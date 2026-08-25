@@ -1249,6 +1249,25 @@ def main():
     basar("Kutu skor: top çalma sütunu 'TÇ'", "['stl','TÇ']" in _sayfa)
     basar("Kutu skor: top kaybı sütunu 'TK' (tutarlılık)", "['to','TK']" in _sayfa)
     basar("Kutu skor: eski 'Çal' başlığı kalmadı", "'Çal'" not in _sayfa)
+    # 'FA' ne Türkçe ne İngilizce bir kısaltmaydı; veri alanı `ft`
+    # (serbest atış) olduğu halde "faul" gibi okunuyordu — kullanıcı
+    # "3/7 faul olamaz" diyerek yakaladı. FT hem İngilizce standardı
+    # hem de FG/3P ile aynı ailede.
+    # Kısaltmaların TAMAMI Türkçe (kullanıcı kuralı) — yarı Türkçe yarı
+    # İngilizce set (FG/3P/FT) kalktı.
+    _cift = [("pts","SAY"),("reb","RİB"),("ast","AST"),("min","DK"),("fg","ŞUT"),
+             ("3p","3S"),("ft","SA"),("stl","TÇ"),("blk","BLK"),("to","TK"),("pm","+/−")]
+    basar("Kutu skor: bütün sütun etiketleri Türkçe ve beklenen küme",
+          all(f"['{a}','{b}'" in _sayfa for a, b in _cift))
+    basar("Kutu skor: İngilizce kalıntı yok (FG/3P/FT/Blk)",
+          not any(x in _sayfa for x in ("'FG'", "'3P'", "'FT'", "'Blk'", "'Say'", "'Rib'")))
+    # 'FA' ASLA kullanılmamalı: Türk basketbol istatistiklerinde FA
+    # FAUL demek. Serbest atış sütununa FA yazılmıştı ve tam da bu
+    # yüzden faul sanıldı ("3/7 faul olamaz" — kullanıcı yakaladı).
+    basar("Kutu skor: 'FA' etiketi hiçbir yerde yok (FA = faul, karışıyor)",
+          "'FA'" not in _sayfa and "['fa'," not in _sayfa)
+    basar("Türkler: ikincil satır etiketleri de Türkçe",
+          "[['dk',t.min],['şut',t.fg],['3s',t['3p']],['sa',t.ft]]" in _sayfa)
 
     # Masaüstünde saha öğeleri büyür, MOBİL ÖLÇÜLERE DOKUNULMAZ.
     # (Kullanıcı kuralı: "375px'teki hâli mükemmel, ölçüleri aynen kalsın.")

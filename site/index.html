@@ -112,7 +112,7 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
    alta kayması bu yüzden imkânsız — sarmalama grup sınırından oluyor,
    öğe sınırından değil. */
 /* Sütun boşluğu, grup içi boşlukla AYNI (14px). Farklı olursa iki grup
-   tek satıra sığdığında ek yeri görünüyor: "fa" ile "2 tç" arası
+   tek satıra sığdığında ek yeri görünüyor: "FT" ile "2 TÇ" arası
    diğerlerinden geniş duruyordu. Gruplama yalnızca sarmalamayı
    yönetmek için var, göze görünmemeli. Satır boşluğu (9px) ayrı ve
    bilerek büyük — o, iki satıra düştüğünde ayırıcı görevi görüyor. */
@@ -143,7 +143,7 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
    göz "fa → 2" diye eşleştiriyordu. Dikey eşleşmede bu belirsizlik
    yapısal olarak imkânsız: etiket her zaman kendi değerinin altında.
    Etiketler BÜYÜK harf — kutu skor sütun başlıklarıyla aynı biçim,
-   böylece kelime değil başlık olarak okunuyorlar ("fa" küçük harfle
+   böylece kelime değil başlık olarak okunuyorlar ("ft" küçük harfle
    "faul" gibi okunuyordu). */
 .tkalt .tkg > span{display:flex;flex-direction:column;gap:4px;white-space:nowrap}
 .tkalt .tkg > span b{font-family:var(--mono);font-size:13px;font-weight:400;
@@ -711,8 +711,13 @@ function surukleBagla(){
 }
 
 /* ---- box score kartı ---- */
-const KOLONLAR=[['pts','Say','k'],['reb','Rib'],['ast','Ast'],['min','Dk'],['fg','FG'],
-                ['3p','3P'],['ft','FA'],['stl','TÇ'],['blk','Blk'],['to','TK'],['pm','+/−']];
+// Kısaltmaların TAMAMI Türkçe (kullanıcı kuralı: yarı Türkçe yarı
+// İngilizce olmasın). Önceki set FG/3P/FT karışımıydı.
+// DİKKAT: "FA" KULLANILMAZ — Türk basketbol istatistiklerinde FA
+// FAUL demektir. Serbest atış sütununa FA yazılmıştı ve tam da bu
+// yüzden faul sanılıyordu ("3/7 faul olamaz"). Serbest atış = SA.
+const KOLONLAR=[['pts','SAY','k'],['reb','RİB'],['ast','AST'],['min','DK'],['fg','ŞUT'],
+                ['3p','3S'],['ft','SA'],['stl','TÇ'],['blk','BLK'],['to','TK'],['pm','+/−']];
 
 function isaretliMi(t){ return t.oyuncular.some(o=>o.gecti_mi||o.aykiri||o.kaybedenin_en_iyisi); }
 
@@ -801,7 +806,7 @@ function render(d){
     const blok=t=>{
       // İkincil satır İKİ GRUP hâlinde: ya tek satıra sığar ya da
       // dörtlü iki dengeli satır olur. Tek öğe asla yalnız kalmaz.
-      const g1=[['dk',t.min],['fg',t.fg],['3p',t['3p']],['fa',t.ft]];
+      const g1=[['dk',t.min],['şut',t.fg],['3s',t['3p']],['sa',t.ft]];
       const g2=[['tç',t.stl],['blk',t.blk],['tk',t.to],['+/−',t.pm]];
       const yaz=g=>g.map(([e,v])=>`<span><b>${esc(String(v))}</b><i>${e}</i></span>`).join('');
       return `<button class="tkblok" style="--tc:${esc(t.renk||'#7E8794')}" data-kart="${esc(t.mac_id||'')}">
