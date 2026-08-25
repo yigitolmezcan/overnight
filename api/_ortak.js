@@ -1,27 +1,34 @@
 // Bülten uç noktalarının ortak parçaları.
 //
-// TASARIM KARARI — veritabanı yok. Abone listesi deponun içinde düz bir
-// JSON dosyası (config/aboneler.json); uç noktalar GitHub Contents API
-// ile okuyup yazıyor. Birkaç yüz aboneye kadar bu fazlasıyla yeterli ve
-// bakım gerektirmiyor: yedek zaten git geçmişinde, listeyi görmek için
-// dosyaya bakmak yeterli.
+// TASARIM KARARI — abone listesi DEPONUN DIŞINDA. Önce depoda düz bir
+// JSON dosyasındaydı; çalışıyordu ama kalıcı bir kusuru vardı: bir adres
+// git geçmişine girdikten sonra silinemiyor. Abonelikten çıkan biri
+// güncel listeden düşüyor ama eski commit'lerde kalmaya devam ediyordu.
+// Depo bir gün herkese açılırsa adresler orada. Beş kişiyken önemsiz,
+// elli kişiyken ciddi — ve sonradan taşımak şimdi taşımaktan zor.
 //
-// TASARIM KARARI — onay ve çıkış bağlantıları DURUMSUZ. Token, adresin
-// gizli anahtarla HMAC'i; hiçbir yerde saklanmıyor, uç nokta yeniden
-// hesaplayıp karşılaştırıyor. Böylece "bekleyen onaylar" için ikinci bir
-// depoya ihtiyaç kalmıyor ve onaysız adres hiçbir yere yazılmıyor.
+// Yerine Upstash Redis (REST API). Seçilme sebebi: HTTP üzerinden
+// çalışıyor, yani sunucusuz fonksiyonda bağlantı havuzu/istemci
+// kütüphanesi gerekmiyor — düz `fetch` yetiyor, projeye tek bir
+// bağımlılık eklenmiyor. Veri tek bir SET içinde: SADD ekler, SREM
+// çıkarır, SMEMBERS listeler.
+//
+// TASARIM KARARI — onay ve çıkış bağlantıları DURUMSUZ (bu kısım
+// değişmedi). Token, adresin gizli anahtarla HMAC'i; hiçbir yerde
+// saklanmıyor, uç nokta yeniden hesaplayıp karşılaştırıyor. Onaysız
+// adres hiçbir yere yazılmıyor.
 
 import crypto from "node:crypto";
 
-export const DEPO = process.env.GITHUB_DEPO || "";
-const DEPO_TOKEN = process.env.GITHUB_DEPO_TOKEN || "";
+const REDIS_URL = (process.env.UPSTASH_REDIS_REST_URL || "").replace(/\/$/, "");
+const REDIS_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN || "";
 const GIZLI = process.env.ABONE_GIZLI_ANAHTAR || "";
-export const LISTE_YOLU = "config/aboneler.json";
+export const ANAHTAR = "overnight:aboneler";
 
 export function ayarlarEksik() {
   const eksik = [];
-  if (!DEPO) eksik.push("GITHUB_DEPO");
-  if (!DEPO_TOKEN) eksik.push("GITHUB_DEPO_TOKEN");
+  if (!REDIS_URL) eksik.push("UPSTASH_REDIS_REST_URL");
+  if (!REDIS_TOKEN) eksik.push("UPSTASH_REDIS_REST_TOKEN");
   if (!GIZLI) eksik.push("ABONE_GIZLI_ANAHTAR");
   if (!process.env.RESEND_API_KEY) eksik.push("RESEND_API_KEY");
   return eksik;
@@ -53,39 +60,24 @@ export function tokenGecerli(amac, adres, gelen) {
 export const kodla = (s) => Buffer.from(s, "utf8").toString("base64url");
 export const coz = (s) => Buffer.from(String(s || ""), "base64url").toString("utf8");
 
-async function githubIstek(yol, secenek = {}) {
-  const yanit = await fetch(`https://api.github.com/repos/${DEPO}/${yol}`, {
-    ...secenek,
-    headers: {
-      Authorization: `Bearer ${DEPO_TOKEN}`,
-      Accept: "application/vnd.github+json",
-      "User-Agent": "overnight-bulten",
-      ...(secenek.headers || {}),
-    },
+async function redis(...komut) {
+  const yanit = await fetch(REDIS_URL, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${REDIS_TOKEN}`, "Content-Type": "application/json" },
+    body: JSON.stringify(komut),
   });
-  return yanit;
+  if (!yanit.ok) throw new Error(`Depolama hatası (${yanit.status}): ${await yanit.text()}`);
+  return (await yanit.json()).result;
 }
 
-export async function listeOku() {
-  const yanit = await githubIstek(`contents/${LISTE_YOLU}`);
-  if (yanit.status === 404) return { aboneler: [], sha: null };
-  if (!yanit.ok) throw new Error(`Liste okunamadı (${yanit.status})`);
-  const veri = await yanit.json();
-  const icerik = JSON.parse(Buffer.from(veri.content, "base64").toString("utf8"));
-  return { aboneler: icerik.aboneler || [], sha: veri.sha };
+export async function aboneEkle(adres) {
+  // SADD kümeye ekler; adres zaten varsa 0 döner, yani aynı adres iki
+  // kez kaydedilmiyor ve ayrıca kontrol etmeye gerek kalmıyor.
+  return (await redis("SADD", ANAHTAR, adres)) === 1;
 }
 
-export async function listeYaz(aboneler, sha, mesaj) {
-  const govde = JSON.stringify({ _aciklama: "Onaylı bülten aboneleri. api/onayla.js ekler, api/cikis.js çıkarır — elle düzenlenmesi gerekmez.", aboneler }, null, 2) + "\n";
-  const yanit = await githubIstek(`contents/${LISTE_YOLU}`, {
-    method: "PUT",
-    body: JSON.stringify({
-      message: mesaj,
-      content: Buffer.from(govde, "utf8").toString("base64"),
-      ...(sha ? { sha } : {}),
-    }),
-  });
-  if (!yanit.ok) throw new Error(`Liste yazılamadı (${yanit.status}): ${await yanit.text()}`);
+export async function aboneCikar(adres) {
+  return (await redis("SREM", ANAHTAR, adres)) === 1;
 }
 
 export async function mailGonder({ kime, konu, html, metin }) {

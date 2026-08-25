@@ -1066,6 +1066,7 @@ def main():
     # Sayı her zaman elimizde: fark_serisi.kazanan_en_buyuk_acigi.
     # (Gerçek üretim bug'ı 2026-01-28 — veri promptta VARDI, model
     # kullanmadı; o yüzden düzeltme prompta değil doğrulayıcıya yazıldı.)
+    import dogrula as dogrula_modul
     from dogrula import t23_mimari_kural_ihlalleri as _t23
     basar("T23: sayısız geri dönüş reddediliyor",
           not _t23("San Antonio, Houston'ı farktan dönerek 111-99 yendi.")[0])
@@ -1130,11 +1131,66 @@ def main():
     basar("Bülten: çıkış token'ı Node tarafıyla birebir aynı",
           _bulten._cikis_bagi("ali@ornek.com") == _beklenen)
 
-    # Onaysız adres listeye yazılamaz: liste dosyası çift onaydan
-    # geçmeyen hiçbir adresi taşımamalı (başlangıçta boş).
-    _abn = _j.loads(open("config/aboneler.json").read())
-    basar("Bülten: abone listesi yapısı doğru",
-          isinstance(_abn.get("aboneler"), list))
+    # Abone listesi DEPODA OLMAMALI: adresler git geçmişine yazılırsa
+    # abonelikten çıkan biri bile eski commit'lerde kalır. Liste artık
+    # Upstash'te; depoda bir kopyasının belirmesi geriye dönüş olur.
+    basar("Bülten: abone listesi depoda TUTULMUYOR",
+          not _os.path.exists("config/aboneler.json"))
+    _bulten_kaynak = open("bulten.py", encoding="utf-8").read()
+    basar("Bülten: liste Upstash'ten okunuyor, dosyadan değil",
+          "SMEMBERS" in _bulten_kaynak and "aboneler.json" not in _bulten_kaynak)
+    _ortak = open("api/_ortak.js", encoding="utf-8").read()
+    basar("Bülten: uç noktalar da depoya yazmıyor",
+          "api.github.com" not in _ortak and "SADD" in _ortak and "SREM" in _ortak)
+
+
+    # ==================================================================
+    # Kendini çürüten cümle + "an" önem sırası.
+    # ==================================================================
+
+    # a) Sonucu ETKİLEMEYEN an, LLM'e hiç gönderilmiyor. Kök sebep:
+    # anlar önem sırasına göre değil EN GEÇ olana göre seçiliyordu, o
+    # yüzden 12 sayı farkla biten maçın son saniyesindeki anlamsız smaç
+    # listenin başına geçiyordu (gerçek üretim bug'ı, Spurs-Rockets).
+    _an_hepsi = [f for f in _g0128 if f["tur"] == "an"]
+    _an_gonderilen = [f for f in _y0.grup_b_gercekleri(_g0128, "Victor Wembanyama")
+                      if f["tur"] == "an"]
+    basar("an: sonucu etkilemeyen anlar elendi",
+          len(_an_gonderilen) < len(_an_hepsi) / 3)
+    basar("an: gönderilen anların hepsi son periyot ya da uzatmada",
+          all(f["veri"]["periyot"] >= _y0.AN_SON_PERIYOT for f in _an_gonderilen))
+    basar("an: gönderilen anların hepsi maç yakınken oldu",
+          all(f["veri"].get("tur_alt") == "lider_degisimi"
+              or abs(f["veri"].get("fark") or 0) <= _y0.AN_YAKIN_FARK
+              for f in _an_gonderilen))
+    basar("an: disiplin kayıtları (teknik faul vb.) hiç gönderilmiyor",
+          not any(f["veri"].get("tur_alt") == "disiplin" for f in _an_gonderilen))
+    _erken = [{"tur": "an", "veri": {"periyot": 1, "fark": 2, "tur_alt": "klutch_sayi", "saat": "PT01M"}}]
+    basar("an: maç yakın olsa da ERKEN periyot anı gönderilmiyor",
+          _y0._onemli_anlar(_erken) == [])
+    _uzak = [{"tur": "an", "veri": {"periyot": 4, "fark": 18, "tur_alt": "klutch_sayi", "saat": "PT00M"}}]
+    basar("an: geç olsa da FARK AÇIKKEN atılan basket gönderilmiyor",
+          _y0._onemli_anlar(_uzak) == [])
+
+    # b) Bir olayı anıp ardından önemsizliğini söyleyen yapı reddedilir.
+    for _c in ("Capela'nın smacı skoru etkilemese de San Antonio kazandı.",
+               "Son basket sonucu değiştirmese de tribünler ayaktaydı.",
+               "Bu basket fark etmese de moral oldu.",
+               "Son hücum boşa gitse de Denver kazandı.",
+               "Serbest atış etkisiz kalsa da maç bitti."):
+        basar(f"T23: kendini çürüten yapı reddedildi ({_c[:34]}…)", not _t23(_c)[0])
+    basar("T23: gerçekten sonucu belirleyen an YANLIŞLIKLA reddedilmiyor (regresyon)",
+          _t23("San Antonio, dördüncü periyotta Wembanyama'nın serbest atışıyla öne geçti.")[0])
+
+    # Kural cümle katmanının kapısında da olmalı — şablon da üretemesin.
+    basar("cumle: kendini çürüten cümle şablon kapısından da geçemiyor",
+          _cumle._gecir("Capela'nın smacı skoru etkilemese de maç bitti.") is None)
+
+    # Ad çakışması nöbeti: T23'ün geri dönüş deseni, dosyanın ilerisindeki
+    # aynı adlı geniş desenle karışmamalı (bir kez oldu, sessizce yanlış
+    # deseni kullandı).
+    basar("dogrula: T23 kendi geri dönüş desenini kullanıyor",
+          hasattr(dogrula_modul, "T23_GERI_DONUS_DESENI"))
 
 
 if __name__ == "__main__":

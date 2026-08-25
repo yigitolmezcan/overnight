@@ -123,21 +123,28 @@ Hesap açtıktan sonra: **API Keys → Create API Key** → adını `overnight`
 koy → **Sending access** yetkisi yeter → oluştur. Çıkan `re_...` ile
 başlayan değeri kopyala, birazdan iki yere koyacağız.
 
-## 5 — Depoya yazma izni (abone listesi için)
+## 5 — Upstash hesabı (abone listesi)
 
-Abone listesi ayrı bir veritabanında değil, deponun içinde
-`config/aboneler.json` dosyasında duruyor. Formu işleyen kodun oraya
-yazabilmesi için dar yetkili bir anahtar gerekiyor.
+Abone adresleri **depoda tutulmuyor**. Sebebi: bir adres git geçmişine
+girdikten sonra silinemez — abonelikten çıkan biri güncel listeden düşer
+ama eski kayıtlarda kalır. Bunun yerine Upstash denen ücretsiz bir
+depolama kullanıyoruz.
 
-**https://github.com/settings/personal-access-tokens/new**
+**https://upstash.com** → **Sign up** (GitHub ile girebilirsin).
 
-- **Token name**: `overnight-bulten`
-- **Expiration**: `1 year`
-- **Repository access**: **Only select repositories** → `overnight`
-- **Permissions → Repository permissions** → **Contents** → **Read and write**
-- **Generate token**
+- **Create Database** → **Redis**
+- **Name**: `overnight`
+- **Region**: sana en yakını (Frankfurt uygun)
+- **Type**: **Free**
+- **Create**
 
-Çıkan `github_pat_...` değerini kopyala.
+Açılan sayfada aşağı in, **REST API** bölümünü bul. İki değer var:
+`UPSTASH_REDIS_REST_URL` ve `UPSTASH_REDIS_REST_TOKEN`. İkisini de
+kopyala (her birinin yanında kopyalama düğmesi var).
+
+Ücretsiz katman: 256 MB veri ve ayda yüz binlerce komut. Biz günde
+birkaç komut kullanıyoruz (bir abone eklendiğinde bir, bülten
+gönderilirken bir) — bu sınırlara yaklaşmamız mümkün değil.
 
 ## 6 — Anahtarları yerine koy
 
@@ -149,8 +156,8 @@ Environment olarak **Production, Preview, Development** üçünü de işaretle:
 | Name | Value |
 |---|---|
 | `RESEND_API_KEY` | Resend'den aldığın `re_...` |
-| `GITHUB_DEPO_TOKEN` | GitHub'dan aldığın `github_pat_...` |
-| `GITHUB_DEPO` | `yigitolmezcan/overnight` |
+| `UPSTASH_REDIS_REST_URL` | Upstash'ten aldığın `https://...upstash.io` |
+| `UPSTASH_REDIS_REST_TOKEN` | Upstash'ten aldığın uzun değer |
 | `ABONE_GIZLI_ANAHTAR` | aşağıdaki komutun ürettiği değer |
 
 Gizli anahtarı üretmek için Terminal'de:
@@ -170,12 +177,14 @@ Değişkenleri ekledikten sonra Vercel'de **Deployments → en üstteki →
 
 **Settings → Secrets and variables → Actions**
 
-**Secrets** sekmesinde iki tane:
+**Secrets** sekmesinde dört tane:
 
 | Name | Value |
 |---|---|
 | `RESEND_API_KEY` | aynı `re_...` |
 | `ABONE_GIZLI_ANAHTAR` | Vercel'e koyduğun AYNI değer |
+| `UPSTASH_REDIS_REST_URL` | Vercel'e koyduğun AYNI değer |
+| `UPSTASH_REDIS_REST_TOKEN` | Vercel'e koyduğun AYNI değer |
 
 **Variables** sekmesinde iki tane:
 
@@ -190,7 +199,8 @@ Değişkenleri ekledikten sonra Vercel'de **Deployments → en üstteki →
 2. "Onay maili yolladık" yazısını gör
 3. Mail kutuna gelen maildeki **Aboneliği onayla** düğmesine bas
 4. "Kaydın tamam" sayfasını gör
-5. Depoda `config/aboneler.json` dosyasına bak — adresin orada olmalı
+5. Upstash panelinde **Data Browser** sekmesine bak — `overnight:aboneler`
+   içinde adresini görmelisin
 6. Bülteni beklemeden denemek için, deponun **Actions → Yayınla → Run
    workflow** düğmesine bas
 
@@ -199,13 +209,94 @@ listeden çıkmalı.
 
 ## Bilmen gereken iki şey
 
-**Abone adresleri depoda duruyor.** Depo gizli (private), o yüzden
-kimse göremez. Ama git geçmişi silinmez: biri abonelikten çıkınca adresi
-güncel listeden düşer, eski commit'lerde kalmaya devam eder. Birkaç yüz
-kişilik bir bülten için kabul edilebilir; liste binlere çıkarsa gerçek
-bir veritabanına geçmek gerekir.
+**Abone adresleri artık depoda değil.** Upstash'te duruyorlar ve
+abonelikten çıkan biri gerçekten siliniyor — geride iz kalmıyor. Adresler
+şifrelenmiş değil; Upstash hesabına giren onları görebilir, o yüzden o
+hesabın parolasını güçlü tut.
 
 **Form kötüye kullanılabilir.** Biri başkasının adresini yazarsa o adrese
 bir onay maili gider (listeye EKLENMEZ, çift onay bunu engelliyor). Resend'in
 günlük 100 mail limiti doğal bir tavan; kötüye kullanım görürsen söyle,
 forma hız sınırı eklerim.
+
+---
+
+# Alan adı
+
+Resend, doğrulanmış bir alan adın olmadan sadece **kendi adresine** mail
+atmana izin veriyor. Başkalarına göndermek için bir alan adı şart.
+
+## İsim önerileri
+
+Hepsi kısa, akılda kalır ve "overnight" geçiyor. Alınıp alınmadığını
+sipariş ekranında göreceksin — biri doluysa sıradakine geç.
+
+| Alan adı | Neden | Yıllık (yaklaşık) |
+|---|---|---|
+| **overnight.report** | "overnight report" diye okunuyor, tam işi anlatıyor | ~$15 |
+| **overnightnba.com** | En açık ve en güvenli seçim, kimse şaşırmaz | ~$12 |
+| **overnight.gg** | `.gg` spor/oyun dünyasında tanıdık, kısa | ~$25 |
+| **overnightnba.co** | `.com` doluysa en yakın alternatif | ~$12 |
+| **overnight.basketball** | Anlamı tartışmasız ama uzun ve pahalı | ~$40 |
+
+Benim önerim **overnight.report** — sitenin ne olduğunu ismin kendisi
+söylüyor ve `.com` kalabalığında kaybolmuyor.
+
+## Nereden alınır
+
+**https://porkbun.com** öneriyorum: fiyatları düşük, gizlilik koruması
+(WHOIS privacy) ücretsiz ve ekranı sade. Namecheap veya Cloudflare da
+olur; aşağıdaki adımlar hepsinde benzer.
+
+1. Porkbun'da arama kutusuna ismi yaz, **Search**
+2. Uygun olanın yanındaki **Add to cart** → **Checkout**
+3. Hesap aç, öde (kredi kartı yeter)
+
+## Vercel'e bağlama
+
+1. Vercel'de projene gir → **Settings → Domains**
+2. **Add** → aldığın alan adını yaz (ör. `overnight.report`) → **Add**
+3. Vercel sana **iki nameserver** ya da **birkaç DNS kaydı** gösterecek.
+   En kolayı nameserver yöntemi: `ns1.vercel-dns.com` ve
+   `ns2.vercel-dns.com`
+4. Porkbun'da: **Domain Management** → alan adının yanındaki **Details** →
+   **Authoritative Nameservers** → **Edit** → Vercel'in verdiği iki
+   adresi yaz → **Submit**
+5. Vercel'e dön, birkaç dakika içinde alan adının yanında yeşil bir
+   onay çıkar
+
+> Bu yayılma bazen 1-2 saat sürebilir. Sabırlı ol, bir şey bozulmadı.
+
+Bağlandıktan sonra GitHub'daki `SITE_ADRESI` değişkenini yeni adrese
+güncelle (sonunda `/` olmadan, ör. `https://overnight.report`).
+
+## Resend'de doğrulama
+
+1. Resend'de **Domains** → **Add Domain**
+2. Alan adını yaz → **Add**
+3. Resend sana 3 kayıt verecek (bir `MX`, iki `TXT` — DKIM ve SPF)
+4. **Nameserver'ları Vercel'e verdiysen** bu kayıtları Vercel'de
+   gireceksin: **Settings → Domains → alan adın → DNS Records → Add**
+   - Her kayıt için: Resend'deki **Type**, **Name** ve **Value**
+     alanlarını birebir kopyala
+5. Resend'e dön → **Verify DNS Records**
+6. Üçü de yeşil olunca hazırsın
+
+> Kopyalarken **Name** alanına dikkat: Resend `send` ya da
+> `resend._domainkey` gibi kısa bir ad verir. Vercel'de de aynen o kısa
+> hâlini yaz, sonuna alan adını EKLEME.
+
+Doğrulama bitince GitHub'daki `GONDEREN_ADRES` değişkenini güncelle:
+
+```
+OVERNIGHT <gunaydin@overnight.report>
+```
+
+`gunaydin@` kısmını istediğin gibi seçebilirsin, o adresin ayrıca var
+olması gerekmiyor — alan adı doğrulanmış olması yeterli.
+
+## Sıra önemli
+
+Alan adını al → Vercel'e bağla → Resend'de doğrula → iki değişkeni
+güncelle. Doğrulama bitmeden bülten hâlâ sadece sana gider; sistem
+bozulmaz, sadece bekler.

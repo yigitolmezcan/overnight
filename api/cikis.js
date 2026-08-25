@@ -2,7 +2,7 @@
 // Her bültenin altındaki tek tıklık çıkış bağlantısı. Onay ekranı YOK —
 // kullanıcı çıkmak için tıkladıysa çıkar; araya ekran koymak hem yasal
 // beklentiye hem de servislerin şartına aykırı.
-import { adresiNormallestir, tokenGecerli, coz, listeOku, listeYaz, sayfa, ayarlarEksik } from "./_ortak.js";
+import { adresiNormallestir, tokenGecerli, coz, aboneCikar, sayfa, ayarlarEksik } from "./_ortak.js";
 
 export default async function handler(istek, yanit) {
   yanit.setHeader("Content-Type", "text/html; charset=utf-8");
@@ -14,9 +14,7 @@ export default async function handler(istek, yanit) {
   }
 
   try {
-    const { aboneler, sha } = await listeOku();
-    const kalan = aboneler.filter((a) => a.eposta !== adres);
-    if (kalan.length !== aboneler.length) await listeYaz(kalan, sha, "abonelikten çıkıldı");
+    await aboneCikar(adres);
   } catch (e) {
     console.error("Liste güncellenemedi:", e.message);
     return yanit.status(502).send(sayfa("Bir sorun var", "Çıkışını kaydedemedik. Birazdan tekrar dene."));

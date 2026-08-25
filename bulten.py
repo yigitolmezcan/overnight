@@ -25,13 +25,31 @@ from pathlib import Path
 
 KOK = Path(__file__).resolve().parent
 DURUM = KOK / "config" / "yayin_durumu.json"
-ABONELER = KOK / "config" / "aboneler.json"
 DIST = KOK / "dist"
 
 SITE = os.environ.get("SITE_ADRESI", "").rstrip("/")
 GONDEREN = os.environ.get("GONDEREN_ADRES", "OVERNIGHT <onboarding@resend.dev>")
 GIZLI = os.environ.get("ABONE_GIZLI_ANAHTAR", "")
 RESEND = os.environ.get("RESEND_API_KEY", "")
+# Abone listesi depoda DEĞİL (adresler git geçmişine yazılmasın diye) —
+# api/_ortak.js ile aynı Upstash kümesinden okunuyor.
+REDIS_URL = os.environ.get("UPSTASH_REDIS_REST_URL", "").rstrip("/")
+REDIS_TOKEN = os.environ.get("UPSTASH_REDIS_REST_TOKEN", "")
+REDIS_ANAHTAR = "overnight:aboneler"
+
+
+def aboneleri_getir():
+    """Onaylı abone adresleri (SMEMBERS). Ağ hatası burada YUTULMAZ —
+    liste okunamadıysa 'abone yok' diye sessizce geçmek, gönderilmemiş
+    bir bülteni başarılı göstermek olurdu."""
+    istek = urllib.request.Request(
+        REDIS_URL,
+        data=json.dumps(["SMEMBERS", REDIS_ANAHTAR]).encode(),
+        headers={"Authorization": f"Bearer {REDIS_TOKEN}", "Content-Type": "application/json"},
+        method="POST",
+    )
+    with urllib.request.urlopen(istek, timeout=30) as y:
+        return json.loads(y.read()).get("result") or []
 
 AYLAR = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
          "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
@@ -133,7 +151,9 @@ def _resend(kime, konu, html, metin):
 
 def gonder(prova_adresi=None):
     eksik = [a for a, v in (("RESEND_API_KEY", RESEND), ("ABONE_GIZLI_ANAHTAR", GIZLI),
-                            ("SITE_ADRESI", SITE)) if not v]
+                            ("SITE_ADRESI", SITE),
+                            ("UPSTASH_REDIS_REST_URL", REDIS_URL),
+                            ("UPSTASH_REDIS_REST_TOKEN", REDIS_TOKEN)) if not v]
     if eksik:
         print(f"Eksik ortam değişkeni: {', '.join(eksik)} — gönderim yapılmadı.")
         return 1
@@ -155,20 +175,17 @@ def gonder(prova_adresi=None):
     konu = f"OVERNIGHT — {_tarih_tr(tarih)} gecesi"
 
     if prova_adresi:
-        alicilar = [{"eposta": prova_adresi}]
+        alicilar = [prova_adresi]
         print(f"PROVA: sadece {prova_adresi} adresine gönderiliyor, liste kullanılmıyor.")
-    elif ABONELER.exists():
-        alicilar = json.loads(ABONELER.read_text(encoding="utf-8")).get("aboneler", [])
     else:
-        alicilar = []
+        alicilar = aboneleri_getir()
 
     if not alicilar:
         print("Onaylı abone yok — gönderilecek kimse yok.")
         return 0
 
     basarili, basarisiz = 0, []
-    for a in alicilar:
-        adres = a["eposta"]
+    for adres in alicilar:
         cikis = _cikis_bagi(adres)
         try:
             _resend(adres, konu, mail_govdesi(veri, cikis), mail_metni(veri, cikis))

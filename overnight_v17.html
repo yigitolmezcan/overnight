@@ -18,7 +18,14 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+/* -webkit-text-size-adjust:100% — iOS Safari, viewport'tan geniş
+   bloklardaki yazıyı KENDİLİĞİNDEN büyütüyor ("text autosizing") ve
+   bunu blok blok farklı oranlarda yapıyor. Kutu skor kartındaki
+   "Oynamayanlar" satırında bazı isimlerin kocaman, bazılarının küçük
+   görünmesinin sebebi buydu — bizim CSS'imiz değil, tarayıcının
+   müdahalesi. Kapatılıyor. */
 body{margin:0;color:var(--ink);font:16px/1.55 var(--txt);-webkit-font-smoothing:antialiased;
+  -webkit-text-size-adjust:100%;text-size-adjust:100%;
   background:linear-gradient(180deg,#080C13 0%,#0A0F18 26%,#0D131D 52%,#111825 76%,#151D2B 100%);
   background-attachment:fixed}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:left}
@@ -30,7 +37,27 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-a
 .sec.s1{--c:var(--ember)} .sec.s3{--c:var(--ember)} .sec.s4b{--c:var(--gold)}
 .sec.s5{--c:var(--gold)}  .sec.s6{--c:var(--steel)} .sec.sTr{--c:var(--ember)}
 .sec.s7{--c:var(--steel)} .sec.s8{--c:var(--sky)} .sec.s9{--c:var(--sky)}
-.sechead{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:14px}
+/* Yapışkan bölüm başlığı (kullanıcı kararı): sayfada yer imi olmadığı
+   için kaydırma bitmiyormuş gibi hissettiriyordu. Şerit İNCE tutuldu —
+   amaç konum bildirmek, alan kaplamak değil. Zemin opak olmak zorunda,
+   yoksa altından geçen metin şeridin içinden görünüyor. */
+/* z-index 30: scrim 40, sheet 50. Şerit perdenin ALTINDA kalmalı —
+   40 verilseydi kart açıkken bulanık perdenin üstünde asılı dururdu. */
+.sechead{position:sticky;top:0;z-index:30;display:flex;align-items:baseline;
+  justify-content:space-between;gap:14px;margin-bottom:14px;
+  padding:10px 20px 9px;margin-left:-20px;margin-right:-20px;
+  border-bottom:1px solid transparent;transition:border-color .15s;
+  /* Zemin, gövdeyle BİREBİR aynı degrade + aynı sabitleme. Düz bir renk
+     verilseydi degradenin üstünde yama gibi durur, kaydırdıkça fark
+     açılırdı. background-attachment:fixed sayesinde ikisi de ekrana göre
+     boyanıyor, yani şerit altındaki sayfayla tam olarak aynı rengi
+     alıyor ve görünmez oluyor — sadece içeriği gizliyor. */
+  background:linear-gradient(180deg,#080C13 0%,#0A0F18 26%,#0D131D 52%,#111825 76%,#151D2B 100%);
+  background-attachment:fixed}
+.sechead.yapisik{border-bottom-color:#1A2230}
+.sechead.yapisik h2{font-size:17px}
+.sechead h2{transition:font-size .15s}
+
 .sechead h2{font-family:var(--disp);font-weight:800;font-size:26px;line-height:1;letter-spacing:-.03em;margin:0}
 .cue{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
 .rule{height:1px;background:var(--c);opacity:.35;margin-bottom:20px}
@@ -76,11 +103,22 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
 .brief ul{margin:0;padding:0;list-style:none}
 .brief li{border-bottom:1px solid #171E2B}
 .brief li:last-child{border-bottom:0}
-.briefrow{display:flex;align-items:center;gap:14px;padding:12px 2px;width:100%}
-.bmark{flex:0 0 auto;min-width:42px}
+/* Numaralı hiyerarşi (kullanıcı kararı): beş satır aynı ağırlıktayken
+   göz nereye bakacağını bilmiyordu. Numara ritmi veriyor, ilk satır
+   belirgin şekilde büyük. Rozet ember kutudan küçük mono yazıya indi —
+   numara zaten güçlü bir öğe, ikisi çakışıyordu. */
+.briefrow{display:flex;align-items:flex-start;gap:14px;padding:15px 2px;width:100%}
+.bnum{flex:none;width:34px;font-family:var(--mono);font-size:26px;font-weight:700;
+  line-height:.9;letter-spacing:-.05em;color:#26303F}
+.briefrow.lead .bnum{color:var(--ember);font-size:38px}
+.btext{flex:1;min-width:0}
 .newsmark{color:var(--amber);font-family:var(--mono);font-size:13px;margin-right:6px}
-.brieftxt{font-size:14.5px;color:var(--ink2);flex:1;min-width:0}
-.briefgo{flex:0 0 auto;font-family:var(--mono);font-size:11.5px;color:var(--faint)}
+.brieftxt{display:block;font-size:14px;line-height:1.5;color:var(--ink2)}
+.briefrow.lead .brieftxt{font-size:19px;line-height:1.38;color:var(--ink);
+  font-weight:600;letter-spacing:-.01em}
+.brozet{display:block;margin-top:6px;font-family:var(--mono);font-size:11px;color:var(--faint)}
+.briefrow.lead .brozet{color:var(--ember)}
+.briefgo{flex:0 0 auto;font-family:var(--mono);font-size:11.5px;color:var(--faint);margin-top:3px}
 
 /* games */
 .game{border-bottom:1px solid #171E2B;padding:0 0 24px;margin-bottom:24px;scroll-margin-top:20px}
@@ -183,7 +221,11 @@ body.n-worst .calm{border-left-color:var(--amber)}
    display:none DEĞİL (o zaman yükseklik düşerdi) — visibility:hidden,
    yer kaplıyor ama erişilebilirlik ağacından da çıkıyor. */
 .kpanes{display:grid}
-.kpane{grid-area:1/1}
+/* min-width:0 — ızgara öğesinin varsayılan min-width:auto'su, içindeki
+   geniş tablonun genişliğini panoya dayatıyordu; pano ekrandan taşınca
+   hem yatay kaydırma çıkıyor hem de altındaki "Oynamayanlar" satırı o
+   geniş kutuya göre diziliyordu. */
+.kpane{grid-area:1/1;min-width:0}
 .kpane[hidden]{display:block;visibility:hidden;pointer-events:none}
 .kwtf{margin:8px 16px 0;padding:7px 11px;background:#12100C;border-left:2px solid var(--amber)}
 .kwtf span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;
@@ -211,12 +253,28 @@ tr.kstar td:first-child{background:#17110A;box-shadow:inset 3px 0 0 var(--ember)
 tr.kbest td{background:#0C1320}
 tr.kbest td:first-child{background:#0C1320;box-shadow:inset 3px 0 0 #5B8DEF}
 td.khot{color:var(--amber);font-weight:700}
-.kdnp{padding:7px 16px 0;font-family:var(--mono);font-size:11.5px;color:var(--faint);line-height:1.45}
+/* Oynamayanlar: düz metin gibi aksın, sarmalansın, yatay kaydırma
+   İSTEMESİN. Her isim aynı boyda (kullanıcı kuralı). */
+.kdnp{padding:7px 16px 0;font-family:var(--mono);font-size:11px;color:var(--faint);
+  line-height:1.5;white-space:normal;overflow-wrap:break-word;word-break:normal}
 .kfoot{padding:0 16px 12px}
 
 /* gecenin beşi — ana sayfada sadece isim+mevki, ayrıntı kartta */
+/* Gecenin beşi artık düz liste değil, YARIM SAHA yerleşimi (kullanıcı
+   kararı). Beş oyuncu zaten G-G-F-F-C; mevkiler gerçek olduğu için
+   yerleşim dekor değil, bilgi taşıyor. Saha çizimi kasten ince ve
+   soluk: zemin, oyuncular ön planda. */
 .besiline{border:1px solid #171E2B;cursor:pointer}
 .besiline:hover{border-color:#26303F}
+.court{position:relative;width:100%;aspect-ratio:1/1.06;margin:2px 0 0}
+.court svg{position:absolute;inset:0;width:100%;height:100%}
+.pl{position:absolute;transform:translate(-50%,-50%);text-align:center;width:104px}
+.pl .dot{width:30px;height:30px;margin:0 auto 6px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:11px;font-weight:700}
+.pl .nm{font-size:12px;font-weight:700;letter-spacing:-.01em;line-height:1.25;
+  overflow-wrap:break-word}
+.pl .st{font-family:var(--mono);font-size:10.5px;color:var(--ink2);margin-top:3px}
 .besirow{position:relative;display:flex;align-items:baseline;gap:9px;padding:12px 15px;border-bottom:1px solid #141A24}
 /* Kullanıcı kararı: şerit rozetin turuncusu, ve satırlar arasında
    minnacık boşluk kalsın — tek uzun çubuk yerine her satırın kendi
@@ -627,13 +685,16 @@ function render(d){
   // olduğu gibi, hedef maçın ROZETİ duruyor (küçük boy) — satır hem
   // dolduruluyor hem de gerçek bir bilgi taşıyor. Haber işareti (⚠)
   // metnin başına geçti, o da bilgi taşıyordu.
-  briefList.innerHTML=d.brief.map(b=>{
+  briefList.innerHTML=d.brief.map((b,i)=>{
     const haber = b.haber || b.icon==='news';
     const hedef = MAC_BY_ID[b.hedef_id];
     const roz = hedef && typeof hedef.rozet==='number' ? hedef.rozet.toFixed(1) : '';
-    return `<li><a class="briefrow rowlink" href="#${b.hedef_id}">
-    <span class="bmark">${roz?`<span class="roz sm">${roz}</span>`:''}</span>
-    <span class="brieftxt">${haber?'<i class="newsmark">⚠</i>':''}${esc(b.metin)}</span>
+    return `<li><a class="briefrow rowlink${i===0?' lead':''}" href="#${b.hedef_id}">
+    <span class="bnum">${i+1}</span>
+    <span class="btext">
+      <span class="brieftxt">${haber?'<i class="newsmark">⚠</i>':''}${esc(b.metin)}</span>
+      ${roz?`<span class="brozet">rozet ${roz}</span>`:''}
+    </span>
     <span class="briefgo">→</span>
   </a></li>`;}).join('');
 
@@ -678,10 +739,36 @@ function render(d){
 
   // ---- gecenin beşi ----
   BESI = d.gecenin_besi;
+  // Mevki → saha konumu. İki guard altta (dış köşeler), iki forward
+  // ortada (kanatlar), center üstte (potaya yakın). Slot sırası
+  // GECENIN_BESI_SLOTLARI ile aynı: G, G, F, F, C.
+  const SAHA_YERI=[{l:20,t:78},{l:80,t:78},{l:16,t:45},{l:84,t:45},{l:50,t:27}];
+  const oyuncular=d.gecenin_besi.map((o,i)=>{
+    const y=SAHA_YERI[i]||SAHA_YERI[4];
+    // Koyu takım renklerinde siyah yazı okunmuyor — rengin parlaklığına
+    // göre yazı rengi seçiliyor (WCAG'ın basit sürümü).
+    const rgb=(o.renk||'#7E8794').replace('#','');
+    const parlak=(parseInt(rgb.slice(0,2),16)*299+parseInt(rgb.slice(2,4),16)*587+parseInt(rgb.slice(4,6),16)*114)/1000;
+    return `<div class="pl" style="left:${y.l}%;top:${y.t}%">
+      <div class="dot" style="background:${esc(o.renk||'#7E8794')};color:${parlak>140?'#0A0603':'#EDEFF2'}">${esc(o.pos)}</div>
+      <div class="nm">${esc(o.isim)}</div>
+      <div class="st">${o.pts} · ${o.reb} · ${o.ast}</div></div>`;
+  }).join('');
   document.getElementById('fiveList').innerHTML=
-    `<div class="besiline" id="besiAc" role="button" tabindex="0">`+
-    d.gecenin_besi.map(o=>`<div class="besirow"><b>${esc(o.isim)}</b><em>${esc(o.pos)}</em><span class="besiteam">${esc(o.takim_adi||o.takim||'')}</span></div>`).join('')+
-    `<div class="besiac">Tam istatistikler için dokun →</div></div>`;
+    `<div class="besiline" id="besiAc" role="button" tabindex="0" aria-label="Gecenin beşi — tam istatistikler için dokun">
+      <div class="court">
+        <svg viewBox="0 0 300 318" xmlns="http://www.w3.org/2000/svg" fill="none"
+             stroke="#1F2937" stroke-width="1.4" aria-hidden="true">
+          <rect x="6" y="6" width="288" height="306"/>
+          <rect x="108" y="6" width="84" height="112"/>
+          <circle cx="150" cy="118" r="38"/>
+          <path d="M40 6 v54 a110 110 0 0 0 220 0 V6"/>
+          <line x1="130" y1="14" x2="170" y2="14" stroke-width="2.4"/>
+          <circle cx="150" cy="312" r="46" stroke-dasharray="3 5"/>
+        </svg>
+        ${oyuncular}
+      </div>
+      <div class="besiac">Tam istatistikler için dokun →</div></div>`;
   const besiAc=document.getElementById('besiAc');
   besiAc.addEventListener('click',()=>kartAc(besiKartiHTML()));
   besiAc.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();kartAc(besiKartiHTML());}});
@@ -706,12 +793,52 @@ function render(d){
     </div>`;
   }
 
+  yapiskanBasliklariKur();
+
   // ---- kart açma ----
   document.querySelectorAll('[data-kart]').forEach(b=>{
     const ac=()=>{ const m=MAC_BY_ID[b.dataset.kart]; if(m) kartAc(boxKartiHTML(m)); };
     b.addEventListener('click',ac);
     b.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); ac(); } });
   });
+}
+
+// Yapışkan başlık: bölüm başlığı üste yapıştığı anda incelsin ve alt
+// çizgisi belirsin — "buradasın" işareti.
+//
+// IntersectionObserver ile yazılmıştı ama doğrulanamadı: test ortamında
+// gözlemci hiç tetiklenmedi (ilk kayıt bile gelmedi), yani sınıf hiçbir
+// zaman uygulanmıyordu. Doğrulayamadığım bir yöntemi göndermek yerine
+// kaydırma olayına geçildi — rAF ile kısılıyor, yani kare başına en
+// fazla bir hesap yapılıyor.
+//
+// Koşul İKİ parçalı: üst kenar 0'a dayanmış VE alt kenar hâlâ ekranda.
+// Sadece "üst <= 0" deseydik, bölüm tamamen yukarı kaydıktan sonra da
+// başlık yapışık sayılırdı ve aynı anda birden çok başlık işaretlenirdi.
+let _yapiskanTemizle = null;
+
+function yapiskanBasliklariKur(){
+  if(_yapiskanTemizle) _yapiskanTemizle();   // gece değişince üst üste binmesin
+  const basliklar=[...document.querySelectorAll('.sec:not([hidden]) .sechead')];
+  if(!basliklar.length) return;
+  let bekliyor=false;
+  const guncelle=()=>{
+    bekliyor=false;
+    basliklar.forEach(h=>{
+      const r=h.getBoundingClientRect();
+      h.classList.toggle('yapisik', r.top<=0 && r.bottom>0);
+    });
+  };
+  const tetikle=()=>{ if(!bekliyor){ bekliyor=true; requestAnimationFrame(guncelle); } };
+  addEventListener('scroll',tetikle,{passive:true});
+  addEventListener('resize',tetikle,{passive:true});
+  guncelle();
+  _yapiskanTemizle=()=>{
+    removeEventListener('scroll',tetikle);
+    removeEventListener('resize',tetikle);
+    basliklar.forEach(h=>h.classList.remove('yapisik'));
+    _yapiskanTemizle=null;
+  };
 }
 
 function revealTarget(id){

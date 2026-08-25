@@ -829,15 +829,38 @@ def t24_en_iyi_kilometre_sahibi(metin, gercekler):
 # zaman elimizde: `fark_serisi.kazanan_en_buyuk_acigi`.
 # (Gerçek üretim bug'ı 2026-01-28: "San Antonio, Houston'ı farktan
 # dönerek 111-99 yendi" — veri promptta vardı, model kullanmadı.)
-GERI_DONUS_DESENI = re.compile(r"\bfark(?:tan|ı|ını)?\s+dön|geri\s+dönüş", re.IGNORECASE)
+# DİKKAT: adı GERI_DONUS_DESENI KOYMA — dosyanın ilerisinde aynı adlı,
+# daha geniş bir desen var (T16 kullanıyor) ve sonradan tanımlandığı için
+# buradakini gölgeler. Bu tam olarak bir kez oldu ve t23 sessizce yanlış
+# deseni kullandı.
+T23_GERI_DONUS_DESENI = re.compile(r"\bfark(?:tan|ı|ını)?\s+dön|geri\s+dönüş", re.IGNORECASE)
 # İfadeden ÖNCE gelen "N sayılık" kalıbı — sayı buraya yazılır.
 GERI_DONUS_SAYISI_DESENI = re.compile(r"\d+\s*sayı", re.IGNORECASE)
+
+# Kendini çürüten yapı: bir olayı anıp hemen ardından önemsizliğini
+# söylemek. "Capela'nın smacı skoru etkilemese de..." — bir şey anılmaya
+# değmiyorsa HİÇ anılmaz. Kök sebep veri katmanında da kapatıldı (bkz.
+# yaz._onemli_anlar); bu kural ikinci hat.
+KENDINI_CURUTEN_DESENI = re.compile(
+    r"(?:skoru|sonucu|skora|sonuca|durumu)\s+(?:etkile|değiştir)\w*\s+(?:de|da)\b"
+    r"|fark\s+etme\w*\s+(?:de|da)\b"
+    r"|boşa\s+git\w*\s+(?:de|da)\b"
+    r"|(?:etkisiz|önemsiz|anlamsız)\s+kal\w*\s+(?:de|da)\b"
+    r"|hiçbir\s+şey\w*\s+değiştirme\w*\s+(?:de|da)\b",
+    re.IGNORECASE,
+)
 
 
 def t23_mimari_kural_ihlalleri(metin):
     sorunlu = []
     for cumle in cumlelere_ayir(metin):
-        m_gd = GERI_DONUS_DESENI.search(cumle)
+        m_kc = KENDINI_CURUTEN_DESENI.search(cumle)
+        if m_kc:
+            sorunlu.append(
+                f"olay anılıp ardından önemsizliği söylenmiş ('{m_kc.group(0)}') — "
+                f"sonuca etkisi olmayan olay hiç anılmamalı"
+            )
+        m_gd = T23_GERI_DONUS_DESENI.search(cumle)
         if m_gd and not GERI_DONUS_SAYISI_DESENI.search(cumle[: m_gd.end()]):
             sorunlu.append(
                 f"geri dönüş sayısız anıldı ('{cumle.strip()[:70]}') — kaç sayılık "

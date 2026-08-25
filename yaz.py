@@ -514,7 +514,12 @@ GRUP_A_ONEMLI_TURLER = {
 # izlenebilirlik testleri (T1/T2) zayıflamıyor: model daha az şey
 # görüyor, ama yazdığı her şey yine tam listeye karşı denetleniyor.
 GRUP_B_OYUNCU_SAYISI = 8   # en çok sayı atan 8 oyuncu (iki takım toplamı)
-GRUP_B_AN_SAYISI = 6       # en geç periyottakiler — kararı veren anlar
+GRUP_B_AN_SAYISI = 6
+# Bir "an"ın anılmaya değmesi için maçın O ANDA yakın olması gerekiyor.
+# Fark bu eşiğin üstündeyken atılan basket sonucu etkilemez.
+AN_YAKIN_FARK = 5
+# ...ve geç olması gerekiyor: son periyot ya da uzatma.
+AN_SON_PERIYOT = 4
 # Tamamı gönderilen türler: hepsi küçük ve doğrudan anlatıya giriyor.
 GRUP_B_TAM_TURLER = {
     "skor", "ceyrek", "derece", "fark_serisi", "takim_stat", "kilometre",
@@ -541,15 +546,52 @@ def grup_b_gercekleri(gercekler, en_iyi_performans=None):
             anlar.append(f)
         elif t in GRUP_B_TAM_TURLER:
             secili.append(f)
+    anlar = _onemli_anlar(anlar)
     oyuncular.sort(key=lambda f: -f["veri"].get("sayi", 0))
     tutulan = oyuncular[:GRUP_B_OYUNCU_SAYISI]
     if en_iyi_performans and not any(f["veri"]["oyuncu"] == en_iyi_performans for f in tutulan):
         eksik = next((f for f in oyuncular if f["veri"]["oyuncu"] == en_iyi_performans), None)
         if eksik:
             tutulan.append(eksik)
-    # "an"lar: en geç periyot önce — maçı belirleyen an her zaman sonda.
-    anlar.sort(key=lambda f: (-f["veri"].get("periyot", 0), f["veri"].get("saat", "")))
     return secili + tutulan + anlar[:GRUP_B_AN_SAYISI]
+
+
+def _onemli_anlar(anlar):
+    """Sonucu ETKİLEYEN anlar — en geç olanlar değil.
+
+    Kullanıcı bildirimi (gerçek üretim bug'ı): Spurs-Rockets özetinde
+    Capela'nın smacı anıldı ve cümle "skoru etkilemese de" diyerek kendi
+    kendini çürüttü. Sebebi buradaydı: `an` kayıtları önem sırasına göre
+    değil, EN GEÇ olana göre seçiliyordu. Maç 12 sayı farkla biterken son
+    saniyede atılan bir basket "en geç" olduğu için listenin başına
+    geçiyordu.
+
+    Ölçüt iki koşullu: maç o anda YAKIN olmalı (|fark| <= 5) VE an geç
+    olmalı (son periyot ya da uzatma). Lider değişimi kendi başına
+    sonucu etkiler — o kayıtlarda fark zaten sıfıra yakın, ama şartı
+    açıkça yazmak niyeti belgeliyor.
+
+    `disiplin` (teknik faul vb.) hiç girmiyor: sayı olayı değil,
+    "maçı belirleyen an" anlatısına ait değil.
+    """
+    uygun = []
+    for f in anlar:
+        v = f["veri"]
+        alt = v.get("tur_alt")
+        if alt == "disiplin":
+            continue
+        periyot = v.get("periyot", 0)
+        if periyot < AN_SON_PERIYOT:
+            continue
+        if alt == "lider_degisimi":
+            uygun.append(f)
+            continue
+        fark = v.get("fark")
+        if fark is not None and abs(fark) <= AN_YAKIN_FARK:
+            uygun.append(f)
+    # Geç olan önce — eşit önemdeyse maçın sonuna yakın olan daha anlamlı.
+    uygun.sort(key=lambda f: (-f["veri"].get("periyot", 0), f["veri"].get("saat", "")))
+    return uygun
 
 
 def kompakt_gercekler(gercekler, sadece_turler=None):

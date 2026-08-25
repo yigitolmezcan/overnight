@@ -1,6 +1,6 @@
 // GET /api/onayla?e=<adres>&t=<token>
 // Token doğrulanırsa adres listeye yazılır. Aynı adres iki kez eklenmez.
-import { adresiNormallestir, tokenGecerli, coz, listeOku, listeYaz, sayfa, ayarlarEksik } from "./_ortak.js";
+import { adresiNormallestir, tokenGecerli, coz, aboneEkle, sayfa, ayarlarEksik } from "./_ortak.js";
 
 export default async function handler(istek, yanit) {
   yanit.setHeader("Content-Type", "text/html; charset=utf-8");
@@ -12,11 +12,7 @@ export default async function handler(istek, yanit) {
   }
 
   try {
-    const { aboneler, sha } = await listeOku();
-    if (!aboneler.some((a) => a.eposta === adres)) {
-      aboneler.push({ eposta: adres, katildi: new Date().toISOString() });
-      await listeYaz(aboneler, sha, "abone eklendi (onaylı)");
-    }
+    await aboneEkle(adres);
   } catch (e) {
     console.error("Liste güncellenemedi:", e.message);
     return yanit.status(502).send(sayfa("Bir sorun var", "Kaydını tamamlayamadık. Birazdan bağlantıya tekrar tıkla."));

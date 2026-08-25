@@ -51,6 +51,8 @@ jobs:
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           ABONE_GIZLI_ANAHTAR: ${{ secrets.ABONE_GIZLI_ANAHTAR }}
+          UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
           SITE_ADRESI: ${{ vars.SITE_ADRESI }}
           GONDEREN_ADRES: ${{ vars.GONDEREN_ADRES }}
         run: python3 bulten.py gonder
