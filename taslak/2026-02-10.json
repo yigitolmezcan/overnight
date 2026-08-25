@@ -1,0 +1,152 @@
+{
+  "tarih": "2026-02-10",
+  "uretildi": "2026-08-15T01:20:06.006236Z",
+  "maclar": {
+    "0022500771": {
+      "gec_satiri": "Uzatmaya giden mücadelede Indiana Pacers, New York Knicks'i 137-134 yendi. 4 maç aradan sonra kazanan Pacers'ta Pascal Siakam, attığı 30 sayıyla maçın en skorer ismi oldu. Mağlup Knicks'te Jalen Brunson 40 sayı üretti.",
+      "muzip": false
+    },
+    "0022500772": {
+      "gec_satiri": "Houston Rockets evinde 102-95 kazandı. Kevin Durant 26 sayı attı.",
+      "muzip": false
+    },
+    "0022500773": {
+      "gec_satiri": "Phoenix Suns evinde 120-111 kazandı. Dillon Brooks 23 sayı attı.",
+      "muzip": false
+    },
+    "0022500774": {
+      "baslik": "San Antonio Spurs deplasmanda 136-108 kazandı.",
+      "neden_onemli": "",
+      "ozet": "San Antonio Spurs deplasmanda 136-108 kazandı. Victor Wembanyama 40 sayı attı.",
+      "muzip": false
+    }
+  },
+  "brief": [
+    {
+      "metin": "Wembanyama 40 sayı 12 ribaundla San Antonio'yu 5. galibiyete taşıdı.",
+      "hedef_mac": "0022500774",
+      "muzip": false
+    },
+    {
+      "metin": "Indiana Pacers deplasmanda 137-134 kazandı.",
+      "hedef_mac": "0022500771",
+      "muzip": false
+    },
+    {
+      "metin": "Houston ve Clippers 16 kez lider değiştirdi, ev sahibi kazandı.",
+      "hedef_mac": "0022500772",
+      "muzip": false
+    },
+    {
+      "metin": "Dallas 8. mağlubiyetini üst üste aldı, Phoenix rahat kazandı.",
+      "hedef_mac": "0022500773",
+      "muzip": false
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 11,
+    "ilk_denemede_kabul": 4,
+    "sablon_moduna_dusen": 4,
+    "detay": [
+      {
+        "mac_id": "0022500772",
+        "deneme": 0,
+        "gerekce": [
+          "T14: en iyi performans (Alperen Sengun) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "gec_satiri": "Liderliğin 16 kez el değiştirdiği maçta Houston, evinde LA Clippers'ı 102-95 geçti. İç sahada oynadığı 24. maçını da kazanan Rockets'ta Alperen Şengün, 22 sayı, 7 ribaund ve 5 asistle takımını sırtladı.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500773",
+        "deneme": 0,
+        "gerekce": [
+          "gec_satiri/T6: 4 cümle (sınır 3)",
+          "gec_satiri/T16: [\"'üst üste' iddiası (PHX, seri uzunluğu 1) 3 eşiğinin altında\"]"
+        ],
+        "reddedilen_taslak": {
+          "gec_satiri": "Phoenix, sahasında Dallas'ı 120-111 yendi. Suns'ta Dillon Brooks, 23 sayıyla yıldızlaştı. 8. mağlubiyetini üst üste alan Mavericks'te Naji Marshall, attığı 31 sayıyla öne çıktı.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500774",
+        "deneme": 0,
+        "gerekce": [
+          "ozet/T1: ['17']",
+          "ozet/T4d: [\"'damgasını vurdu' (damga vurmak (klişe))\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "San Antonio Spurs, Wembanyama'nın 40 sayısıyla Lakers'ı 28 farkla yıktı",
+          "neden_onemli": "Spurs, üst üste 5. galibiyetini alarak Batı'da 2. sırayı korudu.",
+          "ozet": "Gecenin dördüncü maçında Spurs, ilk çeyrekte kurduğu 17 sayılık üstünlükle maça erken damgasını vurdu. Fark ikinci çeyrekte 30 sayıya kadar yükselirken Lakers bir daha toparlanma şansı bulamadı. Wembanyama'nın ikinci periyotta attığı alley-oop smaç, farkın 30'a yükselmesinin simgesi oldu. Wembanyama, attığı 40 sayı ve 12 ribaundla double-double yaparak gecenin en etkili ismi oldu.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500772",
+        "deneme": 1,
+        "gerekce": [
+          "T14: en iyi performans (Alperen Sengun) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "gec_satiri": "Liderliğin 16 kez el değiştirdiği maçta Houston, LA Clippers'ı 102-95 geçti. İç sahada oynadığı 24. maçını da kazanan Rockets'ta Alperen Şengün, 22 sayı ve 7 ribaundla takımını sırtladı.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500773",
+        "deneme": 1,
+        "gerekce": [
+          "gec_satiri/T6: 4 cümle (sınır 3)",
+          "gec_satiri/T16: [\"'üst üste' iddiası (PHX, seri uzunluğu 1) 3 eşiğinin altında\"]"
+        ],
+        "reddedilen_taslak": {
+          "gec_satiri": "Phoenix, sahasında Dallas'ı 120-111 yendi. Üst üste 8. mağlubiyetini alan Mavericks karşısında Suns'ta Dillon Brooks, 23 sayıyla yıldızlaştı. Kaybeden tarafta Naji Marshall, 31 sayıyla öne çıktı.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500774",
+        "deneme": 1,
+        "gerekce": [
+          "ozet/T1: ['17']",
+          "ozet/T6: 5 cümle / 45 kelime (sınır 4 cümle / 75 kelime)",
+          "ozet/T4d: [\"'damga vurdu' (damga vurmak (klişe))\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "San Antonio Spurs, Lakers'ı deplasmanda 28 sayı farkla ezdi.",
+          "neden_onemli": "Bu galibiyetle Spurs üst üste 5. maçını kazanıp Batı'da 2. sıraya yerleşti.",
+          "ozet": "Gecenin dördüncü maçında San Antonio Spurs, deplasmanda Los Angeles Lakers'ı 136-108 mağlup etti. Spurs, ilk çeyrekte 17 sayılık üstünlük kurarak maça erken damga vurdu. 3. çeyrekte farkı yükselten konuk takım, maç boyunca hiç liderliği kaybetmedi. Victor Wembanyama attığı 40 sayı ve 12 ribaundla double-double yaptı.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500771",
+        "deneme": 0,
+        "gerekce": [
+          "T17: [\"'Josh Hart' (kaybeden NYK) cümle öznesi: 'Josh Hart triple-double yaptı, Indiana uzatmada kazandı'\"]"
+        ],
+        "yer": "brief[1]",
+        "reddedilen_taslak": {
+          "metin": "Josh Hart triple-double yaptı, Indiana uzatmada kazandı.",
+          "hedef_mac": "0022500771",
+          "muzip": false
+        }
+      }
+    ],
+    "ret_orani": 0.636,
+    "kelime_butcesi_uygulandi": false,
+    "uretim_modu": "batch",
+    "kullanim": {
+      "cagri_sayisi": 8,
+      "girdi_token": 60260,
+      "cikti_token": 29472,
+      "cache_yazma_token": 0,
+      "cache_okuma_token": 23552,
+      "toplam_maliyet_usd": 0.21
+    }
+  }
+}

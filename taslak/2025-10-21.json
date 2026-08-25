@@ -1,0 +1,88 @@
+{
+  "tarih": "2025-10-21",
+  "uretildi": "2026-08-21T13:02:06.884983Z",
+  "maclar": {
+    "0022500001": {
+      "baslik": "Oklahoma City, çifte uzatmada Houston'ı 125-124 yendi.",
+      "neden_onemli": "Maç boyunca liderlik 22 kez el değiştirdi, son periyotta bu sayı 5'e çıktı.",
+      "ozet": "Liderliğin 22 kez el değiştirdiği maçta Houston, ilk yarıda farkı 12 sayıya kadar çıkardı. Oklahoma City dördüncü periyotta farkı eritti, skor 104-104'e eşitlenerek maç uzatmaya gitti. İkinci uzatmanın son saniyesinde Shai Gilgeous-Alexander'ın attığı serbest atış, Oklahoma City'ye galibiyeti getirdi. Houston'da Alperen Şengün, attığı 39 sayı ve 11 ribaundla double-double yaptı, 5/8'lik üçlük isabetiyle de öne çıktı.",
+      "muzip": false
+    },
+    "0022500002": {
+      "baslik": "Golden State Warriors, Los Angeles Lakers'i 119-109 yendi.",
+      "neden_onemli": "Golden State Warriors, maçı son saniyede kazandı.",
+      "ozet_kisa": "Golden State Warriors, bitime 1.0 saniye kala bulduğu basketle Los Angeles Lakers'i 119-109 yendi. Mağlup tarafta Luka Dončić, 43 sayı, 12 ribaund, 9 asistle gecenin en etkili ismiydi.",
+      "muzip": false
+    }
+  },
+  "brief": [
+    {
+      "metin": "Oklahoma City Thunder, 12 sayılık farktan dönüp Houston Rockets'i geçti.",
+      "hedef_mac": "0022500001",
+      "muzip": false
+    },
+    {
+      "metin": "Golden State Warriors, son saniyede attığı basketle Los Angeles Lakers'i geçti.",
+      "hedef_mac": "0022500002",
+      "muzip": false
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 4,
+    "ilk_denemede_kabul": 0,
+    "sablon_moduna_dusen": 1,
+    "detay": [
+      {
+        "mac_id": "0022500001",
+        "deneme": 0,
+        "gerekce": [
+          "baslik/T4e: ['OKC']",
+          "ozet/T4d: [\"'farkı 12 sayıya kadar açtı' (farkı açmak — 'farkı yükseltti/çıkardı' kullanılmalı)\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "22 lider değişimli maçta OKC, Houston'ı iki uzatmada yendi",
+          "neden_onemli": "Son uzatmada liderlik 5 kez el değiştirdi, gecenin en gerilimli maçıydı.",
+          "ozet": "Houston, ilk yarıda farkı 12 sayıya kadar açtı ancak Oklahoma City son çeyrekte skoru eşitledi ve maç iki uzatmaya gitti. Karar, ikinci uzatmanın son saniyelerinde Shai Gilgeous-Alexander'ın attığı serbest atışlarla 125-124'e çevrildi. Houston tarafında Alperen Şengün 39 sayı ve 11 ribaundla double-double yaptı. Şengün'ün 39 sayısının 10'u serbest atıştan geldi, isabet oranı da oldukça yüksekti.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500002",
+        "deneme": 0,
+        "gerekce": [
+          "ozet_kisa/T21: [\"'Curry'nin' — 'n' tamponu sadece sesli harfle biten kelimede kullanılır, 'Curry' ünsüzle bitiyor\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Golden State Warriors, 3. çeyrekte üstünlük sağlayarak Lakers'ı deplasmanda yendi.",
+          "neden_onemli": "Luka Dončić, 43 sayı 12 ribaundla mağlubiyete karşın gecenin en üretken ismiydi.",
+          "ozet_kisa": "Maç yedi kez el değiştirdi, ancak 3. çeyrekte 10 sayılık üstünlük sağlayan Golden State inisiyatifi bırakmadı. Curry'nin bitime 39 saniye kala attığı serbest atışlar farkı iki haneye çıkardı. Dončić 43 sayı, 12 ribaundla double-double yaptı ama mağlubiyeti önleyemedi.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500002",
+        "deneme": 1,
+        "gerekce": [
+          "ozet_kisa/T17: [\"'Luka Dončić' (kaybeden LAL) cümle öznesi: 'Luka Dončić 43 sayı, 12 ribaund ve 9 asistle double-double yaptı, ancak 3. çeyrekte 10 sayılık üstünlük kuran Warriors farkı sonuna kadar korudu'\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Golden State, Dončić'in 43 sayısına rağmen Lakers'ı yendi",
+          "neden_onemli": "Maç boyunca 7 kez el değiştiren liderlik, 3. çeyrekte Golden State'in lehine kesin şekilde döndü.",
+          "ozet_kisa": "Golden State Warriors, deplasmanda Los Angeles Lakers'ı 119-109 yendi. Luka Dončić 43 sayı, 12 ribaund ve 9 asistle double-double yaptı, ancak 3. çeyrekte 10 sayılık üstünlük kuran Warriors farkı sonuna kadar korudu. Jimmy Butler III 16'da 16 serbest atışla 31 sayı üretti.",
+          "muzip": false
+        }
+      }
+    ],
+    "sablon_isaretli": [],
+    "ret_orani": 1.0,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 5,
+      "girdi_token": 83190,
+      "cikti_token": 25943,
+      "cache_yazma_token": 0,
+      "cache_okuma_token": 29890,
+      "toplam_maliyet_usd": 0.4318
+    }
+  }
+}

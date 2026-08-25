@@ -1,0 +1,15 @@
+# API anahtarı — ASLA depoya girmez. Canlıda GitHub repository secret'ı
+# olarak saklanıyor (ANTHROPIC_API_KEY).
+.env
+
+# Ham NBA verisi: gece başına ~20MB, toplam 300MB+. Depoya girmez —
+# zamanlanmış iş her gece kendi gecesini yeniden çekiyor, geçmiş ham
+# veriye ihtiyaç yok. (Tek istisna: testler ham dosya isterse yoksa
+# atlıyor, bkz. test_dogrula_bozuk.py.)
+ham/
+
+# Ara çıktılar — üretimde her gece yeniden oluşuyor.
+cikti/
+__pycache__/
+*.pyc
+.DS_Store

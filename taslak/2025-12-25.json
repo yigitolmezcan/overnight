@@ -1,0 +1,137 @@
+{
+  "tarih": "2025-12-25",
+  "uretildi": "2026-08-20T22:32:40.511846Z",
+  "maclar": {
+    "0022500010": {
+      "gec_satiri": "Batı'nın zirvesinde San Antonio Spurs, Oklahoma City Thunder'i 117-102 yendi. De'Aaron Fox 29 sayı attı. Üst üste 8. galibiyetini alan San Antonio Spurs formunu sürdürdü.",
+      "muzip": false
+    },
+    "0022500012": {
+      "gec_satiri": "Houston Rockets deplasmanda Los Angeles Lakers'i 119-96 farkla ezdi. Amen Thompson 26 sayı attı. Kevin Durant da 25 sayı attı.",
+      "muzip": false
+    },
+    "0022500011": {
+      "gec_satiri": "Konferans sıralamasını yakından ilgilendiren maçta Golden State Warriors, Dallas Mavericks'i 126-116 yendi.",
+      "muzip": false
+    },
+    "0022500013": {
+      "baslik": "Denver Nuggets, Minnesota Timberwolves'i 142-138 yendi.",
+      "neden_onemli": "Denver Nuggets, konferansta 3. sıraya oturdu.",
+      "ozet": "Denver Nuggets, Minnesota Timberwolves'i uzatmada 142-138 yendi. Minnesota Timberwolves, 4. çeyrekte 14 sayı öne geçse de farkı koruyamadı. Nikola Jokić, 56 sayı, 16 ribaund, 15 asistle gecenin en etkili ismiydi. Bu eşiği (50+ sayılık triple-double) geçen 9. oyuncu oldu.",
+      "muzip": false
+    },
+    "0022500009": {
+      "baslik": "New York, 17 sayılık farktan dönerek Cleveland'ı evinde yendi.",
+      "neden_onemli": "Cleveland, iki maçlık galibiyet serisini bu mağlubiyetle bitirdi.",
+      "ozet_kisa": "Son çeyrekte 42 sayı üreten Knicks, maçı geriden çevirdi. Mitchell'in son saniyelerdeki üçlüğü skoru 125-124'e getirdi, ancak Towns'un serbest atışıyla Knicks farkı 2'ye çıkardı. Mitchell 34 sayı, 6 asist ve 4 çalmayla Cleveland'ın en etkili ismi oldu.",
+      "muzip": false
+    }
+  },
+  "brief": [
+    {
+      "metin": "Nikola Jokić, Minnesota Timberwolves karşısında 56 sayılık triple-double'ıyla öne çıktı.",
+      "hedef_mac": "0022500013",
+      "muzip": false
+    },
+    {
+      "metin": "New York Knicks, 17 sayılık farktan dönüp Cleveland Cavaliers'i geçti.",
+      "hedef_mac": "0022500009",
+      "muzip": false
+    },
+    {
+      "metin": "Batı'nın zirvesinde San Antonio Spurs, Oklahoma City Thunder'i geçti.",
+      "hedef_mac": "0022500010",
+      "muzip": false
+    },
+    {
+      "metin": "Houston Rockets, Los Angeles Lakers'i yenerek konferansta 6. sıraya oturdu.",
+      "hedef_mac": "0022500012",
+      "muzip": false
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 6,
+    "ilk_denemede_kabul": 0,
+    "sablon_moduna_dusen": 1,
+    "detay": [
+      {
+        "mac_id": "0022500013",
+        "deneme": 0,
+        "gerekce": [
+          "gece_capinda: 'üst üste/art arda' kalıbı bu gece zaten kullanıldı, tekrar edilemez"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Jokić'in 56 sayılık triple-double'ıyla Denver, Minnesota'yı uzatmada geçti.",
+          "neden_onemli": "Bu eşiği NBA tarihinde ondan önce sadece 8 oyuncu geçmişti, Jokić 9. oldu.",
+          "ozet": "Denver, ilk çeyrekte Jokić'in 18 sayısıyla erken avantaj buldu. Minnesota son çeyrekte farkı sıfırladı ve maç 115-115'le uzatmaya gitti. Uzatmada Jokić'in art arda gelen serbest atışları Denver'ı önde tuttu, Minnesota'nın son hamleleri yetmedi. Jokić geceyi 56 sayı, 16 ribaund ve 15 asistle triple-double yaparak tamamladı.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500013",
+        "deneme": 1,
+        "gerekce": [
+          "ozet/T4: ['peş peşe']",
+          "ozet/T17: [\"'Anthony Edwards' (kaybeden MIN) cümle öznesi: 'Anthony Edwards 44 sayıyla karşılık verse de Minnesota'yı mağlubiyetten kurtaramadı'\"]",
+          "gece_capinda: 'üst üste/art arda' kalıbı bu gece zaten kullanıldı, tekrar edilemez"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Jokić'in 56 sayılık triple-double'ı Denver'ı uzatmada sırtladı",
+          "neden_onemli": "Jokić, NBA tarihinde 50+ sayılık triple-double yapan 9. oyuncu oldu.",
+          "ozet": "Denver ilk çeyreği 3 sayı önde kapatıp erken avantaj yakaladı, ancak Minnesota son çeyrekte topu Anthony Edwards'ın son saniyedeki üçlüğüyle 115-115'e getirdi ve maç uzatmaya gitti. Uzatmada Nikola Jokić peş peşe serbest atışlarla farkı 6 sayıya çıkardı ve Denver'ın elini rahatlattı. Jokić 56 sayı, 16 ribaund ve 15 asistle triple-double yaptı; bu 56 sayının 22'si serbest atıştan geldi. Anthony Edwards 44 sayıyla karşılık verse de Minnesota'yı mağlubiyetten kurtaramadı.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500013",
+        "deneme": 2,
+        "gerekce": [
+          "ozet/T17: [\"'Anthony Edwards' (kaybeden MIN) cümle öznesi: 'Anthony Edwards 44 sayı üretse de Minnesota mağlubiyetten kurtulamadı'\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Jokić'in 56 sayılık triple-double'ı Denver'a uzatmada galibiyet getirdi",
+          "neden_onemli": "Bu, NBA tarihinde 50+ sayılık triple-double yapan 9. oyuncu oldu.",
+          "ozet": "Denver ilk çeyreği 32-29 önde bitirdi, ama Minnesota son periyotta farkı eritip skoru 115-115'e getirdi. Maç uzatmaya gitti, son saniyelerde Jokić'in serbest atışları farkı Denver lehine tuttu. Nikola Jokić 56 sayı, 16 ribaund ve 15 asistle triple-double yaptı, bunun 22'si serbest atıştan geldi. Anthony Edwards 44 sayı üretse de Minnesota mağlubiyetten kurtulamadı.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500009",
+        "deneme": 0,
+        "gerekce": [
+          "ozet_kisa/T17: [\"'Donovan Mitchell' (kaybeden CLE) cümle öznesi: 'Donovan Mitchell 34 sayı, 7 ribaund ve 6 asistle en etkili isim oldu'\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "New York, 17 sayılık farktan dönerek Cleveland'ı 126-124 yendi.",
+          "neden_onemli": "New York bu galibiyetle Doğu'da 2. sıraya yükseldi, Cleveland ise 7. sırada kaldı.",
+          "ozet_kisa": "Cleveland ilk yarıda öne geçip farkı 17 sayıya kadar çıkardı ancak New York son çeyrekte toparlandı. Donovan Mitchell 34 sayı, 7 ribaund ve 6 asistle en etkili isim oldu. Maçı, Mitchell'in son 3 saniyede attığı üçlükle 125-124'e gelmesinin ardından Karl-Anthony Towns'un serbest atışı belirledi.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500009",
+        "deneme": 1,
+        "gerekce": [
+          "ozet_kisa/T17: [\"'Donovan Mitchell' (kaybeden CLE) cümle öznesi: 'Donovan Mitchell'in son saniye üçlüğü farkı 1'e indirdi, Karl-Anthony Towns'un serbest atışı galibiyeti Knicks'e bıraktı'\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "New York Knicks, 17 farktan dönerek Cleveland Cavaliers'i 126-124 yendi",
+          "neden_onemli": "Bu sonuçla Cleveland'ın iki maçlık galibiyet serisi sona erdi.",
+          "ozet_kisa": "Nefes kesen maçında New York Knicks, ilk yarıda 17 sayıya açılan farktan dönerek Cleveland Cavaliers'i 126-124 yendi. Donovan Mitchell'in son saniye üçlüğü farkı 1'e indirdi, Karl-Anthony Towns'un serbest atışı galibiyeti Knicks'e bıraktı. Mitchell 34 sayı, 7 ribaund ve 6 asistle Cavaliers'in en etkili ismi oldu.",
+          "muzip": false
+        }
+      }
+    ],
+    "sablon_isaretli": [],
+    "ret_orani": 1.0,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 6,
+      "girdi_token": 106412,
+      "cikti_token": 20461,
+      "cache_yazma_token": 0,
+      "cache_okuma_token": 33810,
+      "toplam_maliyet_usd": 0.4242
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "_aciklama": "Y* yildiz katsayisi. Hesapta kuresel ve turkiye kademelerinden YUKSEK olan (sayica kucuk olan) kullanilir. Kademe -> katsayi: 1=1.20, 2=1.08, 3=0.95, 4=0.80. Listede olmayan her oyuncu kademe 3 sayilir. Elit performansta (lig geneli ilk %1) katsayi en az 1.00 alinir.",
+  "_bakim": "Sezonda 3-4 kez guncellenir. 'takim' alani takas sonrasi elle duzeltilir; kadro disi yildiz tespiti bu alana bagli.",
+  "kademe_katsayi": { "1": 1.20, "2": 1.08, "3": 0.95, "4": 0.80 },
+
+  "oyuncular": [
+    { "ad": "Nikola Jokic",            "takim": "DEN", "kuresel": 1, "turkiye": 1 },
+    { "ad": "Giannis Antetokounmpo",   "takim": "MIL", "kuresel": 1, "turkiye": 1 },
+    { "ad": "Luka Doncic",             "takim": "LAL", "kuresel": 1, "turkiye": 1 },
+    { "ad": "Shai Gilgeous-Alexander", "takim": "OKC", "kuresel": 1, "turkiye": 2 },
+    { "ad": "Victor Wembanyama",       "takim": "SAS", "kuresel": 1, "turkiye": 1 },
+    { "ad": "LeBron James",            "takim": "LAL", "kuresel": 1, "turkiye": 1 },
+    { "ad": "Stephen Curry",           "takim": "GSW", "kuresel": 1, "turkiye": 1 },
+    { "ad": "Kevin Durant",            "takim": "HOU", "kuresel": 1, "turkiye": 1 },
+
+    { "ad": "Alperen Sengun",          "takim": "HOU", "kuresel": 2, "turkiye": 1 },
+
+    { "ad": "Jayson Tatum",            "takim": "BOS", "kuresel": 2, "turkiye": 2 },
+    { "ad": "Anthony Edwards",         "takim": "MIN", "kuresel": 2, "turkiye": 2 },
+    { "ad": "Devin Booker",            "takim": "PHX", "kuresel": 2, "turkiye": 2 },
+    { "ad": "Jalen Brunson",           "takim": "NYK", "kuresel": 2, "turkiye": 3 },
+    { "ad": "Anthony Davis",           "takim": "DAL", "kuresel": 2, "turkiye": 2 },
+    { "ad": "Donovan Mitchell",        "takim": "CLE", "kuresel": 2, "turkiye": 2 },
+    { "ad": "Tyrese Haliburton",       "takim": "IND", "kuresel": 2, "turkiye": 3 },
+    { "ad": "Paolo Banchero",          "takim": "ORL", "kuresel": 2, "turkiye": 3 },
+    { "ad": "Cade Cunningham",         "takim": "DET", "kuresel": 2, "turkiye": 3 },
+    { "ad": "Evan Mobley",             "takim": "CLE", "kuresel": 2, "turkiye": 3 },
+    { "ad": "Jaylen Brown",            "takim": "BOS", "kuresel": 2, "turkiye": 2 },
+    { "ad": "Zion Williamson",         "takim": "NOP", "kuresel": 2, "turkiye": 2 },
+    { "ad": "Ja Morant",               "takim": "MEM", "kuresel": 2, "turkiye": 2 },
+    { "ad": "De'Aaron Fox",            "takim": "SAS", "kuresel": 2, "turkiye": 3 },
+    { "ad": "Kawhi Leonard",           "takim": "LAC", "kuresel": 2, "turkiye": 2 },
+    { "ad": "Jimmy Butler",            "takim": "GSW", "kuresel": 2, "turkiye": 2 },
+    { "ad": "Damian Lillard",          "takim": "POR", "kuresel": 2, "turkiye": 2 },
+    { "ad": "Trae Young",              "takim": "ATL", "kuresel": 2, "turkiye": 2 },
+    { "ad": "Karl-Anthony Towns",      "takim": "NYK", "kuresel": 2, "turkiye": 3 },
+    { "ad": "Jaren Jackson Jr.",       "takim": "MEM", "kuresel": 2, "turkiye": 3 },
+    { "ad": "Franz Wagner",            "takim": "ORL", "kuresel": 2, "turkiye": 3 },
+    { "ad": "Chet Holmgren",           "takim": "OKC", "kuresel": 2, "turkiye": 3 },
+    { "ad": "Jalen Williams",          "takim": "OKC", "kuresel": 2, "turkiye": 3 },
+    { "ad": "Cooper Flagg",            "takim": "DAL", "kuresel": 2, "turkiye": 2 },
+    { "ad": "Lauri Markkanen",         "takim": "UTA", "kuresel": 2, "turkiye": 2 },
+    { "ad": "Scottie Barnes",          "takim": "TOR", "kuresel": 2, "turkiye": 3 },
+    { "ad": "Amen Thompson",           "takim": "HOU", "kuresel": 2, "turkiye": 3 },
+
+    { "ad": "Bogdan Bogdanovic",       "takim": "LAC", "kuresel": 3, "turkiye": 2 },
+    { "ad": "Adem Bona",               "takim": "PHI", "kuresel": 4, "turkiye": 2 }
+  ]
+}

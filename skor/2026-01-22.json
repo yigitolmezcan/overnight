@@ -1,0 +1,199 @@
+{
+  "tarih": "2026-01-22",
+  "hesaplandi": "2026-08-15T02:06:15.015017Z",
+  "en_iyi_skor": 8.75,
+  "maclar": [
+    {
+      "rozet": 8.75,
+      "ham": 9.88,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 7.37,
+        "K": 5.48,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 9.5,
+        "F": 6,
+        "G": 0,
+        "A": 7.5
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500628",
+      "ev": "PHI",
+      "dep": "HOU",
+      "ev_skor": 128,
+      "dep_skor": 122,
+      "en_iyi_performans": "Tyrese Maxey"
+    },
+    {
+      "rozet": 8.06,
+      "ham": 8.12,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 8.67,
+        "K": 1.09,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 4.6,
+        "F": 0,
+        "G": 0,
+        "A": 2.0
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500629",
+      "ev": "WAS",
+      "dep": "DEN",
+      "ev_skor": 97,
+      "dep_skor": 107,
+      "en_iyi_performans": "Peyton Watson"
+    },
+    {
+      "rozet": 7.57,
+      "ham": 7.57,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.1,
+        "K": 6.0,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.46,
+        "F": 3,
+        "G": 0,
+        "A": 5.88
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500633",
+      "ev": "LAC",
+      "dep": "LAL",
+      "ev_skor": 112,
+      "dep_skor": 104,
+      "en_iyi_performans": "Luka Dončić"
+    },
+    {
+      "rozet": 7.03,
+      "ham": 7.03,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 7.5,
+        "K": 0.41,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 4.45,
+        "F": 0,
+        "G": 0,
+        "A": 4.58
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500632",
+      "ev": "UTA",
+      "dep": "SAS",
+      "ev_skor": 109,
+      "dep_skor": 126,
+      "en_iyi_performans": "Victor Wembanyama"
+    },
+    {
+      "rozet": 5.65,
+      "ham": 5.65,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 2.85,
+        "K": 4.52,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 7.38,
+        "F": 6,
+        "G": 0,
+        "A": 6.33
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500631",
+      "ev": "MIN",
+      "dep": "CHI",
+      "ev_skor": 115,
+      "dep_skor": 120,
+      "en_iyi_performans": "Julius Randle"
+    },
+    {
+      "rozet": 5.58,
+      "ham": 5.58,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 5.64,
+        "K": 2.89,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.21,
+        "F": 0,
+        "G": 0,
+        "A": 2.08
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500634",
+      "ev": "POR",
+      "dep": "MIA",
+      "ev_skor": 127,
+      "dep_skor": 110,
+      "en_iyi_performans": "Bam Adebayo"
+    },
+    {
+      "rozet": 5.33,
+      "ham": 5.33,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 4.79,
+        "K": 3.12,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 5.1,
+        "F": 0,
+        "G": 0,
+        "A": 4.54
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500630",
+      "ev": "DAL",
+      "dep": "GSW",
+      "ev_skor": 123,
+      "dep_skor": 115,
+      "en_iyi_performans": "Stephen Curry"
+    },
+    {
+      "rozet": 2.92,
+      "ham": 2.92,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 1.65,
+        "K": 2.94,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.43,
+        "F": 0,
+        "G": 0,
+        "A": 3.5
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500627",
+      "ev": "ORL",
+      "dep": "CHA",
+      "ev_skor": 97,
+      "dep_skor": 124,
+      "en_iyi_performans": "Paolo Banchero"
+    }
+  ]
+}

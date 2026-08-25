@@ -1,0 +1,55 @@
+{
+  "tarih": "2025-10-21",
+  "hesaplandi": "2026-08-15T02:06:09.604400Z",
+  "en_iyi_skor": 9.33,
+  "maclar": [
+    {
+      "rozet": 9.33,
+      "ham": 12.4,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 10,
+        "K": 0.0,
+        "T": 0,
+        "D": 8
+      },
+      "yukselticiler": {
+        "Y": 9.5,
+        "F": 10,
+        "G": 6,
+        "A": 8.0
+      },
+      "dram_terfi": true,
+      "mac_id": "0022500001",
+      "ev": "OKC",
+      "dep": "HOU",
+      "ev_skor": 125,
+      "dep_skor": 124,
+      "en_iyi_performans": "Alperen Şengün"
+    },
+    {
+      "rozet": 8.79,
+      "ham": 10.0,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 10,
+        "K": 0.0,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.8,
+        "F": 0,
+        "G": 0,
+        "A": 5.5
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500002",
+      "ev": "LAL",
+      "dep": "GSW",
+      "ev_skor": 109,
+      "dep_skor": 119,
+      "en_iyi_performans": "Luka Dončić"
+    }
+  ]
+}

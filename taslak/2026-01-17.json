@@ -1,0 +1,144 @@
+{
+  "tarih": "2026-01-17",
+  "uretildi": "2026-08-15T02:03:51.361378Z",
+  "maclar": {
+    "0022500597": {
+      "gec_satiri": "Miami, sahasında Oklahoma City'yi 122-120 yendi. İlk yarının sonunda 12 sayıya kadar ulaşan farktan dönerek kazanan Heat'te Bam Adebayo, 30 sayı ile maçın en skorer ismi oldu. Kaybeden Thunder'da Shai Gilgeous-Alexander 39 sayı attı.",
+      "muzip": false
+    },
+    "0022500600": {
+      "gec_satiri": "Denver, sahasında Washington'ı 121-115 yendi. Üst üste 4. galibiyetini alan Nuggets'ta Jamal Murray, 42 sayıyla takımını sırtladı.",
+      "muzip": false
+    },
+    "0022500594": {
+      "gec_satiri": "Boston Celtics, deplasmanda Atlanta Hawks'ı 132-106 yendi. Rakibine tam 26 sayı fark atan Celtics'te Jaylen Brown, 41 sayı ve 6 ribaundla yıldızlaştı.",
+      "muzip": false
+    },
+    "0022500596": {
+      "gec_satiri": "Kazananı son saniyede belli olan maçta Phoenix, New York'u 106-99 yendi. Galibiyet sayısını 25'e yükselten ve 2 maç aradan sonra kazanan Suns'ta Devin Booker, attığı 27 sayıyla galibiyetin mimarı oldu. Kaybeden New York'ta ise Miles McBride, attığı 23 sayıyla dikkat çekti.",
+      "muzip": false
+    },
+    "0022500593": {
+      "gec_satiri": "Batı'da aynı sıra için yarışan iki takımın maçında Dallas, Utah'ı 138-120 mağlup etti. Farkı ilk çeyrekte 13'e çıkaran Mavericks'te Klay Thompson, attığı 23 sayıyla etkili oldu. Jazz'da ise Keyonte George, attığı 29 sayıyla etkili oldu.",
+      "muzip": false
+    },
+    "0022500601": {
+      "gec_satiri": "Gecenin kapanışında Portland, evinde Los Angeles Lakers'ı 132-116 yenerek galibiyet sayısını 21'e yükseltti; Shaedon Sharpe 25 sayıyla öne çıktı.",
+      "muzip": false
+    },
+    "0022500599": {
+      "gec_satiri": "Golden State Warriors, sahasında Charlotte Hornets'i 136-116 yendi ve üst üste üçüncü galibiyetini aldı; De'Anthony Melton 24 sayı, Kon Knueppel 24 sayı ve 11 ribaundla double-double yaptı.",
+      "muzip": false
+    },
+    "0022500595": {
+      "gec_satiri": "Detroit, sahasında Indiana'yı 121-78 yendi; Doğu liderliğini sürdüren Pistons'ta Javonte Green 16 sayıyla öne çıktı.",
+      "muzip": false
+    },
+    "0022500598": {
+      "baslik": "San Antonio Spurs evinde 126-123 kazandı.",
+      "neden_onemli": "",
+      "ozet": "San Antonio Spurs evinde 126-123 kazandı. Victor Wembanyama 39 sayı attı.",
+      "muzip": false
+    }
+  },
+  "brief": [
+    {
+      "metin": "San Antonio Spurs evinde 126-123 kazandı.",
+      "hedef_mac": "0022500598",
+      "muzip": false
+    },
+    {
+      "metin": "Miami Heat evinde 122-120 kazandı.",
+      "hedef_mac": "0022500597",
+      "muzip": false
+    },
+    {
+      "metin": "Denver 4. galibiyetini üst üste alırken Washington 6. mağlubiyetini yaşadı.",
+      "hedef_mac": "0022500600",
+      "muzip": false
+    },
+    {
+      "metin": "Boston, Atlanta'yı 26 sayı farkla geçti, ikinci çeyrek belirleyici oldu.",
+      "hedef_mac": "0022500594",
+      "muzip": false
+    },
+    {
+      "metin": "Phoenix, New York'u son saniyede gelen basketle mağlup etti.",
+      "hedef_mac": "0022500596",
+      "muzip": false
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 15,
+    "ilk_denemede_kabul": 11,
+    "sablon_moduna_dusen": 3,
+    "detay": [
+      {
+        "mac_id": "0022500598",
+        "deneme": 0,
+        "gerekce": [
+          "neden_onemli/T18: [\"'2. sırada' kesin sıra/rank iddiası — all-time sıralama veritabanımız yok, hiçbir kilometre kaydı bunu doğrulayamaz, HER ZAMAN reddedilir\"]",
+          "ozet/T6: 7 cümle / 54 kelime (sınır 4 cümle / 75 kelime)",
+          "ozet/T16: [\"'4 lider değişim' haber değeri eşiğinin altında (<15)\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Wembanyama'nın son dakika basketiyle San Antonio Spurs, Minnesota'yı 126-123 yendi.",
+          "neden_onemli": "Edwards'ın 55 sayısı yetmedi, Spurs geceyi Batı'da 2. sırada kapattı.",
+          "ozet": "Minnesota erken üstünlüğü ele geçirse de Spurs 2. çeyrekte 26 sayılık farkla öne geçti. Timberwolves 3. ve 4. çeyrekte farkı tek haneye indirip son çeyreği 4 lider değişimiyle geçirdi. Maçı, Victor Wembanyama'nın son dakikada uzaktan attığı basketle öne geçen Spurs, son saniyelerde serbest atışlarla kapattı. Kaybeden tarafta Anthony Edwards attığı 55 sayıyla öne çıktı.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500598",
+        "deneme": 1,
+        "gerekce": [
+          "ozet/T6: 5 cümle / 54 kelime (sınır 4 cümle / 75 kelime)",
+          "ozet/T13: [\"geri dönüş kaybedene atfedilmiş: 'Minnesota, son çeyrekte Anthony Edwards'ın etkisiyle farkı eritti ve 3 dakika kala 108-110 öne geçti'\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "San Antonio Spurs, sahasında Minnesota'yı 126-123 yendi.",
+          "neden_onemli": "Galibiyetle San Antonio Spurs, Batı Konferansı'nda 2. sırayı korudu.",
+          "ozet": "San Antonio Spurs, 2. çeyrekte kurduğu 26 sayılık üstünlükle maça erken yön verdi. Minnesota, son çeyrekte Anthony Edwards'ın etkisiyle farkı eritti ve 3 dakika kala 108-110 öne geçti. Victor Wembanyama'nın son dakikadaki basketiyle Spurs yeniden liderliğe geçti ve bu üstünlüğü sonuna kadar korudu. Karşı tarafta 55 sayı atan Edwards, gecenin en üretken ismi oldu.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500598",
+        "deneme": 0,
+        "gerekce": [
+          "T17: [\"'Anthony Edwards' (kaybeden MIN) cümle öznesi: 'Anthony Edwards 55 sayı attı, Minnesota yine de kaybetti'\"]"
+        ],
+        "yer": "brief[0]",
+        "reddedilen_taslak": {
+          "metin": "Anthony Edwards 55 sayı attı, Minnesota yine de kaybetti.",
+          "hedef_mac": "0022500598",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500597",
+        "deneme": 0,
+        "gerekce": [
+          "T13: [\"geri dönüş kaybedene atfedilmiş: 'Miami, Oklahoma City'ye karşı 12 sayılık farktan döndü'\"]"
+        ],
+        "yer": "brief[1]",
+        "reddedilen_taslak": {
+          "metin": "Miami, Oklahoma City'ye karşı 12 sayılık farktan döndü.",
+          "hedef_mac": "0022500597",
+          "muzip": false
+        }
+      }
+    ],
+    "ret_orani": 0.267,
+    "kelime_butcesi_uygulandi": true,
+    "uretim_modu": "batch",
+    "kullanim": {
+      "cagri_sayisi": 14,
+      "girdi_token": 91292,
+      "cikti_token": 41903,
+      "cache_yazma_token": 0,
+      "cache_okuma_token": 32384,
+      "toplam_maliyet_usd": 0.304
+    }
+  }
+}

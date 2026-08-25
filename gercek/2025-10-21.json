@@ -1,0 +1,4063 @@
+{
+  "tarih": "2025-10-21",
+  "uretildi": "2026-08-21T12:56:29.959235Z",
+  "maclar": {
+    "0022500001": [
+      {
+        "id": "f1",
+        "tur": "skor",
+        "veri": {
+          "ev": "OKC",
+          "dep": "HOU",
+          "ev_skor": 125,
+          "dep_skor": 124,
+          "kazanan": "OKC",
+          "fark": 1
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500001",
+        "guven": "kesin"
+      },
+      {
+        "id": "f2",
+        "tur": "ceyrek",
+        "veri": {
+          "periyot": 1,
+          "ev": "OKC",
+          "dep": "HOU",
+          "ev_ceyrek_sayisi": 27,
+          "dep_ceyrek_sayisi": 30,
+          "kumulatif_ev": 27,
+          "kumulatif_dep": 30,
+          "kumulatif_fark": -3
+        },
+        "kaynak": "PlayByPlayV3:0022500001:periyot1sonu",
+        "guven": "kesin"
+      },
+      {
+        "id": "f3",
+        "tur": "ceyrek",
+        "veri": {
+          "periyot": 2,
+          "ev": "OKC",
+          "dep": "HOU",
+          "ev_ceyrek_sayisi": 24,
+          "dep_ceyrek_sayisi": 27,
+          "kumulatif_ev": 51,
+          "kumulatif_dep": 57,
+          "kumulatif_fark": -6
+        },
+        "kaynak": "PlayByPlayV3:0022500001:periyot2sonu",
+        "guven": "kesin"
+      },
+      {
+        "id": "f4",
+        "tur": "ceyrek",
+        "veri": {
+          "periyot": 3,
+          "ev": "OKC",
+          "dep": "HOU",
+          "ev_ceyrek_sayisi": 24,
+          "dep_ceyrek_sayisi": 22,
+          "kumulatif_ev": 75,
+          "kumulatif_dep": 79,
+          "kumulatif_fark": -4
+        },
+        "kaynak": "PlayByPlayV3:0022500001:periyot3sonu",
+        "guven": "kesin"
+      },
+      {
+        "id": "f5",
+        "tur": "ceyrek",
+        "veri": {
+          "periyot": 4,
+          "ev": "OKC",
+          "dep": "HOU",
+          "ev_ceyrek_sayisi": 29,
+          "dep_ceyrek_sayisi": 25,
+          "kumulatif_ev": 104,
+          "kumulatif_dep": 104,
+          "kumulatif_fark": 0
+        },
+        "kaynak": "PlayByPlayV3:0022500001:periyot4sonu",
+        "guven": "kesin"
+      },
+      {
+        "id": "f6",
+        "tur": "ceyrek",
+        "veri": {
+          "periyot": 5,
+          "ev": "OKC",
+          "dep": "HOU",
+          "ev_ceyrek_sayisi": 11,
+          "dep_ceyrek_sayisi": 11,
+          "kumulatif_ev": 115,
+          "kumulatif_dep": 115,
+          "kumulatif_fark": 0
+        },
+        "kaynak": "PlayByPlayV3:0022500001:periyot5sonu",
+        "guven": "kesin"
+      },
+      {
+        "id": "f7",
+        "tur": "ceyrek",
+        "veri": {
+          "periyot": 6,
+          "ev": "OKC",
+          "dep": "HOU",
+          "ev_ceyrek_sayisi": 10,
+          "dep_ceyrek_sayisi": 9,
+          "kumulatif_ev": 125,
+          "kumulatif_dep": 124,
+          "kumulatif_fark": 1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:periyot6sonu",
+        "guven": "kesin"
+      },
+      {
+        "id": "f8",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Luguentz Dort",
+          "id": 1629652,
+          "takim": "OKC",
+          "dk": "45:15",
+          "sayi": 6,
+          "rib": 6,
+          "ast": 5,
+          "cal": 1,
+          "blk": 0,
+          "tk": 1,
+          "fg": "2/12",
+          "uc": "0/8",
+          "sut": "2/2",
+          "arti_eksi": 2.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500001:1629652",
+        "guven": "kesin"
+      },
+      {
+        "id": "f9",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Chet Holmgren",
+          "id": 1631096,
+          "takim": "OKC",
+          "dk": "38:30",
+          "sayi": 28,
+          "rib": 7,
+          "ast": 2,
+          "cal": 0,
+          "blk": 0,
+          "tk": 3,
+          "fg": "11/17",
+          "uc": "2/5",
+          "sut": "4/4",
+          "arti_eksi": -1.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500001:1631096",
+        "guven": "kesin"
+      },
+      {
+        "id": "f10",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Isaiah Hartenstein",
+          "id": 1628392,
+          "takim": "OKC",
+          "dk": "36:51",
+          "sayi": 6,
+          "rib": 8,
+          "ast": 5,
+          "cal": 2,
+          "blk": 0,
+          "tk": 1,
+          "fg": "2/5",
+          "uc": "0/1",
+          "sut": "2/2",
+          "arti_eksi": 9.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500001:1628392",
+        "guven": "kesin"
+      },
+      {
+        "id": "f11",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Cason Wallace",
+          "id": 1641717,
+          "takim": "OKC",
+          "dk": "41:39",
+          "sayi": 14,
+          "rib": 7,
+          "ast": 5,
+          "cal": 4,
+          "blk": 0,
+          "tk": 2,
+          "fg": "5/10",
+          "uc": "3/8",
+          "sut": "1/2",
+          "arti_eksi": 8.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500001:1641717",
+        "guven": "kesin"
+      },
+      {
+        "id": "f12",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Shai Gilgeous-Alexander",
+          "id": 1628983,
+          "takim": "OKC",
+          "dk": "47:13",
+          "sayi": 35,
+          "rib": 5,
+          "ast": 5,
+          "cal": 2,
+          "blk": 2,
+          "tk": 3,
+          "fg": "12/26",
+          "uc": "1/9",
+          "sut": "10/14",
+          "arti_eksi": 3.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500001:1628983",
+        "guven": "kesin"
+      },
+      {
+        "id": "f13",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Jaylin Williams",
+          "id": 1631119,
+          "takim": "OKC",
+          "dk": "12:53",
+          "sayi": 2,
+          "rib": 0,
+          "ast": 1,
+          "cal": 1,
+          "blk": 0,
+          "tk": 0,
+          "fg": "1/5",
+          "uc": "0/4",
+          "sut": "0/0",
+          "arti_eksi": -3.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500001:1631119",
+        "guven": "kesin"
+      },
+      {
+        "id": "f14",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Aaron Wiggins",
+          "id": 1630598,
+          "takim": "OKC",
+          "dk": "20:32",
+          "sayi": 10,
+          "rib": 1,
+          "ast": 1,
+          "cal": 0,
+          "blk": 0,
+          "tk": 1,
+          "fg": "4/8",
+          "uc": "2/5",
+          "sut": "0/0",
+          "arti_eksi": 2.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500001:1630598",
+        "guven": "kesin"
+      },
+      {
+        "id": "f15",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Alex Caruso",
+          "id": 1627936,
+          "takim": "OKC",
+          "dk": "30:11",
+          "sayi": 8,
+          "rib": 2,
+          "ast": 3,
+          "cal": 2,
+          "blk": 1,
+          "tk": 0,
+          "fg": "3/9",
+          "uc": "2/6",
+          "sut": "0/0",
+          "arti_eksi": -15.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500001:1627936",
+        "guven": "kesin"
+      },
+      {
+        "id": "f16",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Brooks Barnhizer",
+          "id": 1642964,
+          "takim": "OKC",
+          "dk": "2:15",
+          "sayi": 0,
+          "rib": 0,
+          "ast": 0,
+          "cal": 0,
+          "blk": 0,
+          "tk": 0,
+          "fg": "0/0",
+          "uc": "0/0",
+          "sut": "0/0",
+          "arti_eksi": -2.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500001:1642964",
+        "guven": "kesin"
+      },
+      {
+        "id": "f17",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Ajay Mitchell",
+          "id": 1642349,
+          "takim": "OKC",
+          "dk": "14:36",
+          "sayi": 16,
+          "rib": 2,
+          "ast": 2,
+          "cal": 0,
+          "blk": 1,
+          "tk": 0,
+          "fg": "6/12",
+          "uc": "3/6",
+          "sut": "1/1",
+          "arti_eksi": 2.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500001:1642349",
+        "guven": "kesin"
+      },
+      {
+        "id": "f18",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Chris Youngblood",
+          "id": 1642959,
+          "takim": "OKC",
+          "dk": "0:06",
+          "sayi": 0,
+          "rib": 0,
+          "ast": 0,
+          "cal": 0,
+          "blk": 0,
+          "tk": 0,
+          "fg": "0/0",
+          "uc": "0/0",
+          "sut": "0/0",
+          "arti_eksi": 0.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500001:1642959",
+        "guven": "kesin"
+      },
+      {
+        "id": "f19",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Jabari Smith Jr.",
+          "id": 1631095,
+          "takim": "HOU",
+          "dk": "41:45",
+          "sayi": 16,
+          "rib": 5,
+          "ast": 0,
+          "cal": 1,
+          "blk": 0,
+          "tk": 0,
+          "fg": "7/15",
+          "uc": "2/6",
+          "sut": "0/0",
+          "arti_eksi": 2.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500001:1631095",
+        "guven": "kesin"
+      },
+      {
+        "id": "f20",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Alperen Şengün",
+          "id": 1630578,
+          "takim": "HOU",
+          "dk": "48:53",
+          "sayi": 39,
+          "rib": 11,
+          "ast": 7,
+          "cal": 2,
+          "blk": 1,
+          "tk": 4,
+          "fg": "12/24",
+          "uc": "5/8",
+          "sut": "10/11",
+          "arti_eksi": 9.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500001:1630578",
+        "guven": "kesin"
+      },
+      {
+        "id": "f21",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Steven Adams",
+          "id": 203500,
+          "takim": "HOU",
+          "dk": "36:30",
+          "sayi": 4,
+          "rib": 13,
+          "ast": 3,
+          "cal": 0,
+          "blk": 0,
+          "tk": 3,
+          "fg": "1/4",
+          "uc": "0/0",
+          "sut": "2/2",
+          "arti_eksi": 2.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500001:203500",
+        "guven": "kesin"
+      },
+      {
+        "id": "f22",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Kevin Durant",
+          "id": 201142,
+          "takim": "HOU",
+          "dk": "47:03",
+          "sayi": 23,
+          "rib": 9,
+          "ast": 3,
+          "cal": 0,
+          "blk": 0,
+          "tk": 4,
+          "fg": "9/16",
+          "uc": "0/4",
+          "sut": "5/6",
+          "arti_eksi": 0.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500001:201142",
+        "guven": "kesin"
+      },
+      {
+        "id": "f23",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Amen Thompson",
+          "id": 1641708,
+          "takim": "HOU",
+          "dk": "38:36",
+          "sayi": 18,
+          "rib": 4,
+          "ast": 5,
+          "cal": 1,
+          "blk": 1,
+          "tk": 4,
+          "fg": "8/17",
+          "uc": "0/7",
+          "sut": "2/2",
+          "arti_eksi": -11.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500001:1641708",
+        "guven": "kesin"
+      },
+      {
+        "id": "f24",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Tari Eason",
+          "id": 1631106,
+          "takim": "HOU",
+          "dk": "21:36",
+          "sayi": 3,
+          "rib": 6,
+          "ast": 0,
+          "cal": 0,
+          "blk": 1,
+          "tk": 4,
+          "fg": "1/6",
+          "uc": "1/4",
+          "sut": "0/0",
+          "arti_eksi": -4.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500001:1631106",
+        "guven": "kesin"
+      },
+      {
+        "id": "f25",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Reed Sheppard",
+          "id": 1642263,
+          "takim": "HOU",
+          "dk": "27:47",
+          "sayi": 9,
+          "rib": 2,
+          "ast": 4,
+          "cal": 1,
+          "blk": 1,
+          "tk": 2,
+          "fg": "3/11",
+          "uc": "2/7",
+          "sut": "1/2",
+          "arti_eksi": 0.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500001:1642263",
+        "guven": "kesin"
+      },
+      {
+        "id": "f26",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Clint Capela",
+          "id": 203991,
+          "takim": "HOU",
+          "dk": "7:52",
+          "sayi": 4,
+          "rib": 0,
+          "ast": 0,
+          "cal": 1,
+          "blk": 0,
+          "tk": 1,
+          "fg": "1/1",
+          "uc": "0/0",
+          "sut": "2/2",
+          "arti_eksi": 5.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500001:203991",
+        "guven": "kesin"
+      },
+      {
+        "id": "f27",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Josh Okogie",
+          "id": 1629006,
+          "takim": "HOU",
+          "dk": "19:58",
+          "sayi": 8,
+          "rib": 2,
+          "ast": 1,
+          "cal": 0,
+          "blk": 1,
+          "tk": 0,
+          "fg": "1/3",
+          "uc": "1/3",
+          "sut": "5/6",
+          "arti_eksi": -8.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500001:1629006",
+        "guven": "kesin"
+      },
+      {
+        "id": "f28",
+        "tur": "takim_stat",
+        "veri": {
+          "takim": "OKC",
+          "isabet": "46/104",
+          "uclu": "13/52",
+          "serbest": "20/25",
+          "oreb": 11,
+          "dreb": 27,
+          "rib": 38,
+          "ast": 29,
+          "cal": 12,
+          "blk": 4,
+          "tk": 11,
+          "pf": 27,
+          "sayi": 125
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500001:OKC",
+        "guven": "kesin"
+      },
+      {
+        "id": "f29",
+        "tur": "takim_stat",
+        "veri": {
+          "takim": "HOU",
+          "isabet": "43/97",
+          "uclu": "11/39",
+          "serbest": "27/31",
+          "oreb": 16,
+          "dreb": 36,
+          "rib": 52,
+          "ast": 23,
+          "cal": 6,
+          "blk": 5,
+          "tk": 22,
+          "pf": 26,
+          "sayi": 124
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500001:HOU",
+        "guven": "kesin"
+      },
+      {
+        "id": "f30",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Kevin Durant",
+          "id": 201142,
+          "periyot": 1,
+          "sayi": 8
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f31",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Clint Capela",
+          "id": 203991,
+          "periyot": 1,
+          "sayi": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f32",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Shai Gilgeous-Alexander",
+          "id": 1628983,
+          "periyot": 1,
+          "sayi": 3
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f33",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Luguentz Dort",
+          "id": 1629652,
+          "periyot": 1,
+          "sayi": 6
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f34",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Alperen Şengün",
+          "id": 1630578,
+          "periyot": 1,
+          "sayi": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f35",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Aaron Wiggins",
+          "id": 1630598,
+          "periyot": 1,
+          "sayi": 3
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f36",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Jabari Smith Jr.",
+          "id": 1631095,
+          "periyot": 1,
+          "sayi": 5
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f37",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Chet Holmgren",
+          "id": 1631096,
+          "periyot": 1,
+          "sayi": 13
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f38",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Jaylin Williams",
+          "id": 1631119,
+          "periyot": 1,
+          "sayi": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f39",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Amen Thompson",
+          "id": 1641708,
+          "periyot": 1,
+          "sayi": 10
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f40",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Reed Sheppard",
+          "id": 1642263,
+          "periyot": 1,
+          "sayi": 3
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f41",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Kevin Durant",
+          "id": 201142,
+          "periyot": 2,
+          "sayi": 6
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f42",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Steven Adams",
+          "id": 203500,
+          "periyot": 2,
+          "sayi": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f43",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Alex Caruso",
+          "id": 1627936,
+          "periyot": 2,
+          "sayi": 3
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f44",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Shai Gilgeous-Alexander",
+          "id": 1628983,
+          "periyot": 2,
+          "sayi": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f45",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Josh Okogie",
+          "id": 1629006,
+          "periyot": 2,
+          "sayi": 5
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f46",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Alperen Şengün",
+          "id": 1630578,
+          "periyot": 2,
+          "sayi": 8
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f47",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Aaron Wiggins",
+          "id": 1630598,
+          "periyot": 2,
+          "sayi": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f48",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Chet Holmgren",
+          "id": 1631096,
+          "periyot": 2,
+          "sayi": 5
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f49",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Tari Eason",
+          "id": 1631106,
+          "periyot": 2,
+          "sayi": 3
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f50",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Reed Sheppard",
+          "id": 1642263,
+          "periyot": 2,
+          "sayi": 3
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f51",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Ajay Mitchell",
+          "id": 1642349,
+          "periyot": 2,
+          "sayi": 12
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f52",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Kevin Durant",
+          "id": 201142,
+          "periyot": 3,
+          "sayi": 3
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f53",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Steven Adams",
+          "id": 203500,
+          "periyot": 3,
+          "sayi": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f54",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Clint Capela",
+          "id": 203991,
+          "periyot": 3,
+          "sayi": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f55",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Alex Caruso",
+          "id": 1627936,
+          "periyot": 3,
+          "sayi": 5
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f56",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Shai Gilgeous-Alexander",
+          "id": 1628983,
+          "periyot": 3,
+          "sayi": 6
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f57",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Alperen Şengün",
+          "id": 1630578,
+          "periyot": 3,
+          "sayi": 9
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f58",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Aaron Wiggins",
+          "id": 1630598,
+          "periyot": 3,
+          "sayi": 5
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f59",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Jabari Smith Jr.",
+          "id": 1631095,
+          "periyot": 3,
+          "sayi": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f60",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Amen Thompson",
+          "id": 1641708,
+          "periyot": 3,
+          "sayi": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f61",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Cason Wallace",
+          "id": 1641717,
+          "periyot": 3,
+          "sayi": 8
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f62",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Reed Sheppard",
+          "id": 1642263,
+          "periyot": 3,
+          "sayi": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f63",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Kevin Durant",
+          "id": 201142,
+          "periyot": 4,
+          "sayi": 3
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f64",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Isaiah Hartenstein",
+          "id": 1628392,
+          "periyot": 4,
+          "sayi": 6
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f65",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Shai Gilgeous-Alexander",
+          "id": 1628983,
+          "periyot": 4,
+          "sayi": 12
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f66",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Josh Okogie",
+          "id": 1629006,
+          "periyot": 4,
+          "sayi": 1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f67",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Alperen Şengün",
+          "id": 1630578,
+          "periyot": 4,
+          "sayi": 11
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f68",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Jabari Smith Jr.",
+          "id": 1631095,
+          "periyot": 4,
+          "sayi": 4
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f69",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Chet Holmgren",
+          "id": 1631096,
+          "periyot": 4,
+          "sayi": 4
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f70",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Amen Thompson",
+          "id": 1641708,
+          "periyot": 4,
+          "sayi": 6
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f71",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Cason Wallace",
+          "id": 1641717,
+          "periyot": 4,
+          "sayi": 3
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f72",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Ajay Mitchell",
+          "id": 1642349,
+          "periyot": 4,
+          "sayi": 4
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f73",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Shai Gilgeous-Alexander",
+          "id": 1628983,
+          "periyot": 5,
+          "sayi": 5
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f74",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Josh Okogie",
+          "id": 1629006,
+          "periyot": 5,
+          "sayi": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f75",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Alperen Şengün",
+          "id": 1630578,
+          "periyot": 5,
+          "sayi": 5
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f76",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Jabari Smith Jr.",
+          "id": 1631095,
+          "periyot": 5,
+          "sayi": 3
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f77",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Chet Holmgren",
+          "id": 1631096,
+          "periyot": 5,
+          "sayi": 6
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f78",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Reed Sheppard",
+          "id": 1642263,
+          "periyot": 5,
+          "sayi": 1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f79",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Kevin Durant",
+          "id": 201142,
+          "periyot": 6,
+          "sayi": 3
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f80",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Shai Gilgeous-Alexander",
+          "id": 1628983,
+          "periyot": 6,
+          "sayi": 7
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f81",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Alperen Şengün",
+          "id": 1630578,
+          "periyot": 6,
+          "sayi": 4
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f82",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Jabari Smith Jr.",
+          "id": 1631095,
+          "periyot": 6,
+          "sayi": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f83",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Cason Wallace",
+          "id": 1641717,
+          "periyot": 6,
+          "sayi": 3
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f84",
+        "tur": "an",
+        "veri": {
+          "periyot": 1,
+          "saat": "PT08M17.00S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Thompson Free Throw 1 of 1 (3 PTS)",
+          "skor_ev": 9,
+          "skor_dep": 10,
+          "fark": -1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:45",
+        "guven": "kesin"
+      },
+      {
+        "id": "f85",
+        "tur": "an",
+        "veri": {
+          "periyot": 1,
+          "saat": "PT07M42.00S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Holmgren 23' Jump Shot (9 PTS) (Dort 2 AST)",
+          "skor_ev": 11,
+          "skor_dep": 10,
+          "fark": 1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:55",
+        "guven": "kesin"
+      },
+      {
+        "id": "f86",
+        "tur": "an",
+        "veri": {
+          "periyot": 1,
+          "saat": "PT07M26.00S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Thompson 23' Pullup Jump Shot (5 PTS)",
+          "skor_ev": 11,
+          "skor_dep": 12,
+          "fark": -1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:57",
+        "guven": "kesin"
+      },
+      {
+        "id": "f87",
+        "tur": "an",
+        "veri": {
+          "periyot": 1,
+          "saat": "PT07M10.00S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Holmgren 14' Jump Shot (11 PTS) (Gilgeous-Alexander 1 AST)",
+          "skor_ev": 13,
+          "skor_dep": 12,
+          "fark": 1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:58",
+        "guven": "kesin"
+      },
+      {
+        "id": "f88",
+        "tur": "an",
+        "veri": {
+          "periyot": 1,
+          "saat": "PT06M52.00S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Sengun 1' Driving Layup (2 PTS)",
+          "skor_ev": 13,
+          "skor_dep": 14,
+          "fark": -1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:62",
+        "guven": "kesin"
+      },
+      {
+        "id": "f89",
+        "tur": "an",
+        "veri": {
+          "periyot": 1,
+          "saat": "PT06M40.00S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Holmgren Free Throw 2 of 2 (13 PTS)",
+          "skor_ev": 15,
+          "skor_dep": 14,
+          "fark": 1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:69",
+        "guven": "kesin"
+      },
+      {
+        "id": "f90",
+        "tur": "an",
+        "veri": {
+          "periyot": 1,
+          "saat": "PT06M29.00S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Thompson 13' Driving Floating Jump Shot (7 PTS)",
+          "skor_ev": 15,
+          "skor_dep": 16,
+          "fark": -1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:70",
+        "guven": "kesin"
+      },
+      {
+        "id": "f91",
+        "tur": "an",
+        "veri": {
+          "periyot": 1,
+          "saat": "PT04M17.00S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Dort 1' Driving Layup (6 PTS)",
+          "skor_ev": 23,
+          "skor_dep": 21,
+          "fark": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500001:99",
+        "guven": "kesin"
+      },
+      {
+        "id": "f92",
+        "tur": "an",
+        "veri": {
+          "periyot": 1,
+          "saat": "PT03M00.00S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Durant 16' Pullup Jump Shot (8 PTS) (Sengun 2 AST)",
+          "skor_ev": 24,
+          "skor_dep": 25,
+          "fark": -1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:128",
+        "guven": "kesin"
+      },
+      {
+        "id": "f93",
+        "tur": "an",
+        "veri": {
+          "periyot": 1,
+          "saat": "PT01M54.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Aaron Wiggins",
+          "aciklama": "Wiggins 26' 3PT Running Jump Shot (3 PTS) (Caruso 1 AST)",
+          "skor_ev": 27,
+          "skor_dep": 25,
+          "fark": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500001:141",
+        "guven": "kesin"
+      },
+      {
+        "id": "f94",
+        "tur": "an",
+        "veri": {
+          "periyot": 1,
+          "saat": "PT01M54.00S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Wiggins 26' 3PT Running Jump Shot (3 PTS) (Caruso 1 AST)",
+          "skor_ev": 27,
+          "skor_dep": 25,
+          "fark": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500001:141",
+        "guven": "kesin"
+      },
+      {
+        "id": "f95",
+        "tur": "an",
+        "veri": {
+          "periyot": 1,
+          "saat": "PT01M37.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Reed Sheppard",
+          "aciklama": "Sheppard 29' 3PT Jump Shot (3 PTS) (Sengun 3 AST)",
+          "skor_ev": 27,
+          "skor_dep": 28,
+          "fark": -1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:143",
+        "guven": "kesin"
+      },
+      {
+        "id": "f96",
+        "tur": "an",
+        "veri": {
+          "periyot": 1,
+          "saat": "PT01M37.00S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Sheppard 29' 3PT Jump Shot (3 PTS) (Sengun 3 AST)",
+          "skor_ev": 27,
+          "skor_dep": 28,
+          "fark": -1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:143",
+        "guven": "kesin"
+      },
+      {
+        "id": "f97",
+        "tur": "an",
+        "veri": {
+          "periyot": 1,
+          "saat": "PT01M02.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Clint Capela",
+          "aciklama": "Capela 3' Hook Shot (2 PTS) (Sengun 4 AST)",
+          "skor_ev": 27,
+          "skor_dep": 30,
+          "fark": -3
+        },
+        "kaynak": "PlayByPlayV3:0022500001:148",
+        "guven": "kesin"
+      },
+      {
+        "id": "f98",
+        "tur": "an",
+        "veri": {
+          "periyot": 2,
+          "saat": "PT07M25.00S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Mitchell 25' 3PT Jump Shot (5 PTS) (Hartenstein 4 AST)",
+          "skor_ev": 42,
+          "skor_dep": 41,
+          "fark": 1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:243",
+        "guven": "kesin"
+      },
+      {
+        "id": "f99",
+        "tur": "an",
+        "veri": {
+          "periyot": 2,
+          "saat": "PT06M54.00S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Sheppard 26' 3PT Jump Bank Shot (6 PTS) (Okogie 1 AST)",
+          "skor_ev": 42,
+          "skor_dep": 44,
+          "fark": -2
+        },
+        "kaynak": "PlayByPlayV3:0022500001:247",
+        "guven": "kesin"
+      },
+      {
+        "id": "f100",
+        "tur": "an",
+        "veri": {
+          "periyot": 2,
+          "saat": "PT01M44.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Alperen Şengün",
+          "aciklama": "Sengun 25' 3PT Jump Shot (8 PTS) (Durant 1 AST)",
+          "skor_ev": 45,
+          "skor_dep": 53,
+          "fark": -8
+        },
+        "kaynak": "PlayByPlayV3:0022500001:321",
+        "guven": "kesin"
+      },
+      {
+        "id": "f101",
+        "tur": "an",
+        "veri": {
+          "periyot": 2,
+          "saat": "PT00M56.60S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Shai Gilgeous-Alexander",
+          "aciklama": "Gilgeous-Alexander 2' Driving Finger Roll Layup (5 PTS)",
+          "skor_ev": 47,
+          "skor_dep": 53,
+          "fark": -6
+        },
+        "kaynak": "PlayByPlayV3:0022500001:332",
+        "guven": "kesin"
+      },
+      {
+        "id": "f102",
+        "tur": "an",
+        "veri": {
+          "periyot": 2,
+          "saat": "PT00M38.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Kevin Durant",
+          "aciklama": "Durant 12' Jump Shot (14 PTS) (Adams 2 AST)",
+          "skor_ev": 47,
+          "skor_dep": 55,
+          "fark": -8
+        },
+        "kaynak": "PlayByPlayV3:0022500001:333",
+        "guven": "kesin"
+      },
+      {
+        "id": "f103",
+        "tur": "an",
+        "veri": {
+          "periyot": 2,
+          "saat": "PT00M05.10S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Alperen Şengün",
+          "aciklama": "Sengun Free Throw 1 of 2 (9 PTS)",
+          "skor_ev": 47,
+          "skor_dep": 56,
+          "fark": -9
+        },
+        "kaynak": "PlayByPlayV3:0022500001:342",
+        "guven": "kesin"
+      },
+      {
+        "id": "f104",
+        "tur": "an",
+        "veri": {
+          "periyot": 2,
+          "saat": "PT00M05.10S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Alperen Şengün",
+          "aciklama": "Sengun Free Throw 2 of 2 (10 PTS)",
+          "skor_ev": 47,
+          "skor_dep": 57,
+          "fark": -10
+        },
+        "kaynak": "PlayByPlayV3:0022500001:347",
+        "guven": "kesin"
+      },
+      {
+        "id": "f105",
+        "tur": "an",
+        "veri": {
+          "periyot": 2,
+          "saat": "PT00M00.70S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Ajay Mitchell",
+          "aciklama": "Mitchell 25' 3PT Pullup Jump Shot (11 PTS)",
+          "skor_ev": 50,
+          "skor_dep": 57,
+          "fark": -7
+        },
+        "kaynak": "PlayByPlayV3:0022500001:350",
+        "guven": "kesin"
+      },
+      {
+        "id": "f106",
+        "tur": "an",
+        "veri": {
+          "periyot": 2,
+          "saat": "PT00M00.70S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Ajay Mitchell",
+          "aciklama": "Mitchell Free Throw 1 of 1 (12 PTS)",
+          "skor_ev": 51,
+          "skor_dep": 57,
+          "fark": -6
+        },
+        "kaynak": "PlayByPlayV3:0022500001:356",
+        "guven": "kesin"
+      },
+      {
+        "id": "f107",
+        "tur": "an",
+        "veri": {
+          "periyot": 3,
+          "saat": "PT01M48.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Alperen Şengün",
+          "aciklama": "Sengun 27' 3PT Jump Shot (17 PTS) (Sheppard 1 AST)",
+          "skor_ev": 73,
+          "skor_dep": 76,
+          "fark": -3
+        },
+        "kaynak": "PlayByPlayV3:0022500001:497",
+        "guven": "kesin"
+      },
+      {
+        "id": "f108",
+        "tur": "an",
+        "veri": {
+          "periyot": 3,
+          "saat": "PT01M18.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Kevin Durant",
+          "aciklama": "Durant Free Throw 1 of 1 (17 PTS)",
+          "skor_ev": 73,
+          "skor_dep": 77,
+          "fark": -4
+        },
+        "kaynak": "PlayByPlayV3:0022500001:506",
+        "guven": "kesin"
+      },
+      {
+        "id": "f109",
+        "tur": "an",
+        "veri": {
+          "periyot": 3,
+          "saat": "PT00M53.60S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Aaron Wiggins",
+          "aciklama": "Wiggins 1' Driving Dunk (10 PTS) (Holmgren 1 AST)",
+          "skor_ev": 75,
+          "skor_dep": 77,
+          "fark": -2
+        },
+        "kaynak": "PlayByPlayV3:0022500001:511",
+        "guven": "kesin"
+      },
+      {
+        "id": "f110",
+        "tur": "an",
+        "veri": {
+          "periyot": 3,
+          "saat": "PT00M43.80S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Alperen Şengün",
+          "aciklama": "Sengun Free Throw 1 of 2 (18 PTS)",
+          "skor_ev": 75,
+          "skor_dep": 78,
+          "fark": -3
+        },
+        "kaynak": "PlayByPlayV3:0022500001:515",
+        "guven": "kesin"
+      },
+      {
+        "id": "f111",
+        "tur": "an",
+        "veri": {
+          "periyot": 3,
+          "saat": "PT00M43.80S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Alperen Şengün",
+          "aciklama": "Sengun Free Throw 2 of 2 (19 PTS)",
+          "skor_ev": 75,
+          "skor_dep": 79,
+          "fark": -4
+        },
+        "kaynak": "PlayByPlayV3:0022500001:520",
+        "guven": "kesin"
+      },
+      {
+        "id": "f112",
+        "tur": "an",
+        "veri": {
+          "periyot": 4,
+          "saat": "PT01M34.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Shai Gilgeous-Alexander",
+          "aciklama": "Gilgeous-Alexander 19' Step Back Jump Shot (21 PTS)",
+          "skor_ev": 102,
+          "skor_dep": 101,
+          "fark": 1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:659",
+        "guven": "kesin"
+      },
+      {
+        "id": "f113",
+        "tur": "an",
+        "veri": {
+          "periyot": 4,
+          "saat": "PT01M34.00S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Gilgeous-Alexander 19' Step Back Jump Shot (21 PTS)",
+          "skor_ev": 102,
+          "skor_dep": 101,
+          "fark": 1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:659",
+        "guven": "kesin"
+      },
+      {
+        "id": "f114",
+        "tur": "an",
+        "veri": {
+          "periyot": 4,
+          "saat": "PT00M38.40S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Alperen Şengün",
+          "aciklama": "Sengun 7' Turnaround Hook Shot (30 PTS)",
+          "skor_ev": 102,
+          "skor_dep": 103,
+          "fark": -1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:669",
+        "guven": "kesin"
+      },
+      {
+        "id": "f115",
+        "tur": "an",
+        "veri": {
+          "periyot": 4,
+          "saat": "PT00M38.40S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Sengun 7' Turnaround Hook Shot (30 PTS)",
+          "skor_ev": 102,
+          "skor_dep": 103,
+          "fark": -1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:669",
+        "guven": "kesin"
+      },
+      {
+        "id": "f116",
+        "tur": "an",
+        "veri": {
+          "periyot": 4,
+          "saat": "PT00M09.50S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Kevin Durant",
+          "aciklama": "Durant Free Throw 2 of 2 (20 PTS)",
+          "skor_ev": 102,
+          "skor_dep": 104,
+          "fark": -2
+        },
+        "kaynak": "PlayByPlayV3:0022500001:682",
+        "guven": "kesin"
+      },
+      {
+        "id": "f117",
+        "tur": "an",
+        "veri": {
+          "periyot": 4,
+          "saat": "PT00M02.60S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Shai Gilgeous-Alexander",
+          "aciklama": "Gilgeous-Alexander 16' Pullup Jump Shot (23 PTS)",
+          "skor_ev": 104,
+          "skor_dep": 104,
+          "fark": 0
+        },
+        "kaynak": "PlayByPlayV3:0022500001:683",
+        "guven": "kesin"
+      },
+      {
+        "id": "f118",
+        "tur": "an",
+        "veri": {
+          "periyot": 5,
+          "saat": "PT04M15.00S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Holmgren 3PT Jump Shot (25 PTS) (Dort 5 AST)",
+          "skor_ev": 107,
+          "skor_dep": 104,
+          "fark": 3
+        },
+        "kaynak": "PlayByPlayV3:0022500001:712",
+        "guven": "kesin"
+      },
+      {
+        "id": "f119",
+        "tur": "an",
+        "veri": {
+          "periyot": 5,
+          "saat": "PT02M00.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Jabari Smith Jr.",
+          "aciklama": "Smith Jr. 3PT Jump Shot (14 PTS) (Durant 2 AST)",
+          "skor_ev": 112,
+          "skor_dep": 110,
+          "fark": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500001:735",
+        "guven": "kesin"
+      },
+      {
+        "id": "f120",
+        "tur": "an",
+        "veri": {
+          "periyot": 5,
+          "saat": "PT01M25.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Alperen Şengün",
+          "aciklama": "Sengun Free Throw 2 of 2 (33 PTS)",
+          "skor_ev": 112,
+          "skor_dep": 111,
+          "fark": 1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:743",
+        "guven": "kesin"
+      },
+      {
+        "id": "f121",
+        "tur": "an",
+        "veri": {
+          "periyot": 5,
+          "saat": "PT01M11.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Chet Holmgren",
+          "aciklama": "Holmgren 25' 3PT Jump Shot (28 PTS) (Gilgeous-Alexander 5 AST)",
+          "skor_ev": 115,
+          "skor_dep": 111,
+          "fark": 4
+        },
+        "kaynak": "PlayByPlayV3:0022500001:744",
+        "guven": "kesin"
+      },
+      {
+        "id": "f122",
+        "tur": "an",
+        "veri": {
+          "periyot": 5,
+          "saat": "PT00M48.10S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Josh Okogie",
+          "aciklama": "Okogie Free Throw 1 of 2 (7 PTS)",
+          "skor_ev": 115,
+          "skor_dep": 112,
+          "fark": 3
+        },
+        "kaynak": "PlayByPlayV3:0022500001:757",
+        "guven": "kesin"
+      },
+      {
+        "id": "f123",
+        "tur": "an",
+        "veri": {
+          "periyot": 5,
+          "saat": "PT00M48.10S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Josh Okogie",
+          "aciklama": "Okogie Free Throw 2 of 2 (8 PTS)",
+          "skor_ev": 115,
+          "skor_dep": 113,
+          "fark": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500001:758",
+        "guven": "kesin"
+      },
+      {
+        "id": "f124",
+        "tur": "an",
+        "veri": {
+          "periyot": 5,
+          "saat": "PT00M08.80S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Alperen Şengün",
+          "aciklama": "Sengun 1' Putback Dunk (35 PTS)",
+          "skor_ev": 115,
+          "skor_dep": 115,
+          "fark": 0
+        },
+        "kaynak": "PlayByPlayV3:0022500001:767",
+        "guven": "kesin"
+      },
+      {
+        "id": "f125",
+        "tur": "an",
+        "veri": {
+          "periyot": 6,
+          "saat": "PT03M41.00S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Sengun Free Throw 1 of 2 (36 PTS)",
+          "skor_ev": 115,
+          "skor_dep": 116,
+          "fark": -1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:800",
+        "guven": "kesin"
+      },
+      {
+        "id": "f126",
+        "tur": "an",
+        "veri": {
+          "periyot": 6,
+          "saat": "PT01M32.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Cason Wallace",
+          "aciklama": "Wallace 25' 3PT Step Back Jump Shot (14 PTS) (Caruso 3 AST)",
+          "skor_ev": 120,
+          "skor_dep": 119,
+          "fark": 1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:834",
+        "guven": "kesin"
+      },
+      {
+        "id": "f127",
+        "tur": "an",
+        "veri": {
+          "periyot": 6,
+          "saat": "PT01M32.00S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Wallace 25' 3PT Step Back Jump Shot (14 PTS) (Caruso 3 AST)",
+          "skor_ev": 120,
+          "skor_dep": 119,
+          "fark": 1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:834",
+        "guven": "kesin"
+      },
+      {
+        "id": "f128",
+        "tur": "an",
+        "veri": {
+          "periyot": 6,
+          "saat": "PT01M15.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Kevin Durant",
+          "aciklama": "Durant 5' Driving Layup (22 PTS)",
+          "skor_ev": 120,
+          "skor_dep": 121,
+          "fark": -1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:836",
+        "guven": "kesin"
+      },
+      {
+        "id": "f129",
+        "tur": "an",
+        "veri": {
+          "periyot": 6,
+          "saat": "PT01M15.00S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Durant 5' Driving Layup (22 PTS)",
+          "skor_ev": 120,
+          "skor_dep": 121,
+          "fark": -1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:836",
+        "guven": "kesin"
+      },
+      {
+        "id": "f130",
+        "tur": "an",
+        "veri": {
+          "periyot": 6,
+          "saat": "PT01M15.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Kevin Durant",
+          "aciklama": "Durant Free Throw 1 of 1 (23 PTS)",
+          "skor_ev": 120,
+          "skor_dep": 122,
+          "fark": -2
+        },
+        "kaynak": "PlayByPlayV3:0022500001:841",
+        "guven": "kesin"
+      },
+      {
+        "id": "f131",
+        "tur": "an",
+        "veri": {
+          "periyot": 6,
+          "saat": "PT00M59.70S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Shai Gilgeous-Alexander",
+          "aciklama": "Gilgeous-Alexander 19' Step Back Jump Shot (32 PTS)",
+          "skor_ev": 122,
+          "skor_dep": 122,
+          "fark": 0
+        },
+        "kaynak": "PlayByPlayV3:0022500001:842",
+        "guven": "kesin"
+      },
+      {
+        "id": "f132",
+        "tur": "an",
+        "veri": {
+          "periyot": 6,
+          "saat": "PT00M32.60S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Shai Gilgeous-Alexander",
+          "aciklama": "Gilgeous-Alexander Free Throw 2 of 2 (33 PTS)",
+          "skor_ev": 123,
+          "skor_dep": 122,
+          "fark": 1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:851",
+        "guven": "kesin"
+      },
+      {
+        "id": "f133",
+        "tur": "an",
+        "veri": {
+          "periyot": 6,
+          "saat": "PT00M32.60S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Gilgeous-Alexander Free Throw 2 of 2 (33 PTS)",
+          "skor_ev": 123,
+          "skor_dep": 122,
+          "fark": 1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:851",
+        "guven": "kesin"
+      },
+      {
+        "id": "f134",
+        "tur": "an",
+        "veri": {
+          "periyot": 6,
+          "saat": "PT00M11.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Alperen Şengün",
+          "aciklama": "Sengun 2' Driving Finger Roll Layup (39 PTS) (Durant 3 AST)",
+          "skor_ev": 123,
+          "skor_dep": 124,
+          "fark": -1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:855",
+        "guven": "kesin"
+      },
+      {
+        "id": "f135",
+        "tur": "an",
+        "veri": {
+          "periyot": 6,
+          "saat": "PT00M11.00S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Sengun 2' Driving Finger Roll Layup (39 PTS) (Durant 3 AST)",
+          "skor_ev": 123,
+          "skor_dep": 124,
+          "fark": -1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:855",
+        "guven": "kesin"
+      },
+      {
+        "id": "f136",
+        "tur": "an",
+        "veri": {
+          "periyot": 6,
+          "saat": "PT00M02.30S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Shai Gilgeous-Alexander",
+          "aciklama": "Gilgeous-Alexander Free Throw 1 of 2 (34 PTS)",
+          "skor_ev": 124,
+          "skor_dep": 124,
+          "fark": 0
+        },
+        "kaynak": "PlayByPlayV3:0022500001:864",
+        "guven": "kesin"
+      },
+      {
+        "id": "f137",
+        "tur": "an",
+        "veri": {
+          "periyot": 6,
+          "saat": "PT00M02.30S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Shai Gilgeous-Alexander",
+          "aciklama": "Gilgeous-Alexander Free Throw 2 of 2 (35 PTS)",
+          "skor_ev": 125,
+          "skor_dep": 124,
+          "fark": 1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:865",
+        "guven": "kesin"
+      },
+      {
+        "id": "f138",
+        "tur": "an",
+        "veri": {
+          "periyot": 6,
+          "saat": "PT00M02.30S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Gilgeous-Alexander Free Throw 2 of 2 (35 PTS)",
+          "skor_ev": 125,
+          "skor_dep": 124,
+          "fark": 1
+        },
+        "kaynak": "PlayByPlayV3:0022500001:865",
+        "guven": "kesin"
+      },
+      {
+        "id": "f139",
+        "tur": "fark_serisi",
+        "veri": {
+          "en_buyuk_ev_farki": 6,
+          "en_buyuk_dep_farki": 12,
+          "lider_degisim_sayisi": 22,
+          "son_periyot_lider_degisimi": 5,
+          "ilk_lider": "OKC",
+          "kazanan_en_buyuk_acigi": 12,
+          "baski_altinda_hic_kalmadi": false,
+          "esik_sonrasi_hic_asilmadi": {
+            "5": {
+              "periyot": 6,
+              "saniye_kalan": 0.0
+            },
+            "8": {
+              "periyot": 6,
+              "saniye_kalan": 0.0
+            },
+            "10": {
+              "periyot": 6,
+              "saniye_kalan": 0.0
+            },
+            "15": {
+              "periyot": 6,
+              "saniye_kalan": 0.0
+            },
+            "20": {
+              "periyot": 6,
+              "saniye_kalan": 0.0
+            }
+          },
+          "kopma_ani": null
+        },
+        "kaynak": "PlayByPlayV3:0022500001:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f140",
+        "tur": "derece",
+        "veri": {
+          "takim": "OKC",
+          "galibiyet": 1,
+          "maglubiyet": 0,
+          "derece_metni": "1-0",
+          "konferans": "Batı",
+          "konferans_sira": null,
+          "lig_sira": null,
+          "sezon_guvenilir": false,
+          "onceki_seri_tur": null,
+          "onceki_seri_uzunluk": 0,
+          "sezon_ilk_mac_sonucu": "galibiyet",
+          "ev_galibiyet": 1,
+          "ev_maglubiyet": 0,
+          "ev_mac_sayisi": 1,
+          "bu_mac_evde_mi": true
+        },
+        "kaynak": "LeagueGameLog:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f141",
+        "tur": "derece",
+        "veri": {
+          "takim": "HOU",
+          "galibiyet": 0,
+          "maglubiyet": 1,
+          "derece_metni": "0-1",
+          "konferans": "Batı",
+          "konferans_sira": null,
+          "lig_sira": null,
+          "sezon_guvenilir": false,
+          "onceki_seri_tur": null,
+          "onceki_seri_uzunluk": 0,
+          "sezon_ilk_mac_sonucu": "maglubiyet",
+          "ev_galibiyet": 0,
+          "ev_maglubiyet": 0,
+          "ev_mac_sayisi": 0,
+          "bu_mac_evde_mi": false
+        },
+        "kaynak": "LeagueGameLog:turetilmis",
+        "guven": "turetilmis"
+      }
+    ],
+    "0022500002": [
+      {
+        "id": "f1",
+        "tur": "skor",
+        "veri": {
+          "ev": "LAL",
+          "dep": "GSW",
+          "ev_skor": 109,
+          "dep_skor": 119,
+          "kazanan": "GSW",
+          "fark": 10
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500002",
+        "guven": "kesin"
+      },
+      {
+        "id": "f2",
+        "tur": "ceyrek",
+        "veri": {
+          "periyot": 1,
+          "ev": "LAL",
+          "dep": "GSW",
+          "ev_ceyrek_sayisi": 22,
+          "dep_ceyrek_sayisi": 28,
+          "kumulatif_ev": 22,
+          "kumulatif_dep": 28,
+          "kumulatif_fark": -6
+        },
+        "kaynak": "PlayByPlayV3:0022500002:periyot1sonu",
+        "guven": "kesin"
+      },
+      {
+        "id": "f3",
+        "tur": "ceyrek",
+        "veri": {
+          "periyot": 2,
+          "ev": "LAL",
+          "dep": "GSW",
+          "ev_ceyrek_sayisi": 32,
+          "dep_ceyrek_sayisi": 27,
+          "kumulatif_ev": 54,
+          "kumulatif_dep": 55,
+          "kumulatif_fark": -1
+        },
+        "kaynak": "PlayByPlayV3:0022500002:periyot2sonu",
+        "guven": "kesin"
+      },
+      {
+        "id": "f4",
+        "tur": "ceyrek",
+        "veri": {
+          "periyot": 3,
+          "ev": "LAL",
+          "dep": "GSW",
+          "ev_ceyrek_sayisi": 25,
+          "dep_ceyrek_sayisi": 35,
+          "kumulatif_ev": 79,
+          "kumulatif_dep": 90,
+          "kumulatif_fark": -11
+        },
+        "kaynak": "PlayByPlayV3:0022500002:periyot3sonu",
+        "guven": "kesin"
+      },
+      {
+        "id": "f5",
+        "tur": "ceyrek",
+        "veri": {
+          "periyot": 4,
+          "ev": "LAL",
+          "dep": "GSW",
+          "ev_ceyrek_sayisi": 30,
+          "dep_ceyrek_sayisi": 29,
+          "kumulatif_ev": 109,
+          "kumulatif_dep": 119,
+          "kumulatif_fark": -10
+        },
+        "kaynak": "PlayByPlayV3:0022500002:periyot4sonu",
+        "guven": "kesin"
+      },
+      {
+        "id": "f6",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Austin Reaves",
+          "id": 1630559,
+          "takim": "LAL",
+          "dk": "36:20",
+          "sayi": 26,
+          "rib": 5,
+          "ast": 9,
+          "cal": 2,
+          "blk": 0,
+          "tk": 5,
+          "fg": "9/16",
+          "uc": "1/5",
+          "sut": "7/10",
+          "arti_eksi": -14.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500002:1630559",
+        "guven": "kesin"
+      },
+      {
+        "id": "f7",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Rui Hachimura",
+          "id": 1629060,
+          "takim": "LAL",
+          "dk": "35:25",
+          "sayi": 9,
+          "rib": 4,
+          "ast": 3,
+          "cal": 0,
+          "blk": 0,
+          "tk": 1,
+          "fg": "3/6",
+          "uc": "3/6",
+          "sut": "0/0",
+          "arti_eksi": -6.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500002:1629060",
+        "guven": "kesin"
+      },
+      {
+        "id": "f8",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Deandre Ayton",
+          "id": 1629028,
+          "takim": "LAL",
+          "dk": "33:53",
+          "sayi": 10,
+          "rib": 6,
+          "ast": 0,
+          "cal": 0,
+          "blk": 1,
+          "tk": 4,
+          "fg": "5/7",
+          "uc": "0/0",
+          "sut": "0/2",
+          "arti_eksi": -4.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500002:1629028",
+        "guven": "kesin"
+      },
+      {
+        "id": "f9",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Gabe Vincent",
+          "id": 1629216,
+          "takim": "LAL",
+          "dk": "28:44",
+          "sayi": 3,
+          "rib": 0,
+          "ast": 1,
+          "cal": 1,
+          "blk": 0,
+          "tk": 0,
+          "fg": "1/4",
+          "uc": "1/4",
+          "sut": "0/0",
+          "arti_eksi": -5.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500002:1629216",
+        "guven": "kesin"
+      },
+      {
+        "id": "f10",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Luka Dončić",
+          "id": 1629029,
+          "takim": "LAL",
+          "dk": "40:59",
+          "sayi": 43,
+          "rib": 12,
+          "ast": 9,
+          "cal": 2,
+          "blk": 1,
+          "tk": 3,
+          "fg": "17/27",
+          "uc": "2/10",
+          "sut": "7/10",
+          "arti_eksi": -8.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500002:1629029",
+        "guven": "kesin"
+      },
+      {
+        "id": "f11",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Marcus Smart",
+          "id": 203935,
+          "takim": "LAL",
+          "dk": "22:46",
+          "sayi": 9,
+          "rib": 0,
+          "ast": 0,
+          "cal": 1,
+          "blk": 0,
+          "tk": 3,
+          "fg": "3/6",
+          "uc": "0/3",
+          "sut": "3/4",
+          "arti_eksi": 2.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500002:203935",
+        "guven": "kesin"
+      },
+      {
+        "id": "f12",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Jake LaRavia",
+          "id": 1631222,
+          "takim": "LAL",
+          "dk": "15:50",
+          "sayi": 5,
+          "rib": 3,
+          "ast": 0,
+          "cal": 0,
+          "blk": 0,
+          "tk": 0,
+          "fg": "2/4",
+          "uc": "1/2",
+          "sut": "0/2",
+          "arti_eksi": -5.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500002:1631222",
+        "guven": "kesin"
+      },
+      {
+        "id": "f13",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Jaxson Hayes",
+          "id": 1629637,
+          "takim": "LAL",
+          "dk": "14:07",
+          "sayi": 4,
+          "rib": 6,
+          "ast": 1,
+          "cal": 0,
+          "blk": 0,
+          "tk": 1,
+          "fg": "2/3",
+          "uc": "0/0",
+          "sut": "0/0",
+          "arti_eksi": -6.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500002:1629637",
+        "guven": "kesin"
+      },
+      {
+        "id": "f14",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Jarred Vanderbilt",
+          "id": 1629020,
+          "takim": "LAL",
+          "dk": "11:56",
+          "sayi": 0,
+          "rib": 3,
+          "ast": 0,
+          "cal": 1,
+          "blk": 0,
+          "tk": 2,
+          "fg": "0/4",
+          "uc": "0/2",
+          "sut": "0/0",
+          "arti_eksi": -4.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500002:1629020",
+        "guven": "kesin"
+      },
+      {
+        "id": "f15",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Jimmy Butler III",
+          "id": 202710,
+          "takim": "GSW",
+          "dk": "34:44",
+          "sayi": 31,
+          "rib": 5,
+          "ast": 4,
+          "cal": 1,
+          "blk": 0,
+          "tk": 1,
+          "fg": "7/14",
+          "uc": "1/2",
+          "sut": "16/16",
+          "arti_eksi": 20.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500002:202710",
+        "guven": "kesin"
+      },
+      {
+        "id": "f16",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Jonathan Kuminga",
+          "id": 1630228,
+          "takim": "GSW",
+          "dk": "32:54",
+          "sayi": 17,
+          "rib": 9,
+          "ast": 6,
+          "cal": 1,
+          "blk": 0,
+          "tk": 2,
+          "fg": "6/11",
+          "uc": "4/6",
+          "sut": "1/2",
+          "arti_eksi": 4.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500002:1630228",
+        "guven": "kesin"
+      },
+      {
+        "id": "f17",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Draymond Green",
+          "id": 203110,
+          "takim": "GSW",
+          "dk": "28:24",
+          "sayi": 8,
+          "rib": 7,
+          "ast": 9,
+          "cal": 1,
+          "blk": 2,
+          "tk": 4,
+          "fg": "3/6",
+          "uc": "1/3",
+          "sut": "1/3",
+          "arti_eksi": 20.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500002:203110",
+        "guven": "kesin"
+      },
+      {
+        "id": "f18",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Brandin Podziemski",
+          "id": 1641764,
+          "takim": "GSW",
+          "dk": "32:32",
+          "sayi": 7,
+          "rib": 7,
+          "ast": 2,
+          "cal": 1,
+          "blk": 0,
+          "tk": 1,
+          "fg": "3/7",
+          "uc": "1/4",
+          "sut": "0/0",
+          "arti_eksi": 13.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500002:1641764",
+        "guven": "kesin"
+      },
+      {
+        "id": "f19",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Stephen Curry",
+          "id": 201939,
+          "takim": "GSW",
+          "dk": "32:04",
+          "sayi": 23,
+          "rib": 1,
+          "ast": 4,
+          "cal": 3,
+          "blk": 1,
+          "tk": 2,
+          "fg": "6/14",
+          "uc": "3/9",
+          "sut": "8/8",
+          "arti_eksi": 1.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500002:201939",
+        "guven": "kesin"
+      },
+      {
+        "id": "f20",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Buddy Hield",
+          "id": 1627741,
+          "takim": "GSW",
+          "dk": "22:15",
+          "sayi": 17,
+          "rib": 1,
+          "ast": 0,
+          "cal": 1,
+          "blk": 0,
+          "tk": 2,
+          "fg": "6/11",
+          "uc": "5/10",
+          "sut": "0/0",
+          "arti_eksi": 5.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500002:1627741",
+        "guven": "kesin"
+      },
+      {
+        "id": "f21",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Gary Payton II",
+          "id": 1627780,
+          "takim": "GSW",
+          "dk": "12:04",
+          "sayi": 6,
+          "rib": 2,
+          "ast": 1,
+          "cal": 1,
+          "blk": 1,
+          "tk": 3,
+          "fg": "3/6",
+          "uc": "0/1",
+          "sut": "0/0",
+          "arti_eksi": 3.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500002:1627780",
+        "guven": "kesin"
+      },
+      {
+        "id": "f22",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Al Horford",
+          "id": 201143,
+          "takim": "GSW",
+          "dk": "20:15",
+          "sayi": 5,
+          "rib": 5,
+          "ast": 1,
+          "cal": 0,
+          "blk": 0,
+          "tk": 2,
+          "fg": "2/7",
+          "uc": "1/4",
+          "sut": "0/0",
+          "arti_eksi": -10.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500002:201143",
+        "guven": "kesin"
+      },
+      {
+        "id": "f23",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Gui Santos",
+          "id": 1630611,
+          "takim": "GSW",
+          "dk": "2:39",
+          "sayi": 0,
+          "rib": 0,
+          "ast": 0,
+          "cal": 0,
+          "blk": 0,
+          "tk": 1,
+          "fg": "0/0",
+          "uc": "0/0",
+          "sut": "0/0",
+          "arti_eksi": 0.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500002:1630611",
+        "guven": "kesin"
+      },
+      {
+        "id": "f24",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Will Richard",
+          "id": 1642954,
+          "takim": "GSW",
+          "dk": "13:35",
+          "sayi": 5,
+          "rib": 1,
+          "ast": 1,
+          "cal": 1,
+          "blk": 0,
+          "tk": 0,
+          "fg": "2/2",
+          "uc": "1/1",
+          "sut": "0/0",
+          "arti_eksi": -11.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500002:1642954",
+        "guven": "kesin"
+      },
+      {
+        "id": "f25",
+        "tur": "oyuncu_stat",
+        "veri": {
+          "oyuncu": "Quinten Post",
+          "id": 1642366,
+          "takim": "GSW",
+          "dk": "8:34",
+          "sayi": 0,
+          "rib": 2,
+          "ast": 1,
+          "cal": 0,
+          "blk": 0,
+          "tk": 0,
+          "fg": "0/0",
+          "uc": "0/0",
+          "sut": "0/0",
+          "arti_eksi": 5.0
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500002:1642366",
+        "guven": "kesin"
+      },
+      {
+        "id": "f26",
+        "tur": "takim_stat",
+        "veri": {
+          "takim": "LAL",
+          "isabet": "42/77",
+          "uclu": "8/32",
+          "serbest": "17/28",
+          "oreb": 7,
+          "dreb": 32,
+          "rib": 39,
+          "ast": 23,
+          "cal": 7,
+          "blk": 2,
+          "tk": 19,
+          "pf": 21,
+          "sayi": 109
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500002:LAL",
+        "guven": "kesin"
+      },
+      {
+        "id": "f27",
+        "tur": "takim_stat",
+        "veri": {
+          "takim": "GSW",
+          "isabet": "38/78",
+          "uclu": "17/40",
+          "serbest": "26/29",
+          "oreb": 9,
+          "dreb": 31,
+          "rib": 40,
+          "ast": 29,
+          "cal": 10,
+          "blk": 4,
+          "tk": 18,
+          "pf": 27,
+          "sayi": 119
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500002:GSW",
+        "guven": "kesin"
+      },
+      {
+        "id": "f28",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Al Horford",
+          "id": 201143,
+          "periyot": 1,
+          "sayi": 3
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f29",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Stephen Curry",
+          "id": 201939,
+          "periyot": 1,
+          "sayi": 3
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f30",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Jimmy Butler III",
+          "id": 202710,
+          "periyot": 1,
+          "sayi": 12
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f31",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Buddy Hield",
+          "id": 1627741,
+          "periyot": 1,
+          "sayi": 5
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f32",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Deandre Ayton",
+          "id": 1629028,
+          "periyot": 1,
+          "sayi": 4
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f33",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Luka Dončić",
+          "id": 1629029,
+          "periyot": 1,
+          "sayi": 10
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f34",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Jaxson Hayes",
+          "id": 1629637,
+          "periyot": 1,
+          "sayi": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f35",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Jonathan Kuminga",
+          "id": 1630228,
+          "periyot": 1,
+          "sayi": 3
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f36",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Austin Reaves",
+          "id": 1630559,
+          "periyot": 1,
+          "sayi": 6
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f37",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Brandin Podziemski",
+          "id": 1641764,
+          "periyot": 1,
+          "sayi": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f38",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Stephen Curry",
+          "id": 201939,
+          "periyot": 2,
+          "sayi": 11
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f39",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Jimmy Butler III",
+          "id": 202710,
+          "periyot": 2,
+          "sayi": 5
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f40",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Draymond Green",
+          "id": 203110,
+          "periyot": 2,
+          "sayi": 3
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f41",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Marcus Smart",
+          "id": 203935,
+          "periyot": 2,
+          "sayi": 5
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f42",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Gary Payton II",
+          "id": 1627780,
+          "periyot": 2,
+          "sayi": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f43",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Luka Dončić",
+          "id": 1629029,
+          "periyot": 2,
+          "sayi": 12
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f44",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Rui Hachimura",
+          "id": 1629060,
+          "periyot": 2,
+          "sayi": 6
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f45",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Gabe Vincent",
+          "id": 1629216,
+          "periyot": 2,
+          "sayi": 3
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f46",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Jonathan Kuminga",
+          "id": 1630228,
+          "periyot": 2,
+          "sayi": 1
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f47",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Austin Reaves",
+          "id": 1630559,
+          "periyot": 2,
+          "sayi": 6
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f48",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Brandin Podziemski",
+          "id": 1641764,
+          "periyot": 2,
+          "sayi": 5
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f49",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Stephen Curry",
+          "id": 201939,
+          "periyot": 3,
+          "sayi": 4
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f50",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Jimmy Butler III",
+          "id": 202710,
+          "periyot": 3,
+          "sayi": 8
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f51",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Marcus Smart",
+          "id": 203935,
+          "periyot": 3,
+          "sayi": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f52",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Buddy Hield",
+          "id": 1627741,
+          "periyot": 3,
+          "sayi": 6
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f53",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Gary Payton II",
+          "id": 1627780,
+          "periyot": 3,
+          "sayi": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f54",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Deandre Ayton",
+          "id": 1629028,
+          "periyot": 3,
+          "sayi": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f55",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Luka Dončić",
+          "id": 1629029,
+          "periyot": 3,
+          "sayi": 13
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f56",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Jaxson Hayes",
+          "id": 1629637,
+          "periyot": 3,
+          "sayi": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f57",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Jonathan Kuminga",
+          "id": 1630228,
+          "periyot": 3,
+          "sayi": 13
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f58",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Austin Reaves",
+          "id": 1630559,
+          "periyot": 3,
+          "sayi": 1
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f59",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Jake LaRavia",
+          "id": 1631222,
+          "periyot": 3,
+          "sayi": 5
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f60",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Will Richard",
+          "id": 1642954,
+          "periyot": 3,
+          "sayi": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f61",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Al Horford",
+          "id": 201143,
+          "periyot": 4,
+          "sayi": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f62",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Stephen Curry",
+          "id": 201939,
+          "periyot": 4,
+          "sayi": 5
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f63",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Jimmy Butler III",
+          "id": 202710,
+          "periyot": 4,
+          "sayi": 6
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f64",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Draymond Green",
+          "id": 203110,
+          "periyot": 4,
+          "sayi": 5
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f65",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Marcus Smart",
+          "id": 203935,
+          "periyot": 4,
+          "sayi": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f66",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Buddy Hield",
+          "id": 1627741,
+          "periyot": 4,
+          "sayi": 6
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f67",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Gary Payton II",
+          "id": 1627780,
+          "periyot": 4,
+          "sayi": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f68",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Deandre Ayton",
+          "id": 1629028,
+          "periyot": 4,
+          "sayi": 4
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f69",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Luka Dončić",
+          "id": 1629029,
+          "periyot": 4,
+          "sayi": 8
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f70",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Rui Hachimura",
+          "id": 1629060,
+          "periyot": 4,
+          "sayi": 3
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f71",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Austin Reaves",
+          "id": 1630559,
+          "periyot": 4,
+          "sayi": 13
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f72",
+        "tur": "oyuncu_ceyrek",
+        "veri": {
+          "oyuncu": "Will Richard",
+          "id": 1642954,
+          "periyot": 4,
+          "sayi": 3
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f73",
+        "tur": "kilometre",
+        "veri": {
+          "oyuncu": "Luka Dončić",
+          "id": 1629029,
+          "esik": "40_sayi",
+          "sayi": 43,
+          "rib": 12,
+          "ast": 9,
+          "baglam": null
+        },
+        "kaynak": "BoxScoreTraditionalV3:0022500002:1629029",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f74",
+        "tur": "an",
+        "veri": {
+          "periyot": 1,
+          "saat": "PT10M08.00S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Butler III 24' 3PT Jump Shot (3 PTS) (Podziemski 1 AST)",
+          "skor_ev": 4,
+          "skor_dep": 5,
+          "fark": -1
+        },
+        "kaynak": "PlayByPlayV3:0022500002:20",
+        "guven": "kesin"
+      },
+      {
+        "id": "f75",
+        "tur": "an",
+        "veri": {
+          "periyot": 1,
+          "saat": "PT08M36.00S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Ayton 5' Turnaround Hook Shot (2 PTS) (Doncic 1 AST)",
+          "skor_ev": 9,
+          "skor_dep": 7,
+          "fark": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500002:37",
+        "guven": "kesin"
+      },
+      {
+        "id": "f76",
+        "tur": "an",
+        "veri": {
+          "periyot": 1,
+          "saat": "PT08M13.00S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Curry 27' 3PT Jump Shot (3 PTS) (Green 1 AST)",
+          "skor_ev": 9,
+          "skor_dep": 12,
+          "fark": -3
+        },
+        "kaynak": "PlayByPlayV3:0022500002:44",
+        "guven": "kesin"
+      },
+      {
+        "id": "f77",
+        "tur": "an",
+        "veri": {
+          "periyot": 1,
+          "saat": "PT05M22.00S",
+          "tur_alt": "disiplin",
+          "oyuncu": "Draymond Green",
+          "aciklama": "Green T.FOUL (P0.T0) (J.DeRosa)",
+          "detay": "Technical"
+        },
+        "kaynak": "PlayByPlayV3:0022500002:87",
+        "guven": "kesin"
+      },
+      {
+        "id": "f78",
+        "tur": "an",
+        "veri": {
+          "periyot": 1,
+          "saat": "PT01M30.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Austin Reaves",
+          "aciklama": "Reaves Free Throw 1 of 2 (3 PTS)",
+          "skor_ev": 17,
+          "skor_dep": 22,
+          "fark": -5
+        },
+        "kaynak": "PlayByPlayV3:0022500002:155",
+        "guven": "kesin"
+      },
+      {
+        "id": "f79",
+        "tur": "an",
+        "veri": {
+          "periyot": 1,
+          "saat": "PT01M30.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Austin Reaves",
+          "aciklama": "Reaves Free Throw 2 of 2 (4 PTS)",
+          "skor_ev": 18,
+          "skor_dep": 22,
+          "fark": -4
+        },
+        "kaynak": "PlayByPlayV3:0022500002:156",
+        "guven": "kesin"
+      },
+      {
+        "id": "f80",
+        "tur": "an",
+        "veri": {
+          "periyot": 1,
+          "saat": "PT01M09.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Al Horford",
+          "aciklama": "Horford 24' 3PT Jump Shot (3 PTS) (Butler III 1 AST)",
+          "skor_ev": 18,
+          "skor_dep": 25,
+          "fark": -7
+        },
+        "kaynak": "PlayByPlayV3:0022500002:157",
+        "guven": "kesin"
+      },
+      {
+        "id": "f81",
+        "tur": "an",
+        "veri": {
+          "periyot": 1,
+          "saat": "PT00M37.20S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Austin Reaves",
+          "aciklama": "Reaves 2' Driving Finger Roll Layup (6 PTS)",
+          "skor_ev": 20,
+          "skor_dep": 25,
+          "fark": -5
+        },
+        "kaynak": "PlayByPlayV3:0022500002:164",
+        "guven": "kesin"
+      },
+      {
+        "id": "f82",
+        "tur": "an",
+        "veri": {
+          "periyot": 1,
+          "saat": "PT00M27.70S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Jaxson Hayes",
+          "aciklama": "Hayes 3' Running Alley Oop Layup Shot (2 PTS) (Reaves 2 AST)",
+          "skor_ev": 22,
+          "skor_dep": 25,
+          "fark": -3
+        },
+        "kaynak": "PlayByPlayV3:0022500002:167",
+        "guven": "kesin"
+      },
+      {
+        "id": "f83",
+        "tur": "an",
+        "veri": {
+          "periyot": 1,
+          "saat": "PT00M03.20S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Jimmy Butler III",
+          "aciklama": "Butler III Free Throw 1 of 3 (10 PTS)",
+          "skor_ev": 22,
+          "skor_dep": 26,
+          "fark": -4
+        },
+        "kaynak": "PlayByPlayV3:0022500002:179",
+        "guven": "kesin"
+      },
+      {
+        "id": "f84",
+        "tur": "an",
+        "veri": {
+          "periyot": 1,
+          "saat": "PT00M03.20S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Jimmy Butler III",
+          "aciklama": "Butler III Free Throw 2 of 3 (11 PTS)",
+          "skor_ev": 22,
+          "skor_dep": 27,
+          "fark": -5
+        },
+        "kaynak": "PlayByPlayV3:0022500002:180",
+        "guven": "kesin"
+      },
+      {
+        "id": "f85",
+        "tur": "an",
+        "veri": {
+          "periyot": 1,
+          "saat": "PT00M03.20S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Jimmy Butler III",
+          "aciklama": "Butler III Free Throw 3 of 3 (12 PTS)",
+          "skor_ev": 22,
+          "skor_dep": 28,
+          "fark": -6
+        },
+        "kaynak": "PlayByPlayV3:0022500002:181",
+        "guven": "kesin"
+      },
+      {
+        "id": "f86",
+        "tur": "an",
+        "veri": {
+          "periyot": 2,
+          "saat": "PT10M04.00S",
+          "tur_alt": "disiplin",
+          "oyuncu": "Jarred Vanderbilt",
+          "aciklama": "Vanderbilt T.FOUL (P0.T0) (T.Ford)",
+          "detay": "Technical"
+        },
+        "kaynak": "PlayByPlayV3:0022500002:216",
+        "guven": "kesin"
+      },
+      {
+        "id": "f87",
+        "tur": "an",
+        "veri": {
+          "periyot": 2,
+          "saat": "PT05M33.00S",
+          "tur_alt": "disiplin",
+          "oyuncu": "Marcus Smart",
+          "aciklama": "Smart FLAGRANT.FOUL.TYPE1 (P2.T3) (P.Ransom)",
+          "detay": "Flagrant Type 1"
+        },
+        "kaynak": "PlayByPlayV3:0022500002:286",
+        "guven": "kesin"
+      },
+      {
+        "id": "f88",
+        "tur": "an",
+        "veri": {
+          "periyot": 2,
+          "saat": "PT01M52.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Luka Dončić",
+          "aciklama": "Doncic 6' Driving Floating Jump Shot (18 PTS)",
+          "skor_ev": 44,
+          "skor_dep": 49,
+          "fark": -5
+        },
+        "kaynak": "PlayByPlayV3:0022500002:350",
+        "guven": "kesin"
+      },
+      {
+        "id": "f89",
+        "tur": "an",
+        "veri": {
+          "periyot": 2,
+          "saat": "PT01M52.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Luka Dončić",
+          "aciklama": "Doncic Free Throw 1 of 1 (19 PTS)",
+          "skor_ev": 45,
+          "skor_dep": 49,
+          "fark": -4
+        },
+        "kaynak": "PlayByPlayV3:0022500002:353",
+        "guven": "kesin"
+      },
+      {
+        "id": "f90",
+        "tur": "an",
+        "veri": {
+          "periyot": 2,
+          "saat": "PT01M28.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Rui Hachimura",
+          "aciklama": "Hachimura 25' 3PT Jump Shot (3 PTS) (Doncic 3 AST)",
+          "skor_ev": 48,
+          "skor_dep": 49,
+          "fark": -1
+        },
+        "kaynak": "PlayByPlayV3:0022500002:356",
+        "guven": "kesin"
+      },
+      {
+        "id": "f91",
+        "tur": "an",
+        "veri": {
+          "periyot": 2,
+          "saat": "PT01M08.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Draymond Green",
+          "aciklama": "Green Free Throw 1 of 2 (3 PTS)",
+          "skor_ev": 48,
+          "skor_dep": 50,
+          "fark": -2
+        },
+        "kaynak": "PlayByPlayV3:0022500002:360",
+        "guven": "kesin"
+      },
+      {
+        "id": "f92",
+        "tur": "an",
+        "veri": {
+          "periyot": 2,
+          "saat": "PT00M55.60S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Rui Hachimura",
+          "aciklama": "Hachimura 25' 3PT Jump Shot (6 PTS) (Doncic 4 AST)",
+          "skor_ev": 51,
+          "skor_dep": 50,
+          "fark": 1
+        },
+        "kaynak": "PlayByPlayV3:0022500002:365",
+        "guven": "kesin"
+      },
+      {
+        "id": "f93",
+        "tur": "an",
+        "veri": {
+          "periyot": 2,
+          "saat": "PT00M55.60S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Hachimura 25' 3PT Jump Shot (6 PTS) (Doncic 4 AST)",
+          "skor_ev": 51,
+          "skor_dep": 50,
+          "fark": 1
+        },
+        "kaynak": "PlayByPlayV3:0022500002:365",
+        "guven": "kesin"
+      },
+      {
+        "id": "f94",
+        "tur": "an",
+        "veri": {
+          "periyot": 2,
+          "saat": "PT00M33.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Brandin Podziemski",
+          "aciklama": "Podziemski 26' 3PT Step Back Jump Shot (7 PTS) (Kuminga 5 AST)",
+          "skor_ev": 51,
+          "skor_dep": 53,
+          "fark": -2
+        },
+        "kaynak": "PlayByPlayV3:0022500002:371",
+        "guven": "kesin"
+      },
+      {
+        "id": "f95",
+        "tur": "an",
+        "veri": {
+          "periyot": 2,
+          "saat": "PT00M33.00S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Podziemski 26' 3PT Step Back Jump Shot (7 PTS) (Kuminga 5 AST)",
+          "skor_ev": 51,
+          "skor_dep": 53,
+          "fark": -2
+        },
+        "kaynak": "PlayByPlayV3:0022500002:371",
+        "guven": "kesin"
+      },
+      {
+        "id": "f96",
+        "tur": "an",
+        "veri": {
+          "periyot": 2,
+          "saat": "PT00M19.50S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Luka Dončić",
+          "aciklama": "Doncic 30' 3PT Step Back Jump Shot (22 PTS)",
+          "skor_ev": 54,
+          "skor_dep": 53,
+          "fark": 1
+        },
+        "kaynak": "PlayByPlayV3:0022500002:373",
+        "guven": "kesin"
+      },
+      {
+        "id": "f97",
+        "tur": "an",
+        "veri": {
+          "periyot": 2,
+          "saat": "PT00M19.50S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Doncic 30' 3PT Step Back Jump Shot (22 PTS)",
+          "skor_ev": 54,
+          "skor_dep": 53,
+          "fark": 1
+        },
+        "kaynak": "PlayByPlayV3:0022500002:373",
+        "guven": "kesin"
+      },
+      {
+        "id": "f98",
+        "tur": "an",
+        "veri": {
+          "periyot": 2,
+          "saat": "PT00M01.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Jimmy Butler III",
+          "aciklama": "Butler III Free Throw 1 of 2 (16 PTS)",
+          "skor_ev": 54,
+          "skor_dep": 54,
+          "fark": 0
+        },
+        "kaynak": "PlayByPlayV3:0022500002:378",
+        "guven": "kesin"
+      },
+      {
+        "id": "f99",
+        "tur": "an",
+        "veri": {
+          "periyot": 2,
+          "saat": "PT00M01.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Jimmy Butler III",
+          "aciklama": "Butler III Free Throw 2 of 2 (17 PTS)",
+          "skor_ev": 54,
+          "skor_dep": 55,
+          "fark": -1
+        },
+        "kaynak": "PlayByPlayV3:0022500002:381",
+        "guven": "kesin"
+      },
+      {
+        "id": "f100",
+        "tur": "an",
+        "veri": {
+          "periyot": 2,
+          "saat": "PT00M01.00S",
+          "tur_alt": "lider_degisimi",
+          "aciklama": "Butler III Free Throw 2 of 2 (17 PTS)",
+          "skor_ev": 54,
+          "skor_dep": 55,
+          "fark": -1
+        },
+        "kaynak": "PlayByPlayV3:0022500002:381",
+        "guven": "kesin"
+      },
+      {
+        "id": "f101",
+        "tur": "an",
+        "veri": {
+          "periyot": 3,
+          "saat": "PT01M57.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Buddy Hield",
+          "aciklama": "Hield 27' 3PT Jump Shot (11 PTS) (Podziemski 2 AST)",
+          "skor_ev": 73,
+          "skor_dep": 88,
+          "fark": -15
+        },
+        "kaynak": "PlayByPlayV3:0022500002:511",
+        "guven": "kesin"
+      },
+      {
+        "id": "f102",
+        "tur": "an",
+        "veri": {
+          "periyot": 3,
+          "saat": "PT01M40.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Luka Dončić",
+          "aciklama": "Doncic 3' Driving Floating Bank Jump Shot (35 PTS)",
+          "skor_ev": 75,
+          "skor_dep": 88,
+          "fark": -13
+        },
+        "kaynak": "PlayByPlayV3:0022500002:514",
+        "guven": "kesin"
+      },
+      {
+        "id": "f103",
+        "tur": "an",
+        "veri": {
+          "periyot": 3,
+          "saat": "PT01M00.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Jaxson Hayes",
+          "aciklama": "Hayes 4' Alley Oop Dunk (4 PTS) (Doncic 5 AST)",
+          "skor_ev": 77,
+          "skor_dep": 88,
+          "fark": -11
+        },
+        "kaynak": "PlayByPlayV3:0022500002:518",
+        "guven": "kesin"
+      },
+      {
+        "id": "f104",
+        "tur": "an",
+        "veri": {
+          "periyot": 3,
+          "saat": "PT00M37.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Will Richard",
+          "aciklama": "Richard 5' Turnaround Hook Shot (2 PTS)",
+          "skor_ev": 77,
+          "skor_dep": 90,
+          "fark": -13
+        },
+        "kaynak": "PlayByPlayV3:0022500002:522",
+        "guven": "kesin"
+      },
+      {
+        "id": "f105",
+        "tur": "an",
+        "veri": {
+          "periyot": 3,
+          "saat": "PT00M27.70S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Jake LaRavia",
+          "aciklama": "LaRavia 3' Putback Layup (5 PTS)",
+          "skor_ev": 79,
+          "skor_dep": 90,
+          "fark": -11
+        },
+        "kaynak": "PlayByPlayV3:0022500002:525",
+        "guven": "kesin"
+      },
+      {
+        "id": "f106",
+        "tur": "an",
+        "veri": {
+          "periyot": 4,
+          "saat": "PT01M52.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Austin Reaves",
+          "aciklama": "Reaves 27' 3PT Pullup Jump Shot (24 PTS) (Doncic 9 AST)",
+          "skor_ev": 105,
+          "skor_dep": 112,
+          "fark": -7
+        },
+        "kaynak": "PlayByPlayV3:0022500002:666",
+        "guven": "kesin"
+      },
+      {
+        "id": "f107",
+        "tur": "an",
+        "veri": {
+          "periyot": 4,
+          "saat": "PT01M35.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Gary Payton II",
+          "aciklama": "Payton II 4' Cutting Finger Roll Layup Shot (6 PTS) (Butler III 4 AST)",
+          "skor_ev": 105,
+          "skor_dep": 114,
+          "fark": -9
+        },
+        "kaynak": "PlayByPlayV3:0022500002:667",
+        "guven": "kesin"
+      },
+      {
+        "id": "f108",
+        "tur": "an",
+        "veri": {
+          "periyot": 4,
+          "saat": "PT01M22.00S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Luka Dončić",
+          "aciklama": "Doncic 5' Driving Floating Jump Shot (43 PTS) (Hachimura 3 AST)",
+          "skor_ev": 107,
+          "skor_dep": 114,
+          "fark": -7
+        },
+        "kaynak": "PlayByPlayV3:0022500002:669",
+        "guven": "kesin"
+      },
+      {
+        "id": "f109",
+        "tur": "an",
+        "veri": {
+          "periyot": 4,
+          "saat": "PT00M51.20S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Stephen Curry",
+          "aciklama": "Curry 36' 3PT Jump Shot (21 PTS) (Payton II 1 AST)",
+          "skor_ev": 107,
+          "skor_dep": 117,
+          "fark": -10
+        },
+        "kaynak": "PlayByPlayV3:0022500002:675",
+        "guven": "kesin"
+      },
+      {
+        "id": "f110",
+        "tur": "an",
+        "veri": {
+          "periyot": 4,
+          "saat": "PT00M43.50S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Austin Reaves",
+          "aciklama": "Reaves 1' Driving Layup (26 PTS)",
+          "skor_ev": 109,
+          "skor_dep": 117,
+          "fark": -8
+        },
+        "kaynak": "PlayByPlayV3:0022500002:677",
+        "guven": "kesin"
+      },
+      {
+        "id": "f111",
+        "tur": "an",
+        "veri": {
+          "periyot": 4,
+          "saat": "PT00M39.10S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Stephen Curry",
+          "aciklama": "Curry Free Throw 1 of 2 (22 PTS)",
+          "skor_ev": 109,
+          "skor_dep": 118,
+          "fark": -9
+        },
+        "kaynak": "PlayByPlayV3:0022500002:680",
+        "guven": "kesin"
+      },
+      {
+        "id": "f112",
+        "tur": "an",
+        "veri": {
+          "periyot": 4,
+          "saat": "PT00M39.10S",
+          "tur_alt": "klutch_sayi",
+          "oyuncu": "Stephen Curry",
+          "aciklama": "Curry Free Throw 2 of 2 (23 PTS)",
+          "skor_ev": 109,
+          "skor_dep": 119,
+          "fark": -10
+        },
+        "kaynak": "PlayByPlayV3:0022500002:681",
+        "guven": "kesin"
+      },
+      {
+        "id": "f113",
+        "tur": "fark_serisi",
+        "veri": {
+          "en_buyuk_ev_farki": 2,
+          "en_buyuk_dep_farki": 17,
+          "lider_degisim_sayisi": 7,
+          "son_periyot_lider_degisimi": 0,
+          "ilk_lider": "LAL",
+          "kazanan_en_buyuk_acigi": 2,
+          "baski_altinda_hic_kalmadi": false,
+          "esik_sonrasi_hic_asilmadi": {
+            "5": {
+              "periyot": 3,
+              "saniye_kalan": 647.0
+            },
+            "8": {
+              "periyot": 4,
+              "saniye_kalan": 82.0
+            },
+            "10": {
+              "periyot": 4,
+              "saniye_kalan": 39.1
+            },
+            "15": {
+              "periyot": 4,
+              "saniye_kalan": 0.0
+            },
+            "20": {
+              "periyot": 4,
+              "saniye_kalan": 0.0
+            }
+          },
+          "kopma_ani": null
+        },
+        "kaynak": "PlayByPlayV3:0022500002:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f114",
+        "tur": "derece",
+        "veri": {
+          "takim": "LAL",
+          "galibiyet": 0,
+          "maglubiyet": 1,
+          "derece_metni": "0-1",
+          "konferans": "Batı",
+          "konferans_sira": null,
+          "lig_sira": null,
+          "sezon_guvenilir": false,
+          "onceki_seri_tur": null,
+          "onceki_seri_uzunluk": 0,
+          "sezon_ilk_mac_sonucu": "maglubiyet",
+          "ev_galibiyet": 0,
+          "ev_maglubiyet": 1,
+          "ev_mac_sayisi": 1,
+          "bu_mac_evde_mi": true
+        },
+        "kaynak": "LeagueGameLog:turetilmis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f115",
+        "tur": "derece",
+        "veri": {
+          "takim": "GSW",
+          "galibiyet": 1,
+          "maglubiyet": 0,
+          "derece_metni": "1-0",
+          "konferans": "Batı",
+          "konferans_sira": null,
+          "lig_sira": null,
+          "sezon_guvenilir": false,
+          "onceki_seri_tur": null,
+          "onceki_seri_uzunluk": 0,
+          "sezon_ilk_mac_sonucu": "galibiyet",
+          "ev_galibiyet": 0,
+          "ev_maglubiyet": 0,
+          "ev_mac_sayisi": 0,
+          "bu_mac_evde_mi": false
+        },
+        "kaynak": "LeagueGameLog:turetilmis",
+        "guven": "turetilmis"
+      }
+    ]
+  },
+  "gece_gercekleri": [
+    {
+      "id": "f1",
+      "tur": "gece_ozet",
+      "veri": {
+        "toplam_mac": 2,
+        "yakin_biten_mac_sayisi": 1,
+        "farkli_biten_mac_sayisi": 0
+      },
+      "kaynak": "turetilmis:gece",
+      "guven": "turetilmis"
+    },
+    {
+      "id": "f2",
+      "tur": "gece_en_skorerler",
+      "veri": {
+        "mac_basina_en_skorerler": [
+          {
+            "mac_id": "0022500001",
+            "oyuncu": "Alperen Şengün",
+            "sayi": 39
+          },
+          {
+            "mac_id": "0022500002",
+            "oyuncu": "Luka Dončić",
+            "sayi": 43
+          }
+        ],
+        "gecenin_en_skoreri": "Luka Dončić",
+        "gecenin_en_skoreri_sayi": 43,
+        "en_dusuk_en_skorer_mac_id": "0022500001",
+        "en_dusuk_en_skorer_oyuncu": "Alperen Şengün",
+        "en_dusuk_en_skorer_sayi": 39
+      },
+      "kaynak": "turetilmis:gece",
+      "guven": "turetilmis"
+    },
+    {
+      "id": "f3",
+      "tur": "gece_en_yuksek_ceyrek",
+      "veri": {
+        "mac_id": "0022500002",
+        "takim": "GSW",
+        "periyot": 3,
+        "sayi": 35
+      },
+      "kaynak": "turetilmis:gece",
+      "guven": "turetilmis"
+    },
+    {
+      "id": "f4",
+      "tur": "gece_en_iyi_bireysel",
+      "veri": {
+        "oyuncu": "Luka Dončić",
+        "mac_id": "0022500002",
+        "sayi": 43
+      },
+      "kaynak": "turetilmis:gece",
+      "guven": "turetilmis"
+    }
+  ]
+}

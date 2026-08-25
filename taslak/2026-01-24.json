@@ -1,0 +1,123 @@
+{
+  "tarih": "2026-01-24",
+  "uretildi": "2026-08-14T22:49:08.849157Z",
+  "maclar": {
+    "0022500643": {
+      "gec_satiri": "Gecenin ilk maçında New York Knicks, Philadelphia'yı deplasmanda 112-109 geçti. Galibiyet sayısını 27'ye yükselten Knicks'te Jalen Brunson attığı 31 sayıyla takımını sırtladı. Mağlup Philadelphia'da Joel Embiid 38 sayı, 11 ribaundla double-double yaptı.",
+      "muzip": false
+    },
+    "0022500646": {
+      "gec_satiri": "Son dönemde formunu yükselten ekiplerden Cleveland, deplasmanda Orlando'yu 119-105 mağlup etti. De'Andre Hunter, Larry Nance Jr.'siz oynadığı maçı kazanan Cavaliers'te Donovan Mitchell, attığı 36 sayıyla yıldızlaştı.",
+      "muzip": false
+    },
+    "0022500649": {
+      "gec_satiri": "Miami Heat, deplasmanda Utah Jazz'ı 147-116 yendi. Rakibine tam 31 sayı fark atan Heat'te Bam Adebayo, 26 sayı ve 15 ribaundla etkili oldu.",
+      "muzip": false
+    },
+    "0022500647": {
+      "baslik": "Kevin Huerter'in son saniye üçlüğü Chicago Bulls'a galibiyeti kazandırdı",
+      "neden_onemli": "Bu sonuçla Bulls üst üste 4. galibiyetini alıp Doğu Konferansı'nda 9. sıraya yükseldi.",
+      "ozet": "Kazananı son saniyede belli olan maçta Boston Celtics ikinci periyotta farkı 8 sayıya çıkardı. Chicago Bulls, üçüncü periyotta 36-27'lik üstünlükle farktan döndü ve son çeyreğe önde girdi. Son periyotta liderlik dört kez el değiştirdi; Jaylen Brown'un son dakikada attığı basketle skor eşitlendi, ancak Kevin Huerter son saniyede bulduğu üçlükle galibiyeti Bulls'a getirdi. Brown attığı 33 sayı, 8 ribaund ve 5 asistle mağlup tarafın en etkili ismi oldu.",
+      "muzip": false
+    },
+    "0022500645": {
+      "gec_satiri": "Charlotte, sahasında Washington'ı 119-115 yendi. 18-28'lik Charlotte'ta Brandon Miller, 21 sayı ve 11 ribaundla galibiyetin mimarı oldu. Washington'da ise Justin Champagnie mücadele etti.",
+      "muzip": false
+    },
+    "0022500648": {
+      "baslik": "Los Angeles Lakers deplasmanda 116-110 kazandı.",
+      "neden_onemli": "",
+      "ozet": "Los Angeles Lakers deplasmanda 116-110 kazandı. Luka Dončić 33 sayı attı.",
+      "muzip": false
+    }
+  },
+  "brief": [
+    {
+      "metin": "Los Angeles Lakers, 15 sayılık farktan dönüp Dallas'ı deplasmanda geçti.",
+      "hedef_mac": "0022500648",
+      "muzip": false
+    },
+    {
+      "metin": "Chicago, son çeyrekte liderliği kaptırmadı, üst üste 4 galibiyet aldı.",
+      "hedef_mac": "0022500647",
+      "muzip": false
+    },
+    {
+      "metin": "New York, üçüncü çeyrekte üstünlüğü ele alıp Philadelphia'yı deplasmanda geçti.",
+      "hedef_mac": "0022500643",
+      "muzip": false
+    },
+    {
+      "metin": "Donovan Mitchell 36 sayı attı, Cleveland üst üste 3 galibiyet aldı.",
+      "hedef_mac": "0022500646",
+      "muzip": false
+    },
+    {
+      "metin": "Miami Heat deplasmanda 147-116 kazandı.",
+      "hedef_mac": "0022500649",
+      "muzip": false
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 12,
+    "ilk_denemede_kabul": 8,
+    "sablon_moduna_dusen": 2,
+    "detay": [
+      {
+        "mac_id": "0022500645",
+        "deneme": 0,
+        "gerekce": [
+          "gec_satiri/T6: 4 cümle (sınır 3)"
+        ],
+        "reddedilen_taslak": {
+          "gec_satiri": "Charlotte, sahasında Washington'ı 119-115 yendi. 18. galibiyetini alan Charlotte'ta Brandon Miller, 21 sayı ve 11 ribaundla galibiyetin mimarı oldu. Kaybeden Washington'da ise gecenin en etkili ismi Justin Champagnie oldu.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500648",
+        "deneme": 0,
+        "gerekce": [
+          "batch isteği başarısız / boş yanıt"
+        ]
+      },
+      {
+        "mac_id": "0022500648",
+        "deneme": 1,
+        "gerekce": [
+          "ozet/T6: 5 cümle / 48 kelime (sınır 4 cümle / 75 kelime)"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Los Angeles Lakers, deplasmanda Dallas Mavericks'i 116-110 yendi.",
+          "neden_onemli": "Lakers geceyi Batı Konferansı'nda 5. sırada kapatırken, Dallas'ın 4 maçlık galibiyet serisi sona erdi.",
+          "ozet": "Lakers ilk yarı sonunda farkı 13 sayıya çıkardı. Ancak Dallas, 3. çeyrekte rakibini 35-14 geçerek farkı 8 sayıya çevirdi. Lakers son çeyrekte 37-23'lük üstünlükle geri döndü; son dakikada Dončić'in driving layup'ı farkı 8'e çıkararak maçı bitirdi. 33 sayı ve 11 asistle double-double yapan Dončić, gecenin en etkili ismiydi.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500649",
+        "deneme": 0,
+        "gerekce": [
+          "T17: [\"'Jusuf Nurkić' (kaybeden UTA) cümle öznesi: 'Jusuf Nurkić triple-double yaptı, Miami farkı 31 sayıya çıkardı'\"]"
+        ],
+        "yer": "brief[4]",
+        "reddedilen_taslak": {
+          "metin": "Jusuf Nurkić triple-double yaptı, Miami farkı 31 sayıya çıkardı.",
+          "hedef_mac": "0022500649",
+          "muzip": false
+        }
+      }
+    ],
+    "ret_orani": 0.333,
+    "kelime_butcesi_uygulandi": false,
+    "uretim_modu": "batch",
+    "kullanim": {
+      "cagri_sayisi": 9,
+      "girdi_token": 79998,
+      "cikti_token": 46364,
+      "cache_yazma_token": 0,
+      "cache_okuma_token": 24219,
+      "toplam_maliyet_usd": 0.3142
+    }
+  }
+}

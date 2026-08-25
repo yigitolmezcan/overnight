@@ -1,0 +1,103 @@
+{
+  "tarih": "2026-02-10",
+  "hesaplandi": "2026-08-15T02:06:15.259597Z",
+  "en_iyi_skor": 9.06,
+  "maclar": [
+    {
+      "rozet": 9.06,
+      "ham": 11.01,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 10,
+        "K": 3.36,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.3,
+        "F": 0,
+        "G": 0,
+        "A": 5.21
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500774",
+      "ev": "LAL",
+      "dep": "SAS",
+      "ev_skor": 108,
+      "dep_skor": 136,
+      "en_iyi_performans": "Victor Wembanyama"
+    },
+    {
+      "rozet": 8.61,
+      "ham": 9.46,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 8.57,
+        "K": 1.22,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 9.5,
+        "F": 6,
+        "G": 0,
+        "A": 4.83
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500771",
+      "ev": "NYK",
+      "dep": "IND",
+      "ev_skor": 134,
+      "dep_skor": 137,
+      "en_iyi_performans": "Jalen Brunson"
+    },
+    {
+      "rozet": 5.58,
+      "ham": 5.58,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 0.58,
+        "K": 5.76,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.65,
+        "F": 0,
+        "G": 0,
+        "A": 6.9
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500772",
+      "ev": "HOU",
+      "dep": "LAC",
+      "ev_skor": 102,
+      "dep_skor": 95,
+      "en_iyi_performans": "Alperen Şengün"
+    },
+    {
+      "rozet": 5.35,
+      "ham": 5.35,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 5.05,
+        "K": 3.23,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.31,
+        "F": 0,
+        "G": 0,
+        "A": 4.33
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500773",
+      "ev": "PHX",
+      "dep": "DAL",
+      "ev_skor": 120,
+      "dep_skor": 111,
+      "en_iyi_performans": "Naji Marshall"
+    }
+  ]
+}

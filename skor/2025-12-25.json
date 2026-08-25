@@ -1,0 +1,127 @@
+{
+  "tarih": "2025-12-25",
+  "hesaplandi": "2026-08-20T16:27:33.610440Z",
+  "en_iyi_skor": 9.27,
+  "maclar": [
+    {
+      "rozet": 9.27,
+      "ham": 12.04,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 10,
+        "K": 2.36,
+        "T": 6,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 9.5,
+        "F": 6,
+        "G": 0,
+        "A": 8.42
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500013",
+      "ev": "DEN",
+      "dep": "MIN",
+      "ev_skor": 142,
+      "dep_skor": 138,
+      "en_iyi_performans": "Nikola Jokić"
+    },
+    {
+      "rozet": 8.99,
+      "ham": 10.73,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 8.99,
+        "K": 1.43,
+        "T": 0,
+        "D": 6
+      },
+      "yukselticiler": {
+        "Y": 5.31,
+        "F": 6,
+        "G": 8,
+        "A": 7.58
+      },
+      "dram_terfi": true,
+      "mac_id": "0022500009",
+      "ev": "NYK",
+      "dep": "CLE",
+      "ev_skor": 126,
+      "dep_skor": 124,
+      "en_iyi_performans": "Donovan Mitchell"
+    },
+    {
+      "rozet": 6.45,
+      "ham": 6.45,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 4.64,
+        "K": 5.5,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.04,
+        "F": 0,
+        "G": 0,
+        "A": 8.27
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500010",
+      "ev": "OKC",
+      "dep": "SAS",
+      "ev_skor": 102,
+      "dep_skor": 117,
+      "en_iyi_performans": "De'Aaron Fox"
+    },
+    {
+      "rozet": 6.15,
+      "ham": 6.15,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 5.41,
+        "K": 4.22,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.06,
+        "F": 0,
+        "G": 0,
+        "A": 8.2
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500012",
+      "ev": "LAL",
+      "dep": "HOU",
+      "ev_skor": 96,
+      "dep_skor": 119,
+      "en_iyi_performans": "Kevin Durant"
+    },
+    {
+      "rozet": 3.02,
+      "ham": 3.02,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 2.81,
+        "K": 1.67,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.06,
+        "F": 0,
+        "G": 0,
+        "A": 5.33
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500011",
+      "ev": "GSW",
+      "dep": "DAL",
+      "ev_skor": 126,
+      "dep_skor": 116,
+      "en_iyi_performans": "Cooper Flagg"
+    }
+  ]
+}

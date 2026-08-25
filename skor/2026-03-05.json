@@ -1,0 +1,223 @@
+{
+  "tarih": "2026-03-05",
+  "hesaplandi": "2026-08-24T22:46:29.928643Z",
+  "en_iyi_skor": 9.2,
+  "maclar": [
+    {
+      "rozet": 9.2,
+      "ham": 11.65,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 10,
+        "K": 5.5,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.08,
+        "F": 0,
+        "G": 0,
+        "A": 8.08
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500904",
+      "ev": "SAS",
+      "dep": "DET",
+      "ev_skor": 121,
+      "dep_skor": 106,
+      "en_iyi_performans": "Victor Wembanyama"
+    },
+    {
+      "rozet": 8.75,
+      "ham": 9.9,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 7.55,
+        "K": 7.53,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 4.97,
+        "F": 3,
+        "G": 0,
+        "A": 8.17
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500906",
+      "ev": "DEN",
+      "dep": "LAL",
+      "ev_skor": 120,
+      "dep_skor": 113,
+      "en_iyi_performans": "Nikola Jokić"
+    },
+    {
+      "rozet": 8.58,
+      "ham": 9.36,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 5.31,
+        "K": 3.93,
+        "T": 0,
+        "D": 8
+      },
+      "yukselticiler": {
+        "Y": 6.48,
+        "F": 10,
+        "G": 0,
+        "A": 3.58
+      },
+      "dram_terfi": true,
+      "mac_id": "0022500899",
+      "ev": "ORL",
+      "dep": "DAL",
+      "ev_skor": 115,
+      "dep_skor": 114,
+      "en_iyi_performans": "Tristan da Silva"
+    },
+    {
+      "rozet": 7.47,
+      "ham": 7.47,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 4.32,
+        "K": 5.62,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 9.5,
+        "F": 6,
+        "G": 0,
+        "A": 6.28
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500902",
+      "ev": "HOU",
+      "dep": "GSW",
+      "ev_skor": 113,
+      "dep_skor": 115,
+      "en_iyi_performans": "Kevin Durant"
+    },
+    {
+      "rozet": 7.08,
+      "ham": 7.08,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 5.09,
+        "K": 6.14,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.67,
+        "F": 0,
+        "G": 0,
+        "A": 6.58
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500903",
+      "ev": "MIN",
+      "dep": "TOR",
+      "ev_skor": 115,
+      "dep_skor": 107,
+      "en_iyi_performans": "Rudy Gobert"
+    },
+    {
+      "rozet": 6.81,
+      "ham": 6.81,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 7.59,
+        "K": 0.0,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.19,
+        "F": 0,
+        "G": 0,
+        "A": 4.08
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500907",
+      "ev": "SAC",
+      "dep": "NOP",
+      "ev_skor": 123,
+      "dep_skor": 133,
+      "en_iyi_performans": "Precious Achiuwa"
+    },
+    {
+      "rozet": 6.48,
+      "ham": 6.48,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 5.64,
+        "K": 2.95,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 4.48,
+        "F": 6,
+        "G": 0,
+        "A": 5.0
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500905",
+      "ev": "PHX",
+      "dep": "CHI",
+      "ev_skor": 103,
+      "dep_skor": 105,
+      "en_iyi_performans": "Collin Sexton"
+    },
+    {
+      "rozet": 6.29,
+      "ham": 6.29,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 5.89,
+        "K": 3.87,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.59,
+        "F": 0,
+        "G": 0,
+        "A": 4.25
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500901",
+      "ev": "MIA",
+      "dep": "BKN",
+      "ev_skor": 126,
+      "dep_skor": 110,
+      "en_iyi_performans": "Kel'el Ware"
+    },
+    {
+      "rozet": 4.69,
+      "ham": 4.69,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 5.54,
+        "K": 0.0,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.15,
+        "F": 0,
+        "G": 0,
+        "A": 0.17
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500900",
+      "ev": "WAS",
+      "dep": "UTA",
+      "ev_skor": 112,
+      "dep_skor": 122,
+      "en_iyi_performans": "Ace Bailey"
+    }
+  ]
+}

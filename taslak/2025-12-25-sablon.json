@@ -1,0 +1,59 @@
+{
+  "tarih": "2025-12-25",
+  "uretildi": "2026-08-20T16:34:18.616599Z",
+  "maclar": {
+    "0022500010": {
+      "gec_satiri": "Batı'nın zirvesinde San Antonio Spurs, Oklahoma City Thunder'i 117-102 yendi. De'Aaron Fox 29 sayı attı. Üst üste 8. galibiyetini alan San Antonio Spurs formunu sürdürdü.",
+      "muzip": false
+    },
+    "0022500012": {
+      "gec_satiri": "Houston Rockets deplasmanda 119-96 kazandı. Amen Thompson 26 sayı attı. Houston Rockets, konferansta 6. sırada yer alıyor.",
+      "muzip": false
+    },
+    "0022500011": {
+      "gec_satiri": "Konferans sıralamasını yakından ilgilendiren maçta Golden State Warriors, Dallas Mavericks'i 126-116 yendi. Stephen Curry 23 sayı attı. Mağlup tarafta Cooper Flagg 27 sayı attı.",
+      "muzip": false
+    },
+    "0022500013": {
+      "baslik": "Denver Nuggets, Minnesota Timberwolves'i 142-138 yendi.",
+      "neden_onemli": "Denver Nuggets, konferansta 3. sıraya oturdu.",
+      "ozet": "Denver Nuggets, Minnesota Timberwolves'i uzatmada 142-138 yendi. Minnesota Timberwolves, 4. çeyrekte 14 sayı öne geçse de farkı koruyamadı. Nikola Jokić, 56 sayı, 16 ribaund, 15 asistle gecenin en etkili ismiydi. Ondan önce NBA tarihinde bu eşiği (50+ sayılık triple-double) sadece 8 oyuncu geçmişti.",
+      "muzip": false
+    },
+    "0022500009": {
+      "baslik": "New York Knicks, Cleveland Cavaliers'i 126-124 yendi.",
+      "neden_onemli": "New York Knicks, konferansta 2. sıraya oturdu.",
+      "ozet_kisa": "New York Knicks, 17 sayıya kadar açılan farktan dönerek Cleveland Cavaliers'i 126-124 yendi. Mağlup tarafta Donovan Mitchell, 34 sayı, 7 ribaund, 6 asistle gecenin en etkili ismiydi.",
+      "muzip": false
+    }
+  },
+  "brief": [
+    {
+      "metin": "Nikola Jokić, Minnesota Timberwolves karşısında 56 sayılık triple-double'ıyla öne çıktı.",
+      "hedef_mac": "0022500013",
+      "muzip": false
+    },
+    {
+      "metin": "New York Knicks, 17 sayılık farktan dönüp Cleveland Cavaliers'i geçti.",
+      "hedef_mac": "0022500009",
+      "muzip": false
+    },
+    {
+      "metin": "Batı'nın zirvesinde San Antonio Spurs, Oklahoma City Thunder'i geçti.",
+      "hedef_mac": "0022500010",
+      "muzip": false
+    },
+    {
+      "metin": "Houston Rockets, Los Angeles Lakers'i yenerek konferansta 6. sıraya oturdu.",
+      "hedef_mac": "0022500012",
+      "muzip": false
+    }
+  ],
+  "rapor": {
+    "uretim_modu": "sablon",
+    "kullanim": {
+      "cagri_sayisi": 0,
+      "toplam_maliyet_usd": 0.0
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "tarih": "2026-03-05",
+  "uretildi": "2026-08-24T22:48:05.728488Z",
+  "maclar": {
+    "0022500902": {
+      "gec_satiri": "Golden State Warriors deplasmanda Houston Rockets'i 115-113 yendi. Golden State Warriors, maçı uzatmada kazandı.",
+      "muzip": false
+    },
+    "0022500903": {
+      "gec_satiri": "Minnesota Timberwolves evinde Toronto Raptors'u 115-107 yendi. Minnesota Timberwolves, 12 sayılık farktan dönerek kazandı.",
+      "muzip": false
+    },
+    "0022500907": {
+      "gec_satiri": "Liderliğin 15 kez el değiştirdiği maçta New Orleans Pelicans, Sacramento Kings'i 133-123 yendi.",
+      "muzip": false
+    },
+    "0022500905": {
+      "gec_satiri": "Chicago Bulls deplasmanda Phoenix Suns'u 105-103 yendi. Collin Sexton 30 sayı attı.",
+      "muzip": false
+    },
+    "0022500901": {
+      "gec_satiri": "Miami Heat evinde Brooklyn Nets'i 126-110 yendi.",
+      "muzip": false
+    },
+    "0022500900": {
+      "gec_satiri": "Utah Jazz deplasmanda Washington Wizards'ı 122-112 yendi. Ace Bailey 32 sayı attı.",
+      "muzip": false
+    },
+    "0022500904": {
+      "baslik": "San Antonio, erken çıkışla Detroit'i 121-106 yendi.",
+      "neden_onemli": "Batı'nın 2., Doğu'nun 1. sırasındaki takımlar karşı karşıya geldi.",
+      "ozet": "San Antonio, ilk çeyrekte attığı 38 sayıyla farkı 15'e taşıdı ve maç boyunca hiç geriye düşmedi. Detroit, üçüncü çeyrekte farkı sekize kadar indirse de son periyotta toparlanamadı. Spurs, dördüncü çeyrekte Julian Champagnie ve Stephon Castle'ın katkısıyla farkı yeniden 15'e çıkardı. Gecenin en etkili ismi Victor Wembanyama, 38 sayı, 16 ribaund ve 5 blokla öne çıktı.",
+      "muzip": false
+    },
+    "0022500906": {
+      "baslik": "Jokić triple-double yaptı, Denver Lakers'ı 120-113 yendi.",
+      "neden_onemli": "Denver, maç boyunca liderliği hiç kaptırmadan galip geldi.",
+      "ozet_kisa": "Denver, ilk çeyrekte kurduğu üstünlüğü hiç kaybetmeden Lakers'ı 120-113 yendi. Jokić 28 sayı, 12 ribaund ve 13 asistle triple-double yaptı. Jamal Murray 28 sayıyla, Luka Dončić ise 27 sayı 11 ribaundla öne çıktı.",
+      "muzip": false
+    },
+    "0022500899": {
+      "baslik": "Orlando, Wendell Carter Jr.'ın son saniye smaçıyla Dallas'ı 115-114 yendi.",
+      "neden_onemli": "Dallas'ın 14 sayıya kadar yükselttiği farktan dönülerek kazanılan maç, gecenin en gerilimli karşılaşmalarından biriydi.",
+      "ozet_kisa": "Dallas, ilk yarıda kurduğu üstünlüğü üçüncü çeyrekte kaybetti, ancak son çeyrekte tekrar öne geçti. Maça 1.4 saniye kalırken Wendell Carter Jr.'ın smaçı Orlando'ya galibiyeti getirdi. Tristan da Silva, 7/7 isabetle attığı 19 sayıyla en verimli performansı sundu.",
+      "muzip": false
+    }
+  },
+  "brief": [
+    {
+      "metin": "Victor Wembanyama, Detroit Pistons karşısında 38 sayı attı.",
+      "hedef_mac": "0022500904",
+      "muzip": false
+    },
+    {
+      "metin": "Orlando Magic, 14 sayılık farktan dönüp Dallas Mavericks'i geçti.",
+      "hedef_mac": "0022500899",
+      "muzip": false
+    },
+    {
+      "metin": "Golden State Warriors, Houston Rockets'i uzatmada geçti.",
+      "hedef_mac": "0022500902",
+      "muzip": false
+    },
+    {
+      "metin": "Minnesota Timberwolves, Toronto Raptors'u yenerek konferansta 3. sıraya yükseldi.",
+      "hedef_mac": "0022500903",
+      "muzip": false
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 3,
+    "ilk_denemede_kabul": 3,
+    "sablon_moduna_dusen": 0,
+    "detay": [],
+    "sablon_isaretli": [],
+    "ret_orani": 0.0,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 3,
+      "girdi_token": 44042,
+      "cikti_token": 6526,
+      "cache_yazma_token": 7172,
+      "cache_okuma_token": 14344,
+      "toplam_maliyet_usd": 0.1741
+    }
+  }
+}

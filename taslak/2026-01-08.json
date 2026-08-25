@@ -1,0 +1,40 @@
+{
+  "tarih": "2026-01-08",
+  "uretildi": "2026-08-21T14:09:20.214910Z",
+  "maclar": {
+    "0022500531": {
+      "gec_satiri": "Liderliğin 15 kez el değiştirdiği maçta Utah Jazz, Dallas Mavericks'i 116-114 yendi.",
+      "muzip": false
+    },
+    "0022500530": {
+      "gec_satiri": "Minnesota Timberwolves evinde 131-122 kazandı. Mağlup tarafta Donovan Mitchell 30 sayı attı.",
+      "muzip": false
+    },
+    "0022500528": {
+      "baslik": "Indiana Pacers, Charlotte Hornets'i 114-112 yendi.",
+      "neden_onemli": "Indiana Pacers sezonu 7-31 yaptı.",
+      "ozet": "Indiana Pacers, bitime 11.5 saniye kala bulduğu basketle Charlotte Hornets'i 114-112 yendi. Mağlup tarafta LaMelo Ball 33 sayı attı.",
+      "muzip": false
+    }
+  },
+  "brief": [
+    {
+      "metin": "Indiana Pacers, son saniyede attığı basketle Charlotte Hornets'i geçti.",
+      "hedef_mac": "0022500528",
+      "muzip": false
+    },
+    {
+      "metin": "Minnesota Timberwolves, 3. çeyrekte kurduğu üstünlükle Cleveland Cavaliers'i geçti.",
+      "hedef_mac": "0022500530",
+      "muzip": false
+    }
+  ],
+  "rapor": {
+    "uretim_modu": "sablon",
+    "kullanim": {
+      "cagri_sayisi": 0,
+      "toplam_maliyet_usd": 0.0
+    },
+    "sablon_isaretli": []
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "tarih": "2026-01-08",
+  "hesaplandi": "2026-08-21T13:39:44.508110Z",
+  "en_iyi_skor": 6.96,
+  "maclar": [
+    {
+      "rozet": 6.96,
+      "ham": 6.96,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 5.34,
+        "K": 0.0,
+        "T": 0,
+        "D": 6
+      },
+      "yukselticiler": {
+        "Y": 7.42,
+        "F": 8,
+        "G": 0,
+        "A": 0.92
+      },
+      "dram_terfi": true,
+      "mac_id": "0022500528",
+      "ev": "CHA",
+      "dep": "IND",
+      "ev_skor": 112,
+      "dep_skor": 114,
+      "en_iyi_performans": "LaMelo Ball"
+    },
+    {
+      "rozet": 6.76,
+      "ham": 6.76,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.12,
+        "K": 1.54,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 7.48,
+        "F": 6,
+        "G": 0,
+        "A": 4.33
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500531",
+      "ev": "UTA",
+      "dep": "DAL",
+      "ev_skor": 116,
+      "dep_skor": 114,
+      "en_iyi_performans": "Cooper Flagg"
+    },
+    {
+      "rozet": 6.18,
+      "ham": 6.18,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 3.71,
+        "K": 5.23,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.1,
+        "F": 3,
+        "G": 0,
+        "A": 7.58
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500530",
+      "ev": "MIN",
+      "dep": "CLE",
+      "ev_skor": 131,
+      "dep_skor": 122,
+      "en_iyi_performans": "Donovan Mitchell"
+    }
+  ]
+}

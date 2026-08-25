@@ -1,0 +1,129 @@
+{
+  "tarih": "2026-01-14",
+  "uretildi": "2026-08-15T01:35:05.483564Z",
+  "maclar": {
+    "0022500574": {
+      "gec_satiri": "Gecenin nefes kesen maçında New Orleans, Brooklyn'i bitime 21.1 saniye kala bulduğu basketle 116-113 mağlup etti. 2 maç aradan sonra kazanan Pelicans'ta Trey Murphy III, attığı 34 sayı ve topladığı 9 ribaundla takımını sırtladı.",
+      "muzip": false
+    },
+    "0022500577": {
+      "gec_satiri": "LA Clippers, sahasında Washington Wizards'ı 119-105 yendi. Üst üste 4. galibiyetini alan Clippers'ta Kawhi Leonard, 33 sayı ve 7 üçlükle yıldızlaştı.",
+      "muzip": false
+    },
+    "0022500571": {
+      "gec_satiri": "Gecenin ilk maçında Toronto Raptors, Indiana Pacers'ı deplasmanda 115-101 geçti. Galibiyet sayısını 25'e yükselten Raptors'ta Scottie Barnes, attığı 26 sayı ve 13 asistle galibiyetin mimarı oldu.",
+      "muzip": false
+    },
+    "0022500576": {
+      "gec_satiri": "Son dönemde formunu yükselten ekiplerden Sacramento Kings, evinde New York Knicks'i 112-101 yendi. Kings'te DeMar DeRozan, attığı 27 sayıyla etkili oldu.",
+      "muzip": false
+    },
+    "0022500575": {
+      "gec_satiri": "Denver, deplasmanda Dallas'ı 118-109 yendi. Üst üste üçüncü galibiyetini alan Nuggets'ta Jamal Murray, 33 sayı ve 5 asistle etkili bir maç oynadı.",
+      "muzip": false
+    },
+    "0022500573": {
+      "baslik": "Vučević'in son basketiyle Chicago Bulls, Utah Jazz'ı yendi",
+      "neden_onemli": "Liderliğin 26 kez el değiştirdiği maç, Bulls'u Doğu'da 10. sıraya taşıdı.",
+      "ozet": "Sensabaugh'un ilk çeyrekte attığı 21 sayı, Utah'ı 39-36 öne geçirdi. Bulls ikinci çeyrekte farkı 12 sayıya çıkararak maçı çevirdi, ancak Jazz üçüncü çeyrek sonunda skoru 94-94'e getirdi. Son dakikada Sensabaugh'un layup'u skoru eşitledi, galibiyeti ise Vučević'in son basketi belirledi. 43 sayı, 5 ribaund ve 5/10'luk üçlük isabetiyle Sensabaugh gecenin en üretken ismi oldu.",
+      "muzip": false
+    },
+    "0022500572": {
+      "gec_satiri": "Cleveland Cavaliers deplasmanda 133-107 kazandı. Donovan Mitchell 35 sayı attı.",
+      "muzip": false
+    }
+  },
+  "brief": [
+    {
+      "metin": "Chicago Bulls evinde 128-126 kazandı.",
+      "hedef_mac": "0022500573",
+      "muzip": false
+    },
+    {
+      "metin": "Cleveland Cavaliers deplasmanda 133-107 kazandı.",
+      "hedef_mac": "0022500572",
+      "muzip": false
+    },
+    {
+      "metin": "Maçı bitiren basketle New Orleans Pelicans, Brooklyn Nets'i 3 sayı geçti.",
+      "hedef_mac": "0022500574",
+      "muzip": false
+    },
+    {
+      "metin": "LA Clippers, Washington Wizards'ı yenerek üst üste 4. galibiyetini aldı.",
+      "hedef_mac": "0022500577",
+      "muzip": false
+    },
+    {
+      "metin": "Toronto Raptors, maç boyunca hiç geride kalmadan Indiana Pacers'ı deplasmanda yendi.",
+      "hedef_mac": "0022500571",
+      "muzip": false
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 13,
+    "ilk_denemede_kabul": 9,
+    "sablon_moduna_dusen": 3,
+    "detay": [
+      {
+        "mac_id": "0022500572",
+        "deneme": 0,
+        "gerekce": [
+          "gec_satiri/T1: ['76']"
+        ],
+        "reddedilen_taslak": {
+          "gec_satiri": "Cleveland Cavaliers, deplasmanda Philadelphia 76ers'ı 133-107 yendi. Rakibine tam 26 sayı fark atan Cavaliers'ta Donovan Mitchell, 35 sayı ve 9 asistle maçın en skorer ismi oldu.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500572",
+        "deneme": 1,
+        "gerekce": [
+          "gec_satiri/T1: ['76']"
+        ],
+        "reddedilen_taslak": {
+          "gec_satiri": "Cleveland Cavaliers, deplasmanda Philadelphia 76ers'ı 133-107 yendi. Rakibine tam 26 sayı fark atan Cavaliers'ta Donovan Mitchell, 35 sayıyla maçın en skorer ismi oldu.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500573",
+        "deneme": 0,
+        "gerekce": [
+          "T17: [\"'Brice Sensabaugh' (kaybeden UTA) cümle öznesi: 'Brice Sensabaugh 43 sayı attı, yine de Utah Jazz kaybetti'\"]"
+        ],
+        "yer": "brief[0]",
+        "reddedilen_taslak": {
+          "metin": "Brice Sensabaugh 43 sayı attı, yine de Utah Jazz kaybetti.",
+          "hedef_mac": "0022500573",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500572",
+        "deneme": 0,
+        "gerekce": [
+          "T1: ['76']"
+        ],
+        "yer": "brief[1]",
+        "reddedilen_taslak": {
+          "metin": "Cleveland Cavaliers, Philadelphia 76ers'ı sahasında 26 sayı farkla ezdi.",
+          "hedef_mac": "0022500572",
+          "muzip": false
+        }
+      }
+    ],
+    "ret_orani": 0.308,
+    "kelime_butcesi_uygulandi": false,
+    "uretim_modu": "batch",
+    "kullanim": {
+      "cagri_sayisi": 9,
+      "girdi_token": 58119,
+      "cikti_token": 24624,
+      "cache_yazma_token": 0,
+      "cache_okuma_token": 26496,
+      "toplam_maliyet_usd": 0.1839
+    }
+  }
+}

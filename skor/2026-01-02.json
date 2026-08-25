@@ -1,0 +1,247 @@
+{
+  "tarih": "2026-01-02",
+  "hesaplandi": "2026-08-21T13:39:44.319119Z",
+  "en_iyi_skor": 8.9,
+  "maclar": [
+    {
+      "rozet": 8.9,
+      "ham": 10.4,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 7.95,
+        "K": 1.66,
+        "T": 0,
+        "D": 8
+      },
+      "yukselticiler": {
+        "Y": 7.27,
+        "F": 10,
+        "G": 0,
+        "A": 6.42
+      },
+      "dram_terfi": true,
+      "mac_id": "0022500481",
+      "ev": "MIL",
+      "dep": "CHA",
+      "ev_skor": 122,
+      "dep_skor": 121,
+      "en_iyi_performans": "Giannis Antetokounmpo"
+    },
+    {
+      "rozet": 7.15,
+      "ham": 7.15,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 7.45,
+        "K": 3.0,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.77,
+        "F": 0,
+        "G": 0,
+        "A": 2.42
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500482",
+      "ev": "NOP",
+      "dep": "POR",
+      "ev_skor": 109,
+      "dep_skor": 122,
+      "en_iyi_performans": "Zion Williamson"
+    },
+    {
+      "rozet": 7.13,
+      "ham": 7.13,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 5.94,
+        "K": 4.43,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 6.42,
+        "F": 0,
+        "G": 0,
+        "A": 7.0
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500485",
+      "ev": "LAL",
+      "dep": "MEM",
+      "ev_skor": 128,
+      "dep_skor": 121,
+      "en_iyi_performans": "Luka Dončić"
+    },
+    {
+      "rozet": 7.06,
+      "ham": 7.06,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 5.6,
+        "K": 4.65,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 6.66,
+        "F": 6,
+        "G": 0,
+        "A": 3.83
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500480",
+      "ev": "CHI",
+      "dep": "ORL",
+      "ev_skor": 121,
+      "dep_skor": 114,
+      "en_iyi_performans": "Paolo Banchero"
+    },
+    {
+      "rozet": 6.26,
+      "ham": 6.26,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 4.42,
+        "K": 4.09,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 6.96,
+        "F": 6,
+        "G": 6,
+        "A": 6.5
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500478",
+      "ev": "CLE",
+      "dep": "DEN",
+      "ev_skor": 113,
+      "dep_skor": 108,
+      "en_iyi_performans": "Donovan Mitchell"
+    },
+    {
+      "rozet": 3.6,
+      "ham": 3.6,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 3.46,
+        "K": 2.1,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.2,
+        "F": 0,
+        "G": 0,
+        "A": 4.92
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500483",
+      "ev": "PHX",
+      "dep": "SAC",
+      "ev_skor": 129,
+      "dep_skor": 102,
+      "en_iyi_performans": "Devin Booker"
+    },
+    {
+      "rozet": 3.23,
+      "ham": 3.23,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 2.26,
+        "K": 3.0,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.65,
+        "F": 0,
+        "G": 0,
+        "A": 4.17
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500479",
+      "ev": "NYK",
+      "dep": "ATL",
+      "ev_skor": 99,
+      "dep_skor": 111,
+      "en_iyi_performans": "Onyeka Okongwu"
+    },
+    {
+      "rozet": 2.37,
+      "ham": 2.37,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 2.56,
+        "K": 0.36,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.25,
+        "F": 0,
+        "G": 0,
+        "A": 6.57
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500484",
+      "ev": "GSW",
+      "dep": "OKC",
+      "ev_skor": 94,
+      "dep_skor": 131,
+      "en_iyi_performans": "Shai Gilgeous-Alexander"
+    },
+    {
+      "rozet": 0.76,
+      "ham": 0.76,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 0.87,
+        "K": 0.0,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.39,
+        "F": 0,
+        "G": 0,
+        "A": 3.33
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500476",
+      "ev": "IND",
+      "dep": "SAS",
+      "ev_skor": 113,
+      "dep_skor": 123,
+      "en_iyi_performans": "De'Aaron Fox"
+    },
+    {
+      "rozet": 0.64,
+      "ham": 0.64,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 0.75,
+        "K": 0.0,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.12,
+        "F": 0,
+        "G": 0,
+        "A": 2.83
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500477",
+      "ev": "WAS",
+      "dep": "BKN",
+      "ev_skor": 119,
+      "dep_skor": 99,
+      "en_iyi_performans": "Alex Sarr"
+    }
+  ]
+}

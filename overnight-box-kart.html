@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OVERNIGHT — box score kartı</title>
+<style>
+:root{
+  --bg:#0A0D12; --card:#0E131B; --line:#1A2230; --line2:#141A24;
+  --ink:#EDEFF2; --dim:#98A2B0; --faint:#5A6472;
+  --c:#E8763A; --amber:#D9A441; --cool:#5B8DEF;
+  --mono:ui-monospace,"SF Mono",Menlo,monospace;
+  --disp:"Helvetica Neue",Inter,system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:#06080B;color:var(--ink);font-family:var(--disp);-webkit-font-smoothing:antialiased}
+
+/* ---------- arka plandaki liste (bağlam) ---------- */
+.behind{max-width:520px;margin:0 auto;padding:22px 16px}
+.behind h1{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--c)}
+.row{border:1px solid var(--line);background:var(--card);padding:14px 15px;margin-top:10px;
+     display:flex;justify-content:space-between;align-items:center;gap:10px;cursor:pointer}
+.row .t{font-family:var(--mono);font-size:13px}
+.row .r{font-family:var(--mono);font-size:15px;font-weight:700;color:#0A0603;background:var(--c);padding:2px 8px}
+.hint{margin-top:16px;font-size:12px;color:var(--faint);line-height:1.6}
+
+/* ---------- kart ---------- */
+.scrim{position:fixed;inset:0;background:rgba(3,5,8,.72);backdrop-filter:blur(3px);
+       opacity:0;pointer-events:none;transition:opacity .22s}
+.scrim.on{opacity:1;pointer-events:auto}
+
+.sheet{position:fixed;left:50%;transform:translateX(-50%) translateY(100%);
+  bottom:0;width:100%;max-width:520px;height:auto;max-height:92vh;background:var(--card);
+  border:1px solid var(--line);border-bottom:0;display:flex;flex-direction:column;
+  transition:transform .28s cubic-bezier(.22,.8,.3,1);z-index:20}
+.sheet.on{transform:translateX(-50%) translateY(0)}
+
+.grab{padding:9px 0 5px;display:flex;justify-content:center;flex:none;cursor:grab}
+.grab i{display:block;width:34px;height:3px;border-radius:2px;background:#2A3444}
+
+/* başlık */
+.head{flex:none;padding:6px 16px 16px;border-bottom:1px solid var(--line);position:relative}
+.close{position:absolute;top:2px;right:10px;width:34px;height:34px;border:0;background:transparent;
+  color:var(--faint);font-size:19px;line-height:1;cursor:pointer}
+.close:hover{color:var(--ink)}
+.meta{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--faint);margin-bottom:13px}
+.meta b{color:var(--c);font-weight:400}
+
+.team{display:flex;align-items:center;gap:11px;padding:6px 0}
+.chip{width:4px;height:30px;flex:none;border-radius:1px}
+.tname{font-family:var(--disp);font-size:17px;font-weight:700;letter-spacing:-.02em;flex:1}
+.tsc{font-family:var(--mono);font-size:24px;font-weight:700;letter-spacing:-.04em;line-height:1}
+.lose .tname,.lose .tsc{color:var(--faint);font-weight:600}
+.win .tsc{color:var(--ink)}
+.wmark{font-family:var(--mono);font-size:9px;color:var(--c);margin-left:7px;letter-spacing:.1em}
+
+/* çeyrekler */
+.qt{margin-top:13px;border-top:1px solid var(--line2);padding-top:11px;overflow-x:auto}
+table.q{border-collapse:collapse;font-family:var(--mono);font-size:11px;width:100%}
+table.q th{font-size:8.5px;letter-spacing:.08em;color:var(--faint);font-weight:400;
+  padding:0 0 5px;text-align:right}
+table.q th:first-child{text-align:left}
+table.q td{padding:3px 0;text-align:right;color:var(--dim)}
+table.q td:first-child{text-align:left;color:var(--faint);font-size:10px}
+table.q td.tot{color:var(--ink);font-weight:700}
+
+/* gövde */
+.body{flex:1;overflow-y:auto;overscroll-behavior:contain}
+
+/* takım sekmeleri */
+.tabs{flex:none;display:flex;gap:1px;background:var(--line);border-bottom:1px solid var(--line)}
+.tabs button{flex:1;position:relative;background:var(--card);border:0;cursor:pointer;
+  padding:13px 6px 12px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+  color:var(--faint);transition:color .15s}
+.tabs button .sc{display:block;font-size:15px;font-weight:700;letter-spacing:-.02em;margin-top:4px;color:inherit}
+.tabs button.on{color:var(--ink)}
+.tabs button.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--tc)}
+.tabs button .dot{position:absolute;top:9px;right:calc(50% - 30px);width:5px;height:5px;
+  border-radius:50%;background:var(--cool)}
+.tabs button.on .dot{display:none}
+.pane[hidden]{display:none}
+
+.wtf{margin:14px 16px 0;padding:13px 14px;background:#12100C;border-left:2px solid var(--amber)}
+.wtf span{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--amber);margin-bottom:6px}
+.wtf p{font-size:13px;line-height:1.6;color:#E9E0CE}
+
+.bshead{display:flex;align-items:center;gap:9px;padding:20px 16px 9px}
+.bshead .chip{height:14px}
+.bshead h3{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--dim);font-weight:400;flex:1}
+.bshead em{font-family:var(--mono);font-size:11px;color:var(--faint);font-style:normal}
+
+.scroller{overflow-x:auto;overscroll-behavior-x:contain}
+table.bs{border-collapse:collapse;font-family:var(--mono);font-size:11.5px;min-width:100%}
+table.bs th{font-size:8.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);
+  font-weight:400;padding:7px 9px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+table.bs td{padding:9px;text-align:right;color:var(--dim);border-bottom:1px solid var(--line2);white-space:nowrap}
+table.bs th:first-child,table.bs td:first-child{
+  text-align:left;position:sticky;left:0;background:var(--card);padding-left:16px;
+  min-width:132px;max-width:132px;overflow:hidden;text-overflow:ellipsis}
+table.bs td:first-child{color:var(--ink);font-family:var(--disp);font-size:12.5px}
+table.bs td.k{color:var(--ink);font-weight:700}
+tr:last-child td{border-bottom:0}
+
+/* işaretlemeler */
+tr.star td{background:#17110A}
+tr.star td:first-child{background:#17110A;box-shadow:inset 3px 0 0 var(--c)}
+tr.best td{background:#0C1320}
+tr.best td:first-child{background:#0C1320;box-shadow:inset 3px 0 0 var(--cool)}
+.tag{display:inline-block;font-family:var(--mono);font-size:8px;letter-spacing:.09em;
+  text-transform:uppercase;padding:2px 5px;margin-left:6px;vertical-align:1.5px}
+.tag.a{background:var(--c);color:#0A0603}
+.tag.b{background:var(--cool);color:#04101F}
+td.hot{color:var(--amber);font-weight:700}
+td.hot::after{content:"▲";font-size:6.5px;margin-left:3px;vertical-align:2.5px}
+
+.dnp{padding:12px 16px 0;font-family:var(--mono);font-size:10.5px;color:var(--faint);line-height:1.7}
+.foot{padding:22px 16px 30px;text-align:center}
+.foot button{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  background:transparent;border:1px solid var(--line);color:var(--dim);padding:13px 26px;cursor:pointer}
+.foot button:hover{border-color:var(--c);color:var(--c)}
+</style>
+</head>
+<body>
+
+<div class="behind">
+  <h1>25 Aralık 2025 · Mutlaka bil</h1>
+  <div class="row" onclick="open_()">
+    <span class="t">Miami Heat 150–129 Washington Wizards</span>
+    <span class="r">9.3</span>
+  </div>
+  <div class="row" style="opacity:.45">
+    <span class="t">Denver Nuggets 142–138 Minnesota</span>
+    <span class="r">9.2</span>
+  </div>
+  <p class="hint">Üstteki satıra dokun, kart açılsın. Kapatma: X, aşağı sürükleme veya geri tuşu.</p>
+</div>
+
+<div class="scrim" id="scrim" onclick="close_()"></div>
+
+<section class="sheet" id="sheet">
+  <div class="grab" id="grab"><i></i></div>
+
+  <div class="head">
+    <button class="close" onclick="close_()">✕</button>
+    <div class="meta">25 Aralık 2025 · <b>rozet 9.3</b> · Mutlaka bil</div>
+
+    <div class="team win">
+      <span class="chip" style="background:#98002E"></span>
+      <span class="tname">Miami Heat</span>
+      <span class="tsc">150</span>
+    </div>
+    <div class="team lose">
+      <span class="chip" style="background:#002B5C"></span>
+      <span class="tname">Washington Wizards</span>
+      <span class="tsc">129</span>
+    </div>
+
+    <div class="qt">
+      <table class="q">
+        <tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>T</th></tr>
+        <tr><td>MIA</td><td>40</td><td>35</td><td>39</td><td>36</td><td class="tot">150</td></tr>
+        <tr><td>WAS</td><td>29</td><td>33</td><td>31</td><td>36</td><td class="tot">129</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button id="tabA" class="on" style="--tc:#98002E" onclick="tab('A')">MIA<span class="sc">150</span></button>
+    <button id="tabB" style="--tc:#002B5C" onclick="tab('B')">WAS<span class="sc">129</span><i class="dot"></i></button>
+  </div>
+
+  <div class="body">
+
+    <div class="wtf">
+      <span>WTF İstatistiği</span>
+      <p>Adebayo tek başına 43 serbest atış denedi. Washington'ın tamamı 19.</p>
+    </div>
+
+    <div class="pane" id="paneA">
+    <div class="scroller">
+      <table class="bs">
+        <thead><tr>
+          <th>Oyuncu</th><th>Say</th><th>Rib</th><th>Ast</th>
+          <th>Dk</th><th>FG</th><th>3P</th><th>FA</th><th>Çal</th><th>Blk</th><th>TK</th><th>+/−</th>
+        </tr></thead>
+        <tbody>
+          <tr class="star">
+            <td>Bam Adebayo<span class="tag a">Gecenin adamı</span></td>
+            <td class="k">83</td><td>9</td><td>3</td>
+            <td>41</td><td>20/28</td><td>7/12</td><td class="hot">36/43</td><td>5</td><td>2</td><td>4</td><td>+24</td>
+          </tr>
+          <tr><td>Tyler Herro</td><td class="k">18</td><td>3</td><td>7</td><td>33</td><td>6/14</td><td>3/8</td><td>3/3</td><td>1</td><td>0</td><td>3</td><td>+18</td></tr>
+          <tr><td>Andrew Wiggins</td><td class="k">14</td><td>5</td><td>2</td><td>31</td><td>5/11</td><td>2/5</td><td>2/2</td><td>2</td><td>1</td><td>1</td><td>+11</td></tr>
+          <tr><td>Davion Mitchell</td><td class="k">11</td><td>2</td><td>9</td><td>28</td><td>4/9</td><td>1/3</td><td>2/2</td><td>3</td><td>0</td><td>2</td><td>+16</td></tr>
+          <tr><td>Kel'el Ware</td><td class="k">8</td><td>11</td><td>1</td><td>22</td><td>3/6</td><td>0/1</td><td>2/2</td><td>0</td><td>3</td><td>1</td><td>+7</td></tr>
+          <tr><td>Nikola Jović</td><td class="k">6</td><td>4</td><td>3</td><td>19</td><td>2/7</td><td>2/6</td><td>0/0</td><td>1</td><td>0</td><td>2</td><td>−2</td></tr>
+          <tr><td>Pelle Larsson</td><td class="k">5</td><td>2</td><td>1</td><td>14</td><td>2/4</td><td>1/2</td><td>0/0</td><td>0</td><td>0</td><td>0</td><td>+3</td></tr>
+          <tr><td>Haywood Highsmith</td><td class="k">3</td><td>3</td><td>0</td><td>11</td><td>1/3</td><td>1/2</td><td>0/0</td><td>1</td><td>1</td><td>1</td><td>−4</td></tr>
+          <tr><td>Keshad Johnson</td><td class="k">2</td><td>1</td><td>0</td><td>6</td><td>1/2</td><td>0/0</td><td>0/0</td><td>0</td><td>0</td><td>0</td><td>+1</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    </div>
+    </div>
+
+    <div class="pane" id="paneB" hidden>
+    <div class="scroller">
+      <table class="bs">
+        <thead><tr>
+          <th>Oyuncu</th><th>Say</th><th>Rib</th><th>Ast</th>
+          <th>Dk</th><th>FG</th><th>3P</th><th>FA</th><th>Çal</th><th>Blk</th><th>TK</th><th>+/−</th>
+        </tr></thead>
+        <tbody>
+          <tr class="best">
+            <td>Alex Sarr<span class="tag b">Rakibin en iyisi</span></td>
+            <td class="k">28</td><td>10</td><td>2</td>
+            <td>34</td><td>11/19</td><td>3/7</td><td>3/4</td><td>1</td><td>2</td><td>3</td><td>−19</td>
+          </tr>
+          <tr><td>Will Riley</td><td class="k">22</td><td>4</td><td>3</td><td>30</td><td>8/16</td><td>4/9</td><td>2/2</td><td>2</td><td>0</td><td>2</td><td>−15</td></tr>
+          <tr><td>Bilal Coulibaly</td><td class="k">19</td><td>6</td><td>4</td><td>32</td><td>7/15</td><td>2/6</td><td>3/4</td><td>3</td><td>1</td><td>4</td><td>−21</td></tr>
+          <tr><td>Kyshawn George</td><td class="k">16</td><td>5</td><td>5</td><td>29</td><td>6/13</td><td>3/8</td><td>1/2</td><td>1</td><td>0</td><td>3</td><td>−17</td></tr>
+          <tr><td>Tre Johnson</td><td class="k">14</td><td>2</td><td>2</td><td>26</td><td>5/12</td><td>2/6</td><td>2/2</td><td>0</td><td>0</td><td>1</td><td>−12</td></tr>
+          <tr><td>Justin Champagnie</td><td class="k">12</td><td>7</td><td>1</td><td>24</td><td>5/10</td><td>1/3</td><td>1/2</td><td>2</td><td>1</td><td>0</td><td>−9</td></tr>
+          <tr><td>Bub Carrington</td><td class="k">10</td><td>3</td><td>6</td><td>21</td><td>4/9</td><td>2/5</td><td>0/0</td><td>1</td><td>0</td><td>2</td><td>−14</td></tr>
+          <tr><td>Cam Whitmore</td><td class="k">8</td><td>2</td><td>1</td><td>16</td><td>3/8</td><td>1/3</td><td>1/2</td><td>0</td><td>0</td><td>1</td><td>−6</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    </div>
+    <p class="dnp">Oynamayanlar · Washington: Marcus Smart (sakatlık), Corey Kispert (sakatlık)</p>
+
+    <div class="foot"><button onclick="close_()">Listeye dön</button></div>
+  </div>
+</section>
+
+<script>
+const sheet=document.getElementById('sheet'), scrim=document.getElementById('scrim');
+function open_(){sheet.classList.add('on');scrim.classList.add('on');
+  document.body.style.overflow='hidden';history.pushState({card:1},'');}
+function close_(){sheet.classList.remove('on');scrim.classList.remove('on');
+  document.body.style.overflow='';sheet.style.transform='';}
+addEventListener('popstate',()=>{if(sheet.classList.contains('on'))close_();});
+addEventListener('keydown',e=>{if(e.key==='Escape')close_();});
+
+function tab(k){
+  const a=k==='A';
+  paneA.hidden=!a; paneB.hidden=a;
+  tabA.classList.toggle('on',a); tabB.classList.toggle('on',!a);
+  document.querySelector('.body').scrollTop=0;
+}
+
+/* aşağı sürükleyerek kapatma */
+let y0=null,dy=0;
+const grab=document.getElementById('grab');
+function start(y){y0=y;dy=0;sheet.style.transition='none';}
+function move(y){if(y0===null)return;dy=Math.max(0,y-y0);
+  sheet.style.transform=`translateX(-50%) translateY(${dy}px)`;}
+function end(){if(y0===null)return;sheet.style.transition='';
+  if(dy>110)close_();else sheet.style.transform='translateX(-50%) translateY(0)';y0=null;}
+grab.addEventListener('touchstart',e=>start(e.touches[0].clientY),{passive:true});
+grab.addEventListener('touchmove',e=>move(e.touches[0].clientY),{passive:true});
+grab.addEventListener('touchend',end);
+grab.addEventListener('mousedown',e=>{start(e.clientY);
+  const mm=e=>move(e.clientY),mu=()=>{end();removeEventListener('mousemove',mm);removeEventListener('mouseup',mu);};
+  addEventListener('mousemove',mm);addEventListener('mouseup',mu);});
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "_aciklama": "hesapla.py'nin A bileşeni (takım kalitesi) için sezon öncesi beklenti — sezon başında (n küçükken) bu sezonun az sayıda maçına aşırı ağırlık vermemek için n/(n+20) ile bu sezonun verisine karışır (n = takımın hedef geceden önce oynadığı maç sayısı). Gerçek bahis galibiyet hedefleri bulunamadı (bu ortamda canlı bahis-oranı verisine erişim yok) — KULLANICI KARARIYLA yerine 2024-25 sezonu NET_RATING'i (LeagueDashTeamStats, measure_type=Advanced) kullanıldı.",
+  "kaynak": "nba_api LeagueDashTeamStats(season='2024-25', measure_type_detailed_defense='Advanced').NET_RATING — 2026-08-15'te çekildi",
+  "bakim": "Her sezon başında güncellenmeli: yeni sezonun net rating'i mevcut değilse bir önceki tamamlanmış sezonun net rating'i kullanılır. Gerçek preseason bahis galibiyet hedefleri bulunabilirse (ör. bir bahis sitesi API'si) bunun yerine o kullanılmalı — daha isabetli bir sezon-öncesi beklenti kaynağıdır.",
+  "net_rating": {
+    "ATL": -1.1, "BKN": -7.3, "BOS": 9.4, "CHA": -9.1, "CHI": -1.6,
+    "CLE": 9.2, "DAL": -1.3, "DEN": 3.8, "DET": 2.1, "GSW": 3.2,
+    "HOU": 4.6, "IND": 2.1, "LAC": 4.9, "LAL": 1.2, "MEM": 4.7,
+    "MIA": 0.4, "MIL": 2.4, "MIN": 5.0, "NOP": -9.4, "NYK": 4.0,
+    "OKC": 12.7, "ORL": -0.2, "PHI": -6.3, "PHX": -3.0, "POR": -2.7,
+    "SAC": 0.6, "SAS": -2.8, "TOR": -4.1, "UTA": -9.2, "WAS": -12.2
+  }
+}

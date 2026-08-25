@@ -1,0 +1,150 @@
+{
+  "tarih": "2025-11-12",
+  "uretildi": "2026-08-24T22:14:51.885525Z",
+  "maclar": {
+    "0022500214": {
+      "gec_satiri": "Detroit Pistons evinde Chicago Bulls'u 124-113 yendi.",
+      "muzip": false
+    },
+    "0022500222": {
+      "gec_satiri": "Lig lideri Oklahoma City Thunder, Los Angeles Lakers'i 121-92 yendi. Shai Gilgeous-Alexander 30 sayı attı.",
+      "muzip": false
+    },
+    "0022500219": {
+      "gec_satiri": "Portland Trail Blazers deplasmanda New Orleans Pelicans'ı 125-117 yendi. Shaedon Sharpe 35 sayı attı.",
+      "muzip": false
+    },
+    "0022500223": {
+      "gec_satiri": "Atlanta Hawks deplasmanda Sacramento Kings'i 133-100 yendi.",
+      "muzip": false
+    },
+    "0022500217": {
+      "gec_satiri": "Cleveland Cavaliers deplasmanda Miami Heat'ı 130-116 yendi. Jarrett Allen 30 sayı attı.",
+      "muzip": false
+    },
+    "0022500215": {
+      "gec_satiri": "Orlando Magic deplasmanda New York Knicks'i 124-107 yendi.",
+      "muzip": false
+    },
+    "0022500216": {
+      "gec_satiri": "Boston Celtics evinde Memphis Grizzlies'i 131-95 ezdi.",
+      "muzip": false
+    },
+    "0022500213": {
+      "gec_satiri": "Charlotte Hornets evinde Milwaukee Bucks'u 111-100 yendi.",
+      "muzip": false
+    },
+    "0022500221": {
+      "gec_satiri": "Phoenix Suns deplasmanda Dallas Mavericks'i 123-114 yendi.",
+      "muzip": false
+    },
+    "0022500218": {
+      "gec_satiri": "Houston Rockets evinde Washington Wizards'ı 135-112 yendi.",
+      "muzip": false
+    },
+    "0022500224": {
+      "baslik": "Denver Nuggets deplasmanda LA Clippers'i 130-116 yendi.",
+      "ozet": "Denver Nuggets, 10 sayılık farktan dönerek kazandı. Nikola Jokić 55 sayı attı.",
+      "muzip": false,
+      "neden_onemli": "Denver Nuggets, konferansta 2. sıraya yükseldi."
+    },
+    "0022500220": {
+      "baslik": "Warriors, San Antonio'yu deplasmanda 125-120 mağlup etti.",
+      "neden_onemli": "Kaybeden tarafta Stephon Castle, 23 sayı, 10 ribaund, 10 asistle triple-double yaptı.",
+      "ozet_kisa": "Stephen Curry gecenin en üretken ismiydi, 46 sayı attı. Warriors, San Antonio deplasmanında bulduğu üstünlüğü son çeyreğe kadar korudu. Kaybeden tarafta Stephon Castle ise 23 sayı, 10 ribaund, 10 asistle triple-double yaptı.",
+      "muzip": false
+    }
+  },
+  "brief": [
+    {
+      "metin": "Golden State Warriors, 16 sayılık farktan dönüp San Antonio Spurs'u geçti.",
+      "hedef_mac": "0022500220",
+      "muzip": false
+    },
+    {
+      "metin": "Nikola Jokić, LA Clippers karşısında 55 sayı attı.",
+      "hedef_mac": "0022500224",
+      "muzip": false
+    },
+    {
+      "metin": "Detroit Pistons, Chicago Bulls'u yenerek konferansta 1. sıraya yükseldi.",
+      "hedef_mac": "0022500214",
+      "muzip": false
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 5,
+    "ilk_denemede_kabul": 0,
+    "sablon_moduna_dusen": 1,
+    "detay": [
+      {
+        "mac_id": "0022500224",
+        "deneme": 0,
+        "gerekce": [
+          "baslik/T13: [\"geri dönüş kaybedene atfedilmiş: 'Denver Nuggets, deplasmanda LA Clippers'ı farktan dönerek 130-116 yendi'\"]",
+          "ozet/T1: ['40', '50']",
+          "ozet/T18: [\"'ilk kez' doğrulanamaz kayıt/üstünlük iddiası — bu maçta hiçbir oyuncu olağanüstü kilometre eşiğini (60+ sayı, 25+ ribaund, 20+ asist, 15+ üçlük, quadruple-double, 50+ sayılık triple-double) geçmedi, iddia kaynaksız\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Denver Nuggets, deplasmanda LA Clippers'ı farktan dönerek 130-116 yendi.",
+          "neden_onemli": "Clippers üst üste 6. mağlubiyetini alırken Denver, konferansta 2. sıraya yükseldi.",
+          "ozet": "Clippers, ilk çeyrekte farkı 10 sayıya kadar çıkardı, ancak Nikola Jokić'in kısa sürede ürettiği sayılarla Denver skoru dengeledi. Üçüncü çeyrekte 43-22'lik üstünlük kuran Denver, farkı 22 sayıya kadar yükseltti. Jokić çıldırdı, 55 sayı, 12 ribaund ve 6 asist üretti, 18/23 isabetle sahadan çok verimli çıktı. Bu sezon ilk kez 40 sayı barajını geçen Jokić, 50 sayının da üzerine çıktı.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500224",
+        "deneme": 1,
+        "gerekce": [
+          "ozet/T1: ['50']"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Nikola Jokić'in 55 sayısı, Denver'a deplasmanda 130-116 galibiyeti getirdi.",
+          "neden_onemli": "Denver konferansta 2. sırayı korurken, Clippers üst üste 6. mağlubiyetini aldı.",
+          "ozet": "LA Clippers, ilk yarıda 10 sayıya kadar öne geçerek maça iyi başladı. Nikola Jokić'in üçüncü çeyrekte attığı 19 sayıyla Denver farktan döndü ve maçın kontrolünü ele geçirdi. Son çeyrekte Julian Strawther'ın son dakikadaki basketiyle Denver farkı 130-116'ya çıkardı. Jokić çıldırdı, 55 sayı 12 ribaundla double-double yaptı, 50 sayı barajını aşan nadir bir gece geçirdi.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500224",
+        "deneme": 2,
+        "gerekce": [
+          "baslik/T4e: ['LAC']",
+          "baslik/T13: [\"geri dönüş kaybedene atfedilmiş: 'Denver, LAC'ı deplasmanda 130-116 yenerek 10 sayılık farktan döndü'\"]",
+          "neden_onemli/T4e: ['LAC']",
+          "ozet/T4e: ['LAC']"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Denver, LAC'ı deplasmanda 130-116 yenerek 10 sayılık farktan döndü.",
+          "neden_onemli": "LAC, üst üste 6. mağlubiyetini alırken Denver geceyi konferansta 2. sırada kapattı.",
+          "ozet": "LAC, maça hızlı başlayıp ilk yarıda 10 sayıya kadar öne geçti. Ancak Denver, üçüncü periyotta 43-22'lik seriyle öne geçip farkı 22 sayıya çıkardı. Clippers son çeyrekte farkı kapatamayınca Denver, deplasmanda 130-116'lık galibiyeti güvenceye aldı. Nikola Jokić çıldırdı, 18/23 şutla 55 sayı, 12 ribaund ve 6 asistle double-double yaptı.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500220",
+        "deneme": 0,
+        "gerekce": [
+          "baslik/T17: [\"'Stephon Castle' (kaybeden SAS) cümle öznesi: 'Stephon Castle triple-double yaptı, Warriors farkı korudu'\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Stephon Castle triple-double yaptı, Warriors farkı korudu.",
+          "neden_onemli": "Aynı maçta Victor Wembanyama da triple-double yaptı, ender görülen bir gece oldu.",
+          "ozet_kisa": "Golden State, San Antonio deplasmanında 125-120 kazandı. Stephen Curry 46 sayı attı, 15/16 serbest atışla farkı korudu. Castle, maçın son basketini saniyeler kala attı.",
+          "muzip": false
+        }
+      }
+    ],
+    "sablon_isaretli": [],
+    "ret_orani": 1.0,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 5,
+      "girdi_token": 79372,
+      "cikti_token": 23161,
+      "cache_yazma_token": 0,
+      "cache_okuma_token": 35860,
+      "toplam_maliyet_usd": 0.3975
+    }
+  }
+}

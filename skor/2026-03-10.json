@@ -1,0 +1,271 @@
+{
+  "tarih": "2026-03-10",
+  "hesaplandi": "2026-08-20T16:27:33.908173Z",
+  "en_iyi_skor": 9.3,
+  "maclar": [
+    {
+      "rozet": 9.3,
+      "ham": 12.23,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 10,
+        "K": 4.25,
+        "T": 6,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.67,
+        "F": 0,
+        "G": 0,
+        "A": 4.17
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500938",
+      "ev": "MIA",
+      "dep": "WAS",
+      "ev_skor": 150,
+      "dep_skor": 129,
+      "en_iyi_performans": "Bam Adebayo"
+    },
+    {
+      "rozet": 8.99,
+      "ham": 10.72,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 9.8,
+        "K": 3.29,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 4.06,
+        "F": 0,
+        "G": 6,
+        "A": 2.92
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500936",
+      "ev": "PHI",
+      "dep": "MEM",
+      "ev_skor": 139,
+      "dep_skor": 129,
+      "en_iyi_performans": "Cameron Payne"
+    },
+    {
+      "rozet": 8.79,
+      "ham": 10.01,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 8.47,
+        "K": 5.0,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 4.58,
+        "F": 3,
+        "G": 0,
+        "A": 8.21
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500942",
+      "ev": "SAS",
+      "dep": "BOS",
+      "ev_skor": 125,
+      "dep_skor": 116,
+      "en_iyi_performans": "Victor Wembanyama"
+    },
+    {
+      "rozet": 8.75,
+      "ham": 9.89,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 8.79,
+        "K": 3.83,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 9.5,
+        "F": 3,
+        "G": 0,
+        "A": 2.17
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500943",
+      "ev": "GSW",
+      "dep": "CHI",
+      "ev_skor": 124,
+      "dep_skor": 130,
+      "en_iyi_performans": "Matas Buzelis"
+    },
+    {
+      "rozet": 8.65,
+      "ham": 9.56,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 2.06,
+        "K": 8.5,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 6.98,
+        "F": 6,
+        "G": 6,
+        "A": 1.92
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500944",
+      "ev": "POR",
+      "dep": "CHA",
+      "ev_skor": 101,
+      "dep_skor": 103,
+      "en_iyi_performans": "Jerami Grant"
+    },
+    {
+      "rozet": 8.38,
+      "ham": 8.84,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 7.01,
+        "K": 7.33,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.89,
+        "F": 0,
+        "G": 0,
+        "A": 7.42
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500940",
+      "ev": "HOU",
+      "dep": "TOR",
+      "ev_skor": 113,
+      "dep_skor": 99,
+      "en_iyi_performans": "Kevin Durant"
+    },
+    {
+      "rozet": 8.33,
+      "ham": 8.72,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.24,
+        "K": 0.0,
+        "T": 0,
+        "D": 8
+      },
+      "yukselticiler": {
+        "Y": 5.41,
+        "F": 6,
+        "G": 10,
+        "A": 0.58
+      },
+      "dram_terfi": true,
+      "mac_id": "0022500945",
+      "ev": "SAC",
+      "dep": "IND",
+      "ev_skor": 114,
+      "dep_skor": 109,
+      "en_iyi_performans": "Devin Carter"
+    },
+    {
+      "rozet": 8.31,
+      "ham": 8.67,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 7.47,
+        "K": 7.16,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.68,
+        "F": 0,
+        "G": 0,
+        "A": 6.0
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500946",
+      "ev": "LAL",
+      "dep": "MIN",
+      "ev_skor": 120,
+      "dep_skor": 106,
+      "en_iyi_performans": "Luka Dončić"
+    },
+    {
+      "rozet": 6.73,
+      "ham": 6.73,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 5.46,
+        "K": 4.43,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.81,
+        "F": 0,
+        "G": 6,
+        "A": 6.0
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500941",
+      "ev": "MIL",
+      "dep": "PHX",
+      "ev_skor": 114,
+      "dep_skor": 129,
+      "en_iyi_performans": "Kyle Kuzma"
+    },
+    {
+      "rozet": 5.04,
+      "ham": 5.04,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 4.7,
+        "K": 3.24,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.83,
+        "F": 0,
+        "G": 0,
+        "A": 2.67
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500939",
+      "ev": "ATL",
+      "dep": "DAL",
+      "ev_skor": 124,
+      "dep_skor": 112,
+      "en_iyi_performans": "Jalen Johnson"
+    },
+    {
+      "rozet": 4.94,
+      "ham": 4.94,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 5.63,
+        "K": 0.0,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.12,
+        "F": 0,
+        "G": 0,
+        "A": 5.83
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500937",
+      "ev": "BKN",
+      "dep": "DET",
+      "ev_skor": 100,
+      "dep_skor": 138,
+      "en_iyi_performans": "Cade Cunningham"
+    }
+  ]
+}

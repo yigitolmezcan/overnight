@@ -1,0 +1,147 @@
+{
+  "tarih": "2026-01-22",
+  "uretildi": "2026-08-15T01:12:20.878207Z",
+  "maclar": {
+    "0022500629": {
+      "gec_satiri": "Denver, deplasmanda Washington'ı 107-97 yendi. Galibiyet sayısını 30'e yükselten Nuggets'ta Peyton Watson, 35 sayı ile maçın en skorer ismi oldu.",
+      "muzip": false
+    },
+    "0022500632": {
+      "gec_satiri": "San Antonio Spurs, deplasmanda Utah Jazz'ı 126-109 yendi. Bismack Biyombo ve Lindy Waters III'sız oynadığı maçı kazanan Spurs'te Victor Wembanyama, attığı 26 sayı, 14 ribaund ve 5 blokla yıldızlaştı.",
+      "muzip": true
+    },
+    "0022500631": {
+      "gec_satiri": "Chicago, deplasmanda Minnesota'yı 120-115 yendi. Üst üste üçüncü galibiyetini alan Bulls'ta Coby White, 22 sayı ile galibiyetin mimarı oldu. Mağlup Minnesota'da ise Julius Randle, 30 sayı, 7 ribaund ve 6 asistle öne çıktı.",
+      "muzip": false
+    },
+    "0022500634": {
+      "gec_satiri": "Play-in sıralamasını yakından ilgilendiren karşılaşmada Portland Trail Blazers, evinde Miami Heat'i 127-110 mağlup etti. Trail Blazers'ta Shaedon Sharpe, attığı 27 sayıyla etkili oldu. Kaybeden Heat'te Bam Adebayo ise 32 sayı, 10 ribaundla double-double yaptı.",
+      "muzip": false
+    },
+    "0022500630": {
+      "gec_satiri": "Son dönemde formunu yükselten ekiplerden Dallas Mavericks, evinde Golden State Warriors'ı 123-115 yendi. Dört maçlık galibiyet serisini sürdüren Mavericks'te Naji Marshall, attığı 30 sayı ve 9 asistle öne çıkan bir performans oynadı. Mağlup tarafta Stephen Curry 38 sayıyla en skorer isim oldu.",
+      "muzip": false
+    },
+    "0022500627": {
+      "gec_satiri": "Gecenin ilk maçında Charlotte, Orlando'yu deplasmanda 124-97 geçti. Rakibine tam 27 sayı fark atan Hornets'te Brandon Miller, attığı 20 sayıyla öne çıktı. Mağlup Magic'te Paolo Banchero 23 sayı üretti.",
+      "muzip": false
+    },
+    "0022500633": {
+      "gec_satiri": "LA Clippers evinde 112-104 kazandı. Kawhi Leonard 24 sayı attı.",
+      "muzip": false
+    },
+    "0022500628": {
+      "baslik": "Philadelphia 76ers evinde 128-122 kazandı.",
+      "neden_onemli": "",
+      "ozet": "Philadelphia 76ers evinde 128-122 kazandı. Tyrese Maxey 36 sayı attı.",
+      "muzip": false
+    }
+  },
+  "brief": [
+    {
+      "metin": "Philadelphia 76ers evinde 128-122 kazandı.",
+      "hedef_mac": "0022500628",
+      "muzip": false
+    },
+    {
+      "metin": "Washington Wizards 8. mağlubiyetini üst üste aldı, Denver Nuggets kazandı.",
+      "hedef_mac": "0022500629",
+      "muzip": false
+    },
+    {
+      "metin": "LA Clippers 2. çeyrekte 10 sayılık üstünlük kurdu, Los Angeles Lakers'ı yendi.",
+      "hedef_mac": "0022500633",
+      "muzip": false
+    },
+    {
+      "metin": "Victor Wembanyama 5 blokla San Antonio Spurs'ın galibiyetinde öne çıktı.",
+      "hedef_mac": "0022500632",
+      "muzip": false
+    },
+    {
+      "metin": "14 sayı geriden gelen Chicago Bulls, Minnesota Timberwolves'ı deplasmanda geçti.",
+      "hedef_mac": "0022500631",
+      "muzip": false
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 15,
+    "ilk_denemede_kabul": 10,
+    "sablon_moduna_dusen": 3,
+    "detay": [
+      {
+        "mac_id": "0022500633",
+        "deneme": 0,
+        "gerekce": [
+          "gec_satiri/T6: 4 cümle (sınır 3)"
+        ],
+        "reddedilen_taslak": {
+          "gec_satiri": "LA Clippers, sahasında Los Angeles Lakers'ı 112-104 yendi. 2. çeyrekte 10 sayılık üstünlük sağlayan Clippers'ta Kawhi Leonard, 24 sayıyla takımını sırtladı. Lakers'ta Luka Dončić ise 32 sayı, 11 ribaund ve 8 asist üretti.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500628",
+        "deneme": 0,
+        "gerekce": [
+          "neden_onemli/T2: ['Sixers']",
+          "neden_onemli/T18: [\"'5. sırada' kesin sıra/rank iddiası — all-time sıralama veritabanımız yok, hiçbir kilometre kaydı bunu doğrulayamaz, HER ZAMAN reddedilir\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Philadelphia, sahasında Houston'ı uzatmada 128-122 yendi.",
+          "neden_onemli": "Doğu Konferansı'nda 5. sıradaki yerini koruyan Sixers, bir önceki mağlubiyetin ardından toparlandı.",
+          "ozet": "Houston, ilk periyotta öne geçti; Philadelphia ise dördüncü çeyreğin sonunda skoru eşitleyip maçı uzatmaya taşıdı. İki takım arasında lider değişimi gece boyu sık yaşandı. Uzatmada son saniyelerde attığı smaçla farkı 6'ya çıkaran Tyrese Maxey, 36 sayı ve 10 asistle double-double yaptı. Joel Embiid ise 32 sayı, 15 ribaund, 10 asistle triple-double'a ulaştı.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500633",
+        "deneme": 1,
+        "gerekce": [
+          "gec_satiri/T6: 4 cümle (sınır 3)"
+        ],
+        "reddedilen_taslak": {
+          "gec_satiri": "LA Clippers, sahasında Los Angeles Lakers'ı 112-104 yendi. 2. çeyrekte 10 sayılık üstünlük sağlayan Clippers'ta James Harden, 18 sayı ve 10 asistle takımını sırtladı. Mağlup Lakers'ta Luka Dončić 32 sayı, 11 ribaund ve 8 asist üretti.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500628",
+        "deneme": 1,
+        "gerekce": [
+          "ozet/T6: 5 cümle / 50 kelime (sınır 4 cümle / 75 kelime)"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Philadelphia, sahasında Houston'ı uzatmada 128-122 yendi.",
+          "neden_onemli": "Sixers iç sahadaki 24. maçını da kazanarak Doğu'da 5. sırasını korudu.",
+          "ozet": "Philadelphia ilk çeyreği 2 sayı geride kapadı. Maç, 4. çeyrek sonunda 115-115 eşitlenince uzatmaya gitti. Uzatmada Durant farkı 2'ye indirse de Maxey'nin serbest atışları ve son saniyedeki smaçı farkı yeniden 6'ya çıkardı. 36 sayı 10 asistle öne çıkan Maxey'e, 32 sayı 15 ribaund 10 asistle triple-double yapan Embiid eşlik etti.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500628",
+        "deneme": 0,
+        "gerekce": [
+          "T1: ['76']"
+        ],
+        "yer": "brief[0]",
+        "reddedilen_taslak": {
+          "metin": "Joel Embiid triple-double yaptı, Philadelphia 76ers Houston Rockets'ı evinde geçti.",
+          "hedef_mac": "0022500628",
+          "muzip": false
+        }
+      }
+    ],
+    "ret_orani": 0.333,
+    "kelime_butcesi_uygulandi": false,
+    "uretim_modu": "batch",
+    "kullanim": {
+      "cagri_sayisi": 11,
+      "girdi_token": 79892,
+      "cikti_token": 45242,
+      "cache_yazma_token": 2944,
+      "cache_okuma_token": 29440,
+      "toplam_maliyet_usd": 0.3127
+    }
+  }
+}

@@ -1,0 +1,52 @@
+name: Yayınla (09:00 TSİ)
+
+on:
+  schedule:
+    - cron: "0 6 * * *"     # 06:00 UTC = 09:00 TSİ
+  workflow_dispatch:
+
+concurrency:
+  group: overnight-yayin
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  yayinla:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # Hazır gece yoksa bu adım hiçbir şey yapmaz ve iş BAŞARILI biter —
+      # site olduğu gibi kalır. Kullanıcı kuralı: "Site sessizce boş
+      # kalmasın, hata halinde bir önceki gece durmaya devam etsin."
+      - name: Hazır geceyi siteye göm
+        run: python3 yayin.py yayinla
+
+      - name: Siteyi depoya yaz (Vercel bu push'la deploy eder)
+        run: |
+          git config user.name  "overnight-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add site/index.html config/yayin_durumu.json
+          if git diff --staged --quiet; then
+            echo "Yayınlanacak yeni gece yoktu — site aynen kaldı."
+          else
+            git commit -m "yayın: $(python3 -c "import json;d=json.load(open('config/yayin_durumu.json'));print(d['yayinlanan'][-1] if d['yayinlanan'] else '-')")"
+            git push
+          fi
+
+      - name: Hata bildirimi
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create \
+            --title "Yayın işi başarısız — $(date -u +%Y-%m-%d)" \
+            --body "09:00 yayın işi başarısız oldu. Site DEĞİŞMEDİ, bir önceki gece yayında. Kayıtlar: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"

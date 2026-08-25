@@ -1,0 +1,114 @@
+{
+  "tarih": "2026-01-02",
+  "uretildi": "2026-08-13T22:14:29.759646Z",
+  "maclar": {
+    "0022500482": {
+      "gec_satiri": "POR, dördüncü çeyrek başında farkı 20'ye çıkararak NOP'un altıncı maglubiyetini kesinleştirdi. Deni Avdija 34 sayı 11 asistle maçı yönetti, NOP 109-122 kaybetti.",
+      "muzip": false
+    },
+    "0022500478": {
+      "gec_satiri": "CLE evinde 113-108 kazandı. Jamal Murray 34 sayı attı.",
+      "muzip": false
+    },
+    "0022500480": {
+      "gec_satiri": "ORL ilk çeyreği 10 farkla açtı, CHI ikinci çeyrekte eşitleyip son çeyreği 30-19 aldı. 19 lider değişimiyle geçen maçı CHI 121-114 kazandı.",
+      "muzip": false
+    },
+    "0022500485": {
+      "gec_satiri": "LAL 15 sayıya kadar açılan farkı üçüncü çeyrekte MEM'e yakınlatırken kaybetti, skor 96-96'ya geldi. Son çeyrekte toparlayan ev sahibi 128-121 kazandı.",
+      "muzip": false
+    },
+    "0022500479": {
+      "gec_satiri": "Jalen Johnson 18 sayı, 10 ribaund, 11 asistle triple-double yaptı; ATL üçüncü çeyrek sonunda farkı 24'e çıkardı. NYK son çeyrekte yaklaştı ama 99-111 kaybetti.",
+      "muzip": false
+    },
+    "0022500483": {
+      "gec_satiri": "PHX ilk yarıdan itibaren kontrolü elden bırakmadı, üçüncü çeyrekte farkı 14'e taşıdı. Devin Booker 33 sayıyla SAC'ı 129-102 mağlup etti.",
+      "muzip": false
+    },
+    "0022500484": {
+      "gec_satiri": "GSW bu maçta bir kez bile öne geçemedi, en fazla 1 sayı yaklaşabildi. OKC üçüncü çeyrekte farkı 20'nin üzerine çıkarıp 131-94 kazandı; 30-5'lik rekoruyla ligin en iyisi.",
+      "muzip": true
+    },
+    "0022500476": {
+      "gec_satiri": "IND ikinci çeyrekte SAS'a 41-27 kaybederek farkı 13'e verdi ve on birinci maglubiyetini yaşadı. SAS son çeyrekte de üstünlüğünü koruyup 123-113 kazandı.",
+      "muzip": true
+    },
+    "0022500477": {
+      "gec_satiri": "WAS evinde 119-99 kazandı. Justin Champagnie 20 sayı attı.",
+      "muzip": false
+    },
+    "0022500481": {
+      "baslik": "Giannis'in son saniyedeki alley-oop smaçıyla Milwaukee, Charlotte'u 1 sayı farkla geçti",
+      "neden_onemli": "Milwaukee, 14 sayılık geriden dönüp son çeyrekte 5 lider değişimiyle 1 sayı farkla kazandı.",
+      "ozet": "Charlotte ilk çeyreği 38-24 alarak maça 14 sayılık farkla başladı ve üçüncü çeyreğe kadar üstünlüğünü korudu. Milwaukee, Kuzma'nın basketiyle üçüncü çeyrekte öne geçti, ama fark son çeyreğe kadar açılıp kapanmaya devam etti. Son periyotta taraflar beş kez lider değişti; Rollins'in 29 sayılık gecesi ve Giannis'in 30 sayı 10 ribaundu maçı taşıdı. Charlotte, üç çeyrek boyunca koruduğu üstünlüğü 4.7 saniye kala Giannis'in alley-oop smaçına kaptırdı.",
+      "muzip": true
+    }
+  },
+  "brief": [
+    {
+      "metin": "POR, NOP deplasmanında 13 farkla kazandı, maglubiyet serisi 6'ya çıktı.",
+      "hedef_mac": "0022500482",
+      "muzip": false
+    },
+    {
+      "metin": "CLE, DEN'i son çeyrekte geride bırakıp 113-108 kazandı.",
+      "hedef_mac": "0022500478",
+      "muzip": false
+    },
+    {
+      "metin": "CHI, 19 lider değişimli maçı ORL karşısında 121-114 kazandı.",
+      "hedef_mac": "0022500480",
+      "muzip": false
+    },
+    {
+      "metin": "LAL, MEM'in geri dönüşüne rağmen 128-121 üstünlük kurdu.",
+      "hedef_mac": "0022500485",
+      "muzip": false
+    },
+    {
+      "metin": "ATL, NYK'yi 111-99 yendi; Jalen Johnson triple-double yaptı.",
+      "hedef_mac": "0022500479",
+      "muzip": false
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 15,
+    "ilk_denemede_kabul": 13,
+    "sablon_moduna_dusen": 2,
+    "detay": [
+      {
+        "mac_id": "0022500478",
+        "deneme": 0,
+        "gerekce": [
+          "gec_satiri/T2: ['Ev']"
+        ],
+        "reddedilen_taslak": {
+          "gec_satiri": "DEN üçüncü çeyreği 38-26 alıp 9 sayı öne geçti, ama CLE son çeyreği 25-11 kapatıp geri döndü. Ev sahibi 113-108 kazandı, seri üçe çıktı.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500477",
+        "deneme": 0,
+        "gerekce": [
+          "gec_satiri/T2: ['Ev']"
+        ],
+        "reddedilen_taslak": {
+          "gec_satiri": "BKN ilk çeyrekte öne geçse de WAS hemen devraldı, üçüncü çeyrekte fark 22'ye ulaştı. Ev sahibi 119-99 kazanarak ikinci galibiyetini aldı.",
+          "muzip": false
+        }
+      }
+    ],
+    "ret_orani": 0.133,
+    "kelime_butcesi_uygulandi": false,
+    "kullanim": {
+      "cagri_sayisi": 2,
+      "girdi_token": 36651,
+      "cikti_token": 6235,
+      "cache_yazma_token": 4354,
+      "cache_okuma_token": 4354,
+      "toplam_maliyet_usd": 0.1474
+    }
+  }
+}

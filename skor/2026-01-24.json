@@ -1,0 +1,151 @@
+{
+  "tarih": "2026-01-24",
+  "hesaplandi": "2026-08-14T23:52:59.852342Z",
+  "en_iyi_skor": 9.04,
+  "maclar": [
+    {
+      "rozet": 9.04,
+      "ham": 10.92,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 9.14,
+        "K": 4.3,
+        "T": 0,
+        "D": 6
+      },
+      "yukselticiler": {
+        "Y": 4.6,
+        "F": 3,
+        "G": 8,
+        "A": 5.12
+      },
+      "dram_terfi": true,
+      "mac_id": "0022500648",
+      "ev": "DAL",
+      "dep": "LAL",
+      "ev_skor": 110,
+      "dep_skor": 116,
+      "en_iyi_performans": "Luka Dončić"
+    },
+    {
+      "rozet": 8.64,
+      "ham": 9.54,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 5.48,
+        "K": 2.58,
+        "T": 0,
+        "D": 8
+      },
+      "yukselticiler": {
+        "Y": 7.21,
+        "F": 10,
+        "G": 0,
+        "A": 4.83
+      },
+      "dram_terfi": true,
+      "mac_id": "0022500647",
+      "ev": "CHI",
+      "dep": "BOS",
+      "ev_skor": 114,
+      "dep_skor": 111,
+      "en_iyi_performans": "Jaylen Brown"
+    },
+    {
+      "rozet": 8.45,
+      "ham": 9.02,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 7.68,
+        "K": 4.32,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 4.05,
+        "F": 6,
+        "G": 0,
+        "A": 6.33
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500643",
+      "ev": "PHI",
+      "dep": "NYK",
+      "ev_skor": 109,
+      "dep_skor": 112,
+      "en_iyi_performans": "Joel Embiid"
+    },
+    {
+      "rozet": 6.44,
+      "ham": 6.44,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 5.76,
+        "K": 4.41,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.55,
+        "F": 0,
+        "G": 0,
+        "A": 5.62
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500646",
+      "ev": "ORL",
+      "dep": "CLE",
+      "ev_skor": 105,
+      "dep_skor": 119,
+      "en_iyi_performans": "Donovan Mitchell"
+    },
+    {
+      "rozet": 3.31,
+      "ham": 3.31,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 3.25,
+        "K": 0.64,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.98,
+        "F": 6,
+        "G": 0,
+        "A": 3.0
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500645",
+      "ev": "CHA",
+      "dep": "WAS",
+      "ev_skor": 119,
+      "dep_skor": 115,
+      "en_iyi_performans": "Justin Champagnie"
+    },
+    {
+      "rozet": 3.16,
+      "ham": 3.16,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 3.13,
+        "K": 2.27,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.75,
+        "F": 0,
+        "G": 0,
+        "A": 1.5
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500649",
+      "ev": "UTA",
+      "dep": "MIA",
+      "ev_skor": 116,
+      "dep_skor": 147,
+      "en_iyi_performans": "Bam Adebayo"
+    }
+  ]
+}

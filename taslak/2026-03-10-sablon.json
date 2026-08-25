@@ -1,0 +1,85 @@
+{
+  "tarih": "2026-03-10",
+  "uretildi": "2026-08-20T16:34:18.907966Z",
+  "maclar": {
+    "0022500943": {
+      "gec_satiri": "Chicago Bulls deplasmanda 130-124 kazandı. Matas Buzelis 41 sayı attı. Chicago Bulls, konferansta 12. sırada yer alıyor.",
+      "muzip": false
+    },
+    "0022500944": {
+      "gec_satiri": "Charlotte Hornets, Portland Trail Blazers'i 2 sayı farkla 103-101 yendi. Brandon Miller 23 sayı attı. Mağlup tarafta Jerami Grant 24 sayı attı.",
+      "muzip": false
+    },
+    "0022500940": {
+      "gec_satiri": "Houston Rockets evinde 113-99 kazandı. Kevin Durant 29 sayı attı. Houston Rockets, galibiyet sayısını 40'e yükseltti.",
+      "muzip": false
+    },
+    "0022500945": {
+      "gec_satiri": "Konferans sıralamasını yakından ilgilendiren maçta Sacramento Kings, Indiana Pacers'i 114-109 yendi. Devin Carter 24 sayı attı. Indiana Pacers, 10. mağlubiyetini üst üste aldı.",
+      "muzip": false
+    },
+    "0022500946": {
+      "gec_satiri": "Los Angeles Lakers evinde 120-106 kazandı. Austin Reaves 31 sayı attı. Los Angeles Lakers, 3. çeyrekte 16 sayılık üstünlük kurdu.",
+      "muzip": false
+    },
+    "0022500941": {
+      "gec_satiri": "Phoenix Suns deplasmanda 129-114 kazandı. Devin Booker 27 sayı attı. Mağlup tarafta Kyle Kuzma 33 sayı attı.",
+      "muzip": false
+    },
+    "0022500939": {
+      "gec_satiri": "Son maçlarında formda olan Atlanta Hawks, Dallas Mavericks'i 124-112 yenerek 7 maçlık galibiyet serisini sürdürdü. Nickeil Alexander-Walker 29 sayı attı.",
+      "muzip": false
+    },
+    "0022500937": {
+      "gec_satiri": "Detroit Pistons deplasmanda Brooklyn Nets'i 138-100 farkla ezdi. Jalen Duren 26 sayı attı. Detroit Pistons, 4 maç aradan sonra kazandı.",
+      "muzip": false
+    },
+    "0022500938": {
+      "baslik": "Miami Heat, Washington Wizards'ı 150-129 yendi.",
+      "neden_onemli": "Miami Heat, konferansta 6. sıraya oturdu.",
+      "ozet": "Miami Heat, Washington Wizards'ı 150-129 yendi. 1. çeyrekte 11 sayı üstünlük kuran Miami Heat, bunu sonuna kadar korudu. Bam Adebayo, 83 sayı, 9 ribaund, 3 asistle gecenin en etkili ismiydi. Ondan önce NBA tarihinde bu eşiği (80+ sayı) sadece 2 oyuncu geçmişti.",
+      "muzip": false
+    },
+    "0022500936": {
+      "baslik": "Philadelphia 76ers, Memphis Grizzlies'i 139-129 yendi.",
+      "neden_onemli": "Philadelphia 76ers, konferansta 8. sıraya oturdu.",
+      "ozet_kisa": "Philadelphia 76ers, 14 sayıya kadar açılan farktan dönerek Memphis Grizzlies'i 139-129 yendi. Cameron Payne, 32 sayı, 3 ribaund, 10 asistle gecenin en etkili ismiydi.",
+      "muzip": false
+    },
+    "0022500942": {
+      "baslik": "San Antonio Spurs, Boston Celtics'i 125-116 yendi.",
+      "neden_onemli": "San Antonio Spurs, konferansta 2. sıraya oturdu.",
+      "ozet_kisa": "San Antonio Spurs, Boston Celtics'i 125-116 yendi. Victor Wembanyama, 39 sayı, 11 ribaund, 3 asistle gecenin en etkili ismiydi.",
+      "muzip": false
+    }
+  },
+  "brief": [
+    {
+      "metin": "Bam Adebayo tarihe geçti — Washington Wizards karşısında 83 sayı attı.",
+      "hedef_mac": "0022500938",
+      "muzip": false
+    },
+    {
+      "metin": "Philadelphia 76ers, 14 sayılık farktan dönüp Memphis Grizzlies'i geçti.",
+      "hedef_mac": "0022500936",
+      "muzip": false
+    },
+    {
+      "metin": "Batı'nın zirvesinde San Antonio Spurs, Boston Celtics'i geçti.",
+      "hedef_mac": "0022500942",
+      "muzip": false
+    },
+    {
+      "metin": "Chicago Bulls, Golden State Warriors'u yenerek konferansta 12. sıraya oturdu.",
+      "hedef_mac": "0022500943",
+      "muzip": false
+    }
+  ],
+  "rapor": {
+    "uretim_modu": "sablon",
+    "kullanim": {
+      "cagri_sayisi": 0,
+      "toplam_maliyet_usd": 0.0
+    }
+  }
+}

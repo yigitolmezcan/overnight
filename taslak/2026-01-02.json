@@ -1,0 +1,73 @@
+{
+  "tarih": "2026-01-02",
+  "uretildi": "2026-08-21T14:09:20.020201Z",
+  "maclar": {
+    "0022500482": {
+      "gec_satiri": "Portland Trail Blazers deplasmanda 122-109 kazandı. Mağlup tarafta Zion Williamson 35 sayı attı.",
+      "muzip": false
+    },
+    "0022500485": {
+      "gec_satiri": "Los Angeles Lakers evinde 128-121 kazandı. Luka Dončić 34 sayı attı.",
+      "muzip": false
+    },
+    "0022500480": {
+      "gec_satiri": "Konferans sıralamasını yakından ilgilendiren maçta Chicago Bulls, Orlando Magic'i 121-114 yendi. Mağlup tarafta Paolo Banchero 31 sayı attı.",
+      "muzip": false
+    },
+    "0022500478": {
+      "gec_satiri": "Cleveland Cavaliers evinde 113-108 kazandı. Donovan Mitchell 33 sayı attı.",
+      "muzip": false
+    },
+    "0022500483": {
+      "gec_satiri": "Phoenix Suns evinde 129-102 yendi. Devin Booker 33 sayı attı.",
+      "muzip": false
+    },
+    "0022500479": {
+      "gec_satiri": "Atlanta Hawks deplasmanda 111-99 yendi.",
+      "muzip": false
+    },
+    "0022500484": {
+      "gec_satiri": "Oklahoma City Thunder deplasmanda 131-94 yendi. Shai Gilgeous-Alexander 30 sayı attı.",
+      "muzip": false
+    },
+    "0022500476": {
+      "gec_satiri": "San Antonio Spurs deplasmanda 123-113 yendi.",
+      "muzip": false
+    },
+    "0022500477": {
+      "gec_satiri": "Washington Wizards evinde 119-99 yendi.",
+      "muzip": false
+    },
+    "0022500481": {
+      "baslik": "Milwaukee Bucks, Charlotte Hornets'i 122-121 yendi.",
+      "neden_onemli": "Milwaukee Bucks, konferansta 11. sıraya oturdu.",
+      "ozet": "Milwaukee Bucks, bitime 4.7 saniye kala bulduğu basketle Charlotte Hornets'i 122-121 yendi. Giannis Antetokounmpo 30 sayı attı.",
+      "muzip": false
+    }
+  },
+  "brief": [
+    {
+      "metin": "Milwaukee Bucks, 16 sayılık farktan dönüp Charlotte Hornets'i geçti.",
+      "hedef_mac": "0022500481",
+      "muzip": false
+    },
+    {
+      "metin": "Portland Trail Blazers, New Orleans Pelicans'ı yenerek konferansta 10. sıraya oturdu.",
+      "hedef_mac": "0022500482",
+      "muzip": false
+    },
+    {
+      "metin": "Chicago Bulls, 4. çeyrekte kurduğu üstünlükle Orlando Magic'i geçti.",
+      "hedef_mac": "0022500480",
+      "muzip": false
+    }
+  ],
+  "rapor": {
+    "uretim_modu": "sablon",
+    "kullanim": {
+      "cagri_sayisi": 0,
+      "toplam_maliyet_usd": 0.0
+    },
+    "sablon_isaretli": []
+  }
+}

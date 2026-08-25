@@ -1,0 +1,88 @@
+{
+  "tarih": "2026-02-12",
+  "uretildi": "2026-08-24T22:09:13.622526Z",
+  "maclar": {
+    "0022500791": {
+      "gec_satiri": "LeBron James'in 28 sayılık gecesinde Los Angeles Lakers, Dallas Mavericks'i 124-104 yendi. LeBron James 12 asist verdi.",
+      "muzip": false
+    },
+    "0022500789": {
+      "gec_satiri": "Sürpriz bir sonuçla Milwaukee Bucks, Oklahoma City Thunder'i 110-93 yendi.",
+      "muzip": false
+    },
+    "0022500790": {
+      "baslik": "Portland Trail Blazers deplasmanda Utah Jazz'ı 135-119 yendi.",
+      "ozet": "Portland Trail Blazers deplasmanda Utah Jazz'ı 135-119 yendi. Jrue Holiday 31 sayı attı.",
+      "muzip": false
+    }
+  },
+  "brief": [
+    {
+      "metin": "Jrue Holiday, Utah Jazz karşısında 31 sayı attı.",
+      "hedef_mac": "0022500790",
+      "muzip": false
+    },
+    {
+      "metin": "Sürpriz bir sonuçla Milwaukee Bucks, Oklahoma City Thunder'i yendi.",
+      "hedef_mac": "0022500789",
+      "muzip": false
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 3,
+    "ilk_denemede_kabul": 0,
+    "sablon_moduna_dusen": 1,
+    "detay": [
+      {
+        "mac_id": "0022500790",
+        "deneme": 0,
+        "gerekce": [
+          "neden_onemli/T23: [\"lider değişimi ALT KIRILIMI ('Maçta liderlik 7 kez el değiştirdi, ancak son çeyrekte hiç değişmedi') hiçbir zaman yazılmaz — sadece maç geneli toplamı, 15+ ise\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Gecenin ikinci maçında Portland, Utah'ı üçüncü çeyrekle 135-119 geçti",
+          "neden_onemli": "Maçta liderlik 7 kez el değiştirdi, ancak son çeyrekte hiç değişmedi.",
+          "ozet": "Utah Jazz, ilk çeyreği 3 sayı önde kapadı ve ikinci çeyrekte de farkı 2 sayıda tuttu. İkinci periyodun son dakikasında Jrue Holiday'in skoru 56-56'ya getiren üçlüğünden sonra Portland Trail Blazers üçüncü çeyrekte 40-23'lük seriyle farkı 15 sayıya çıkardı. Blazers, son çeyrekte farkı hiç 15'in altına indirmeyerek maçı kontrol altında bitirdi. Holiday, attığı 31 sayı, 9 ribaund ve 7 asistle gecenin en verimli ismi oldu.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500790",
+        "deneme": 1,
+        "gerekce": [
+          "ozet/T4d: [\"'damgasını vurdu' (damga vurmak (klişe))\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Portland Trail Blazers, 3. çeyrek çıkışıyla Utah Jazz'ı 135-119 yendi",
+          "neden_onemli": "Jrue Holiday, 31 sayı ve 10/15 isabetle Blazers'ın en verimli ismi oldu.",
+          "ozet": "Gecenin ilk maçında Utah Jazz, ilk çeyreği 31-28 önde tamamladı ve ilk yarıyı 63-61'lik dar farkla kapadı. Üçüncü çeyrekte Blazers'ın 40-23'lük üstünlüğü maçı belirledi, fark 15 sayıya çıktı. Son periyotta Jrue Holiday'in ortadan attığı basketle sayısı 31'e yükseldi ve Blazers farkı 16'ya taşıdı. Holiday, 10/15 şutla 31 sayı, 9 ribaund ve 7 asistle geceye damgasını vurdu.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500790",
+        "deneme": 2,
+        "gerekce": [
+          "neden_onemli/T16: [\"'farkına döndü' civarındaki geri dönüş 10 sayının altında\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Portland, üçüncü çeyrek çıkışıyla Utah'ı 135-119 yendi",
+          "neden_onemli": "Maç, liderliğin 7 kez el değiştirdiği çekişmeli bir başlangıçtan Portland'ın rahat farkına döndü.",
+          "ozet": "Gecenin ikinci maçında Utah, ilk yarıyı Portland'a karşı iki sayı önde tamamladı. Üçüncü çeyrekte Portland'ın çıkışı skoru çevirdi, farkı 15 sayıya çıkardı. Maçı belirleyen an, Jrue Holiday'in üçüncü çeyrek başında attığı basketle liderliği Portland'a geçirmesiydi. Holiday finali 31 sayı, 9 ribaund ve 7 asistle tamamladı, 10/15 isabetli şutla en verimli performansı üretti.",
+          "muzip": false
+        }
+      }
+    ],
+    "sablon_isaretli": [],
+    "ret_orani": 1.0,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 3,
+      "girdi_token": 47104,
+      "cikti_token": 8164,
+      "cache_yazma_token": 7172,
+      "cache_okuma_token": 14344,
+      "toplam_maliyet_usd": 0.1966
+    }
+  }
+}

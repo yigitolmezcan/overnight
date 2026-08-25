@@ -1,0 +1,79 @@
+{
+  "tarih": "2026-02-12",
+  "hesaplandi": "2026-08-24T22:06:58.472829Z",
+  "en_iyi_skor": 7.5,
+  "maclar": [
+    {
+      "rozet": 7.5,
+      "ham": 7.5,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 7.75,
+        "K": 3.48,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.08,
+        "F": 0,
+        "G": 0,
+        "A": 0.75
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500790",
+      "ev": "UTA",
+      "dep": "POR",
+      "ev_skor": 119,
+      "dep_skor": 135,
+      "en_iyi_performans": "Jrue Holiday"
+    },
+    {
+      "rozet": 6.81,
+      "ham": 6.81,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.82,
+        "K": 3.36,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.08,
+        "F": 0,
+        "G": 0,
+        "A": 3.17
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500791",
+      "ev": "LAL",
+      "dep": "DAL",
+      "ev_skor": 124,
+      "dep_skor": 104,
+      "en_iyi_performans": "LeBron James"
+    },
+    {
+      "rozet": 6.69,
+      "ham": 6.69,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 4.25,
+        "K": 6.41,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.27,
+        "F": 0,
+        "G": 0,
+        "A": 4.04
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500789",
+      "ev": "OKC",
+      "dep": "MIL",
+      "ev_skor": 93,
+      "dep_skor": 110,
+      "en_iyi_performans": "Ousmane Dieng"
+    }
+  ]
+}

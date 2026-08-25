@@ -1,0 +1,90 @@
+{
+  "tarih": "2025-10-22",
+  "uretildi": "2026-08-21T14:09:24.425357Z",
+  "maclar": {
+    "0022500086": {
+      "gec_satiri": "Milwaukee Bucks evinde 133-120 kazandı. Giannis Antetokounmpo 37 sayı attı.",
+      "muzip": false
+    },
+    "0022500004": {
+      "gec_satiri": "San Antonio Spurs deplasmanda Dallas Mavericks'i 125-92 ezdi. Victor Wembanyama 40 sayı attı.",
+      "muzip": false
+    },
+    "0022500089": {
+      "gec_satiri": "Anthony Edwards'ın 41 sayılık gecesinde Minnesota Timberwolves, Portland Trail Blazers'i 118-114 yendi. Anthony Edwards 41 sayı attı.",
+      "muzip": false
+    },
+    "0022500084": {
+      "gec_satiri": "Chicago Bulls evinde 115-111 kazandı.",
+      "muzip": false
+    },
+    "0022500087": {
+      "gec_satiri": "Utah Jazz evinde 129-108 kazandı.",
+      "muzip": false
+    },
+    "0022500081": {
+      "gec_satiri": "Orlando Magic evinde 125-121 kazandı. Orlando Magic, 12 sayılık farktan dönerek kazandı.",
+      "muzip": false
+    },
+    "0022500082": {
+      "gec_satiri": "Toronto Raptors deplasmanda 138-118 kazandı.",
+      "muzip": false
+    },
+    "0022500003": {
+      "gec_satiri": "New York Knicks evinde 119-111 kazandı. Mağlup tarafta Donovan Mitchell 31 sayı attı.",
+      "muzip": false
+    },
+    "0022500080": {
+      "gec_satiri": "Charlotte Hornets evinde 136-117 yendi.",
+      "muzip": false
+    },
+    "0022500088": {
+      "baslik": "Phoenix Suns, Sacramento Kings'i 120-116 yendi.",
+      "neden_onemli": "Phoenix Suns, 20 sayılık farktan döndü.",
+      "ozet": "Phoenix Suns evinde 120-116 kazandı. Phoenix Suns, 20 sayılık farktan dönerek kazandı.",
+      "muzip": false
+    },
+    "0022500085": {
+      "baslik": "Memphis Grizzlies, New Orleans Pelicans'ı 128-122 yendi.",
+      "neden_onemli": "Memphis Grizzlies, 15 sayılık farktan döndü.",
+      "ozet": "Memphis Grizzlies evinde 128-122 kazandı. Memphis Grizzlies, 15 sayılık farktan dönerek kazandı. Ja Morant 35 sayı attı.",
+      "muzip": false
+    },
+    "0022500083": {
+      "baslik": "Philadelphia 76ers, Boston Celtics'i 117-116 yendi.",
+      "neden_onemli": "Philadelphia 76ers, 13 sayılık farktan döndü.",
+      "ozet": "Philadelphia 76ers, nefes kesen bir maçta Boston Celtics'i 117-116 yendi. Tyrese Maxey 40 sayı attı.",
+      "muzip": false
+    }
+  },
+  "brief": [
+    {
+      "metin": "Phoenix Suns, 20 sayılık farktan dönüp Sacramento Kings'i geçti.",
+      "hedef_mac": "0022500088",
+      "muzip": false
+    },
+    {
+      "metin": "Memphis Grizzlies, 3. çeyrekte kurduğu üstünlükle New Orleans Pelicans'ı geçti.",
+      "hedef_mac": "0022500085",
+      "muzip": false
+    },
+    {
+      "metin": "Tyrese Maxey, Boston Celtics karşısında 40 sayı attı.",
+      "hedef_mac": "0022500083",
+      "muzip": false
+    },
+    {
+      "metin": "Victor Wembanyama, Dallas Mavericks karşısında 40 sayı attı.",
+      "hedef_mac": "0022500004",
+      "muzip": false
+    }
+  ],
+  "rapor": {
+    "uretim_modu": "sablon",
+    "kullanim": {
+      "cagri_sayisi": 0,
+      "toplam_maliyet_usd": 0.0
+    },
+    "sablon_isaretli": []
+  }
+}

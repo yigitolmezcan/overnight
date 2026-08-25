@@ -1,0 +1,138 @@
+{
+  "tarih": "2026-03-10",
+  "uretildi": "2026-08-20T22:33:58.231556Z",
+  "maclar": {
+    "0022500943": {
+      "gec_satiri": "Chicago Bulls deplasmanda 130-124 kazandı. Matas Buzelis 41 sayı attı. Chicago Bulls, konferansta 12. sırada yer alıyor.",
+      "muzip": false
+    },
+    "0022500944": {
+      "gec_satiri": "Charlotte Hornets, nefes kesen bir maçta Portland Trail Blazers'i 103-101 yendi. Brandon Miller 23 sayı attı. Mağlup tarafta Jerami Grant 24 sayı attı.",
+      "muzip": false
+    },
+    "0022500940": {
+      "gec_satiri": "Houston Rockets evinde 113-99 kazandı. Kevin Durant 29 sayı attı. Houston Rockets, 40. galibiyetini aldı.",
+      "muzip": false
+    },
+    "0022500945": {
+      "gec_satiri": "Konferans sıralamasını yakından ilgilendiren maçta Sacramento Kings, Indiana Pacers'i 114-109 yendi. Devin Carter 24 sayı attı. Sacramento Kings, 4. çeyrekte 15 sayılık üstünlük kurdu.",
+      "muzip": false
+    },
+    "0022500946": {
+      "gec_satiri": "Los Angeles Lakers evinde 120-106 kazandı. Austin Reaves 31 sayı attı. Luka Dončić da 31 sayı attı.",
+      "muzip": false
+    },
+    "0022500941": {
+      "gec_satiri": "Phoenix Suns deplasmanda 129-114 kazandı. Devin Booker 27 sayı attı. Mağlup tarafta Kyle Kuzma 33 sayı attı.",
+      "muzip": false
+    },
+    "0022500939": {
+      "gec_satiri": "Son maçlarında formda olan Atlanta Hawks, Dallas Mavericks'i 124-112 yenerek 7 maçlık galibiyet serisini sürdürdü.",
+      "muzip": false
+    },
+    "0022500937": {
+      "gec_satiri": "Detroit Pistons deplasmanda Brooklyn Nets'i 138-100 farkla ezdi. Cade Cunningham 15 asist verdi.",
+      "muzip": false
+    },
+    "0022500938": {
+      "baslik": "Bam Adebayo, attığı 83 sayıyla Miami'yi sırtladı",
+      "neden_onemli": "Bu skorla NBA tarihinde 80+ sayı atan üçüncü oyuncu oldu.",
+      "ozet": "Miami, ilk çeyrekte Bam Adebayo'nun attığı 31 sayıyla 11 farkla öne geçti. Washington, üçüncü çeyrekte farkın 20'ye çıkmasıyla maçı pratikte kaybetti. Adebayo, son çeyrekte serbest atışlarla skorunu 83'e taşıdı, Miami rahat bir 150-129 galibiyet aldı. 41 dakikada 20/43 şut kullanan Adebayo'nun 83 sayısının 36'sı serbest atıştan geldi.",
+      "muzip": false
+    },
+    "0022500936": {
+      "baslik": "Philadelphia 76ers, Memphis Grizzlies'i 139-129 yendi.",
+      "neden_onemli": "Philadelphia 76ers, konferansta 8. sıraya oturdu.",
+      "ozet_kisa": "Philadelphia 76ers, 14 sayıya kadar açılan farktan dönerek Memphis Grizzlies'i 139-129 yendi. Cameron Payne, 32 sayı, 3 ribaund, 10 asistle gecenin en etkili ismiydi.",
+      "muzip": false
+    },
+    "0022500942": {
+      "baslik": "San Antonio, konuk Boston'ı 125-116 mağlup etti.",
+      "neden_onemli": "Bu galibiyetle Spurs üst üste 5. galibiyetini alıp Batı'da 2. sırayı korudu.",
+      "ozet_kisa": "Konferanslarının zirvesindeki iki takım karşılaştığında San Antonio, üçüncü çeyrekte açtığı farkı sonuna kadar korudu. Victor Wembanyama 39 sayı, 11 ribaund ve 2 blokla maçın en etkili ismiydi. Bismack Biyombo, Kelly Olynyk'suz çıkılan bu maçta yine forma giymedi.",
+      "muzip": false
+    }
+  },
+  "brief": [
+    {
+      "metin": "Bam Adebayo tarihe geçti, Washington Wizards karşısında 83 sayı attı.",
+      "hedef_mac": "0022500938",
+      "muzip": false
+    },
+    {
+      "metin": "Philadelphia 76ers, 14 sayılık farktan dönüp Memphis Grizzlies'i geçti.",
+      "hedef_mac": "0022500936",
+      "muzip": false
+    },
+    {
+      "metin": "Batı'nın zirvesinde San Antonio Spurs, Boston Celtics'i geçti.",
+      "hedef_mac": "0022500942",
+      "muzip": false
+    },
+    {
+      "metin": "Chicago Bulls, Golden State Warriors'u yenerek konferansta 12. sıraya oturdu.",
+      "hedef_mac": "0022500943",
+      "muzip": false
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 5,
+    "ilk_denemede_kabul": 2,
+    "sablon_moduna_dusen": 1,
+    "detay": [
+      {
+        "mac_id": "0022500936",
+        "deneme": 0,
+        "gerekce": [
+          "neden_onemli/T16: [\"'üst üste' iddiası (PHI, seri uzunluğu 1) 4 eşiğinin altında\"]",
+          "ozet_kisa/T4d: [\"'farkın 14 sayıya kadar açıldığı' (farkı açmak — 'farkı yükseltti/çıkardı' kullanılmalı)\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Philadelphia, liderliğin 18 kez el değiştirdiği maçta Memphis'i yendi.",
+          "neden_onemli": "Memphis üst üste 5. mağlubiyetini alırken Philadelphia iki maç sonra kazandı.",
+          "ozet_kisa": "Philadelphia, ilk yarının sonunda farkın 14 sayıya kadar açıldığı maçta Memphis'i farktan dönüp geçti. Cameron Payne 32 sayı, 10 asist ve isabet ettirdiği 8 üçlükle öne çıktı. Grimes'ın son çeyrekteki serbest atışı skoru 116-115'e getirdi, Philadelphia bir daha geride kalmadı.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500936",
+        "deneme": 1,
+        "gerekce": [
+          "neden_onemli/T4: ['kayıp serisi']",
+          "neden_onemli/T16: [\"'üst üste' iddiası (PHI, seri uzunluğu 1) 4 eşiğinin altında\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Philadelphia, liderliğin 18 kez değiştiği maçta Memphis'i farktan dönüp yendi.",
+          "neden_onemli": "Memphis, üst üste 5. mağlubiyetini alırken Philadelphia iki maçlık kayıp serisini bitirdi.",
+          "ozet_kisa": "İlk yarının sonunda farkı 14 sayıya kadar yükselten Memphis'i, Philadelphia son çeyrekte geçti ve 139-129 kazandı. Cameron Payne 32 sayı, 10 asist ve 8/8 üçlük atışla maçın en etkili ismi oldu.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500936",
+        "deneme": 2,
+        "gerekce": [
+          "neden_onemli/T16: [\"'üst üste' iddiası (PHI, seri uzunluğu 1) 4 eşiğinin altında\"]",
+          "ozet_kisa/T2: ['Sixers']"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Liderliğin 18 kez el değiştirdiği maçta Philadelphia, Memphis'i 139-129 yendi.",
+          "neden_onemli": "Memphis bu mağlubiyetle üst üste 5. maçını kaybetti.",
+          "ozet_kisa": "Philadelphia, ilk yarının sonunda 14 sayıya kadar açılan farktan dönerek kazandı. Son çeyrekte Grimes'ın serbest atışıyla öne geçen Sixers bir daha geride kalmadı. Cameron Payne 32 sayı, 10 asist ve 8/8 üçlük isabetiyle maçın en etkili ismi oldu.",
+          "muzip": false
+        }
+      }
+    ],
+    "sablon_isaretli": [],
+    "ret_orani": 0.6,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 5,
+      "girdi_token": 88059,
+      "cikti_token": 15213,
+      "cache_yazma_token": 0,
+      "cache_okuma_token": 28175,
+      "toplam_maliyet_usd": 0.3339
+    }
+  }
+}

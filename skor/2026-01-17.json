@@ -1,0 +1,223 @@
+{
+  "tarih": "2026-01-17",
+  "hesaplandi": "2026-08-15T02:06:16.217748Z",
+  "en_iyi_skor": 9.27,
+  "maclar": [
+    {
+      "rozet": 9.27,
+      "ham": 12.04,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 10,
+        "K": 2.36,
+        "T": 6,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 5.78,
+        "F": 6,
+        "G": 0,
+        "A": 7.83
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500598",
+      "ev": "SAS",
+      "dep": "MIN",
+      "ev_skor": 126,
+      "dep_skor": 123,
+      "en_iyi_performans": "Anthony Edwards"
+    },
+    {
+      "rozet": 8.93,
+      "ham": 10.51,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 9.82,
+        "K": 1.94,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 8.14,
+        "F": 6,
+        "G": 0,
+        "A": 8.0
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500597",
+      "ev": "MIA",
+      "dep": "OKC",
+      "ev_skor": 122,
+      "dep_skor": 120,
+      "en_iyi_performans": "Shai Gilgeous-Alexander"
+    },
+    {
+      "rozet": 8.35,
+      "ham": 8.77,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 8.98,
+        "K": 0.22,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 6.85,
+        "F": 3,
+        "G": 0,
+        "A": 2.0
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500600",
+      "ev": "DEN",
+      "dep": "WAS",
+      "ev_skor": 121,
+      "dep_skor": 115,
+      "en_iyi_performans": "Jamal Murray"
+    },
+    {
+      "rozet": 7.24,
+      "ham": 7.24,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 7.31,
+        "K": 3.66,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.16,
+        "F": 0,
+        "G": 0,
+        "A": 4.5
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500594",
+      "ev": "ATL",
+      "dep": "BOS",
+      "ev_skor": 106,
+      "dep_skor": 132,
+      "en_iyi_performans": "Jaylen Brown"
+    },
+    {
+      "rozet": 5.85,
+      "ham": 5.85,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 3.04,
+        "K": 4.71,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 5.48,
+        "F": 3,
+        "G": 6,
+        "A": 5.5
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500596",
+      "ev": "NYK",
+      "dep": "PHX",
+      "ev_skor": 99,
+      "dep_skor": 106,
+      "en_iyi_performans": "Miles McBride"
+    },
+    {
+      "rozet": 5.2,
+      "ham": 5.2,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 5.77,
+        "K": 1.66,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.42,
+        "F": 0,
+        "G": 0,
+        "A": 0.75
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500593",
+      "ev": "DAL",
+      "dep": "UTA",
+      "ev_skor": 138,
+      "dep_skor": 120,
+      "en_iyi_performans": "Keyonte George"
+    },
+    {
+      "rozet": 4.08,
+      "ham": 4.08,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 0.8,
+        "K": 4.48,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.29,
+        "F": 0,
+        "G": 0,
+        "A": 3.58
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500601",
+      "ev": "POR",
+      "dep": "LAL",
+      "ev_skor": 132,
+      "dep_skor": 116,
+      "en_iyi_performans": "LeBron James"
+    },
+    {
+      "rozet": 3.66,
+      "ham": 3.66,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 3.61,
+        "K": 1.72,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.76,
+        "F": 0,
+        "G": 0,
+        "A": 4.75
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500599",
+      "ev": "GSW",
+      "dep": "CHA",
+      "ev_skor": 136,
+      "dep_skor": 116,
+      "en_iyi_performans": "Kon Knueppel"
+    },
+    {
+      "rozet": 0.84,
+      "ham": 0.84,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 0.98,
+        "K": 0.0,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.08,
+        "F": 0,
+        "G": 0,
+        "A": 4.25
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500595",
+      "ev": "DET",
+      "dep": "IND",
+      "ev_skor": 121,
+      "dep_skor": 78,
+      "en_iyi_performans": "Javonte Green"
+    }
+  ]
+}

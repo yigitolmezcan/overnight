@@ -1,0 +1,295 @@
+{
+  "tarih": "2025-11-12",
+  "hesaplandi": "2026-08-24T22:06:57.995860Z",
+  "en_iyi_skor": 9.23,
+  "maclar": [
+    {
+      "rozet": 9.23,
+      "ham": 11.81,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 10,
+        "K": 0.1,
+        "T": 6,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.8,
+        "F": 0,
+        "G": 0,
+        "A": 6.58
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500224",
+      "ev": "LAC",
+      "dep": "DEN",
+      "ev_skor": 116,
+      "dep_skor": 130,
+      "en_iyi_performans": "Nikola Jokić"
+    },
+    {
+      "rozet": 8.8,
+      "ham": 10.03,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 10,
+        "K": 0.1,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 4.97,
+        "F": 3,
+        "G": 6,
+        "A": 6.21
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500220",
+      "ev": "SAS",
+      "dep": "GSW",
+      "ev_skor": 120,
+      "dep_skor": 125,
+      "en_iyi_performans": "Stephen Curry"
+    },
+    {
+      "rozet": 7.77,
+      "ham": 7.77,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 8.53,
+        "K": 0.92,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.11,
+        "F": 0,
+        "G": 0,
+        "A": 2.83
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500214",
+      "ev": "DET",
+      "dep": "CHI",
+      "ev_skor": 124,
+      "dep_skor": 113,
+      "en_iyi_performans": "Paul Reed"
+    },
+    {
+      "rozet": 7.58,
+      "ham": 7.58,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 8.23,
+        "K": 1.03,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.19,
+        "F": 0,
+        "G": 0,
+        "A": 6.53
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500222",
+      "ev": "OKC",
+      "dep": "LAL",
+      "ev_skor": 121,
+      "dep_skor": 92,
+      "en_iyi_performans": "Shai Gilgeous-Alexander"
+    },
+    {
+      "rozet": 6.83,
+      "ham": 6.83,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 7.83,
+        "K": 0.1,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 4.07,
+        "F": 0,
+        "G": 0,
+        "A": 0.92
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500219",
+      "ev": "NOP",
+      "dep": "POR",
+      "ev_skor": 117,
+      "dep_skor": 125,
+      "en_iyi_performans": "Shaedon Sharpe"
+    },
+    {
+      "rozet": 5.6,
+      "ham": 5.6,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 6.34,
+        "K": 1.5,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.19,
+        "F": 0,
+        "G": 0,
+        "A": 1.67
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500223",
+      "ev": "SAC",
+      "dep": "ATL",
+      "ev_skor": 100,
+      "dep_skor": 133,
+      "en_iyi_performans": "Jalen Johnson"
+    },
+    {
+      "rozet": 5.28,
+      "ham": 5.28,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 4.94,
+        "K": 1.72,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.93,
+        "F": 0,
+        "G": 6,
+        "A": 4.08
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500217",
+      "ev": "MIA",
+      "dep": "CLE",
+      "ev_skor": 116,
+      "dep_skor": 130,
+      "en_iyi_performans": "Jarrett Allen"
+    },
+    {
+      "rozet": 5.09,
+      "ham": 5.09,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 4.94,
+        "K": 2.18,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.7,
+        "F": 0,
+        "G": 0,
+        "A": 6.67
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500215",
+      "ev": "NYK",
+      "dep": "ORL",
+      "ev_skor": 107,
+      "dep_skor": 124,
+      "en_iyi_performans": "Franz Wagner"
+    },
+    {
+      "rozet": 4.65,
+      "ham": 4.65,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 4.87,
+        "K": 1.55,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.29,
+        "F": 0,
+        "G": 0,
+        "A": 5.25
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500216",
+      "ev": "BOS",
+      "dep": "MEM",
+      "ev_skor": 131,
+      "dep_skor": 95,
+      "en_iyi_performans": "Payton Pritchard"
+    },
+    {
+      "rozet": 3.73,
+      "ham": 3.73,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 3.95,
+        "K": 1.5,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.54,
+        "F": 0,
+        "G": 0,
+        "A": 2.0
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500213",
+      "ev": "CHA",
+      "dep": "MIL",
+      "ev_skor": 111,
+      "dep_skor": 100,
+      "en_iyi_performans": "Ryan Rollins"
+    },
+    {
+      "rozet": 3.05,
+      "ham": 3.05,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 3.09,
+        "K": 0.68,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.3,
+        "F": 3,
+        "G": 0,
+        "A": 3.67
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500221",
+      "ev": "DAL",
+      "dep": "PHX",
+      "ev_skor": 114,
+      "dep_skor": 123,
+      "en_iyi_performans": "Grayson Allen"
+    },
+    {
+      "rozet": 2.7,
+      "ham": 2.7,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 2.85,
+        "K": 0.52,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.93,
+        "F": 0,
+        "G": 0,
+        "A": 6.58
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500218",
+      "ev": "HOU",
+      "dep": "WAS",
+      "ev_skor": 135,
+      "dep_skor": 112,
+      "en_iyi_performans": "Kevin Durant"
+    }
+  ]
+}

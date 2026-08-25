@@ -1,0 +1,74 @@
+name: Gece üret (08:30 TSİ)
+
+on:
+  schedule:
+    # GitHub cron UTC çalışır. Türkiye yıl boyu UTC+3 (yaz saati yok),
+    # yani 05:30 UTC = 08:30 TSİ. Yaz/kış geçişi olmadığı için tek
+    # satır yeterli — bu, TSİ'nin sabit ofsetli olmasının getirdiği
+    # nadir kolaylıklardan biri.
+    - cron: "30 5 * * *"
+  workflow_dispatch:        # elle de çalıştırılabilsin (düğmeyle)
+
+concurrency:
+  group: overnight-yayin    # üret ve yayınla asla aynı anda commit atmasın
+  cancel-in-progress: false
+
+permissions:
+  contents: write           # üretilen geceyi depoya commit'lemek için
+  issues: write             # hata halinde bildirim issue'su açmak için
+
+jobs:
+  uret:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Testler (bozuk kod yayına çıkmasın)
+        run: python3 test_dogrula_bozuk.py
+
+      - name: Sıradaki geceyi üret
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GUNLUK_BUTCE_USD: "1.00"
+        run: python3 yayin.py uret
+
+      - name: Sonucu depoya yaz
+        run: |
+          git config user.name  "overnight-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add config/yayin_durumu.json gercek dist skor taslak
+          if git diff --staged --quiet; then
+            echo "Değişiklik yok — commit atlanıyor."
+          else
+            git commit -m "üret: $(python3 -c "import json;print(json.load(open('config/yayin_durumu.json')).get('hazir',{}).get('tarih','-'))")"
+            git push
+          fi
+
+      - name: Bütçe tavanı uyarısı
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          ASILDI=$(python3 -c "import json;d=json.load(open('config/yayin_durumu.json'));h=d.get('hazir') or {};print('evet' if h.get('butce_asildi') else 'hayir')")
+          if [ "$ASILDI" = "evet" ]; then
+            gh issue create \
+              --title "Bütçe tavanı aşıldı — gece şablon moduna düştü" \
+              --body "Günlük \$0.30 tavanına ulaşıldı. Gecenin kalanı şablonla üretildi; yayın normal saatinde çıkacak, sadece metinler LLM yerine şablondan geliyor. Ayrıntı: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          fi
+
+      - name: Hata bildirimi
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create \
+            --title "Gece üretimi başarısız — $(date -u +%Y-%m-%d)" \
+            --body "08:30 üretim işi başarısız oldu. Site DEĞİŞMEDİ, bir önceki gece yayında kalmaya devam ediyor. Kayıtlar: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"

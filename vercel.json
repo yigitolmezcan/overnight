@@ -1,0 +1,6 @@
+{
+  "buildCommand": "echo statik site, derleme yok",
+  "outputDirectory": "site",
+  "framework": null,
+  "cleanUrls": true
+}

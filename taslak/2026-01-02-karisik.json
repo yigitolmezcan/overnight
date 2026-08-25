@@ -1,0 +1,114 @@
+{
+  "tarih": "2026-01-02",
+  "uretildi": "2026-08-13T22:06:25.229745Z",
+  "maclar": {
+    "0022500482": {
+      "gec_satiri": "New Orleans 37 sayı ile çıktı, Portland ikinci çeyreği 34-18 kazanarak 8 puanlık açığı kapattı. Deni Avdija'nın 34 sayı ve 11 asisti Portland'ı 122-109'luk galibiyete taşıdı.",
+      "muzip": false
+    },
+    "0022500478": {
+      "gec_satiri": "CLE evinde 113-108 kazandı. Jamal Murray 34 sayı attı.",
+      "muzip": false
+    },
+    "0022500480": {
+      "gec_satiri": "19 lider değişimi yaşayan bir maçta Chicago son çeyrekte 30 sayı sayarak Orlando'yu geride bıraktı. Matas Buzelis'in 21 sayı ve 9 ribaundla yer aldığı Bulls, 121-114 kazandı.",
+      "muzip": false
+    },
+    "0022500485": {
+      "gec_satiri": "Lakers ilk çeyrekte 39 sayı atarak erken kontrolü sağladı, Memphis'in 3 sayılık açık bulması yetersiz kaldı. Luka Dončić'in 34 sayısı Lakers'ı 128-121 galibiyete güvence altına aldı.",
+      "muzip": true
+    },
+    "0022500479": {
+      "gec_satiri": "ATL deplasmanda 111-99 kazandı. Jalen Brunson 24 sayı attı.",
+      "muzip": false
+    },
+    "0022500483": {
+      "gec_satiri": "Phoenix üçüncü çeyreğini 35 sayıyla aldı, dördüncü çeyreğe 14 puan fark ile gitti. Devin Booker'ın 33 sayısı Phoenix'i Sacramento'yu 129-102 yenmeye taşıdı.",
+      "muzip": false
+    },
+    "0022500484": {
+      "gec_satiri": "Golden State dört çeyrekten hiçbirine hakim olamadı; OKC ilk çeyrekte 11 sayı öne geçti ve açığı sadece genişletti. Thunder 30-5 derece kaydına 131-94'lük dominant galibiyeti ekledi.",
+      "muzip": false
+    },
+    "0022500476": {
+      "gec_satiri": "San Antonio ikinci çeyreği 41-27 kazanarak maçın kilit anını yarattı; Indiana'nın sonraki dönemlerde kısmi düzelmesi yetmedi. De'Aaron Fox 24 sayı, Spurs 123-113 kazandı.",
+      "muzip": false
+    },
+    "0022500477": {
+      "gec_satiri": "Washington ilk çeyrekte 37 sayı atarak şok etkisi yarattı, Brooklyn hiç kapanabilme şansı bulamadı. Alex Sarr'ın 19 sayısı Wizards'ı 119-99'lük net galibiyete götürdü.",
+      "muzip": false
+    },
+    "0022500481": {
+      "baslik": "MIL, 16 sayılık farkı kapatıp CHA'yı son saniyede yendi",
+      "neden_onemli": "MIL, 16 sayılık geriden dönüp CHA'yı son 4.7 saniyede bir sayı farkla geçti.",
+      "ozet": "CHA ilk çeyreği 38-24 kazanıp farkı 16 sayıya kadar açtı, ancak bu rahatlık uzun sürmedi. MIL üçüncü çeyrekte 36-31 üstünlükle toparlandı ve son çeyreğe 4 sayı gerideyken girdi. Son periyotta liderlik 5 kez el değiştirdi, kalan 4.7 saniyede Giannis'in attığı alley-oop smaçla MIL 122-121 öne geçti. Rollins'in 29 sayısı ve Giannis'in 30 sayı 10 ribaundu galibiyeti taşıdı.",
+      "muzip": true
+    }
+  },
+  "brief": [
+    {
+      "metin": "Portland, 34 sayı ve 11 asista Avdija'yı New Orleans'ı 122-109 yendi.",
+      "hedef_mac": "0022500482",
+      "muzip": false
+    },
+    {
+      "metin": "Donovan Mitchell 33 sayı: Cleveland dördüncü çeyrekte Denver'ı döktü.",
+      "hedef_mac": "0022500478",
+      "muzip": false
+    },
+    {
+      "metin": "Chicago 19 lider değişimli maçın sonunda Orlando'yu 121-114 yendi.",
+      "hedef_mac": "0022500480",
+      "muzip": false
+    },
+    {
+      "metin": "Lakers ilk çeyrek 39 sayı: Memphis'e 7 puan farkla galip 128-121.",
+      "hedef_mac": "0022500485",
+      "muzip": false
+    },
+    {
+      "metin": "Jalen Johnson triple-double: Atlanta, Knicks'i 111-99 yendi, seri başladı.",
+      "hedef_mac": "0022500479",
+      "muzip": false
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 15,
+    "ilk_denemede_kabul": 13,
+    "sablon_moduna_dusen": 2,
+    "detay": [
+      {
+        "mac_id": "0022500478",
+        "deneme": 0,
+        "gerekce": [
+          "gec_satiri/T10: ['almış']"
+        ],
+        "reddedilen_taslak": {
+          "gec_satiri": "Denver üçüncü çeyreği 38-26 almış görünüyordu, ama Cleveland dördüncü çeyrekte 25-11'lik basınçla durumu tersine çevirdi. Donovan Mitchell 33 sayı atarak Cavaliers'i 113-108 galibiyete götürdü.",
+          "muzip": true
+        }
+      },
+      {
+        "mac_id": "0022500479",
+        "deneme": 0,
+        "gerekce": [
+          "gec_satiri/T2: ['Favori']"
+        ],
+        "reddedilen_taslak": {
+          "gec_satiri": "Jalen Johnson triple-double ile (18 sayı, 10 ribaund, 11 asist) Atlanta'yı yönetti; New York'ın 23 galibiyet 11 mağlubiyetken Atlanta 111-99 kazandı. Favori düştü: Knicks'in 2 maçlık kaybı başladı.",
+          "muzip": false
+        }
+      }
+    ],
+    "ret_orani": 0.133,
+    "kelime_butcesi_uygulandi": false,
+    "kullanim": {
+      "cagri_sayisi": 2,
+      "girdi_token": 36838,
+      "cikti_token": 4644,
+      "cache_yazma_token": 0,
+      "cache_okuma_token": 4354,
+      "toplam_maliyet_usd": 0.0912
+    }
+  }
+}
