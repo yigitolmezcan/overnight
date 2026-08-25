@@ -186,8 +186,6 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
 .brieftxt{display:block;font-size:14px;line-height:1.5;color:var(--ink2)}
 .briefrow.lead .brieftxt{font-size:19px;line-height:1.38;color:var(--ink);
   font-weight:600;letter-spacing:-.01em}
-.brozet{display:block;margin-top:6px;font-family:var(--mono);font-size:11px;color:var(--faint)}
-.briefrow.lead .brozet{color:var(--ember)}
 .briefgo{flex:0 0 auto;font-family:var(--mono);font-size:11.5px;color:var(--faint);margin-top:3px}
 
 /* games */
@@ -839,15 +837,17 @@ function render(d){
   // olduğu gibi, hedef maçın ROZETİ duruyor (küçük boy) — satır hem
   // dolduruluyor hem de gerçek bir bilgi taşıyor. Haber işareti (⚠)
   // metnin başına geçti, o da bilgi taşıyordu.
+  // Rozet burada GÖSTERİLMİYOR (kullanıcı kararı): değer skoru bizim
+  // iç sıralama aracımız, okura anlatılacak bir bilgi değil. Zaten
+  // aşağıda Mutlaka bil ve Bunları geç bölümlerinde görünüyor; brief'te
+  // ayrıca tekrar etmesi hem gereksiz hem de satırı meşgul ediyordu.
+  // Sıralamayı numaralar taşıyor.
   briefList.innerHTML=d.brief.map((b,i)=>{
     const haber = b.haber || b.icon==='news';
-    const hedef = MAC_BY_ID[b.hedef_id];
-    const roz = hedef && typeof hedef.rozet==='number' ? hedef.rozet.toFixed(1) : '';
     return `<li><a class="briefrow rowlink${i===0?' lead':''}" href="#${b.hedef_id}">
     <span class="bnum">${i+1}</span>
     <span class="btext">
       <span class="brieftxt">${haber?'<i class="newsmark">⚠</i>':''}${esc(b.metin)}</span>
-      ${roz?`<span class="brozet">rozet ${roz}</span>`:''}
     </span>
     <span class="briefgo">→</span>
   </a></li>`;}).join('');

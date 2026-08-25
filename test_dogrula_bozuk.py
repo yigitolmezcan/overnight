@@ -1327,6 +1327,19 @@ def main():
     # ==================================================================
     # Metin bloğu, Türkler bloğu, dokun/tıkla.
     # ==================================================================
+    # Değer skoru İÇ araç, okura anlatılan bir bilgi değil. Brief
+    # satırlarında görünmez; aşağıdaki bölümlerde (Mutlaka bil, Göz at,
+    # Bunları geç) rozet olarak duruyor.
+    basar("Brief: rozet satırı kalktı",
+          "brozet" not in _sayfa and "rozet ${roz}" not in _sayfa)
+    basar("Brief: rozet hesabı da kalmadı (ölü kod bırakılmadı)",
+          "hedef.rozet.toFixed" not in _sayfa)
+    basar("Brief: sıralamayı numaralar taşıyor",
+          '<span class="bnum">${i+1}</span>' in _sayfa)
+    # Aşağıdaki bölümlerde rozet KORUNDU — oradan kaldırılması istenmedi.
+    basar("Rozet aşağıdaki bölümlerde duruyor (regresyon)",
+          '<span class="roz sm">${m.rozet.toFixed(1)}</span>' in _sayfa)
+
     basar("Mutlaka bil: 'neden önemli' gövdeden ÖNCE ve ön eki yok",
           '<div class="kicker">${esc(mv.neden_onemli)}</div>' in _sayfa
           # Ön ek KODDA olmamalı; CSS yorumunda geçmesi sorun değil.
