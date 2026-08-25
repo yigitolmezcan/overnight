@@ -1340,9 +1340,9 @@ def main():
     # Ferahlık: ölçüldü — 375px'te iki grup da tek satırda (en geniş
     # değerlerle bile), masaüstünde ikisi birden tek satırda.
     basar("Türkler: ikincil satırda nefes payı var",
-          "gap:9px 14px" in _sayfa and "padding-top:15px" in _sayfa)
+          "gap:16px 14px" in _sayfa and "padding-top:15px" in _sayfa)
     basar("Türkler: masaüstünde daha da ferah",
-          "gap:10px 18px" in _sayfa)
+          "gap:10px 22px" in _sayfa)
     # Gruplar arası boşluk, grup İÇİ boşlukla AYNI olmalı. Farklı
     # olursa iki grup tek satıra sığdığında ek yeri göze görünüyor
     # ("fa" ile "2 tç" arası diğerlerinden genişti — kullanıcı fark
@@ -1367,8 +1367,8 @@ def main():
     # satırın değeri üsttekinin etiketiyle karışır.
     basar("Türkler: satır arası (16px) hücre içi boşluktan (4px) büyük",
           "gap:16px 14px" in _sayfa and "gap:4px" in _sayfa.split(".tkalt .tkg > span{")[1][:90])
-    basar("Türkler: masaüstünde öğe aralığı tek değerden geliyor (18px)",
-          "gap:10px 18px" in _sayfa)
+    basar("Türkler: masaüstünde öğe aralığı tek değerden geliyor (22px)",
+          "gap:10px 22px" in _sayfa)
     basar("Türkler: oynamayan için OYNAMADI etiketi var",
           'class="tkoff"' in _sayfa and "Oynamadı" in _sayfa)
     basar("Türkler: iki oyuncu oynayınca rakamlar küçülüyor",
