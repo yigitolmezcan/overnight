@@ -1324,6 +1324,16 @@ def main():
           'class="tkblok"' in _sayfa and 'data-kart="${esc(t.mac_id' in _sayfa)
     basar("Türkler: ikincil satır İKİ GRUBA bölünmüş (tek öğe yalnız kalmasın)",
           'class="tkg"' in _sayfa and _sayfa.count("const g1=") == 1 and "const g2=" in _sayfa)
+    # Grubun KENDİSİ sarmalanmamalı — sarmalarsa yalnız öğe garantisi
+    # çöker. nowrap bunu CSS düzeyinde kilitliyor.
+    basar("Türkler: grup içi sarmalama kapalı (yalnız öğe garantisi)",
+          "white-space:nowrap}" in _sayfa.split(".tkalt .tkg{")[1][:80])
+    # Ferahlık: ölçüldü — 375px'te iki grup da tek satırda (en geniş
+    # değerlerle bile), masaüstünde ikisi birden tek satırda.
+    basar("Türkler: ikincil satırda nefes payı var",
+          "gap:9px 20px" in _sayfa and "padding-top:15px" in _sayfa)
+    basar("Türkler: masaüstünde daha da ferah",
+          "gap:10px 32px" in _sayfa)
     basar("Türkler: oynamayan için OYNAMADI etiketi var",
           'class="tkoff"' in _sayfa and "Oynamadı" in _sayfa)
     basar("Türkler: iki oyuncu oynayınca rakamlar küçülüyor",
