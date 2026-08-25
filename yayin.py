@@ -63,7 +63,12 @@ def sonraki_gece(d):
     dokunuyor (ucuz), tam çekim yapmıyor."""
     import cek
 
-    son = d["yayinlanan"][-1] if d["yayinlanan"] else _gun_ekle(d["sezon_baslangici"], -1)
+    # Sıra imlecinden ilerler, "en son yayınlanan"dan DEĞİL. İkisi
+    # normalde aynı; ayrıldıkları tek durum VİTRİN gecesi: sırayla
+    # ilgisi olmayan, elle seçilmiş bir gece yayınlandığında (ör. site
+    # ilk kez paylaşılırken dolu bir gece istendi) imleç yerinde kalır
+    # ve ertesi gün kronoloji kaldığı yerden devam eder.
+    son = d.get("sira_imleci") or (d["yayinlanan"][-1] if d["yayinlanan"] else _gun_ekle(d["sezon_baslangici"], -1))
     atla = set(d["atlanan"]) | set(d["yayinlanan"]) | set(d.get("engellenen", []))
     for i in range(1, ILERI_BAKMA_SINIRI + 1):
         aday = _gun_ekle(son, i)
@@ -242,6 +247,9 @@ def yayinla():
 
     boyut = _siteyi_kur(tarih)
     d["yayinlanan"].append(tarih)
+    # Vitrin gecesi sırayı ilerletmez — kronoloji kaldığı yerden devam eder.
+    if not hazir.get("vitrin"):
+        d["sira_imleci"] = tarih
     d["hazir"] = None
     d["son_yayin"] = {**hazir, "yayinlandi": datetime.utcnow().isoformat() + "Z"}
     durum_yaz(d)
@@ -273,6 +281,7 @@ def durum():
     if engel:
         print(f"Son takılan gece       : {engel['tarih']} (Mutlaka bil doğrulamadan geçmedi)")
     print(f"Şu an yayında          : {d['yayinlanan'][-1] if d['yayinlanan'] else '(henüz yok)'}")
+    print(f"Sıra imleci            : {d.get('sira_imleci') or '(sezon başı)'}")
     print(f"Üretilmiş, bekliyor    : {d['hazir']['tarih'] if d.get('hazir') else '(yok)'}")
     print(f"Atlanan (ayarlı) gece  : {len(d['atlanan'])}")
     son = d.get("son_yayin")

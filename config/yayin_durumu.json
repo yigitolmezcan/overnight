@@ -20,18 +20,22 @@
   ],
   "_atlanan_neden": "Düzeltme turlarında defalarca üretilen 14 gece. Kurallar bu gecelere elle uyduruldu; sistemin gerçek performansını yansıtmıyorlar, o yüzden yayına girmiyorlar.",
   "yayinlanan": [
-    "2025-10-23"
+    "2025-10-23",
+    "2026-01-28"
   ],
   "hazir": null,
   "son_yayin": {
-    "tarih": "2025-10-23",
-    "uretildi": "2026-08-25T10:00:00Z",
-    "mod": "sablon",
-    "maliyet_usd": 0.0,
+    "tarih": "2026-01-28",
+    "uretildi": "2026-08-25T12:00:00Z",
+    "mod": "hibrit",
+    "maliyet_usd": 0.2302,
     "butce_asildi": false,
-    "sablona_dusen_alan": 2,
-    "yayinlandi": "2026-08-25T10:01:32.600796Z"
+    "sablona_dusen_alan": 0,
+    "vitrin": true,
+    "_not": "Site ilk kez paylaşılırken dolu bir gece istendi. vitrin=True → sıra imleci ilerlemez, kronoloji 24 Ekim'den devam eder.",
+    "yayinlandi": "2026-08-25T10:44:59.334009Z"
   },
   "son_engel": null,
-  "engellenen": []
+  "engellenen": [],
+  "sira_imleci": "2025-10-23"
 }

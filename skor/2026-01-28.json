@@ -1,0 +1,223 @@
+{
+  "tarih": "2026-01-28",
+  "hesaplandi": "2026-08-25T10:42:16.778445Z",
+  "en_iyi_skor": 8.4,
+  "maclar": [
+    {
+      "rozet": 8.4,
+      "ham": 8.9,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 7.71,
+        "K": 3.09,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 4.48,
+        "F": 0,
+        "G": 6,
+        "A": 8.32
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500679",
+      "ev": "HOU",
+      "dep": "SAS",
+      "ev_skor": 99,
+      "dep_skor": 111,
+      "en_iyi_performans": "Victor Wembanyama"
+    },
+    {
+      "rozet": 7.42,
+      "ham": 7.42,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.29,
+        "K": 4.64,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.52,
+        "F": 0,
+        "G": 6,
+        "A": 4.33
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500674",
+      "ev": "MIA",
+      "dep": "ORL",
+      "ev_skor": 124,
+      "dep_skor": 133,
+      "en_iyi_performans": "Paolo Banchero"
+    },
+    {
+      "rozet": 6.79,
+      "ham": 6.79,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.28,
+        "K": 2.25,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.17,
+        "F": 0,
+        "G": 6,
+        "A": 6.58
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500675",
+      "ev": "TOR",
+      "dep": "NYK",
+      "ev_skor": 92,
+      "dep_skor": 119,
+      "en_iyi_performans": "OG Anunoby"
+    },
+    {
+      "rozet": 6.56,
+      "ham": 6.56,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 3.6,
+        "K": 3.0,
+        "T": 0,
+        "D": 6
+      },
+      "yukselticiler": {
+        "Y": 5.26,
+        "F": 8,
+        "G": 6,
+        "A": 1.17
+      },
+      "dram_terfi": true,
+      "mac_id": "0022500672",
+      "ev": "IND",
+      "dep": "CHI",
+      "ev_skor": 113,
+      "dep_skor": 110,
+      "en_iyi_performans": "Nikola Vučević"
+    },
+    {
+      "rozet": 5.32,
+      "ham": 5.32,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 4.93,
+        "K": 3.72,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.1,
+        "F": 0,
+        "G": 0,
+        "A": 3.83
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500677",
+      "ev": "DAL",
+      "dep": "MIN",
+      "ev_skor": 105,
+      "dep_skor": 118,
+      "en_iyi_performans": "Julius Randle"
+    },
+    {
+      "rozet": 4.6,
+      "ham": 4.6,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 2.51,
+        "K": 4.37,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.87,
+        "F": 0,
+        "G": 0,
+        "A": 6.62
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500671",
+      "ev": "CLE",
+      "dep": "LAL",
+      "ev_skor": 129,
+      "dep_skor": 99,
+      "en_iyi_performans": "Luka Dončić"
+    },
+    {
+      "rozet": 4.43,
+      "ham": 4.43,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 3.91,
+        "K": 3.73,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.58,
+        "F": 0,
+        "G": 0,
+        "A": 4.5
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500673",
+      "ev": "BOS",
+      "dep": "ATL",
+      "ev_skor": 106,
+      "dep_skor": 117,
+      "en_iyi_performans": "Dyson Daniels"
+    },
+    {
+      "rozet": 4.37,
+      "ham": 4.37,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 4.6,
+        "K": 1.36,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.48,
+        "F": 0,
+        "G": 0,
+        "A": 3.92
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500676",
+      "ev": "MEM",
+      "dep": "CHA",
+      "ev_skor": 97,
+      "dep_skor": 112,
+      "en_iyi_performans": "Moussa Diabaté"
+    },
+    {
+      "rozet": 4.3,
+      "ham": 4.3,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 4.46,
+        "K": 1.37,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.56,
+        "F": 0,
+        "G": 0,
+        "A": 4.67
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500678",
+      "ev": "UTA",
+      "dep": "GSW",
+      "ev_skor": 124,
+      "dep_skor": 140,
+      "en_iyi_performans": "Moses Moody"
+    }
+  ]
+}
