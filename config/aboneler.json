@@ -1,0 +1,4 @@
+{
+  "_aciklama": "Onaylı bülten aboneleri. api/onayla.js ekler, api/cikis.js çıkarır — elle düzenlenmesi gerekmez. Çift onaydan geçmemiş hiçbir adres buraya yazılmaz.",
+  "aboneler": []
+}

@@ -1057,5 +1057,85 @@ def main():
           "engellenen" in _d or _d.get("engellenen") == [])
 
 
+    # ==================================================================
+    # Bülten turu — üç kural.
+    # ==================================================================
+
+    # 1) Geri dönüş SAYISIZ anılamaz. "farktan dönerek yendi" okura
+    # hiçbir şey söylemiyor; 4 sayılık da 16 sayılık da o cümleye sığar.
+    # Sayı her zaman elimizde: fark_serisi.kazanan_en_buyuk_acigi.
+    # (Gerçek üretim bug'ı 2026-01-28 — veri promptta VARDI, model
+    # kullanmadı; o yüzden düzeltme prompta değil doğrulayıcıya yazıldı.)
+    from dogrula import t23_mimari_kural_ihlalleri as _t23
+    basar("T23: sayısız geri dönüş reddediliyor",
+          not _t23("San Antonio, Houston'ı farktan dönerek 111-99 yendi.")[0])
+    basar("T23: sayısız 'geri dönüş' ifadesi de reddediliyor",
+          not _t23("Golden State, geri dönüşü tamamladı.")[0])
+    basar("T23: sayılı geri dönüş YANLIŞLIKLA reddedilmiyor (regresyon)",
+          _t23("San Antonio, 16 sayılık farktan dönüp Houston'ı yendi.")[0]
+          and _t23("Orlando, 14 sayılık farkı eritti.")[0])
+    basar("T23: 'sayı farkla yendi' geri dönüş sanılmıyor (regresyon)",
+          _t23("Boston, Miami'yi 20 sayı farkla yendi.")[0])
+
+    # 2) Seyrek geceler yayınlanmaz — tek maçlık bir sayfa gece özeti
+    # değil, tek maç raporu; ürünün triyaj vaadiyle çelişiyor.
+    basar("Yayın: asgari maç eşiği 3", _yayin.ASGARI_MAC_SAYISI == 3)
+
+    # 3) Bülten. "Mail vitrin, site asıl yer" — kutu skor maile girmez.
+    _os.environ.setdefault("SITE_ADRESI", "https://ornek.test")
+    _os.environ.setdefault("ABONE_GIZLI_ANAHTAR", "test-gizli-anahtar-123")
+    import importlib
+    import bulten as _bulten
+    importlib.reload(_bulten)
+    _veri = _j.loads(open("dist/2026-01-28.json").read())
+    _cikis = _bulten._cikis_bagi("ali@ornek.com")
+    _html = _bulten.mail_govdesi(_veri, _cikis)
+    _metin = _bulten.mail_metni(_veri, _cikis)
+
+    # Kutu skor maile girmez. Ölçüt "hiç oyuncu adı geçmesin" DEĞİL —
+    # Türkler bölümü ve brief satırları bilerek isim taşıyor. Doğru
+    # ölçüt: SADECE kutu skorda olan (metnin hiçbir yerinde anılmayan)
+    # bir oyuncu mailde görünmemeli.
+    _metinler = " ".join(
+        [b["metin"] for b in _veri["brief"]]
+        + [m["baslik"] + " " + m.get("ozet", "") + m.get("ozet_kisa", "") for m in _veri["mutlaka"]]
+        + [t["isim"] for t in _veri["turkler"]]
+    )
+    _sadece_kutuda = [
+        o["isim"]
+        for m in _veri["mutlaka"]
+        for yan in ("ev", "dep")
+        for o in m["box"][yan]["oyuncular"]
+        if o["isim"] not in _metinler
+    ]
+    basar("Bülten: sadece kutu skorda olan oyuncular maile girmiyor",
+          bool(_sadece_kutuda) and not any(ad in _html for ad in _sadece_kutuda))
+    basar("Bülten: '30 saniyede gece' satırları var",
+          all(b["metin"] in _html for b in _veri["brief"]))
+    basar("Bülten: Mutlaka bil başlıkları var",
+          all(m["baslik"] in _html for m in _veri["mutlaka"]))
+    basar("Bülten: siteye bağlantı var", "https://ornek.test/" in _html)
+    basar("Bülten: çıkış bağlantısı HER iki sürümde de var",
+          "/api/cikis?" in _html and "/api/cikis?" in _metin)
+    basar("Bülten: charset bildirimi var (Türkçe karakter bozulmasın)",
+          'charset="utf-8"' in _html)
+    basar("Bülten: açık zemin AÇIKÇA yazılı (koyu temada okunsun)",
+          "background:#FFFFFF" in _html and 'content="light"' in _html)
+
+    # Çıkış token'ı iki dilde üretiliyor (Python gönderirken, JS
+    # doğrularken) — birebir aynı olmalı, yoksa bağlantı çalışmaz.
+    # Aşağıdaki değer node crypto ile üretildi ve elle sabitlendi.
+    _beklenen = ("https://ornek.test/api/cikis?e=YWxpQG9ybmVrLmNvbQ"
+                 "&t=YVrUb3KfpdVJSDD8Wv4vcQil4FvCArX73W_zcULrA44")
+    basar("Bülten: çıkış token'ı Node tarafıyla birebir aynı",
+          _bulten._cikis_bagi("ali@ornek.com") == _beklenen)
+
+    # Onaysız adres listeye yazılamaz: liste dosyası çift onaydan
+    # geçmeyen hiçbir adresi taşımamalı (başlangıçta boş).
+    _abn = _j.loads(open("config/aboneler.json").read())
+    basar("Bülten: abone listesi yapısı doğru",
+          isinstance(_abn.get("aboneler"), list))
+
+
 if __name__ == "__main__":
     main()

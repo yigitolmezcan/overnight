@@ -312,6 +312,7 @@ td.khot{color:var(--amber);font-weight:700}
 .subinput:focus-visible{outline:2px solid var(--sky);outline-offset:2px}
 .nnote{font-family:var(--mono);font-size:11.5px;color:var(--faint);margin-top:14px;letter-spacing:.04em}
 .nnote.ok{color:var(--sky)}
+.nnote.hata{color:var(--ember)}
 .credit{font-family:var(--mono);font-size:11px;color:#4A5568;text-align:center;margin-top:44px;letter-spacing:.1em}
 
 
@@ -722,21 +723,34 @@ function revealTarget(id){
 // ---- e-posta aboneliği (sadece adres toplar, gönderme sistemi henüz yok) ----
 const subForm=document.getElementById('subscribeForm');
 if(subForm){
-  subForm.addEventListener('submit',e=>{
+  subForm.addEventListener('submit',async e=>{
     e.preventDefault();
     const email=document.getElementById('subEmail').value.trim();
     if(!email) return;
-    try{
-      const kayitli=JSON.parse(localStorage.getItem('overnight_abone_listesi')||'[]');
-      if(!kayitli.includes(email)) kayitli.push(email);
-      localStorage.setItem('overnight_abone_listesi', JSON.stringify(kayitli));
-    }catch(err){}
     const btn=subForm.querySelector('.notify');
     const note=document.getElementById('subNote');
-    document.getElementById('subEmail').disabled=true;
-    btn.disabled=true; btn.textContent='Kaydedildi ✓';
-    note.textContent='Kaydettik. Gönderim sistemi yakında açılıyor.';
-    note.classList.add('ok');
+    const eskiYazi=btn.textContent;
+    btn.disabled=true; btn.textContent='Gönderiliyor…';
+    note.classList.remove('ok','hata');
+    try{
+      const y=await fetch('/api/abone',{method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({eposta:email})});
+      const d=await y.json().catch(()=>({}));
+      if(!y.ok) throw new Error(d.hata||'Kaydedemedik, birazdan tekrar dene.');
+      // Çift onay: adres BURADA listeye girmiyor, sadece onay maili
+      // yollandı. Kullanıcı bağlantıya tıklayana kadar hiçbir yere
+      // yazılmıyor — mesajın bunu açıkça söylemesi gerekiyor, yoksa
+      // gelen maili beklemez.
+      document.getElementById('subEmail').disabled=true;
+      btn.textContent='Maili kontrol et ✓';
+      note.textContent='Onay maili yolladık. Bağlantıya tıklamadan kaydın tamamlanmıyor.';
+      note.classList.add('ok');
+    }catch(err){
+      btn.disabled=false; btn.textContent=eskiYazi;
+      note.textContent=err.message;
+      note.classList.add('hata');
+    }
   });
 }
 

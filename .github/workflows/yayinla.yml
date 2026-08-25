@@ -42,6 +42,31 @@ jobs:
             git push
           fi
 
+      # Bülten SADECE yeni bir gece yayınlandıysa gider. `yayin.py`
+      # yayınlamadıysa (hazır gece yok, ya da doğrulama kapısı tuttu)
+      # durum dosyasındaki son_bulten zaten güncel kalır ve bulten.py
+      # kendiliğinden hiçbir şey göndermez — kullanıcı kuralı: "Site
+      # yayınlanmadıysa mail de gitmesin."
+      - name: Bülteni gönder
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          ABONE_GIZLI_ANAHTAR: ${{ secrets.ABONE_GIZLI_ANAHTAR }}
+          SITE_ADRESI: ${{ vars.SITE_ADRESI }}
+          GONDEREN_ADRES: ${{ vars.GONDEREN_ADRES }}
+        run: python3 bulten.py gonder
+
+      - name: Bülten kaydını depoya yaz
+        if: always()
+        run: |
+          git config user.name  "overnight-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add config/yayin_durumu.json
+          if ! git diff --staged --quiet; then
+            git pull --rebase --autostash -q
+            git commit -m "bülten gönderildi"
+            git push
+          fi
+
       - name: Hata bildirimi
         if: failure()
         env:
@@ -49,4 +74,4 @@ jobs:
         run: |
           gh issue create \
             --title "Yayın işi başarısız — $(date -u +%Y-%m-%d)" \
-            --body "09:00 yayın işi başarısız oldu. Site DEĞİŞMEDİ, bir önceki gece yayında. Kayıtlar: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+            --body "09:00 yayın ya da bülten işi başarısız oldu. Hangi adımın düştüğü kayıtlarda yazıyor: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID -- 'Hazır geceyi siteye göm' düştüyse site DEĞİŞMEDİ, bir önceki gece yayında kalır. 'Bülteni gönder' düştüyse site güncellendi ama en az bir adrese mail gidemedi."

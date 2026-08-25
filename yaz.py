@@ -1296,6 +1296,11 @@ anıştan itibaren takma ad kullanabilirsin — üç harfli kod ASLA kullanma.
 {kalan_muzip_kotasi} pay var (gecenin geri kalanı zaten kullanılmış
 olabilir).
 
+DİKKAT: Bir geri dönüşten bahsedeceksen KAÇ SAYILIK olduğunu MUTLAKA
+yaz — "farktan dönerek yendi" tek başına hiçbir şey söylemiyor, 4
+sayılık fark da 16 sayılık fark da o cümleye sığar. Sayı elinde:
+`fark_serisi.kazanan_en_buyuk_acigi` = kazananın kapattığı en büyük açık.
+
 DİKKAT: `fark_serisi` gerçeğinde İKİ ayrı lider değişim sayısı var —
 `lider_degisim_sayisi` MAÇ GENELİ toplamı, `son_periyot_lider_degisimi`
 SADECE son çeyrek/periyot içindekiler. "Son çeyreği N lider

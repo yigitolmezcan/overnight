@@ -42,6 +42,14 @@ DIST_DIZIN = KOK / "dist"
 # sezon bittiğinde döngünün sonsuza gitmesini engeller.
 ILERI_BAKMA_SINIRI = 30
 
+# Kullanıcı kuralı: bu sayıdan az maç oynanan ARŞİV gecesi yayınlanmaz.
+# Gerekçe ürünün kendi vaadi: "10 maç oynandı, üçünü bilmen yeter."
+# Tek maçlık bir sayfa gece özeti değil, tek bir maç raporu — triyaj
+# yapacak bir şey yok. Gerçek sezona geçildiğinde bu eşik 0'a çekilecek:
+# o zaman gece ne ise o yayınlanır, çünkü okuyucu zaten o geceyi merak
+# ederek geliyor.
+ASGARI_MAC_SAYISI = 3
+
 
 def durum_oku():
     return json.loads(DURUM_DOSYASI.read_text(encoding="utf-8"))
@@ -77,8 +85,10 @@ def sonraki_gece(d):
         if aday in atla:
             continue
         _, mac_idleri = cek.gece_mac_idlerini_al(aday)
-        if mac_idleri:
+        if len(mac_idleri) >= ASGARI_MAC_SAYISI:
             return aday
+        if mac_idleri:
+            print(f"  {aday}: {len(mac_idleri)} maç — eşiğin ({ASGARI_MAC_SAYISI}) altında, atlanıyor.")
     return None
 
 

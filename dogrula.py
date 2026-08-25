@@ -823,8 +823,26 @@ def t24_en_iyi_kilometre_sahibi(metin, gercekler):
     return (len(sorunlu) == 0, sorunlu or None)
 
 
+# Geri dönüş ifadesi SAYISIZ kullanılamaz. "Houston'ı farktan dönerek
+# yendi" okura hiçbir şey söylemiyor — 4 sayılık bir fark da, 16 sayılık
+# bir fark da aynı cümleye sığıyor, oysa ikisi bambaşka maçlar. Sayı her
+# zaman elimizde: `fark_serisi.kazanan_en_buyuk_acigi`.
+# (Gerçek üretim bug'ı 2026-01-28: "San Antonio, Houston'ı farktan
+# dönerek 111-99 yendi" — veri promptta vardı, model kullanmadı.)
+GERI_DONUS_DESENI = re.compile(r"\bfark(?:tan|ı|ını)?\s+dön|geri\s+dönüş", re.IGNORECASE)
+# İfadeden ÖNCE gelen "N sayılık" kalıbı — sayı buraya yazılır.
+GERI_DONUS_SAYISI_DESENI = re.compile(r"\d+\s*sayı", re.IGNORECASE)
+
+
 def t23_mimari_kural_ihlalleri(metin):
     sorunlu = []
+    for cumle in cumlelere_ayir(metin):
+        m_gd = GERI_DONUS_DESENI.search(cumle)
+        if m_gd and not GERI_DONUS_SAYISI_DESENI.search(cumle[: m_gd.end()]):
+            sorunlu.append(
+                f"geri dönüş sayısız anıldı ('{cumle.strip()[:70]}') — kaç sayılık "
+                f"açığın kapatıldığı yazılmalı (fark_serisi.kazanan_en_buyuk_acigi)"
+            )
     for cumle in cumlelere_ayir(metin):
         m = TOPLA_KOKU_DESENI.search(cumle)
         if not m:
