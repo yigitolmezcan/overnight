@@ -1228,5 +1228,33 @@ def main():
           and _sayfa.count(".sechead h2{") == 1)
 
 
+    # ==================================================================
+    # Sütun adları, masaüstü saha ölçüsü, kart yüksekliği.
+    # ==================================================================
+    basar("Kutu skor: top çalma sütunu 'TÇ'", "['stl','TÇ']" in _sayfa)
+    basar("Kutu skor: top kaybı sütunu 'TK' (tutarlılık)", "['to','TK']" in _sayfa)
+    basar("Kutu skor: eski 'Çal' başlığı kalmadı", "'Çal'" not in _sayfa)
+
+    # Masaüstünde saha öğeleri büyür, MOBİL ÖLÇÜLERE DOKUNULMAZ.
+    # (Kullanıcı kuralı: "375px'teki hâli mükemmel, ölçüleri aynen kalsın.")
+    basar("Saha: masaüstü için ayrı ölçü bloğu var",
+          "@media(min-width:768px){" in _sayfa and ".pl .dot{width:52px" in _sayfa)
+    basar("Saha: mobil ölçüleri değişmedi",
+          ".pl{position:absolute;transform:translate(-50%,-50%);text-align:center;width:104px}" in _sayfa
+          and "width:30px;height:30px" in _sayfa)
+    basar("Saha: mobil ad/istatistik puntoları değişmedi",
+          ".pl .nm{font-size:12px" in _sayfa and ".pl .st{font-family:var(--mono);font-size:10.5px" in _sayfa)
+
+    # Kart mobilde neredeyse tam ekran ama ÜSTTE ŞERİT kalır; masaüstünde
+    # eski davranış (içeriğe göre, 92vh sınırı) korunur.
+    basar("Kart: mobilde ekran yüksekliğinden şerit kadar kısa",
+          "height:calc(100dvh - var(--serit))" in _sayfa and "--serit:44px" in _sayfa)
+    basar("Kart: dvh desteklemeyen tarayıcı için vh yedeği var",
+          "height:calc(100vh - var(--serit))" in _sayfa)
+    basar("Kart: masaüstünde 92vh sınırı duruyor", "max-height:92vh" in _sayfa)
+    basar("Kart: kazanılan yer satırlara dağıtılıyor (sabit dolgu değil)",
+          ".sheet table.kbs{height:100%}" in _sayfa)
+
+
 if __name__ == "__main__":
     main()

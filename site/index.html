@@ -184,9 +184,32 @@ body.n-worst .calm{border-left-color:var(--amber)}
 .scrim.on{opacity:1;pointer-events:auto}
 .sheet{position:fixed;left:50%;bottom:0;width:100%;max-width:700px;
   transform:translateX(-50%) translateY(100%);height:auto;max-height:92vh;
+  --serit:44px;
   background:#0E131B;border:1px solid #1A2230;border-bottom:0;
   display:flex;flex-direction:column;transition:transform .28s cubic-bezier(.22,.8,.3,1);z-index:50}
 .sheet.on{transform:translateX(-50%) translateY(0)}
+/* Mobilde kart neredeyse tam ekran. Üstte ~44px şerit KASITLI kalıyor:
+   tamamen kaplarsa "nereden geldim" hissi kayboluyor, ince şerit hem
+   ferahlığı veriyor hem arkadaki sayfanın durduğunu hatırlatıyor.
+   dvh — iOS'ta adres çubuğu açılıp kapandıkça vh değişiyor ve kart
+   zıplıyor; dvh gerçek görünür yüksekliği veriyor. vh satırı, dvh
+   desteklemeyen tarayıcılar için önce yazılmış yedek. */
+@media(max-width:767px){
+  /* height (max-height değil): kart artık içeriğine göre büzülmüyor,
+     her zaman ekranın neredeyse tamamını kaplıyor. Kazanılan yer
+     SATIRLARA dağıtılıyor — table{height:100%} fazla yüksekliği satırlar
+     arasında eşit paylaştırır. Sabit dolgu eklemek yerine bunu seçtim:
+     sabit dolgu 812px'lik telefonda ferah dururken 667px'likte taşmaya
+     yol açıyordu. Bu yöntem ekrana göre kendini ayarlıyor — dar ekranda
+     satırlar doğal yüksekliğinde kalıp yine sığıyor. */
+  .sheet{height:calc(100vh - var(--serit));
+         height:calc(100dvh - var(--serit));
+         max-height:none}
+  .sheet table.kbs{height:100%}
+  .sheet .kbs td{padding-top:3px;padding-bottom:3px}
+  .kteams{margin-top:14px}
+  .kt{padding-top:15px;padding-bottom:15px}
+}
 .grab{padding:5px 0 3px;display:flex;justify-content:center;flex:none;cursor:grab;touch-action:none}
 .grab i{display:block;width:34px;height:3px;border-radius:2px;background:#2A3444}
 .khead{flex:none;padding:2px 16px 7px;border-bottom:1px solid #1A2230;position:relative}
@@ -281,6 +304,20 @@ td.khot{color:var(--amber);font-weight:700}
 .pl .nm{font-size:12px;font-weight:700;letter-spacing:-.01em;line-height:1.25;
   overflow-wrap:break-word}
 .pl .st{font-family:var(--mono);font-size:10.5px;color:var(--ink2);margin-top:3px}
+/* Masaüstünde saha büyüyor ama üstündeki öğeler mobil ölçüsünde kalıyordu
+   ve bol yer varken sıkışık duruyordu. Sadece geniş ekran için orantılı
+   büyütme — 375px'teki değerlere DOKUNULMUYOR. */
+/* Ölçek, sahanın kendi büyümesine göre seçildi: saha 331px'ten 656px'e
+   çıkıyor (yaklaşık iki katı). Öğeler mobil ölçüsünde bırakılınca daire
+   sahanın %9'u yerine %6.7'si kalıyordu — kullanıcının "bol yer varken
+   sıkışık" dediği şey buydu. Değerler mobilin ~1.7 katına alındı; tam
+   iki kat, isimleri sahaya göre iri gösteriyordu. */
+@media(min-width:768px){
+  .pl{width:190px}
+  .pl .dot{width:52px;height:52px;font-size:19px;margin-bottom:10px}
+  .pl .nm{font-size:18px;line-height:1.25}
+  .pl .st{font-size:15px;margin-top:6px}
+}
 .besirow{position:relative;display:flex;align-items:baseline;gap:9px;padding:12px 15px;border-bottom:1px solid #141A24}
 /* Kullanıcı kararı: şerit rozetin turuncusu, ve satırlar arasında
    minnacık boşluk kalsın — tek uzun çubuk yerine her satırın kendi
@@ -579,7 +616,7 @@ function surukleBagla(){
 
 /* ---- box score kartı ---- */
 const KOLONLAR=[['pts','Say','k'],['reb','Rib'],['ast','Ast'],['min','Dk'],['fg','FG'],
-                ['3p','3P'],['ft','FA'],['stl','Çal'],['blk','Blk'],['to','TK'],['pm','+/−']];
+                ['3p','3P'],['ft','FA'],['stl','TÇ'],['blk','Blk'],['to','TK'],['pm','+/−']];
 
 function isaretliMi(t){ return t.oyuncular.some(o=>o.gecti_mi||o.aykiri||o.kaybedenin_en_iyisi); }
 
