@@ -1149,6 +1149,25 @@ def main():
     # Abone listesi DEPODA OLMAMALI: adresler git geçmişine yazılırsa
     # abonelikten çıkan biri bile eski commit'lerde kalır. Liste artık
     # Upstash'te; depoda bir kopyasının belirmesi geriye dönüş olur.
+    # Bülten kurulmadan önce iş BAŞARISIZ sayılmamalı — yoksa site
+    # yayınlanmış olmasına rağmen her sabah hata bildirimi gider ve
+    # gerçek hatalar bu gürültünün içinde kaybolur.
+    _bk = open("bulten.py", encoding="utf-8").read()
+    basar("Bülten: hiç ayar yokken 'kurulmamış' sayılıyor (hata değil)",
+          "if len(eksik) == len(ayarlar):" in _bk and "return 0" in
+          _bk.split("if len(eksik) == len(ayarlar):")[1][:300])
+    basar("Bülten: yarım kurulum yapılandırma hatası sayılıyor",
+          "bu bir yapılandırma hatası" in _bk)
+
+    # CI'da test fixture'ları OKUNABİLİR olmalı. .gitignore'da eğik
+    # çizgisiz "ham/" deseni test_verisi/ham/'i de dışlıyordu ve temiz
+    # kopyada testler ilk satırda çöküyordu — üretim hiç başlamıyordu.
+    _gi = open(".gitignore", encoding="utf-8").read()
+    basar(".gitignore: ham deseni sadece kökü dışlıyor",
+          "/ham/" in _gi and "\nham/" not in _gi)
+    basar("Test fixture'ları mevcut", _os.path.isdir("test_verisi/ham")
+          and len(_os.listdir("test_verisi/ham")) >= 5)
+
     basar("Bülten: abone listesi depoda TUTULMUYOR",
           not _os.path.exists("config/aboneler.json"))
     _bulten_kaynak = open("bulten.py", encoding="utf-8").read()

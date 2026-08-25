@@ -150,12 +150,23 @@ def _resend(kime, konu, html, metin):
 
 
 def gonder(prova_adresi=None):
-    eksik = [a for a, v in (("RESEND_API_KEY", RESEND), ("ABONE_GIZLI_ANAHTAR", GIZLI),
-                            ("SITE_ADRESI", SITE),
-                            ("UPSTASH_REDIS_REST_URL", REDIS_URL),
-                            ("UPSTASH_REDIS_REST_TOKEN", REDIS_TOKEN)) if not v]
+    ayarlar = (("RESEND_API_KEY", RESEND), ("ABONE_GIZLI_ANAHTAR", GIZLI),
+               ("SITE_ADRESI", SITE),
+               ("UPSTASH_REDIS_REST_URL", REDIS_URL),
+               ("UPSTASH_REDIS_REST_TOKEN", REDIS_TOKEN))
+    eksik = [a for a, v in ayarlar if not v]
+    # "Henüz kurulmadı" ile "kurulu ama bozuk" AYRI şeyler.
+    # Hiçbiri tanımlı değilse bülten daha kurulmamıştır: bu bir HATA
+    # değil, iş başarıyla biter. Aksi halde bülten kurulana kadar her
+    # sabah "yayın işi başarısız" bildirimi gider ve gerçek hatalar bu
+    # gürültünün içinde kaybolur — site yayınlanmış olmasına rağmen.
+    if len(eksik) == len(ayarlar):
+        print("Bülten henüz kurulmamış (hiçbir ayar tanımlı değil) — "
+              "site yayınlandı, mail gönderilmedi. Kurulum için bkz. KURULUM.md.")
+        return 0
     if eksik:
-        print(f"Eksik ortam değişkeni: {', '.join(eksik)} — gönderim yapılmadı.")
+        print(f"Bülten ayarları EKSİK: {', '.join(eksik)} — gönderim yapılmadı. "
+              f"Bazı ayarlar tanımlı, bazıları değil; bu bir yapılandırma hatası.")
         return 1
 
     durum = json.loads(DURUM.read_text(encoding="utf-8"))

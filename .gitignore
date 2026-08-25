@@ -6,7 +6,11 @@
 # zamanlanmış iş her gece kendi gecesini yeniden çekiyor, geçmiş ham
 # veriye ihtiyaç yok. (Tek istisna: testler ham dosya isterse yoksa
 # atlıyor, bkz. test_dogrula_bozuk.py.)
-ham/
+# Başında / VAR: sadece kök dizindeki ham/ dışlanır. Eğik çizgisiz
+# "ham/" deseni her seviyedeki ham klasörünü tutuyordu ve test_verisi/ham/
+# fixture'larını da sessizce dışarıda bırakmıştı — CI'da testler ilk
+# satırda çöküyor, üretim hiç başlamıyordu.
+/ham/
 
 # Ara çıktılar — üretimde her gece yeniden oluşuyor.
 cikti/
