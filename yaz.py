@@ -1323,6 +1323,12 @@ sınırına bağlı:
   kelimelerle TEKRAR ETMEZ — yeni bilgi taşır.
 {govde_talimati}
 
+SAYI TEKRARI YASAK: `baslik` ya da `neden_onemli` içinde geçen bir SAYI
+(skor "111-99", "16 sayılık fark", "2. sıra") gövdede TEKRAR EDİLMEZ.
+Başlık skoru zaten söylüyorsa gövde skoru yeniden yazmaz; gövde başka
+şey anlatır. Bu kural artık makine tarafından denetleniyor, ihlal eden
+metin reddediliyor.
+
 GENEL KURAL — AYNI OLGU İKİ KEZ GEÇEMEZ: `baslik`, `neden_onemli` ve
 gövde ({govde_alani}) ayrı ayrı okunmuyor, TEK bir kart olarak okunuyor.
 Bir kilometre/bağlam gerçeğini (ör. "ondan önce NBA tarihinde sadece N

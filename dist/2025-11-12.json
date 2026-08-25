@@ -7441,7 +7441,12 @@
       "ft": "2/4",
       "pm": "+1",
       "pm_ham": 1.0,
-      "cold": false
+      "cold": false,
+      "oynadi": true,
+      "renk": "#CE1141",
+      "takim_adi": "Houston Rockets",
+      "mac_kisa": "Houston 135–112 Washington",
+      "mac_id": "a-0022500218"
     }
   ],
   "turkler_bekleyen": null,

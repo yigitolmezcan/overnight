@@ -54,6 +54,22 @@ TAKIM_ADI = {
 }
 
 
+# Kısa (şehir) ad — "Houston 118–112 Dallas" gibi tek satırlık skorlar
+# için. Lakabı atarak türetmek güvenilir değil: "Portland Trail Blazers"
+# lakabı İKİ kelime, "San Antonio Spurs" şehri iki kelime. Tablo elle
+# yazıldı, 30 sabit değer.
+TAKIM_KISA = {
+    "ATL": "Atlanta", "BOS": "Boston", "BKN": "Brooklyn", "CHA": "Charlotte",
+    "CHI": "Chicago", "CLE": "Cleveland", "DAL": "Dallas", "DEN": "Denver",
+    "DET": "Detroit", "GSW": "Golden State", "HOU": "Houston", "IND": "Indiana",
+    "LAC": "LA Clippers", "LAL": "LA Lakers", "MEM": "Memphis", "MIA": "Miami",
+    "MIL": "Milwaukee", "MIN": "Minnesota", "NOP": "New Orleans", "NYK": "New York",
+    "OKC": "Oklahoma City", "ORL": "Orlando", "PHI": "Philadelphia", "PHX": "Phoenix",
+    "POR": "Portland", "SAC": "Sacramento", "SAS": "San Antonio", "TOR": "Toronto",
+    "UTA": "Utah", "WAS": "Washington",
+}
+
+
 # Takım renkleri — kart sekmesindeki 2px çizgi ve takım adının yanındaki
 # ince şerit için. Logo YOK (kullanıcı kararı), renk şeridi kimliği
 # taşıyor. Koyu zeminde okunur tonlar seçildi (BKN siyah yerine gri,
@@ -427,25 +443,65 @@ def _gecenin_besi(ham, gercek_gece, id_by_gid, skor_by_gid):
     return sonuc
 
 
-def _turkler(ham, turk_oyunculari):
-    # NBA API isimleri aksansız döner ("Alperen Sengun", "Şengün" değil)
-    # — düz karşılaştırma hiçbir zaman eşleşmiyordu (gerçek üretim bug'ı,
-    # 11 gecelik toplu üretimde HOU'nun oynadığı 3 gecede de Şengün hiç
-    # yakalanmadı). Aksan-katlanmış (ASCII) karşılaştırmaya geçildi —
-    # aynı yöntem kalip_secici.yildiz_kademesi / hesapla._katla'da da var.
+def _turkler(ham, turk_oyunculari, id_by_gid=None, skor_by_gid=None):
+    """Türk oyuncularının o geceki durumu.
+
+    NBA API isimleri aksansız döner ("Alperen Sengun") — düz karşılaştırma
+    hiçbir zaman eşleşmiyordu (gerçek üretim bug'ı). Aksan-katlanmış
+    karşılaştırma kullanılıyor.
+
+    Dönen her kayıt `oynadi` taşır:
+      True  → tam istatistik + maçın kartına atlamak için mac_id
+      False → takımı o gece OYNADI ama oyuncu sahaya çıkmadı
+    Takımı hiç maç yapmadıysa oyuncu listeye HİÇ girmez — "oynamadı"
+    demek yanlış olurdu, ortada maç yok.
+    """
+    id_by_gid = id_by_gid or {}
     isim_by_takim = {_katla(o["ad"]): o["takim"] for o in turk_oyunculari}
     if not isim_by_takim:
         return []
-    bulunanlar = []
+    ad_by_katlanmis = {_katla(o["ad"]): o["ad"] for o in turk_oyunculari}
+
+    oynayan_takimlar = set()
+    bulunanlar = {}
     for gid, ham_mac in ham["maclar"].items():
         bt = ham_mac["box_traditional"]["boxScoreTraditional"]
-        for taraf in (bt["homeTeam"], bt["awayTeam"]):
+        ev, dep = bt["homeTeam"], bt["awayTeam"]
+        ev_p, dep_p = ev["statistics"]["points"], dep["statistics"]["points"]
+        kaz, kay = (ev, dep) if ev_p >= dep_p else (dep, ev)
+        mac_kisa = (f"{TAKIM_KISA.get(kaz['teamTricode'], kaz['teamTricode'])} "
+                    f"{max(ev_p, dep_p)}–{min(ev_p, dep_p)} "
+                    f"{TAKIM_KISA.get(kay['teamTricode'], kay['teamTricode'])}")
+        for taraf in (ev, dep):
+            oynayan_takimlar.add(taraf["teamTricode"])
             for p in taraf["players"]:
-                tam_ad = f"{p['firstName']} {p['familyName']}".strip()
-                if _katla(tam_ad) in isim_by_takim and p["statistics"]["minutes"]:
-                    satir = _oyuncu_satiri(p, taraf["teamTricode"])
-                    bulunanlar.append(satir)
-    return bulunanlar
+                katlanmis = _katla(f"{p['firstName']} {p['familyName']}".strip())
+                if katlanmis not in isim_by_takim:
+                    continue
+                if not p["statistics"]["minutes"]:
+                    continue
+                satir = _oyuncu_satiri(p, taraf["teamTricode"])
+                satir.update({
+                    "oynadi": True,
+                    "renk": TAKIM_RENK.get(taraf["teamTricode"], "#7E8794"),
+                    "takim_adi": _takim_adi(taraf["teamTricode"]),
+                    "mac_kisa": mac_kisa,
+                    "mac_id": id_by_gid.get(gid, f"a-{gid}"),
+                })
+                bulunanlar[katlanmis] = satir
+
+    sonuc = list(bulunanlar.values())
+    # Takımı oynamış ama kendisi sahaya çıkmamış olanlar.
+    for katlanmis, kod in isim_by_takim.items():
+        if katlanmis in bulunanlar or kod not in oynayan_takimlar:
+            continue
+        sonuc.append({
+            "isim": ad_by_katlanmis[katlanmis], "takim": kod, "oynadi": False,
+            "takim_adi": _takim_adi(kod), "renk": TAKIM_RENK.get(kod, "#7E8794"),
+        })
+    # Oynayanlar önce, sonra ada göre — sıra geceden geceye zıplamasın.
+    sonuc.sort(key=lambda o: (not o["oynadi"], o["isim"]))
+    return sonuc
 
 
 _AYLAR_TR = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
@@ -489,7 +545,7 @@ def _turkler_bekleyen(ham, turk_oyunculari):
     if not adaylar:
         isimler = [o["ad"].split()[-1] for o in turk_oyunculari][:2]
         return {"isimler": isimler, "tarih": None,
-                "metin": "Bu gece Türk oyuncu sahada yoktu."}
+                "metin": "Bu gece Türk oyuncu sahaya çıkmadı."}
     # Oyuncuları KENDİ sonraki maç tarihlerine göre grupla. Eskiden
     # sadece en erken tarihe sahip olanlar anılıyordu ve diğerleri
     # cümleden düşüyordu (liste iki kişiye inince Bona her seferinde
@@ -509,7 +565,7 @@ def _turkler_bekleyen(ham, turk_oyunculari):
     return {
         "isimler": tum_isimler,
         "tarih": _tarih_tr(en_erken, bulunma=True),
-        "metin": f"Bu gece Türk oyuncu sahada yoktu. {cumle}",
+        "metin": f"Bu gece Türk oyuncu sahaya çıkmadı. {cumle}",
     }
 
 
@@ -637,7 +693,7 @@ def derle(tarih_str):
             diger.append(girdi)
 
     # ---- türkler ----
-    turkler = _turkler(ham, turk_oyunculari)
+    turkler = _turkler(ham, turk_oyunculari, mutlaka_id_by_gid, rozet_by_gid)
 
     return {
         "tarih": tarih_str,
@@ -650,7 +706,10 @@ def derle(tarih_str):
         "degerse_bak": degerse_bak,
         "diger": diger,
         "turkler": turkler,
-        "turkler_bekleyen": None if turkler else _turkler_bekleyen(ham, turk_oyunculari),
+        # Bölüm en alta ancak HİÇ KİMSE sahaya çıkmadıysa düşer. Biri
+        # oynayıp diğeri oynamadıysa bölüm üstte kalır ve oynamayan
+        # "OYNAMADI" satırıyla aynı blokta görünür.
+        "turkler_bekleyen": None if any(t.get("oynadi") for t in turkler) else _turkler_bekleyen(ham, turk_oyunculari),
         # Aşağıdaki iki bölümün üretim tarafı henüz YOK (bkz. modül
         # docstring'i) — HTML bu anahtarlar boşsa ilgili bölümü gizler.
         "gecenin_notlari": [],

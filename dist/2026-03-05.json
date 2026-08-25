@@ -5240,7 +5240,12 @@
       "ft": "1/1",
       "pm": "-15",
       "pm_ham": -15.0,
-      "cold": false
+      "cold": false,
+      "oynadi": true,
+      "renk": "#CE1141",
+      "takim_adi": "Houston Rockets",
+      "mac_kisa": "Golden State 115–113 Houston",
+      "mac_id": "a-0022500902"
     }
   ],
   "turkler_bekleyen": null,

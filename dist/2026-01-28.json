@@ -1,6 +1,6 @@
 {
   "tarih": "2026-01-28",
-  "uretildi": "2026-08-25T11:29:06.441613Z",
+  "uretildi": "2026-08-25T12:38:30.403344Z",
   "mac_sayisi": 9,
   "bars": [
     {
@@ -87,9 +87,9 @@
       "mac": "Houston Rockets — San Antonio Spurs",
       "skor": "99–111",
       "rozet": 8.4,
-      "baslik": "San Antonio, Houston'ı 16 sayılık farktan dönerek 111-99 yendi",
-      "neden_onemli": "San Antonio bu galibiyetle konferansta 2. sıraya yükseldi.",
-      "ozet": "Houston, ilk çeyreği 36-26 önde kapadı ve farkı 16 sayıya kadar çıkardı. San Antonio, dördüncü çeyrekte Wembanyama'nın serbest atışıyla 87-86 öne geçerek 16 sayılık farktan döndü. Spurs bu üstünlüğü son periyotta koruyarak maçı rahat biçimde 111-99 kazandı. 28 sayı, 16 ribaund ve 5 blokla öne çıkan Wembanyama, geceyi konferansta 2. sırada kapatan Spurs'ün en etkili ismi oldu.",
+      "baslik": "San Antonio Spurs, 16 sayılık farktan dönüp Houston Rockets'ı yendi.",
+      "neden_onemli": "San Antonio bu galibiyetle Batı Konferansı'nda 2. sıraya yükseldi.",
+      "ozet": "Houston, ilk periyotta hızlı başlayarak erken üstünlük kurdu ve devreye kadar farkını korudu. San Antonio, üçüncü periyotta farkı tek haneye indirdi ve dördüncü periyotun başında Wembanyama'nın serbest atışıyla öne geçti. Houston son periyotta sadece 13 sayı üretebilirken, San Antonio bu periyotta bulduğu 27 sayıyla maçı kopardı. Wembanyama 28 sayı, 5 blok ve çift haneli ribaundla double-double yaptı.",
       "box": {
         "ev": {
           "takim": "Houston Rockets",
@@ -2009,7 +2009,7 @@
       "skor": "113–110",
       "rozet": 6.56,
       "why": "maçı bitiren basket, bitime 13.9 saniye kala",
-      "metin": "Bitime 13.9 saniye kala bulduğu basketle Indiana Pacers, Chicago Bulls'u 113-110 yendi.",
+      "metin": "Bitime 13.9 saniye kala bulduğu basketle Indiana, Chicago'yu yendi.",
       "box": {
         "ev": {
           "takim": "Indiana Pacers",
@@ -5451,7 +5451,12 @@
       "ft": "3/7",
       "pm": "-14",
       "pm_ham": -14.0,
-      "cold": false
+      "cold": false,
+      "oynadi": true,
+      "renk": "#CE1141",
+      "takim_adi": "Houston Rockets",
+      "mac_kisa": "San Antonio 111–99 Houston",
+      "mac_id": "g-mutlaka-0"
     }
   ],
   "turkler_bekleyen": null,

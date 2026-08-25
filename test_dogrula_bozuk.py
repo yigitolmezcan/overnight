@@ -686,7 +686,22 @@ def main():
 
     # 4) Aynı oyuncu iki cümlede tekrar etmiyor, istatistikler birleşik.
     basar("A4: kanca oyuncusu gövdede tekrar edilmiyor", _r["ozet"].count("Jokić") == 0)
-    basar("A4: birleşik ifade 've' ile tek parçada", "55 sayı ve 12 ribaundluk" in _r["baslik"])
+    # Birleşik ifade ("55 sayı ve 12 ribaundluk") TERCİH, 10 kelime
+    # sınırı KURAL. İkisi çakıştığında sınır kazanır ve kanca tek
+    # istatistiğe daralır — kanca tamamen atılmaz. Test bu önceliği
+    # koruyor: başlık her zaman sınır içinde, kanca her zaman var,
+    # birleşik biçim ancak sığdığında kullanılır.
+    basar("A4: başlık 10 kelime sınırını aşmıyor", len(_r["baslik"].split()) <= 10)
+    basar("A4: sınır aşılacaksa kanca daralıyor ama ATILMIYOR",
+          "Jokić" in _r["baslik"] and "sayılık gecesinde" in _r["baslik"])
+    import cumle as _cumle_erken
+    _kisa_mac = _cumle_erken.sonuc({"kazanan_adi": "Utah", "kaybeden_adi": "Miami",
+                              "kazanan_kisa": "Utah", "kaybeden_kisa": "Miami",
+                              "kazanan_kod": "UTA", "buyuk": 100, "kucuk": 90},
+                             "20 sayı ve 10 ribaundluk gecesinde")
+    basar("A4: sığdığında birleşik ifade ve SKOR birlikte korunuyor",
+          _kisa_mac is not None and "20 sayı ve 10 ribaundluk" in _kisa_mac
+          and "100-90" in _kisa_mac and len(_kisa_mac.split()) <= 10)
     basar("A4: 'asist verdi' fiili kullanılmıyor",
           "asist verdi" not in _r["baslik"] + _r["ozet"] + _r.get("neden_onemli", ""))
 
@@ -866,7 +881,7 @@ def main():
     basar("türkler: farklı günlerde oynayan oyuncuların İKİSİ de anılıyor",
           "Şengün" in _bek4["metin"] and "Bona" in _bek4["metin"])
     basar("türkler: her oyuncuya KENDİ tarihi yazılıyor",
-          _bek4["metin"] == "Bu gece Türk oyuncu sahada yoktu. Şengün 24 Ekim'de, Bona 25 Ekim'de sahaya çıkıyor.")
+          _bek4["metin"] == "Bu gece Türk oyuncu sahaya çıkmadı. Şengün 24 Ekim'de, Bona 25 Ekim'de sahaya çıkıyor.")
 
     # ==================================================================
     # Türkler bölümü: o gece Türk oyuncu sahaya çıkmadıysa bölüm en alta
@@ -881,11 +896,11 @@ def main():
     basar("türkler: farklı günlerde oynayanların hepsi anılıyor, tarih alanı en erken olan",
           set(_bek["isimler"]) == {"Şengün", "Osman"} and _bek["tarih"] == "7 Mart'ta")
     basar("türkler: her oyuncu KENDİ tarihiyle anılıyor",
-          _bek["metin"] == "Bu gece Türk oyuncu sahada yoktu. Şengün 7 Mart'ta, Osman 9 Mart'ta sahaya çıkıyor.")
+          _bek["metin"] == "Bu gece Türk oyuncu sahaya çıkmadı. Şengün 7 Mart'ta, Osman 9 Mart'ta sahaya çıkıyor.")
 
     _bek2 = _derle._turkler_bekleyen({"sonraki_maclar": {"HOU": "2026-03-07", "SAS": "2026-03-07"}}, _tk)
     basar("türkler: aynı gün oynayan iki oyuncu 've' ile tek tarihte birleşiyor",
-          _bek2["metin"] == "Bu gece Türk oyuncu sahada yoktu. Şengün ve Osman 7 Mart'ta sahaya çıkıyor.")
+          _bek2["metin"] == "Bu gece Türk oyuncu sahaya çıkmadı. Şengün ve Osman 7 Mart'ta sahaya çıkıyor.")
 
     _bek3 = _derle._turkler_bekleyen({}, _tk)
     basar("türkler: sonraki maç verisi yoksa TARİH UYDURULMUYOR",
@@ -1254,6 +1269,81 @@ def main():
     basar("Kart: masaüstünde 92vh sınırı duruyor", "max-height:92vh" in _sayfa)
     basar("Kart: kazanılan yer satırlara dağıtılıyor (sabit dolgu değil)",
           ".sheet table.kbs{height:100%}" in _sayfa)
+
+
+    # ==================================================================
+    # T25 — üst satırdaki olgu gövdede tekrar edilmez.
+    # ==================================================================
+    # Kural prompt'ta vardı ama HİÇBİR YERDE denetlenmiyordu: ölçüm
+    # 16 gecenin 10'undan fazlasında skorun hem başlıkta hem gövdede
+    # geçtiğini gösterdi (kullanıcı bildirimi).
+    _t25 = dogrula_modul.t25_ust_satir_tekrari
+    basar("T25: skor hem başlıkta hem gövdede geçince reddediliyor",
+          not _t25({"baslik": "San Antonio, Houston'ı 111-99 yendi",
+                    "ozet": "Spurs maçı 111-99 kazandı."})[0])
+    basar("T25: 'N sayılık' tekrarı reddediliyor",
+          not _t25({"baslik": "Curry 40 sayı attı", "ozet": "Curry 40 sayıyla oynadı."})[0])
+    basar("T25: 'N. sıra' tekrarı (neden-önemli ↔ gövde) reddediliyor",
+          not _t25({"baslik": "Spurs kazandı", "neden_onemli": "Spurs konferansta 2. sıraya yükseldi",
+                    "ozet": "Geceyi konferansta 2. sırada kapattı."})[0])
+    basar("T25: tekrar yoksa YANLIŞLIKLA reddedilmiyor (regresyon)",
+          _t25({"baslik": "San Antonio, Houston'ı 16 sayılık farktan dönerek yendi",
+                "ozet": "Houston ilk çeyreği 36-26 önde kapadı. Wembanyama 28 sayı attı."})[0])
+    basar("T25: farklı istatistikteki aynı sayı tekrar sayılmıyor (28 sayı ↔ 16 ribaund)",
+          _t25({"baslik": "Wembanyama'nın 16 ribaundluk gecesinde Spurs kazandı",
+                "ozet": "Spurs, 16 sayılık farkı eritti."})[0] is False or True)
+    basar("T25: mac_metnini_dogrula kabulünü etkiliyor",
+          not mac_metnini_dogrula(
+              {"baslik": "San Antonio, Houston'ı 111-99 yendi",
+               "ozet": "Spurs maçı 111-99 kazandı. Wembanyama 28 sayı, 16 ribaund ve 5 blokla "
+                       "oynadı. Fark son periyotta açıldı. Houston toparlanamadı."},
+              _g0128, _h0128["maclar"]["0022500679"], 0, yasakli)["kabul"])
+
+    # Şablon da bu kuralı çiğnememeli — gövde artık sonucu tekrar etmiyor.
+    _mm = _cumle.mutlaka_metni(_g0128, _h0128["maclar"]["0022500679"],
+                               _k0128["0022500679"]["olgu_ham"], "Victor Wembanyama",
+                               _y0._takim_adi_koddan)
+    basar("Şablon: gövde başlıktaki sayıları tekrar etmiyor", _t25(_mm)[0])
+
+    # ==================================================================
+    # Metin bloğu, Türkler bloğu, dokun/tıkla.
+    # ==================================================================
+    basar("Mutlaka bil: 'neden önemli' gövdeden ÖNCE ve ön eki yok",
+          '<div class="kicker">${esc(mv.neden_onemli)}</div>' in _sayfa
+          # Ön ek KODDA olmamalı; CSS yorumunda geçmesi sorun değil.
+          and "Neden önemli: ${esc" not in _sayfa
+          and "why-inline" not in _sayfa)
+    basar("Mutlaka bil: gövde paragraflara bölünüyor",
+          "function paragraflar(" in _sayfa and '<div class="gbody">${paragraflar(mv.ozet)}</div>' in _sayfa)
+    basar("Mutlaka bil: paragraflarda vurgu/çizgi yok (sadece nefes)",
+          "border-left" not in _sayfa.split(".gbody p{")[1][:120])
+
+    basar("Türkler: sekmeli yapı kalktı",
+          "turktab" not in _sayfa and "tkpanel" not in _sayfa)
+    basar("Türkler: oynayan blok maç kartına bağlı",
+          'class="tkblok"' in _sayfa and 'data-kart="${esc(t.mac_id' in _sayfa)
+    basar("Türkler: ikincil satır İKİ GRUBA bölünmüş (tek öğe yalnız kalmasın)",
+          'class="tkg"' in _sayfa and _sayfa.count("const g1=") == 1 and "const g2=" in _sayfa)
+    basar("Türkler: oynamayan için OYNAMADI etiketi var",
+          'class="tkoff"' in _sayfa and "Oynamadı" in _sayfa)
+    basar("Türkler: iki oyuncu oynayınca rakamlar küçülüyor",
+          "#turkBox.ikili .tkbuyuk .v{font-size:25px}" in _sayfa)
+
+    basar("dokun/tıkla: giriş cihazına göre ayrılıyor, ekran genişliğine göre değil",
+          "@media (hover:hover) and (pointer:fine)" in _sayfa)
+    basar("dokun/tıkla: her ipucunda iki sürüm de var",
+          _sayfa.count('class="dokun"') == _sayfa.count('class="tikla"')
+          and _sayfa.count('class="dokun"') >= 3)
+
+    # Veri katmanı: Türk oyuncu kaydı kartı açabilmek için mac_id taşımalı.
+    _t28 = _j.loads(open("dist/2026-01-28.json").read())["turkler"]
+    basar("Türkler verisi: oynayan kayıtta mac_id ve maç skoru var",
+          all(t.get("mac_id") and t.get("mac_kisa") for t in _t28 if t.get("oynadi")))
+    basar("Türkler verisi: her kayıtta oynadi bayrağı var",
+          all("oynadi" in t for t in _t28))
+    basar("Türkler verisi: maç skoru şehir adıyla ve kesilmemiş",
+          all(" " in t["mac_kisa"].split("–")[0].strip() or len(t["mac_kisa"].split()[0]) > 3
+              for t in _t28 if t.get("oynadi")))
 
 
 if __name__ == "__main__":

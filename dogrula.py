@@ -851,6 +851,47 @@ KENDINI_CURUTEN_DESENI = re.compile(
 )
 
 
+# ---------------------------------------------------------------------------
+# T25 — üst satırda geçen olgu gövdede tekrar edilmez
+# ---------------------------------------------------------------------------
+# Kullanıcı kuralı: "başlıkta veya üst satırda geçen bir olgu gövdede
+# tekrar edilmez." Kural prompt'ta vardı ama HİÇBİR YERDE denetlenmiyordu;
+# ölçüm 16 gecenin 10'undan fazlasında skorun hem başlıkta hem gövdede
+# geçtiğini gösterdi.
+#
+# "Olgu izi" olarak üç şey aranıyor: skor kalıbı (111-99), "N sayı(lık)"
+# ve "N. sıra". Serbest sayılar KASTEN aranmıyor — "dördüncü çeyrek" ile
+# "4 ribaund" arasındaki tesadüfi eşleşmeler yanlış ret üretirdi.
+_IZ_DESENLERI = (
+    ("skor", re.compile(r"\b\d{2,3}\s*[-–]\s*\d{2,3}\b")),
+    ("sayi", re.compile(r"\b(\d+)\s*sayı")),
+    ("sira", re.compile(r"\b(\d+)\.\s*sıra")),
+)
+
+
+def olgu_izleri(metin):
+    izler = set()
+    for ad, desen in _IZ_DESENLERI:
+        for m in desen.finditer(metin or ""):
+            deger = m.group(1) if m.lastindex else re.sub(r"\s", "", m.group(0)).replace("–", "-")
+            izler.add((ad, deger))
+    return izler
+
+
+def t25_ust_satir_tekrari(metin_obj):
+    """Başlık/neden-önemli'deki bir olgu gövdede tekrar ediyorsa reddeder."""
+    if not isinstance(metin_obj, dict):
+        return True, None
+    ust = olgu_izleri(metin_obj.get("baslik", "")) | olgu_izleri(metin_obj.get("neden_onemli", ""))
+    govde = olgu_izleri(metin_obj.get("ozet", "") or metin_obj.get("ozet_kisa", ""))
+    ortak = ust & govde
+    if not ortak:
+        return True, None
+    okunur = ", ".join(f"{d}" for _, d in sorted(ortak))
+    return False, [f"üst satırdaki olgu gövdede tekrar edildi ({okunur}) — "
+                   f"başlıkta geçen bir sayı gövdede yeniden yazılmaz"]
+
+
 def t23_mimari_kural_ihlalleri(metin):
     sorunlu = []
     for cumle in cumlelere_ayir(metin):
@@ -1613,6 +1654,11 @@ def t14_en_iyi_performans_anildi(tum_metin, en_iyi_performans, gercekler):
 
 def mac_metnini_dogrula(metin, gercekler, ham_mac, haber_skoru, yasakli_liste, en_iyi_performans=None, sablon=False):
     sonuc = {"alanlar": {}, "gerekce": []}
+    # T25 alan bazlı DEĞİL nesne bazlı: başlık ile gövdeyi karşılaştırıyor,
+    # yani tek bir alana bakarak karar verilemez.
+    t25_ok, t25_sebep = t25_ust_satir_tekrari(metin)
+    if not t25_ok:
+        sonuc["gerekce"].extend(f"T25: {x}" for x in t25_sebep)
     # DİKKAT: "and v" filtresi kaldırıldı — önceki hâli BOŞ bir alanı
     # (v == "") doğrulama kapsamının tamamen DIŞINA atıyordu, yani boş
     # metin hiçbir testten geçmeden "kabul" görüyordu (gerçek üretim
@@ -1652,6 +1698,11 @@ def mac_metnini_dogrula(metin, gercekler, ham_mac, haber_skoru, yasakli_liste, e
     if not gecti8:
         hepsi_gecti = False
         sonuc["gerekce"].append("T8: haber_skoru>=6 iken muzip:true")
+
+    # T25 gerekçesi eklenmişse metin kabul edilmez (yukarıda, nesne
+    # bazlı test olarak çalıştırıldı).
+    if any(g.startswith("T25:") for g in sonuc["gerekce"]):
+        hepsi_gecti = False
 
     sonuc["kabul"] = hepsi_gecti
     return sonuc

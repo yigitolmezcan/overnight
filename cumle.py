@@ -233,7 +233,7 @@ def gerekce(metin):
 # ---------------------------------------------------------------------------
 
 
-def sonuc(mac, kanca=None):
+def sonuc(mac, kanca=None, kanca_kisa=None):
     """CÜMLE1 (zorunlu): kim kimi kaç kaç yendi. `kanca` verilirse
     (eşiği geçen bir olgudan türemiş kısa bir önek) cümlenin başına
     eklenir; yoksa düz sonuç. Fark rakamı ASLA yazılmaz (skor zaten
@@ -247,7 +247,24 @@ def sonuc(mac, kanca=None):
         # başlamıştı; önekler cümle ortası için yazıldığı halde cümle
         # başında kullanılıyor).
         kanca = kanca[0].upper() + kanca[1:]
-        return _gecir(f"{kanca} {k}, {y}'{ek} {skor} yendi.")
+        # Telefon ekranı kuralı: başlık en fazla 10 kelime. Kancalı biçim
+        # tam takım adları ve skorla birlikte sık sık 13-15 kelimeye
+        # çıkıyor. Kancayı ATMAK yanlış çözüm — başlığın en güçlü olguyu
+        # kullanması ayrı bir kural. Onun yerine SONUÇ KISMI kademeli
+        # sadeleşiyor: önce skor düşer (skor zaten kartın tepesinde ve
+        # başlıkta tekrarı T25'i de ihlal ediyordu), yetmezse takım adları
+        # kısa şehir biçimine iner.
+        kk = (kanca_kisa[0].upper() + kanca_kisa[1:]) if kanca_kisa else kanca
+        ky, kyek = mac.get("kaybeden_kisa", y), belirtme_eki(mac.get("kaybeden_kisa", y))
+        for aday in (
+            f"{kanca} {k}, {y}'{ek} {skor} yendi.",
+            f"{kanca} {k}, {y}'{ek} yendi.",
+            f"{kk} {k}, {y}'{ek} yendi.",
+            f"{kk} {mac.get('kazanan_kisa', k)}, {ky}'{kyek} yendi.",
+        ):
+            if len(aday.split()) <= 10:
+                return _gecir(aday)
+        return _gecir(f"{kk} {mac.get('kazanan_kisa', k)}, {ky}'{kyek} yendi.")
     if mac.get("en_buyuk_fark_gecede_mi"):
         return _gecir(f"{k} {mac['ev_dep']} {y}'{ek} {skor} ezdi.")
     return _gecir(f"{k} {mac['ev_dep']} {y}'{ek} {skor} yendi.")
@@ -479,17 +496,24 @@ def _baslik_oneki(mac, olgu, en_iyi_oyuncu, gercekler=None):
     if kilo and kilo.get("oyuncu"):
         takim = oyuncunun_takimi(gercekler or [], kilo["oyuncu"])
         if takim is None or takim == mac["kazanan_kod"]:
-            return "kilometre", f"{kilo['oyuncu']}'{iyelik_eki(kilo['oyuncu'])} {_gece_ifadesi(kilo, en_iyi_oyuncu)} gecesinde"
+            ad = f"{kilo['oyuncu']}'{iyelik_eki(kilo['oyuncu'])}"
+            # İki biçim: tam (birleşik istatistik) ve KISA (tek istatistik).
+            # Başlık 10 kelimeyi aşarsa kısası kullanılıyor — kancayı
+            # tamamen atmaktansa daraltmak doğru, başlığın en güçlü olguyu
+            # taşıması ayrı bir kural.
+            return ("kilometre",
+                    f"{ad} {_gece_ifadesi(kilo, en_iyi_oyuncu)} gecesinde",
+                    f"{ad} {kilo['sayi']} sayı{lik_eki('sayı')} gecesinde")
     ka = olgu.get("karar_ani")
     if ka:
-        return "an", f"bitime {ka['saniye_kalan']:.1f} saniye kala bulduğu basketle"
+        return "an", f"bitime {ka['saniye_kalan']:.1f} saniye kala bulduğu basketle", f"bitime {ka['saniye_kalan']:.1f} saniye kala bulduğu basketle"
     if olgu.get("uzatma"):
-        return "an", "uzatmaya giden maçta"
+        return "an", "uzatmaya giden maçta", "uzatmaya giden maçta"
     if olgu.get("en_buyuk_geri_donus", 0) >= GERI_DONUS_ESIGI:
-        return "geri_donus", f"{olgu['en_buyuk_geri_donus']} sayılık farktan dönen"
+        return "geri_donus", f"{olgu['en_buyuk_geri_donus']} sayılık farktan dönen", f"{olgu['en_buyuk_geri_donus']} sayılık farktan dönen"
     if olgu.get("surpriz_sonuc"):
-        return "surpriz", "sürpriz bir sonuçla"
-    return None, None
+        return "surpriz", "sürpriz bir sonuçla", "sürpriz bir sonuçla"
+    return None, None, None
 
 
 def _olgu_cumleleri(mac, olgu, en_iyi_oyuncu, en_iyi_ad, gercekler=None):
@@ -535,8 +559,8 @@ def mutlaka_metni(gercekler, ham_mac, olgu, en_iyi_ad, takim_adi_fn, kisa=False)
     kullanilan = set()
 
     # 1) BAŞLIK — en güçlü olgu; düz skor son çare.
-    kind, onek = _baslik_oneki(mac, olgu, en_iyi, gercekler)
-    baslik = sonuc(mac, onek) if onek else None
+    kind, onek, onek_kisa = _baslik_oneki(mac, olgu, en_iyi, gercekler)
+    baslik = sonuc(mac, onek, onek_kisa) if onek else None
     if baslik:
         kullanilan.add(kind)
         # Kanca oyuncuyu zaten andıysa (ve istatistikleri birleştirdiyse)
@@ -567,7 +591,13 @@ def mutlaka_metni(gercekler, ham_mac, olgu, en_iyi_ad, takim_adi_fn, kisa=False)
     # tabanına ulaşana kadar sırayla ekleniyor.
     hedef_cumle = OZET_CUMLE if not kisa else SEVIYE_BUTCE["degerse"]
     kalanlar = [m for k, m in havuz if k not in kullanilan]
-    govde = [sonuc_alternatif(mac) or sonuc(mac)]
+    # Gövde ARTIK sonucu tekrar etmiyor. Eskiden ilk cümle her zaman
+    # sonucun başka sözcüklerle kurulmuş hâliydi ("X, Y karşısında A-B
+    # kazandı") — başlık zaten skoru taşıdığı için aynı sayılar iki kez
+    # geçiyordu (kullanıcı bildirimi: "111-99 başlıkta ve gövdede").
+    # Elde hiç olgu yoksa sonuç cümlesi SON ÇARE olarak kalıyor; boş
+    # gövde göndermektense tekrar etmek yeğ.
+    govde = [] if kalanlar else [sonuc_alternatif(mac) or sonuc(mac)]
     for m in kalanlar:
         if len(govde) >= hedef_cumle:
             break
@@ -638,7 +668,24 @@ def brief_satiri(mac, olgu, en_iyi_oyuncu, en_iyi_ad, haric_kindler=None):
 # ---------------------------------------------------------------------------
 
 
-def mac_baglami(gercekler, ham_mac, olgu, takim_adi_fn):
+# Takım kodu → kısa (şehir) ad. Lakabı atarak türetmek güvenilir değil:
+# "Portland Trail Blazers"ın lakabı iki kelime, "San Antonio"nun şehri iki
+# kelime. derle.TAKIM_KISA ile aynı tablo — orada görüntü için, burada
+# başlık kısaltması için gerekiyor.
+TAKIM_KISA = {
+    "ATL": "Atlanta", "BOS": "Boston", "BKN": "Brooklyn", "CHA": "Charlotte",
+    "CHI": "Chicago", "CLE": "Cleveland", "DAL": "Dallas", "DEN": "Denver",
+    "DET": "Detroit", "GSW": "Golden State", "HOU": "Houston", "IND": "Indiana",
+    "LAC": "LA Clippers", "LAL": "LA Lakers", "MEM": "Memphis", "MIA": "Miami",
+    "MIL": "Milwaukee", "MIN": "Minnesota", "NOP": "New Orleans", "NYK": "New York",
+    "OKC": "Oklahoma City", "ORL": "Orlando", "PHI": "Philadelphia", "PHX": "Phoenix",
+    "POR": "Portland", "SAC": "Sacramento", "SAS": "San Antonio", "TOR": "Toronto",
+    "UTA": "Utah", "WAS": "Washington",
+}
+
+
+def mac_baglami(gercekler, ham_mac, olgu, takim_adi_fn, kisa_ad_fn=None):
+    kisa_ad_fn = kisa_ad_fn or (lambda kod: TAKIM_KISA.get(kod, kod))
     """Cümle kurucuların ihtiyaç duyduğu ortak sözlük."""
     skor = next(g for g in gercekler if g["tur"] == "skor")["veri"]
     kaybeden_kod = skor["dep"] if skor["kazanan"] == skor["ev"] else skor["ev"]
@@ -647,6 +694,9 @@ def mac_baglami(gercekler, ham_mac, olgu, takim_adi_fn):
         "kaybeden_kod": kaybeden_kod,
         "kazanan_adi": takim_adi_fn(skor["kazanan"], ham_mac),
         "kaybeden_adi": takim_adi_fn(kaybeden_kod, ham_mac),
+        # Kısa (şehir) biçim — başlık 10 kelimeyi aşarsa devreye giriyor.
+        "kazanan_kisa": kisa_ad_fn(skor["kazanan"]) if kisa_ad_fn else takim_adi_fn(skor["kazanan"], ham_mac),
+        "kaybeden_kisa": kisa_ad_fn(kaybeden_kod) if kisa_ad_fn else takim_adi_fn(kaybeden_kod, ham_mac),
         "ev_dep": "evinde" if skor["kazanan"] == skor["ev"] else "deplasmanda",
         "buyuk": max(skor["ev_skor"], skor["dep_skor"]),
         "kucuk": min(skor["ev_skor"], skor["dep_skor"]),
