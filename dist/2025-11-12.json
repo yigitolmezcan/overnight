@@ -48,7 +48,7 @@
     {
       "sira": 8,
       "mac": "San Antonio Spurs — Golden State Warriors",
-      "rozet": 8.8,
+      "rozet": 8.83,
       "id": "g-mutlaka-1"
     },
     {
@@ -72,7 +72,7 @@
     {
       "sira": 12,
       "mac": "LA Clippers — Denver Nuggets",
-      "rozet": 9.23,
+      "rozet": 9.16,
       "id": "g-mutlaka-0"
     }
   ],
@@ -85,7 +85,7 @@
     {
       "metin": "Nikola Jokić, LA Clippers karşısında 55 sayı attı.",
       "hedef_id": "g-mutlaka-0",
-      "icon": "default"
+      "icon": "standings"
     },
     {
       "metin": "Detroit Pistons, Chicago Bulls'u yenerek konferansta 1. sıraya yükseldi.",
@@ -99,7 +99,7 @@
       "kisa": false,
       "mac": "LA Clippers — Denver Nuggets",
       "skor": "116–130",
-      "rozet": 9.23,
+      "rozet": 9.16,
       "baslik": "Denver Nuggets deplasmanda LA Clippers'i 130-116 yendi.",
       "neden_onemli": "Denver Nuggets, konferansta 2. sıraya yükseldi.",
       "ozet": "Denver Nuggets, 10 sayılık farktan dönerek kazandı. Nikola Jokić 55 sayı attı.",
@@ -753,7 +753,7 @@
       "kisa": true,
       "mac": "San Antonio Spurs — Golden State Warriors",
       "skor": "120–125",
-      "rozet": 8.8,
+      "rozet": 8.83,
       "baslik": "Warriors, San Antonio'yu deplasmanda 125-120 mağlup etti.",
       "neden_onemli": "Kaybeden tarafta Stephon Castle, 23 sayı, 10 ribaund, 10 asistle triple-double yaptı.",
       "ozet": "Stephen Curry gecenin en üretken ismiydi, 46 sayı attı. Warriors, San Antonio deplasmanında bulduğu üstünlüğü son çeyreğe kadar korudu. Kaybeden tarafta Stephon Castle ise 23 sayı, 10 ribaund, 10 asistle triple-double yaptı.",
@@ -5581,7 +5581,7 @@
       "mac": "Charlotte Hornets — Milwaukee Bucks",
       "skor": "111–100",
       "rozet": 3.73,
-      "why": "gece sırası 1",
+      "why": "",
       "metin": "Charlotte Hornets evinde Milwaukee Bucks'u 111-100 yendi.",
       "box": {
         "ev": {

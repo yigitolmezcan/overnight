@@ -1,11 +1,11 @@
 {
   "tarih": "2026-03-10",
-  "hesaplandi": "2026-08-20T16:27:33.908173Z",
-  "en_iyi_skor": 9.3,
+  "hesaplandi": "2026-08-25T20:12:09.290449Z",
+  "en_iyi_skor": 9.21,
   "maclar": [
     {
-      "rozet": 9.3,
-      "ham": 12.23,
+      "rozet": 9.21,
+      "ham": 11.72,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 10,
@@ -28,8 +28,8 @@
       "en_iyi_performans": "Bam Adebayo"
     },
     {
-      "rozet": 8.99,
-      "ham": 10.72,
+      "rozet": 8.97,
+      "ham": 10.64,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 9.8,

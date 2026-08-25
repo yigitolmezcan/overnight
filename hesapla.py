@@ -775,6 +775,11 @@ def A_hesapla(ev_kod, dep_kod, ortalamalar, sirali, bt, yildizlar):
 # ---------------------------------------------------------------------------
 
 
+# Zirve sönümlemesinin üst sınırı. 1.0 = çarpanı tamamen sil (YANLIŞTI,
+# bkz. formulu_uygula 3. adım), 0.7 = en fazla %70'ini sil.
+SONUMLEME_TAVANI = 0.7
+
+
 def formulu_uygula(S, K, T, Y, F, G, A):
     # 0. Dram terfisi
     # Kullanıcı kararı: F=8 ("son 30 saniyede öne geçildi") eskiden
@@ -801,8 +806,16 @@ def formulu_uygula(S, K, T, Y, F, G, A):
     carpan = min(max(carpan, 0.80), 1.28)
 
     # 3. Zirve sönümlemesi
+    #
+    # Kuralın amacı çarpanı YOK ETMEK değil ZAYIFLATMAK: "83 sayılık bir
+    # maç bağlamına ihtiyaç duymaz" demek, "bağlam hiç sayılmaz" demek
+    # değil. Tavan 1.0 iken S=10 olan HER maçta çarpan tamamen iptal
+    # oluyordu ve dramları bambaşka maçlar aynı rozete çöküyordu
+    # (2025-10-22: dört maç birden 8.96; çarpanları 0.87–1.08 arasında
+    # FARKLIYDI ama hepsi sıfırla çarpıldı). Tavan 0.7 — en uç durumda
+    # bile çarpanın %30'u etkisini korur.
     if C1 in (S, T) and C1 == max(S, T):
-        k = min(max((C1 - 8.5) / 1.5, 0), 1)
+        k = min(max((C1 - 8.5) / 1.5, 0), SONUMLEME_TAVANI)
     else:
         k = 0
     carpan_efektif = 1 + (carpan - 1) * (1 - k)

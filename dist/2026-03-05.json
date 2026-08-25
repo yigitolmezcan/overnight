@@ -36,7 +36,7 @@
     {
       "sira": 6,
       "mac": "San Antonio Spurs — Detroit Pistons",
-      "rozet": 9.2,
+      "rozet": 9.15,
       "id": "g-mutlaka-0"
     },
     {
@@ -86,7 +86,7 @@
       "kisa": false,
       "mac": "San Antonio Spurs — Detroit Pistons",
       "skor": "121–106",
-      "rozet": 9.2,
+      "rozet": 9.15,
       "baslik": "San Antonio, erken çıkışla Detroit'i 121-106 yendi.",
       "neden_onemli": "Batı'nın 2., Doğu'nun 1. sırasındaki takımlar karşı karşıya geldi.",
       "ozet": "San Antonio, ilk çeyrekte attığı 38 sayıyla farkı 15'e taşıdı ve maç boyunca hiç geriye düşmedi. Detroit, üçüncü çeyrekte farkı sekize kadar indirse de son periyotta toparlanamadı. Spurs, dördüncü çeyrekte Julian Champagnie ve Stephon Castle'ın katkısıyla farkı yeniden 15'e çıkardı. Gecenin en etkili ismi Victor Wembanyama, 38 sayı, 16 ribaund ve 5 blokla öne çıktı.",
@@ -3599,7 +3599,7 @@
       "mac": "Phoenix Suns — Chicago Bulls",
       "skor": "103–105",
       "rozet": 6.48,
-      "why": "",
+      "why": "gece sırası 7",
       "metin": "Chicago Bulls deplasmanda Phoenix Suns'u 105-103 yendi. Collin Sexton 30 sayı attı.",
       "box": {
         "ev": {
@@ -4096,7 +4096,7 @@
       "mac": "Miami Heat — Brooklyn Nets",
       "skor": "126–110",
       "rozet": 6.29,
-      "why": "gece sırası 3",
+      "why": "",
       "metin": "Miami Heat evinde Brooklyn Nets'i 126-110 yendi.",
       "box": {
         "ev": {

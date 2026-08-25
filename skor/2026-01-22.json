@@ -1,6 +1,6 @@
 {
   "tarih": "2026-01-22",
-  "hesaplandi": "2026-08-15T02:06:15.015017Z",
+  "hesaplandi": "2026-08-25T20:12:07.653212Z",
   "en_iyi_skor": 8.75,
   "maclar": [
     {
@@ -28,6 +28,30 @@
       "en_iyi_performans": "Tyrese Maxey"
     },
     {
+      "rozet": 8.74,
+      "ham": 9.86,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 2.85,
+        "K": 8.52,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 7.38,
+        "F": 6,
+        "G": 0,
+        "A": 6.33
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500631",
+      "ev": "MIN",
+      "dep": "CHI",
+      "ev_skor": 115,
+      "dep_skor": 120,
+      "en_iyi_performans": "Julius Randle"
+    },
+    {
       "rozet": 8.06,
       "ham": 8.12,
       "katman": "ikinci",
@@ -50,6 +74,30 @@
       "ev_skor": 97,
       "dep_skor": 107,
       "en_iyi_performans": "Peyton Watson"
+    },
+    {
+      "rozet": 7.72,
+      "ham": 7.72,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 4.79,
+        "K": 6.86,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 5.1,
+        "F": 0,
+        "G": 0,
+        "A": 4.54
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500630",
+      "ev": "DAL",
+      "dep": "GSW",
+      "ev_skor": 123,
+      "dep_skor": 115,
+      "en_iyi_performans": "Stephen Curry"
     },
     {
       "rozet": 7.57,
@@ -100,30 +148,6 @@
       "en_iyi_performans": "Victor Wembanyama"
     },
     {
-      "rozet": 5.65,
-      "ham": 5.65,
-      "katman": "gec",
-      "tasiyicilar": {
-        "S": 2.85,
-        "K": 4.52,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 7.38,
-        "F": 6,
-        "G": 0,
-        "A": 6.33
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500631",
-      "ev": "MIN",
-      "dep": "CHI",
-      "ev_skor": 115,
-      "dep_skor": 120,
-      "en_iyi_performans": "Julius Randle"
-    },
-    {
       "rozet": 5.58,
       "ham": 5.58,
       "katman": "gec",
@@ -146,30 +170,6 @@
       "ev_skor": 127,
       "dep_skor": 110,
       "en_iyi_performans": "Bam Adebayo"
-    },
-    {
-      "rozet": 5.33,
-      "ham": 5.33,
-      "katman": "gec",
-      "tasiyicilar": {
-        "S": 4.79,
-        "K": 3.12,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 5.1,
-        "F": 0,
-        "G": 0,
-        "A": 4.54
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500630",
-      "ev": "DAL",
-      "dep": "GSW",
-      "ev_skor": 123,
-      "dep_skor": 115,
-      "en_iyi_performans": "Stephen Curry"
     },
     {
       "rozet": 2.92,

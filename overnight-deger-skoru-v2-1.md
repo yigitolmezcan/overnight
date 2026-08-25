@@ -105,7 +105,7 @@ sebebi büyütür, sebep yaratmaz.
 
 3. Zirve sönümlemesi — C1 yüksekse bağlam susar:
 
-   C1, S veya T ise:   k = (C1 − 8.5) / 1.5   , 0 ile 1 arasına kırp
+   C1, S veya T ise:   k = (C1 − 8.5) / 1.5   , 0 ile 0.7 arasına kırp
    C1, K veya D ise:   k = 0
 
    Çarpan_efektif = 1 + (Çarpan − 1) × (1 − k)
@@ -122,6 +122,17 @@ bakmaz. Tarihi bir bireysel performans bağlama muhtaç değildir. Ama yüksek
 bahisli bir maç (K) dramla büyür — orada sönümleme uygulanmaz. Bu tek kural,
 senin "80 sayı ne olursa olsun manşet" ilkeni tek bir taban kuralı eklemeden
 sağlıyor.
+
+**Tavan neden 1.0 değil 0.7 (2026-08-25 düzeltmesi):** Kural ilk yazıldığında
+`k` 1.0'a kadar çıkabiliyordu. Bu, S=10 olan HER maçta çarpanı tamamen
+siliyordu — `Çarpan_efektif` tam olarak 1 oluyor ve Y/F/G/A hiç sayılmıyordu.
+Sonuç: taşıyıcıları aynı olan maçlar, dramları bambaşka olsa bile AYNI rozete
+çöküyordu. 22 Ekim 2025'te dört maç birden 8.96 aldı; çarpanları 0.87 ile 1.08
+arasında farklıydı ama hepsi sıfırla çarpıldı. Kuralın amacı bağlamı
+ZAYIFLATMAKTI, YOK ETMEK değil — "83 sayı bağlama muhtaç değildir" demek
+"bağlam hiç sayılmaz" demek değil. Tavan 0.7'ye çekildi: en uç durumda bile
+çarpanın %30'u etkisini korur. Kalibrasyon (16 gece, 112 maç): aynı rozeti
+3+ maçın paylaştığı gece sayısı 1/16'dan 0/16'ya indi.
 
 **5. adım neden var:** Ham skorlar 12–14'e çıkabiliyor. Düz kırpma yapsak
 gecenin en iyi dört maçı da 10.0 okur ve rozet ayırt etme gücünü kaybeder.
@@ -509,4 +520,4 @@ Ayarlanacak yerler, muhtemelen bu sırayla:
 1. S'nin çapa tablosu (en çok gürültü buradan gelir)
 2. Çarpan katsayıları (Y ve A ağırlıkları)
 3. Katman eşiği (8.5 doğru yerde mi)
-4. Zirve sönümlemesinin başlangıç noktası (8.5)
+4. Zirve sönümlemesinin başlangıç noktası (8.5) ve tavanı (0.7)

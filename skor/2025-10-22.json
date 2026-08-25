@@ -1,11 +1,11 @@
 {
   "tarih": "2025-10-22",
-  "hesaplandi": "2026-08-25T20:05:44.733038Z",
-  "en_iyi_skor": 9.23,
+  "hesaplandi": "2026-08-25T20:12:05.959085Z",
+  "en_iyi_skor": 9.27,
   "maclar": [
     {
-      "rozet": 9.23,
-      "ham": 11.8,
+      "rozet": 9.27,
+      "ham": 12.04,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 10,
@@ -29,7 +29,7 @@
     },
     {
       "rozet": 9.15,
-      "ham": 11.44,
+      "ham": 11.42,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 9.6,
@@ -52,8 +52,8 @@
       "en_iyi_performans": "DeMar DeRozan"
     },
     {
-      "rozet": 8.96,
-      "ham": 10.6,
+      "rozet": 9.02,
+      "ham": 10.87,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 10,
@@ -76,8 +76,32 @@
       "en_iyi_performans": "Ja Morant"
     },
     {
-      "rozet": 8.96,
-      "ham": 10.6,
+      "rozet": 8.97,
+      "ham": 10.67,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 10,
+        "K": 2.0,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 6.74,
+        "F": 6,
+        "G": 0,
+        "A": 4.67
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500089",
+      "ev": "POR",
+      "dep": "MIN",
+      "ev_skor": 114,
+      "dep_skor": 118,
+      "en_iyi_performans": "Anthony Edwards"
+    },
+    {
+      "rozet": 8.88,
+      "ham": 10.33,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 10,
@@ -100,8 +124,8 @@
       "en_iyi_performans": "Giannis Antetokounmpo"
     },
     {
-      "rozet": 8.96,
-      "ham": 10.6,
+      "rozet": 8.84,
+      "ham": 10.19,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 10,
@@ -122,30 +146,6 @@
       "ev_skor": 92,
       "dep_skor": 125,
       "en_iyi_performans": "Victor Wembanyama"
-    },
-    {
-      "rozet": 8.96,
-      "ham": 10.6,
-      "katman": "mutlaka",
-      "tasiyicilar": {
-        "S": 10,
-        "K": 2.0,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 6.74,
-        "F": 6,
-        "G": 0,
-        "A": 4.67
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500089",
-      "ev": "POR",
-      "dep": "MIN",
-      "ev_skor": 114,
-      "dep_skor": 118,
-      "en_iyi_performans": "Anthony Edwards"
     },
     {
       "rozet": 8.4,

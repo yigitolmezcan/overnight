@@ -1,6 +1,6 @@
 {
   "tarih": "2026-01-24",
-  "hesaplandi": "2026-08-14T23:52:59.852342Z",
+  "hesaplandi": "2026-08-25T20:12:07.886654Z",
   "en_iyi_skor": 9.04,
   "maclar": [
     {
@@ -28,12 +28,12 @@
       "en_iyi_performans": "Luka Dončić"
     },
     {
-      "rozet": 8.64,
-      "ham": 9.54,
+      "rozet": 8.83,
+      "ham": 10.14,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 5.48,
-        "K": 2.58,
+        "K": 6.58,
         "T": 0,
         "D": 8
       },

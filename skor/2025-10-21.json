@@ -1,15 +1,15 @@
 {
   "tarih": "2025-10-21",
-  "hesaplandi": "2026-08-15T02:06:09.604400Z",
-  "en_iyi_skor": 9.33,
+  "hesaplandi": "2026-08-25T20:12:05.809843Z",
+  "en_iyi_skor": 9.43,
   "maclar": [
     {
-      "rozet": 9.33,
-      "ham": 12.4,
+      "rozet": 9.43,
+      "ham": 13.04,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 10,
-        "K": 0.0,
+        "K": 5.0,
         "T": 0,
         "D": 8
       },
@@ -28,8 +28,8 @@
       "en_iyi_performans": "Alperen Şengün"
     },
     {
-      "rozet": 8.79,
-      "ham": 10.0,
+      "rozet": 8.7,
+      "ham": 9.73,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 10,

@@ -1,11 +1,11 @@
 {
   "tarih": "2026-01-17",
-  "hesaplandi": "2026-08-15T02:06:16.217748Z",
-  "en_iyi_skor": 9.27,
+  "hesaplandi": "2026-08-25T20:12:07.407166Z",
+  "en_iyi_skor": 9.3,
   "maclar": [
     {
-      "rozet": 9.27,
-      "ham": 12.04,
+      "rozet": 9.3,
+      "ham": 12.21,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 10,
@@ -28,8 +28,8 @@
       "en_iyi_performans": "Anthony Edwards"
     },
     {
-      "rozet": 8.93,
-      "ham": 10.51,
+      "rozet": 8.97,
+      "ham": 10.66,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 9.82,

@@ -1,11 +1,35 @@
 {
   "tarih": "2026-02-10",
-  "hesaplandi": "2026-08-15T02:06:15.259597Z",
-  "en_iyi_skor": 9.06,
+  "hesaplandi": "2026-08-25T20:12:08.402702Z",
+  "en_iyi_skor": 8.99,
   "maclar": [
     {
-      "rozet": 9.06,
-      "ham": 11.01,
+      "rozet": 8.99,
+      "ham": 10.73,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 8.57,
+        "K": 5.22,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 9.5,
+        "F": 6,
+        "G": 0,
+        "A": 4.83
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500771",
+      "ev": "NYK",
+      "dep": "IND",
+      "ev_skor": 134,
+      "dep_skor": 137,
+      "en_iyi_performans": "Jalen Brunson"
+    },
+    {
+      "rozet": 8.95,
+      "ham": 10.59,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 10,
@@ -26,30 +50,6 @@
       "ev_skor": 108,
       "dep_skor": 136,
       "en_iyi_performans": "Victor Wembanyama"
-    },
-    {
-      "rozet": 8.61,
-      "ham": 9.46,
-      "katman": "mutlaka",
-      "tasiyicilar": {
-        "S": 8.57,
-        "K": 1.22,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 9.5,
-        "F": 6,
-        "G": 0,
-        "A": 4.83
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500771",
-      "ev": "NYK",
-      "dep": "IND",
-      "ev_skor": 134,
-      "dep_skor": 137,
-      "en_iyi_performans": "Jalen Brunson"
     },
     {
       "rozet": 5.58,

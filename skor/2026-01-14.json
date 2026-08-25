@@ -1,6 +1,6 @@
 {
   "tarih": "2026-01-14",
-  "hesaplandi": "2026-08-15T02:06:15.654548Z",
+  "hesaplandi": "2026-08-25T20:12:07.151438Z",
   "en_iyi_skor": 9.06,
   "maclar": [
     {
@@ -28,6 +28,30 @@
       "en_iyi_performans": "Brice Sensabaugh"
     },
     {
+      "rozet": 8.74,
+      "ham": 9.84,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 8.45,
+        "K": 0.0,
+        "T": 0,
+        "D": 6
+      },
+      "yukselticiler": {
+        "Y": 7.68,
+        "F": 8,
+        "G": 0,
+        "A": 4.0
+      },
+      "dram_terfi": true,
+      "mac_id": "0022500574",
+      "ev": "NOP",
+      "dep": "BKN",
+      "ev_skor": 116,
+      "dep_skor": 113,
+      "en_iyi_performans": "Trey Murphy III"
+    },
+    {
       "rozet": 8.54,
       "ham": 9.26,
       "katman": "mutlaka",
@@ -50,30 +74,6 @@
       "ev_skor": 107,
       "dep_skor": 133,
       "en_iyi_performans": "Donovan Mitchell"
-    },
-    {
-      "rozet": 8.38,
-      "ham": 8.85,
-      "katman": "ikinci",
-      "tasiyicilar": {
-        "S": 8.45,
-        "K": 0.0,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 7.68,
-        "F": 8,
-        "G": 0,
-        "A": 4.0
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500574",
-      "ev": "NOP",
-      "dep": "BKN",
-      "ev_skor": 116,
-      "dep_skor": 113,
-      "en_iyi_performans": "Trey Murphy III"
     },
     {
       "rozet": 6.32,
@@ -124,12 +124,12 @@
       "en_iyi_performans": "Scottie Barnes"
     },
     {
-      "rozet": 3.31,
-      "ham": 3.31,
+      "rozet": 5.12,
+      "ham": 5.12,
       "katman": "gec",
       "tasiyicilar": {
         "S": 3.5,
-        "K": 0.69,
+        "K": 4.69,
         "T": 0,
         "D": 0
       },

@@ -1456,23 +1456,34 @@ def main():
     basar("Kalibrasyon: her gecede gerekli alanlar var",
           all({"tarih","mac_sayisi","en_yuksek","medyan","yayilim","katmanlar",
                "en_cok_tekrar"} <= set(g) for g in _geceler))
-    basar("Kalibrasyon: ayrım zayıflığını sayıyor (aynı rozeti paylaşan maç)",
-          any(g["en_cok_tekrar"] >= 3 for g in _geceler))
+    basar("Kalibrasyon: ayrım zayıflığını ölçebiliyor",
+          all(isinstance(g["en_cok_tekrar"], int) and g["en_cok_tekrar"] >= 1
+              for g in _geceler))
 
-    # Formül bulgusu: S=10 iken zirve sönümlemesi çarpanı TAMAMEN
-    # iptal ediyor (k=1), yani Y/F/G/A hiç etkilemiyor ve o maçların
-    # hepsi aynı rozete çöküyor. 2025-10-22'deki dörtlü eşitliğin sebebi
-    # bu. Test bulguyu SABİTLİYOR — formül değişirse burası düşer ve
-    # kararın bilinçli olduğu görülür.
+    # Zirve sönümlemesi çarpanı ZAYIFLATIR, YOK ETMEZ. Tavan 1.0 iken
+    # S=10 olan her maçta çarpan tamamen siliniyor ve dramları bambaşka
+    # maçlar aynı rozete çöküyordu (2025-10-22: dört maç birden 8.96).
+    # Tavan 0.7 — en uç durumda bile çarpanın %30'u yaşar.
     import hesapla as _hes
+    basar("Formül: sönümleme tavanı 0.7 (1.0 çarpanı tamamen siliyordu)",
+          _hes.SONUMLEME_TAVANI == 0.7)
     _a = _hes.formulu_uygula(S=10, K=2.0, T=0, Y=6.15, F=6, G=6, A=5.58)
     _b = _hes.formulu_uygula(S=10, K=2.0, T=0, Y=0.73, F=0, G=0, A=4.58)
-    basar("Formül bulgusu: S=10 iken çok farklı Y/F/G/A aynı rozeti veriyor",
-          _a["rozet"] == _b["rozet"])
+    basar("Formül: S=10 (en uç sönümleme) iken bile farklı dram farklı rozet veriyor",
+          _a["rozet"] != _b["rozet"])
+    basar("Formül: yüksek dramlı maç düşük dramlıdan YÜKSEK rozet alıyor",
+          _a["rozet"] > _b["rozet"])
     _c = _hes.formulu_uygula(S=8, K=2.0, T=0, Y=6.15, F=6, G=6, A=5.58)
     _d = _hes.formulu_uygula(S=8, K=2.0, T=0, Y=0.73, F=0, G=0, A=4.58)
-    basar("Formül: S=8 iken (sönümleme yokken) çarpan AYRIM YAPIYOR",
-          _c["rozet"] != _d["rozet"])
+    basar("Formül: sönümleme yokken (S=8) ayrım daha da büyük",
+          abs(_c["rozet"] - _d["rozet"]) > abs(_a["rozet"] - _b["rozet"]))
+    # Sönümleme HÂLÂ bastırıyor — tamamen kalkmadı.
+    basar("Formül: sönümleme etkisini sürdürüyor (S=10'da ayrım S=8'dekinden küçük)",
+          0 < abs(_a["rozet"] - _b["rozet"]) < abs(_c["rozet"] - _d["rozet"]))
+
+    # Kalibrasyon: eşitlik kalmamalı.
+    basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
+          all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))
 
 
 if __name__ == "__main__":
