@@ -125,7 +125,10 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
    Yan fayda: satır başına tam dört öğe garanti — "yalnız öğe" kuralı
    artık sarmalama şansına değil ızgara yapısına dayanıyor. */
 .tkalt{display:grid;grid-template-columns:repeat(4,auto);justify-content:start;
-  gap:9px 14px;margin-top:16px;padding-top:15px;border-top:1px solid #151C28}
+  /* Satır arası (16px) sütun arasından (14px) BÜYÜK: her hücre artık
+     iki satırlık olduğu için, satırlar birbirine yaklaşınca alt satırın
+     değeri üsttekinin etiketiyle karışıyordu. */
+  gap:16px 14px;margin-top:16px;padding-top:15px;border-top:1px solid #151C28}
 /* Grup İÇİ boşluk ayrı: öğeler arası 14px. Grubun kendisi asla
    sarmalanmamalı (yalnız öğe yasağı), o yüzden bu değer ölçülerek
    seçildi — 375px'te dört öğelik grup tek satırda kalıyor. */
@@ -133,13 +136,27 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
    hücre doğrudan ızgaranın çocuğu oluyor, sarmalama mantığı JS'te
    bozulmadan duruyor. */
 .tkalt .tkg{display:contents}
-.tkalt .tkg > span{font-family:var(--mono);font-size:12px;color:var(--ink2);white-space:nowrap}
-.tkalt .tkg > span i{font-style:normal;color:var(--faint);margin-left:1px}
+/* Değer ÜSTTE, etiketi ALTINDA — üstteki büyük rakamlarla (18/SAYI)
+   aynı dil. Önceki biçim değer-sonra-etiket tek satırdaydı ve satır
+   sonuna denk gelen etiket, kendinden SONRAKİNİ tanıtıyormuş gibi
+   okunuyordu: "3/7 fa" satırı bitiriyor, alt satır "2" ile başlıyor ve
+   göz "fa → 2" diye eşleştiriyordu. Dikey eşleşmede bu belirsizlik
+   yapısal olarak imkânsız: etiket her zaman kendi değerinin altında.
+   Etiketler BÜYÜK harf — kutu skor sütun başlıklarıyla aynı biçim,
+   böylece kelime değil başlık olarak okunuyorlar ("fa" küçük harfle
+   "faul" gibi okunuyordu). */
+.tkalt .tkg > span{display:flex;flex-direction:column;gap:4px;white-space:nowrap}
+.tkalt .tkg > span b{font-family:var(--mono);font-size:13px;font-weight:400;
+  color:var(--ink2);line-height:1}
+.tkalt .tkg > span i{font-style:normal;font-family:var(--mono);font-size:9.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--faint);line-height:1}
 /* Masaüstünde daha da ferah — orada iki grup zaten tek satıra sığıyor,
    kazanılan yer aralıklara gidiyor. */
 @media(min-width:768px){
   /* Masaüstünde sekizi de tek satır — ızgara tek sıra oluyor. */
-  .tkalt{grid-template-columns:repeat(8,auto);gap:10px 18px;margin-top:18px;padding-top:17px}
+  .tkalt{grid-template-columns:repeat(8,auto);gap:10px 22px;margin-top:18px;padding-top:17px}
+  .tkalt .tkg > span b{font-size:14px}
+  .tkalt .tkg > span i{font-size:10px}
   .tkalt .tkg > span{font-size:13px}
 }
 
@@ -786,7 +803,7 @@ function render(d){
       // dörtlü iki dengeli satır olur. Tek öğe asla yalnız kalmaz.
       const g1=[['dk',t.min],['fg',t.fg],['3p',t['3p']],['fa',t.ft]];
       const g2=[['tç',t.stl],['blk',t.blk],['tk',t.to],['+/−',t.pm]];
-      const yaz=g=>g.map(([e,v])=>`<span>${esc(String(v))} <i>${e}</i></span>`).join('');
+      const yaz=g=>g.map(([e,v])=>`<span><b>${esc(String(v))}</b><i>${e}</i></span>`).join('');
       return `<button class="tkblok" style="--tc:${esc(t.renk||'#7E8794')}" data-kart="${esc(t.mac_id||'')}">
         <span class="tkust"><span class="tkad">${esc(t.isim)}</span>
           <span class="tkmac">${esc(t.mac_kisa||t.takim_adi||'')}</span></span>

@@ -1350,7 +1350,23 @@ def main():
     # Izgarada tek bir sütun boşluğu var, yani öğeler arası mesafe
     # yapısal olarak eşit — ek yeri oluşamaz.
     basar("Türkler: mobilde öğe aralığı tek değerden geliyor (14px)",
-          "gap:9px 14px" in _sayfa)
+          "gap:16px 14px" in _sayfa)
+    # Değer ÜSTTE, etiketi ALTINDA. Değer-sonra-etiket tek satır biçiminde
+    # satır sonuna denk gelen etiket kendinden SONRAKİNİ tanıtıyormuş gibi
+    # okunuyordu ("3/7 fa" / "2 tç" → "fa"nın metriği 2 sanılıyordu).
+    # Dikey eşleşmede bu belirsizlik yapısal olarak imkânsız.
+    basar("Türkler: ikincil istatistikte etiket değerin ALTINDA",
+          "flex-direction:column" in _sayfa.split(".tkalt .tkg > span{")[1][:90])
+    basar("Türkler: değer ve etiket ayrı öğelerde (<b> / <i>)",
+          "<b>${esc(String(v))}</b><i>${e}</i>" in _sayfa)
+    # Etiketler BÜYÜK harf: küçük harfli "fa" kelime gibi ("faul")
+    # okunuyordu, büyük harf sütun başlığı gibi okunur.
+    basar("Türkler: etiketler büyük harf (kelime değil başlık gibi okunsun)",
+          "text-transform:uppercase" in _sayfa.split(".tkalt .tkg > span i{")[1][:160])
+    # Satır arası, hücre içi boşluktan belirgin BÜYÜK olmalı; yoksa alt
+    # satırın değeri üsttekinin etiketiyle karışır.
+    basar("Türkler: satır arası (16px) hücre içi boşluktan (4px) büyük",
+          "gap:16px 14px" in _sayfa and "gap:4px" in _sayfa.split(".tkalt .tkg > span{")[1][:90])
     basar("Türkler: masaüstünde öğe aralığı tek değerden geliyor (18px)",
           "gap:10px 18px" in _sayfa)
     basar("Türkler: oynamayan için OYNAMADI etiketi var",
