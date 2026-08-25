@@ -1,6 +1,6 @@
 {
   "_aciklama": "derle.py bu listeyi 'Türkler' bölümünü doldurmak için kullanır — gecenin box score'larında bu isimlerden biri geçiyorsa o oyuncunun istatistik satırı gösterilir, yoksa 'Bu gece Türk oyuncu içeren bir maç oynanmadı' yazılır. Liste NBA'deki güncel Türk oyunculara göre elle tutuluyor (transfer/draft sonrası güncellenmeli).",
-  "_bakim": "Her sezon başında ve trade deadline sonrasında NBA.com rosterlarına karşı doğrulanmalı — draft edilen/taşınan/kadro dışı kalan oyuncular için liste elle güncellenir.",
+  "_bakim": "Her sezon başında ve trade deadline sonrasında NBA.com rosterlarına karşı doğrulanmalı. 2026-08-25: kullanıcı listeyi AKTİF iki oyuncuya indirdi (Şengün, Bona) — diğerleri artık NBA kadrosunda değil. Buraya isim eklenince test_dogrula_bozuk.py'deki liste testi de güncellenmeli; test kasıtlı olarak tam kümeyi kontrol ediyor ki kadro değişikliği sessizce geçmesin.",
   "oyuncular": [
     {
       "ad": "Adem Bona",
@@ -9,26 +9,6 @@
     {
       "ad": "Alperen Şengün",
       "takim": "HOU"
-    },
-    {
-      "ad": "Berke Büyüktuncel",
-      "takim": "LAL"
-    },
-    {
-      "ad": "Cedi Osman",
-      "takim": "SAS"
-    },
-    {
-      "ad": "Ege Demir",
-      "takim": "SAS"
-    },
-    {
-      "ad": "Furkan Korkmaz",
-      "takim": "PHI"
-    },
-    {
-      "ad": "Ömer Yurtseven",
-      "takim": "IND"
     }
   ]
 }

@@ -490,14 +490,26 @@ def _turkler_bekleyen(ham, turk_oyunculari):
         isimler = [o["ad"].split()[-1] for o in turk_oyunculari][:2]
         return {"isimler": isimler, "tarih": None,
                 "metin": "Bu gece Türk oyuncu sahada yoktu."}
-    en_erken = min(g for g, _ in adaylar)
-    isimler = [ad.split()[-1] for g, ad in adaylar if g == en_erken]
-    tarih = _tarih_tr(en_erken, bulunma=True)
+    # Oyuncuları KENDİ sonraki maç tarihlerine göre grupla. Eskiden
+    # sadece en erken tarihe sahip olanlar anılıyordu ve diğerleri
+    # cümleden düşüyordu (liste iki kişiye inince Bona her seferinde
+    # kayboluyordu). Herkes anılır, ama tarih uydurulmaz — kimin maçı
+    # ne zamansa o yazılır.
+    tarihe_gore = {}
+    for gun, ad in sorted(adaylar):
+        tarihe_gore.setdefault(gun, []).append(ad.split()[-1])
+    parcalar = [f"{_ve_listesi(adlar)} {_tarih_tr(gun, bulunma=True)}"
+                for gun, adlar in sorted(tarihe_gore.items())]
+    en_erken = min(tarihe_gore)
+    tum_isimler = [ad for adlar in tarihe_gore.values() for ad in adlar]
+    if len(parcalar) == 1:
+        cumle = f"{parcalar[0]} sahaya çıkıyor."
+    else:
+        cumle = f"{', '.join(parcalar)} sahaya çıkıyor."
     return {
-        "isimler": isimler,
-        "tarih": tarih,
-        "metin": (f"Bu gece Türk oyuncu sahada yoktu, {_ve_listesi(isimler)} "
-                  f"bir sonraki maçına {tarih} çıkıyor."),
+        "isimler": tum_isimler,
+        "tarih": _tarih_tr(en_erken, bulunma=True),
+        "metin": f"Bu gece Türk oyuncu sahada yoktu. {cumle}",
     }
 
 

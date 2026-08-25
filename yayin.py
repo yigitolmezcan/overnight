@@ -249,6 +249,22 @@ def yayinla():
     return 0
 
 
+def tazele():
+    """Yayındaki geceyi yeniden derleyip siteyi güncelle — sıra ilerlemez.
+
+    Bir yapılandırma ya da tasarım değişikliği (ör. Türk oyuncu listesi)
+    yayındaki gecenin metnini de etkilediğinde gerekiyor: `yayinla`
+    sıradaki geceye geçerdi, oysa istenen aynı gecenin tazelenmesi."""
+    d = durum_oku()
+    if not d["yayinlanan"]:
+        print("Yayında gece yok — tazelenecek bir şey yok.")
+        return 0
+    tarih = d["yayinlanan"][-1]
+    boyut = _siteyi_kur(tarih)
+    print(f"TAZELENDİ: {tarih} · site/index.html {boyut:,} bayt")
+    return 0
+
+
 def durum():
     d = durum_oku()
     print(f"Yayınlanan gece sayısı : {len(d['yayinlanan'])}")
@@ -286,6 +302,7 @@ KOMUTLAR = {
     "durum": durum,
     "sonraki": lambda: print(sonraki_gece(durum_oku())) or 0,
     "engelleri_temizle": engelleri_temizle,
+    "tazele": tazele,
 }
 
 if __name__ == "__main__":

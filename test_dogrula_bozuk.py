@@ -846,10 +846,27 @@ def main():
     # Türk oyuncu listesi elle tutuluyor — kadro değişince testin de
     # bilmesi gerek (kullanıcı eklemesi: Adem Bona, PHI).
     _turk = _j.loads(open("config/turk_oyuncular.json").read())["oyuncular"]
-    basar("türk listesi: Adem Bona (PHI) listede",
-          any(o["ad"] == "Adem Bona" and o["takim"] == "PHI" for o in _turk))
+    # Liste KASITLI olarak tam küme kontrol ediliyor: kadro değişikliği
+    # (transfer, kesilme, draft) sessizce geçmesin, testi düşürsün ve
+    # elle gözden geçirilsin. NBA'de aktif Türk oyuncu sayısı tek haneli
+    # olduğu için bu bakım yükü değil, koruma.
+    basar("türk listesi: sadece aktif iki oyuncu (Şengün, Bona)",
+          {(o["ad"], o["takim"]) for o in _turk}
+          == {("Alperen Şengün", "HOU"), ("Adem Bona", "PHI")})
     basar("türk listesi: her oyuncunun takım kodu geçerli",
           all(o["takim"] in _derle.TAKIM_ADI for o in _turk))
+
+    # Sahaya çıkmayan oyuncuların satırı: HERKES anılır, ama tarih
+    # uydurulmaz — kimin maçı ne zamansa o yazılır. (Eskiden sadece en
+    # erken tarihli oyuncular anılıyordu, liste ikiye inince Bona her
+    # seferinde cümleden düşüyordu.)
+    _bek4 = _derle._turkler_bekleyen(
+        {"sonraki_maclar": {"HOU": "2025-10-24", "PHI": "2025-10-25"}},
+        [{"ad": "Alperen Şengün", "takim": "HOU"}, {"ad": "Adem Bona", "takim": "PHI"}])
+    basar("türkler: farklı günlerde oynayan oyuncuların İKİSİ de anılıyor",
+          "Şengün" in _bek4["metin"] and "Bona" in _bek4["metin"])
+    basar("türkler: her oyuncuya KENDİ tarihi yazılıyor",
+          _bek4["metin"] == "Bu gece Türk oyuncu sahada yoktu. Şengün 24 Ekim'de, Bona 25 Ekim'de sahaya çıkıyor.")
 
     # ==================================================================
     # Türkler bölümü: o gece Türk oyuncu sahaya çıkmadıysa bölüm en alta
@@ -861,14 +878,14 @@ def main():
 
     _tk = [{"ad": "Alperen Şengün", "takim": "HOU"}, {"ad": "Cedi Osman", "takim": "SAS"}]
     _bek = _derle._turkler_bekleyen({"sonraki_maclar": {"HOU": "2026-03-07", "SAS": "2026-03-09"}}, _tk)
-    basar("türkler: en yakın maçı olan oyuncu anılıyor",
-          _bek["isimler"] == ["Şengün"] and _bek["tarih"] == "7 Mart'ta")
-    basar("türkler: cümle kullanıcının istediği biçimde",
-          _bek["metin"] == "Bu gece Türk oyuncu sahada yoktu, Şengün bir sonraki maçına 7 Mart'ta çıkıyor.")
+    basar("türkler: farklı günlerde oynayanların hepsi anılıyor, tarih alanı en erken olan",
+          set(_bek["isimler"]) == {"Şengün", "Osman"} and _bek["tarih"] == "7 Mart'ta")
+    basar("türkler: her oyuncu KENDİ tarihiyle anılıyor",
+          _bek["metin"] == "Bu gece Türk oyuncu sahada yoktu. Şengün 7 Mart'ta, Osman 9 Mart'ta sahaya çıkıyor.")
 
     _bek2 = _derle._turkler_bekleyen({"sonraki_maclar": {"HOU": "2026-03-07", "SAS": "2026-03-07"}}, _tk)
-    basar("türkler: aynı gün maçı olan iki oyuncu 've' ile bağlanıyor",
-          _bek2["metin"].startswith("Bu gece Türk oyuncu sahada yoktu, Şengün ve Osman bir sonraki maçına"))
+    basar("türkler: aynı gün oynayan iki oyuncu 've' ile tek tarihte birleşiyor",
+          _bek2["metin"] == "Bu gece Türk oyuncu sahada yoktu. Şengün ve Osman 7 Mart'ta sahaya çıkıyor.")
 
     _bek3 = _derle._turkler_bekleyen({}, _tk)
     basar("türkler: sonraki maç verisi yoksa TARİH UYDURULMUYOR",
