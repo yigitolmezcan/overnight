@@ -1,5 +1,7 @@
 {
   "_aciklama": "Canlı yayın durumu. yayin.py bunu okur ve günceller; elle düzenlenmesi gerekmez. 'yayinlanan' kronolojik sırada tutulur — sıradaki gece her zaman listenin sonundan ileriye bakılarak bulunur.",
+  "mod": "arsiv",
+  "_mod_aciklama": "arsiv = geçmiş sezondan kronolojik gece (sıra imleci, 3 maç eşiği, emekli geceler). canli = dün gece, eşik yok, sıra yok. Sezon başlayınca: python3 yayin.py canli",
   "sezon_baslangici": "2025-10-21",
   "sezon_bitisi": "2026-04-12",
   "atlanan": [

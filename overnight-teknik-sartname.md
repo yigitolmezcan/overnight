@@ -451,3 +451,54 @@ olsun `ham` (ve dolayısıyla rozet) aynı çıkıyor. Bu, `config/takim_beklent
 eklenmeden ÖNCE de vardı, eklendikten SONRA da duruyor — ayrı bir
 formül davranışı, S/K tavan doygunluğu erken sezonda ne sıklıkla
 tetikleniyor incelenmeden düzeltilmemeli.
+
+---
+
+## 12. Yayın modları (`yayin.py`)
+
+Durum dosyasındaki (`config/yayin_durumu.json`) `mod` alanı iki değer alır:
+
+| mod | hedef gece | maç eşiği | sıra imleci |
+|---|---|---|---|
+| `arsiv` | geçmiş sezondan kronolojik sıradaki gece | 3 maç altı atlanır | kullanılır |
+| `canli` | dün gece (TSİ) | **yok** — gece ne ise o | kullanılmaz |
+
+Geçiş tek komut: `python3 yayin.py canli` (geri dönüş `arsiv`).
+
+Canlı modda dün maç oynanmamışsa hiçbir şey yapılmaz, bir önceki gece
+yayında kalır. Sezon başı susma kuralı iki modda da aynı çalışır — o
+kural veri katmanında (`gercekler.sezon_guvenilir`), yayın modundan
+bağımsız.
+
+TSİ hesabı açıkça yapılıyor (UTC+3, Türkiye'de yaz saati yok). Koşucu
+UTC'de olduğu için gün sınırına yakın saatlerde ikisi ayrışabilir.
+
+---
+
+## 13. Kalibrasyon (`kalibrasyon.py`)
+
+Elde ne kadar gece varsa `skor/*.json`'ları toplu okur; ağa çıkmaz, LLM
+çağırmaz, maliyeti sıfırdır. Çıkardıkları: gece başına en yüksek rozet /
+medyan / yayılım, tüm maçların rozet dağılımı, katman dağılımı ve
+**ayrım gücü** (aynı rozeti paylaşan maç sayısı).
+
+### İlk koşunun bulgusu (16 gece, 112 maç)
+
+Zirve sönümlemesi (`formulu_uygula` 3. adım), en büyük taşıyıcı S ise ve
+S=10 ise `k=1` veriyor; bu da `carpan_efektif`i 1'e sabitliyor, yani
+**Y/F/G/A çarpanı tamamen iptal oluyor**. Sonuç: S=10 olan bütün maçlar,
+dramları ne kadar farklı olursa olsun, taşıyıcıları aynıysa AYNI rozete
+çöküyor.
+
+2025-10-22'deki dörtlü 8.96 eşitliğinin sebebi budur. `takim_beklenti`
+harmanı A bileşenini gerçekten ayrıştırıyor (5.58 / 6.58 / 4.58 / 4.67)
+ama sönümleme o farkı sıfırla çarpıyor.
+
+Aynı sebep, gecenin en yüksek rozetinin dar bir banda sıkışmasını da
+açıklıyor (medyan 9.13, %75 yüzdelik 9.27, tavan 9.33).
+
+Olası düzeltme: `k`'nın üst sınırını 1'in altına çekmek (ör. 0.7), böylece
+büyük bireysel performansın çarpanı bastırması sürer ama tamamen
+silmez. Formülü değiştirmek her rozeti ve katman atamasını değiştireceği
+için KULLANICI KARARINA bırakıldı.
+

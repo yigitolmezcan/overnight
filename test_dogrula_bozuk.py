@@ -1423,5 +1423,57 @@ def main():
               for t in _t28 if t.get("oynadi")))
 
 
+    # ==================================================================
+    # Canlı mod ve kalibrasyon betiği.
+    # ==================================================================
+    basar("Yayın: iki mod tanımlı (arşiv / canlı)",
+          _yayin.MOD_ARSIV == "arsiv" and _yayin.MOD_CANLI == "canli")
+    basar("Yayın: durum dosyasında mod alanı var",
+          _yayin.durum_oku().get("mod") in (_yayin.MOD_ARSIV, _yayin.MOD_CANLI))
+    # Canlı modun hedefi TSİ'ye göre DÜN. Koşucu UTC'de olduğu için
+    # hesap açıkça TSİ'den yapılmalı.
+    from datetime import datetime as _dt, timedelta as _td
+    _beklenen = ((_dt.utcnow() + _td(hours=3)) - _td(days=1)).strftime("%Y-%m-%d")
+    basar("Yayın: canlı modun hedefi TSİ'ye göre dün", _yayin.dun_gece() == _beklenen)
+    basar("Yayın: TSİ farkı sabit 3 saat (Türkiye'de yaz saati yok)",
+          _yayin.TSI_FARKI_SAAT == 3)
+    # Maç eşiği SADECE arşiv modunda uygulanır — canlı modda gece ne ise o.
+    _kaynak = open("yayin.py", encoding="utf-8").read()
+    basar("Yayın: canlı mod dalı maç eşiği uygulamıyor",
+          "canlı mod, eşik uygulanmıyor" in _kaynak)
+    basar("Yayın: mod değiştirme komutları var",
+          "canli" in _yayin.KOMUTLAR and "arsiv" in _yayin.KOMUTLAR)
+
+    # Kalibrasyon betiği: ağa ÇIKMAZ, LLM çağırmaz — maliyeti sıfır
+    # olmalı ki istendiği kadar koşturulabilsin.
+    _kal = open("kalibrasyon.py", encoding="utf-8").read()
+    basar("Kalibrasyon: ağ/LLM bağımlılığı yok",
+          not any(x in _kal for x in ("import anthropic", "import cek", "import yaz",
+                                      "urllib", "requests", "nba_api")))
+    import kalibrasyon as _kalib
+    _geceler = _kalib.geceleri_oku()
+    basar("Kalibrasyon: geceleri okuyabiliyor", len(_geceler) > 0)
+    basar("Kalibrasyon: her gecede gerekli alanlar var",
+          all({"tarih","mac_sayisi","en_yuksek","medyan","yayilim","katmanlar",
+               "en_cok_tekrar"} <= set(g) for g in _geceler))
+    basar("Kalibrasyon: ayrım zayıflığını sayıyor (aynı rozeti paylaşan maç)",
+          any(g["en_cok_tekrar"] >= 3 for g in _geceler))
+
+    # Formül bulgusu: S=10 iken zirve sönümlemesi çarpanı TAMAMEN
+    # iptal ediyor (k=1), yani Y/F/G/A hiç etkilemiyor ve o maçların
+    # hepsi aynı rozete çöküyor. 2025-10-22'deki dörtlü eşitliğin sebebi
+    # bu. Test bulguyu SABİTLİYOR — formül değişirse burası düşer ve
+    # kararın bilinçli olduğu görülür.
+    import hesapla as _hes
+    _a = _hes.formulu_uygula(S=10, K=2.0, T=0, Y=6.15, F=6, G=6, A=5.58)
+    _b = _hes.formulu_uygula(S=10, K=2.0, T=0, Y=0.73, F=0, G=0, A=4.58)
+    basar("Formül bulgusu: S=10 iken çok farklı Y/F/G/A aynı rozeti veriyor",
+          _a["rozet"] == _b["rozet"])
+    _c = _hes.formulu_uygula(S=8, K=2.0, T=0, Y=6.15, F=6, G=6, A=5.58)
+    _d = _hes.formulu_uygula(S=8, K=2.0, T=0, Y=0.73, F=0, G=0, A=4.58)
+    basar("Formül: S=8 iken (sönümleme yokken) çarpan AYRIM YAPIYOR",
+          _c["rozet"] != _d["rozet"])
+
+
 if __name__ == "__main__":
     main()

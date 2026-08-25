@@ -50,6 +50,25 @@ ILERI_BAKMA_SINIRI = 30
 # ederek geliyor.
 ASGARI_MAC_SAYISI = 3
 
+# İki mod var, durum dosyasındaki "mod" alanı seçiyor:
+#
+#   "arsiv" — geçmiş sezondan KRONOLOJİK gece. Sıra imleciyle ilerler,
+#             3'ten az maçlı geceleri atlar, emekli geceleri atlar.
+#             Sezon başlayana kadarki mod.
+#
+#   "canli" — DÜN GECE. Sıra yok, atlama yok: o gece kaç maç oynandıysa
+#             yayınlanır (kullanıcı kuralı — okuyucu zaten o geceyi
+#             merak ederek geliyor, triyaj vaadi tek maçta da geçerli).
+#             Maç oynanmadıysa hiçbir şey yapılmaz, önceki gece kalır.
+#
+# Sezon başı susma kuralı İKİ MODDA DA aynı çalışır: o kural veri
+# katmanında (gercekler.sezon_guvenilir), burada bir karşılığı yok.
+MOD_ARSIV, MOD_CANLI = "arsiv", "canli"
+
+# Türkiye yıl boyu UTC+3 (yaz saati yok). İş 05:30 UTC'de koşuyor, yani
+# 08:30 TSİ — o saatte bir önceki NBA gecesi çoktan bitmiş oluyor.
+TSI_FARKI_SAAT = 3
+
 
 def durum_oku():
     return json.loads(DURUM_DOSYASI.read_text(encoding="utf-8"))
@@ -63,6 +82,17 @@ def _gun_ekle(tarih_str, n):
     return (datetime.strptime(tarih_str, "%Y-%m-%d") + timedelta(days=n)).strftime("%Y-%m-%d")
 
 
+def dun_gece():
+    """Canlı modun hedefi: TSİ'ye göre dünün tarihi.
+
+    NBA maçları ABD akşamı oynanıp TSİ'nin sabaha karşısında biter; iş
+    08:30 TSİ'de koştuğu için "dün" doğru gecedir. Hesap UTC'den
+    değil TSİ'den yapılıyor — koşucu UTC'de ve gün sınırına yakın
+    saatlerde ikisi ayrışabilir."""
+    tsi = datetime.utcnow() + timedelta(hours=TSI_FARKI_SAAT)
+    return (tsi - timedelta(days=1)).strftime("%Y-%m-%d")
+
+
 def sonraki_gece(d):
     """Yayınlanacak bir sonraki arşiv gecesi, ya da None (sezon bitti).
 
@@ -70,6 +100,20 @@ def sonraki_gece(d):
     oynanmayan günleri geçer. Maç var mı kontrolü SADECE ScoreboardV2'ye
     dokunuyor (ucuz), tam çekim yapmıyor."""
     import cek
+
+    if d.get("mod") == MOD_CANLI:
+        # Canlı mod: sıra yok, dün gece. Zaten yayınlandıysa tekrar
+        # üretilmez (iş gün içinde ikinci kez tetiklenirse diye).
+        aday = dun_gece()
+        if aday in d["yayinlanan"]:
+            return None
+        _, mac_idleri = cek.gece_mac_idlerini_al(aday)
+        if not mac_idleri:
+            print(f"  {aday}: maç oynanmamış — yayın yok, önceki gece kalıyor.")
+            return None
+        # Maç eşiği UYGULANMAZ (kullanıcı kuralı): gece ne ise o.
+        print(f"  {aday}: {len(mac_idleri)} maç (canlı mod, eşik uygulanmıyor)")
+        return aday
 
     # Sıra imlecinden ilerler, "en son yayınlanan"dan DEĞİL. İkisi
     # normalde aynı; ayrıldıkları tek durum VİTRİN gecesi: sırayla
@@ -285,6 +329,7 @@ def tazele():
 
 def durum():
     d = durum_oku()
+    print(f"Mod                    : {d.get('mod', MOD_ARSIV)}")
     print(f"Yayınlanan gece sayısı : {len(d['yayinlanan'])}")
     print(f"Doğrulamada takılan    : {len(d.get('engellenen', []))}")
     engel = d.get("son_engel")
@@ -315,8 +360,26 @@ def engelleri_temizle():
     return 0
 
 
+def mod_degistir(yeni_mod=None):
+    """Arşiv ↔ canlı geçişi. Sezon başlayınca tek komut:
+    `python3 yayin.py canli`"""
+    d = durum_oku()
+    eski = d.get("mod", MOD_ARSIV)
+    d["mod"] = yeni_mod
+    durum_yaz(d)
+    print(f"Mod: {eski} → {yeni_mod}")
+    if yeni_mod == MOD_CANLI:
+        print(f"Sıradaki hedef: {dun_gece()} (dün gece)")
+        print("Maç sayısı eşiği artık uygulanmıyor; sıra imleci kullanılmıyor.")
+    else:
+        print(f"Sıra imlecinden devam edecek: {d.get('sira_imleci')}")
+    return 0
+
+
 KOMUTLAR = {
     "uret": uret,
+    "canli": lambda: mod_degistir(MOD_CANLI),
+    "arsiv": lambda: mod_degistir(MOD_ARSIV),
     "yayinla": yayinla,
     "durum": durum,
     "sonraki": lambda: print(sonraki_gece(durum_oku())) or 0,
