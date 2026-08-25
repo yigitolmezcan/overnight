@@ -495,6 +495,63 @@ GRUP_A_ONEMLI_TURLER = {
 }
 
 
+# ---------------------------------------------------------------------------
+# Grup B girdi filtresi — maliyetin asıl kaynağı
+# ---------------------------------------------------------------------------
+# Ölçüm (2026-01-28, HOU-SAS): Grup B promptu 21.535 girdi token'ı
+# gönderiyordu ve bunun 14.228'i "Maç verisi" bloğuydu — maçın TÜM 103
+# gerçek kaydı, filtresiz. Dökümü:
+#   oyuncu_stat    24 kalem  %30  (sahaya çıkan HER oyuncu, iki takım)
+#   oyuncu_ceyrek  46 kalem  %28  (oyuncu × çeyrek sayı kırılımı)
+#   an             22 kalem  %26  (play-by-play'den her "an")
+#   kalan 9 tür     9 kalem  %16
+# Model bunların çoğunu kullanamaz: 4 cümlelik bir gövde en fazla 2-3
+# oyuncu anar, çeyrek kırılımını TAKIM düzeyinde kullanır (`ceyrek`
+# kaydı zaten var), ve "an"lardan sadece kararı vereni.
+#
+# DİKKAT — bu filtre SADECE modele GÖNDERİLENİ kısar. Doğrulayıcı
+# (dogrula.py) her zaman TAM `gercekler` listesiyle çalışır, o yüzden
+# izlenebilirlik testleri (T1/T2) zayıflamıyor: model daha az şey
+# görüyor, ama yazdığı her şey yine tam listeye karşı denetleniyor.
+GRUP_B_OYUNCU_SAYISI = 8   # en çok sayı atan 8 oyuncu (iki takım toplamı)
+GRUP_B_AN_SAYISI = 6       # en geç periyottakiler — kararı veren anlar
+# Tamamı gönderilen türler: hepsi küçük ve doğrudan anlatıya giriyor.
+GRUP_B_TAM_TURLER = {
+    "skor", "ceyrek", "derece", "fark_serisi", "takim_stat", "kilometre",
+    "surpriz", "geri_donus", "uzatma", "seri", "gece_ozeti",
+}
+
+
+def grup_b_gercekleri(gercekler, en_iyi_performans=None):
+    """Grup B'ye gidecek gerçek alt kümesi (bkz. yukarıdaki döküm).
+
+    `oyuncu_ceyrek` HİÇ gönderilmiyor — takım düzeyi çeyrek akışı zaten
+    `ceyrek` kaydında var ve gövde oyuncu-çeyrek kırılımını kullanmıyor.
+    `en_iyi_performans` oyuncusu, sayısı düşük olsa bile HER ZAMAN
+    listeye giriyor: T14 onun anılmasını şart koşuyor, göndermezsek
+    model anamaz ve her seferinde reddedilir."""
+    secili, oyuncular, anlar = [], [], []
+    for f in gercekler:
+        t = f["tur"]
+        if t == "oyuncu_ceyrek":
+            continue
+        if t == "oyuncu_stat":
+            oyuncular.append(f)
+        elif t == "an":
+            anlar.append(f)
+        elif t in GRUP_B_TAM_TURLER:
+            secili.append(f)
+    oyuncular.sort(key=lambda f: -f["veri"].get("sayi", 0))
+    tutulan = oyuncular[:GRUP_B_OYUNCU_SAYISI]
+    if en_iyi_performans and not any(f["veri"]["oyuncu"] == en_iyi_performans for f in tutulan):
+        eksik = next((f for f in oyuncular if f["veri"]["oyuncu"] == en_iyi_performans), None)
+        if eksik:
+            tutulan.append(eksik)
+    # "an"lar: en geç periyot önce — maçı belirleyen an her zaman sonda.
+    anlar.sort(key=lambda f: (-f["veri"].get("periyot", 0), f["veri"].get("saat", "")))
+    return secili + tutulan + anlar[:GRUP_B_AN_SAYISI]
+
+
 def kompakt_gercekler(gercekler, sadece_turler=None):
     if sadece_turler:
         secili = [g for g in gercekler if g["tur"] in sadece_turler]
@@ -593,6 +650,21 @@ def llm_cagir(model, sistem, kullanici_mesaji, max_tokens=2000, output_config=No
     ekstra = {}
     if output_config or effort:
         ekstra["output_config"] = {**(output_config or {}), **({"effort": effort} if effort else {})}
+    # `kullanici_mesaji` bir liste ise: SON parça hariç hepsi önbelleğe
+    # alınır. Önbellek önek üzerinden çalıştığı için değişmeyen kısım
+    # (maç verisi) önde, denemeden denemeye değişen kısım (talimatlar +
+    # önceki hata listesi) sonda olmalı — bkz. grup_b_prompt_kur.
+    if isinstance(kullanici_mesaji, (list, tuple)):
+        parcalar = [p for p in kullanici_mesaji if p]
+        icerik = []
+        for i, parca in enumerate(parcalar):
+            blok = {"type": "text", "text": parca}
+            if i < len(parcalar) - 1:
+                blok["cache_control"] = {"type": "ephemeral"}
+            icerik.append(blok)
+    else:
+        icerik = kullanici_mesaji
+
     yanit = istemci.messages.create(
         model=model,
         max_tokens=max_tokens,
@@ -603,7 +675,7 @@ def llm_cagir(model, sistem, kullanici_mesaji, max_tokens=2000, output_config=No
                 "cache_control": {"type": "ephemeral"},
             }
         ],
-        messages=[{"role": "user", "content": kullanici_mesaji}],
+        messages=[{"role": "user", "content": icerik}],
         **ekstra,
     )
 
@@ -1232,11 +1304,19 @@ kullan — maç geneli sayıyı son çeyreğe atfetme.
 {ust_uste_uyarisi}{onceki_hata_talimati}
 JSON şeması:
 {{"baslik": "...", "neden_onemli": "...", "{govde_alani}": "...", "muzip": bool}}
-
-Maç verisi:
-{json.dumps(kompakt_gercekler(gercekler), ensure_ascii=False)}
 """
-    return talimat
+    # Maç verisi promptun BAŞINA alındı ve ayrı bir parça olarak dönüyor.
+    # Sebep: önbellek ÖNEK (prefix) üzerinden çalışır. Blok sondayken
+    # önündeki talimatlar her denemede değiştiği için (önceki hata listesi
+    # ekleniyor) hiçbir şey önbellekten okunamıyordu — 14 bin token her
+    # denemede tam fiyat ödeniyordu. Şimdi büyük ve DEĞİŞMEYEN kısım
+    # önde: aynı maçın onarım denemeleri onu önbellekten okuyor.
+    mac_verisi = (
+        "Maç verisi:\n"
+        + json.dumps(kompakt_gercekler(grup_b_gercekleri(gercekler, en_iyi_performans)), ensure_ascii=False)
+        + "\n"
+    )
+    return mac_verisi, talimat
 
 
 # Ölçüldü (2025-10-23, aynı maç, aynı prompt):
@@ -2646,7 +2726,11 @@ def yaz_batch(tarih_str, zorla=False, haber_skorlari=None, sadece_gidler=None):
                 kalip_plani[gid], ornekler_havuzu, en_iyi_performans, grup_b_hatalar_by_gid.get(gid),
                 kisa=kisa_by_gid.get(gid, False),
             )
-            istekler.append((f"grupB_{gid}", GUCLU_MODEL, sistem_prompt(), prompt, 12000))
+            # Batch yolu tek parça metin bekliyor — grup_b_prompt_kur artık
+            # (maç verisi, talimat) ikilisi döndürüyor, burada birleştiriliyor.
+            # Önbellek kazancı batch'te zaten geçerli değil (istekler
+            # birbirinden bağımsız kuyruklanıyor), sıra da önemsiz.
+            istekler.append((f"grupB_{gid}", GUCLU_MODEL, sistem_prompt(), "".join(prompt), 12000))
 
         if not istekler:
             break

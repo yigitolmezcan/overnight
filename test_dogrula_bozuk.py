@@ -949,6 +949,42 @@ def main():
         basar("Brief: daha yüksek GmSc'li kilometre varken zayıf performans satırı kurulmuyor",
               _b is None or "Curry" not in _b.get("metin", ""))
 
+    # Girdi maliyeti: Grup B promptuna gerçeklerin TAMAMI değil, ilgili
+    # alt kümesi gidiyor. Ölçüm (2026-01-28): 103 kalem → 25 kalem,
+    # girdi 21.535 → 13.518 token. oyuncu_ceyrek hiç gitmiyor.
+    _g0128 = _j.loads(open("gercek/2026-01-28.json").read())["maclar"]["0022500679"]
+    _alt = _y0.grup_b_gercekleri(_g0128, "Victor Wembanyama")
+    basar("Girdi: gerçeklerin tamamı değil alt kümesi gönderiliyor",
+          len(_alt) < len(_g0128) / 3)
+    basar("Girdi: oyuncu_ceyrek kayıtları LLM'e hiç gönderilmiyor",
+          not any(f["tur"] == "oyuncu_ceyrek" for f in _alt))
+    basar("Girdi: en iyi performans oyuncusu HER ZAMAN gönderiliyor (T14 şart koşuyor)",
+          any(f["tur"] == "oyuncu_stat" and f["veri"]["oyuncu"] == "Victor Wembanyama"
+              for f in _alt))
+    _kucuk = _y0.grup_b_gercekleri(_g0128, "Yok Böyle Biri")
+    basar("Girdi: skor/çeyrek/derece gibi küçük türlerin tamamı korunuyor",
+          {f["tur"] for f in _kucuk} >= {"skor", "ceyrek", "derece"})
+
+    # Önbellek: büyük ve DEĞİŞMEYEN kısım promptun BAŞINDA olmalı, yoksa
+    # önek eşleşmez ve hiçbir şey önbellekten okunamaz. Maç verisi bloğu
+    # onarım denemelerinde de birebir aynı kalmalı.
+    _h0128 = _j.loads(open(_ham_yolu("2026-01-28")).read()) if _os.path.exists(_ham_yolu("2026-01-28")) else None
+    if _h0128:
+        _s0128 = _j.loads(open("skor/2026-01-28.json").read())
+        _gg = _j.loads(open("gercek/2026-01-28.json").read())
+        _k0128 = _y0.gece_kalip_plani("2026-01-28", _gg, _h0128, _s0128)
+        _orn = _y0.ornekler_yukle()
+        _args = ("0022500679", _g0128, _h0128["maclar"]["0022500679"],
+                 _y0.MUZIP_BUTCESI_TOPLAM, _k0128["0022500679"], _orn, "Victor Wembanyama")
+        _mv1, _t1 = _y0.grup_b_prompt_kur(*_args)
+        _mv2, _t2 = _y0.grup_b_prompt_kur(*_args, onceki_hatalar=["T16: örnek"])
+        basar("Önbellek: maç verisi bloğu onarım denemesinde de birebir aynı",
+              _mv1 == _mv2)
+        basar("Önbellek: değişen kısım (talimatlar) ayrı parçada",
+              _t1 != _t2)
+        basar("Önbellek: maç verisi ayrı parça olarak dönüyor (önek olabilsin diye)",
+              _mv1.startswith("Maç verisi:"))
+
     # 2) Bir gecede LLM'e giden "Mutlaka bil" maçı sayısı tek yerden
     # kontrol ediliyor — maliyetin asıl kaldıracı bu.
     import yaz as _yaz

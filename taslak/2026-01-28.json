@@ -1,6 +1,6 @@
 {
   "tarih": "2026-01-28",
-  "uretildi": "2026-08-25T10:44:23.949569Z",
+  "uretildi": "2026-08-25T10:53:45.824606Z",
   "maclar": {
     "0022500674": {
       "gec_satiri": "Orlando Magic deplasmanda Miami Heat'ı 133-124 yendi. Paolo Banchero 31 sayı attı.",
@@ -35,9 +35,9 @@
       "muzip": false
     },
     "0022500679": {
-      "baslik": "San Antonio, 16 sayılık farktan dönüp Houston'ı deplasmanda yendi.",
-      "neden_onemli": "Bu galibiyetle Spurs, Batı Konferansı'nda 2. sıraya yerleşti.",
-      "ozet": "Houston, ilk çeyrekte hücumda üstünlük kurup farkı 16 sayıya kadar çıkardı. San Antonio, üçüncü çeyrekte liderliği ele geçirdi ve son periyot başında Wembanyama'nın serbest atışıyla öne geçtikten sonra bir daha geride kalmadı. Son periyotta gelen basketlerle Spurs farkı çift haneye çıkardı ve maçı 111-99 bitirdi. Gecenin en etkili ismi Wembanyama oldu, 28 sayı, 16 ribaund ve 5 blokla nadir görülen bir performans ortaya koydu.",
+      "baslik": "San Antonio, Houston'ı farktan dönerek 111-99 yendi.",
+      "neden_onemli": "San Antonio, Wembanyama'nın çıkışıyla Batı Konferansı'nda 2. sırasını korudu.",
+      "ozet": "Houston, ilk çeyrekte 36-26 üstünlük kurarak farkı 16 sayıya kadar çıkardı ve maça hızlı başladı. San Antonio, üçüncü çeyrekte farkı tek haneye indirdi ve son çeyrekte liderliği ele geçirdi. Kararı son dakikada Wembanyama'nın smaçı ve serbest atışları belirledi, San Antonio farkı 15 sayıya kadar çıkardı. Maçın en etkili ismi Wembanyama, 28 sayı, 16 ribaund ve 5 blokla nadir görülen bir gece yaşadı.",
       "muzip": false
     }
   },
@@ -64,7 +64,7 @@
     }
   ],
   "rapor": {
-    "toplam_alan": 3,
+    "toplam_alan": 2,
     "ilk_denemede_kabul": 0,
     "sablon_moduna_dusen": 0,
     "detay": [
@@ -72,27 +72,12 @@
         "mac_id": "0022500679",
         "deneme": 0,
         "gerekce": [
-          "ozet/T4: ['imza at']",
-          "ozet/T4d: [\"'farkı hızla açarak' (farkı açmak — 'farkı yükseltti/çıkardı' kullanılmalı)\"]",
-          "ozet/T23: [\"'topladığı' — 'toplamak' SADECE ribaund fiilidir, aynı cümlede sayı/asist de bu fiile bağlanmış; sayı 'atılır', asist 'verilir'\"]"
+          "ozet/T16: [\"'üst üste' iddiası (SAS, seri uzunluğu 1) 4 eşiğinin altında\"]"
         ],
         "reddedilen_taslak": {
-          "baslik": "San Antonio, ilk yarı farkını çevirip Houston'ı deplasmanda yendi.",
-          "neden_onemli": "Wembanyama'nın 5 bloklu nadir gecesinde Spurs, Batı'da 2. sırasını korudu.",
-          "ozet": "Houston, ilk çeyrekte 36-26 öne geçerek farkı 10 sayıya kadar taşıdı. San Antonio üçüncü çeyrekte toparlandı, liderlik birkaç kez el değiştirdi ve skor 84-84'e geldi. Son çeyrekte 27-13'lük üstünlük kuran Spurs, farkı hızla açarak deplasmanda rahat bir galibiyet aldı. Victor Wembanyama attığı 28 sayı, topladığı 16 ribaund ve 5 blokla gecenin en etkili performansına imza attı.",
-          "muzip": false
-        }
-      },
-      {
-        "mac_id": "0022500679",
-        "deneme": 1,
-        "gerekce": [
-          "baslik/T16: [\"'farktan dönüp' civarındaki geri dönüş 10 sayının altında\"]"
-        ],
-        "reddedilen_taslak": {
-          "baslik": "Wembanyama'nın 5 blokluyla San Antonio, Houston Rockets'ı farktan dönüp yendi",
-          "neden_onemli": "San Antonio, bu sonuçla Batı Konferansı'nda 2. sıraya yükseldi.",
-          "ozet": "Houston Rockets, ilk yarıda farkı 16 sayıya kadar çıkararak üstünlüğü ele geçirdi. San Antonio Spurs, dördüncü çeyrek başında Wembanyama'nın serbest atışlarıyla öne geçti ve bir daha geriye düşmedi. Son periyotta smaçı ve serbest atışlarıyla farkı hızla yükselten Spurs, deplasmanda 111-99 kazandı. Gecenin en etkili ismi olan Wembanyama, 28 sayı, 16 ribaund ve 5 blokla nadir görülen bir çizgi yakaladı.",
+          "baslik": "Wembanyama'nın 5 blokluk gecesinde San Antonio, Houston'ı 12 farkla geçti.",
+          "neden_onemli": "Wembanyama double-double yaparken Spurs, Batı Konferansı'nda 2. sıraya oturdu.",
+          "ozet": "Houston Rockets, ilk çeyreği 36-26 önde bitirerek maça hızlı başladı. Üçüncü çeyrek sonunda fark 2 sayıya kadar inince San Antonio, son çeyrekte 27-13'lük üstünlükle öne geçti. Son dakikada art arda serbest atış ve smaçla skoruna katkı veren Wembanyama, farkı 15'e kadar çıkardı. Spurs'te Wembanyama 28 sayı, 16 ribaund ve 5 blokla öne çıkarken Rockets'ta De'Aaron Fox 18 sayı, 8 asistle katkı verdi.",
           "muzip": false
         }
       }
@@ -101,12 +86,12 @@
     "ret_orani": 1.0,
     "uretim_modu": "hibrit",
     "kullanim": {
-      "cagri_sayisi": 3,
-      "girdi_token": 43039,
-      "cikti_token": 10616,
-      "cache_yazma_token": 14610,
-      "cache_okuma_token": 7305,
-      "toplam_maliyet_usd": 0.2302,
+      "cagri_sayisi": 2,
+      "girdi_token": 4979,
+      "cikti_token": 5039,
+      "cache_yazma_token": 22170,
+      "cache_okuma_token": 0,
+      "toplam_maliyet_usd": 0.1158,
       "butce_asildi": false
     }
   }
