@@ -1326,8 +1326,17 @@ def main():
           'class="tkg"' in _sayfa and _sayfa.count("const g1=") == 1 and "const g2=" in _sayfa)
     # Grubun KENDİSİ sarmalanmamalı — sarmalarsa yalnız öğe garantisi
     # çöker. nowrap bunu CSS düzeyinde kilitliyor.
-    basar("Türkler: grup içi sarmalama kapalı (yalnız öğe garantisi)",
-          "white-space:nowrap}" in _sayfa.split(".tkalt .tkg{")[1][:80])
+    # Sarmalama artık şansa değil IZGARAYA dayanıyor: dört sütun, yani
+    # satır başına tam dört öğe. Ayrıca sütunlar dikey hizalı olduğu için
+    # kırılma noktası belirsiz kalmıyor — serbest sarmalamada satır
+    # sonundaki ETİKET ile satır başındaki DEĞER çift gibi okunuyordu
+    # ("... 3/7 fa" / "2 tç" → "fa 2", kullanıcı fark etti).
+    basar("Türkler: ikincil satır ızgara (satır başına tam 4 öğe)",
+          "grid-template-columns:repeat(4,auto)" in _sayfa)
+    basar("Türkler: gruplar ızgarada görünmez (display:contents)",
+          "display:contents" in _sayfa.split(".tkalt .tkg{")[1][:40])
+    basar("Türkler: masaüstünde sekizi tek sırada",
+          "grid-template-columns:repeat(8,auto)" in _sayfa)
     # Ferahlık: ölçüldü — 375px'te iki grup da tek satırda (en geniş
     # değerlerle bile), masaüstünde ikisi birden tek satırda.
     basar("Türkler: ikincil satırda nefes payı var",
@@ -1338,13 +1347,12 @@ def main():
     # olursa iki grup tek satıra sığdığında ek yeri göze görünüyor
     # ("fa" ile "2 tç" arası diğerlerinden genişti — kullanıcı fark
     # etti). Gruplama sarmalama içindir, görünmemeli.
-    _mob = _sayfa.split(".tkalt{display:flex")[1][:200]
-    _grup = _sayfa.split(".tkalt .tkg{")[1][:80]
-    basar("Türkler: mobilde gruplar arası boşluk = grup içi boşluk (14px)",
-          "gap:9px 14px" in _mob and "gap:14px" in _grup)
-    _mas = _sayfa.split("@media(min-width:768px){\n  .tkalt{")[1][:120]
-    basar("Türkler: masaüstünde de eşit (18px)",
-          "gap:10px 18px" in _mas and "gap:18px" in _mas)
+    # Izgarada tek bir sütun boşluğu var, yani öğeler arası mesafe
+    # yapısal olarak eşit — ek yeri oluşamaz.
+    basar("Türkler: mobilde öğe aralığı tek değerden geliyor (14px)",
+          "gap:9px 14px" in _sayfa)
+    basar("Türkler: masaüstünde öğe aralığı tek değerden geliyor (18px)",
+          "gap:10px 18px" in _sayfa)
     basar("Türkler: oynamayan için OYNAMADI etiketi var",
           'class="tkoff"' in _sayfa and "Oynamadı" in _sayfa)
     basar("Türkler: iki oyuncu oynayınca rakamlar küçülüyor",

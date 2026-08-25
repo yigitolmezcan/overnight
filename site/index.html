@@ -116,19 +116,30 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
    diğerlerinden geniş duruyordu. Gruplama yalnızca sarmalamayı
    yönetmek için var, göze görünmemeli. Satır boşluğu (9px) ayrı ve
    bilerek büyük — o, iki satıra düştüğünde ayırıcı görevi görüyor. */
-.tkalt{display:flex;flex-wrap:wrap;gap:9px 14px;margin-top:16px;
-  padding-top:15px;border-top:1px solid #151C28}
+/* IZGARA, akış değil. Serbest sarmalamada satır sonundaki ETİKET ile
+   satır başındaki DEĞER göz için yan yana geliyor ve çift gibi
+   okunuyordu ("... 3/7 fa" / "2 tç" → "fa 2"). Dört sütunlu ızgarada
+   her hücre bir değer-etiket çifti ve sütunlar DİKEY HİZALI, yani
+   kırılma noktası artık belirsiz değil: alt satırdaki her öğe üsttekinin
+   tam altında duruyor.
+   Yan fayda: satır başına tam dört öğe garanti — "yalnız öğe" kuralı
+   artık sarmalama şansına değil ızgara yapısına dayanıyor. */
+.tkalt{display:grid;grid-template-columns:repeat(4,auto);justify-content:start;
+  gap:9px 14px;margin-top:16px;padding-top:15px;border-top:1px solid #151C28}
 /* Grup İÇİ boşluk ayrı: öğeler arası 14px. Grubun kendisi asla
    sarmalanmamalı (yalnız öğe yasağı), o yüzden bu değer ölçülerek
    seçildi — 375px'te dört öğelik grup tek satırda kalıyor. */
-.tkalt .tkg{display:flex;gap:14px;white-space:nowrap}
+/* Gruplar ızgarada görünmez olmalı — display:contents sayesinde sekiz
+   hücre doğrudan ızgaranın çocuğu oluyor, sarmalama mantığı JS'te
+   bozulmadan duruyor. */
+.tkalt .tkg{display:contents}
 .tkalt .tkg > span{font-family:var(--mono);font-size:12px;color:var(--ink2);white-space:nowrap}
 .tkalt .tkg > span i{font-style:normal;color:var(--faint);margin-left:1px}
 /* Masaüstünde daha da ferah — orada iki grup zaten tek satıra sığıyor,
    kazanılan yer aralıklara gidiyor. */
 @media(min-width:768px){
-  .tkalt{gap:10px 18px;margin-top:18px;padding-top:17px}
-  .tkalt .tkg{gap:18px}
+  /* Masaüstünde sekizi de tek satır — ızgara tek sıra oluyor. */
+  .tkalt{grid-template-columns:repeat(8,auto);gap:10px 18px;margin-top:18px;padding-top:17px}
   .tkalt .tkg > span{font-size:13px}
 }
 
