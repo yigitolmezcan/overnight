@@ -111,7 +111,12 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
    dörtlü iki dengeli satır olur. Tek bir öğenin ("+9") yalnız başına
    alta kayması bu yüzden imkânsız — sarmalama grup sınırından oluyor,
    öğe sınırından değil. */
-.tkalt{display:flex;flex-wrap:wrap;gap:9px 20px;margin-top:16px;
+/* Sütun boşluğu, grup içi boşlukla AYNI (14px). Farklı olursa iki grup
+   tek satıra sığdığında ek yeri görünüyor: "fa" ile "2 tç" arası
+   diğerlerinden geniş duruyordu. Gruplama yalnızca sarmalamayı
+   yönetmek için var, göze görünmemeli. Satır boşluğu (9px) ayrı ve
+   bilerek büyük — o, iki satıra düştüğünde ayırıcı görevi görüyor. */
+.tkalt{display:flex;flex-wrap:wrap;gap:9px 14px;margin-top:16px;
   padding-top:15px;border-top:1px solid #151C28}
 /* Grup İÇİ boşluk ayrı: öğeler arası 14px. Grubun kendisi asla
    sarmalanmamalı (yalnız öğe yasağı), o yüzden bu değer ölçülerek
@@ -122,7 +127,7 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
 /* Masaüstünde daha da ferah — orada iki grup zaten tek satıra sığıyor,
    kazanılan yer aralıklara gidiyor. */
 @media(min-width:768px){
-  .tkalt{gap:10px 32px;margin-top:18px;padding-top:17px}
+  .tkalt{gap:10px 18px;margin-top:18px;padding-top:17px}
   .tkalt .tkg{gap:18px}
   .tkalt .tkg > span{font-size:13px}
 }
