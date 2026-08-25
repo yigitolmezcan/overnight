@@ -1193,5 +1193,40 @@ def main():
           hasattr(dogrula_modul, "T23_GERI_DONUS_DESENI"))
 
 
+    # ==================================================================
+    # Kaydırma performansı — titreme nöbeti.
+    # ==================================================================
+    # Kullanıcı bildirimi: tasarım turundan sonra sayfa kaydırırken
+    # titremeye başladı. Ölçüldü: kaydırma olayı başına 6 düzen okuması
+    # (getBoundingClientRect) ve 9 adet ekrana sabitlenmiş zemin katmanı.
+    # Asıl kötü kısım geri beslemeydi: sınıf değişince başlığın PUNTOSU
+    # değişiyordu, yani ŞERİDİN YÜKSEKLİĞİ değişiyordu — bu da altındaki
+    # içeriği kaydırıp koşulu yeniden tetikliyordu.
+    #
+    # Bu testler o üçünün geri gelmesini engelliyor.
+    # DİKKAT: `_html` bülten testinde mail gövdesine yeniden atanıyor —
+    # sayfayı kontrol etmek için ayrı ad ve taze okuma şart. (Bu tam
+    # olarak bir kez atlandı ve testler sessizce maili sınadı.)
+    _sayfa = open("overnight_v17.html", encoding="utf-8").read()
+    basar("Kaydırma: sayfada kaydırma dinleyicisi YOK",
+          "addEventListener('scroll'" not in _sayfa and 'addEventListener("scroll"' not in _sayfa)
+    basar("Kaydırma: yapışkan başlık için JS kalmadı (saf CSS)",
+          "yapisik" not in _sayfa and "yapiskanBasliklariKur" not in _sayfa)
+    basar("Kaydırma: ekrana sabitlenmiş zemin katmanı (background-attachment) YOK",
+          "background-attachment:fixed" not in _sayfa.replace("`background-attachment:fixed` DEĞİL", ""))
+    basar("Kaydırma: degrade tek bir position:fixed katmanda (aynı görüntü, tek boyama)",
+          "body::before" in _sayfa and "position:fixed;inset:0;z-index:-1" in _sayfa)
+    basar("Kaydırma: bölüm başlığı hâlâ yapışkan (saf CSS ile)",
+          ".sechead{position:sticky" in _sayfa)
+    # Şeridin YÜKSEKLİĞİ hiçbir duruma göre değişmemeli: değişirse
+    # altındaki içerik zıplar ve yapışma koşulunu yeniden tetikler.
+    # (font-size:17px sayfanın başka yerlerinde meşru olarak var —
+    # ölçüt genel punto değil, BAŞLIĞA bağlı koşullu punto/geçiş.)
+    basar("Kaydırma: şerit yüksekliğini değiştiren koşullu kural yok",
+          "transition:font-size" not in _sayfa
+          and ".sechead.yapisik" not in _sayfa
+          and _sayfa.count(".sechead h2{") == 1)
+
+
 if __name__ == "__main__":
     main()

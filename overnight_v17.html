@@ -24,10 +24,18 @@ html{scroll-behavior:smooth}
    "Oynamayanlar" satırında bazı isimlerin kocaman, bazılarının küçük
    görünmesinin sebebi buydu — bizim CSS'imiz değil, tarayıcının
    müdahalesi. Kapatılıyor. */
+/* Degrade artık `background-attachment:fixed` DEĞİL. O özellik iOS'ta
+   bilinen bir titreme kaynağı: tarayıcı, sayfa her kaydığında sabit
+   zemini yeniden boyamak zorunda kalıyor ve bunu kaydırmayla aynı karede
+   yapamıyor. Aynı görüntüyü bedelsiz almanın yolu: degradeyi ekrana
+   SABİTLENMİŞ ayrı bir katmana koymak (position:fixed). O katman bir kez
+   boyanıp GPU'da tutuluyor, kaydırmada yeniden boyanmıyor. Görünüş
+   birebir aynı — degrade yine ekrana göre duruyor, sayfayla kaymıyor. */
+html{background:#080C13}
 body{margin:0;color:var(--ink);font:16px/1.55 var(--txt);-webkit-font-smoothing:antialiased;
-  -webkit-text-size-adjust:100%;text-size-adjust:100%;
-  background:linear-gradient(180deg,#080C13 0%,#0A0F18 26%,#0D131D 52%,#111825 76%,#151D2B 100%);
-  background-attachment:fixed}
+  -webkit-text-size-adjust:100%;text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,#080C13 0%,#0A0F18 26%,#0D131D 52%,#111825 76%,#151D2B 100%)}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:left}
 .rowlink{text-decoration:none;color:inherit}
 :focus-visible{outline:2px solid var(--c,var(--ember));outline-offset:3px}
@@ -46,17 +54,15 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-a
 .sechead{position:sticky;top:0;z-index:30;display:flex;align-items:baseline;
   justify-content:space-between;gap:14px;margin-bottom:14px;
   padding:10px 20px 9px;margin-left:-20px;margin-right:-20px;
-  border-bottom:1px solid transparent;transition:border-color .15s;
-  /* Zemin, gövdeyle BİREBİR aynı degrade + aynı sabitleme. Düz bir renk
-     verilseydi degradenin üstünde yama gibi durur, kaydırdıkça fark
-     açılırdı. background-attachment:fixed sayesinde ikisi de ekrana göre
-     boyanıyor, yani şerit altındaki sayfayla tam olarak aynı rengi
-     alıyor ve görünmez oluyor — sadece içeriği gizliyor. */
-  background:linear-gradient(180deg,#080C13 0%,#0A0F18 26%,#0D131D 52%,#111825 76%,#151D2B 100%);
-  background-attachment:fixed}
-.sechead.yapisik{border-bottom-color:#1A2230}
-.sechead.yapisik h2{font-size:17px}
-.sechead h2{transition:font-size .15s}
+  /* DÜZ RENK, degrade değil. Önceden her başlığa gövdeyle aynı sabit
+     degrade veriliyordu — 8 başlık = 8 ayrı sabitlenmiş katman, hepsi
+     her karede yeniden boyanıyordu (mobilde titremenin kaynaklarından
+     biri). Degrade katmanı artık ekrana sabitlenmiş TEK bir öğe
+     (body::before) ve o katmanın ekran üstündeki rengi her zaman
+     #080C13 — yani bu düz renk şeridin altındaki sayfayla birebir
+     aynı. Yükseklik de artık hiç değişmiyor: incelme efekti kalktı,
+     şerit sabit yükseklikte. */
+  background:#080C13}
 
 .sechead h2{font-family:var(--disp);font-weight:800;font-size:26px;line-height:1;letter-spacing:-.03em;margin:0}
 .cue{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
@@ -793,52 +799,12 @@ function render(d){
     </div>`;
   }
 
-  yapiskanBasliklariKur();
-
   // ---- kart açma ----
   document.querySelectorAll('[data-kart]').forEach(b=>{
     const ac=()=>{ const m=MAC_BY_ID[b.dataset.kart]; if(m) kartAc(boxKartiHTML(m)); };
     b.addEventListener('click',ac);
     b.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); ac(); } });
   });
-}
-
-// Yapışkan başlık: bölüm başlığı üste yapıştığı anda incelsin ve alt
-// çizgisi belirsin — "buradasın" işareti.
-//
-// IntersectionObserver ile yazılmıştı ama doğrulanamadı: test ortamında
-// gözlemci hiç tetiklenmedi (ilk kayıt bile gelmedi), yani sınıf hiçbir
-// zaman uygulanmıyordu. Doğrulayamadığım bir yöntemi göndermek yerine
-// kaydırma olayına geçildi — rAF ile kısılıyor, yani kare başına en
-// fazla bir hesap yapılıyor.
-//
-// Koşul İKİ parçalı: üst kenar 0'a dayanmış VE alt kenar hâlâ ekranda.
-// Sadece "üst <= 0" deseydik, bölüm tamamen yukarı kaydıktan sonra da
-// başlık yapışık sayılırdı ve aynı anda birden çok başlık işaretlenirdi.
-let _yapiskanTemizle = null;
-
-function yapiskanBasliklariKur(){
-  if(_yapiskanTemizle) _yapiskanTemizle();   // gece değişince üst üste binmesin
-  const basliklar=[...document.querySelectorAll('.sec:not([hidden]) .sechead')];
-  if(!basliklar.length) return;
-  let bekliyor=false;
-  const guncelle=()=>{
-    bekliyor=false;
-    basliklar.forEach(h=>{
-      const r=h.getBoundingClientRect();
-      h.classList.toggle('yapisik', r.top<=0 && r.bottom>0);
-    });
-  };
-  const tetikle=()=>{ if(!bekliyor){ bekliyor=true; requestAnimationFrame(guncelle); } };
-  addEventListener('scroll',tetikle,{passive:true});
-  addEventListener('resize',tetikle,{passive:true});
-  guncelle();
-  _yapiskanTemizle=()=>{
-    removeEventListener('scroll',tetikle);
-    removeEventListener('resize',tetikle);
-    basliklar.forEach(h=>h.classList.remove('yapisik'));
-    _yapiskanTemizle=null;
-  };
 }
 
 function revealTarget(id){
