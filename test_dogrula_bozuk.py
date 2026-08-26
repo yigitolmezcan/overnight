@@ -1561,6 +1561,18 @@ def main():
           "_dayanikli(f\"scoreboard" in _ck)
     basar("Ağ: sarmasız nba_api çağrısı kalmadı",
           _ck.count("_dayanikli(") == 9)
+    basar("Ağ: her nba_api çağrısı kendi zaman aşımını veriyor",
+          _ck.count("timeout=ISTEK_ZAMAN_ASIMI_SN") == 8)
+    # Dayanıklılık, işi zaman aşımından ÖLDÜRMEMELİ. Yeniden deneme
+    # eklendiğinde en kötü durum 103 dk'ya çıkmıştı, oysa iş 45 dk'da
+    # kesiliyordu — dayanıklılık ekleyeyim derken tersini yapan bir
+    # tasarım. Bu test o dengeyi kilitliyor.
+    _tek = (_cek.YENIDEN_DENEME * _cek.ISTEK_ZAMAN_ASIMI_SN
+            + sum(_cek.DENEME_ARASI_TABAN_SN * 2 ** i for i in range(_cek.YENIDEN_DENEME - 1)))
+    _en_kotu_dk = 46 * _tek / 60
+    _is_siniri = int(_u.split("timeout-minutes:")[1].split()[0])
+    basar(f"Ağ: en kötü durum ({_en_kotu_dk:.0f} dk) iş sınırının ({_is_siniri} dk) altında",
+          _en_kotu_dk < _is_siniri)
 
     basar("Zamanlayıcı: cron UTC'ye göre doğru (08:30/09:00 TSİ)",
           'cron: "30 5 * * *"' in _u and 'cron: "0 6 * * *"' in _y)

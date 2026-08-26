@@ -67,7 +67,14 @@ ISTEK_ARASI_BEKLEME_SN = 0.6
 # çalışacak (projenin üçüncü pazarlıksız kuralı). Gerçek olay
 # (2026-08-26): tek bir ReadTimeout `cek.py`yi düşürdü, `yayin.py uret`
 # çöktü, gece hiç üretilmedi.
-YENIDEN_DENEME = 4
+# nba_api varsayılanı 30 sn. Yeniden deneme eklenince bu çok pahalı
+# oluyor: 46 çağrılık bir gecede hepsi düşerse 4×30sn × 46 = 103 dakika,
+# oysa iş 45 dakikada kesiliyor — yani dayanıklılık ekleyeyim derken
+# işi zaman aşımından öldürecek bir tasarım çıkmıştı.
+# 15 sn fazlasıyla cömert (NBA normalde 1-3 sn'de cevaplıyor) ve
+# 3 denemeyle en kötü durum ~39 dakikaya iniyor.
+ISTEK_ZAMAN_ASIMI_SN = 15
+YENIDEN_DENEME = 3
 DENEME_ARASI_TABAN_SN = 2.0
 
 
@@ -106,7 +113,7 @@ def sezon_kodu(tarih: datetime) -> str:
 
 def gece_mac_idlerini_al(tarih_str: str) -> list[str]:
     ham = _dayanikli(f"scoreboard {tarih_str}",
-                     lambda: scoreboardv2.ScoreboardV2(game_date=tarih_str).get_dict())
+                     lambda: scoreboardv2.ScoreboardV2(game_date=tarih_str, timeout=ISTEK_ZAMAN_ASIMI_SN).get_dict())
     satirlar = ham["resultSets"][0]["rowSet"]
     basliklar = ham["resultSets"][0]["headers"]
     id_index = basliklar.index("GAME_ID")
@@ -117,19 +124,19 @@ def mac_verisi_cek(game_id: str) -> dict:
     veri = {}
 
     veri["box_traditional"] = _dayanikli(f"box_traditional {game_id}",
-        lambda: boxscoretraditionalv3.BoxScoreTraditionalV3(game_id=game_id).get_dict())
+        lambda: boxscoretraditionalv3.BoxScoreTraditionalV3(game_id=game_id, timeout=ISTEK_ZAMAN_ASIMI_SN).get_dict())
     time.sleep(ISTEK_ARASI_BEKLEME_SN)
 
     veri["box_advanced"] = _dayanikli(f"box_advanced {game_id}",
-        lambda: boxscoreadvancedv3.BoxScoreAdvancedV3(game_id=game_id).get_dict())
+        lambda: boxscoreadvancedv3.BoxScoreAdvancedV3(game_id=game_id, timeout=ISTEK_ZAMAN_ASIMI_SN).get_dict())
     time.sleep(ISTEK_ARASI_BEKLEME_SN)
 
     veri["box_summary"] = _dayanikli(f"box_summary {game_id}",
-        lambda: boxscoresummaryv2.BoxScoreSummaryV2(game_id=game_id).get_dict())
+        lambda: boxscoresummaryv2.BoxScoreSummaryV2(game_id=game_id, timeout=ISTEK_ZAMAN_ASIMI_SN).get_dict())
     time.sleep(ISTEK_ARASI_BEKLEME_SN)
 
     veri["play_by_play"] = _dayanikli(f"play_by_play {game_id}",
-        lambda: playbyplayv3.PlayByPlayV3(game_id=game_id).get_dict())
+        lambda: playbyplayv3.PlayByPlayV3(game_id=game_id, timeout=ISTEK_ZAMAN_ASIMI_SN).get_dict())
     time.sleep(ISTEK_ARASI_BEKLEME_SN)
 
     return veri
@@ -147,7 +154,7 @@ def sonraki_mac_tarihleri(sezon: str, tarih_str: str) -> dict:
     """
     ertesi_gun = (datetime.strptime(tarih_str, "%Y-%m-%d") + timedelta(days=1)).strftime("%Y-%m-%d")
     ham = _dayanikli("sonraki_maclar", lambda: leaguegamelog.LeagueGameLog(
-        season=sezon, date_from_nullable=ertesi_gun).get_dict())
+        season=sezon, date_from_nullable=ertesi_gun, timeout=ISTEK_ZAMAN_ASIMI_SN).get_dict())
     kume = ham["resultSets"][0]
     basliklar = kume["headers"]
     i_takim = basliklar.index("TEAM_ABBREVIATION")
@@ -176,11 +183,11 @@ def cek(tarih_str: str, zorla: bool = False) -> Path:
     print(f"  {len(mac_idleri)} maç bulundu: {mac_idleri}")
 
     puan_durumu = _dayanikli("puan_durumu", lambda: leaguegamelog.LeagueGameLog(
-        season=sezon, date_to_nullable=tarih_str).get_dict())
+        season=sezon, date_to_nullable=tarih_str, timeout=ISTEK_ZAMAN_ASIMI_SN).get_dict())
     time.sleep(ISTEK_ARASI_BEKLEME_SN)
 
     oyuncu_ortalama = _dayanikli("oyuncu_ortalama", lambda: playergamelogs.PlayerGameLogs(
-        season_nullable=sezon, date_to_nullable=onceki_gun).get_dict())
+        season_nullable=sezon, date_to_nullable=onceki_gun, timeout=ISTEK_ZAMAN_ASIMI_SN).get_dict())
     time.sleep(ISTEK_ARASI_BEKLEME_SN)
 
     sonraki_maclar = sonraki_mac_tarihleri(sezon, tarih_str)

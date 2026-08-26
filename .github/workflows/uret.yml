@@ -20,7 +20,10 @@ permissions:
 jobs:
   uret:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    # 60 dk: NBA yavaşladığında yeniden denemeler süreyi uzatıyor.
+    # En kötü durum hesabı ~39 dk (46 çağrı × 3 deneme × 15 sn), üstüne
+    # pay bırakıldı.
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
 
