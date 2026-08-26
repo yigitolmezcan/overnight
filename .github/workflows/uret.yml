@@ -29,18 +29,23 @@ jobs:
           python-version: "3.11"
           cache: pip
 
-      - run: pip install -r requirements.txt
+      - name: Bağımlılıklar
+        id: kurulum
+        run: pip install -r requirements.txt
 
       - name: Testler (bozuk kod yayına çıkmasın)
+        id: testler
         run: python3 test_dogrula_bozuk.py
 
       - name: Sıradaki geceyi üret
+        id: uretim
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GUNLUK_BUTCE_USD: "1.00"
         run: python3 yayin.py uret
 
       - name: Sonucu depoya yaz
+        id: yazma
         run: |
           git config user.name  "overnight-bot"
           git config user.email "bot@users.noreply.github.com"
@@ -85,6 +90,14 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          # Hangi adımın düştüğünü bildirime YAZ. Önceki başarısızlıkta
+          # bildirim sadece "başarısız" deyip kayıt bağlantısı veriyordu;
+          # sebebi öğrenmek için her seferinde Actions'a girmek gerekti.
+          DUSEN="bilinmiyor"
+          [ "${{ steps.kurulum.outcome }}" = "failure" ] && DUSEN="Bağımlılıklar (pip install)"
+          [ "${{ steps.testler.outcome }}" = "failure" ] && DUSEN="Testler"
+          [ "${{ steps.uretim.outcome }}" = "failure" ] && DUSEN="Gece üretimi"
+          [ "${{ steps.yazma.outcome }}" = "failure" ] && DUSEN="Depoya yazma"
           gh issue create \
-            --title "Gece üretimi başarısız — $(date -u +%Y-%m-%d)" \
-            --body "08:30 üretim işi başarısız oldu. Site DEĞİŞMEDİ, bir önceki gece yayında kalmaya devam ediyor. Kayıtlar: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+            --title "Gece üretimi başarısız ($DUSEN) — $(date -u +%Y-%m-%d)" \
+            --body "08:30 üretim işi **$DUSEN** adımında düştü. Site DEĞİŞMEDİ, bir önceki gece yayında kalmaya devam ediyor. Tam kayıt: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"

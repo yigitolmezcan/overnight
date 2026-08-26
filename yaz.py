@@ -675,8 +675,12 @@ def llm_cagir(model, sistem, kullanici_mesaji, max_tokens=2000, output_config=No
     — API "thinking.type.adaptive ve output_config.effort kullan" diyor.
     Thinking her zaman adaptive kalıyor, sadece effort seviyesi onun ne
     kadar harcayacağını kısıtlıyor."""
-    import anthropic
-
+    # Bütçe kapısı EN BAŞTA — anthropic'i içe aktarmadan ve istemciyi
+    # kurmadan önce. Sırası önemli: istemci kurulumu ANTHROPIC_API_KEY
+    # yoksa kendi hatasını fırlatıyor ve bütçe kapısının hiç çalışmadığı
+    # bir ortamda (ör. anahtarsız CI test adımı) o hata bütçe hatasını
+    # maskeliyordu. Tavan zaten "hiç çağrı yapma" kararı; çağrı için
+    # gereken hiçbir şeyi hazırlamaya gerek yok.
     tavan = _butce_tavani()
     if tavan is not None:
         BUTCE_DURUMU["tavan"] = tavan
@@ -687,6 +691,8 @@ def llm_cagir(model, sistem, kullanici_mesaji, max_tokens=2000, output_config=No
                 f"Günlük tavan ${tavan:.2f}; şu ana kadar ${harcanan:.4f} harcandı, "
                 f"bir çağrılık pay (${TAHMINI_CAGRI_USD:.2f}) sığmıyor. Şablona düşülüyor."
             )
+
+    import anthropic
 
     istemci = anthropic.Anthropic()  # ANTHROPIC_API_KEY ortam değişkeninden okur
     ekstra = {}

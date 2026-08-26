@@ -1478,6 +1478,41 @@ def main():
     basar("Koşu kaydı: bayatlık eşiği tanımlı", _kk.BAYATLIK_ESIGI_GUN == 2)
     # Cron ifadeleri: 05:30/06:00 UTC = 08:30/09:00 TSİ. Yanlış dilim
     # en sık şüphe olduğu için teste bağlandı.
+    # Bütçe kapısı, istemci kurulmadan ÖNCE çalışmalı. Sıra ters olunca
+    # anahtarsız bir ortamda (CI test adımı) istemci kendi hatasını
+    # fırlatıyor ve bütçe hatasını maskeliyor.
+    _yz = open("yaz.py", encoding="utf-8").read()
+    _govde = _yz.split("def llm_cagir(")[1]
+    basar("Bütçe: kapı anthropic içe aktarımından ÖNCE",
+          _govde.index("tavan = _butce_tavani()") < _govde.index("import anthropic"))
+    _eski_ort = _os.environ.get("ANTHROPIC_API_KEY")
+    try:
+        _os.environ.pop("ANTHROPIC_API_KEY", None)
+        _os.environ["GUNLUK_BUTCE_USD"] = "0.30"
+        _yedek = list(_y0.KULLANIM_TAKIBI)
+        _y0.KULLANIM_TAKIBI.clear()
+        _y0.KULLANIM_TAKIBI.append({"model": _y0.GUCLU_MODEL, "girdi": 100_000,
+                                    "cikti": 10_000, "cache_yazma": 0, "cache_okuma": 0})
+        _dogru = False
+        try:
+            _y0.llm_cagir(_y0.GUCLU_MODEL, "s", "k")
+        except _y0.ButceAsildi:
+            _dogru = True
+        except Exception:
+            pass
+        basar("Bütçe: API anahtarı YOKKEN de kapı doğru hatayı veriyor", _dogru)
+    finally:
+        _y0.KULLANIM_TAKIBI[:] = _yedek
+        _os.environ.pop("GUNLUK_BUTCE_USD", None)
+        if _eski_ort is not None:
+            _os.environ["ANTHROPIC_API_KEY"] = _eski_ort
+
+    # Bildirim hangi adımın düştüğünü söylemeli — yoksa her seferinde
+    # Actions'a girip aramak gerekiyor.
+    basar("Zamanlayıcı: hata bildirimi düşen adımı adıyla söylüyor",
+          "steps.testler.outcome" in _u and "steps.uretim.outcome" in _u
+          and "adımında düştü" in _u)
+
     basar("Zamanlayıcı: cron UTC'ye göre doğru (08:30/09:00 TSİ)",
           'cron: "30 5 * * *"' in _u and 'cron: "0 6 * * *"' in _y)
 
