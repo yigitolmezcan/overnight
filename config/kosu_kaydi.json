@@ -6,6 +6,12 @@
       "is": "elle-yayin",
       "sonuc": "success",
       "not": "15 Aralık yayınlandı (zamanlayıcı tetiklenmediği için elle)"
+    },
+    {
+      "zaman": "2026-08-26T06:40:46Z",
+      "is": "yayinla",
+      "sonuc": "success",
+      "not": "run 1 · schedule"
     }
   ]
 }
