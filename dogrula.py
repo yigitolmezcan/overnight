@@ -787,6 +787,34 @@ FARKLA_EZDI_YENDI_DESENI = re.compile(r"\d+\s*-\s*\d+\s*(\'?lik)?\s*farkla\s*(ez
 SIRALAMA_IDDIASI_DESENI = re.compile(r"konferansta\s+(\d+)\.\s*s[ıi]ra", re.IGNORECASE)
 
 
+# Eşik → metinde o kilometre taşının GERÇEKTEN iddia edildiğini gösteren
+# işaret. Sayısal eşiklerde eşiği karşılayan bir sayı + doğru birim,
+# adlandırılmış eşiklerde terimin kendisi aranıyor.
+_ESIK_BIRIMI = {"sayi": "sayı", "ribaund": "ribaund", "asist": "asist",
+                "uclu": "üçlük", "blok": "blok"}
+
+
+def _esik_iddia_ediliyor(esik, metin):
+    """Metin bu kilometre taşını gerçekten anıyor mu?"""
+    dusuk = (metin or "").lower()
+    if not esik:
+        return False
+    if "double" in esik:                      # triple_double, quadruple_double, 50_triple_double
+        return "double" in dusuk
+    parcalar = esik.split("_", 1)
+    if len(parcalar) != 2 or not parcalar[0].isdigit():
+        return True                            # tanımadığımız eşik: temkinli davran
+    sinir, tur = int(parcalar[0]), parcalar[1]
+    birim = _ESIK_BIRIMI.get(tur)
+    if not birim:
+        return True
+    # "N birim" kalıbında, N eşiği karşılıyor mu?
+    for m in re.finditer(rf"(\d+)\s*{birim}", dusuk):
+        if int(m.group(1)) >= sinir:
+            return True
+    return False
+
+
 def t24_en_iyi_kilometre_sahibi(metin, gercekler):
     """Kullanıcı kuralı: bir maçta AYNI kilometre eşiğini birden fazla
     oyuncu geçmişse, metin SADECE en yüksek GmSc'li olanı anabilir.
@@ -810,6 +838,13 @@ def t24_en_iyi_kilometre_sahibi(metin, gercekler):
         # daha yüksek GmSc'li Gordon'ı anıyordu, T24 yine de reddetti.)
         en_iyi_soyad = en_iyi["oyuncu"].strip().split()[-1]
         if en_iyi_soyad.lower() in metin.lower():
+            continue
+        # Kural, kilometre taşı İDDİA EDİLDİĞİNDE işler. Bir oyuncunun
+        # adının geçmesi tek başına iddia değil: "Jokić 13 asist dağıttı"
+        # cümlesi triple-double'dan söz etmiyor, doğru ve yeterli bir
+        # cümle. Eskiden sırf ad geçtiği için reddediliyordu ve gece
+        # yayınlanamıyordu (gerçek olay: 2025-12-18 DEN-ORL).
+        if not _esik_iddia_ediliyor(esik, metin):
             continue
         for k in liste:
             if k is en_iyi:

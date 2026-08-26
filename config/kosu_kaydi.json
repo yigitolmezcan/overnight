@@ -12,6 +12,12 @@
       "is": "yayinla",
       "sonuc": "success",
       "not": "run 1 · schedule"
+    },
+    {
+      "zaman": "2026-08-26T15:50:36Z",
+      "is": "elle-yayin",
+      "sonuc": "success",
+      "not": "18 Aralık — GitHub Actions kesintisi sırasında elle"
     }
   ]
 }

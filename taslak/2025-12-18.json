@@ -1,0 +1,105 @@
+{
+  "tarih": "2025-12-18",
+  "uretildi": "2026-08-26T15:50:24.304280Z",
+  "maclar": {
+    "0022500371": {
+      "gec_satiri": "Charlotte Hornets evinde Atlanta Hawks'ı 133-126 yendi. Kon Knueppel 28 sayı attı. Mağlup tarafta Jalen Johnson 43 sayı attı.",
+      "muzip": false
+    },
+    "0022500378": {
+      "gec_satiri": "Phoenix Suns evinde Golden State Warriors'u 99-98 yendi. Devin Booker 25 sayı attı. Mağlup tarafta Jimmy Butler III 31 sayı attı.",
+      "muzip": false
+    },
+    "0022500372": {
+      "gec_satiri": "New York Knicks deplasmanda Indiana Pacers'i 114-113 yendi. Maçı belirleyen basket, bitime 5.6 saniye kala geldi.",
+      "muzip": false
+    },
+    "0022500376": {
+      "gec_satiri": "Dallas Mavericks evinde Detroit Pistons'u 116-114 yendi. Maçı belirleyen basket, bitime 19.2 saniye kala geldi.",
+      "muzip": false
+    },
+    "0022500373": {
+      "gec_satiri": "Miami Heat deplasmanda Brooklyn Nets'i 106-95 yendi.",
+      "muzip": false
+    },
+    "0022500377": {
+      "gec_satiri": "Denver Nuggets evinde Orlando Magic'i 126-115 yendi. Nikola Jokić 13 asist dağıttı.",
+      "muzip": false
+    },
+    "0022500374": {
+      "gec_satiri": "Toronto Raptors deplasmanda Milwaukee Bucks'u 111-105 yendi.",
+      "muzip": false
+    },
+    "0022500375": {
+      "baslik": "New Orleans Pelicans, 25 sayılık farktan dönüp Houston Rockets'ı yendi",
+      "neden_onemli": "Batı'nın en zayıf takımlarından biri, konferansın üst sıralarındaki bir ekibi sahasında devirdi.",
+      "ozet": "Houston, ilk periyotta kurduğu üstünlüğü ikinci çeyrekte 22 sayıya kadar çıkardı. New Orleans, üçüncü çeyrekte hücumda oyunu değiştirdi ve dördüncü periyodu farksız tamamlayarak maçı uzatmaya taşıdı. Uzatmada son anlarda serbest atışlarını kullanan Saddiq Bey, farkı beşe çıkararak galibiyeti belirledi. Rockets'ta Kevin Durant, attığı 32 sayı, 7 ribaund ve 4 blokla gecenin en etkili performansını üretti.",
+      "muzip": false
+    },
+    "0022500379": {
+      "baslik": "Luka Dončić'in 45 sayılık gecesinde Los Angeles, Utah'ı yendi.",
+      "ozet_kisa": "Los Angeles Lakers, 10 sayılık farkı eritti.",
+      "muzip": false,
+      "neden_onemli": "Los Angeles Lakers, konferansta 3. sıraya yükseldi."
+    },
+    "0022500380": {
+      "baslik": "Bitime 1.5 saniye kala bulduğu basketle Portland, Sacramento'yu yendi.",
+      "ozet_kisa": "Mağlup tarafta DeMar DeRozan 33 sayı attı.",
+      "muzip": false
+    }
+  },
+  "brief": [
+    {
+      "metin": "Sürpriz bir sonuçla New Orleans Pelicans, Houston Rockets'i yendi.",
+      "hedef_mac": "0022500375",
+      "muzip": false
+    },
+    {
+      "metin": "Luka Dončić, Utah Jazz karşısında 45 sayı attı.",
+      "hedef_mac": "0022500379",
+      "muzip": false
+    },
+    {
+      "metin": "Portland Trail Blazers, son saniyede attığı basketle Sacramento Kings'i geçti.",
+      "hedef_mac": "0022500380",
+      "muzip": false
+    },
+    {
+      "metin": "Phoenix Suns, 14 sayılık farktan dönüp Golden State Warriors'u geçti.",
+      "hedef_mac": "0022500378",
+      "muzip": false
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 2,
+    "ilk_denemede_kabul": 0,
+    "sablon_moduna_dusen": 0,
+    "detay": [
+      {
+        "mac_id": "0022500375",
+        "deneme": 0,
+        "gerekce": [
+          "ozet/T4d: [\"'damgasını vurdu' (damga vurmak (klişe))\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "New Orleans Pelicans, 25 sayılık farktan dönerek Houston'ı yendi.",
+          "neden_onemli": "Rockets, Batı'nın 5. sıradaki takımı olarak deplasmanda çöktü.",
+          "ozet": "Houston Rockets, ilk yarıda farkı 22 sayıya kadar çıkararak maça damgasını vurdu. New Orleans Pelicans üçüncü periyotta başlattığı çıkışı dördüncü periyotta sürdürerek skoru eşitledi. Son periyotta serbest atışlarla öne geçen taraflar sırayla liderliği kaptı, ancak son saniyelerde Saddiq Bey'in attığı serbest atışlar Pelicans'a galibiyeti getirdi. Rockets'ın Kevin Durant'ı 32 sayı, 7 ribaund ve 4 blokla en etkili performansı ortaya koydu.",
+          "muzip": false
+        }
+      }
+    ],
+    "sablon_isaretli": [],
+    "ret_orani": 1.0,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 2,
+      "girdi_token": 5633,
+      "cikti_token": 7450,
+      "cache_yazma_token": 0,
+      "cache_okuma_token": 22396,
+      "toplam_maliyet_usd": 0.0902,
+      "butce_asildi": false
+    }
+  }
+}

@@ -788,6 +788,35 @@ def main():
         {"ozet_kisa": "Victor Wembanyama 31 sayı, 15 ribaund, 10 asistle triple-double yaptı. "
                       "Mağlup tarafta Stephen Castle 23 sayı attı."},
         _gsw, _h1112, 0, yasakli)
+    # T24, kilometre taşı İDDİA EDİLDİĞİNDE işler. Adın geçmesi tek
+    # başına iddia değil — "Jokić 13 asist dağıttı" triple-double'dan
+    # söz etmiyor. (Gerçek olay 2025-12-18: bu yüzden gece yayına
+    # çıkamamıştı.)
+    _iddia = dogrula_modul._esik_iddia_ediliyor
+    basar("T24: istatistik anmak kilometre taşı iddiası sayılmıyor",
+          not _iddia("triple_double", "Nikola Jokić 13 asist dağıttı.")
+          and not _iddia("40_sayi", "Curry 30 sayı attı."))
+    basar("T24: gerçek iddia tanınıyor",
+          _iddia("triple_double", "Jokić triple-double yaptı.")
+          and _iddia("40_sayi", "Curry 42 sayı attı.")
+          and _iddia("20_ribaund", "Gobert 22 ribaund topladı."))
+    basar("T24: iddia yokken düşük GmSc'li oyuncu anılabiliyor",
+          mac_metnini_dogrula({"gec_satiri": "Nikola Jokić 13 asist dağıttı."},
+                              _gsw, _h1112, 0, yasakli)["kabul"]
+          or "T24" not in " ".join(mac_metnini_dogrula(
+              {"gec_satiri": "Nikola Jokić 13 asist dağıttı."},
+              _gsw, _h1112, 0, yasakli)["gerekce"]))
+
+    # Kısa takım adları TAM ADIN İÇİNDE geçmeli, yoksa T2 (özel ad
+    # izlenebilirliği) onları uydurma sayar. "LA Lakers" tam adın
+    # ("Los Angeles Lakers") içinde geçmiyordu ve 18 Aralık'ı yayından
+    # alıkoydu.
+    basar("Kısa takım adları izlenebilir (tam adın öneki)",
+          all(_derle.TAKIM_ADI[k].startswith(v) for k, v in _derle.TAKIM_KISA.items()))
+    import cumle as _cm
+    basar("Kısa ad tablosu iki dosyada da aynı",
+          _cm.TAKIM_KISA == _derle.TAKIM_KISA)
+
     basar("T24: en iyisi de anıldığında ikinci oyuncunun anılması reddedilmiyor",
           "T24" not in " ".join(_s["gerekce"]))
 
