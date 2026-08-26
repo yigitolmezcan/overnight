@@ -2,7 +2,12 @@ name: Yayınla (09:00 TSİ)
 
 on:
   schedule:
-    - cron: "0 6 * * *"     # 06:00 UTC = 09:00 TSİ
+    # ÜÇ SLOT (bkz. uret.yml'deki gerekçe). İdempotent: hazır gece
+    # yoksa hiçbir şey yapmıyor, yayınlanmışsa tekrar yayınlamıyor.
+    # Gecikme telafisi — 09:00 kaçarsa 09:30, o da kaçarsa 10:00.
+    - cron: "0 6 * * *"     # 09:00 TSİ (asıl)
+    - cron: "30 6 * * *"    # 09:30 TSİ (telafi)
+    - cron: "0 7 * * *"     # 10:00 TSİ (son şans)
   workflow_dispatch:
 
 concurrency:

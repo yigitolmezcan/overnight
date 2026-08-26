@@ -371,6 +371,13 @@ def mod_degistir(yeni_mod=None):
     if yeni_mod == MOD_CANLI:
         print(f"Sıradaki hedef: {dun_gece()} (dün gece)")
         print("Maç sayısı eşiği artık uygulanmıyor; sıra imleci kullanılmıyor.")
+        print()
+        print("DİKKAT — zamanlayıcıyı da güncelle:")
+        print("  .github/workflows/uret.yml içindeki '0 2' ve '0 4' cron")
+        print("  satırları ARŞİV modu içindir (05:00 ve 07:00 TSİ). Canlı")
+        print("  modda o saatte maçlar bitmemiş olur; ikisini sil, geriye")
+        print("  '30 5' (08:30 TSİ) kalsın ve telafi için '0 6' ile '30 6'")
+        print("  eklensin.")
     else:
         print(f"Sıra imlecinden devam edecek: {d.get('sira_imleci')}")
     return 0

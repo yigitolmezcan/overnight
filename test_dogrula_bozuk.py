@@ -1617,8 +1617,25 @@ def main():
     basar(f"Ağ: en kötü durum ({_en_kotu_dk:.0f} dk) iş sınırının ({_is_siniri} dk) altında",
           _en_kotu_dk < _is_siniri)
 
-    basar("Zamanlayıcı: cron UTC'ye göre doğru (08:30/09:00 TSİ)",
-          'cron: "30 5 * * *"' in _u and 'cron: "0 6 * * *"' in _y)
+    # Tek slot yetmiyor: ölçüldü (2026-08-26) — GitHub üretimi 27 dk,
+    # yayını 41 dk geç başlattı. Gecikme doğrudan yayın saatine biniyor.
+    # Birden çok slot, kaçan slotu telafi ediyor; işler idempotent
+    # olduğu için fazladan koşu zarar vermiyor.
+    import re as _re2
+    _uc = _re2.findall(r'cron: "([^"]+)"', _u)
+    _yc = _re2.findall(r'cron: "([^"]+)"', _y)
+    basar("Zamanlayıcı: üretim birden çok slotta deniyor", len(_uc) >= 3)
+    basar("Zamanlayıcı: yayın birden çok slotta deniyor", len(_yc) >= 3)
+    basar("Zamanlayıcı: yayın slotları 09:00 TSİ'de başlıyor", "0 6 * * *" in _yc)
+    basar("Zamanlayıcı: arşiv modunda üretim çok erken (05:00 TSİ)", "0 2 * * *" in _uc)
+    # Fazladan koşu zarar vermemeli — ikisi de erken çıkıyor.
+    _kaynak_y = open("yayin.py", encoding="utf-8").read()
+    basar("Zamanlayıcı: hazır gece varken üretim atlanıyor (idempotent)",
+          "Zaten hazır bir gece var" in _kaynak_y)
+    basar("Zamanlayıcı: hazır gece yokken yayın atlanıyor (idempotent)",
+          "Hazır gece yok" in _kaynak_y)
+    basar("Zamanlayıcı: canlı moda geçerken cron uyarısı veriliyor",
+          "zamanlayıcıyı da güncelle" in _kaynak_y.lower())
 
     basar("Yayın: mod değiştirme komutları var",
           "canli" in _yayin.KOMUTLAR and "arsiv" in _yayin.KOMUTLAR)

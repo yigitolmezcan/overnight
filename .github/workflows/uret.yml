@@ -2,10 +2,24 @@ name: Gece üret (08:30 TSİ)
 
 on:
   schedule:
-    # GitHub cron UTC çalışır. Türkiye yıl boyu UTC+3 (yaz saati yok),
-    # yani 05:30 UTC = 08:30 TSİ. Yaz/kış geçişi olmadığı için tek
-    # satır yeterli — bu, TSİ'nin sabit ofsetli olmasının getirdiği
-    # nadir kolaylıklardan biri.
+    # GitHub cron UTC çalışır; Türkiye yıl boyu UTC+3 (yaz saati yok).
+    #
+    # ÜÇ SLOT, tek değil. Ölçüm (2026-08-26): GitHub zamanlanmış işi
+    # 27 dk gecikmeyle başlattı, yayın işini 41 dk. Tek slota bağlıyken
+    # gecikme doğrudan yayın saatine biniyor ve "09:00'da yayında"
+    # vaadi tutmuyor. Slotlar İDEMPOTENT: hazır gece varsa üretim
+    # atlanıyor, yani fazladan koşu zarar vermiyor, sadece kaçan slotu
+    # telafi ediyor.
+    #
+    # ARŞİV MODU: veri her zaman hazır, o yüzden çok erken üretiyoruz.
+    #   02:00 UTC = 05:00 TSİ  (asıl)
+    #   04:00 UTC = 07:00 TSİ  (telafi)
+    #   05:30 UTC = 08:30 TSİ  (son şans)
+    # CANLI MODA geçince ilk iki slot ÇALIŞMAZ — o saatte maçlar
+    # bitmemiş olur. Canlı modda 05:30 UTC (08:30 TSİ) ve sonrası
+    # kullanılmalı; `python3 yayin.py canli` bunu hatırlatıyor.
+    - cron: "0 2 * * *"
+    - cron: "0 4 * * *"
     - cron: "30 5 * * *"
   workflow_dispatch:        # elle de çalıştırılabilsin (düğmeyle)
 
