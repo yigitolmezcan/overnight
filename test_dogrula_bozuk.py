@@ -1041,6 +1041,48 @@ def main():
     basar("Maliyet: Mutlaka bil'in tamamı LLM'den (kısıt kalktı)",
           _yaz.MUTLAKA_LLM_MAC_SAYISI == _yaz.MUTLAKA_MAX_MAC)
 
+    # ==================================================================
+    # Mutlaka bil / Göz at kesme noktası — EN BÜYÜK BOŞLUKTAN.
+    # ==================================================================
+    # Sabit 8.5 eşiği kördü: 8.9 Mutlaka bil'e, 8.8 ve 8.6 Göz at'a
+    # düşüyordu; okuyucu için o üç maç arasında fark yok. Yeni kural
+    # gecenin KENDİ dağılımına bakıyor.
+    def _kes(rozetler):
+        sahte = {"maclar": [{"mac_id": str(i), "rozet": r} for i, r in enumerate(rozetler)]}
+        return len(_yaz._mutlaka_ve_diger(sahte)[0])
+
+    basar("Kesme: en büyük boşluk sonda → dört maç girer",
+          _kes([9.2, 8.9, 8.8, 8.6, 6.4]) == 4)
+    basar("Kesme: boşluk ikinci sırada → iki maç girer",
+          _kes([9.3, 8.9, 6.4, 6.1]) == 2)
+    basar("Kesme: boşluk hemen başta → tek maç girer",
+          _kes([9.1, 7.2, 7.1, 7.0]) == 1)
+    basar("Kesme: üst sınır 4'ü aşmıyor",
+          _kes([9.9, 9.8, 9.7, 9.6, 5.0]) <= 4 and _yaz.MUTLAKA_MAX_MAC == 4)
+    basar("Kesme: 'kötünün iyisi' korunuyor — eşiği geçen yoksa TEK maç",
+          _kes([8.2, 8.1, 5.0, 4.9]) == 1)
+    basar("Kesme: tek maçlık gecede tek maç", _kes([9.4]) == 1)
+    # Eşitlikte ÜSTTEKİ tercih edilir: vaat "üçünü bilmen yeter",
+    # cömertlik değil.
+    basar("Kesme: eşit boşluklarda az maç tercih ediliyor",
+          _kes([9.0, 8.9, 8.8, 8.7, 8.6]) <= 2)
+    # Bölüm sayacı bu sayıyı göstermeli.
+    basar("Kesme: bölüm sayacı maç sayısını yazıyor",
+          "${d.mutlaka.length} maç · en önemlileri"
+          in open("overnight_v17.html", encoding="utf-8").read())
+
+    # Kalibrasyon üretimin GERÇEK kuralını ölçmeli — kopya kural iki
+    # yerde ayrışır ve tablo yalan söyler.
+    _kal_kaynak = open("kalibrasyon.py", encoding="utf-8").read()
+    basar("Kalibrasyon: kesme kuralını yaz.py'den alıyor (kopyalamıyor)",
+          "from yaz import _mutlaka_ve_diger" in _kal_kaynak)
+    import kalibrasyon as _kalib_erken
+    _kal_geceler = _kalib_erken.geceleri_oku()
+    basar("Kalibrasyon: gece başına Mutlaka bil sayısı raporlanıyor",
+          all("mutlaka_sayisi" in g for g in _kal_geceler))
+    basar("Kalibrasyon: dağılım tek değere yığılmıyor",
+          len({g["mutlaka_sayisi"] for g in _kal_geceler}) >= 3)
+
     # 3) Kademeli effort: ilk deneme ucuz, onarım denemesi güçlü.
     # Ölçüm: medium 6543 çıktı token / $0.1256 — low 2289 / $0.0831,
     # ikisinde de gövde 58-59 kelime (yani düşük effort metni kısaltmıyor).
@@ -1398,7 +1440,7 @@ def main():
     # 1'e indirilmişti (çağrı $0.12 iken); önbellek düzeltmesinden sonra
     # gerekçe kalmadı ve 2./3. maçlar şablonda tek cümlede kalıyordu.
     basar("Mutlaka bil: her maç LLM'den (kısıt üst sınıra eşit)",
-          _y0.MUTLAKA_LLM_MAC_SAYISI == _y0.MUTLAKA_MAX_MAC == 3)
+          _y0.MUTLAKA_LLM_MAC_SAYISI == _y0.MUTLAKA_MAX_MAC == 4)
 
     # Üç bölüm üç farklı ağırlıkta olmalı. Aynı görünüm aynı okuma
     # davranışını doğuruyordu: göz Göz at'ı da Bunları geç gibi

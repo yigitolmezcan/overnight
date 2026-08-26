@@ -190,31 +190,82 @@ MAX_DENEME_GRUP_B = 3
 # Önbellek düzeltmesinden sonra sıcak çağrı $0.0167'ye indi, yani
 # kısıtın maliyet gerekçesi ortadan kalktı. MUTLAKA_MAX_MAC ile aynı
 # değere çıkarıldı: Mutlaka bil'e giren her maç LLM'den geçiyor.
-MUTLAKA_LLM_MAC_SAYISI = int(os.environ.get("MUTLAKA_LLM_MAC_SAYISI", "3"))
+# MUTLAKA_MAX_MAC ile aynı olmalı (aşağıda tanımlı, 4) — Mutlaka bil'e
+# giren her maç LLM'den geçiyor. Burada sayı elle yazılı çünkü bu sabit
+# MUTLAKA_MAX_MAC'ten önce tanımlanıyor; test ikisinin eşitliğini
+# bekçiliyor.
+MUTLAKA_LLM_MAC_SAYISI = int(os.environ.get("MUTLAKA_LLM_MAC_SAYISI", "4"))
 UZUNLUK_ONARIM_MAX_TUR = 5
 PARALEL_ISCI_SAYISI = 6  # Grup A maçları eşzamanlı üretilirken kaç iş parçacığı
 
 
 MUTLAKA_ESIGI = 8.5
-MUTLAKA_MAX_MAC = 3
+# Üst sınır 4 (kullanıcı kuralı, boşluk tabanlı kesme turu): bölüm
+# gecenin dağılımına göre 1-4 maç arası genişliyor. Sınır olmadan bazı
+# gecelerde altı maç girer ve "üçünü bilmen yeter" vaadi çöker.
+MUTLAKA_MAX_MAC = 4
+
+
+# Kesme noktası artık SABİT EŞİKTE değil, EN BÜYÜK BOŞLUKTA.
+#
+# Sabit 8.5 kör bir kesiciydi: 8.9 Mutlaka bil'e, 8.8 ve 8.6 Göz at'a
+# düşüyordu — okuyucu için o üç maç arasında fark yok. Ama sınırı
+# tamamen kaldırmak da olmuyor; bazı gecelerde altı maç girer ve
+# "üçünü bilmen yeter" vaadi çöker.
+#
+# Yeni kural: ilk BOSLUK_BAKILAN maç arasındaki ardışık farklara bakılır,
+# en büyük farkın olduğu yerden bölünür. Yani bölüm sınırı gecenin kendi
+# dağılımından çıkıyor — birbirine yakın maçlar aynı tarafta kalıyor.
+BOSLUK_BAKILAN = 5          # ilk kaç maç arasındaki boşluğa bakılır
+MUTLAKA_MIN_MAC = 1
+# MUTLAKA_MAX_MAC yukarıda tanımlı (3) — kullanıcı kararıyla 4'e çıktı.
 
 
 def _mutlaka_ve_diger(skor_gece):
-    """Formül dokümanı (overnight-deger-skoru-v2-1.md, §5 Katmanlar)
-    baştan beri şunu söylüyordu: rozeti 8.5+ olan HER maç Mutlaka bil'e
-    girer, en fazla 3 — hiçbiri geçmezse en yüksek olan yine girer. Kod
-    bir ara turda bunu YANLIŞLIKLA "her zaman tek maç"a indirmişti
-    (kullanıcı düzeltmesi: 25 Aralık'ta Knicks-Cavaliers 126-124, iki
-    oyuncu 34'er sayı, 8.99 rozetle bile "Bunları geç"e düşüyordu —
-    doğrudan bu regresyonun sonucu). Kural geri getirildi: 8.5+ olan
-    EN FAZLA 3 maç sırayla girer, biri bile geçmiyorsa tek en yüksek
-    maç girer. Maliyet kontrolü ARTIK burada değil, tiered uzunlukta
-    (bkz. yaz_hibrit — sadece #1 tam anlatı, #2/#3 kısa)."""
+    """Mutlaka bil / Göz at ayrımı — EN BÜYÜK ROZET BOŞLUĞUNDAN.
+
+    1. Maçlar rozete göre sıralanır.
+    2. İlk `BOSLUK_BAKILAN` maç arasındaki ardışık farklara bakılır.
+    3. En büyük farkın olduğu yerden bölünür: üstü Mutlaka bil.
+    4. Sınırlar: en az `MUTLAKA_MIN_MAC`, en fazla `MUTLAKA_MAX_MAC`.
+    5. Hiçbir maç `MUTLAKA_ESIGI`'ni geçmiyorsa en yüksek olan TEK
+       BAŞINA girer — "kötünün iyisi" hâli aynen korunuyor, sakin bir
+       gecede dört vasat maçı "mutlaka bil" diye sunmayalım.
+
+    Örnekler:
+      9.2 / 8.9 / 8.8 / 8.6 / 6.4 → en büyük boşluk 8.6→6.4, dördü de girer
+      9.3 / 8.9 / 6.4 / 6.1       → boşluk 8.9→6.4, ikisi girer
+      9.1 / 7.2 / 7.1 / 7.0       → boşluk 9.1→7.2, tek maç girer
+    """
     tum_maclar = sorted(skor_gece["maclar"], key=lambda m: -m["rozet"])
     if not tum_maclar:
         return [], []
-    esigi_gecen = [m for m in tum_maclar if m["rozet"] >= MUTLAKA_ESIGI][:MUTLAKA_MAX_MAC]
-    mutlaka = esigi_gecen if esigi_gecen else [tum_maclar[0]]
+
+    # Kötünün iyisi: eşiği geçen yoksa tek maç. Boşluğa bakmıyoruz —
+    # sakin gecede dağılım ne olursa olsun bölüm tek maçlık kalmalı.
+    if tum_maclar[0]["rozet"] < MUTLAKA_ESIGI:
+        mutlaka = tum_maclar[:1]
+    else:
+        bakilan = tum_maclar[:BOSLUK_BAKILAN]
+        # Ardışık farklar: fark[k] = bakilan[k] ile bakilan[k+1] arası.
+        # k=0'da bölmek "1 maç", k=1'de "2 maç" demek.
+        # Fark İKİ HANEYE YUVARLANIYOR: rozetler zaten 2 haneli, ama
+        # çıkarma kayan nokta gürültüsü üretiyor (0.1 yerine
+        # 0.10000000000000053). Yuvarlamadan, gerçekte eşit olan iki
+        # boşluktan biri rastgele "daha büyük" çıkıyor ve kesme noktası
+        # veriye değil kayan nokta artığına dayanıyordu.
+        farklar = [(round(bakilan[k]["rozet"] - bakilan[k + 1]["rozet"], 2), k)
+                   for k in range(len(bakilan) - 1)]
+        if not farklar:
+            mutlaka = tum_maclar[:1]
+        else:
+            # En büyük fark; eşitlikte ÜSTTEKİ (daha az maç) tercih
+            # edilir — vaat "üçünü bilmen yeter", cömertlik değil.
+            en_buyuk = max(farklar, key=lambda x: (x[0], -x[1]))
+            kac = en_buyuk[1] + 1
+            kac = max(MUTLAKA_MIN_MAC, min(kac, MUTLAKA_MAX_MAC))
+            mutlaka = tum_maclar[:kac]
+
     mutlaka_idleri = {m["mac_id"] for m in mutlaka}
     diger = [m for m in tum_maclar if m["mac_id"] not in mutlaka_idleri]
     return mutlaka, diger

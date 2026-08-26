@@ -1,15 +1,7 @@
 {
   "tarih": "2025-12-19",
-  "uretildi": "2026-08-26T22:55:04.686024Z",
+  "uretildi": "2026-08-26T23:03:57.772154Z",
   "maclar": {
-    "0022500384": {
-      "gec_satiri": "Sürpriz bir sonuçla Chicago Bulls, Cleveland Cavaliers'i 136-125 yendi. Matas Buzelis 24 sayı attı. Mağlup tarafta Darius Garland 35 sayı attı.",
-      "muzip": false
-    },
-    "0022500381": {
-      "gec_satiri": "Boston Celtics evinde Miami Heat'ı 129-116 yendi. Derrick White 33 sayı attı.",
-      "muzip": false
-    },
     "0022500382": {
       "gec_satiri": "Liderliğin 19 kez el değiştirdiği maçta Philadelphia, New York'u yendi. Tyrese Maxey 30 sayı attı. Mağlup tarafta Mitchell Robinson 16 ribaund topladı.",
       "muzip": false
@@ -19,8 +11,21 @@
       "muzip": false
     },
     "0022500385": {
-      "baslik": "12 sayılık farktan dönen Minnesota Timberwolves, Oklahoma City Thunder'i yendi.",
-      "ozet": "Mağlup tarafta Shai Gilgeous-Alexander 35 sayı attı.",
+      "baslik": "Minnesota, 12 sayılık farktan dönerek Oklahoma City'yi 112-107 yendi.",
+      "neden_onemli": "Bu galibiyet, lig lideri Oklahoma City'ye karşı geldi.",
+      "ozet": "Gecenin beşinci maçında Oklahoma City, ilk çeyreği 33-23 önde bitirerek erken bir üstünlük kurdu. Minnesota farkı ikinci çeyrekten itibaren tek haneye indirse de son periyoda kadar gerideydi. Son dakikada Anthony Edwards'ın üçlüğüyle öne geçen Timberwolves, ardından gelen serbest atışlarla üstünlüğünü korudu. Mağlup tarafta Shai Gilgeous-Alexander 35 sayı, 7 asist ve 8/8 serbest atış isabetiyle öne çıksa da takımını taşımaya yetmedi.",
+      "muzip": false
+    },
+    "0022500384": {
+      "baslik": "Chicago Bulls, sürpriz galibiyetle Cleveland'ı deplasmanda 136-125 yendi.",
+      "neden_onemli": "Liderliğin 7 kez el değiştirdiği maçta Bulls, 11 sayılık farktan döndü.",
+      "ozet_kisa": "Cleveland, son periyotta Darius Garland'ın öne çıkmasıyla farkı azaltmaya çalıştı; guard 35 sayı ve 8 asistle takımının en üretken ismi oldu. Son iki dakikada attığı adım geri üçlükle skoru daraltsa da Bulls, Nikola Vučević ve Matas Buzelis'in katkısıyla üstünlüğü sonuna kadar korudu.",
+      "muzip": false
+    },
+    "0022500381": {
+      "baslik": "Boston, sahasında Miami'yi 129-116 yendi.",
+      "neden_onemli": "Miami, kazandığı en yakın anda farkı sadece 8 sayıya indirebildi.",
+      "ozet_kisa": "Boston, son çeyrekte rakibine üstünlük kurarak maçı rahat bitirdi. Derrick White gecenin en etkili ismi oldu; 9/14 üçlük isabetiyle 33 sayı, 6 asist ve 4 blok üretti. Jaylen Brown'ın 30 sayısı da Celtics'in üstünlüğünü sürdürmesine yardımcı oldu.",
       "muzip": false
     }
   },
@@ -47,62 +52,49 @@
     }
   ],
   "rapor": {
-    "toplam_alan": 3,
-    "ilk_denemede_kabul": 0,
-    "sablon_moduna_dusen": 1,
+    "toplam_alan": 5,
+    "ilk_denemede_kabul": 1,
+    "sablon_moduna_dusen": 0,
     "detay": [
       {
         "mac_id": "0022500385",
         "deneme": 0,
         "gerekce": [
-          "ozet/T4: ['peş peşe']",
-          "ozet/T4e: ['OKC']",
-          "ozet/T16: [\"'üst üste' iddiası (MIN, seri uzunluğu 1) 4 eşiğinin altında\"]"
+          "baslik/T4e: ['OKC']",
+          "ozet/T4d: [\"'farkı açtı' (farkı açmak — 'farkı yükseltti/çıkardı' kullanılmalı)\"]",
+          "ozet/T23: [\"lider değişimi ALT KIRILIMI ('Son periyotta liderlik üç kez el değiştirdi ve Anthony Edwards'ın son dakikada attığı üçlükle Timberwolves öne geçti') hiçbir zaman yazılmaz — sadece maç geneli toplamı, 15+ ise\"]"
         ],
         "reddedilen_taslak": {
-          "baslik": "Minnesota, 12 sayılık farktan dönüp Oklahoma City'yi 112-107 yendi",
-          "neden_onemli": "Lig lideri Oklahoma City'yi deplasmanda mağlup ederek gecenin en çarpıcı sonucunu üretti.",
-          "ozet": "Oklahoma City, ilk çeyreği 33-23 önde kapatarak deplasmanda maça sert başladı. Minnesota, üçüncü çeyrekte 35-34 üstünlük kurup farkı sadece iki sayıya indirerek maça ortak oldu. Maçı belirleyen kritik an son dakikada geldi, Jaden McDaniels'ın peş peşe attığı serbest atışlar farkı beşe çıkardı. OKC'de Shai Gilgeous-Alexander 35 sayı üretti, 8 serbest atışının tamamını isabetli kullandı ama takımını yenilgiden kurtaramadı.",
+          "baslik": "Minnesota, lig lideri OKC'yi 12 sayılık farktan dönerek 112-107 yendi.",
+          "neden_onemli": "Batı'nın 1 numarası Oklahoma City, sezonun en zorlu deplasman gecesini yaşadı.",
+          "ozet": "Gecenin bu maçında Oklahoma City ilk çeyrekte hızlı başlayıp farkı açtı, Minnesota ise son çeyreğe kadar geride kaldı. Son periyotta liderlik üç kez el değiştirdi ve Anthony Edwards'ın son dakikada attığı üçlükle Timberwolves öne geçti. Julius Randle ve Jaden McDaniels'ın son saniyelerdeki serbest atışları skoru güvenceye aldı ve Minnesota, Thunder'ın en büyük açığını eriterek maçı kazandı. Karşı tarafta Shai Gilgeous-Alexander 35 sayı, 7 asist ve 5 ribaundla mağlubiyete rağmen gecenin en etkili ismi oldu.",
           "muzip": false
         }
       },
       {
-        "mac_id": "0022500385",
-        "deneme": 1,
+        "mac_id": "0022500384",
+        "deneme": 0,
         "gerekce": [
-          "ozet/T4d: [\"'farka kadar açıldı' (farkı açmak — 'farkı yükseltti/çıkardı' kullanılmalı)\"]"
+          "ozet_kisa/T4d: [\"'fark açık' (farkı açmak — 'farkı yükseltti/çıkardı' kullanılmalı)\"]"
         ],
         "reddedilen_taslak": {
-          "baslik": "Minnesota, 12 sayılık farktan dönüp Oklahoma City'yi 112-107 yendi",
-          "neden_onemli": "Lig lideri Oklahoma City'ye karşı deplasmanda gelen bu galibiyet, Minnesota'nın sezonundaki en değerli sonuçlardan biri.",
-          "ozet": "Oklahoma City, ilk çeyrekte skoru 33-23 yaparak 10 sayılık farka kadar açıldı. Minnesota son çeyreğe girerken farkı eritti ve maçın kaderini kapanışa taşıdı. Son dakikada Anthony Edwards'ın üstten savurduğu üçlük öne geçirdi, ardından Jaden McDaniels'ın serbest atışları galibiyeti kilitledi. Oklahoma City tarafında Shai Gilgeous-Alexander 35 sayı, 7 asist ve 8/8 isabetli serbest atışla mağlubiyette bile en etkili isim oldu.",
-          "muzip": false
-        }
-      },
-      {
-        "mac_id": "0022500385",
-        "deneme": 2,
-        "gerekce": [
-          "ozet/T2: ['Wolves']"
-        ],
-        "reddedilen_taslak": {
-          "baslik": "Minnesota, 12 sayılık farktan dönerek Oklahoma City'yi 112-107 yendi.",
-          "neden_onemli": "Ligin en iyi takımı Thunder'ı deplasmanda dize getirdi.",
-          "ozet": "Thunder ilk çeyrekte erken üstünlük kurdu ve Minnesota'yı geride bıraktı. Thunder farkı üçüncü çeyrek sonunda genişletti, ancak Wolves son periyotta bu açığı tamamen eritti. Anthony Edwards son dakikada attığı üçlükle öne geçti, ardından Randle ve McDaniels serbest atışlarıyla galibiyeti güvenceye aldı. Karşı tarafta Shai Gilgeous-Alexander 35 sayı, 7 asist ve 8/8 serbest atışla mağlubiyette en dikkat çeken isim oldu.",
+          "baslik": "Chicago Bulls, Cleveland'ı deplasmanda 136-125 yendi.",
+          "neden_onemli": "Sıralamada gerideki Bulls, favori kabul edilen Cleveland'ı kendi sahasında devirdi.",
+          "ozet_kisa": "Cavaliers'ın en etkili ismi Darius Garland 35 sayı ve 8 asistle öne çıktı, son periyotta üstten üçlük buldu ama farkı kapatmaya yetmedi. Bulls tarafında Nikola Vučević 24 sayı, 15 ribaundla double-double yaptı ve fark açık kaldı.",
           "muzip": false
         }
       }
     ],
     "sablon_isaretli": [],
-    "ret_orani": 1.0,
+    "ret_orani": 0.8,
     "uretim_modu": "hibrit",
     "kullanim": {
-      "cagri_sayisi": 3,
-      "girdi_token": 8404,
-      "cikti_token": 11289,
-      "cache_yazma_token": 21946,
-      "cache_okuma_token": 10973,
-      "toplam_maliyet_usd": 0.1868,
+      "cagri_sayisi": 5,
+      "girdi_token": 12167,
+      "cikti_token": 10820,
+      "cache_yazma_token": 31033,
+      "cache_okuma_token": 21915,
+      "toplam_maliyet_usd": 0.2145,
       "butce_asildi": false
     }
   }

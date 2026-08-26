@@ -28,10 +28,11 @@ from pathlib import Path
 KOK = Path(__file__).resolve().parent
 SKOR_DIZIN = KOK / "skor"
 
-# yaz.MUTLAKA_ESIGI ile aynı olmalı; oradan içe aktarmak yerine burada
-# tekrar tanımlamak yaz.py'yi (ve anthropic bağımlılığını) yüklememek
-# için — bu betik ağa çıkmayan, bağımsız bir ölçüm aracı.
-MUTLAKA_ESIGI = 8.5
+# Kesme kuralı yaz.py'den İÇE AKTARILIYOR, burada kopyalanmıyor:
+# kalibrasyonun ölçtüğü şey üretimin gerçekten uyguladığı kural olmalı,
+# yoksa iki kopya zamanla ayrışır ve tablo yalan söyler. yaz.py içe
+# aktarımı ağa çıkmıyor (anthropic sadece çağrı anında import ediliyor).
+from yaz import _mutlaka_ve_diger, MUTLAKA_ESIGI, MUTLAKA_MAX_MAC
 KOVALAR = [(0, 2), (2, 4), (4, 6), (6, 7), (7, 8), (8, 8.5), (8.5, 9), (9, 11)]
 
 
@@ -45,7 +46,9 @@ def geceleri_oku():
         if not maclar:
             continue
         rozetler = sorted((m["rozet"] for m in maclar), reverse=True)
+        mutlaka, _ = _mutlaka_ve_diger({"maclar": maclar})
         geceler.append({
+            "mutlaka_sayisi": len(mutlaka),
             "tarih": dosya.stem,
             "mac_sayisi": len(maclar),
             "rozetler": rozetler,
@@ -77,12 +80,13 @@ def ozet(geceler):
 
     print("GECE BAŞINA")
     print(f"{'tarih':<12}{'maç':>4}{'en yüksek':>11}{'medyan':>8}{'yayılım':>9}"
-          f"{'aynı rozet':>11}  katmanlar")
+          f"{'aynı rozet':>11}{'Mutlaka':>9}  katmanlar")
     for g in geceler:
         k = " ".join(f"{ad}:{n}" for ad, n in sorted(g["katmanlar"].items()))
         isaret = "  <-- ayrım zayıf" if g["en_cok_tekrar"] >= 3 else ""
         print(f"{g['tarih']:<12}{g['mac_sayisi']:>4}{g['en_yuksek']:>11.2f}"
-              f"{g['medyan']:>8.2f}{g['yayilim']:>9.2f}{g['en_cok_tekrar']:>11}  {k}{isaret}")
+              f"{g['medyan']:>8.2f}{g['yayilim']:>9.2f}{g['en_cok_tekrar']:>11}"
+              f"{g['mutlaka_sayisi']:>9}  {k}{isaret}")
 
     enler = sorted(g["en_yuksek"] for g in geceler)
     print(f"\nGECENİN EN YÜKSEK ROZETİ — dağılım")
@@ -110,6 +114,17 @@ def ozet(geceler):
         katman.update(g["katmanlar"])
     for ad, n in katman.most_common():
         print(f"  {ad:<8}{n:>5}  %{100*n//len(tum)}")
+
+    print(f"\nMUTLAKA BİL'E KAÇ MAÇ DÜŞÜYOR (en büyük boşluktan kesme)")
+    dagilim = Counter(g["mutlaka_sayisi"] for g in geceler)
+    for n in range(1, MUTLAKA_MAX_MAC + 1):
+        adet = dagilim.get(n, 0)
+        cubuk = "█" * round(30 * adet / max(len(geceler), 1))
+        print(f"  {n} maç  {adet:>3} gece  {cubuk}")
+    ort = sum(g["mutlaka_sayisi"] for g in geceler) / len(geceler)
+    print(f"  ortalama: {ort:.2f} maç")
+    if dagilim.get(MUTLAKA_MAX_MAC, 0) > len(geceler) * 0.6:
+        print(f"  UYARI: gecelerin çoğu üst sınıra dayanıyor — kural fazla cömert.")
 
     zayif = [g for g in geceler if g["en_cok_tekrar"] >= 3]
     print(f"\nAYRIM GÜCÜ")
