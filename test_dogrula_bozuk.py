@@ -1509,6 +1509,17 @@ def main():
 
     # Bildirim hangi adımın düştüğünü söylemeli — yoksa her seferinde
     # Actions'a girip aramak gerekiyor.
+    # Bildirim HATANIN KENDİSİNİ taşımalı. Önceki sürüm sadece
+    # "başarısız oldu" deyip kayıt bağlantısı veriyordu; sebebi öğrenmek
+    # için Actions'a girip ekran görüntüsü almak gerekiyordu ve teşhis
+    # turlarca sürüyordu (26 Ağustos: üç tur).
+    basar("Bildirim: hata metni issue gövdesine giriyor",
+          "tail -n 40 /tmp/adim.log" in _u and "--body-file /tmp/issue.md" in _u)
+    basar("Bildirim: yayın işi de aynısını yapıyor",
+          "tail -n 40 /tmp/adim.log" in _y and "--body-file /tmp/issue.md" in _y)
+    basar("Bildirim: adım çıktısı dosyaya yakalanıyor",
+          _u.count("tee /tmp/adim.log") == 2 and "set -o pipefail" in _u)
+
     basar("Zamanlayıcı: hata bildirimi düşen adımı adıyla söylüyor",
           "steps.testler.outcome" in _u and "steps.uretim.outcome" in _u
           and "adımında düştü" in _u)

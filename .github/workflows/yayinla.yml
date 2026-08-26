@@ -28,7 +28,10 @@ jobs:
       # site olduğu gibi kalır. Kullanıcı kuralı: "Site sessizce boş
       # kalmasın, hata halinde bir önceki gece durmaya devam etsin."
       - name: Hazır geceyi siteye göm
-        run: python3 yayin.py yayinla
+        id: gomme
+        run: |
+          set -o pipefail
+          python3 yayin.py yayinla 2>&1 | tee /tmp/adim.log
 
       - name: Siteyi depoya yaz (Vercel bu push'la deploy eder)
         run: |
@@ -55,7 +58,9 @@ jobs:
           UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
           SITE_ADRESI: ${{ vars.SITE_ADRESI }}
           GONDEREN_ADRES: ${{ vars.GONDEREN_ADRES }}
-        run: python3 bulten.py gonder
+        run: |
+          set -o pipefail
+          python3 bulten.py gonder 2>&1 | tee -a /tmp/adim.log
 
       - name: Bülten kaydını depoya yaz
         if: always()
@@ -105,6 +110,17 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          {
+            echo "09:00 yayın işi düştü."
+            echo ""
+            echo "### Hatanın son satırları"
+            echo ""
+            echo '```'
+            tail -n 40 /tmp/adim.log 2>/dev/null || echo "(adım çıktısı yakalanamadı)"
+            echo '```'
+            echo ""
+            echo "Tam kayıt: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          } > /tmp/issue.md
           gh issue create \
             --title "Yayın işi başarısız — $(date -u +%Y-%m-%d)" \
-            --body "09:00 yayın ya da bülten işi başarısız oldu. Hangi adımın düştüğü kayıtlarda yazıyor: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID -- 'Hazır geceyi siteye göm' düştüyse site DEĞİŞMEDİ, bir önceki gece yayında kalır. 'Bülteni gönder' düştüyse site güncellendi ama en az bir adrese mail gidemedi."
+            --body-file /tmp/issue.md

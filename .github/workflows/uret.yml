@@ -38,14 +38,18 @@ jobs:
 
       - name: Testler (bozuk kod yayına çıkmasın)
         id: testler
-        run: python3 test_dogrula_bozuk.py
+        run: |
+          set -o pipefail
+          python3 test_dogrula_bozuk.py 2>&1 | tee /tmp/adim.log
 
       - name: Sıradaki geceyi üret
         id: uretim
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GUNLUK_BUTCE_USD: "1.00"
-        run: python3 yayin.py uret
+        run: |
+          set -o pipefail
+          python3 yayin.py uret 2>&1 | tee /tmp/adim.log
 
       - name: Sonucu depoya yaz
         id: yazma
@@ -101,6 +105,23 @@ jobs:
           [ "${{ steps.testler.outcome }}" = "failure" ] && DUSEN="Testler"
           [ "${{ steps.uretim.outcome }}" = "failure" ] && DUSEN="Gece üretimi"
           [ "${{ steps.yazma.outcome }}" = "failure" ] && DUSEN="Depoya yazma"
+          # HATANIN KENDİSİ bildirime giriyor. Önceki sürüm sadece
+          # "başarısız oldu" deyip kayıt bağlantısı veriyordu; sebebi
+          # öğrenmek için her seferinde Actions'a girip ekran görüntüsü
+          # almak gerekiyordu ve teşhis turlarca sürüyordu.
+          {
+            echo "08:30 üretim işi **$DUSEN** adımında düştü."
+            echo ""
+            echo "Site DEĞİŞMEDİ, bir önceki gece yayında kalmaya devam ediyor."
+            echo ""
+            echo "### Hatanın son satırları"
+            echo ""
+            echo '```'
+            tail -n 40 /tmp/adim.log 2>/dev/null || echo "(adım çıktısı yakalanamadı)"
+            echo '```'
+            echo ""
+            echo "Tam kayıt: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          } > /tmp/issue.md
           gh issue create \
             --title "Gece üretimi başarısız ($DUSEN) — $(date -u +%Y-%m-%d)" \
-            --body "08:30 üretim işi **$DUSEN** adımında düştü. Site DEĞİŞMEDİ, bir önceki gece yayında kalmaya devam ediyor. Tam kayıt: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+            --body-file /tmp/issue.md
