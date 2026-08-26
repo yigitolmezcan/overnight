@@ -792,7 +792,9 @@ def main():
     # başına iddia değil — "Jokić 13 asist dağıttı" triple-double'dan
     # söz etmiyor. (Gerçek olay 2025-12-18: bu yüzden gece yayına
     # çıkamamıştı.)
-    _iddia = dogrula_modul._esik_iddia_ediliyor
+    import dogrula as _dg
+    import derle as _derle_erken
+    _iddia = _dg._esik_iddia_ediliyor
     basar("T24: istatistik anmak kilometre taşı iddiası sayılmıyor",
           not _iddia("triple_double", "Nikola Jokić 13 asist dağıttı.")
           and not _iddia("40_sayi", "Curry 30 sayı attı."))
@@ -812,10 +814,11 @@ def main():
     # ("Los Angeles Lakers") içinde geçmiyordu ve 18 Aralık'ı yayından
     # alıkoydu.
     basar("Kısa takım adları izlenebilir (tam adın öneki)",
-          all(_derle.TAKIM_ADI[k].startswith(v) for k, v in _derle.TAKIM_KISA.items()))
+          all(_derle_erken.TAKIM_ADI[k].startswith(v)
+              for k, v in _derle_erken.TAKIM_KISA.items()))
     import cumle as _cm
     basar("Kısa ad tablosu iki dosyada da aynı",
-          _cm.TAKIM_KISA == _derle.TAKIM_KISA)
+          _cm.TAKIM_KISA == _derle_erken.TAKIM_KISA)
 
     basar("T24: en iyisi de anıldığında ikinci oyuncunun anılması reddedilmiyor",
           "T24" not in " ".join(_s["gerekce"]))
