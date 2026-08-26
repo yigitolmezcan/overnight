@@ -1,0 +1,127 @@
+{
+  "tarih": "2025-12-19",
+  "hesaplandi": "2026-08-26T22:52:55.026324Z",
+  "en_iyi_skor": 8.79,
+  "maclar": [
+    {
+      "rozet": 8.79,
+      "ham": 10.02,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 8.74,
+        "K": 2.25,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 7.45,
+        "F": 6,
+        "G": 0,
+        "A": 8.21
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500385",
+      "ev": "MIN",
+      "dep": "OKC",
+      "ev_skor": 112,
+      "dep_skor": 107,
+      "en_iyi_performans": "Shai Gilgeous-Alexander"
+    },
+    {
+      "rozet": 8.33,
+      "ham": 8.73,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 5.24,
+        "K": 7.62,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 5.83,
+        "F": 3,
+        "G": 0,
+        "A": 2.67
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500384",
+      "ev": "CLE",
+      "dep": "CHI",
+      "ev_skor": 125,
+      "dep_skor": 136,
+      "en_iyi_performans": "Darius Garland"
+    },
+    {
+      "rozet": 7.34,
+      "ham": 7.34,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 7.0,
+        "K": 3.19,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.37,
+        "F": 0,
+        "G": 0,
+        "A": 5.83
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500381",
+      "ev": "BOS",
+      "dep": "MIA",
+      "ev_skor": 129,
+      "dep_skor": 116,
+      "en_iyi_performans": "Derrick White"
+    },
+    {
+      "rozet": 6.08,
+      "ham": 6.08,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 5.72,
+        "K": 1.76,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 6.36,
+        "F": 0,
+        "G": 0,
+        "A": 6.42
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500382",
+      "ev": "NYK",
+      "dep": "PHI",
+      "ev_skor": 107,
+      "dep_skor": 116,
+      "en_iyi_performans": "Mitchell Robinson"
+    },
+    {
+      "rozet": 5.18,
+      "ham": 5.18,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 5.49,
+        "K": 1.37,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.29,
+        "F": 0,
+        "G": 0,
+        "A": 5.67
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500383",
+      "ev": "ATL",
+      "dep": "SAS",
+      "ev_skor": 98,
+      "dep_skor": 126,
+      "en_iyi_performans": "Victor Wembanyama"
+    }
+  ]
+}

@@ -182,12 +182,15 @@ MAX_DENEME = 2  # doğrulama başarısız olursa en fazla bu kadar yeniden dene
 # thinking bütçesi harcıyor) sonrasında 3'e indirildi — uzunluk onarımı
 # bu sınırdan MUAF (ayrı, ucuz ve neredeyse hep işe yarayan bir döngü).
 MAX_DENEME_GRUP_B = 3
-# Kullanıcı kararı (canlıya alma turu): bir gecede LLM'e giden "Mutlaka
-# bil" maçı sayısı. Üçü birden göndermek maliyeti üçe katlıyordu ve
-# 2./3. maç zaten KISA anlatı — şablonun en iyi olduğu yer. Sadece en
-# yüksek rozetli maç LLM'den geçiyor, kalanı şablondan. Normal sezonda
-# yeniden 3'e çıkarılabilir; tek yerden değişsin diye sabit.
-MUTLAKA_LLM_MAC_SAYISI = int(os.environ.get("MUTLAKA_LLM_MAC_SAYISI", "1"))
+# Bir gecede LLM'e giden "Mutlaka bil" maçı sayısı.
+#
+# Önce 1'e indirilmişti: çağrı başına $0.12 iken üçü birden göndermek
+# maliyeti üçe katlıyordu. Ama o kısıt 2./3. maçları şablona bırakıyor
+# ve şablon tek cümlede kalıyordu — birinci maç dolu, diğerleri cılız.
+# Önbellek düzeltmesinden sonra sıcak çağrı $0.0167'ye indi, yani
+# kısıtın maliyet gerekçesi ortadan kalktı. MUTLAKA_MAX_MAC ile aynı
+# değere çıkarıldı: Mutlaka bil'e giren her maç LLM'den geçiyor.
+MUTLAKA_LLM_MAC_SAYISI = int(os.environ.get("MUTLAKA_LLM_MAC_SAYISI", "3"))
 UZUNLUK_ONARIM_MAX_TUR = 5
 PARALEL_ISCI_SAYISI = 6  # Grup A maçları eşzamanlı üretilirken kaç iş parçacığı
 

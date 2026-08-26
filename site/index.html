@@ -209,6 +209,10 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
 .mrow.lose .mad,.mrow.lose .msk{color:var(--faint);font-weight:400}
 .mblok.sm .mad{font-size:14.5px}
 .mblok.sm .msk{font-size:19px}
+/* Orta boy: Göz at için. Üç bölümün ağırlığı skor bloğunun boyundan da
+   okunuyor — Mutlaka bil 17/24, Göz at 16/21.5, Bunları geç 14.5/19. */
+.mblok.md .mad{font-size:16px}
+.mblok.md .msk{font-size:21.5px}
 .starline{margin-top:13px;font-family:var(--mono);font-size:13px;color:var(--ink2);display:flex;gap:16px;flex-wrap:wrap}
 .starline b{color:var(--ink);font-weight:500}
 .recap{margin:13px 0 0;font-size:15px;color:var(--ink2)}
@@ -458,8 +462,32 @@ td.khot{color:var(--amber);font-weight:700}
 .fiverow .st{font-family:var(--mono);font-size:11px;color:var(--faint);text-align:right;flex:0 0 128px}
 
 /* archive */
+/* Bunları geç: DÜZ LİSTE, satırlar birbirine yakın. Bölümün işi zaten
+   "geçebilirsin" demek; hafif durması doğru. */
 .arch{border-bottom:1px solid #171E2B}
-.archrow{display:flex;gap:12px;align-items:flex-start;width:100%;padding:15px 0;text-align:left}
+.arch:last-child{border-bottom:0}
+.archrow{display:flex;gap:12px;align-items:flex-start;width:100%;padding:12px 0;text-align:left}
+.arch .dblock{margin-bottom:10px}
+.arch .dblock p{font-size:13.5px;line-height:1.5}
+
+/* Göz at: her maç KENDİ KARTINDA. Aynı görünüm aynı okuma davranışını
+   doğuruyordu — göz Bunları geç'i nasıl kaydırıyorsa Göz at'ı da öyle
+   kaydırıyordu. Çerçeve, zemin, daha geniş iç boşluk ve kartlar arası
+   belirgin aralık, bölümü "orta ağırlığa" taşıyor. Metin uzamıyor,
+   sadece nefes alıyor. */
+/* AD ÇAKIŞMASI UYARISI: `.gcard` zaten Mutlaka bil kart düğmesinin
+   sınıfı — buraya o adı vermek onların üstüne biniyordu. Göz at
+   kartları `.gozkart`. */
+.gozkart{border:1px solid #1A2230;background:#0C121C;padding:15px 16px 4px;
+  margin-bottom:14px;scroll-margin-top:20px}
+.gozkart:last-child{margin-bottom:0}
+.gozkart .archrow{padding:0 0 12px}
+.gozkart .dblock{margin-bottom:14px}
+.gozkart .dblock p{font-size:14.5px;line-height:1.7;color:var(--ink2)}
+@media(min-width:768px){
+  .gozkart{padding:18px 20px 6px;margin-bottom:18px}
+  .gozkart .dblock p{font-size:15px;line-height:1.72}
+}
 .archname{font-family:var(--disp);font-weight:600;font-size:16.5px;letter-spacing:-.02em}
 
 .archscore{font-family:var(--mono);font-size:15px;letter-spacing:-.03em;white-space:nowrap;color:var(--ink2)}
@@ -499,6 +527,14 @@ td.khot{color:var(--amber);font-weight:700}
 @media(max-width:620px){
   .mad{font-size:15.5px}
   .msk{font-size:21px}
+  /* Üç bölümün ağırlık farkı mobilde de korunsun — bu blok yoksa
+     Göz at ile Mutlaka bil aynı boyda görünüyordu. */
+  /* Üç kademe eşit aralıklı olsun: 15.5 / 14.5 / 13 ve 21 / 19 / 17.
+     15 ile 15.5 birbirinden ayırt edilmiyordu. */
+  .mblok.md .mad{font-size:14.5px}
+  .mblok.md .msk{font-size:19px}
+  .mblok.sm .mad{font-size:13px}
+  .mblok.sm .msk{font-size:17px}
   .fiverow .st{flex-basis:80px}
   .starline{gap:10px 16px}
 }
@@ -877,9 +913,9 @@ function render(d){
   // ---- göz at (katman "ikinci" — veri yoksa bölüm gizli) ----
   document.getElementById('secDegerseBak').hidden = !(d.degerse_bak && d.degerse_bak.length);
   if(d.degerse_bak && d.degerse_bak.length){
-    document.getElementById('degerseBak').innerHTML=d.degerse_bak.map(m=>`<div class="arch" id="${m.id}">
+    document.getElementById('degerseBak').innerHTML=d.degerse_bak.map(m=>`<div class="gozkart" id="${m.id}">
       <button class="archrow" data-kart="${m.id}"><span class="roz sm">${m.rozet.toFixed(1)}</span>
-        <div class="mblok sm">${macBlok(m.mac, m.skor)}</div></button>
+        <div class="mblok md">${macBlok(m.mac, m.skor)}</div></button>
       ${m.metin?`<div class="dblock" style="padding:0 0 14px"><p>${esc(m.metin)}</p></div>`:''}
     </div>`).join('');
   }

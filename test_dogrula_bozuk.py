@@ -1035,8 +1035,11 @@ def main():
     # 2) Bir gecede LLM'e giden "Mutlaka bil" maçı sayısı tek yerden
     # kontrol ediliyor — maliyetin asıl kaldıracı bu.
     import yaz as _yaz
-    basar("Maliyet: varsayılan olarak gecede tek maç LLM'e gidiyor",
-          _yaz.MUTLAKA_LLM_MAC_SAYISI == 1)
+    # Bu kısıt KALDIRILDI (önbellek düzeltmesinden sonra maliyet
+    # gerekçesi kalmadı). Artık Mutlaka bil'e giren her maç LLM'den
+    # geçiyor — 2./3. maçlar şablonda tek cümlede kalıyordu.
+    basar("Maliyet: Mutlaka bil'in tamamı LLM'den (kısıt kalktı)",
+          _yaz.MUTLAKA_LLM_MAC_SAYISI == _yaz.MUTLAKA_MAX_MAC)
 
     # 3) Kademeli effort: ilk deneme ucuz, onarım denemesi güçlü.
     # Ölçüm: medium 6543 çıktı token / $0.1256 — low 2289 / $0.0831,
@@ -1390,6 +1393,29 @@ def main():
     # Aşağıdaki bölümlerde rozet KORUNDU — oradan kaldırılması istenmedi.
     basar("Rozet aşağıdaki bölümlerde duruyor (regresyon)",
           '<span class="roz sm">${m.rozet.toFixed(1)}</span>' in _sayfa)
+
+    # Mutlaka bil'deki HER maç LLM'den geçiyor. Kısıt maliyet yüzünden
+    # 1'e indirilmişti (çağrı $0.12 iken); önbellek düzeltmesinden sonra
+    # gerekçe kalmadı ve 2./3. maçlar şablonda tek cümlede kalıyordu.
+    basar("Mutlaka bil: her maç LLM'den (kısıt üst sınıra eşit)",
+          _y0.MUTLAKA_LLM_MAC_SAYISI == _y0.MUTLAKA_MAX_MAC == 3)
+
+    # Üç bölüm üç farklı ağırlıkta olmalı. Aynı görünüm aynı okuma
+    # davranışını doğuruyordu: göz Göz at'ı da Bunları geç gibi
+    # kaydırıyordu. Göz at KART, Bunları geç DÜZ SATIR.
+    basar("Göz at: kendi kart sınıfı var",
+          ".gozkart{border:1px solid" in _sayfa and 'class="gozkart"' in _sayfa)
+    basar("Göz at: Mutlaka bil'in .gcard sınıfıyla ÇAKIŞMIYOR",
+          ".gozkart" in _sayfa and _sayfa.count(".gcard{border") == 0)
+    basar("Göz at: orta boy skor bloğu (üç kademe)",
+          ".mblok.md .mad" in _sayfa and 'class="mblok md"' in _sayfa)
+    basar("Bunları geç: düz satır, kart değil",
+          'class="mblok sm"' in _sayfa and ".arch{border-bottom" in _sayfa)
+    basar("Göz at: kartlar arası boşluk, Bunları geç'te yok",
+          "margin-bottom:14px" in _sayfa.split(".gozkart{")[1][:160])
+    basar("Üç kademe mobilde de korunuyor",
+          ".mblok.md .mad{font-size:14.5px}" in _sayfa
+          and ".mblok.sm .mad{font-size:13px}" in _sayfa)
 
     basar("Mutlaka bil: 'neden önemli' gövdeden ÖNCE ve ön eki yok",
           '<div class="kicker">${esc(mv.neden_onemli)}</div>' in _sayfa
