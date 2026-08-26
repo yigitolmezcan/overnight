@@ -1513,6 +1513,55 @@ def main():
           "steps.testler.outcome" in _u and "steps.uretim.outcome" in _u
           and "adımında düştü" in _u)
 
+    # Ağ dayanıklılığı — 26 Ağustos 08:56 koşusunun düşme sebebi buydu:
+    # stats.nba.com ilk scoreboard çağrısında 30 sn cevap vermedi,
+    # yeniden deneme yoktu, gece hiç üretilmedi.
+    import cek as _cek
+    import requests as _rq
+    _sayac = {"n": 0}
+    def _iki_kez_dus():
+        _sayac["n"] += 1
+        if _sayac["n"] < 3:
+            raise _rq.exceptions.ReadTimeout("test")
+        return "tamam"
+    _eski_bekleme = _cek.DENEME_ARASI_TABAN_SN
+    try:
+        _cek.DENEME_ARASI_TABAN_SN = 0.01
+        basar("Ağ: geçici zaman aşımından sonra yeniden deneyip başarıyor",
+              _cek._dayanikli("t", _iki_kez_dus) == "tamam" and _sayac["n"] == 3)
+        _s2 = {"n": 0}
+        def _hep_dus():
+            _s2["n"] += 1
+            raise _rq.exceptions.ReadTimeout("test")
+        _pes = False
+        try:
+            _cek._dayanikli("t", _hep_dus)
+        except RuntimeError:
+            _pes = True
+        basar("Ağ: sonsuza kadar denemiyor, sınırda pes ediyor",
+              _pes and _s2["n"] == _cek.YENIDEN_DENEME)
+        # Veri hatası tekrar denenirse gerçek bir bozulma maskelenir.
+        _s3 = {"n": 0}
+        def _veri_hatasi():
+            _s3["n"] += 1
+            raise KeyError("şema")
+        try:
+            _cek._dayanikli("t", _veri_hatasi)
+        except KeyError:
+            pass
+        basar("Ağ: VERİ hatası tekrar denenmiyor (bozulmayı maskelemesin)",
+              _s3["n"] == 1)
+    finally:
+        _cek.DENEME_ARASI_TABAN_SN = _eski_bekleme
+
+    # Düşen çağrı sonraki_gece → gece_mac_idlerini_al idi; o yol da
+    # sarmalı olmalı.
+    _ck = open("cek.py", encoding="utf-8").read()
+    basar("Ağ: scoreboard çağrısı (düşen yol) sarmalı",
+          "_dayanikli(f\"scoreboard" in _ck)
+    basar("Ağ: sarmasız nba_api çağrısı kalmadı",
+          _ck.count("_dayanikli(") == 9)
+
     basar("Zamanlayıcı: cron UTC'ye göre doğru (08:30/09:00 TSİ)",
           'cron: "30 5 * * *"' in _u and 'cron: "0 6 * * *"' in _y)
 
