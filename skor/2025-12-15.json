@@ -1,0 +1,127 @@
+{
+  "tarih": "2025-12-15",
+  "hesaplandi": "2026-08-26T06:19:05.579492Z",
+  "en_iyi_skor": 9.0,
+  "maclar": [
+    {
+      "rozet": 9.0,
+      "ham": 10.75,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 10,
+        "K": 1.29,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 9.5,
+        "F": 6,
+        "G": 0,
+        "A": 9.12
+      },
+      "dram_terfi": false,
+      "mac_id": "0022501225",
+      "ev": "DEN",
+      "dep": "HOU",
+      "ev_skor": 128,
+      "dep_skor": 125,
+      "en_iyi_performans": "Nikola Jokić"
+    },
+    {
+      "rozet": 8.92,
+      "ham": 10.48,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 8.78,
+        "K": 3.82,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 9.5,
+        "F": 3,
+        "G": 6,
+        "A": 3.25
+      },
+      "dram_terfi": false,
+      "mac_id": "0022501224",
+      "ev": "UTA",
+      "dep": "DAL",
+      "ev_skor": 140,
+      "dep_skor": 133,
+      "en_iyi_performans": "Lauri Markkanen"
+    },
+    {
+      "rozet": 7.8,
+      "ham": 7.8,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 8.34,
+        "K": 0.83,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.12,
+        "F": 0,
+        "G": 0,
+        "A": 6.0
+      },
+      "dram_terfi": false,
+      "mac_id": "0022501226",
+      "ev": "LAC",
+      "dep": "MEM",
+      "ev_skor": 103,
+      "dep_skor": 121,
+      "en_iyi_performans": "Jaren Jackson Jr."
+    },
+    {
+      "rozet": 6.33,
+      "ham": 6.33,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 5.82,
+        "K": 1.86,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 5.44,
+        "F": 3,
+        "G": 0,
+        "A": 6.42
+      },
+      "dram_terfi": false,
+      "mac_id": "0022501222",
+      "ev": "BOS",
+      "dep": "DET",
+      "ev_skor": 105,
+      "dep_skor": 112,
+      "en_iyi_performans": "Cade Cunningham"
+    },
+    {
+      "rozet": 3.83,
+      "ham": 3.83,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 2.09,
+        "K": 3.25,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 5.14,
+        "F": 3,
+        "G": 0,
+        "A": 6.33
+      },
+      "dram_terfi": false,
+      "mac_id": "0022501227",
+      "ev": "MIA",
+      "dep": "TOR",
+      "ev_skor": 96,
+      "dep_skor": 106,
+      "en_iyi_performans": "Brandon Ingram"
+    }
+  ]
+}

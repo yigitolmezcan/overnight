@@ -62,6 +62,38 @@ from nba_api.stats.endpoints import (
 HAM_DIZIN = Path(__file__).parent / "ham"
 ISTEK_ARASI_BEKLEME_SN = 0.6
 
+# stats.nba.com düzenli olarak zaman aşımı ve 5xx veriyor. Tek bir
+# hıçkırık bütün sabahı düşürmemeli: sistem kimse başında olmadan
+# çalışacak (projenin üçüncü pazarlıksız kuralı). Gerçek olay
+# (2026-08-26): tek bir ReadTimeout `cek.py`yi düşürdü, `yayin.py uret`
+# çöktü, gece hiç üretilmedi.
+YENIDEN_DENEME = 4
+DENEME_ARASI_TABAN_SN = 2.0
+
+
+def _dayanikli(ad, fn):
+    """Ağ çağrısını üstel bekleyerek yeniden dener.
+
+    Sadece AĞ hatalarında tekrar denenir; veri hatası (bozuk JSON,
+    beklenmeyen şema) tekrar denemeyle düzelmez ve hemen yukarı
+    fırlatılır — yoksa gerçek bir bozulma dört kez maskelenir."""
+    import requests
+    son_hata = None
+    for deneme in range(1, YENIDEN_DENEME + 1):
+        try:
+            return fn()
+        except (requests.exceptions.Timeout,
+                requests.exceptions.ConnectionError,
+                requests.exceptions.HTTPError) as e:
+            son_hata = e
+            if deneme == YENIDEN_DENEME:
+                break
+            bekle = DENEME_ARASI_TABAN_SN * (2 ** (deneme - 1))
+            print(f"    {ad}: ağ hatası ({type(e).__name__}), {bekle:.0f} sn sonra "
+                  f"yeniden denenecek ({deneme}/{YENIDEN_DENEME - 1})")
+            time.sleep(bekle)
+    raise RuntimeError(f"{ad}: {YENIDEN_DENEME} denemede de alınamadı — {son_hata}")
+
 
 def sezon_kodu(tarih: datetime) -> str:
     """2026-01-02 -> '2025-26'. NBA sezonu ekimde başlar."""
@@ -73,8 +105,8 @@ def sezon_kodu(tarih: datetime) -> str:
 
 
 def gece_mac_idlerini_al(tarih_str: str) -> list[str]:
-    sb = scoreboardv2.ScoreboardV2(game_date=tarih_str)
-    ham = sb.get_dict()
+    ham = _dayanikli(f"scoreboard {tarih_str}",
+                     lambda: scoreboardv2.ScoreboardV2(game_date=tarih_str).get_dict())
     satirlar = ham["resultSets"][0]["rowSet"]
     basliklar = ham["resultSets"][0]["headers"]
     id_index = basliklar.index("GAME_ID")
@@ -84,22 +116,20 @@ def gece_mac_idlerini_al(tarih_str: str) -> list[str]:
 def mac_verisi_cek(game_id: str) -> dict:
     veri = {}
 
-    veri["box_traditional"] = boxscoretraditionalv3.BoxScoreTraditionalV3(
-        game_id=game_id
-    ).get_dict()
+    veri["box_traditional"] = _dayanikli(f"box_traditional {game_id}",
+        lambda: boxscoretraditionalv3.BoxScoreTraditionalV3(game_id=game_id).get_dict())
     time.sleep(ISTEK_ARASI_BEKLEME_SN)
 
-    veri["box_advanced"] = boxscoreadvancedv3.BoxScoreAdvancedV3(
-        game_id=game_id
-    ).get_dict()
+    veri["box_advanced"] = _dayanikli(f"box_advanced {game_id}",
+        lambda: boxscoreadvancedv3.BoxScoreAdvancedV3(game_id=game_id).get_dict())
     time.sleep(ISTEK_ARASI_BEKLEME_SN)
 
-    veri["box_summary"] = boxscoresummaryv2.BoxScoreSummaryV2(
-        game_id=game_id
-    ).get_dict()
+    veri["box_summary"] = _dayanikli(f"box_summary {game_id}",
+        lambda: boxscoresummaryv2.BoxScoreSummaryV2(game_id=game_id).get_dict())
     time.sleep(ISTEK_ARASI_BEKLEME_SN)
 
-    veri["play_by_play"] = playbyplayv3.PlayByPlayV3(game_id=game_id).get_dict()
+    veri["play_by_play"] = _dayanikli(f"play_by_play {game_id}",
+        lambda: playbyplayv3.PlayByPlayV3(game_id=game_id).get_dict())
     time.sleep(ISTEK_ARASI_BEKLEME_SN)
 
     return veri
@@ -116,9 +146,8 @@ def sonraki_mac_tarihleri(sezon: str, tarih_str: str) -> dict:
     tüm log değil (dosya boyutu).
     """
     ertesi_gun = (datetime.strptime(tarih_str, "%Y-%m-%d") + timedelta(days=1)).strftime("%Y-%m-%d")
-    ham = leaguegamelog.LeagueGameLog(
-        season=sezon, date_from_nullable=ertesi_gun
-    ).get_dict()
+    ham = _dayanikli("sonraki_maclar", lambda: leaguegamelog.LeagueGameLog(
+        season=sezon, date_from_nullable=ertesi_gun).get_dict())
     kume = ham["resultSets"][0]
     basliklar = kume["headers"]
     i_takim = basliklar.index("TEAM_ABBREVIATION")
@@ -146,14 +175,12 @@ def cek(tarih_str: str, zorla: bool = False) -> Path:
     scoreboard_ham, mac_idleri = gece_mac_idlerini_al(tarih_str)
     print(f"  {len(mac_idleri)} maç bulundu: {mac_idleri}")
 
-    puan_durumu = leaguegamelog.LeagueGameLog(
-        season=sezon, date_to_nullable=tarih_str
-    ).get_dict()
+    puan_durumu = _dayanikli("puan_durumu", lambda: leaguegamelog.LeagueGameLog(
+        season=sezon, date_to_nullable=tarih_str).get_dict())
     time.sleep(ISTEK_ARASI_BEKLEME_SN)
 
-    oyuncu_ortalama = playergamelogs.PlayerGameLogs(
-        season_nullable=sezon, date_to_nullable=onceki_gun
-    ).get_dict()
+    oyuncu_ortalama = _dayanikli("oyuncu_ortalama", lambda: playergamelogs.PlayerGameLogs(
+        season_nullable=sezon, date_to_nullable=onceki_gun).get_dict())
     time.sleep(ISTEK_ARASI_BEKLEME_SN)
 
     sonraki_maclar = sonraki_mac_tarihleri(sezon, tarih_str)

@@ -69,6 +69,37 @@ jobs:
             git push
           fi
 
+      # Kullanıcı kuralı: her koşu, sonucu ne olursa olsun iz bıraksın.
+      # if: always() — adımlardan biri düşse bile bu çalışır, yoksa
+      # "çalıştı mı çalışmadı mı" sorusu tahmine kalıyor.
+      # Zamanlayıcı sessizce durursa hiçbir hata oluşmaz, sadece site
+      # eskir. Bu adım onu yakalıyor: iş koştuğu HÂLDE yayın bayatsa
+      # bildirim açılıyor.
+      - name: Bayatlık kontrolü
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! python3 kosu_kaydi.py --bayatlik; then
+            gh issue create \
+              --title "Yayın bayat — $(date -u +%Y-%m-%d)" \
+              --body "İş koştu ama son yayının üstünden eşikten fazla gün geçmiş. Site eskiyor. Kayıtlar: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" \
+              || echo "issue açılamadı"
+          fi
+
+      - name: Koşu kaydı bırak
+        if: always()
+        run: |
+          python3 kosu_kaydi.py yayinla "${{ job.status }}" "run ${{ github.run_number }} · ${{ github.event_name }}"
+          git config user.name  "overnight-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add config/kosu_kaydi.json
+          if ! git diff --staged --quiet; then
+            git pull --rebase --autostash -q || true
+            git commit -m "koşu kaydı: yayinla ${{ job.status }}"
+            git push || echo "koşu kaydı push edilemedi (yarışma) — kayıt yine de üretildi"
+          fi
+
       - name: Hata bildirimi
         if: failure()
         env:

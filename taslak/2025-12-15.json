@@ -1,0 +1,64 @@
+{
+  "tarih": "2025-12-15",
+  "uretildi": "2026-08-26T06:19:38.940415Z",
+  "maclar": {
+    "0022501226": {
+      "gec_satiri": "Memphis Grizzlies deplasmanda LA Clippers'i 121-103 yendi. Jaren Jackson Jr. 31 sayı attı.",
+      "muzip": false
+    },
+    "0022501222": {
+      "gec_satiri": "Liderliğin 15 kez el değiştirdiği maçta Detroit, Boston'u yendi. Cade Cunningham 32 sayı attı.",
+      "muzip": false
+    },
+    "0022501227": {
+      "gec_satiri": "Toronto Raptors deplasmanda Miami Heat'ı 106-96 yendi.",
+      "muzip": false
+    },
+    "0022501225": {
+      "baslik": "Jokić'in triple-double'ıyla Denver, Houston'ı 128-125 yendi.",
+      "neden_onemli": "Liderliğin 17 kez el değiştirdiği maç, gece boyunca gerilimini hiç kaybetmedi.",
+      "ozet": "Houston, ilk çeyreği 30-24 önde tamamlayarak maça güçlü bir başlangıç yaptı. Denver ikinci çeyrekte toparlanıp liderliği ele geçirdi, ardından iki takım maç sonuna kadar sırayla öne geçerek gerilimi hiç düşürmedi. Son dakikada Alperen Şengün'ün basketiyle fark üçe inince, Nikola Jokić'in serbest atışları Denver'ın avantajını korudu. Geceyi konferansta 2. sırada kapatan Denver'da Jokić, 39 sayı, 15 ribaund ve 10 asistle triple-double yaptı.",
+      "muzip": false
+    },
+    "0022501224": {
+      "baslik": "Uzatmaya giden maçta Utah Jazz, Dallas Mavericks'i 140-133 yendi.",
+      "ozet_kisa": "Utah Jazz, 10 sayılık farkı eritti. Lauri Markkanen 33 sayı attı.",
+      "muzip": false
+    }
+  },
+  "brief": [
+    {
+      "metin": "Nikola Jokić, Houston Rockets karşısında 39 sayı attı.",
+      "hedef_mac": "0022501225",
+      "muzip": false
+    },
+    {
+      "metin": "Utah Jazz, 10 sayılık farktan dönüp Dallas Mavericks'i geçti.",
+      "hedef_mac": "0022501224",
+      "muzip": false
+    },
+    {
+      "metin": "Detroit Pistons, Boston Celtics'i yenerek konferansta 1. sıraya yükseldi.",
+      "hedef_mac": "0022501222",
+      "muzip": false
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 1,
+    "ilk_denemede_kabul": 1,
+    "sablon_moduna_dusen": 0,
+    "detay": [],
+    "sablon_isaretli": [],
+    "ret_orani": 0.0,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 1,
+      "girdi_token": 2726,
+      "cikti_token": 2884,
+      "cache_yazma_token": 11466,
+      "cache_okuma_token": 0,
+      "toplam_maliyet_usd": 0.063,
+      "butce_asildi": false
+    }
+  }
+}

@@ -1460,6 +1460,27 @@ def main():
     _kaynak = open("yayin.py", encoding="utf-8").read()
     basar("Yayın: canlı mod dalı maç eşiği uygulamıyor",
           "canlı mod, eşik uygulanmıyor" in _kaynak)
+    # Her koşu iz bırakmalı — "çalıştı mı" sorusu tahmine kalmasın.
+    # (Zamanlayıcı 26 Ağustos sabahı tetiklenmedi ve HİÇBİR YERDE iz
+    # yoktu; hata bildirimi de işin İÇİNDE olduğu için çalışmadı.)
+    _u = open(".github/workflows/uret.yml", encoding="utf-8").read()
+    _y = open(".github/workflows/yayinla.yml", encoding="utf-8").read()
+    basar("Zamanlayıcı: her iki iş de koşu kaydı bırakıyor",
+          "kosu_kaydi.py uret" in _u and "kosu_kaydi.py yayinla" in _y)
+    basar("Zamanlayıcı: kayıt adımı adım düşse bile çalışıyor (if: always)",
+          _u.split("Koşu kaydı bırak")[1][:60].strip().startswith("if: always()")
+          and _y.split("Koşu kaydı bırak")[1][:60].strip().startswith("if: always()"))
+    basar("Zamanlayıcı: bayatlık kontrolü var (sessiz durma yakalanır)",
+          "--bayatlik" in _y and "Yayın bayat" in _y)
+    import kosu_kaydi as _kk
+    basar("Koşu kaydı: kayıt yokken bunu açıkça söylüyor",
+          "HİÇ KOŞU KAYDI YOK" in open("kosu_kaydi.py", encoding="utf-8").read())
+    basar("Koşu kaydı: bayatlık eşiği tanımlı", _kk.BAYATLIK_ESIGI_GUN == 2)
+    # Cron ifadeleri: 05:30/06:00 UTC = 08:30/09:00 TSİ. Yanlış dilim
+    # en sık şüphe olduğu için teste bağlandı.
+    basar("Zamanlayıcı: cron UTC'ye göre doğru (08:30/09:00 TSİ)",
+          'cron: "30 5 * * *"' in _u and 'cron: "0 6 * * *"' in _y)
+
     basar("Yayın: mod değiştirme komutları var",
           "canli" in _yayin.KOMUTLAR and "arsiv" in _yayin.KOMUTLAR)
 
