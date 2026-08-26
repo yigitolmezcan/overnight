@@ -97,6 +97,7 @@ from kalip_secici import (
     kademe_hesapla,
     gece_kanca_ata,
     gece_niteleyici_ata,
+    gece_maglup_izni,
     GALIBIYET_SAYISI_YUVARLAK,
     PLAY_IN_ARALIGI,
 )
@@ -526,6 +527,16 @@ bunlardan olabildiğince kaçın. En sık tekrarlanan somut hatalar:
   görünüyorsa YAZMA, düz sonuçla bitir.
 - "N sayıyla/asistle/ribaundla oynadı" YASAK (fiil yavan) → "attığı N
   sayıyla öne çıktı" gibi bir kullanım tercih et.
+- ASİST FİİLİ: sadece "N asist yaptı" ve "N asistle oynadı" serbest.
+  "asist verdi", "asist dağıttı", "asist üretti", "asist kaydetti"
+  YASAK.
+- "Mağlup tarafta ..." kalıbı gecede EN FAZLA BİR KEZ kullanılır ve
+  SADECE kaybeden taraftaki oyuncu gerçekten dikkat çekiciyse (bir
+  kilometre taşı geçmişse). Sıradan bir 25-31 sayı için kaybeden takım
+  oyuncusu ANILMAZ — maç zaten kaybedilmiş.
+- Maçı belirleyen basketi anıyorsan ATAN OYUNCUYU da an. "Maçı
+  belirleyen basket bitime N saniye kala geldi" gibi, kimin attığını
+  söylemeyen bir cümle YASAK; ad yoksa o anı hiç anma.
 - "final oynadı" YASAK (final = şampiyonluk maçı, maç sonunu böyle
   anlatma) → "çekişmeli bitti", "son ana kadar sürdü" gibi bir ifade
   kullan.
@@ -1306,6 +1317,38 @@ sahne.
 
 
 def grup_b_prompt_kur(gid, gercekler, ham_mac, kalan_muzip_kotasi, kalip, ornekler_havuzu, en_iyi_performans=None, onceki_hatalar=None, kisa=False, ust_uste_kullanildi_mi=False):
+    # Gece kapsamlı kural ÜRETİM ANINA taşınıyor: modelin bunu sonradan
+    # doğrulamada öğrenmesi işe yaramıyor — T27 gece kapsamlı olduğu için
+    # maç bazlı onarım döngüsüne hiç geri beslenmiyordu, ihlal doğrudan
+    # yayın kapısına çarpıp geceyi durduruyordu (18 Aralık).
+    _olgu_ham = kalip.get("olgu_ham") or {}
+    _maglup_izinli = _olgu_ham.get("maglup_anilabilir_ad")
+    _skor = next((f["veri"] for f in gercekler if f["tur"] == "skor"), None)
+    _kaybeden_kod = None
+    if _skor:
+        _kaybeden_kod = _skor["dep"] if _skor["kazanan"] == _skor["ev"] else _skor["ev"]
+    _en_iyi_kaybeden_tarafta = False
+    if en_iyi_performans and _kaybeden_kod:
+        _t = next((f["veri"].get("takim") for f in gercekler
+                   if f["tur"] == "oyuncu_stat" and f["veri"].get("oyuncu") == en_iyi_performans), None)
+        _en_iyi_kaybeden_tarafta = (_t == _kaybeden_kod)
+    if _maglup_izinli:
+        maglup_uyarisi = (
+            f'\nKAYBEDEN TARAF: bu gece "Mağlup tarafta ..." kalıbını SADECE bu maçta ve '
+            f'SADECE {_maglup_izinli} için kullanabilirsin. Başka hiçbir kaybeden takım '
+            f'oyuncusunu anma.\n'
+        )
+    else:
+        maglup_uyarisi = (
+            '\nKAYBEDEN TARAF: bu maçta kaybeden takımın hiçbir oyuncusu ANILMAYACAK — '
+            '"Mağlup tarafta ..." kalıbını KULLANMA. Sıradan bir 25-31 sayı haber değil, '
+            'maç zaten kaybedilmiş.\n'
+        )
+
+    if _en_iyi_kaybeden_tarafta and en_iyi_performans != _maglup_izinli:
+        # T14 ile çelişmesin: anılması ZATEN yasak olan bir ismi "mutlaka
+        # an" diye istemek modeli kurala aykırı yazmaya zorlar.
+        en_iyi_performans = None
     mutlaka_talimati = mutlaka_talimati_kur(kalip, ornekler_havuzu, en_iyi_performans)
     ust_uste_uyarisi = (
         '\nDİKKAT: "üst üste"/"art arda"/"ardışık"/"arka arkaya" kalıbı bu gece BAŞKA BİR MAÇTA ZATEN '
@@ -1414,7 +1457,7 @@ DİKKAT: `fark_serisi` gerçeğinde İKİ ayrı lider değişim sayısı var —
 SADECE son çeyrek/periyot içindekiler. "Son çeyreği N lider
 değişimiyle geçti" gibi bir cümle kuracaksan `son_periyot_lider_degisimi`yi
 kullan — maç geneli sayıyı son çeyreğe atfetme.
-{ust_uste_uyarisi}{onceki_hata_talimati}
+{maglup_uyarisi}{ust_uste_uyarisi}{onceki_hata_talimati}
 JSON şeması:
 {{"baslik": "...", "neden_onemli": "...", "{govde_alani}": "...", "muzip": bool}}
 """
@@ -1642,6 +1685,20 @@ def gece_kalip_plani(tarih_str, gercek_gece, ham, skor_gece):
         olgu["en_buyuk_fark_gecede_mi"] = (
             gid == en_buyuk_fark_gid and olgu.get("fark", 0) >= BUYUK_FARK_ESIGI_TEK_CUMLE
         )
+
+    # Kullanıcı kuralı (gece çapında KIT kaynak): "Mağlup tarafta X ..."
+    # kalıbı bir gecede EN FAZLA BİR KEZ kullanılabilir. İki maç üst üste
+    # bu cümleyle bitince hem tekrar hem gereksiz oluyordu. Hakkı, kaybeden
+    # tarafta gecenin EN YÜKSEK GmSc'li kilometre taşını barındıran maç
+    # alıyor; hiçbir maçta kaybeden tarafta kilometre taşı yoksa hiçbiri
+    # almıyor (sessizlik varsayılan).
+    # TEK KAYNAK: doğrulama (T14) da aynı fonksiyonu çağırıyor. Ayrı
+    # hesaplansaydı T14 "en iyi performans anılmalı" derken bu kural
+    # "anılmasın" derdi ve gece hiç yayınlanamazdı.
+    _maglup_izni = gece_maglup_izni(gercek_gece["maclar"])
+    for gid, ad in _maglup_izni.items():
+        if gid in olgu_by_gid:
+            olgu_by_gid[gid]["maglup_anilabilir_ad"] = ad
 
     # Öne çıkma fiili de aynı gecede tekrar edemez (Bölüm 4 kuralı) —
     # rozet sırasına göre kütüphaneden sırayla atanıyor.

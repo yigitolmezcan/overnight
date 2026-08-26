@@ -815,6 +815,42 @@ def _esik_iddia_ediliyor(esik, metin):
     return False
 
 
+# ---------------------------------------------------------------------------
+# T26 — maçı belirleyen basket anılıyorsa ATANI da anılmalı
+# ---------------------------------------------------------------------------
+#
+# Gerçek üretim hatası (2025-12-18): "Maçı belirleyen basket, bitime 5.6
+# saniye kala geldi." — 1 sayı farkla biten bir maçta okuyucunun tek
+# merak ettiği şey basketi KİMİN attığı, ve cümle tam da onu söylemiyor.
+# Kullanıcı kuralı: bir `an` kaydı anılıyorsa oyuncu adı da anılmak
+# zorunda; ad yoksa o an hiç anılmaz.
+
+KARAR_BASKETI_DESENI = re.compile(
+    r"(maçı belirleyen basket|son saniyede attığı basket|bulduğu basketle"
+    r"|son saniyede kazandı|son anda attığı basket)",
+    re.IGNORECASE,
+)
+
+
+def t26_karar_ani_oyuncusuz(metin, gercekler):
+    """Metin maçı belirleyen basketi anıyorsa, o basketi atan oyuncunun
+    adı da metinde geçmeli."""
+    m = KARAR_BASKETI_DESENI.search(metin or "")
+    if not m:
+        return True, None
+    adlar = set()
+    for f in gercekler or []:
+        if f["tur"] in ("an", "oyuncu_stat", "kilometre"):
+            ad = (f["veri"] or {}).get("oyuncu")
+            if ad:
+                adlar.add(ad.strip().split()[-1].lower())
+    if any(soyad in metin.lower() for soyad in adlar):
+        return True, None
+    return False, [f"maçı belirleyen basket oyuncu adı olmadan anıldı "
+                   f"('{m.group(0)}') — basketi atan anılmalı, yoksa o an "
+                   f"hiç anılmamalı (karar_ani.oyuncu)"]
+
+
 def t24_en_iyi_kilometre_sahibi(metin, gercekler):
     """Kullanıcı kuralı: bir maçta AYNI kilometre eşiğini birden fazla
     oyuncu geçmişse, metin SADECE en yüksek GmSc'li olanı anabilir.
@@ -1008,6 +1044,7 @@ def alan_dogrula(alan_adi, metin, gercekler, ham_mac, yasakli_liste, sablon=Fals
     testler["T22"] = t22_kucuk_fark_rakami(metin)
     testler["T23"] = t23_mimari_kural_ihlalleri(metin)
     testler["T24"] = t24_en_iyi_kilometre_sahibi(metin, gercekler)
+    testler["T26"] = t26_karar_ani_oyuncusuz(metin, gercekler)
     gecti = all(sonuc[0] for sonuc in testler.values())
     return gecti, testler
 
@@ -1666,7 +1703,7 @@ def _esigi_geciyor_mu(gercekler, en_iyi_performans):
     )
 
 
-def t14_en_iyi_performans_anildi(tum_metin, en_iyi_performans, gercekler):
+def t14_en_iyi_performans_anildi(tum_metin, en_iyi_performans, gercekler, maglup_izinli_ad=None):
     """Kural: bir maçın hikaye metni, o maçın en yüksek GmSc'li
     performansını SADECE o performans kendisi bir haber değeri
     eşiğini geçiyorsa anmalı — kaybeden taraftan bir isim ancak
@@ -1684,10 +1721,23 @@ def t14_en_iyi_performans_anildi(tum_metin, en_iyi_performans, gercekler):
     soyad = en_iyi_performans.strip().split()[-1]
     if soyad.lower() in tum_metin.lower():
         return True, None
+    # Kullanıcı kuralı (kaybeden tarafın anılması) T14'ü EZER: en iyi
+    # performans kaybeden taraftaysa ve o gecenin "Mağlup tarafta" hakkı
+    # ona ait değilse, metnin bu ismi anması ZATEN yasak — T14 anmadığı
+    # için reddedemez. İki kural birbirini yiyordu (18 Aralık: Butler,
+    # Durant, DeRozan üçü de kaybeden taraftaydı ve gece hiç geçemedi).
+    skor = next((f["veri"] for f in (gercekler or []) if f["tur"] == "skor"), None)
+    if skor:
+        takim = next((f["veri"].get("takim") for f in gercekler
+                      if f["tur"] == "oyuncu_stat"
+                      and f["veri"].get("oyuncu") == en_iyi_performans), None)
+        kaybeden_tarafta = bool(takim) and takim != skor["kazanan"]
+        if kaybeden_tarafta and en_iyi_performans != maglup_izinli_ad:
+            return True, None
     return False, en_iyi_performans
 
 
-def mac_metnini_dogrula(metin, gercekler, ham_mac, haber_skoru, yasakli_liste, en_iyi_performans=None, sablon=False):
+def mac_metnini_dogrula(metin, gercekler, ham_mac, haber_skoru, yasakli_liste, en_iyi_performans=None, sablon=False, maglup_izinli_ad=None):
     sonuc = {"alanlar": {}, "gerekce": []}
     # T25 alan bazlı DEĞİL nesne bazlı: başlık ile gövdeyi karşılaştırıyor,
     # yani tek bir alana bakarak karar verilemez.
@@ -1721,7 +1771,7 @@ def mac_metnini_dogrula(metin, gercekler, ham_mac, haber_skoru, yasakli_liste, e
             hepsi_gecti = False
             sonuc["gerekce"].append(f"T5: {detay5}")
 
-        gecti14, detay14 = t14_en_iyi_performans_anildi(tum_metin, en_iyi_performans, gercekler)
+        gecti14, detay14 = t14_en_iyi_performans_anildi(tum_metin, en_iyi_performans, gercekler, maglup_izinli_ad)
         sonuc["alanlar"]["T14"] = {"gecti": gecti14, "detay": detay14}
         if not gecti14:
             hepsi_gecti = False
@@ -1884,6 +1934,38 @@ def _gece_metinlerini_topla(taslak):
     return metin_by_yer
 
 
+MAGLUP_TARAFTA_DESENI = re.compile(r"mağlup tarafta", re.IGNORECASE)
+
+
+def _metnin_alanlari(metin_obj):
+    if not isinstance(metin_obj, dict):
+        return str(metin_obj or "")
+    return " ".join(str(v) for v in metin_obj.values() if isinstance(v, str))
+
+
+def t27_maglup_gece_kurali(taslak, maglup_izni):
+    """T27 (GECE KAPSAMLI) — "Mağlup tarafta ..." kalıbının kullanımı.
+
+    Kural SAYI SAYMAK DEĞİL: kalıbı kullanma hakkı gecede tek bir maçın
+    tek bir oyuncusunda (kaybeden tarafta, kilometre taşı geçmiş, en
+    yüksek GmSc — bkz. kalip_secici.gece_maglup_izni). Hakkı olmayan bir
+    maçta TEK kullanım da ihlaldir; yoksa "sıradan bir 25-31 sayı için
+    kaybeden takım oyuncusu anılmaz" kuralı LLM yolunda hiç uygulanmaz.
+
+    Gerçek üretim hatası (2025-12-18): Göz at'ta iki maç üst üste bu
+    cümleyle bitti."""
+    maclar = taslak.get("maclar", {})
+    kullanan = [gid for gid, metin in maclar.items()
+                if MAGLUP_TARAFTA_DESENI.search(_metnin_alanlari(metin))]
+    izinsiz = []
+    for gid in kullanan:
+        ad = (maglup_izni or {}).get(gid)
+        if not ad or ad.strip().split()[-1].lower() not in _metnin_alanlari(maclar[gid]).lower():
+            izinsiz.append(gid)
+    return {"gecti": len(kullanan) <= 1 and not izinsiz,
+            "maclar": kullanan, "izinsiz": izinsiz}
+
+
 def gece_dogrula(taslak, gercek_gece, ham, skor_gece, haber_skorlari=None):
     """taslak: {'maclar': {gid: metin_obj}, 'brief': [brief_obj, ...]}
     haber_skorlari: {gid: int} — henüz kurulmamış bir mekanizmadan
@@ -1897,6 +1979,9 @@ def gece_dogrula(taslak, gercek_gece, ham, skor_gece, haber_skorlari=None):
     muzip_kayitlari = []
 
     en_iyi_performans_by_gid = {m["mac_id"]: m.get("en_iyi_performans") for m in skor_gece["maclar"]}
+    # Üretimle AYNI fonksiyon — bkz. kalip_secici.gece_maglup_izni.
+    from kalip_secici import gece_maglup_izni  # yerel: kalip_secici zaten dogrula'yı içe aktarıyor
+    maglup_izni = gece_maglup_izni(gercek_gece["maclar"])
 
     for gid, metin in taslak.get("maclar", {}).items():
         gercekler = gercek_gece["maclar"][gid]
@@ -1905,6 +1990,7 @@ def gece_dogrula(taslak, gercek_gece, ham, skor_gece, haber_skorlari=None):
         mac_sonucu = mac_metnini_dogrula(
             metin, gercekler, ham_mac, haber_skoru, yasakli_liste,
             en_iyi_performans=en_iyi_performans_by_gid.get(gid),
+            maglup_izinli_ad=maglup_izni.get(gid),
         )
         sonuc["maclar"][gid] = mac_sonucu
         if not mac_sonucu["kabul"]:
@@ -1937,6 +2023,15 @@ def gece_dogrula(taslak, gercek_gece, ham, skor_gece, haber_skorlari=None):
     t9_gecti, tekrarlar = t9_gece_ici_tekrar(_gece_metinlerini_topla(taslak))
     sonuc["t9"] = {"gecti": t9_gecti, "tekrarlar": tekrarlar}
     if not t9_gecti:
+        sonuc["kabul"] = False
+
+    # T27 (GECE KAPSAMLI) — "Mağlup tarafta ..." kalıbı bir gecede EN
+    # FAZLA BİR KEZ. Gerçek üretim hatası (2025-12-18): Göz at'ta iki maç
+    # üst üste bu cümleyle bitti; hem tekrar hem gereksizdi. Şablon yolu
+    # bunu gece_kalip_plani'ndaki izinle çözüyor; bu kapı LLM yolunu da
+    # kapatıyor — kural tek kod yolunda değil, gecenin TÜM çıktısında.
+    sonuc["t27"] = t27_maglup_gece_kurali(taslak, maglup_izni)
+    if not sonuc["t27"]["gecti"]:
         sonuc["kabul"] = False
 
     return sonuc
@@ -1978,6 +2073,11 @@ def _kayitli_gece_test_et(tarih, ham_json=False, sessiz=False):
                 for g in brief_sonucu["gerekce"]:
                     print(f"       {g}")
 
+        if not sonuc["t27"]["gecti"]:
+            _t27 = sonuc["t27"]
+            print(f"[RET] T27 — 'Mağlup tarafta' {len(_t27['maclar'])} maçta "
+                  f"kullanıldı (gecede en fazla bir kez); hakkı olmayan maçlar: "
+                  f"{_t27['izinsiz'] or 'yok'}")
         if not sonuc["t7"]["gecti"]:
             print(f"[RET] T7 — muziplik sınırı aşıldı: {sonuc['t7']}")
         if not sonuc["t9"]["gecti"]:

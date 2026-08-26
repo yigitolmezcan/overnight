@@ -226,12 +226,56 @@ def _karar_ani_bul(gercekler, ev_kod, kazanan_kod):
     kazanan_onde_bu_anda = (son_an["fark"] > 0) == (kazanan_kod == ev_kod)
     if not kazanan_onde_bu_anda:
         return None
-    return {"periyot": son_an["periyot"], "saniye_kalan": saniye_kalan, "aciklama": son_an["aciklama"]}
+    # Kullanıcı kuralı: bir `an` anılıyorsa basketi ATAN da anılmak
+    # zorunda ("Maçı belirleyen basket ... geldi." tek başına, okuyucunun
+    # tek merak ettiği şeyi söylemeyen bir cümleydi). Ad yoksa `an`
+    # cümle kurucularda hiç kullanılmıyor.
+    return {"periyot": son_an["periyot"], "saniye_kalan": saniye_kalan,
+            "aciklama": son_an["aciklama"], "oyuncu": son_an.get("oyuncu")}
 
 
 # ---------------------------------------------------------------------------
 # Olgu hesaplama — bir maç için hesaplanabilir HER ŞEY
 # ---------------------------------------------------------------------------
+
+
+def gece_maglup_izni(gercek_maclar):
+    """{mac_id: ad|None} — "Mağlup tarafta ..." kalıbını kullanma hakkı
+    gecede TEK bir maçın TEK bir oyuncusunda.
+
+    Kural iki kullanıcı kuralının birleşimi: kalıp gecede en fazla bir
+    kez kullanılır VE sadece kaybeden taraftaki oyuncu gerçekten dikkat
+    çekiciyse (sistemin kendi kilometre taşı kataloğundan birini
+    geçmişse). Hak, kaybeden tarafta gecenin en yüksek GmSc'li kilometre
+    taşını barındıran maça gider.
+
+    TEK KAYNAK: hem üretim (yaz.gece_kalip_plani) hem doğrulama
+    (dogrula.gece_dogrula) bunu çağırır. İki yerde ayrı ayrı
+    hesaplanırsa T14 ile bu kural birbirini yer."""
+    adaylar = []
+    for gid, gercekler in (gercek_maclar or {}).items():
+        skor = _tek(gercekler, "skor")
+        if not skor:
+            continue
+        kaybeden = skor["dep"] if skor["kazanan"] == skor["ev"] else skor["ev"]
+        oyuncu_stat = _oyuncu_stat_listesi(gercekler)
+        for f in _fact(gercekler, "kilometre"):
+            k = f["veri"]
+            ad = k.get("oyuncu")
+            if ad and _oyuncunun_kodu(oyuncu_stat, ad) == kaybeden:
+                adaylar.append((k.get("gmsc", 0), gid, ad))
+    izin = {gid: None for gid in (gercek_maclar or {})}
+    if adaylar:
+        _, gid, ad = max(adaylar, key=lambda x: x[0])
+        izin[gid] = ad
+    return izin
+
+
+def _oyuncunun_kodu(oyuncu_stat, ad):
+    for o in oyuncu_stat:
+        if o.get("oyuncu") == ad:
+            return o.get("takim")
+    return None
 
 
 def olgulari_hesapla(gercekler, ham_mac, haber_skoru, yildizlar, kalite_ort, kalite_sirali):
@@ -251,6 +295,16 @@ def olgulari_hesapla(gercekler, ham_mac, haber_skoru, yildizlar, kalite_ort, kal
     kaybeden_derece = derece_by_takim.get(kaybeden, {})
     kazanan_seri = seri_by_takim.get(kazanan)
     kaybeden_seri = seri_by_takim.get(kaybeden)
+    # Kullanıcı kuralı: kaybeden takımın oyuncusu ancak GERÇEKTEN
+    # dikkat çekiciyse anılır — yani sistemin kendi kilometre taşı
+    # kataloğundan birini geçmişse. "Sıradan bir 25-31 sayı" için
+    # anılmaz. Hangi maçın bu hakkı kullanacağına gece düzeyinde karar
+    # veriliyor (yaz.gece_kalip_plani), çünkü kalıp gecede EN FAZLA BİR
+    # KEZ kullanılabiliyor.
+    _maglup_kilo = [k["veri"] for k in kilometre
+                    if k["veri"].get("oyuncu") and _oyuncunun_kodu(oyuncu_stat, k["veri"]["oyuncu"]) == kaybeden]
+    maglup_kilometre = max(_maglup_kilo, key=lambda k: k.get("gmsc", 0), default=None)
+
     kazanan_kadro_disi = [k["veri"] for k in kadro_disi if k["veri"]["takim"] == kazanan]
     kaybeden_kadro_disi = [k["veri"] for k in kadro_disi if k["veri"]["takim"] == kaybeden]
 
@@ -315,6 +369,11 @@ def olgulari_hesapla(gercekler, ham_mac, haber_skoru, yildizlar, kalite_ort, kal
         "kazanan_yildiz_yok": kazanan_yildiz_yok,
         "kilometre": kilometre_veri,
         "en_iyi_kilometre": en_iyi_kilometre_gercegi,
+        # Bu maçta kaybeden tarafın en iyi kilometre taşı (varsa).
+        # İZİN DEĞİL, sadece aday — izni gece düzeyi veriyor.
+        "maglup_kilometre": maglup_kilometre,
+        "maglup_anilabilir_ad": None,
+
         "triple_double_var": triple_double_var,
         "en_yuksek_sayi": en_yuksek_sayi,
         "en_iyi_bireysel_esik": [

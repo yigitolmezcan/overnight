@@ -240,7 +240,46 @@ ENGELLEYICI_TESTLER = (
     "T20",  # sezon başı susma kuralı
     "T23",  # mimari kural ihlali
     "T24",  # kilometre taşının sahibi yanlış
+    "T26",  # karar anı oyuncu adı olmadan anıldı
+    "T27",  # "Mağlup tarafta" gece kuralı (GECE kapsamlı)
 )
+
+
+def _isaretleri_tazele(tarih, isaretli):
+    """Şablona düşmüş alanların gerekçelerini GÜNCEL kurallarla yeniden
+    hesaplar. Kural değişince eski rapor yanlış karar verdiriyordu."""
+    if not isaretli:
+        return isaretli
+    try:
+        import dogrula as _dog
+        from kalip_secici import gece_maglup_izni
+        gercek_gece = json.loads((KOK / "gercek" / f"{tarih}.json").read_text(encoding="utf-8"))
+        ham = json.loads((KOK / "ham" / f"{tarih}.json").read_text(encoding="utf-8"))
+        skor_gece = json.loads((KOK / "skor" / f"{tarih}.json").read_text(encoding="utf-8"))
+    except Exception:
+        return isaretli  # veri yoksa eski raporla devam — kapı gevşemez
+    yasakli = _dog.yasakli_yukle()
+    izin = gece_maglup_izni(gercek_gece["maclar"])
+    en_iyi = {m["mac_id"]: m.get("en_iyi_performans") for m in skor_gece["maclar"]}
+    yeni = []
+    for i in isaretli:
+        gid = i.get("mac_id")
+        if gid not in gercek_gece["maclar"]:
+            yeni.append(i)
+            continue
+        sonuc = _dog.mac_metnini_dogrula(
+            i.get("metin", {}), gercek_gece["maclar"][gid], ham["maclar"][gid], 0,
+            yasakli, en_iyi_performans=en_iyi.get(gid), sablon=True,
+            maglup_izinli_ad=izin.get(gid),
+        )
+        gerekce = list(sonuc.get("gerekce", []))
+        for alan, ad in sonuc.get("alanlar", {}).items():
+            for test, (gecti, detay) in ad.get("testler", {}).items():
+                if not gecti:
+                    gerekce.append(f"{alan}/{test}: {detay}")
+        if gerekce:
+            yeni.append({**i, "gerekce": gerekce})
+    return yeni
 
 
 def yayin_engelleri(tarih):
@@ -258,13 +297,48 @@ def yayin_engelleri(tarih):
     kabul edilebilir bir sonuç."""
     taslak = json.loads((KOK / "taslak" / f"{tarih}.json").read_text(encoding="utf-8"))
     isaretli = taslak.get("rapor", {}).get("sablon_isaretli", [])
+    # Rapordaki gerekçeler ÜRETİM ANINDA dondu. Bir kural o günden sonra
+    # değiştiyse (18 Aralık: T14 daraltıldı) kapı artık geçerli olmayan
+    # bir gerekçeyle geceyi bloke ediyordu. "Hangi alan şablona düştü"
+    # bilgisi metinden geri hesaplanamaz — o rapordan gelir; ama
+    # gerekçeler HER ZAMAN güncel kurallarla yeniden üretilir.
+    isaretli = _isaretleri_tazele(tarih, isaretli)
     engel = []
     for i in isaretli:
         gerekce = " ".join(i.get("gerekce", []))
         vurulan = {t for t in ENGELLEYICI_TESTLER if t + ":" in gerekce or t + "/" in gerekce}
         if vurulan:
             engel.append({**i, "engelleyen": sorted(vurulan)})
+    engel.extend(_gece_kapsamli_engeller(tarih, taslak))
     return engel
+
+
+def _gece_kapsamli_engeller(tarih, taslak):
+    """GECE kapsamlı kurallar (şu an T27) — bir maça değil gecenin
+    TAMAMINA bakan kurallar.
+
+    Boşluk: kapı yalnızca `sablon_isaretli`e bakıyordu, yani maç bazlı
+    doğrulama sonuçlarına. Gece kapsamlı bir ihlal (aynı kalıbın iki
+    maçta kullanılması) hiçbir maçın raporunda görünmediği için kapıdan
+    sessizce geçiyordu — LLM'in yazdığı cümleler için hiç uygulanmıyordu."""
+    try:
+        import dogrula as _dog
+        gercek_gece = json.loads((KOK / "gercek" / f"{tarih}.json").read_text(encoding="utf-8"))
+        ham = json.loads((KOK / "ham" / f"{tarih}.json").read_text(encoding="utf-8"))
+        skor_gece = json.loads((KOK / "skor" / f"{tarih}.json").read_text(encoding="utf-8"))
+    except Exception:
+        return []
+    sonuc = _dog.gece_dogrula(taslak, gercek_gece, ham, skor_gece)
+    t27 = sonuc.get("t27") or {}
+    if t27.get("gecti", True):
+        return []
+    return [{
+        "mac_id": ", ".join(t27.get("maclar", [])),
+        "alan": "gece",
+        "gerekce": [f"T27: 'Mağlup tarafta' kalıbı {len(t27.get('maclar', []))} maçta "
+                    f"kullanıldı; hakkı olmayan maçlar: {t27.get('izinsiz') or 'yok'}"],
+        "engelleyen": ["T27"],
+    }]
 
 
 def yayinla():
@@ -322,6 +396,11 @@ def tazele():
         print("Yayında gece yok — tazelenecek bir şey yok.")
         return 0
     tarih = d["yayinlanan"][-1]
+    # Gerçek hata: tazele SADECE dist'i sayfaya gömüyordu, dist'i yeniden
+    # DERLEMİYORDU. Taslak metni değiştikten (yeni kural, yeniden üretim)
+    # sonra "tazele" eski metni sessizce yeniden yayınlıyordu — adı
+    # tazeleme, işi kopyalama. Derleme burada.
+    _kos([sys.executable, "derle.py", tarih])
     boyut = _siteyi_kur(tarih)
     print(f"TAZELENDİ: {tarih} · site/index.html {boyut:,} bayt")
     return 0

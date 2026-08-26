@@ -61,12 +61,14 @@ LIDER_DEGISIM_ESIGI = 15    # maç geneli toplamı; alt kırılım HİÇ anılma
 # İstatistik → (eşik, birim, DOĞRU FİİL). "toplamak" SADECE ribaund fiili;
 # sayı "atılır", asist "dağıtılır" — fiil-isim uyumsuzluğu ("36 sayı topladı")
 # burada yapısal olarak imkânsız, çünkü fiil istatistiğe bağlı.
-# Kullanıcı kararı: asist için "vermek" fiili KULLANILMAZ ("12 asist verdi"
-# değil) — bitişik kullanımda "12 asistle", tek başına "12 asist dağıttı".
+# Kullanıcı kuralı (asist fiili): SADECE "N asist yaptı" ve "N asistle
+# oynadı" serbest. "asist verdi / dağıttı / üretti / kaydetti" yasak —
+# yasağın tanımı config/yasakli.json kok_kaliplari'nda, burada sadece
+# doğru fiil üretiliyor.
 PERFORMANS_ESIKLERI = [
     ("sayi", 30, "sayı", "attı"),
     ("rib", 15, "ribaund", "topladı"),
-    ("ast", 10, "asist", "dağıttı"),
+    ("ast", 10, "asist", "yaptı"),   # "dağıttı/verdi/üretti" yasak (kullanıcı kuralı)
 ]
 
 # Cümle bütçesi — katman başına en fazla kaç cümle (kullanıcı kararı).
@@ -160,6 +162,21 @@ def galibiyet_serisi_konusulabilir(seri, kazanan_derece, seri_haber):
     if not derece_konusulabilir(kazanan_derece):
         return False
     return seri.get("uzunluk", 0) >= SERI_ESIGI
+
+
+def maglup_anilabilir(mac, ad):
+    """Kaybeden takımın oyuncusu anılabilir mi?
+
+    İki kullanıcı kuralı TEK mekanizmada:
+      (a) "Mağlup tarafta ..." kalıbı bir gecede EN FAZLA BİR KEZ,
+      (b) sadece GERÇEKTEN dikkat çekici bir performans için.
+
+    Hakkı, kaybeden tarafta gecenin en yüksek GmSc'li KİLOMETRE TAŞINI
+    barındıran maç ve o oyuncu alır; kararı gece_kalip_plani veriyor,
+    burada sadece uygulanıyor. Bilerek `False` varsayılanı: izni kimse
+    hesaplamadıysa susulur (sessizlik varsayılan)."""
+    izinli = (mac or {}).get("maglup_anilabilir_ad")
+    return bool(izinli) and izinli == ad
 
 
 def performans_konusulabilir(oyuncu):
@@ -276,8 +293,9 @@ def an(mac, olgu, kancada_kullanildi=False):
     if kancada_kullanildi:
         return None
     ka = olgu.get("karar_ani")
-    if ka:
-        return _gecir(f"Maçı belirleyen basket, bitime {ka['saniye_kalan']:.1f} saniye kala geldi.")
+    if ka and ka.get("oyuncu"):
+        return _gecir(f"Maçı belirleyen basketi, bitime {ka['saniye_kalan']:.1f} "
+                      f"saniye kala {ka['oyuncu']} attı.")
     if olgu.get("uzatma"):
         return _gecir(f"{mac['kazanan_adi']}, maçı uzatmada kazandı.")
     if olgu.get("en_buyuk_geri_donus", 0) >= GERI_DONUS_ESIGI:
@@ -293,7 +311,12 @@ def performans(mac, en_iyi_oyuncu, en_iyi_ad):
     if not ifade:
         return None
     deger, birim, fiil = ifade
-    onek = "" if en_iyi_oyuncu.get("takim") == mac["kazanan_kod"] else "Mağlup tarafta "
+    kazanan_tarafta = en_iyi_oyuncu.get("takim") == mac["kazanan_kod"]
+    if not kazanan_tarafta and not maglup_anilabilir(mac, en_iyi_ad):
+        # Gece izni yok ya da başka bir oyuncuya ait — maç zaten
+        # kaybedilmiş, sıradan bir performans için susulur.
+        return None
+    onek = "" if kazanan_tarafta else "Mağlup tarafta "
     return _gecir(f"{onek}{en_iyi_ad} {deger} {birim} {fiil}.")
 
 
@@ -329,6 +352,8 @@ def kaybedenin_kilometresi(mac, gercekler, en_iyi_ad):
         return None
     if oyuncunun_takimi(gercekler, ad) == mac["kazanan_kod"]:
         return None
+    if not maglup_anilabilir(mac, ad):
+        return None
     oyuncu = oyuncu_bul(gercekler, ad)
     ifade = performans_konusulabilir(oyuncu)
     if not ifade:
@@ -361,8 +386,10 @@ def neden_onemli(mac, olgu):
                 return c
     if olgu.get("uzatma"):
         return _gecir(f"{mac['kazanan_adi']}, maçı uzatmada kazandı.")
-    if olgu.get("karar_ani"):
-        return _gecir(f"{mac['kazanan_adi']}, maçı son saniyede kazandı.")
+    _ka = olgu.get("karar_ani") or {}
+    if _ka.get("oyuncu"):
+        return _gecir(f"{mac['kazanan_adi']}, maçı son saniyede "
+                      f"{_ka['oyuncu']}'{iyelik_eki(_ka['oyuncu'])} basketiyle kazandı.")
     if olgu.get("en_buyuk_geri_donus", 0) >= GERI_DONUS_ESIGI:
         return _gecir(f"{mac['kazanan_adi']}, {olgu['en_buyuk_geri_donus']} sayılık farktan döndü.")
     if olgu.get("en_buyuk_fark_gecede_mi"):
@@ -431,8 +458,9 @@ def kanca_oneki(kanca_harf, olgu, mac, en_iyi_oyuncu=None):
         if olgu.get("uzatma"):
             return "uzatmaya giden maçta"
         ka = olgu.get("karar_ani")
-        if ka:
-            return f"bitime {ka['saniye_kalan']:.1f} saniye kala bulduğu basketle"
+        if ka and ka.get("oyuncu"):
+            return (f"bitime {ka['saniye_kalan']:.1f} saniye kala "
+                    f"{ka['oyuncu']}'{iyelik_eki(ka['oyuncu'])} basketiyle")
         if olgu.get("fark", 99) <= 2:
             return "nefes kesen bir maçta"
         return None
@@ -505,8 +533,10 @@ def _baslik_oneki(mac, olgu, en_iyi_oyuncu, gercekler=None):
                     f"{ad} {_gece_ifadesi(kilo, en_iyi_oyuncu)} gecesinde",
                     f"{ad} {kilo['sayi']} sayı{lik_eki('sayı')} gecesinde")
     ka = olgu.get("karar_ani")
-    if ka:
-        return "an", f"bitime {ka['saniye_kalan']:.1f} saniye kala bulduğu basketle", f"bitime {ka['saniye_kalan']:.1f} saniye kala bulduğu basketle"
+    if ka and ka.get("oyuncu"):
+        _tam = (f"bitime {ka['saniye_kalan']:.1f} saniye kala "
+                f"{ka['oyuncu']}'{iyelik_eki(ka['oyuncu'])} basketiyle")
+        return "an", _tam, _tam
     if olgu.get("uzatma"):
         return "an", "uzatmaya giden maçta", "uzatmaya giden maçta"
     if olgu.get("en_buyuk_geri_donus", 0) >= GERI_DONUS_ESIGI:
@@ -522,8 +552,9 @@ def _olgu_cumleleri(mac, olgu, en_iyi_oyuncu, en_iyi_ad, gercekler=None):
     kd = olgu.get("kazanan_derece") or {}
     c = []
     ka = olgu.get("karar_ani")
-    if ka:
-        c.append(("an", _gecir(f"Maçı belirleyen basket, bitime {ka['saniye_kalan']:.1f} saniye kala geldi.")))
+    if ka and ka.get("oyuncu"):
+        c.append(("an", _gecir(f"Maçı belirleyen basketi, bitime {ka['saniye_kalan']:.1f} "
+                               f"saniye kala {ka['oyuncu']} attı.")))
     elif olgu.get("uzatma"):
         c.append(("an", _gecir(f"{mac['kazanan_adi']}, maçı uzatmada kazandı.")))
     if olgu.get("en_buyuk_geri_donus", 0) >= GERI_DONUS_ESIGI:
@@ -645,8 +676,11 @@ def brief_satiri(mac, olgu, en_iyi_oyuncu, en_iyi_ad, haric_kindler=None):
             adaylar.append(("performans", f"{en_iyi_ad}, {y} karşısında {deger} {birim} {fiil}."))
     if olgu.get("en_buyuk_geri_donus", 0) >= GERI_DONUS_ESIGI:
         adaylar.append(("geri_donus", f"{k}, {olgu['en_buyuk_geri_donus']} sayılık farktan dönüp {y}'{ek} geçti."))
-    if olgu.get("karar_ani"):
-        adaylar.append(("son_saniye", f"{k}, son saniyede attığı basketle {y}'{ek} geçti."))
+    _ka = olgu.get("karar_ani") or {}
+    if _ka.get("oyuncu"):
+        adaylar.append(("son_saniye",
+                        f"{k}, son saniyede {_ka['oyuncu']}'{iyelik_eki(_ka['oyuncu'])} "
+                        f"basketiyle {y}'{ek} geçti."))
     if olgu.get("uzatma"):
         adaylar.append(("uzatma", f"{k}, {y}'{ek} uzatmada geçti."))
     if galibiyet_serisi_konusulabilir(olgu.get("kazanan_seri"), kd, olgu.get("kazanan_seri_haber")):
@@ -702,6 +736,9 @@ def mac_baglami(gercekler, ham_mac, olgu, takim_adi_fn, kisa_ad_fn=None):
         "kucuk": min(skor["ev_skor"], skor["dep_skor"]),
         "fark": abs(skor["ev_skor"] - skor["dep_skor"]),
         "en_buyuk_fark_gecede_mi": (olgu or {}).get("en_buyuk_fark_gecede_mi", False),
+        # Gece çapında TEK: "Mağlup tarafta ..." kalıbını kullanma hakkı
+        # olan oyuncunun adı (yoksa None). Kararı gece_kalip_plani veriyor.
+        "maglup_anilabilir_ad": (olgu or {}).get("maglup_anilabilir_ad"),
     }
 
 

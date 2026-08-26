@@ -1,0 +1,247 @@
+{
+  "tarih": "2025-12-20",
+  "hesaplandi": "2026-08-26T23:22:14.582056Z",
+  "en_iyi_skor": 8.69,
+  "maclar": [
+    {
+      "rozet": 8.69,
+      "ham": 9.69,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 9.33,
+        "K": 1.0,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 5.39,
+        "F": 6,
+        "G": 0,
+        "A": 5.58
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500392",
+      "ev": "GSW",
+      "dep": "PHX",
+      "ev_skor": 119,
+      "dep_skor": 116,
+      "en_iyi_performans": "Devin Booker"
+    },
+    {
+      "rozet": 8.62,
+      "ham": 9.49,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 8.27,
+        "K": 1.43,
+        "T": 0,
+        "D": 6
+      },
+      "yukselticiler": {
+        "Y": 6.27,
+        "F": 6,
+        "G": 8,
+        "A": 3.17
+      },
+      "dram_terfi": true,
+      "mac_id": "0022500391",
+      "ev": "MEM",
+      "dep": "WAS",
+      "ev_skor": 122,
+      "dep_skor": 130,
+      "en_iyi_performans": "Santi Aldama"
+    },
+    {
+      "rozet": 8.48,
+      "ham": 9.11,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 3.54,
+        "K": 3.16,
+        "T": 0,
+        "D": 8
+      },
+      "yukselticiler": {
+        "Y": 9.5,
+        "F": 10,
+        "G": 0,
+        "A": 2.92
+      },
+      "dram_terfi": true,
+      "mac_id": "0022500393",
+      "ev": "UTA",
+      "dep": "ORL",
+      "ev_skor": 127,
+      "dep_skor": 128,
+      "en_iyi_performans": "Desmond Bane"
+    },
+    {
+      "rozet": 7.35,
+      "ham": 7.35,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 7.02,
+        "K": 3.34,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.87,
+        "F": 0,
+        "G": 0,
+        "A": 4.75
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500388",
+      "ev": "TOR",
+      "dep": "BOS",
+      "ev_skor": 96,
+      "dep_skor": 112,
+      "en_iyi_performans": "Payton Pritchard"
+    },
+    {
+      "rozet": 6.39,
+      "ham": 6.39,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.35,
+        "K": 1.39,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.92,
+        "F": 0,
+        "G": 0,
+        "A": 9.04
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500386",
+      "ev": "DEN",
+      "dep": "HOU",
+      "ev_skor": 101,
+      "dep_skor": 115,
+      "en_iyi_performans": "Kevin Durant"
+    },
+    {
+      "rozet": 6.0,
+      "ham": 6.0,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 5.3,
+        "K": 2.88,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 5.34,
+        "F": 3,
+        "G": 0,
+        "A": 5.08
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500387",
+      "ev": "PHI",
+      "dep": "DAL",
+      "ev_skor": 121,
+      "dep_skor": 114,
+      "en_iyi_performans": "Tyrese Maxey"
+    },
+    {
+      "rozet": 5.07,
+      "ham": 5.07,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 5.3,
+        "K": 0.85,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.04,
+        "F": 0,
+        "G": 0,
+        "A": 6.5
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500395",
+      "ev": "LAC",
+      "dep": "LAL",
+      "ev_skor": 103,
+      "dep_skor": 88,
+      "en_iyi_performans": "LeBron James"
+    },
+    {
+      "rozet": 4.05,
+      "ham": 4.05,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 4.77,
+        "K": 0.0,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.31,
+        "F": 0,
+        "G": 0,
+        "A": 2.33
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500389",
+      "ev": "NOP",
+      "dep": "IND",
+      "ev_skor": 128,
+      "dep_skor": 109,
+      "en_iyi_performans": "Zion Williamson"
+    },
+    {
+      "rozet": 2.65,
+      "ham": 2.65,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 1.64,
+        "K": 2.25,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 6.2,
+        "F": 6,
+        "G": 0,
+        "A": 0.92
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500394",
+      "ev": "SAC",
+      "dep": "POR",
+      "ev_skor": 93,
+      "dep_skor": 98,
+      "en_iyi_performans": "Dennis Schröder"
+    },
+    {
+      "rozet": 2.45,
+      "ham": 2.45,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 2.73,
+        "K": 0.0,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.58,
+        "F": 0,
+        "G": 0,
+        "A": 5.75
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500390",
+      "ev": "DET",
+      "dep": "CHA",
+      "ev_skor": 112,
+      "dep_skor": 86,
+      "en_iyi_performans": "Cade Cunningham"
+    }
+  ]
+}

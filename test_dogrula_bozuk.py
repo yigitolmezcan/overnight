@@ -559,7 +559,7 @@ def main():
     # (Golden State Warriors + Los Angeles Lakers) eskiden T6'nın 12
     # kelime sınırını aşıyordu.
     # ------------------------------------------------------------------
-    olgu_karar_ani = {"karar_ani": {"saniye_kalan": 1.0}}
+    olgu_karar_ani = {"karar_ani": {"saniye_kalan": 1.0, "oyuncu": "Stephen Curry"}}
     _mac_b = {"kazanan_adi": "Golden State Warriors", "kaybeden_adi": "Los Angeles Lakers",
               "kazanan_kod": "GSW", "kaybeden_kod": "LAL", "ev_dep": "deplasmanda",
               "buyuk": 119, "kucuk": 109, "fark": 10, "en_buyuk_fark_gecede_mi": False}
@@ -587,8 +587,15 @@ def main():
     ham_0108 = json.loads(open(_ham_yolu("2026-01-08")).read())
     gercekler_ind_cha = gercek_0108["maclar"]["0022500528"]  # IND kazandı, LaMelo Ball (CHA) kaybetti
     ham_ind_cha = ham_0108["maclar"]["0022500528"]
-    metin_dusuk_kaybeden = yaz.sablon_uret(gercekler_ind_cha, ham_ind_cha, "LaMelo Ball", None, kanca_harf="A", olgu={}, rozet=5.0)
-    basar("rozet bütçesi: kaybeden takımın oyuncusu 'Mağlup tarafta' çerçevesiyle anılıyor", "Mağlup tarafta LaMelo Ball" in metin_dusuk_kaybeden)
+    # Gece izni VARKEN: "Mağlup tarafta" çerçevesi eklenmek zorunda (T17).
+    _olgu_izinli = {"maglup_anilabilir_ad": "LaMelo Ball"}
+    metin_dusuk_kaybeden = yaz.sablon_uret(gercekler_ind_cha, ham_ind_cha, "LaMelo Ball", None, kanca_harf="A", olgu=_olgu_izinli, rozet=5.0)
+    basar("rozet bütçesi: kaybeden takımın oyuncusu 'Mağlup tarafta' çerçevesiyle anılıyor",
+          "Mağlup tarafta LaMelo Ball" in metin_dusuk_kaybeden)
+    # Gece izni YOKKEN: aynı maç aynı oyuncuyu hiç anmıyor (kural 1b).
+    metin_izinsiz = yaz.sablon_uret(gercekler_ind_cha, ham_ind_cha, "LaMelo Ball", None, kanca_harf="A", olgu={}, rozet=5.0)
+    basar("Kural1: gece izni yokken şablon yolu da kaybeden oyuncuyu anmıyor",
+          "Mağlup tarafta" not in metin_izinsiz)
     sonuc = mac_metnini_dogrula({"gec_satiri": metin_dusuk_kaybeden}, gercekler_ind_cha, ham_ind_cha, 0, yasakli, en_iyi_performans="LaMelo Ball")
     basar("rozet bütçesi: kaybedene atfedilen düşük-rozet eki T17'den geçiyor", "T17" not in " ".join(sonuc["gerekce"]))
 
@@ -609,7 +616,8 @@ def main():
           _n is None or ("yaptı" not in _n and "7-31" not in _n))
     basar("cumle: söylenecek bir şey yoksa neden_onemli susuyor", _n is None)
     # Maçın kendisinden bir olgu VARSA ona dayanır (regresyon).
-    _n2 = cumle.neden_onemli(_mac, {"kazanan_derece": _kd, "karar_ani": {"saniye_kalan": 4.7}})
+    _n2 = cumle.neden_onemli(_mac, {"kazanan_derece": _kd,
+                                    "karar_ani": {"saniye_kalan": 4.7, "oyuncu": "LaMelo Ball"}})
     basar("cumle: olgu varsa neden_onemli maçın kendisine dayanıyor (regresyon)",
           _n2 is not None and "son saniye" in _n2)
 
@@ -1143,8 +1151,13 @@ def main():
     basar("Yayın kapısı: engelleyici testler listesi gerçeğe dair testlerden oluşuyor",
           "T17" in _yayin.ENGELLEYICI_TESTLER and "T6" not in _yayin.ENGELLEYICI_TESTLER)
     _d = _yayin.durum_oku()
+    # Sayıyı SABİTLEMEK yanlıştı: emekli listesi her yeni emeklilikte
+    # değişiyor, test de her seferinde kırılıyordu. Değişmez şu: emekli
+    # bir gece ne yayınlananlarda ne de sıradaki gecede olabilir.
     basar("Yayın durumu: emekli geceler yayın sırasına girmiyor",
-          len(_d["atlanan"]) == 14 and "2026-03-05" in _d["atlanan"])
+          bool(_d["atlanan"])
+          and not (set(_d["atlanan"]) & set(_d["yayinlanan"]))
+          and (_d.get("hazir") or {}).get("tarih") not in _d["atlanan"])
     basar("Yayın durumu: takılan geceler emekli listesinden AYRI tutuluyor",
           "engellenen" in _d or _d.get("engellenen") == [])
 
@@ -1159,6 +1172,7 @@ def main():
     # (Gerçek üretim bug'ı 2026-01-28 — veri promptta VARDI, model
     # kullanmadı; o yüzden düzeltme prompta değil doğrulayıcıya yazıldı.)
     import dogrula as dogrula_modul
+    import kalip_secici as _kalip_secici
     from dogrula import t23_mimari_kural_ihlalleri as _t23
     basar("T23: sayısız geri dönüş reddediliyor",
           not _t23("San Antonio, Houston'ı farktan dönerek 111-99 yendi.")[0])
@@ -1744,6 +1758,244 @@ def main():
     # Sönümleme HÂLÂ bastırıyor — tamamen kalkmadı.
     basar("Formül: sönümleme etkisini sürdürüyor (S=10'da ayrım S=8'dekinden küçük)",
           0 < abs(_a["rozet"] - _b["rozet"]) < abs(_c["rozet"] - _d["rozet"]))
+
+
+    # ==================================================================
+    # KURAL 1 — "Mağlup tarafta ..." gecede en fazla BİR KEZ ve sadece
+    # gerçekten dikkat çekici bir performans için.
+    # Gerçek üretim hatası (2025-12-18): Göz at'ta iki maç üst üste bu
+    # cümleyle bitti.
+    # ==================================================================
+    _mac_izinsiz = {"kazanan_kod": "BOS", "kaybeden_kod": "NYK",
+                    "kazanan_adi": "Boston Celtics", "kaybeden_adi": "New York Knicks",
+                    "ev_dep": "evinde", "buyuk": 110, "kucuk": 108, "fark": 2,
+                    "en_buyuk_fark_gecede_mi": False, "maglup_anilabilir_ad": None}
+    _mac_izinli = dict(_mac_izinsiz, maglup_anilabilir_ad="Jalen Brunson")
+    _kaybeden_oyuncu = {"oyuncu": "Jalen Brunson", "takim": "NYK", "sayi": 31, "rib": 4, "ast": 6}
+
+    basar("Kural1: gece izni YOKKEN kaybeden taraf oyuncusu anılmıyor",
+          cumle.performans(_mac_izinsiz, _kaybeden_oyuncu, "Jalen Brunson") is None)
+    basar("Kural1: gece izni VARKEN aynı oyuncu anılabiliyor",
+          (cumle.performans(_mac_izinli, _kaybeden_oyuncu, "Jalen Brunson") or "")
+          .startswith("Mağlup tarafta"))
+    basar("Kural1: izin BAŞKA oyuncuya aitse bu oyuncu anılmıyor",
+          cumle.performans(dict(_mac_izinsiz, maglup_anilabilir_ad="Nikola Jokić"),
+                           _kaybeden_oyuncu, "Jalen Brunson") is None)
+    basar("Kural1: kazanan taraf oyuncusu izne TABİ DEĞİL (kural sızmıyor)",
+          (cumle.performans(_mac_izinsiz, {"oyuncu": "Jayson Tatum", "takim": "BOS",
+                                           "sayi": 31, "rib": 4, "ast": 5},
+                            "Jayson Tatum") or "").startswith("Jayson Tatum"))
+    basar("Kural1: varsayılan sessizlik — maglup_anilabilir_ad hiç yoksa anılmıyor",
+          cumle.performans({k: v for k, v in _mac_izinsiz.items()
+                            if k != "maglup_anilabilir_ad"},
+                           _kaybeden_oyuncu, "Jalen Brunson") is None)
+
+    # Gece kapsamlı kapı (LLM yolu dahil): iki maçta birden geçemez.
+    _t27_iki = {"maclar": {
+        "A": {"ozet": "Mağlup tarafta Jalen Brunson 31 sayı attı."},
+        "B": {"ozet": "Mağlup tarafta Devin Booker 33 sayı attı."},
+    }}
+    _t27_bir = {"maclar": {
+        "A": {"ozet": "Mağlup tarafta Jalen Brunson 31 sayı attı."},
+        "B": {"ozet": "Boston, New York'u 110-108 yendi."},
+    }}
+    _say = lambda t: [g for g, m in t["maclar"].items()
+                      if dogrula_modul.MAGLUP_TARAFTA_DESENI.search(
+                          dogrula_modul._metnin_alanlari(m))]
+    basar("Kural1/T27: iki maçta birden kullanılırsa yakalanıyor", len(_say(_t27_iki)) == 2)
+    basar("Kural1/T27: tek maçta kullanım serbest", len(_say(_t27_bir)) == 1)
+
+    # ==================================================================
+    # KURAL 2 — bir `an` kaydı anılıyorsa oyuncu adı da anılmak zorunda.
+    # Gerçek üretim hatası (2025-12-18): "Maçı belirleyen basket, bitime
+    # 5.6 saniye kala geldi." — okuyucunun tek merak ettiği şeyi
+    # söylemiyor.
+    # ==================================================================
+    _mac_an = {"kazanan_kod": "CHA", "kaybeden_kod": "ATL",
+               "kazanan_adi": "Charlotte Hornets", "kaybeden_adi": "Atlanta Hawks",
+               "ev_dep": "evinde", "buyuk": 133, "kucuk": 126, "fark": 7,
+               "en_buyuk_fark_gecede_mi": False, "maglup_anilabilir_ad": None}
+    _an_adli = {"karar_ani": {"saniye_kalan": 5.6, "oyuncu": "LaMelo Ball"}}
+    _an_adsiz = {"karar_ani": {"saniye_kalan": 5.6}}
+
+    _c_adli = cumle.an(_mac_an, _an_adli)
+    basar("Kural2: adı olan karar anı cümlesi oyuncuyu anıyor",
+          _c_adli is not None and "LaMelo Ball" in _c_adli)
+    basar("Kural2: adı OLMAYAN karar anı hiç anılmıyor",
+          cumle.an(_mac_an, _an_adsiz) is None)
+    basar("Kural2: başlık kancası da adsız karar anını kullanmıyor",
+          cumle._baslik_oneki(_mac_an, _an_adsiz, None)[0] != "an")
+    basar("Kural2: başlık kancası adı VARKEN oyuncuyu anıyor",
+          "LaMelo Ball" in (cumle._baslik_oneki(_mac_an, _an_adli, None)[1] or ""))
+    basar("Kural2: brief adsız karar anı için son_saniye adayı kurmuyor",
+          cumle.brief_satiri(_mac_an, _an_adsiz, None, None)[0] != "son_saniye")
+    basar("Kural2: neden_onemli adsız karar anını kullanmıyor",
+          "son saniyede" not in (cumle.neden_onemli(_mac_an, _an_adsiz) or ""))
+
+    # T26 doğrulayıcısı — kural üretim yoluna değil, ÇIKTIYA bağlı.
+    _an_gercekleri = [{"tur": "an", "veri": {"oyuncu": "LaMelo Ball", "tur_alt": "lider_degisimi"}}]
+    basar("Kural2/T26: adsız karar anı cümlesi reddediliyor",
+          not dogrula_modul.t26_karar_ani_oyuncusuz(
+              "Maçı belirleyen basket, bitime 5.6 saniye kala geldi.", _an_gercekleri)[0])
+    basar("Kural2/T26: adlı karar anı cümlesi kabul ediliyor",
+          dogrula_modul.t26_karar_ani_oyuncusuz(
+              "Maçı belirleyen basketi, bitime 5.6 saniye kala LaMelo Ball attı.",
+              _an_gercekleri)[0])
+    basar("Kural2/T26: karar anı geçmeyen metne karışmıyor",
+          dogrula_modul.t26_karar_ani_oyuncusuz("Charlotte, Atlanta'yı 133-126 yendi.", [])[0])
+    basar("Kural2/T26: yayını ENGELLEYEN testler arasında",
+          "T26" in _yayin.ENGELLEYICI_TESTLER)
+
+    # ==================================================================
+    # KURAL 3 — asist fiili: sadece "N asist yaptı" / "N asistle oynadı".
+    # ==================================================================
+    for _yasak in ["Jokić 13 asist dağıttı.", "Jokić 13 asist verdi.",
+                   "Jokić 13 asist üretti.", "Jokić 13 asist kaydetti.",
+                   "13 asist dağıtan Jokić maçı bitirdi.",
+                   "13 asist vererek maçı bitirdi."]:
+        basar(f"Kural3: '{_yasak[:28]}...' yasaklı listeye takılıyor",
+              not dogrula_modul.t4d_kok_kaliplari(_yasak)[0])
+    for _serbest in ["Jokić 13 asist yaptı.", "Jokić 31 sayı ve 13 asistle oynadı."]:
+        basar(f"Kural3: '{_serbest[:30]}...' serbest",
+              dogrula_modul.t4d_kok_kaliplari(_serbest)[0])
+    basar("Kural3: üretici artık 'dağıttı' değil 'yaptı' kuruyor",
+          ("ast", 10, "asist", "yaptı") in cumle.PERFORMANS_ESIKLERI)
+    _asist_cumlesi = cumle.performans(
+        {"kazanan_kod": "DEN", "kaybeden_kod": "PHX", "kazanan_adi": "Denver Nuggets",
+         "kaybeden_adi": "Phoenix Suns", "ev_dep": "evinde", "buyuk": 120, "kucuk": 110,
+         "fark": 10, "en_buyuk_fark_gecede_mi": False, "maglup_anilabilir_ad": None},
+        {"oyuncu": "Nikola Jokić", "takim": "DEN", "sayi": 20, "rib": 9, "ast": 13},
+        "Nikola Jokić")
+    basar("Kural3: üretilen asist cümlesi kendi yasak kapısından geçiyor",
+          _asist_cumlesi is not None and "asist yaptı" in _asist_cumlesi)
+
+
+    # ==================================================================
+    # T14 ile Kural 1 çelişiyordu: en iyi performans KAYBEDEN taraftaysa
+    # T14 "anılmalı", yeni kural "anılmasın" diyordu — 18 Aralık'ta üç
+    # maç birden bu yüzden yayına çıkamadı. Yeni kural T14'ü ezer.
+    # ==================================================================
+    _t14_gercekler = [
+        {"tur": "skor", "veri": {"ev": "PHX", "dep": "GSW", "ev_skor": 99,
+                                 "dep_skor": 98, "kazanan": "PHX", "fark": 1}},
+        {"tur": "oyuncu_stat", "veri": {"oyuncu": "Jimmy Butler III", "takim": "GSW",
+                                        "sayi": 31, "rib": 5, "ast": 4}},
+    ]
+    _metin_ansiz = "Phoenix Suns evinde Golden State Warriors'u 99-98 yendi."
+    basar("T14: kaybeden taraftaki en iyi performans, gece izni YOKKEN T14'ü tetiklemiyor",
+          dogrula_modul.t14_en_iyi_performans_anildi(
+              _metin_ansiz, "Jimmy Butler III", _t14_gercekler, None)[0])
+    basar("T14: gece izni O OYUNCUDAysa anılmaması yine hata",
+          not dogrula_modul.t14_en_iyi_performans_anildi(
+              _metin_ansiz, "Jimmy Butler III", _t14_gercekler, "Jimmy Butler III")[0])
+    _t14_kazanan = [
+        {"tur": "skor", "veri": {"ev": "PHX", "dep": "GSW", "ev_skor": 99,
+                                 "dep_skor": 98, "kazanan": "PHX", "fark": 1}},
+        {"tur": "oyuncu_stat", "veri": {"oyuncu": "Devin Booker", "takim": "PHX",
+                                        "sayi": 31, "rib": 5, "ast": 4}},
+    ]
+    basar("T14: KAZANAN taraftaki en iyi performans hâlâ anılmak zorunda (kural sızmıyor)",
+          not dogrula_modul.t14_en_iyi_performans_anildi(
+              _metin_ansiz, "Devin Booker", _t14_kazanan, None)[0])
+
+    # Üretim ve doğrulama AYNI izni kullanmalı; ayrı hesaplanırsa T14 ile
+    # Kural 1 birbirini yer ve gece hiç yayınlanamaz.
+    _gercek_1218 = json.loads(open("gercek/2025-12-18.json").read())
+    _izin = _kalip_secici.gece_maglup_izni(_gercek_1218["maclar"])
+    basar("Kural1: gece izni tek kaynaktan geliyor ve gecede en fazla bir maça veriliyor",
+          sum(1 for v in _izin.values() if v) <= 1)
+
+    # ==================================================================
+    # Yayın kapısı gerekçeleri GÜNCEL kurallarla yeniden hesaplanmalı —
+    # üretim anında donmuş bir gerekçe, kural değişince yanlış bloke
+    # ediyordu (18 Aralık: T14 daraltıldıktan sonra bile 3 engel).
+    # ==================================================================
+    # NOT: burada bir gecenin TEMİZ olduğunu iddia etmiyoruz — o, her
+    # üretimde değişen bir VERİ, kod değişmezi değil. Test edilen şey:
+    # kapı, üretim anında donmuş gerekçeyi değil GÜNCEL kuralı uyguluyor.
+    _isaret_eski = [{"mac_id": "0022500378", "alan": "gec_satiri",
+                     "gerekce": ["T14: en iyi performans (Jimmy Butler III) hiç anılmadı"],
+                     "metin": {"gec_satiri": "Phoenix Suns evinde Golden State "
+                                             "Warriors'u 99-98 yendi.", "muzip": False}}]
+    _tazelenmis = _yayin._isaretleri_tazele("2025-12-18", _isaret_eski)
+    basar("Yayın kapısı: donmuş T14 gerekçesi güncel kuralla düşüyor",
+          not any("T14" in " ".join(i["gerekce"]) for i in _tazelenmis))
+
+    # Kapı GECE kapsamlı kuralları da görmeli — eskiden sadece maç bazlı
+    # `sablon_isaretli`e bakıyordu, gece kuralı LLM cümlelerinde sessizce
+    # geçiyordu (19 Aralık: iki maçta "Mağlup tarafta", kapı 0 engel).
+    _e19 = _yayin.yayin_engelleri("2025-12-19")
+    basar("Yayın kapısı: gece kapsamlı T27 ihlali yayını DURDURUYOR",
+          any("T27" in x.get("engelleyen", []) for x in _e19))
+    basar("Yayın kapısı: T27 engelleyici testler listesinde",
+          "T27" in _yayin.ENGELLEYICI_TESTLER)
+    # T27 artık sayı saymıyor: hakkı olmayan maçta TEK kullanım da ihlal.
+    _t27_izinsiz = dogrula_modul.t27_maglup_gece_kurali(
+        {"maclar": {"A": {"ozet": "Mağlup tarafta Tyrese Maxey 30 sayı attı."}}}, {"A": None})
+    basar("Kural1/T27: hakkı olmayan maçta TEK kullanım da ihlal",
+          not _t27_izinsiz["gecti"] and _t27_izinsiz["izinsiz"] == ["A"])
+    _t27_izinli = dogrula_modul.t27_maglup_gece_kurali(
+        {"maclar": {"A": {"ozet": "Mağlup tarafta Aaron Gordon 50 sayı attı."}}},
+        {"A": "Aaron Gordon"})
+    basar("Kural1/T27: hakkı olan maçta tek kullanım serbest", _t27_izinli["gecti"])
+    _t27_iki = dogrula_modul.t27_maglup_gece_kurali(
+        {"maclar": {"A": {"ozet": "Mağlup tarafta Aaron Gordon 50 sayı attı."},
+                    "B": {"ozet": "Mağlup tarafta Devin Booker 33 sayı attı."}}},
+        {"A": "Aaron Gordon", "B": None})
+    basar("Kural1/T27: izinli bir maç olsa bile ikinci kullanım ihlal", not _t27_iki["gecti"])
+
+    # Gece kapsamlı kural ÜRETİM PROMPTUNA da girmeli — sadece kapıda
+    # yakalanırsa maç bazlı onarım döngüsü onu hiç göremez ve gece
+    # yayınlanamaz (18 Aralık: LLM iki maçta birden yazdı).
+    _g1218 = json.loads(open("gercek/2025-12-18.json").read())
+    _h1218 = json.loads(open(_ham_yolu("2025-12-18")).read())
+    _s1218 = json.loads(open("skor/2025-12-18.json").read())
+    _plan1218 = yaz.gece_kalip_plani("2025-12-18", _g1218, _h1218, _s1218)
+    _izin1218 = _kalip_secici.gece_maglup_izni(_g1218["maclar"])
+    _izinli_gid = next((g for g, a in _izin1218.items() if a), None)
+    _izinsiz_gid = next((g for g, a in _izin1218.items() if not a), None)
+    if _izinsiz_gid:
+        _, _tal = yaz.grup_b_prompt_kur(_izinsiz_gid, _g1218["maclar"][_izinsiz_gid],
+                                        _h1218["maclar"][_izinsiz_gid], 1,
+                                        _plan1218[_izinsiz_gid], {})
+        basar("Kural1: hakkı OLMAYAN maçın promptu kaybeden oyuncuyu yasaklıyor",
+              "KULLANMA" in _tal and "KAYBEDEN TARAF" in _tal)
+    if _izinli_gid:
+        _, _tal2 = yaz.grup_b_prompt_kur(_izinli_gid, _g1218["maclar"][_izinli_gid],
+                                         _h1218["maclar"][_izinli_gid], 1,
+                                         _plan1218[_izinli_gid], {})
+        basar("Kural1: hakkı OLAN maçın promptu tek ismi açıkça veriyor",
+              _izin1218[_izinli_gid] in _tal2)
+
+    # ==================================================================
+    # "tazele" tazelemiyordu: dist'i YENİDEN DERLEMEDEN sayfaya gömüyor,
+    # taslak değiştiğinde eski metni sessizce yeniden yayınlıyordu.
+    # Değişmez: yayındaki gecenin dist metni, taslak metniyle aynı olmalı.
+    # ==================================================================
+    _yayinda = _yayin.durum_oku()["yayinlanan"][-1]
+    _dist = json.loads(open(f"dist/{_yayinda}.json").read())
+    _taslak_metni = json.dumps(
+        json.loads(open(f"taslak/{_yayinda}.json").read())["maclar"], ensure_ascii=False)
+    _dist_metinleri = []
+    for _bolum in ("mutlaka", "goz_at", "diger"):
+        for _k in _dist.get(_bolum, []) or []:
+            if _k.get("metin"):
+                _dist_metinleri.append(_k["metin"])
+    basar("Yayın: dist metni taslakla aynı (tazele gerçekten yeniden derliyor)",
+          bool(_dist_metinleri) and all(
+              _c.strip() in _taslak_metni
+              for _m in _dist_metinleri for _c in _m.split(". ") if len(_c.strip()) > 25))
+
+    # İngilizce terim: "driving layup" 20 Aralık'ta yayına kadar geldi —
+    # listede sadece dunk/assist/rebound gibi birkaç terim vardı.
+    _yasakli_liste = dogrula_modul.yasakli_yukle()
+    for _ing in ["Curry driving layup ile bitirdi.", "Bir fadeaway jumper attı.",
+                 "Maçta 12 turnover oldu.", "Son saniyede buzzer beater geldi.",
+                 "Bir alley-oop buldu.", "Üç steal yaptı."]:
+        basar(f"İngilizce terim yakalanıyor: '{_ing[:30]}...'",
+              not dogrula_modul.t4_yasakli_ifade(_ing, _yasakli_liste)[0])
+    basar("İngilizce terim: Türkçe karşılık serbest ('turnike')",
+          dogrula_modul.t4_yasakli_ifade("Curry turnikeyle bitirdi.", _yasakli_liste)[0])
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",

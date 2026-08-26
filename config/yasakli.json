@@ -51,7 +51,19 @@
     "clutch",
     "box score",
     "and-one",
-    "possession"
+    "possession",
+    "layup",
+    "lay-up",
+    "fadeaway",
+    "floater",
+    "turnover",
+    "steal",
+    "jumper",
+    "three-pointer",
+    "buzzer",
+    "tip-in",
+    "putback",
+    "alley-oop"
   ],
   "register": [
     "suretiyle",
@@ -63,27 +75,97 @@
     "—"
   ],
   "kok_kaliplari": [
-    {"aciklama": "damga vurmak (klişe)", "desen": "damga\\w*\\s+vur\\w*"},
-    {"aciklama": "çeyreği kazanmak (klişe, çekimli/aralı varyantlar)", "desen": "çeyre[a-zğüşıöç]*(\\s+\\w+){0,2}\\s+kazan\\w*"},
-    {"aciklama": "açığı kapatmak — 'farktan döndü/farkı eritti' kullanılmalı", "desen": "aç[ıi]\\w*\\s+kapat\\w*"},
-    {"aciklama": "farkı açmak — 'farkı yükseltti/çıkardı' kullanılmalı", "desen": "fark\\w*(\\s+\\w+){0,4}\\s+aç\\w*"},
-    {"aciklama": "mahkûm etmek (register — resmi yazışma dili)", "desen": "mahkûm\\s+et\\w*"},
-    {"aciklama": "gömmek (register — abartılı/gazetecilik klişesi)", "desen": "göm\\w*"},
-    {"aciklama": "geri getirmek — basketbolda yanlış kullanım, 'farktan dönmek' kullanılmalı", "desen": "geri\\s+getir\\w*"},
-    {"aciklama": "'ribaunt' yazım hatası — doğrusu 'ribaund' (d ile)", "desen": "ribaunt\\w*"},
-    {"aciklama": "uydurma kişileştirme — 'rahatlık geceye yetmedi' türü icat deyim", "desen": "rahatl[ıi]\\w*\\s+(gece\\w*|geceye)\\s+yetmedi"},
-    {"aciklama": "koç adıyla takım anma — Türk NBA yazısında kullanılmaz, çeviri gibi durur", "desen": "\\w+'(n[iuüı]n|[iuüı]n)\\s+(ekibinde|yönetiminde|takımında)"},
-    {"aciklama": "renk lakabı — NBA takımlarının renk lakabı yok (bu bir Türk ligi kalıntısı)", "desen": "\\b(siyah|beyaz|sarı|lacivert|kırmızı|mavi|yeşil|mor|turuncu)[\\w-]*l[ıi]lar\\b"},
-    {"aciklama": "'sayılı/asistli/ribaundlu oynadı' — istatistik sıfat gibi kullanılıp 'oynadı'ya bağlanmış, bozuk çekim; 'X sayı Y asistle oynadı' ya da düz 'attı/üretti' kullanılmalı", "desen": "\\w*(sayılı|asistli|ribaundlu|ribaundlı)\\s+oynadı\\w*"},
-    {"aciklama": "'N sayıyla/asistle/ribaundla oynadı' — fiil yavan, 'attığı N sayıyla öne çıktı' gibi bir kullanım tercih edilmeli", "desen": "(sayıyla|sayıyle|asistle|asistiyle|ribaundla|ribaundle|çalmayla|blokla)\\s+oynadı\\w*"},
-    {"aciklama": "'final oynadı' — bir takım maç sonunu 'final oynadı' diye anlatmaz (final = şampiyonluk maçı), 'çekişmeli bitti/son ana kadar sürdü' gibi bir ifade kullanılmalı", "desen": "final\\s+oynad\\w*"},
-    {"aciklama": "güldürmek — gazete manşeti klişesi, oyuncu-taşıma fiili kullanılmalı (sırtladı/taşıdı/sürükledi/omuzladı)", "desen": "güldür\\w*"},
-    {"aciklama": "gülümsetmek — gazete manşeti klişesi", "desen": "gülümset\\w*"},
-    {"aciklama": "sevindirmek — gazete manşeti klişesi", "desen": "sevindir\\w*"},
-    {"aciklama": "hanesine yazdırmak — gazete manşeti klişesi", "desen": "hane\\w*\\s+yazd[ıi]r\\w*"},
-    {"aciklama": "gol olmak — basketbolda 'gol' yok, futbol kalıntısı", "desen": "\\bgol\\s+ol\\w*"},
-    {"aciklama": "zafere taşımak — gazete manşeti klişesi", "desen": "zafer\\w*(\\s+\\w+){0,2}\\s+taşı\\w*"},
-    {"aciklama": "mutlu etmek — gazete manşeti klişesi", "desen": "mutlu\\s+et\\w*"},
-    {"aciklama": "kariyer hakkında yorum — sadece BU maçta olan yazılır, oyuncunun kariyeri hakkında nitelemeye izin yok", "desen": "kariyer\\w*\\s+yakış\\w*"}
+    {
+      "aciklama": "damga vurmak (klişe)",
+      "desen": "damga\\w*\\s+vur\\w*"
+    },
+    {
+      "aciklama": "çeyreği kazanmak (klişe, çekimli/aralı varyantlar)",
+      "desen": "çeyre[a-zğüşıöç]*(\\s+\\w+){0,2}\\s+kazan\\w*"
+    },
+    {
+      "aciklama": "açığı kapatmak — 'farktan döndü/farkı eritti' kullanılmalı",
+      "desen": "aç[ıi]\\w*\\s+kapat\\w*"
+    },
+    {
+      "aciklama": "farkı açmak — 'farkı yükseltti/çıkardı' kullanılmalı",
+      "desen": "fark\\w*(\\s+\\w+){0,4}\\s+aç\\w*"
+    },
+    {
+      "aciklama": "mahkûm etmek (register — resmi yazışma dili)",
+      "desen": "mahkûm\\s+et\\w*"
+    },
+    {
+      "aciklama": "gömmek (register — abartılı/gazetecilik klişesi)",
+      "desen": "göm\\w*"
+    },
+    {
+      "aciklama": "geri getirmek — basketbolda yanlış kullanım, 'farktan dönmek' kullanılmalı",
+      "desen": "geri\\s+getir\\w*"
+    },
+    {
+      "aciklama": "'ribaunt' yazım hatası — doğrusu 'ribaund' (d ile)",
+      "desen": "ribaunt\\w*"
+    },
+    {
+      "aciklama": "uydurma kişileştirme — 'rahatlık geceye yetmedi' türü icat deyim",
+      "desen": "rahatl[ıi]\\w*\\s+(gece\\w*|geceye)\\s+yetmedi"
+    },
+    {
+      "aciklama": "koç adıyla takım anma — Türk NBA yazısında kullanılmaz, çeviri gibi durur",
+      "desen": "\\w+'(n[iuüı]n|[iuüı]n)\\s+(ekibinde|yönetiminde|takımında)"
+    },
+    {
+      "aciklama": "renk lakabı — NBA takımlarının renk lakabı yok (bu bir Türk ligi kalıntısı)",
+      "desen": "\\b(siyah|beyaz|sarı|lacivert|kırmızı|mavi|yeşil|mor|turuncu)[\\w-]*l[ıi]lar\\b"
+    },
+    {
+      "aciklama": "'sayılı/asistli/ribaundlu oynadı' — istatistik sıfat gibi kullanılıp 'oynadı'ya bağlanmış, bozuk çekim; 'X sayı Y asistle oynadı' ya da düz 'attı/üretti' kullanılmalı",
+      "desen": "\\w*(sayılı|asistli|ribaundlu|ribaundlı)\\s+oynadı\\w*"
+    },
+    {
+      "aciklama": "'N sayıyla/asistle/ribaundla oynadı' — fiil yavan, 'attığı N sayıyla öne çıktı' gibi bir kullanım tercih edilmeli — NOT: 'asistle oynadı' kullanıcı tarafından açıkça serbest bırakıldı (asist fiili kuralı), bu yüzden desenin dışında.",
+      "desen": "(sayıyla|sayıyle|ribaundla|ribaundle|çalmayla|blokla)\\s+oynadı\\w*"
+    },
+    {
+      "aciklama": "'final oynadı' — bir takım maç sonunu 'final oynadı' diye anlatmaz (final = şampiyonluk maçı), 'çekişmeli bitti/son ana kadar sürdü' gibi bir ifade kullanılmalı",
+      "desen": "final\\s+oynad\\w*"
+    },
+    {
+      "aciklama": "güldürmek — gazete manşeti klişesi, oyuncu-taşıma fiili kullanılmalı (sırtladı/taşıdı/sürükledi/omuzladı)",
+      "desen": "güldür\\w*"
+    },
+    {
+      "aciklama": "gülümsetmek — gazete manşeti klişesi",
+      "desen": "gülümset\\w*"
+    },
+    {
+      "aciklama": "sevindirmek — gazete manşeti klişesi",
+      "desen": "sevindir\\w*"
+    },
+    {
+      "aciklama": "hanesine yazdırmak — gazete manşeti klişesi",
+      "desen": "hane\\w*\\s+yazd[ıi]r\\w*"
+    },
+    {
+      "aciklama": "gol olmak — basketbolda 'gol' yok, futbol kalıntısı",
+      "desen": "\\bgol\\s+ol\\w*"
+    },
+    {
+      "aciklama": "zafere taşımak — gazete manşeti klişesi",
+      "desen": "zafer\\w*(\\s+\\w+){0,2}\\s+taşı\\w*"
+    },
+    {
+      "aciklama": "mutlu etmek — gazete manşeti klişesi",
+      "desen": "mutlu\\s+et\\w*"
+    },
+    {
+      "aciklama": "kariyer hakkında yorum — sadece BU maçta olan yazılır, oyuncunun kariyeri hakkında nitelemeye izin yok",
+      "desen": "kariyer\\w*\\s+yakış\\w*"
+    },
+    {
+      "aciklama": "asist fiili — sadece 'N asist yaptı' ve 'N asistle oynadı' serbest; 'asist verdi/dağıttı/üretti/kaydetti' yasak (kullanıcı kuralı)",
+      "desen": "asist\\w*\\s+(ver|dağıt|üret|kaydet|kayded)\\w*"
+    }
   ]
 }

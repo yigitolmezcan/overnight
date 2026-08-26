@@ -1,0 +1,171 @@
+{
+  "tarih": "2025-12-20",
+  "uretildi": "2026-08-26T23:55:54.068183Z",
+  "maclar": {
+    "0022500388": {
+      "gec_satiri": "Boston Celtics deplasmanda Toronto Raptors'u 112-96 yendi. Payton Pritchard 33 sayı attı.",
+      "muzip": false
+    },
+    "0022500386": {
+      "gec_satiri": "Houston Rockets deplasmanda Denver Nuggets'i 115-101 yendi. Kevin Durant 31 sayı attı.",
+      "muzip": false
+    },
+    "0022500387": {
+      "gec_satiri": "Liderliğin 16 kez el değiştirdiği maçta Philadelphia, Dallas'ı yendi. Tyrese Maxey 38 sayı attı.",
+      "muzip": false
+    },
+    "0022500395": {
+      "gec_satiri": "LA Clippers evinde Los Angeles Lakers'i 103-88 yendi.",
+      "muzip": false
+    },
+    "0022500389": {
+      "gec_satiri": "New Orleans Pelicans evinde Indiana Pacers'i 128-109 yendi.",
+      "muzip": false
+    },
+    "0022500394": {
+      "gec_satiri": "Portland Trail Blazers deplasmanda Sacramento Kings'i 98-93 yendi.",
+      "muzip": false
+    },
+    "0022500390": {
+      "gec_satiri": "Detroit Pistons evinde Charlotte Hornets'i 112-86 ezdi. Cade Cunningham 10 asist yaptı.",
+      "muzip": false
+    },
+    "0022500392": {
+      "baslik": "14 sayılık farktan dönen Golden State Warriors, Phoenix Suns'u yendi.",
+      "ozet": "Golden State Warriors, Phoenix Suns karşısında 119-116 kazandı.",
+      "muzip": false
+    },
+    "0022500391": {
+      "baslik": "Washington, deplasmanda Memphis'i 130-122 yendi.",
+      "neden_onemli": "Wizards, 20 sayılık farktan dönerek deplasmanda maçı çevirdi.",
+      "ozet_kisa": "Kyshawn George 28 sayı, 7 ribaund ve 7 asistle öne çıkarken, CJ McCollum da 28 sayı attı. Son periyotta farkı beşe indiren Memphis'e karşı George, bitime 15 saniye kala attığı serbest atışlarla skoru güvenceye aldı.",
+      "muzip": false
+    },
+    "0022500393": {
+      "baslik": "Uzatmaya giden maçta Orlando Magic, Utah Jazz'ı 128-127 yendi.",
+      "ozet_kisa": "Desmond Bane 32 sayı attı.",
+      "muzip": false
+    }
+  },
+  "brief": [
+    {
+      "metin": "Golden State Warriors, 14 sayılık farktan dönüp Phoenix Suns'u geçti.",
+      "hedef_mac": "0022500392",
+      "muzip": false
+    },
+    {
+      "metin": "Desmond Bane, Utah Jazz karşısında 32 sayı attı.",
+      "hedef_mac": "0022500393",
+      "muzip": false
+    },
+    {
+      "metin": "Boston Celtics, Toronto Raptors'u yenerek konferansta 3. sıraya yükseldi.",
+      "hedef_mac": "0022500388",
+      "muzip": false
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 7,
+    "ilk_denemede_kabul": 1,
+    "sablon_moduna_dusen": 2,
+    "detay": [
+      {
+        "mac_id": "0022500392",
+        "deneme": 0,
+        "gerekce": [
+          "ozet/T4: ['layup']",
+          "ozet/T6: boş/çok kısa metin (52 kelime, asgari 55)",
+          "ozet/T23: [\"'topladı' — 'toplamak' SADECE ribaund fiilidir, aynı cümlede sayı/asist de bu fiile bağlanmış; sayı 'atılır', asist 'verilir'\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Golden State, sahasında Phoenix'i 14 sayılık farktan dönerek 119-116 yendi.",
+          "neden_onemli": "Liderliğin toplam 5 kez el değiştirdiği maç son saniyeye kadar sürdü.",
+          "ozet": "Phoenix ilk çeyreği rahat kapatıp Warriors karşısında erkenden öne geçti. Golden State üçüncü çeyrekte savunmasını sıkılaştırıp skoru kendi lehine çevirdi. Son periyotta taraflar sırayla öne geçerken maçı bitiren basket son saniyede Stephen Curry'den geldi, driving layup ile skoru belirledi. Curry attığı 28 sayıyla gecenin en etkili ismi oldu, ayrıca 10 ribaund topladı.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500392",
+        "deneme": 1,
+        "gerekce": [
+          "ozet/T21: [\"'Curry'nin' — 'n' tamponu sadece sesli harfle biten kelimede kullanılır, 'Curry' ünsüzle bitiyor\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Golden State Warriors, sahasında Phoenix Suns'ı 119-116 yendi.",
+          "neden_onemli": "Warriors, ligdeki 3 maçlık mağlubiyet serisini bu galibiyetle sonlandırdı.",
+          "ozet": "Phoenix ilk çeyrekte hızlı başlayarak öne geçti ve Golden State Warriors, farkı 14 sayıya kadar geriye düştü. Ancak Warriors, üçüncü çeyrekte savunmasını sıkılaştırıp oyunun kontrolünü tamamen ele aldı. Bitime son saniyeler kala Stephen Curry'nin sürüşle bulduğu basket, kritik anda farkı üçe çıkardı. Curry, double-double sınırını geçen 28 sayı ve 10 ribaund ile öne çıkarken, ayrıca 6 asist de verdi.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500392",
+        "deneme": 2,
+        "gerekce": [
+          "ozet/T4: ['layup']",
+          "ozet/T23: [\"geri dönüş sayısız anıldı ('Golden State, üçüncü çeyrekte hücumunu düzene koyarak farktan döndü ve') — kaç sayılık açığın kapatıldığı yazılmalı (fark_serisi.kazanan_en_buyuk_acigi)\", \"'topladığı' — 'toplamak' SADECE ribaund fiilidir, aynı cümlede sayı/asist de bu fiile bağlanmış; sayı 'atılır', asist 'verilir'\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Golden State, son saniyede Phoenix'i 119-116 geçti.",
+          "neden_onemli": "Warriors, 14 sayılık farktan dönerek galibiyete ulaştı.",
+          "ozet": "Phoenix, ilk çeyreği 44-32 önde tamamlayarak maçın erken temposunu belirledi. Golden State, üçüncü çeyrekte hücumunu düzene koyarak farktan döndü ve maç boyunca beş kez el değiştiren liderliği ele geçirdi. Curry, son saniyelerde attığı driving reverse layup'la farkı üçe çıkararak galibiyeti belirledi. Curry, attığı 28 sayı ve topladığı 10 ribaundla double-double yaparak gecenin en iyi performansını ortaya koydu.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500393",
+        "deneme": 0,
+        "gerekce": [
+          "ozet_kisa/T4: ['layup']",
+          "ozet_kisa/T23: [\"'topladığı' — 'toplamak' SADECE ribaund fiilidir, burada ribaunda bağlı değil\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Orlando, Bane'in son saniye basketiyle Utah'ı yendi.",
+          "neden_onemli": "Liderliğin 11 kez el değiştirdiği maçta karar son saniyeye kaldı.",
+          "ozet_kisa": "Utah, son çeyrekte topladığı avantajı korumaya çalışsa da Orlando maçın sonunda öne geçti. Desmond Bane, attığı 32 sayıyla gecenin en etkili ismi oldu ve maçı bitiren layup'ı kendisi buldu. Bitime 0.9 saniye kala bulduğu driving finger roll, skoru Orlando lehine çevirdi.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500393",
+        "deneme": 1,
+        "gerekce": [
+          "neden_onemli/T16: [\"'farktan dönerek' civarındaki geri dönüş 10 sayının altında\"]",
+          "ozet_kisa/T1: ['39']"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Orlando, Desmond Bane'in son saniye basketiyle Utah'ı 128-127 yendi.",
+          "neden_onemli": "Orlando, geride kaldığı 5 sayılık farktan dönerek galibiyeti kaptı.",
+          "ozet_kisa": "Liderliğin 11 kez el değiştirdiği maçta Bane, bitime 0.9 saniye kalırken sürüşle bulduğu basketle Orlando'yu öne geçirdi. Bane bu akşam 39 dakikada attığı 32 sayıyla maçın en etkili ismi oldu, 13/21 isabetle sahadan yüksek verim gösterdi. Utah'ın son çeyrek çıkışı yetmedi.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500393",
+        "deneme": 2,
+        "gerekce": [
+          "ozet_kisa/T1: ['39']",
+          "ozet_kisa/T4: ['layup']",
+          "ozet_kisa/T16: [\"'farktan dönerek' civarındaki geri dönüş 10 sayının altında\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Orlando, uzatmada Bane'in son saniye basketiyle Utah'ı yendi.",
+          "neden_onemli": "Liderliğin 11 kez el değiştirdiği çekişmeli bir maçtı.",
+          "ozet_kisa": "Uzatmaya giden karşılaşmada Utah, dördüncü çeyrekte 15 sayılık farkı eritip skoru eşitledi. Ancak Orlando, 5 sayılık farktan dönerek bitime 0.9 saniye kala Desmond Bane'in layup'ıyla öne geçti. Bane 39 dakikada 32 sayı, 6 ribaund ürettiği gecenin en etkili ismi oldu.",
+          "muzip": false
+        }
+      }
+    ],
+    "sablon_isaretli": [],
+    "ret_orani": 0.857,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 7,
+      "girdi_token": 17637,
+      "cikti_token": 24889,
+      "cache_yazma_token": 18696,
+      "cache_okuma_token": 61018,
+      "toplam_maliyet_usd": 0.3431,
+      "butce_asildi": false
+    }
+  }
+}
