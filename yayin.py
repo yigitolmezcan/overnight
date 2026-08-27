@@ -245,6 +245,19 @@ ENGELLEYICI_TESTLER = (
 )
 
 
+def _ham_metni(tarih):
+    """Ham veri — tam kopya varsa o, yoksa depodaki kırpılmış kopya.
+
+    `ham/` depoya girmiyor (gece başına ~19MB) ve yayın işi ayrı bir
+    koşucuda checkout'la başlıyor: orada tam ham HİÇ yok. Kırpılmış kopya
+    (cek.py üretiyor, ~250KB) doğrulamanın okuduğu blokları taşıyor, o
+    yüzden kapı canlıda da yerelde olduğu gibi çalışıyor."""
+    tam = KOK / "ham" / f"{tarih}.json"
+    if tam.exists():
+        return tam.read_text(encoding="utf-8")
+    return (KOK / "test_verisi" / "ham" / f"{tarih}.json").read_text(encoding="utf-8")
+
+
 def _isaretleri_tazele(tarih, isaretli):
     """Şablona düşmüş alanların gerekçelerini GÜNCEL kurallarla yeniden
     hesaplar. Kural değişince eski rapor yanlış karar verdiriyordu."""
@@ -254,10 +267,15 @@ def _isaretleri_tazele(tarih, isaretli):
         import dogrula as _dog
         from kalip_secici import gece_maglup_izni
         gercek_gece = json.loads((KOK / "gercek" / f"{tarih}.json").read_text(encoding="utf-8"))
-        ham = json.loads((KOK / "ham" / f"{tarih}.json").read_text(encoding="utf-8"))
+        ham = json.loads(_ham_metni(tarih))
         skor_gece = json.loads((KOK / "skor" / f"{tarih}.json").read_text(encoding="utf-8"))
-    except Exception:
-        return isaretli  # veri yoksa eski raporla devam — kapı gevşemez
+    except Exception as e:
+        # Eski raporla devam — kapı GEVŞEMEZ (donmuş gerekçe kalır, en
+        # fazla haksız yere bloke eder). Ama sessiz kalmıyor: bu satır
+        # olmadan "kural yerelde var, üretimde yok" farkı görünmezdi.
+        print(f"UYARI: {tarih} doğrulaması tazelenemedi ({e}) — "
+              f"üretim anındaki gerekçelerle devam ediliyor.")
+        return isaretli
     yasakli = _dog.yasakli_yukle()
     izin = gece_maglup_izni(gercek_gece["maclar"])
     en_iyi = {m["mac_id"]: m.get("en_iyi_performans") for m in skor_gece["maclar"]}

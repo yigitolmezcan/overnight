@@ -2087,6 +2087,30 @@ def main():
         basar(f"Bildirim: {_wf.split('/')[-1]} her issue'yu kullanıcıya atıyor",
               _n_issue > 0 and _icerik.count("--assignee") == _n_issue)
 
+    # ==================================================================
+    # CI/YEREL FARKI — gerçek arıza (2026-08-27): testler bende geçip
+    # CI'da düştü, çünkü `ham/` depoya girmiyor. Aynı sebeple yayın
+    # kapısı da canlıda doğrulamayı tazeleyemiyordu: kural yerelde
+    # geçerli, üretimde değil. Çözüm: cek.py kırpılmış bir ham kopya da
+    # yazıyor ve depoya giriyor.
+    # ==================================================================
+    _yayinda2 = _yayin.durum_oku()["yayinlanan"][-1]
+    basar("Kırpılmış ham: yayındaki gecenin kopyası depoda var",
+          _os.path.exists(f"test_verisi/ham/{_yayinda2}.json"))
+    _kirpik = _jj.loads(open(f"test_verisi/ham/{_yayinda2}.json", encoding="utf-8").read())
+    _mid = list(_kirpik["maclar"])[0]
+    basar("Kırpılmış ham: doğrulamanın okuduğu iki blok duruyor",
+          {"box_traditional", "box_summary"} <= set(_kirpik["maclar"][_mid]))
+    basar("Kırpılmış ham: oyuncu_ortalama dışarıda (dosyanın %90'ı oydu)",
+          "oyuncu_ortalama" not in _kirpik)
+    _kb = _os.path.getsize(f"test_verisi/ham/{_yayinda2}.json") / 1024
+    basar(f"Kırpılmış ham: makul boyutta ({_kb:.0f} KB, tam kopya ~19000 KB)",
+          _kb < 1500)
+    basar("Kırpılmış ham: cek.py her çekimde yazıyor (elle üretilmiyor)",
+          "kirpilmis_yaz(tarih_str, cikti)" in open("cek.py", encoding="utf-8").read())
+    basar("Yayın kapısı: tam ham yoksa kırpılmış kopyaya düşüyor",
+          "_ham_metni" in open("yayin.py", encoding="utf-8").read())
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))

@@ -167,6 +167,42 @@ def sonraki_mac_tarihleri(sezon: str, tarih_str: str) -> dict:
     return en_erken
 
 
+# Kırpılmış ham kopya — depoya GİREN tek ham veri.
+#
+# NEDEN: tam ham gece başına ~19MB, depoya giremez (.gitignore'da). Ama
+# hem testlerin hem YAYIN KAPISININ box score'a ihtiyacı var. Yayın işi
+# ayrı bir koşucuda checkout'la başlıyor; orada `ham/` hiç oluşmuyor ve
+# kapı doğrulamayı tazeleyemiyordu — kural yerelde geçerli, üretimde
+# değil. Bu gerçek bir arıza oldu (2026-08-27, CI'da testler düştü).
+#
+# Kırpılmış kopya SADECE doğrulamanın okuduğu iki bloğu taşıyor;
+# gece başına ~240KB. Bir sezon ~40MB — kabul edilebilir bedel.
+KIRPILMIS_DIZIN = Path(__file__).parent / "test_verisi" / "ham"
+KIRPILMIS_MAC_ALANLARI = ("box_traditional", "box_summary")
+
+
+# `oyuncu_ortalama` gece başına ~4.6MB (bütün ligin sezon ortalamaları)
+# ve doğrulama onu HİÇ okumuyor — dışarıda bırakılınca kırpılmış kopya
+# 5MB'dan ~250KB'a düşüyor.
+KIRPILMIS_DISLANAN = ("oyuncu_ortalama",)
+
+
+def kirpilmis_yaz(tarih_str, cikti):
+    kirpik = {k: v for k, v in cikti.items()
+              if k != "maclar" and k not in KIRPILMIS_DISLANAN}
+    kirpik["_not"] = ("Kırpılmış ham kopya — doğrulamanın ve testlerin "
+                      "okuduğu bloklar. cek.py üretiyor, elle düzenlenmez.")
+    kirpik["maclar"] = {
+        gid: {a: mac[a] for a in KIRPILMIS_MAC_ALANLARI if a in mac}
+        for gid, mac in cikti["maclar"].items()
+    }
+    KIRPILMIS_DIZIN.mkdir(parents=True, exist_ok=True)
+    hedef = KIRPILMIS_DIZIN / f"{tarih_str}.json"
+    hedef.write_text(json.dumps(kirpik, ensure_ascii=False))
+    print(f"Yazıldı: {hedef} ({hedef.stat().st_size // 1024} KB, kırpılmış)")
+    return hedef
+
+
 def cek(tarih_str: str, zorla: bool = False) -> Path:
     hedef_dosya = HAM_DIZIN / f"{tarih_str}.json"
     if hedef_dosya.exists() and not zorla:
@@ -213,6 +249,7 @@ def cek(tarih_str: str, zorla: bool = False) -> Path:
     HAM_DIZIN.mkdir(exist_ok=True)
     hedef_dosya.write_text(json.dumps(cikti, ensure_ascii=False, indent=2))
     print(f"Yazıldı: {hedef_dosya}")
+    kirpilmis_yaz(tarih_str, cikti)
     return hedef_dosya
 
 
