@@ -1004,6 +1004,11 @@ def _formda_listeler(ham, bt_by_gid, gecenin_oyunculari):
 # sıralama, oyun günlüğünden o günün maçları çıkarılarak hesaplanıyor —
 # `derece` ve `seri` için de aynı yöntem kullanılıyor (gercekler.py).
 SIRALAMA_FORM_MAC = 10
+# Sezonun ilk günlerinde sıralama anlamsız: iki maç oynamış takımlar
+# arasında "3. sıraya yükseldi" demek gürültü. Bölüm ancak sezonun
+# 5. gününden SONRA çıkıyor (kullanıcı kararı). Arşiv geceleri sezon
+# ortasından geldiği için bu eşiği zaten geçiyor.
+SIRALAMA_ASGARI_GUN = 5
 
 
 def _gunluk_satirlari(oyun_gunlugu, kadar_tarih=None):
@@ -1032,6 +1037,17 @@ def _siralama_hareketi(ham, tarih_str, gece_takimlari):
     gunluk = ham.get("puan_durumu")
     if not gunluk or not gece_takimlari:
         return []
+    # Sezonun kaçıncı OYUN GÜNÜ? Takvim günü değil, gerçekten maç
+    # oynanan gün sayısı — lig arası günler sayılmasın.
+    try:
+        rs = gunluk["resultSets"][0]
+        i = {ad: n for n, ad in enumerate(rs["headers"])}
+        oyun_gunleri = {str(r[i["GAME_DATE"]])[:10] for r in rs["rowSet"]}
+        gecilen = len({g for g in oyun_gunleri if g <= tarih_str})
+    except Exception:
+        return []
+    if gecilen <= SIRALAMA_ASGARI_GUN:
+        return []
     try:
         once_ham, _ = _gunluk_satirlari(gunluk, kadar_tarih=tarih_str)
         once = puan_durumu_hesapla(once_ham, tarih_str)
@@ -1056,8 +1072,10 @@ def _siralama_hareketi(ham, tarih_str, gece_takimlari):
             "konferans": b.get("konferans"),
             "form": _son_form(gunluk, kod),
         })
-    # Çok yükselen en üstte, çok düşen en altta.
-    satirlar.sort(key=lambda x: -x["degisim"])
+    # Çok yükselen en üstte, çok düşen en altta. Eşitlikte YENİ SIRA
+    # belirleyici (üst sıradaki önce) — yoksa aynı miktarda oynayan
+    # takımların dizilişi rastgele görünüyordu.
+    satirlar.sort(key=lambda x: (-x["degisim"], x["yeni"]))
     # Takım rengi KULLANILMIYOR (kullanıcı kararı: küçük dikdörtgenler
     # kalktı), o yüzden çakışma çözümü de çağrılmıyor — kullanılmayan
     # alan üretmiyoruz. Kural duruyor; renk geri gelirse tek satır.

@@ -2364,6 +2364,26 @@
       ]
     },
     {
+      "takim": "PHI",
+      "takim_adi": "Philadelphia 76ers",
+      "eski": 5,
+      "yeni": 4,
+      "degisim": 1,
+      "konferans": "Doğu",
+      "form": [
+        true,
+        false,
+        true,
+        true,
+        true,
+        false,
+        true,
+        false,
+        true,
+        true
+      ]
+    },
+    {
       "takim": "GSW",
       "takim_adi": "Golden State Warriors",
       "eski": 9,
@@ -2424,26 +2444,6 @@
       ]
     },
     {
-      "takim": "PHI",
-      "takim_adi": "Philadelphia 76ers",
-      "eski": 5,
-      "yeni": 4,
-      "degisim": 1,
-      "konferans": "Doğu",
-      "form": [
-        true,
-        false,
-        true,
-        true,
-        true,
-        false,
-        true,
-        false,
-        true,
-        true
-      ]
-    },
-    {
       "takim": "DEN",
       "takim_adi": "Denver Nuggets",
       "eski": 2,
@@ -2484,26 +2484,6 @@
       ]
     },
     {
-      "takim": "SAC",
-      "takim_adi": "Sacramento Kings",
-      "eski": 13,
-      "yeni": 15,
-      "degisim": -2,
-      "konferans": "Batı",
-      "form": [
-        false,
-        false,
-        false,
-        false,
-        true,
-        false,
-        false,
-        false,
-        false,
-        false
-      ]
-    },
-    {
       "takim": "TOR",
       "takim_adi": "Toronto Raptors",
       "eski": 3,
@@ -2520,6 +2500,26 @@
         false,
         true,
         true,
+        false
+      ]
+    },
+    {
+      "takim": "SAC",
+      "takim_adi": "Sacramento Kings",
+      "eski": 13,
+      "yeni": 15,
+      "degisim": -2,
+      "konferans": "Batı",
+      "form": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
         false
       ]
     }
@@ -3103,7 +3103,7 @@
       "mac": "Denver Nuggets — Houston Rockets",
       "skor": "101–115",
       "rozet": 6.39,
-      "why": "",
+      "why": "gece sırası 1",
       "metin": "Houston Rockets deplasmanda Denver Nuggets'i 115-101 yendi. Kevin Durant 31 sayı attı.",
       "box": {
         "ev": {
@@ -4182,7 +4182,7 @@
       "mac": "LA Clippers — Los Angeles Lakers",
       "skor": "103–88",
       "rozet": 5.07,
-      "why": "gece sırası 10",
+      "why": "",
       "metin": "LA Clippers evinde Los Angeles Lakers'i 103-88 yendi.",
       "box": {
         "ev": {

@@ -2574,7 +2574,7 @@ def main():
     basar("Sıralama: hareket yoksa bölüm gizleniyor",
           "document.getElementById('secSiralama').hidden=!siralama.length" in _sayfa6)
     basar("Sıralama: başlık yanında sayaç var",
-          "takım yer değiştirdi" in _sayfa6)
+          "siralamaSayac" in _sayfa6 and "${siralama.length} takım" in _sayfa6)
 
     # Gece ÖNCESİ sıralama, oyun günlüğünden O GÜN ÇIKARILARAK hesaplanıyor
     # — sıralama uç noktasında tarih filtresi yok.
@@ -2630,8 +2630,46 @@ def main():
     basar("Sıralama: galibiyet yeşil %85, mağlubiyet koyu gri",
           ".sr .f10 i.w{background:#3FB27F;opacity:.85}" in _sayfa6
           and "background:#2A3340}" in _sayfa6)
-    basar("Sıralama: sıra sütunu 44px, sağa hizalı",
-          "width:44px;\n  flex:none;text-align:right" in _sayfa6)
+    basar("Sıralama: sıra sütunu 46px, sağa hizalı",
+          "width:46px;flex:none;text-align:right" in _sayfa6)
+    # "4→3" 10 form kutucuğunun yanında galibiyet-mağlubiyet sanıldı;
+    # "4.→3." de okunaksız oldu. Eski sıra ZATEN gereksiz: soldaki ok kaç
+    # sıra oynadığını, sağdaki nerede olduğunu söylüyor.
+    basar("Sıralama: sadece YENİ sıra yazılıyor",
+          "<b>${t.yeni}.</b>" in _sayfa6 and "${t.eski}" not in _sayfa6)
+    basar("Sıralama: sayının ne olduğu satırda yazılı",
+          "<s>sıra</s>" in _sayfa6)
+    # Eşitlikte diziliş rastgele görünüyordu; yeni sıra belirleyici.
+    basar("Sıralama: eşit hareketlerde üst sıradaki önce",
+          all(_sir[i]["degisim"] != _sir[i+1]["degisim"]
+              or _sir[i]["yeni"] <= _sir[i+1]["yeni"] for i in range(len(_sir)-1)))
+    basar("Sıralama: en çok yükselen en üstte, en çok düşen en altta",
+          [t["degisim"] for t in _sir] == sorted((t["degisim"] for t in _sir), reverse=True))
+    basar("Sıralama: sayaç neyin sırası olduğunu söylüyor",
+          "konferans sırası" in _sayfa6)
+
+    # SEZON BAŞI: ilk günlerde sıralama anlamsız, bölüm çıkmıyor.
+    _gunler = sorted({str(r[_i["GAME_DATE"]])[:10]
+                      for r in _gunluk["resultSets"][0]["rowSet"]})
+    def _kesitle(gun_sayisi):
+        _kesim = _gunler[gun_sayisi - 1]
+        _rs = _gunluk["resultSets"][0]
+        return {"puan_durumu": {"resultSets": [{"headers": _rs["headers"],
+                "rowSet": [r for r in _rs["rowSet"]
+                           if str(r[_i["GAME_DATE"]])[:10] <= _kesim]}]}}, _kesim
+    _takimlar = ["BOS", "LAL", "DEN", "GSW", "MIA", "PHX"]
+    for _n in (3, 5):
+        _h, _g = _kesitle(_n)
+        basar(f"Sıralama: sezonun {_n}. oyun gününde bölüm çıkmıyor",
+              _derle._siralama_hareketi(_h, _g, _takimlar) == [])
+    _h6, _g6 = _kesitle(6)
+    basar("Sıralama: 6. oyun gününden itibaren çıkıyor",
+          len(_derle._siralama_hareketi(_h6, _g6, _takimlar)) > 0)
+    basar("Sıralama: eşik gün sayısı 5",
+          _derle.SIRALAMA_ASGARI_GUN == 5)
+    # Arşiv geceleri sezon ortasından; eşiği zaten geçiyorlar.
+    basar("Sıralama: yayındaki arşiv gecesi eşiği geçiyor",
+          len(_sir) > 0)
     # Ad KESİLMİYOR — projenin kuralı, ve şartname "tam ad" diyor.
     basar("Sıralama: takım adı kesilmiyor, sarmalanıyor",
           "overflow-wrap:break-word}" in _sayfa6.split(".sr .tn{")[1][:260]

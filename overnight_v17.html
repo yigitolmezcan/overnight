@@ -609,9 +609,20 @@ td.khot{color:var(--amber);font-weight:700}
 .sr .f10{display:flex;gap:2.5px;flex:none}
 .sr .f10 i{width:9px;height:9px;display:block;border-radius:1px;background:#2A3340}
 .sr .f10 i.w{background:#3FB27F;opacity:.85}
-.sr .pos{font-family:var(--mono);font-size:11px;color:var(--ink2);width:44px;
-  flex:none;text-align:right;white-space:nowrap}
-.sr .pos s{color:var(--faint);text-decoration:none}
+/* Sıra sütunu — SADECE YENİ SIRA.
+   Önce "4→3" yazıyordu; 10 form kutucuğunun yanında galibiyet-mağlubiyet
+   sanıldı ("10 maç var, 4-3 ne demek?"). Sonra "4.→3." denendi, o da
+   okunaksız oldu. Eski sıra zaten GEREKSİZ: soldaki ok kaç sıra
+   oynadığını söylüyor, buradaki de nerede olduğunu. İkisi birlikte tam
+   bilgiyi veriyor, tek bir sayı okunuyor.
+   "SIRA" etiketi sayının altında, çok küçük — neyin sayısı olduğu bir
+   kere söyleniyor ve satır kalabalıklaşmıyor. */
+.sr .pos{font-family:var(--mono);width:46px;flex:none;text-align:right;
+  white-space:nowrap;line-height:1.1}
+.sr .pos b{display:block;font-size:15px;font-weight:700;color:var(--ink);
+  letter-spacing:-.02em}
+.sr .pos s{display:block;font-size:8px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--faint);text-decoration:none;margin-top:2px}
 @media(max-width:400px){
   /* 375px'te dört sütun + 10 kutucuk dar kalıyor; takım adı esnek
      olduğu için ilk o daralıyor, kutucuklar sabit kalıyor. */
@@ -1446,7 +1457,7 @@ function render(d){
   document.getElementById('secSiralama').hidden=!siralama.length;
   if(siralama.length){
     document.getElementById('siralamaSayac').textContent=
-      `${siralama.length} takım yer değiştirdi`;
+      `${siralama.length} takım · konferans sırası`;
     document.getElementById('siralamaListe').innerHTML=siralama.map(t=>{
       const yukari=t.degisim>0;
       const kare=w=>`<i class="${w?'w':''}"></i>`;
@@ -1454,7 +1465,7 @@ function render(d){
         <span class="ar ${yukari?'u':'d'}">${yukari?'▲':'▼'}${Math.abs(t.degisim)}</span>
         <span class="tn">${esc(t.takim_adi)}</span>
         <span class="f10">${t.form.map(kare).join('')}</span>
-        <span class="pos">${t.eski}<s>→</s>${t.yeni}</span>
+        <span class="pos"><b>${t.yeni}.</b><s>sıra</s></span>
       </div>`;
     }).join('');
   }
