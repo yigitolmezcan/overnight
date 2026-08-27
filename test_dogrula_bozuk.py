@@ -1639,8 +1639,13 @@ def main():
           "tail -n 40 /tmp/adim.log" in _u and "--body-file /tmp/issue.md" in _u)
     basar("Bildirim: yayın işi de aynısını yapıyor",
           "tail -n 40 /tmp/adim.log" in _y and "--body-file /tmp/issue.md" in _y)
+    # Üretim adımı artık üç kez deniyor; her deneme kayda EKLENİYOR
+    # (tee -a), üzerine yazmıyor — bildirimde üç denemenin de hatası
+    # görünsün diye. Testler adımı hâlâ düz `tee` kullanıyor.
     basar("Bildirim: adım çıktısı dosyaya yakalanıyor",
-          _u.count("tee /tmp/adim.log") == 2 and "set -o pipefail" in _u)
+          _u.count("/tmp/adim.log") >= 2 and "set -o pipefail" in _u)
+    basar("Bildirim: yeniden denemeler kaydın üstüne yazmıyor",
+          "tee -a /tmp/adim.log" in _u)
 
     basar("Zamanlayıcı: hata bildirimi düşen adımı adıyla söylüyor",
           "steps.testler.outcome" in _u and "steps.uretim.outcome" in _u
