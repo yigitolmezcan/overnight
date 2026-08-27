@@ -2061,6 +2061,13 @@ def main():
           all(c["path"].startswith("/api/nobetci") for c in _cronlar))
     basar("Nöbetçi: anahtarsız istek reddediliyor",
           "NOBETCI_ANAHTARI" in _nb and "yetkisiz" in _nb)
+    # Kullanıcıya bırakılan kurulum işi asgaride: zorunlu tek değişken
+    # GH_JETON. Anahtar tanımlı değilse dışarıdan çağrı hiç kabul
+    # edilmiyor — boş anahtarla boş isteğin eşleşmesi bir kapı olurdu.
+    basar("Nöbetçi: zorunlu tek ayar GH_JETON",
+          '  if (!GH_JETON) eksik.push("GH_JETON");\n  return eksik;' in _nb)
+    basar("Nöbetçi: anahtar tanımsızken dışarıdan çağrı yine reddediliyor",
+          "Boolean(ANAHTAR) && verilen === ANAHTAR" in _nb)
     basar("Nöbetçi: ayarları eksikse SESSİZ KALMIYOR (kendi arızasını gizlemiyor)",
           "ayarlar eksik" in _nb)
     # E-posta kurulu DEĞİLKEN de haber verebilmeli: issue açıp kullanıcıyı

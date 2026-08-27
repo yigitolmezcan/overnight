@@ -25,14 +25,21 @@ const ANAHTAR = process.env.NOBETCI_ANAHTARI || "";
 const UYARI_ADRESI = process.env.UYARI_ADRESI || "";
 const BAYATLIK_ESIGI_GUN = Number(process.env.BAYATLIK_ESIGI_GUN || 2);
 
-// ZORUNLU olan sadece ikisi. Resend BİLEREK opsiyonel: e-posta kurulu
-// değilse nöbetçi susmuyor, GitHub'da issue açıp kullanıcıyı ATIYOR —
-// atama GitHub'ın kendi bildirimini tetikliyor, hiçbir dış servise
-// ihtiyaç kalmıyor. "Uyarı yolu kurulmamış" bir sessizlik sebebi olamaz.
+// ZORUNLU tek ayar: GH_JETON. Kullanıcıya bırakılan kurulum işi ne
+// kadar azsa o kadar iyi — her ek değişken bir kurulum adımı, her
+// kurulum adımı bir arıza ihtimali.
+//
+// NOBETCI_ANAHTARI opsiyonel: Vercel kendi cron isteğine `x-vercel-cron`
+// başlığını koyuyor, asıl yol o. Anahtar SADECE dışarıdan elle çağırmak
+// için (doğrulama, hata ayıklama). Anahtar tanımlı değilse dışarıdan
+// çağrı KABUL EDİLMİYOR — güvenli varsayılan.
+//
+// Resend de opsiyonel: e-posta kurulu değilse nöbetçi susmuyor, GitHub'da
+// issue açıp kullanıcıyı ATIYOR — atama GitHub'ın kendi bildirimini
+// tetikliyor. "Uyarı yolu kurulmamış" bir sessizlik sebebi olamaz.
 function eksikAyarlar() {
   const eksik = [];
   if (!GH_JETON) eksik.push("GH_JETON");
-  if (!ANAHTAR) eksik.push("NOBETCI_ANAHTARI");
   return eksik;
 }
 
@@ -119,7 +126,10 @@ export default async function handler(istek, yanit) {
   // ?anahtar= da kabul ediliyor.
   const cronMu = Boolean(istek.headers["x-vercel-cron"]);
   const verilen = istek.query?.anahtar || (istek.headers.authorization || "").replace(/^Bearer\s+/i, "");
-  if (!cronMu && verilen !== ANAHTAR) {
+  // Anahtar tanımlı DEĞİLSE dışarıdan çağrı hiç kabul edilmiyor; boş
+  // anahtarla boş isteğin eşleşmesi bir kapı olurdu.
+  const anahtarGecerli = Boolean(ANAHTAR) && verilen === ANAHTAR;
+  if (!cronMu && !anahtarGecerli) {
     return yanit.status(401).json({ hata: "yetkisiz" });
   }
 

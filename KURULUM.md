@@ -101,10 +101,14 @@ eşiği aşmışsa haber verir.
 
 Vercel → Settings → Environment Variables:
 
-| değişken | değer |
-|---|---|
-| `GH_JETON` | GitHub'da yeni bir token (aşağıda) |
-| `NOBETCI_ANAHTARI` | rastgele uzun bir metin, kendin uydur |
+| değişken | zorunlu mu | değer |
+|---|---|---|
+| `GH_JETON` | **evet** | GitHub'da yeni bir token (aşağıda) |
+| `NOBETCI_ANAHTARI` | hayır | sadece dışarıdan elle çağırmak için |
+
+Vercel kendi cron isteğine `x-vercel-cron` başlığını koyuyor; nöbetçi asıl
+o başlığa bakıyor. Anahtar sadece "dışarıdan elle tetikleyip doğrulamak"
+içindir. Tanımlı değilse dışarıdan çağrı hiç kabul edilmez.
 
 Vercel ÜCRETSİZ planda **en fazla 2 cron** olabiliyor ve saatler dakika
 hassasiyetinde değil (06:00 cron'u 06:00–07:00 arasında bir yerde ateşler).
