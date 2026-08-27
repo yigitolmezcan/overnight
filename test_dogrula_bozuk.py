@@ -2020,6 +2020,46 @@ def main():
         _os.remove("taslak/_ci_kapi_testi.json")
         _os.remove("gercek/_ci_kapi_testi.json")
 
+    # ==================================================================
+    # ARIZA BİLDİRİMİ — gerçek arıza (2026-08-27): iki gün üretim yok ve
+    # kullanıcıya hiçbir e-posta gitmedi. Sebep mimari: bildirim, izlediği
+    # sistemin İÇİNDEydi. İş koşmayınca bildirimi yazan adım da koşmuyor.
+    # ==================================================================
+    import subprocess as _sp
+    _ort = {k: v for k, v in _os.environ.items()
+            if k not in ("RESEND_API_KEY", "UYARI_ADRESI")}
+    _r = _sp.run(["python3", "uyari.py", "konu", "satır"],
+                 capture_output=True, text=True, env=_ort)
+    basar("Uyarı: ayar yokken sessiz ve BAŞARILI çıkıyor (işi düşürmüyor)",
+          _r.returncode == 0)
+    import uyari as _uyari
+    basar("Uyarı: gövde HTML kaçışı yapılıyor",
+          "&lt;script&gt;" in _uyari.govde_html(["<script>x</script>"]))
+
+    # İş akışlarının ikisi de arıza e-postası adımını taşımalı.
+    for _wf in (".github/workflows/uret.yml", ".github/workflows/yayinla.yml"):
+        _icerik = open(_wf, encoding="utf-8").read()
+        basar(f"Uyarı: {_wf.split('/')[-1]} arıza e-postası adımı içeriyor",
+              "Arıza e-postası" in _icerik and "uyari.py" in _icerik)
+        basar(f"Uyarı: {_wf.split('/')[-1]} koşu kaydını her durumda bırakıyor",
+              "kosu_kaydi.py" in _icerik and "if: always()" in _icerik)
+
+    # DIŞ NÖBETÇİ — GitHub hiç koşmasa bile haber verecek tek katman.
+    _vercel = _jj.loads(open("vercel.json", encoding="utf-8").read())
+    _cronlar = _vercel.get("crons", [])
+    basar("Nöbetçi: vercel.json üç cron tanımlıyor (üret · yayınla · nöbet)",
+          len(_cronlar) == 3)
+    _gorevler = {c["path"].split("gorev=")[-1] for c in _cronlar}
+    basar("Nöbetçi: üretimi ve yayını GitHub'ın DIŞINDAN tetikliyor",
+          {"uret", "yayinla", "nobet"} == _gorevler)
+    basar("Nöbetçi: bütün cron'lar nöbetçi uç noktasına gidiyor",
+          all(c["path"].startswith("/api/nobetci") for c in _cronlar))
+    _nb = open("api/nobetci.js", encoding="utf-8").read()
+    basar("Nöbetçi: anahtarsız istek reddediliyor",
+          "NOBETCI_ANAHTARI" in _nb and "yetkisiz" in _nb)
+    basar("Nöbetçi: ayarları eksikse SESSİZ KALMIYOR (kendi arızasını gizlemiyor)",
+          "ayarlar eksik" in _nb)
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))

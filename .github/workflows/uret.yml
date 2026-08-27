@@ -106,6 +106,21 @@ jobs:
             git push || echo "koşu kaydı push edilemedi (yarışma) — kayıt yine de üretildi"
           fi
 
+      # Kullanıcı kuralı: "Başarısızsa bana e-posta gelsin." Issue kalıyor
+      # (izlenebilirlik), üstüne mail ekleniyor — kimse Issues sekmesine
+      # bakmıyor. Bu adım işin sonucunu DEĞİŞTİRMİYOR: uyari.py mail
+      # atamasa bile 0 dönüyor.
+      - name: Arıza e-postası
+        if: failure()
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          UYARI_ADRESI: ${{ secrets.UYARI_ADRESI }}
+          GONDEREN_ADRES: ${{ vars.GONDEREN_ADRES }}
+        run: |
+          python3 uyari.py "OVERNIGHT · üretim işi başarısız ($(date -u +%Y-%m-%d))" \
+            "üretim işi düştü." \
+            "Son satırlar: $(tail -n 6 /tmp/adim.log 2>/dev/null | tr '\n' ' ' | cut -c1-400)" \
+            "Tam kayıt: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
       - name: Hata bildirimi
         if: failure()
         env:
