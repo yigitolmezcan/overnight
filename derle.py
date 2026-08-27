@@ -219,7 +219,34 @@ def _wtf_istatistigi_bul(ev_taraf, dep_taraf):
     return max(adaylar, key=lambda x: x[0])[1]
 
 
-def _box_score(ham_mac, metin="", kaybeden_kod=None):
+def _ceyrek_serisi(gercekler, ev_kod):
+    """([ev çeyrekleri], [deplasman çeyrekleri]) — periyot sırasına göre.
+
+    Uzatma varsa listeye sadece oynanan uzatmalar ekleniyor (U1, U2 ...);
+    başlıkları arayüz üretiyor. Veri yoksa iki boş liste döner ve şerit
+    hiç çizilmez — uydurulmuş çeyrek yayına çıkmaz."""
+    if not gercekler:
+        return [], []
+    kayitlar = sorted(
+        (f["veri"] for f in gercekler if f["tur"] == "ceyrek"),
+        key=lambda v: v["periyot"],
+    )
+    if not kayitlar:
+        return [], []
+    ev, dep = [], []
+    for v in kayitlar:
+        # `ev`/`dep` alanları kaydın kendi içinde; ev_kod ile eşleşmezse
+        # taraflar ters bağlanmış olur, o yüzden kayda göre yerleştiriyoruz.
+        if v.get("ev") == ev_kod:
+            ev.append(v["ev_ceyrek_sayisi"])
+            dep.append(v["dep_ceyrek_sayisi"])
+        else:
+            ev.append(v["dep_ceyrek_sayisi"])
+            dep.append(v["ev_ceyrek_sayisi"])
+    return ev, dep
+
+
+def _box_score(ham_mac, metin="", kaybeden_kod=None, gercekler=None):
     bt = ham_mac["box_traditional"]["boxScoreTraditional"]
     ev, dep = bt["homeTeam"], bt["awayTeam"]
     metin_katlanmis = _katla(metin or "")
@@ -256,10 +283,21 @@ def _box_score(ham_mac, metin="", kaybeden_kod=None):
                 "fg": f"{toplam['fieldGoalsMade']}/{toplam['fieldGoalsAttempted']}",
                 "3p": f"{toplam['threePointersMade']}/{toplam['threePointersAttempted']}",
                 "ft": f"{toplam['freeThrowsMade']}/{toplam['freeThrowsAttempted']}",
+                # Ribaund ÜÇE ayrıldı (kullanıcı kararı): hücum ribaundu
+                # iradeyi, savunma ribaundu rakibin isabetsizliğini
+                # gösteriyor. Toplam da kalıyor — okuyucu toplamayla
+                # uğraşmasın.
+                "oreb": toplam["reboundsOffensive"],
+                "dreb": toplam["reboundsDefensive"],
             },
         }
 
     ev_taraf, dep_taraf = taraf(ev), taraf(dep)
+    # Çeyrek şeridi (kullanıcı kararı): skor bloğunun ALTINDA kendi
+    # şeridinde. Kaynak `gercek`teki `ceyrek` kayıtları — ham verideki
+    # LineScore alanları bu veri setinde boş geliyor.
+    # TOPLAM SÜTUNU YOK: büyük skor zaten yukarıda.
+    ev_taraf["ceyrek"], dep_taraf["ceyrek"] = _ceyrek_serisi(gercekler, ev_taraf["kod"])
 
     # Kullanıcı kuralı (son tur): işaret SADECE her sekmenin İLK
     # satırında. Ember çizgi kazanan takımın ilk satırında, mavi çizgi
@@ -653,7 +691,7 @@ def derle(tarih_str):
             "baslik": mv.get("baslik", ""),
             "neden_onemli": mv.get("neden_onemli", ""),
             "ozet": ozet_metni,
-            "box": _box_score(ham["maclar"][gid], tum_metin, kaybeden_kod),
+            "box": _box_score(ham["maclar"][gid], tum_metin, kaybeden_kod, gercek_gece["maclar"][gid]),
         })
 
     # ---- gecenin beşi ----
@@ -685,7 +723,7 @@ def derle(tarih_str):
             "rozet": skor_bilgi["rozet"],
             "why": _why_metni(plan.get(gid, {})),
             "metin": v.get("gec_satiri", ""),
-            "box": _box_score(ham["maclar"][gid], v.get("gec_satiri", ""), kaybeden_kod),
+            "box": _box_score(ham["maclar"][gid], v.get("gec_satiri", ""), kaybeden_kod, gercek_gece["maclar"][gid]),
         }
         if skor_bilgi["katman"] in ("mutlaka", "ikinci"):
             degerse_bak.append(girdi)

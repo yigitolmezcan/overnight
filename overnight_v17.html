@@ -288,8 +288,11 @@ body.n-worst .calm{border-left-color:var(--amber)}
   .sheet{height:calc(100vh - var(--serit));
          height:calc(100dvh - var(--serit));
          max-height:none}
-  .sheet table.kbs{height:100%}
-  .sheet .kbs td{padding-top:3px;padding-bottom:3px}
+  /* table{height:100%} KALDIRILDI: tabloyu germek, satır yüksekliğini
+     O PANONUN satır sayısına bağlıyordu — 12 kişilik kadrodan 15 kişiliğe
+     geçince satırlar daralıyor ve göz zıplıyordu. Artık dolgu EN UZUN
+     kadroya göre bir kez hesaplanıp her panoya aynı veriliyor; kısa
+     kadroda altta boşluk kalması kabul (kullanıcı kararı). */
   .kteams{margin-top:14px}
   .kt{padding-top:15px;padding-bottom:15px}
 }
@@ -318,6 +321,43 @@ body.n-worst .calm{border-left-color:var(--amber)}
 .kt.lose{background:linear-gradient(90deg,color-mix(in srgb,var(--tc) 7%,transparent),transparent 78%)}
 .kt.lose .ktn,.kt.lose .kts{color:var(--faint);font-weight:400}
 .kt.win .ktn,.kt.win .kts{color:var(--ink);font-weight:500}
+/* Çeyrek şeridi (kullanıcı kararı): skor bloğunun ALTINDA, sekmelerin
+   ÜSTÜNDE kendi şeridinde. Satır içine denendi, 375px'te takım adının
+   yanına sığmıyor — o yüzden kendi satırına alındı, geri konmayacak.
+   TOPLAM SÜTUNU YOK: büyük skor zaten yukarıda, tekrar olmasın.
+   Uzatma olursa sadece bir sütun daha ekleniyor (U1, U2). */
+.qbar{flex:none;border-bottom:1px solid #1A2230;padding:9px 16px 10px}
+.qrow{display:flex;align-items:center}
+.qrow .lb{width:48px;flex:none;font-family:var(--mono);font-size:10px;
+  letter-spacing:.08em;color:var(--faint)}
+/* min-width:0 — hücreler kalan alanı EŞİT paylaşsın; olmazsa mono
+   rakamların doğal genişliği sarmalanmaya yol açıyor. */
+.qrow .cells{flex:1;display:flex;min-width:0}
+.qrow .cells u{flex:1;min-width:0;text-align:center;text-decoration:none;
+  font-family:var(--mono);font-size:13px;color:var(--ink2)}
+.qrow.head .cells u{font-size:8.5px;letter-spacing:.1em;color:#39424F}
+.qrow.head .lb{color:transparent}
+.qrow.los .cells u{color:var(--faint)}
+
+/* Üçüncü sekme "TAKIM" — takıma ait olmadığı RENKTEN belli olsun diye
+   ember, yazısı bir tık küçük (kullanıcı kararı). */
+.ktabs button.mid{color:var(--ember);font-size:10.5px;letter-spacing:.14em}
+.ktabs button.mid.on{color:var(--ember)}
+
+/* İki takımın istatistikleri karşılıklı. Vurgu SATIR SATIR hesaplanıyor:
+   maçı kazanan takım her kategoriyi kazanmıyor. */
+.cmp{padding:13px 16px 14px}
+.cmp .h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:11px}
+.cmp .h b{font-family:var(--mono);font-size:9px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--faint);font-weight:400}
+.cmp .h span{font-family:var(--mono);font-size:10.5px;color:var(--ink2)}
+.cr{display:flex;align-items:center;gap:10px;padding:var(--crpad,6px) 0}
+.cr .v{font-family:var(--mono);font-size:15px;width:56px;flex:none;color:var(--faint)}
+.cr .v.l{text-align:left}
+.cr .v.r{text-align:right}
+.cr .v.win{color:var(--ink);font-weight:700}
+.cr .lb{flex:1;min-width:0;text-align:center;font-family:var(--mono);font-size:9px;
+  letter-spacing:.11em;text-transform:uppercase;color:#4B5666}
 .ktabs{flex:none;display:flex;gap:1px;background:#1A2230;border-bottom:1px solid #1A2230}
 .ktabs button{flex:1;position:relative;background:#0E131B;border:0;cursor:pointer;
   padding:9px 6px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--faint)}
@@ -326,7 +366,14 @@ body.n-worst .calm{border-left-color:var(--amber)}
 .ktabs button.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--tc)}
 .ktabs .dot{position:absolute;top:10px;right:calc(50% - 26px);width:5px;height:5px;border-radius:50%;background:#5B8DEF}
 .ktabs button.on .dot{display:none}
-.kbody{flex:1;overflow-y:auto;overscroll-behavior:contain}
+/* Kalan dikey alan SATIRLARA dağıtılıyor (kullanıcı kararı): eskiden
+   kartın altında büyük bir boşluk kalırken tablo satırları sıkışıktı.
+   Yazı boyutu DEĞİŞMİYOR, sadece dolgu artıyor — dolgu JS'te ölçülüp
+   `--kbspad` olarak veriliyor (bkz. satirAraliginiAyarla).
+   Flex sütun: panolar kalan alanı alsın, kfoot altta kalsın. */
+.kbody{flex:1;overflow-y:auto;overscroll-behavior:contain;display:flex;flex-direction:column}
+.kbody>.kpanes{flex:1 1 auto}
+.kbody>.kfoot{flex:none}
 /* Kullanıcı kararı: sekme değiştirince kart ZIPLAMASIN. İki kadro aynı
    ızgara gözüne yerleşiyor, böylece alanın yüksekliği UZUN kadroya göre
    sabitleniyor; kısa kadroda altta boşluk kalıyor. Gizli pane
@@ -347,7 +394,7 @@ body.n-worst .calm{border-left-color:var(--amber)}
 table.kbs{border-collapse:collapse;font-family:var(--mono);font-size:13.5px;min-width:100%}
 table.kbs th{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);
   font-weight:400;padding:3px 6px;line-height:1.2;text-align:right;border-bottom:1px solid #1A2230;white-space:nowrap}
-table.kbs td{padding:1px 6px;line-height:1.2;text-align:right;color:var(--ink2);border-bottom:1px solid #141A24;white-space:nowrap}
+table.kbs td{padding:var(--kbspad,1px) 6px;line-height:1.2;text-align:right;color:var(--ink2);border-bottom:1px solid #141A24;white-space:nowrap}
 /* Oyuncu sütunu SABİT — istatistikler yana kayar (kullanıcı kararı). */
 /* Kullanıcı kararı: ad ASLA kesilmez — üç nokta kabul edilmiyor.
    max-width ve ellipsis kaldırıldı, sütun en uzun ada göre genişliyor;
@@ -417,6 +464,15 @@ td.khot{color:var(--amber);font-weight:700}
 .besirow em{font-family:var(--mono);font-style:normal;font-size:11px;color:var(--c);letter-spacing:.08em}
 .besiac{display:flex;align-items:center;justify-content:center;gap:7px;padding:13px 15px;
   font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--c);background:#0C121C}
+/* Beş oyuncu bloğu kalan alanı PAYLAŞIYOR (kullanıcı kararı) — kartın
+   altında boşluk kalmasın, her blok ferahlasın. Yazı boyutu değişmiyor;
+   bloklar eşit büyüyor ve içerik dikeyde ortalanıyor. */
+.besikart .kbody{display:flex;flex-direction:column}
+/* flex-basis AUTO — 0 DEĞİL. 0 iken masaüstünde kart yüksekliği
+   kesin olmadığı için (height:auto + max-height) bloklar 19px'e
+   çöküyordu; ölçüldü. auto ile blok doğal yüksekliğinin altına
+   inmiyor, sadece artan alanı paylaşıyor. */
+.besikart .kbody>.bp{flex:1 1 auto;display:flex;flex-direction:column;justify-content:center}
 .bp{padding:9px 16px;border-bottom:1px solid #141A24;border-left:3px solid transparent}
 .bp:last-of-type{border-bottom:0}
 /* Satır 1 — ad solda, mevki+takım sağda */
@@ -698,8 +754,79 @@ function esc(s){
 const sheet=document.getElementById('sheet'), scrim=document.getElementById('scrim');
 let MAC_BY_ID={}, BESI=[], TARIH_ETIKET='';
 
+/* Kalan dikey alanı SATIRLARA dağıtır (kullanıcı kararı: altta boşluk
+   kalmasın, satırlar sıkışık durmasın). Yazı boyutuna DOKUNMAZ.
+
+   Dolgu EN UZUN kadroya göre bir kez hesaplanıp bütün panolara aynı
+   veriliyor. CSS'teki `table{height:100%}` yöntemi bunu yapamıyordu:
+   tabloyu germek satır yüksekliğini O PANONUN satır sayısına bağlıyor,
+   12 kişilik kadrodan 15 kişiliğe geçince satırlar daralıyor ve göz
+   zıplıyordu. Kısa kadroda altta boşluk kalması kabul. */
+// CR_PAD_MIN=6 fazla yüksekti: WTF bloğu olan kartlarda döngü orada
+// takılıp 14px taşmayı çözemiyordu (ölçüldü, LAC-LAL kartı). 2'ye
+// indirildi — daralma buraya kadar inebilsin, taşma her koşulda kapansın.
+// KBS_PAD_MAX 9 iken masaüstünde 10 satırlık kartta 134px boşluk
+// kalıyordu (ölçüldü); tavan 14'e çıkarıldı.
+const KBS_PAD_MIN=1, KBS_PAD_MAX=14, CR_PAD_MIN=2, CR_PAD_MAX=16;
+function satirAraliginiAyarla(){
+  const govde=sheet.querySelector('.kbody');
+  const tablolar=[...sheet.querySelectorAll('.kpane table.kbs')];
+  if(!govde) return;
+  const cmp=sheet.querySelector('.cmp');
+  if(!tablolar.length&&!cmp) return;
+
+  // HESAP YOK, SADECE ÖLÇÜM. Önce kalan alanı hesaplamayı denedim:
+  // panoların doğal yüksekliğini çocuklarının kutularını toplayarak
+  // buluyordum ve KENAR BOŞLUKLARI toplama girmiyordu — hesap 466.8
+  // derken gerçek yükseklik 485.8'di ve 14px dikey taşma çıkıyordu.
+  // Dikey kaydırma yasak olduğu için tahmin edilebilir bir yöntem
+  // gerekiyor: en GENİŞ dolgudan başla, sığana kadar daralt. Taşma
+  // testi (scrollHeight>clientHeight) tarayıcının kendi ölçümü, benim
+  // toplamam değil.
+  const tasti=()=>govde.scrollHeight>govde.clientHeight;
+
+  // 1) KUTU SKOR: takım panosu en dar hâline çekilip yoldan çekiliyor,
+  //    sonra tablo dolgusu sığana kadar daraltılıyor. Tek geçişte
+  //    "önce takımı daralt" denenmişti; takım panosu zaten kısayken de
+  //    daralıyor ve hiçbir işe yaramadan TAKIM sekmesinde boşluk
+  //    bırakıyordu (ölçüldü, ekran görüntüsüyle doğrulandı).
+  sheet.style.setProperty('--crpad',CR_PAD_MIN+'px');
+  let pad=KBS_PAD_MAX;
+  sheet.style.setProperty('--kbspad',pad+'px');
+  let guvenlik=0;
+  while(tasti() && pad>KBS_PAD_MIN && guvenlik++<60){
+    pad-=1; sheet.style.setProperty('--kbspad',pad+'px');
+  }
+
+  // 2) TAKIM PANOSU: kalan yeri o da kullansın — sığdığı sürece aç.
+  let crpad=CR_PAD_MIN;
+  while(crpad<CR_PAD_MAX && guvenlik++<120){
+    sheet.style.setProperty('--crpad',(crpad+1)+'px');
+    if(tasti()){ sheet.style.setProperty('--crpad',crpad+'px'); break; }
+    crpad+=1;
+  }
+}
+
+/* SENKRON çağrı — bilerek. Kartın yüksekliği CSS'ten geliyor
+   (mobilde 100dvh eksi şerit, masaüstünde max-height), açılış
+   animasyonuna bağlı DEĞİL; innerHTML yazıldıktan hemen sonra ölçüm
+   geçerli. Fonksiyonun içindeki getBoundingClientRect zaten yerleşimi
+   zorluyor.
+
+   Önce ResizeObserver ve rAF denendi, ölçüldü: İKİSİ DE ateşlenmedi
+   (arka plan sekmesinde tarayıcı ikisini de donduruyor) ve dolgu hiç
+   hesaplanmadı. Doğrulayamadığım bir mekanizma gönderilmedi.
+   Ekran döndüğünde/boyut değiştiğinde yeniden hesaplanıyor. */
+function satirAraligiBagla(){
+  satirAraliginiAyarla();
+  removeEventListener('resize',satirAraliginiAyarla);
+  addEventListener('resize',satirAraliginiAyarla);
+}
+
 function kartAc(html){
   sheet.innerHTML=html;
+  sheet.classList.toggle('besikart',html.indexOf('class="bp"')!==-1);
+  sheet.style.removeProperty('--kbspad');
   sheet.classList.add('on'); scrim.classList.add('on');
   document.body.style.overflow='hidden';
   if(!history.state||!history.state.kart) history.pushState({kart:1},'');
@@ -714,8 +841,10 @@ function kartAc(html){
     const m=MAC_BY_ID[a.dataset.mac]; if(m){ kartAc(boxKartiHTML(m)); }
   }));
   surukleBagla();
+  satirAraligiBagla();
 }
 function kartKapat(){
+  removeEventListener('resize',satirAraliginiAyarla);
   sheet.classList.remove('on'); scrim.classList.remove('on');
   document.body.style.overflow=''; sheet.style.transform='';
   if(history.state&&history.state.kart) history.back();
@@ -771,22 +900,89 @@ function boxTablosu(t){
     ${dnp.length?`<p class="kdnp">Oynamayanlar · ${esc(dnp.join(', '))}</p>`:''}`;
 }
 
+// Çeyrek başlıkları: 4 çeyrek sabit, üstü uzatma (U1, U2 ...).
+function ceyrekBasliklari(n){
+  return Array.from({length:n},(_,i)=>i<4?`${i+1}Ç`:`U${i-3}`);
+}
+
+// Çeyrek şeridi. Veri yoksa HİÇ ÇİZİLMEZ — uydurulmuş çeyrek yayına
+// çıkmaz. Toplam sütunu yok (kullanıcı kararı): skor zaten yukarıda.
+function ceyrekSeridi(ust,alt){
+  const a=ust.ceyrek||[], b=alt.ceyrek||[];
+  if(!a.length||a.length!==b.length) return '';
+  const hucre=(dizi)=>dizi.map(v=>`<u>${esc(String(v))}</u>`).join('');
+  const satir=(t,dizi,los)=>`<div class="qrow${los?' los':''}">
+      <span class="lb">${esc(t.kod)}</span><span class="cells">${hucre(dizi)}</span></div>`;
+  return `<div class="qbar">
+      <div class="qrow head"><span class="lb">.</span>
+        <span class="cells">${hucre(ceyrekBasliklari(a.length))}</span></div>
+      ${satir(ust,a,false)}${satir(alt,b,true)}
+    </div>`;
+}
+
+// Takım istatistikleri — iki takım karşılıklı.
+// Sıra kullanıcı tarafından belirlendi; ribaund üçe ayrıldı.
+// Top kaybında AZ olan kazanır (tersine karşılaştırma).
+const TAKIM_SATIRLARI=[
+  ['fg','Saha içi'],['3p','Üçlük'],['ft','Serbest atış'],
+  ['oreb','Hücum ribaundu'],['dreb','Savunma ribaundu'],['reb','Toplam ribaund'],
+  ['ast','Asist'],['to','Top kaybı',true],['stl','Top çalma'],['blk','Blok'],
+];
+
+// "18/42" gibi kesirli değerlerde karşılaştırma İSABET SAYISINA göre.
+// Yüzdeye göre yapılsaydı 1/1 atan takım 18/42 atanı yenerdi.
+function karsilastirmaDegeri(ham){
+  const s=String(ham??'');
+  const m=s.match(/^(\d+)\s*\/\s*(\d+)$/);
+  return m ? Number(m[1]) : Number(s);
+}
+
+function takimPanosu(ust,alt){
+  const satir=([alan,etiket,tersMi])=>{
+    const sv=ust.toplam[alan], av=alt.toplam[alan];
+    if(sv===undefined||av===undefined) return '';
+    const a=karsilastirmaDegeri(sv), b=karsilastirmaDegeri(av);
+    // VURGU SATIR SATIR: maçı kazanan takım her kategoriyi kazanmıyor.
+    // Eşitlikte iki taraf da vurgulanmaz.
+    const solKazandi = tersMi ? a<b : a>b;
+    const sagKazandi = tersMi ? b<a : b>a;
+    return `<div class="cr">
+        <span class="v l${solKazandi?' win':''}">${esc(String(sv))}</span>
+        <span class="lb">${esc(etiket)}</span>
+        <span class="v r${sagKazandi?' win':''}">${esc(String(av))}</span></div>`;
+  };
+  return `<div class="cmp">
+      <div class="h"><b>Takım istatistikleri</b><span>${esc(ust.kod)} · ${esc(alt.kod)}</span></div>
+      ${TAKIM_SATIRLARI.map(satir).join('')}
+    </div>`;
+}
+
 function boxKartiHTML(m){
   const b=m.box;
   // Varsayılan sekme KAZANAN takım.
   const sira = b.ev.skor>=b.dep.skor ? [b.ev,b.dep] : [b.dep,b.ev];
-  // Sekmelerde skor TEKRARI yok — skor üstteki blokta (kullanıcı kararı).
-  const tab=(t,i)=>`<button class="${i===0?'on':''}" style="--tc:${esc(t.renk)}" data-pane="${i}">${esc(t.kod)}${i!==0&&isaretliMi(t)?'<i class="dot"></i>':''}</button>`;
+  // Sekme çubuğu: KAZANAN | TAKIM | KAYBEDEN.
+  // DİKKAT: karşılaştırma sütunları sekme sırasını izliyor (solda soldaki
+  // sekmenin takımı). Kullanıcı "solda ev sahibi" demişti; ev sahibi
+  // kaybettiğinde sol sekme ile sol sütun FARKLI takımlar oluyordu ve
+  // okuyucu yanlış takımın rakamını okuyordu. Başlıkta iki kod da yazılı.
+  const tab=(t,i)=>`<button class="${i===0?'on':''}" style="--tc:${esc(t.renk)}" data-pane="${i===0?0:2}">${esc(t.kod)}${i!==0&&isaretliMi(t)?'<i class="dot"></i>':''}</button>`;
   const takimSatiri=(t,kazandi)=>`<div class="kt ${kazandi?'win':'lose'}" style="--tc:${esc(t.renk)}">
       <span class="ktn">${esc(t.takim)}</span><span class="kts">${t.skor}</span></div>`;
+  const panolar=[
+    `<div class="kpane" data-pane="0">${boxTablosu(sira[0])}</div>`,
+    `<div class="kpane" data-pane="1" hidden>${takimPanosu(sira[0],sira[1])}</div>`,
+    `<div class="kpane" data-pane="2" hidden>${boxTablosu(sira[1])}</div>`,
+  ].join('');
   return `<div class="grab"><i></i></div>
     <div class="khead"><button class="kclose" data-kapat aria-label="Kapat">✕</button>
       <div class="kmeta">${esc(TARIH_ETIKET)} · <b>rozet ${m.rozet.toFixed(1)}</b></div>
       <div class="kteams">${sira.map((t,i)=>takimSatiri(t,i===0)).join('')}</div></div>
-    <div class="ktabs">${sira.map(tab).join('')}</div>
+    ${ceyrekSeridi(sira[0],sira[1])}
+    <div class="ktabs">${tab(sira[0],0)}<button class="mid" style="--tc:var(--ember)" data-pane="1">TAKIM</button>${tab(sira[1],1)}</div>
     <div class="kbody">
       ${b.wtf?`<div class="kwtf"><span>WTF İstatistiği</span><p>${esc(b.wtf)}</p></div>`:''}
-      <div class="kpanes">${sira.map((t,i)=>`<div class="kpane" data-pane="${i}"${i?' hidden':''}>${boxTablosu(t)}</div>`).join('')}</div>
+      <div class="kpanes">${panolar}</div>
       <div class="kfoot"></div>
     </div>`;
 }

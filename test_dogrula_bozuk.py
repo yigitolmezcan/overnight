@@ -1397,8 +1397,13 @@ def main():
     basar("Kart: dvh desteklemeyen tarayıcı için vh yedeği var",
           "height:calc(100vh - var(--serit))" in _sayfa)
     basar("Kart: masaüstünde 92vh sınırı duruyor", "max-height:92vh" in _sayfa)
+    # Yöntem değişti: table{height:100%} tabloyu geriyordu ve satır
+    # yüksekliğini O PANONUN satır sayısına bağlıyordu — sekme değişince
+    # göz zıplıyordu. Artık dolgu ölçülüp EN UZUN kadroya göre tek
+    # değer olarak veriliyor.
     basar("Kart: kazanılan yer satırlara dağıtılıyor (sabit dolgu değil)",
-          ".sheet table.kbs{height:100%}" in _sayfa)
+          "padding:var(--kbspad,1px) 6px" in _sayfa
+          and ".sheet table.kbs{height:100%}" not in _sayfa)
 
 
     # ==================================================================
@@ -2133,6 +2138,81 @@ def main():
           not _karsiliksiz)
     basar("Yasak: prompt 'karşılığı yoksa terimi hiç kullanma' diyor",
           "HİÇ KULLANMA" in _prompt)
+
+    # ==================================================================
+    # BOX SCORE KARTI — çeyrek şeridi, TAKIM sekmesi, satır aralığı.
+    # ==================================================================
+    _sayfa2 = open("overnight_v17.html", encoding="utf-8").read()
+    _dist = _jj.loads(open(f"dist/{_yayinda2}.json", encoding="utf-8").read())
+    _kartlar = []
+    for _b in ("mutlaka", "goz_at", "diger"):
+        _v = _dist.get(_b)
+        if isinstance(_v, list):
+            _kartlar += [x for x in _v if isinstance(x, dict) and "box" in x]
+
+    # --- çeyrek verisi ---
+    basar("Çeyrek: her kartın iki tarafı da çeyrek dizisi taşıyor",
+          all(k["box"]["ev"].get("ceyrek") and k["box"]["dep"].get("ceyrek")
+              for k in _kartlar))
+    basar("Çeyrek: iki tarafın çeyrek sayısı eşit",
+          all(len(k["box"]["ev"]["ceyrek"]) == len(k["box"]["dep"]["ceyrek"])
+              for k in _kartlar))
+    # Çeyreklerin TOPLAMI skoru vermeli — taraflar ters bağlanırsa bu tutmaz.
+    basar("Çeyrek: toplamları takımın skoruna eşit (taraflar doğru bağlı)",
+          all(sum(k["box"][t]["ceyrek"]) == k["box"][t]["skor"]
+              for k in _kartlar for t in ("ev", "dep")))
+    basar("Çeyrek: en az 4 sütun, uzatmada daha fazla",
+          all(len(k["box"]["ev"]["ceyrek"]) >= 4 for k in _kartlar))
+    # TOPLAM SÜTUNU YOK (kullanıcı kararı): skor zaten yukarıda.
+    basar("Çeyrek: şeritte toplam sütunu üretilmiyor",
+          "ceyrekBasliklari" in _sayfa2 and "toplam" not in
+          _sayfa2.split("function ceyrekSeridi(")[1].split("\n}")[0].lower())
+    basar("Çeyrek: uzatma başlıkları U1/U2 olarak üretiliyor",
+          "`U${i-3}`" in _sayfa2)
+    basar("Çeyrek: veri yoksa şerit hiç çizilmiyor (uydurma çeyrek yok)",
+          "if(!a.length||a.length!==b.length) return ''" in _sayfa2)
+
+    # --- takım istatistikleri ---
+    basar("TAKIM: hücum ve savunma ribaundu ayrı taşınıyor",
+          all("oreb" in k["box"]["ev"]["toplam"] and "dreb" in k["box"]["ev"]["toplam"]
+              for k in _kartlar))
+    basar("TAKIM: hücum + savunma = toplam ribaund",
+          all(k["box"][t]["toplam"]["oreb"] + k["box"][t]["toplam"]["dreb"]
+              == k["box"][t]["toplam"]["reb"] for k in _kartlar for t in ("ev", "dep")))
+    _sira = ["fg", "3p", "ft", "oreb", "dreb", "reb", "ast", "to", "stl", "blk"]
+    _blok = _sayfa2.split("const TAKIM_SATIRLARI=[")[1].split("];")[0]
+    _bulunan = [x.split("'")[1] for x in _blok.split("[")[1:]]
+    basar("TAKIM: satır sırası kullanıcının verdiği sıra",
+          _bulunan == _sira)
+    # Top kaybında AZ olan kazanır — ters karşılaştırma bayrağı.
+    basar("TAKIM: top kaybında az olan kazanıyor (ters karşılaştırma)",
+          "['to','Topkaybı',true]" in _blok.replace(" ", ""))
+    basar("TAKIM: vurgu satır satır, eşitlikte hiçbiri vurgulanmıyor",
+          "solKazandi" in _sayfa2 and "sagKazandi" in _sayfa2
+          and "a>b" in _sayfa2 and "b>a" in _sayfa2)
+    # "18/42" gibi değerler İSABET SAYISINA göre karşılaştırılmalı;
+    # yüzdeye göre olsaydı 1/1 atan takım 18/42 atanı yenerdi.
+    basar("TAKIM: kesirli değerler isabet sayısına göre karşılaştırılıyor",
+          "karsilastirmaDegeri" in _sayfa2 and "Number(m[1])" in _sayfa2)
+    basar("TAKIM: üçüncü sekme ember renginde ve yazısı küçük",
+          ".ktabs button.mid{color:var(--ember)" in _sayfa2)
+    basar("TAKIM: varsayılan sekme hâlâ kazanan takım",
+          'data-pane="${i===0?0:2}"' in _sayfa2 and 'class="${i===0?\'on\':\'\'}"' in _sayfa2)
+
+    # --- satır aralığı ---
+    basar("Satır aralığı: yazı boyutu değil DOLGU değişiyor",
+          "padding:var(--kbspad,1px) 6px" in _sayfa2)
+    # table{height:100%} satır yüksekliğini O PANONUN satır sayısına
+    # bağlıyordu; 12 kişiden 15 kişiye geçince satırlar daralıyordu.
+    basar("Satır aralığı: table{height:100%} kaldırıldı (sekme zıplamasın)",
+          "table.kbs{height:100%}" not in _sayfa2)
+    basar("Satır aralığı: dolgu ÖLÇÜLEREK daraltılıyor, hesapla tahmin edilmiyor",
+          "govde.scrollHeight>govde.clientHeight" in _sayfa2)
+    basar("Satır aralığı: ekran boyutu değişince yeniden hesaplanıyor",
+          "addEventListener('resize',satirAraliginiAyarla)" in _sayfa2)
+    # Gecenin beşi: flex-basis 0 masaüstünde blokları 19px'e çökertiyordu.
+    basar("Gecenin beşi: bloklar kalan alanı paylaşıyor, basis auto",
+          ".besikart .kbody>.bp{flex:1 1 auto" in _sayfa2)
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
