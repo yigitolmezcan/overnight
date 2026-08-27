@@ -321,15 +321,19 @@ def _gece_kapsamli_engeller(tarih, taslak):
     doğrulama sonuçlarına. Gece kapsamlı bir ihlal (aynı kalıbın iki
     maçta kullanılması) hiçbir maçın raporunda görünmediği için kapıdan
     sessizce geçiyordu — LLM'in yazdığı cümleler için hiç uygulanmıyordu."""
+    # DİKKAT: burada `gece_dogrula` ÇAĞIRMIYORUZ, çünkü o ham veri
+    # istiyor ve `ham/` depoda YOK (gece başına ~20MB, .gitignore'da).
+    # Yayın işi ayrı bir koşucuda checkout'la başlıyor; ham orada hiç
+    # oluşmuyor. gece_dogrula çağırsaydık her yayında sessizce istisnaya
+    # düşer ve T27 canlıda HİÇ çalışmazdı — kural yerelde var, üretimde
+    # yok. T27'nin ham'a ihtiyacı yok: taslak + gerçekler yetiyor.
     try:
-        import dogrula as _dog
+        from dogrula import t27_maglup_gece_kurali
+        from kalip_secici import gece_maglup_izni
         gercek_gece = json.loads((KOK / "gercek" / f"{tarih}.json").read_text(encoding="utf-8"))
-        ham = json.loads((KOK / "ham" / f"{tarih}.json").read_text(encoding="utf-8"))
-        skor_gece = json.loads((KOK / "skor" / f"{tarih}.json").read_text(encoding="utf-8"))
     except Exception:
         return []
-    sonuc = _dog.gece_dogrula(taslak, gercek_gece, ham, skor_gece)
-    t27 = sonuc.get("t27") or {}
+    t27 = t27_maglup_gece_kurali(taslak, gece_maglup_izni(gercek_gece["maclar"]))
     if t27.get("gecti", True):
         return []
     return [{

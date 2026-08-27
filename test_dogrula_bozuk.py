@@ -1171,6 +1171,7 @@ def main():
     # Sayı her zaman elimizde: fark_serisi.kazanan_en_buyuk_acigi.
     # (Gerçek üretim bug'ı 2026-01-28 — veri promptta VARDI, model
     # kullanmadı; o yüzden düzeltme prompta değil doğrulayıcıya yazıldı.)
+    import shutil as _shutil
     import dogrula as dogrula_modul
     import kalip_secici as _kalip_secici
     from dogrula import t23_mimari_kural_ihlalleri as _t23
@@ -1996,6 +1997,28 @@ def main():
               not dogrula_modul.t4_yasakli_ifade(_ing, _yasakli_liste)[0])
     basar("İngilizce terim: Türkçe karşılık serbest ('turnike')",
           dogrula_modul.t4_yasakli_ifade("Curry turnikeyle bitirdi.", _yasakli_liste)[0])
+
+    # ==================================================================
+    # Yayın kapısı CANLIDA da çalışmalı. `ham/` depoda YOK (.gitignore) ve
+    # yayın işi ayrı bir koşucuda checkout'la başlıyor — ham'a ihtiyaç
+    # duyan bir kapı kontrolü sessizce istisnaya düşer ve kural yerelde
+    # var, üretimde yok olur.
+    # ==================================================================
+    _ci_taslak = _jj.loads(open("taslak/2025-12-20.json").read())
+    _ci_gidler = list(_ci_taslak["maclar"])[:2]
+    for _g in _ci_gidler:
+        _ci_taslak["maclar"][_g]["ozet_kisa"] = "Mağlup tarafta Devin Booker 33 sayı attı."
+    open("taslak/_ci_kapi_testi.json", "w", encoding="utf-8").write(
+        _jj.dumps(_ci_taslak, ensure_ascii=False))
+    _shutil.copy("gercek/2025-12-20.json", "gercek/_ci_kapi_testi.json")
+    try:
+        basar("Yayın kapısı: ham verisi OLMADAN da T27 yakalanıyor (canlı koşucu)",
+              not _os.path.exists("ham/_ci_kapi_testi.json")
+              and any("T27" in x.get("engelleyen", [])
+                      for x in _yayin.yayin_engelleri("_ci_kapi_testi")))
+    finally:
+        _os.remove("taslak/_ci_kapi_testi.json")
+        _os.remove("gercek/_ci_kapi_testi.json")
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
