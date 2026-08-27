@@ -2606,14 +2606,13 @@ def main():
           all(t["form"][-1] == _gece_sonuc.get(t["takim"]) for t in _sir
               if t["takim"] in _gece_sonuc))
 
-    # Renk çakışması bu bölümde de geçerli.
-    basar("Sıralama: takım renkleri çakışma kuralından geçmiş",
-          all("renk" in t and "asil_renk" in t and "renk_degisti" in t for t in _sir))
-    _renk_cift = {}
-    for _t in _sir:
-        _renk_cift.setdefault(_t["takim"], set()).add(_t["renk"])
-    basar("Sıralama: takım başına tek renk",
-          all(len(v) == 1 for v in _renk_cift.values()))
+    # KARAR DEĞİŞTİ: takım rengi (küçük dikdörtgen) kaldırıldı. Renk
+    # kullanılmadığı için çakışma çözümü de çağrılmıyor — kullanılmayan
+    # alan üretilmiyor. Kural duruyor, renk geri gelirse tek satır.
+    basar("Sıralama: takım rengi kullanılmıyor, ölü alan da üretilmiyor",
+          all("renk" not in t and "asil_renk" not in t for t in _sir))
+    basar("Sıralama: renk dikdörtgeni işaretlemeden de kalktı",
+          ".sr .tc{" not in _sayfa6 and 'class="tc' not in _sayfa6)
 
     # YERLEŞİM: bölüm EN SONDA.
     _bolumler = _re.findall(r'<section class="sec[^"]*"(?:\s+id="([^"]+)")?', _sayfa6)

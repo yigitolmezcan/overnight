@@ -1055,11 +1055,13 @@ def _siralama_hareketi(ham, tarih_str, gece_takimlari):
             "degisim": eski - yeni,
             "konferans": b.get("konferans"),
             "form": _son_form(gunluk, kod),
-            "_gmsc": abs(eski - yeni),   # renk çakışmasında öncelik ölçüsü
         })
     # Çok yükselen en üstte, çok düşen en altta.
     satirlar.sort(key=lambda x: -x["degisim"])
-    return renk_cakismasini_coz(satirlar)
+    # Takım rengi KULLANILMIYOR (kullanıcı kararı: küçük dikdörtgenler
+    # kalktı), o yüzden çakışma çözümü de çağrılmıyor — kullanılmayan
+    # alan üretmiyoruz. Kural duruyor; renk geri gelirse tek satır.
+    return satirlar
 
 
 def derle(tarih_str):

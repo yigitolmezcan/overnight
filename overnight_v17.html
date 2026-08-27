@@ -605,11 +605,6 @@ td.khot{color:var(--amber);font-weight:700}
    hiçbir şey gizlenmiyor. */
 .sr .tn{flex:1;min-width:0;font-size:13.5px;font-weight:700;letter-spacing:-.01em;
   line-height:1.25;overflow-wrap:break-word}
-/* Takım rengi: bu bölümde de aynı anda birden fazla takım görünüyor,
-   o yüzden önceki turun çakışma kuralı burada da çalışıyor. */
-.sr .tc{display:inline-block;width:3px;height:12px;margin-right:7px;
-  vertical-align:-2px;border-radius:1px}
-.sr .tc.ring{box-shadow:0 0 0 1px var(--asil)}
 /* Form: 10 kare, soldan sağa ESKİDEN YENİYE — en sağdaki bu geceki maç. */
 .sr .f10{display:flex;gap:2.5px;flex:none}
 .sr .f10 i{width:9px;height:9px;display:block;border-radius:1px;background:#2A3340}
@@ -1455,12 +1450,9 @@ function render(d){
     document.getElementById('siralamaListe').innerHTML=siralama.map(t=>{
       const yukari=t.degisim>0;
       const kare=w=>`<i class="${w?'w':''}"></i>`;
-      const cizgi=t.renk_degisti
-        ? `<i class="tc ring" style="background:${esc(t.renk)};--asil:${esc(t.asil_renk)}"></i>`
-        : `<i class="tc" style="background:${esc(t.renk)}"></i>`;
       return `<div class="sr">
         <span class="ar ${yukari?'u':'d'}">${yukari?'▲':'▼'}${Math.abs(t.degisim)}</span>
-        <span class="tn">${cizgi}${esc(t.takim_adi)}</span>
+        <span class="tn">${esc(t.takim_adi)}</span>
         <span class="f10">${t.form.map(kare).join('')}</span>
         <span class="pos">${t.eski}<s>→</s>${t.yeni}</span>
       </div>`;
