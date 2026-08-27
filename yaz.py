@@ -1091,24 +1091,124 @@ def sablon_uret_brief(gid, gercekler, ham_mac, olgu, en_iyi_performans=None, har
     return {"metin": metin, "hedef_mac": gid, "muzip": False, "kind": kind}
 
 
-def gece_brief_ata(kalip_plani, rozet_by_gid, brief_hedefleri, ham, en_iyi_performans_by_gid, gercek_gece):
-    """Brief satırlarını gece çapında dedup ederek atar — rozeti yüksek
-    maç önce hak eder. Aynı KIND iki maçta kullanılamaz. Gerçek bir
-    olguya dayanamayan maç sözlükte HİÇ yer almaz (brief sabit 5 satır
-    değil, dürüst içerik kadar satır). Kind bilgisi artık doğrudan
-    cumle katmanından geliyor — eski sürüm aday bankasını İKİNCİ kez
-    kurup metin eşleştirerek kind'ı geri buluyordu, o kopya kalktı."""
-    kullanilan_kind = set()
+def _brief_mac_baglami(gid, gercek_gece, ham, kalip_plani, en_iyi_performans_by_gid):
+    gercekler = gercek_gece["maclar"][gid]
+    olgu = kalip_plani[gid]["olgu_ham"]
+    mac = cumle.mac_baglami(gercekler, ham["maclar"][gid], olgu, _takim_adi_koddan)
+    en_iyi_ad = en_iyi_performans_by_gid.get(gid)
+    en_iyi_oyuncu = None
+    if en_iyi_ad:
+        en_iyi_oyuncu = next(
+            (g["veri"] for g in gercekler if g["tur"] == "oyuncu_stat"
+             and g["veri"]["oyuncu"] == en_iyi_ad), None)
+    return mac, olgu, en_iyi_oyuncu, en_iyi_ad
+
+
+def gece_brief_ata(kalip_plani, rozet_by_gid, brief_hedefleri, ham,
+                   en_iyi_performans_by_gid, gercek_gece):
+    """Brief satırlarını gece çapında atar.
+
+    DEĞİŞMEZ KURAL (kullanıcı): cümle dağılımı ROZET SIRASIYLA UYUMLU.
+    Bir maç cümle alıyorsa, ondan yüksek rozetli her maç da alır —
+    sıralamada boşluk olamaz. Bölüm "önemliden önemsize" vaat ediyor,
+    dördüncü sıradaki konuşurken ikincinin susması o vaadi çürütüyordu.
+
+    Bunu üç kural sağlıyor:
+      1) Bir TÜRÜ, o türde EN GÜÇLÜ değere sahip maç alır — rozet
+         sırasına göre DEĞİL. 20 sayılık geri dönüş 14 sayılıktan önce
+         gelir. (Eskiden rozeti yüksek maç türü kapıyor, daha zayıf bir
+         olgu daha güçlüsünü bloke edebiliyordu.)
+      2) Türü kaybeden maç sırayla kendi ikinci, üçüncü olgusunu dener;
+         hiçbiri kalmadıysa DÜZ SONUÇ cümlesi alır. Yani bir maç cümle
+         hakkını türe takıldığı için kaybetmez.
+      3) Sessiz kalmanın TEK sebebi kalır: eşiği geçen hiçbir olgusu
+         olmaması.
+    Son adımda monotonluk denetleniyor (bkz. aşağıda)."""
+    # 1) Her maçın bütün adayları, güçleriyle.
+    adaylar_by_gid = {}
+    baglam_by_gid = {}
+    for gid in brief_hedefleri:
+        mac, olgu, en_iyi_oyuncu, en_iyi_ad = _brief_mac_baglami(
+            gid, gercek_gece, ham, kalip_plani, en_iyi_performans_by_gid)
+        baglam_by_gid[gid] = mac
+        adaylar_by_gid[gid] = [
+            (kind, metin, guc)
+            for kind, metin, guc in cumle.brief_adaylari(mac, olgu or {}, en_iyi_oyuncu, en_iyi_ad)
+            if cumle._gecir(metin)
+        ]
+
+    # 1b) MONOTONLUK KESİMİ ATAMADAN ÖNCE. Sessiz kalmanın tek sebebi
+    #     "eşiği geçen hiçbir olgusu yok" olduğu için hangi maçların
+    #     konuşacağı şimdiden belli. Kesimi sonra yapsaydık, kesilecek
+    #     bir maç bir türü kapıp yukarıdaki maçı düz cümleye düşürebilir
+    #     ve tür boşa giderdi (ölçüldü: 2.45'lik DET-CHA `siralama`yı
+    #     alıyor, sonra kesiliyor, 7.35'lik TOR-BOS düz cümleye düşüyordu).
+    sirali_hepsi = sorted(brief_hedefleri, key=lambda g: -(rozet_by_gid.get(g) or 0))
+    uygun = []
+    for gid in sirali_hepsi:
+        if not adaylar_by_gid.get(gid):
+            break                 # ilk olgusuz maçtan sonrası susar
+        uygun.append(gid)
+    adaylar_by_gid = {g: a for g, a in adaylar_by_gid.items() if g in uygun}
+
+    # 2) Tür ataması: her tür, o türde en güçlü maça. Kaybeden bir
+    #    sonraki türünü dener; bu döngü sabitlenene kadar sürer.
+    atanan = {}          # gid -> (kind, metin)
+    tur_sahibi = {}      # kind -> gid
+    kalan = {gid: list(a) for gid, a in adaylar_by_gid.items() if a}
+    while True:
+        degisti = False
+        for gid, liste in list(kalan.items()):
+            if gid in atanan or not liste:
+                continue
+            kind, metin, guc = liste[0]
+            rakip = tur_sahibi.get(kind)
+            if rakip is None:
+                tur_sahibi[kind] = gid
+                atanan[gid] = (kind, metin)
+                degisti = True
+            else:
+                rakip_guc = next((g for k, _, g in adaylar_by_gid[rakip] if k == kind), 0)
+                if guc > rakip_guc:
+                    # Daha güçlü olan türü devralır, eski sahip sıradakine düşer.
+                    del atanan[rakip]
+                    kalan[rakip] = [x for x in kalan[rakip] if x[0] != kind]
+                    tur_sahibi[kind] = gid
+                    atanan[gid] = (kind, metin)
+                    degisti = True
+                else:
+                    liste.pop(0)
+                    degisti = True
+        if not degisti:
+            break
+
+    # 3) Olgusu OLUP tür bulamayan maç düz sonuç cümlesi alır.
     sonuc = {}
-    for gid in sorted(brief_hedefleri, key=lambda g: -rozet_by_gid.get(g, 0)):
-        obj = sablon_uret_brief(
-            gid, gercek_gece["maclar"][gid], ham["maclar"][gid], kalip_plani[gid]["olgu_ham"],
-            en_iyi_performans_by_gid.get(gid), haric_kindler=kullanilan_kind,
-        )
-        if obj is None:
-            continue
-        kullanilan_kind.add(obj.pop("kind"))
-        sonuc[gid] = obj
+    for gid, adaylar in adaylar_by_gid.items():
+        if gid in atanan:
+            kind, metin = atanan[gid]
+        elif adaylar:
+            metin = cumle.brief_duz_sonuc(baglam_by_gid[gid])
+            if not metin:
+                continue
+            kind = "duz_sonuc"
+        else:
+            continue      # eşiği geçen hiçbir olgusu yok -> sessiz
+        sonuc[gid] = {"metin": metin, "hedef_mac": gid, "muzip": False, "kind": kind}
+
+    # 4) SON DENETİM — monotonluk gerçekten sağlandı mı? Kesim yukarıda
+    #    yapıldığı için burada bir şey düzeltmek gerekmemeli; yine de
+    #    kontrol ediliyor, çünkü kural DEĞİŞMEZ: cümlesi olan maçların
+    #    en düşük rozeti, cümlesi olmayanların en yükseğinden büyük olmalı.
+    konusan = [rozet_by_gid.get(g) or 0 for g in sonuc]
+    susan = [rozet_by_gid.get(g) or 0 for g in brief_hedefleri if g not in sonuc]
+    if konusan and susan and min(konusan) <= max(susan):
+        # Buraya düşülmemeli. Düşülürse boşluğun altındaki cümleler
+        # alınıyor — olgusu olmayan bir maça dolgu yazmaktansa doğrusu bu.
+        esik = max(susan)
+        for gid in list(sonuc):
+            if (rozet_by_gid.get(gid) or 0) <= esik:
+                sonuc.pop(gid, None)
     return sonuc
 
 

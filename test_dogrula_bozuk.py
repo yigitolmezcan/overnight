@@ -2708,6 +2708,67 @@ def main():
           "overflow-wrap:break-word}" in _sayfa6.split(".sr .tn{")[1][:260]
           and "text-overflow:ellipsis" not in _sayfa6.split(".sr .tn{")[1][:260])
 
+    # ==================================================================
+    # DEĞİŞMEZ KURAL: "Sen uyurken"de cümle dağılımı ROZET SIRASIYLA
+    # uyumlu. Bir maç cümle alıyorsa ondan yüksek rozetli her maç da
+    # alır — sıralamada boşluk olamaz.
+    # Gerçek arıza: 4. sıradaki maç konuşurken 2. sıradaki susuyordu
+    # (MEM-WAS 8.62 sessiz, TOR-BOS 7.35 konuşuyor). Sebep: türü ROZETİ
+    # yüksek maç kapıyordu ve 14 sayılık geri dönüş 20 sayılığı bloke
+    # ediyordu.
+    # ==================================================================
+    import yaz as _yaz
+    _gc = _jj.loads(open(f"gercek/{_yayinda2}.json", encoding="utf-8").read())
+    _hm = _jj.loads(_yayin._ham_metni(_yayinda2))
+    _sk = _jj.loads(open(f"skor/{_yayinda2}.json", encoding="utf-8").read())
+    _plan = _yaz.gece_kalip_plani(_yayinda2, _gc, _hm, _sk)
+    _roz = {m["mac_id"]: m["rozet"] for m in _sk["maclar"]}
+    _eniyi = {m["mac_id"]: m.get("en_iyi_performans") for m in _sk["maclar"]}
+    _atama = _yaz.gece_brief_ata(_plan, _roz, list(_roz), _hm, _eniyi, _gc)
+
+    _konusan = [_roz[g] for g in _atama]
+    _susan = [_roz[g] for g in _roz if g not in _atama]
+    basar("Brief: cümle dağılımında rozet boşluğu yok",
+          not _konusan or not _susan or min(_konusan) > max(_susan))
+    # Tür, o türde EN GÜÇLÜ maça gider — rozete göre değil.
+    _geri = [g for g, o in _atama.items() if o["kind"] == "geri_donus"]
+    if _geri:
+        _sahip = _geri[0]
+        _guc = _plan[_sahip]["olgu_ham"].get("en_buyuk_geri_donus", 0)
+        _rakipler = [g for g in _roz if g != _sahip
+                     and (_plan[g]["olgu_ham"].get("en_buyuk_geri_donus") or 0) >= _yaz.cumle.GERI_DONUS_ESIGI]
+        basar("Brief: geri dönüş türünü EN BÜYÜK dönüş alıyor",
+              all(_guc >= (_plan[g]["olgu_ham"].get("en_buyuk_geri_donus") or 0) for g in _rakipler))
+    # Türü kaybeden maç susmuyor: ya başka olgusunu ya düz sonucu alıyor.
+    basar("Brief: olgusu olan hiçbir maç türe takılıp susmuyor",
+          all(g in _atama for g in _roz
+              if _yaz.cumle.brief_adaylari(
+                  *_yaz._brief_mac_baglami(g, _gc, _hm, _plan, _eniyi)[:1],
+                  _plan[g]["olgu_ham"] or {},
+                  *_yaz._brief_mac_baglami(g, _gc, _hm, _plan, _eniyi)[2:])
+              and _roz[g] > (max(_susan) if _susan else -1)))
+    basar("Brief: düz sonuç cümlesi bir yedek olarak var",
+          hasattr(_yaz.cumle, "brief_duz_sonuc"))
+    # Sessiz kalmanın TEK sebebi: eşiği geçen hiçbir olgu yok.
+    for _g in _roz:
+        if _g in _atama:
+            continue
+        _mac, _olgu, _eo, _ea = _yaz._brief_mac_baglami(_g, _gc, _hm, _plan, _eniyi)
+        _ads = [x for x in _yaz.cumle.brief_adaylari(_mac, _olgu or {}, _eo, _ea)
+                if _yaz.cumle._gecir(x[1])]
+        if _ads and _roz[_g] > (max(_susan) if _susan else -1):
+            basar(f"Brief: sessiz maçın olgusu yok ({_g})", False)
+            break
+    else:
+        basar("Brief: sessiz maçlar kesim çizgisinin altında", True)
+    # Kesim ATAMADAN ÖNCE: kesilecek bir maç tür kapıp yukarıdakini
+    # düz cümleye düşürmesin (ölçüldü: DET-CHA 2.45 `siralama`yı alıyor,
+    # sonra kesiliyor, TOR-BOS 7.35 düz cümleye düşüyordu).
+    _kaynak = open("yaz.py", encoding="utf-8").read()
+    basar("Brief: monotonluk kesimi tür atamasından ÖNCE yapılıyor",
+          _kaynak.index("MONOTONLUK KESİMİ ATAMADAN ÖNCE")
+          < _kaynak.index("# 2) Tür ataması"))
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))

@@ -646,18 +646,53 @@ def mutlaka_metni(gercekler, ham_mac, olgu, en_iyi_ad, takim_adi_fn, kisa=False)
     return obj
 
 
+def brief_adaylari(mac, olgu, en_iyi_oyuncu, en_iyi_ad):
+    """[(kind, metin, guc), ...] — güçten bağımsız, EKLENME sırasıyla.
+
+    `guc`, o türün BÜYÜKLÜĞÜ: 20 sayılık geri dönüş 14 sayılıktan
+    güçlü, 32 sayı 28'den güçlü. Gece çapında atama bunu kullanıyor —
+    bir türü, o türde en güçlü değere sahip maç alıyor (kullanıcı
+    kuralı). Eskiden türü ROZETİ yüksek maç kapıyordu ve daha zayıf bir
+    olgu daha güçlüsünü bloke edebiliyordu."""
+    return _brief_adaylari(mac, olgu, en_iyi_oyuncu, en_iyi_ad)
+
+
 def brief_satiri(mac, olgu, en_iyi_oyuncu, en_iyi_ad, haric_kindler=None):
     """"30 saniyede gece" satırı — (kind, metin). Skor HİÇ yazılmaz
     (T19). Gerçek bir olgu yoksa None: brief sabit 5 satır değil,
     dürüst içerik kadar satır."""
     haric = haric_kindler or set()
+    adaylar = [(kind, metin) for kind, metin, _ in
+               _brief_adaylari(mac, olgu, en_iyi_oyuncu, en_iyi_ad)]
+
+    for kind, metin in adaylar:
+        if kind in haric:
+            continue
+        gecen = _gecir(metin)
+        if gecen:
+            return kind, gecen
+    return None, None
+
+
+def brief_duz_sonuc(mac):
+    """Türü kaptırmış ama olgusu OLAN maç için düz sonuç cümlesi.
+
+    Kullanıcı kuralı: bir maç cümle hakkını türe takıldığı için
+    kaybetmesin. Bu cümle uydurma değil — skor bir olgu, ve aynı biçim
+    "Bunları geç" bölümünde zaten kullanılıyor."""
+    return _gecir(f"{mac['kazanan_adi']}, {mac['kaybeden_adi']}'"
+                  f"{belirtme_eki(mac['kaybeden_adi'])} "
+                  f"{mac['buyuk']}-{mac['kucuk']} yendi.")
+
+
+def _brief_adaylari(mac, olgu, en_iyi_oyuncu, en_iyi_ad):
     k, y = mac["kazanan_adi"], mac["kaybeden_adi"]
     ek = belirtme_eki(y)
     kd = olgu.get("kazanan_derece") or {}
     adaylar = []
 
     if olgu.get("surpriz_sonuc"):
-        adaylar.append(("surpriz", f"Sürpriz bir sonuçla {k}, {y}'{ek} yendi."))
+        adaylar.append(("surpriz", f"Sürpriz bir sonuçla {k}, {y}'{ek} yendi.", olgu.get("fark", 0)))
     ifade = performans_konusulabilir(en_iyi_oyuncu)
     if ifade and en_iyi_oyuncu.get("takim") == mac["kazanan_kod"]:
         # T24 kapısı: brief TEK satır, iki oyuncuyu birden anamaz. Aynı
@@ -673,28 +708,22 @@ def brief_satiri(mac, olgu, en_iyi_oyuncu, en_iyi_ad, haric_kindler=None):
         _daha_iyisi_var = bool(_kilo.get("oyuncu")) and _kilo["oyuncu"] != en_iyi_ad
         if not _daha_iyisi_var:
             deger, birim, fiil = ifade
-            adaylar.append(("performans", f"{en_iyi_ad}, {y} karşısında {deger} {birim} {fiil}."))
+            adaylar.append(("performans", f"{en_iyi_ad}, {y} karşısında {deger} {birim} {fiil}.", deger))
     if olgu.get("en_buyuk_geri_donus", 0) >= GERI_DONUS_ESIGI:
-        adaylar.append(("geri_donus", f"{k}, {olgu['en_buyuk_geri_donus']} sayılık farktan dönüp {y}'{ek} geçti."))
+        adaylar.append(("geri_donus", f"{k}, {olgu['en_buyuk_geri_donus']} sayılık farktan dönüp {y}'{ek} geçti.", olgu["en_buyuk_geri_donus"]))
     _ka = olgu.get("karar_ani") or {}
     if _ka.get("oyuncu"):
         adaylar.append(("son_saniye",
                         f"{k}, son saniyede {_ka['oyuncu']}'{iyelik_eki(_ka['oyuncu'])} "
-                        f"basketiyle {y}'{ek} geçti."))
+                        f"basketiyle {y}'{ek} geçti.",
+                        100 - float(_ka.get("saniye_kalan") or 0)))
     if olgu.get("uzatma"):
-        adaylar.append(("uzatma", f"{k}, {y}'{ek} uzatmada geçti."))
+        adaylar.append(("uzatma", f"{k}, {y}'{ek} uzatmada geçti.", 1))
     if galibiyet_serisi_konusulabilir(olgu.get("kazanan_seri"), kd, olgu.get("kazanan_seri_haber")):
-        adaylar.append(("seri", f"{k}, {y}'{ek} yenerek {olgu['kazanan_seri']['uzunluk']} maçlık galibiyet serisini sürdürdü."))
+        adaylar.append(("seri", f"{k}, {y}'{ek} yenerek {olgu['kazanan_seri']['uzunluk']} maçlık galibiyet serisini sürdürdü.", olgu["kazanan_seri"]["uzunluk"]))
     if siralama_konusulabilir(kd.get("konferans_sira"), kd):
-        adaylar.append(("siralama", f"{k}, {y}'{ek} yenerek konferansta {kd['konferans_sira']}. sıraya yükseldi."))
-
-    for kind, metin in adaylar:
-        if kind in haric:
-            continue
-        gecen = _gecir(metin)
-        if gecen:
-            return kind, gecen
-    return None, None
+        adaylar.append(("siralama", f"{k}, {y}'{ek} yenerek konferansta {kd['konferans_sira']}. sıraya yükseldi.", 30 - kd["konferans_sira"]))
+    return adaylar
 
 
 # ---------------------------------------------------------------------------
