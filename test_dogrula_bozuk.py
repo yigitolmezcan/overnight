@@ -6,6 +6,7 @@ Her biri ayrı bir T testini düşürmeli. Hepsi düşerse dogrula.py doğru
 Kullanım: python3 test_dogrula_bozuk.py
 """
 
+import datetime as _tarih
 import os as _os
 import json
 
@@ -960,8 +961,12 @@ def main():
     _sira = [x for x in _re.findall(r'<section class="sec ([a-zA-Z0-9]+)"', _html)]
     basar("html: bölüm sırası 30 saniyede → Türkler → Mutlaka bil → Göz at → Bunları geç → Gecenin beşi",
           _sira[:6] == ["s1", "sTr", "s3", "s4b", "s7", "s6"])
-    basar("html: başlık altı cümlesi güncellendi",
-          "Molasız, reklamsız özet." in _html and "Sıraya senin yerine biz karar verdik" not in _html)
+    # Başlık altındaki tanıtım cümlesi KALKTI: açılış artık künye ve
+    # yerinde gecenin sayıları duruyor (bkz. "AÇILIŞ (HERO)" bölümü).
+    basar("html: başlık altında tanıtım cümlesi yok, veri var",
+          "Molasız, reklamsız özet." not in _html
+          and "Sıraya senin yerine biz karar verdik" not in _html
+          and '<div class="nums" id="nums"></div>' in _html)
 
 
     # ==================================================================
@@ -2904,6 +2909,81 @@ def main():
     basar("İlk beş: lejant kartta bir kez (kfoot içinde)",
           '<span class="kbeslegend"><i></i>ilk beş</span>' in _sayfa7
           and _sayfa7.count("kbeslegend\"><i>") == 1)
+
+    # ==================================================================
+    # AÇILIŞ (HERO) — GAZETE KÜNYESİ
+    # Eski açılış ortalanmış iki satırlık slogandı: bilgi taşımıyordu.
+    # Yenisi künye. Testler hem yeni yapının varlığını hem ESKİ kalıbın
+    # geri gelmediğini kontrol ediyor — asıl şikâyet kalıbın kendisiydi.
+    # ==================================================================
+    _sayfa8 = open("overnight_v17.html", encoding="utf-8").read()
+    _kunye = _sayfa8.split('<div class="mast">')[1].split("</div>\n\n<div class=\"hero\">")[0]
+    _hero8 = _sayfa8.split('<div class="hero">')[1].split("</div>")[0]
+
+    basar("Açılış: marka künyede, NIGHT ember",
+          '<div class="mark">OVER<em>NIGHT</em></div>' in _kunye
+          and ".mark em{font-style:normal;color:var(--ember)}" in _sayfa8)
+    basar("Açılış: tarih ve gün adı sağda, ayrı satırlarda",
+          '<span id="edTarih">' in _kunye and '<b id="edGun">' in _kunye
+          and ".ed b{display:block" in _sayfa8)
+    # Çift çizgi: kalın açık + ince koyu.
+    basar("Açılış: çift çizgi (2px açık + 1px koyu)",
+          "border-bottom:2px solid var(--ink)" in _sayfa8
+          and ".rule2{height:1px;background:#1A2130" in _sayfa8
+          and '<div class="rule2"></div>' in _sayfa8)
+    # SABİT SAAT: canlı olmadığı için bilgi değil.
+    basar("Açılış: sabit saat yazmıyor",
+          "TSİ 09:00" not in _kunye and "TSI 09:00" not in _kunye)
+    # "dakika": ürünün vaadi hız değil.
+    basar("Açılış: okuma süresi (dakika) yazmıyor",
+          "dakika" not in _hero8
+          and "dakika" not in _sayfa8.split("id='nums'")[0].split('id="nums"')[-1][:400])
+    # ESKİ KALIP GERİ GELMESİN.
+    basar("Açılış: ortalanmış değil",
+          "text-align:center" not in _sayfa8.split(".hero{")[1].split("}")[0]
+          and "text-align:center" not in _sayfa8.split("\nh1{")[1].split("}")[0])
+    basar("Açılış: dev slogan kalıbı kalktı",
+          "clamp(38px,11vw,52px)" not in _sayfa8
+          and "font-size:24px" in _sayfa8.split("\nh1{")[1].split("}")[0])
+    basar("Açılış: eski damga ve tanıtım cümlesi kalmadı",
+          "Molasız, reklamsız özet" not in _sayfa8
+          and 'id="stamp"' not in _sayfa8
+          and "NBA · sen uyurken</em>" not in _sayfa8)
+    # Sayılar sarmalanmamalı; sıkışırsa cümle kısalır, sayı bozulmaz.
+    basar("Açılış: sayılar tek satırda ve daralmıyor",
+          "flex:none" in _sayfa8.split(".nums{")[1].split("}")[0]
+          and "white-space:nowrap" in _sayfa8.split(".nums{")[1].split("}")[0])
+
+    # --- Sayılar ham veriyle birebir mi? ---
+    # (DOM'a elle değer enjekte edip "doğru görünüyor" demek yerine
+    #  yayındaki dist'ten hesaplanıyor.)
+    _rozetler8 = [b.get("rozet", 0) for b in _d7.get("bars") or []]
+    basar("Açılış: maç sayısı bars uzunluğuyla aynı",
+          _d7.get("mac_sayisi") == len(_rozetler8))
+    _kartroz8 = [k["rozet"] for b in ("mutlaka", "degerse_bak", "diger")
+                 for k in (_d7.get(b) or []) if isinstance(k, dict) and "rozet" in k]
+    basar("Açılış: 'en iyisi' gecenin en yüksek rozeti (kartlarla da uyuşuyor)",
+          bool(_rozetler8) and bool(_kartroz8)
+          and round(max(_rozetler8), 2) == round(max(_kartroz8), 2))
+    basar("Açılış: en iyisi tek ondalık basamakla yazılıyor",
+          "enIyi.toFixed(1)" in _sayfa8)
+
+    # --- Gün adı doğru mu? ---
+    # JS getUTCDay() Pazar=0; Python weekday() Pazartesi=0. Tablo sırası
+    # yanlışsa gün adı kayar ve künye yanlış bilgi verir.
+    _gunler8 = _sayfa8.split("const GUN_ADLARI=[")[1].split("]")[0]
+    _gunler8 = [x.strip().strip("'") for x in _gunler8.split(",")]
+    _dogru8 = ["Pazartesi", "Salı", "Çarşamba", "Perşembe",
+               "Cuma", "Cumartesi", "Pazar"]
+    _t8 = _tarih.date.fromisoformat(_yayinda2)
+    basar("Açılış: gün adı tablosu Pazar=0 sırasında",
+          _gunler8[(_t8.weekday() + 1) % 7] == _dogru8[_t8.weekday()])
+    basar("Açılış: gün adı UTC ile hesaplanıyor (yaz saati kaydırmasın)",
+          "Date.UTC(y,m-1,d)).getUTCDay()" in _sayfa8)
+    # Türkçe büyük harf: text-transform her tarayıcıda dil duyarlı değil.
+    basar("Açılış: büyük harf Türkçe kurala göre (CUMARTESİ, CUMARTESI değil)",
+          "toLocaleUpperCase('tr-TR')" in _sayfa8
+          and "text-transform" not in _sayfa8.split(".ed{")[1].split("}")[0])
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",

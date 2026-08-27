@@ -68,20 +68,42 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-a
 .cue{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
 .rule{height:1px;background:var(--c);opacity:.35;margin-bottom:20px}
 
-.mast{display:flex;justify-content:space-between;align-items:center;padding:20px 0 16px;border-bottom:1px solid #1A2130}
-.mark{font-family:var(--disp);font-weight:800;font-size:16px;letter-spacing:.2em}
-.mark em{display:block;font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.1em;color:var(--faint);margin-top:5px;text-transform:uppercase}
-.mastright{display:flex;align-items:center;gap:9px}
+/* Açılış: GAZETE KÜNYESİ (kullanıcı kararı).
+   Eskisi ortalanmış, kalın, iki satırlık bir slogandı — hiçbir bilgi
+   taşımıyordu ve "ortalanmış + kalın + bol boşluk" kalıbı üretilmiş
+   arayüz izlenimi veriyordu. Yenisi künye: solda marka, sağda tarih ve
+   gün, altında çift çizgi, sonra giriş cümlesi ve gecenin iki sayısı.
+   Sola hizalı ve asimetrik.
+   SABİT SAAT YAZILMIYOR: canlı olmayan bir saat bilgi değil süs.
+   Eski markanın altındaki "NBA · sen uyurken" alt satırı da kalktı —
+   hemen aşağıdaki bölümün adı zaten "Sen uyurken", tekrar oluyordu. */
+.mast{display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+  padding:20px 0 9px;border-bottom:2px solid var(--ink)}
+.mark{font-family:var(--disp);font-weight:800;font-size:23px;letter-spacing:-.04em}
+.mark em{font-style:normal;color:var(--ember)}
+.mastright{flex:none;text-align:right}
+.ed{font-family:var(--mono);font-size:9px;letter-spacing:.13em;color:var(--faint);
+  line-height:1.55;white-space:nowrap}
+/* Gün adı KENDİ satırında: tarihle yan yana yazılırsa dar ekranda
+   künyeyi sarmalatacak kadar uzuyor. */
+.ed b{display:block;font-weight:400}
 .gecesec{font-family:var(--mono);font-size:11px;background:#0C121C;color:var(--ink2);
-  border:1px solid #26303F;padding:9px 8px;cursor:pointer}
+  border:1px solid #26303F;padding:7px 8px;cursor:pointer;margin-top:8px}
+/* Çift çizgi (gazete kuralı): .mast'ın 2px açık alt kenarı + hemen
+   altında 1px koyu çizgi. */
+.rule2{height:1px;background:#1A2130;margin-top:3px}
 
-.hero{padding:32px 0 0}
-.stamp{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
-.stamp b{color:var(--ember);font-weight:400}
-h1{font-family:var(--disp);font-weight:800;font-size:clamp(38px,11vw,52px);line-height:.9;letter-spacing:-.045em;margin:16px 0 14px}
+.hero{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;
+  padding:15px 0 0}
+h1{flex:1;min-width:0;font-family:var(--disp);font-weight:800;font-size:24px;
+  line-height:1.18;letter-spacing:-.03em;margin:0}
 h1 s{text-decoration:none;color:var(--faint);display:block}
-.lede{font-size:16px;color:var(--ink2);max-width:36ch}
-.lede b{color:var(--ink);font-weight:600}
+/* Sayılar sarmalanmıyor (white-space:nowrap) ve daralmıyor (flex:none);
+   yer sıkışırsa giriş cümlesi kısalır, sayı bozulmaz. */
+.nums{flex:none;font-family:var(--mono);font-size:10.5px;color:var(--faint);
+  text-align:right;line-height:1.7;white-space:nowrap}
+.nums b{color:var(--ink2);font-weight:400}
+.hata{margin-top:14px;font-size:14px;color:var(--ink2)}
 
 /* türkler — side-by-side tabs, one active detail panel */
 #turkBox{display:flex;flex-direction:column;gap:1px;background:#1C2432;
@@ -858,17 +880,19 @@ td.khot{color:var(--amber);font-weight:700}
 <div class="wrap">
 
 <div class="mast">
-  <div class="mark">OVERNIGHT<em>NBA · sen uyurken</em></div>
+  <div class="mark">OVER<em>NIGHT</em></div>
   <div class="mastright">
+    <div class="ed"><span id="edTarih">&nbsp;</span><b id="edGun">&nbsp;</b></div>
     <select class="gecesec" id="gecesec" hidden aria-label="Gece seç"></select>
   </div>
 </div>
+<div class="rule2"></div>
 
 <div class="hero">
-  <div class="stamp" id="stamp">yükleniyor…</div>
   <h1 id="h1">Günaydın.<s>NBA uyumadı.</s></h1>
-  <p class="lede" id="lede"></p>
+  <div class="nums" id="nums"></div>
 </div>
+<p class="hata" id="lede" hidden></p>
 
 <section class="sec s1">
   <div class="sechead"><h2>Sen uyurken</h2><div class="cue"><span class="tikla">tıkla</span><span class="dokun">dokun</span></div></div>
@@ -984,6 +1008,17 @@ function turkceTarihYilli(tarihStr){
   const [y,m,d]=tarihStr.split('-').map(Number);
   return `${d} ${AY_ADLARI[m-1]} ${y}`;
 }
+
+// Künyedeki gün adı. Tarih dizesi YEREL saatle Date'e verilirse yaz
+// saati geçişlerinde bir gün kayabiliyor; UTC ile kuruluyor.
+const GUN_ADLARI=['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'];
+function turkceGun(tarihStr){
+  const [y,m,d]=tarihStr.split('-').map(Number);
+  return GUN_ADLARI[new Date(Date.UTC(y,m-1,d)).getUTCDay()];
+}
+// Türkçe büyük harf CSS'e bırakılmıyor: text-transform her tarayıcıda
+// dil duyarlı değil ve "Cumartesi" → "CUMARTESI" (noktasız I) çıkıyor.
+function trBuyuk(x){ return String(x).toLocaleUpperCase('tr-TR'); }
 
 // Gövdeyi cümle GRUPLARINA böler — paragraf başına 1-2 cümle.
 // 4 cümlelik hedef gövde 2+2 oluyor; tek sayıda cümlede ilk paragraf
@@ -1319,8 +1354,13 @@ function render(d){
   document.body.dataset.tarih=d.tarih;
 
   // ---- hero ----
-  document.getElementById('stamp').innerHTML=`${esc(turkceTarihYilli(d.tarih))} gecesi · <b>arşivden</b>`;
-  document.getElementById('lede').innerHTML=`<b>${d.mac_sayisi} maç oynandı.</b> Molasız, reklamsız özet.`;
+  document.getElementById('edTarih').textContent=trBuyuk(turkceTarihYilli(d.tarih));
+  document.getElementById('edGun').textContent=trBuyuk(turkceGun(d.tarih));
+  // Gecenin iki sayısı: maç adedi ve en yüksek rozet. İkisi de zaten
+  // hesaplanıyor. "Okuma süresi" bilerek yok — ürünün vaadi hız değil.
+  const enIyi=(d.bars||[]).reduce((a,b)=>Math.max(a,b.rozet||0),0);
+  document.getElementById('nums').innerHTML=
+    `<b>${d.mac_sayisi}</b> maç`+(enIyi>0?`<br><b>${enIyi.toFixed(1)}</b> en iyisi`:'');
   document.getElementById('endP').textContent=`${d.mac_sayisi} maç. Yarın sabah dokuzda görüşürüz.`;
   document.getElementById('credit').textContent=`OVERNIGHT · ${esc(d.uretildi||'')}`;
 
@@ -1683,7 +1723,9 @@ function geceYukle(tarih){
     if(!r.ok) throw new Error('veri bulunamadı');
     return r.json();
   }).then(render).catch(err=>{
-    document.getElementById('lede').textContent='Veri yüklenemedi: '+err.message;
+    const kutu=document.getElementById('lede');
+    kutu.hidden=false;
+    kutu.textContent='Veri yüklenemedi: '+err.message;
     console.error(err);
   });
 }
