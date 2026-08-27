@@ -169,24 +169,64 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
 .turkempty{background:#0C121C;padding:15px 16px;font-size:13.5px;line-height:1.55;color:var(--ink2)}
 .turkempty b{color:var(--ink);font-weight:600}
 
-/* brief */
-.brief ul{margin:0;padding:0;list-style:none}
-.brief li{border-bottom:1px solid #171E2B}
-.brief li:last-child{border-bottom:0}
-/* Numaralı hiyerarşi (kullanıcı kararı): beş satır aynı ağırlıktayken
-   göz nereye bakacağını bilmiyordu. Numara ritmi veriyor, ilk satır
-   belirgin şekilde büyük. Rozet ember kutudan küçük mono yazıya indi —
-   numara zaten güçlü bir öğe, ikisi çakışıyordu. */
-.briefrow{display:flex;align-items:flex-start;gap:14px;padding:15px 2px;width:100%}
-.bnum{flex:none;width:34px;font-family:var(--mono);font-size:26px;font-weight:700;
-  line-height:.9;letter-spacing:-.05em;color:#26303F}
-.briefrow.lead .bnum{color:var(--ember);font-size:38px}
-.btext{flex:1;min-width:0}
-.newsmark{color:var(--amber);font-family:var(--mono);font-size:13px;margin-right:6px}
-.brieftxt{display:block;font-size:14px;line-height:1.5;color:var(--ink2)}
-.briefrow.lead .brieftxt{font-size:19px;line-height:1.38;color:var(--ink);
-  font-weight:600;letter-spacing:-.01em}
-.briefgo{flex:0 0 auto;font-family:var(--mono);font-size:11.5px;color:var(--faint);margin-top:3px}
+/* "Sen uyurken" — masa saati düzeni (kullanıcı kararı).
+   Eski ad "30 saniyede gece"ydi; ürünün kimliği kullanıcı UYURKEN
+   oynanan maçlar, bölüm adı da onu söylüyor.
+   Sıralama rozete göre DEĞİL, TSİ başlama saatine göre kronolojik —
+   gece akış hâlinde okunsun. Bitiş saati NBA verisinde yok ve
+   uydurulmuyor; başlama saati akışı zaten veriyor. */
+.clock{border:1px solid #1A2230;background:#0E131B;overflow:hidden}
+/* üst şerit — saatin "kasası" */
+/* Kasa şeridinde BAŞLIK YOK: bölüm başlığı ("Sen uyurken") hemen
+   üstünde duruyordu, iki satır üst üste aynı şeyi yazıyordu. Şeritte
+   sadece "TSİ · N maç", solda. */
+.cbar{display:flex;justify-content:flex-start;align-items:center;
+  padding:11px 15px;background:#0B0F16;border-bottom:1px solid #1A2230}
+.cbar .tz{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--faint)}
+/* gece bandı: solda gece yarısı, sağda gün doğumu */
+.night{height:3px;background:linear-gradient(90deg,#0E1520,#141C2A,#1E2636,#2E2A24,#4A3520,#E8763A)}
+.rows{padding:2px 0;margin:0;list-style:none}
+.crow{display:flex;align-items:stretch;position:relative;width:100%}
+.rows li:not(:last-child) .crow::after{content:"";position:absolute;left:15px;right:15px;
+  bottom:0;height:1px;background:#141A24}
+/* saat sütunu — sabit 78px; etiketi olmayan satırda da hizayı bu genişlik
+   tutuyor, etiket yokluğu hizayı kaydırmıyor. */
+.crow .t{width:78px;flex:none;padding:15px 0 15px 15px;position:relative}
+.crow .t b{font-family:var(--mono);font-size:16px;font-weight:500;letter-spacing:-.02em;
+  color:#6E7A8B;display:block;line-height:1}
+.crow .t s{font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;color:#39424F;
+  text-decoration:none;display:block;margin-top:4px;min-height:9px}
+.crow.hot .t b{color:var(--ember)}
+.crow.hot .t s{color:#8A5A38}
+/* dikey ray — ilk satırda yukarıdan, son satırda aşağıdan kesiliyor ki
+   baştan sona akan tek çizgi görünmesin. */
+.crow .rail{width:1px;background:#141A24;flex:none;position:relative;margin:0 0 0 2px}
+/* Ray ilk satırda yukarıdan kesiliyor ama NOKTA onunla birlikte
+   inmemeli: nokta satırı işaretliyor, rayın başladığı yeri değil.
+   Ölçüldü — telafi yokken ilk nokta 34px'te, diğerleri 20px'teydi.
+   Kesme kadar (14px) yukarı alınıyor, mutlak konum eşitleniyor. */
+.rows li:first-child .rail{margin-top:14px}
+.rows li:first-child .rail u{top:5px}
+.rows li:last-child .rail{margin-bottom:14px}
+.crow .rail u{position:absolute;left:-3.5px;top:19px;width:8px;height:8px;border-radius:50%;
+  background:#2A3444;text-decoration:none}
+.crow.hot .rail u{background:var(--ember);box-shadow:0 0 0 3px rgba(232,118,58,.16)}
+/* min-width:0 — uzun cümle ray hizasını itmesin, kendi sütununda sarmalansın */
+.crow .c{flex:1;padding:14px 15px 14px 17px;min-width:0}
+.crow .c p{font-size:14.5px;line-height:1.5;color:var(--ink2);margin:0}
+.crow.hot .c p{font-size:16.5px;line-height:1.42;color:var(--ink);font-weight:600;
+  letter-spacing:-.01em}
+.crow .sc{display:flex;align-items:baseline;gap:8px;margin-top:6px;flex-wrap:wrap;
+  font-family:var(--mono);font-size:11px;color:var(--faint)}
+.crow .sc b{color:var(--ink2);font-weight:500}
+.crow .sc i{font-style:normal;color:#0A0603;background:var(--ember);padding:1px 6px;
+  font-weight:700;font-size:10.5px}
+.cfoot{padding:11px 15px;border-top:1px solid #1A2230;background:#0B0F16;
+  display:flex;justify-content:space-between;align-items:center;gap:10px}
+.cfoot span,.cfoot em{font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--faint);font-style:normal}
+.cfoot em{color:var(--ember)}
 
 /* games */
 .game{border-bottom:1px solid #171E2B;padding:0 0 24px;margin-bottom:24px;scroll-margin-top:20px}
@@ -613,10 +653,13 @@ td.khot{color:var(--amber);font-weight:700}
 </div>
 
 <section class="sec s1">
-  <div class="sechead"><h2>30 saniyede gece</h2><div class="cue"><span class="tikla">tıkla</span><span class="dokun">dokun</span></div></div>
+  <div class="sechead"><h2>Sen uyurken</h2><div class="cue"><span class="tikla">tıkla</span><span class="dokun">dokun</span></div></div>
   <div class="rule"></div>
-  <div class="brief">
-    <ul id="briefList"></ul>
+  <div class="clock">
+    <div class="cbar"><span class="tz" id="briefTz"></span></div>
+    <div class="night"></div>
+    <ul class="rows" id="briefList"></ul>
+    <div class="cfoot"><span id="briefAralik"></span><em id="briefSayac"></em></div>
   </div>
 </section>
 
@@ -1063,26 +1106,33 @@ function render(d){
   (d.diger||[]).forEach(m=>{MAC_BY_ID[m.id]={...m,katman_adi:'Bunları geç'};});
   TARIH_ETIKET=`${turkceTarih(d.tarih)} gecesi`;
 
-  // ---- brief ----
+  // ---- "Sen uyurken" (masa saati) ----
+  // Sıralama derle.py'de TSİ başlama saatine göre yapılıyor; burada
+  // yeniden sıralanmıyor. İÇERİK KURALI DEĞİŞMEDİ: satır sayısı sabit
+  // değil, bir maç ancak gerçek bir olguya dayanabiliyorsa satır alıyor.
   const briefList=document.getElementById('briefList');
-  // Kullanıcı kararı: ikonlar geri gelmiyor. Solda, sitenin her yerinde
-  // olduğu gibi, hedef maçın ROZETİ duruyor (küçük boy) — satır hem
-  // dolduruluyor hem de gerçek bir bilgi taşıyor. Haber işareti (⚠)
-  // metnin başına geçti, o da bilgi taşıyordu.
-  // Rozet burada GÖSTERİLMİYOR (kullanıcı kararı): değer skoru bizim
-  // iç sıralama aracımız, okura anlatılacak bir bilgi değil. Zaten
-  // aşağıda Mutlaka bil ve Bunları geç bölümlerinde görünüyor; brief'te
-  // ayrıca tekrar etmesi hem gereksiz hem de satırı meşgul ediyordu.
-  // Sıralamayı numaralar taşıyor.
-  briefList.innerHTML=d.brief.map((b,i)=>{
+  const ozet=d.brief_ozet||{};
+  document.getElementById('briefTz').textContent =
+    d.brief.length ? `TSİ · ${d.brief.length} maç` : 'TSİ';
+  briefList.innerHTML=d.brief.map(b=>{
     const haber = b.haber || b.icon==='news';
-    return `<li><a class="briefrow rowlink${i===0?' lead':''}" href="#${b.hedef_id}">
-    <span class="bnum">${i+1}</span>
-    <span class="btext">
-      <span class="brieftxt">${haber?'<i class="newsmark">⚠</i>':''}${esc(b.metin)}</span>
-    </span>
-    <span class="briefgo">→</span>
-  </a></li>`;}).join('');
+    const rozet = (b.rozet||b.rozet===0) ? `<i>${b.rozet.toFixed(1)}</i>` : '';
+    // Saat yoksa hücre BOŞ kalıyor — uydurma saat yazılmıyor. Sütun
+    // genişliği sabit olduğu için hizalama yine bozulmuyor.
+    return `<li><a class="crow rowlink${b.one_cikan?' hot':''}" href="#${b.hedef_id}">
+      <span class="t"><b>${esc(b.saat||'')}</b><s>${esc(b.etiket||'')}</s></span>
+      <span class="rail"><u></u></span>
+      <span class="c">
+        <p>${haber?'<i class="newsmark">⚠</i>':''}${esc(b.metin)}</p>
+        ${(b.skor||rozet)?`<span class="sc"><b>${esc(b.skor||'')}</b>${rozet}</span>`:''}
+      </span>
+    </a></li>`;}).join('');
+  // Alt şerit. DİKKAT: sağdaki saat gecenin BİTİŞİ değil, son maçın
+  // BAŞLAMA saati — bitiş NBA verisinde yok ve uydurulmuyor.
+  document.getElementById('briefAralik').textContent =
+    (ozet.ilk && ozet.son && ozet.ilk!==ozet.son) ? `${ozet.ilk} – ${ozet.son}` : (ozet.ilk||'');
+  document.getElementById('briefSayac').textContent =
+    ozet.dakika ? `${ozet.mac} maç · ${ozet.dakika} dakika` : `${ozet.mac||d.brief.length} maç`;
 
   // ---- mutlaka bil (liste — kullanıcı kararı: 8.5+ rozetli en fazla 3
   // maç, id-0 tam anlatı + "gecenin maçı", diğerleri kısa anlatı) ----

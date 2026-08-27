@@ -15,7 +15,9 @@ tarafı o bölümü veri yoksa gizliyor.
 """
 
 import json
+import re
 import unicodedata
+from datetime import datetime
 from pathlib import Path
 
 from hesapla import gmsc
@@ -632,6 +634,56 @@ def _brief_ikonu(gerekce_metni):
     return "default"
 
 
+# Maçın TSİ başlama saati.
+#
+# Kaynak: BoxScoreSummaryV2 → GameSummary → GAME_STATUS_TEXT ("5:00 pm ET").
+# BİTİŞ SAATİ NBA VERİSİNDE YOK ve tahmin EDİLMİYOR — "doğrulanmamış
+# cümle yayınlanmaz" kuralı saatler için de geçerli. Başlama saati
+# gecenin akışını zaten veriyor.
+#
+# Saat dilimi ZoneInfo ile çevriliyor, sabit fark eklenerek DEĞİL: ABD
+# yaz saati (mart–kasım) NBA sezonuna denk geliyor ve fark kışın 8,
+# yazın 7 saat. Sabit +8 yazsaydık ekim ve nisan maçları bir saat kayardı.
+_ET = "America/New_York"
+_TSI = "Europe/Istanbul"
+
+
+def _tsi_baslama(ham_mac, tarih_str):
+    """'01:00' — çevrilemezse None (uydurma saat yazılmaz)."""
+    try:
+        from zoneinfo import ZoneInfo
+    except ImportError:
+        return None
+    try:
+        gs = next(rs for rs in ham_mac["box_summary"]["resultSets"]
+                  if rs["name"] == "GameSummary")
+        ham = dict(zip(gs["headers"], gs["rowSet"][0])).get("GAME_STATUS_TEXT", "")
+        m = re.match(r"\s*(\d{1,2}):(\d{2})\s*([ap])m", str(ham), re.I)
+        if not m:
+            return None
+        saat, dk, yarim = int(m.group(1)), int(m.group(2)), m.group(3).lower()
+        if yarim == "p" and saat != 12:
+            saat += 12
+        if yarim == "a" and saat == 12:
+            saat = 0
+        gun = datetime.strptime(tarih_str, "%Y-%m-%d")
+        et = gun.replace(hour=saat, minute=dk, tzinfo=ZoneInfo(_ET))
+        return et.astimezone(ZoneInfo(_TSI)).strftime("%H:%M")
+    except Exception:
+        return None
+
+
+def _dakika_farki(bas, son):
+    """İki 'HH:MM' arasındaki dakika — gece yarısını geçen akış için."""
+    if not bas or not son:
+        return None
+    a = int(bas[:2]) * 60 + int(bas[3:])
+    b = int(son[:2]) * 60 + int(son[3:])
+    if b < a:
+        b += 24 * 60
+    return b - a
+
+
 def derle(tarih_str):
     gercek_gece = _yukle(GERCEK_DIZIN, tarih_str)
     skor_gece = _yukle(SKOR_DIZIN, tarih_str)
@@ -663,16 +715,51 @@ def derle(tarih_str):
             "id": mutlaka_id_by_gid.get(gid, f"a-{gid}"),
         })
 
-    # ---- brief ----
+    # ---- "Sen uyurken" (eski adı: 30 saniyede gece) ----
+    # Sıralama artık ROZETE göre değil, TSİ BAŞLAMA SAATİNE göre: gece
+    # gerçekten bir gece gibi, akış hâlinde okunsun (kullanıcı kararı).
+    # İÇERİK KURALI DEĞİŞMEDİ: bir maç ancak gerçek bir olguya
+    # dayanabiliyorsa satır alıyor; o eleme yaz.py'de yapılıyor.
     brief = []
     for b in taslak.get("brief", []):
         hedef = b.get("hedef_mac")
         kanca_gerekce = plan.get(hedef, {}).get("kanca_gerekce", "")
+        bilgi = rozet_by_gid.get(hedef, {})
+        ham_mac = ham["maclar"].get(hedef)
         brief.append({
             "metin": b["metin"],
             "hedef_id": mutlaka_id_by_gid.get(hedef, f"a-{hedef}"),
             "icon": _brief_ikonu(kanca_gerekce),
+            "saat": _tsi_baslama(ham_mac, tarih_str) if ham_mac else None,
+            "rozet": bilgi.get("rozet"),
+            # Takım KODU (MIL 122 – CHA 121): mini skor satırı dar,
+            # tam ad sığmıyor ve rozet çipiyle yan yana duruyor.
+            "skor": (f"{bilgi['ev']} {bilgi['ev_skor']} – "
+                     f"{bilgi['dep']} {bilgi['dep_skor']}") if bilgi else "",
         })
+    # Saati olmayan satır sona: uydurma saat yazmaktansa sırayı bozmamak.
+    brief.sort(key=lambda x: (x["saat"] is None, x["saat"] or ""))
+    if brief:
+        _en_yuksek = max(brief, key=lambda x: x["rozet"] or 0)
+        for i, x in enumerate(brief):
+            # Etiket SADECE hak edene. Öncelik: gecenin maçı > ilki > kapanış.
+            if x is _en_yuksek:
+                x["etiket"], x["one_cikan"] = "gecenin maçı", True
+            elif i == 0:
+                x["etiket"], x["one_cikan"] = "gecenin ilki", False
+            elif i == len(brief) - 1:
+                x["etiket"], x["one_cikan"] = "kapanış", False
+            else:
+                x["etiket"], x["one_cikan"] = "", False
+    saatli = [x["saat"] for x in brief if x["saat"]]
+    brief_ozet = {
+        "ilk": saatli[0] if saatli else None,
+        "son": saatli[-1] if saatli else None,
+        "mac": len(brief),
+        # DİKKAT: "son", gecenin BİTİŞİ değil son maçın BAŞLAMA saati.
+        # Bitiş saati veride yok ve uydurulmuyor.
+        "dakika": _dakika_farki(saatli[0], saatli[-1]) if len(saatli) > 1 else None,
+    }
 
     # ---- mutlaka bil (liste — id-0 tam anlatı, diğerleri kısa) ----
     mutlaka = []
@@ -739,6 +826,7 @@ def derle(tarih_str):
         "mac_sayisi": len(rozet_by_gid),
         "bars": bars,
         "brief": brief,
+        "brief_ozet": brief_ozet,
         "mutlaka": mutlaka,
         "gecenin_besi": gecenin_besi,
         "degerse_bak": degerse_bak,

@@ -1443,15 +1443,17 @@ def main():
     # ==================================================================
     # Metin bloğu, Türkler bloğu, dokun/tıkla.
     # ==================================================================
-    # Değer skoru İÇ araç, okura anlatılan bir bilgi değil. Brief
-    # satırlarında görünmez; aşağıdaki bölümlerde (Mutlaka bil, Göz at,
-    # Bunları geç) rozet olarak duruyor.
-    basar("Brief: rozet satırı kalktı",
-          "brozet" not in _sayfa and "rozet ${roz}" not in _sayfa)
-    basar("Brief: rozet hesabı da kalmadı (ölü kod bırakılmadı)",
-          "hedef.rozet.toFixed" not in _sayfa)
-    basar("Brief: sıralamayı numaralar taşıyor",
-          '<span class="bnum">${i+1}</span>' in _sayfa)
+    # KARAR DEĞİŞTİ (masa saati turu): rozet brief'ten kaldırılmıştı
+    # ("iç araç, okura anlatılmaz"); yeni düzende kullanıcı mini skorun
+    # yanında ROZET ÇİPİ istedi. Eski kural artık geçerli değil, testi de
+    # ona göre değişti — eski testi "geçsin diye" yumuşatmıyoruz.
+    basar("Sen uyurken: rozet mini skorun yanında çip olarak duruyor",
+          "b.rozet.toFixed(1)" in _sayfa and ".crow .sc i{" in _sayfa)
+    # Sıralamayı artık numaralar değil SAAT taşıyor.
+    basar("Sen uyurken: numaralı sıralama kalktı",
+          '<span class="bnum">${i+1}</span>' not in _sayfa and ".bnum{" not in _sayfa)
+    basar("Sen uyurken: satırı saat açıyor",
+          '<b>${esc(b.saat' in _sayfa)
     # Aşağıdaki bölümlerde rozet KORUNDU — oradan kaldırılması istenmedi.
     basar("Rozet aşağıdaki bölümlerde duruyor (regresyon)",
           '<span class="roz sm">${m.rozet.toFixed(1)}</span>' in _sayfa)
@@ -2213,6 +2215,92 @@ def main():
     # Gecenin beşi: flex-basis 0 masaüstünde blokları 19px'e çökertiyordu.
     basar("Gecenin beşi: bloklar kalan alanı paylaşıyor, basis auto",
           ".besikart .kbody>.bp{flex:1 1 auto" in _sayfa2)
+
+    # ==================================================================
+    # "SEN UYURKEN" — masa saati düzeni.
+    # ==================================================================
+    import derle as _derle
+    _sayfa3 = open("overnight_v17.html", encoding="utf-8").read()
+    _d3 = _jj.loads(open(f"dist/{_yayinda2}.json", encoding="utf-8").read())
+    _brief = _d3["brief"]
+    _ozet = _d3["brief_ozet"]
+
+    # Eski ad SAYFADA GÖRÜNMEMELİ. Kaynaktaki açıklama yorumu (adın
+    # neden değiştiğini anlatan) sayılmıyor — kural görünür metin için.
+    _gorunur = _re.sub(r"/\*.*?\*/", "", _sayfa3, flags=_re.S)
+    basar("Sen uyurken: bölüm adı değişti",
+          "<h2>Sen uyurken</h2>" in _sayfa3 and "30 saniyede gece" not in _gorunur)
+    # Kasa şeridinde başlık YOK — bölüm başlığıyla üst üste geliyordu.
+    basar("Sen uyurken: kasa şeridinde ikinci başlık yok",
+          '<div class="cbar"><span class="tz"' in _sayfa3)
+
+    # --- sıralama ---
+    _saatler = [b["saat"] for b in _brief if b["saat"]]
+    basar("Sen uyurken: satırlar TSİ başlama saatine göre kronolojik",
+          _saatler == sorted(_saatler))
+    basar("Sen uyurken: sıralama artık rozete göre DEĞİL",
+          len(_brief) < 2 or [b["rozet"] for b in _brief]
+          != sorted((b["rozet"] for b in _brief), reverse=True))
+    basar("Sen uyurken: her saat HH:MM biçiminde",
+          all(_re.fullmatch(r"\d{2}:\d{2}", s2) for s2 in _saatler))
+
+    # --- saat dilimi: SABİT FARK DEĞİL, gerçek dönüşüm ---
+    # ABD yaz saati NBA sezonuna denk geliyor; fark kışın 8, yazın 7
+    # saat. Sabit +8 yazsaydık ekim ve nisan maçları bir saat kayardı.
+    class _SahteMac(dict):
+        pass
+    def _sahte(saat_metni):
+        return {"box_summary": {"resultSets": [{"name": "GameSummary",
+                "headers": ["GAME_STATUS_TEXT"], "rowSet": [[saat_metni]]}]}}
+    basar("Sen uyurken: kış saatinde ET+8 (5:00 pm -> 01:00)",
+          _derle._tsi_baslama(_sahte("5:00 pm ET"), "2025-12-20") == "01:00")
+    basar("Sen uyurken: yaz saatinde ET+7 (7:00 pm -> 02:00)",
+          _derle._tsi_baslama(_sahte("7:00 pm ET"), "2025-10-25") == "02:00")
+    basar("Sen uyurken: öğlen/gece yarısı sınırı doğru (12:30 am -> 08:30)",
+          _derle._tsi_baslama(_sahte("12:30 am ET"), "2025-12-20") == "08:30")
+    basar("Sen uyurken: saat okunamazsa None (uydurma saat yazılmaz)",
+          _derle._tsi_baslama(_sahte("TBD"), "2025-12-20") is None)
+
+    # --- bitiş saati YOK ---
+    # Kullanıcı kuralı: bitiş saati NBA verisinde yok, tahmin edilip
+    # yazılamaz — "doğrulanmamış cümle yayınlanmaz" saatler için de geçerli.
+    basar("Sen uyurken: hiçbir satır bitiş saati taşımıyor",
+          all("bitis" not in b and "bitiş" not in b for b in _brief))
+    basar("Sen uyurken: alt şeritteki ikinci saat son maçın BAŞLANGICI",
+          _ozet["son"] == (_saatler[-1] if _saatler else None))
+
+    # --- etiketler ---
+    _etiketli = [b for b in _brief if b.get("etiket")]
+    basar("Sen uyurken: 'gecenin maçı' etiketi en yüksek rozetli satırda",
+          not _brief or max(_brief, key=lambda x: x["rozet"] or 0)["etiket"] == "gecenin maçı")
+    basar("Sen uyurken: öne çıkan satır tek",
+          sum(1 for b in _brief if b.get("one_cikan")) <= 1)
+    basar("Sen uyurken: etiketler sadece tanımlı üç değerden biri",
+          all(b.get("etiket") in ("", "gecenin ilki", "gecenin maçı", "kapanış")
+              for b in _brief))
+
+    # --- içerik kuralı DEĞİŞMEDİ ---
+    # Satır sayısı sabit değil; eleme yaz.py'de, olguya dayanabilen maçlar
+    # için yapılıyor. Bu tur sadece sıralama ve görünüm değiştirdi.
+    basar("Sen uyurken: satır sayısı sabit değil (olguya dayanan maç kadar)",
+          len(_brief) <= _d3["mac_sayisi"])
+    basar("Sen uyurken: her satır gerçek bir maça bağlı",
+          all(b.get("hedef_id") for b in _brief))
+
+    # --- ray hizası CSS'i ---
+    basar("Sen uyurken: uzun cümle rayı itemesin (içerik sütunu min-width:0)",
+          ".crow .c{flex:1;padding:14px 15px 14px 17px;min-width:0}" in _sayfa3)
+    basar("Sen uyurken: etiketsiz satırda hiza kaymasın (etiket yeri ayrılmış)",
+          "min-height:9px" in _sayfa3)
+    basar("Sen uyurken: ray ilk satırda yukarıdan, son satırda aşağıdan kesik",
+          ".rows li:first-child .rail{margin-top:14px}" in _sayfa3
+          and ".rows li:last-child .rail{margin-bottom:14px}" in _sayfa3)
+    # Ray kesilirken nokta onunla inmemeli — nokta satırı işaretliyor.
+    basar("Sen uyurken: ilk satırın noktası kesme kadar telafi ediliyor",
+          ".rows li:first-child .rail u{top:5px}" in _sayfa3)
+    basar("Sen uyurken: gece bandı koyu laciverten ember'a",
+          ".night{height:3px" in _sayfa3 and "#0E1520" in _sayfa3
+          and "#E8763A)" in _sayfa3.split(".night{")[1][:200])
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
