@@ -48,6 +48,12 @@
       "is": "uret",
       "sonuc": "failure",
       "not": "run 7 · schedule"
+    },
+    {
+      "zaman": "2026-08-27T16:36:36Z",
+      "is": "uret",
+      "sonuc": "success",
+      "not": "run 8 · schedule"
     }
   ]
 }
