@@ -2234,8 +2234,10 @@ def yaz_sablon(tarih_str, zorla=False, dosya_soneki="-sablon"):
     uretim_rapor = {}
 
     mutlaka_gidleri = {m["mac_id"] for m in mutlaka}
-    diger_hedef_sayisi = max(0, 5 - len(mutlaka_gidleri))
-    brief_hedefleri = list(mutlaka_gidleri) + [m["mac_id"] for m in diger[:diger_hedef_sayisi]]
+    # HAVUZ = gecenin bütün maçları. Kimin konuşacağına gece_brief_ata
+    # karar veriyor (olgusu var mı + monotonluk kesimi); havuzu baştan
+    # beşe indirmek o kararın önüne geçen ikinci bir eleme olurdu.
+    brief_hedefleri = list(mutlaka_gidleri) + [m["mac_id"] for m in diger]
 
     taslak_maclar = {}
     for m in diger:
@@ -2321,8 +2323,8 @@ def yaz_hibrit(tarih_str, zorla=False):
     ornekler_havuzu = ornekler_yukle()
 
     mutlaka_gidleri = [m["mac_id"] for m in mutlaka]
-    diger_hedef_sayisi = max(0, 5 - len(mutlaka_gidleri))
-    brief_hedefleri = mutlaka_gidleri + [m["mac_id"] for m in diger[:diger_hedef_sayisi]]
+    # HAVUZ = gecenin bütün maçları (bkz. gece_brief_ata).
+    brief_hedefleri = mutlaka_gidleri + [m["mac_id"] for m in diger]
 
     rapor = {"toplam_alan": 0, "ilk_denemede_kabul": 0, "sablon_moduna_dusen": 0, "detay": [], "sablon_isaretli": []}
 
@@ -2500,30 +2502,17 @@ def yaz(tarih_str, zorla=False, haber_skorlari=None, sadece_gidler=None):
     # düzeltmesi: ilk sürüm mutlaka'yı brief havuzundan tamamen
     # dışlıyordu çünkü brief_hedefleri sadece "diger"den besleniyordu).
     mutlaka_gidleri = [m["mac_id"] for m in mutlaka]
-    diger_hedef_sayisi = max(0, 5 - len(mutlaka_gidleri))
-    brief_hedefleri = mutlaka_gidleri + [m["mac_id"] for m in diger[:diger_hedef_sayisi]]
+    # HAVUZ = gecenin bütün maçları (bkz. gece_brief_ata).
+    brief_hedefleri = mutlaka_gidleri + [m["mac_id"] for m in diger]
 
-    # Rozetten bağımsız olay eşikleri: bir maç top-5 rozete girmese bile
-    # kilometre taşı bir performans (triple-double, 50+ sayı, kariyer
-    # rekoru — bkz. "kilometre" gerçek türü) ya da yüksek haber skoru
-    # (ciddi sakatlık, ihraç vb.) taşıyorsa "30 saniyede gece"de yer
-    # almalı. En düşük rozetli brief hedefinin yerini alır.
-    def _olay_esigini_asiyor_mu(gid):
-        gercekler = gercek_gece["maclar"][gid]
-        kilometre_var = any(f["tur"] == "kilometre" for f in gercekler)
-        return kilometre_var or haber_skorlari.get(gid, 0) >= 6
-
-    olay_adaylari = [
-        m["mac_id"] for m in diger
-        if m["mac_id"] not in brief_hedefleri and _olay_esigini_asiyor_mu(m["mac_id"])
-    ]
-    if olay_adaylari:
-        degistirilebilir = sorted(brief_hedefleri, key=lambda g: rozet_by_gid[g])
-        for olay_gid in olay_adaylari:
-            if not degistirilebilir:
-                break
-            cikarilan = degistirilebilir.pop(0)
-            brief_hedefleri[brief_hedefleri.index(cikarilan)] = olay_gid
+    # KALDIRILDI — "kilometre taşı olan düşük rozetli maç, en düşük
+    # rozetli hedefin YERİNİ ALIR" kuralı. Amacı iyiydi (2.45'lik bir
+    # maçtaki triple-double haber değeri taşır) ama kullanıcının
+    # DEĞİŞMEZ kuralıyla çelişiyordu: yüksek rozetli bir maçı havuzdan
+    # atıyor ve o maç, kendi olgusu olmasına rağmen susuyordu
+    # (ölçüldü 20 Aralık: TOR-BOS 7.35 ve DEN-HOU 6.39, 2.45 ve 2.65
+    # rozetli maçlar için listeden çıkarılmıştı).
+    # Havuz artık bütün maçlar; kimin konuşacağını tek kural belirliyor.
 
     taslak_maclar = {}
     taslak_brief = []
@@ -2961,25 +2950,12 @@ def yaz_batch(tarih_str, zorla=False, haber_skorlari=None, sadece_gidler=None):
         for m in skor_gece["maclar"]
     }
 
-    diger_hedef_sayisi = max(0, 5 - len(mutlaka_gidleri))
-    brief_hedefleri = mutlaka_gidleri + [m["mac_id"] for m in diger[:diger_hedef_sayisi]]
+    # HAVUZ = gecenin bütün maçları (bkz. gece_brief_ata).
+    brief_hedefleri = mutlaka_gidleri + [m["mac_id"] for m in diger]
 
-    def _olay_esigini_asiyor_mu(gid):
-        gercekler = gercek_gece["maclar"][gid]
-        kilometre_var = any(f["tur"] == "kilometre" for f in gercekler)
-        return kilometre_var or haber_skorlari.get(gid, 0) >= 6
-
-    olay_adaylari = [
-        m["mac_id"] for m in diger
-        if m["mac_id"] not in brief_hedefleri and _olay_esigini_asiyor_mu(m["mac_id"])
-    ]
-    if olay_adaylari:
-        degistirilebilir = sorted(brief_hedefleri, key=lambda g: rozet_by_gid[g])
-        for olay_gid in olay_adaylari:
-            if not degistirilebilir:
-                break
-            cikarilan = degistirilebilir.pop(0)
-            brief_hedefleri[brief_hedefleri.index(cikarilan)] = olay_gid
+    # KALDIRILDI (bkz. yaz_hibrit'teki aynı gerekçe): olay eşiğiyle
+    # yer değiştirme, yüksek rozetli maçı havuzdan atıp monotonluk
+    # kuralını bozuyordu.
 
     taslak_maclar = {}
     bekleyen_gec = dict(gec_maclar)

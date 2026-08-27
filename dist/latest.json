@@ -66,10 +66,10 @@
   ],
   "brief": [
     {
-      "metin": "",
-      "anlatili": false,
+      "metin": "Houston Rockets, Denver Nuggets'i 115-101 yendi.",
+      "anlatili": true,
       "hedef_id": "a-0022500386",
-      "icon": "default",
+      "icon": "standings",
       "saat": "01:00",
       "rozet": 6.39,
       "skor": "DEN 101 – HOU 115",
@@ -90,8 +90,8 @@
       "one_cikan": false
     },
     {
-      "metin": "",
-      "anlatili": false,
+      "metin": "Tyrese Maxey, Dallas Mavericks karşısında 38 sayı attı.",
+      "anlatili": true,
       "hedef_id": "a-0022500387",
       "icon": "default",
       "saat": "03:00",
@@ -126,8 +126,8 @@
       "one_cikan": false
     },
     {
-      "metin": "",
-      "anlatili": false,
+      "metin": "Washington Wizards, 20 sayılık farktan dönüp Memphis Grizzlies'i geçti.",
+      "anlatili": true,
       "hedef_id": "g-mutlaka-1",
       "icon": "default",
       "saat": "04:00",
@@ -138,7 +138,7 @@
       "one_cikan": false
     },
     {
-      "metin": "Golden State Warriors, 14 sayılık farktan dönüp Phoenix Suns'u geçti.",
+      "metin": "Golden State Warriors, Phoenix Suns'u 119-116 yendi.",
       "anlatili": true,
       "hedef_id": "g-mutlaka-0",
       "icon": "default",
@@ -150,7 +150,7 @@
       "one_cikan": true
     },
     {
-      "metin": "Desmond Bane, Utah Jazz karşısında 32 sayı attı.",
+      "metin": "Orlando Magic, Utah Jazz'ı uzatmada geçti.",
       "anlatili": true,
       "hedef_id": "g-mutlaka-2",
       "icon": "default",
@@ -190,7 +190,7 @@
     "ilk": "01:00",
     "son": "06:30",
     "mac": 10,
-    "anlatili": 3,
+    "anlatili": 6,
     "dakika": 330
   },
   "mutlaka": [

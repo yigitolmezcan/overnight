@@ -49,19 +49,40 @@
   },
   "brief": [
     {
-      "metin": "Golden State Warriors, 14 sayılık farktan dönüp Phoenix Suns'u geçti.",
+      "metin": "Golden State Warriors, Phoenix Suns'u 119-116 yendi.",
       "hedef_mac": "0022500392",
-      "muzip": false
+      "muzip": false,
+      "kind": "duz_sonuc"
     },
     {
-      "metin": "Desmond Bane, Utah Jazz karşısında 32 sayı attı.",
+      "metin": "Washington Wizards, 20 sayılık farktan dönüp Memphis Grizzlies'i geçti.",
+      "hedef_mac": "0022500391",
+      "muzip": false,
+      "kind": "geri_donus"
+    },
+    {
+      "metin": "Orlando Magic, Utah Jazz'ı uzatmada geçti.",
       "hedef_mac": "0022500393",
-      "muzip": false
+      "muzip": false,
+      "kind": "uzatma"
     },
     {
       "metin": "Boston Celtics, Toronto Raptors'u yenerek konferansta 3. sıraya yükseldi.",
       "hedef_mac": "0022500388",
-      "muzip": false
+      "muzip": false,
+      "kind": "siralama"
+    },
+    {
+      "metin": "Houston Rockets, Denver Nuggets'i 115-101 yendi.",
+      "hedef_mac": "0022500386",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Tyrese Maxey, Dallas Mavericks karşısında 38 sayı attı.",
+      "hedef_mac": "0022500387",
+      "muzip": false,
+      "kind": "performans"
     }
   ],
   "rapor": {

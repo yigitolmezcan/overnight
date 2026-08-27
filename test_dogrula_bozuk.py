@@ -2768,6 +2768,21 @@ def main():
     basar("Brief: monotonluk kesimi tür atamasından ÖNCE yapılıyor",
           _kaynak.index("MONOTONLUK KESİMİ ATAMADAN ÖNCE")
           < _kaynak.index("# 2) Tür ataması"))
+    # Havuz BÜTÜN maçlar. Havuzu beşe indirmek, kesimden önce ikinci bir
+    # eleme demekti; üstelik "kilometre taşı olan düşük rozetli maç,
+    # en düşükün YERİNİ ALIR" kuralı yüksek rozetli maçı havuzdan atıp
+    # monotonluğu bozuyordu (20 Aralık: TOR-BOS 7.35 ve DEN-HOU 6.39,
+    # 2.45 ve 2.65 rozetli maçlar için çıkarılmıştı).
+    basar("Brief: hedef havuzu gecenin bütün maçları",
+          "diger_hedef_sayisi" not in _kaynak)
+    basar("Brief: olay eşiğiyle yer değiştirme kaldırıldı",
+          "olay_adaylari" not in _kaynak)
+    # Yayınlanan gecede de kural tutuyor mu — uçtan uca.
+    _bd = _d3["brief"]
+    _bk = [b["rozet"] for b in _bd if b["anlatili"]]
+    _bs = [b["rozet"] for b in _bd if not b["anlatili"]]
+    basar("Brief: YAYINLANAN gecede de rozet boşluğu yok",
+          not _bk or not _bs or min(_bk) > max(_bs))
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
