@@ -76,6 +76,46 @@ her sabah push attığı için sen hiçbir şey yapmayacaksın.
 Aradaki yarım saat kasıtlı: üretim takılırsa 09:00 işi ortada hazır gece
 bulamaz ve **hiçbir şey yapmaz** — site boşalmaz, bir önceki gece yayında kalır.
 
+## Zamanlayıcı neden dışarıda
+
+GitHub'ın kendi zamanlayıcısı bu depoda **güvenilir değil**. Ölçüldü:
+
+| gün | ateşlenmesi gereken slot | gerçekten ateşlenen |
+|---|---|---|
+| 26 Ağustos | 6 | 2 |
+| 27 Ağustos | 6 | 0 |
+
+Elle tetikleme (`workflow_dispatch`) ise **anında** çalışıyor. Yani sorun
+kota ya da bozuk bir dosya değil; GitHub zamanlanmış tetiklemeyi düşürüyor.
+Bu bizim düzeltebileceğimiz bir şey değil — o yüzden zamanlayıcıyı dışarı
+taşıdık.
+
+**Asıl zamanlayıcı: Vercel Cron** → `api/nobetci.js` → GitHub'ı elle
+tetikler gibi başlatır. GitHub'ın kendi cron'u yedek olarak duruyor.
+İşler idempotent: ikisi birden ateşlerse ikinci hiçbir şey yapmaz.
+
+Üstüne bir de **nöbet** var: her gün 11:00'de yayının bayatlığına bakar,
+eşiği aşmışsa haber verir.
+
+### Gereken tek ayar
+
+Vercel → Settings → Environment Variables:
+
+| değişken | değer |
+|---|---|
+| `GH_JETON` | GitHub'da yeni bir token (aşağıda) |
+| `NOBETCI_ANAHTARI` | rastgele uzun bir metin, kendin uydur |
+
+Token için: github.com/settings/tokens → **Fine-grained token** →
+sadece `overnight` deposu → izinler: **Actions: Read and write**,
+**Contents: Read**, **Issues: Read and write**.
+
+Bu ikisi yeterli. E-posta (Resend) **isteğe bağlı**: kuruluysa mail atar,
+kurulu değilse GitHub'da issue açıp seni atar — atama zaten GitHub'ın
+kendi bildirim e-postasını tetikler.
+
+Mail de istersen ekle: `RESEND_API_KEY`, `UYARI_ADRESI` (kendi adresin).
+
 ## Bir şey ters giderse
 
 Üretim ya da yayın başarısız olursa deponda otomatik bir **Issue** açılır ve
