@@ -1145,10 +1145,20 @@ def derle(tarih_str):
             "icon": _brief_ikonu(kanca_gerekce) if metin else "default",
             "saat": _tsi_baslama(ham_mac, tarih_str) if ham_mac else None,
             "rozet": bilgi.get("rozet"),
-            # Takım KODU (MIL 122 – CHA 121): mini skor satırı dar,
-            # tam ad sığmıyor ve rozet çipiyle yan yana duruyor.
+            # Üç biçim, üç farklı yer için — ölçüldü (375px içerik
+            # sütunu 252px, masaüstü 577px):
+            #   kod       "DEN 101 – HOU 115"                  1.07 satır
+            #   şehir     7 satırın 4'ü sarmalanıyor
+            #   tam ad    "Denver Nuggets 101 – Houston …"     3.54 satır
+            # Yani tam ad MOBİLDE SIĞMIYOR. Cümlesiz satırda skor tek
+            # tanım olduğu için orada mümkün olan en okunur biçim
+            # kullanılıyor: masaüstünde tam ad, mobilde şehir.
+            # Cümleli satırda takımlar zaten cümlede geçiyor, orada kod
+            # yeterli — aynı adı iki kez yazmak gereksiz.
             "skor": (f"{bilgi['ev']} {bilgi['ev_skor']} – "
                      f"{bilgi['dep']} {bilgi['dep_skor']}") if bilgi else "",
+            "skor_tam": (f"{_takim_adi(bilgi['ev'])} {bilgi['ev_skor']} – "
+                         f"{_takim_adi(bilgi['dep'])} {bilgi['dep_skor']}") if bilgi else "",
         })
     # Saati olmayan satır sona: uydurma saat yazmaktansa sırayı bozmamak.
     brief.sort(key=lambda x: (x["saat"] is None, x["saat"] or ""))

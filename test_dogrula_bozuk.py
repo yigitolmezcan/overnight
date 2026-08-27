@@ -2295,6 +2295,23 @@ def main():
           all(not b["metin"] for b in _brief if not b["anlatili"]))
     basar("Sen uyurken: cümlesiz satırda da skor var (olgu)",
           all(b["skor"] for b in _brief if not b["anlatili"]))
+    # Cümlesiz satırda skor TEK tanım. Ölçüldü (375px, 7 satır):
+    #   tam ad 3.54 satır (hepsi sarmalanıyor) · şehir 4/7 sarmalanıyor
+    #   kod 1.07 satır (hiçbiri sarmalanmıyor)
+    # Mobilde kod, masaüstünde (577px) tam ad.
+    basar("Sen uyurken: cümlesiz satır iki skor biçimi taşıyor",
+          all(b.get("skor") and b.get("skor_tam") for b in _brief if not b["anlatili"]))
+    basar("Sen uyurken: tam ad biçimi gerçekten uzun ad kullanıyor",
+          any(len(b["skor_tam"]) > len(b["skor"]) + 8
+              for b in _brief if not b["anlatili"]))
+    basar("Sen uyurken: mobilde kod, masaüstünde tam ad",
+          ".crow .sc b.genis{display:none}" in _sayfa3
+          and "@media(min-width:768px){\n  .crow .sc b.dar{display:none}" in _sayfa3)
+    # Cümleli satırda takımlar zaten cümlede geçiyor — orada kod yeterli.
+    basar("Sen uyurken: cümleli satırda tek biçim (kod), tekrar yok",
+          '`<b>${esc(b.skor||\'\')}</b>`' in _sayfa3)
+    basar("Sen uyurken: kullanılmayan şehir biçimi üretilmiyor",
+          all("skor_sehir" not in b for b in _brief))
     basar("Sen uyurken: özet anlatılı sayısını da taşıyor",
           _ozet["anlatili"] == sum(1 for b in _brief if b["anlatili"]))
     # Görünümde ayrım: cümlesiz satır sessiz sınıfı alıyor ve rozeti sönük.

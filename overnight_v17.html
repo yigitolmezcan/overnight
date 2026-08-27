@@ -234,6 +234,21 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
    okuyucu "bakmaya değer mi" sorusunu yine cevaplayabiliyor. */
 .crow.sessiz .sc i{background:#232C3A;color:var(--ink2);font-weight:500}
 
+/* Cümlesiz satırda skor TEK tanım — takım adı başka yerde geçmiyor,
+   o yüzden mümkün olan en okunur biçim kullanılıyor.
+   ÖLÇÜLDÜ (375px, içerik sütunu 252px, 7 cümlesiz satır):
+     tam ad    → 3.54 satır, hepsi sarmalanıyor
+     şehir adı → 7 satırın 4'ü sarmalanıyor (2.54 satır)
+     kod       → 1.07 satır, hiçbiri sarmalanmıyor
+   Şehir adı ayrıca tuhaf eşleşmeler üretiyordu ("LA Clippers 103 –
+   Los Angeles 88"). Mobilde KOD kalıyor; masaüstünde (içerik sütunu
+   577px) tam ad tek satıra sığıyor, orada tam ad. */
+.crow .sc b.genis{display:none}
+@media(min-width:768px){
+  .crow .sc b.dar{display:none}
+  .crow .sc b.genis{display:inline}
+}
+
 .cfoot{padding:11px 15px;border-top:1px solid #1A2230;background:#0B0F16;
   display:flex;justify-content:space-between;align-items:center;gap:10px}
 .cfoot span,.cfoot em{font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;
@@ -1335,7 +1350,9 @@ function render(d){
       <span class="rail"><u></u></span>
       <span class="c">
         ${sessiz?'':`<p>${haber?'<i class="newsmark">⚠</i>':''}${esc(b.metin)}</p>`}
-        ${(b.skor||rozet)?`<span class="sc"><b>${esc(b.skor||'')}</b>${rozet}</span>`:''}
+        ${(b.skor||rozet)?`<span class="sc">${sessiz
+            ? `<b class="dar">${esc(b.skor||'')}</b><b class="genis">${esc(b.skor_tam||b.skor||'')}</b>`
+            : `<b>${esc(b.skor||'')}</b>`}${rozet}</span>`:''}
       </span>
     </a></li>`;}).join('');
   // Alt şerit. DİKKAT: sağdaki saat gecenin BİTİŞİ değil, son maçın

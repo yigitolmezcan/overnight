@@ -73,6 +73,7 @@
       "saat": "01:00",
       "rozet": 6.39,
       "skor": "DEN 101 – HOU 115",
+      "skor_tam": "Denver Nuggets 101 – Houston Rockets 115",
       "etiket": "gecenin ilki",
       "one_cikan": false
     },
@@ -84,6 +85,7 @@
       "saat": "03:00",
       "rozet": 7.35,
       "skor": "TOR 96 – BOS 112",
+      "skor_tam": "Toronto Raptors 96 – Boston Celtics 112",
       "etiket": "",
       "one_cikan": false
     },
@@ -95,6 +97,7 @@
       "saat": "03:00",
       "rozet": 6.0,
       "skor": "PHI 121 – DAL 114",
+      "skor_tam": "Philadelphia 76ers 121 – Dallas Mavericks 114",
       "etiket": "",
       "one_cikan": false
     },
@@ -106,6 +109,7 @@
       "saat": "03:00",
       "rozet": 4.05,
       "skor": "NOP 128 – IND 109",
+      "skor_tam": "New Orleans Pelicans 128 – Indiana Pacers 109",
       "etiket": "",
       "one_cikan": false
     },
@@ -117,6 +121,7 @@
       "saat": "03:30",
       "rozet": 2.45,
       "skor": "DET 112 – CHA 86",
+      "skor_tam": "Detroit Pistons 112 – Charlotte Hornets 86",
       "etiket": "",
       "one_cikan": false
     },
@@ -128,6 +133,7 @@
       "saat": "04:00",
       "rozet": 8.62,
       "skor": "MEM 122 – WAS 130",
+      "skor_tam": "Memphis Grizzlies 122 – Washington Wizards 130",
       "etiket": "",
       "one_cikan": false
     },
@@ -139,6 +145,7 @@
       "saat": "04:30",
       "rozet": 8.69,
       "skor": "GSW 119 – PHX 116",
+      "skor_tam": "Golden State Warriors 119 – Phoenix Suns 116",
       "etiket": "gecenin maçı",
       "one_cikan": true
     },
@@ -150,6 +157,7 @@
       "saat": "05:30",
       "rozet": 8.48,
       "skor": "UTA 127 – ORL 128",
+      "skor_tam": "Utah Jazz 127 – Orlando Magic 128",
       "etiket": "",
       "one_cikan": false
     },
@@ -161,6 +169,7 @@
       "saat": "06:00",
       "rozet": 2.65,
       "skor": "SAC 93 – POR 98",
+      "skor_tam": "Sacramento Kings 93 – Portland Trail Blazers 98",
       "etiket": "",
       "one_cikan": false
     },
@@ -172,6 +181,7 @@
       "saat": "06:30",
       "rozet": 5.07,
       "skor": "LAC 103 – LAL 88",
+      "skor_tam": "LA Clippers 103 – Los Angeles Lakers 88",
       "etiket": "kapanış",
       "one_cikan": false
     }
@@ -3184,7 +3194,7 @@
       "mac": "Denver Nuggets — Houston Rockets",
       "skor": "101–115",
       "rozet": 6.39,
-      "why": "",
+      "why": "gece sırası 1",
       "metin": "Houston Rockets deplasmanda Denver Nuggets'i 115-101 yendi. Kevin Durant 31 sayı attı.",
       "box": {
         "ev": {
@@ -4263,7 +4273,7 @@
       "mac": "LA Clippers — Los Angeles Lakers",
       "skor": "103–88",
       "rozet": 5.07,
-      "why": "gece sırası 10",
+      "why": "",
       "metin": "LA Clippers evinde Los Angeles Lakers'i 103-88 yendi.",
       "box": {
         "ev": {
