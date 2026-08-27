@@ -94,7 +94,8 @@ jobs:
             gh issue create \
               --title "Yayın bayat — $(date -u +%Y-%m-%d)" \
               --body "İş koştu ama son yayının üstünden eşikten fazla gün geçmiş. Site eskiyor. Kayıtlar: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" \
-              || echo "issue açılamadı"
+              || echo "issue açılamadı" \
+            --assignee yigitolmezcan
           fi
 
       - name: Koşu kaydı bırak
@@ -143,4 +144,5 @@ jobs:
           } > /tmp/issue.md
           gh issue create \
             --title "Yayın işi başarısız — $(date -u +%Y-%m-%d)" \
-            --body-file /tmp/issue.md
+            --body-file /tmp/issue.md \
+            --assignee yigitolmezcan

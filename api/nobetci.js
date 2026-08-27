@@ -25,14 +25,18 @@ const ANAHTAR = process.env.NOBETCI_ANAHTARI || "";
 const UYARI_ADRESI = process.env.UYARI_ADRESI || "";
 const BAYATLIK_ESIGI_GUN = Number(process.env.BAYATLIK_ESIGI_GUN || 2);
 
+// ZORUNLU olan sadece ikisi. Resend BİLEREK opsiyonel: e-posta kurulu
+// değilse nöbetçi susmuyor, GitHub'da issue açıp kullanıcıyı ATIYOR —
+// atama GitHub'ın kendi bildirimini tetikliyor, hiçbir dış servise
+// ihtiyaç kalmıyor. "Uyarı yolu kurulmamış" bir sessizlik sebebi olamaz.
 function eksikAyarlar() {
   const eksik = [];
   if (!GH_JETON) eksik.push("GH_JETON");
   if (!ANAHTAR) eksik.push("NOBETCI_ANAHTARI");
-  if (!UYARI_ADRESI) eksik.push("UYARI_ADRESI");
-  if (!process.env.RESEND_API_KEY) eksik.push("RESEND_API_KEY");
   return eksik;
 }
+
+const MAIL_KURULU = () => Boolean(process.env.RESEND_API_KEY && UYARI_ADRESI);
 
 async function gh(yol, secenekler = {}) {
   const yanit = await fetch(`https://api.github.com/repos/${GH_DEPO}${yol}`, {
@@ -65,6 +69,28 @@ async function sonYayinTarihi() {
   if (!yanit.ok) throw new Error(`yayin_durumu okunamadı (${yanit.status})`);
   const d = JSON.parse(await yanit.text());
   return d?.son_yayin?.yayinlandi || null;
+}
+
+// Tek giriş noktası: hangi yol açıksa oradan haber veriyor.
+async function haberVer(konu, satirlar) {
+  if (MAIL_KURULU()) {
+    try {
+      await mailAt(konu, satirlar);
+      return "mail";
+    } catch (e) {
+      console.error("mail gitmedi, issue'ya düşülüyor:", e.message);
+    }
+  }
+  const yanit = await gh("/issues", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      title: konu,
+      body: satirlar.join("\n\n"),
+      assignees: [GH_DEPO.split("/")[0]],
+    }),
+  });
+  return yanit.ok ? "issue" : `haber verilemedi (HTTP ${yanit.status})`;
 }
 
 async function mailAt(konu, satirlar) {
@@ -112,7 +138,7 @@ export default async function handler(istek, yanit) {
     if (gorev === "uret" || gorev === "yayinla") {
       rapor.tetikleme = await isAkisiniTetikle(`${gorev}.yml`);
       if (!rapor.tetikleme.tamam) {
-        await mailAt("OVERNIGHT · iş tetiklenemedi", [
+        rapor.haber = await haberVer("OVERNIGHT · iş tetiklenemedi", [
           `${gorev}.yml tetiklenemedi.`,
           `GitHub yanıtı: HTTP ${rapor.tetikleme.durum}`,
           "Site bugün güncellenmeyebilir.",
@@ -125,7 +151,7 @@ export default async function handler(istek, yanit) {
     const sonYayin = await sonYayinTarihi();
     rapor.son_yayin = sonYayin;
     if (!sonYayin) {
-      await mailAt("OVERNIGHT · hiç yayın kaydı yok", [
+      rapor.haber = await haberVer("OVERNIGHT · hiç yayın kaydı yok", [
         "config/yayin_durumu.json içinde son_yayin bulunamadı.",
       ]);
       rapor.uyari = "kayit_yok";
@@ -135,7 +161,7 @@ export default async function handler(istek, yanit) {
     rapor.gun_gecti = Number(gun.toFixed(2));
     rapor.esik_gun = BAYATLIK_ESIGI_GUN;
     if (gun > BAYATLIK_ESIGI_GUN) {
-      await mailAt("OVERNIGHT · site bayatladı", [
+      rapor.haber = await haberVer("OVERNIGHT · site bayatladı", [
         `Son yayın: ${sonYayin}`,
         `Üstünden ${gun.toFixed(1)} gün geçti (eşik: ${BAYATLIK_ESIGI_GUN} gün).`,
         "Zamanlayıcı çalışmamış olabilir.",
@@ -149,7 +175,7 @@ export default async function handler(istek, yanit) {
   } catch (hata) {
     console.error("Nöbetçi hatası:", hata);
     try {
-      await mailAt("OVERNIGHT · nöbetçi hata verdi", [String(hata && hata.message)]);
+      await haberVer("OVERNIGHT · nöbetçi hata verdi", [String(hata && hata.message)]);
     } catch (_) { /* mail de gitmiyorsa kayıt en azından Vercel loglarında */ }
     return yanit.status(500).json({ hata: String(hata && hata.message) });
   }

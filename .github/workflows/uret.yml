@@ -87,7 +87,8 @@ jobs:
           if [ "$ASILDI" = "evet" ]; then
             gh issue create \
               --title "Bütçe tavanı aşıldı — gece şablon moduna düştü" \
-              --body "Günlük \$0.30 tavanına ulaşıldı. Gecenin kalanı şablonla üretildi; yayın normal saatinde çıkacak, sadece metinler LLM yerine şablondan geliyor. Ayrıntı: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+              --body "Günlük \$0.30 tavanına ulaşıldı. Gecenin kalanı şablonla üretildi; yayın normal saatinde çıkacak, sadece metinler LLM yerine şablondan geliyor. Ayrıntı: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" \
+            --assignee yigitolmezcan
           fi
 
       # Kullanıcı kuralı: her koşu, sonucu ne olursa olsun iz bıraksın.
@@ -153,4 +154,5 @@ jobs:
           } > /tmp/issue.md
           gh issue create \
             --title "Gece üretimi başarısız ($DUSEN) — $(date -u +%Y-%m-%d)" \
-            --body-file /tmp/issue.md
+            --body-file /tmp/issue.md \
+            --assignee yigitolmezcan

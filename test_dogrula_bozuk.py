@@ -2059,6 +2059,22 @@ def main():
           "NOBETCI_ANAHTARI" in _nb and "yetkisiz" in _nb)
     basar("Nöbetçi: ayarları eksikse SESSİZ KALMIYOR (kendi arızasını gizlemiyor)",
           "ayarlar eksik" in _nb)
+    # E-posta kurulu DEĞİLKEN de haber verebilmeli: issue açıp kullanıcıyı
+    # atıyor (atama GitHub'ın kendi bildirimini tetikliyor). "Uyarı yolu
+    # kurulmamış" bir sessizlik sebebi olamaz.
+    basar("Nöbetçi: zorunlu ayar sadece jeton + anahtar (Resend opsiyonel)",
+          "if (!GH_JETON) eksik.push" in _nb
+          and "eksik.push(\"RESEND_API_KEY\")" not in _nb)
+    basar("Nöbetçi: e-posta yoksa issue açıp kullanıcıyı atıyor",
+          "assignees" in _nb and "haberVer" in _nb)
+
+    # Actions'ın kendi issue'su da ATANMALI — dün açılan #1 atanmamıştı,
+    # o yüzden GitHub bildirim yollamadı.
+    for _wf in (".github/workflows/uret.yml", ".github/workflows/yayinla.yml"):
+        _icerik = open(_wf, encoding="utf-8").read()
+        _n_issue = _icerik.count("gh issue create")
+        basar(f"Bildirim: {_wf.split('/')[-1]} her issue'yu kullanıcıya atıyor",
+              _n_issue > 0 and _icerik.count("--assignee") == _n_issue)
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
