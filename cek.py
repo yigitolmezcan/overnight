@@ -73,9 +73,29 @@ ISTEK_ARASI_BEKLEME_SN = 0.6
 # işi zaman aşımından öldürecek bir tasarım çıkmıştı.
 # 15 sn fazlasıyla cömert (NBA normalde 1-3 sn'de cevaplıyor) ve
 # 3 denemeyle en kötü durum ~39 dakikaya iniyor.
-ISTEK_ZAMAN_ASIMI_SN = 15
-YENIDEN_DENEME = 3
-DENEME_ARASI_TABAN_SN = 2.0
+# ÖLÇÜM (2026-08-27): stats.nba.com bağlantıyı 26 saniye açık tutup
+# düşürdü — hem GitHub koşucusundan hem de geliştirme makinesinden. Yani
+# IP engeli değil, API'nin kendisi dönemsel olarak tıkalı. Eski politika
+# (3 deneme, 2+4 sn bekleme, 15 sn zaman aşımı) toplam ~50 saniye
+# dayanıyordu; bu tür bir tıkanmayı atlatmaya yetmiyor.
+ISTEK_ZAMAN_ASIMI_SN = 20
+YENIDEN_DENEME = 4
+DENEME_ARASI_TABAN_SN = 5.0
+
+# Sabrın SINIRI da olmalı. Tek çağrının kötü senaryosu ~115 sn; 46 çağrı
+# körlemesine bu kadar beklerse iş 60 dakikalık tavanı aşar ve GitHub onu
+# yarıda keser — o zaman ne veri olur ne düzgün hata. Bu bütçe, TOPLAM
+# yeniden-deneme beklemesini sınırlıyor: aşılınca yeniden deneme durur,
+# iş hızlı ve TEMİZ düşer. Bir sonraki zaman slotu (04:00, 05:30 ve
+# Vercel) zaten yeniden deneyecek — asıl dayanıklılık orada.
+TOPLAM_BEKLEME_BUTCESI_SN = 900.0
+_toplam_beklenen = {"sn": 0.0}
+
+
+def yeniden_deneme_butcesini_sifirla():
+    """Her çekim başında bütçe sıfırlanır (testler ve arka arkaya
+    çağrılar birbirinin bütçesini yemesin)."""
+    _toplam_beklenen["sn"] = 0.0
 
 
 def _dayanikli(ad, fn):
@@ -87,15 +107,27 @@ def _dayanikli(ad, fn):
     import requests
     son_hata = None
     for deneme in range(1, YENIDEN_DENEME + 1):
+        basladi = time.monotonic()
         try:
             return fn()
         except (requests.exceptions.Timeout,
                 requests.exceptions.ConnectionError,
                 requests.exceptions.HTTPError) as e:
             son_hata = e
+            # Bütçe SADECE uykuyu değil, boşa geçen zaman aşımını da
+            # sayıyor. Sadece uyku sayılsaydı 46 çağrının zaman aşımları
+            # tek başına 60 dakikalık iş tavanını aşardı — bütçe var ama
+            # koruduğu şeyi korumaz olurdu.
+            _toplam_beklenen["sn"] += time.monotonic() - basladi
             if deneme == YENIDEN_DENEME:
                 break
             bekle = DENEME_ARASI_TABAN_SN * (2 ** (deneme - 1))
+            if _toplam_beklenen["sn"] + bekle > TOPLAM_BEKLEME_BUTCESI_SN:
+                print(f"    {ad}: toplam yeniden-deneme bütçesi doldu "
+                      f"({TOPLAM_BEKLEME_BUTCESI_SN:.0f} sn) — bir sonraki "
+                      f"zaman slotuna bırakılıyor")
+                break
+            _toplam_beklenen["sn"] += bekle
             print(f"    {ad}: ağ hatası ({type(e).__name__}), {bekle:.0f} sn sonra "
                   f"yeniden denenecek ({deneme}/{YENIDEN_DENEME - 1})")
             time.sleep(bekle)
@@ -204,6 +236,7 @@ def kirpilmis_yaz(tarih_str, cikti):
 
 
 def cek(tarih_str: str, zorla: bool = False) -> Path:
+    yeniden_deneme_butcesini_sifirla()
     hedef_dosya = HAM_DIZIN / f"{tarih_str}.json"
     if hedef_dosya.exists() and not zorla:
         print(f"{hedef_dosya} zaten var, atlanıyor (--force ile yeniden çek).")

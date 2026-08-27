@@ -1693,12 +1693,23 @@ def main():
     # eklendiğinde en kötü durum 103 dk'ya çıkmıştı, oysa iş 45 dk'da
     # kesiliyordu — dayanıklılık ekleyeyim derken tersini yapan bir
     # tasarım. Bu test o dengeyi kilitliyor.
-    _tek = (_cek.YENIDEN_DENEME * _cek.ISTEK_ZAMAN_ASIMI_SN
-            + sum(_cek.DENEME_ARASI_TABAN_SN * 2 ** i for i in range(_cek.YENIDEN_DENEME - 1)))
-    _en_kotu_dk = 46 * _tek / 60
+    # Bütçe (TOPLAM_BEKLEME_BUTCESI_SN) hem uykuyu hem boşa geçen zaman
+    # aşımlarını sayıyor. Bütçe dolduğunda yeniden deneme tamamen durur,
+    # yani en kötü durum: bütçenin tamamı + her çağrının TEK başarısız
+    # denemesi. Ölçülen gerçek arıza (2026-08-27): stats.nba.com 26 sn
+    # bağlantıyı açık tutup düşürdü, hem koşucudan hem yerelden.
+    _en_kotu_sn = _cek.TOPLAM_BEKLEME_BUTCESI_SN + 46 * _cek.ISTEK_ZAMAN_ASIMI_SN
+    _en_kotu_dk = _en_kotu_sn / 60
     _is_siniri = int(_u.split("timeout-minutes:")[1].split()[0])
     basar(f"Ağ: en kötü durum ({_en_kotu_dk:.0f} dk) iş sınırının ({_is_siniri} dk) altında",
           _en_kotu_dk < _is_siniri)
+    # Bütçe boşa geçen zaman aşımlarını SAYMALI; saymazsa 46 çağrının
+    # zaman aşımları tek başına iş tavanını aşar ve bütçe koruduğu şeyi
+    # korumaz olur.
+    basar("Ağ: yeniden deneme bütçesi boşa geçen zaman aşımını da sayıyor",
+          'time.monotonic() - basladi' in _ck)
+    basar("Ağ: her çekim kendi bütçesiyle başlıyor",
+          "yeniden_deneme_butcesini_sifirla()" in _ck.split("def cek(")[1][:400])
 
     # Tek slot yetmiyor: ölçüldü (2026-08-26) — GitHub üretimi 27 dk,
     # yayını 41 dk geç başlattı. Gecikme doğrudan yayın saatine biniyor.
