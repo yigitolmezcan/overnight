@@ -2401,6 +2401,35 @@ def main():
     basar("Kilit: WTF İstatistiği ayrı bir öğe olarak duruyor (regresyon)",
           ".kwtf{" in _sayfa4 and "WTF İstatistiği" in _sayfa4)
 
+    # Kilit istatistikteki HER SAYI ham NBA verisiyle birebir olmalı.
+    # Gerekçe: tasarım turunda ekrandaki değerler yanlış göründü ve
+    # "veri bozuk mu" sorusu göz kararıyla cevaplanamadı (sebep DOM'a
+    # elle enjekte edilmiş test değerleriydi, ama bunu ancak ölçerek
+    # ayırt edebildim). Bu test o soruyu bir daha tahmine bırakmıyor.
+    _ham_kilit = _jj.loads(_yayin._ham_metni(_yayinda2))
+    _ham_by = {}
+    for _gid, _m in _ham_kilit["maclar"].items():
+        _bt = _m["box_traditional"]["boxScoreTraditional"]
+        for _t in (_bt["homeTeam"], _bt["awayTeam"]):
+            _st = _t["statistics"]
+            _ham_by[_t["teamTricode"]] = {
+                "ribaund": _st["reboundsTotal"],
+                "hücum ribaundu": _st["reboundsOffensive"],
+                "üçlük": _st["threePointersMade"],
+                "asist": _st["assists"],
+                "top kaybı": _st["turnovers"],
+                "serbest atış denemesi": _st["freeThrowsAttempted"],
+            }
+    _uyusmaz = []
+    for _k in _kartlar4:
+        _kl = _k["box"]["kilit"]
+        for _kutu in _kl["kutular"]:
+            _bek = _ham_by.get(_kutu["kod"], {}).get(_kl["ad"])
+            if _bek is not None and _bek != _kutu["deger"]:
+                _uyusmaz.append(f"{_kutu['kod']} {_kl['ad']}: {_kutu['deger']} != {_bek}")
+    basar(f"Kilit: sayfadaki her sayı ham NBA verisiyle birebir ({len(_kartlar4)} şerit)",
+          not _uyusmaz)
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))
