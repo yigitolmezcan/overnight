@@ -2045,16 +2045,20 @@ def main():
               "kosu_kaydi.py" in _icerik and "if: always()" in _icerik)
 
     # DIŞ NÖBETÇİ — GitHub hiç koşmasa bile haber verecek tek katman.
+    _nb = open("api/nobetci.js", encoding="utf-8").read()
     _vercel = _jj.loads(open("vercel.json", encoding="utf-8").read())
     _cronlar = _vercel.get("crons", [])
-    basar("Nöbetçi: vercel.json üç cron tanımlıyor (üret · yayınla · nöbet)",
-          len(_cronlar) == 3)
+    # Vercel ÜCRETSİZ planda en fazla 2 cron — üçüncüsü dağıtımı
+    # reddettiriyor. Bayatlık nöbeti yayın görevinin içine alındı.
+    basar("Nöbetçi: cron sayısı Vercel ücretsiz sınırını aşmıyor (en fazla 2)",
+          len(_cronlar) <= 2)
     _gorevler = {c["path"].split("gorev=")[-1] for c in _cronlar}
     basar("Nöbetçi: üretimi ve yayını GitHub'ın DIŞINDAN tetikliyor",
-          {"uret", "yayinla", "nobet"} == _gorevler)
+          {"uret", "yayinla"} == _gorevler)
+    basar("Nöbetçi: bayatlık nöbeti yayın görevinin içinde de tutuluyor",
+          'gorev !== "yayinla"' in _nb and "bayatladı" in _nb)
     basar("Nöbetçi: bütün cron'lar nöbetçi uç noktasına gidiyor",
           all(c["path"].startswith("/api/nobetci") for c in _cronlar))
-    _nb = open("api/nobetci.js", encoding="utf-8").read()
     basar("Nöbetçi: anahtarsız istek reddediliyor",
           "NOBETCI_ANAHTARI" in _nb and "yetkisiz" in _nb)
     basar("Nöbetçi: ayarları eksikse SESSİZ KALMIYOR (kendi arızasını gizlemiyor)",

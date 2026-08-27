@@ -106,6 +106,11 @@ Vercel → Settings → Environment Variables:
 | `GH_JETON` | GitHub'da yeni bir token (aşağıda) |
 | `NOBETCI_ANAHTARI` | rastgele uzun bir metin, kendin uydur |
 
+Vercel ÜCRETSİZ planda **en fazla 2 cron** olabiliyor ve saatler dakika
+hassasiyetinde değil (06:00 cron'u 06:00–07:00 arasında bir yerde ateşler).
+O yüzden GitHub'ın kendi cron'u da duruyor: hangisi önce ateşlerse iş
+yapılır, ikincisi "zaten yapılmış" deyip geçer.
+
 Token için: github.com/settings/tokens → **Fine-grained token** →
 sadece `overnight` deposu → izinler: **Actions: Read and write**,
 **Contents: Read**, **Issues: Read and write**.

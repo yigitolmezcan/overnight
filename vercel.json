@@ -11,10 +11,6 @@
     {
       "path": "/api/nobetci?gorev=yayinla",
       "schedule": "0 6 * * *"
-    },
-    {
-      "path": "/api/nobetci?gorev=nobet",
-      "schedule": "0 8 * * *"
     }
   ]
 }

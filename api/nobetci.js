@@ -143,8 +143,13 @@ export default async function handler(istek, yanit) {
           `GitHub yanıtı: HTTP ${rapor.tetikleme.durum}`,
           "Site bugün güncellenmeyebilir.",
         ]);
+        return yanit.status(200).json(rapor);
       }
-      return yanit.status(200).json(rapor);
+      // Vercel ücretsiz planda 2 cron sınırı var; bayatlık nöbeti ayrı
+      // bir cron olamıyor. Yayın görevi tetiklemeyi yaptıktan SONRA
+      // aynı çağrıda nöbeti de tutuyor — dünkü yayın çıkmadıysa bunu
+      // yakalayan tek katman bu.
+      if (gorev !== "yayinla") return yanit.status(200).json(rapor);
     }
 
     // Nöbet: yayın bayat mı?
