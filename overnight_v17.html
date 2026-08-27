@@ -521,12 +521,26 @@ table.kbs td{padding:var(--kbspad,1px) 6px;line-height:1.2;text-align:right;colo
    max-width ve ellipsis kaldırıldı, sütun en uzun ada göre genişliyor;
    yazı bir tık küçültüldü. Yatay kaydırma zaten serbest. */
 table.kbs th:first-child,table.kbs td:first-child{text-align:left;position:sticky;left:0;
-  background:#0E131B;padding-left:14px;padding-right:8px;white-space:nowrap}
+  background:#0E131B;padding-left:18px;padding-right:8px;white-space:nowrap}
+/* İLK BEŞ göstergesi — adın SOLUNDA ince dikey çizgi.
+   Mevcut şerit KULLANILMIYOR: satırın sol kenarındaki ember ("gecenin
+   adamı") ve mavi ("rakibin en iyisi") işaretleri özel; beş oyuncuya da
+   verirsek o işaretler anlamını kaybeder. Bu yüzden ayrı bir çizgi ve
+   NÖTR gri. Bir oyuncu hem ilk beş hem gecenin adamı olabilir; kenardaki
+   şerit 0-3px'te, bu çizgi 8-11px'te, ikisi birlikte görünüyor.
+   Dolgu (18px) BÜTÜN satırlarda aynı — yedeklerde çizgi yok ama yer
+   ayrılı, yoksa adlar satır satır kayardı. */
+table.kbs td.ilkbes::before{content:"";position:absolute;left:8px;top:50%;
+  transform:translateY(-50%);width:3px;height:50%;background:#4A5566}
 table.kbs td:first-child{color:var(--ink);font-family:var(--txt);font-size:13.5px}
 table.kbs td.k{color:var(--ink);font-weight:700}
 /* Kullanıcı kuralı: Say/Rib/Ast/Dk yatay kaydırma OLMADAN görünmeli —
    bu dört sütun dar tutuldu, ileri istatistikler sağa kayabilir. */
-table.kbs th:nth-child(-n+5),table.kbs td:nth-child(-n+5){padding-left:5px;padding-right:5px}
+/* n+2 — bu daraltma İSTATİSTİK sütunları için; ad sütununa uygulanınca
+   onun dolgusunu da 5px'e düşürüyordu ve ilk beş göstergesi (8px'te)
+   yazının üstüne biniyordu (ölçüldü). Ad sütunu kendi dolgusunu korur. */
+table.kbs th:nth-child(n+2):nth-child(-n+5),
+table.kbs td:nth-child(n+2):nth-child(-n+5){padding-left:5px;padding-right:5px}
 table.kbs tr:last-child td{border-bottom:0}
 tr.kstar td{background:#17110A}
 tr.kstar td:first-child{background:#17110A;box-shadow:inset 3px 0 0 var(--ember)}
@@ -538,6 +552,11 @@ td.khot{color:var(--amber);font-weight:700}
 .kdnp{padding:7px 16px 0;font-family:var(--mono);font-size:11px;color:var(--faint);
   line-height:1.5;white-space:normal;overflow-wrap:break-word;word-break:normal}
 .kfoot{padding:0 16px 12px}
+/* Lejant bir KEZ, kartın altında — sekme başına değil. */
+.kbeslegend{display:block;padding-top:8px;font-family:var(--mono);font-size:10px;
+  color:var(--faint);letter-spacing:.04em}
+.kbeslegend i{display:inline-block;width:3px;height:9px;background:#4A5566;
+  vertical-align:-1px;margin-right:6px}
 
 /* gecenin beşi — ana sayfada sadece isim+mevki, ayrıntı kartta */
 /* Gecenin beşi artık düz liste değil, YARIM SAHA yerleşimi (kullanıcı
@@ -1180,7 +1199,7 @@ function boxTablosu(t){
     const huc=KOLONLAR.map(([alan,,vurgu])=>{
       const c=[vurgu?'k':'',o.aykiri&&o.aykiri_alan===alan?'khot':''].filter(Boolean).join(' ');
       return `<td${c?` class="${c}"`:''}>${esc(String(o[alan]))}</td>`;}).join('');
-    return `<tr class="${cls}"><td>${esc(o.isim)}</td>${huc}</tr>`;
+    return `<tr class="${cls}"><td${o.ilk_bes?' class="ilkbes"':''}>${esc(o.isim)}</td>${huc}</tr>`;
   };
   const dnp = t.oynamayanlar || [];
   return `<div class="kscroll"><table class="kbs">
@@ -1273,7 +1292,8 @@ function boxKartiHTML(m){
     <div class="kbody">
       ${b.wtf?`<div class="kwtf"><span>WTF İstatistiği</span><p>${esc(b.wtf)}</p></div>`:''}
       <div class="kpanes">${panolar}</div>
-      <div class="kfoot"></div>
+      <div class="kfoot">${(b.ev.oyuncular||[]).some(o=>o.ilk_bes)
+        ? '<span class="kbeslegend"><i></i>ilk beş</span>' : ''}</div>
     </div>`;
 }
 

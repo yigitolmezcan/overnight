@@ -116,6 +116,10 @@ def _oyuncu_satiri(p, takim_kodu):
     return {
         "isim": _dogru_oyuncu_adi(p["personId"], f"{p['firstName']} {p['familyName']}".strip()),
         "takim": takim_kodu,
+        # İlk beş / yedek ayrımı BoxScoreTraditionalV3'te zaten var:
+        # ilk beşin `position` alanı dolu ("G"/"F"/"C"), yedeklerin boş.
+        # Ek çağrı gerekmiyor.
+        "ilk_bes": bool(p.get("position")),
         "min": dk(s["minutes"]),
         "pts": s["points"],
         "reb": s["reboundsTotal"],

@@ -2843,6 +2843,54 @@ def main():
           all(dogrula_modul.t4_yasakli_ifade(a["ifade"], _yasakli3)[0]
               and dogrula_modul.t4d_kok_kaliplari(a["ifade"])[0] for a in _ayr))
 
+    # ==================================================================
+    # İLK BEŞ GÖSTERGESİ
+    # Mevcut şerit KULLANILMIYOR: satırın sol kenarındaki ember
+    # ("gecenin adamı") ve mavi ("rakibin en iyisi") işaretleri özel;
+    # beş oyuncuya da verilirse anlamlarını kaybederler.
+    # ==================================================================
+    _sayfa7 = open("overnight_v17.html", encoding="utf-8").read()
+    _d7 = _jj.loads(open(f"dist/{_yayinda2}.json", encoding="utf-8").read())
+    _kart7 = []
+    for _b in ("mutlaka", "degerse_bak", "diger"):
+        _v = _d7.get(_b)
+        if isinstance(_v, list):
+            _kart7 += [x for x in _v if isinstance(x, dict) and "box" in x]
+    # Veri: her takımda tam 5 ilk beş.
+    basar("İlk beş: her takımda tam 5 oyuncu işaretli",
+          all(sum(1 for o in k["box"][t]["oyuncular"] if o.get("ilk_bes")) == 5
+              for k in _kart7 for t in ("ev", "dep")))
+    basar("İlk beş: yedeklerde işaret yok",
+          all(isinstance(o.get("ilk_bes"), bool)
+              for k in _kart7 for t in ("ev", "dep") for o in k["box"][t]["oyuncular"]))
+    # Kaynak: BoxScoreTraditionalV3'ün `position` alanı — ek çağrı yok.
+    basar("İlk beş: ayrım position alanından, ek API çağrısı yok",
+          '"ilk_bes": bool(p.get("position"))' in open("derle.py", encoding="utf-8").read())
+    # SIRALAMA DEĞİŞMİYOR: tablo hâlâ sayıya göre.
+    basar("İlk beş: tablo hâlâ sayıya göre sıralı (ilk beş üste toplanmadı)",
+          all([o["pts"] for o in k["box"][t]["oyuncular"]]
+              == sorted((o["pts"] for o in k["box"][t]["oyuncular"]), reverse=True)
+              for k in _kart7 for t in ("ev", "dep")))
+    # Gösterge AYRI ve NÖTR; mevcut şerit dokunulmadan duruyor.
+    basar("İlk beş: gösterge nötr gri, ember/mavi değil",
+          "background:#4A5566}" in _sayfa7.split("td.ilkbes::before")[1][:200])
+    basar("İlk beş: mevcut ember/mavi şerit yerinde",
+          "tr.kstar td:first-child{background:#17110A;box-shadow:inset 3px 0 0 var(--ember)}" in _sayfa7
+          and "tr.kbest td:first-child{background:#0C1320;box-shadow:inset 3px 0 0 #5B8DEF}" in _sayfa7)
+    basar("İlk beş: iki işaret çakışmıyor (kenar 0-3px, gösterge 8-11px)",
+          "left:8px" in _sayfa7.split("td.ilkbes::before")[1][:200])
+    # Dolgu bütün satırlarda aynı — yedeklerde çizgi yok ama yer ayrılı.
+    basar("İlk beş: ad sütunu dolgusu 18px (yedekte de yer ayrılı)",
+          "background:#0E131B;padding-left:18px" in _sayfa7)
+    # İstatistik daraltması ad sütununa uygulanmamalı; uygulanınca
+    # gösterge yazının üstüne biniyordu (ölçüldü).
+    basar("İlk beş: istatistik daraltması ad sütununu etkilemiyor",
+          "td:nth-child(n+2):nth-child(-n+5)" in _sayfa7)
+    # Lejant bir KEZ, sekme başına değil.
+    basar("İlk beş: lejant kartta bir kez (kfoot içinde)",
+          '<span class="kbeslegend"><i></i>ilk beş</span>' in _sayfa7
+          and _sayfa7.count("kbeslegend\"><i>") == 1)
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))

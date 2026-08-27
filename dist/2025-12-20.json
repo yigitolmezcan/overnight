@@ -69,7 +69,7 @@
       "metin": "Houston Rockets, Denver Nuggets'i 115-101 yendi.",
       "anlatili": true,
       "hedef_id": "a-0022500386",
-      "icon": "standings",
+      "icon": "default",
       "saat": "01:00",
       "rozet": 6.39,
       "skor": "DEN 101 – HOU 115",
@@ -228,6 +228,7 @@
             {
               "isim": "Stephen Curry",
               "takim": "GSW",
+              "ilk_bes": true,
               "min": "35",
               "pts": 28,
               "reb": 10,
@@ -251,6 +252,7 @@
             {
               "isim": "Jimmy Butler III",
               "takim": "GSW",
+              "ilk_bes": true,
               "min": "34",
               "pts": 25,
               "reb": 1,
@@ -274,6 +276,7 @@
             {
               "isim": "Will Richard",
               "takim": "GSW",
+              "ilk_bes": false,
               "min": "19",
               "pts": 20,
               "reb": 5,
@@ -297,6 +300,7 @@
             {
               "isim": "Brandin Podziemski",
               "takim": "GSW",
+              "ilk_bes": false,
               "min": "29",
               "pts": 11,
               "reb": 3,
@@ -320,6 +324,7 @@
             {
               "isim": "Quinten Post",
               "takim": "GSW",
+              "ilk_bes": true,
               "min": "26",
               "pts": 7,
               "reb": 4,
@@ -343,6 +348,7 @@
             {
               "isim": "Gary Payton II",
               "takim": "GSW",
+              "ilk_bes": false,
               "min": "18",
               "pts": 5,
               "reb": 8,
@@ -366,6 +372,7 @@
             {
               "isim": "Trayce Jackson-Davis",
               "takim": "GSW",
+              "ilk_bes": false,
               "min": "17",
               "pts": 5,
               "reb": 7,
@@ -389,6 +396,7 @@
             {
               "isim": "Gui Santos",
               "takim": "GSW",
+              "ilk_bes": false,
               "min": "6",
               "pts": 5,
               "reb": 3,
@@ -412,6 +420,7 @@
             {
               "isim": "Draymond Green",
               "takim": "GSW",
+              "ilk_bes": true,
               "min": "8",
               "pts": 4,
               "reb": 3,
@@ -435,6 +444,7 @@
             {
               "isim": "Pat Spencer",
               "takim": "GSW",
+              "ilk_bes": false,
               "min": "10",
               "pts": 4,
               "reb": 1,
@@ -458,6 +468,7 @@
             {
               "isim": "Moses Moody",
               "takim": "GSW",
+              "ilk_bes": true,
               "min": "17",
               "pts": 3,
               "reb": 2,
@@ -481,6 +492,7 @@
             {
               "isim": "De'Anthony Melton",
               "takim": "GSW",
+              "ilk_bes": false,
               "min": "15",
               "pts": 2,
               "reb": 2,
@@ -537,6 +549,7 @@
             {
               "isim": "Devin Booker",
               "takim": "PHX",
+              "ilk_bes": true,
               "min": "33",
               "pts": 38,
               "reb": 1,
@@ -561,6 +574,7 @@
             {
               "isim": "Dillon Brooks",
               "takim": "PHX",
+              "ilk_bes": true,
               "min": "31",
               "pts": 22,
               "reb": 5,
@@ -584,6 +598,7 @@
             {
               "isim": "Collin Gillespie",
               "takim": "PHX",
+              "ilk_bes": true,
               "min": "34",
               "pts": 16,
               "reb": 5,
@@ -607,6 +622,7 @@
             {
               "isim": "Oso Ighodaro",
               "takim": "PHX",
+              "ilk_bes": false,
               "min": "29",
               "pts": 10,
               "reb": 7,
@@ -630,6 +646,7 @@
             {
               "isim": "Jordan Goodwin",
               "takim": "PHX",
+              "ilk_bes": false,
               "min": "25",
               "pts": 9,
               "reb": 1,
@@ -653,6 +670,7 @@
             {
               "isim": "Ryan Dunn",
               "takim": "PHX",
+              "ilk_bes": false,
               "min": "20",
               "pts": 7,
               "reb": 5,
@@ -676,6 +694,7 @@
             {
               "isim": "Royce O'Neale",
               "takim": "PHX",
+              "ilk_bes": true,
               "min": "29",
               "pts": 5,
               "reb": 3,
@@ -699,6 +718,7 @@
             {
               "isim": "Jamaree Bouyea",
               "takim": "PHX",
+              "ilk_bes": false,
               "min": "16",
               "pts": 5,
               "reb": 2,
@@ -722,6 +742,7 @@
             {
               "isim": "Mark Williams",
               "takim": "PHX",
+              "ilk_bes": true,
               "min": "18",
               "pts": 4,
               "reb": 5,
@@ -806,6 +827,7 @@
             {
               "isim": "Santi Aldama",
               "takim": "MEM",
+              "ilk_bes": false,
               "min": "35",
               "pts": 37,
               "reb": 10,
@@ -830,6 +852,7 @@
             {
               "isim": "Jaren Jackson Jr.",
               "takim": "MEM",
+              "ilk_bes": true,
               "min": "31",
               "pts": 22,
               "reb": 8,
@@ -853,6 +876,7 @@
             {
               "isim": "Cam Spencer",
               "takim": "MEM",
+              "ilk_bes": true,
               "min": "37",
               "pts": 19,
               "reb": 4,
@@ -876,6 +900,7 @@
             {
               "isim": "Cedric Coward",
               "takim": "MEM",
+              "ilk_bes": true,
               "min": "30",
               "pts": 14,
               "reb": 6,
@@ -899,6 +924,7 @@
             {
               "isim": "Kentavious Caldwell-Pope",
               "takim": "MEM",
+              "ilk_bes": false,
               "min": "27",
               "pts": 11,
               "reb": 2,
@@ -922,6 +948,7 @@
             {
               "isim": "Olivier-Maxence Prosper",
               "takim": "MEM",
+              "ilk_bes": false,
               "min": "16",
               "pts": 8,
               "reb": 2,
@@ -945,6 +972,7 @@
             {
               "isim": "Jock Landale",
               "takim": "MEM",
+              "ilk_bes": false,
               "min": "23",
               "pts": 5,
               "reb": 8,
@@ -968,6 +996,7 @@
             {
               "isim": "Jaylen Wells",
               "takim": "MEM",
+              "ilk_bes": true,
               "min": "32",
               "pts": 4,
               "reb": 5,
@@ -991,6 +1020,7 @@
             {
               "isim": "Brandon Clarke",
               "takim": "MEM",
+              "ilk_bes": true,
               "min": "3",
               "pts": 2,
               "reb": 3,
@@ -1045,6 +1075,7 @@
             {
               "isim": "Kyshawn George",
               "takim": "WAS",
+              "ilk_bes": true,
               "min": "39",
               "pts": 28,
               "reb": 7,
@@ -1068,6 +1099,7 @@
             {
               "isim": "CJ McCollum",
               "takim": "WAS",
+              "ilk_bes": true,
               "min": "39",
               "pts": 28,
               "reb": 5,
@@ -1091,6 +1123,7 @@
             {
               "isim": "Alex Sarr",
               "takim": "WAS",
+              "ilk_bes": true,
               "min": "25",
               "pts": 18,
               "reb": 11,
@@ -1114,6 +1147,7 @@
             {
               "isim": "Marvin Bagley III",
               "takim": "WAS",
+              "ilk_bes": false,
               "min": "21",
               "pts": 16,
               "reb": 6,
@@ -1137,6 +1171,7 @@
             {
               "isim": "Bub Carrington",
               "takim": "WAS",
+              "ilk_bes": true,
               "min": "34",
               "pts": 14,
               "reb": 7,
@@ -1160,6 +1195,7 @@
             {
               "isim": "Tre Johnson",
               "takim": "WAS",
+              "ilk_bes": false,
               "min": "21",
               "pts": 12,
               "reb": 3,
@@ -1183,6 +1219,7 @@
             {
               "isim": "Khris Middleton",
               "takim": "WAS",
+              "ilk_bes": true,
               "min": "22",
               "pts": 6,
               "reb": 3,
@@ -1206,6 +1243,7 @@
             {
               "isim": "Justin Champagnie",
               "takim": "WAS",
+              "ilk_bes": false,
               "min": "23",
               "pts": 4,
               "reb": 11,
@@ -1229,6 +1267,7 @@
             {
               "isim": "Will Riley",
               "takim": "WAS",
+              "ilk_bes": false,
               "min": "10",
               "pts": 4,
               "reb": 1,
@@ -1252,6 +1291,7 @@
             {
               "isim": "Malaki Branham",
               "takim": "WAS",
+              "ilk_bes": false,
               "min": "0",
               "pts": 0,
               "reb": 0,
@@ -1319,6 +1359,7 @@
             {
               "isim": "Keyonte George",
               "takim": "UTA",
+              "ilk_bes": true,
               "min": "41",
               "pts": 27,
               "reb": 4,
@@ -1343,6 +1384,7 @@
             {
               "isim": "Svi Mykhailiuk",
               "takim": "UTA",
+              "ilk_bes": true,
               "min": "30",
               "pts": 23,
               "reb": 3,
@@ -1366,6 +1408,7 @@
             {
               "isim": "Isaiah Collier",
               "takim": "UTA",
+              "ilk_bes": false,
               "min": "28",
               "pts": 18,
               "reb": 5,
@@ -1389,6 +1432,7 @@
             {
               "isim": "Kevin Love",
               "takim": "UTA",
+              "ilk_bes": false,
               "min": "31",
               "pts": 16,
               "reb": 16,
@@ -1412,6 +1456,7 @@
             {
               "isim": "Ace Bailey",
               "takim": "UTA",
+              "ilk_bes": true,
               "min": "34",
               "pts": 14,
               "reb": 4,
@@ -1435,6 +1480,7 @@
             {
               "isim": "Brice Sensabaugh",
               "takim": "UTA",
+              "ilk_bes": false,
               "min": "24",
               "pts": 12,
               "reb": 4,
@@ -1458,6 +1504,7 @@
             {
               "isim": "Kyle Filipowski",
               "takim": "UTA",
+              "ilk_bes": true,
               "min": "21",
               "pts": 6,
               "reb": 4,
@@ -1481,6 +1528,7 @@
             {
               "isim": "Taylor Hendricks",
               "takim": "UTA",
+              "ilk_bes": false,
               "min": "10",
               "pts": 6,
               "reb": 2,
@@ -1504,6 +1552,7 @@
             {
               "isim": "Jusuf Nurkić",
               "takim": "UTA",
+              "ilk_bes": true,
               "min": "21",
               "pts": 4,
               "reb": 8,
@@ -1527,6 +1576,7 @@
             {
               "isim": "Walter Clayton Jr.",
               "takim": "UTA",
+              "ilk_bes": false,
               "min": "8",
               "pts": 1,
               "reb": 0,
@@ -1550,6 +1600,7 @@
             {
               "isim": "Cody Williams",
               "takim": "UTA",
+              "ilk_bes": false,
               "min": "12",
               "pts": 0,
               "reb": 2,
@@ -1605,6 +1656,7 @@
             {
               "isim": "Desmond Bane",
               "takim": "ORL",
+              "ilk_bes": true,
               "min": "39",
               "pts": 32,
               "reb": 6,
@@ -1628,6 +1680,7 @@
             {
               "isim": "Paolo Banchero",
               "takim": "ORL",
+              "ilk_bes": true,
               "min": "42",
               "pts": 23,
               "reb": 9,
@@ -1651,6 +1704,7 @@
             {
               "isim": "Anthony Black",
               "takim": "ORL",
+              "ilk_bes": true,
               "min": "39",
               "pts": 20,
               "reb": 6,
@@ -1674,6 +1728,7 @@
             {
               "isim": "Wendell Carter Jr.",
               "takim": "ORL",
+              "ilk_bes": true,
               "min": "37",
               "pts": 14,
               "reb": 9,
@@ -1697,6 +1752,7 @@
             {
               "isim": "Noah Penda",
               "takim": "ORL",
+              "ilk_bes": false,
               "min": "23",
               "pts": 13,
               "reb": 12,
@@ -1720,6 +1776,7 @@
             {
               "isim": "Jase Richardson",
               "takim": "ORL",
+              "ilk_bes": false,
               "min": "23",
               "pts": 10,
               "reb": 1,
@@ -1743,6 +1800,7 @@
             {
               "isim": "Tyus Jones",
               "takim": "ORL",
+              "ilk_bes": true,
               "min": "18",
               "pts": 5,
               "reb": 1,
@@ -1766,6 +1824,7 @@
             {
               "isim": "Jett Howard",
               "takim": "ORL",
+              "ilk_bes": false,
               "min": "14",
               "pts": 5,
               "reb": 2,
@@ -1789,6 +1848,7 @@
             {
               "isim": "Goga Bitadze",
               "takim": "ORL",
+              "ilk_bes": false,
               "min": "15",
               "pts": 5,
               "reb": 4,
@@ -1812,6 +1872,7 @@
             {
               "isim": "Jonathan Isaac",
               "takim": "ORL",
+              "ilk_bes": false,
               "min": "10",
               "pts": 1,
               "reb": 2,
@@ -1863,6 +1924,7 @@
     {
       "isim": "Payton Pritchard",
       "takim": "BOS",
+      "ilk_bes": true,
       "min": "37",
       "pts": 33,
       "reb": 7,
@@ -1897,6 +1959,7 @@
     {
       "isim": "Devin Booker",
       "takim": "PHX",
+      "ilk_bes": true,
       "min": "33",
       "pts": 38,
       "reb": 1,
@@ -1931,6 +1994,7 @@
     {
       "isim": "Kawhi Leonard",
       "takim": "LAC",
+      "ilk_bes": true,
       "min": "41",
       "pts": 32,
       "reb": 12,
@@ -1965,6 +2029,7 @@
     {
       "isim": "Kevin Durant",
       "takim": "HOU",
+      "ilk_bes": true,
       "min": "39",
       "pts": 31,
       "reb": 6,
@@ -1999,6 +2064,7 @@
     {
       "isim": "Anthony Davis",
       "takim": "DAL",
+      "ilk_bes": true,
       "min": "33",
       "pts": 24,
       "reb": 15,
@@ -2648,6 +2714,7 @@
             {
               "isim": "Brandon Ingram",
               "takim": "TOR",
+              "ilk_bes": true,
               "min": "35",
               "pts": 24,
               "reb": 4,
@@ -2672,6 +2739,7 @@
             {
               "isim": "Sandro Mamukelashvili",
               "takim": "TOR",
+              "ilk_bes": true,
               "min": "29",
               "pts": 24,
               "reb": 5,
@@ -2695,6 +2763,7 @@
             {
               "isim": "Scottie Barnes",
               "takim": "TOR",
+              "ilk_bes": true,
               "min": "33",
               "pts": 12,
               "reb": 9,
@@ -2718,6 +2787,7 @@
             {
               "isim": "Collin Murray-Boyles",
               "takim": "TOR",
+              "ilk_bes": false,
               "min": "22",
               "pts": 9,
               "reb": 6,
@@ -2741,6 +2811,7 @@
             {
               "isim": "Ja'Kobe Walter",
               "takim": "TOR",
+              "ilk_bes": false,
               "min": "15",
               "pts": 7,
               "reb": 0,
@@ -2764,6 +2835,7 @@
             {
               "isim": "Ochai Agbaji",
               "takim": "TOR",
+              "ilk_bes": true,
               "min": "27",
               "pts": 6,
               "reb": 3,
@@ -2787,6 +2859,7 @@
             {
               "isim": "Jamal Shead",
               "takim": "TOR",
+              "ilk_bes": false,
               "min": "23",
               "pts": 6,
               "reb": 3,
@@ -2810,6 +2883,7 @@
             {
               "isim": "Gradey Dick",
               "takim": "TOR",
+              "ilk_bes": false,
               "min": "13",
               "pts": 5,
               "reb": 0,
@@ -2833,6 +2907,7 @@
             {
               "isim": "Immanuel Quickley",
               "takim": "TOR",
+              "ilk_bes": true,
               "min": "31",
               "pts": 3,
               "reb": 4,
@@ -2856,6 +2931,7 @@
             {
               "isim": "Jamison Battle",
               "takim": "TOR",
+              "ilk_bes": false,
               "min": "6",
               "pts": 0,
               "reb": 2,
@@ -2879,6 +2955,7 @@
             {
               "isim": "Garrett Temple",
               "takim": "TOR",
+              "ilk_bes": false,
               "min": "1",
               "pts": 0,
               "reb": 1,
@@ -2934,6 +3011,7 @@
             {
               "isim": "Payton Pritchard",
               "takim": "BOS",
+              "ilk_bes": true,
               "min": "37",
               "pts": 33,
               "reb": 7,
@@ -2957,6 +3035,7 @@
             {
               "isim": "Derrick White",
               "takim": "BOS",
+              "ilk_bes": true,
               "min": "35",
               "pts": 15,
               "reb": 5,
@@ -2980,6 +3059,7 @@
             {
               "isim": "Anfernee Simons",
               "takim": "BOS",
+              "ilk_bes": false,
               "min": "26",
               "pts": 15,
               "reb": 3,
@@ -3003,6 +3083,7 @@
             {
               "isim": "Neemias Queta",
               "takim": "BOS",
+              "ilk_bes": true,
               "min": "22",
               "pts": 14,
               "reb": 5,
@@ -3026,6 +3107,7 @@
             {
               "isim": "Luka Garza",
               "takim": "BOS",
+              "ilk_bes": false,
               "min": "25",
               "pts": 12,
               "reb": 10,
@@ -3049,6 +3131,7 @@
             {
               "isim": "Hugo González",
               "takim": "BOS",
+              "ilk_bes": false,
               "min": "27",
               "pts": 10,
               "reb": 10,
@@ -3072,6 +3155,7 @@
             {
               "isim": "Sam Hauser",
               "takim": "BOS",
+              "ilk_bes": true,
               "min": "27",
               "pts": 6,
               "reb": 6,
@@ -3095,6 +3179,7 @@
             {
               "isim": "Josh Minott",
               "takim": "BOS",
+              "ilk_bes": false,
               "min": "17",
               "pts": 5,
               "reb": 4,
@@ -3118,6 +3203,7 @@
             {
               "isim": "Baylor Scheierman",
               "takim": "BOS",
+              "ilk_bes": false,
               "min": "7",
               "pts": 2,
               "reb": 1,
@@ -3141,6 +3227,7 @@
             {
               "isim": "Jordan Walsh",
               "takim": "BOS",
+              "ilk_bes": true,
               "min": "12",
               "pts": 0,
               "reb": 4,
@@ -3206,7 +3293,7 @@
       "mac": "Denver Nuggets — Houston Rockets",
       "skor": "101–115",
       "rozet": 6.39,
-      "why": "gece sırası 1",
+      "why": "",
       "metin": "Houston Rockets deplasmanda Denver Nuggets'i 115-101 yendi. Kevin Durant 31 sayı attı.",
       "box": {
         "ev": {
@@ -3219,6 +3306,7 @@
             {
               "isim": "Nikola Jokić",
               "takim": "DEN",
+              "ilk_bes": true,
               "min": "29",
               "pts": 25,
               "reb": 7,
@@ -3243,6 +3331,7 @@
             {
               "isim": "Jamal Murray",
               "takim": "DEN",
+              "ilk_bes": true,
               "min": "34",
               "pts": 16,
               "reb": 4,
@@ -3266,6 +3355,7 @@
             {
               "isim": "Bruce Brown",
               "takim": "DEN",
+              "ilk_bes": false,
               "min": "27",
               "pts": 12,
               "reb": 12,
@@ -3289,6 +3379,7 @@
             {
               "isim": "Jalen Pickett",
               "takim": "DEN",
+              "ilk_bes": false,
               "min": "22",
               "pts": 10,
               "reb": 4,
@@ -3312,6 +3403,7 @@
             {
               "isim": "Jonas Valančiūnas",
               "takim": "DEN",
+              "ilk_bes": false,
               "min": "15",
               "pts": 10,
               "reb": 1,
@@ -3335,6 +3427,7 @@
             {
               "isim": "Spencer Jones",
               "takim": "DEN",
+              "ilk_bes": true,
               "min": "27",
               "pts": 9,
               "reb": 4,
@@ -3358,6 +3451,7 @@
             {
               "isim": "Tim Hardaway Jr.",
               "takim": "DEN",
+              "ilk_bes": true,
               "min": "29",
               "pts": 8,
               "reb": 2,
@@ -3381,6 +3475,7 @@
             {
               "isim": "Cameron Johnson",
               "takim": "DEN",
+              "ilk_bes": true,
               "min": "31",
               "pts": 6,
               "reb": 4,
@@ -3404,6 +3499,7 @@
             {
               "isim": "Julian Strawther",
               "takim": "DEN",
+              "ilk_bes": false,
               "min": "4",
               "pts": 2,
               "reb": 0,
@@ -3427,6 +3523,7 @@
             {
               "isim": "Hunter Tyson",
               "takim": "DEN",
+              "ilk_bes": false,
               "min": "4",
               "pts": 2,
               "reb": 1,
@@ -3450,6 +3547,7 @@
             {
               "isim": "Zeke Nnaji",
               "takim": "DEN",
+              "ilk_bes": false,
               "min": "11",
               "pts": 1,
               "reb": 0,
@@ -3505,6 +3603,7 @@
             {
               "isim": "Kevin Durant",
               "takim": "HOU",
+              "ilk_bes": true,
               "min": "39",
               "pts": 31,
               "reb": 6,
@@ -3528,6 +3627,7 @@
             {
               "isim": "Reed Sheppard",
               "takim": "HOU",
+              "ilk_bes": false,
               "min": "30",
               "pts": 28,
               "reb": 2,
@@ -3551,6 +3651,7 @@
             {
               "isim": "Jabari Smith Jr.",
               "takim": "HOU",
+              "ilk_bes": true,
               "min": "38",
               "pts": 22,
               "reb": 10,
@@ -3574,6 +3675,7 @@
             {
               "isim": "Amen Thompson",
               "takim": "HOU",
+              "ilk_bes": true,
               "min": "38",
               "pts": 16,
               "reb": 4,
@@ -3597,6 +3699,7 @@
             {
               "isim": "Josh Okogie",
               "takim": "HOU",
+              "ilk_bes": true,
               "min": "28",
               "pts": 9,
               "reb": 3,
@@ -3620,6 +3723,7 @@
             {
               "isim": "Alperen Şengün",
               "takim": "HOU",
+              "ilk_bes": true,
               "min": "30",
               "pts": 8,
               "reb": 6,
@@ -3643,6 +3747,7 @@
             {
               "isim": "Steven Adams",
               "takim": "HOU",
+              "ilk_bes": false,
               "min": "25",
               "pts": 1,
               "reb": 12,
@@ -3666,6 +3771,7 @@
             {
               "isim": "Aaron Holiday",
               "takim": "HOU",
+              "ilk_bes": false,
               "min": "7",
               "pts": 0,
               "reb": 4,
@@ -3689,6 +3795,7 @@
             {
               "isim": "Jae'Sean Tate",
               "takim": "HOU",
+              "ilk_bes": false,
               "min": "1",
               "pts": 0,
               "reb": 0,
@@ -3770,6 +3877,7 @@
             {
               "isim": "Tyrese Maxey",
               "takim": "PHI",
+              "ilk_bes": true,
               "min": "40",
               "pts": 38,
               "reb": 2,
@@ -3793,6 +3901,7 @@
             {
               "isim": "VJ Edgecombe",
               "takim": "PHI",
+              "ilk_bes": true,
               "min": "34",
               "pts": 26,
               "reb": 6,
@@ -3816,6 +3925,7 @@
             {
               "isim": "Dominick Barlow",
               "takim": "PHI",
+              "ilk_bes": true,
               "min": "30",
               "pts": 21,
               "reb": 4,
@@ -3839,6 +3949,7 @@
             {
               "isim": "Jared McCain",
               "takim": "PHI",
+              "ilk_bes": false,
               "min": "30",
               "pts": 12,
               "reb": 5,
@@ -3862,6 +3973,7 @@
             {
               "isim": "Adem Bona",
               "takim": "PHI",
+              "ilk_bes": false,
               "min": "24",
               "pts": 10,
               "reb": 8,
@@ -3885,6 +3997,7 @@
             {
               "isim": "Quentin Grimes",
               "takim": "PHI",
+              "ilk_bes": true,
               "min": "24",
               "pts": 6,
               "reb": 2,
@@ -3908,6 +4021,7 @@
             {
               "isim": "Andre Drummond",
               "takim": "PHI",
+              "ilk_bes": true,
               "min": "23",
               "pts": 6,
               "reb": 12,
@@ -3931,6 +4045,7 @@
             {
               "isim": "Jabari Walker",
               "takim": "PHI",
+              "ilk_bes": false,
               "min": "17",
               "pts": 2,
               "reb": 8,
@@ -3954,6 +4069,7 @@
             {
               "isim": "Justin Edwards",
               "takim": "PHI",
+              "ilk_bes": false,
               "min": "13",
               "pts": 0,
               "reb": 0,
@@ -4010,6 +4126,7 @@
             {
               "isim": "Cooper Flagg",
               "takim": "DAL",
+              "ilk_bes": true,
               "min": "36",
               "pts": 24,
               "reb": 4,
@@ -4034,6 +4151,7 @@
             {
               "isim": "Anthony Davis",
               "takim": "DAL",
+              "ilk_bes": true,
               "min": "33",
               "pts": 24,
               "reb": 15,
@@ -4057,6 +4175,7 @@
             {
               "isim": "Naji Marshall",
               "takim": "DAL",
+              "ilk_bes": true,
               "min": "34",
               "pts": 22,
               "reb": 9,
@@ -4080,6 +4199,7 @@
             {
               "isim": "P.J. Washington",
               "takim": "DAL",
+              "ilk_bes": true,
               "min": "30",
               "pts": 15,
               "reb": 8,
@@ -4103,6 +4223,7 @@
             {
               "isim": "Brandon Williams",
               "takim": "DAL",
+              "ilk_bes": false,
               "min": "21",
               "pts": 10,
               "reb": 2,
@@ -4126,6 +4247,7 @@
             {
               "isim": "Klay Thompson",
               "takim": "DAL",
+              "ilk_bes": false,
               "min": "17",
               "pts": 10,
               "reb": 1,
@@ -4149,6 +4271,7 @@
             {
               "isim": "Ryan Nembhard",
               "takim": "DAL",
+              "ilk_bes": true,
               "min": "26",
               "pts": 7,
               "reb": 0,
@@ -4172,6 +4295,7 @@
             {
               "isim": "Daniel Gafford",
               "takim": "DAL",
+              "ilk_bes": false,
               "min": "14",
               "pts": 2,
               "reb": 4,
@@ -4195,6 +4319,7 @@
             {
               "isim": "Max Christie",
               "takim": "DAL",
+              "ilk_bes": false,
               "min": "14",
               "pts": 0,
               "reb": 0,
@@ -4218,6 +4343,7 @@
             {
               "isim": "D'Angelo Russell",
               "takim": "DAL",
+              "ilk_bes": false,
               "min": "11",
               "pts": 0,
               "reb": 1,
@@ -4285,7 +4411,7 @@
       "mac": "LA Clippers — Los Angeles Lakers",
       "skor": "103–88",
       "rozet": 5.07,
-      "why": "",
+      "why": "gece sırası 10",
       "metin": "LA Clippers evinde Los Angeles Lakers'i 103-88 yendi.",
       "box": {
         "ev": {
@@ -4300,6 +4426,7 @@
             {
               "isim": "Kawhi Leonard",
               "takim": "LAC",
+              "ilk_bes": true,
               "min": "41",
               "pts": 32,
               "reb": 12,
@@ -4323,6 +4450,7 @@
             {
               "isim": "James Harden",
               "takim": "LAC",
+              "ilk_bes": true,
               "min": "40",
               "pts": 21,
               "reb": 4,
@@ -4346,6 +4474,7 @@
             {
               "isim": "John Collins",
               "takim": "LAC",
+              "ilk_bes": true,
               "min": "31",
               "pts": 17,
               "reb": 12,
@@ -4369,6 +4498,7 @@
             {
               "isim": "Brook Lopez",
               "takim": "LAC",
+              "ilk_bes": false,
               "min": "24",
               "pts": 11,
               "reb": 5,
@@ -4392,6 +4522,7 @@
             {
               "isim": "Kris Dunn",
               "takim": "LAC",
+              "ilk_bes": true,
               "min": "31",
               "pts": 8,
               "reb": 6,
@@ -4415,6 +4546,7 @@
             {
               "isim": "Ivica Zubac",
               "takim": "LAC",
+              "ilk_bes": true,
               "min": "10",
               "pts": 5,
               "reb": 2,
@@ -4438,6 +4570,7 @@
             {
               "isim": "Kobe Sanders",
               "takim": "LAC",
+              "ilk_bes": false,
               "min": "17",
               "pts": 4,
               "reb": 1,
@@ -4461,6 +4594,7 @@
             {
               "isim": "Nicolas Batum",
               "takim": "LAC",
+              "ilk_bes": false,
               "min": "20",
               "pts": 3,
               "reb": 4,
@@ -4484,6 +4618,7 @@
             {
               "isim": "Bogdan Bogdanović",
               "takim": "LAC",
+              "ilk_bes": false,
               "min": "17",
               "pts": 2,
               "reb": 2,
@@ -4507,6 +4642,7 @@
             {
               "isim": "Jordan Miller",
               "takim": "LAC",
+              "ilk_bes": false,
               "min": "2",
               "pts": 0,
               "reb": 0,
@@ -4530,6 +4666,7 @@
             {
               "isim": "Kobe Brown",
               "takim": "LAC",
+              "ilk_bes": false,
               "min": "0",
               "pts": 0,
               "reb": 0,
@@ -4584,6 +4721,7 @@
             {
               "isim": "LeBron James",
               "takim": "LAL",
+              "ilk_bes": true,
               "min": "37",
               "pts": 36,
               "reb": 4,
@@ -4608,6 +4746,7 @@
             {
               "isim": "Jake LaRavia",
               "takim": "LAL",
+              "ilk_bes": true,
               "min": "37",
               "pts": 12,
               "reb": 11,
@@ -4631,6 +4770,7 @@
             {
               "isim": "Luka Dončić",
               "takim": "LAL",
+              "ilk_bes": true,
               "min": "19",
               "pts": 12,
               "reb": 5,
@@ -4654,6 +4794,7 @@
             {
               "isim": "Nick Smith Jr.",
               "takim": "LAL",
+              "ilk_bes": false,
               "min": "21",
               "pts": 9,
               "reb": 3,
@@ -4677,6 +4818,7 @@
             {
               "isim": "Jaxson Hayes",
               "takim": "LAL",
+              "ilk_bes": true,
               "min": "30",
               "pts": 8,
               "reb": 5,
@@ -4700,6 +4842,7 @@
             {
               "isim": "Marcus Smart",
               "takim": "LAL",
+              "ilk_bes": true,
               "min": "30",
               "pts": 5,
               "reb": 4,
@@ -4723,6 +4866,7 @@
             {
               "isim": "Jarred Vanderbilt",
               "takim": "LAL",
+              "ilk_bes": false,
               "min": "27",
               "pts": 4,
               "reb": 5,
@@ -4746,6 +4890,7 @@
             {
               "isim": "Dalton Knecht",
               "takim": "LAL",
+              "ilk_bes": false,
               "min": "13",
               "pts": 2,
               "reb": 4,
@@ -4769,6 +4914,7 @@
             {
               "isim": "Maxi Kleber",
               "takim": "LAL",
+              "ilk_bes": false,
               "min": "15",
               "pts": 0,
               "reb": 1,
@@ -4792,6 +4938,7 @@
             {
               "isim": "Adou Thiero",
               "takim": "LAL",
+              "ilk_bes": false,
               "min": "5",
               "pts": 0,
               "reb": 1,
@@ -4873,6 +5020,7 @@
             {
               "isim": "Zion Williamson",
               "takim": "NOP",
+              "ilk_bes": false,
               "min": "23",
               "pts": 29,
               "reb": 7,
@@ -4896,6 +5044,7 @@
             {
               "isim": "Saddiq Bey",
               "takim": "NOP",
+              "ilk_bes": true,
               "min": "27",
               "pts": 18,
               "reb": 5,
@@ -4919,6 +5068,7 @@
             {
               "isim": "Trey Murphy III",
               "takim": "NOP",
+              "ilk_bes": true,
               "min": "32",
               "pts": 17,
               "reb": 6,
@@ -4942,6 +5092,7 @@
             {
               "isim": "Derik Queen",
               "takim": "NOP",
+              "ilk_bes": true,
               "min": "27",
               "pts": 17,
               "reb": 10,
@@ -4965,6 +5116,7 @@
             {
               "isim": "Jordan Poole",
               "takim": "NOP",
+              "ilk_bes": false,
               "min": "31",
               "pts": 16,
               "reb": 2,
@@ -4988,6 +5140,7 @@
             {
               "isim": "Micah Peavy",
               "takim": "NOP",
+              "ilk_bes": false,
               "min": "14",
               "pts": 8,
               "reb": 1,
@@ -5011,6 +5164,7 @@
             {
               "isim": "Karlo Matković",
               "takim": "NOP",
+              "ilk_bes": false,
               "min": "19",
               "pts": 6,
               "reb": 9,
@@ -5034,6 +5188,7 @@
             {
               "isim": "Herbert Jones",
               "takim": "NOP",
+              "ilk_bes": true,
               "min": "12",
               "pts": 5,
               "reb": 3,
@@ -5057,6 +5212,7 @@
             {
               "isim": "Jeremiah Fears",
               "takim": "NOP",
+              "ilk_bes": true,
               "min": "22",
               "pts": 5,
               "reb": 3,
@@ -5080,6 +5236,7 @@
             {
               "isim": "Yves Missi",
               "takim": "NOP",
+              "ilk_bes": false,
               "min": "2",
               "pts": 4,
               "reb": 1,
@@ -5103,6 +5260,7 @@
             {
               "isim": "Jose Alvarado",
               "takim": "NOP",
+              "ilk_bes": false,
               "min": "21",
               "pts": 3,
               "reb": 1,
@@ -5126,6 +5284,7 @@
             {
               "isim": "Jordan Hawkins",
               "takim": "NOP",
+              "ilk_bes": false,
               "min": "2",
               "pts": 0,
               "reb": 1,
@@ -5179,6 +5338,7 @@
             {
               "isim": "Pascal Siakam",
               "takim": "IND",
+              "ilk_bes": true,
               "min": "30",
               "pts": 22,
               "reb": 5,
@@ -5203,6 +5363,7 @@
             {
               "isim": "Johnny Furphy",
               "takim": "IND",
+              "ilk_bes": false,
               "min": "23",
               "pts": 18,
               "reb": 2,
@@ -5226,6 +5387,7 @@
             {
               "isim": "T.J. McConnell",
               "takim": "IND",
+              "ilk_bes": false,
               "min": "17",
               "pts": 16,
               "reb": 4,
@@ -5249,6 +5411,7 @@
             {
               "isim": "Jay Huff",
               "takim": "IND",
+              "ilk_bes": true,
               "min": "21",
               "pts": 9,
               "reb": 6,
@@ -5272,6 +5435,7 @@
             {
               "isim": "Andrew Nembhard",
               "takim": "IND",
+              "ilk_bes": true,
               "min": "27",
               "pts": 7,
               "reb": 3,
@@ -5295,6 +5459,7 @@
             {
               "isim": "Garrison Mathews",
               "takim": "IND",
+              "ilk_bes": false,
               "min": "10",
               "pts": 7,
               "reb": 1,
@@ -5318,6 +5483,7 @@
             {
               "isim": "Jarace Walker",
               "takim": "IND",
+              "ilk_bes": false,
               "min": "20",
               "pts": 7,
               "reb": 5,
@@ -5341,6 +5507,7 @@
             {
               "isim": "Ethan Thompson",
               "takim": "IND",
+              "ilk_bes": false,
               "min": "18",
               "pts": 7,
               "reb": 2,
@@ -5364,6 +5531,7 @@
             {
               "isim": "James Wiseman",
               "takim": "IND",
+              "ilk_bes": false,
               "min": "14",
               "pts": 6,
               "reb": 3,
@@ -5387,6 +5555,7 @@
             {
               "isim": "Bennedict Mathurin",
               "takim": "IND",
+              "ilk_bes": true,
               "min": "26",
               "pts": 4,
               "reb": 4,
@@ -5410,6 +5579,7 @@
             {
               "isim": "Isaiah Jackson",
               "takim": "IND",
+              "ilk_bes": false,
               "min": "11",
               "pts": 4,
               "reb": 5,
@@ -5433,6 +5603,7 @@
             {
               "isim": "Quenton Jackson",
               "takim": "IND",
+              "ilk_bes": true,
               "min": "17",
               "pts": 2,
               "reb": 2,
@@ -5499,6 +5670,7 @@
             {
               "isim": "Dennis Schröder",
               "takim": "SAC",
+              "ilk_bes": false,
               "min": "31",
               "pts": 21,
               "reb": 5,
@@ -5523,6 +5695,7 @@
             {
               "isim": "Maxime Raynaud",
               "takim": "SAC",
+              "ilk_bes": true,
               "min": "30",
               "pts": 17,
               "reb": 11,
@@ -5546,6 +5719,7 @@
             {
               "isim": "Keegan Murray",
               "takim": "SAC",
+              "ilk_bes": true,
               "min": "39",
               "pts": 15,
               "reb": 6,
@@ -5569,6 +5743,7 @@
             {
               "isim": "DeMar DeRozan",
               "takim": "SAC",
+              "ilk_bes": true,
               "min": "34",
               "pts": 15,
               "reb": 5,
@@ -5592,6 +5767,7 @@
             {
               "isim": "Nique Clifford",
               "takim": "SAC",
+              "ilk_bes": false,
               "min": "29",
               "pts": 12,
               "reb": 5,
@@ -5615,6 +5791,7 @@
             {
               "isim": "Russell Westbrook",
               "takim": "SAC",
+              "ilk_bes": true,
               "min": "30",
               "pts": 7,
               "reb": 8,
@@ -5638,6 +5815,7 @@
             {
               "isim": "Dylan Cardwell",
               "takim": "SAC",
+              "ilk_bes": false,
               "min": "20",
               "pts": 4,
               "reb": 8,
@@ -5661,6 +5839,7 @@
             {
               "isim": "Precious Achiuwa",
               "takim": "SAC",
+              "ilk_bes": true,
               "min": "9",
               "pts": 2,
               "reb": 2,
@@ -5684,6 +5863,7 @@
             {
               "isim": "Keon Ellis",
               "takim": "SAC",
+              "ilk_bes": false,
               "min": "10",
               "pts": 0,
               "reb": 0,
@@ -5707,6 +5887,7 @@
             {
               "isim": "Dario Šarić",
               "takim": "SAC",
+              "ilk_bes": false,
               "min": "3",
               "pts": 0,
               "reb": 0,
@@ -5764,6 +5945,7 @@
             {
               "isim": "Deni Avdija",
               "takim": "POR",
+              "ilk_bes": true,
               "min": "40",
               "pts": 24,
               "reb": 7,
@@ -5787,6 +5969,7 @@
             {
               "isim": "Shaedon Sharpe",
               "takim": "POR",
+              "ilk_bes": true,
               "min": "34",
               "pts": 23,
               "reb": 4,
@@ -5810,6 +5993,7 @@
             {
               "isim": "Toumani Camara",
               "takim": "POR",
+              "ilk_bes": true,
               "min": "36",
               "pts": 15,
               "reb": 6,
@@ -5833,6 +6017,7 @@
             {
               "isim": "Donovan Clingan",
               "takim": "POR",
+              "ilk_bes": true,
               "min": "30",
               "pts": 14,
               "reb": 14,
@@ -5856,6 +6041,7 @@
             {
               "isim": "Robert Williams III",
               "takim": "POR",
+              "ilk_bes": false,
               "min": "17",
               "pts": 10,
               "reb": 9,
@@ -5879,6 +6065,7 @@
             {
               "isim": "Kris Murray",
               "takim": "POR",
+              "ilk_bes": true,
               "min": "35",
               "pts": 9,
               "reb": 3,
@@ -5902,6 +6089,7 @@
             {
               "isim": "Caleb Love",
               "takim": "POR",
+              "ilk_bes": false,
               "min": "9",
               "pts": 2,
               "reb": 0,
@@ -5925,6 +6113,7 @@
             {
               "isim": "Sidy Cissoko",
               "takim": "POR",
+              "ilk_bes": false,
               "min": "23",
               "pts": 1,
               "reb": 3,
@@ -5948,6 +6137,7 @@
             {
               "isim": "Rayan Rupert",
               "takim": "POR",
+              "ilk_bes": false,
               "min": "8",
               "pts": 0,
               "reb": 0,
@@ -5971,6 +6161,7 @@
             {
               "isim": "Duop Reath",
               "takim": "POR",
+              "ilk_bes": false,
               "min": "4",
               "pts": 0,
               "reb": 0,
@@ -6051,6 +6242,7 @@
             {
               "isim": "Cade Cunningham",
               "takim": "DET",
+              "ilk_bes": true,
               "min": "35",
               "pts": 22,
               "reb": 10,
@@ -6074,6 +6266,7 @@
             {
               "isim": "Jalen Duren",
               "takim": "DET",
+              "ilk_bes": true,
               "min": "24",
               "pts": 19,
               "reb": 11,
@@ -6097,6 +6290,7 @@
             {
               "isim": "Tobias Harris",
               "takim": "DET",
+              "ilk_bes": true,
               "min": "27",
               "pts": 16,
               "reb": 5,
@@ -6120,6 +6314,7 @@
             {
               "isim": "Duncan Robinson",
               "takim": "DET",
+              "ilk_bes": true,
               "min": "24",
               "pts": 15,
               "reb": 3,
@@ -6143,6 +6338,7 @@
             {
               "isim": "Ausar Thompson",
               "takim": "DET",
+              "ilk_bes": true,
               "min": "25",
               "pts": 14,
               "reb": 4,
@@ -6166,6 +6362,7 @@
             {
               "isim": "Ronald Holland II",
               "takim": "DET",
+              "ilk_bes": false,
               "min": "23",
               "pts": 9,
               "reb": 9,
@@ -6189,6 +6386,7 @@
             {
               "isim": "Isaiah Stewart",
               "takim": "DET",
+              "ilk_bes": false,
               "min": "24",
               "pts": 8,
               "reb": 11,
@@ -6212,6 +6410,7 @@
             {
               "isim": "Jaden Ivey",
               "takim": "DET",
+              "ilk_bes": false,
               "min": "13",
               "pts": 5,
               "reb": 1,
@@ -6235,6 +6434,7 @@
             {
               "isim": "Caris LeVert",
               "takim": "DET",
+              "ilk_bes": false,
               "min": "17",
               "pts": 2,
               "reb": 2,
@@ -6258,6 +6458,7 @@
             {
               "isim": "Javonte Green",
               "takim": "DET",
+              "ilk_bes": false,
               "min": "14",
               "pts": 2,
               "reb": 3,
@@ -6281,6 +6482,7 @@
             {
               "isim": "Daniss Jenkins",
               "takim": "DET",
+              "ilk_bes": false,
               "min": "4",
               "pts": 0,
               "reb": 1,
@@ -6304,6 +6506,7 @@
             {
               "isim": "Marcus Sasser",
               "takim": "DET",
+              "ilk_bes": false,
               "min": "2",
               "pts": 0,
               "reb": 1,
@@ -6327,6 +6530,7 @@
             {
               "isim": "Paul Reed",
               "takim": "DET",
+              "ilk_bes": false,
               "min": "2",
               "pts": 0,
               "reb": 0,
@@ -6378,6 +6582,7 @@
             {
               "isim": "Kon Knueppel",
               "takim": "CHA",
+              "ilk_bes": true,
               "min": "34",
               "pts": 19,
               "reb": 7,
@@ -6402,6 +6607,7 @@
             {
               "isim": "Miles Bridges",
               "takim": "CHA",
+              "ilk_bes": true,
               "min": "30",
               "pts": 19,
               "reb": 2,
@@ -6425,6 +6631,7 @@
             {
               "isim": "Brandon Miller",
               "takim": "CHA",
+              "ilk_bes": true,
               "min": "30",
               "pts": 14,
               "reb": 7,
@@ -6448,6 +6655,7 @@
             {
               "isim": "LaMelo Ball",
               "takim": "CHA",
+              "ilk_bes": true,
               "min": "23",
               "pts": 8,
               "reb": 1,
@@ -6471,6 +6679,7 @@
             {
               "isim": "Tidjane Salaün",
               "takim": "CHA",
+              "ilk_bes": false,
               "min": "17",
               "pts": 8,
               "reb": 3,
@@ -6494,6 +6703,7 @@
             {
               "isim": "Josh Green",
               "takim": "CHA",
+              "ilk_bes": false,
               "min": "14",
               "pts": 5,
               "reb": 3,
@@ -6517,6 +6727,7 @@
             {
               "isim": "Sion James",
               "takim": "CHA",
+              "ilk_bes": false,
               "min": "22",
               "pts": 5,
               "reb": 5,
@@ -6540,6 +6751,7 @@
             {
               "isim": "Ryan Kalkbrenner",
               "takim": "CHA",
+              "ilk_bes": true,
               "min": "24",
               "pts": 4,
               "reb": 7,
@@ -6563,6 +6775,7 @@
             {
               "isim": "Tre Mann",
               "takim": "CHA",
+              "ilk_bes": false,
               "min": "17",
               "pts": 3,
               "reb": 4,
@@ -6586,6 +6799,7 @@
             {
               "isim": "Moussa Diabaté",
               "takim": "CHA",
+              "ilk_bes": false,
               "min": "16",
               "pts": 1,
               "reb": 3,
@@ -6609,6 +6823,7 @@
             {
               "isim": "Mason Plumlee",
               "takim": "CHA",
+              "ilk_bes": false,
               "min": "7",
               "pts": 0,
               "reb": 1,
@@ -6632,6 +6847,7 @@
             {
               "isim": "Pat Connaughton",
               "takim": "CHA",
+              "ilk_bes": false,
               "min": "2",
               "pts": 0,
               "reb": 0,
@@ -6697,6 +6913,7 @@
     {
       "isim": "Adem Bona",
       "takim": "PHI",
+      "ilk_bes": false,
       "min": "24",
       "pts": 10,
       "reb": 8,
@@ -6722,6 +6939,7 @@
     {
       "isim": "Alperen Şengün",
       "takim": "HOU",
+      "ilk_bes": true,
       "min": "30",
       "pts": 8,
       "reb": 6,
