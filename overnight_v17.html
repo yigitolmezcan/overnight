@@ -222,6 +222,18 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
 .crow .sc b{color:var(--ink2);font-weight:500}
 .crow .sc i{font-style:normal;color:#0A0603;background:var(--ember);padding:1px 6px;
   font-weight:700;font-size:10.5px}
+/* Cümlesiz satır: gecenin akışında yerini alıyor ama sesini
+   yükseltmiyor. Anlatısı olan satırlar öne çıksın diye daha soluk ve
+   daha az dolgulu. */
+.crow.sessiz .c{padding-top:11px;padding-bottom:11px}
+.crow.sessiz .sc b{color:var(--faint)}
+.crow.sessiz .rail u{background:#232C3A}
+.crow.sessiz .t b{color:#59636F}
+/* Rozet çipi sessiz satırda SÖNÜK: ember bu sayfanın en güçlü vurgusu
+   ve cümlesiz bir satırın en parlak öğesi olmamalı. Sayı duruyor —
+   okuyucu "bakmaya değer mi" sorusunu yine cevaplayabiliyor. */
+.crow.sessiz .sc i{background:#232C3A;color:var(--ink2);font-weight:500}
+
 .cfoot{padding:11px 15px;border-top:1px solid #1A2230;background:#0B0F16;
   display:flex;justify-content:space-between;align-items:center;gap:10px}
 .cfoot span,.cfoot em{font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;
@@ -1315,11 +1327,14 @@ function render(d){
     const rozet = (b.rozet||b.rozet===0) ? `<i>${b.rozet.toFixed(1)}</i>` : '';
     // Saat yoksa hücre BOŞ kalıyor — uydurma saat yazılmıyor. Sütun
     // genişliği sabit olduğu için hizalama yine bozulmuyor.
-    return `<li><a class="crow rowlink${b.one_cikan?' hot':''}" href="#${b.hedef_id}">
+    // Anlatısı olmayan maç CÜMLE ALMIYOR — sadece saat + skor. Dolgu
+    // cümlesi yazmaktansa satırı sessiz bırakmak (kullanıcı kararı).
+    const sessiz=!b.anlatili;
+    return `<li><a class="crow rowlink${b.one_cikan?' hot':''}${sessiz?' sessiz':''}" href="#${b.hedef_id}">
       <span class="t"><b>${esc(b.saat||'')}</b><s>${esc(b.etiket||'')}</s></span>
       <span class="rail"><u></u></span>
       <span class="c">
-        <p>${haber?'<i class="newsmark">⚠</i>':''}${esc(b.metin)}</p>
+        ${sessiz?'':`<p>${haber?'<i class="newsmark">⚠</i>':''}${esc(b.metin)}</p>`}
         ${(b.skor||rozet)?`<span class="sc"><b>${esc(b.skor||'')}</b>${rozet}</span>`:''}
       </span>
     </a></li>`;}).join('');

@@ -66,17 +66,74 @@
   ],
   "brief": [
     {
+      "metin": "",
+      "anlatili": false,
+      "hedef_id": "a-0022500386",
+      "icon": "default",
+      "saat": "01:00",
+      "rozet": 6.39,
+      "skor": "DEN 101 – HOU 115",
+      "etiket": "gecenin ilki",
+      "one_cikan": false
+    },
+    {
       "metin": "Boston Celtics, Toronto Raptors'u yenerek konferansta 3. sıraya yükseldi.",
+      "anlatili": true,
       "hedef_id": "a-0022500388",
       "icon": "default",
       "saat": "03:00",
       "rozet": 7.35,
       "skor": "TOR 96 – BOS 112",
-      "etiket": "gecenin ilki",
+      "etiket": "",
+      "one_cikan": false
+    },
+    {
+      "metin": "",
+      "anlatili": false,
+      "hedef_id": "a-0022500387",
+      "icon": "default",
+      "saat": "03:00",
+      "rozet": 6.0,
+      "skor": "PHI 121 – DAL 114",
+      "etiket": "",
+      "one_cikan": false
+    },
+    {
+      "metin": "",
+      "anlatili": false,
+      "hedef_id": "a-0022500389",
+      "icon": "default",
+      "saat": "03:00",
+      "rozet": 4.05,
+      "skor": "NOP 128 – IND 109",
+      "etiket": "",
+      "one_cikan": false
+    },
+    {
+      "metin": "",
+      "anlatili": false,
+      "hedef_id": "a-0022500390",
+      "icon": "default",
+      "saat": "03:30",
+      "rozet": 2.45,
+      "skor": "DET 112 – CHA 86",
+      "etiket": "",
+      "one_cikan": false
+    },
+    {
+      "metin": "",
+      "anlatili": false,
+      "hedef_id": "g-mutlaka-1",
+      "icon": "default",
+      "saat": "04:00",
+      "rozet": 8.62,
+      "skor": "MEM 122 – WAS 130",
+      "etiket": "",
       "one_cikan": false
     },
     {
       "metin": "Golden State Warriors, 14 sayılık farktan dönüp Phoenix Suns'u geçti.",
+      "anlatili": true,
       "hedef_id": "g-mutlaka-0",
       "icon": "default",
       "saat": "04:30",
@@ -87,20 +144,44 @@
     },
     {
       "metin": "Desmond Bane, Utah Jazz karşısında 32 sayı attı.",
+      "anlatili": true,
       "hedef_id": "g-mutlaka-2",
       "icon": "default",
       "saat": "05:30",
       "rozet": 8.48,
       "skor": "UTA 127 – ORL 128",
+      "etiket": "",
+      "one_cikan": false
+    },
+    {
+      "metin": "",
+      "anlatili": false,
+      "hedef_id": "a-0022500394",
+      "icon": "default",
+      "saat": "06:00",
+      "rozet": 2.65,
+      "skor": "SAC 93 – POR 98",
+      "etiket": "",
+      "one_cikan": false
+    },
+    {
+      "metin": "",
+      "anlatili": false,
+      "hedef_id": "a-0022500395",
+      "icon": "default",
+      "saat": "06:30",
+      "rozet": 5.07,
+      "skor": "LAC 103 – LAL 88",
       "etiket": "kapanış",
       "one_cikan": false
     }
   ],
   "brief_ozet": {
-    "ilk": "03:00",
-    "son": "05:30",
-    "mac": 3,
-    "dakika": 150
+    "ilk": "01:00",
+    "son": "06:30",
+    "mac": 10,
+    "anlatili": 3,
+    "dakika": 330
   },
   "mutlaka": [
     {
@@ -3103,7 +3184,7 @@
       "mac": "Denver Nuggets — Houston Rockets",
       "skor": "101–115",
       "rozet": 6.39,
-      "why": "gece sırası 1",
+      "why": "",
       "metin": "Houston Rockets deplasmanda Denver Nuggets'i 115-101 yendi. Kevin Durant 31 sayı attı.",
       "box": {
         "ev": {
@@ -4182,7 +4263,7 @@
       "mac": "LA Clippers — Los Angeles Lakers",
       "skor": "103–88",
       "rozet": 5.07,
-      "why": "",
+      "why": "gece sırası 10",
       "metin": "LA Clippers evinde Los Angeles Lakers'i 103-88 yendi.",
       "box": {
         "ev": {

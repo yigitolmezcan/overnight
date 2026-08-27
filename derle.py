@@ -1118,16 +1118,31 @@ def derle(tarih_str):
     # gerçekten bir gece gibi, akış hâlinde okunsun (kullanıcı kararı).
     # İÇERİK KURALI DEĞİŞMEDİ: bir maç ancak gerçek bir olguya
     # dayanabiliyorsa satır alıyor; o eleme yaz.py'de yapılıyor.
-    brief = []
+    # Kullanıcı kararı (B seçeneği): gecenin BÜTÜN maçları satır alıyor,
+    # ama CÜMLE sadece anlatacak bir olgusu olana veriliyor. Diğerleri
+    # yalnızca saat + skor gösteriyor.
+    #
+    # Neden böyle: bölüm kendini KRONOLOJİ olarak sunuyordu ama 10 maçın
+    # 3'ünü gösteriyordu, akış eksik hissettiriyordu. Her maça cümle
+    # yazmak ise dolgu üretmek olurdu ("Sacramento, Portland'ı yendi"
+    # bir bilgi değil). Skor bir OLGU, uydurma değil — o yüzden cümlesiz
+    # satır kuralı çiğnemiyor.
+    _brief_metin = {}
     for b in taslak.get("brief", []):
         hedef = b.get("hedef_mac")
-        kanca_gerekce = plan.get(hedef, {}).get("kanca_gerekce", "")
-        bilgi = rozet_by_gid.get(hedef, {})
-        ham_mac = ham["maclar"].get(hedef)
+        if hedef:
+            _brief_metin[hedef] = b["metin"]
+    brief = []
+    for gid in rozet_by_gid:
+        bilgi = rozet_by_gid.get(gid) or {}
+        ham_mac = ham["maclar"].get(gid)
+        kanca_gerekce = plan.get(gid, {}).get("kanca_gerekce", "")
+        metin = _brief_metin.get(gid, "")
         brief.append({
-            "metin": b["metin"],
-            "hedef_id": mutlaka_id_by_gid.get(hedef, f"a-{hedef}"),
-            "icon": _brief_ikonu(kanca_gerekce),
+            "metin": metin,
+            "anlatili": bool(metin),
+            "hedef_id": mutlaka_id_by_gid.get(gid, f"a-{gid}"),
+            "icon": _brief_ikonu(kanca_gerekce) if metin else "default",
             "saat": _tsi_baslama(ham_mac, tarih_str) if ham_mac else None,
             "rozet": bilgi.get("rozet"),
             # Takım KODU (MIL 122 – CHA 121): mini skor satırı dar,
@@ -1138,6 +1153,8 @@ def derle(tarih_str):
     # Saati olmayan satır sona: uydurma saat yazmaktansa sırayı bozmamak.
     brief.sort(key=lambda x: (x["saat"] is None, x["saat"] or ""))
     if brief:
+        # "gecenin maçı" en yüksek rozetli maç — anlatısı olsun olmasın,
+        # gecenin en iyisi odur.
         _en_yuksek = max(brief, key=lambda x: x["rozet"] or 0)
         for i, x in enumerate(brief):
             # Etiket SADECE hak edene. Öncelik: gecenin maçı > ilki > kapanış.
@@ -1154,6 +1171,7 @@ def derle(tarih_str):
         "ilk": saatli[0] if saatli else None,
         "son": saatli[-1] if saatli else None,
         "mac": len(brief),
+        "anlatili": sum(1 for x in brief if x["anlatili"]),
         # DİKKAT: "son", gecenin BİTİŞİ değil son maçın BAŞLAMA saati.
         # Bitiş saati veride yok ve uydurulmuyor.
         "dakika": _dakika_farki(saatli[0], saatli[-1]) if len(saatli) > 1 else None,

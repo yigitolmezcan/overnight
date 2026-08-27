@@ -2279,13 +2279,29 @@ def main():
           all(b.get("etiket") in ("", "gecenin ilki", "gecenin maçı", "kapanış")
               for b in _brief))
 
-    # --- içerik kuralı DEĞİŞMEDİ ---
-    # Satır sayısı sabit değil; eleme yaz.py'de, olguya dayanabilen maçlar
-    # için yapılıyor. Bu tur sadece sıralama ve görünüm değiştirdi.
-    basar("Sen uyurken: satır sayısı sabit değil (olguya dayanan maç kadar)",
-          len(_brief) <= _d3["mac_sayisi"])
+    # --- KARAR DEĞİŞTİ: gecenin BÜTÜN maçları satır alıyor ---
+    # Bölüm kendini KRONOLOJİ olarak sunuyordu ama 10 maçın 3'ünü
+    # gösteriyordu; akış eksik hissettiriyordu. Her maça cümle yazmak
+    # ise dolgu üretmek olurdu ("Sacramento, Portland'ı yendi" bilgi
+    # değil). Çözüm: herkes satır alıyor, CÜMLE sadece anlatacak bir
+    # olgusu olana veriliyor. Skor bir OLGU, uydurma değil.
+    basar("Sen uyurken: gecenin bütün maçları satır alıyor",
+          len(_brief) == _d3["mac_sayisi"])
     basar("Sen uyurken: her satır gerçek bir maça bağlı",
           all(b.get("hedef_id") for b in _brief))
+    basar("Sen uyurken: cümle SADECE anlatısı olanda",
+          all(bool(b["metin"]) == b["anlatili"] for b in _brief))
+    basar("Sen uyurken: anlatısı olmayan satır cümle taşımıyor (dolgu yok)",
+          all(not b["metin"] for b in _brief if not b["anlatili"]))
+    basar("Sen uyurken: cümlesiz satırda da skor var (olgu)",
+          all(b["skor"] for b in _brief if not b["anlatili"]))
+    basar("Sen uyurken: özet anlatılı sayısını da taşıyor",
+          _ozet["anlatili"] == sum(1 for b in _brief if b["anlatili"]))
+    # Görünümde ayrım: cümlesiz satır sessiz sınıfı alıyor ve rozeti sönük.
+    basar("Sen uyurken: cümlesiz satır 'sessiz' sınıfı alıyor",
+          "sessiz?' sessiz':''" in _sayfa3 and ".crow.sessiz .sc i{" in _sayfa3)
+    basar("Sen uyurken: sessiz satırda rozet ember DEĞİL",
+          "background:#232C3A;color:var(--ink2)" in _sayfa3)
 
     # --- ray hizası CSS'i ---
     basar("Sen uyurken: uzun cümle rayı itemesin (içerik sütunu min-width:0)",
