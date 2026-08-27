@@ -1,0 +1,151 @@
+{
+  "tarih": "2025-12-21",
+  "hesaplandi": "2026-08-27T15:33:25.090117Z",
+  "en_iyi_skor": 9.06,
+  "maclar": [
+    {
+      "rozet": 9.06,
+      "ham": 11.02,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 9.83,
+        "K": 3.68,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 6.4,
+        "F": 6,
+        "G": 0,
+        "A": 5.33
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500396",
+      "ev": "ATL",
+      "dep": "CHI",
+      "ev_skor": 150,
+      "dep_skor": 152,
+      "en_iyi_performans": "Trae Young"
+    },
+    {
+      "rozet": 9.06,
+      "ham": 11.02,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 7.07,
+        "K": 6.25,
+        "T": 0,
+        "D": 8
+      },
+      "yukselticiler": {
+        "Y": 9.5,
+        "F": 10,
+        "G": 6,
+        "A": 7.08
+      },
+      "dram_terfi": true,
+      "mac_id": "0022500401",
+      "ev": "SAC",
+      "dep": "HOU",
+      "ev_skor": 125,
+      "dep_skor": 124,
+      "en_iyi_performans": "Dennis Schröder"
+    },
+    {
+      "rozet": 8.84,
+      "ham": 10.19,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 10,
+        "K": 1.11,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 4.5,
+        "F": 0,
+        "G": 0,
+        "A": 7.08
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500398",
+      "ev": "NYK",
+      "dep": "MIA",
+      "ev_skor": 132,
+      "dep_skor": 125,
+      "en_iyi_performans": "Jalen Brunson"
+    },
+    {
+      "rozet": 7.14,
+      "ham": 7.14,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 4.38,
+        "K": 2.51,
+        "T": 0,
+        "D": 6
+      },
+      "yukselticiler": {
+        "Y": 5.92,
+        "F": 6,
+        "G": 8,
+        "A": 4.67
+      },
+      "dram_terfi": true,
+      "mac_id": "0022500400",
+      "ev": "MIN",
+      "dep": "MIL",
+      "ev_skor": 103,
+      "dep_skor": 100,
+      "en_iyi_performans": "Kevin Porter Jr."
+    },
+    {
+      "rozet": 3.93,
+      "ham": 3.93,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 4.33,
+        "K": 0.03,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.97,
+        "F": 0,
+        "G": 0,
+        "A": 6.0
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500399",
+      "ev": "WAS",
+      "dep": "SAS",
+      "ev_skor": 113,
+      "dep_skor": 124,
+      "en_iyi_performans": "De'Aaron Fox"
+    },
+    {
+      "rozet": 2.45,
+      "ham": 2.45,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 1.42,
+        "K": 2.25,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.52,
+        "F": 0,
+        "G": 0,
+        "A": 5.0
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500397",
+      "ev": "BKN",
+      "dep": "TOR",
+      "ev_skor": 96,
+      "dep_skor": 81,
+      "en_iyi_performans": "Michael Porter Jr."
+    }
+  ]
+}
