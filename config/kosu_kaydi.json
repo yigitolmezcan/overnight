@@ -18,6 +18,12 @@
       "is": "elle-yayin",
       "sonuc": "success",
       "not": "18 Aralık — GitHub Actions kesintisi sırasında elle"
+    },
+    {
+      "zaman": "2026-08-27T11:02:47Z",
+      "is": "yayinla",
+      "sonuc": "success",
+      "not": "run 2 · workflow_dispatch"
     }
   ]
 }
