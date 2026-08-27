@@ -989,6 +989,79 @@ def _formda_listeler(ham, bt_by_gid, gecenin_oyunculari):
     return renk_cakismasini_coz(yukselen), renk_cakismasini_coz(dusen)
 
 
+# ---------------------------------------------------------------------------
+# SIRALAMA HAREKETİ
+# ---------------------------------------------------------------------------
+#
+# Sitede sıralama diye bir şey yoktu. Sabah bakan biri için en pratik
+# bilgilerden biri: gece bitince kim yükseldi, kim düştü. Metin bunu
+# söyleyemiyor çünkü tek maçın metni tüm ligin hareketini anlatamaz.
+#
+# SADECE YER DEĞİŞTİREN takımlar görünüyor; hareket yoksa bölüm hiç
+# çıkmıyor — "sakin gece" ve "kilit istatistik" ile aynı ilke.
+#
+# DİKKAT: sıralama uç noktasında tarih filtresi YOK. Gece ÖNCESİ
+# sıralama, oyun günlüğünden o günün maçları çıkarılarak hesaplanıyor —
+# `derece` ve `seri` için de aynı yöntem kullanılıyor (gercekler.py).
+SIRALAMA_FORM_MAC = 10
+
+
+def _gunluk_satirlari(oyun_gunlugu, kadar_tarih=None):
+    """LeagueGameLog satırlarını (isteğe bağlı) tarihe kadar süzer.
+    `kadar_tarih` VERİLİRSE o gün HARİÇ tutulur (gece öncesi durumu)."""
+    rs = oyun_gunlugu["resultSets"][0]
+    i = {ad: n for n, ad in enumerate(rs["headers"])}
+    satirlar = rs["rowSet"]
+    if kadar_tarih:
+        satirlar = [r for r in satirlar if str(r[i["GAME_DATE"]])[:10] < kadar_tarih]
+    return {"resultSets": [{"headers": rs["headers"], "rowSet": satirlar}]}, i
+
+
+def _son_form(oyun_gunlugu, kod, adet=SIRALAMA_FORM_MAC):
+    """[True/False, ...] — ESKİDEN YENİYE, sonuncusu bu geceki maç."""
+    rs = oyun_gunlugu["resultSets"][0]
+    i = {ad: n for n, ad in enumerate(rs["headers"])}
+    maclar = sorted((r for r in rs["rowSet"] if r[i["TEAM_ABBREVIATION"]] == kod),
+                    key=lambda r: str(r[i["GAME_DATE"]])[:10])
+    return [r[i["WL"]] == "W" for r in maclar[-adet:]]
+
+
+def _siralama_hareketi(ham, tarih_str, gece_takimlari):
+    """Yer değiştiren takımlar. Hareket yoksa boş liste -> bölüm çıkmaz."""
+    from gercekler import puan_durumu_hesapla
+    gunluk = ham.get("puan_durumu")
+    if not gunluk or not gece_takimlari:
+        return []
+    try:
+        once_ham, _ = _gunluk_satirlari(gunluk, kadar_tarih=tarih_str)
+        once = puan_durumu_hesapla(once_ham, tarih_str)
+        sonra = puan_durumu_hesapla(gunluk, tarih_str)
+    except Exception:
+        return []
+    satirlar = []
+    for kod in gece_takimlari:
+        a, b = once.get(kod), sonra.get(kod)
+        if not a or not b:
+            continue
+        eski, yeni = a.get("konferans_sira"), b.get("konferans_sira")
+        if not eski or not yeni or eski == yeni:
+            continue          # yer değiştirmeyen takım görünmüyor
+        satirlar.append({
+            "takim": kod,
+            "takim_adi": _takim_adi(kod),
+            "eski": eski,
+            "yeni": yeni,
+            # Pozitif = YÜKSELDİ (sıra numarası küçüldü).
+            "degisim": eski - yeni,
+            "konferans": b.get("konferans"),
+            "form": _son_form(gunluk, kod),
+            "_gmsc": abs(eski - yeni),   # renk çakışmasında öncelik ölçüsü
+        })
+    # Çok yükselen en üstte, çok düşen en altta.
+    satirlar.sort(key=lambda x: -x["degisim"])
+    return renk_cakismasini_coz(satirlar)
+
+
 def derle(tarih_str):
     gercek_gece = _yukle(GERCEK_DIZIN, tarih_str)
     skor_gece = _yukle(SKOR_DIZIN, tarih_str)
@@ -1113,6 +1186,10 @@ def derle(tarih_str):
                 })
     yukselen, dusen = _formda_listeler(ham, None, _gece_oyunculari)
 
+    # ---- sıralama hareketi ----
+    _gece_takimlari = sorted({o["takim"] for o in _gece_oyunculari})
+    siralama = _siralama_hareketi(ham, tarih_str, _gece_takimlari)
+
     # ---- değerse bak (rozet 6.0+, "mutlaka" olarak seçilmemiş) / bunları geç ----
     # Kullanıcı düzeltmesi: hesapla.py baştan beri üç katman üretiyordu
     # (mutlaka/ikinci/gec) ama sayfada iki bölüm vardı — 126-124 biten,
@@ -1160,6 +1237,7 @@ def derle(tarih_str):
         "gecenin_besi": gecenin_besi,
         "yukselen": yukselen,
         "dusen": dusen,
+        "siralama": siralama,
         "degerse_bak": degerse_bak,
         "diger": diger,
         "turkler": turkler,

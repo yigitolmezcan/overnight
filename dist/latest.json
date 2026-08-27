@@ -2342,6 +2342,224 @@
       "renk_degisti": false
     }
   ],
+  "siralama": [
+    {
+      "takim": "BOS",
+      "takim_adi": "Boston Celtics",
+      "eski": 4,
+      "yeni": 3,
+      "degisim": 1,
+      "konferans": "Doğu",
+      "form": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true
+      ],
+      "_gmsc": 1,
+      "renk": "#12A05C",
+      "asil_renk": "#12A05C",
+      "renk_degisti": false
+    },
+    {
+      "takim": "GSW",
+      "takim_adi": "Golden State Warriors",
+      "eski": 9,
+      "yeni": 8,
+      "degisim": 1,
+      "konferans": "Batı",
+      "form": [
+        false,
+        true,
+        false,
+        false,
+        true,
+        true,
+        false,
+        false,
+        false,
+        true
+      ],
+      "_gmsc": 1,
+      "renk": "#2E6BD6",
+      "asil_renk": "#2E6BD6",
+      "renk_degisti": false
+    },
+    {
+      "takim": "LAC",
+      "takim_adi": "LA Clippers",
+      "eski": 14,
+      "yeni": 13,
+      "degisim": 1,
+      "konferans": "Batı",
+      "form": [
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "_gmsc": 1,
+      "renk": "#B7BEC7",
+      "asil_renk": "#D2434A",
+      "renk_degisti": true
+    },
+    {
+      "takim": "NOP",
+      "takim_adi": "New Orleans Pelicans",
+      "eski": 15,
+      "yeni": 14,
+      "degisim": 1,
+      "konferans": "Batı",
+      "form": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true
+      ],
+      "_gmsc": 1,
+      "renk": "#B4975A",
+      "asil_renk": "#B4975A",
+      "renk_degisti": false
+    },
+    {
+      "takim": "PHI",
+      "takim_adi": "Philadelphia 76ers",
+      "eski": 5,
+      "yeni": 4,
+      "degisim": 1,
+      "konferans": "Doğu",
+      "form": [
+        true,
+        false,
+        true,
+        true,
+        true,
+        false,
+        true,
+        false,
+        true,
+        true
+      ],
+      "_gmsc": 1,
+      "renk": "#7A8B99",
+      "asil_renk": "#3A8DDE",
+      "renk_degisti": true
+    },
+    {
+      "takim": "DEN",
+      "takim_adi": "Denver Nuggets",
+      "eski": 2,
+      "yeni": 3,
+      "degisim": -1,
+      "konferans": "Batı",
+      "form": [
+        false,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "_gmsc": 1,
+      "renk": "#FEC524",
+      "asil_renk": "#FEC524",
+      "renk_degisti": false
+    },
+    {
+      "takim": "MEM",
+      "takim_adi": "Memphis Grizzlies",
+      "eski": 8,
+      "yeni": 9,
+      "degisim": -1,
+      "konferans": "Batı",
+      "form": [
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        false,
+        true,
+        true,
+        false
+      ],
+      "_gmsc": 1,
+      "renk": "#12173F",
+      "asil_renk": "#6C8CC7",
+      "renk_degisti": true
+    },
+    {
+      "takim": "SAC",
+      "takim_adi": "Sacramento Kings",
+      "eski": 13,
+      "yeni": 15,
+      "degisim": -2,
+      "konferans": "Batı",
+      "form": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "_gmsc": 2,
+      "renk": "#8A5FC7",
+      "asil_renk": "#8A5FC7",
+      "renk_degisti": false
+    },
+    {
+      "takim": "TOR",
+      "takim_adi": "Toronto Raptors",
+      "eski": 3,
+      "yeni": 5,
+      "degisim": -2,
+      "konferans": "Doğu",
+      "form": [
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        false
+      ],
+      "_gmsc": 2,
+      "renk": "#CE1141",
+      "asil_renk": "#CE1141",
+      "renk_degisti": false
+    }
+  ],
   "degerse_bak": [
     {
       "id": "a-0022500388",
@@ -2921,7 +3139,7 @@
       "mac": "Denver Nuggets — Houston Rockets",
       "skor": "101–115",
       "rozet": 6.39,
-      "why": "",
+      "why": "gece sırası 1",
       "metin": "Houston Rockets deplasmanda Denver Nuggets'i 115-101 yendi. Kevin Durant 31 sayı attı.",
       "box": {
         "ev": {
@@ -4000,7 +4218,7 @@
       "mac": "LA Clippers — Los Angeles Lakers",
       "skor": "103–88",
       "rozet": 5.07,
-      "why": "gece sırası 10",
+      "why": "",
       "metin": "LA Clippers evinde Los Angeles Lakers'i 103-88 yendi.",
       "box": {
         "ev": {

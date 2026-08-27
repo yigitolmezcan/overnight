@@ -2555,6 +2555,89 @@ def main():
     basar("Box işareti: ekran okuyucu için açıklama aria-label'da",
           _sayfa5.count('— box score"') == 2)
 
+    # ==================================================================
+    # SIRALAMA — gece bitince kim yükseldi, kim düştü.
+    # Metin bunu söyleyemiyor: tek maçın metni tüm ligin hareketini
+    # anlatamaz.
+    # ==================================================================
+    _sayfa6 = open("overnight_v17.html", encoding="utf-8").read()
+    _d6 = _jj.loads(open(f"dist/{_yayinda2}.json", encoding="utf-8").read())
+    _sir = _d6.get("siralama") or []
+
+    # İÇERİK KURALI: sadece yer değiştirenler; hareket yoksa bölüm yok.
+    basar("Sıralama: listedeki her takım gerçekten yer değiştirmiş",
+          all(t["eski"] != t["yeni"] for t in _sir))
+    basar("Sıralama: değişim işareti yönü doğru (pozitif = yükseldi)",
+          all((t["degisim"] > 0) == (t["yeni"] < t["eski"]) for t in _sir))
+    basar("Sıralama: değişim miktarı sıra farkına eşit",
+          all(abs(t["degisim"]) == abs(t["eski"] - t["yeni"]) for t in _sir))
+    basar("Sıralama: hareket yoksa bölüm gizleniyor",
+          "document.getElementById('secSiralama').hidden=!siralama.length" in _sayfa6)
+    basar("Sıralama: başlık yanında sayaç var",
+          "takım yer değiştirdi" in _sayfa6)
+
+    # Gece ÖNCESİ sıralama, oyun günlüğünden O GÜN ÇIKARILARAK hesaplanıyor
+    # — sıralama uç noktasında tarih filtresi yok.
+    _gunluk = _jj.loads(_yayin._ham_metni(_yayinda2))["puan_durumu"]
+    _once_ham, _i = _derle._gunluk_satirlari(_gunluk, kadar_tarih=_yayinda2)
+    _tum = len(_gunluk["resultSets"][0]["rowSet"])
+    _once = len(_once_ham["resultSets"][0]["rowSet"])
+    basar("Sıralama: gece öncesi hesabı o günün maçlarını dışarıda bırakıyor",
+          _once < _tum)
+    basar("Sıralama: dışarıda kalan satırların hepsi o geceye ait",
+          all(str(r[_i["GAME_DATE"]])[:10] == _yayinda2
+              for r in _gunluk["resultSets"][0]["rowSet"]
+              if str(r[_i["GAME_DATE"]])[:10] >= _yayinda2))
+
+    # FORM: son 10, eskiden yeniye, sonuncusu bu geceki maç.
+    basar("Sıralama: her takımda 10 form kutucuğu",
+          all(len(t["form"]) == 10 for t in _sir))
+    basar("Sıralama: form değerleri galibiyet/mağlubiyet (bool)",
+          all(isinstance(w, bool) for t in _sir for w in t["form"]))
+    # Son kutucuk bu geceki maçın sonucu olmalı — kutu skorla karşılaştır.
+    _gece_sonuc = {}
+    for _k in _d6["mutlaka"] + (_d6.get("degerse_bak") or []) + (_d6.get("diger") or []):
+        _b = _k["box"]
+        _kaz = _b["ev"] if _b["ev"]["skor"] >= _b["dep"]["skor"] else _b["dep"]
+        _kay = _b["dep"] if _kaz is _b["ev"] else _b["ev"]
+        _gece_sonuc[_kaz["kod"]] = True
+        _gece_sonuc[_kay["kod"]] = False
+    basar("Sıralama: son kutucuk BU GECEKİ maçın sonucu",
+          all(t["form"][-1] == _gece_sonuc.get(t["takim"]) for t in _sir
+              if t["takim"] in _gece_sonuc))
+
+    # Renk çakışması bu bölümde de geçerli.
+    basar("Sıralama: takım renkleri çakışma kuralından geçmiş",
+          all("renk" in t and "asil_renk" in t and "renk_degisti" in t for t in _sir))
+    _renk_cift = {}
+    for _t in _sir:
+        _renk_cift.setdefault(_t["takim"], set()).add(_t["renk"])
+    basar("Sıralama: takım başına tek renk",
+          all(len(v) == 1 for v in _renk_cift.values()))
+
+    # YERLEŞİM: bölüm EN SONDA.
+    _bolumler = _re.findall(r'<section class="sec[^"]*"(?:\s+id="([^"]+)")?', _sayfa6)
+    basar("Sıralama: bölüm en sonda (kapanış bilgisi)",
+          _bolumler and _bolumler[-1] == "secSiralama")
+
+    # ÖLÇÜLER — şartnamedeki değerler.
+    basar("Sıralama: ok sütunu 30px ve sarmalanmıyor",
+          "font-size:11.5px;font-weight:700;width:30px" in _sayfa6
+          and "white-space:nowrap}" in _sayfa6.split(".sr .ar{")[1][:200])
+    basar("Sıralama: yükseliş yeşil, düşüş kırmızı",
+          ".sr .ar.u{color:#3FB27F}" in _sayfa6 and ".sr .ar.d{color:#C4544F}" in _sayfa6)
+    basar("Sıralama: form kutucukları 9x9, 2.5px aralık",
+          "width:9px;height:9px" in _sayfa6 and ".sr .f10{display:flex;gap:2.5px" in _sayfa6)
+    basar("Sıralama: galibiyet yeşil %85, mağlubiyet koyu gri",
+          ".sr .f10 i.w{background:#3FB27F;opacity:.85}" in _sayfa6
+          and "background:#2A3340}" in _sayfa6)
+    basar("Sıralama: sıra sütunu 44px, sağa hizalı",
+          "width:44px;\n  flex:none;text-align:right" in _sayfa6)
+    # Ad KESİLMİYOR — projenin kuralı, ve şartname "tam ad" diyor.
+    basar("Sıralama: takım adı kesilmiyor, sarmalanıyor",
+          "overflow-wrap:break-word}" in _sayfa6.split(".sr .tn{")[1][:260]
+          and "text-overflow:ellipsis" not in _sayfa6.split(".sr .tn{")[1][:260])
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))

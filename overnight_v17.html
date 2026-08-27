@@ -583,6 +583,47 @@ td.khot{color:var(--amber);font-weight:700}
   margin-right:5px;vertical-align:baseline}
 .fp .tmdot.ring{box-shadow:0 0 0 1.5px var(--asil)}
 
+/* SIRALAMA — gece bitince kim yükseldi, kim düştü.
+   Metin bunu söyleyemiyor: tek maçın metni tüm ligin hareketini
+   anlatamaz. SADECE yer değiştiren takımlar; hareket yoksa bölüm hiç
+   çıkmıyor ("sakin gece" ve "kilit istatistik" ile aynı ilke). */
+.sr{display:flex;align-items:center;gap:11px;padding:11px 2px;
+  border-bottom:1px solid #141A24}
+.sr:last-child{border-bottom:0}
+/* Ok sütunu SABİT 30px; iki haneli değerde (▲10) sarmalanmasın diye
+   nowrap ile birlikte. */
+.sr .ar{font-family:var(--mono);font-size:11.5px;font-weight:700;width:30px;
+  flex:none;white-space:nowrap}
+.sr .ar.u{color:#3FB27F}
+.sr .ar.d{color:#C4544F}
+/* min-width:0 — uzun takım adı ("Portland Trail Blazers") form
+   kutucuklarını itmesin, kendi sütununda kısalsın. */
+/* Ad KESİLMİYOR, sarmalanıyor. 375px'te dört sütun + 10 kutucuk
+   dururken "Golden State Warriors" ve "New Orleans Pelicans" üç noktaya
+   düşüyordu (ölçüldü). Projenin kuralı ad kesmemek, ve bu bölümün
+   şartnamesi de "tam ad" diyor — uzun adda satır iki satıra çıkıyor,
+   hiçbir şey gizlenmiyor. */
+.sr .tn{flex:1;min-width:0;font-size:13.5px;font-weight:700;letter-spacing:-.01em;
+  line-height:1.25;overflow-wrap:break-word}
+/* Takım rengi: bu bölümde de aynı anda birden fazla takım görünüyor,
+   o yüzden önceki turun çakışma kuralı burada da çalışıyor. */
+.sr .tc{display:inline-block;width:3px;height:12px;margin-right:7px;
+  vertical-align:-2px;border-radius:1px}
+.sr .tc.ring{box-shadow:0 0 0 1px var(--asil)}
+/* Form: 10 kare, soldan sağa ESKİDEN YENİYE — en sağdaki bu geceki maç. */
+.sr .f10{display:flex;gap:2.5px;flex:none}
+.sr .f10 i{width:9px;height:9px;display:block;border-radius:1px;background:#2A3340}
+.sr .f10 i.w{background:#3FB27F;opacity:.85}
+.sr .pos{font-family:var(--mono);font-size:11px;color:var(--ink2);width:44px;
+  flex:none;text-align:right;white-space:nowrap}
+.sr .pos s{color:var(--faint);text-decoration:none}
+@media(max-width:400px){
+  /* 375px'te dört sütun + 10 kutucuk dar kalıyor; takım adı esnek
+     olduğu için ilk o daralıyor, kutucuklar sabit kalıyor. */
+  .sr{gap:8px}
+  .sr .f10{gap:2px}
+}
+
 .besirow{position:relative;display:flex;align-items:baseline;gap:9px;padding:12px 15px;border-bottom:1px solid #141A24}
 /* Kullanıcı kararı: şerit rozetin turuncusu, ve satırlar arasında
    minnacık boşluk kalsın — tek uzun çubuk yerine her satırın kendi
@@ -819,6 +860,12 @@ td.khot{color:var(--amber);font-weight:700}
   <div class="sechead"><h2>Geniş açı</h2></div>
   <div class="rule"></div>
   <div class="wide" id="genisAciBox"></div>
+</section>
+
+<section class="sec s9" id="secSiralama" hidden>
+  <div class="sechead"><h2>Sıralama</h2><div class="cue" id="siralamaSayac"></div></div>
+  <div class="rule"></div>
+  <div class="siralama" id="siralamaListe"></div>
 </section>
 
 <div class="end">
@@ -1398,6 +1445,27 @@ function render(d){
     formdaCiz('yukselen');
   }
   document.addEventListener('click',formdaBalonKapat);
+
+  // ---- sıralama (yer değiştiren yoksa bölüm gizli) ----
+  const siralama=d.siralama||[];
+  document.getElementById('secSiralama').hidden=!siralama.length;
+  if(siralama.length){
+    document.getElementById('siralamaSayac').textContent=
+      `${siralama.length} takım yer değiştirdi`;
+    document.getElementById('siralamaListe').innerHTML=siralama.map(t=>{
+      const yukari=t.degisim>0;
+      const kare=w=>`<i class="${w?'w':''}"></i>`;
+      const cizgi=t.renk_degisti
+        ? `<i class="tc ring" style="background:${esc(t.renk)};--asil:${esc(t.asil_renk)}"></i>`
+        : `<i class="tc" style="background:${esc(t.renk)}"></i>`;
+      return `<div class="sr">
+        <span class="ar ${yukari?'u':'d'}">${yukari?'▲':'▼'}${Math.abs(t.degisim)}</span>
+        <span class="tn">${cizgi}${esc(t.takim_adi)}</span>
+        <span class="f10">${t.form.map(kare).join('')}</span>
+        <span class="pos">${t.eski}<s>→</s>${t.yeni}</span>
+      </div>`;
+    }).join('');
+  }
 
   // ---- gecenin notları (veri yoksa bölüm gizli) ----
   document.getElementById('secNotlar').hidden = !(d.gecenin_notlari && d.gecenin_notlari.length);
