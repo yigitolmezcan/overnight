@@ -36,6 +36,12 @@
       "is": "uret",
       "sonuc": "failure",
       "not": "run 5 · workflow_dispatch"
+    },
+    {
+      "zaman": "2026-08-27T12:16:13Z",
+      "is": "uret",
+      "sonuc": "failure",
+      "not": "run 6 · schedule"
     }
   ]
 }
