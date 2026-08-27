@@ -2587,6 +2587,20 @@ def main():
           and "gozgo\">Box" not in _sayfa5)
     basar("Box işareti: ekran okuyucu için açıklama aria-label'da",
           _sayfa5.count('— box score"') == 2)
+    # Mutlaka bil'de bağlantı SAĞDA. Solda kalınca kilit istatistiğin
+    # sol etiketiyle ("ribaund", ember) 15px arayla üst üste biniyordu —
+    # iki ember metin aynı kenarda (ölçüldü).
+    basar("Mutlaka bil: box score bağlantısı sağa hizalı",
+          "text-align:right;font-family:var(--mono);\n  font-size:11.5px" in _sayfa5)
+    # Eski metin GÖRÜNÜR işaretlemede olmamalı; kaynaktaki açıklama
+    # yorumu sayılmıyor (aynı tuzağa daha önce de düşülmüştü).
+    _gorunur5 = _re.sub(r"/\*.*?\*/", "", _sayfa5, flags=_re.S)
+    basar("Mutlaka bil: 'dokun/tıkla' kalktı, sade 'Box score ›' kaldı",
+          '<span class="opener">Box score<i>›</i></span>' in _sayfa5
+          and "Box score için" not in _gorunur5)
+    # Üç bölümde de aynı işaret: okuyucu bir kez öğreniyor.
+    basar("Box işareti: üç bölümde de aynı ok kullanılıyor",
+          _sayfa5.count("›") >= 3)
 
     # ==================================================================
     # SIRALAMA — gece bitince kim yükseldi, kim düştü.

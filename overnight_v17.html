@@ -359,7 +359,15 @@ body.n-worst .calm{border-left-color:var(--amber)}
 .demotoggle.on{color:var(--c);border-color:var(--c)}
 .flag{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);border:1px solid #4A3A18;padding:4px 8px;margin-top:11px}
 .flag::before{content:"⚠";font-size:12px}
-.opener{display:block;margin-top:15px;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--c)}
+/* Box score bağlantısı SAĞDA. Solda kalınca kilit istatistiğin sol
+   etiketiyle ("ribaund", ember) 15px arayla üst üste biniyordu — iki
+   ember metin aynı kenarda. Sağa alınca ikisi karşılıklı duruyor.
+   Metin de sadeleşti: "dokun/tıkla" kalktı, turuncu "Box score ›"
+   yetiyor — aynı işaret Göz at ve Bunları geç satırlarında da var,
+   okuyucu onu zaten öğrenmiş oluyor. */
+.opener{display:block;margin-top:15px;text-align:right;font-family:var(--mono);
+  font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--c)}
+.opener i{font-style:normal;margin-left:4px}
 .deep{display:none;margin-top:20px}
 .game.open .deep{display:block}
 .dblock{margin-bottom:16px}
@@ -758,10 +766,11 @@ td.khot{color:var(--amber);font-weight:700}
    sınıfı — buraya o adı vermek onların üstüne biniyordu. Göz at
    kartları `.gozkart`. */
 /* Box score olduğunu belirten işaret — Göz at ve Bunları geç satırlarında.
-   Mutlaka bil'deki tam metin ("Box score için dokun") bu kısa satırları
-   fazla dolduruyordu; sonra "Box ›" denendi, o da fazlaydı. Sadece ok:
-   kullanıcı anlıyor. Erişilebilirlik açıklaması düğmenin aria-label'ında,
-   yani ekran okuyucu için bilgi kaybı yok. */
+   Uzun metin bu kısa satırları fazla dolduruyordu; sonra "Box ›"
+   denendi, o da fazlaydı. Sadece ok: kullanıcı anlıyor. Erişilebilirlik
+   açıklaması düğmenin aria-label'ında, yani ekran okuyucu için bilgi
+   kaybı yok. Mutlaka bil'de aynı ok, yanında "Box score" yazısıyla —
+   orada kart geniş, yazıya yer var. */
 .gozgo{flex:none;font-family:var(--mono);font-size:15px;line-height:1;
   color:var(--ember);align-self:center;padding-left:8px}
 .gozkart{border:1px solid #1A2230;background:#0C121C;padding:15px 16px 4px;
@@ -1417,7 +1426,7 @@ function render(d){
       ${mv.neden_onemli?`<div class="kicker">${esc(mv.neden_onemli)}</div>`:''}
       <div class="gbody">${paragraflar(mv.ozet)}</div>
       ${kilitSerit(mv)}
-      <span class="opener">Box score için <span class="dokun">dokun</span><span class="tikla">tıkla</span></span>
+      <span class="opener">Box score<i>›</i></span>
     </div>
   </article>`).join('');
 
