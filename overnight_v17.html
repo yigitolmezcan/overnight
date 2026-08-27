@@ -249,6 +249,20 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
   .crow .sc b.genis{display:inline}
 }
 
+/* "AYRICA" — kilometre taşları akışın DIŞINDA.
+   "Sen uyurken" MAÇLARI sıralıyor ve sırası rozete bağlı; triple-double
+   ise bir OYUNCU haberi, maçın izlenmeye değer olup olmamasıyla ilgisi
+   yok. Tek listede karıştırınca ya rozet sıralaması bozuluyor ya haber
+   düşüyordu (2.45 rozetli maçtaki triple-double kesimin altında
+   kalıyordu). Burada rozet de saat de geçmiyor. */
+.ayrica{display:flex;align-items:baseline;gap:11px;padding:10px 15px 11px;
+  border-top:1px solid #141A24}
+.ayrica b{flex:none;font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--faint);font-weight:400}
+.ayrica span{flex:1;min-width:0;font-size:12.5px;line-height:1.5;color:var(--ink2)}
+.ayrica i{font-style:normal;color:var(--faint)}
+.ayrica u{text-decoration:none;color:var(--faint);margin:0 6px}
+
 .cfoot{padding:11px 15px;border-top:1px solid #1A2230;background:#0B0F16;
   display:flex;justify-content:space-between;align-items:center;gap:10px}
 .cfoot span,.cfoot em{font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;
@@ -835,6 +849,7 @@ td.khot{color:var(--amber);font-weight:700}
     <div class="cbar"><span class="tz" id="briefTz"></span></div>
     <div class="night"></div>
     <ul class="rows" id="briefList"></ul>
+    <div class="ayrica" id="briefAyrica" hidden></div>
     <div class="cfoot"><span id="briefAralik"></span><em id="briefSayac"></em></div>
   </div>
 </section>
@@ -1355,6 +1370,15 @@ function render(d){
             : `<b>${esc(b.skor||'')}</b>`}${rozet}</span>`:''}
       </span>
     </a></li>`;}).join('');
+  // "Ayrıca" satırı — kilometre taşları. Hiçbiri yoksa satır HİÇ çıkmaz.
+  const ayrica=d.brief_ayrica||[];
+  const ayricaKutu=document.getElementById('briefAyrica');
+  ayricaKutu.hidden=!ayrica.length;
+  if(ayrica.length){
+    ayricaKutu.innerHTML=`<b>Ayrıca</b><span>${ayrica.map(a=>
+      `${esc(a.isim)} ${esc(a.ifade)} <i>(${esc(a.takim)})</i>`).join('<u>·</u>')}</span>`;
+  }
+
   // Alt şerit. DİKKAT: sağdaki saat gecenin BİTİŞİ değil, son maçın
   // BAŞLAMA saati — bitiş NBA verisinde yok ve uydurulmuyor.
   document.getElementById('briefAralik').textContent =

@@ -1082,6 +1082,104 @@ def _siralama_hareketi(ham, tarih_str, gece_takimlari):
     return satirlar
 
 
+# ---------------------------------------------------------------------------
+# "AYRICA" — kilometre taşları, akışın DIŞINDA
+# ---------------------------------------------------------------------------
+#
+# "Sen uyurken" MAÇLARI sıralıyor ve sırası rozete bağlı. Triple-double
+# ise bir OYUNCU haberi — maçın izlenmeye değer olup olmamasıyla ilgisi
+# yok. İkisini tek listede karıştırmak, ya rozet sıralamasını bozuyordu
+# ya da haberi tamamen düşürüyordu (2.45 rozetli maçtaki Cade Cunningham
+# triple-double'ı kesim çizgisinin altında kalıyordu).
+#
+# Çözüm: kilometre taşları akıştan çıkıp bölümün altına, kendi satırına
+# alındı. Rozetle de saatle de ilgisi yok.
+AYRICA_EN_FAZLA = 3
+
+# Kilometre eşiği → (okunur ifade, fiil). Fiil istatistiğe göre:
+# sayı/üçlük ATILIR, ribaund TOPLANIR, asist ve blok YAPILIR.
+# ("asist verdi/dağıttı" yasak — bkz. config/yasakli.json.)
+_AYRICA_FIIL = {
+    "sayi": "attı", "uclu": "attı", "ribaund": "topladı",
+    "asist": "yaptı", "blok": "yaptı",
+}
+
+
+# Eşik birimi → (kutu skor alanı, okunur birim). Kilometre kaydı sadece
+# sayı/ribaund/asist taşıyor; blok ve üçlük için kutu skora bakılıyor,
+# yoksa "5+ blok" gibi eşik metni yazılırdı — oysa gerçek değer elimizde.
+_AYRICA_ALAN = {
+    "sayi": ("pts", "sayı"), "uclu": ("3pm", "üçlük"), "ribaund": ("reb", "ribaund"),
+    "asist": ("ast", "asist"), "blok": ("blk", "blok"),
+}
+
+
+def _ayrica_ifadesi(kilo, kutu):
+    """'triple-double yaptı' / '43 sayı attı' — gerçek değer yazılır."""
+    esik = kilo.get("esik") or ""
+    okunur = _ESIK_OKUNUR.get(esik, esik.replace("_", " "))
+    if "double" in esik:
+        return f"{okunur} yaptı"
+    birim = esik.split("_", 1)[1] if "_" in esik else ""
+    alan, birim_okunur = _AYRICA_ALAN.get(birim, (None, birim))
+    fiil = _AYRICA_FIIL.get(birim, "yaptı")
+    deger = (kutu or {}).get(alan) if alan else None
+    if isinstance(deger, int):
+        return f"{deger} {birim_okunur} {fiil}"
+    return f"{okunur} {fiil}"
+
+
+def _ayrica_satiri(gercek_gece, ham, brief):
+    """[{isim, ifade, takim}, ...] — en fazla AYRICA_EN_FAZLA, en NADİR olanlar.
+
+    Akışta cümlesi olan bir oyuncu buraya TEKRAR girmiyor: aynı haberi
+    iki kez okutmak bölümü uzatmaktan başka bir şey yapmaz."""
+    anilan = " ".join(b.get("metin", "") for b in brief if b.get("metin"))
+    kod_by_oyuncu, kutu_by_oyuncu = {}, {}
+    for gid, hm in (ham.get("maclar") or {}).items():
+        bt = hm["box_traditional"]["boxScoreTraditional"]
+        for taraf in (bt["homeTeam"], bt["awayTeam"]):
+            for p in taraf["players"]:
+                ad = _dogru_oyuncu_adi(
+                    p["personId"], f"{p['firstName']} {p['familyName']}".strip())
+                kod_by_oyuncu[ad] = taraf["teamTricode"]
+                st = p["statistics"]
+                kutu_by_oyuncu[ad] = {
+                    "pts": st["points"], "reb": st["reboundsTotal"],
+                    "ast": st["assists"], "blk": st["blocks"],
+                    "3pm": st["threePointersMade"],
+                }
+    adaylar = []
+    for gid, kayitlar in (gercek_gece.get("maclar") or {}).items():
+        for f in kayitlar:
+            if f["tur"] != "kilometre":
+                continue
+            kilo = f["veri"]
+            ad = kilo.get("oyuncu")
+            if not ad:
+                continue
+            soyad = ad.strip().split()[-1]
+            if soyad.lower() in anilan.lower():
+                continue          # akışta zaten anıldı
+            esik = kilo.get("esik")
+            nadirlik = (_KILOMETRE_ONCELIK.index(esik)
+                        if esik in _KILOMETRE_ONCELIK else 99)
+            adaylar.append({
+                "isim": ad,
+                "ifade": _ayrica_ifadesi(kilo, kutu_by_oyuncu.get(ad)),
+                "takim": TAKIM_KISA.get(kod_by_oyuncu.get(ad, ""), kod_by_oyuncu.get(ad, "")),
+                "_nadirlik": nadirlik,
+                "_gmsc": kilo.get("gmsc", 0),
+            })
+    # En NADİR olanlar önce; eşitlikte GmSc.
+    adaylar.sort(key=lambda a: (a["_nadirlik"], -(a["_gmsc"] or 0)))
+    secilen = adaylar[:AYRICA_EN_FAZLA]
+    for a in secilen:
+        a.pop("_nadirlik", None)
+        a.pop("_gmsc", None)
+    return secilen
+
+
 def derle(tarih_str):
     gercek_gece = _yukle(GERCEK_DIZIN, tarih_str)
     skor_gece = _yukle(SKOR_DIZIN, tarih_str)
@@ -1176,6 +1274,7 @@ def derle(tarih_str):
                 x["etiket"], x["one_cikan"] = "kapanış", False
             else:
                 x["etiket"], x["one_cikan"] = "", False
+    ayrica = _ayrica_satiri(gercek_gece, ham, brief)
     saatli = [x["saat"] for x in brief if x["saat"]]
     brief_ozet = {
         "ilk": saatli[0] if saatli else None,
@@ -1281,6 +1380,7 @@ def derle(tarih_str):
         "bars": bars,
         "brief": brief,
         "brief_ozet": brief_ozet,
+        "brief_ayrica": ayrica,
         "mutlaka": mutlaka,
         "gecenin_besi": gecenin_besi,
         "yukselen": yukselen,

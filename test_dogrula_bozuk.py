@@ -2784,6 +2784,51 @@ def main():
     basar("Brief: YAYINLANAN gecede de rozet boşluğu yok",
           not _bk or not _bs or min(_bk) > max(_bs))
 
+    # ==================================================================
+    # "AYRICA" — kilometre taşları akışın DIŞINDA.
+    # "Sen uyurken" MAÇLARI sıralıyor (rozete göre); triple-double ise
+    # bir OYUNCU haberi. İkisi tek listede karışınca ya rozet sıralaması
+    # bozuluyordu ya haber düşüyordu (2.45 rozetli maçtaki Cunningham
+    # triple-double'ı kesimin altında kalıyordu).
+    # ==================================================================
+    _ayr = _d3.get("brief_ayrica") or []
+    basar("Ayrıca: satır kilometre taşı olan gecede üretiliyor",
+          bool(_ayr))
+    basar(f"Ayrıca: en fazla {_derle.AYRICA_EN_FAZLA} kayıt",
+          len(_ayr) <= _derle.AYRICA_EN_FAZLA)
+    basar("Ayrıca: her kayıtta isim, ifade ve takım var",
+          all(a.get("isim") and a.get("ifade") and a.get("takim") for a in _ayr))
+    # Akışta anılan oyuncu buraya TEKRAR girmiyor.
+    _akis = " ".join(b.get("metin", "") for b in _d3["brief"] if b.get("metin")).lower()
+    basar("Ayrıca: akışta anılan oyuncu tekrar etmiyor",
+          all(a["isim"].split()[-1].lower() not in _akis for a in _ayr))
+    # Rozetle ve saatle ilgisi yok — sıralamanın dışında.
+    basar("Ayrıca: kayıtlar rozet/saat taşımıyor (sıralamanın dışında)",
+          all("rozet" not in a and "saat" not in a for a in _ayr))
+    # Gerçek değer yazılıyor, eşik metni değil ("5 blok", "5+ blok" değil).
+    basar("Ayrıca: eşik metni değil gerçek değer yazılıyor",
+          all("+" not in a["ifade"] for a in _ayr))
+    # Nadirlik sırası: en nadir eşik önce.
+    _oncelik = _kalip_secici._KILOMETRE_ONCELIK
+    basar("Ayrıca: seçim nadirliğe göre (kalip_secici önceliği)",
+          "_KILOMETRE_ONCELIK.index" in open("derle.py", encoding="utf-8").read())
+    # Hiçbiri yoksa satır çıkmaz.
+    basar("Ayrıca: kayıt yoksa satır gizleniyor",
+          "ayricaKutu.hidden=!ayrica.length" in _sayfa3)
+    # Yeri: akıştan sonra, alt şeritten önce.
+    _i_rows = _sayfa3.index('id="briefList"')
+    _i_ayr = _sayfa3.index('id="briefAyrica"')
+    _i_foot = _sayfa3.index('class="cfoot"')
+    basar("Ayrıca: akıştan sonra, alt şeritten önce",
+          _i_rows < _i_ayr < _i_foot)
+    # Asist fiili kuralı burada da geçerli.
+    basar("Ayrıca: asist için 'yaptı' kullanılıyor (verdi/dağıttı yasak)",
+          '"asist": "yaptı"' in open("derle.py", encoding="utf-8").read())
+    _yasakli3 = dogrula_modul.yasakli_yukle()
+    basar("Ayrıca: üretilen ifadeler yasak listesinden geçiyor",
+          all(dogrula_modul.t4_yasakli_ifade(a["ifade"], _yasakli3)[0]
+              and dogrula_modul.t4d_kok_kaliplari(a["ifade"])[0] for a in _ayr))
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))

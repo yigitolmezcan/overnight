@@ -193,6 +193,18 @@
     "anlatili": 6,
     "dakika": 330
   },
+  "brief_ayrica": [
+    {
+      "isim": "Cade Cunningham",
+      "ifade": "triple-double yaptı",
+      "takim": "Detroit"
+    },
+    {
+      "isim": "Dylan Cardwell",
+      "ifade": "5 blok yaptı",
+      "takim": "Sacramento"
+    }
+  ],
   "mutlaka": [
     {
       "id": "g-mutlaka-0",
