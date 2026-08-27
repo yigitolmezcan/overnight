@@ -228,6 +228,38 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
   text-transform:uppercase;color:var(--faint);font-style:normal}
 .cfoot em{color:var(--ember)}
 
+/* KİLİT İSTATİSTİK — maçın NEDEN kazanıldığını söyleyen tek takım farkı.
+   Metin hikâyeyi anlatıyor ama sebebini anlatmıyor: "36 asiste karşı 20
+   asist" hiçbir cümlede geçmiyor.
+   WTF İstatistiği ile ayrı işler: WTF oyuncu düzeyinde ve absürt, bu
+   takım düzeyinde ve açıklayıcı — ikisi bir arada durabilir.
+   "Bunları geç"e KONMUYOR: orada metin zaten tek cümle. */
+.kilit{margin-top:13px;padding-top:12px;border-top:1px solid #141A24;
+  display:flex;align-items:center;gap:12px}
+.kilit .lft{flex:1;min-width:0}
+.kilit .lft b{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--faint);line-height:1.5;font-weight:400}
+.kilit .lft s{display:block;font-family:var(--mono);font-size:13px;color:var(--ember);
+  text-decoration:none;letter-spacing:.04em;margin-top:3px}
+/* flex:none — kutular metnin baskısıyla ezilmesin; sol etiket sarmalanır,
+   kutular sabit kalır. */
+.kilit .duo{display:flex;gap:5px;flex:none}
+/* Alçak ve geniş, kare değil. Kod ve sayı YAN YANA. */
+.kilit .cf{display:flex;align-items:baseline;justify-content:center;gap:7px;
+  padding:8px 0;width:76px}
+/* Takım kodu sayıdan SOLUK OLMAYACAK (kullanıcı kuralı): hangi takımın
+   hangisi olduğu sayının kendisi kadar önemli. */
+.kilit .cf u{font-family:var(--mono);font-size:10px;letter-spacing:.09em;
+  text-decoration:none;font-weight:700}
+.kilit .cf b{font-family:var(--mono);font-size:19px;font-weight:700;
+  letter-spacing:-.03em;line-height:1}
+.kilit .cf.win{background:var(--ember)}
+.kilit .cf.win u{color:#1A0C03}
+.kilit .cf.win b{color:#0A0603}
+.kilit .cf.los{background:#1E2733}
+.kilit .cf.los u{color:#C4CDDA}
+.kilit .cf.los b{color:#8B97A7}
+
 /* games */
 .game{border-bottom:1px solid #171E2B;padding:0 0 24px;margin-bottom:24px;scroll-margin-top:20px}
 .game:last-child{border-bottom:0;margin-bottom:0}
@@ -1143,6 +1175,18 @@ function render(d){
   if(sakin){
     document.getElementById('calmB').textContent=`Hiçbir maç 6.0'ı geçmedi. En iyisi bu.`;
   }
+  // Kilit istatistik şeridi. Eşiği aşan istatistik yoksa BOŞ STRING
+  // döner ve şerit hiç çizilmez — boş yer kalmaz (kullanıcı kuralı).
+  const kilitSerit=(m)=>{
+    const k=m.box&&m.box.kilit;
+    if(!k) return '';
+    const kutu=x=>`<span class="cf ${x.kazandi?'win':'los'}"><u>${esc(x.kod)}</u><b>${x.deger}</b></span>`;
+    return `<div class="kilit">
+      <span class="lft"><b>Kilit istatistik</b><s>${esc(k.ad)}</s></span>
+      <span class="duo">${k.kutular.map(kutu).join('')}</span>
+    </div>`;
+  };
+
   document.getElementById('mutlakaBox').innerHTML = d.mutlaka.map(mv=>`<article class="game" id="${mv.id}">
     <div class="gcard" data-kart="${mv.id}" role="button" tabindex="0">
       <div class="gtop">
@@ -1152,6 +1196,7 @@ function render(d){
       <p class="recap"><b>${esc(mv.baslik)}</b></p>
       ${mv.neden_onemli?`<div class="kicker">${esc(mv.neden_onemli)}</div>`:''}
       <div class="gbody">${paragraflar(mv.ozet)}</div>
+      ${kilitSerit(mv)}
       <span class="opener">Box score için <span class="dokun">dokun</span><span class="tikla">tıkla</span></span>
     </div>
   </article>`).join('');
@@ -1163,6 +1208,7 @@ function render(d){
       <button class="archrow" data-kart="${m.id}"><span class="roz sm">${m.rozet.toFixed(1)}</span>
         <div class="mblok md">${macBlok(m.mac, m.skor)}</div></button>
       ${m.metin?`<div class="dblock" style="padding:0 0 14px"><p>${esc(m.metin)}</p></div>`:''}
+      ${kilitSerit(m)}
     </div>`).join('');
   }
 

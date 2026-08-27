@@ -2302,6 +2302,105 @@ def main():
           ".night{height:3px" in _sayfa3 and "#0E1520" in _sayfa3
           and "#E8763A)" in _sayfa3.split(".night{")[1][:200])
 
+    # ==================================================================
+    # KİLİT İSTATİSTİK — maçın NEDEN kazanıldığını söyleyen takım farkı.
+    # ==================================================================
+    _sayfa4 = open("overnight_v17.html", encoding="utf-8").read()
+    _d4 = _jj.loads(open(f"dist/{_yayinda2}.json", encoding="utf-8").read())
+
+    def _taraf(kod, **d):
+        t = {"reb": 40, "oreb": 10, "ast": 25, "to": 12, "3p": "12/30", "ft": "18/24"}
+        t.update({k: v for k, v in d.items() if k in t})
+        return {"kod": kod, "toplam": t}
+
+    def _ham(ev_kod, dep_kod, ev_paint=40, dep_paint=40, ev_2c=10, dep_2c=10):
+        return {"box_summary": {"resultSets": [{"name": "OtherStats",
+                "headers": ["TEAM_ABBREVIATION", "PTS_PAINT", "PTS_2ND_CHANCE"],
+                "rowSet": [[ev_kod, ev_paint, ev_2c], [dep_kod, dep_paint, dep_2c]]}]}}
+
+    # Eşik altındaysa BÖLÜM HİÇ ÇIKMAZ — boş yer kalmaz.
+    basar("Kilit: hiçbir eşik aşılmazsa None",
+          _derle._kilit_istatistik(_ham("AAA", "BBB"), _taraf("AAA"), _taraf("BBB")) is None)
+    basar("Kilit: eşiğin bir altı da çıkmaz (ribaund 14)",
+          _derle._kilit_istatistik(_ham("AAA", "BBB"),
+              _taraf("AAA", reb=54), _taraf("BBB", reb=40)) is None)
+    _r = _derle._kilit_istatistik(_ham("AAA", "BBB"),
+              _taraf("AAA", reb=55), _taraf("BBB", reb=40))
+    basar("Kilit: eşiğin tam üstü çıkar (ribaund 15)",
+          _r and _r["ad"] == "ribaund" and _r["fark"] == 15)
+
+    # YÖN: top kaybında AZ olan kazanır. Canlı örneği yok, testle sabitli.
+    _tk = _derle._kilit_istatistik(_ham("AAA", "BBB"),
+              _taraf("AAA", to=8), _taraf("BBB", to=20))
+    basar("Kilit: top kaybında AZ olan kazanıyor",
+          _tk and _tk["ad"] == "top kaybı"
+          and _tk["kutular"][0]["kazandi"] is True
+          and _tk["kutular"][1]["kazandi"] is False)
+    # Diğer her şeyde ÇOK olan kazanır.
+    _as = _derle._kilit_istatistik(_ham("AAA", "BBB"),
+              _taraf("AAA", ast=20), _taraf("BBB", ast=36))
+    basar("Kilit: asistte ÇOK olan kazanıyor",
+          _as and _as["kutular"][1]["kazandi"] is True
+          and _as["kutular"][0]["kazandi"] is False)
+
+    # MAÇ BAŞINA TEK. Birden fazla eşik aşılırsa EN BÜYÜK AYKIRILIK.
+    # Ham fark değil, farkın kendi EŞİĞİNE ORANI: boyalı alanda 21'lik
+    # fark eşiği ancak geçerken (21/20), asistte 13'lük fark daha büyük
+    # bir aykırılık (13/12). Ham farkla karşılaştırmak ölçekleri karıştırır.
+    _cok = _derle._kilit_istatistik(
+        _ham("AAA", "BBB", ev_paint=61, dep_paint=40),
+        _taraf("AAA", ast=38), _taraf("BBB", ast=25))
+    basar("Kilit: maç başına tek istatistik döner",
+          isinstance(_cok, dict) and "ad" in _cok)
+    basar("Kilit: en büyük AYKIRILIK seçiliyor (ham fark değil, eşiğe oran)",
+          _cok["ad"] == "asist")
+
+    # Maçı kazanan takım bu kategoriyi KAYBETMİŞ olabilir; ember kutu
+    # istatistiğin kazananına gider, maçın kazananına değil.
+    _kartlar4 = []
+    for _b in ("mutlaka", "degerse_bak"):
+        _v = _d4.get(_b)
+        if isinstance(_v, list):
+            _kartlar4 += [x for x in _v if isinstance(x, dict) and x.get("box", {}).get("kilit")]
+    basar("Kilit: her şeritte tam bir kutu kazanan işaretli",
+          all(sum(1 for k in x["box"]["kilit"]["kutular"] if k["kazandi"]) == 1
+              for x in _kartlar4))
+    basar("Kilit: kutu sırası ev–deplasman, kod ve değer taşıyor",
+          all(len(x["box"]["kilit"]["kutular"]) == 2
+              and all("kod" in k and "deger" in k for k in x["box"]["kilit"]["kutular"])
+              for x in _kartlar4))
+    # Veri yoksa uydurma yok: OtherStats gelmezse o iki alan atlanır.
+    basar("Kilit: OtherStats yoksa boyalı alan/ikinci şans uydurulmuyor",
+          _derle._kilit_istatistik({"box_summary": {"resultSets": []}},
+              _taraf("AAA"), _taraf("BBB")) is None)
+
+    # --- yerleşim ---
+    # İki çağrı yeri: Mutlaka bil ve Göz at. "Bunları geç" render'ı
+    # şeridi HİÇ çağırmıyor — orada metin zaten tek cümle.
+    basar("Kilit: sadece iki yerde çağrılıyor (Mutlaka bil + Göz at)",
+          _sayfa4.count("kilitSerit(") == 2)
+    _diger_blok = _sayfa4.split("d.diger")[1][:600] if "d.diger" in _sayfa4 else ""
+    basar("Kilit: 'Bunları geç' render'ında şerit yok",
+          "kilitSerit" not in _diger_blok)
+    basar("Kilit: eşik aşılmazsa şerit hiç çizilmiyor",
+          "if(!k) return '';" in _sayfa4)
+    basar("Kilit: kutu 76px, alçak ve geniş (kare değil)",
+          "width:76px" in _sayfa4 and ".kilit .cf{" in _sayfa4)
+    basar("Kilit: kutular arası 5px", ".kilit .duo{display:flex;gap:5px" in _sayfa4)
+    # Takım kodu sayıdan SOLUK OLMAYACAK: hangi takım olduğu sayı kadar önemli.
+    basar("Kilit: kaybeden kutuda kod sayıdan AÇIK (#C4CDDA > #8B97A7)",
+          ".kilit .cf.los u{color:#C4CDDA}" in _sayfa4
+          and ".kilit .cf.los b{color:#8B97A7}" in _sayfa4)
+    basar("Kilit: kazanan kutu ember zemin, koyu yazı",
+          ".kilit .cf.win{background:var(--ember)}" in _sayfa4
+          and ".kilit .cf.win u{color:#1A0C03}" in _sayfa4)
+    basar("Kilit: kod ve sayı yan yana (alt alta değil)",
+          ".kilit .cf{display:flex;align-items:baseline" in _sayfa4)
+
+    # WTF ile karıştırılmıyor: ikisi ayrı yerlerde, ikisi bir arada durabilir.
+    basar("Kilit: WTF İstatistiği ayrı bir öğe olarak duruyor (regresyon)",
+          ".kwtf{" in _sayfa4 and "WTF İstatistiği" in _sayfa4)
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))

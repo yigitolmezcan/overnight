@@ -300,6 +300,7 @@ def _box_score(ham_mac, metin="", kaybeden_kod=None, gercekler=None):
     # LineScore alanları bu veri setinde boş geliyor.
     # TOPLAM SÜTUNU YOK: büyük skor zaten yukarıda.
     ev_taraf["ceyrek"], dep_taraf["ceyrek"] = _ceyrek_serisi(gercekler, ev_taraf["kod"])
+    kilit = _kilit_istatistik(ham_mac, ev_taraf, dep_taraf)
 
     # Kullanıcı kuralı (son tur): işaret SADECE her sekmenin İLK
     # satırında. Ember çizgi kazanan takımın ilk satırında, mavi çizgi
@@ -326,7 +327,7 @@ def _box_score(ham_mac, metin="", kaybeden_kod=None, gercekler=None):
 
     wtf = _wtf_istatistigi_bul(ev_taraf, dep_taraf)
 
-    return {"ev": ev_taraf, "dep": dep_taraf, "wtf": wtf}
+    return {"ev": ev_taraf, "dep": dep_taraf, "wtf": wtf, "kilit": kilit}
 
 
 def _takim_adi(kod):
@@ -682,6 +683,90 @@ def _dakika_farki(bas, son):
     if b < a:
         b += 24 * 60
     return b - a
+
+
+# ---------------------------------------------------------------------------
+# KİLİT İSTATİSTİK — maçın NEDEN kazanıldığını söyleyen tek takım farkı.
+# ---------------------------------------------------------------------------
+#
+# Metin maçın hikâyesini anlatıyor ama sebebini anlatmıyor: "36 asiste
+# karşı 20 asist" maçın sebebini veriyor ve hiçbir cümlede geçmiyor.
+#
+# WTF İstatistiği ile KARIŞTIRILMAMALI: WTF oyuncu düzeyinde ve absürt
+# ("tek başına 43 serbest atış"), kilit istatistik TAKIM düzeyinde ve
+# açıklayıcı. Farklı işler, ikisi bir arada durabilir.
+#
+# (alan, okunur ad, eşik, çok_olan_kazanır)
+KILIT_ESIKLERI = [
+    ("reb",   "ribaund",              15, True),
+    ("oreb",  "hücum ribaundu",        8, True),
+    ("3pm",   "üçlük",                 8, True),
+    ("ast",   "asist",                12, True),
+    ("to",    "top kaybı",             8, False),   # AZ olan kazanır
+    ("fta",   "serbest atış denemesi", 15, True),
+    ("pts2c", "ikinci şans sayısı",    15, True),
+    ("paint", "boyalı alan sayısı",    20, True),
+]
+
+
+def _kilit_degerleri(taraf, digerleri):
+    """Bir takımın kilit istatistik alanları. `digerleri` OtherStats satırı."""
+    t = taraf["toplam"]
+    yapilan = lambda kesir: int(str(kesir).split("/")[0]) if "/" in str(kesir) else 0
+    denenen = lambda kesir: int(str(kesir).split("/")[1]) if "/" in str(kesir) else 0
+    return {
+        "reb": t["reb"], "oreb": t["oreb"], "ast": t["ast"], "to": t["to"],
+        "3pm": yapilan(t["3p"]), "fta": denenen(t["ft"]),
+        "pts2c": (digerleri or {}).get("PTS_2ND_CHANCE"),
+        "paint": (digerleri or {}).get("PTS_PAINT"),
+    }
+
+
+def _kilit_istatistik(ham_mac, ev_taraf, dep_taraf):
+    """Eşiği aşan TEK istatistik, yoksa None.
+
+    MAÇ BAŞINA EN FAZLA BİR TANE (kullanıcı kararı). Birden fazla eşik
+    aşılıyorsa "en büyük aykırılık" seçiliyor — ham fark DEĞİL, farkın
+    kendi eşiğine ORANI. Ham farkla karşılaştırmak ölçekleri birbirine
+    karıştırırdı: boyalı alanda 21 sayılık fark eşiği ancak geçerken,
+    asistte 13'lük fark eşiği çoktan aşıyor.
+
+    Hiçbiri aşılmazsa None döner ve bölüm HİÇ ÇİZİLMEZ — boş yer kalmaz."""
+    try:
+        rs = next(x for x in ham_mac["box_summary"]["resultSets"]
+                  if x["name"] == "OtherStats")
+        by_kod = {dict(zip(rs["headers"], r))["TEAM_ABBREVIATION"]:
+                  dict(zip(rs["headers"], r)) for r in rs["rowSet"]}
+    except Exception:
+        by_kod = {}
+    ev = _kilit_degerleri(ev_taraf, by_kod.get(ev_taraf["kod"]))
+    dep = _kilit_degerleri(dep_taraf, by_kod.get(dep_taraf["kod"]))
+
+    en_iyi = None
+    for alan, ad, esik, cok_kazanir in KILIT_ESIKLERI:
+        a, b = ev.get(alan), dep.get(alan)
+        if a is None or b is None:
+            continue          # veri yoksa uydurma yok
+        fark = abs(a - b)
+        if fark < esik:
+            continue
+        oran = fark / esik
+        if en_iyi is None or oran > en_iyi["_oran"] or (
+                oran == en_iyi["_oran"] and fark > en_iyi["fark"]):
+            # YÖN: kazanan taraf istatistiğe göre belirleniyor, maçın
+            # sonucuna göre DEĞİL. Maçı kazanan takım bu kategoriyi
+            # kaybetmiş olabilir; o zaman ember kutu kaybedenin olur.
+            ev_kazandi = (a > b) if cok_kazanir else (a < b)
+            en_iyi = {
+                "ad": ad, "fark": fark, "_oran": oran,
+                "kutular": [
+                    {"kod": ev_taraf["kod"], "deger": a, "kazandi": ev_kazandi},
+                    {"kod": dep_taraf["kod"], "deger": b, "kazandi": not ev_kazandi},
+                ],
+            }
+    if en_iyi:
+        en_iyi.pop("_oran")
+    return en_iyi
 
 
 def derle(tarih_str):

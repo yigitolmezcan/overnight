@@ -660,7 +660,23 @@
             29
           ]
         },
-        "wtf": null
+        "wtf": null,
+        "kilit": {
+          "ad": "ribaund",
+          "fark": 15,
+          "kutular": [
+            {
+              "kod": "GSW",
+              "deger": 49,
+              "kazandi": true
+            },
+            {
+              "kod": "PHX",
+              "deger": 34,
+              "kazandi": false
+            }
+          ]
+        }
       }
     },
     {
@@ -1174,7 +1190,8 @@
             35
           ]
         },
-        "wtf": null
+        "wtf": null,
+        "kilit": null
       }
     },
     {
@@ -1734,7 +1751,8 @@
             10
           ]
         },
-        "wtf": null
+        "wtf": null,
+        "kilit": null
       }
     }
   ],
@@ -2455,7 +2473,23 @@
             29
           ]
         },
-        "wtf": null
+        "wtf": null,
+        "kilit": {
+          "ad": "ribaund",
+          "fark": 18,
+          "kutular": [
+            {
+              "kod": "TOR",
+              "deger": 37,
+              "kazandi": false
+            },
+            {
+              "kod": "BOS",
+              "deger": 55,
+              "kazandi": true
+            }
+          ]
+        }
       }
     },
     {
@@ -2987,7 +3021,23 @@
             33
           ]
         },
-        "wtf": null
+        "wtf": null,
+        "kilit": {
+          "ad": "üçlük",
+          "fark": 11,
+          "kutular": [
+            {
+              "kod": "DEN",
+              "deger": 8,
+              "kazandi": false
+            },
+            {
+              "kod": "HOU",
+              "deger": 19,
+              "kazandi": true
+            }
+          ]
+        }
       }
     },
     {
@@ -3500,7 +3550,23 @@
             17
           ]
         },
-        "wtf": null
+        "wtf": null,
+        "kilit": {
+          "ad": "hücum ribaundu",
+          "fark": 12,
+          "kutular": [
+            {
+              "kod": "PHI",
+              "deger": 20,
+              "kazandi": true
+            },
+            {
+              "kod": "DAL",
+              "deger": 8,
+              "kazandi": false
+            }
+          ]
+        }
       }
     }
   ],
@@ -4058,7 +4124,23 @@
             27
           ]
         },
-        "wtf": "LeBron James 36 sayı attı. Los Angeles Lakers'in toplamı 88 — tek kişiden yüzde 40."
+        "wtf": "LeBron James 36 sayı attı. Los Angeles Lakers'in toplamı 88 — tek kişiden yüzde 40.",
+        "kilit": {
+          "ad": "üçlük",
+          "fark": 10,
+          "kutular": [
+            {
+              "kod": "LAC",
+              "deger": 16,
+              "kazandi": true
+            },
+            {
+              "kod": "LAL",
+              "deger": 6,
+              "kazandi": false
+            }
+          ]
+        }
       }
     },
     {
@@ -4683,7 +4765,8 @@
             30
           ]
         },
-        "wtf": null
+        "wtf": null,
+        "kilit": null
       }
     },
     {
@@ -5220,7 +5303,23 @@
             26
           ]
         },
-        "wtf": null
+        "wtf": null,
+        "kilit": {
+          "ad": "hücum ribaundu",
+          "fark": 8,
+          "kutular": [
+            {
+              "kod": "SAC",
+              "deger": 18,
+              "kazandi": true
+            },
+            {
+              "kod": "POR",
+              "deger": 10,
+              "kazandi": false
+            }
+          ]
+        }
       }
     },
     {
@@ -5865,7 +5964,23 @@
             14
           ]
         },
-        "wtf": null
+        "wtf": null,
+        "kilit": {
+          "ad": "ribaund",
+          "fark": 18,
+          "kutular": [
+            {
+              "kod": "DET",
+              "deger": 61,
+              "kazandi": true
+            },
+            {
+              "kod": "CHA",
+              "deger": 43,
+              "kazandi": false
+            }
+          ]
+        }
       }
     }
   ],
