@@ -1,0 +1,30 @@
+name: Zamanlayıcı testi (geçici)
+
+# GEÇİCİ TEŞHİS İŞİ. Amaç tek bir soruya kanıtla cevap vermek:
+# "GitHub bu depoda zamanlanmış tetiklemeyi GERÇEKTEN ateşliyor mu?"
+# Hiçbir yan etkisi yok — üretim yapmaz, yayın yapmaz, para harcamaz,
+# sadece koştuğuna dair iz bırakır. Sonuç alınınca SİLİNECEK.
+on:
+  schedule:
+    - cron: "25 11 * * *"
+  workflow_dispatch:
+
+# Üretim işleriyle AYNI eşzamanlılık grubuna girmiyor — teşhis işi
+# üretimi bloke etmemeli.
+concurrency:
+  group: overnight-zamanlayici-testi
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  iz:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Tetikleme kaydı
+        run: |
+          echo "tetikleyen olay : ${{ github.event_name }}"
+          echo "UTC             : $(date -u '+%Y-%m-%d %H:%M:%S')"
+          echo "beklenen cron   : 25 11 * * *"
