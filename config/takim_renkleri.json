@@ -1,0 +1,156 @@
+{
+  "_aciklama": "Takım renkleri. İlk renk BİRİNCİL (varsayılan). Aynı listede iki takımın rengi birbirine yakın çıkarsa, DÜŞÜK GmSc'li olan sıradaki renge geçiyor — bkz. derle.renk_cakismasini_coz. Halka her zaman takımın BİRİNCİL rengini gösteriyor, yani 'gerçekte mor ama ayırt edilsin diye gri' bilgisi kaybolmuyor.",
+  "_kural": "Mor bugün çakıştı (LAL/SAC); MAVİ çok daha sık çakışacak — DAL, ORL, OKC, MIN, MEM, CHA. Renk güzelleştirir, KOD belirtir; ikisi birlikte kullanılıyor.",
+  "takimlar": {
+    "ATL": [
+      "#E03A3E",
+      "#C1D32F",
+      "#26282A"
+    ],
+    "BOS": [
+      "#12A05C",
+      "#BA9653",
+      "#0B4A32"
+    ],
+    "BKN": [
+      "#8A8F98",
+      "#D9DBDE",
+      "#2B2F36"
+    ],
+    "CHA": [
+      "#4B36A8",
+      "#00908C",
+      "#A0A6B0"
+    ],
+    "CHI": [
+      "#CE1141",
+      "#B8B9BC",
+      "#3A3E45"
+    ],
+    "CLE": [
+      "#B3123F",
+      "#F5B335",
+      "#2A1C3B"
+    ],
+    "DAL": [
+      "#2E7BC4",
+      "#9EA7B3",
+      "#0B2545"
+    ],
+    "DEN": [
+      "#FEC524",
+      "#1D428A",
+      "#8B5E2B"
+    ],
+    "DET": [
+      "#E0384A",
+      "#1A5FB4",
+      "#B6BDC7"
+    ],
+    "GSW": [
+      "#2E6BD6",
+      "#FFC72C",
+      "#1B3A6B"
+    ],
+    "HOU": [
+      "#CE1141",
+      "#9EA2A6",
+      "#2C2F33"
+    ],
+    "IND": [
+      "#F2C230",
+      "#0B2C6B",
+      "#9AA3AE"
+    ],
+    "LAC": [
+      "#D2434A",
+      "#1D428A",
+      "#B7BEC7"
+    ],
+    "LAL": [
+      "#8B62D9",
+      "#F5C542",
+      "#3B2B57"
+    ],
+    "MEM": [
+      "#6C8CC7",
+      "#12173F",
+      "#B6A16B"
+    ],
+    "MIA": [
+      "#C0304A",
+      "#F9A01B",
+      "#2B2A2A"
+    ],
+    "MIL": [
+      "#1E9E5A",
+      "#0B3B2E",
+      "#C9B78A"
+    ],
+    "MIN": [
+      "#3B7FD4",
+      "#78BE20",
+      "#1C2B4A"
+    ],
+    "NOP": [
+      "#B4975A",
+      "#0C2340",
+      "#8E9BA8"
+    ],
+    "NYK": [
+      "#F58426",
+      "#1D428A",
+      "#B0B6BE"
+    ],
+    "OKC": [
+      "#31A8E0",
+      "#EF3B24",
+      "#1C2A3A"
+    ],
+    "ORL": [
+      "#1E8FD5",
+      "#C4CED4",
+      "#1A2233"
+    ],
+    "PHI": [
+      "#3A8DDE",
+      "#ED174C",
+      "#7A8B99"
+    ],
+    "PHX": [
+      "#B08BE8",
+      "#E56020",
+      "#1A1230"
+    ],
+    "POR": [
+      "#E03A3E",
+      "#B6BDC7",
+      "#2A2E35"
+    ],
+    "SAC": [
+      "#8A5FC7",
+      "#8E9090",
+      "#3B2352"
+    ],
+    "SAS": [
+      "#C4CED4",
+      "#C4CED4",
+      "#2A2D31"
+    ],
+    "TOR": [
+      "#CE1141",
+      "#B4B9BE",
+      "#2B2E33"
+    ],
+    "UTA": [
+      "#3E7A5E",
+      "#F9A01B",
+      "#1B3D2F"
+    ],
+    "WAS": [
+      "#3B7FD4",
+      "#C8102E",
+      "#8E97A3"
+    ]
+  }
+}

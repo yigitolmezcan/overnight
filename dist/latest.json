@@ -1787,7 +1787,9 @@
       "etiket": null,
       "num": 33,
       "unit": "pts",
-      "st": "7 REB · 10 AST"
+      "st": "7 REB · 10 AST",
+      "asil_renk": "#12A05C",
+      "renk_degisti": false
     },
     {
       "isim": "Devin Booker",
@@ -1819,7 +1821,9 @@
       "etiket": null,
       "num": 38,
       "unit": "pts",
-      "st": "1 REB · 5 AST"
+      "st": "1 REB · 5 AST",
+      "asil_renk": "#B08BE8",
+      "renk_degisti": false
     },
     {
       "isim": "Kawhi Leonard",
@@ -1851,7 +1855,9 @@
       "etiket": null,
       "num": 32,
       "unit": "pts",
-      "st": "12 REB · 3 AST"
+      "st": "12 REB · 3 AST",
+      "asil_renk": "#D2434A",
+      "renk_degisti": false
     },
     {
       "isim": "Kevin Durant",
@@ -1873,7 +1879,7 @@
       "pm_ham": 18.0,
       "cold": false,
       "pos": "F",
-      "renk": "#CE1141",
+      "renk": "#9EA2A6",
       "takim_adi": "Houston Rockets",
       "mac": "Denver Nuggets — Houston Rockets",
       "mac_skor": "101–115",
@@ -1883,7 +1889,9 @@
       "etiket": null,
       "num": 31,
       "unit": "pts",
-      "st": "6 REB · 5 AST"
+      "st": "6 REB · 5 AST",
+      "asil_renk": "#CE1141",
+      "renk_degisti": true
     },
     {
       "isim": "Anthony Davis",
@@ -1915,7 +1923,423 @@
       "etiket": null,
       "num": 24,
       "unit": "pts",
-      "st": "15 REB · 2 AST"
+      "st": "15 REB · 2 AST",
+      "asil_renk": "#2E7BC4",
+      "renk_degisti": false
+    }
+  ],
+  "yukselen": [
+    {
+      "id": 2544,
+      "isim": "LeBron James",
+      "takim": "LAL",
+      "pos": "F",
+      "_gmsc": 24.599999999999998,
+      "son5": [
+        {
+          "sayi": 29,
+          "rakip": "PHI",
+          "bu_gece": false
+        },
+        {
+          "sayi": 19,
+          "rakip": "SAS",
+          "bu_gece": false
+        },
+        {
+          "sayi": 26,
+          "rakip": "PHX",
+          "bu_gece": false
+        },
+        {
+          "sayi": 28,
+          "rakip": "UTA",
+          "bu_gece": false
+        },
+        {
+          "sayi": 36,
+          "rakip": "LAC",
+          "bu_gece": true
+        }
+      ],
+      "son5_ort": 27.6,
+      "sezon_ort": 18.6,
+      "fark": 9.0,
+      "son5_dakika": 35.4,
+      "renk": "#8B62D9",
+      "asil_renk": "#8B62D9",
+      "renk_degisti": false
+    },
+    {
+      "id": 1642843,
+      "isim": "Cooper Flagg",
+      "takim": "DAL",
+      "pos": "F",
+      "_gmsc": 15.399999999999995,
+      "son5": [
+        {
+          "sayi": 19,
+          "rakip": "HOU",
+          "bu_gece": false
+        },
+        {
+          "sayi": 22,
+          "rakip": "BKN",
+          "bu_gece": false
+        },
+        {
+          "sayi": 42,
+          "rakip": "UTA",
+          "bu_gece": false
+        },
+        {
+          "sayi": 23,
+          "rakip": "DET",
+          "bu_gece": false
+        },
+        {
+          "sayi": 24,
+          "rakip": "PHI",
+          "bu_gece": true
+        }
+      ],
+      "son5_ort": 26.0,
+      "sezon_ort": 17.6,
+      "fark": 8.4,
+      "son5_dakika": 37.7,
+      "renk": "#9EA7B3",
+      "asil_renk": "#2E7BC4",
+      "renk_degisti": true
+    },
+    {
+      "id": 1642267,
+      "isim": "Bub Carrington",
+      "takim": "WAS",
+      "pos": "G",
+      "_gmsc": 9.999999999999998,
+      "son5": [
+        {
+          "sayi": 14,
+          "rakip": "ATL",
+          "bu_gece": false
+        },
+        {
+          "sayi": 27,
+          "rakip": "CLE",
+          "bu_gece": false
+        },
+        {
+          "sayi": 11,
+          "rakip": "IND",
+          "bu_gece": false
+        },
+        {
+          "sayi": 15,
+          "rakip": "SAS",
+          "bu_gece": false
+        },
+        {
+          "sayi": 14,
+          "rakip": "MEM",
+          "bu_gece": true
+        }
+      ],
+      "son5_ort": 16.2,
+      "sezon_ort": 7.8,
+      "fark": 8.4,
+      "son5_dakika": 36.6,
+      "renk": "#C8102E",
+      "asil_renk": "#3B7FD4",
+      "renk_degisti": true
+    },
+    {
+      "id": 1642875,
+      "isim": "Maxime Raynaud",
+      "takim": "SAC",
+      "pos": "C",
+      "_gmsc": 12.2,
+      "son5": [
+        {
+          "sayi": 13,
+          "rakip": "IND",
+          "bu_gece": false
+        },
+        {
+          "sayi": 15,
+          "rakip": "DEN",
+          "bu_gece": false
+        },
+        {
+          "sayi": 8,
+          "rakip": "MIN",
+          "bu_gece": false
+        },
+        {
+          "sayi": 29,
+          "rakip": "POR",
+          "bu_gece": false
+        },
+        {
+          "sayi": 17,
+          "rakip": "POR",
+          "bu_gece": true
+        }
+      ],
+      "son5_ort": 16.4,
+      "sezon_ort": 8.9,
+      "fark": 7.5,
+      "son5_dakika": 30.7,
+      "renk": "#8E9090",
+      "asil_renk": "#8A5FC7",
+      "renk_degisti": true
+    },
+    {
+      "id": 1642285,
+      "isim": "Cam Spencer",
+      "takim": "MEM",
+      "pos": "G",
+      "_gmsc": 16.1,
+      "son5": [
+        {
+          "sayi": 17,
+          "rakip": "LAC",
+          "bu_gece": false
+        },
+        {
+          "sayi": 12,
+          "rakip": "POR",
+          "bu_gece": false
+        },
+        {
+          "sayi": 20,
+          "rakip": "UTA",
+          "bu_gece": false
+        },
+        {
+          "sayi": 27,
+          "rakip": "LAC",
+          "bu_gece": false
+        },
+        {
+          "sayi": 19,
+          "rakip": "WAS",
+          "bu_gece": true
+        }
+      ],
+      "son5_ort": 19.0,
+      "sezon_ort": 11.7,
+      "fark": 7.3,
+      "son5_dakika": 30.6,
+      "renk": "#6C8CC7",
+      "asil_renk": "#6C8CC7",
+      "renk_degisti": false
+    }
+  ],
+  "dusen": [
+    {
+      "id": 1629656,
+      "isim": "Quentin Grimes",
+      "takim": "PHI",
+      "pos": "F",
+      "_gmsc": 7.0,
+      "son5": [
+        {
+          "sayi": 7,
+          "rakip": "LAL",
+          "bu_gece": false
+        },
+        {
+          "sayi": 10,
+          "rakip": "IND",
+          "bu_gece": false
+        },
+        {
+          "sayi": 14,
+          "rakip": "ATL",
+          "bu_gece": false
+        },
+        {
+          "sayi": 5,
+          "rakip": "NYK",
+          "bu_gece": false
+        },
+        {
+          "sayi": 6,
+          "rakip": "DAL",
+          "bu_gece": true
+        }
+      ],
+      "son5_ort": 8.4,
+      "sezon_ort": 16.0,
+      "fark": -7.6,
+      "son5_dakika": 29.9,
+      "renk": "#3A8DDE",
+      "asil_renk": "#3A8DDE",
+      "renk_degisti": false
+    },
+    {
+      "id": 1631097,
+      "isim": "Bennedict Mathurin",
+      "takim": "IND",
+      "pos": "F",
+      "_gmsc": -0.7000000000000004,
+      "son5": [
+        {
+          "sayi": 25,
+          "rakip": "SAC",
+          "bu_gece": false
+        },
+        {
+          "sayi": 7,
+          "rakip": "PHI",
+          "bu_gece": false
+        },
+        {
+          "sayi": 15,
+          "rakip": "WAS",
+          "bu_gece": false
+        },
+        {
+          "sayi": 16,
+          "rakip": "NYK",
+          "bu_gece": false
+        },
+        {
+          "sayi": 4,
+          "rakip": "NOP",
+          "bu_gece": true
+        }
+      ],
+      "son5_ort": 13.4,
+      "sezon_ort": 19.1,
+      "fark": -5.7,
+      "son5_dakika": 32.4,
+      "renk": "#F2C230",
+      "asil_renk": "#F2C230",
+      "renk_degisti": false
+    },
+    {
+      "id": 1629029,
+      "isim": "Luka Dončić",
+      "takim": "LAL",
+      "pos": "G",
+      "_gmsc": 2.1999999999999993,
+      "son5": [
+        {
+          "sayi": 31,
+          "rakip": "PHI",
+          "bu_gece": false
+        },
+        {
+          "sayi": 35,
+          "rakip": "SAS",
+          "bu_gece": false
+        },
+        {
+          "sayi": 29,
+          "rakip": "PHX",
+          "bu_gece": false
+        },
+        {
+          "sayi": 45,
+          "rakip": "UTA",
+          "bu_gece": false
+        },
+        {
+          "sayi": 12,
+          "rakip": "LAC",
+          "bu_gece": true
+        }
+      ],
+      "son5_ort": 30.4,
+      "sezon_ort": 34.5,
+      "fark": -4.1,
+      "son5_dakika": 35.4,
+      "renk": "#8B62D9",
+      "asil_renk": "#8B62D9",
+      "renk_degisti": false
+    },
+    {
+      "id": 202699,
+      "isim": "Tobias Harris",
+      "takim": "DET",
+      "pos": "F",
+      "_gmsc": 15.899999999999999,
+      "son5": [
+        {
+          "sayi": 10,
+          "rakip": "POR",
+          "bu_gece": false
+        },
+        {
+          "sayi": 9,
+          "rakip": "ATL",
+          "bu_gece": false
+        },
+        {
+          "sayi": 13,
+          "rakip": "BOS",
+          "bu_gece": false
+        },
+        {
+          "sayi": 0,
+          "rakip": "DAL",
+          "bu_gece": false
+        },
+        {
+          "sayi": 16,
+          "rakip": "CHA",
+          "bu_gece": true
+        }
+      ],
+      "son5_ort": 9.6,
+      "sezon_ort": 13.4,
+      "fark": -3.8,
+      "son5_dakika": 25.9,
+      "renk": "#E0384A",
+      "asil_renk": "#E0384A",
+      "renk_degisti": false
+    },
+    {
+      "id": 1631105,
+      "isim": "Jalen Duren",
+      "takim": "DET",
+      "pos": "C",
+      "_gmsc": 16.5,
+      "son5": [
+        {
+          "sayi": 16,
+          "rakip": "MIL",
+          "bu_gece": false
+        },
+        {
+          "sayi": 14,
+          "rakip": "ATL",
+          "bu_gece": false
+        },
+        {
+          "sayi": 6,
+          "rakip": "BOS",
+          "bu_gece": false
+        },
+        {
+          "sayi": 17,
+          "rakip": "DAL",
+          "bu_gece": false
+        },
+        {
+          "sayi": 19,
+          "rakip": "CHA",
+          "bu_gece": true
+        }
+      ],
+      "son5_ort": 14.4,
+      "sezon_ort": 17.7,
+      "fark": -3.3,
+      "son5_dakika": 29.0,
+      "renk": "#E0384A",
+      "asil_renk": "#E0384A",
+      "renk_degisti": false
     }
   ],
   "degerse_bak": [

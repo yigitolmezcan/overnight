@@ -14,6 +14,7 @@ UYDURULMUYOR, JSON'da o anahtar hiç yazılmıyor / boş dönüyor ve HTML
 tarafı o bölümü veri yoksa gizliyor.
 """
 
+import colorsys
 import json
 import re
 import unicodedata
@@ -455,7 +456,9 @@ def _gecenin_besi(ham, gercek_gece, id_by_gid, skor_by_gid):
             # GmSc'li oyuncusu. Boş bırakmaktansa doğru olanı yaz.
             sebep = "mevkisinde gecenin en iyisi"
         o.pop("_kilo", None)
-        o.pop("gmsc", None)
+        # GmSc siliniyor ama ÖNCE saklanıyor: renk çakışması çözümü
+        # "düşük GmSc'li kayar" kuralına göre karar veriyor.
+        o["_gmsc"] = o.pop("gmsc", 0)
         o["sebep"] = sebep
         # Kart etiketi (ad yanındaki küçük işaret) SADECE gerçek bir
         # kilometre taşı varsa çıkar — kullanıcı kararı: "varsa küçük bir
@@ -481,6 +484,11 @@ def _gecenin_besi(ham, gercek_gece, id_by_gid, skor_by_gid):
         o["num"], o["unit"] = o["pts"], "pts"
         o["st"] = f"{o['reb']} REB · {o['ast']} AST"
         sonuc.append(o)
+    # Renk çakışması: sahada üç oyuncunun ikisi mor olduğunda üçü aynı
+    # takımdanmış gibi duruyordu (18 Aralık: Dončić, DeRozan, LeBron).
+    renk_cakismasini_coz(sonuc)
+    for o in sonuc:
+        o.pop("_gmsc", None)
     return sonuc
 
 
@@ -769,6 +777,218 @@ def _kilit_istatistik(ham_mac, ev_taraf, dep_taraf):
     return en_iyi
 
 
+# ---------------------------------------------------------------------------
+# TAKIM RENGİ ÇAKIŞMASI
+# ---------------------------------------------------------------------------
+#
+# Gerçek sorun (18 Aralık): gecenin beşi sahasında Dončić, DeRozan ve
+# LeBron vardı. Lakers ve Sacramento ikisi de mor — üçü aynı takımdanmış
+# gibi duruyordu. Ayrıca sahada kimin hangi takımda olduğu HİÇ yazmıyordu.
+#
+# Çözüm iki parçalı ve ikisi de gerekli: RENK güzelleştirir, KOD belirtir.
+# Kod her oyuncuda var (çakışma olsun olmasın); renk sadece çakışınca
+# değişiyor ve değişince halka takımın ASIL rengini gösteriyor.
+#
+# 30 takım var; mor bugün çakıştı, MAVİ çok daha sık çakışacak
+# (DAL, ORL, OKC, MIN, MEM, CHA).
+
+# Eşikler: iki renk "yakın" sayılıyorsa ton farkı VE parlaklık farkı
+# birlikte küçük demektir. Sadece tona bakmak yetmiyor — açık mavi ile
+# lacivert aynı tonda ama gözde karışmıyor.
+TON_ESIGI = 32.0        # derece (0-360)
+PARLAKLIK_ESIGI = 0.20  # 0-1
+DOYGUNLUK_ESIGI = 0.25  # bu farkın üstünde renkler zaten ayırt ediliyor
+
+
+def _hsl(hex_renk):
+    h = hex_renk.lstrip("#")
+    r, g, b = (int(h[i:i + 2], 16) / 255 for i in (0, 2, 4))
+    return colorsys.rgb_to_hls(r, g, b)  # (ton, parlaklık, doygunluk)
+
+
+def _renkler_yakin_mi(a, b):
+    ha, la, sa = _hsl(a)
+    hb, lb, sb = _hsl(b)
+    # Doygunluğu çok düşük iki renk (griler) tonu ne olursa olsun yakındır.
+    if sa < 0.12 and sb < 0.12:
+        return abs(la - lb) < PARLAKLIK_ESIGI
+    # DOYGUNLUK tek başına ayırt edici. Gri (#9EA2A6) ile Dallas mavisi
+    # (#2E7BC4) hesaplanan TONU birbirine yakın çıkıyor — grinin tonu
+    # zaten anlamsız — ve parlaklıkları da yakın olunca "çakışıyor"
+    # sanılıyordu. Gerçek üretim sonucu: HOU kırmızıdan griye kaydıktan
+    # sonra DAL da boşuna lacivert oluyordu. Göz bu ikisini karıştırmaz.
+    if abs(sa - sb) > DOYGUNLUK_ESIGI:
+        return False
+    ton_farki = abs(ha - hb) * 360
+    ton_farki = min(ton_farki, 360 - ton_farki)   # dairesel
+    return ton_farki < TON_ESIGI and abs(la - lb) < PARLAKLIK_ESIGI
+
+
+def takim_renk_secenekleri():
+    try:
+        ham = json.loads((CONFIG_DIZIN / "takim_renkleri.json").read_text(encoding="utf-8"))
+        return ham["takimlar"]
+    except Exception:
+        return {kod: [renk] for kod, renk in TAKIM_RENK.items()}
+
+
+def renk_cakismasini_coz(oyuncular):
+    """Aynı listedeki oyunculara çakışmayan renk atar.
+
+    `oyuncular`: [{"takim": kod, "_gmsc": float, ...}] — sıra önemli DEĞİL,
+    karar GmSc'ye göre veriliyor: yüksek GmSc'li oyuncu takımının birincil
+    rengini korur, DÜŞÜK olan sıradaki renge geçer (kullanıcı kuralı).
+
+    Her oyuncuya iki alan yazılır:
+      renk       — ekranda kullanılacak renk
+      asil_renk  — takımın birincil rengi; farklıysa halka bunu gösterir
+    """
+    secenekler = takim_renk_secenekleri()
+    # Karar TAKIM düzeyinde: aynı takımın iki oyuncusu aynı rengi almalı.
+    # İlk sürüm oyuncu düzeyinde karar veriyordu ve LeBron ile Dončić
+    # (ikisi de LAL) farklı renk alıyordu — çakışmayı çözerken takım
+    # kimliğini bozuyordu.
+    takim_gmsc = {}
+    for o in oyuncular:
+        kod = o.get("takim")
+        takim_gmsc[kod] = max(takim_gmsc.get(kod, 0), o.get("_gmsc") or 0)
+    # Yüksek GmSc'li takım birincil rengini korur, düşük olan kayar.
+    sirali_takimlar = sorted(takim_gmsc, key=lambda k: -takim_gmsc[k])
+    kullanilan = []
+    renk_by_takim = {}
+    for kod in sirali_takimlar:
+        liste = secenekler.get(kod) or [TAKIM_RENK.get(kod, "#7E8794")]
+        asil = liste[0]
+        secilen = next((aday for aday in liste
+                        if not any(_renkler_yakin_mi(aday, k) for k in kullanilan)), None)
+        # Hepsi çakışıyorsa birincil kalır: yanlış renk göstermektense
+        # çakışmayı kabul ediyoruz — KOD zaten her oyuncuda yazılı.
+        if secilen is None:
+            secilen = asil
+        kullanilan.append(secilen)
+        renk_by_takim[kod] = (secilen, asil)
+    for o in oyuncular:
+        secilen, asil = renk_by_takim[o.get("takim")]
+        o["renk"] = secilen
+        o["asil_renk"] = asil
+        o["renk_degisti"] = secilen != asil
+    return oyuncular
+
+
+# ---------------------------------------------------------------------------
+# YÜKSELEN / DÜŞEN
+# ---------------------------------------------------------------------------
+#
+# "Avdija yanıyor, 5 maçtır" gerçek bir muhabbet ve hiçbir yerde karşılığı
+# yoktu. Bu bölüm onu veriyor.
+#
+# ÖLÇÜT sadece "çok sayı atmak" DEĞİL, son 5 maç ortalamasının SEZON
+# ortalamasını ne kadar aştığı. Hep 28 atan biri listeye girmiyor, çünkü
+# normali o — böylece sürpriz isimler çıkıyor.
+#
+# Veri PlayerGameLogs'ta zaten var (ham["oyuncu_ortalama"]), yeni API
+# çağrısı yok. Loglar bu gecenin ÖNCESİNDE bitiyor, o yüzden son 5 maç =
+# bu gecenin kutu skoru + logdan son 4 maç.
+FORM_MAC_SAYISI = 5
+FORM_LISTE_UZUNLUGU = 5
+# Düşenlerde dakika şartı: yoksa 2 sayı ortalayan yedekler listeyi
+# doldurur ve bölüm anlamsızlaşır (kullanıcı kuralı).
+DUSEN_ASGARI_DAKIKA = 25.0
+
+
+def _dakikayi_coz(ham):
+    """'34:12' ya da 34.2 -> 34.2"""
+    if ham is None:
+        return 0.0
+    if isinstance(ham, (int, float)):
+        return float(ham)
+    metin = str(ham)
+    if ":" in metin:
+        parca = metin.split(":")
+        try:
+            return int(parca[0]) + int(parca[1]) / 60
+        except ValueError:
+            return 0.0
+    try:
+        return float(metin)
+    except ValueError:
+        return 0.0
+
+
+def _oyuncu_gecmisi(ham):
+    """{oyuncu_id: [{tarih, sayi, dakika, rakip}, ...]} — eskiden yeniye."""
+    try:
+        rs = ham["oyuncu_ortalama"]["resultSets"][0]
+    except Exception:
+        return {}
+    h = {ad: i for i, ad in enumerate(rs["headers"])}
+    gerekli = ("PLAYER_ID", "GAME_DATE", "PTS", "MIN", "MATCHUP")
+    if any(k not in h for k in gerekli):
+        return {}
+    gecmis = {}
+    for satir in rs["rowSet"]:
+        pid = satir[h["PLAYER_ID"]]
+        gecmis.setdefault(pid, []).append({
+            "tarih": str(satir[h["GAME_DATE"]])[:10],
+            "sayi": satir[h["PTS"]] or 0,
+            "dakika": _dakikayi_coz(satir[h["MIN"]]),
+            "rakip": _rakip_kisalt(satir[h["MATCHUP"]]),
+        })
+    for pid in gecmis:
+        gecmis[pid].sort(key=lambda x: x["tarih"])
+    return gecmis
+
+
+def _rakip_kisalt(matchup):
+    """'GSW vs. PHX' / 'GSW @ PHX' -> 'PHX'"""
+    metin = str(matchup or "")
+    for ayirac in (" vs. ", " @ "):
+        if ayirac in metin:
+            return metin.split(ayirac)[1].strip()
+    return ""
+
+
+def _formda_listeler(ham, bt_by_gid, gecenin_oyunculari):
+    """(yukselen, dusen) — her biri en fazla FORM_LISTE_UZUNLUGU satır.
+
+    `gecenin_oyunculari`: bu gece OYNAYAN oyuncular
+      [{"id","isim","takim","pos","sayi","dakika","_gmsc","rakip"}]
+    O gece oynamayan oyuncu iki listede de yer almıyor (kullanıcı kuralı)."""
+    gecmis = _oyuncu_gecmisi(ham)
+    adaylar = []
+    for o in gecenin_oyunculari:
+        onceki = gecmis.get(o["id"], [])
+        if not onceki:
+            continue                      # sezon ortalaması yoksa kıyas yok
+        sezon_ort = sum(x["sayi"] for x in onceki) / len(onceki)
+        # Son 5 = bu gece + logdan son 4.
+        son5 = onceki[-(FORM_MAC_SAYISI - 1):] + [{
+            "tarih": "bu gece", "sayi": o["sayi"],
+            "dakika": o["dakika"], "rakip": o["rakip"],
+        }]
+        if len(son5) < FORM_MAC_SAYISI:
+            continue                      # 5 maçı dolmayan için "form" denmez
+        son5_ort = sum(x["sayi"] for x in son5) / len(son5)
+        adaylar.append({
+            "id": o["id"], "isim": o["isim"], "takim": o["takim"], "pos": o.get("pos", ""),
+            "_gmsc": o.get("_gmsc") or 0,
+            "son5": [{"sayi": x["sayi"], "rakip": x["rakip"],
+                      "bu_gece": x["tarih"] == "bu gece"} for x in son5],
+            "son5_ort": round(son5_ort, 1),
+            "sezon_ort": round(sezon_ort, 1),
+            "fark": round(son5_ort - sezon_ort, 1),
+            "son5_dakika": round(sum(x["dakika"] for x in son5) / len(son5), 1),
+        })
+    yukselen = sorted([a for a in adaylar if a["fark"] > 0],
+                      key=lambda a: -a["fark"])[:FORM_LISTE_UZUNLUGU]
+    dusen = sorted([a for a in adaylar
+                    if a["fark"] < 0 and a["son5_dakika"] >= DUSEN_ASGARI_DAKIKA],
+                   key=lambda a: a["fark"])[:FORM_LISTE_UZUNLUGU]
+    # Renk çakışması her iki listede AYRI AYRI çözülüyor — listeler
+    # birbirinden bağımsız okunuyor.
+    return renk_cakismasini_coz(yukselen), renk_cakismasini_coz(dusen)
+
+
 def derle(tarih_str):
     gercek_gece = _yukle(GERCEK_DIZIN, tarih_str)
     skor_gece = _yukle(SKOR_DIZIN, tarih_str)
@@ -869,6 +1089,30 @@ def derle(tarih_str):
     # ---- gecenin beşi ----
     gecenin_besi = _gecenin_besi(ham, gercek_gece, mutlaka_id_by_gid, rozet_by_gid)
 
+    # ---- yükselen / düşen ----
+    # Bu gece OYNAYAN her oyuncu aday; oynamayan iki listede de yok.
+    _gece_oyunculari = []
+    for _gid, _hm in ham["maclar"].items():
+        _bt = _hm["box_traditional"]["boxScoreTraditional"]
+        _ev, _dep = _bt["homeTeam"], _bt["awayTeam"]
+        for _taraf, _rakip in ((_ev, _dep), (_dep, _ev)):
+            for _p in _taraf["players"]:
+                _st = _p["statistics"]
+                if not _st["minutes"]:
+                    continue
+                _gece_oyunculari.append({
+                    "id": _p["personId"],
+                    "isim": _dogru_oyuncu_adi(
+                        _p["personId"], f"{_p['firstName']} {_p['familyName']}".strip()),
+                    "takim": _taraf["teamTricode"],
+                    "pos": _p.get("position") or "",
+                    "sayi": _st["points"],
+                    "dakika": _dakikayi_coz(_st["minutes"]),
+                    "rakip": _rakip["teamTricode"],
+                    "_gmsc": gmsc(_st),
+                })
+    yukselen, dusen = _formda_listeler(ham, None, _gece_oyunculari)
+
     # ---- değerse bak (rozet 6.0+, "mutlaka" olarak seçilmemiş) / bunları geç ----
     # Kullanıcı düzeltmesi: hesapla.py baştan beri üç katman üretiyordu
     # (mutlaka/ikinci/gec) ama sayfada iki bölüm vardı — 126-124 biten,
@@ -914,6 +1158,8 @@ def derle(tarih_str):
         "brief_ozet": brief_ozet,
         "mutlaka": mutlaka,
         "gecenin_besi": gecenin_besi,
+        "yukselen": yukselen,
+        "dusen": dusen,
         "degerse_bak": degerse_bak,
         "diger": diger,
         "turkler": turkler,

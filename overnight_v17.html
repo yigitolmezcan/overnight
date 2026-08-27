@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ember:#E2701C; --amber:#D9A441; --gold:#C3B078; --steel:#7E9BB5; --sky:#A9C0D4;
+  --dusen:#5B8DEF; --ember:#E2701C; --amber:#D9A441; --gold:#C3B078; --steel:#7E9BB5; --sky:#A9C0D4;
   --ink:#F2F0EC; --ink2:#B4BECD; --faint:#6F7C90;
   --disp:'Bricolage Grotesque',system-ui,sans-serif;
   --txt:'Instrument Sans',system-ui,sans-serif;
@@ -506,6 +506,14 @@ td.khot{color:var(--amber);font-weight:700}
 .pl .nm{font-size:12px;font-weight:700;letter-spacing:-.01em;line-height:1.25;
   overflow-wrap:break-word}
 .pl .st{font-family:var(--mono);font-size:10.5px;color:var(--ink2);margin-top:3px}
+/* Takım KODU her oyuncuda (kullanıcı kuralı): çakışma olsun olmasın,
+   sahada kimin hangi takımda olduğu hiç yazmıyordu. Renk güzelleştirir,
+   kod BELİRTİR — ikisi birlikte. */
+.pl .tg{font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--faint);
+  margin-top:2px}
+/* Halka SADECE rengi değişen oyuncuda, ve halkanın rengi takımın ASIL
+   rengi: "gerçekte mor ama ayırt edilsin diye gri" bilgisi kaybolmasın. */
+.pl .dot.ring{box-shadow:0 0 0 2.5px var(--asil),0 0 0 4px #0A0D12}
 /* Masaüstünde saha büyüyor ama üstündeki öğeler mobil ölçüsünde kalıyordu
    ve bol yer varken sıkışık duruyordu. Sadece geniş ekran için orantılı
    büyütme — 375px'teki değerlere DOKUNULMUYOR. */
@@ -519,7 +527,62 @@ td.khot{color:var(--amber);font-weight:700}
   .pl .dot{width:52px;height:52px;font-size:19px;margin-bottom:10px}
   .pl .nm{font-size:18px;line-height:1.25}
   .pl .st{font-size:15px;margin-top:6px}
+  .pl .tg{font-size:13px;margin-top:4px}
+  .pl .dot.ring{box-shadow:0 0 0 4px var(--asil),0 0 0 6.5px #0A0D12}
 }
+/* YÜKSELEN / DÜŞEN — "Avdija yanıyor, 5 maçtır" muhabbetinin karşılığı.
+   ÖLÇÜT sadece çok sayı atmak DEĞİL, son 5 maç ortalamasının SEZON
+   ortalamasını ne kadar aştığı: hep 28 atan biri girmiyor, çünkü
+   normali o. Düşenlerde 25+ dakika şartı var, yoksa 2 sayı ortalayan
+   yedekler listeyi doldururdu. */
+.tog{display:flex;gap:1px;background:#1A2230}
+.tog button{background:#0E131B;border:0;cursor:pointer;padding:6px 11px;
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--faint)}
+.tog button.on{color:#0A0603;background:var(--ember);font-weight:700}
+.tog button.on.cold{background:var(--dusen);color:#03101F}
+.fp{display:flex;align-items:center;gap:12px;padding:13px 2px;border-bottom:1px solid #141A24}
+.fp:last-child{border-bottom:0}
+.fp .who{flex:1;min-width:0}
+/* Ad tek satır: iki satıra inince çubuk hizası satır satır kayıyordu.
+   Kesilme ellipsis ile — sahadaki "ad asla kesilmez" kuralı orada
+   geçerli, burada satır dar ve çubuklar sabit genişlikte. */
+/* display:block — ad ve takım ALT ALTA. <span> kullandığım için ikisi
+   aynı satıra düşüyordu ve takım noktası adın hemen dibine yapışıyordu. */
+.fp .nm{display:block;font-size:14.5px;font-weight:700;letter-spacing:-.01em;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fp .tm{display:block;font-family:var(--mono);font-size:10.5px;color:var(--faint);
+  margin-top:2px}
+.bars{display:flex;gap:3px;align-items:flex-end;height:36px;flex:none;position:relative}
+.bars i{width:10px;background:#2A3444;display:block;border-radius:1px;cursor:pointer;
+  transition:background .12s}
+.bars i.now{background:var(--ember)}
+.cold .bars i.now{background:var(--dusen)}
+.bars i:hover{background:#4A5768}
+.bars i.now:hover{background:#F08B52}
+.cold .bars i.now:hover{background:#7BA5F3}
+/* Balon: mobilde hover YOK, dokunma zorunlu — sadece hover'a bırakılmıyor.
+   Aynı anda tek balon açık kalıyor (bkz. formdaBalonKapat). */
+.tip{position:absolute;bottom:calc(100% + 7px);left:50%;transform:translateX(-50%);
+  background:#1A222E;border:1px solid #2A3444;padding:5px 8px;white-space:nowrap;
+  font-family:var(--mono);font-size:10.5px;color:var(--ink);opacity:0;pointer-events:none;
+  transition:opacity .12s;z-index:5}
+.tip s{color:var(--faint);text-decoration:none}
+/* Balon .bars'ın SON çocuğu; "i.tap + .tip" kardeş seçicisi sadece
+   SONUNCU çubuk için eşleşiyordu ve diğer dördünde balon hiç
+   görünmüyordu (ölçüldü: opacity 0). Görünürlük artık kabın sınıfıyla
+   kontrol ediliyor, çubuğun DOM sırasıyla değil. */
+.bars.tipon .tip{opacity:1}
+.fp .avg{font-family:var(--mono);text-align:right;flex:none;width:70px}
+.fp .avg b{display:block;font-size:16px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.fp .avg s{display:block;font-size:9.5px;color:var(--faint);text-decoration:none;margin-top:4px}
+.fp .avg s em{color:#3FB27F;font-style:normal}
+.cold .fp .avg s em{color:#C4544F}
+/* Takım noktası: renk çakışması burada da çözülüyor, halka asıl rengi taşıyor. */
+.fp .tmdot{display:inline-block;width:7px;height:7px;border-radius:50%;
+  margin-right:5px;vertical-align:baseline}
+.fp .tmdot.ring{box-shadow:0 0 0 1.5px var(--asil)}
+
 .besirow{position:relative;display:flex;align-items:baseline;gap:9px;padding:12px 15px;border-bottom:1px solid #141A24}
 /* Kullanıcı kararı: şerit rozetin turuncusu, ve satırlar arasında
    minnacık boşluk kalsın — tek uzun çubuk yerine her satırın kendi
@@ -606,6 +669,13 @@ td.khot{color:var(--amber);font-weight:700}
 /* AD ÇAKIŞMASI UYARISI: `.gcard` zaten Mutlaka bil kart düğmesinin
    sınıfı — buraya o adı vermek onların üstüne biniyordu. Göz at
    kartları `.gozkart`. */
+/* Box score olduğunu belirten işaret — Göz at ve Bunları geç satırlarında.
+   Mutlaka bil'deki tam metin ("Box score için dokun") bu kısa satırları
+   fazla dolduruyordu; sonra "Box ›" denendi, o da fazlaydı. Sadece ok:
+   kullanıcı anlıyor. Erişilebilirlik açıklaması düğmenin aria-label'ında,
+   yani ekran okuyucu için bilgi kaybı yok. */
+.gozgo{flex:none;font-family:var(--mono);font-size:15px;line-height:1;
+  color:var(--ember);align-self:center;padding-left:8px}
 .gozkart{border:1px solid #1A2230;background:#0C121C;padding:15px 16px 4px;
   margin-bottom:14px;scroll-margin-top:20px}
 .gozkart:last-child{margin-bottom:0}
@@ -727,6 +797,16 @@ td.khot{color:var(--amber);font-weight:700}
   <div class="sechead"><h2>Gecenin beşi</h2></div>
   <div class="rule"></div>
   <div class="fivelist" id="fiveList"></div>
+</section>
+
+<section class="sec s6" id="secFormda" hidden>
+  <div class="sechead"><h2>Form</h2>
+    <div class="tog" id="formdaTog">
+      <button class="on" data-liste="yukselen">Yükselen</button>
+      <button data-liste="dusen">Düşen</button>
+    </div></div>
+  <div class="rule"></div>
+  <div class="formda" id="formdaListe"></div>
 </section>
 
 <section class="sec s5" id="secNotlar" hidden>
@@ -897,6 +977,37 @@ function satirAraligiBagla(){
   removeEventListener('resize',satirAraliginiAyarla);
   addEventListener('resize',satirAraliginiAyarla);
 }
+
+/* Bağlantı hedefine kaydırma — tarayıcının kendi çıpa davranışına
+   BIRAKILMIYOR.
+
+   Kullanıcı bildirimi: saat satırına basınca "biraz fazla kayıyor,
+   hedefin tam üstüne değil biraz altına iniyor". Ölçtüm; kendi
+   ortamımda sapma 0 çıktı, yani yerel olarak tekrarlayamadım. Ama
+   yerleşim gömülü görüntüleyicide, farklı tarayıcıda ya da yazı tipi
+   geç yüklendiğinde değişebiliyor ve çıpa sıçraması o an hesaplanmış
+   bir konuma gidiyor. Hesabı kendimiz yapınca değişken kalmıyor.
+
+   Ayrıca paylık: 20px çok azdı — hedefin üstünde nefes alacak yer
+   bırakmıyordu ve kart "yukarıdan kesilmiş" gibi duruyordu. */
+const CIPA_PAYI = 56;
+function cipayaKaydir(id){
+  const el = document.getElementById(id);
+  if (!el) return false;
+  const mutlak = el.getBoundingClientRect().top + scrollY;
+  const hedef = Math.max(0, Math.round(mutlak - CIPA_PAYI));
+  const yumusak = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  scrollTo({top: hedef, behavior: yumusak ? 'smooth' : 'auto'});
+  // Adres çubuğu güncellensin ama tarayıcı İKİNCİ bir sıçrama yapmasın.
+  if (history.replaceState) history.replaceState(null, '', '#' + id);
+  return true;
+}
+document.addEventListener('click', e => {
+  const bag = e.target.closest && e.target.closest('a.rowlink[href^="#"]');
+  if (!bag) return;
+  const id = bag.getAttribute('href').slice(1);
+  if (cipayaKaydir(id)) e.preventDefault();
+});
 
 function kartAc(html){
   sheet.innerHTML=html;
@@ -1205,12 +1316,88 @@ function render(d){
   document.getElementById('secDegerseBak').hidden = !(d.degerse_bak && d.degerse_bak.length);
   if(d.degerse_bak && d.degerse_bak.length){
     document.getElementById('degerseBak').innerHTML=d.degerse_bak.map(m=>`<div class="gozkart" id="${m.id}">
-      <button class="archrow" data-kart="${m.id}"><span class="roz sm">${m.rozet.toFixed(1)}</span>
-        <div class="mblok md">${macBlok(m.mac, m.skor)}</div></button>
+      <button class="archrow" data-kart="${m.id}" aria-label="${esc(m.mac)} — box score">
+        <span class="roz sm">${m.rozet.toFixed(1)}</span>
+        <div class="mblok md">${macBlok(m.mac, m.skor)}</div>
+        <span class="gozgo" aria-hidden="true">›</span></button>
       ${m.metin?`<div class="dblock" style="padding:0 0 14px"><p>${esc(m.metin)}</p></div>`:''}
       ${kilitSerit(m)}
     </div>`).join('');
   }
+
+  // ---- yükselen / düşen ----
+  // Aynı anda TEK balon açık kalıyor: ikinciye dokununca birincisi kapanır.
+  const formdaBalonKapat=()=>{
+    document.querySelectorAll('.bars i.tap').forEach(x=>x.classList.remove('tap'));
+    document.querySelectorAll('.bars.tipon').forEach(x=>x.classList.remove('tipon'));
+  };
+  const formdaSatir=(o,soguk)=>{
+    const enYuksek=Math.max(...o.son5.map(x=>x.sayi),1);
+    const cubuk=x=>{
+      // En düşük çubuk bile görünsün: 0 sayı da bir bilgi.
+      const h=Math.max(3,Math.round(x.sayi/enYuksek*36));
+      return `<i class="${x.bu_gece?'now':''}" style="height:${h}px" data-sayi="${x.sayi}" data-rakip="${esc(x.rakip||'')}"></i>`;
+    };
+    const ok=o.fark>0?'▲':'▼';
+    const halka=o.renk_degisti?` ring" style="background:${esc(o.renk)};--asil:${esc(o.asil_renk)}`:`" style="background:${esc(o.renk)}`;
+    return `<div class="fp">
+      <span class="who">
+        <span class="nm">${esc(o.isim)}</span>
+        <span class="tm"><i class="tmdot${halka}"></i>${esc(o.takim)}${o.pos?' · '+esc(o.pos):''}</span>
+      </span>
+      <span class="bars">${o.son5.map(cubuk).join('')}<span class="tip"></span></span>
+      <span class="avg"><b>${o.son5_ort.toFixed(1)}</b>
+        <s>sezon ${o.sezon_ort.toFixed(1)} <em>${ok}${Math.abs(o.fark).toFixed(1)}</em></s></span>
+    </div>`;
+  };
+  const formdaCiz=(hangi)=>{
+    const liste=(hangi==='dusen'?d.dusen:d.yukselen)||[];
+    const kutu=document.getElementById('formdaListe');
+    kutu.classList.toggle('cold',hangi==='dusen');
+    document.getElementById('secFormda').classList.toggle('cold',hangi==='dusen');
+    // Sol başlık SABİT "Form": sekmede zaten "Yükselen"/"Düşen" yazıyor,
+    // başlığın da onu tekrarlaması iki satır üst üste aynı kelimeydi.
+    kutu.innerHTML=liste.map(o=>formdaSatir(o,hangi==='dusen')).join('');
+    kutu.querySelectorAll('.bars i').forEach(c=>{
+      const goster=()=>{
+        const balon=c.parentElement.querySelector('.tip');
+        balon.innerHTML=`${c.dataset.sayi} sayı${c.dataset.rakip?` <s>· ${esc(c.dataset.rakip)}</s>`:''}`;
+        // Balon satırın ortasına göre değil ÇUBUĞA göre konumlanıyor;
+        // ilk ve son çubukta ekran dışına taşmasın diye sınırlanıyor.
+        const kap=c.parentElement.getBoundingClientRect();
+        const kutu2=c.getBoundingClientRect();
+        balon.style.left=(kutu2.left-kap.left+kutu2.width/2)+'px';
+        const acik=c.classList.contains('tap');
+        formdaBalonKapat();
+        if(!acik){ c.classList.add('tap'); c.parentElement.classList.add('tipon'); }
+        // Ekran dışına taşma düzeltmesi ölçümle: balon çizildikten sonra
+        // gerçek genişliğine bakılıp gerekirse içeri çekiliyor.
+        const b=balon.getBoundingClientRect();
+        let kaydir=0;
+        if(b.left<8) kaydir=8-b.left;
+        if(b.right>innerWidth-8) kaydir=(innerWidth-8)-b.right;
+        if(kaydir) balon.style.transform=`translateX(calc(-50% + ${kaydir}px))`;
+        else balon.style.transform='translateX(-50%)';
+      };
+      c.addEventListener('click',e=>{e.stopPropagation();goster();});
+      // Mobilde hover YOK — dokunma zorunlu (kullanıcı kuralı). Hover
+      // sadece gerçekten hover destekleyen cihazda ek kolaylık.
+      c.addEventListener('mouseenter',()=>{ if(matchMedia('(hover:hover)').matches) goster(); });
+      c.addEventListener('mouseleave',()=>{ if(matchMedia('(hover:hover)').matches) formdaBalonKapat(); });
+    });
+  };
+  const varFormda=(d.yukselen&&d.yukselen.length)||(d.dusen&&d.dusen.length);
+  document.getElementById('secFormda').hidden=!varFormda;
+  if(varFormda){
+    const tog=document.getElementById('formdaTog');
+    tog.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
+      tog.querySelectorAll('button').forEach(x=>{x.classList.remove('on','cold');});
+      b.classList.add('on'); if(b.dataset.liste==='dusen') b.classList.add('cold');
+      formdaCiz(b.dataset.liste);
+    }));
+    formdaCiz('yukselen');
+  }
+  document.addEventListener('click',formdaBalonKapat);
 
   // ---- gecenin notları (veri yoksa bölüm gizli) ----
   document.getElementById('secNotlar').hidden = !(d.gecenin_notlari && d.gecenin_notlari.length);
@@ -1231,10 +1418,12 @@ function render(d){
     // göre yazı rengi seçiliyor (WCAG'ın basit sürümü).
     const rgb=(o.renk||'#7E8794').replace('#','');
     const parlak=(parseInt(rgb.slice(0,2),16)*299+parseInt(rgb.slice(2,4),16)*587+parseInt(rgb.slice(4,6),16)*114)/1000;
+    const halka=o.renk_degisti?` ring" style="--asil:${esc(o.asil_renk||o.renk)};background:${esc(o.renk||'#7E8794')};color:${parlak>140?'#0A0603':'#EDEFF2'}`:`" style="background:${esc(o.renk||'#7E8794')};color:${parlak>140?'#0A0603':'#EDEFF2'}`;
     return `<div class="pl" style="left:${y.l}%;top:${y.t}%">
-      <div class="dot" style="background:${esc(o.renk||'#7E8794')};color:${parlak>140?'#0A0603':'#EDEFF2'}">${esc(o.pos)}</div>
+      <div class="dot${halka}">${esc(o.pos)}</div>
       <div class="nm">${esc(o.isim)}</div>
-      <div class="st">${o.pts} · ${o.reb} · ${o.ast}</div></div>`;
+      <div class="st">${o.pts} · ${o.reb} · ${o.ast}</div>
+      <div class="tg">${esc(o.takim)}</div></div>`;
   }).join('');
   document.getElementById('fiveList').innerHTML=
     `<div class="besiline" id="besiAc" role="button" tabindex="0" aria-label="Gecenin beşi — tam istatistikler için dokun">
@@ -1257,8 +1446,10 @@ function render(d){
 
   // ---- bunları geç ----
   document.getElementById('archive').innerHTML=d.diger.map(m=>`<div class="arch" id="${m.id}">
-    <button class="archrow" data-kart="${m.id}"><span class="roz sm">${m.rozet.toFixed(1)}</span>
-      <div class="mblok sm">${macBlok(m.mac, m.skor)}</div></button>
+    <button class="archrow" data-kart="${m.id}" aria-label="${esc(m.mac)} — box score">
+      <span class="roz sm">${m.rozet.toFixed(1)}</span>
+      <div class="mblok sm">${macBlok(m.mac, m.skor)}</div>
+      <span class="gozgo" aria-hidden="true">›</span></button>
     ${m.metin?`<div class="dblock" style="padding:0 0 14px"><p>${esc(m.metin)}</p></div>`:''}
   </div>`).join('');
 
@@ -1281,12 +1472,6 @@ function render(d){
     b.addEventListener('click',ac);
     b.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); ac(); } });
   });
-}
-
-function revealTarget(id){
-  const el=document.getElementById(id);
-  if(!el) return;
-  requestAnimationFrame(()=>el.scrollIntoView({block:'start',behavior:'smooth'}));
 }
 
 // ---- e-posta aboneliği (sadece adres toplar, gönderme sistemi henüz yok) ----

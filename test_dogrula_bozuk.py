@@ -2430,6 +2430,131 @@ def main():
     basar(f"Kilit: sayfadaki her sayı ham NBA verisiyle birebir ({len(_kartlar4)} şerit)",
           not _uyusmaz)
 
+    # ==================================================================
+    # TAKIM RENGİ ÇAKIŞMASI
+    # Gerçek sorun (18 Aralık): sahada Dončić, DeRozan ve LeBron vardı;
+    # Lakers ve Sacramento ikisi de mor, üçü aynı takımdanmış gibi
+    # duruyordu. Ayrıca sahada takım bilgisi HİÇ yazmıyordu.
+    # ==================================================================
+    _sayfa5 = open("overnight_v17.html", encoding="utf-8").read()
+    _d5 = _jj.loads(open(f"dist/{_yayinda2}.json", encoding="utf-8").read())
+    _renk_cfg = _jj.loads(open("config/takim_renkleri.json", encoding="utf-8").read())["takimlar"]
+
+    basar("Renk: 30 takımın hepsinde en az iki seçenek var",
+          len(_renk_cfg) == 30 and all(len(v) >= 2 for v in _renk_cfg.values()))
+    # Yakınlık ölçüsü: ton + parlaklık, ve DOYGUNLUK ayırt edici.
+    basar("Renk: iki mor yakın sayılıyor (LAL/SAC)",
+          _derle._renkler_yakin_mi("#8B62D9", "#8A5FC7"))
+    basar("Renk: iki kırmızı yakın sayılıyor (LAC/HOU)",
+          _derle._renkler_yakin_mi("#D2434A", "#CE1141"))
+    basar("Renk: iki mavi yakın sayılıyor (DAL/ORL)",
+          _derle._renkler_yakin_mi("#2E7BC4", "#1E8FD5"))
+    basar("Renk: mor ile mavi yakın DEĞİL (gereksiz kayma olmasın)",
+          not _derle._renkler_yakin_mi("#8B62D9", "#2E6BD6"))
+    # Gri ile doygun mavi: hesaplanan TONLARI yakın ama göz karıştırmaz.
+    # Bu kontrol olmadan HOU griye kayınca DAL da boşuna lacivert oluyordu.
+    basar("Renk: gri ile doygun mavi yakın DEĞİL (doygunluk ayırt ediyor)",
+          not _derle._renkler_yakin_mi("#9EA2A6", "#2E7BC4"))
+
+    # Karar TAKIM düzeyinde: aynı takımın iki oyuncusu aynı rengi almalı.
+    _liste = [{"takim": "LAL", "_gmsc": 30.5}, {"takim": "SAC", "_gmsc": 22.1},
+              {"takim": "LAL", "_gmsc": 24.0}, {"takim": "GSW", "_gmsc": 26.0}]
+    _cozum = _derle.renk_cakismasini_coz([dict(x) for x in _liste])
+    _lal = [o["renk"] for o in _cozum if o["takim"] == "LAL"]
+    basar("Renk: aynı takımın oyuncuları AYNI rengi alıyor",
+          len(set(_lal)) == 1)
+    basar("Renk: yüksek GmSc'li takım birincil rengini koruyor",
+          next(o for o in _cozum if o["takim"] == "LAL")["renk"] == _renk_cfg["LAL"][0])
+    _sac = next(o for o in _cozum if o["takim"] == "SAC")
+    basar("Renk: düşük GmSc'li çakışan takım sıradaki renge geçiyor",
+          _sac["renk_degisti"] and _sac["renk"] != _renk_cfg["SAC"][0])
+    basar("Renk: halka takımın ASIL rengini taşıyor",
+          _sac["asil_renk"] == _renk_cfg["SAC"][0])
+    basar("Renk: çakışmayan takım hiç değişmiyor",
+          not next(o for o in _cozum if o["takim"] == "GSW")["renk_degisti"])
+
+    # Kural HER listede geçerli: gecenin beşi, yükselen, düşen.
+    for _ad in ("gecenin_besi", "yukselen", "dusen"):
+        _l = _d5.get(_ad) or []
+        basar(f"Renk: {_ad} listesinde takım renkleri çözülmüş",
+              all("renk" in o and "asil_renk" in o and "renk_degisti" in o for o in _l))
+        _cift = {}
+        for _o in _l:
+            _cift.setdefault(_o["takim"], set()).add(_o["renk"])
+        basar(f"Renk: {_ad} listesinde takım başına tek renk",
+              all(len(v) == 1 for v in _cift.values()))
+
+    # Sahada TAKIM KODU her oyuncuda — çakışma olsun olmasın.
+    basar("Saha: her oyuncunun takım kodu var",
+          all(o.get("takim") for o in _d5["gecenin_besi"]))
+    basar("Saha: kod işaretlemesi ve halka CSS'i kuruldu",
+          '<div class="tg">${esc(o.takim)}</div>' in _sayfa5
+          and ".pl .dot.ring{box-shadow:0 0 0 2.5px var(--asil)" in _sayfa5)
+    basar("Saha: halka SADECE rengi değişen oyuncuda",
+          "o.renk_degisti?` ring" in _sayfa5)
+
+    # ==================================================================
+    # YÜKSELEN / DÜŞEN
+    # ==================================================================
+    _yuk, _dus = _d5.get("yukselen") or [], _d5.get("dusen") or []
+    basar("Form: iki liste de en fazla 5 satır",
+          len(_yuk) <= 5 and len(_dus) <= 5)
+    basar("Form: her satırda tam 5 maç var",
+          all(len(o["son5"]) == 5 for o in _yuk + _dus))
+    basar("Form: son çubuk BU GECE",
+          all(o["son5"][-1]["bu_gece"] and not any(x["bu_gece"] for x in o["son5"][:-1])
+              for o in _yuk + _dus))
+    # ÖLÇÜT sadece çok sayı atmak DEĞİL, sezon ortalamasını aşma miktarı.
+    basar("Form: yükselenler sezon ortalamasının ÜSTÜNDE",
+          all(o["fark"] > 0 for o in _yuk))
+    basar("Form: yükselenler farka göre sıralı (sayıya göre değil)",
+          [o["fark"] for o in _yuk] == sorted((o["fark"] for o in _yuk), reverse=True))
+    basar("Form: düşenler sezon ortalamasının ALTINDA",
+          all(o["fark"] < 0 for o in _dus))
+    # 25+ dakika şartı: yoksa 2 sayı ortalayan yedekler listeyi doldurur.
+    basar(f"Form: düşenlerde 25+ dakika şartı uygulanıyor",
+          all(o["son5_dakika"] >= _derle.DUSEN_ASGARI_DAKIKA for o in _dus))
+    basar("Form: fark gerçekten son5 - sezon",
+          all(abs(o["fark"] - round(o["son5_ort"] - o["sezon_ort"], 1)) < 0.11
+              for o in _yuk + _dus))
+    # O gece OYNAMAYAN oyuncu iki listede de yer almaz.
+    _oynayanlar = {o["isim"] for k in _d5["mutlaka"] + (_d5.get("degerse_bak") or [])
+                            + (_d5.get("diger") or [])
+                   for t in ("ev", "dep") for o in k["box"][t]["oyuncular"]}
+    basar("Form: listedeki herkes o gece oynadı",
+          all(o["isim"] in _oynayanlar for o in _yuk + _dus))
+
+    # Balon: mobilde hover YOK, dokunma zorunlu; aynı anda tek balon.
+    basar("Form: balon görünürlüğü kap sınıfıyla (kardeş seçici değil)",
+          ".bars.tipon .tip{opacity:1}" in _sayfa5
+          and ".bars i.tap + .tip" not in _sayfa5)
+    basar("Form: hover sadece hover destekleyen cihazda",
+          "matchMedia('(hover:hover)').matches" in _sayfa5)
+    basar("Form: aynı anda tek balon (önce hepsi kapanıyor)",
+          "formdaBalonKapat();" in _sayfa5)
+    # Sol başlık SABİT: sekmede zaten aynı kelime yazıyor.
+    basar("Form: sol başlık sabit 'Form', sekmeyle değişmiyor",
+          "<h2>Form</h2>" in _sayfa5 and "formdaBaslik" not in _sayfa5)
+
+    # ==================================================================
+    # Çıpa kaydırması ve Göz at'ta box score işareti
+    # ==================================================================
+    basar("Çıpa: kaydırma tarayıcıya bırakılmıyor, hesaplanıyor",
+          "function cipayaKaydir(" in _sayfa5 and "CIPA_PAYI" in _sayfa5)
+    basar("Çıpa: ikinci sıçrama olmasın diye replaceState kullanılıyor",
+          "history.replaceState(null, '', '#' + id)" in _sayfa5)
+    basar("Çıpa: kullanılmayan revealTarget ölü kodu kaldırıldı",
+          "revealTarget" not in _sayfa5)
+    # İşaret SADECE ok: "Box score için dokun" fazlaydı, "Box ›" da
+    # fazlaydı. Erişilebilirlik açıklaması düğmenin aria-label'ında.
+    basar("Box işareti: Göz at ve Bunları geç satırlarında var",
+          _sayfa5.count('class="gozgo" aria-hidden="true"') == 2)
+    basar("Box işareti: sadece ok, metin yok",
+          '<span class="gozgo" aria-hidden="true">›</span>' in _sayfa5
+          and "gozgo\">Box" not in _sayfa5)
+    basar("Box işareti: ekran okuyucu için açıklama aria-label'da",
+          _sayfa5.count('— box score"') == 2)
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))
