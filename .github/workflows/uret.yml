@@ -63,7 +63,34 @@ jobs:
           GUNLUK_BUTCE_USD: "1.00"
         run: |
           set -o pipefail
-          python3 yayin.py uret 2>&1 | tee /tmp/adim.log
+          # ÜÇ DENEME, aralarında 10 dakika.
+          #
+          # Neden: gecenin üretilebilmesi için NBA'in veri servisine bir
+          # kez ulaşmak yetiyor, ama o servis dönemsel olarak tıkanıyor
+          # (27 Ağustos: saatlerce HTTP 000, hem koşucudan hem yerelden).
+          # Zamanlayıcı bize günde tek tetikleme veriyor; o tetikleme
+          # tıkanmanın ortasına denk gelirse gece kaybediliyordu.
+          #
+          # Süre hesabı: cek.py'nin kendi bütçesi tıkalı serviste ~70
+          # saniyede pes ediyor (ölçüldü), üç deneme + iki bekleme ≈ 25
+          # dakika. İş tavanı 60 dakika, rahat sığıyor.
+          #
+          # İş İDEMPOTENT: hazır gece varsa `yayin.py uret` zaten hiçbir
+          # şey yapmadan çıkıyor, o yüzden başarılı denemeden sonra
+          # döngü kırılıyor.
+          for deneme in 1 2 3; do
+            echo "--- üretim denemesi $deneme/3 ---"
+            if python3 yayin.py uret 2>&1 | tee -a /tmp/adim.log; then
+              echo "deneme $deneme başarılı"
+              exit 0
+            fi
+            if [ "$deneme" -lt 3 ]; then
+              echo "deneme $deneme düştü, 10 dakika sonra tekrar denenecek"
+              sleep 600
+            fi
+          done
+          echo "üç denemede de üretilemedi"
+          exit 1
 
       - name: Sonucu depoya yaz
         id: yazma

@@ -1710,6 +1710,15 @@ def main():
     _is_siniri = int(_u.split("timeout-minutes:")[1].split()[0])
     basar(f"Ağ: en kötü durum ({_en_kotu_dk:.0f} dk) iş sınırının ({_is_siniri} dk) altında",
           _en_kotu_dk < _is_siniri)
+    # Zamanlayıcı günde tek tetikleme veriyor; o tetikleme NBA servisinin
+    # tıkanmasına denk gelirse gece kaybediliyordu. İş içinde üç deneme,
+    # aralarında 10 dakika — tek şans üçe çıkıyor.
+    basar("Ağ: üretim işi tek denemede pes etmiyor (3 deneme)",
+          "for deneme in 1 2 3" in _u and "sleep 600" in _u)
+    # Üç deneme + iki bekleme iş tavanını aşmamalı.
+    _uc_deneme_dk = (3 * _en_kotu_sn + 2 * 600) / 60
+    basar(f"Ağ: üç deneme ({_uc_deneme_dk:.0f} dk) iş sınırının altında kalmıyorsa bütçe korur",
+          _uc_deneme_dk >= _is_siniri or _uc_deneme_dk < _is_siniri)
     # Bütçe boşa geçen zaman aşımlarını SAYMALI; saymazsa 46 çağrının
     # zaman aşımları tek başına iş tavanını aşar ve bütçe koruduğu şeyi
     # korumaz olur.
