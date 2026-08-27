@@ -530,6 +530,25 @@ bunlardan olabildiğince kaçın. En sık tekrarlanan somut hatalar:
 - ASİST FİİLİ: sadece "N asist yaptı" ve "N asistle oynadı" serbest.
   "asist verdi", "asist dağıttı", "asist üretti", "asist kaydetti"
   YASAK.
+- İNGİLİZCE BASKETBOL TERİMİ YASAK. Türkçe karşılığını kullan:
+    layup / lay-up      -> turnike  (ya da "sürüşle bulduğu basket")
+    driving layup       -> sürüşle bulduğu basket
+    dunk                -> smaç
+    alley-oop           -> havadan smaç
+    fadeaway            -> geriye kaçarak attığı şut
+    floater             -> yumuşak dokunuşla bıraktığı şut
+    jumper              -> şut
+    three-pointer       -> üçlük
+    buzzer beater       -> son saniye basketi
+    tip-in              -> dokunuşla sayı
+    putback             -> hücum ribaundu sonrası sayı
+    turnover            -> top kaybı
+    clutch              -> kritik anda / son anlarda
+    and-one             -> faullü sayı
+    steal               -> top çalma
+    assist / rebound / block / possession -> asist / ribaund / blok / hücum
+  Karşılığı aklına gelmiyorsa terimi HİÇ KULLANMA, olayı düz anlat
+  ("bitime 2 saniye kala attığı basketle").
 - "Mağlup tarafta ..." kalıbı gecede EN FAZLA BİR KEZ kullanılır ve
   SADECE kaybeden taraftaki oyuncu gerçekten dikkat çekiciyse (bir
   kilometre taşı geçmişse). Sıradan bir 25-31 sayı için kaybeden takım

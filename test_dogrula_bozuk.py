@@ -2122,6 +2122,18 @@ def main():
     basar("Yayın kapısı: tam ham yoksa kırpılmış kopyaya düşüyor",
           "_ham_metni" in open("yayin.py", encoding="utf-8").read())
 
+    # Yasak koyup KARŞILIĞINI VERMEMEK tuzak: 20 Aralık'ta model "layup"
+    # yerine ne yazacağını bilemedi, aynı alanda üç kez reddedildi ve
+    # metin kısa şablona düştü (ret gerekçelerinin 4'ünde "layup" vardı).
+    _prompt = open("yaz.py", encoding="utf-8").read()
+    _yasakli_liste2 = dogrula_modul.yasakli_yukle()
+    _ingilizce = _jj.loads(open("config/yasakli.json", encoding="utf-8").read())["ingilizce_terim"]
+    _karsiliksiz = [t for t in _ingilizce if t not in _prompt]
+    basar(f"Yasak: her İngilizce terimin promptta Türkçe karşılığı var ({len(_ingilizce)} terim)",
+          not _karsiliksiz)
+    basar("Yasak: prompt 'karşılığı yoksa terimi hiç kullanma' diyor",
+          "HİÇ KULLANMA" in _prompt)
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))
