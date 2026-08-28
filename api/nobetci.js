@@ -29,10 +29,17 @@ const BAYATLIK_ESIGI_GUN = Number(process.env.BAYATLIK_ESIGI_GUN || 2);
 // kadar azsa o kadar iyi — her ek değişken bir kurulum adımı, her
 // kurulum adımı bir arıza ihtimali.
 //
-// NOBETCI_ANAHTARI opsiyonel: Vercel kendi cron isteğine `x-vercel-cron`
-// başlığını koyuyor, asıl yol o. Anahtar SADECE dışarıdan elle çağırmak
-// için (doğrulama, hata ayıklama). Anahtar tanımlı değilse dışarıdan
-// çağrı KABUL EDİLMİYOR — güvenli varsayılan.
+// NOBETCI_ANAHTARI ZORUNLU — Vercel cron da dahil HER çağrı bunu
+// taşımak zorunda.
+//
+// Önceden `x-vercel-cron` başlığının VARLIĞI kimlik yerine geçiyordu.
+// O bir kapıydı: başlık istemci tarafından yazılıyor, yani internetteki
+// herkes tek bir curl ile üretim/yayın iş akışlarını tetikleyebiliyordu
+// (ölçüldü: `curl -H "x-vercel-cron: 1" .../api/nobetci` → HTTP 200).
+// Vercel'in kendi cron'u, `CRON_SECRET` ortam değişkeni tanımlıysa
+// isteğe `Authorization: Bearer <CRON_SECRET>` koyuyor — doğru yol bu.
+// CRON_SECRET ile NOBETCI_ANAHTARI aynı değere kuruluyor, böylece cron
+// da elle çağrı da AYNI kapıdan geçiyor.
 //
 // Resend de opsiyonel: e-posta kurulu değilse nöbetçi susmuyor, GitHub'da
 // issue açıp kullanıcıyı ATIYOR — atama GitHub'ın kendi bildirimini
@@ -122,14 +129,15 @@ async function mailAt(konu, satirlar) {
 }
 
 export default async function handler(istek, yanit) {
-  // Vercel Cron kendi isteğine bu başlığı koyuyor; elle çağrı için
-  // ?anahtar= da kabul ediliyor.
-  const cronMu = Boolean(istek.headers["x-vercel-cron"]);
+  // TEK KAPI. Vercel cron `Authorization: Bearer <CRON_SECRET>` ile
+  // geliyor (CRON_SECRET = NOBETCI_ANAHTARI), elle çağrı aynı başlıkla
+  // ya da ?anahtar= ile. `x-vercel-cron` başlığı ARTIK KİMLİK DEĞİL —
+  // istemci yazabildiği için kapı işlevi görüyordu.
   const verilen = istek.query?.anahtar || (istek.headers.authorization || "").replace(/^Bearer\s+/i, "");
-  // Anahtar tanımlı DEĞİLSE dışarıdan çağrı hiç kabul edilmiyor; boş
-  // anahtarla boş isteğin eşleşmesi bir kapı olurdu.
-  const anahtarGecerli = Boolean(ANAHTAR) && verilen === ANAHTAR;
-  if (!cronMu && !anahtarGecerli) {
+  // Anahtar tanımlı DEĞİLSE hiçbir çağrı kabul edilmiyor; boş anahtarla
+  // boş isteğin eşleşmesi kapının kendisi olurdu.
+  const anahtarGecerli = Boolean(ANAHTAR) && verilen.length > 0 && verilen === ANAHTAR;
+  if (!anahtarGecerli) {
     return yanit.status(401).json({ hata: "yetkisiz" });
   }
 
