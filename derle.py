@@ -902,6 +902,38 @@ def _kilit_degerleri(taraf, digerleri):
     }
 
 
+def kilit_istatistik_adi(ham_mac):
+    """Bu maçın kilit istatistiğinin ADI, yoksa None.
+
+    ÜRETİM ANINDA gerekiyor: metin yazılırken hangi olgunun kilit
+    istatistik kutusuna çıkacağı biliniyorsa, o olgu metinden çıkarılmalı
+    (dogrula.t30). Hesap TEK KAYNAK — aşağıdaki _kilit_istatistik ile
+    aynı fonksiyonu çağırıyor, ölçüt kopyalanmıyor.
+
+    Sadece kutu TOPLAMLARI gerektiği için hafif bir taraf sözlüğü
+    kuruluyor; tam _box_score'a (oyuncu satırları, renkler, çeyrekler)
+    gerek yok."""
+    try:
+        bt = ham_mac["box_traditional"]["boxScoreTraditional"]
+    except (KeyError, TypeError):
+        return None
+
+    def hafif(takim):
+        t = takim["statistics"]
+        return {
+            "kod": takim["teamTricode"],
+            "toplam": {
+                "reb": t["reboundsTotal"], "oreb": t["reboundsOffensive"],
+                "ast": t["assists"], "to": t["turnovers"],
+                "3p": f"{t['threePointersMade']}/{t['threePointersAttempted']}",
+                "ft": f"{t['freeThrowsMade']}/{t['freeThrowsAttempted']}",
+            },
+        }
+
+    kilit = _kilit_istatistik(ham_mac, hafif(bt["homeTeam"]), hafif(bt["awayTeam"]))
+    return (kilit or {}).get("ad")
+
+
 def _kilit_istatistik(ham_mac, ev_taraf, dep_taraf):
     """Eşiği aşan TEK istatistik, yoksa None.
 
@@ -1067,6 +1099,21 @@ FORM_LISTE_UZUNLUGU = 5
 # doldurur ve bölüm anlamsızlaşır (kullanıcı kuralı).
 DUSEN_ASGARI_DAKIKA = 25.0
 
+# ÖLÇÜT MUTLAK FARK DEĞİL, YÜZDE DEĞİŞİM (kullanıcı kuralı).
+#
+# Gerçek üretim arızası (2025-12-21): Anthony Edwards "Düşen"deydi —
+# 11-15-40-26-24, sezon 27.4, son5 23.2, mutlak fark 4.2. Ama 27.4
+# ortalayan birinde 4.2 = %15, yani gürültü. 10 ortalayan biri 5.8'e
+# düşse yine 4.2 fark eder ve o %42, gerçek çöküş. Mutlak fark çok sayı
+# atanları haksız yere Düşen'e sokuyor, az atanların gerçek düşüşünü
+# kaçırıyordu.
+FORM_YUZDE_ESIGI = 25.0
+
+# TUTARLILIK ŞARTI: son 5 maçın en az DÖRDÜ aynı yönde olmalı.
+# Edwards'ın ortasındaki 40 sayılık maç dalgalanmayı düşüş gibi
+# gösteriyordu; dört maç aynı yönde değilse bu bir eğilim değil.
+FORM_AYNI_YON_ASGARI = 4
+
 
 def _dakikayi_coz(ham):
     """'34:12' ya da 34.2 -> 34.2"""
@@ -1141,6 +1188,10 @@ def _formda_listeler(ham, bt_by_gid, gecenin_oyunculari):
         if len(son5) < FORM_MAC_SAYISI:
             continue                      # 5 maçı dolmayan için "form" denmez
         son5_ort = sum(x["sayi"] for x in son5) / len(son5)
+        # Yüzde değişim ve kaç maçın aynı yönde olduğu — ölçüt bunlar.
+        yuzde = ((son5_ort - sezon_ort) / sezon_ort * 100) if sezon_ort else 0.0
+        ust_sayisi = sum(1 for x in son5 if x["sayi"] > round(sezon_ort, 1))
+        alt_sayisi = sum(1 for x in son5 if x["sayi"] < round(sezon_ort, 1))
         # Her maç oyuncunun KENDİ sezon ortalamasının üstünde mi?
         # Çıplak sayı bir şey ifade etmiyor: 24 sayı iyi mi kötü mü,
         # oyuncunun normalini bilmeden söylenemez. Kıyas EKRANDA YAZAN
@@ -1160,13 +1211,24 @@ def _formda_listeler(ham, bt_by_gid, gecenin_oyunculari):
             "son5_ort": round(son5_ort, 1),
             "sezon_ort": round(sezon_ort, 1),
             "fark": round(son5_ort - sezon_ort, 1),
+            "yuzde": round(yuzde, 1),
+            "ust_sayisi": ust_sayisi,
+            "alt_sayisi": alt_sayisi,
             "son5_dakika": round(sum(x["dakika"] for x in son5) / len(son5), 1),
         })
-    yukselen = sorted([a for a in adaylar if a["fark"] > 0],
-                      key=lambda a: -a["fark"])[:FORM_LISTE_UZUNLUGU]
-    dusen = sorted([a for a in adaylar
-                    if a["fark"] < 0 and a["son5_dakika"] >= DUSEN_ASGARI_DAKIKA],
-                   key=lambda a: a["fark"])[:FORM_LISTE_UZUNLUGU]
+    # Sıralama da seçim de YÜZDEYE göre. Eşiği geçmeyen ve son 5 maçın
+    # en az dördü aynı yönde olmayan aday listeye HİÇ girmiyor.
+    yukselen = sorted(
+        [a for a in adaylar
+         if a["yuzde"] >= FORM_YUZDE_ESIGI
+         and a["ust_sayisi"] >= FORM_AYNI_YON_ASGARI],
+        key=lambda a: -a["yuzde"])[:FORM_LISTE_UZUNLUGU]
+    dusen = sorted(
+        [a for a in adaylar
+         if a["yuzde"] <= -FORM_YUZDE_ESIGI
+         and a["alt_sayisi"] >= FORM_AYNI_YON_ASGARI
+         and a["son5_dakika"] >= DUSEN_ASGARI_DAKIKA],
+        key=lambda a: a["yuzde"])[:FORM_LISTE_UZUNLUGU]
     # Renk çakışması her iki listede AYRI AYRI çözülüyor — listeler
     # birbirinden bağımsız okunuyor.
     return renk_cakismasini_coz(yukselen), renk_cakismasini_coz(dusen)

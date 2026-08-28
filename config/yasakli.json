@@ -166,6 +166,34 @@
     {
       "aciklama": "asist fiili — sadece 'N asist yaptı' ve 'N asistle oynadı' serbest; 'asist verdi/dağıttı/üretti/kaydetti' yasak (kullanıcı kuralı)",
       "desen": "asist\\w*\\s+(ver|dağıt|üret|kaydet|kayded)\\w*"
+    },
+    {
+      "aciklama": "belirsiz nicelik — sayı elimizde, 'geniş/büyük/ciddi üstünlük' yerine kaç sayı olduğu yazılmalı",
+      "desen": "(geniş|büyük|ciddi|önemli|belirgin|kayda değer|hatırı sayılır)\\s+(bir\\s+)?(üstünlük|fark|avantaj|açık|farkl?ılık)"
+    },
+    {
+      "aciklama": "belirsiz nicelik — 'farkı açtı/büyüttü' değil kaç sayıya çıktığı yazılmalı",
+      "desen": "fark[ıi]\\s+(iyice|epey|hayli|bir hayli)\\s+\\w+"
+    },
+    {
+      "aciklama": "belirsiz nicelik — isabet oranı sayıyla yazılır ('9/19'), 'yüksek isabet' değil",
+      "desen": "(yüksek|düşük|iyi|kötü)\\s+isabet\\w*"
+    },
+    {
+      "aciklama": "'serbest atışının tamamını kullanarak' — '11 serbest atışının 11'ini attı' ya da '11/11 yaptı'",
+      "desen": "(atış|şut)\\w*\\s*(\\w+\\s+){0,2}tamam[ıi]n[ıi]\\s+kullan\\w*"
+    },
+    {
+      "aciklama": "'tamamını kullanmak' — istatistik fiili değil, sayıyla yazılmalı",
+      "desen": "tamam[ıi]n[ıi]\\s+kullan\\w*"
+    },
+    {
+      "aciklama": "'sahadan yüksek isabetle oynadı' — belirsiz; sayı ver ya da cümleden çıkar",
+      "desen": "saha\\w*\\s+(\\w+\\s+){0,2}isabet\\w*\\s+oyna\\w*"
+    },
+    {
+      "aciklama": "'galibiyeti aldı' — cümle sonu dolgusu, kim kimi yendi zaten yazılı",
+      "desen": "galibiyet[ıi]?\\s*(\\w+\\s+){0,2}al[dt]\\w*"
     }
   ]
 }

@@ -1476,6 +1476,20 @@ def grup_b_prompt_kur(gid, gercekler, ham_mac, kalan_muzip_kotasi, kalip, ornekl
         # T14 ile çelişmesin: anılması ZATEN yasak olan bir ismi "mutlaka
         # an" diye istemek modeli kurala aykırı yazmaya zorlar.
         en_iyi_performans = None
+    # KİLİT İSTATİSTİK: hangi olgunun kutuya çıkacağı ÜRETİM ANINDA
+    # biliniyor (derle.kilit_istatistik_adi — tek kaynak). Model o olguyu
+    # metinde tekrarlamasın; kutu zaten sayfada duruyor.
+    try:
+        import derle as _derle_modul
+        _kilit_adi = _derle_modul.kilit_istatistik_adi(ham_mac)
+    except Exception:
+        _kilit_adi = None
+    kilit_uyarisi = (
+        f'KİLİT İSTATİSTİK: bu maçın kilit istatistiği "{_kilit_adi}" ve sayfada '
+        f'KENDİ KUTUSUNDA gösteriliyor. Metinde bu olgudan HİÇ bahsetme — '
+        f'okuyucu zaten görüyor, tekrarı yer kaplayıp bilgi eklemiyor.\n\n'
+        if _kilit_adi else ""
+    )
     mutlaka_talimati = mutlaka_talimati_kur(kalip, ornekler_havuzu, en_iyi_performans)
     ust_uste_uyarisi = (
         '\nDİKKAT: "üst üste"/"art arda"/"ardışık"/"arka arkaya" kalıbı bu gece BAŞKA BİR MAÇTA ZATEN '
@@ -1565,6 +1579,25 @@ Bir kilometre/bağlam gerçeğini (ör. "ondan önce NBA tarihinde sadece N
 oyuncu başardı") HANGİ ALANDA kullandıysan, DİĞER ALANDA TEKRARLAMA —
 gerçek üretim bug'ı: aynı cümle hem `neden_onemli`de hem gövdenin
 sonunda ayrı ayrı çıkmıştı. Bu gerçeği SADECE BİR alanda kullan.
+
+BAŞLIK EN GÜÇLÜ OLGUYU KULLANIR. Elinde geri dönüş, uzatma, son saniye
+basketi, 4+ maçlık seri, ilk 3 sıra ya da eşiği geçen bir performans
+(30+ sayı / 15+ ribaund / 10+ asist / triple-double) varsa BAŞLIK onu
+anlatır. Düz skor başlığı ("X, Y'yi 103-100 yendi") SON ÇAREDİR — güçlü
+olgu alt satıra ya da gövdeye düşmüşse başlık yanlış kurulmuştur.
+
+ALT SATIR İLE GÖVDE BİRBİRİNİ TEKRAR ETMEZ. `neden_onemli` maçın NEDEN
+önemli olduğunu söyler, gövde NE OLDUĞUNU. Aynı olayı iki kez anlatmak
+— sayı tekrar etmese bile — reddediliyor. Gerçek örnek: alt satır "16
+sayılık farktan dönerek maçı son çeyrekte kontrol altına aldı", gövde
+"son çeyreği kontrollü geçen Timberwolves, farkı koruyarak..." — aynı
+şey, iki kez.
+
+{kilit_uyarisi}BELİRSİZ NİCELİK YASAK. Sayı elindeyse yaz: "geniş/büyük/ciddi
+üstünlük", "yüksek isabetle oynadı" gibi ifadeler bilgi saklıyor. "16
+sayılık üstünlük", "11 serbest atışının 11'ini attı", "16/28 isabet"
+yaz. "galibiyeti aldı" gibi cümle sonu dolguları da çıkar — kimin
+kazandığı zaten yazılı.
 
 {mutlaka_talimati}
 Takım adını cümledeki İLK anışta tam şehir/takım adıyla yaz, ikinci

@@ -29,6 +29,7 @@ import re as _re
 _derle_kaynak = open("derle.py", encoding="utf-8").read()
 _yaz_kaynak = open("yaz.py", encoding="utf-8").read()
 _yayin_kaynak = open("yayin.py", encoding="utf-8").read()
+_dogrula_kaynak = open("dogrula.py", encoding="utf-8").read()
 import derle as _derle
 
 _derle_kaynak = open("derle.py", encoding="utf-8").read()
@@ -2571,8 +2572,10 @@ def main():
     # ÖLÇÜT sadece çok sayı atmak DEĞİL, sezon ortalamasını aşma miktarı.
     basar("Form: yükselenler sezon ortalamasının ÜSTÜNDE",
           all(o["fark"] > 0 for o in _yuk))
-    basar("Form: yükselenler farka göre sıralı (sayıya göre değil)",
-          [o["fark"] for o in _yuk] == sorted((o["fark"] for o in _yuk), reverse=True))
+    # Sıralama artık YÜZDEYE göre (kullanıcı kuralı): mutlak fark 27.4
+    # ortalayanla 10 ortalayanı aynı gösteriyordu.
+    basar("Form: yükselenler yüzde değişime göre sıralı (mutlak farka göre değil)",
+          [o["yuzde"] for o in _yuk] == sorted((o["yuzde"] for o in _yuk), reverse=True))
     basar("Form: düşenler sezon ortalamasının ALTINDA",
           all(o["fark"] < 0 for o in _dus))
     # 25+ dakika şartı: yoksa 2 sayı ortalayan yedekler listeyi doldurur.
@@ -3398,6 +3401,129 @@ def main():
           "Şablona düşme alarmı — issue aç" in _akislar["uret.yml"]
           and "--assignee yigitolmezcan"
           in _akislar["uret.yml"].split("Şablona düşme alarmı — issue aç")[1])
+
+    # ==================================================================
+    # FORM ÖLÇÜTÜ — YÜZDE DEĞİŞİM + TUTARLILIK
+    # Gerçek arıza (2025-12-21): Anthony Edwards "Düşen"deydi —
+    # 11-15-40-26-24, sezon 27.4, mutlak fark 4.2. 27.4 ortalayanda 4.2
+    # = %15, gürültü; 10 ortalayanda aynı fark %42, gerçek çöküş.
+    # ==================================================================
+    basar("Form: eşik yüzde değişim (%25)",
+          _derle.FORM_YUZDE_ESIGI == 25.0)
+    basar("Form: tutarlılık şartı 5 maçın 4'ü",
+          _derle.FORM_AYNI_YON_ASGARI == 4)
+    _formcular2 = (_d7.get("yukselen") or []) + (_d7.get("dusen") or [])
+    basar("Form: her satırda yüzde ve yön sayacı var",
+          all(isinstance(o.get("yuzde"), (int, float))
+              and isinstance(o.get("ust_sayisi"), int)
+              and isinstance(o.get("alt_sayisi"), int) for o in _formcular2))
+    basar("Form: yüzde gerçekten (son5-sezon)/sezon",
+          all(abs(o["yuzde"] - (o["son5_ort"] - o["sezon_ort"]) / o["sezon_ort"] * 100) < 1.5
+              for o in _formcular2 if o["sezon_ort"]))
+    basar("Form: listedeki herkes eşiği geçiyor",
+          all(abs(o["yuzde"]) >= _derle.FORM_YUZDE_ESIGI for o in _formcular2))
+    basar("Form: yükselenlerde 5 maçın 4'ü ortalamanın ÜSTÜNDE",
+          all(o["ust_sayisi"] >= _derle.FORM_AYNI_YON_ASGARI
+              for o in (_d7.get("yukselen") or [])))
+    basar("Form: düşenlerde 5 maçın 4'ü ortalamanın ALTINDA",
+          all(o["alt_sayisi"] >= _derle.FORM_AYNI_YON_ASGARI
+              for o in (_d7.get("dusen") or [])))
+    basar("Form: sıralama yüzdeye göre (mutlak farka göre değil)",
+          [round(o["yuzde"], 1) for o in (_d7.get("yukselen") or [])]
+          == sorted((round(o["yuzde"], 1) for o in (_d7.get("yukselen") or [])), reverse=True))
+    # Edwards'ın satırı: dalgalanma listeye girmemeli.
+    basar("Form: dalgalanan oyuncu listeye girmiyor (Edwards 11-15-40-26-24)",
+          not any(o["isim"] == "Anthony Edwards" for o in _formcular2))
+    basar("Form: gösterim yüzde ('▼%15'), mutlak fark değil",
+          "${ok}%${Math.abs(o.yuzde).toFixed(0)}" in _sayfa10
+          and "Math.abs(o.fark).toFixed(1)" not in _sayfa10)
+
+    # ==================================================================
+    # BEŞ METİN KURALI (T28 / T29 / T30 / yasak kalıpları)
+    # ==================================================================
+    # (a) Başlık en güçlü olguyu kullanmalı.
+    basar("Kural a: düz skor başlık + gövdede geri dönüş → ret",
+          not _dogrula_modul.t28_baslik_guclu_olgu({
+              "baslik": "Minnesota, sahasında Milwaukee'yi 103-100 yendi.",
+              "neden_onemli": "Timberwolves, 16 sayılık farktan dönerek kazandı.",
+              "ozet": ""})[0])
+    basar("Kural a: başlıkta olgu varsa geçiyor",
+          _dogrula_modul.t28_baslik_guclu_olgu({
+              "baslik": "Jalen Brunson'ın 47 sayısıyla New York, Miami'yi 132-125 yendi",
+              "neden_onemli": "Knicks 2. sıraya yükseldi.", "ozet": ""})[0])
+    basar("Kural a: triple-double da kanca sayılıyor",
+          _dogrula_modul.t28_baslik_guclu_olgu({
+              "baslik": "Jokić'in triple-double'ıyla Denver, Houston'ı 128-120 yendi.",
+              "neden_onemli": "Nuggets 1. sıraya yükseldi.", "ozet": ""})[0])
+    # Sıradan bir sayı güçlü olgu DEĞİL: eşiksiz halinde kural arşivin
+    # yarısından fazlasında boş yere çalıyordu (ölçüldü).
+    basar("Kural a: sıradan performans başlığı zorlamıyor (22 sayı)",
+          _dogrula_modul.t28_baslik_guclu_olgu({
+              "baslik": "Warriors, Spurs'ü 125-120 yendi.",
+              "neden_onemli": "Curry 22 sayı attı.", "ozet": ""})[0])
+    # Eşikler cumle.PERFORMANS_ESIKLERI ile AYNI olmak zorunda.
+    basar("Kural a: performans eşikleri cumle ile aynı",
+          _dogrula_modul.T28_GUCLU_PERFORMANS
+          == {birim: esik for _alan, esik, birim, _fiil in cumle.PERFORMANS_ESIKLERI})
+
+    # (b) Alt satır ile gövde birbirini tekrar edemez.
+    basar("Kural b: aynı olay iki kez anlatılırsa ret",
+          not _dogrula_modul.t29_alt_satir_govde_tekrari({
+              "neden_onemli": "16 sayılık farktan dönerek maçı son çeyrekte kontrol altına aldı.",
+              "ozet": "Son çeyreği kontrollü geçen ekip, çeyrek boyunca kontrolü bırakmadı."})[0])
+    basar("Kural b: farklı şeyler anlatılırsa geçiyor",
+          _dogrula_modul.t29_alt_satir_govde_tekrari({
+              "neden_onemli": "Knicks konferansta 2. sıraya yükseldi.",
+              "ozet": "Brunson 47 sayı attı, Miami son periyotta 18 sayıda kaldı."})[0])
+    basar("Kural b: takım/oyuncu adları ortak kök sayılmıyor",
+          _dogrula_modul.t29_alt_satir_govde_tekrari(
+              {"neden_onemli": "Timberwolves galibiyetle günü kapattı.",
+               "ozet": "Timberwolves ilk yarıda 18 sayı geride kaldı."},
+              None,
+              {"box_traditional": {"boxScoreTraditional": {
+                  "homeTeam": {"teamCity": "Minnesota", "teamName": "Timberwolves", "players": []},
+                  "awayTeam": {"teamCity": "Milwaukee", "teamName": "Bucks", "players": []}}}})[0])
+
+    # (c) Kilit istatistik metinde tekrarlanamaz.
+    basar("Kural c: kilit istatistik metinde geçerse ret",
+          not _dogrula_modul.t30_kilit_istatistik_tekrari(
+              "Miami'nin ribaund üstünlüğüne rağmen Knicks kazandı.", "hücum ribaundu")[0])
+    basar("Kural c: kilit istatistik yoksa kural çalışmıyor",
+          _dogrula_modul.t30_kilit_istatistik_tekrari(
+              "Miami'nin ribaund üstünlüğüne rağmen Knicks kazandı.", None)[0])
+    basar("Kural c: kilit istatistiğin adı üretim anında biliniyor",
+          _derle.kilit_istatistik_adi(
+              _jj.loads(open(_ham_yolu(_yayinda2)).read())["maclar"]["0022500398"])
+          == "hücum ribaundu")
+
+    # (d) Belirsiz nicelik yasak.
+    for _c, _ad in (("Milwaukee ilk yarıda geniş bir üstünlük kurdu.", "geniş üstünlük"),
+                    ("Brunson sahadan yüksek isabetle oynadı.", "yüksek isabet")):
+        basar(f"Kural d: '{_ad}' yakalanıyor",
+              not _dogrula_modul.t4d_kok_kaliplari(_c)[0])
+    basar("Kural d: sayı yazılmışsa geçiyor",
+          _dogrula_modul.t4d_kok_kaliplari(
+              "Milwaukee ilk yarıda 16 sayılık üstünlük kurdu.")[0])
+
+    # (e) Bozuk fiil kalıpları.
+    for _c, _ad in (("11 serbest atışının tamamını kullanarak 38 sayıya ulaştı.", "tamamını kullanarak"),
+                    ("Minnesota, farkı koruyarak galibiyeti aldı.", "galibiyeti aldı")):
+        basar(f"Kural e: '{_ad}' yakalanıyor",
+              not _dogrula_modul.t4d_kok_kaliplari(_c)[0])
+    basar("Kural e: doğru biçim geçiyor",
+          _dogrula_modul.t4d_kok_kaliplari(
+              "Randle serbest atışta 11/11 yaptı.")[0])
+
+    # Kurallar ÜRETİCİYE de ulaşmalı — sadece doğrulayıcıda kalırsa
+    # model aynı hatayı her denemede tekrar eder.
+    basar("Beş kural: sistem promptunda da yazılı",
+          all(x in _yaz_kaynak for x in
+              ("BAŞLIK EN GÜÇLÜ OLGUYU", "ALT SATIR İLE GÖVDE BİRBİRİNİ TEKRAR ETMEZ",
+               "BELİRSİZ NİCELİK YASAK", "KİLİT İSTATİSTİK: bu maçın kilit")))
+    # Nesne bazlı testler kabulü düşürmezse gerekçe yazılır ama metin
+    # yine yayına çıkar.
+    basar("Beş kural: T28/T29 kabulü düşürüyor",
+          '("T25", "T28", "T29")' in _dogrula_kaynak)
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",

@@ -1610,7 +1610,10 @@ function render(d){
     const hucre=x=>`<span class="${x.ust?'hi':'lo'}${x.bu_gece?' now':''}" `
       +`data-sayi="${x.sayi}" data-rakip="${esc(x.rakip||'')}">`
       +`<u>${x.sayi}</u><i></i></span>`;
-    const ok=o.fark>0?'▲':'▼';
+    // Gösterim YÜZDE (kullanıcı kuralı): mutlak fark 27.4 ortalayanla
+    // 10 ortalayanı aynı gösteriyordu — ikisinde de "▼4.2", biri %15
+    // gürültü, öbürü %42 çöküş.
+    const ok=o.yuzde>0?'▲':'▼';
     const halka=o.renk_degisti?` ring" style="background:${esc(o.renk)};--asil:${esc(o.asil_renk)}`:`" style="background:${esc(o.renk)}`;
     return `<div class="fp">
       <span class="who">
@@ -1619,7 +1622,7 @@ function render(d){
       </span>
       <span class="sq">${o.son5.map(hucre).join('')}<span class="tip"></span></span>
       <span class="avg"><b>${o.son5_ort.toFixed(1)}</b>
-        <s>sezon ${o.sezon_ort.toFixed(1)} <em>${ok}${Math.abs(o.fark).toFixed(1)}</em></s></span>
+        <s>sezon ${o.sezon_ort.toFixed(1)} <em>${ok}%${Math.abs(o.yuzde).toFixed(0)}</em></s></span>
     </div>`;
   };
   const formdaCiz=(hangi)=>{

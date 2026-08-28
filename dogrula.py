@@ -963,6 +963,221 @@ def t25_ust_satir_tekrari(metin_obj):
                    f"başlıkta geçen bir sayı gövdede yeniden yazılmaz"]
 
 
+# ---------------------------------------------------------------------------
+# T28 — BAŞLIK EN GÜÇLÜ OLGUYU KULLANMALI
+# ---------------------------------------------------------------------------
+#
+# Gerçek üretim hatası (2025-12-21 MIN-MIL): başlık "Minnesota, sahasında
+# Milwaukee'yi 103-100 yendi." — düz skor. Alt satırda ise "16 sayılık
+# farktan dönerek" vardı. Güçlü olgu alt satırdaysa BAŞLIK onu
+# kullanmalı; düz skor SON ÇARE.
+
+# Bir olgu başlıkta "kullanılmış" sayılır mı? Olgu türü → onu ele veren
+# desen. Sayı aramıyoruz: "16 sayılık farktan döndü" ile "geri dönüş"
+# aynı olgu, ikisi de kabul.
+GUCLU_OLGU_DESENLERI = (
+    # Geri dönüş deseni T23'ünkiyle AYNI — kopyalanmıyor, tek tanım.
+    # (İlk yazımda ayrı bir desen kurmuştum ve "farktan" kelimesini
+    #  kaçırıyordu: ayrılma eki "-tan", "-tın" değil. Ölçüldü.)
+    ("geri_donus", T23_GERI_DONUS_DESENI),
+    ("uzatma", re.compile(r"\buzatma", re.I)),
+    ("son_saniye", re.compile(r"son\s+saniye", re.I)),
+    ("seri", re.compile(r"maçlık\s+(galibiyet|mağlubiyet)\s+seri", re.I)),
+    ("siralama", re.compile(r"\d+\.\s*sıra", re.I)),
+    # Kilometre taşı da bir kanca: "Jokić'in triple-double'ıyla ..."
+    # başlığı düz skor DEĞİL, ama sayı taşımadığı için olgusuz
+    # sanılıyordu (ölçüldü, 2025-12-15).
+    ("kilometre", re.compile(r"triple[-\s]?double|double[-\s]?double|quadruple", re.I)),
+    # `\b` KULLANILMIYOR: "47 sayısıyla" / "16 sayılık" gibi ekli
+    # biçimlerde kelime sınırı oluşmuyor ve desen kaçıyordu (ölçüldü —
+    # NYK-MIA başlığı "47 sayısıyla" taşıdığı halde olgusuz sanıldı).
+    ("performans", re.compile(r"(\d+)\s*(sayı|ribaund|asist)\w*", re.I)),
+)
+
+# Performans ancak EŞİĞİ GEÇERSE güçlü olgudur. Eşiksiz halinde kural
+# arşivdeki 43 metnin 25'inde çalıyordu (%58): gövdede "22 sayı attı"
+# geçen her maç "güçlü olgu var" sayılıyordu, oysa sıradan bir sayı
+# başlığı hak etmiyor.
+#
+# Sayılar cumle.PERFORMANS_ESIKLERI ile AYNI olmak zorunda; oradan içe
+# alınamıyor (cumle bu modülü içe alıyor, ters yön döngü kurar). İkisinin
+# ayrışmasını test kilitliyor.
+T28_GUCLU_PERFORMANS = {"sayı": 30, "ribaund": 15, "asist": 10}
+
+# Düz skor başlığı: "X, Y'yi 103-100 yendi" — başka hiçbir olgu yok.
+DUZ_SKOR_BASLIK_DESENI = re.compile(r"\b\d{2,3}\s*[-–]\s*\d{2,3}\b")
+
+
+def _olgu_turleri(metin):
+    turler = set()
+    for ad, desen in GUCLU_OLGU_DESENLERI:
+        if ad != "performans":
+            if desen.search(metin or ""):
+                turler.add(ad)
+            continue
+        for m in desen.finditer(metin or ""):
+            birim = m.group(2).lower()
+            esik = next((v for k, v in T28_GUCLU_PERFORMANS.items()
+                         if birim.startswith(k)), None)
+            if esik is not None and int(m.group(1)) >= esik:
+                turler.add(ad)
+                break
+    return turler
+
+
+def t28_baslik_guclu_olgu(metin_obj):
+    """Alt satır/gövdedeki güçlü olgu başlıkta yoksa reddeder."""
+    if not isinstance(metin_obj, dict):
+        return True, None
+    baslik = metin_obj.get("baslik", "") or ""
+    if not baslik:
+        return True, None
+    alt = (metin_obj.get("neden_onemli", "") or "") + " " + \
+          (metin_obj.get("ozet", "") or metin_obj.get("ozet_kisa", "") or "")
+    baslik_olgulari = _olgu_turleri(baslik)
+    # Başlıkta zaten bir olgu varsa kural sağlanmış sayılır: hangi
+    # olgunun daha güçlü olduğunu metinden ölçemeyiz, ama düz skorun
+    # son çare olduğunu ölçebiliriz.
+    if baslik_olgulari:
+        return True, None
+    alt_olgulari = _olgu_turleri(alt)
+    if not alt_olgulari:
+        return True, None          # ortada güçlü olgu yok, düz skor doğru
+    if not DUZ_SKOR_BASLIK_DESENI.search(baslik):
+        return True, None          # düz skor değil, başka bir kanca var
+    return False, [f"başlık düz skor ama metinde güçlü olgu var "
+                   f"({', '.join(sorted(alt_olgulari))}) — düz skor son çaredir, "
+                   f"başlık en güçlü olguyu kullanmalı"]
+
+
+# ---------------------------------------------------------------------------
+# T29 — ALT SATIR İLE GÖVDE BİRBİRİNİ TEKRAR EDEMEZ
+# ---------------------------------------------------------------------------
+#
+# T25 sadece SAYI izlerini karşılaştırıyor. Gerçek üretim hatası
+# (2025-12-21 MIN-MIL) sayısızdı:
+#   alt satır: "16 sayılık farktan dönerek maçı son çeyrekte kontrol
+#               altına aldı."
+#   gövde:     "...son çeyreği kontrollü geçen Timberwolves, farkı
+#               koruyarak..."
+# Aynı olay iki kez, ortak sayı yok. Kıyas KELİME KÖKÜ üzerinden.
+
+# İçerik taşımayan kelimeler: eşleşmeleri tekrar sayılmaz.
+_ETKISIZ_KELIMELER = {
+    "ancak", "ardından", "bu", "bir", "daha", "değil", "diğer", "fakat",
+    "gibi", "hem", "için", "ikinci", "ile", "kadar", "karşı", "maçta",
+    "olarak", "önce", "rağmen", "sadece", "sonra", "sonunda", "üzerine",
+    "vardı", "yine", "birinci", "üçüncü", "dördüncü", "takım", "takımı",
+    "oyuncu", "maç", "maçı", "maçın", "sayı", "sayıyla", "puan",
+    # Genel yardımcı fiiller: iki cümlede de geçmeleri "aynı olayı
+    # anlatıyorlar" demek değil. ("kontrol altına ALDI" ile "galibiyeti
+    # ALDI" ortak kök sayılıyordu.)
+    "aldı", "aldığı", "alarak", "geçti", "geçen", "oldu", "olan", "kaldı",
+    "buldu", "verdi", "yaptı", "yapan", "etti", "eden", "gitti", "girdi",
+}
+_KELIME_DESENI = re.compile(r"[A-Za-zÇĞİÖŞÜçğıöşü]{4,}")
+# Kaç ortak kök tekrar sayılır. 1 fazla gevşek ("fark" tek başına
+# tesadüf olabilir); 2 ölçüldü, gerçek tekrarları yakalıyor.
+T29_ORTAK_KOK_ESIGI = 2
+# Kök = kelimenin ilk 5 harfi. Türkçe çekim eklerini kaba ama yeterli
+# biçimde eliyor: "kontrol/kontrollü", "çeyrekte/çeyreği" aynı köke iner.
+_KOK_UZUNLUGU = 5
+
+
+def _icerik_kokleri(metin, ozel_kokler):
+    """Metnin içerik köklerini döner. `ozel_kokler` zaten KÖK biçiminde."""
+    kokler = set()
+    for kelime in _KELIME_DESENI.findall(metin or ""):
+        kucuk = kelime.lower()
+        if kucuk in _ETKISIZ_KELIMELER:
+            continue
+        kok = kucuk[:_KOK_UZUNLUGU]
+        if kok in ozel_kokler:
+            continue
+        kokler.add(kok)
+    return kokler
+
+
+def t29_alt_satir_govde_tekrari(metin_obj, gercekler=None, ham_mac=None):
+    """Alt satır (neden_onemli) ile gövde aynı olayı anlatıyorsa reddeder."""
+    if not isinstance(metin_obj, dict):
+        return True, None
+    alt = metin_obj.get("neden_onemli", "") or ""
+    govde = metin_obj.get("ozet", "") or metin_obj.get("ozet_kisa", "") or ""
+    if not alt or not govde:
+        return True, None
+    # TAKIM VE OYUNCU ADLARI tekrar sayılmaz: gövde zaten aynı maçı
+    # anlatıyor, adların iki yerde de geçmesi kaçınılmaz. Adları KUTU
+    # SKORDAN alıyoruz — gerçek kayıtlarında çoğu zaman üç harfli kod
+    # var, tam ad yok ("Timberwolves" ortak kök sayılıyordu, ölçüldü).
+    ozel = set()
+    for kaynak in (gercekler or []):
+        for deger in (kaynak.get("veri") or {}).values():
+            if isinstance(deger, str):
+                for parca in _KELIME_DESENI.findall(deger):
+                    ozel.add(parca.lower()[:_KOK_UZUNLUGU])
+    try:
+        bt = (ham_mac or {})["box_traditional"]["boxScoreTraditional"]
+        for takim in (bt["homeTeam"], bt["awayTeam"]):
+            for parca in _KELIME_DESENI.findall(
+                    f"{takim.get('teamCity', '')} {takim.get('teamName', '')}"):
+                ozel.add(parca.lower()[:_KOK_UZUNLUGU])
+            for p in takim.get("players", []):
+                for parca in _KELIME_DESENI.findall(
+                        f"{p.get('firstName', '')} {p.get('familyName', '')}"):
+                    ozel.add(parca.lower()[:_KOK_UZUNLUGU])
+    except (KeyError, TypeError):
+        pass
+    ortak = _icerik_kokleri(alt, ozel) & _icerik_kokleri(govde, ozel)
+    if len(ortak) < T29_ORTAK_KOK_ESIGI:
+        return True, None
+    return False, [f"alt satır ile gövde aynı olayı anlatıyor "
+                   f"(ortak: {', '.join(sorted(ortak))}) — alt satır maçın NEDEN "
+                   f"önemli olduğunu söyler, gövde ne olduğunu; ikisi tekrar edemez"]
+
+
+# ---------------------------------------------------------------------------
+# T30 — KİLİT İSTATİSTİK METİNDE TEKRARLANAMAZ
+# ---------------------------------------------------------------------------
+#
+# Kilit istatistik kutusu zaten sayfada duruyor ("hücum ribaundu MIA 12 -
+# NYK 4"). Metnin aynı olguyu ikinci kez anlatması yer kaplayıp bilgi
+# eklemiyor. Gerçek üretim hatası (2025-12-21 NYK-MIA): metin "Miami'nin
+# ribaund üstünlüğüne rağmen..." diyordu, kutuda hücum ribaundu vardı.
+#
+# Hangi istatistiğin kilit olacağı derle.py'de hesaplanıyor — TEK KAYNAK.
+# Buradan gecikmeli içe alınıyor (derle yaz'ı, yaz cumle'yi, cumle bunu
+# içe alıyor; modül düzeyinde import döngü kurardı).
+KILIT_METIN_DESENLERI = {
+    # Kilit istatistik "hücum ribaundu" iken metnin çıplak "ribaund
+    # üstünlüğü" demesi AYNI olguyu tekrar etmektir — okuyucu kutuda
+    # zaten görüyor (ölçüldü: NYK-MIA, "Miami'nin ribaund üstünlüğüne
+    # rağmen"). İkisi de aynı desene bakıyor.
+    "ribaund": re.compile(r"ribaund", re.I),
+    "hücum ribaundu": re.compile(r"ribaund", re.I),
+    "üçlük": re.compile(r"üçlük|üç\s*say[ıi]l[ıi]k", re.I),
+    "asist": re.compile(r"asist", re.I),
+    "top kaybı": re.compile(r"top\s+kay[bı]", re.I),
+    "serbest atış denemesi": re.compile(r"serbest\s+at[ıi]ş", re.I),
+    "ikinci şans sayısı": re.compile(r"ikinci\s+şans", re.I),
+    "boyalı alan sayısı": re.compile(r"boyal[ıi]\s+alan", re.I),
+}
+
+
+def t30_kilit_istatistik_tekrari(metin, kilit_adi):
+    """Kilit istatistik olarak KUTUYA çıkacak olgu metinde geçiyorsa reddeder."""
+    if not kilit_adi:
+        return True, None
+    desen = KILIT_METIN_DESENLERI.get(kilit_adi)
+    if not desen:
+        return True, None
+    m = desen.search(metin or "")
+    if not m:
+        return True, None
+    return False, [f"'{m.group(0)}' — bu maçın KİLİT İSTATİSTİĞİ ({kilit_adi}) "
+                   f"zaten kendi kutusunda gösteriliyor, metinde tekrarlanmaz"]
+
+
 def t23_mimari_kural_ihlalleri(metin):
     sorunlu = []
     for cumle in cumlelere_ayir(metin):
@@ -1744,6 +1959,22 @@ def mac_metnini_dogrula(metin, gercekler, ham_mac, haber_skoru, yasakli_liste, e
     t25_ok, t25_sebep = t25_ust_satir_tekrari(metin)
     if not t25_ok:
         sonuc["gerekce"].extend(f"T25: {x}" for x in t25_sebep)
+    # T28/T29 de nesne bazlı: başlık-gövde ve alt satır-gövde ilişkisi
+    # tek alana bakarak ölçülemez.
+    t28_ok, t28_sebep = t28_baslik_guclu_olgu(metin)
+    if not t28_ok:
+        sonuc["gerekce"].extend(f"T28: {x}" for x in t28_sebep)
+    t29_ok, t29_sebep = t29_alt_satir_govde_tekrari(metin, gercekler, ham_mac)
+    if not t29_ok:
+        sonuc["gerekce"].extend(f"T29: {x}" for x in t29_sebep)
+    # T30 kilit istatistiğin ADINI bilmek zorunda. Hesap derle.py'de
+    # (tek kaynak); döngüsel içe alma olmasın diye çağrı anında alınıyor.
+    _kilit_adi = None
+    try:
+        import derle as _derle_modul
+        _kilit_adi = _derle_modul.kilit_istatistik_adi(ham_mac)
+    except Exception:
+        _kilit_adi = None
     # DİKKAT: "and v" filtresi kaldırıldı — önceki hâli BOŞ bir alanı
     # (v == "") doğrulama kapsamının tamamen DIŞINA atıyordu, yani boş
     # metin hiçbir testten geçmeden "kabul" görüyordu (gerçek üretim
@@ -1764,6 +1995,12 @@ def mac_metnini_dogrula(metin, gercekler, ham_mac, haber_skoru, yasakli_liste, e
                     sonuc["gerekce"].append(f"{alan}/{tur}: {detay}")
 
     tum_metin = " ".join(dolu_alanlar.values())
+    if tum_metin and _kilit_adi:
+        t30_ok, t30_sebep = t30_kilit_istatistik_tekrari(tum_metin, _kilit_adi)
+        sonuc["alanlar"]["T30"] = {"gecti": t30_ok, "detay": t30_sebep}
+        if not t30_ok:
+            hepsi_gecti = False
+            sonuc["gerekce"].extend(f"T30: {x}" for x in t30_sebep)
     if tum_metin:
         gecti5, detay5 = t5_kazanan(tum_metin, gercekler, ham_mac)
         sonuc["alanlar"]["T5"] = {"gecti": gecti5, "detay": detay5}
@@ -1784,9 +2021,12 @@ def mac_metnini_dogrula(metin, gercekler, ham_mac, haber_skoru, yasakli_liste, e
         hepsi_gecti = False
         sonuc["gerekce"].append("T8: haber_skoru>=6 iken muzip:true")
 
-    # T25 gerekçesi eklenmişse metin kabul edilmez (yukarıda, nesne
-    # bazlı test olarak çalıştırıldı).
-    if any(g.startswith("T25:") for g in sonuc["gerekce"]):
+    # NESNE BAZLI testlerin gerekçesi kabulü düşürür — bunlar tek alana
+    # bakarak ölçülemediği için yukarıda ayrıca çalıştırıldı ve alan
+    # döngüsünün dışında kaldı. Tek yerde toplanıyor: yeni bir nesne
+    # bazlı test eklendiğinde burası da güncellenmezse test gerekçe
+    # yazar ama metin yine kabul görür.
+    if any(g.split(":")[0] in ("T25", "T28", "T29") for g in sonuc["gerekce"]):
         hepsi_gecti = False
 
     sonuc["kabul"] = hepsi_gecti
