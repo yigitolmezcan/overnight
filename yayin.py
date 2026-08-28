@@ -125,17 +125,37 @@ def sonraki_gece(d):
     # ve ertesi gün kronoloji kaldığı yerden devam eder.
     son = d.get("sira_imleci") or (d["yayinlanan"][-1] if d["yayinlanan"] else _gun_ekle(d["sezon_baslangici"], -1))
     atla = set(d["atlanan"]) | set(d["yayinlanan"]) | set(d.get("engellenen", []))
+    # VERİSİ ÇEKİLEMEYEN GECE SİSTEMİ DURDURMAZ (kullanıcı kuralı).
+    # NBA servisi GitHub koşucusunu IP bazlı engelliyor; bir geceye
+    # ulaşılamayınca eskiden bütün iş çöküyor ve sıra ORADA duruyordu.
+    # Artık o gece atlanıp bir sonrakine geçiliyor, atlananlar da
+    # `ulasilamayan` listesinde toplanıp çağırana bildiriliyor.
+    ulasilamayan = []
     for i in range(1, ILERI_BAKMA_SINIRI + 1):
         aday = _gun_ekle(son, i)
         if aday > d["sezon_bitisi"]:
-            return None
+            break
         if aday in atla:
             continue
-        _, mac_idleri = cek.gece_mac_idlerini_al(aday)
+        try:
+            _, mac_idleri = cek.gece_mac_idlerini_al(aday)
+        except Exception as hata:
+            # Ağ/engel hatası. Gece BAŞARISIZ diye işaretlenmiyor —
+            # veri yarın gelebilir; sadece bu koşuda atlanıyor.
+            ulasilamayan.append((aday, f"{type(hata).__name__}: {str(hata)[:80]}"))
+            print(f"  {aday}: veri alınamadı ({type(hata).__name__}) — atlanıyor.")
+            continue
         if len(mac_idleri) >= ASGARI_MAC_SAYISI:
+            if ulasilamayan:
+                d["_ulasilamayan"] = ulasilamayan
             return aday
         if mac_idleri:
             print(f"  {aday}: {len(mac_idleri)} maç — eşiğin ({ASGARI_MAC_SAYISI}) altında, atlanıyor.")
+    # Hiçbir aday bulunamadı. SEBEP ÖNEMLİ: sezon gerçekten bitti mi,
+    # yoksa hiçbirine ulaşamadık mı? İkisi aynı şey değil ve aynı
+    # sessizlikle geçilemez.
+    if ulasilamayan:
+        d["_ulasilamayan"] = ulasilamayan
     return None
 
 
@@ -159,7 +179,21 @@ def uret():
         return 0
 
     tarih = sonraki_gece(d)
+    ulasilamayan = d.pop("_ulasilamayan", [])
+    if ulasilamayan:
+        # SESSİZ KALMIYOR: atlanan geceler kayda geçiyor. Bir gecenin
+        # verisine ulaşılamaması normal bir "gece yok" durumu DEĞİL,
+        # altyapı arızası — bildirilmezse sıra sessizce eriyor.
+        print(f"UYARI: {len(ulasilamayan)} gecenin verisine ulaşılamadı, atlandı:")
+        for gun, sebep in ulasilamayan:
+            print(f"  - {gun}: {sebep}")
+
     if tarih is None:
+        if ulasilamayan:
+            # Sezon bitmedi; hiçbir geceye ULAŞILAMADI. İki durum
+            # birbirine karıştırılamaz.
+            print("ÜRETİLECEK GECE BULUNAMADI — sebep veri erişimi, sezon sonu değil.")
+            return 3
         print("Sezonda yayınlanacak gece kalmadı.")
         return 0
 

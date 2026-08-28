@@ -102,6 +102,15 @@ jobs:
               echo "Şablona düşme alarmı — tekrar denenmiyor."
               exit 2
             fi
+            # 3 = hiçbir gecenin verisine ULAŞILAMADI (sezon sonu değil).
+            # Tekrar denemenin anlamı var: engel dönemsel olabilir. Ama
+            # son denemede de olmuyorsa iş DÜŞMELİ, sessizce "gece yok"
+            # deyip geçmemeli.
+            if [ "$KOD" -eq 3 ]; then
+              echo "veri_erisimi=1" >> "$GITHUB_OUTPUT"
+              echo "Gecelerin verisine ulaşılamadı."
+              if [ "$deneme" -ge 2 ]; then exit 3; fi
+            fi
             if [ "$deneme" -lt 2 ]; then
               echo "deneme $deneme düştü, 5 dakika sonra tekrar denenecek"
               sleep 300
@@ -187,6 +196,20 @@ jobs:
       # sonuç değil." Alarm çaldığında iş zaten kırmızı; burada ayrıca
       # ATANMIŞ issue açılıyor (atanmamış issue için GitHub e-posta
       # garanti etmiyor — 26 Ağustos'ta bunun bedeli ödendi).
+      # Kullanıcı kuralı: "Sistem sessizce durmasın — o geceyi atlayıp
+      # bir sonrakine geçsin ve bana bildirsin." Atlama sonraki_gece
+      # içinde yapılıyor; bildirimi bu adım yapıyor.
+      - name: Veri erişilemedi — issue aç
+        if: failure() && steps.uretim.outputs.veri_erisimi == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create \
+            --title "Gece verisi çekilemedi — $(date -u +%Y-%m-%d)" \
+            --body "$(printf 'Sıradaki arşiv gecelerinin hiçbirinin verisine ulaşılamadı, o yüzden bu sabah yeni gece üretilmedi. Site bir önceki gecede kaldı.\n\nBİLİNEN SEBEP: NBA veri servisi GitHub koşucusunun IP blokunu (Azure) engelliyor. Ölçüldü: aynı istek yerel makineden 0.5 saniyede dönüyor, koşucudan 25 saniyede zaman aşımına uğruyor. Kalıcı çözüm vekil sunucu (bkz. şartname, Çözülmemiş engeller).\n\nAtlanan geceler ve sebepleri:\n\n```\n%s\n```\n\nKayıtlar: %s/%s/actions/runs/%s' "$(grep -A 20 "verisine ulaşılamadı" /tmp/adim.log 2>/dev/null | head -20)" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID")" \
+            --assignee yigitolmezcan \
+            || echo "issue açılamadı"
+
       - name: Şablona düşme alarmı — issue aç
         if: failure() && steps.uretim.outputs.sablon_alarmi == '1'
         env:

@@ -3823,6 +3823,40 @@ def main():
     basar("Kutu skor: ad hâlâ dokunulabilir ve parlak",
           "td.oyad{color:var(--ink);cursor:pointer}" in _sayfa10)
 
+    # ==================================================================
+    # VERİSİ ÇEKİLEMEYEN GECE SİSTEMİ DURDURMAZ
+    # NBA servisi GitHub koşucusunu IP bazlı engelliyor. Eskiden bir
+    # geceye ulaşılamayınca bütün iş çöküyor ve sıra ORADA duruyordu.
+    # ==================================================================
+    basar("Atlama: ulaşılamayan gece hatası yutulmuyor, kaydediliyor",
+          "ulasilamayan.append((aday," in _yayin_kaynak
+          and 'd["_ulasilamayan"] = ulasilamayan' in _yayin_kaynak)
+    basar("Atlama: hata bir sonraki geceye geçmeyi engellemiyor",
+          "continue" in _yayin_kaynak.split("ulasilamayan.append")[1][:400])
+    # "Sezon bitti" ile "hiçbirine ulaşamadık" AYNI ŞEY DEĞİL.
+    basar("Atlama: sezon sonu ile erişim arızası ayrı çıkış kodları",
+          "return 3" in _yayin_kaynak
+          and "sebep veri erişimi, sezon sonu değil" in _yayin_kaynak)
+    basar("Atlama: atlanan geceler kayda yazılıyor (sessiz kalmıyor)",
+          "UYARI: {len(ulasilamayan)} gecenin verisine ulaşılamadı" in _yayin_kaynak)
+    basar("Atlama: iş atanmış issue açıyor",
+          "Veri erişilemedi — issue aç" in _akislar["uret.yml"]
+          and "--assignee yigitolmezcan"
+          in _akislar["uret.yml"].split("Veri erişilemedi — issue aç")[1])
+    basar("Atlama: çıkış kodu 3 son denemede işi düşürüyor",
+          'if [ "$KOD" -eq 3 ]' in _akislar["uret.yml"]
+          and 'if [ "$deneme" -ge 2 ]; then exit 3; fi' in _akislar["uret.yml"])
+    # Şartname notu: ileride kimse "zaten çalışıyordu" diye varsaymasın.
+    _sartname = open("overnight-teknik-sartname.md", encoding="utf-8").read()
+    basar("Şartname: çözülmemiş engel başlığı var",
+          "ÇÖZÜLMEMİŞ ENGEL" in _sartname
+          and "OTOMATİK VERİ ÇEKME HİÇ ÇALIŞMADI" in _sartname)
+    basar("Şartname: ölçüm tablosu ve IP teşhisi yazılı",
+          "20.171.20.54" in _sartname and "AS8075" in _sartname
+          and "Başlık eklemek bir çözüm DEĞİLDİR" in _sartname)
+    basar("Şartname: canlı sezon için vekil sunucu şartı yazılı",
+          "VEKİL SUNUCU ŞARTTIR" in _sartname)
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))

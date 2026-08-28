@@ -79,6 +79,58 @@ sadece bu). Tespit YOKLUĞU bilgi değildir — "X oynamadı" cümlesi
 sadece bu yokluktan asla üretilmez. Bu sınır resmi bir sakatlık
 raporu kaynağı eklenene kadar kalıcı.
 
+## 1.5. ÇÖZÜLMEMİŞ ENGEL — NBA verisi GitHub'dan çekilemiyor
+
+**Bu başlık bilerek boru hattının hemen ardında duruyor. İleride kimse
+"zaten çalışıyordu" diye varsaymasın: OTOMATİK VERİ ÇEKME HİÇ ÇALIŞMADI.**
+
+Bugüne kadar yayınlanan **her gecenin** ham verisi geliştiricinin kendi
+makinesinden çekildi. GitHub Actions koşucusu bir kez bile NBA verisi
+alamadı — depo geçmişinde `overnight-bot` yazarlı tek bir veri commit'i
+yoktur.
+
+### Ölçüm (28 Ağustos 2026)
+
+Koşucu: Azure `westus3`, çıkış IP `20.171.20.54`, AS8075 Microsoft.
+
+| İstek | GitHub koşucusu | Yerel makine (AS34984, TR) |
+|---|---|---|
+| `stats.nba.com/` kök | 301, 0.14 sn | — |
+| `nba_api` (kendi başlıklarıyla) | **ReadTimeout 25 sn** | **başarılı, 0.5 sn** |
+| `/stats/*` tarayıcı başlıklı curl | timeout | timeout |
+| `/stats/*` başlıksız curl | timeout | — |
+| `www.nba.com` | **403** | 200 |
+| `cdn.nba.com` | 403 | 403 |
+| `google.com`, `api.github.com` | 200 | 200 |
+
+### Sonuçlar
+
+1. **Ağ sorunu değil.** Kök adres 0.14 saniyede yanıt veriyor.
+2. **Başlık sorunu değil.** Başlıklı ve başlıksız istek aynı biçimde
+   takılıyor; `nba_api`'nin kendi başlık seti de koşucudan çalışmıyor.
+   Başlık eklemek bir çözüm DEĞİLDİR, denendi ve ölçüldü.
+3. **IP engeli.** `www.nba.com` Azure'dan açıkça 403 dönüyor. Aynı
+   kütüphane, aynı başlıklar, farklı IP → farklı sonuç.
+
+### Bunun anlamı
+
+- **Arşiv modunda** sistem ancak verisi ÖNCEDEN çekilmiş geceler için
+  çalışır. Verisi olmayan bir geceye sıra gelirse `sonraki_gece` o
+  geceyi atlar ve atlananları çağırana bildirir (`_ulasilamayan`);
+  `uret` çıkış kodu **3** döner ve iş atanmış issue açar. Sessizce
+  durmaz — ama üretmez de.
+- **Canlı sezonda VEKİL SUNUCU ŞARTTIR.** Canlı modda her gece taze
+  veri gerekir; vekil sunucu olmadan canlı mod çalışmaz. Konut
+  (residential) IP'si gerekir — engellenen tam olarak veri merkezi
+  blokları.
+- Ölçülen hacim: gece başına 19 MB ham JSON, telde gzip'li 1,4 MB;
+  ayda ~43 MB. Yani maliyet GB fiyatından değil, sağlayıcının asgari
+  alım tutarından geliyor.
+
+**Bu engel kapanmadan canlı sezona geçilemez.** Sezon başlamadan en az
+iki hafta önce vekil sunucu kurulmuş ve GitHub koşucusundan ÖLÇÜLEREK
+doğrulanmış olmalı.
+
 ## 2. Veri kaynağı
 
 **nba_api** (Python). Kurulumun ilk adımı: aşağıdaki uç noktaların hâlâ
