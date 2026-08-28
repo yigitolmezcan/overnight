@@ -56,6 +56,15 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:left}
 .rowlink{text-decoration:none;color:inherit}
 :focus-visible{outline:2px solid var(--c,var(--ember));outline-offset:3px}
+/* İçerik sütunu. MOBİL DEĞİŞMİYOR — 375px'te max-width hiç bağlamıyor,
+   bütün ölçüler aynı.
+   1024px ve üstünde genişliyor: 1440px ekranda yanlarda kocaman boşluk
+   kalıyordu. Kart (.sheet) da aynı ölçüye bağlı — sayfa genişleyip kart
+   dar kalsaydı ikisi görsel olarak ayrışırdı ve kutu skor tablosu
+   gereksiz yere yatay kaydırma isterdi.
+   DÜZ METİN AYRI: gövde paragrafları 68ch'de duruyor. Yapısal bloklar
+   (tablo, saha, saat şeridi) genişlikten kazanıyor ama okuma satırı
+   uzarsa göz satır başını kaybediyor — kazanç zarara dönüyor. */
 .wrap{max-width:700px;margin:0 auto;padding:0 20px 60px}
 
 .sec{--c:var(--ember);padding-top:44px}
@@ -736,6 +745,11 @@ table.kbs td.ilkbes::before{content:"";position:absolute;left:8px;top:50%;
   transform:translateY(-50%);width:3px;height:50%;background:#4A5566}
 table.kbs td:first-child{color:var(--ink);font-family:var(--txt);font-size:13.5px}
 table.kbs td.k{color:var(--ink);font-weight:700}
+/* Dakika: bağlam, manşet değil. Sayının yanında durur ama göz sayıya
+   gider — soluk gri, normal ağırlık, bir tık küçük. */
+/* Seçici `table.kbs` ile başlıyor: temel `table.kbs td` kuralı daha
+   özgül ve font-size'ı ezerdi (bu dosyada dördüncü kez aynı tuzak). */
+table.kbs td.kdk{color:var(--faint);font-weight:400;font-size:12px}
 /* Kullanıcı kuralı: Say/Rib/Ast/Dk yatay kaydırma OLMADAN görünmeli —
    bu dört sütun dar tutuldu, ileri istatistikler sağa kayabilir. */
 /* n+2 — bu daraltma İSTATİSTİK sütunları için; ad sütununa uygulanınca
@@ -1119,6 +1133,53 @@ td.khot{color:var(--amber);font-weight:700}
   .fiverow .st{flex-basis:80px}
   .starline{gap:10px 16px}
 }
+
+/* ===================== MASAÜSTÜ GENİŞLİĞİ =====================
+   1024px ve üstünde içerik sütunu genişliyor: 1440px ekranda yanlarda
+   kocaman boşluk kalıyordu (ölçüldü: içerik 660px, ekran 1440px).
+   MOBİL DEĞİŞMİYOR — 375px'te max-width hiç bağlamıyor.
+
+   KART GENİŞLEMİYOR, 700px kalıyor. Ölçtüm: kutu skor tablosu 700px
+   kartta yatay kaydırma İSTEMİYOR (taşma 0), yani genişletmenin bir
+   kazancı yok; 11 sütunu daha da açmak aralarında boşluk bırakırdı.
+   Kart zaten odaklanmış bir katman, sayfadan dar olması doğru.
+
+   DÜZ METİN AYRI TUTULUYOR: gövde paragrafları 68ch'de duruyor.
+   Yapısal bloklar (tablo, saha, saat şeridi) genişlikten kazanıyor
+   ama okuma satırı uzarsa göz satır başını kaybediyor.
+
+   KONUM: bu blok stil sayfasının SONUNDA. Aynı özgüllükteki temel
+   kurallardan önce yazılırsa eziliyor — bu dosyada beşinci kez. */
+@media(min-width:1024px){
+  .wrap{max-width:900px}
+  .gbody p,.recap,.kicker,.dblock p,.gbody{max-width:68ch}
+  /* Sayfa 660'tan 860'a çıkınca Formda ve Sıralama satırları ufak
+     kaldı: oyuncu adı 14.5px ve takım adı 13.5px, gövde metni ise
+     15px — listeler gövdeden KÜÇÜKTÜ, oysa ikisi de sayfanın ana
+     içeriği. Punto burada, sadece masaüstünde büyüyor; mobilde
+     satırlar zaten ekranı dolduruyor ve büyütmek taşma yaratır.
+     Satır dolgusu da artıyor: yazı büyüyüp aralık sabit kalırsa
+     liste sıkışık görünüyor. */
+  .fp{padding:15px 2px;gap:14px}
+  .fp .nm{font-size:16px}
+  .fp .tm{font-size:11.5px}
+  .fp .avg{width:78px}
+  .fp .avg b{font-size:18px}
+  .fp .avg s{font-size:10.5px}
+  .sq{gap:5px}
+  .sq>span[data-sayi]{width:30px}
+  .sq u{font-size:14px}
+  .sq i{height:3.5px}
+  .formnot{font-size:9.5px}
+  .sr{padding:13px 2px;gap:13px}
+  .sr .ar{font-size:12.5px;width:33px}
+  .sr .tn{font-size:15.5px}
+  .sr .pos{width:52px}
+  .sr .pos b{font-size:17px}
+  .sr .pos s{font-size:9px}
+  .sr .f10{gap:3px}
+  .sr .f10 i{width:10px;height:10px}
+}
 </style>
 </head>
 <body>
@@ -1383,6 +1444,41 @@ function satirAraliginiAyarla(){
     if(tasti()){ sheet.style.setProperty('--crpad',crpad+'px'); break; }
     crpad+=1;
   }
+
+  // 3) KISA KADRODAKİ ÖLÜ ALAN. Panolar aynı ızgara gözünde duruyor,
+  //    göz UZUN kadroya göre yükseliyor; tek bir dolgu ikisine birden
+  //    verilince kısa kadronun altında ölü alan kalıyordu. Ölçüldü,
+  //    21 Aralık: SAC 10 satır → 0px, HOU 8 satır → 92px; ATL 46px;
+  //    NYK-MIA 9'a 9 olduğu için 0px — kullanıcının "New York doğru,
+  //    Sacramento bozuk" dediği ayrımın tamamı bu.
+  //
+  //    Dolgu artık HER PANOYA AYRI veriliyor: her pano gözü kendi
+  //    dolgusuyla dolduruyor. Kart yüksekliği değişmiyor (gözü hâlâ
+  //    en uzun kadro belirliyor, kart alta sabit) — sekme değişince
+  //    hiçbir şey ZIPLAMIYOR, sadece baktığın tablonun satır aralığı
+  //    kadrosuna göre ferahlıyor.
+  const kap=govde.querySelector('.kpanes');
+  if(kap){
+    // Göz yüksekliği kilitleniyor: dolgu artarken pano gözü büyütüp
+    // ölçümü kendi kendine geçersiz kılmasın.
+    const gozAlt=kap.getBoundingClientRect().bottom;
+    kap.style.height=kap.getBoundingClientRect().height+'px';
+    for(const pano of kap.querySelectorAll('.kpane')){
+      const satir=pano.querySelectorAll('tbody tr').length;
+      const son=pano.lastElementChild;
+      if(!satir||!son) continue;
+      const olu=()=>gozAlt-son.getBoundingClientRect().bottom;
+      let d=pad;
+      // Her 1px dolgu satır başına 2px büyütür — doğrudan hesapla,
+      // sonra ÖLÇEREK geri çekil.
+      d=Math.min(KBS_PAD_MAX, d+Math.floor(olu()/(2*satir)));
+      pano.style.setProperty('--kbspad',d+'px');
+      while(olu()<0 && d>pad && guvenlik++<200){
+        d-=1; pano.style.setProperty('--kbspad',d+'px');
+      }
+    }
+    kap.style.removeProperty('height');
+  }
 }
 
 /* SENKRON çağrı — bilerek. Kartın yüksekliği CSS'ten geliyor
@@ -1443,13 +1539,21 @@ function _ustKatman(){
   if(sheet.classList.contains('on')) return 1;
   return 0;
 }
+/* Kapatma geçmişi de geri alıyor; o `history.back()` bir popstate
+   doğuruyor ve popstate işleyicisi ÜSTTEKİ katmanı kapatıyor. İkisi
+   birleşince tek bir ✕ iki katmanı birden kapatıyordu: oyuncu kartını
+   kapatınca altındaki kutu skor da gidiyordu (ölçüldü — hata bir kare
+   sonra ortaya çıktığı için eşzamanlı ölçümde görünmüyordu).
+   Bayrak, kendi tetiklediğimiz popstate'i bir kez yutuyor. */
+let _geriYutulacak=false;
+
 function _katmaniKapat(n,geri){
   const s=n===2?sheet2:sheet, sc=n===2?scrim2:scrim;
   s.classList.remove('on'); sc.classList.remove('on'); s.style.transform='';
   if(n===1) removeEventListener('resize',satirAraliginiAyarla);
   // Sayfa kaydırması ancak SON katman kapanınca serbest kalıyor.
   if(_ustKatman()===0) document.body.style.overflow='';
-  if(geri && history.state && history.state.kart) history.back();
+  if(geri && history.state && history.state.kart){ _geriYutulacak=true; history.back(); }
 }
 
 function oyuncuKartiAc(pid,macId){
@@ -1489,6 +1593,7 @@ function kartAc(html){
   sheet.innerHTML=html;
   sheet.classList.toggle('besikart',html.indexOf('class="bp"')!==-1);
   sheet.style.removeProperty('--kbspad');
+  sheet.querySelectorAll('.kpane').forEach(p=>p.style.removeProperty('--kbspad'));
   sheet.classList.add('on'); scrim.classList.add('on');
   document.body.style.overflow='hidden';
   // İçerik DEĞİŞİRSE (maç kartından maç kartına) yeni geçmiş kaydı yok.
@@ -1521,25 +1626,66 @@ const _fareVar = () => matchMedia('(hover:hover) and (pointer:fine)').matches;
 scrim.addEventListener('click',()=>{ if(_fareVar()) kartKapat(); });
 scrim2.addEventListener('click',()=>{ if(_fareVar()) kartKapat(); });
 // popstate geçmişi ZATEN geriye aldı; burada history.back çağrılmaz.
-addEventListener('popstate',()=>{ const n=_ustKatman(); if(n) _katmaniKapat(n,false); });
+addEventListener('popstate',()=>{
+  // Kendi kapatmamızın doğurduğu popstate ise katman ZATEN kapandı.
+  if(_geriYutulacak){ _geriYutulacak=false; return; }
+  const n=_ustKatman(); if(n) _katmaniKapat(n,false);
+});
 addEventListener('keydown',e=>{ if(e.key==='Escape'&&_ustKatman()) kartKapat(); });
 
 /* aşağı sürükleyerek kapatma */
-// Katmana bağlı: hangi kart sürükleniyorsa O kapanıyor.
+/* AŞAĞI SÜRÜKLEYEREK KAPATMA. Katmana bağlı: hangi kart
+   sürükleniyorsa O kapanıyor, kart üstüne kartta üstteki önce gider.
+
+   Eskiden SADECE `.grab` tutamağına bağlıydı — 34x3 piksellik bir
+   şerit. Parmakla isabet etmek neredeyse imkânsızdı, o yüzden mobilde
+   "çalışmıyor" görünüyordu. Artık tutamak VE başlık alanı sürükleniyor.
+
+   TABLO ALANI HARİÇ: `.kbody` içinde dikey kaydırma olabiliyor;
+   orada sürükleme kartı kapatırsa okuyucu listeyi kaydıramaz.
+
+   İki kapanma ölçütü var: eşik (80px) VEYA hızlı aşağı hareket. Sadece
+   eşiğe bakılsaydı hızlı ve kısa bir savurma cevapsız kalırdı. */
+const SURUKLE_ESIGI = 80;      // px
+const SURUKLE_HIZI = 0.55;     // px/ms — bunun üstü "savurma" sayılıyor
+
 function surukleBagla(kat,kapat){
-  const grab=kat.querySelector('.grab'); if(!grab) return;
-  let y0=null,dy=0;
-  const bas=y=>{y0=y;dy=0;kat.style.transition='none';};
-  const gec=y=>{if(y0===null)return;dy=Math.max(0,y-y0);
-    kat.style.transform=`translateX(-50%) translateY(${dy}px)`;};
-  const bit=()=>{if(y0===null)return;kat.style.transition='';
-    if(dy>110)kapat(); else kat.style.transform='translateX(-50%) translateY(0)';y0=null;};
-  grab.addEventListener('touchstart',e=>bas(e.touches[0].clientY),{passive:true});
-  grab.addEventListener('touchmove',e=>gec(e.touches[0].clientY),{passive:true});
-  grab.addEventListener('touchend',bit);
-  grab.addEventListener('mousedown',e=>{bas(e.clientY);
-    const mm=ev=>gec(ev.clientY),mu=()=>{bit();removeEventListener('mousemove',mm);removeEventListener('mouseup',mu);};
-    addEventListener('mousemove',mm);addEventListener('mouseup',mu);});
+  const tutamaklar=[...kat.querySelectorAll('.grab, .khead, .ohd')];
+  if(!tutamaklar.length) return;
+  let y0=null,dy=0,t0=0,sonY=0,sonT=0,hiz=0;
+  const bas=y=>{
+    y0=y; dy=0; hiz=0; t0=sonT=performance.now(); sonY=y;
+    kat.style.transition='none';
+  };
+  const gec=y=>{
+    if(y0===null) return;
+    dy=Math.max(0,y-y0);
+    const simdi=performance.now(), dt=simdi-sonT;
+    if(dt>0){ hiz=(y-sonY)/dt; sonY=y; sonT=simdi; }
+    kat.style.transform=`translateX(-50%) translateY(${dy}px)`;
+  };
+  const bit=()=>{
+    if(y0===null) return;
+    kat.style.transition='';
+    // Eşiği geçtiyse ya da aşağı savurulduysa kapan; yoksa geri otur.
+    if(dy>SURUKLE_ESIGI || (hiz>SURUKLE_HIZI && dy>16)) kapat();
+    else kat.style.transform='translateX(-50%) translateY(0)';
+    y0=null;
+  };
+  const uygun=e=>!e.target.closest('.kbody');
+  for(const el of tutamaklar){
+    el.addEventListener('touchstart',e=>{ if(uygun(e)) bas(e.touches[0].clientY); },{passive:true});
+    el.addEventListener('touchmove',e=>gec(e.touches[0].clientY),{passive:true});
+    el.addEventListener('touchend',bit);
+    el.addEventListener('touchcancel',bit);
+    el.addEventListener('mousedown',e=>{
+      if(!uygun(e)) return;
+      bas(e.clientY);
+      const mm=ev=>gec(ev.clientY);
+      const mu=()=>{bit();removeEventListener('mousemove',mm);removeEventListener('mouseup',mu);};
+      addEventListener('mousemove',mm); addEventListener('mouseup',mu);
+    });
+  }
 }
 
 /* ---- box score kartı ---- */
@@ -1548,16 +1694,22 @@ function surukleBagla(kat,kapat){
 // DİKKAT: "FA" KULLANILMAZ — Türk basketbol istatistiklerinde FA
 // FAUL demektir. Serbest atış sütununa FA yazılmıştı ve tam da bu
 // yüzden faul sanılıyordu ("3/7 faul olamaz"). Serbest atış = SA.
-const KOLONLAR=[['pts','SAY','k'],['reb','RİB'],['ast','AST'],['min','DK'],['fg','ŞUT'],
-                ['3p','3S'],['ft','SA'],['stl','TÇ'],['blk','BLK'],['to','TK'],['pm','+/−']];
+/* Sütun sırası standart box score düzeni: dakika oyuncu adından hemen
+   sonra (kullanıcı kararı). DİKKAT — dakika SAYIYI EZMEMELİ: bağlam
+   bilgisi, manşet değil. `sonuk` işareti onu soluk ve bir tık küçük
+   yapıyor (bkz. td.kdk), sayı kalın ve beyaz kalıyor. */
+const KOLONLAR=[['min','DK',null,'sonuk'],['pts','SAY','k'],['reb','RİB'],['ast','AST'],
+                ['fg','ŞUT'],['3p','3S'],['ft','SA'],['stl','TÇ'],['blk','BLK'],
+                ['to','TK'],['pm','+/−']];
 
 function isaretliMi(t){ return t.oyuncular.some(o=>o.gecti_mi||o.aykiri||o.kaybedenin_en_iyisi); }
 
 function boxTablosu(t){
   const satir=o=>{
     const cls=[o.gecti_mi?'kstar':'',o.kaybedenin_en_iyisi?'kbest':''].filter(Boolean).join(' ');
-    const huc=KOLONLAR.map(([alan,,vurgu])=>{
-      const c=[vurgu?'k':'',o.aykiri&&o.aykiri_alan===alan?'khot':''].filter(Boolean).join(' ');
+    const huc=KOLONLAR.map(([alan,,vurgu,ek])=>{
+      const c=[vurgu?'k':'',ek==='sonuk'?'kdk':'',
+               o.aykiri&&o.aykiri_alan===alan?'khot':''].filter(Boolean).join(' ');
       return `<td${c?` class="${c}"`:''}>${esc(String(o[alan]))}</td>`;}).join('');
     // Ad dokunulabilir SADECE kartı olan oyuncuda; işaret de o zaman
     // çiziliyor, yoksa okuyucuya yalan bir söz verilmiş olur.

@@ -1153,6 +1153,32 @@ td.khot{color:var(--amber);font-weight:700}
 @media(min-width:1024px){
   .wrap{max-width:900px}
   .gbody p,.recap,.kicker,.dblock p,.gbody{max-width:68ch}
+  /* Sayfa 660'tan 860'a çıkınca Formda ve Sıralama satırları ufak
+     kaldı: oyuncu adı 14.5px ve takım adı 13.5px, gövde metni ise
+     15px — listeler gövdeden KÜÇÜKTÜ, oysa ikisi de sayfanın ana
+     içeriği. Punto burada, sadece masaüstünde büyüyor; mobilde
+     satırlar zaten ekranı dolduruyor ve büyütmek taşma yaratır.
+     Satır dolgusu da artıyor: yazı büyüyüp aralık sabit kalırsa
+     liste sıkışık görünüyor. */
+  .fp{padding:15px 2px;gap:14px}
+  .fp .nm{font-size:16px}
+  .fp .tm{font-size:11.5px}
+  .fp .avg{width:78px}
+  .fp .avg b{font-size:18px}
+  .fp .avg s{font-size:10.5px}
+  .sq{gap:5px}
+  .sq>span[data-sayi]{width:30px}
+  .sq u{font-size:14px}
+  .sq i{height:3.5px}
+  .formnot{font-size:9.5px}
+  .sr{padding:13px 2px;gap:13px}
+  .sr .ar{font-size:12.5px;width:33px}
+  .sr .tn{font-size:15.5px}
+  .sr .pos{width:52px}
+  .sr .pos b{font-size:17px}
+  .sr .pos s{font-size:9px}
+  .sr .f10{gap:3px}
+  .sr .f10 i{width:10px;height:10px}
 }
 </style>
 </head>
@@ -1381,6 +1407,12 @@ let MAC_BY_ID={}, BESI=[], TARIH_ETIKET='', GECE_OYUNCULARI={};
 // döngü 92vh'ye kadar açıyor: kalan yer satırlara dağılıyor.
 const KBS_PAD_MIN=0, CR_PAD_MIN=2, CR_PAD_MAX=16;
 const KBS_PAD_MAX = matchMedia('(min-width:768px)').matches ? 30 : 14;
+// PANO DOLGUSU TAVANI AYRI. KBS_PAD_MAX bütün panolara verilen ORTAK
+// dolgunun başlangıcı; mobilde 14 olması bilinçli. Ama 3. adımda her
+// pano kendi gözünü doldururken bu tavan kısa kadroyu erken durduruyor
+// ve altta artık kalıyordu (ölçüldü, 375px: SAC-HOU 24px). Orada
+// ölçüm zaten taşmayı engelliyor, tavana gerek yok.
+const KBS_PANO_MAX = 30;
 function satirAraliginiAyarla(){
   const govde=sheet.querySelector('.kbody');
   const tablolar=[...sheet.querySelectorAll('.kpane table.kbs')];
@@ -1417,6 +1449,46 @@ function satirAraliginiAyarla(){
     sheet.style.setProperty('--crpad',(crpad+1)+'px');
     if(tasti()){ sheet.style.setProperty('--crpad',crpad+'px'); break; }
     crpad+=1;
+  }
+
+  // 3) KISA KADRODAKİ ÖLÜ ALAN. Panolar aynı ızgara gözünde duruyor,
+  //    göz UZUN kadroya göre yükseliyor; tek bir dolgu ikisine birden
+  //    verilince kısa kadronun altında ölü alan kalıyordu. Ölçüldü,
+  //    21 Aralık: SAC 10 satır → 0px, HOU 8 satır → 92px; ATL 46px;
+  //    NYK-MIA 9'a 9 olduğu için 0px — kullanıcının "New York doğru,
+  //    Sacramento bozuk" dediği ayrımın tamamı bu.
+  //
+  //    Dolgu artık HER PANOYA AYRI veriliyor: her pano gözü kendi
+  //    dolgusuyla dolduruyor. Kart yüksekliği değişmiyor (gözü hâlâ
+  //    en uzun kadro belirliyor, kart alta sabit) — sekme değişince
+  //    hiçbir şey ZIPLAMIYOR, sadece baktığın tablonun satır aralığı
+  //    kadrosuna göre ferahlıyor.
+  const kap=govde.querySelector('.kpanes');
+  if(kap){
+    // Göz yüksekliği kilitleniyor: dolgu artarken pano gözü büyütüp
+    // ölçümü kendi kendine geçersiz kılmasın.
+    const gozAlt=kap.getBoundingClientRect().bottom;
+    kap.style.height=kap.getBoundingClientRect().height+'px';
+    for(const pano of kap.querySelectorAll('.kpane')){
+      const satir=pano.querySelectorAll('tbody tr').length;
+      const son=pano.lastElementChild;
+      if(!satir||!son) continue;
+      const olu=()=>gozAlt-son.getBoundingClientRect().bottom;
+      let d=pad;
+      // Her 1px dolgu satır başına 2px büyütür — doğrudan hesapla,
+      // sonra ÖLÇEREK geri çekil.
+      d=Math.min(KBS_PANO_MAX, d+Math.floor(olu()/(2*satir)));
+      pano.style.setProperty('--kbspad',d+'px');
+      while(olu()<0 && d>pad && guvenlik++<200){
+        d-=1; pano.style.setProperty('--kbspad',d+'px');
+      }
+      // Yarım adım: 1px dolgu 12 kişilik kadroda 24px demek, o yüzden
+      // tam sayı adım tek başına 17px'e kadar artık bırakıyordu
+      // (ölçüldü, BKN). Yarım piksel artığı yarıya indiriyor.
+      pano.style.setProperty('--kbspad',(d+.5)+'px');
+      if(olu()<0) pano.style.setProperty('--kbspad',d+'px');
+    }
+    kap.style.removeProperty('height');
   }
 }
 
@@ -1532,6 +1604,7 @@ function kartAc(html){
   sheet.innerHTML=html;
   sheet.classList.toggle('besikart',html.indexOf('class="bp"')!==-1);
   sheet.style.removeProperty('--kbspad');
+  sheet.querySelectorAll('.kpane').forEach(p=>p.style.removeProperty('--kbspad'));
   sheet.classList.add('on'); scrim.classList.add('on');
   document.body.style.overflow='hidden';
   // İçerik DEĞİŞİRSE (maç kartından maç kartına) yeni geçmiş kaydı yok.

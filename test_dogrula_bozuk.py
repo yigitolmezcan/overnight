@@ -4266,6 +4266,66 @@ def main():
           "ek==='sonuk'?'kdk':''" in _s16
           and "['min','DK',null,'sonuk']" in _kol.replace(" ", ""))
 
+    # ==================================================================
+    # KISA KADRODAKİ ÖLÜ ALAN / MASAÜSTÜ PUNTO ÖLÇEĞİ
+    # ==================================================================
+    _s17 = _sayfa10
+
+    # 1) Ölü alan. Panolar aynı ızgara gözünde; tek dolgu ikisine
+    #    birden verilince kısa kadronun altında boşluk kalıyordu
+    #    (ölçüldü, 1440px: SAC-HOU 92px, ATL 46px, NYK 9'a 9 olduğu
+    #    için 0px).
+    basar("Ölü alan: dolgu her panoya AYRI veriliyor",
+          "pano.style.setProperty('--kbspad'," in _s17)
+    # Göz yüksekliği kilitlenmezse dolgu artarken göz de büyüyor ve
+    # ölçüm kendi kendini geçersiz kılıyor.
+    basar("Ölü alan: ölçüm sırasında göz yüksekliği kilitli",
+          "kap.style.height=kap.getBoundingClientRect().height+'px'" in _s17
+          and "kap.style.removeProperty('height')" in _s17)
+    basar("Ölü alan: taşarsa ÖLÇEREK geri çekiliyor",
+          "while(olu()<0 && d>pad" in _s17)
+    basar("Ölü alan: yarım adım artığı kırpıyor",
+          "pano.style.setProperty('--kbspad',(d+.5)+'px');" in _s17
+          and "if(olu()<0) pano.style.setProperty('--kbspad',d+'px');" in _s17)
+    # Ortak dolgunun mobil tavanı (14) bilinçli; pano doldurmada
+    # geçerli olursa kısa kadro erken duruyor (ölçüldü: 375px'te 24px
+    # artık). Orada ölçüm zaten taşmayı engelliyor.
+    basar("Ölü alan: pano tavanı ortak dolgu tavanından AYRI",
+          "const KBS_PANO_MAX = 30;" in _s17
+          and "Math.min(KBS_PANO_MAX," in _s17
+          and "Math.min(KBS_PAD_MAX," not in _s17)
+    basar("Ölü alan: temizlikte pano dolguları da siliniyor",
+          "sheet.querySelectorAll('.kpane').forEach(p=>p.style.removeProperty('--kbspad'));"
+          in _s17)
+    # Kart yüksekliği DEĞİŞMEMELİ: gözü hâlâ en uzun kadro belirliyor,
+    # yoksa sekme değişince kart alta sabit olduğu için her şey ziplar.
+    basar("Ölü alan: panolar hâlâ aynı ızgara gözünde",
+          ".kpane{grid-area:1/1;min-width:0}" in _s17
+          and ".kpanes{display:grid}" in _s17)
+
+    # 2) Masaüstü punto ölçeği. SADECE 1024px+ bloğunda.
+    _mb = _s17.split("@media(min-width:1024px){")[1]
+    _mb = _mb[:_mb.index("\n}")]
+    for _sec, _bek in [(".fp .nm{font-size:16px}", "oyuncu adı"),
+                       (".fp .tm{font-size:11.5px}", "takım satırı"),
+                       (".fp .avg b{font-size:18px}", "ortalama"),
+                       (".sq u{font-size:14px}", "son 5 maç sayıları"),
+                       (".sr .tn{font-size:15.5px}", "takım adı"),
+                       (".sr .pos b{font-size:17px}", "sıra"),
+                       (".sr .f10 i{width:10px;height:10px}", "form kutuları")]:
+        basar("Punto: %s masaüstünde büyüyor" % _bek, _sec in _mb)
+    # Yazı büyüyüp aralık sabit kalırsa liste sıkışık görünüyor.
+    basar("Punto: satır dolgusu da artıyor",
+          ".fp{padding:15px 2px;gap:14px}" in _mb
+          and ".sr{padding:13px 2px;gap:13px}" in _mb)
+    # MOBİL DEĞİŞMEDİ: taban kurallar yerinde ve blok dışında.
+    basar("Punto: mobil taban puntoları yerinde",
+          ".fp .nm{display:block;font-size:14.5px" in _s17
+          and "font-size:13.5px;font-weight:700;letter-spacing:-.01em" in _s17
+          and ".sq u{display:block;font-family:var(--mono);font-size:12.5px" in _s17)
+    basar("Punto: büyütme kuralları mobil tabandan SONRA",
+          _s17.index("@media(min-width:1024px){") > _s17.index(".fp .nm{display:block"))
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))
