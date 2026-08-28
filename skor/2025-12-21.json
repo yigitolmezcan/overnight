@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-21",
-  "hesaplandi": "2026-08-27T15:33:25.090117Z",
+  "hesaplandi": "2026-08-28T14:31:42.037518Z",
   "en_iyi_skor": 9.06,
   "maclar": [
     {
@@ -25,7 +25,11 @@
       "dep": "CHI",
       "ev_skor": 150,
       "dep_skor": 152,
-      "en_iyi_performans": "Trae Young"
+      "en_iyi_performans": "Trae Young",
+      "esitlik_bozucu": [
+        0,
+        -2
+      ]
     },
     {
       "rozet": 9.06,
@@ -49,7 +53,11 @@
       "dep": "HOU",
       "ev_skor": 125,
       "dep_skor": 124,
-      "en_iyi_performans": "Dennis Schröder"
+      "en_iyi_performans": "Dennis Schröder",
+      "esitlik_bozucu": [
+        8,
+        -1
+      ]
     },
     {
       "rozet": 8.84,
@@ -73,7 +81,11 @@
       "dep": "MIA",
       "ev_skor": 132,
       "dep_skor": 125,
-      "en_iyi_performans": "Jalen Brunson"
+      "en_iyi_performans": "Jalen Brunson",
+      "esitlik_bozucu": [
+        0,
+        -7
+      ]
     },
     {
       "rozet": 7.14,
@@ -97,7 +109,11 @@
       "dep": "MIL",
       "ev_skor": 103,
       "dep_skor": 100,
-      "en_iyi_performans": "Kevin Porter Jr."
+      "en_iyi_performans": "Kevin Porter Jr.",
+      "esitlik_bozucu": [
+        6,
+        -3
+      ]
     },
     {
       "rozet": 3.93,
@@ -121,7 +137,11 @@
       "dep": "SAS",
       "ev_skor": 113,
       "dep_skor": 124,
-      "en_iyi_performans": "De'Aaron Fox"
+      "en_iyi_performans": "De'Aaron Fox",
+      "esitlik_bozucu": [
+        0,
+        -11
+      ]
     },
     {
       "rozet": 2.45,
@@ -145,7 +165,11 @@
       "dep": "TOR",
       "ev_skor": 96,
       "dep_skor": 81,
-      "en_iyi_performans": "Michael Porter Jr."
+      "en_iyi_performans": "Michael Porter Jr.",
+      "esitlik_bozucu": [
+        0,
+        -15
+      ]
     }
   ]
 }

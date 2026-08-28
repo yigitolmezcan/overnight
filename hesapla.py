@@ -890,7 +890,26 @@ def mac_hesapla(gid, m, ay, puan_durumu, lig_gmsc_sirali, kisisel_gmsc, yildizla
     sonuc["ev_skor"] = ev_skor
     sonuc["dep_skor"] = dep_skor
     sonuc["en_iyi_performans"] = en_iyi_oyuncu
+    # EŞİTLİK BOZUCU — "gecenin maçı" seçimi tesadüfe kalmasın.
+    # Gerçek durum (2025-12-21): ATL-CHI 152-150 ve SAC-HOU 125-124
+    # ikisi de ham 11.02 → rozet 9.06. Ondalık artırmak çözmüyor,
+    # eşitlik gerçek. İkincil ölçüt: önce DRAM (son dakika gerilimi;
+    # SAC-HOU uzatmaya gitti, D=8), sonra FİNAL FARKI (küçük olan
+    # önde). İkisi de zaten hesaplanıyor, yeni veri gerekmiyor.
+    sonuc["esitlik_bozucu"] = [
+        sonuc["tasiyicilar"]["D"],
+        -abs(ev_skor - dep_skor),
+    ]
     return sonuc
+
+
+def siralama_anahtari(mac):
+    """Maçları ÖNEMDEN önemsize sıralayan anahtar — tek kaynak.
+
+    Rozet eşitliğinde dram ve final farkı devreye giriyor; en sonda
+    mac_id var ki sıralama iki koşuda da AYNI çıksın (kararlılık)."""
+    ikincil = mac.get("esitlik_bozucu") or [0, 0]
+    return (-(mac.get("rozet") or 0), -ikincil[0], -ikincil[1], str(mac.get("mac_id", "")))
 
 
 def hesapla(tarih_str, zorla=False):

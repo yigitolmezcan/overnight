@@ -21,7 +21,7 @@ import unicodedata
 from datetime import datetime
 from pathlib import Path
 
-from hesapla import gmsc
+from hesapla import gmsc, siralama_anahtari
 from yaz import gece_kalip_plani, _mutlaka_ve_diger
 from kalip_secici import _KILOMETRE_ONCELIK
 from gercekler import _dogru_oyuncu_adi
@@ -665,8 +665,15 @@ _ET = "America/New_York"
 _TSI = "Europe/Istanbul"
 
 
-def _tsi_baslama(ham_mac, tarih_str):
-    """'01:00' — çevrilemezse None (uydurma saat yazılmaz)."""
+def _tsi_baslama_dt(ham_mac, tarih_str):
+    """TSİ başlama ANI (datetime) — çevrilemezse None.
+
+    TAM AN gerekiyor, saat dizesi değil: gece takvim gününü aşıyor.
+    TSİ 23:30'da başlayan maç gecenin İLKİ, 06:00'da başlayan KAPANIŞI.
+    Sıralama "HH:MM" dizesine göre yapıldığında 23:30 en sona düşüyordu
+    ve "1290 dakika" gibi bir süre çıkıyordu — sistem 23:30 ile 02:00
+    arasını 21,5 saat sanıyordu (gerçekte 2,5 saat).
+    """
     try:
         from zoneinfo import ZoneInfo
     except ImportError:
@@ -685,20 +692,30 @@ def _tsi_baslama(ham_mac, tarih_str):
             saat = 0
         gun = datetime.strptime(tarih_str, "%Y-%m-%d")
         et = gun.replace(hour=saat, minute=dk, tzinfo=ZoneInfo(_ET))
-        return et.astimezone(ZoneInfo(_TSI)).strftime("%H:%M")
+        # ET tarihi NBA'in maç günü; TSİ karşılığı kendiliğinden doğru
+        # takvim gününe düşüyor (15:30 ET → 23:30 aynı gün, 18:00 ET →
+        # 02:00 ertesi gün). Kural bu yüzden koda ayrıca yazılmıyor.
+        return et.astimezone(ZoneInfo(_TSI))
     except Exception:
         return None
 
 
-def _dakika_farki(bas, son):
-    """İki 'HH:MM' arasındaki dakika — gece yarısını geçen akış için."""
-    if not bas or not son:
+def _tsi_baslama(ham_mac, tarih_str):
+    """'01:00' — gösterim için. Sıralama ASLA buna göre yapılmaz."""
+    an = _tsi_baslama_dt(ham_mac, tarih_str)
+    return an.strftime("%H:%M") if an else None
+
+
+def _sure_metni(dakika):
+    """"6,5 saat" — "1290 dakika" bir insana hiçbir şey söylemiyordu."""
+    if not dakika or dakika <= 0:
         return None
-    a = int(bas[:2]) * 60 + int(bas[3:])
-    b = int(son[:2]) * 60 + int(son[3:])
-    if b < a:
-        b += 24 * 60
-    return b - a
+    saat = dakika / 60
+    if saat < 1:
+        return f"{int(round(dakika))} dakika"
+    tam = round(saat * 2) / 2          # yarım saate yuvarla
+    metin = f"{tam:.1f}".replace(".0", "").replace(".", ",")
+    return f"{metin} saat"
 
 
 # ---------------------------------------------------------------------------
@@ -1095,9 +1112,21 @@ def renk_cakismasini_coz(oyuncular):
 # bu gecenin kutu skoru + logdan son 4 maç.
 FORM_MAC_SAYISI = 5
 FORM_LISTE_UZUNLUGU = 5
-# Düşenlerde dakika şartı: yoksa 2 sayı ortalayan yedekler listeyi
-# doldurur ve bölüm anlamsızlaşır (kullanıcı kuralı).
-DUSEN_ASGARI_DAKIKA = 25.0
+# ANLAMLILIK EŞİĞİ — "2 sayı ortalayan yedekler listeyi doldurmasın"
+# (kullanıcı kuralı). Bu iş önce 25 DAKİKA şartıyla yapılıyordu; ölçüm
+# gösterdi ki dakika yanlış vekil: %25 + tutarlılık kapılarını geçen 455
+# oyuncunun 395'ini TEK BAŞINA dakika eliyordu (21 gecede düşen listesi
+# gece başına 2.5 satır, 4 gece tamamen boş). Elenenler arasında Keldon
+# Johnson (12.6 → 8.0) ve Julian Champagnie (11.1 → 5.4) gibi gerçek
+# düşüşler vardı; kalanlar 18-23 dakika oynayan rotasyon oyuncuları.
+#
+# Doğru vekil SAYI: liste zaten SAYI formunu anlatıyor.
+#   Düşen  → SEZON ortalaması eşiği geçmeli (önce anlamlı mıydı?)
+#   Yükselen → SON 5 ortalaması eşiği geçmeli (şimdi anlamlı mı?)
+# Yükselene sezon eşiği konulamaz: bölümün bütün anlamı düşük sezon
+# ortalamasından patlayanı bulmak (Carrington 8.0 → 17.6, %120).
+DUSEN_ASGARI_SEZON_SAYI = 10.0
+YUKSELEN_ASGARI_SON5_SAYI = 10.0
 
 # ÖLÇÜT MUTLAK FARK DEĞİL, YÜZDE DEĞİŞİM (kullanıcı kuralı).
 #
@@ -1221,13 +1250,14 @@ def _formda_listeler(ham, bt_by_gid, gecenin_oyunculari):
     yukselen = sorted(
         [a for a in adaylar
          if a["yuzde"] >= FORM_YUZDE_ESIGI
-         and a["ust_sayisi"] >= FORM_AYNI_YON_ASGARI],
+         and a["ust_sayisi"] >= FORM_AYNI_YON_ASGARI
+         and a["son5_ort"] >= YUKSELEN_ASGARI_SON5_SAYI],
         key=lambda a: -a["yuzde"])[:FORM_LISTE_UZUNLUGU]
     dusen = sorted(
         [a for a in adaylar
          if a["yuzde"] <= -FORM_YUZDE_ESIGI
          and a["alt_sayisi"] >= FORM_AYNI_YON_ASGARI
-         and a["son5_dakika"] >= DUSEN_ASGARI_DAKIKA],
+         and a["sezon_ort"] >= DUSEN_ASGARI_SEZON_SAYI],
         key=lambda a: a["yuzde"])[:FORM_LISTE_UZUNLUGU]
     # Renk çakışması her iki listede AYRI AYRI çözülüyor — listeler
     # birbirinden bağımsız okunuyor.
@@ -1436,7 +1466,10 @@ def derle(tarih_str):
     rozet_by_gid = {m["mac_id"]: m for m in skor_gece["maclar"]}
     taslak_maclar = taslak["maclar"]
 
-    sira = sorted(rozet_by_gid.keys(), key=lambda g: -rozet_by_gid[g]["rozet"])
+    # Aynı anahtar (hesapla.siralama_anahtari) — rozet eşitliğinde dram
+    # ve final farkı karar veriyor, sıralama iki koşuda da aynı çıkıyor.
+    sira = sorted(rozet_by_gid.keys(),
+                  key=lambda g: siralama_anahtari(rozet_by_gid[g]))
     # Kullanıcı kararı: Mutlaka bil'e 8.5+ olan en fazla 3 maç girer
     # (yaz._mutlaka_ve_diger ile AYNI mantık — tek kaynak, iki ayrı
     # eşik tanımı olmasın). Her biri kendi "g-mutlaka-{i}" id'sini alır,
@@ -1487,6 +1520,10 @@ def derle(tarih_str):
             "hedef_id": mutlaka_id_by_gid.get(gid, f"a-{gid}"),
             "icon": _brief_ikonu(kanca_gerekce) if metin else "default",
             "saat": _tsi_baslama(ham_mac, tarih_str) if ham_mac else None,
+            # Sıralama ANI'na göre; "HH:MM" dizesi gece yarısını aşan
+            # akışta 23:30'u en sona atıyordu.
+            "_an": _tsi_baslama_dt(ham_mac, tarih_str) if ham_mac else None,
+            "_gid": gid,
             "rozet": bilgi.get("rozet"),
             # Üç biçim, üç farklı yer için — ölçüldü (375px içerik
             # sütunu 252px, masaüstü 577px):
@@ -1504,11 +1541,17 @@ def derle(tarih_str):
                          f"{_takim_adi(bilgi['dep'])} {bilgi['dep_skor']}") if bilgi else "",
         })
     # Saati olmayan satır sona: uydurma saat yazmaktansa sırayı bozmamak.
-    brief.sort(key=lambda x: (x["saat"] is None, x["saat"] or ""))
+    # Anahtar TAM AN — takvim günü değişimi burada hesaba katılıyor.
+    _uzak = datetime.max
+    brief.sort(key=lambda x: (x["_an"] is None,
+                              x["_an"].replace(tzinfo=None) if x["_an"] else _uzak))
     if brief:
         # "gecenin maçı" en yüksek rozetli maç — anlatısı olsun olmasın,
         # gecenin en iyisi odur.
-        _en_yuksek = max(brief, key=lambda x: x["rozet"] or 0)
+        # "gecenin maçı" da aynı anahtarla: iki maç aynı rozeti aldığında
+        # listede önce gelen değil, DRAMI yüksek olan seçiliyor.
+        _sirali_gid = {g: i for i, g in enumerate(sira)}
+        _en_yuksek = min(brief, key=lambda x: _sirali_gid.get(x["_gid"], 10**6))
         for i, x in enumerate(brief):
             # Etiket SADECE hak edene. Öncelik: gecenin maçı > ilki > kapanış.
             if x is _en_yuksek:
@@ -1519,8 +1562,15 @@ def derle(tarih_str):
                 x["etiket"], x["one_cikan"] = "kapanış", False
             else:
                 x["etiket"], x["one_cikan"] = "", False
+    for x in brief:
+        x.pop("_gid", None)         # yalnız sıralama içindi
     ayrica = _ayrica_satiri(gercek_gece, ham, brief)
+    anlar = [x["_an"] for x in brief if x["_an"]]
     saatli = [x["saat"] for x in brief if x["saat"]]
+    _dakika = (int((anlar[-1] - anlar[0]).total_seconds() // 60)
+               if len(anlar) > 1 else None)
+    for x in brief:
+        x.pop("_an", None)          # JSON'a datetime yazılmaz
     brief_ozet = {
         "ilk": saatli[0] if saatli else None,
         "son": saatli[-1] if saatli else None,
@@ -1528,7 +1578,8 @@ def derle(tarih_str):
         "anlatili": sum(1 for x in brief if x["anlatili"]),
         # DİKKAT: "son", gecenin BİTİŞİ değil son maçın BAŞLAMA saati.
         # Bitiş saati veride yok ve uydurulmuyor.
-        "dakika": _dakika_farki(saatli[0], saatli[-1]) if len(saatli) > 1 else None,
+        "dakika": _dakika,
+        "sure": _sure_metni(_dakika),
     }
 
     # ---- mutlaka bil (liste — id-0 tam anlatı, diğerleri kısa) ----

@@ -1566,9 +1566,12 @@ def main():
 
     basar("dokun/tıkla: giriş cihazına göre ayrılıyor, ekran genişliğine göre değil",
           "@media (hover:hover) and (pointer:fine)" in _sayfa)
-    basar("dokun/tıkla: her ipucunda iki sürüm de var",
-          _sayfa.count('class="dokun"') == _sayfa.count('class="tikla"')
-          and _sayfa.count('class="dokun"') >= 3)
+    # "Sen uyurken" ipucundan `tıkla` KALDIRILDI (kullanıcı kararı) —
+    # o bölümde masaüstünde ipucu hiç yazmıyor. Kalan ipuçlarında iki
+    # sürüm de bulunmalı, yoksa dokunmatik/fare ayrımı bozulur.
+    basar("dokun/tıkla: Sen uyurken dışındaki ipuçlarında iki sürüm de var",
+          _sayfa.count('class="dokun"') == _sayfa.count('class="tikla"') + 1
+          and _sayfa.count('class="tikla"') >= 2)
 
     # Veri katmanı: Türk oyuncu kaydı kartı açabilmek için mac_id taşımalı.
     _t28 = _j.loads(open("dist/2026-01-28.json").read())["turkler"]
@@ -2268,8 +2271,12 @@ def main():
 
     # --- sıralama ---
     _saatler = [b["saat"] for b in _brief if b["saat"]]
-    basar("Sen uyurken: satırlar TSİ başlama saatine göre kronolojik",
-          _saatler == sorted(_saatler))
+    # DİKKAT: "sorted(_saatler)" ile karşılaştırmak YANLIŞ — gece takvim
+    # gününü aşıyor ve 23:30 dizesel sıralamada en sona düşüyor. Doğru
+    # ölçüt: satırlar bir kez gece yarısını geçer, geri sarmaz.
+    _atlama = sum(1 for a, b in zip(_saatler, _saatler[1:]) if b < a)
+    basar("Sen uyurken: satırlar kronolojik (gece yarısını bir kez geçiyor)",
+          _atlama <= 1)
     basar("Sen uyurken: sıralama artık rozete göre DEĞİL",
           len(_brief) < 2 or [b["rozet"] for b in _brief]
           != sorted((b["rozet"] for b in _brief), reverse=True))
@@ -2303,8 +2310,12 @@ def main():
 
     # --- etiketler ---
     _etiketli = [b for b in _brief if b.get("etiket")]
+    # Rozet eşitliğinde max() listede ÖNCE geleni seçer; sıralama artık
+    # eşitlik bozucuyla yapılıyor (bkz. hesapla.siralama_anahtari).
+    _en_yuksek_rozet = max((b["rozet"] or 0) for b in _brief) if _brief else 0
     basar("Sen uyurken: 'gecenin maçı' etiketi en yüksek rozetli satırda",
-          not _brief or max(_brief, key=lambda x: x["rozet"] or 0)["etiket"] == "gecenin maçı")
+          not _brief or next(b for b in _brief if b.get("etiket") == "gecenin maçı"
+                             )["rozet"] == _en_yuksek_rozet)
     basar("Sen uyurken: öne çıkan satır tek",
           sum(1 for b in _brief if b.get("one_cikan")) <= 1)
     basar("Sen uyurken: etiketler sadece tanımlı üç değerden biri",
@@ -2580,7 +2591,7 @@ def main():
           all(o["fark"] < 0 for o in _dus))
     # 25+ dakika şartı: yoksa 2 sayı ortalayan yedekler listeyi doldurur.
     basar(f"Form: düşenlerde 25+ dakika şartı uygulanıyor",
-          all(o["son5_dakika"] >= _derle.DUSEN_ASGARI_DAKIKA for o in _dus))
+          all(o["sezon_ort"] >= _derle.DUSEN_ASGARI_SEZON_SAYI for o in _dus))
     basar("Form: fark gerçekten son5 - sezon",
           all(abs(o["fark"] - round(o["son5_ort"] - o["sezon_ort"], 1)) < 0.11
               for o in _yuk + _dus))
@@ -3443,40 +3454,40 @@ def main():
     # ==================================================================
     # (a) Başlık en güçlü olguyu kullanmalı.
     basar("Kural a: düz skor başlık + gövdede geri dönüş → ret",
-          not _dogrula_modul.t28_baslik_guclu_olgu({
+          not dogrula_modul.t28_baslik_guclu_olgu({
               "baslik": "Minnesota, sahasında Milwaukee'yi 103-100 yendi.",
               "neden_onemli": "Timberwolves, 16 sayılık farktan dönerek kazandı.",
               "ozet": ""})[0])
     basar("Kural a: başlıkta olgu varsa geçiyor",
-          _dogrula_modul.t28_baslik_guclu_olgu({
+          dogrula_modul.t28_baslik_guclu_olgu({
               "baslik": "Jalen Brunson'ın 47 sayısıyla New York, Miami'yi 132-125 yendi",
               "neden_onemli": "Knicks 2. sıraya yükseldi.", "ozet": ""})[0])
     basar("Kural a: triple-double da kanca sayılıyor",
-          _dogrula_modul.t28_baslik_guclu_olgu({
+          dogrula_modul.t28_baslik_guclu_olgu({
               "baslik": "Jokić'in triple-double'ıyla Denver, Houston'ı 128-120 yendi.",
               "neden_onemli": "Nuggets 1. sıraya yükseldi.", "ozet": ""})[0])
     # Sıradan bir sayı güçlü olgu DEĞİL: eşiksiz halinde kural arşivin
     # yarısından fazlasında boş yere çalıyordu (ölçüldü).
     basar("Kural a: sıradan performans başlığı zorlamıyor (22 sayı)",
-          _dogrula_modul.t28_baslik_guclu_olgu({
+          dogrula_modul.t28_baslik_guclu_olgu({
               "baslik": "Warriors, Spurs'ü 125-120 yendi.",
               "neden_onemli": "Curry 22 sayı attı.", "ozet": ""})[0])
     # Eşikler cumle.PERFORMANS_ESIKLERI ile AYNI olmak zorunda.
     basar("Kural a: performans eşikleri cumle ile aynı",
-          _dogrula_modul.T28_GUCLU_PERFORMANS
+          dogrula_modul.T28_GUCLU_PERFORMANS
           == {birim: esik for _alan, esik, birim, _fiil in cumle.PERFORMANS_ESIKLERI})
 
     # (b) Alt satır ile gövde birbirini tekrar edemez.
     basar("Kural b: aynı olay iki kez anlatılırsa ret",
-          not _dogrula_modul.t29_alt_satir_govde_tekrari({
+          not dogrula_modul.t29_alt_satir_govde_tekrari({
               "neden_onemli": "16 sayılık farktan dönerek maçı son çeyrekte kontrol altına aldı.",
               "ozet": "Son çeyreği kontrollü geçen ekip, çeyrek boyunca kontrolü bırakmadı."})[0])
     basar("Kural b: farklı şeyler anlatılırsa geçiyor",
-          _dogrula_modul.t29_alt_satir_govde_tekrari({
+          dogrula_modul.t29_alt_satir_govde_tekrari({
               "neden_onemli": "Knicks konferansta 2. sıraya yükseldi.",
               "ozet": "Brunson 47 sayı attı, Miami son periyotta 18 sayıda kaldı."})[0])
     basar("Kural b: takım/oyuncu adları ortak kök sayılmıyor",
-          _dogrula_modul.t29_alt_satir_govde_tekrari(
+          dogrula_modul.t29_alt_satir_govde_tekrari(
               {"neden_onemli": "Timberwolves galibiyetle günü kapattı.",
                "ozet": "Timberwolves ilk yarıda 18 sayı geride kaldı."},
               None,
@@ -3486,10 +3497,10 @@ def main():
 
     # (c) Kilit istatistik metinde tekrarlanamaz.
     basar("Kural c: kilit istatistik metinde geçerse ret",
-          not _dogrula_modul.t30_kilit_istatistik_tekrari(
+          not dogrula_modul.t30_kilit_istatistik_tekrari(
               "Miami'nin ribaund üstünlüğüne rağmen Knicks kazandı.", "hücum ribaundu")[0])
     basar("Kural c: kilit istatistik yoksa kural çalışmıyor",
-          _dogrula_modul.t30_kilit_istatistik_tekrari(
+          dogrula_modul.t30_kilit_istatistik_tekrari(
               "Miami'nin ribaund üstünlüğüne rağmen Knicks kazandı.", None)[0])
     basar("Kural c: kilit istatistiğin adı üretim anında biliniyor",
           _derle.kilit_istatistik_adi(
@@ -3500,18 +3511,18 @@ def main():
     for _c, _ad in (("Milwaukee ilk yarıda geniş bir üstünlük kurdu.", "geniş üstünlük"),
                     ("Brunson sahadan yüksek isabetle oynadı.", "yüksek isabet")):
         basar(f"Kural d: '{_ad}' yakalanıyor",
-              not _dogrula_modul.t4d_kok_kaliplari(_c)[0])
+              not dogrula_modul.t4d_kok_kaliplari(_c)[0])
     basar("Kural d: sayı yazılmışsa geçiyor",
-          _dogrula_modul.t4d_kok_kaliplari(
+          dogrula_modul.t4d_kok_kaliplari(
               "Milwaukee ilk yarıda 16 sayılık üstünlük kurdu.")[0])
 
     # (e) Bozuk fiil kalıpları.
     for _c, _ad in (("11 serbest atışının tamamını kullanarak 38 sayıya ulaştı.", "tamamını kullanarak"),
                     ("Minnesota, farkı koruyarak galibiyeti aldı.", "galibiyeti aldı")):
         basar(f"Kural e: '{_ad}' yakalanıyor",
-              not _dogrula_modul.t4d_kok_kaliplari(_c)[0])
+              not dogrula_modul.t4d_kok_kaliplari(_c)[0])
     basar("Kural e: doğru biçim geçiyor",
-          _dogrula_modul.t4d_kok_kaliplari(
+          dogrula_modul.t4d_kok_kaliplari(
               "Randle serbest atışta 11/11 yaptı.")[0])
 
     # Kurallar ÜRETİCİYE de ulaşmalı — sadece doğrulayıcıda kalırsa
@@ -3524,6 +3535,103 @@ def main():
     # yine yayına çıkar.
     basar("Beş kural: T28/T29 kabulü düşürüyor",
           '("T25", "T28", "T29")' in _dogrula_kaynak)
+
+    # ==================================================================
+    # SEN UYURKEN — SAAT MANTIĞI
+    # Gerçek arıza (2025-12-21): alt şeritte "1290 dakika" yazıyordu;
+    # sıralama "HH:MM" DİZESİNE göre yapıldığı için sistem 23:30 ile
+    # 02:00 arasını 21,5 saat sanıyordu (gerçekte 2,5 saat) ve 23:30
+    # gecenin İLKİ olduğu halde en sona düşüyordu.
+    # ==================================================================
+    _ham21 = _jj.loads(open(_ham_yolu(_yayinda2)).read())
+    _brief11 = _d7.get("brief") or []
+    _ozet11 = _d7.get("brief_ozet") or {}
+    _anlar11 = [a for a in (_derle._tsi_baslama_dt(m, _yayinda2)
+                            for m in _ham21["maclar"].values()) if a]
+    _saatli11 = [b["saat"] for b in _brief11 if b.get("saat")]
+
+    basar("Saat: başlama anı tam tarihli (sadece saat değil)",
+          bool(_anlar11) and all(hasattr(a, "date") for a in _anlar11))
+    basar("Saat: gece takvim gününü aşıyor (iki farklı tarih var)",
+          len({a.date() for a in _anlar11}) == 2)
+    basar("Saat: sıralama tam ana göre (23:30 önce, 06:00 sonra)",
+          _saatli11[:1] == ["23:30"] and _saatli11[-1:] == ["06:00"])
+    basar("Saat: sıralama saat DİZESİNE göre yapılmıyor",
+          _saatli11 != sorted(_saatli11))
+    basar("Saat: kodda sıralama anahtarı tam an",
+          'x["_an"].replace(tzinfo=None)' in _derle_kaynak
+          and 'key=lambda x: (x["saat"] is None' not in _derle_kaynak)
+
+    _ilk11 = next((b for b in _brief11 if b.get("etiket") == "gecenin ilki"), None)
+    basar("Saat: 'gecenin ilki' etiketi en erken maçta",
+          _ilk11 is None or _ilk11["saat"] == _saatli11[0])
+    _kap11 = next((b for b in _brief11 if b.get("etiket") == "kapanış"), None)
+    basar("Saat: 'kapanış' etiketi en geç maçta",
+          _kap11 is None or _kap11["saat"] == _saatli11[-1])
+
+    basar("Saat: süre gerçek (23:30 → 06:00 = 390 dakika)",
+          _ozet11.get("dakika") == 390)
+    basar("Saat: alt şerit süreyi saat olarak yazıyor",
+          _ozet11.get("sure") == "6,5 saat"
+          and "${ozet.sure}" in _sayfa10 and "${ozet.dakika} dakika" not in _sayfa10)
+    basar("Saat: alt şerit aralığı 23:30 - 06:00",
+          _ozet11.get("ilk") == "23:30" and _ozet11.get("son") == "06:00")
+    basar("Saat: süre biçimi (6,5 saat / 2 saat / 45 dakika)",
+          _derle._sure_metni(390) == "6,5 saat" and _derle._sure_metni(120) == "2 saat"
+          and _derle._sure_metni(45) == "45 dakika" and _derle._sure_metni(None) is None)
+
+    # ==================================================================
+    # ROZET EŞİTLİĞİ — "gecenin maçı" tesadüfe kalmasın
+    # ==================================================================
+    import hesapla as _hesapla
+    _skor11 = _jj.loads(open(f"skor/{_yayinda2}.json", encoding="utf-8").read())["maclar"]
+    basar("Rozet: her maçta eşitlik bozucu var",
+          all(isinstance(m.get("esitlik_bozucu"), list)
+              and len(m["esitlik_bozucu"]) == 2 for m in _skor11))
+    basar("Rozet: eşitlik bozucu dram ve final farkından türüyor",
+          all(m["esitlik_bozucu"][0] == m["tasiyicilar"]["D"]
+              and m["esitlik_bozucu"][1] == -abs(m["ev_skor"] - m["dep_skor"])
+              for m in _skor11))
+    _esit11 = [m for m in _skor11
+               if sum(1 for x in _skor11 if x["rozet"] == m["rozet"]) > 1]
+    basar("Rozet: eşit rozetli maçlar ikincil ölçütle ayrışıyor",
+          not _esit11 or len({tuple(m["esitlik_bozucu"]) for m in _esit11}) == len(_esit11))
+    _sir11 = sorted(_skor11, key=_hesapla.siralama_anahtari)
+    basar("Rozet: sıralama kararlı (girdi sırası sonucu değiştirmiyor)",
+          [m["mac_id"] for m in _sir11]
+          == [m["mac_id"] for m in sorted(list(reversed(_skor11)),
+                                          key=_hesapla.siralama_anahtari)])
+    basar("Rozet: eşitlikte dramı yüksek olan önde",
+          not _esit11 or _sir11.index(max(_esit11, key=lambda m: m["esitlik_bozucu"][0]))
+          == min(_sir11.index(m) for m in _esit11))
+    basar("Rozet: sıralama anahtarı tek kaynak (yaz ve derle aynısını kullanıyor)",
+          "hesapla_siralama_anahtari" in _yaz_kaynak
+          and "siralama_anahtari(rozet_by_gid[g])" in _derle_kaynak)
+
+    # ==================================================================
+    # FORM — ANLAMLILIK EŞİĞİ SAYIYA BAĞLI, DAKİKAYA DEĞİL
+    # 25 dakika şartı, %25+tutarlılık kapılarını geçen 455 oyuncunun
+    # 395'ini TEK BAŞINA eliyordu; düşen listesi tek satıra iniyordu.
+    # ==================================================================
+    basar("Form: düşende sezon sayı eşiği (dakika şartı kalktı)",
+          _derle.DUSEN_ASGARI_SEZON_SAYI == 10.0
+          and not hasattr(_derle, "DUSEN_ASGARI_DAKIKA"))
+    basar("Form: yükselende son 5 sayı eşiği",
+          _derle.YUKSELEN_ASGARI_SON5_SAYI == 10.0)
+    basar("Form: düşenlerin hepsi sezonda anlamlı skorer",
+          all(o["sezon_ort"] >= _derle.DUSEN_ASGARI_SEZON_SAYI
+              for o in (_d7.get("dusen") or [])))
+    basar("Form: yükselenlerin hepsi ŞU AN anlamlı skorer",
+          all(o["son5_ort"] >= _derle.YUKSELEN_ASGARI_SON5_SAYI
+              for o in (_d7.get("yukselen") or [])))
+    # Yükselene SEZON eşiği konulamaz: bölümün anlamı düşük ortalamadan
+    # patlayanı bulmak (Carrington 8.0 → 17.6).
+    basar("Form: yükselende sezon eşiği YOK (patlama görünsün)",
+          "sezon_ort" not in _derle_kaynak.split("yukselen = sorted(")[1].split("]")[0])
+
+    _s1_bas = _sayfa10.split("<h2>Sen uyurken</h2>")[1].split("</div></div>")[0]
+    basar("Sen uyurken: 'tıkla' ipucu kalktı",
+          "tıkla" not in _s1_bas and "dokun" in _s1_bas)
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",

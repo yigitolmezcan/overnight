@@ -969,7 +969,7 @@ td.khot{color:var(--amber);font-weight:700}
 <p class="hata" id="lede" hidden></p>
 
 <section class="sec s1">
-  <div class="sechead"><h2>Sen uyurken</h2><div class="cue"><span class="tikla">tıkla</span><span class="dokun">dokun</span></div></div>
+  <div class="sechead"><h2>Sen uyurken</h2><div class="cue"><span class="dokun">dokun</span></div></div>
   <div class="rule"></div>
   <div class="clock">
     <div class="cbar"><span class="tz" id="briefTz"></span></div>
@@ -1546,8 +1546,11 @@ function render(d){
   // BAŞLAMA saati — bitiş NBA verisinde yok ve uydurulmuyor.
   document.getElementById('briefAralik').textContent =
     (ozet.ilk && ozet.son && ozet.ilk!==ozet.son) ? `${ozet.ilk} – ${ozet.son}` : (ozet.ilk||'');
+  // Süre SAAT cinsinden ("6,5 saat"). "1290 dakika" hem okunmuyordu hem
+  // yanlıştı: sıralama "HH:MM" dizesine göre yapıldığı için 23:30 ile
+  // 02:00 arası 21,5 saat sanılıyordu. Hesap artık tam AN üzerinden.
   document.getElementById('briefSayac').textContent =
-    ozet.dakika ? `${ozet.mac} maç · ${ozet.dakika} dakika` : `${ozet.mac||d.brief.length} maç`;
+    ozet.sure ? `${ozet.mac} maç · ${ozet.sure}` : `${ozet.mac||d.brief.length} maç`;
 
   // ---- mutlaka bil (liste — kullanıcı kararı: 8.5+ rozetli en fazla 3
   // maç, id-0 tam anlatı + "gecenin maçı", diğerleri kısa anlatı) ----

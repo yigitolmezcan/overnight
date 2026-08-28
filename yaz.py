@@ -101,7 +101,7 @@ from kalip_secici import (
     GALIBIYET_SAYISI_YUVARLAK,
     PLAY_IN_ARALIGI,
 )
-from hesapla import takim_kalitesi_hesapla
+from hesapla import takim_kalitesi_hesapla, siralama_anahtari as hesapla_siralama_anahtari
 import cumle
 
 BUYUK_FARK_ESIGI_TEK_CUMLE = 20  # kullanıcı kararı (2. tur): fark 20+
@@ -238,7 +238,9 @@ def _mutlaka_ve_diger(skor_gece):
       9.3 / 8.9 / 6.4 / 6.1       → boşluk 8.9→6.4, ikisi girer
       9.1 / 7.2 / 7.1 / 7.0       → boşluk 9.1→7.2, tek maç girer
     """
-    tum_maclar = sorted(skor_gece["maclar"], key=lambda m: -m["rozet"])
+    # Sıralama anahtarı hesapla.py'de — eşit rozette dram ve final
+    # farkı devreye giriyor, "gecenin maçı" tesadüfe kalmıyor.
+    tum_maclar = sorted(skor_gece["maclar"], key=hesapla_siralama_anahtari)
     if not tum_maclar:
         return [], []
 
