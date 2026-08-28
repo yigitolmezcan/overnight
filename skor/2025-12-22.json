@@ -1,0 +1,203 @@
+{
+  "tarih": "2025-12-22",
+  "hesaplandi": "2026-08-28T17:54:36.016434Z",
+  "en_iyi_skor": 8.31,
+  "maclar": [
+    {
+      "rozet": 8.31,
+      "ham": 8.67,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 4.1,
+        "K": 0.66,
+        "T": 0,
+        "D": 8
+      },
+      "yukselticiler": {
+        "Y": 5.73,
+        "F": 0,
+        "G": 10,
+        "A": 4.0
+      },
+      "dram_terfi": true,
+      "mac_id": "0022500403",
+      "ev": "BOS",
+      "dep": "IND",
+      "ev_skor": 103,
+      "dep_skor": 95,
+      "en_iyi_performans": "Jaylen Brown",
+      "esitlik_bozucu": [
+        8,
+        -8
+      ]
+    },
+    {
+      "rozet": 6.71,
+      "ham": 6.71,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.89,
+        "K": 1.45,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.46,
+        "F": 0,
+        "G": 0,
+        "A": 6.23
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500406",
+      "ev": "OKC",
+      "dep": "MEM",
+      "ev_skor": 119,
+      "dep_skor": 103,
+      "en_iyi_performans": "Shai Gilgeous-Alexander",
+      "esitlik_bozucu": [
+        0,
+        -16
+      ]
+    },
+    {
+      "rozet": 6.24,
+      "ham": 6.24,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 5.77,
+        "K": 1.16,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 5.13,
+        "F": 3,
+        "G": 6,
+        "A": 4.25
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500404",
+      "ev": "NOP",
+      "dep": "DAL",
+      "ev_skor": 119,
+      "dep_skor": 113,
+      "en_iyi_performans": "Anthony Davis",
+      "esitlik_bozucu": [
+        0,
+        -6
+      ]
+    },
+    {
+      "rozet": 6.12,
+      "ham": 6.12,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 5.8,
+        "K": 2.25,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 4.08,
+        "F": 3,
+        "G": 0,
+        "A": 4.25
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500408",
+      "ev": "POR",
+      "dep": "DET",
+      "ev_skor": 102,
+      "dep_skor": 110,
+      "en_iyi_performans": "Jalen Duren",
+      "esitlik_bozucu": [
+        0,
+        -8
+      ]
+    },
+    {
+      "rozet": 5.46,
+      "ham": 5.46,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 5.81,
+        "K": 0.98,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.65,
+        "F": 0,
+        "G": 0,
+        "A": 6.58
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500405",
+      "ev": "DEN",
+      "dep": "UTA",
+      "ev_skor": 135,
+      "dep_skor": 112,
+      "en_iyi_performans": "Nikola Jokić",
+      "esitlik_bozucu": [
+        0,
+        -23
+      ]
+    },
+    {
+      "rozet": 5.22,
+      "ham": 5.22,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 5.34,
+        "K": 1.83,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.64,
+        "F": 0,
+        "G": 0,
+        "A": 3.83
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500402",
+      "ev": "CLE",
+      "dep": "CHA",
+      "ev_skor": 139,
+      "dep_skor": 132,
+      "en_iyi_performans": "Darius Garland",
+      "esitlik_bozucu": [
+        0,
+        -7
+      ]
+    },
+    {
+      "rozet": 2.58,
+      "ham": 2.58,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 1.12,
+        "K": 2.51,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.73,
+        "F": 0,
+        "G": 0,
+        "A": 5.38
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500407",
+      "ev": "GSW",
+      "dep": "ORL",
+      "ev_skor": 120,
+      "dep_skor": 97,
+      "en_iyi_performans": "Stephen Curry",
+      "esitlik_bozucu": [
+        0,
+        -23
+      ]
+    }
+  ]
+}

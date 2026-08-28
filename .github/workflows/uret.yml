@@ -78,8 +78,14 @@ jobs:
           # İş İDEMPOTENT: hazır gece varsa `yayin.py uret` zaten hiçbir
           # şey yapmadan çıkıyor, o yüzden başarılı denemeden sonra
           # döngü kırılıyor.
-          for deneme in 1 2 3; do
-            echo "--- üretim denemesi $deneme/3 ---"
+          # ÜÇ DENEME → İKİ. Ölçüldü (28 Ağustos): NBA servisi GitHub
+          # koşucusunu engelliyor, aynı gün 3/3 deneme aynı ReadTimeout
+          # ile düştü ve her koşu 26 dakika sürdü. Aynı engelde üçüncü
+          # denemenin getirisi yok, maliyeti var: GitHub zamanlanmış
+          # işleri yoğun kullanan depolarda geciktiriyor ve bu iş
+          # gecikmenin kendisini besliyor.
+          for deneme in 1 2; do
+            echo "--- üretim denemesi $deneme/2 ---"
             set +e
             python3 yayin.py uret 2>&1 | tee -a /tmp/adim.log
             KOD=${PIPESTATUS[0]}
@@ -96,12 +102,12 @@ jobs:
               echo "Şablona düşme alarmı — tekrar denenmiyor."
               exit 2
             fi
-            if [ "$deneme" -lt 3 ]; then
-              echo "deneme $deneme düştü, 10 dakika sonra tekrar denenecek"
-              sleep 600
+            if [ "$deneme" -lt 2 ]; then
+              echo "deneme $deneme düştü, 5 dakika sonra tekrar denenecek"
+              sleep 300
             fi
           done
-          echo "üç denemede de üretilemedi"
+          echo "iki denemede de üretilemedi"
           exit 1
 
       - name: Sonucu depoya yaz

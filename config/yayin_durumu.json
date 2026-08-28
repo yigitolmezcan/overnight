@@ -30,7 +30,15 @@
     "2025-12-20",
     "2025-12-21"
   ],
-  "hazir": null,
+  "hazir": {
+    "tarih": "2025-12-22",
+    "uretildi": "2026-08-28T17:55:48.779650Z",
+    "mod": "hibrit",
+    "maliyet_usd": 0.0801,
+    "butce_asildi": false,
+    "sablona_dusen_alan": 0,
+    "_not": "NBA GitHub koşucusundan erişilemiyor — yerelden önden üretildi"
+  },
   "son_yayin": {
     "tarih": "2025-12-21",
     "uretildi": "2026-08-27T15:40:32.287510Z",
