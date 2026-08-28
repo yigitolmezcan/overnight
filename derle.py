@@ -1727,7 +1727,24 @@ def derle(tarih_str):
             "neden_onemli": mv.get("neden_onemli", ""),
             "ozet": ozet_metni,
             "box": _box_score(ham["maclar"][gid], tum_metin, kaybeden_kod, gercek_gece["maclar"][gid]),
+            # Sol ray rengi: KAZANAN takımın rengi (aşağıda çakışma
+            # çözümünden geçiyor).
+            "kazanan_kod": (mutlaka_skor["ev"]
+                            if mutlaka_skor["ev_skor"] >= mutlaka_skor["dep_skor"]
+                            else mutlaka_skor["dep"]),
         })
+
+    # Sol ray rengi — çakışma kuralı burada da geçerli (kullanıcı
+    # kuralı): aynı gecede iki kazanan yakın renkteyse DÜŞÜK rozetli
+    # olan kendi ikincil rengine geçiyor. Öncelik ölçütü GmSc değil
+    # ROZET; `renk_cakismasini_coz` sıralamayı `_gmsc` alanından
+    # okuduğu için rozet oraya yazılıyor.
+    _ray = [{"takim": m["kazanan_kod"], "_gmsc": m["rozet"]} for m in mutlaka]
+    renk_cakismasini_coz(_ray)
+    for m, r in zip(mutlaka, _ray):
+        m["ray_renk"] = r["renk"]
+        m["ray_asil"] = r["asil_renk"]
+        m["ray_degisti"] = r["renk_degisti"]
 
     # ---- gecenin beşi ----
     gecenin_besi = _gecenin_besi(ham, gercek_gece, mutlaka_id_by_gid, rozet_by_gid)

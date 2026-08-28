@@ -4072,6 +4072,67 @@ def main():
     basar("Nefes alanı: sıradaki gecelerin sıkıştırılmış kopyası depoda",
           not _eksik_gz)
 
+    # ==================================================================
+    # MUTLAKA BİL — MAÇ AYRACI SOL RAY
+    # İnce yatay çizgi silik kalıyordu, iki maç tek metin öbeği gibi
+    # okunuyordu. Ayrımı artık ray ile blok arası boşluk BİRLİKTE veriyor.
+    # ==================================================================
+    _s14 = _sayfa10
+    # DİKKAT: aynı çizgi rengi başka bölümlerde de var (gecenin beşi,
+    # arşiv, form mini). Arama `.game` KURALININ İÇİNDE yapılmalı.
+    _game_kural = _s14.split("\n.game{")[1].split("}")[0]
+    basar("Ayraç: yatay çizgi kalktı",
+          "border-bottom" not in _game_kural
+          and ".game:last-child{border-bottom:0" not in _s14)
+    basar("Ayraç: sol ray 2px ve sönen degrade",
+          "width:2px" in _s14.split(".game::before{")[1].split("}")[0]
+          and "linear-gradient(180deg,var(--ray" in _s14)
+    # HİZA: ray rozetin ÜST KENARINDAN başlıyor, üstte boşluk yok.
+    basar("Ayraç: ray blokun tepesinden başlıyor",
+          "top:0" in _s14.split(".game::before{")[1].split("}")[0])
+    basar("Ayraç: altta metin bitmeden sönüyor",
+          "bottom:18px" in _s14.split(".game::before{")[1].split("}")[0])
+    basar("Ayraç: içerik raydan 17px içeride",
+          "padding:0 0 0 17px" in _s14.split("\n.game{")[1].split("}")[0])
+    basar("Ayraç: bloklar arası 26px",
+          "margin-bottom:26px" in _s14.split("\n.game{")[1].split("}")[0])
+    # KART DEĞİL: kart dili sitede dokunulabilirlik demek; Mutlaka bil
+    # blokları okunacak metin.
+    basar("Ayraç: blok kartlaştırılmadı (kutu/çerçeve yok)",
+          "border:" not in _s14.split("\n.game{")[1].split("}")[0]
+          and "background" not in _s14.split("\n.game{")[1].split("}")[0])
+
+    # --- Ray rengi: kazanan takım + çakışma kuralı ---
+    _mut14 = _d7.get("mutlaka") or []
+    basar("Ayraç: her blokta ray rengi var",
+          bool(_mut14) and all(m.get("ray_renk", "").startswith("#") for m in _mut14))
+    basar("Ayraç: renk KAZANAN takımdan",
+          all(m["kazanan_kod"] in (m["box"]["ev"]["kod"], m["box"]["dep"]["kod"])
+              for m in _mut14)
+          and all((m["kazanan_kod"] == m["box"]["ev"]["kod"])
+                  == (m["box"]["ev"]["skor"] >= m["box"]["dep"]["skor"])
+                  for m in _mut14))
+    basar("Ayraç: ray rengi işaretlemede kullanılıyor",
+          'style="--ray:${esc(mv.ray_renk' in _s14)
+    # Çakışma: yakın renkli iki kazanan varsa DÜŞÜK rozetli kayar.
+    _cak = _derle.renk_cakismasini_coz(
+        [{"takim": "DAL", "_gmsc": 9.1}, {"takim": "ORL", "_gmsc": 7.2}])
+    basar("Ayraç: yakın renkte düşük rozetli olan kayıyor",
+          not _cak[0]["renk_degisti"] and _cak[1]["renk_degisti"])
+    _cak2 = _derle.renk_cakismasini_coz(
+        [{"takim": "ORL", "_gmsc": 9.1}, {"takim": "DAL", "_gmsc": 7.2}])
+    basar("Ayraç: öncelik rozete göre (sıra ters çevrilince karar da döner)",
+          not _cak2[0]["renk_degisti"] and _cak2[1]["renk_degisti"])
+    # Çakışma yoksa kimse kaymamalı — gereksiz renk değişimi kimliği bozar.
+    _cak3 = _derle.renk_cakismasini_coz(
+        [{"takim": "CHI", "_gmsc": 9.0}, {"takim": "SAC", "_gmsc": 8.0}])
+    basar("Ayraç: çakışma yoksa renk değişmiyor",
+          not any(x["renk_degisti"] for x in _cak3))
+    # Öncelik ölçütü ROZET olmalı; `renk_cakismasini_coz` bunu `_gmsc`
+    # alanından okuyor, kaynakta bağ açıkça kurulu.
+    basar("Ayraç: öncelik ölçütü rozet (koda yazılı)",
+          '{"takim": m["kazanan_kod"], "_gmsc": m["rozet"]}' in _derle_kaynak)
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))
