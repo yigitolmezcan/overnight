@@ -414,11 +414,88 @@ body.n-worst .calm{border-left-color:var(--amber)}
 .scrim{position:fixed;inset:0;background:rgba(3,5,8,.72);backdrop-filter:blur(3px);
   opacity:0;pointer-events:none;transition:opacity .22s;z-index:40}
 .scrim.on{opacity:1;pointer-events:auto}
+/* ===================== OYUNCU KARTI =====================
+   Kutu skor "bu gece 35 attı" diyor; kart "bu 35, onun normalinin %39
+   üstünde" diyor. Katılan şey BAĞLAM.
+   Alt dizi Yükselen/Düşen'deki biçimin AYNISI (.sq): sayılar yan yana,
+   altlarında sezon ortalamasına göre renkli çizgi. Sınıf adları ayrı
+   (.osq) çünkü orada satır içinde dar bir şerit, burada kartın tam
+   genişliği — hücre sabit değil, esnek. */
+.okart{padding:0}
+.ohd{padding:2px 16px 14px;border-bottom:1px solid #1A2230;position:relative}
+.ohd .strip{position:absolute;left:0;top:4px;bottom:14px;width:5px}
+.ohd .onm{font-size:20px;font-weight:800;letter-spacing:-.025em;line-height:1.15;
+  padding-right:34px}
+.ohd .osub{font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:5px}
+.ohd .osub em{font-style:normal;color:var(--ink2)}
+.ohd .omac{font-family:var(--mono);font-size:10.5px;color:var(--faint);margin-top:9px}
+.ohd .omac b{color:var(--ink2);font-weight:400}
+
+.obolum{padding:14px 16px 15px;border-bottom:1px solid #1A2230}
+.obolum:last-child{border-bottom:0}
+.obolum>.h{font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ember);margin-bottom:11px}
+.obolum.ctx>.h{display:flex;justify-content:space-between;align-items:baseline;
+  gap:10px;color:var(--faint)}
+.obolum.ctx>.h span{color:#39424F;letter-spacing:.06em;text-transform:none;
+  font-size:9px}
+.obig{display:flex;gap:0}
+.obig div{flex:1;min-width:0;border-left:1px solid #141A24;padding-left:12px}
+.obig div:first-child{border-left:0;padding-left:0}
+.obig b{display:block;font-family:var(--mono);font-size:27px;font-weight:600;
+  letter-spacing:-.03em;line-height:1}
+.obig u{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--faint);text-decoration:none;margin-top:6px}
+.oalt{font-family:var(--mono);font-size:11.5px;color:var(--ink2);margin-top:14px;
+  line-height:1.75}
+.opair{display:flex;gap:0;margin-bottom:15px}
+.opair div{flex:1;min-width:0;border-left:1px solid #141A24;padding-left:12px}
+.opair div:first-child{border-left:0;padding-left:0}
+.opair b{display:block;font-family:var(--mono);font-size:17px;font-weight:700;
+  letter-spacing:-.02em;line-height:1}
+.opair u{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--faint);text-decoration:none;margin-top:5px}
+.opair b.up{color:#3FB27F} .opair b.dn{color:#C4544F}
+.osq{display:flex;gap:5px}
+.osq>span{flex:1;min-width:0;text-align:center}
+.osq u{display:block;font-family:var(--mono);font-size:13px;text-decoration:none;
+  color:var(--faint)}
+.osq i{display:block;height:3px;margin-top:5px;border-radius:1px;background:#2A3444}
+.osq>span.hi u{color:var(--ink2)}
+.osq>span.hi i{background:#3FB27F;opacity:.75}
+.osq>span.lo i{background:#C4544F;opacity:.6}
+/* .now SONRA: aynı özgüllük, sırayla kazanıyor (bkz. .sq). */
+.osq>span.now u{color:var(--ember);font-weight:700}
+.osq>span.now i{background:var(--ember);opacity:1}
+.osqlab{font-family:var(--mono);font-size:8.5px;letter-spacing:.11em;
+  text-transform:uppercase;color:#39424F;margin-top:9px;text-align:center}
+
+/* DOKUNULABİLİRLİK — kimse isme dokunmayı denemez, işaret gerekiyor.
+   Üç sinyal: ad bir tık parlak, adın sağında ince ember ok, tablo
+   altında ipucu satırı. */
+td.oyad{color:var(--ink);cursor:pointer}
+td.oyad::after{content:"›";color:var(--ember);font-family:var(--mono);
+  font-size:10px;margin-left:5px;vertical-align:1px}
+.kfoot .oipucu{font-family:var(--mono);font-size:9px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--faint)}
+.kfoot .oipucu s{color:var(--ember);text-decoration:none;margin-right:4px}
+.besikart .bpname{cursor:pointer}
+.besikart .bpname::after{content:"›";color:var(--ember);font-family:var(--mono);
+  font-size:10px;margin-left:5px;vertical-align:1px}
 .sheet{position:fixed;left:50%;bottom:0;width:100%;max-width:700px;
   transform:translateX(-50%) translateY(100%);height:auto;max-height:92vh;
   --serit:44px;
   background:#0E131B;border:1px solid #1A2230;border-bottom:0;
   display:flex;flex-direction:column;transition:transform .28s cubic-bezier(.22,.8,.3,1);z-index:50}
+/* İKİNCİ KATMAN — oyuncu kartı kutu skorun ÜSTÜNDE.
+   z sırası: scrim 40 < sheet 50 < scrim2 55 < sheet2 60.
+   KONUM ÖNEMLİ: `.sheet` ile aynı özgüllükte, o yüzden .sheet
+   kuralından SONRA yazılmak zorunda. Önce yazılınca z-index 50'de
+   kalıyordu; perde-2 kartın ÜSTÜNE biniyor, kart bulanık görünüyor ve
+   dokunuşlar perdeye gidip kartı hemen kapatıyordu (ölçüldü —
+   elementFromPoint kartın yerinde `scrim2` döndürüyordu). */
+.scrim2{z-index:55}
+.sheet2{z-index:60}
 .sheet.on{transform:translateX(-50%) translateY(0)}
 /* Mobilde kart neredeyse tam ekran. Üstte ~44px şerit KASITLI kalıyor:
    tamamen kaplarsa "nereden geldim" hissi kayboluyor, ince şerit hem
@@ -444,6 +521,13 @@ body.n-worst .calm{border-left-color:var(--amber)}
      kadroda altta boşluk kalması kabul (kullanıcı kararı). */
   .kteams{margin-top:14px}
   .kt{padding-top:15px;padding-bottom:15px}
+  /* OYUNCU KARTI İÇERİĞİNE GÖRE BÜZÜLÜR — kutu skorun aksine sabit
+     yükseklikte değil. Kutu skorda tam ekran doğru (uzun kadro tablosu,
+     kazanılan yer satırlara dağılıyor); oyuncu kartında iki-üç kısa
+     bölüm var ve sabit yükseklik 515px boşluk bırakıyordu (ölçüldü,
+     sezon verisi olmayan oyuncuda). Sıra ÖNEMLİ: .sheet ile aynı
+     özgüllükte, sonra yazılmazsa ezilir. */
+  .sheet2{height:auto;max-height:88dvh}
 }
 .grab{padding:5px 0 3px;display:flex;justify-content:center;flex:none;cursor:grab;touch-action:none}
 .grab i{display:block;width:34px;height:3px;border-radius:2px;background:#2A3444}
@@ -604,7 +688,9 @@ td.khot{color:var(--amber);font-weight:700}
    İSTEMESİN. Her isim aynı boyda (kullanıcı kuralı). */
 .kdnp{padding:7px 16px 0;font-family:var(--mono);font-size:11px;color:var(--faint);
   line-height:1.5;white-space:normal;overflow-wrap:break-word;word-break:normal}
-.kfoot{padding:0 16px 12px}
+/* İki ipucu yan yana: solda "ilk beş" lejantı, sağda "isme dokun". */
+.kfoot{padding:0 16px 12px;display:flex;align-items:baseline;
+  justify-content:space-between;gap:12px}
 /* Lejant bir KEZ, kartın altında — sekme başına değil. */
 .kbeslegend{display:block;padding-top:8px;font-family:var(--mono);font-size:10px;
   color:var(--faint);letter-spacing:.04em}
@@ -1059,6 +1145,11 @@ td.khot{color:var(--amber);font-weight:700}
 
 <div class="scrim" id="scrim"></div>
 <section class="sheet" id="sheet" role="dialog" aria-modal="true"></section>
+<!-- Oyuncu kartı AYRI bir katman. Kutu skorun DOM'una dokunulmadığı
+     için kapanınca kutu skor aynı sekmede, aynı kaydırma konumunda
+     kalıyor — tek bir .sheet'e içerik yazsaydık ikisi de kaybolurdu. -->
+<div class="scrim scrim2" id="scrim2"></div>
+<section class="sheet sheet2" id="sheet2" role="dialog" aria-modal="true"></section>
 
 </div>
 <script>
@@ -1140,7 +1231,8 @@ function esc(s){
    gecenin beşi). Açılış-kapanış davranışı ortak: alttan kayar,
    arka plan kararır+bulanır, ✕ / aşağı sürükleme / geri tuşu kapatır. */
 const sheet=document.getElementById('sheet'), scrim=document.getElementById('scrim');
-let MAC_BY_ID={}, BESI=[], TARIH_ETIKET='';
+const sheet2=document.getElementById('sheet2'), scrim2=document.getElementById('scrim2');
+let MAC_BY_ID={}, BESI=[], TARIH_ETIKET='', GECE_OYUNCULARI={};
 
 /* Kalan dikey alanı SATIRLARA dağıtır (kullanıcı kararı: altta boşluk
    kalmasın, satırlar sıkışık durmasın). Yazı boyutuna DOKUNMAZ.
@@ -1246,13 +1338,55 @@ document.addEventListener('click', e => {
   if (cipayaKaydir(id)) e.preventDefault();
 });
 
+/* İKİ KATMAN. Katman 1 = kutu skor / gecenin beşi (#sheet).
+   Katman 2 = oyuncu kartı (#sheet2), katman 1'in ÜSTÜNE geliyor.
+   Kapatma HER ZAMAN en üstteki katmanı kapatır; katman 1'in DOM'una
+   dokunulmadığı için sekmesi ve kaydırma konumu olduğu gibi kalıyor.
+   Tarayıcı geçmişine katman BAŞINA bir kayıt konuyor: birinci geri
+   oyuncuyu, ikinci geri kutu skoru kapatıyor. */
+function _ustKatman(){
+  if(sheet2.classList.contains('on')) return 2;
+  if(sheet.classList.contains('on')) return 1;
+  return 0;
+}
+function _katmaniKapat(n,geri){
+  const s=n===2?sheet2:sheet, sc=n===2?scrim2:scrim;
+  s.classList.remove('on'); sc.classList.remove('on'); s.style.transform='';
+  if(n===1) removeEventListener('resize',satirAraliginiAyarla);
+  // Sayfa kaydırması ancak SON katman kapanınca serbest kalıyor.
+  if(_ustKatman()===0) document.body.style.overflow='';
+  if(geri && history.state && history.state.kart) history.back();
+}
+
+function oyuncuKartiAc(pid){
+  const o=(GECE_OYUNCULARI||{})[String(pid)];
+  if(!o) return;
+  const yeniKatman=!sheet2.classList.contains('on');
+  sheet2.innerHTML=oyuncuKartiHTML(o);
+  sheet2.classList.add('on'); scrim2.classList.add('on');
+  document.body.style.overflow='hidden';
+  if(yeniKatman) history.pushState({kart:_ustKatman()},'');
+  sheet2.querySelectorAll('[data-kapat]').forEach(b=>b.addEventListener('click',()=>_katmaniKapat(2,true)));
+  surukleBagla(sheet2,()=>_katmaniKapat(2,true));
+}
+
+// Oyuncu adına dokunulan her yerde aynı bağlama: kapsayıcı kartın
+// kendi tıklaması tetiklenmesin diye olay durduruluyor.
+function oyuncuBagla(kap){
+  kap.querySelectorAll('[data-oyuncu]').forEach(el=>{
+    el.addEventListener('click',e=>{e.stopPropagation();oyuncuKartiAc(el.dataset.oyuncu);});
+  });
+}
+
 function kartAc(html){
+  const yeniKatman=!sheet.classList.contains('on');
   sheet.innerHTML=html;
   sheet.classList.toggle('besikart',html.indexOf('class="bp"')!==-1);
   sheet.style.removeProperty('--kbspad');
   sheet.classList.add('on'); scrim.classList.add('on');
   document.body.style.overflow='hidden';
-  if(!history.state||!history.state.kart) history.pushState({kart:1},'');
+  // İçerik DEĞİŞİRSE (maç kartından maç kartına) yeni geçmiş kaydı yok.
+  if(yeniKatman) history.pushState({kart:1},'');
   sheet.querySelectorAll('[data-kapat]').forEach(b=>b.addEventListener('click',kartKapat));
   const tabs=sheet.querySelectorAll('.ktabs button');
   tabs.forEach(t=>t.addEventListener('click',()=>{
@@ -1263,31 +1397,30 @@ function kartAc(html){
   sheet.querySelectorAll('[data-mac]').forEach(a=>a.addEventListener('click',()=>{
     const m=MAC_BY_ID[a.dataset.mac]; if(m){ kartAc(boxKartiHTML(m)); }
   }));
-  surukleBagla();
+  oyuncuBagla(sheet);
+  surukleBagla(sheet,()=>_katmaniKapat(1,true));
   satirAraligiBagla();
 }
 function kartKapat(){
-  removeEventListener('resize',satirAraliginiAyarla);
-  sheet.classList.remove('on'); scrim.classList.remove('on');
-  document.body.style.overflow=''; sheet.style.transform='';
-  if(history.state&&history.state.kart) history.back();
+  const n=_ustKatman();
+  if(n) _katmaniKapat(n,true);
 }
 scrim.addEventListener('click',kartKapat);
-addEventListener('popstate',()=>{ if(sheet.classList.contains('on')){
-  sheet.classList.remove('on'); scrim.classList.remove('on');
-  document.body.style.overflow=''; sheet.style.transform='';
-}});
-addEventListener('keydown',e=>{ if(e.key==='Escape'&&sheet.classList.contains('on')) kartKapat(); });
+scrim2.addEventListener('click',kartKapat);
+// popstate geçmişi ZATEN geriye aldı; burada history.back çağrılmaz.
+addEventListener('popstate',()=>{ const n=_ustKatman(); if(n) _katmaniKapat(n,false); });
+addEventListener('keydown',e=>{ if(e.key==='Escape'&&_ustKatman()) kartKapat(); });
 
 /* aşağı sürükleyerek kapatma */
-function surukleBagla(){
-  const grab=sheet.querySelector('.grab'); if(!grab) return;
+// Katmana bağlı: hangi kart sürükleniyorsa O kapanıyor.
+function surukleBagla(kat,kapat){
+  const grab=kat.querySelector('.grab'); if(!grab) return;
   let y0=null,dy=0;
-  const bas=y=>{y0=y;dy=0;sheet.style.transition='none';};
+  const bas=y=>{y0=y;dy=0;kat.style.transition='none';};
   const gec=y=>{if(y0===null)return;dy=Math.max(0,y-y0);
-    sheet.style.transform=`translateX(-50%) translateY(${dy}px)`;};
-  const bit=()=>{if(y0===null)return;sheet.style.transition='';
-    if(dy>110)kartKapat(); else sheet.style.transform='translateX(-50%) translateY(0)';y0=null;};
+    kat.style.transform=`translateX(-50%) translateY(${dy}px)`;};
+  const bit=()=>{if(y0===null)return;kat.style.transition='';
+    if(dy>110)kapat(); else kat.style.transform='translateX(-50%) translateY(0)';y0=null;};
   grab.addEventListener('touchstart',e=>bas(e.touches[0].clientY),{passive:true});
   grab.addEventListener('touchmove',e=>gec(e.touches[0].clientY),{passive:true});
   grab.addEventListener('touchend',bit);
@@ -1313,7 +1446,12 @@ function boxTablosu(t){
     const huc=KOLONLAR.map(([alan,,vurgu])=>{
       const c=[vurgu?'k':'',o.aykiri&&o.aykiri_alan===alan?'khot':''].filter(Boolean).join(' ');
       return `<td${c?` class="${c}"`:''}>${esc(String(o[alan]))}</td>`;}).join('');
-    return `<tr class="${cls}"><td${o.ilk_bes?' class="ilkbes"':''}>${esc(o.isim)}</td>${huc}</tr>`;
+    // Ad dokunulabilir SADECE kartı olan oyuncuda; işaret de o zaman
+    // çiziliyor, yoksa okuyucuya yalan bir söz verilmiş olur.
+    const kart=o.id!==undefined && GECE_OYUNCULARI[String(o.id)];
+    const adsinif=[o.ilk_bes?'ilkbes':'',kart?'oyad':''].filter(Boolean).join(' ');
+    const adattr=kart?` data-oyuncu="${o.id}"`:'';
+    return `<tr class="${cls}"><td${adsinif?` class="${adsinif}"`:''}${adattr}>${esc(o.isim)}</td>${huc}</tr>`;
   };
   const dnp = t.oynamayanlar || [];
   return `<div class="kscroll"><table class="kbs">
@@ -1394,6 +1532,55 @@ function kritikBlogu(k){
     </div>`;
 }
 
+/* ---- oyuncu kartı ----
+   Üç giriş de (saha, gecenin beşi kartı, kutu skor tablosu) bu tek
+   bileşeni açıyor. Sezon verisi olmayan oyuncuda (sezonun ilk maçları)
+   "sezon bağlamı" bölümü HİÇ çizilmiyor — uydurma ortalama yazmaktansa
+   kart iki bölümle kalıyor. */
+function oyuncuKartiHTML(o){
+  const g=o.bu_gece||{};
+  const alt1=[`${esc(g.min)} dk`,`${esc(g.fg)} FG`,`${esc(g['3p'])} 3P`,`${esc(g.ft)} FA`].join(' · ');
+  const alt2=[`${g.stl} top çalma`,`${g.blk} blok`,`${g.to} top kaybı`,esc(g.pm)].join(' · ');
+  const kimlik=[o.pos,o.takim].filter(Boolean).map(x=>`<em>${esc(x)}</em>`).join(' · ');
+  let ctx='';
+  if(o.sezon){
+    const s=o.sezon;
+    const yon=s.yuzde>=0?'up':'dn';
+    const ok=s.yuzde>=0?'▲':'▼';
+    const hucre=x=>`<span class="${x.ust?'hi':'lo'}${x.bu_gece?' now':''}"><u>${x.sayi}</u><i></i></span>`;
+    ctx=`<div class="obolum ctx">
+        <div class="h"><b>Sezon bağlamı</b><span>sezon ort. üstü / altı</span></div>
+        <div class="opair">
+          <div><b>${s.sezon_ort.toFixed(1)}</b><u>Sezon ort.</u></div>
+          <div><b>${s.son5_ort.toFixed(1)}</b><u>Son 5</u></div>
+          <div><b class="${yon}">${ok}%${Math.abs(s.yuzde).toFixed(0)}</b><u>Değişim</u></div>
+        </div>
+        <div class="osq">${s.son5.map(hucre).join('')}</div>
+        <div class="osqlab">son ${s.son5.length} maç · sayı</div>
+      </div>`;
+  }
+  return `<div class="grab"><i></i></div>
+    <div class="okart">
+      <div class="ohd">
+        <button class="kclose" data-kapat aria-label="Kapat">✕</button>
+        <span class="strip" style="background:${esc(o.renk)}"></span>
+        <div class="onm">${esc(o.isim)}</div>
+        <div class="osub">${kimlik}</div>
+        <div class="omac"><b>${esc(o.mac_skor)}</b>${o.saat?` · ${esc(o.saat)}`:''}</div>
+      </div>
+      <div class="obolum">
+        <div class="h">Bu gece</div>
+        <div class="obig">
+          <div><b>${g.pts}</b><u>Sayı</u></div>
+          <div><b>${g.reb}</b><u>Ribaund</u></div>
+          <div><b>${g.ast}</b><u>Asist</u></div>
+        </div>
+        <div class="oalt">${alt1}<br>${alt2}</div>
+      </div>
+      ${ctx}
+    </div>`;
+}
+
 function boxKartiHTML(m){
   const b=m.box;
   // Varsayılan sekme KAZANAN takım.
@@ -1422,7 +1609,9 @@ function boxKartiHTML(m){
       ${b.wtf?`<div class="kwtf"><span>WTF İstatistiği</span><p>${esc(b.wtf)}</p></div>`:''}
       <div class="kpanes">${panolar}</div>
       <div class="kfoot">${(b.ev.oyuncular||[]).some(o=>o.ilk_bes)
-        ? '<span class="kbeslegend"><i></i>ilk beş</span>' : ''}</div>
+        ? '<span class="kbeslegend"><i></i>ilk beş</span>' : '<span></span>'}${
+        (b.ev.oyuncular||[]).some(o=>GECE_OYUNCULARI[String(o.id)])
+        ? '<span class="oipucu"><s>›</s>isme <span class="dokun">dokun</span><span class="tikla">tıkla</span></span>' : ''}</div>
     </div>`;
 }
 
@@ -1432,7 +1621,7 @@ function besiKartiHTML(){
   // kalktı, çalma/blok/top kaybı ikincil satırdan çıktı (box score'da var),
   // rozet etiketi ayrı satır değil — adın yanında küçük işaret.
   const blok=o=>`<div class="bp" style="border-left-color:${esc(o.renk)}">
-      <div class="bp1"><span class="bpname">${esc(o.isim)}${o.etiket?`<span class="bpmark">${esc(o.etiket)}</span>`:''}</span>
+      <div class="bp1"><span class="bpname"${GECE_OYUNCULARI[String(o.id)]?` data-oyuncu="${o.id}"`:''}>${esc(o.isim)}${o.etiket?`<span class="bpmark">${esc(o.etiket)}</span>`:''}</span>
         <span class="bppos">${esc(o.pos)} · ${esc(o.takim)}</span></div>
       <div class="bp2"><span><b>${o.pts}</b><s>say</s></span><span><b>${o.reb}</b><s>rib</s></span><span><b>${o.ast}</b><s>ast</s></span></div>
       <div class="bp3"><span>${esc(o.min)} dk · ${esc(o.fg)} FG · ${esc(o['3p'])} 3P · ${esc(o.ft)} FA</span><i>${esc(o.mac_kisa||o.mac_skor)}</i></div>
@@ -1446,6 +1635,9 @@ function besiKartiHTML(){
 
 function render(d){
   document.body.dataset.tarih=d.tarih;
+  // Oyuncu kartı haritası EN BAŞTA: kutu skor tablosu da, saha da bu
+  // haritaya bakarak "bu ada dokunulabilir mi" diye karar veriyor.
+  GECE_OYUNCULARI = d.oyuncular || {};
 
   // ---- hero ----
   document.getElementById('edTarih').textContent=trBuyuk(turkceTarihYilli(d.tarih));
@@ -1716,7 +1908,7 @@ function render(d){
     const parlak=(parseInt(rgb.slice(0,2),16)*299+parseInt(rgb.slice(2,4),16)*587+parseInt(rgb.slice(4,6),16)*114)/1000;
     const halka=o.renk_degisti?` ring" style="--asil:${esc(o.asil_renk||o.renk)};background:${esc(o.renk||'#7E8794')};color:${parlak>140?'#0A0603':'#EDEFF2'}`:`" style="background:${esc(o.renk||'#7E8794')};color:${parlak>140?'#0A0603':'#EDEFF2'}`;
     return `<div class="pl" style="left:${y.l}%;top:${y.t}%">
-      <div class="dot${halka}">${esc(o.pos)}</div>
+      <div class="dot${halka}"${GECE_OYUNCULARI[String(o.id)]?` data-oyuncu="${o.id}"`:''}>${esc(o.pos)}</div>
       <div class="nm">${esc(o.isim)}</div>
       <div class="st">${o.pts} · ${o.reb} · ${o.ast}</div>
       <div class="tg">${esc(o.takim)}</div></div>`;
@@ -1736,6 +1928,9 @@ function render(d){
         ${oyuncular}
       </div>
       <div class="besiac">Tam istatistikler için <span class="dokun">dokun</span><span class="tikla">tıkla</span> →</div></div>`;
+  // Sahadaki halkalar oyuncu kartını açıyor; olay durduruluyor ki
+  // kapsayıcı "gecenin beşi" kartı da açılmasın (bkz. oyuncuBagla).
+  oyuncuBagla(document.getElementById('fiveList'));
   const besiAc=document.getElementById('besiAc');
   besiAc.addEventListener('click',()=>kartAc(besiKartiHTML()));
   besiAc.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();kartAc(besiKartiHTML());}});

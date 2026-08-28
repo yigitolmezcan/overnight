@@ -114,6 +114,10 @@ def _oyuncu_satiri(p, takim_kodu):
         fg_yuzde = s["fieldGoalsMade"] / s["fieldGoalsAttempted"]
 
     return {
+        # `id` oyuncu kartını açmak için: üç giriş de (saha, gecenin beşi
+        # kartı, kutu skor tablosu) dist'teki `oyuncular` haritasına bu
+        # anahtarla bakıyor.
+        "id": p["personId"],
         "isim": _dogru_oyuncu_adi(p["personId"], f"{p['firstName']} {p['familyName']}".strip()),
         "takim": takim_kodu,
         # İlk beş / yedek ayrımı BoxScoreTraditionalV3'te zaten var:
@@ -368,6 +372,89 @@ _ESIK_OKUNUR = {
     "triple_double": "triple-double", "quadruple_double": "quadruple-double",
     "50_triple_double": "50+ sayılık triple-double",
 }
+
+
+# ---------------------------------------------------------------------------
+# OYUNCU KARTI
+# ---------------------------------------------------------------------------
+#
+# Kutu skor "bu gece 35 attı" diyor. Kart "bu 35, onun normalinin %39
+# üstünde" diyor. Katılan şey BAĞLAM — kutu skorun asla veremediği şey.
+#
+# O gece OYNAYAN HER oyuncu için kart açılabiliyor, sadece öne çıkanlar
+# için değil. Sezon verisi olmayan oyuncuda (sezonun ilk maçları)
+# "sezon bağlamı" bölümü hiç kurulmuyor; kart iki bölümle kalıyor —
+# uydurma ortalama yazmaktansa bölümü hiç çizmemek.
+#
+# Veri PlayerGameLogs'ta zaten var (Yükselen/Düşen aynı kaynaktan
+# besleniyor), ek API çağrısı yok.
+_POZISYON_ADI = {"G": "Guard", "F": "Forward", "C": "Center"}
+
+
+def _oyuncu_kartlari(ham, tarih_str):
+    """{personId: kart} — o gece oynayan her oyuncu."""
+    gecmis = _oyuncu_gecmisi(ham)
+    kartlar = {}
+    for gid, hm in (ham.get("maclar") or {}).items():
+        try:
+            bt = hm["box_traditional"]["boxScoreTraditional"]
+        except (KeyError, TypeError):
+            continue
+        ev, dep = bt["homeTeam"], bt["awayTeam"]
+        # KISA (şehir) ad: kart başlığında tam ad iki satıra sarıyor ve
+        # 118 oyuncu için dosyada gereksiz yer kaplıyor.
+        skor_metni = (f"{TAKIM_KISA.get(ev['teamTricode'], ev['teamTricode'])} "
+                      f"{ev['statistics']['points']} – "
+                      f"{TAKIM_KISA.get(dep['teamTricode'], dep['teamTricode'])} "
+                      f"{dep['statistics']['points']}")
+        saat = _tsi_baslama(hm, tarih_str)
+        for takim in (ev, dep):
+            kod = takim["teamTricode"]
+            for p in takim["players"]:
+                st = p["statistics"]
+                if not st["minutes"]:
+                    continue
+                pid = p["personId"]
+                satir = _oyuncu_satiri(p, kod)
+                kart = {
+                    "id": pid,
+                    "isim": satir["isim"],
+                    "pos": _POZISYON_ADI.get(p.get("position") or "", ""),
+                    "takim": f"{takim['teamCity']} {takim['teamName']}",
+                    "takim_kod": kod,
+                    "renk": TAKIM_RENK.get(kod, "#7E8794"),
+                    "mac_skor": skor_metni,
+                    "saat": saat,
+                    "bu_gece": {
+                        "pts": satir["pts"], "reb": satir["reb"], "ast": satir["ast"],
+                        "min": satir["min"], "fg": satir["fg"], "3p": satir["3p"],
+                        "ft": satir["ft"], "stl": satir["stl"], "blk": satir["blk"],
+                        "to": satir["to"], "pm": satir["pm"],
+                    },
+                }
+                onceki = gecmis.get(pid) or []
+                if onceki:
+                    sezon_ort = sum(x["sayi"] for x in onceki) / len(onceki)
+                    son5 = onceki[-(FORM_MAC_SAYISI - 1):] + [
+                        {"sayi": st["points"], "tarih": "bu gece"}]
+                    son5_ort = sum(x["sayi"] for x in son5) / len(son5)
+                    gosterilen = round(sezon_ort, 1)
+                    son5_gosterilen = round(son5_ort, 1)
+                    kart["sezon"] = {
+                        "sezon_ort": gosterilen,
+                        "son5_ort": son5_gosterilen,
+                        # Yüzde EKRANDA YAZAN iki sayıdan türüyor. Ham
+                        # değerlerden hesaplansaydı kart kendi içinde
+                        # çelişirdi: "0.7 → 0.8" yazıp "%20" demek gibi
+                        # (okuyucunun hesabı %14). Ölçüldü, 4 oyuncuda.
+                        "yuzde": round((son5_gosterilen - gosterilen) / gosterilen * 100, 1)
+                        if gosterilen else 0.0,
+                        "son5": [{"sayi": x["sayi"],
+                                  "ust": x["sayi"] > gosterilen,
+                                  "bu_gece": x.get("tarih") == "bu gece"} for x in son5],
+                    }
+                kartlar[str(pid)] = kart
+    return kartlar
 
 
 def _gecenin_besi(ham, gercek_gece, id_by_gid, skor_by_gid):
@@ -1218,15 +1305,20 @@ def _formda_listeler(ham, bt_by_gid, gecenin_oyunculari):
             continue                      # 5 maçı dolmayan için "form" denmez
         son5_ort = sum(x["sayi"] for x in son5) / len(son5)
         # Yüzde değişim ve kaç maçın aynı yönde olduğu — ölçüt bunlar.
-        yuzde = ((son5_ort - sezon_ort) / sezon_ort * 100) if sezon_ort else 0.0
-        ust_sayisi = sum(1 for x in son5 if x["sayi"] > round(sezon_ort, 1))
-        alt_sayisi = sum(1 for x in son5 if x["sayi"] < round(sezon_ort, 1))
+        # Kıyas EKRANDA YAZAN (yuvarlanmış) değerlerle: satır "sezon 21.1
+        # → 25.0" yazıp yüzdeyi ham değerlerden hesaplarsa okuyucunun
+        # kendi hesabıyla tutmuyor.
+        sezon_gosterilen = round(sezon_ort, 1)
+        son5_gosterilen = round(son5_ort, 1)
+        yuzde = (((son5_gosterilen - sezon_gosterilen) / sezon_gosterilen * 100)
+                 if sezon_gosterilen else 0.0)
+        ust_sayisi = sum(1 for x in son5 if x["sayi"] > sezon_gosterilen)
+        alt_sayisi = sum(1 for x in son5 if x["sayi"] < sezon_gosterilen)
         # Her maç oyuncunun KENDİ sezon ortalamasının üstünde mi?
         # Çıplak sayı bir şey ifade etmiyor: 24 sayı iyi mi kötü mü,
         # oyuncunun normalini bilmeden söylenemez. Kıyas EKRANDA YAZAN
         # değerle yapılıyor (yuvarlanmış) — yoksa satır "sezon 21.1"
         # derken 21 sayılık maç yeşil görünebilirdi.
-        sezon_gosterilen = round(sezon_ort, 1)
         adaylar.append({
             "id": o["id"], "isim": o["isim"], "takim": o["takim"], "pos": o.get("pos", ""),
             "_gmsc": o.get("_gmsc") or 0,
@@ -1679,6 +1771,10 @@ def derle(tarih_str):
         "brief_ayrica": ayrica,
         "mutlaka": mutlaka,
         "gecenin_besi": gecenin_besi,
+        # Oyuncu kartları: üç giriş de (gecenin beşi sahası, gecenin beşi
+        # kartı, kutu skor tablosu) BU haritayı okuyor — tek bileşen,
+        # tek veri.
+        "oyuncular": _oyuncu_kartlari(ham, tarih_str),
         "yukselen": yukselen,
         "dusen": dusen,
         "siralama": siralama,

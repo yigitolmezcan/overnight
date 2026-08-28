@@ -3633,6 +3633,120 @@ def main():
     basar("Sen uyurken: 'tıkla' ipucu kalktı",
           "tıkla" not in _s1_bas and "dokun" in _s1_bas)
 
+    # ==================================================================
+    # OYUNCU KARTI
+    # Kutu skor "bu gece 35 attı" diyor; kart "bu 35, onun normalinin
+    # %39 üstünde" diyor. Katılan şey BAĞLAM.
+    # ==================================================================
+    _oy = _d7.get("oyuncular") or {}
+    _oynayan = sum(1 for _k in _kart9 for _t in ("ev", "dep")
+                   for _o in _k["box"][_t]["oyuncular"])
+
+    # O gece OYNAYAN HER oyuncu için kart açılabilmeli, sadece öne
+    # çıkanlar için değil.
+    basar("Oyuncu kartı: oynayan herkes için var",
+          bool(_oy) and all(str(_o["id"]) in _oy
+                            for _k in _kart9 for _t in ("ev", "dep")
+                            for _o in _k["box"][_t]["oyuncular"]))
+    basar("Oyuncu kartı: kimlik alanları dolu",
+          all(k["isim"] and k["takim"] and len(k["takim_kod"]) == 3
+              and k["renk"].startswith("#") for k in _oy.values()))
+    basar("Oyuncu kartı: maç skoru ve saati taşıyor",
+          all("–" in k["mac_skor"] for k in _oy.values())
+          and all(k.get("saat") is None or len(k["saat"]) == 5 for k in _oy.values()))
+    basar("Oyuncu kartı: bu gecenin üç büyük rakamı var",
+          all(isinstance(k["bu_gece"][a], int) for k in _oy.values()
+              for a in ("pts", "reb", "ast")))
+    basar("Oyuncu kartı: ikincil istatistikler kutu skorla aynı",
+          all(all(a in k["bu_gece"] for a in
+                  ("min", "fg", "3p", "ft", "stl", "blk", "to", "pm"))
+              for k in _oy.values()))
+    # Mevki sadece ilk beşte dolu; yedekte boş kalıyor ve satır çizilmiyor.
+    basar("Oyuncu kartı: mevki tam kelime (G değil Guard)",
+          all(k["pos"] in ("", "Guard", "Forward", "Center") for k in _oy.values()))
+
+    # Sezon bağlamı — yüzde ölçütü Yükselen/Düşen ile AYNI.
+    _sezonlu = [k for k in _oy.values() if k.get("sezon")]
+    basar("Oyuncu kartı: sezon bağlamında yüzde değişim var",
+          all(isinstance(k["sezon"]["yuzde"], (int, float)) for k in _sezonlu))
+    basar("Oyuncu kartı: yüzde (son5-sezon)/sezon",
+          all(abs(k["sezon"]["yuzde"]
+                  - (k["sezon"]["son5_ort"] - k["sezon"]["sezon_ort"])
+                  / k["sezon"]["sezon_ort"] * 100) < 1.5
+              for k in _sezonlu if k["sezon"]["sezon_ort"]))
+    basar("Oyuncu kartı: son 5 dizisi ve bu gece işareti",
+          all(len(k["sezon"]["son5"]) == 5 and k["sezon"]["son5"][-1]["bu_gece"]
+              and sum(1 for x in k["sezon"]["son5"] if x["bu_gece"]) == 1
+              for k in _sezonlu))
+    # Renk kararı EKRANDA YAZAN ortalamaya göre — Yükselen/Düşen ile aynı.
+    basar("Oyuncu kartı: üst/alt kararı gösterilen sezon ortalamasıyla tutarlı",
+          all(x["ust"] == (x["sayi"] > k["sezon"]["sezon_ort"])
+              for k in _sezonlu for x in k["sezon"]["son5"]))
+    # Sezon verisi yoksa bölüm HİÇ kurulmuyor — uydurma ortalama yazmak
+    # yerine kart iki bölümle kalıyor.
+    basar("Oyuncu kartı: sezon verisi yoksa bölüm hiç kurulmuyor",
+          all("sezon" in k or True for k in _oy.values())
+          and "if(o.sezon){" in _sayfa10)
+    basar("Oyuncu kartı: ek API çağrısı yok (mevcut oyun günlüğü)",
+          "_oyuncu_gecmisi(ham)" in _derle_kaynak.split("def _oyuncu_kartlari")[1][:600])
+
+    # --- Üç giriş, tek bileşen ---
+    basar("Oyuncu kartı: üç giriş de data-oyuncu taşıyor",
+          _sayfa10.count("data-oyuncu=") >= 3
+          and 'class="dot${halka}"${GECE_OYUNCULARI' in _sayfa10      # saha
+          and 'class="bpname"${GECE_OYUNCULARI' in _sayfa10           # gecenin beşi
+          and "const kart=o.id!==undefined && GECE_OYUNCULARI" in _sayfa10)  # kutu skor
+    basar("Oyuncu kartı: tek işleyici (üçü de aynı fonksiyonu çağırıyor)",
+          _sayfa10.count("function oyuncuKartiHTML(") == 1
+          and _sayfa10.count("function oyuncuKartiAc(") == 1)
+    # Sahadaki halka kapsayıcı kartı da açmasın.
+    basar("Oyuncu kartı: dokunuş kapsayıcı karta sızmıyor",
+          "e.stopPropagation();oyuncuKartiAc" in _sayfa10)
+    # Kartı olmayan oyuncuya işaret KONMUYOR — okuyucuya yalan söz verilmez.
+    basar("Oyuncu kartı: işaret sadece kartı olan oyuncuda",
+          "const adattr=kart?` data-oyuncu=" in _sayfa10)
+
+    # --- Dokunulabilirlik: üç sinyal ---
+    basar("Dokunulabilirlik: adın yanında ember ok",
+          'td.oyad::after{content:"›"' in _sayfa10
+          and "color:var(--ember)" in _sayfa10.split('td.oyad::after{')[1].split("}")[0])
+    basar("Dokunulabilirlik: ad istatistiklerden parlak",
+          "td.oyad{color:var(--ink)" in _sayfa10)
+    basar("Dokunulabilirlik: tablo altında ipucu satırı",
+          'class="oipucu"' in _sayfa10 and "isme <span class=\"dokun\">dokun</span>" in _sayfa10)
+
+    # --- Kart üstüne kart ---
+    basar("Kart üstüne kart: ayrı katman (ikinci sheet)",
+          'id="sheet2"' in _sayfa10 and 'id="scrim2"' in _sayfa10)
+    # z sırası: scrim 40 < sheet 50 < scrim2 55 < sheet2 60. Kural
+    # .sheet'ten SONRA yazılmazsa 50'de kalıyor ve perde kartın üstüne
+    # biniyor (ölçüldü: elementFromPoint kartın yerinde scrim2 döndürdü).
+    basar("Kart üstüne kart: sheet2 z-index kuralı .sheet'ten sonra",
+          _sayfa10.index(".sheet2{z-index:60}") > _sayfa10.index("z-index:50}"))
+    basar("Kart üstüne kart: kapatma en üstteki katmanı kapatıyor",
+          "function _ustKatman()" in _sayfa10
+          and "const n=_ustKatman();\n  if(n) _katmaniKapat(n,true);" in _sayfa10)
+    basar("Kart üstüne kart: geri tuşu tek katman kapatıyor",
+          "addEventListener('popstate',()=>{ const n=_ustKatman(); if(n) _katmaniKapat(n,false); });"
+          in _sayfa10)
+    # Katman 1'in DOM'una dokunulmuyor: sekmesi ve kaydırma konumu kalıyor.
+    basar("Kart üstüne kart: alttaki kartın DOM'u korunuyor",
+          "sheet2.innerHTML=oyuncuKartiHTML(o)" in _sayfa10
+          and "sheet.innerHTML=oyuncuKartiHTML" not in _sayfa10)
+    # Sayfa kaydırması ancak SON katman kapanınca serbest kalmalı.
+    basar("Kart üstüne kart: sayfa kaydırması son katmanda serbest kalıyor",
+          "if(_ustKatman()===0) document.body.style.overflow='';" in _sayfa10)
+    # Sürükleme hangi kart sürükleniyorsa ONU kapatmalı.
+    basar("Kart üstüne kart: sürükleme katmana bağlı",
+          "function surukleBagla(kat,kapat)" in _sayfa10)
+    # Oyuncu kartı içeriğine göre büzülüyor: kutu skorun sabit yüksekliği
+    # burada 515px boşluk bırakıyordu (ölçüldü).
+    basar("Oyuncu kartı: mobilde içeriğine göre büzülüyor",
+          ".sheet2{height:auto;max-height:88dvh}" in _sayfa10)
+    # Uzun adlar ✕ düğmesine girmesin.
+    basar("Oyuncu kartı: ad ✕ için yer bırakıyor",
+          "padding-right:34px" in _sayfa10.split(".ohd .onm{")[1].split("}")[0])
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))
