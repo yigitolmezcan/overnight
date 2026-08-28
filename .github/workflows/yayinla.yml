@@ -40,8 +40,16 @@ jobs:
 
       - name: Siteyi depoya yaz (Vercel bu push'la deploy eder)
         run: |
-          git config user.name  "overnight-bot"
-          git config user.email "bot@users.noreply.github.com"
+          # YAZAR KİMLİĞİ VERCEL TARAFINDAN DENETLENİYOR. "overnight-bot"
+          # kullanıldığında Vercel dağıtımı reddediyor:
+          #   readyStateReason: "The Deployment was blocked because the
+          #   commit author does not have contributing access"
+          #   seatBlock.blockCode: TEAM_ACCESS_REQUIRED
+          # Ölçüldü: bot yazarlı 6 dağıtımın 6'sı BLOCKED, hesap yazarlı
+          # 30 dağıtımın 30'u READY. Yani otomatik yayın siteye HİÇ
+          # ulaşmıyordu. Otomatik olduğu commit MESAJINDAN belli oluyor.
+          git config user.name  "yigitolmezcan"
+          git config user.email "yigitolmezcan@gmail.com"
           git add site/index.html config/yayin_durumu.json
           if git diff --staged --quiet; then
             echo "Yayınlanacak yeni gece yoktu — site aynen kaldı."
@@ -49,6 +57,34 @@ jobs:
             git commit -m "yayın: $(python3 -c "import json;d=json.load(open('config/yayin_durumu.json'));print(d['yayinlanan'][-1] if d['yayinlanan'] else '-')")"
             git push
           fi
+
+      # DEPO DEĞİL, OKUYUCUNUN GÖRDÜĞÜ SAYFA ÖLÇÜT.
+      # 27 Ağustos 2026: iş kusursuz koştu, 21 Aralık'ı depoya yazdı,
+      # "success" dedi — ve site 20 Aralık'ta kaldı. Vercel bot yazarlı
+      # commit'in dağıtımını reddediyordu (TEAM_ACCESS_REQUIRED) ve
+      # bunu kimse görmedi, çünkü bütün denetimler depoya bakıyordu.
+      # Yazar kimliği düzeltildi; bu adım o sınıfın TEKRARINI yakalıyor
+      # (dağıtım reddedilse de, düşse de, assa da).
+      - name: Site gerçekten değişti mi
+        id: canli
+        run: |
+          BEKLENEN=$(python3 -c "import json;d=json.load(open('config/yayin_durumu.json'));print(d['yayinlanan'][-1] if d['yayinlanan'] else '')")
+          if [ -z "$BEKLENEN" ]; then
+            echo "Yayınlanmış gece yok — denetlenecek bir şey de yok."
+            exit 0
+          fi
+          python3 canli_dogrula.py "$BEKLENEN" 2>&1 | tee /tmp/canli.log
+
+      - name: Canlıya çıkmadı — issue aç
+        if: failure() && steps.canli.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create \
+            --title "Site canlıya çıkmadı — $(date -u +%Y-%m-%d)" \
+            --body "$(printf 'Yayın işi başarılı bitti ve depoya yazdı, ama canlı site hâlâ eski geceyi gösteriyor.\n\nBu genelde DAĞITIM katmanında bir engel demek (Vercel reddi, düşen build, asılı dağıtım) — üretim boru hattında değil.\n\n```\n%s\n```\n\nKayıtlar: %s/%s/actions/runs/%s' "$(tail -n 12 /tmp/canli.log 2>/dev/null)" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID")" \
+            --assignee yigitolmezcan \
+            || echo "issue açılamadı"
 
       # Bülten SADECE yeni bir gece yayınlandıysa gider. `yayin.py`
       # yayınlamadıysa (hazır gece yok, ya da doğrulama kapısı tuttu)
@@ -70,8 +106,16 @@ jobs:
       - name: Bülten kaydını depoya yaz
         if: always()
         run: |
-          git config user.name  "overnight-bot"
-          git config user.email "bot@users.noreply.github.com"
+          # YAZAR KİMLİĞİ VERCEL TARAFINDAN DENETLENİYOR. "overnight-bot"
+          # kullanıldığında Vercel dağıtımı reddediyor:
+          #   readyStateReason: "The Deployment was blocked because the
+          #   commit author does not have contributing access"
+          #   seatBlock.blockCode: TEAM_ACCESS_REQUIRED
+          # Ölçüldü: bot yazarlı 6 dağıtımın 6'sı BLOCKED, hesap yazarlı
+          # 30 dağıtımın 30'u READY. Yani otomatik yayın siteye HİÇ
+          # ulaşmıyordu. Otomatik olduğu commit MESAJINDAN belli oluyor.
+          git config user.name  "yigitolmezcan"
+          git config user.email "yigitolmezcan@gmail.com"
           git add config/yayin_durumu.json
           if ! git diff --staged --quiet; then
             git pull --rebase --autostash -q
@@ -102,8 +146,16 @@ jobs:
         if: always()
         run: |
           python3 kosu_kaydi.py yayinla "${{ job.status }}" "run ${{ github.run_number }} · ${{ github.event_name }}"
-          git config user.name  "overnight-bot"
-          git config user.email "bot@users.noreply.github.com"
+          # YAZAR KİMLİĞİ VERCEL TARAFINDAN DENETLENİYOR. "overnight-bot"
+          # kullanıldığında Vercel dağıtımı reddediyor:
+          #   readyStateReason: "The Deployment was blocked because the
+          #   commit author does not have contributing access"
+          #   seatBlock.blockCode: TEAM_ACCESS_REQUIRED
+          # Ölçüldü: bot yazarlı 6 dağıtımın 6'sı BLOCKED, hesap yazarlı
+          # 30 dağıtımın 30'u READY. Yani otomatik yayın siteye HİÇ
+          # ulaşmıyordu. Otomatik olduğu commit MESAJINDAN belli oluyor.
+          git config user.name  "yigitolmezcan"
+          git config user.email "yigitolmezcan@gmail.com"
           git add config/kosu_kaydi.json
           if ! git diff --staged --quiet; then
             git pull --rebase --autostash -q || true

@@ -3161,6 +3161,55 @@ def main():
     basar("Kritik: satır dolgusu tabanı sıfıra inebiliyor (uç kadroda taşma yok)",
           "const KBS_PAD_MIN=0," in _sayfa9)
 
+    # ==================================================================
+    # YAYIN GERÇEKTEN CANLIYA ÇIKIYOR MU
+    # 27 Ağustos 2026: yayın işi kusursuz koştu, 21 Aralık'ı depoya
+    # yazdı, "success" dedi — site 20 Aralık'ta kaldı. Vercel bot
+    # yazarlı commit'in dağıtımını reddediyordu (TEAM_ACCESS_REQUIRED).
+    # Ölçüldü: bot yazarlı 6/6 dağıtım BLOCKED, hesap yazarlı 30/30
+    # READY. Yani otomatik yayın siteye HİÇ ulaşamıyordu.
+    # ==================================================================
+    _akislar = {ad: open(f".github/workflows/{ad}", encoding="utf-8").read()
+                for ad in ("uret.yml", "yayinla.yml")}
+
+    basar("Yayın: iş akışları Vercel'in reddettiği bot kimliğini kullanmıyor",
+          all('user.name  "overnight-bot"' not in m and
+              "bot@users.noreply.github.com" not in m
+              for m in _akislar.values()))
+    basar("Yayın: commit yazarı Vercel hesabıyla aynı",
+          all(m.count('git config user.name  "yigitolmezcan"')
+              == m.count("git config user.email") for m in _akislar.values())
+          and all('git config user.email "yigitolmezcan@gmail.com"' in m
+                  for m in _akislar.values()))
+    # Her `git config user.name` satırının bir `user.email` eşi olmalı;
+    # biri unutulursa commit yine bot kimliğiyle atılır.
+    basar("Yayın: her yazar ayarı ad+eposta çifti hâlinde",
+          all(m.count("git config user.name") == m.count("git config user.email")
+              for m in _akislar.values()))
+
+    # Denetim DEPOYA değil, okuyucunun gördüğü sayfaya bakmalı.
+    basar("Yayın: canlı site denetimi yayın işine bağlı",
+          "canli_dogrula.py" in _akislar["yayinla.yml"]
+          and "Canlıya çıkmadı" in _akislar["yayinla.yml"])
+    basar("Yayın: canlıya çıkmazsa atanmış issue açılıyor",
+          "--assignee yigitolmezcan" in _akislar["yayinla.yml"]
+          .split("Canlıya çıkmadı")[1])
+
+    import canli_dogrula as _cd
+    # Dağıtım birkaç dakika sürebiliyor; tek atışta "olmadı" demek
+    # yanlış alarm üretir.
+    basar("Yayın: canlı denetim tek atışta pes etmiyor (≥3 dk sabır)",
+          _cd.DENEME * _cd.DENEME_ARASI_SN >= 180)
+    # Gömülü veriden tarihi okuyor — sayfadaki görsel metinden değil.
+    _ornek = ('<script id="gomulu-veri" type="application/json">'
+              '{"2025-12-21":{"tarih":"2025-12-21"}}</script>')
+    basar("Yayın: canlı tarih gömülü veriden okunuyor",
+          _cd._GOMULU_DESENI.search(_ornek) is not None
+          and _jj.loads(_cd._GOMULU_DESENI.search(_ornek).group(1))
+          == {"2025-12-21": {"tarih": "2025-12-21"}})
+    basar("Yayın: gömülü veri yoksa tarih uydurulmuyor",
+          _cd._GOMULU_DESENI.search("<html>boş</html>") is None)
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))
