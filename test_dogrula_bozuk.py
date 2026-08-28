@@ -3755,9 +3755,11 @@ def main():
     basar("Kart üstüne kart: kapatma en üstteki katmanı kapatıyor",
           "function _ustKatman()" in _sayfa10
           and "const n=_ustKatman();\n  if(n) _katmaniKapat(n,true);" in _sayfa10)
+    # popstate işleyicisi artık KENDİ doğurduğumuz geri hareketini
+    # yutuyor (bkz. çift kapanma hatası) — biçim değişti, kural aynı.
     basar("Kart üstüne kart: geri tuşu tek katman kapatıyor",
-          "addEventListener('popstate',()=>{ const n=_ustKatman(); if(n) _katmaniKapat(n,false); });"
-          in _sayfa10)
+          "const n=_ustKatman(); if(n) _katmaniKapat(n,false);" in _sayfa10
+          and "if(_geriYutulacak){ _geriYutulacak=false; return; }" in _sayfa10)
     # Katman 1'in DOM'una dokunulmuyor: sekmesi ve kaydırma konumu kalıyor.
     basar("Kart üstüne kart: alttaki kartın DOM'u korunuyor",
           "sheet2.innerHTML=oyuncuKartiHTML({...o, _mac_id: macId || ''})" in _sayfa10
@@ -4201,6 +4203,68 @@ def main():
           _gunler15 == sorted(_gunler15)
           and set(_gunler15) == set(_jj.loads(
               open("config/yayin_durumu.json", encoding="utf-8").read())["yayinlanan"]))
+
+    # ==================================================================
+    # MASAÜSTÜ GENİŞLİĞİ / SÜRÜKLEYEREK KAPATMA / DAKİKA SÜTUNU
+    # ==================================================================
+    _s16 = _sayfa10
+
+    # 1) Masaüstü genişliği. Mobil DEĞİŞMEMELİ.
+    basar("Genişlik: 1024+ için ayrı blok var",
+          "@media(min-width:1024px){" in _s16 and ".wrap{max-width:900px}" in _s16)
+    basar("Genişlik: mobil taban kuralı korundu",
+          ".wrap{max-width:700px;margin:0 auto;padding:0 20px 60px}" in _s16)
+    # Bu dosyada aynı özgüllükteki kural sırası defalarca ısırdı.
+    basar("Genişlik: masaüstü bloğu stil sayfasının SONUNDA",
+          _s16.index("@media(min-width:1024px){") > _s16.index(".wrap{max-width:700px"))
+    # Okuma satırı uzarsa göz satır başını kaybediyor.
+    basar("Genişlik: gövde paragrafı ch ile sınırlı",
+          "max-width:68ch" in _s16)
+    # Kart bilerek genişlemiyor: tablo 700px'te zaten sığıyor.
+    basar("Genişlik: kart 700px kalıyor",
+          ".sheet{max-width:900px}" not in _s16
+          and "max-width:700px" in _s16.split(".sheet{")[1].split("}")[0])
+
+    # 2) Sürükleyerek kapatma.
+    basar("Sürükleme: eşik 80px ve hız ölçütü var",
+          "SURUKLE_ESIGI = 80" in _s16 and "SURUKLE_HIZI" in _s16
+          and "hiz>SURUKLE_HIZI" in _s16)
+    # Eskiden sadece 34x3 piksellik tutamağa bağlıydı.
+    basar("Sürükleme: tutamak VE başlık alanı sürükleniyor",
+          "querySelectorAll('.grab, .khead, .ohd')" in _s16)
+    # Tablo alanında dikey kaydırma var; sürükleme onu ezmemeli.
+    basar("Sürükleme: tablo alanı hariç tutuluyor",
+          "!e.target.closest('.kbody')" in _s16)
+    basar("Sürükleme: eşiğe ulaşmazsa geri oturuyor",
+          "kat.style.transform='translateX(-50%) translateY(0)'" in _s16)
+    basar("Sürükleme: kart üstüne kartta katmana bağlı",
+          "surukleBagla(sheet2,()=>_katmaniKapat(2,true))" in _s16
+          and "surukleBagla(sheet,()=>_katmaniKapat(1,true))" in _s16)
+    # ÇİFT KAPANMA HATASI: kapatma history.back() çağırıyor, o popstate
+    # doğuruyor, popstate de bir katman daha kapatıyordu. Tek ✕ iki
+    # katmanı birden kapatıyordu ve hata bir kare sonra ortaya çıktığı
+    # için eşzamanlı ölçümde görünmüyordu.
+    basar("Sürükleme: kendi doğurduğumuz popstate yutuluyor",
+          "let _geriYutulacak=false;" in _s16
+          and "_geriYutulacak=true; history.back();" in _s16
+          and "if(_geriYutulacak){ _geriYutulacak=false; return; }" in _s16)
+
+    # 3) Dakika sütunu.
+    _kol = _s16.split("const KOLONLAR=[")[1].split("];")[0]
+    _sira = _re.findall(r"\['(\w+)'", _kol)
+    basar("Dakika: sütun sırası Oyuncu | Dk | Say | Rib | Ast ...",
+          _sira[:4] == ["min", "pts", "reb", "ast"])
+    basar("Dakika: soluk, normal ağırlık, bir tık küçük",
+          "table.kbs td.kdk{color:var(--faint);font-weight:400;font-size:12px}" in _s16)
+    # Temel `table.kbs td` kuralı daha özgül; seçici onunla eşit
+    # başlamazsa font-size eziliyor.
+    basar("Dakika: seçici temel kuralı ezebilecek özgüllükte",
+          "table.kbs td.kdk{" in _s16)
+    basar("Dakika: sayı kalın ve beyaz kalıyor",
+          "table.kbs td.k{color:var(--ink);font-weight:700}" in _s16)
+    basar("Dakika: hücreye sınıf veriliyor",
+          "ek==='sonuk'?'kdk':''" in _s16
+          and "['min','DK',null,'sonuk']" in _kol.replace(" ", ""))
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
