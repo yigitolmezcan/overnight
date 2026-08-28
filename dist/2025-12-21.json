@@ -2422,13 +2422,6 @@
               "sayi": 7,
               "fg": "3/3",
               "kazanan": true
-            },
-            {
-              "isim": "Myles Turner",
-              "takim": "MIL",
-              "sayi": 2,
-              "fg": "1/1",
-              "kazanan": false
             }
           ]
         }
@@ -9514,16 +9507,56 @@
       "degisim": 1,
       "konferans": "Batı",
       "form": [
-        true,
-        true,
-        true,
-        true,
-        false,
-        true,
-        true,
-        false,
-        true,
-        true
+        {
+          "g": true,
+          "rakip": "San Antonio",
+          "skor": "125-112"
+        },
+        {
+          "g": true,
+          "rakip": "New Orleans",
+          "skor": "149-142"
+        },
+        {
+          "g": true,
+          "rakip": "New Orleans",
+          "skor": "125-116"
+        },
+        {
+          "g": true,
+          "rakip": "LA Clippers",
+          "skor": "109-106"
+        },
+        {
+          "g": false,
+          "rakip": "Phoenix",
+          "skor": "105-108"
+        },
+        {
+          "g": true,
+          "rakip": "Golden State",
+          "skor": "127-120"
+        },
+        {
+          "g": true,
+          "rakip": "Sacramento",
+          "skor": "117-103"
+        },
+        {
+          "g": false,
+          "rakip": "Memphis",
+          "skor": "110-116"
+        },
+        {
+          "g": true,
+          "rakip": "Oklahoma City",
+          "skor": "112-107"
+        },
+        {
+          "g": true,
+          "rakip": "Milwaukee",
+          "skor": "103-100"
+        }
       ]
     },
     {
@@ -9534,16 +9567,56 @@
       "degisim": 1,
       "konferans": "Batı",
       "form": [
-        false,
-        false,
-        false,
-        true,
-        false,
-        false,
-        false,
-        false,
-        false,
-        true
+        {
+          "g": false,
+          "rakip": "Utah",
+          "skor": "119-128"
+        },
+        {
+          "g": false,
+          "rakip": "Memphis",
+          "skor": "107-115"
+        },
+        {
+          "g": false,
+          "rakip": "Houston",
+          "skor": "95-121"
+        },
+        {
+          "g": true,
+          "rakip": "Miami",
+          "skor": "127-111"
+        },
+        {
+          "g": false,
+          "rakip": "Indiana",
+          "skor": "105-116"
+        },
+        {
+          "g": false,
+          "rakip": "Denver",
+          "skor": "105-136"
+        },
+        {
+          "g": false,
+          "rakip": "Minnesota",
+          "skor": "103-117"
+        },
+        {
+          "g": false,
+          "rakip": "Portland",
+          "skor": "133-134"
+        },
+        {
+          "g": false,
+          "rakip": "Portland",
+          "skor": "93-98"
+        },
+        {
+          "g": true,
+          "rakip": "Houston",
+          "skor": "125-124"
+        }
       ]
     },
     {
@@ -9554,16 +9627,56 @@
       "degisim": -1,
       "konferans": "Batı",
       "form": [
-        true,
-        false,
-        true,
-        true,
-        false,
-        true,
-        false,
-        false,
-        true,
-        false
+        {
+          "g": true,
+          "rakip": "Utah",
+          "skor": "129-101"
+        },
+        {
+          "g": false,
+          "rakip": "Utah",
+          "skor": "125-133"
+        },
+        {
+          "g": true,
+          "rakip": "Sacramento",
+          "skor": "121-95"
+        },
+        {
+          "g": true,
+          "rakip": "Phoenix",
+          "skor": "117-98"
+        },
+        {
+          "g": false,
+          "rakip": "Dallas",
+          "skor": "109-122"
+        },
+        {
+          "g": true,
+          "rakip": "LA Clippers",
+          "skor": "115-113"
+        },
+        {
+          "g": false,
+          "rakip": "Denver",
+          "skor": "125-128"
+        },
+        {
+          "g": false,
+          "rakip": "New Orleans",
+          "skor": "128-133"
+        },
+        {
+          "g": true,
+          "rakip": "Denver",
+          "skor": "115-101"
+        },
+        {
+          "g": false,
+          "rakip": "Sacramento",
+          "skor": "124-125"
+        }
       ]
     },
     {
@@ -9574,16 +9687,56 @@
       "degisim": -1,
       "konferans": "Doğu",
       "form": [
-        false,
-        true,
-        false,
-        false,
-        false,
-        false,
-        true,
-        true,
-        false,
-        false
+        {
+          "g": false,
+          "rakip": "New York",
+          "skor": "94-116"
+        },
+        {
+          "g": true,
+          "rakip": "Portland",
+          "skor": "121-118"
+        },
+        {
+          "g": false,
+          "rakip": "Los Angeles",
+          "skor": "120-123"
+        },
+        {
+          "g": false,
+          "rakip": "Charlotte",
+          "skor": "86-111"
+        },
+        {
+          "g": false,
+          "rakip": "Boston",
+          "skor": "113-121"
+        },
+        {
+          "g": false,
+          "rakip": "New York",
+          "skor": "101-117"
+        },
+        {
+          "g": true,
+          "rakip": "Miami",
+          "skor": "106-96"
+        },
+        {
+          "g": true,
+          "rakip": "Milwaukee",
+          "skor": "111-105"
+        },
+        {
+          "g": false,
+          "rakip": "Boston",
+          "skor": "96-112"
+        },
+        {
+          "g": false,
+          "rakip": "Brooklyn",
+          "skor": "81-96"
+        }
       ]
     },
     {
@@ -9594,16 +9747,56 @@
       "degisim": -1,
       "konferans": "Doğu",
       "form": [
-        false,
-        true,
-        false,
-        false,
-        false,
-        false,
-        false,
-        true,
-        false,
-        false
+        {
+          "g": false,
+          "rakip": "Detroit",
+          "skor": "135-138"
+        },
+        {
+          "g": true,
+          "rakip": "LA Clippers",
+          "skor": "140-123"
+        },
+        {
+          "g": false,
+          "rakip": "Dallas",
+          "skor": "108-118"
+        },
+        {
+          "g": false,
+          "rakip": "Orlando",
+          "skor": "105-106"
+        },
+        {
+          "g": false,
+          "rakip": "Sacramento",
+          "skor": "111-127"
+        },
+        {
+          "g": false,
+          "rakip": "Orlando",
+          "skor": "108-117"
+        },
+        {
+          "g": false,
+          "rakip": "Toronto",
+          "skor": "96-106"
+        },
+        {
+          "g": true,
+          "rakip": "Brooklyn",
+          "skor": "106-95"
+        },
+        {
+          "g": false,
+          "rakip": "Boston",
+          "skor": "116-129"
+        },
+        {
+          "g": false,
+          "rakip": "New York",
+          "skor": "125-132"
+        }
       ]
     },
     {
@@ -9614,16 +9807,56 @@
       "degisim": -1,
       "konferans": "Doğu",
       "form": [
-        true,
-        false,
-        false,
-        false,
-        true,
-        false,
-        true,
-        false,
-        false,
-        false
+        {
+          "g": true,
+          "rakip": "Philadelphia",
+          "skor": "142-134"
+        },
+        {
+          "g": false,
+          "rakip": "Detroit",
+          "skor": "98-99"
+        },
+        {
+          "g": false,
+          "rakip": "LA Clippers",
+          "skor": "92-115"
+        },
+        {
+          "g": false,
+          "rakip": "Denver",
+          "skor": "133-134"
+        },
+        {
+          "g": true,
+          "rakip": "Washington",
+          "skor": "131-116"
+        },
+        {
+          "g": false,
+          "rakip": "Detroit",
+          "skor": "115-142"
+        },
+        {
+          "g": true,
+          "rakip": "Philadelphia",
+          "skor": "120-117"
+        },
+        {
+          "g": false,
+          "rakip": "Charlotte",
+          "skor": "126-133"
+        },
+        {
+          "g": false,
+          "rakip": "San Antonio",
+          "skor": "98-126"
+        },
+        {
+          "g": false,
+          "rakip": "Chicago",
+          "skor": "150-152"
+        }
       ]
     }
   ],

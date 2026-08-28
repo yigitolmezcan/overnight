@@ -2693,8 +2693,10 @@ def main():
     # FORM: son 10, eskiden yeniye, sonuncusu bu geceki maç.
     basar("Sıralama: her takımda 10 form kutucuğu",
           all(len(t["form"]) == 10 for t in _sir))
-    basar("Sıralama: form değerleri galibiyet/mağlubiyet (bool)",
-          all(isinstance(w, bool) for t in _sir for w in t["form"]))
+    # Kutucuk artık bilgi taşıyor: {g, rakip, skor}. Galibiyet bilgisi
+    # `g` alanında, kaybolmadı.
+    basar("Sıralama: form değerleri galibiyet/mağlubiyet (g alanı)",
+          all(isinstance(w["g"], bool) for t in _sir for w in t["form"]))
     # Son kutucuk bu geceki maçın sonucu olmalı — kutu skorla karşılaştır.
     _gece_sonuc = {}
     for _k in _d6["mutlaka"] + (_d6.get("degerse_bak") or []) + (_d6.get("diger") or []):
@@ -2704,7 +2706,7 @@ def main():
         _gece_sonuc[_kaz["kod"]] = True
         _gece_sonuc[_kay["kod"]] = False
     basar("Sıralama: son kutucuk BU GECEKİ maçın sonucu",
-          all(t["form"][-1] == _gece_sonuc.get(t["takim"]) for t in _sir
+          all(t["form"][-1]["g"] == _gece_sonuc.get(t["takim"]) for t in _sir
               if t["takim"] in _gece_sonuc))
 
     # KARAR DEĞİŞTİ: takım rengi (küçük dikdörtgen) kaldırıldı. Renk
@@ -3350,7 +3352,7 @@ def main():
     # Her kutucuk oynanmış bir maç: form listesi sadece True/False taşıyor,
     # "veri yok" diye üçüncü bir durum yok — kırmızı belirsiz kalmıyor.
     basar("Sıralama: form kutucukları yalnız galibiyet/mağlubiyet",
-          all(isinstance(w, bool) for t in (_d7.get("siralama") or []) for w in t["form"]))
+          all(isinstance(w["g"], bool) for t in (_d7.get("siralama") or []) for w in t["form"]))
 
     # ==================================================================
     # BRIEF: SESSİZLİK YALNIZ KUYRUKTA
@@ -3710,7 +3712,7 @@ def main():
           and _sayfa10.count("function oyuncuKartiAc(") == 1)
     # Sahadaki halka kapsayıcı kartı da açmasın.
     basar("Oyuncu kartı: dokunuş kapsayıcı karta sızmıyor",
-          "e.stopPropagation();oyuncuKartiAc" in _sayfa10)
+          "e.stopPropagation();\n      oyuncuKartiAc(el.dataset.oyuncu" in _sayfa10)
     # Kartı olmayan oyuncuya işaret KONMUYOR — okuyucuya yalan söz verilmez.
     basar("Oyuncu kartı: işaret sadece kartı olan oyuncuda",
           "const adattr=kart?` data-oyuncu=" in _sayfa10)
@@ -3743,7 +3745,7 @@ def main():
           in _sayfa10)
     # Katman 1'in DOM'una dokunulmuyor: sekmesi ve kaydırma konumu kalıyor.
     basar("Kart üstüne kart: alttaki kartın DOM'u korunuyor",
-          "sheet2.innerHTML=oyuncuKartiHTML(o)" in _sayfa10
+          "sheet2.innerHTML=oyuncuKartiHTML({...o, _mac_id: macId || ''})" in _sayfa10
           and "sheet.innerHTML=oyuncuKartiHTML" not in _sayfa10)
     # Sayfa kaydırması ancak SON katman kapanınca serbest kalmalı.
     basar("Kart üstüne kart: sayfa kaydırması son katmanda serbest kalıyor",
@@ -3856,6 +3858,88 @@ def main():
           and "Başlık eklemek bir çözüm DEĞİLDİR" in _sartname)
     basar("Şartname: canlı sezon için vekil sunucu şartı yazılı",
           "VEKİL SUNUCU ŞARTTIR" in _sartname)
+
+    # ==================================================================
+    # ALTI TASARIM DÜZELTMESİ
+    # ==================================================================
+    _s12 = _sayfa10
+    _d12 = _d7
+
+    # 1) Kritik anlarda sayı eşiği — düşük/sıfır sayılı satır bilgi taşımıyor.
+    basar("Kritik: sayı eşiği 4",
+          _derle.KRITIK_ASGARI_SAYI == 4)
+    _kritikler = [k["box"]["kritik"] for _b in ("mutlaka", "degerse_bak", "diger")
+                  for k in (_d12.get(_b) or [])
+                  if isinstance(k, dict) and k.get("box", {}).get("kritik")]
+    basar("Kritik: her satır eşiği geçiyor",
+          bool(_kritikler)
+          and all(o["sayi"] >= _derle.KRITIK_ASGARI_SAYI
+                  for k in _kritikler for o in k["oyuncular"]))
+    basar("Kritik: eşiği geçen tek oyuncu varsa tek satır çıkıyor",
+          all(1 <= len(k["oyuncular"]) <= _derle.KRITIK_OYUNCU_SAYISI
+              for k in _kritikler))
+    basar("Kritik: eşiği geçen yoksa blok hiç kurulmuyor",
+          "if not esigi_gecen:\n        return None" in _derle_kaynak)
+
+    # 3) Türkler bölümü oyuncu kartını açıyor, box score'a bağlantı veriyor.
+    basar("Türkler: satır oyuncu kartını açıyor (box score'u değil)",
+          'kartVar?`data-oyuncu="${t.id}" data-mac="${esc(t.mac_id||\'\')}"`' in _s12
+          and "oyuncuBagla(turkBox)" in _s12)
+    basar("Türkler: kartın altında box score bağlantısı",
+          "Maçın box score'u ›" in _s12 and 'data-mac-git=' in _s12)
+    # Bağlantı SADECE maç kimliği verildiğinde çizilir: kutu skordan
+    # açılan kartta geri götüren bağlantı gürültü olurdu.
+    basar("Türkler: bağlantı sadece maç kimliği verilince çiziliyor",
+          "${o._mac_id?`<button class=\"obox\"" in _s12)
+    basar("Türkler: bağlantı oyuncu kartını kapatıp box score'u açıyor",
+          "_katmaniKapat(2,true);\n    if(m) kartAc(boxKartiHTML(m));" in _s12)
+
+    # 4) Boşluğa dokunarak kapatma SADECE masaüstünde.
+    basar("Perde: mobilde dokunarak kapatma kapalı",
+          "const _fareVar = () => matchMedia('(hover:hover) and (pointer:fine)').matches;" in _s12
+          and "scrim.addEventListener('click',()=>{ if(_fareVar()) kartKapat(); });" in _s12
+          and "scrim2.addEventListener('click',()=>{ if(_fareVar()) kartKapat(); });" in _s12)
+    # Ayrım ekran genişliğiyle DEĞİL giriş cihazıyla: geniş ama
+    # dokunmatik tablette de mobil davranış doğru.
+    basar("Perde: ayrım giriş cihazına göre, ekran genişliğine göre değil",
+          "pointer:fine" in _s12.split("const _fareVar")[1][:120])
+
+    # 5) Yükselen/Düşen satırı da kartı açıyor.
+    basar("Form: satır oyuncu kartını açıyor",
+          'data-oyuncu="${o.id}"' in _s12.split("const kartVar=GECE_OYUNCULARI[String(o.id)]")[1][:300]
+          and "oyuncuBagla(kutu)" in _s12)
+    basar("Form: ortalama bloğu satırda kalıyor",
+          'class="avg"' in _s12 and "o.son5_ort.toFixed(1)" in _s12)
+    basar("Form: dokunulabilirlik işareti (ad yanında ok + bölüm ipucu)",
+          '.fp.acilir .nm::after{content:"›"' in _s12
+          and 'class="fipucu"' in _s12)
+    # Sayı dizisine dokunmak satırın kartını AÇMAMALI.
+    basar("Form: sayı dizisi dokunuşu satır kartını açmıyor",
+          "c.addEventListener('click',e=>{e.stopPropagation();goster();});" in _s12)
+
+    # 6) Sıralama kutucuğu bilgi veriyor.
+    _sir12 = _d12.get("siralama") or []
+    basar("Sıralama: form kutucukları rakip ve skor taşıyor",
+          bool(_sir12)
+          and all(isinstance(f, dict) and "g" in f and "rakip" in f and "skor" in f
+                  for t in _sir12 for f in t["form"]))
+    basar("Sıralama: skor kendi-rakip biçiminde",
+          all(not f["skor"] or _re.match(r"^\d+-\d+$", f["skor"])
+              for t in _sir12 for f in t["form"]))
+    basar("Sıralama: kazanma bilgisi korundu",
+          all(isinstance(f["g"], bool) for t in _sir12 for f in t["form"]))
+    basar("Sıralama: balon kutucuğa bağlı, satır tıklamasını tetiklemiyor",
+          "k.addEventListener('click',e=>{e.stopPropagation();goster();});" in _s12
+          and "function siralamaBalonBagla()" in _s12)
+    basar("Sıralama: aynı anda tek balon (diğerleri kapatılıyor)",
+          "siralamaBalonKapat(); formdaBalonKapat();" in _s12)
+    basar("Sıralama: mobilde hover yok, dokunma zorunlu",
+          "matchMedia('(hover:hover)').matches" in
+          _s12.split("function siralamaBalonBagla")[1][:1600])
+    # Eski biçim (düz true/false) hâlâ okunabilmeli: arşiv geceleri
+    # yeniden derlenmeden bozulmasın.
+    basar("Sıralama: eski düz biçim de okunuyor",
+          "(typeof f === 'object') ? f.g : f" in _s12)
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",

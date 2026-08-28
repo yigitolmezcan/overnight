@@ -467,6 +467,12 @@ body.n-worst .calm{border-left-color:var(--amber)}
 /* .now SONRA: aynı özgüllük, sırayla kazanıyor (bkz. .sq). */
 .osq>span.now u{color:var(--ember);font-weight:700}
 .osq>span.now i{background:var(--ember);opacity:1}
+/* "Maçın box score'u ›" — SADECE Türkler bölümünden açılan kartta.
+   Kutu skordan açılan kartta geri götüren bağlantı gürültü olurdu. */
+.obox{display:block;width:100%;padding:13px 16px;border-top:1px solid #1A2230;
+  background:#0B0F16;font-family:var(--mono);font-size:11px;letter-spacing:.06em;
+  color:var(--ember);text-align:center;cursor:pointer}
+.obox:hover{background:#0E141D}
 .osqlab{font-family:var(--mono);font-size:8.5px;letter-spacing:.11em;
   text-transform:uppercase;color:#39424F;margin-top:9px;text-align:center}
 
@@ -765,6 +771,15 @@ td.khot{color:var(--amber);font-weight:700}
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .fp .tm{display:block;font-family:var(--mono);font-size:10.5px;color:var(--faint);
   margin-top:2px}
+/* Dokunulabilirlik: adın yanında ince ember ok + bölüm altında bir kez
+   ipucu. Kutu skordaki ile aynı dil. */
+.fp.acilir{cursor:pointer}
+.fp.acilir .nm::after{content:"›";color:var(--ember);font-family:var(--mono);
+  font-size:10px;margin-left:5px;vertical-align:1px}
+.fp.acilir:hover{background:#0C121C}
+.fipucu{font-family:var(--mono);font-size:9px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--faint);text-align:right;padding:10px 2px 0}
+.fipucu s{color:var(--ember);text-decoration:none;margin-right:4px}
 /* Son 5 maç: SAYI DİZİSİ (kullanıcı kararı). Yerine geçtiği ince çubuk
    grafiği silik duruyordu ve değerler okunmuyordu.
    ÇİZGİ RENGİ ANLAM TAŞIYOR — asıl mesele bu: çıplak sayı bir şey ifade
@@ -856,7 +871,15 @@ td.khot{color:var(--amber);font-weight:700}
 .sr .tn{flex:1;min-width:0;font-size:13.5px;font-weight:700;letter-spacing:-.01em;
   line-height:1.25;overflow-wrap:break-word}
 /* Form: 10 kare, soldan sağa ESKİDEN YENİYE — en sağdaki bu geceki maç. */
-.sr .f10{display:flex;gap:2.5px;flex:none}
+.sr .f10{display:flex;gap:2.5px;flex:none;position:relative}
+/* Kutucuk balonu — sayı dizisindeki `.tip` ile aynı dil ve aynı
+   görünürlük mekanizması (kap sınıfı, kardeş seçici değil). */
+.f10 i[data-rakip]{cursor:pointer}
+.ftip{position:absolute;bottom:calc(100% + 7px);left:50%;transform:translateX(-50%);
+  background:#1A222E;border:1px solid #2A3444;padding:5px 8px;white-space:nowrap;
+  font-family:var(--mono);font-size:10.5px;color:var(--ink);opacity:0;
+  pointer-events:none;transition:opacity .12s;z-index:5}
+.f10.tipon .ftip{opacity:1}
 /* Mağlubiyet KIRMIZI (kullanıcı kararı). Koyu gri (#2A3340) "veri yok"
    gibi duruyordu; oysa her kutucuk oynanmış bir maç — kazanılmış ya da
    kaybedilmiş. İki renk aynı görsel ağırlıkta: kırmızı bağırmıyor ama
@@ -1363,15 +1386,26 @@ function _katmaniKapat(n,geri){
   if(geri && history.state && history.state.kart) history.back();
 }
 
-function oyuncuKartiAc(pid){
+function oyuncuKartiAc(pid,macId){
   const o=(GECE_OYUNCULARI||{})[String(pid)];
   if(!o) return;
   const yeniKatman=!sheet2.classList.contains('on');
-  sheet2.innerHTML=oyuncuKartiHTML(o);
+  // Box score bağlantısı SADECE kartın altında bir maç kimliği
+  // verildiğinde çıkıyor (Türkler bölümü). Kutu skordan açılmışsa
+  // zaten oradan geldik, aynı yere geri götüren bağlantı gürültü.
+  sheet2.innerHTML=oyuncuKartiHTML({...o, _mac_id: macId || ''});
   sheet2.classList.add('on'); scrim2.classList.add('on');
   document.body.style.overflow='hidden';
   if(yeniKatman) history.pushState({kart:_ustKatman()},'');
   sheet2.querySelectorAll('[data-kapat]').forEach(b=>b.addEventListener('click',()=>_katmaniKapat(2,true)));
+  // "Maçın box score'u ›" — oyuncu kartını KAPATIP kutu skoru açıyor,
+  // üst üste iki katman bırakmıyor.
+  const boxGit=sheet2.querySelector('[data-mac-git]');
+  if(boxGit) boxGit.addEventListener('click',()=>{
+    const m=MAC_BY_ID[boxGit.dataset.macGit];
+    _katmaniKapat(2,true);
+    if(m) kartAc(boxKartiHTML(m));
+  });
   surukleBagla(sheet2,()=>_katmaniKapat(2,true));
 }
 
@@ -1379,7 +1413,8 @@ function oyuncuKartiAc(pid){
 // kendi tıklaması tetiklenmesin diye olay durduruluyor.
 function oyuncuBagla(kap){
   kap.querySelectorAll('[data-oyuncu]').forEach(el=>{
-    el.addEventListener('click',e=>{e.stopPropagation();oyuncuKartiAc(el.dataset.oyuncu);});
+    el.addEventListener('click',e=>{e.stopPropagation();
+      oyuncuKartiAc(el.dataset.oyuncu, el.dataset.mac || '');});
   });
 }
 
@@ -1410,8 +1445,15 @@ function kartKapat(){
   const n=_ustKatman();
   if(n) _katmaniKapat(n,true);
 }
-scrim.addEventListener('click',kartKapat);
-scrim2.addEventListener('click',kartKapat);
+// BOŞLUĞA DOKUNARAK KAPATMA SADECE MASAÜSTÜNDE (kullanıcı kararı).
+// Mobilde kartın dışına denk gelen dokunuşlar yanlışlıkla tetikleniyor
+// ve okuyucu kartı istemeden kaybediyor. Telefonda kapatma yolları
+// yeterli: ✕, aşağı sürükleme, geri tuşu. Ayrım EKRAN GENİŞLİĞİYLE
+// DEĞİL giriş cihazıyla — geniş ama dokunmatik bir tablette de mobil
+// davranış doğru (aynı ölçüt `.dokun`/`.tikla` ayrımında da kullanılıyor).
+const _fareVar = () => matchMedia('(hover:hover) and (pointer:fine)').matches;
+scrim.addEventListener('click',()=>{ if(_fareVar()) kartKapat(); });
+scrim2.addEventListener('click',()=>{ if(_fareVar()) kartKapat(); });
 // popstate geçmişi ZATEN geriye aldı; burada history.back çağrılmaz.
 addEventListener('popstate',()=>{ const n=_ustKatman(); if(n) _katmaniKapat(n,false); });
 addEventListener('keydown',e=>{ if(e.key==='Escape'&&_ustKatman()) kartKapat(); });
@@ -1591,6 +1633,7 @@ function oyuncuKartiHTML(o){
         <div class="oalt">${alt1}<br>${alt2}</div>
       </div>
       ${ctx}
+      ${o._mac_id?`<button class="obox" data-mac-git="${esc(o._mac_id)}">Maçın box score'u ›</button>`:''}
     </div>`;
 }
 
@@ -1685,7 +1728,14 @@ function render(d){
       const g1=[['dk',t.min],['şut',t.fg],['3s',t['3p']],['sa',t.ft]];
       const g2=[['tç',t.stl],['blk',t.blk],['tk',t.to],['+/−',t.pm]];
       const yaz=g=>g.map(([e,v])=>`<span><b>${esc(String(v))}</b><i>${e}</i></span>`).join('');
-      return `<button class="tkblok" style="--tc:${esc(t.renk||'#7E8794')}" data-kart="${esc(t.mac_id||'')}">
+      // Kullanıcı kararı: dokununca BOX SCORE değil OYUNCU KARTI açılır.
+      // Okuyucu Houston'ın kadrosunu değil Şengün'ü merak ediyor; sezon
+      // eğrisi sayesinde bu bölüm bir "takip ekranı" gibi çalışıyor.
+      // Maçın kadrosu kartın altındaki bağlantıdan bir dokunuş uzakta.
+      const kartVar=GECE_OYUNCULARI[String(t.id)];
+      return `<button class="tkblok" style="--tc:${esc(t.renk||'#7E8794')}" ${
+        kartVar?`data-oyuncu="${t.id}" data-mac="${esc(t.mac_id||'')}"`
+              :`data-kart="${esc(t.mac_id||'')}"`}>
         <span class="tkust"><span class="tkad">${esc(t.isim)}</span>
           <span class="tkmac">${esc(t.mac_kisa||t.takim_adi||'')}</span></span>
         <span class="tkbuyuk">
@@ -1699,6 +1749,7 @@ function render(d){
     const off=t=>`<div class="tkoff"><span class="ad">${esc(t.isim)} · ${esc(t.takim_adi||t.takim)}</span>
       <span class="tag">Oynamadı</span></div>`;
     turkBox.innerHTML=oynayanlar.map(blok).join('')+oynamayanlar.map(off).join('');
+    oyuncuBagla(turkBox);
     document.querySelector('.sec.s3').before(secTurkler);
   }
 
@@ -1820,7 +1871,11 @@ function render(d){
     // gürültü, öbürü %42 çöküş.
     const ok=o.yuzde>0?'▲':'▼';
     const halka=o.renk_degisti?` ring" style="background:${esc(o.renk)};--asil:${esc(o.asil_renk)}`:`" style="background:${esc(o.renk)}`;
-    return `<div class="fp">
+    // Satır oyuncu kartını açıyor (kullanıcı kararı) — aynı bileşen.
+    // Sağdaki ortalama bloğu satırda KALIYOR; kart açılınca aynı bilgi
+    // daha geniş görünüyor, çakışma yok.
+    const kartVar=GECE_OYUNCULARI[String(o.id)];
+    return `<div class="fp${kartVar?' acilir':''}"${kartVar?` data-oyuncu="${o.id}"`:''}>
       <span class="who">
         <span class="nm">${esc(o.isim)}</span>
         <span class="tm"><i class="tmdot${halka}"></i>${esc(o.takim)}${o.pos?' · '+esc(o.pos):''}</span>
@@ -1837,7 +1892,10 @@ function render(d){
     document.getElementById('secFormda').classList.toggle('cold',hangi==='dusen');
     // Sol başlık SABİT "Form": sekmede zaten "Yükselen"/"Düşen" yazıyor,
     // başlığın da onu tekrarlaması iki satır üst üste aynı kelimeydi.
-    kutu.innerHTML=liste.map(o=>formdaSatir(o,hangi==='dusen')).join('');
+    const ipucu=liste.some(o=>GECE_OYUNCULARI[String(o.id)])
+      ? '<div class="fipucu"><s>›</s>isme <span class="dokun">dokun</span><span class="tikla">tıkla</span></div>' : '';
+    kutu.innerHTML=liste.map(o=>formdaSatir(o,hangi==='dusen')).join('')+ipucu;
+    oyuncuBagla(kutu);
     kutu.querySelectorAll('.sq>span[data-sayi]').forEach(c=>{
       const goster=()=>{
         const balon=c.parentElement.querySelector('.tip');
@@ -1877,7 +1935,7 @@ function render(d){
     }));
     formdaCiz('yukselen');
   }
-  document.addEventListener('click',formdaBalonKapat);
+  document.addEventListener('click',()=>{formdaBalonKapat();siralamaBalonKapat();});
 
   // ---- sıralama (yer değiştiren yoksa bölüm gizli) ----
   const siralama=d.siralama||[];
@@ -1887,14 +1945,55 @@ function render(d){
       `${siralama.length} takım · konferans sırası`;
     document.getElementById('siralamaListe').innerHTML=siralama.map(t=>{
       const yukari=t.degisim>0;
-      const kare=w=>`<i class="${w?'w':''}"></i>`;
+      // Kutucuk artık bilgi taşıyor: dokununca rakip ve skor.
+      // Eski biçim (düz true/false) hâlâ okunuyor — arşivdeki geceler
+      // yeniden derlenmeden de bozulmasın.
+      const kare=f=>{
+        const g = (typeof f === 'object') ? f.g : f;
+        const bilgi = (typeof f === 'object' && f.rakip)
+          ? ` data-rakip="${esc(f.rakip)}" data-skor="${esc(f.skor||'')}"` : '';
+        return `<i class="${g?'w':''}"${bilgi}></i>`;
+      };
       return `<div class="sr">
         <span class="ar ${yukari?'u':'d'}">${yukari?'▲':'▼'}${Math.abs(t.degisim)}</span>
         <span class="tn">${esc(t.takim_adi)}</span>
-        <span class="f10">${t.form.map(kare).join('')}</span>
+        <span class="f10">${t.form.map(kare).join('')}<span class="ftip"></span></span>
         <span class="pos"><b>${t.yeni}.</b><s>sıra</s></span>
       </div>`;
     }).join('');
+    siralamaBalonBagla();
+  }
+
+  // Sıralama kutucuğu balonu. Aynı anda TEK balon açık; kutucuğa
+  // dokunmak satırın kendi tıklamasını tetiklemiyor (stopPropagation).
+  function siralamaBalonKapat(){
+    document.querySelectorAll('.f10 i.tap').forEach(x=>x.classList.remove('tap'));
+    document.querySelectorAll('.f10.tipon').forEach(x=>x.classList.remove('tipon'));
+  }
+  function siralamaBalonBagla(){
+    document.querySelectorAll('.f10 i[data-rakip]').forEach(k=>{
+      const goster=()=>{
+        const kap=k.parentElement, balon=kap.querySelector('.ftip');
+        if(!balon) return;
+        balon.textContent=`${k.dataset.rakip}${k.dataset.skor?' '+k.dataset.skor:''}`;
+        const kr=kap.getBoundingClientRect(), ir=k.getBoundingClientRect();
+        balon.style.left=(ir.left-kr.left+ir.width/2)+'px';
+        const acik=k.classList.contains('tap');
+        siralamaBalonKapat(); formdaBalonKapat();
+        if(acik) return;
+        k.classList.add('tap'); kap.classList.add('tipon');
+        // Ekran dışına taşma düzeltmesi ÖLÇÜMLE — balon çizildikten
+        // sonra gerçek genişliğine bakılıyor.
+        const b=balon.getBoundingClientRect();
+        let kaydir=0;
+        if(b.left<8) kaydir=8-b.left;
+        if(b.right>innerWidth-8) kaydir=(innerWidth-8)-b.right;
+        balon.style.transform=kaydir?`translateX(calc(-50% + ${kaydir}px))`:'translateX(-50%)';
+      };
+      k.addEventListener('click',e=>{e.stopPropagation();goster();});
+      k.addEventListener('mouseenter',()=>{ if(matchMedia('(hover:hover)').matches) goster(); });
+      k.addEventListener('mouseleave',()=>{ if(matchMedia('(hover:hover)').matches) siralamaBalonKapat(); });
+    });
   }
 
   // ---- gecenin notları (veri yoksa bölüm gizli) ----

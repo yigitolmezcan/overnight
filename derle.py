@@ -848,6 +848,11 @@ KRITIK_FARK = 5
 # gidip 12 farkla biten maçta da kritik anlar yaşanmıştır.
 KRITIK_ASGARI_SURE_SN = 120
 KRITIK_OYUNCU_SAYISI = 2
+# Satır ancak GERÇEKTEN sayı üreten oyuncu için kuruluyor (kullanıcı
+# kuralı). Düşük ya da sıfır sayılı satır bilgi taşımıyor: bloğun
+# vaadi "maçı kim kazandırdı", "kim oradaydı" değil. Eşiği geçen tek
+# oyuncu varsa tek satır çıkar; hiç yoksa blok hiç görünmez.
+KRITIK_ASGARI_SAYI = 4
 
 _SAAT_DESENI = re.compile(r"PT(\d+)M([\d.]+)S")
 
@@ -956,7 +961,10 @@ def _kritik_anlar(ham_mac, ev_taraf, dep_taraf):
         yuzde = isabetler.get(kisi, 0) / d if d else 0.0
         return (-sayilar[kisi], -yuzde, ad_by_id.get(kisi, ""))
 
-    secilenler = sorted(sayilar, key=anahtar)[:KRITIK_OYUNCU_SAYISI]
+    esigi_gecen = {k: v for k, v in sayilar.items() if v >= KRITIK_ASGARI_SAYI}
+    if not esigi_gecen:
+        return None
+    secilenler = sorted(esigi_gecen, key=anahtar)[:KRITIK_OYUNCU_SAYISI]
     oyuncular = [{
         "isim": ad_by_id.get(k, ""),
         "takim": kod_by_id.get(k, ""),
@@ -1390,12 +1398,34 @@ def _gunluk_satirlari(oyun_gunlugu, kadar_tarih=None):
 
 
 def _son_form(oyun_gunlugu, kod, adet=SIRALAMA_FORM_MAC):
-    """[True/False, ...] — ESKİDEN YENİYE, sonuncusu bu geceki maç."""
+    """[{g, rakip, skor}, ...] — ESKİDEN YENİYE, sonuncusu bu geceki maç.
+
+    Kutucuk artık sadece renk değil: dokununca rakibi ve skoru söylüyor
+    (kullanıcı kuralı). Rakibin skoru AYNI maçın karşı satırından
+    okunuyor — günlükte her maç iki kez, iki takım için yazılı."""
     rs = oyun_gunlugu["resultSets"][0]
     i = {ad: n for n, ad in enumerate(rs["headers"])}
+    # Maç kimliği → o maçtaki takım/skor çiftleri.
+    skor_by_mac = {}
+    if "GAME_ID" in i:
+        for r in rs["rowSet"]:
+            skor_by_mac.setdefault(r[i["GAME_ID"]], {})[r[i["TEAM_ABBREVIATION"]]] = r[i["PTS"]]
     maclar = sorted((r for r in rs["rowSet"] if r[i["TEAM_ABBREVIATION"]] == kod),
                     key=lambda r: str(r[i["GAME_DATE"]])[:10])
-    return [r[i["WL"]] == "W" for r in maclar[-adet:]]
+    cikti = []
+    for r in maclar[-adet:]:
+        # "OKC vs. HOU" / "GSW @ LAL" → rakip kodu
+        parcalar = str(r[i["MATCHUP"]]).replace(" vs. ", " @ ").split(" @ ")
+        rakip_kod = parcalar[-1].strip() if len(parcalar) == 2 else ""
+        bizim = r[i["PTS"]]
+        rakip_skor = (skor_by_mac.get(r[i["GAME_ID"]], {}).get(rakip_kod)
+                      if "GAME_ID" in i else None)
+        cikti.append({
+            "g": r[i["WL"]] == "W",
+            "rakip": TAKIM_KISA.get(rakip_kod, rakip_kod),
+            "skor": f"{bizim}-{rakip_skor}" if rakip_skor is not None else "",
+        })
+    return cikti
 
 
 def _siralama_hareketi(ham, tarih_str, gece_takimlari):
