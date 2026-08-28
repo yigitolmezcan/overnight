@@ -675,14 +675,20 @@ def brief_satiri(mac, olgu, en_iyi_oyuncu, en_iyi_ad, haric_kindler=None):
 
 
 def brief_duz_sonuc(mac):
-    """Türü kaptırmış ama olgusu OLAN maç için düz sonuç cümlesi.
+    """Tür bulamayan maç için düz sonuç cümlesi — SKORSUZ.
 
     Kullanıcı kuralı: bir maç cümle hakkını türe takıldığı için
-    kaybetmesin. Bu cümle uydurma değil — skor bir olgu, ve aynı biçim
-    "Bunları geç" bölümünde zaten kullanılıyor."""
+    kaybetmesin.
+
+    SKOR YAZILMIYOR, iki sebeple. (1) T19: brief satırında final skor,
+    fark haber değeri eşiğini geçmedikçe gereksiz — ölçüldü, 152-150
+    biten maçta bu cümle doğrulamada işaretlendi. (2) Satırın hemen
+    altında skor ZATEN yazıyor; tekrarlamak yer kaplayıp bilgi
+    eklemiyor. Cümlenin kattığı şey skor değil, KİMİN kazandığı:
+    şeritte "ATL 150 - CHI 152" yazıyor, kazananı okuyucu iki sayıyı
+    karşılaştırarak buluyordu."""
     return _gecir(f"{mac['kazanan_adi']}, {mac['kaybeden_adi']}'"
-                  f"{belirtme_eki(mac['kaybeden_adi'])} "
-                  f"{mac['buyuk']}-{mac['kucuk']} yendi.")
+                  f"{belirtme_eki(mac['kaybeden_adi'])} yendi.")
 
 
 def _brief_adaylari(mac, olgu, en_iyi_oyuncu, en_iyi_ad):

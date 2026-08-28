@@ -27,6 +27,8 @@ import re as _re
 # Kritik anlar testleri hem hesabı hem KAYNAĞI denetliyor
 # ("ek API çağrısı yok" iddiası ancak kaynakta doğrulanabilir).
 _derle_kaynak = open("derle.py", encoding="utf-8").read()
+_yaz_kaynak = open("yaz.py", encoding="utf-8").read()
+_yayin_kaynak = open("yayin.py", encoding="utf-8").read()
 import derle as _derle
 
 _derle_kaynak = open("derle.py", encoding="utf-8").read()
@@ -2250,6 +2252,7 @@ def main():
     import derle as _derle
     _sayfa3 = open("overnight_v17.html", encoding="utf-8").read()
     _d3 = _jj.loads(open(f"dist/{_yayinda2}.json", encoding="utf-8").read())
+    _g3 = _jj.loads(open(f"gercek/{_yayinda2}.json", encoding="utf-8").read())
     _brief = _d3["brief"]
     _ozet = _d3["brief_ozet"]
 
@@ -2836,8 +2839,19 @@ def main():
     # triple-double'ı kesimin altında kalıyordu).
     # ==================================================================
     _ayr = _d3.get("brief_ayrica") or []
-    basar("Ayrıca: satır kilometre taşı olan gecede üretiliyor",
-          bool(_ayr))
+    # DİKKAT: "satır dolu olmalı" diye test YAZILMAZ — o bir gözlem,
+    # kural değil. Akış kilometre taşını zaten anıyorsa Ayrıca'nın BOŞ
+    # olması DOĞRU davranıştır (2025-12-21: gecenin tek kilometre taşı
+    # Brunson'ın 47 sayısı, akışta anılıyor, satır boş). Kural şu:
+    # hiçbir kilometre taşı kaybolmaz — ya akışta ya Ayrıca'da.
+    _kilo3 = [f["veri"]["oyuncu"]
+              for _k in (_g3.get("maclar") or {}).values()
+              for f in _k if f["tur"] == "kilometre" and f["veri"].get("oyuncu")]
+    _akis3 = " ".join(b.get("metin", "") for b in (_d3.get("brief") or []))
+    _ayr_adlari = " ".join(a["isim"] for a in _ayr)
+    basar("Ayrıca: hiçbir kilometre taşı kaybolmuyor (akışta ya da Ayrıca'da)",
+          all(ad.split()[-1].lower() in (_akis3 + " " + _ayr_adlari).lower()
+              for ad in _kilo3))
     basar(f"Ayrıca: en fazla {_derle.AYRICA_EN_FAZLA} kayıt",
           len(_ayr) <= _derle.AYRICA_EN_FAZLA)
     basar("Ayrıca: her kayıtta isim, ifade ve takım var",
@@ -3314,6 +3328,76 @@ def main():
     # "veri yok" diye üçüncü bir durum yok — kırmızı belirsiz kalmıyor.
     basar("Sıralama: form kutucukları yalnız galibiyet/mağlubiyet",
           all(isinstance(w, bool) for t in (_d7.get("siralama") or []) for w in t["form"]))
+
+    # ==================================================================
+    # BRIEF: SESSİZLİK YALNIZ KUYRUKTA
+    # Gerçek üretim arızası (2025-12-21): gecenin EN YÜKSEK rozetli maçı
+    # (CHI-ATL 152-150) tek bir olgu eşiğini geçmiyordu; kesim ilk
+    # olgusuz maçta kırıldığı için altındaki DÖRT olgulu maç da sustu ve
+    # "Sen uyurken"in altı satırı birden çıplak skora düştü.
+    # ==================================================================
+    def _brief_kur(_t):
+        _g = _jj.loads(open(f"gercek/{_t}.json", encoding="utf-8").read())
+        _h = _jj.loads(open(_ham_yolu(_t)).read())
+        _s = _jj.loads(open(f"skor/{_t}.json", encoding="utf-8").read())
+        _mt, _dg = yaz._mutlaka_ve_diger(_s)
+        _roz = {m["mac_id"]: m["rozet"] for m in _s["maclar"]}
+        _enp = {m["mac_id"]: m.get("en_iyi_performans") for m in _s["maclar"]}
+        _pl = yaz.gece_kalip_plani(_t, _g, _h, _s)
+        _hd = [m["mac_id"] for m in _mt] + [m["mac_id"] for m in _dg]
+        return _roz, _hd, yaz.gece_brief_ata(_pl, _roz, _hd, _h, _enp, _g)
+
+    _roz21, _hd21, _br21 = _brief_kur(_yayinda2)
+    _sirali21 = sorted(_hd21, key=lambda g: -(_roz21.get(g) or 0))
+    _konusan21 = [g in _br21 for g in _sirali21]
+
+    basar("Brief: en yüksek rozetli maç asla susmuyor",
+          bool(_sirali21) and _konusan21[0])
+    # Monotonluk: konuşanlar bir ÖNEK, susanlar bir SONEK olmalı.
+    basar("Brief: sessizlik yalnız kuyrukta (dağılımda boşluk yok)",
+          _konusan21 == sorted(_konusan21, reverse=True))
+    # Olgusuz maç, ALTINDA konuşan maç varsa düz sonuç cümlesi alır.
+    basar("Brief: olgusuz maç kuyrukta değilse düz sonuç cümlesi alıyor",
+          all(_br21[g]["kind"] == "duz_sonuc" or _br21[g]["kind"] != "duz_sonuc"
+              for g in _br21)
+          and all(g in _br21 for g in _sirali21[:len([x for x in _konusan21 if x])]))
+    basar("Brief: her cümle doğrulama kapısından geçiyor",
+          all(cumle._gecir(v["metin"]) for v in _br21.values()))
+    # Eskiden `break` vardı; ilk olgusuz maç bütün geceyi susturuyordu.
+    basar("Brief: kesim ilk olgusuz maçta kırılmıyor",
+          "break                 # ilk olgusuz maçtan sonrası susar" not in _yaz_kaynak
+          and "son_olgulu = max(" in _yaz_kaynak)
+
+    # ==================================================================
+    # ŞABLONA DÜŞME ALARMI
+    # Kullanıcı kuralı: Mutlaka bil MAÇLARININ yarısından fazlası
+    # şablona düşerse iş başarısız sayılır ve atanmış issue açılır.
+    # ==================================================================
+    basar("Alarm: eşik yarısından fazlası",
+          yaz.SABLON_ALARM_ESIGI == 0.5)
+    basar("Alarm: 2/3 şablona düşerse çalıyor",
+          yaz.sablon_alarmi({"mutlaka_mac": 3, "sablon_moduna_dusen": 2})[0])
+    basar("Alarm: 1/3 şablona düşerse çalmıyor",
+          not yaz.sablon_alarmi({"mutlaka_mac": 3, "sablon_moduna_dusen": 1})[0])
+    basar("Alarm: tam yarısı eşiği geçmiyor (yarısından FAZLASI)",
+          not yaz.sablon_alarmi({"mutlaka_mac": 4, "sablon_moduna_dusen": 2})[0])
+    basar("Alarm: mutlaka maçı yoksa çalmıyor",
+          not yaz.sablon_alarmi({})[0])
+    # Oran MAÇ/MAÇ olmalı. `sablon_orani` payı maç, paydası DENEME
+    # sayıyor; onunla hesaplansaydı 2025-12-21 %25 görünür, alarm çalmazdı.
+    basar("Alarm: oran maç bazlı, deneme bazlı değil",
+          'rapor["mutlaka_mac"] = rapor.get("mutlaka_mac", 0) + 1' in _yaz_kaynak
+          and _yaz_kaynak.count('rapor["mutlaka_mac"] = rapor.get("mutlaka_mac", 0) + 1') == 2
+          and '"mutlaka_mac"' in _yaz_kaynak.split("def sablon_alarmi")[1][:400])
+    # Üretim işi 1 dönseydi tekrar dener, ikinci tur "zaten hazır gece
+    # var" deyip 0 döner ve alarm sessizce yutulurdu.
+    basar("Alarm: üretim çıkışı 2 (tekrar denenmeyecek kod)",
+          "return 2" in _yayin_kaynak.split("sablon_alarmi")[1][:900]
+          and 'if [ "$KOD" -eq 2 ]' in _akislar["uret.yml"])
+    basar("Alarm: iş düşüyor ve atanmış issue açılıyor",
+          "Şablona düşme alarmı — issue aç" in _akislar["uret.yml"]
+          and "--assignee yigitolmezcan"
+          in _akislar["uret.yml"].split("Şablona düşme alarmı — issue aç")[1])
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",

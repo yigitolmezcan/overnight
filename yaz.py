@@ -1144,11 +1144,18 @@ def gece_brief_ata(kalip_plani, rozet_by_gid, brief_hedefleri, ham,
     #     ve tür boşa giderdi (ölçüldü: 2.45'lik DET-CHA `siralama`yı
     #     alıyor, sonra kesiliyor, 7.35'lik TOR-BOS düz cümleye düşüyordu).
     sirali_hepsi = sorted(brief_hedefleri, key=lambda g: -(rozet_by_gid.get(g) or 0))
-    uygun = []
-    for gid in sirali_hepsi:
-        if not adaylar_by_gid.get(gid):
-            break                 # ilk olgusuz maçtan sonrası susar
-        uygun.append(gid)
+    # SESSİZLİK YALNIZ KUYRUKTA OLABİLİR. Eskiden ilk olgusuz maçta
+    # döngü kırılıyordu; olgusuz maç EN ÜSTTEYSE bütün gece susuyordu.
+    # Gerçek üretim arızası (2025-12-21): 152-150 biten CHI-ATL gecenin
+    # en yüksek rozetli maçıydı ve tek bir olgusu eşiği geçmiyordu
+    # (geri dönüş 4 sayı, en iyi oyuncu kaybeden tarafta, uzatma yok) —
+    # altındaki dört maçın olgusu vardı ama altısı birden sustu.
+    # Artık kesim, OLGUSU OLAN EN DÜŞÜK rozetli maçtan yapılıyor: onun
+    # üstündeki olgusuz maçlar düz sonuç cümlesi alır, kuyruk susar.
+    # Monotonluk yine sağlanıyor, boşluk yine oluşmuyor.
+    son_olgulu = max((i for i, g in enumerate(sirali_hepsi) if adaylar_by_gid.get(g)),
+                     default=-1)
+    uygun = sirali_hepsi[:son_olgulu + 1]
     adaylar_by_gid = {g: a for g, a in adaylar_by_gid.items() if g in uygun}
 
     # 2) Tür ataması: her tür, o türde en güçlü maça. Kaybeden bir
@@ -1182,18 +1189,19 @@ def gece_brief_ata(kalip_plani, rozet_by_gid, brief_hedefleri, ham,
         if not degisti:
             break
 
-    # 3) Olgusu OLUP tür bulamayan maç düz sonuç cümlesi alır.
+    # 3) Türü kapamayan HER uygun maç düz sonuç cümlesi alır — olgusu
+    #    hiç olmayanlar dahil. Bir maç ne türe takıldığı için ne de
+    #    olgusuz kaldığı için hakkını kaybetmez; kuyruğa düşmediği
+    #    sürece konuşur.
     sonuc = {}
-    for gid, adaylar in adaylar_by_gid.items():
+    for gid in uygun:
         if gid in atanan:
             kind, metin = atanan[gid]
-        elif adaylar:
+        else:
             metin = cumle.brief_duz_sonuc(baglam_by_gid[gid])
             if not metin:
                 continue
             kind = "duz_sonuc"
-        else:
-            continue      # eşiği geçen hiçbir olgusu yok -> sessiz
         sonuc[gid] = {"metin": metin, "hedef_mac": gid, "muzip": False, "kind": kind}
 
     # 4) SON DENETİM — monotonluk gerçekten sağlandı mı? Kesim yukarıda
@@ -1855,8 +1863,39 @@ def gece_kalip_plani(tarih_str, gercek_gece, ham, skor_gece):
 _T_NUMARASI_DESENI = re.compile(r"\bT(\d+[a-z]?)\b")
 
 
+# ---------------------------------------------------------------------------
+# ŞABLONA DÜŞME ALARMI
+# ---------------------------------------------------------------------------
+#
+# Kullanıcı kuralı: "Sessizce şablona düşmek kabul edilebilir bir sonuç
+# değil." Bir gecede Mutlaka bil MAÇLARININ yarısından fazlası şablona
+# düşerse iş BAŞARISIZ sayılır ve atanmış issue açılır.
+#
+# DİKKAT — mevcut `sablon_orani` bu iş için KULLANILAMAZ: payı MAÇ,
+# paydası DENEME sayıyor. 2025-12-21'de %25 gösteriyordu (2/8), oysa
+# 3 mutlaka maçının 2'si şablona düşmüştü — gerçek oran %67.
+SABLON_ALARM_ESIGI = 0.5
+
+
+def sablon_alarmi(rapor):
+    """(alarm_mi, oran, mesaj) — Mutlaka bil MAÇLARININ şablona düşme oranı."""
+    toplam = (rapor or {}).get("mutlaka_mac") or 0
+    dusen = (rapor or {}).get("sablon_moduna_dusen") or 0
+    if not toplam:
+        return False, 0.0, "Mutlaka bil maçı yok — denetlenecek bir şey de yok."
+    oran = dusen / toplam
+    if oran > SABLON_ALARM_ESIGI:
+        return True, oran, (
+            f"Mutlaka bil maçlarının %{oran * 100:.0f}'i şablona düştü "
+            f"({dusen}/{toplam}). Yazılan metin LLM'den değil şablondan geliyor.")
+    return False, oran, f"Şablona düşen Mutlaka bil maçı: {dusen}/{toplam} (%{oran * 100:.0f})."
+
+
 def _rapor_metrikleri_hesapla(rapor):
     sablon_orani = round(rapor["sablon_moduna_dusen"] / rapor["toplam_alan"], 3) if rapor["toplam_alan"] else 0.0
+    # Maç bazlı oran — alarm bunu kullanıyor (bkz. sablon_alarmi).
+    _mm = rapor.get("mutlaka_mac") or 0
+    mutlaka_sablon_orani = round(rapor["sablon_moduna_dusen"] / _mm, 3) if _mm else 0.0
 
     # İki denemede de reddedilen alan sayısı: aynı (mac_id, yer) için
     # hem deneme=0 hem deneme=1 rapor["detay"]'de görünüyorsa, o alan
@@ -1877,6 +1916,7 @@ def _rapor_metrikleri_hesapla(rapor):
 
     return {
         "sablon_orani": sablon_orani,
+        "mutlaka_sablon_orani": mutlaka_sablon_orani,
         "iki_denemede_reddedilen": iki_denemede_reddedilen,
         "en_cok_tetikleyen_testler": en_cok_tetikleyen,
     }
@@ -2387,6 +2427,9 @@ def yaz_hibrit(tarih_str, zorla=False):
             ekstra_red_kontrolu=ust_uste_kontrol,
         )
         rapor["toplam_alan"] += toplam_alan
+        # MAÇ bazlı sayaç: alarm bunu kullanıyor. `toplam_alan` DENEME
+        # sayıyor, oran hesabında ikisi karıştırılamaz (bkz. sablon_alarmi).
+        rapor["mutlaka_mac"] = rapor.get("mutlaka_mac", 0) + 1
         rapor["detay"].extend(detay)
         if ilk_denemede_kabul:
             rapor["ilk_denemede_kabul"] += 1
@@ -2713,6 +2756,9 @@ def yaz(tarih_str, zorla=False, haber_skorlari=None, sadece_gidler=None):
             ),
         )
         rapor["toplam_alan"] += toplam_alan
+        # MAÇ bazlı sayaç: alarm bunu kullanıyor. `toplam_alan` DENEME
+        # sayıyor, oran hesabında ikisi karıştırılamaz (bkz. sablon_alarmi).
+        rapor["mutlaka_mac"] = rapor.get("mutlaka_mac", 0) + 1
         rapor["detay"].extend(detay)
         if ilk_denemede_kabul:
             rapor["ilk_denemede_kabul"] += 1

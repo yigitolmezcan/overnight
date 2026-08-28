@@ -31,6 +31,9 @@ import sys
 from datetime import datetime, timedelta
 from pathlib import Path
 
+# Şablona düşme alarmı için (bkz. uret): eşik ve hesap tek yerde durur.
+import yaz
+
 KOK = Path(__file__).resolve().parent
 DURUM_DOSYASI = KOK / "config" / "yayin_durumu.json"
 SABLON_HTML = KOK / "overnight_v17.html"
@@ -195,6 +198,21 @@ def uret():
     print(f"\nHAZIR: {tarih} · mod={d['hazir']['mod']} · maliyet=${d['hazir']['maliyet_usd']:.4f}")
     if d["hazir"]["butce_asildi"]:
         print("UYARI: günlük bütçe tavanına ulaşıldı, gecenin kalanı şablonla üretildi.")
+
+    # ŞABLONA DÜŞME ALARMI (kullanıcı kuralı): "Sessizce şablona düşmek
+    # kabul edilebilir bir sonuç değil." Mutlaka bil maçlarının yarısından
+    # fazlası şablona düştüyse iş BAŞARISIZ. Gece 'hazır' olarak
+    # işaretlenmiş halde kalıyor — üretim boşa gitmesin, kararı insan
+    # versin; ama iş kırmızı yanıyor ve atanmış issue açılıyor.
+    alarm, oran, mesaj = yaz.sablon_alarmi(taslak.get("rapor") or {})
+    print(mesaj)
+    if alarm:
+        # ÇIKIŞ KODU 2, 1 DEĞİL. Üretim işi ağ hatasına karşı üç kez
+        # deniyor; 1 dönseydi döngü tekrar denerdi, `uret` ikinci turda
+        # "zaten hazır gece var" deyip 0 dönerdi ve alarm sessizce
+        # yutulurdu. 2 = "tekrar deneme, işi düşür".
+        print("ÜRETİM BAŞARISIZ SAYILIYOR — LLM metni yayına çıkmıyor.")
+        return 2
     return 0
 
 

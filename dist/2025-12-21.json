@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-21",
-  "uretildi": "2026-08-27T15:39:08.132095Z",
+  "uretildi": "2026-08-28T14:04:29.934615Z",
   "mac_sayisi": 6,
   "bars": [
     {
@@ -42,8 +42,8 @@
   ],
   "brief": [
     {
-      "metin": "",
-      "anlatili": false,
+      "metin": "Jalen Brunson, Miami Heat karşısında 47 sayı attı.",
+      "anlatili": true,
       "hedef_id": "g-mutlaka-2",
       "icon": "default",
       "saat": "02:00",
@@ -66,8 +66,8 @@
       "one_cikan": false
     },
     {
-      "metin": "",
-      "anlatili": false,
+      "metin": "Minnesota Timberwolves, 16 sayılık farktan dönüp Milwaukee Bucks'u geçti.",
+      "anlatili": true,
       "hedef_id": "g-mutlaka-3",
       "icon": "default",
       "saat": "03:00",
@@ -78,8 +78,8 @@
       "one_cikan": false
     },
     {
-      "metin": "",
-      "anlatili": false,
+      "metin": "San Antonio Spurs, Washington Wizards'ı yenerek konferansta 2. sıraya yükseldi.",
+      "anlatili": true,
       "hedef_id": "a-0022500399",
       "icon": "default",
       "saat": "03:00",
@@ -90,8 +90,8 @@
       "one_cikan": false
     },
     {
-      "metin": "",
-      "anlatili": false,
+      "metin": "Sürpriz bir sonuçla Sacramento Kings, Houston Rockets'i yendi.",
+      "anlatili": true,
       "hedef_id": "g-mutlaka-1",
       "icon": "default",
       "saat": "06:00",
@@ -102,10 +102,10 @@
       "one_cikan": true
     },
     {
-      "metin": "",
-      "anlatili": false,
+      "metin": "Chicago Bulls, Atlanta Hawks'ı yendi.",
+      "anlatili": true,
       "hedef_id": "g-mutlaka-0",
-      "icon": "default",
+      "icon": "standings",
       "saat": "23:30",
       "rozet": 9.06,
       "skor": "ATL 150 – CHI 152",
@@ -118,16 +118,10 @@
     "ilk": "02:00",
     "son": "23:30",
     "mac": 6,
-    "anlatili": 0,
+    "anlatili": 5,
     "dakika": 1290
   },
-  "brief_ayrica": [
-    {
-      "isim": "Jalen Brunson",
-      "ifade": "47 sayı attı",
-      "takim": "New York"
-    }
-  ],
+  "brief_ayrica": [],
   "mutlaka": [
     {
       "id": "g-mutlaka-0",
@@ -135,9 +129,9 @@
       "mac": "Atlanta Hawks — Chicago Bulls",
       "skor": "150–152",
       "rozet": 9.06,
-      "baslik": "Chicago Bulls deplasmanda Atlanta Hawks'ı 152-150 yendi.",
-      "neden_onemli": "",
-      "ozet": "Chicago Bulls, Atlanta Hawks karşısında 152-150 kazandı.",
+      "baslik": "Chicago Bulls, Atlanta Hawks deplasmanında son saniyelerde 152-150 kazandı",
+      "neden_onemli": "Doğu Konferansı'nda play-in sıralamasını etkileyen bir maçtı, liderlik 19 kez el değiştirdi.",
+      "ozet": "Maça eşit başlayan Chicago, ikinci periyotta hücumda üstünlük kurup rakibinin önüne geçti. Bulls farkını bir ara 11 sayıya kadar genişletse de, maç son çeyreğe gergin bir skorla girdi. Son çeyrekte taraflar sırayla öne geçti, kararı son saniyelerde Chicago'dan Matas Buzelis'in serbest atışları verdi. Bulls'ta 28 sayı atan Buzelis, 11 şut denemesinde sadece bir kez hedefi ıskaladı.",
       "box": {
         "ev": {
           "takim": "Atlanta Hawks",
@@ -741,9 +735,9 @@
       "mac": "Sacramento Kings — Houston Rockets",
       "skor": "125–124",
       "rozet": 9.06,
-      "baslik": "Sacramento, Houston'ı son saniyede 125-124 yendi.",
-      "neden_onemli": "Kings, 14 sayılık farktan dönerek gecenin en çekişmeli maçını kazandı.",
-      "ozet": "Bitime 3.1 saniye kala Dennis Schröder'in attığı üçlük, Kings'e galibiyeti getirdi. Schröder geceyi 24 sayı, 10 asist ve 7 ribaundla double-double olarak tamamladı. Houston, Jabari Smith Jr.'ın son anlardaki serbest atışlarıyla öne geçmişti ama son sözü Sacramento söyledi.",
+      "baslik": "Uzatmaya giden maçta Sacramento Kings, Houston Rockets'i 125-124 yendi.",
+      "neden_onemli": "",
+      "ozet": "Sacramento Kings, 14 sayılık farkı eritti. Dennis Schröder 10 asist yaptı.",
       "box": {
         "ev": {
           "takim": "Sacramento Kings",
@@ -1279,9 +1273,9 @@
       "mac": "New York Knicks — Miami Heat",
       "skor": "132–125",
       "rozet": 8.84,
-      "baslik": "Jalen Brunson'un 47 sayılık gecesinde New York, Miami'yi yendi.",
-      "neden_onemli": "New York Knicks, konferansta 2. sıraya yükseldi.",
-      "ozet": "New York Knicks, 10 sayılık farkı eritti.",
+      "baslik": "Jalen Brunson'ın 47 sayısıyla New York, Miami'yi 132-125 yendi",
+      "neden_onemli": "20. galibiyetini alan Knicks, geceyi Doğu Konferansı'nda 2. sırada kapattı.",
+      "ozet": "Knicks, Miami'nin açtığı 10 sayılık farktan dönerek maçı kazandı. Brunson, 11 serbest atışının tamamını kullanarak sahadan yüksek isabetle oynadı ve 8 asistle takımını yönetti. Miami'nin ribaund üstünlüğüne rağmen Knicks üçlükte üstün geldi.",
       "box": {
         "ev": {
           "takim": "New York Knicks",
@@ -1807,9 +1801,9 @@
       "mac": "Minnesota Timberwolves — Milwaukee Bucks",
       "skor": "103–100",
       "rozet": 7.14,
-      "baslik": "Minnesota, 16 sayılık farktan dönerek Milwaukee'yi 103-100 yendi.",
-      "neden_onemli": "Edwards, isabetsiz bir geceye rağmen takımının en skorer ismi oldu.",
-      "ozet": "Minnesota, ikinci çeyrekte açılan farkı üçüncü periyotta eritti ve son çeyreğe önde girdi. DiVincenzo, isabetli atışlarıyla hücumda dengeyi kuran isim oldu. Wolves, evinde oynadığı karşılaşmayı son periyotta kontrolü bırakmadan tamamladı.",
+      "baslik": "Minnesota, sahasında Milwaukee'yi 103-100 yendi.",
+      "neden_onemli": "Timberwolves, 16 sayılık farktan dönerek maçı son çeyrekte kontrol altına aldı.",
+      "ozet": "Milwaukee Bucks ilk yarıda geniş bir üstünlük kurdu, ancak üçüncü çeyrekte Minnesota Timberwolves'un 27-15'lik üstünlüğüyle skor eşitlendi. Liderliğin maç boyunca üç kez el değiştirdiği karşılaşmada son çeyreği kontrollü geçen Timberwolves, farkı koruyarak sahasında galibiyeti aldı.",
       "box": {
         "ev": {
           "takim": "Minnesota Timberwolves",

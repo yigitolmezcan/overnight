@@ -80,9 +80,21 @@ jobs:
           # döngü kırılıyor.
           for deneme in 1 2 3; do
             echo "--- üretim denemesi $deneme/3 ---"
-            if python3 yayin.py uret 2>&1 | tee -a /tmp/adim.log; then
+            set +e
+            python3 yayin.py uret 2>&1 | tee -a /tmp/adim.log
+            KOD=${PIPESTATUS[0]}
+            set -e
+            if [ "$KOD" -eq 0 ]; then
               echo "deneme $deneme başarılı"
               exit 0
+            fi
+            # 2 = şablona düşme alarmı. Tekrar denemek anlamsız: gece
+            # zaten "hazır" işaretli, ikinci tur "zaten hazır gece var"
+            # deyip 0 döner ve alarm sessizce yutulurdu.
+            if [ "$KOD" -eq 2 ]; then
+              echo "sablon_alarmi=1" >> "$GITHUB_OUTPUT"
+              echo "Şablona düşme alarmı — tekrar denenmiyor."
+              exit 2
             fi
             if [ "$deneme" -lt 3 ]; then
               echo "deneme $deneme düştü, 10 dakika sonra tekrar denenecek"
@@ -165,6 +177,21 @@ jobs:
             "üretim işi düştü." \
             "Son satırlar: $(tail -n 6 /tmp/adim.log 2>/dev/null | tr '\n' ' ' | cut -c1-400)" \
             "Tam kayıt: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+      # Kullanıcı kuralı: "Sessizce şablona düşmek kabul edilebilir bir
+      # sonuç değil." Alarm çaldığında iş zaten kırmızı; burada ayrıca
+      # ATANMIŞ issue açılıyor (atanmamış issue için GitHub e-posta
+      # garanti etmiyor — 26 Ağustos'ta bunun bedeli ödendi).
+      - name: Şablona düşme alarmı — issue aç
+        if: failure() && steps.uretim.outputs.sablon_alarmi == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create \
+            --title "Mutlaka bil şablona düştü — $(date -u +%Y-%m-%d)" \
+            --body "$(printf 'Gecenin Mutlaka bil maçlarının yarısından fazlası LLM metni yerine şablonla yazıldı; üretim başarısız sayıldı.\n\nGece **hazır** işaretli kaldı — üretim boşa gitmesin diye siliniyor değil. Karar insanın: ya kurallar/prompt düzeltilip `python3 yaz.py <tarih> --force` ile yeniden yazılır, ya da olduğu gibi yayınlanır.\n\n```\n%s\n```\n\nKayıtlar: %s/%s/actions/runs/%s' "$(tail -n 25 /tmp/adim.log 2>/dev/null)" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID")" \
+            --assignee yigitolmezcan \
+            || echo "issue açılamadı"
+
       - name: Hata bildirimi
         if: failure()
         env:
