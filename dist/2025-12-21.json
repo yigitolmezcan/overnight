@@ -708,7 +708,31 @@
           ]
         },
         "wtf": null,
-        "kilit": null
+        "kilit": null,
+        "kritik": {
+          "sure_sn": 228,
+          "sure": "3:48",
+          "skor": "18-11",
+          "onde": "CHI",
+          "ev_puan": 11,
+          "dep_puan": 18,
+          "oyuncular": [
+            {
+              "isim": "Jalen Johnson",
+              "takim": "ATL",
+              "sayi": 9,
+              "fg": "4/4",
+              "kazanan": false
+            },
+            {
+              "isim": "Coby White",
+              "takim": "CHI",
+              "sayi": 9,
+              "fg": "3/4",
+              "kazanan": true
+            }
+          ]
+        }
       }
     },
     {
@@ -1222,7 +1246,31 @@
           ]
         },
         "wtf": null,
-        "kilit": null
+        "kilit": null,
+        "kritik": {
+          "sure_sn": 600,
+          "sure": "10:00",
+          "skor": "22-19",
+          "onde": "SAC",
+          "ev_puan": 22,
+          "dep_puan": 19,
+          "oyuncular": [
+            {
+              "isim": "Dennis Schröder",
+              "takim": "SAC",
+              "sayi": 9,
+              "fg": "3/4",
+              "kazanan": true
+            },
+            {
+              "isim": "Jabari Smith Jr.",
+              "takim": "HOU",
+              "sayi": 7,
+              "fg": "2/4",
+              "kazanan": false
+            }
+          ]
+        }
       }
     },
     {
@@ -1749,7 +1797,8 @@
               "kazandi": true
             }
           ]
-        }
+        },
+        "kritik": null
       }
     },
     {
@@ -2287,7 +2336,31 @@
           ]
         },
         "wtf": null,
-        "kilit": null
+        "kilit": null,
+        "kritik": {
+          "sure_sn": 158,
+          "sure": "2:38",
+          "skor": "7-2",
+          "onde": "MIN",
+          "ev_puan": 7,
+          "dep_puan": 2,
+          "oyuncular": [
+            {
+              "isim": "Anthony Edwards",
+              "takim": "MIN",
+              "sayi": 7,
+              "fg": "3/3",
+              "kazanan": true
+            },
+            {
+              "isim": "Myles Turner",
+              "takim": "MIL",
+              "sayi": 2,
+              "fg": "1/1",
+              "kazanan": false
+            }
+          ]
+        }
       }
     }
   ],
@@ -3576,7 +3649,8 @@
               "kazandi": true
             }
           ]
-        }
+        },
+        "kritik": null
       }
     },
     {
@@ -3584,7 +3658,7 @@
       "mac": "Brooklyn Nets — Toronto Raptors",
       "skor": "96–81",
       "rozet": 2.45,
-      "why": "",
+      "why": "gece sırası 2",
       "metin": "Brooklyn Nets evinde Toronto Raptors'u 96-81 yendi.",
       "box": {
         "ev": {
@@ -4176,7 +4250,8 @@
           ]
         },
         "wtf": null,
-        "kilit": null
+        "kilit": null,
+        "kritik": null
       }
     }
   ],

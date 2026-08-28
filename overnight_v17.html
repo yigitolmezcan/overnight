@@ -501,6 +501,31 @@ body.n-worst .calm{border-left-color:var(--amber)}
 .cr .v.win{color:var(--ink);font-weight:700}
 .cr .lb{flex:1;min-width:0;text-align:center;font-family:var(--mono);font-size:9px;
   letter-spacing:.11em;text-transform:uppercase;color:#4B5666}
+/* KRİTİK ANLAR — maçı KİMİN kazandırdığını söyleyen tek istatistik.
+   Kutu skorda görünmüyor; NBA'in kendi sitesinde bile ayrı sayfada.
+   "Son 5 dakikada Curry 11, Booker 2 sayı attı" 38'e 33'ten çok daha
+   fazlasını anlatıyor.
+   Yeri: çeyrek şeridinin ALTINDA, sekmelerin ÜSTÜNDE. Sekmelerden
+   BAĞIMSIZ — iki takımı birden gösterdiği için sekmeye bağlanamaz.
+   Zemin bir tık koyu, diğer bloklardan ayrılsın. */
+.kritik{flex:none;border-bottom:1px solid #1A2230;padding:11px 16px 12px;
+  background:#0C1119}
+.kritik .h{display:flex;justify-content:space-between;align-items:baseline;
+  gap:10px;margin-bottom:9px}
+.kritik .h b{font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ember);font-weight:400;white-space:nowrap}
+.kritik .h span{font-family:var(--mono);font-size:9.5px;color:var(--faint);
+  white-space:nowrap}
+.krow{display:flex;align-items:center;gap:9px;padding:3px 0}
+/* Ad taşarsa ÜÇ NOKTA ile kesilir; sağdaki sayı asla daralmaz. */
+.krow .who{flex:1;min-width:0;font-size:13px;font-weight:600;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.krow .who s{font-family:var(--mono);font-size:9.5px;color:var(--faint);
+  text-decoration:none;margin-left:6px}
+.krow .n{flex:none;font-family:var(--mono);font-size:13px;color:var(--ink2)}
+.krow .n b{color:var(--ink);font-weight:700}
+.krow.lead .who{color:var(--ink)}
+.krow.lead .n b{color:var(--ember)}
 .ktabs{flex:none;display:flex;gap:1px;background:#1A2230;border-bottom:1px solid #1A2230}
 .ktabs button{flex:1;position:relative;background:#0E131B;border:0;cursor:pointer;
   padding:9px 6px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--faint)}
@@ -1080,7 +1105,11 @@ let MAC_BY_ID={}, BESI=[], TARIH_ETIKET='';
 // indirildi — daralma buraya kadar inebilsin, taşma her koşulda kapansın.
 // KBS_PAD_MAX 9 iken masaüstünde 10 satırlık kartta 134px boşluk
 // kalıyordu (ölçüldü); tavan 14'e çıkarıldı.
-const KBS_PAD_MIN=1, KBS_PAD_MAX=14, CR_PAD_MIN=2, CR_PAD_MAX=16;
+// KBS_PAD_MIN 1 → 0: kritik anlar bloğu eklenince 15 kişilik kadroda
+// döngü tabanda takılıp 3px taşmayı kapatamıyordu (ölçüldü). Taban
+// sadece bu uç durumda devreye giriyor — döngü sığar sığmaz duruyor,
+// normal kartlarda dolgu değişmiyor.
+const KBS_PAD_MIN=0, KBS_PAD_MAX=14, CR_PAD_MIN=2, CR_PAD_MAX=16;
 function satirAraliginiAyarla(){
   const govde=sheet.querySelector('.kbody');
   const tablolar=[...sheet.querySelectorAll('.kpane table.kbs')];
@@ -1301,6 +1330,20 @@ function takimPanosu(ust,alt){
     </div>`;
 }
 
+// Kritik anlar bloğu. Veri yoksa (kritik süre 2 dakikanın altında ya
+// da o sürede hiç sayı atılmamış) HİÇ ÇİZİLMEZ — boş yer kalmaz.
+function kritikBlogu(k){
+  if(!k||!(k.oyuncular||[]).length) return '';
+  const satir=o=>`<div class="krow${o.kazanan?' lead':''}">
+      <span class="who">${esc(o.isim)}<s>${esc(o.takim)}</s></span>
+      <span class="n"><b>${o.sayi}</b> sayı · ${esc(o.fg)}</span></div>`;
+  const skor=k.onde?`${esc(k.skor)} ${esc(k.onde)}`:esc(k.skor);
+  return `<div class="kritik">
+      <div class="h"><b>Son 5 dakika</b><span>${esc(k.sure)} · ${skor}</span></div>
+      ${k.oyuncular.map(satir).join('')}
+    </div>`;
+}
+
 function boxKartiHTML(m){
   const b=m.box;
   // Varsayılan sekme KAZANAN takım.
@@ -1323,6 +1366,7 @@ function boxKartiHTML(m){
       <div class="kmeta">${esc(TARIH_ETIKET)} · <b>rozet ${m.rozet.toFixed(1)}</b></div>
       <div class="kteams">${sira.map((t,i)=>takimSatiri(t,i===0)).join('')}</div></div>
     ${ceyrekSeridi(sira[0],sira[1])}
+    ${kritikBlogu(b.kritik)}
     <div class="ktabs">${tab(sira[0],0)}<button class="mid" style="--tc:var(--ember)" data-pane="1">TAKIM</button>${tab(sira[1],1)}</div>
     <div class="kbody">
       ${b.wtf?`<div class="kwtf"><span>WTF İstatistiği</span><p>${esc(b.wtf)}</p></div>`:''}

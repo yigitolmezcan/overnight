@@ -69,7 +69,7 @@
       "metin": "Houston Rockets, Denver Nuggets'i 115-101 yendi.",
       "anlatili": true,
       "hedef_id": "a-0022500386",
-      "icon": "default",
+      "icon": "standings",
       "saat": "01:00",
       "rozet": 6.39,
       "skor": "DEN 101 – HOU 115",
@@ -800,6 +800,30 @@
               "kazandi": false
             }
           ]
+        },
+        "kritik": {
+          "sure_sn": 175,
+          "sure": "2:55",
+          "skor": "14-10",
+          "onde": "GSW",
+          "ev_puan": 14,
+          "dep_puan": 10,
+          "oyuncular": [
+            {
+              "isim": "Stephen Curry",
+              "takim": "GSW",
+              "sayi": 9,
+              "fg": "3/4",
+              "kazanan": true
+            },
+            {
+              "isim": "Devin Booker",
+              "takim": "PHX",
+              "sayi": 4,
+              "fg": "1/3",
+              "kazanan": false
+            }
+          ]
         }
       }
     },
@@ -1334,7 +1358,31 @@
           ]
         },
         "wtf": null,
-        "kilit": null
+        "kilit": null,
+        "kritik": {
+          "sure_sn": 284,
+          "sure": "4:44",
+          "skor": "16-10",
+          "onde": "WAS",
+          "ev_puan": 10,
+          "dep_puan": 16,
+          "oyuncular": [
+            {
+              "isim": "CJ McCollum",
+              "takim": "WAS",
+              "sayi": 6,
+              "fg": "2/2",
+              "kazanan": true
+            },
+            {
+              "isim": "Alex Sarr",
+              "takim": "WAS",
+              "sayi": 5,
+              "fg": "2/3",
+              "kazanan": false
+            }
+          ]
+        }
       }
     },
     {
@@ -1916,7 +1964,31 @@
           ]
         },
         "wtf": null,
-        "kilit": null
+        "kilit": null,
+        "kritik": {
+          "sure_sn": 486,
+          "sure": "8:06",
+          "skor": "19-17",
+          "onde": "UTA",
+          "ev_puan": 19,
+          "dep_puan": 17,
+          "oyuncular": [
+            {
+              "isim": "Keyonte George",
+              "takim": "UTA",
+              "sayi": 8,
+              "fg": "1/3",
+              "kazanan": false
+            },
+            {
+              "isim": "Wendell Carter Jr.",
+              "takim": "ORL",
+              "sayi": 5,
+              "fg": "2/2",
+              "kazanan": true
+            }
+          ]
+        }
       }
     }
   ],
@@ -3285,7 +3357,8 @@
               "kazandi": true
             }
           ]
-        }
+        },
+        "kritik": null
       }
     },
     {
@@ -3293,7 +3366,7 @@
       "mac": "Denver Nuggets — Houston Rockets",
       "skor": "101–115",
       "rozet": 6.39,
-      "why": "",
+      "why": "gece sırası 1",
       "metin": "Houston Rockets deplasmanda Denver Nuggets'i 115-101 yendi. Kevin Durant 31 sayı attı.",
       "box": {
         "ev": {
@@ -3853,7 +3926,8 @@
               "kazandi": true
             }
           ]
-        }
+        },
+        "kritik": null
       }
     },
     {
@@ -4401,7 +4475,8 @@
               "kazandi": false
             }
           ]
-        }
+        },
+        "kritik": null
       }
     }
   ],
@@ -4411,7 +4486,7 @@
       "mac": "LA Clippers — Los Angeles Lakers",
       "skor": "103–88",
       "rozet": 5.07,
-      "why": "gece sırası 10",
+      "why": "",
       "metin": "LA Clippers evinde Los Angeles Lakers'i 103-88 yendi.",
       "box": {
         "ev": {
@@ -4996,7 +5071,8 @@
               "kazandi": false
             }
           ]
-        }
+        },
+        "kritik": null
       }
     },
     {
@@ -5646,7 +5722,8 @@
           ]
         },
         "wtf": null,
-        "kilit": null
+        "kilit": null,
+        "kritik": null
       }
     },
     {
@@ -6217,6 +6294,30 @@
               "kod": "POR",
               "deger": 10,
               "kazandi": false
+            }
+          ]
+        },
+        "kritik": {
+          "sure_sn": 282,
+          "sure": "4:42",
+          "skor": "10-6",
+          "onde": "POR",
+          "ev_puan": 6,
+          "dep_puan": 10,
+          "oyuncular": [
+            {
+              "isim": "Donovan Clingan",
+              "takim": "POR",
+              "sayi": 6,
+              "fg": "3/3",
+              "kazanan": true
+            },
+            {
+              "isim": "Dennis Schröder",
+              "takim": "SAC",
+              "sayi": 3,
+              "fg": "1/2",
+              "kazanan": false
             }
           ]
         }
@@ -6905,7 +7006,8 @@
               "kazandi": false
             }
           ]
-        }
+        },
+        "kritik": null
       }
     }
   ],

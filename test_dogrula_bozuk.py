@@ -21,6 +21,14 @@ from dogrula import (
 import gercekler
 import yaz
 import cumle
+import derle as _derle
+
+# Kritik anlar testleri hem hesabı hem KAYNAĞI denetliyor
+# ("ek API çağrısı yok" iddiası ancak kaynakta doğrulanabilir).
+_derle_kaynak = open("derle.py", encoding="utf-8").read()
+import derle as _derle
+
+_derle_kaynak = open("derle.py", encoding="utf-8").read()
 
 TARIH = "2026-01-02"
 CHA_MIL = "0022500481"
@@ -2984,6 +2992,134 @@ def main():
     basar("Açılış: büyük harf Türkçe kurala göre (CUMARTESİ, CUMARTESI değil)",
           "toLocaleUpperCase('tr-TR')" in _sayfa8
           and "text-transform" not in _sayfa8.split(".ed{")[1].split("}")[0])
+
+    # ==================================================================
+    # KRİTİK ANLAR — "son 5 dakika" bloğu
+    # NBA'in standart clutch tanımı: son 5 dakika ve varsa uzatmaların
+    # tamamı İÇİNDE, farkın 5 ve altında OLDUĞU süre. Maçın son 5
+    # dakikası DEĞİL — testler tam olarak bu ayrımı koruyor.
+    # ==================================================================
+    _sayfa9 = open("overnight_v17.html", encoding="utf-8").read()
+    _kart9 = []
+    for _b in ("mutlaka", "degerse_bak", "diger"):
+        _v = _d7.get(_b)
+        if isinstance(_v, list):
+            _kart9 += [x for x in _v if isinstance(x, dict) and "box" in x]
+    _kritikler = [(k["box"]["ev"], k["box"]["dep"], k["box"].get("kritik"))
+                  for k in _kart9]
+    _acik = [(e, d, kr) for e, d, kr in _kritikler if kr]
+
+    # --- Tanım ---
+    basar("Kritik: pencere 4. çeyreğin bitimine 5 dakika kala başlıyor",
+          _derle.KRITIK_BASLANGIC_SN == 3 * 720 + (720 - 5 * 60)
+          and _derle.KRITIK_SON_DAKIKA == 5)
+    basar("Kritik: fark eşiği 5 sayı",
+          _derle.KRITIK_FARK == 5)
+    basar("Kritik: uzatma dakikaları da pencerede (5 dk'lık periyot)",
+          _derle._mac_saniyesi(5, 300.0) == 4 * 720
+          and _derle._mac_saniyesi(5, 0.0) == 4 * 720 + 300
+          and _derle._mac_saniyesi(6, 0.0) == 4 * 720 + 600)
+    basar("Kritik: saat ayrıştırma (PT02M38.00S → 158 sn kaldı)",
+          _derle._pbp_saniye("PT02M38.00S") == 158.0
+          and _derle._pbp_saniye("PT00M00.00S") == 0.0
+          and _derle._pbp_saniye("") is None)
+
+    # --- Görünürlük: TEK kural ---
+    basar("Kritik: eşik 2 dakika, açılan her bölüm eşiği geçiyor",
+          _derle.KRITIK_ASGARI_SURE_SN == 120
+          and all(kr["sure_sn"] >= 120 for _e, _d, kr in _acik))
+    basar("Kritik: sayı atılmamışsa bölüm açılmıyor",
+          all(sum(o["sayi"] for o in kr["oyuncular"]) > 0 for _e, _d, kr in _acik))
+    # Farklı biten maçta kritik süre sıfırdır — bölüm hiç açılmaz.
+    basar("Kritik: 20+ farkla biten maçta bölüm yok",
+          all(kr is None for e, d, kr in _kritikler if abs(e["skor"] - d["skor"]) >= 20))
+    # "Final farkı ≤5" gibi EK koşul YOK: uzatmaya gidip farklı biten
+    # maçta da kritik anlar yaşanmıştır.
+    basar("Kritik: görünürlük final farkına bağlı değil",
+          "final" not in _derle._kritik_anlar.__doc__.lower()
+          and any(abs(e["skor"] - d["skor"]) > 5 for e, d, kr in _acik))
+
+    # --- İçerik ---
+    basar("Kritik: bölümde tam iki oyuncu (üç değil)",
+          _derle.KRITIK_OYUNCU_SAYISI == 2
+          and all(1 <= len(kr["oyuncular"]) <= 2 for _e, _d, kr in _acik))
+    basar("Kritik: oyuncular sayıya göre sıralı",
+          all([o["sayi"] for o in kr["oyuncular"]]
+              == sorted((o["sayi"] for o in kr["oyuncular"]), reverse=True)
+              for _e, _d, kr in _acik))
+    basar("Kritik: her oyuncuda ad, takım kodu, sayı ve isabet var",
+          all(o["isim"] and len(o["takim"]) == 3 and isinstance(o["sayi"], int)
+              and "/" in o["fg"] for _e, _d, kr in _acik for o in kr["oyuncular"]))
+    basar("Kritik: oyuncular iki takımdan (kadro dışı isim yok)",
+          all(o["takim"] in (e["kod"], d["kod"])
+              for e, d, kr in _acik for o in kr["oyuncular"]))
+    # Ember vurgu EN FAZLA BİR satırda; ikisi de kazanan taraftan olunca
+    # ikisini birden boyamak vurguyu tamamen yok ediyor.
+    basar("Kritik: ember vurgu en fazla bir satırda",
+          all(sum(1 for o in kr["oyuncular"] if o["kazanan"]) <= 1
+              for _e, _d, kr in _acik))
+    basar("Kritik: vurgulanan oyuncu KAZANAN takımdan",
+          all(o["takim"] == (e["kod"] if e["skor"] >= d["skor"] else d["kod"])
+              for e, d, kr in _acik for o in kr["oyuncular"] if o["kazanan"]))
+    basar("Kritik: isabet sayısı denemeyi aşmıyor",
+          all(int(o["fg"].split("/")[0]) <= int(o["fg"].split("/")[1])
+              for _e, _d, kr in _acik for o in kr["oyuncular"]))
+    # Süre metni ile saniye birbirini tutmalı.
+    basar("Kritik: süre metni saniyeyle uyuşuyor",
+          all(kr["sure"] == f"{kr['sure_sn'] // 60}:{kr['sure_sn'] % 60:02d}"
+              for _e, _d, kr in _acik))
+    # Başlıktaki skor kritik süredeki sayılar; büyük olan önde yazılır.
+    basar("Kritik: başlık skoru kritik süredeki sayılar",
+          all(sorted(map(int, kr["skor"].split("-")), reverse=True)
+              == sorted([kr["ev_puan"], kr["dep_puan"]], reverse=True)
+              for _e, _d, kr in _acik))
+    basar("Kritik: önde yazan kod çok sayı üreten takım, berabere ise yok",
+          all((kr["onde"] is None) == (kr["ev_puan"] == kr["dep_puan"])
+              and (kr["onde"] is None
+                   or kr["onde"] == (e["kod"] if kr["ev_puan"] > kr["dep_puan"] else d["kod"]))
+              for e, d, kr in _acik))
+    # Oyuncuların kritik sayısı, o sürede takımın attığından fazla olamaz.
+    basar("Kritik: oyuncu sayıları takım toplamını aşmıyor",
+          all(sum(o["sayi"] for o in kr["oyuncular"] if o["takim"] == e["kod"]) <= kr["ev_puan"]
+              and sum(o["sayi"] for o in kr["oyuncular"] if o["takim"] == d["kod"]) <= kr["dep_puan"]
+              for e, d, kr in _acik))
+    # Kritik sayı, oyuncunun maç boyu attığı sayıdan fazla olamaz.
+    _pts9 = {o["isim"]: o["pts"] for _e, _d, _k in _kritikler
+             for taraf in (_e, _d) for o in taraf["oyuncular"]}
+    basar("Kritik: kritik sayı maç toplamını aşmıyor",
+          all(o["sayi"] <= _pts9.get(o["isim"], 0)
+              for _e, _d, kr in _acik for o in kr["oyuncular"]))
+    # Ek API çağrısı YOK: kaynak zaten çekilen play-by-play.
+    basar("Kritik: kaynak mevcut play-by-play, ek çağrı yok",
+          'ham_mac["play_by_play"]' in _derle_kaynak
+          and _derle_kaynak.count("def _kritik_anlar") == 1)
+
+    # --- Görünüm ---
+    basar("Kritik: blok çeyrek şeridinin altında, sekmelerin üstünde",
+          "${ceyrekSeridi(sira[0],sira[1])}\n    ${kritikBlogu(b.kritik)}\n"
+          '    <div class="ktabs">' in _sayfa9)
+    basar("Kritik: veri yoksa hiç çizilmiyor",
+          "if(!k||!(k.oyuncular||[]).length) return '';" in _sayfa9)
+    basar("Kritik: zemin bir tık koyu (#0C1119)",
+          "background:#0C1119" in _sayfa9.split(".kritik{")[1].split("}")[0])
+    basar("Kritik: başlık ember, mono 8.5px, geniş harf aralığı",
+          "font-size:8.5px" in _sayfa9.split(".kritik .h b{")[1].split("}")[0]
+          and "color:var(--ember)" in _sayfa9.split(".kritik .h b{")[1].split("}")[0]
+          and "letter-spacing:.14em" in _sayfa9.split(".kritik .h b{")[1].split("}")[0])
+    basar("Kritik: sağdaki süre/skor mono 9.5px gri",
+          "font-size:9.5px" in _sayfa9.split(".kritik .h span{")[1].split("}")[0]
+          and "color:var(--faint)" in _sayfa9.split(".kritik .h span{")[1].split("}")[0])
+    basar("Kritik: uzun ad üç noktayla kesiliyor, sayı daralmıyor",
+          "text-overflow:ellipsis" in _sayfa9.split(".krow .who{")[1].split("}")[0]
+          and "flex:none" in _sayfa9.split(".krow .n{")[1].split("}")[0])
+    basar("Kritik: vurgulu satırda sayı ember",
+          ".krow.lead .n b{color:var(--ember)}" in _sayfa9)
+    basar("Kritik: blok sekmelerden bağımsız (pano içinde değil)",
+          '<div class="kpane" data-pane="0">${boxTablosu(sira[0])}</div>' in _sayfa9
+          and "kritikBlogu" not in _sayfa9.split("const panolar=[")[1].split("].join")[0])
+    # 15 kişilik kadro + kritik blok, dolgu tabanı 1 iken 3px taşıyordu.
+    basar("Kritik: satır dolgusu tabanı sıfıra inebiliyor (uç kadroda taşma yok)",
+          "const KBS_PAD_MIN=0," in _sayfa9)
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",

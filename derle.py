@@ -306,6 +306,9 @@ def _box_score(ham_mac, metin="", kaybeden_kod=None, gercekler=None):
     # TOPLAM SÜTUNU YOK: büyük skor zaten yukarıda.
     ev_taraf["ceyrek"], dep_taraf["ceyrek"] = _ceyrek_serisi(gercekler, ev_taraf["kod"])
     kilit = _kilit_istatistik(ham_mac, ev_taraf, dep_taraf)
+    # Kritik anlar: çeyrek şeridinin ALTINDA, sekmelerden bağımsız (iki
+    # takımı birden gösteriyor). Hak etmeyen maçta None → hiç çizilmez.
+    kritik = _kritik_anlar(ham_mac, ev_taraf, dep_taraf)
 
     # Kullanıcı kuralı (son tur): işaret SADECE her sekmenin İLK
     # satırında. Ember çizgi kazanan takımın ilk satırında, mavi çizgi
@@ -332,7 +335,8 @@ def _box_score(ham_mac, metin="", kaybeden_kod=None, gercekler=None):
 
     wtf = _wtf_istatistigi_bul(ev_taraf, dep_taraf)
 
-    return {"ev": ev_taraf, "dep": dep_taraf, "wtf": wtf, "kilit": kilit}
+    return {"ev": ev_taraf, "dep": dep_taraf, "wtf": wtf, "kilit": kilit,
+            "kritik": kritik}
 
 
 def _takim_adi(kod):
@@ -719,6 +723,170 @@ KILIT_ESIKLERI = [
     ("pts2c", "ikinci şans sayısı",    15, True),
     ("paint", "boyalı alan sayısı",    20, True),
 ]
+
+
+# ---------------------------------------------------------------------------
+# KRİTİK ANLAR — maçı kimin kazandırdığını söyleyen tek istatistik.
+# ---------------------------------------------------------------------------
+#
+# Kutu skorda görünmüyor: NBA'in kendi sitesinde ayrı sayfaya gömülü,
+# başka yerde hiç yok. "Son 5 dakikada Curry 11, Booker 2 sayı attı"
+# 38'e 33'ten çok daha fazlasını anlatıyor.
+#
+# TANIM (NBA'in standart clutch tanımı): son 5 dakika VE varsa
+# uzatmaların tamamı İÇİNDE, farkın 5 sayı ve altında OLDUĞU süre.
+# Maçın son 5 dakikası değil — fark 12'ye çıktıysa o dakikalar
+# sayılmaz, tekrar 4'e inerse yeniden saymaya başlar.
+KRITIK_SON_DAKIKA = 5
+KRITIK_FARK = 5
+# Tek görünürlük kuralı. 26 farkla biten maçta kritik süre sıfırdır,
+# bölüm hiç açılmaz. "Final farkı ≤5" gibi bir ek koşul YOK: uzatmaya
+# gidip 12 farkla biten maçta da kritik anlar yaşanmıştır.
+KRITIK_ASGARI_SURE_SN = 120
+KRITIK_OYUNCU_SAYISI = 2
+
+_SAAT_DESENI = re.compile(r"PT(\d+)M([\d.]+)S")
+
+
+def _pbp_saniye(saat):
+    """"PT02M38.00S" → periyotta KALAN saniye."""
+    m = _SAAT_DESENI.match(str(saat or ""))
+    return int(m.group(1)) * 60 + float(m.group(2)) if m else None
+
+
+def _mac_saniyesi(periyot, kalan):
+    """Maç başından itibaren GEÇEN saniye. Çeyrek 12 dk, uzatma 5 dk."""
+    if periyot <= 4:
+        return (periyot - 1) * 720 + (720 - kalan)
+    return 4 * 720 + (periyot - 5) * 300 + (300 - kalan)
+
+
+# Kritik pencerenin başlangıcı: 4. çeyreğin bitimine 5 dakika kala.
+KRITIK_BASLANGIC_SN = 3 * 720 + (720 - KRITIK_SON_DAKIKA * 60)
+
+
+def _kritik_anlar(ham_mac, ev_taraf, dep_taraf):
+    """Kritik süre + o sürede en çok sayı üreten iki oyuncu, yoksa None.
+
+    Sayı hesabı SKOR FARKINDAN türetiliyor, olay tipinden değil: kaçan
+    serbest atışlarda `scoreHome`/`scoreAway` boş geliyor ve "Free Throw"
+    olayının kendisi isabetli mi belli değil. İki ardışık skorun farkı
+    ise her durumda doğru — o olayda kaç sayı geldiğini birebir verir.
+
+    Farkın ≤5 olup olmadığı olayın ÖNCESİNDEKİ duruma bakılarak
+    ölçülüyor: 6 farkla atılan üçlük kritik değildir, farkı 3'e indirmiş
+    olması bunu değiştirmez.
+    """
+    try:
+        olaylar = ham_mac["play_by_play"]["game"]["actions"]
+    except (KeyError, TypeError):
+        return None
+    if not olaylar:
+        return None
+
+    ev_kod, dep_kod = ev_taraf["kod"], dep_taraf["kod"]
+    # PBP'de yalnız soyadı var ("B. Brown"); tam ad kutu skordan
+    # personId ile geliyor.
+    ad_by_id, kod_by_id = {}, {}
+    try:
+        bt = ham_mac["box_traditional"]["boxScoreTraditional"]
+        for takim in (bt["homeTeam"], bt["awayTeam"]):
+            for p in takim["players"]:
+                ad_by_id[p["personId"]] = _dogru_oyuncu_adi(
+                    p["personId"], f"{p['firstName']} {p['familyName']}".strip())
+                kod_by_id[p["personId"]] = takim["teamTricode"]
+    except (KeyError, TypeError):
+        return None
+
+    sure_sn = 0.0
+    ev_puan = dep_puan = 0
+    sayilar, denemeler, isabetler = {}, {}, {}
+    ev_s = dep_s = 0
+    onceki_t = None
+    son_t = None
+
+    for olay in olaylar:
+        kalan = _pbp_saniye(olay.get("clock"))
+        if kalan is None:
+            continue
+        t = _mac_saniyesi(olay.get("period", 1), kalan)
+        son_t = t
+        yeni_ev = int(olay["scoreHome"]) if str(olay.get("scoreHome") or "").strip() else ev_s
+        yeni_dep = int(olay["scoreAway"]) if str(olay.get("scoreAway") or "").strip() else dep_s
+
+        if t >= KRITIK_BASLANGIC_SN:
+            # Sayaç pencerenin BAŞINDAN işler — ilk olay 5:00'dan birkaç
+            # saniye sonraysa aradaki süre de kritiktir.
+            if onceki_t is None:
+                onceki_t = KRITIK_BASLANGIC_SN
+            # Fark, olayın ÖNCESİNDEKİ duruma göre. Hem süre hem sayı
+            # aynı koşula bağlı: 6 farkla atılan basket kritik değildir.
+            if abs(ev_s - dep_s) <= KRITIK_FARK:
+                sure_sn += max(0.0, t - onceki_t)
+                ev_puan += yeni_ev - ev_s
+                dep_puan += yeni_dep - dep_s
+                kisi = olay.get("personId") or 0
+                if kisi:
+                    kazanc = (yeni_ev - ev_s) + (yeni_dep - dep_s)
+                    if kazanc > 0:
+                        sayilar[kisi] = sayilar.get(kisi, 0) + kazanc
+                    if olay.get("isFieldGoal") == 1:
+                        denemeler[kisi] = denemeler.get(kisi, 0) + 1
+                        if olay.get("shotResult") == "Made":
+                            isabetler[kisi] = isabetler.get(kisi, 0) + 1
+            onceki_t = max(onceki_t, t)
+        ev_s, dep_s = yeni_ev, yeni_dep
+
+    # Son olaydan maçın bitişine kadarki dilim (skor değişmediği için
+    # olay yazılmamış olabilir).
+    if onceki_t is not None and son_t is not None and abs(ev_s - dep_s) <= KRITIK_FARK:
+        sure_sn += max(0.0, son_t - onceki_t)
+
+    if sure_sn < KRITIK_ASGARI_SURE_SN or not sayilar:
+        return None
+
+    kazanan_kod = ev_kod if ev_taraf["skor"] >= dep_taraf["skor"] else dep_kod
+
+    def anahtar(kisi):
+        d = denemeler.get(kisi, 0)
+        yuzde = isabetler.get(kisi, 0) / d if d else 0.0
+        return (-sayilar[kisi], -yuzde, ad_by_id.get(kisi, ""))
+
+    secilenler = sorted(sayilar, key=anahtar)[:KRITIK_OYUNCU_SAYISI]
+    oyuncular = [{
+        "isim": ad_by_id.get(k, ""),
+        "takim": kod_by_id.get(k, ""),
+        "sayi": sayilar[k],
+        "fg": f"{isabetler.get(k, 0)}/{denemeler.get(k, 0)}",
+        "kazanan": False,
+    } for k in secilenler if ad_by_id.get(k)]
+    if not oyuncular:
+        return None
+    # Ember vurgu EN FAZLA BİR satırda: kazanan takımın en çok sayı
+    # üreten oyuncusu. İki satır da kazanan taraftan olduğunda ikisini
+    # birden boyamak vurguyu tamamen yok ediyor.
+    for o in oyuncular:
+        if o["takim"] == kazanan_kod:
+            o["kazanan"] = True
+            break
+
+    dk, sn = divmod(int(round(sure_sn)), 60)
+    if ev_puan == dep_puan:
+        skor, onde = f"{ev_puan}-{dep_puan}", None
+    elif ev_puan > dep_puan:
+        skor, onde = f"{ev_puan}-{dep_puan}", ev_kod
+    else:
+        skor, onde = f"{dep_puan}-{ev_puan}", dep_kod
+
+    return {
+        "sure_sn": int(round(sure_sn)),
+        "sure": f"{dk}:{sn:02d}",
+        "skor": skor,
+        "onde": onde,
+        "ev_puan": ev_puan,
+        "dep_puan": dep_puan,
+        "oyuncular": oyuncular,
+    }
 
 
 def _kilit_degerleri(taraf, digerleri):
