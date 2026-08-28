@@ -633,6 +633,33 @@ td.oyad{color:var(--ink);cursor:pointer}
 .qrow.head .cells u{font-size:8.5px;letter-spacing:.1em;color:#39424F}
 .qrow.head .lb{color:transparent}
 .qrow.los .cells u{color:var(--faint)}
+/* SIKIŞIK MOD — kısa pencerede kartın ÜST BLOĞU küçülüyor.
+   720px yüksekliğinde kart 662px, üst blok (tutamak + skor + çeyrek
+   şeridi + sekmeler) tek başına 284px yiyordu; tabloya 379px kalıyor
+   ve 10-11 kişilik kadroda satır aralığı tabana (0) inse bile 52px
+   taşma kapanmıyordu (ölçüldü, 1280x720: SAC 52px, ATL 52px, MIN
+   26px). Satır aralığını daha fazla kısmanın anlamı yok — sorun
+   tabloda değil, üstünde.
+   İki kademe var ve İKİSİ DE ÖLÇÜMLE devreye giriyor: kart sığıyorsa
+   hiçbiri açılmıyor, 900px'lik pencerede görüntü aynen eskisi gibi.
+   Özgüllük `.sheet.sikN ...` (0,2,x) — mobil medya sorgusundaki
+   `.kt` (0,1,0) kuralını sıra ne olursa olsun eziyor. */
+   HİÇBİR ŞEY GİZLENMİYOR, sadece küçülüyor. Önce çeyrek başlıklarını
+   ve künye satırını gizlemeyi denemiştim; 16px daha kazandırıyordu
+   ama 720px'lik sıradan bir dizüstü penceresinde tarih ve rozet
+   satırı kayboluyordu. Kazanç o bedele değmez. */
+.sheet.sik1 .kteams{margin-top:6px}
+.sheet.sik1 .kt{padding-top:7px;padding-bottom:7px}
+.sheet.sik1 .ktn{font-size:17px}
+.sheet.sik1 .kts{font-size:27px}
+.sheet.sik1 .qbar{padding:5px 16px 6px}
+.sheet.sik2 .kt{padding-top:4px;padding-bottom:4px}
+.sheet.sik2 .ktn{font-size:15px}
+.sheet.sik2 .kts{font-size:22px}
+.sheet.sik2 .kmeta{font-size:9.5px}
+.sheet.sik2 .qbar{padding:4px 16px 4px}
+.sheet.sik2 .qrow .cells u{font-size:11.5px}
+.sheet.sik2 .qrow.head .cells u{font-size:7.5px}
 
 /* Üçüncü sekme "TAKIM" — takıma ait olmadığı RENKTEN belli olsun diye
    ember, yazısı bir tık küçük (kullanıcı kararı). */
@@ -1435,17 +1462,31 @@ function satirAraliginiAyarla(){
   //    "önce takımı daralt" denenmişti; takım panosu zaten kısayken de
   //    daralıyor ve hiçbir işe yaramadan TAKIM sekmesinde boşluk
   //    bırakıyordu (ölçüldü, ekran görüntüsüyle doğrulandı).
-  sheet.style.setProperty('--crpad',CR_PAD_MIN+'px');
-  let pad=KBS_PAD_MAX;
-  sheet.style.setProperty('--kbspad',pad+'px');
+  // Kademeler her açılışta sıfırdan: önceki kartın sıkışıklığı
+  // sığan bir karta miras kalmasın.
+  sheet.classList.remove('sik1','sik2');
   let guvenlik=0;
-  while(tasti() && pad>KBS_PAD_MIN && guvenlik++<60){
-    pad-=1; sheet.style.setProperty('--kbspad',pad+'px');
-  }
+  const daralt=()=>{
+    sheet.style.setProperty('--crpad',CR_PAD_MIN+'px');
+    let p=KBS_PAD_MAX;
+    sheet.style.setProperty('--kbspad',p+'px');
+    while(tasti() && p>KBS_PAD_MIN && guvenlik++<300){
+      p-=1; sheet.style.setProperty('--kbspad',p+'px');
+    }
+    return p;
+  };
+  let pad=daralt();
+
+  // 1b) HÂLÂ SIĞMIYORSA ÜST BLOK KÜÇÜLÜR. Satır aralığı tabana indiği
+  //     hâlde taşma sürüyorsa sorun tabloda değil, üstündeki skor ve
+  //     çeyrek bloğunda (kısa pencerede kartın 284px'i orada). Kademe
+  //     ölçümle açılıyor: sığan kartlarda hiç devreye girmiyor.
+  if(tasti()){ sheet.classList.add('sik1'); pad=daralt(); }
+  if(tasti()){ sheet.classList.add('sik2'); pad=daralt(); }
 
   // 2) TAKIM PANOSU: kalan yeri o da kullansın — sığdığı sürece aç.
   let crpad=CR_PAD_MIN;
-  while(crpad<CR_PAD_MAX && guvenlik++<120){
+  while(crpad<CR_PAD_MAX && guvenlik++<400){
     sheet.style.setProperty('--crpad',(crpad+1)+'px');
     if(tasti()){ sheet.style.setProperty('--crpad',crpad+'px'); break; }
     crpad+=1;
@@ -1467,7 +1508,15 @@ function satirAraliginiAyarla(){
   if(kap){
     // Göz yüksekliği kilitleniyor: dolgu artarken pano gözü büyütüp
     // ölçümü kendi kendine geçersiz kılmasın.
-    const gozAlt=kap.getBoundingClientRect().bottom;
+    // SINIR GÖRÜNEN ALAN, göz değil. Kart sığmıyorsa (kısa pencerede
+    // TAKIM panosu tabanına dayanıp gözü yükseltebiliyor) gözün alt
+    // kenarı EKRANIN ALTINDA kalıyor; dolguyu oraya kadar açmak kısa
+    // kadroyu görünmez yere itiyordu — yani bu adım taşan kartlarda
+    // durumu düzeltmek yerine kötüleştiriyordu (ölçüldü, 1280x620).
+    const kfoot=govde.querySelector('.kfoot');
+    const gorunurAlt=govde.getBoundingClientRect().bottom
+                     -(kfoot?kfoot.getBoundingClientRect().height:0);
+    const gozAlt=Math.min(kap.getBoundingClientRect().bottom,gorunurAlt);
     kap.style.height=kap.getBoundingClientRect().height+'px';
     for(const pano of kap.querySelectorAll('.kpane')){
       const satir=pano.querySelectorAll('tbody tr').length;
@@ -1603,6 +1652,7 @@ function kartAc(html){
   const yeniKatman=!sheet.classList.contains('on');
   sheet.innerHTML=html;
   sheet.classList.toggle('besikart',html.indexOf('class="bp"')!==-1);
+  sheet.classList.remove('sik1','sik2');
   sheet.style.removeProperty('--kbspad');
   sheet.querySelectorAll('.kpane').forEach(p=>p.style.removeProperty('--kbspad'));
   sheet.classList.add('on'); scrim.classList.add('on');

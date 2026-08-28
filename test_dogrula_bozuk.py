@@ -4326,6 +4326,44 @@ def main():
     basar("Punto: büyütme kuralları mobil tabandan SONRA",
           _s17.index("@media(min-width:1024px){") > _s17.index(".fp .nm{display:block"))
 
+    # ==================================================================
+    # KISA PENCEREDE KART: ÜST BLOK SIKIŞIR, TABLO KAYDIRILMAZ
+    # ==================================================================
+    _s18 = _sayfa10
+
+    # 720px yüksekliğinde kartın 284px'i üst bloktu; tabloya 379px
+    # kalıyor ve 10-11 kişilik kadroda satır aralığı tabana inse bile
+    # taşma kapanmıyordu (ölçüldü, 1280x720: SAC 52px, ATL 52px).
+    basar("Sıkışık: iki kademe de tanımlı",
+          ".sheet.sik1 .kt{" in _s18 and ".sheet.sik2 .kt{" in _s18)
+    # Kademeler ÖLÇÜMLE açılıyor — sığan kartta hiç devreye girmemeli.
+    basar("Sıkışık: kademeler ölçümle açılıyor",
+          "if(tasti()){ sheet.classList.add('sik1'); pad=daralt(); }" in _s18
+          and "if(tasti()){ sheet.classList.add('sik2'); pad=daralt(); }" in _s18)
+    basar("Sıkışık: her açılışta sıfırlanıyor",
+          _s18.count("sheet.classList.remove('sik1','sik2');") >= 2)
+    # HİÇBİR ŞEY GİZLENMİYOR: tarih/rozet satırı ve çeyrek başlıkları
+    # 720px'lik sıradan bir pencerede kaybolmamalı. Yorum satırları
+    # eşleşmesin diye SADECE .sheet.sik kuralları ayıklanıyor (bu
+    # dosyada dördüncü kez aynı tuzak).
+    _sik = [_l for _l in _s18.splitlines() if _l.startswith(".sheet.sik")]
+    basar("Sıkışık: kurallar var ve hepsi küçültme",
+          len(_sik) >= 10 and not any("display:none" in _l for _l in _sik)
+          and not any("visibility:hidden" in _l for _l in _sik))
+    basar("Sıkışık: skorun kendisi asla gizlenmiyor",
+          any(".kts{font-size:" in _l for _l in _sik))
+    # Özgüllük: `.sheet.sikN .kt` (0,2,1) mobil medya sorgusundaki
+    # `.kt` (0,1,0) kuralını sıra ne olursa olsun eziyor.
+    basar("Sıkışık: seçici mobil kuralını ezecek özgüllükte",
+          all(_l.startswith(".sheet.sik") for _l in _sik))
+
+    # 3. adım TAŞAN kartta zarar veriyordu: dolguyu gözün altına kadar
+    # açınca kısa kadroyu görünmez alana itiyordu (ölçüldü, 1280x620).
+    basar("Sıkışık: pano dolgusu GÖRÜNEN alanla sınırlı",
+          "const gozAlt=Math.min(kap.getBoundingClientRect().bottom,gorunurAlt);" in _s18)
+    basar("Sıkışık: görünen alandan kfoot düşülüyor",
+          "-(kfoot?kfoot.getBoundingClientRect().height:0)" in _s18)
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))
