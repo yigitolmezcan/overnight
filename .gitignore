@@ -21,3 +21,7 @@ cikti/
 __pycache__/
 *.pyc
 .DS_Store
+
+# Paylaşım görüntülerinin ÇALIŞMA kopyası. Yayına giden kopya
+# site/og/ altında ve depoya giriyor; kökteki og/ ara çıktı.
+/og/

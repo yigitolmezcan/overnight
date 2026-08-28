@@ -4133,6 +4133,75 @@ def main():
     basar("Ayraç: öncelik ölçütü rozet (koda yazılı)",
           '{"takim": m["kazanan_kod"], "_gmsc": m["rozet"]}' in _derle_kaynak)
 
+    # ==================================================================
+    # PAYLAŞIM GÖRÜNTÜSÜ (OG) + ARŞİV GEZİNME
+    # ==================================================================
+    import og_uret as _og
+    _s15 = _sayfa10
+    _og_kaynak = open("og_uret.py", encoding="utf-8").read()
+
+    # DİKKAT: arama YORUM/DİZGİ değil GERÇEK İÇE ALMA üzerinden. Neden
+    # tarayıcı kullanmadığımı anlatan yorumda "Playwright" kelimesi
+    # geçiyor ve çıplak arama kendi açıklamama takılıyordu.
+    _og_ithal = [n.split()[1].split(".")[0]
+                 for n in _re.findall(r"^\s*import\s+\S+|^\s*from\s+\S+",
+                                      _og_kaynak, _re.M)]
+    basar("OG: tarayıcı gerekmiyor (Pillow ile çiziliyor)",
+          "PIL" in _og_ithal
+          and not {"playwright", "pyppeteer", "selenium", "cairosvg"} & set(_og_ithal))
+    basar("OG: ölçü 1200x630", (_og.G, _og.Y) == (1200, 630))
+    for _f in ("BricolageGrotesque.ttf", "DMMono-Regular.ttf", "DMMono-Medium.ttf"):
+        basar(f"OG: {_f} depoda", _os.path.exists(f"fonts/{_f}"))
+    basar("OG: font lisansı belgelenmiş",
+          _os.path.exists("fonts/LISANS.md")
+          and "Open Font License" in open("fonts/LISANS.md", encoding="utf-8").read())
+
+    _skor15 = _jj.loads(open(f"skor/{_yayinda2}.json", encoding="utf-8").read())
+    _parlak, _soluk = _og.satirlari_sec(_skor15)
+    import hesapla as _h15
+    _sirali15 = sorted(_skor15["maclar"], key=_h15.siralama_anahtari)
+    basar("OG: ilk iki satır en yüksek rozetli maçlar",
+          [m["mac_id"] for m in _parlak] == [m["mac_id"] for m in _sirali15[:2]])
+    basar("OG: üçüncü satır en DÜŞÜK rozetli maç",
+          _soluk is not None and _soluk["mac_id"] == _sirali15[-1]["mac_id"])
+    basar("OG: iki maçlık gecede üçüncü satır uydurulmuyor",
+          _og.satirlari_sec({"maclar": _skor15["maclar"][:2]})[1] is None)
+    basar("OG: maç adı kısa ad (kod değil)",
+          _og.kisa_mac_adi("SAC", "HOU") == "Sacramento – Houston")
+    from PIL import Image as _Im
+    with _Im.open(_og.uret(_yayinda2)) as _im:
+        basar("OG: üretilen dosya 1200x630 PNG", _im.size == (1200, 630))
+
+    _site15 = open("site/index.html", encoding="utf-8").read()
+    for _ad in ("og:title", "og:description", "og:url", "og:image",
+                "twitter:card", "twitter:image"):
+        basar(f"Meta: {_ad} dolu",
+              _re.search(rf'"{_re.escape(_ad)}" content="[^"]+"', _site15) is not None)
+    basar("Meta: başlık geceye özel",
+          f'content="OVERNIGHT — {_derle._tarih_tr(_yayinda2)} gecesi"' in _site15)
+    basar("Meta: görsel adresi o gecenin dosyası", f"/og/{_yayinda2}.png" in _site15)
+    # Botlar JS koşturmuyor: meta HTML'de yazılı olmalı.
+    basar("Meta: HTML'de yazılı (JS ile doldurulmuyor)",
+          "og:image" not in _s15.split("<script")[-1])
+
+    basar("Arşiv: her yayınlanmış gecenin kendi sayfası var",
+          all(_os.path.exists(f"site/{t}.html")
+              for t in _jj.loads(open("site/gunler.json", encoding="utf-8").read())))
+    basar("Arşiv: gün listesi ayrı dosyada (sayfalar yeniden yazılmasın)",
+          _os.path.exists("site/gunler.json") and "fetch('gunler.json'" in _s15)
+    basar("Arşiv: künyede iki ok var",
+          'id="okOnceki"' in _s15 and 'id="okSonraki"' in _s15)
+    basar("Arşiv: uçlarda ok pasifleşiyor",
+          "el.classList.add('pasif')" in _s15 and ".ok.pasif{" in _s15
+          and "pointer-events:none" in _s15.split(".ok.pasif{")[1].split("}")[0])
+    basar("Arşiv: liste okunamazsa ok çizilmiyor",
+          "geri.hidden=true; ileri.hidden=true;" in _s15)
+    _gunler15 = _jj.loads(open("site/gunler.json", encoding="utf-8").read())
+    basar("Arşiv: gün listesi sıralı ve yayınlananlarla aynı",
+          _gunler15 == sorted(_gunler15)
+          and set(_gunler15) == set(_jj.loads(
+              open("config/yayin_durumu.json", encoding="utf-8").read())["yayinlanan"]))
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))

@@ -267,7 +267,7 @@ def uret():
     return 0
 
 
-def _siteyi_kur(tarih):
+def _siteyi_kur(tarih, kok_da=True):
     """Tasarım dosyasını alıp o gecenin verisini gömerek site/index.html üretir.
 
     Tasarım dosyası (overnight_v17.html) DEĞİŞMİYOR — geliştirme kopyası
@@ -285,9 +285,105 @@ def _siteyi_kur(tarih):
     )
     if n != 1:
         raise RuntimeError(f"Gömülü veri bloğu bulunamadı ({n} eşleşme) — tasarım dosyası bozulmuş.")
+
+    # PAYLAŞIM ÖNİZLEMESİ. Tarama botları JS koşturmuyor, o yüzden meta
+    # etiketleri HTML'in içine yazılıyor ve her gecenin kendi dosyası
+    # oluyor (/2025-12-22). Paylaşılan link o gecenin görselini gösteriyor.
+    og_gorsel = _og_uret(tarih)
+    yeni = _meta_doldur(yeni, tarih, veri[tarih], og_gorsel)
+
     SITE_DIZIN.mkdir(exist_ok=True)
-    (SITE_DIZIN / "index.html").write_text(yeni, encoding="utf-8")
+    # Hem son gece (kök) hem kendi adresi. cleanUrls açık: 2025-12-22.html
+    # dosyası /2025-12-22 adresinden servis ediliyor (bkz. vercel.json).
+    if kok_da:
+        (SITE_DIZIN / "index.html").write_text(yeni, encoding="utf-8")
+    (SITE_DIZIN / f"{tarih}.html").write_text(yeni, encoding="utf-8")
+    _gunleri_yaz()
     return len(yeni.encode("utf-8"))
+
+
+SITE_ADRESI = "https://overnight-yigit8.vercel.app"
+
+
+def arsiv_sayfalari():
+    """Yayınlanmış HER gecenin kendi sayfasını yeniden kurar.
+
+    Oklar gecelerin arasında geziyor; sayfası olmayan bir geceye giden
+    ok 404 verir. Bu komut geriye dönük eksikleri kapatıyor ve tasarım
+    değiştiğinde bütün arşivi tazeliyor. Kök (index.html) SON gecede
+    kalıyor — arşiv sayfaları onu ezmiyor."""
+    d = durum_oku()
+    gunler = sorted(set(d.get("yayinlanan") or []))
+    son = (d.get("yayinlanan") or [None])[-1]
+    kuruldu, atlanan = [], []
+    for t in gunler:
+        if not (DIST_DIZIN / f"{t}.json").exists():
+            atlanan.append(t)
+            continue
+        _siteyi_kur(t, kok_da=(t == son))
+        kuruldu.append(t)
+    print(f"Arşiv sayfası: {len(kuruldu)} gece kuruldu"
+          + (f", {len(atlanan)} atlandı (dist yok): {atlanan}" if atlanan else ""))
+    return kuruldu
+
+
+def _og_uret(tarih):
+    """og/{tarih}.png üretir ve site/og/ altına kopyalar.
+
+    Üretim başarısız olursa yayın DURMUYOR: görselsiz bir gece,
+    yayınlanmamış bir geceden iyidir. Hata kayda geçiyor."""
+    try:
+        import og_uret
+        kaynak = og_uret.uret(tarih)
+        hedef_dizin = SITE_DIZIN / "og"
+        hedef_dizin.mkdir(parents=True, exist_ok=True)
+        (hedef_dizin / kaynak.name).write_bytes(kaynak.read_bytes())
+        return f"/og/{kaynak.name}"
+    except Exception as hata:
+        print(f"UYARI: paylaşım görüntüsü üretilemedi ({type(hata).__name__}: {hata})")
+        return ""
+
+
+def _meta_doldur(html, tarih, dist, og_gorsel):
+    """og:/twitter: etiketlerini bu geceye göre doldurur."""
+    from derle import _tarih_tr
+    baslik = f"OVERNIGHT — {_tarih_tr(tarih)} gecesi"
+    mac = dist.get("mac_sayisi") or 0
+    aciklama = f"Konuşan box score. {mac} maç oynandı."
+    adres = f"{SITE_ADRESI}/{tarih}"
+    gorsel = f"{SITE_ADRESI}{og_gorsel}" if og_gorsel else ""
+    degerler = {
+        "og:title": baslik, "twitter:title": baslik,
+        "og:description": aciklama, "twitter:description": aciklama,
+        "og:url": adres, "og:image": gorsel, "twitter:image": gorsel,
+    }
+    for ad, deger in degerler.items():
+        nitelik = "name" if ad.startswith("twitter:") else "property"
+        desen = rf'(<meta {nitelik}="{re.escape(ad)}" content=")[^"]*(">)'
+        html, sayi = re.subn(desen, lambda m: m.group(1) + _kacir(deger) + m.group(2), html, count=1)
+        if sayi != 1:
+            raise RuntimeError(f"Meta etiketi bulunamadı: {ad}")
+    # <title> de geceye göre — sekmede ve paylaşımda aynı ad görünsün.
+    html = re.sub(r"<title>.*?</title>", f"<title>{_kacir(baslik)}</title>", html, count=1, flags=re.S)
+    return html
+
+
+def _kacir(metin):
+    return (str(metin).replace("&", "&amp;").replace('"', "&quot;")
+            .replace("<", "&lt;").replace(">", "&gt;"))
+
+
+def _gunleri_yaz():
+    """site/gunler.json — yayınlanmış gecelerin listesi.
+
+    Oklar bu dosyayı okuyor. Liste sayfaların İÇİNDE olsaydı yeni gece
+    çıktığında bütün eski sayfaların yeniden yazılması gerekirdi."""
+    d = durum_oku()
+    gunler = sorted(set(d.get("yayinlanan") or []))
+    SITE_DIZIN.mkdir(exist_ok=True)
+    (SITE_DIZIN / "gunler.json").write_text(
+        json.dumps(gunler, ensure_ascii=False), encoding="utf-8")
+    return gunler
 
 
 # Yayını DURDURAN testler: gerçeğe ve dile dair olanlar. Uzunluk (T6)
@@ -560,6 +656,9 @@ KOMUTLAR = {
     "sonraki": lambda: print(sonraki_gece(durum_oku())) or 0,
     "engelleri_temizle": engelleri_temizle,
     "tazele": tazele,
+    # DİKKAT: "arsiv" adı ZATEN mod değiştirmede kullanılıyor; sayfa
+    # kurma komutu ayrı adla duruyor, yoksa mod komutunu sessizce ezerdi.
+    "sayfalar": arsiv_sayfalari,
 }
 
 if __name__ == "__main__":

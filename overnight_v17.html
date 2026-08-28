@@ -3,6 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<!-- PAYLAŞIM ÖNİZLEMESİ. Değerleri yayın adımı (yayin._siteyi_kur)
+     geceye göre dolduruyor; tarayıcı çalıştırmadan okunabilmesi
+     gerektiği için JS ile YAZILAMAZ — tarama botları JS koşturmuyor.
+     Bu yüzden her gecenin kendi HTML dosyası var. -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="OVERNIGHT">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="OVERNIGHT">
+<meta property="og:description" content="Konuşan box score.">
+<meta property="og:url" content="">
+<meta property="og:image" content="">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OVERNIGHT">
+<meta name="twitter:description" content="Konuşan box score.">
+<meta name="twitter:image" content="">
 <title>OVERNIGHT — NBA · sen uyurken</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -87,6 +104,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-a
 /* Gün adı KENDİ satırında: tarihle yan yana yazılırsa dar ekranda
    künyeyi sarmalatacak kadar uzuyor. */
 .ed b{display:block;font-weight:400}
+/* Arşiv okları — künye satırının ritmini bozmayacak kadar küçük.
+   Sağ ok EN SON gecede pasif: gelecek bir geceye götürmeye çalışmıyor. */
+.edsat{display:flex;align-items:baseline;justify-content:flex-end;gap:8px}
+.ok{font-family:var(--mono);font-size:15px;line-height:1;color:var(--ink2);
+  text-decoration:none;cursor:pointer;padding:0 2px}
+.ok:hover{color:var(--ember)}
+.ok.pasif{color:#2A3444;cursor:default;pointer-events:none}
 .gecesec{font-family:var(--mono);font-size:11px;background:#0C121C;color:var(--ink2);
   border:1px solid #26303F;padding:7px 8px;cursor:pointer;margin-top:8px}
 /* Çift çizgi (gazete kuralı): .mast'ın 2px açık alt kenarı + hemen
@@ -1103,7 +1127,9 @@ td.khot{color:var(--amber);font-weight:700}
 <div class="mast">
   <div class="mark">OVER<em>NIGHT</em></div>
   <div class="mastright">
-    <div class="ed"><span id="edTarih">&nbsp;</span><b id="edGun">&nbsp;</b></div>
+    <div class="ed">
+      <span class="edsat"><a class="ok" id="okOnceki" rel="prev" aria-label="Önceki gece">‹</a><span id="edTarih">&nbsp;</span><a class="ok" id="okSonraki" rel="next" aria-label="Sonraki gece">›</a></span>
+      <b id="edGun">&nbsp;</b></div>
     <select class="gecesec" id="gecesec" hidden aria-label="Gece seç"></select>
   </div>
 </div>
@@ -1726,6 +1752,35 @@ function besiKartiHTML(){
       <div class="kfoot"></div></div>`;
 }
 
+/* ARŞİV OKLARI. Yayınlanmış gecelerin listesi ayrı bir dosyada
+   (site/gunler.json) duruyor, sayfaların İÇİNDE değil: yeni gece
+   çıktığında sadece o dosya güncelleniyor, eski sayfalara dokunmak
+   gerekmiyor. Liste okunamazsa oklar HİÇ çizilmiyor — çalışmayan bir
+   ok koymaktansa hiç koymamak doğru. */
+async function arsivOklari(tarih){
+  const geri=document.getElementById('okOnceki'), ileri=document.getElementById('okSonraki');
+  if(!geri||!ileri) return;
+  geri.hidden=true; ileri.hidden=true;
+  let gunler;
+  try{
+    const y=await fetch('gunler.json',{cache:'no-cache'});
+    if(!y.ok) return;
+    gunler=await y.json();
+  }catch(e){ return; }
+  if(!Array.isArray(gunler)||!gunler.length) return;
+  gunler.sort();
+  const i=gunler.indexOf(tarih);
+  if(i===-1) return;
+  const kur=(el,hedef)=>{
+    el.hidden=false;
+    if(hedef){ el.href='/'+hedef; el.classList.remove('pasif'); el.removeAttribute('aria-disabled'); }
+    // Sağ ok EN SON gecede pasif: gelecek bir geceye gitmeye çalışmasın.
+    else { el.removeAttribute('href'); el.classList.add('pasif'); el.setAttribute('aria-disabled','true'); }
+  };
+  kur(geri, i>0 ? gunler[i-1] : null);
+  kur(ileri, i<gunler.length-1 ? gunler[i+1] : null);
+}
+
 function render(d){
   document.body.dataset.tarih=d.tarih;
   // Oyuncu kartı haritası EN BAŞTA: kutu skor tablosu da, saha da bu
@@ -1735,6 +1790,7 @@ function render(d){
   // ---- hero ----
   document.getElementById('edTarih').textContent=trBuyuk(turkceTarihYilli(d.tarih));
   document.getElementById('edGun').textContent=trBuyuk(turkceGun(d.tarih));
+  arsivOklari(d.tarih);
   // Gecenin iki sayısı: maç adedi ve en yüksek rozet. İkisi de zaten
   // hesaplanıyor. "Okuma süresi" bilerek yok — ürünün vaadi hız değil.
   const enIyi=(d.bars||[]).reduce((a,b)=>Math.max(a,b.rozet||0),0);
