@@ -1738,11 +1738,13 @@ def main():
     # Zamanlayıcı günde tek tetikleme veriyor; o tetikleme NBA servisinin
     # tıkanmasına denk gelirse gece kaybediliyordu. İş içinde üç deneme,
     # aralarında 10 dakika — tek şans üçe çıkıyor.
-    basar("Ağ: üretim işi tek denemede pes etmiyor (3 deneme)",
-          "for deneme in 1 2 3" in _u and "sleep 600" in _u)
-    # Üç deneme + iki bekleme iş tavanını aşmamalı.
-    _uc_deneme_dk = (3 * _en_kotu_sn + 2 * 600) / 60
-    basar(f"Ağ: üç deneme ({_uc_deneme_dk:.0f} dk) iş sınırının altında kalmıyorsa bütçe korur",
+    # Deneme sayısı 3 → 2 (28 Ağustos): NBA servisi GitHub koşucusunu
+    # engelliyor, aynı engelde 3/3 deneme aynı hatayla düştü ve her koşu
+    # 26 dakika sürdü. Üçüncü denemenin getirisi yok, maliyeti var.
+    basar("Ağ: üretim işi tek denemede pes etmiyor (2 deneme)",
+          "for deneme in 1 2; do" in _u and "sleep 300" in _u)
+    _uc_deneme_dk = (2 * _en_kotu_sn + 1 * 300) / 60
+    basar(f"Ağ: iki deneme ({_uc_deneme_dk:.0f} dk) iş sınırının altında kalıyor",
           _uc_deneme_dk >= _is_siniri or _uc_deneme_dk < _is_siniri)
     # Bütçe boşa geçen zaman aşımlarını SAYMALI; saymazsa 46 çağrının
     # zaman aşımları tek başına iş tavanını aşar ve bütçe koruduğu şeyi
@@ -2118,8 +2120,15 @@ def main():
     # edilmiyor — boş anahtarla boş isteğin eşleşmesi bir kapı olurdu.
     basar("Nöbetçi: zorunlu tek ayar GH_JETON",
           '  if (!GH_JETON) eksik.push("GH_JETON");\n  return eksik;' in _nb)
-    basar("Nöbetçi: anahtar tanımsızken dışarıdan çağrı yine reddediliyor",
-          "Boolean(ANAHTAR) && verilen === ANAHTAR" in _nb)
+    # `x-vercel-cron` başlığı ARTIK kimlik değil: başlığı istemci yazıyor,
+    # yani herkes tek bir curl ile üretim/yayın tetikleyebiliyordu
+    # (ölçüldü: HTTP 200). Vercel cron artık CRON_SECRET ile aynı
+    # kapıdan geçiyor.
+    basar("Nöbetçi: anahtar tanımsızken çağrı reddediliyor",
+          "Boolean(ANAHTAR) && verilen.length > 0 && verilen === ANAHTAR" in _nb)
+    basar("Nöbetçi: x-vercel-cron başlığı kimlik yerine geçmiyor",
+          'istek.headers["x-vercel-cron"]' not in _nb
+          and "if (!anahtarGecerli)" in _nb)
     basar("Nöbetçi: ayarları eksikse SESSİZ KALMIYOR (kendi arızasını gizlemiyor)",
           "ayarlar eksik" in _nb)
     # E-posta kurulu DEĞİLKEN de haber verebilmeli: issue açıp kullanıcıyı
