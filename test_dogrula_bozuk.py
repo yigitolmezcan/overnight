@@ -4038,6 +4038,40 @@ def main():
               isinstance(_pytest_yakala(lambda: _cek.ham_oku("1998-01-01", _td)),
                          FileNotFoundError))
 
+    # ==================================================================
+    # NEFES ALANI — depoda kaç gecelik veri var
+    # NBA servisi koşucuyu engellediği için sıra ancak verisi ÖNCEDEN
+    # çekilmiş geceler kadar akabiliyor.
+    # ==================================================================
+    import cek as _cek2
+    from datetime import datetime as _dt2, timedelta as _td2
+    _durum = _jj.loads(open("config/yayin_durumu.json", encoding="utf-8").read())
+    _atla2 = (set(_durum["atlanan"]) | set(_durum["yayinlanan"])
+              | set(_durum.get("engellenen", [])))
+    _g2 = _dt2.strptime(_durum.get("sira_imleci") or _durum["yayinlanan"][-1], "%Y-%m-%d")
+    _son2 = _dt2.strptime(_durum["sezon_bitisi"], "%Y-%m-%d")
+    _sira2 = []
+    while _g2 < _son2:
+        _g2 += _td2(days=1)
+        _t2 = _g2.strftime("%Y-%m-%d")
+        if _t2 in _atla2:
+            continue
+        if _cek2.ham_yolu(_t2) is None:
+            break
+        _sira2.append(_t2)
+    basar(f"Nefes alanı: kesintisiz sıra {len(_sira2)} gece (en az 25 olmalı)",
+          len(_sira2) >= 25)
+    # Maç oynanmayan gün ATLANANLARDA olmalı: koşucu bunu NBA'e soramaz
+    # (servis engelli) ve sorarsa sıra orada durur.
+    basar("Nefes alanı: bilinen boş gün atlananlarda (24 Aralık)",
+          "2025-12-24" in _durum["atlanan"])
+    # Sıradaki her gecenin verisi SIKIŞTIRILMIŞ biçimde depoda olmalı —
+    # tam kopya .gitignore'da, koşucuya ulaşmaz.
+    _eksik_gz = [t for t in _sira2[:10]
+                 if not _os.path.exists(f"ham/{t}.json.gz")]
+    basar("Nefes alanı: sıradaki gecelerin sıkıştırılmış kopyası depoda",
+          not _eksik_gz)
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))

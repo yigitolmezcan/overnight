@@ -1299,7 +1299,14 @@ let MAC_BY_ID={}, BESI=[], TARIH_ETIKET='', GECE_OYUNCULARI={};
 // döngü tabanda takılıp 3px taşmayı kapatamıyordu (ölçüldü). Taban
 // sadece bu uç durumda devreye giriyor — döngü sığar sığmaz duruyor,
 // normal kartlarda dolgu değişmiyor.
-const KBS_PAD_MIN=0, KBS_PAD_MAX=14, CR_PAD_MIN=2, CR_PAD_MAX=16;
+// TAVAN MASAÜSTÜNDE DAHA YÜKSEK. Mobilde kart ekranı kaplıyor ve
+// döngü zaten sığana kadar daraltıyor — orada tavanın yükselmesinin
+// bir etkisi yok. Masaüstünde kart içeriğine göre büzülüyor (max 92vh)
+// ve 14px tavanı erken devreye girip altta büyük bir boşluk
+// bırakıyordu (ölçüldü, kullanıcı ekran görüntüsü). Tavan yükselince
+// döngü 92vh'ye kadar açıyor: kalan yer satırlara dağılıyor.
+const KBS_PAD_MIN=0, CR_PAD_MIN=2, CR_PAD_MAX=16;
+const KBS_PAD_MAX = matchMedia('(min-width:768px)').matches ? 30 : 14;
 function satirAraliginiAyarla(){
   const govde=sheet.querySelector('.kbody');
   const tablolar=[...sheet.querySelectorAll('.kpane table.kbs')];
