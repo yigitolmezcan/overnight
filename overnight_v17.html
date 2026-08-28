@@ -548,6 +548,12 @@ td.oyad{color:var(--ink);cursor:pointer}
    kalıyordu; perde-2 kartın ÜSTÜNE biniyor, kart bulanık görünüyor ve
    dokunuşlar perdeye gidip kartı hemen kapatıyordu (ölçüldü —
    elementFromPoint kartın yerinde `scrim2` döndürüyordu). */
+/* ÖLÇER KATMAN — gecenin SIKIŞIKLIK kademesi burada hesaplanıyor.
+   Canlı kartın içeriğini geçici olarak değiştirip ölçemiyorum:
+   innerHTML'i geri yazmak o karta bağlı olay dinleyicilerini
+   öldürüyor. Bu yüzden ölçüm, aynı CSS kısıtlarını taşıyan ama
+   görünmeyen ikinci bir katmanda yapılıyor. */
+#sheetOlcer{visibility:hidden;pointer-events:none;transition:none}
 .scrim2{z-index:55}
 .sheet2{z-index:60}
 .sheet.on{transform:translateX(-50%) translateY(0)}
@@ -1216,12 +1222,16 @@ td.khot{color:var(--amber);font-weight:700}
   .sr .f10 i{width:10px;height:10px}
   /* SAHA. Sayfa 860'a çıkınca yarım saha da onunla büyüdü: 856x907,
      yani 800px'lik bir pencereye tek başına sığmıyordu (ölçüldü).
-     Üstelik saha üstündeki öğe ölçeği (daire, isim, sayı) 656px'lik
-     sahaya göre seçilmişti — büyüyünce o oran da bozuluyor.
-     656px hem o ayarın geri geldiği yer hem de üst sınır. 66vh ise
-     pencereye bağlı sınır: saha kısa pencerede de ekrandan taşmasın.
-     Kutunun tamamı daralıyor, saha ortada kalmasın diye. */
-  .besiline{max-width:min(656px,66vh);margin-left:auto;margin-right:auto}
+     Sınır PENCERE YÜKSEKLİĞİNDEN geliyor, sabit bir piksel
+     değerinden değil: saha kare sayılır (1/1.06), yükseklik
+     genişliğe bağlı, o yüzden genişliği vh ile sınırlamak sahayı
+     ekranda tutmanın doğrudan yolu.
+     Önce 656px + 66vh denendi; 1000px'lik pencerede saha 654px'te
+     takılıp 860px'lik sayfanın ortasında küçük kaldı (kullanıcı:
+     "ortada cücük gibi"). Sabit tavan kalktı — saha artık sayfanın
+     tamamını kullanabiliyor, yalnız ekran yüksekliği onu sınırlıyor.
+     80vh: 1000px pencerede 800px saha (848px yüksek, 152px pay). */
+  .besiline{max-width:min(100%,80vh);margin-left:auto;margin-right:auto}
 }
 </style>
 </head>
@@ -1456,12 +1466,47 @@ const KBS_PAD_MAX = matchMedia('(min-width:768px)').matches ? 30 : 14;
 // ve altta artık kalıyordu (ölçüldü, 375px: SAC-HOU 24px). Orada
 // ölçüm zaten taşmayı engelliyor, tavana gerek yok.
 const KBS_PANO_MAX = 30;
-function satirAraliginiAyarla(){
-  const govde=sheet.querySelector('.kbody');
-  const tablolar=[...sheet.querySelectorAll('.kpane table.kbs')];
-  if(!govde) return;
-  const cmp=sheet.querySelector('.cmp');
-  if(!tablolar.length&&!cmp) return;
+/* SIKIŞIKLIK KADEMESİ GECE GENELİNDE TEK. Kademe kart kart
+   ölçülünce aynı gecede bazı maçlarda skor bloğu eziliyor, bazılarında
+   normal duruyordu (kullanıcı: "bazı maçlarda takımlar çok ezik,
+   bazılarında normal"). Kadro sayısı ve kritik anlar maça göre
+   değişiyor, kartın yüksekliği de onunla. Artık gecenin EN UZUN kartı
+   neyi gerektiriyorsa hepsi onu kullanıyor: bir gecede bütün kartlar
+   aynı görünüyor. */
+let GECE_SIK=-1, _olcerKat=null;
+function _olcer(){
+  if(!_olcerKat){
+    _olcerKat=document.createElement('div');
+    _olcerKat.id='sheetOlcer'; _olcerKat.className='sheet on';
+    _olcerKat.setAttribute('aria-hidden','true');
+    document.body.appendChild(_olcerKat);
+  }
+  return _olcerKat;
+}
+function geceSikligi(){
+  if(GECE_SIK>=0) return GECE_SIK;
+  const o=_olcer();
+  let en=0;
+  for(const id of Object.keys(MAC_BY_ID)){
+    o.innerHTML=boxKartiHTML(MAC_BY_ID[id]);
+    en=Math.max(en,_kartiYerlestir(o,0));
+    if(en===2) break;
+  }
+  o.innerHTML='';
+  GECE_SIK=en;
+  return en;
+}
+// resize dinleyicisi bu fonksiyona Event nesnesi geçiriyor — sayı
+// olmayan her şey "kademeyi sen hesapla" demek.
+function satirAraliginiAyarla(zorla){
+  _kartiYerlestir(sheet, typeof zorla==='number'?zorla:geceSikligi());
+}
+function _kartiYerlestir(kat,zorla){
+  const govde=kat.querySelector('.kbody');
+  const tablolar=[...kat.querySelectorAll('.kpane table.kbs')];
+  if(!govde) return 0;
+  const cmp=kat.querySelector('.cmp');
+  if(!tablolar.length&&!cmp) return 0;
 
   // HESAP YOK, SADECE ÖLÇÜM. Önce kalan alanı hesaplamayı denedim:
   // panoların doğal yüksekliğini çocuklarının kutularını toplayarak
@@ -1480,14 +1525,16 @@ function satirAraliginiAyarla(){
   //    bırakıyordu (ölçüldü, ekran görüntüsüyle doğrulandı).
   // Kademeler her açılışta sıfırdan: önceki kartın sıkışıklığı
   // sığan bir karta miras kalmasın.
-  sheet.classList.remove('sik1','sik2');
-  let guvenlik=0;
+  kat.classList.remove('sik1','sik2');
+  let seviye=0, guvenlik=0;
+  if(zorla>=1){ kat.classList.add('sik1'); seviye=1; }
+  if(zorla>=2){ kat.classList.add('sik2'); seviye=2; }
   const daralt=()=>{
-    sheet.style.setProperty('--crpad',CR_PAD_MIN+'px');
+    kat.style.setProperty('--crpad',CR_PAD_MIN+'px');
     let p=KBS_PAD_MAX;
-    sheet.style.setProperty('--kbspad',p+'px');
+    kat.style.setProperty('--kbspad',p+'px');
     while(tasti() && p>KBS_PAD_MIN && guvenlik++<300){
-      p-=1; sheet.style.setProperty('--kbspad',p+'px');
+      p-=1; kat.style.setProperty('--kbspad',p+'px');
     }
     return p;
   };
@@ -1497,14 +1544,14 @@ function satirAraliginiAyarla(){
   //     hâlde taşma sürüyorsa sorun tabloda değil, üstündeki skor ve
   //     çeyrek bloğunda (kısa pencerede kartın 284px'i orada). Kademe
   //     ölçümle açılıyor: sığan kartlarda hiç devreye girmiyor.
-  if(tasti()){ sheet.classList.add('sik1'); pad=daralt(); }
-  if(tasti()){ sheet.classList.add('sik2'); pad=daralt(); }
+  if(tasti()&&seviye<1){ kat.classList.add('sik1'); seviye=1; pad=daralt(); }
+  if(tasti()&&seviye<2){ kat.classList.add('sik2'); seviye=2; pad=daralt(); }
 
   // 2) TAKIM PANOSU: kalan yeri o da kullansın — sığdığı sürece aç.
   let crpad=CR_PAD_MIN;
   while(crpad<CR_PAD_MAX && guvenlik++<400){
-    sheet.style.setProperty('--crpad',(crpad+1)+'px');
-    if(tasti()){ sheet.style.setProperty('--crpad',crpad+'px'); break; }
+    kat.style.setProperty('--crpad',(crpad+1)+'px');
+    if(tasti()){ kat.style.setProperty('--crpad',crpad+'px'); break; }
     crpad+=1;
   }
 
@@ -1555,6 +1602,7 @@ function satirAraliginiAyarla(){
     }
     kap.style.removeProperty('height');
   }
+  return seviye;
 }
 
 /* SENKRON çağrı — bilerek. Kartın yüksekliği CSS'ten geliyor
@@ -1567,11 +1615,21 @@ function satirAraliginiAyarla(){
    (arka plan sekmesinde tarayıcı ikisini de donduruyor) ve dolgu hiç
    hesaplanmadı. Doğrulayamadığım bir mekanizma gönderilmedi.
    Ekran döndüğünde/boyut değiştiğinde yeniden hesaplanıyor. */
-function satirAraligiBagla(){
-  satirAraliginiAyarla();
-  removeEventListener('resize',satirAraliginiAyarla);
-  addEventListener('resize',satirAraliginiAyarla);
+function satirAraligiBagla(){ satirAraliginiAyarla(); }
+/* Pencere değişince gecenin kademesi de değişebilir; önbellek düşüyor.
+   Dinleyici KART AÇILIŞINA BAĞLI DEĞİL, sayfa açılır açılmaz kuruluyor:
+   önce kart açıldığında bağlanıyordu ve hiç kart açmadan pencereyi
+   büyütüp sonra kart açan biri bayat kademeyi görüyordu.
+   Kart kapalıyken sadece önbellek düşürülüyor — altı kartı yeniden
+   ölçmenin anlamı yok, ilk açılışta zaten hesaplanacak. */
+let _sonEn=0,_sonBoy=0;
+function _olcumYenile(){
+  if(innerWidth===_sonEn && innerHeight===_sonBoy) return;
+  _sonEn=innerWidth; _sonBoy=innerHeight;
+  GECE_SIK=-1;
+  if(sheet.classList.contains('on')) satirAraliginiAyarla();
 }
+addEventListener('resize',_olcumYenile);
 
 /* Bağlantı hedefine kaydırma — tarayıcının kendi çıpa davranışına
    BIRAKILMIYOR.

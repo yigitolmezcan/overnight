@@ -2265,8 +2265,11 @@ def main():
           "table.kbs{height:100%}" not in _sayfa2)
     basar("Satır aralığı: dolgu ÖLÇÜLEREK daraltılıyor, hesapla tahmin edilmiyor",
           "govde.scrollHeight>govde.clientHeight" in _sayfa2)
+    # Dinleyici artık _olcumYenile: önce gecenin kademe önbelleğini
+    # düşürüyor, sonra yeniden yerleştiriyor. Kural aynı.
     basar("Satır aralığı: ekran boyutu değişince yeniden hesaplanıyor",
-          "addEventListener('resize',satirAraliginiAyarla)" in _sayfa2)
+          "addEventListener('resize',_olcumYenile)" in _sayfa2
+          and "satirAraliginiAyarla()" in _sayfa2)
     # Gecenin beşi: flex-basis 0 masaüstünde blokları 19px'e çökertiyordu.
     basar("Gecenin beşi: bloklar kalan alanı paylaşıyor, basis auto",
           ".besikart .kbody>.bp{flex:1 1 auto" in _sayfa2)
@@ -4340,11 +4343,14 @@ def main():
     basar("Sıkışık: iki kademe de tanımlı",
           ".sheet.sik1 .kt{" in _s18 and ".sheet.sik2 .kt{" in _s18)
     # Kademeler ÖLÇÜMLE açılıyor — sığan kartta hiç devreye girmemeli.
+    # Yerleştirme artık hangi katmanda çalıştığını parametre alıyor
+    # (ölçüm görünmez katmanda yapılıyor) ve kademeyi döndürüyor.
     basar("Sıkışık: kademeler ölçümle açılıyor",
-          "if(tasti()){ sheet.classList.add('sik1'); pad=daralt(); }" in _s18
-          and "if(tasti()){ sheet.classList.add('sik2'); pad=daralt(); }" in _s18)
+          "if(tasti()&&seviye<1){ kat.classList.add('sik1'); seviye=1; pad=daralt(); }" in _s18
+          and "if(tasti()&&seviye<2){ kat.classList.add('sik2'); seviye=2; pad=daralt(); }" in _s18)
     basar("Sıkışık: her açılışta sıfırlanıyor",
-          _s18.count("sheet.classList.remove('sik1','sik2');") >= 2)
+          "sheet.classList.remove('sik1','sik2');" in _s18
+          and "kat.classList.remove('sik1','sik2');" in _s18)
     # HİÇBİR ŞEY GİZLENMİYOR: tarih/rozet satırı ve çeyrek başlıkları
     # 720px'lik sıradan bir pencerede kaybolmamalı. Yorum satırları
     # eşleşmesin diye SADECE .sheet.sik kuralları ayıklanıyor (bu
@@ -4378,8 +4384,13 @@ def main():
     # bağlı sınır.
     _mb19 = _s19.split("@media(min-width:1024px){")[1]
     _mb19 = _mb19[:_mb19.index("\n}")]
-    basar("Saha: masaüstünde hem piksel hem pencere sınırı var",
-          ".besiline{max-width:min(656px,66vh);margin-left:auto;margin-right:auto}" in _mb19)
+    # Sabit piksel tavanı KALKTI: 1000px'lik pencerede saha 654'te
+    # takılıp 860px'lik sayfanın ortasında küçük kalıyordu (kullanıcı:
+    # "ortada cücük gibi"). Sınır artık yalnız pencere yüksekliği.
+    basar("Saha: sınır pencere yüksekliğinden geliyor",
+          ".besiline{max-width:min(100%,80vh);margin-left:auto;margin-right:auto}" in _mb19)
+    basar("Saha: sabit piksel tavanı yok",
+          "min(656px" not in _mb19)
     # Ölçü birimi sahanın kendi genişliği olmalı: sabit pikselken saha
     # küçülünce etiketler büyük kalıp çakışıyordu (ölçüldü: Kel'el Ware
     # iki oyuncunun üstüne bindi).
@@ -4402,6 +4413,47 @@ def main():
           and ".pl .dot{width:30px;height:30px;" in _s19)
     basar("Saha: sınır yalnız masaüstünde",
           ".besiline{max-width:" not in _s19.split("@media(min-width:1024px){")[0])
+
+    # ==================================================================
+    # SIKIŞIKLIK KADEMESİ GECE GENELİNDE TEK
+    # ==================================================================
+    _s20 = _sayfa10
+
+    # Kademe kart kart ölçülünce aynı gecede bazı maçlarda skor bloğu
+    # eziliyor, bazılarında normal duruyordu (kullanıcı: "bazı maçlarda
+    # takımlar çok ezik, bazılarında normal"). Kadro sayısı ve kritik
+    # anlar maça göre değişiyor, kartın yüksekliği de onunla.
+    basar("Kademe: gece geneli tek değer",
+          "let GECE_SIK=-1" in _s20 and "function geceSikligi()" in _s20)
+    basar("Kademe: gecenin EN UZUN kartına göre",
+          "en=Math.max(en,_kartiYerlestir(o,0));" in _s20
+          and "for(const id of Object.keys(MAC_BY_ID)){" in _s20)
+    # Ölçüm canlı kartta yapılamaz: innerHTML'i geri yazmak o karta
+    # bağlı olay dinleyicilerini öldürüyor.
+    basar("Kademe: ölçüm ayrı görünmez katmanda",
+          "_olcerKat.id='sheetOlcer'" in _s20
+          and "#sheetOlcer{visibility:hidden;pointer-events:none;transition:none}" in _s20)
+    basar("Kademe: ölçer katman kartla aynı CSS kısıtlarını taşıyor",
+          "_olcerKat.className='sheet on'" in _s20)
+    basar("Kademe: yerleştirme hangi katmanda çalışacağını alıyor",
+          "function _kartiYerlestir(kat,zorla){" in _s20
+          and "return seviye;" in _s20)
+    basar("Kademe: zorlanan seviyeden başlıyor, gerekirse yükseliyor",
+          "if(zorla>=1){ kat.classList.add('sik1'); seviye=1; }" in _s20
+          and "if(tasti()&&seviye<1){" in _s20)
+    # resize dinleyicisi bu fonksiyona Event geçiriyor.
+    basar("Kademe: sayı olmayan argüman 'sen hesapla' demek",
+          "typeof zorla==='number'?zorla:geceSikligi()" in _s20)
+    # Dinleyici kart açılışına bağlı OLMAMALI: hiç kart açmadan
+    # pencereyi büyütüp sonra kart açan biri bayat kademe görüyordu.
+    basar("Kademe: pencere dinleyicisi açılışta kuruluyor",
+          "addEventListener('resize',_olcumYenile);" in _s20
+          and "function satirAraligiBagla(){ satirAraliginiAyarla(); }" in _s20)
+    basar("Kademe: pencere değişince önbellek düşüyor",
+          "GECE_SIK=-1;\n  if(sheet.classList.contains('on')) satirAraliginiAyarla();" in _s20)
+    # Kart kapalıyken altı kartı yeniden ölçmenin anlamı yok.
+    basar("Kademe: kapalı kartta yeniden ölçüm yok",
+          "if(sheet.classList.contains('on')) satirAraliginiAyarla();" in _s20)
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
