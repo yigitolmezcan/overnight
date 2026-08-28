@@ -54,3 +54,17 @@ jobs:
           for u in https://www.nba.com https://api.github.com https://www.google.com; do
             curl -s -o /dev/null -m 15 -w "$u -> http=%{http_code}\n" "$u" || echo "$u -> BAŞARISIZ"
           done
+
+      - name: 6) CDN uç noktaları — engel stats'e mi özel?
+        run: |
+          for u in \
+            "https://cdn.nba.com/static/json/liveData/scoreboard/todaysScoreboard_00.json" \
+            "https://cdn.nba.com/static/json/liveData/boxscore/boxscore_0022500403.json" \
+            "https://cdn.nba.com/static/json/liveData/playbyplay/playbyplay_0022500403.json" \
+            "https://stats.nba.com/stats/scoreboardv3?GameDate=2025-12-23&LeagueID=00" ; do
+            printf '%-72s ' "$(echo "$u" | cut -c1-72)"
+            curl -s -o /tmp/o.json -m 20 -w "http=%{http_code} sure=%{time_total} boyut=%{size_download}\n" \
+              -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36" \
+              -H "Referer: https://www.nba.com/" \
+              "$u" || echo "BASARISIZ (curl $?)"
+          done
