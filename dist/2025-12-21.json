@@ -2551,28 +2551,33 @@
       "son5": [
         {
           "sayi": 27,
-          "rakip": "CLE",
-          "bu_gece": false
+          "rakip": "Cleveland",
+          "bu_gece": false,
+          "ust": true
         },
         {
           "sayi": 11,
-          "rakip": "IND",
-          "bu_gece": false
+          "rakip": "Indiana",
+          "bu_gece": false,
+          "ust": true
         },
         {
           "sayi": 15,
-          "rakip": "SAS",
-          "bu_gece": false
+          "rakip": "San Antonio",
+          "bu_gece": false,
+          "ust": true
         },
         {
           "sayi": 14,
-          "rakip": "MEM",
-          "bu_gece": false
+          "rakip": "Memphis",
+          "bu_gece": false,
+          "ust": true
         },
         {
           "sayi": 21,
-          "rakip": "SAS",
-          "bu_gece": true
+          "rakip": "San Antonio",
+          "bu_gece": true,
+          "ust": true
         }
       ],
       "son5_ort": 17.6,
@@ -2592,28 +2597,33 @@
       "son5": [
         {
           "sayi": 15,
-          "rakip": "DEN",
-          "bu_gece": false
+          "rakip": "Denver",
+          "bu_gece": false,
+          "ust": true
         },
         {
           "sayi": 8,
-          "rakip": "MIN",
-          "bu_gece": false
+          "rakip": "Minnesota",
+          "bu_gece": false,
+          "ust": false
         },
         {
           "sayi": 29,
-          "rakip": "POR",
-          "bu_gece": false
+          "rakip": "Portland",
+          "bu_gece": false,
+          "ust": true
         },
         {
           "sayi": 17,
-          "rakip": "POR",
-          "bu_gece": false
+          "rakip": "Portland",
+          "bu_gece": false,
+          "ust": true
         },
         {
           "sayi": 12,
-          "rakip": "HOU",
-          "bu_gece": true
+          "rakip": "Houston",
+          "bu_gece": true,
+          "ust": true
         }
       ],
       "son5_ort": 16.2,
@@ -2633,28 +2643,33 @@
       "son5": [
         {
           "sayi": 21,
-          "rakip": "GSW",
-          "bu_gece": false
+          "rakip": "Golden State",
+          "bu_gece": false,
+          "ust": true
         },
         {
           "sayi": 18,
-          "rakip": "SAC",
-          "bu_gece": false
+          "rakip": "Sacramento",
+          "bu_gece": false,
+          "ust": true
         },
         {
           "sayi": 19,
-          "rakip": "MEM",
-          "bu_gece": false
+          "rakip": "Memphis",
+          "bu_gece": false,
+          "ust": true
         },
         {
           "sayi": 15,
-          "rakip": "OKC",
-          "bu_gece": false
+          "rakip": "Oklahoma City",
+          "bu_gece": false,
+          "ust": true
         },
         {
           "sayi": 18,
-          "rakip": "MIL",
-          "bu_gece": true
+          "rakip": "Milwaukee",
+          "bu_gece": true,
+          "ust": true
         }
       ],
       "son5_ort": 18.2,
@@ -2674,28 +2689,33 @@
       "son5": [
         {
           "sayi": 40,
-          "rakip": "ORL",
-          "bu_gece": false
+          "rakip": "Orlando",
+          "bu_gece": false,
+          "ust": true
         },
         {
           "sayi": 25,
-          "rakip": "SAS",
-          "bu_gece": false
+          "rakip": "San Antonio",
+          "bu_gece": false,
+          "ust": false
         },
         {
           "sayi": 25,
-          "rakip": "IND",
-          "bu_gece": false
+          "rakip": "Indiana",
+          "bu_gece": false,
+          "ust": false
         },
         {
           "sayi": 22,
-          "rakip": "PHI",
-          "bu_gece": false
+          "rakip": "Philadelphia",
+          "bu_gece": false,
+          "ust": false
         },
         {
           "sayi": 47,
-          "rakip": "MIA",
-          "bu_gece": true
+          "rakip": "Miami",
+          "bu_gece": true,
+          "ust": true
         }
       ],
       "son5_ort": 31.8,
@@ -2715,28 +2735,33 @@
       "son5": [
         {
           "sayi": 18,
-          "rakip": "ATL",
-          "bu_gece": false
+          "rakip": "Atlanta",
+          "bu_gece": false,
+          "ust": true
         },
         {
           "sayi": 14,
-          "rakip": "CLE",
-          "bu_gece": false
+          "rakip": "Cleveland",
+          "bu_gece": false,
+          "ust": true
         },
         {
           "sayi": 6,
-          "rakip": "IND",
-          "bu_gece": false
+          "rakip": "Indiana",
+          "bu_gece": false,
+          "ust": false
         },
         {
           "sayi": 6,
-          "rakip": "SAS",
-          "bu_gece": false
+          "rakip": "San Antonio",
+          "bu_gece": false,
+          "ust": false
         },
         {
           "sayi": 18,
-          "rakip": "SAS",
-          "bu_gece": true
+          "rakip": "San Antonio",
+          "bu_gece": true,
+          "ust": true
         }
       ],
       "son5_ort": 12.4,
@@ -2758,28 +2783,33 @@
       "son5": [
         {
           "sayi": 22,
-          "rakip": "OKC",
-          "bu_gece": false
+          "rakip": "Oklahoma City",
+          "bu_gece": false,
+          "ust": true
         },
         {
           "sayi": 16,
-          "rakip": "NYK",
-          "bu_gece": false
+          "rakip": "New York",
+          "bu_gece": false,
+          "ust": false
         },
         {
           "sayi": 6,
-          "rakip": "WAS",
-          "bu_gece": false
+          "rakip": "Washington",
+          "bu_gece": false,
+          "ust": false
         },
         {
           "sayi": 8,
-          "rakip": "ATL",
-          "bu_gece": false
+          "rakip": "Atlanta",
+          "bu_gece": false,
+          "ust": false
         },
         {
           "sayi": 27,
-          "rakip": "WAS",
-          "bu_gece": true
+          "rakip": "Washington",
+          "bu_gece": true,
+          "ust": true
         }
       ],
       "son5_ort": 15.8,
@@ -2799,28 +2829,33 @@
       "son5": [
         {
           "sayi": 11,
-          "rakip": "BOS",
-          "bu_gece": false
+          "rakip": "Boston",
+          "bu_gece": false,
+          "ust": false
         },
         {
           "sayi": 15,
-          "rakip": "MIA",
-          "bu_gece": false
+          "rakip": "Miami",
+          "bu_gece": false,
+          "ust": false
         },
         {
           "sayi": 9,
-          "rakip": "MIL",
-          "bu_gece": false
+          "rakip": "Milwaukee",
+          "bu_gece": false,
+          "ust": false
         },
         {
           "sayi": 3,
-          "rakip": "BOS",
-          "bu_gece": false
+          "rakip": "Boston",
+          "bu_gece": false,
+          "ust": false
         },
         {
           "sayi": 17,
-          "rakip": "BKN",
-          "bu_gece": true
+          "rakip": "Brooklyn",
+          "bu_gece": true,
+          "ust": true
         }
       ],
       "son5_ort": 11.0,
@@ -2840,28 +2875,33 @@
       "son5": [
         {
           "sayi": 13,
-          "rakip": "NYK",
-          "bu_gece": false
+          "rakip": "New York",
+          "bu_gece": false,
+          "ust": false
         },
         {
           "sayi": 17,
-          "rakip": "MIA",
-          "bu_gece": false
+          "rakip": "Miami",
+          "bu_gece": false,
+          "ust": false
         },
         {
           "sayi": 24,
-          "rakip": "MIL",
-          "bu_gece": false
+          "rakip": "Milwaukee",
+          "bu_gece": false,
+          "ust": true
         },
         {
           "sayi": 12,
-          "rakip": "BOS",
-          "bu_gece": false
+          "rakip": "Boston",
+          "bu_gece": false,
+          "ust": false
         },
         {
           "sayi": 6,
-          "rakip": "BKN",
-          "bu_gece": true
+          "rakip": "Brooklyn",
+          "bu_gece": true,
+          "ust": false
         }
       ],
       "son5_ort": 14.4,
@@ -2881,28 +2921,33 @@
       "son5": [
         {
           "sayi": 14,
-          "rakip": "TOR",
-          "bu_gece": false
+          "rakip": "Toronto",
+          "bu_gece": false,
+          "ust": false
         },
         {
           "sayi": 29,
-          "rakip": "ORL",
-          "bu_gece": false
+          "rakip": "Orlando",
+          "bu_gece": false,
+          "ust": true
         },
         {
           "sayi": 16,
-          "rakip": "SAS",
-          "bu_gece": false
+          "rakip": "San Antonio",
+          "bu_gece": false,
+          "ust": false
         },
         {
           "sayi": 22,
-          "rakip": "PHI",
-          "bu_gece": false
+          "rakip": "Philadelphia",
+          "bu_gece": false,
+          "ust": true
         },
         {
           "sayi": 2,
-          "rakip": "MIA",
-          "bu_gece": true
+          "rakip": "Miami",
+          "bu_gece": true,
+          "ust": false
         }
       ],
       "son5_ort": 16.6,
@@ -2922,28 +2967,33 @@
       "son5": [
         {
           "sayi": 11,
-          "rakip": "NOP",
-          "bu_gece": false
+          "rakip": "New Orleans",
+          "bu_gece": false,
+          "ust": false
         },
         {
           "sayi": 15,
-          "rakip": "LAC",
-          "bu_gece": false
+          "rakip": "LA Clippers",
+          "bu_gece": false,
+          "ust": false
         },
         {
           "sayi": 40,
-          "rakip": "PHX",
-          "bu_gece": false
+          "rakip": "Phoenix",
+          "bu_gece": false,
+          "ust": true
         },
         {
           "sayi": 26,
-          "rakip": "OKC",
-          "bu_gece": false
+          "rakip": "Oklahoma City",
+          "bu_gece": false,
+          "ust": false
         },
         {
           "sayi": 24,
-          "rakip": "MIL",
-          "bu_gece": true
+          "rakip": "Milwaukee",
+          "bu_gece": true,
+          "ust": false
         }
       ],
       "son5_ort": 23.2,
@@ -3658,7 +3708,7 @@
       "mac": "Brooklyn Nets — Toronto Raptors",
       "skor": "96–81",
       "rozet": 2.45,
-      "why": "",
+      "why": "gece sırası 2",
       "metin": "Brooklyn Nets evinde Toronto Raptors'u 96-81 yendi.",
       "box": {
         "ev": {

@@ -22,6 +22,7 @@ import gercekler
 import yaz
 import cumle
 import derle as _derle
+import re as _re
 
 # Kritik anlar testleri hem hesabı hem KAYNAĞI denetliyor
 # ("ek API çağrısı yok" iddiası ancak kaynakta doğrulanabilir).
@@ -2586,8 +2587,8 @@ def main():
 
     # Balon: mobilde hover YOK, dokunma zorunlu; aynı anda tek balon.
     basar("Form: balon görünürlüğü kap sınıfıyla (kardeş seçici değil)",
-          ".bars.tipon .tip{opacity:1}" in _sayfa5
-          and ".bars i.tap + .tip" not in _sayfa5)
+          ".sq.tipon .tip{opacity:1}" in _sayfa5
+          and ".tap + .tip" not in _sayfa5)
     basar("Form: hover sadece hover destekleyen cihazda",
           "matchMedia('(hover:hover)').matches" in _sayfa5)
     basar("Form: aynı anda tek balon (önce hepsi kapanıyor)",
@@ -2701,9 +2702,11 @@ def main():
           ".sr .ar.u{color:#3FB27F}" in _sayfa6 and ".sr .ar.d{color:#C4544F}" in _sayfa6)
     basar("Sıralama: form kutucukları 9x9, 2.5px aralık",
           "width:9px;height:9px" in _sayfa6 and ".sr .f10{display:flex;gap:2.5px" in _sayfa6)
-    basar("Sıralama: galibiyet yeşil %85, mağlubiyet koyu gri",
+    # Mağlubiyet KIRMIZI oldu (kullanıcı kararı): koyu gri "veri yok"
+    # gibi duruyordu, oysa her kutucuk oynanmış bir maç.
+    basar("Sıralama: galibiyet yeşil %85, mağlubiyet kırmızı %75",
           ".sr .f10 i.w{background:#3FB27F;opacity:.85}" in _sayfa6
-          and "background:#2A3340}" in _sayfa6)
+          and "background:#C4544F;opacity:.75" in _sayfa6)
     basar("Sıralama: sıra sütunu 46px, sağa hizalı",
           "width:46px;flex:none;text-align:right" in _sayfa6)
     # "4→3" 10 form kutucuğunun yanında galibiyet-mağlubiyet sanıldı;
@@ -3225,6 +3228,92 @@ def main():
           == {"2025-12-21": {"tarih": "2025-12-21"}})
     basar("Yayın: gömülü veri yoksa tarih uydurulmuyor",
           _cd._GOMULU_DESENI.search("<html>boş</html>") is None)
+
+    # ==================================================================
+    # FORM: SAYI DİZİSİ + SIRALAMADA KIRMIZI MAĞLUBİYET
+    # Çubuk grafiği silikti ve değerler okunmuyordu. Yerine sayı dizisi:
+    # asıl iş ÇİZGİ RENGİNDE — çıplak sayı bir şey ifade etmiyor, 24
+    # sayı iyi mi kötü mü oyuncunun kendi normalini bilmeden söylenemez.
+    # ==================================================================
+    _sayfa10 = open("overnight_v17.html", encoding="utf-8").read()
+    _formcular = (_d7.get("yukselen") or []) + (_d7.get("dusen") or [])
+
+    # --- Veri: üst/alt kararı ---
+    basar("Form: her maçta sezon ortalaması kıyası var",
+          bool(_formcular)
+          and all(isinstance(x.get("ust"), bool)
+                  for o in _formcular for x in o["son5"]))
+    # Kıyas EKRANDA YAZAN değere göre: satır "sezon 21.1" derken 21
+    # sayılık maç yeşil görünmemeli.
+    basar("Form: üst/alt kararı ekranda yazan sezon ortalamasıyla tutarlı",
+          all(x["ust"] == (x["sayi"] > o["sezon_ort"])
+              for o in _formcular for x in o["son5"]))
+    basar("Form: her satırda tam 5 maç, sonuncusu bu gece",
+          all(len(o["son5"]) == 5 and o["son5"][-1]["bu_gece"]
+              and sum(1 for x in o["son5"] if x["bu_gece"]) == 1
+              for o in _formcular))
+    # Balonda rakip KOD değil okunur ad.
+    basar("Form: balondaki rakip okunur ad (üç harfli kod değil)",
+          all(len(x["rakip"]) > 3 for o in _formcular for x in o["son5"]))
+
+    # --- Görünüm: çubuk gitti, sayı dizisi geldi ---
+    basar("Form: çubuk grafiği kalmadı",
+          ".bars{" not in _sayfa10 and "const cubuk=" not in _sayfa10)
+    basar("Form: hücre 27px, aralık 4px, çizgi 3px",
+          "width:27px" in _sayfa10.split(".sq>span[data-sayi]{")[1].split("}")[0]
+          and "gap:4px" in _sayfa10.split("\n.sq{")[1].split("}")[0]
+          and "height:3px" in _sayfa10.split("\n.sq i{")[1].split("}")[0]
+          and "margin-top:4px" in _sayfa10.split("\n.sq i{")[1].split("}")[0])
+    basar("Form: sayı mono 12.5px",
+          "font-size:12.5px" in _sayfa10.split("\n.sq u{")[1].split("}")[0])
+    # Renkler kullanıcı tarafından tek tek verildi.
+    basar("Form: üstte yeşil (#3FB27F, .75), altta kırmızı (#C4544F, .6)",
+          "background:#3FB27F;opacity:.75" in _sayfa10.split(".hi i{")[1].split("}")[0]
+          and "background:#C4544F;opacity:.6" in _sayfa10.split(".lo i{")[1].split("}")[0])
+    basar("Form: bu geceki maç ember ve kalın",
+          "color:var(--ember);font-weight:700" in _sayfa10.split(".now u{")[1].split("}")[0]
+          and "background:var(--ember);opacity:1" in _sayfa10.split(".now i{")[1].split("}")[0])
+    # .now kuralları .hi/.lo'dan SONRA olmak zorunda: aynı özgüllük.
+    basar("Form: .now kuralları .hi/.lo'dan sonra yazılı (aynı özgüllük)",
+          _sayfa10.index(".sq>span[data-sayi].now i{")
+          > _sayfa10.index(".sq>span[data-sayi].lo i{"))
+    # Balon .sq'nun doğrudan span çocuğu; çıplak `.sq>span` onu da
+    # hücre genişliğine sıkıştırıyordu (ölçüldü: 24px kutu, ~120px içerik).
+    basar("Form: hücre seçicisi balonu kapsamıyor",
+          ".sq>span{" not in _sayfa10
+          and _sayfa10.count(".sq>span[data-sayi]") >= 7)
+    basar("Form: renk açıklaması bölüm başında yazıyor",
+          '<div class="formnot">son 5 maç · sezon ort. üstü / altı</div>' in _sayfa10
+          and "font-size:8.5px" in _sayfa10.split(".formnot{")[1].split("}")[0])
+    # Düşen listesinin tamamı turuncuya boyanırsa ember'in tek anlamı
+    # ("bu geceki maç") yok oluyor.
+    # DİKKAT: arama YORUMSUZ metinde. Kuralı neden kaldırdığımı anlatan
+    # yorumun içinde kuralın kendisi geçiyor; çıplak arama kendi
+    # açıklamama takılıyordu.
+    _yorumsuz10 = _re.sub(r"/\*.*?\*/", "", _sayfa10, flags=_re.S)
+    basar("Form: Düşen listesi topluca ember'e boyanmıyor",
+          ".cold{color:var(--ember)}" not in _yorumsuz10)
+    # Dar ekranda ad sütunu 86px'e düşüp bütün adları kesiyordu.
+    basar("Form: dar ekranda hücre/aralık/ortalama kısılıyor",
+          ".sq>span[data-sayi]{width:24px}"
+          in _sayfa10.split("@media(max-width:400px){")[1].split("}\n")[0]
+          .replace("\n", "").replace("  ", "")
+          or ".sq>span[data-sayi]{width:24px}" in _sayfa10)
+    # Üç haneli sayı 12.5px mono'da 22.5px yer istiyor (ölçüldü).
+    basar("Form: dar ekran hücresi üç haneli sayıyı kırpmıyor (≥23px)",
+          all(int(_p) >= 23 for _p in _re.findall(
+              r"\.sq>span\[data-sayi\]\{width:(\d+)px\}", _sayfa10)))
+
+    # --- Sıralama: mağlubiyet kırmızı ---
+    basar("Sıralama: mağlubiyet kırmızı (#C4544F, .75), 'veri yok' grisi değil",
+          "background:#C4544F;opacity:.75" in _sayfa10.split(".sr .f10 i{")[1].split("}")[0]
+          and "#2A3340" not in _sayfa10.split(".sr .f10 i{")[1].split("}")[0])
+    basar("Sıralama: galibiyet yeşil, iki renk yakın ağırlıkta",
+          "background:#3FB27F;opacity:.85" in _sayfa10.split(".sr .f10 i.w{")[1].split("}")[0])
+    # Her kutucuk oynanmış bir maç: form listesi sadece True/False taşıyor,
+    # "veri yok" diye üçüncü bir durum yok — kırmızı belirsiz kalmıyor.
+    basar("Sıralama: form kutucukları yalnız galibiyet/mağlubiyet",
+          all(isinstance(w, bool) for t in (_d7.get("siralama") or []) for w in t["form"]))
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",

@@ -399,7 +399,13 @@ body.n-worst .calm{border-left-color:var(--amber)}
 .vid b{display:block;font-size:14px;font-weight:600}
 .vid small{font-family:var(--mono);font-size:11.5px;color:var(--faint)}
 .vid.pending{border-color:#8A4A18;color:var(--amber)}
-.cold{color:var(--ember)}
+/* `.cold` YALNIZ Düşen listesinde ve Düşen düğmesinde bulunuyor.
+   Burada eskiden `.cold{color:var(--ember)}` vardı: Düşen listesinin
+   BÜTÜN yazısını turuncuya boyuyordu (adlar, ortalamalar). Hem sekmenin
+   mavi kimliğiyle çelişiyordu hem de yeni sayı dizisinde ember'in tek
+   anlamı olan "bu geceki maç" vurgusunu yok ediyordu — her şey turuncu
+   olunca vurgu vurgu olmaktan çıkıyor. Kaldırıldı; renk artık sadece
+   ▼ farkında ve düğmede. */
 
 /* ===================== KART (box score / gecenin beşi) =====================
    Kullanıcı kararı: box score aşağı açılmaz, alttan yukarı kayan tam
@@ -668,14 +674,31 @@ td.khot{color:var(--amber);font-weight:700}
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .fp .tm{display:block;font-family:var(--mono);font-size:10.5px;color:var(--faint);
   margin-top:2px}
-.bars{display:flex;gap:3px;align-items:flex-end;height:36px;flex:none;position:relative}
-.bars i{width:10px;background:#2A3444;display:block;border-radius:1px;cursor:pointer;
-  transition:background .12s}
-.bars i.now{background:var(--ember)}
-.cold .bars i.now{background:var(--dusen)}
-.bars i:hover{background:#4A5768}
-.bars i.now:hover{background:#F08B52}
-.cold .bars i.now:hover{background:#7BA5F3}
+/* Son 5 maç: SAYI DİZİSİ (kullanıcı kararı). Yerine geçtiği ince çubuk
+   grafiği silik duruyordu ve değerler okunmuyordu.
+   ÇİZGİ RENGİ ANLAM TAŞIYOR — asıl mesele bu: çıplak sayı bir şey ifade
+   etmiyor, 24 sayı iyi mi kötü mü oyuncunun kendi normalini bilmeden
+   söylenemez. Yeşil çizgi "kendi sezon ortalamasının üstünde", kırmızı
+   "altında". Beş sayı artık "dört maçtır normalinin üstünde" diye
+   okunuyor. */
+.sq{display:flex;gap:4px;flex:none;position:relative}
+.sq>span[data-sayi]{width:27px;text-align:center;cursor:pointer}
+/* DİKKAT — seçicide [data-sayi] ŞART: balon (.tip) de .sq'nun
+   doğrudan span çocuğu. Çıplak `.sq>span` yazıldığında balon da
+   24px'e sıkışıyor ve konumlandırma bozuluyordu (ölçüldü). */
+.sq u{display:block;font-family:var(--mono);font-size:12.5px;text-decoration:none;
+  color:var(--faint);transition:color .12s}
+.sq i{display:block;height:3px;margin-top:4px;border-radius:1px;background:#2A3444;
+  transition:opacity .12s}
+.sq>span[data-sayi].hi u{color:var(--ink2)}
+.sq>span[data-sayi].hi i{background:#3FB27F;opacity:.75}
+.sq>span[data-sayi].lo i{background:#C4544F;opacity:.6}
+/* .now SONRA yazılı: aynı özgüllükte olduğu için sırayla kazanıyor.
+   Bu geceki maç iki listede de EMBER — mavi "düşen" sekmesinin rengi,
+   satırdaki değer yargısını yeşil/kırmızı çizgiler zaten taşıyor. */
+.sq>span[data-sayi].now u{color:var(--ember);font-weight:700}
+.sq>span[data-sayi].now i{background:var(--ember);opacity:1}
+.sq>span[data-sayi]:hover u{color:var(--ink)}
 /* Balon: mobilde hover YOK, dokunma zorunlu — sadece hover'a bırakılmıyor.
    Aynı anda tek balon açık kalıyor (bkz. formdaBalonKapat). */
 .tip{position:absolute;bottom:calc(100% + 7px);left:50%;transform:translateX(-50%);
@@ -683,16 +706,37 @@ td.khot{color:var(--amber);font-weight:700}
   font-family:var(--mono);font-size:10.5px;color:var(--ink);opacity:0;pointer-events:none;
   transition:opacity .12s;z-index:5}
 .tip s{color:var(--faint);text-decoration:none}
-/* Balon .bars'ın SON çocuğu; "i.tap + .tip" kardeş seçicisi sadece
-   SONUNCU çubuk için eşleşiyordu ve diğer dördünde balon hiç
-   görünmüyordu (ölçüldü: opacity 0). Görünürlük artık kabın sınıfıyla
-   kontrol ediliyor, çubuğun DOM sırasıyla değil. */
-.bars.tipon .tip{opacity:1}
+/* Balon kabın SON çocuğu; "+ .tip" kardeş seçicisi sadece SONUNCU
+   hücre için eşleşiyordu ve diğer dördünde balon hiç görünmüyordu
+   (ölçüldü: opacity 0). Görünürlük kabın sınıfıyla kontrol ediliyor,
+   hücrenin DOM sırasıyla değil. */
+.sq.tipon .tip{opacity:1}
+/* Renklerin ne anlama geldiğini söyleyen küçük not. Bölüm başlığının
+   sağı Yükselen/Düşen düğmeleriyle dolu; not kendi ince satırında,
+   sağa hizalı duruyor. */
+.formnot{font-family:var(--mono);font-size:8.5px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--faint);text-align:right;margin:-8px 2px 10px}
 .fp .avg{font-family:var(--mono);text-align:right;flex:none;width:70px}
 .fp .avg b{display:block;font-size:16px;font-weight:700;letter-spacing:-.02em;line-height:1}
 .fp .avg s{display:block;font-size:9.5px;color:var(--faint);text-decoration:none;margin-top:4px}
 .fp .avg s em{color:#3FB27F;font-style:normal}
 .cold .fp .avg s em{color:#C4544F}
+/* 375px'te sayı dizisi geniş bir sabit blok: ad sütunu 86px'e düşüyor
+   ve BÜTÜN adlar üç noktayla kesiliyordu (ölçüldü). Dar ekranda hücre,
+   boşluk ve ortalama bloğu birlikte kısılıyor; kazanılan 37px ada
+   gidiyor ve 123px'e çıkıyor — gecenin adlarının tamamı sığıyor.
+   Hücre 24px'in ALTINA inmiyor: üç haneli sayı 12.5px mono'da 22.5px
+   yer istiyor (ölçüldü), altına inince kırpılırdı.
+   KONUM ÖNEMLİ: `.fp .avg` kuralından SONRA olmak zorunda — aynı
+   özgüllükte olduğu için önce yazılsaydı 70px onu ezerdi (ölçüldü). */
+@media(max-width:400px){
+  .fp{gap:8px}
+  .sq{gap:3px}
+  .sq>span[data-sayi]{width:24px}
+  /* Ortalama bloğu 70 → 60: alt satır zaten iki satıra sarıyordu
+     ("sezon 21.8" / "▲8.3"), 60px'te de öyle sarıyor. */
+  .fp .avg{width:60px}
+}
 /* Takım noktası: renk çakışması burada da çözülüyor, halka asıl rengi taşıyor. */
 .fp .tmdot{display:inline-block;width:7px;height:7px;border-radius:50%;
   margin-right:5px;vertical-align:baseline}
@@ -722,7 +766,12 @@ td.khot{color:var(--amber);font-weight:700}
   line-height:1.25;overflow-wrap:break-word}
 /* Form: 10 kare, soldan sağa ESKİDEN YENİYE — en sağdaki bu geceki maç. */
 .sr .f10{display:flex;gap:2.5px;flex:none}
-.sr .f10 i{width:9px;height:9px;display:block;border-radius:1px;background:#2A3340}
+/* Mağlubiyet KIRMIZI (kullanıcı kararı). Koyu gri (#2A3340) "veri yok"
+   gibi duruyordu; oysa her kutucuk oynanmış bir maç — kazanılmış ya da
+   kaybedilmiş. İki renk aynı görsel ağırlıkta: kırmızı bağırmıyor ama
+   kaybolmuyor da. */
+.sr .f10 i{width:9px;height:9px;display:block;border-radius:1px;
+  background:#C4544F;opacity:.75}
 .sr .f10 i.w{background:#3FB27F;opacity:.85}
 /* Sıra sütunu — SADECE YENİ SIRA.
    Önce "4→3" yazıyordu; 10 form kutucuğunun yanında galibiyet-mağlubiyet
@@ -972,6 +1021,7 @@ td.khot{color:var(--amber);font-weight:700}
       <button data-liste="dusen">Düşen</button>
     </div></div>
   <div class="rule"></div>
+  <div class="formnot">son 5 maç · sezon ort. üstü / altı</div>
   <div class="formda" id="formdaListe"></div>
 </section>
 
@@ -1550,16 +1600,16 @@ function render(d){
   // ---- yükselen / düşen ----
   // Aynı anda TEK balon açık kalıyor: ikinciye dokununca birincisi kapanır.
   const formdaBalonKapat=()=>{
-    document.querySelectorAll('.bars i.tap').forEach(x=>x.classList.remove('tap'));
-    document.querySelectorAll('.bars.tipon').forEach(x=>x.classList.remove('tipon'));
+    document.querySelectorAll('.sq>span[data-sayi].tap').forEach(x=>x.classList.remove('tap'));
+    document.querySelectorAll('.sq.tipon').forEach(x=>x.classList.remove('tipon'));
   };
   const formdaSatir=(o,soguk)=>{
-    const enYuksek=Math.max(...o.son5.map(x=>x.sayi),1);
-    const cubuk=x=>{
-      // En düşük çubuk bile görünsün: 0 sayı da bir bilgi.
-      const h=Math.max(3,Math.round(x.sayi/enYuksek*36));
-      return `<i class="${x.bu_gece?'now':''}" style="height:${h}px" data-sayi="${x.sayi}" data-rakip="${esc(x.rakip||'')}"></i>`;
-    };
+    // Hücre: sayı + altında ince çizgi. Çizginin rengi o maçın oyuncunun
+    // KENDİ sezon ortalamasının üstünde mi altında mı olduğunu söylüyor;
+    // karar derle.py'de veriden geliyor (`ust`), burada hesaplanmıyor.
+    const hucre=x=>`<span class="${x.ust?'hi':'lo'}${x.bu_gece?' now':''}" `
+      +`data-sayi="${x.sayi}" data-rakip="${esc(x.rakip||'')}">`
+      +`<u>${x.sayi}</u><i></i></span>`;
     const ok=o.fark>0?'▲':'▼';
     const halka=o.renk_degisti?` ring" style="background:${esc(o.renk)};--asil:${esc(o.asil_renk)}`:`" style="background:${esc(o.renk)}`;
     return `<div class="fp">
@@ -1567,7 +1617,7 @@ function render(d){
         <span class="nm">${esc(o.isim)}</span>
         <span class="tm"><i class="tmdot${halka}"></i>${esc(o.takim)}${o.pos?' · '+esc(o.pos):''}</span>
       </span>
-      <span class="bars">${o.son5.map(cubuk).join('')}<span class="tip"></span></span>
+      <span class="sq">${o.son5.map(hucre).join('')}<span class="tip"></span></span>
       <span class="avg"><b>${o.son5_ort.toFixed(1)}</b>
         <s>sezon ${o.sezon_ort.toFixed(1)} <em>${ok}${Math.abs(o.fark).toFixed(1)}</em></s></span>
     </div>`;
@@ -1580,7 +1630,7 @@ function render(d){
     // Sol başlık SABİT "Form": sekmede zaten "Yükselen"/"Düşen" yazıyor,
     // başlığın da onu tekrarlaması iki satır üst üste aynı kelimeydi.
     kutu.innerHTML=liste.map(o=>formdaSatir(o,hangi==='dusen')).join('');
-    kutu.querySelectorAll('.bars i').forEach(c=>{
+    kutu.querySelectorAll('.sq>span[data-sayi]').forEach(c=>{
       const goster=()=>{
         const balon=c.parentElement.querySelector('.tip');
         balon.innerHTML=`${c.dataset.sayi} sayı${c.dataset.rakip?` <s>· ${esc(c.dataset.rakip)}</s>`:''}`;

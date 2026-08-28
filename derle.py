@@ -1141,11 +1141,22 @@ def _formda_listeler(ham, bt_by_gid, gecenin_oyunculari):
         if len(son5) < FORM_MAC_SAYISI:
             continue                      # 5 maçı dolmayan için "form" denmez
         son5_ort = sum(x["sayi"] for x in son5) / len(son5)
+        # Her maç oyuncunun KENDİ sezon ortalamasının üstünde mi?
+        # Çıplak sayı bir şey ifade etmiyor: 24 sayı iyi mi kötü mü,
+        # oyuncunun normalini bilmeden söylenemez. Kıyas EKRANDA YAZAN
+        # değerle yapılıyor (yuvarlanmış) — yoksa satır "sezon 21.1"
+        # derken 21 sayılık maç yeşil görünebilirdi.
+        sezon_gosterilen = round(sezon_ort, 1)
         adaylar.append({
             "id": o["id"], "isim": o["isim"], "takim": o["takim"], "pos": o.get("pos", ""),
             "_gmsc": o.get("_gmsc") or 0,
-            "son5": [{"sayi": x["sayi"], "rakip": x["rakip"],
-                      "bu_gece": x["tarih"] == "bu gece"} for x in son5],
+            # Balonda rakip KOD değil okunur ad ("47 sayı · Toronto"):
+            # üç harfli kod balonun tek bilgi taşıyan yarısıydı ve
+            # okunması için kod bilmek gerekiyordu.
+            "son5": [{"sayi": x["sayi"],
+                      "rakip": cumle.TAKIM_KISA.get(x["rakip"], x["rakip"]),
+                      "bu_gece": x["tarih"] == "bu gece",
+                      "ust": x["sayi"] > sezon_gosterilen} for x in son5],
             "son5_ort": round(son5_ort, 1),
             "sezon_ort": round(sezon_ort, 1),
             "fark": round(son5_ort - sezon_ort, 1),
