@@ -3034,10 +3034,50 @@ def main():
     basar("Kritik: 20+ farkla biten maçta bölüm yok",
           all(kr is None for e, d, kr in _kritikler if abs(e["skor"] - d["skor"]) >= 20))
     # "Final farkı ≤5" gibi EK koşul YOK: uzatmaya gidip farklı biten
-    # maçta da kritik anlar yaşanmıştır.
-    basar("Kritik: görünürlük final farkına bağlı değil",
-          "final" not in _derle._kritik_anlar.__doc__.lower()
-          and any(abs(e["skor"] - d["skor"]) > 5 for e, d, kr in _acik))
+    # maçta da kritik anlar yaşanmıştır. Bu KURAL, o gecenin maçlarına
+    # bağlı olmadan sınanıyor — kurgu bir maçla: son 5 dakikanın 4
+    # dakikası tek sayı farkla geçiyor, sonra 16-0'lık seri geliyor ve
+    # maç 17 farkla bitiyor. Bölüm yine de AÇILMALI.
+    def _kurgu_olay(dk, sn, ev, dep, kisi=0, sut=False, isabet=False):
+        return {"clock": f"PT{dk:02d}M{sn:05.2f}S", "period": 4,
+                "scoreHome": str(ev), "scoreAway": str(dep), "personId": kisi,
+                "isFieldGoal": 1 if sut else 0,
+                "shotResult": "Made" if isabet else "Missed"}
+
+    _kurgu = {
+        "play_by_play": {"game": {"actions": [
+            # Pencere ÖNCESİ olay: koşan skor buradan başlıyor.
+            _kurgu_olay(6, 0, 90, 89),
+            _kurgu_olay(5, 0, 90, 89),
+            _kurgu_olay(3, 0, 92, 89, 1, True, True),
+            _kurgu_olay(1, 0, 92, 91, 2, True, True),
+            # Buradan sonrası 16-0'lık seri; fark üçüncü basketle 5'i
+            # aşıyor ve maç 17 farkla bitiyor.
+            _kurgu_olay(0, 50, 95, 91, 1, True, True),
+            _kurgu_olay(0, 40, 98, 91, 1, True, True),
+            _kurgu_olay(0, 30, 101, 91, 1, True, True),
+            _kurgu_olay(0, 20, 104, 91, 1, True, True),
+            _kurgu_olay(0, 0, 108, 91, 1, True, True),
+        ]}},
+        "box_traditional": {"boxScoreTraditional": {
+            "homeTeam": {"teamTricode": "AAA", "players": [
+                {"personId": 1, "firstName": "Ev", "familyName": "Oyuncu"}]},
+            "awayTeam": {"teamTricode": "BBB", "players": [
+                {"personId": 2, "firstName": "Dep", "familyName": "Oyuncu"}]}}},
+    }
+    _kr_kurgu = _derle._kritik_anlar(
+        _kurgu,
+        {"kod": "AAA", "skor": 108, "oyuncular": []},
+        {"kod": "BBB", "skor": 91, "oyuncular": []})
+    basar("Kritik: görünürlük final farkına bağlı değil (17 farkla biten maçta da açılıyor)",
+          _kr_kurgu is not None and _kr_kurgu["sure_sn"] >= 120)
+    # Serinin fark 5'i AŞTIKTAN sonraki kısmı hesaba girmiyor:
+    # 2+3+3 = 8 ile 2, toplam 10 — serinin tamamı (18-2) değil.
+    basar("Kritik: fark 5'i aştıktan sonraki sayılar hesaba girmiyor",
+          (_kr_kurgu["ev_puan"], _kr_kurgu["dep_puan"]) == (8, 2))
+    # Fark 5'i aştıktan sonraki süre de sayılmıyor: 2:00 + 2:00 + 0:20.
+    basar("Kritik: fark 5'i aştıktan sonraki süre sayılmıyor",
+          _kr_kurgu["sure"] == "4:20")
 
     # --- İçerik ---
     basar("Kritik: bölümde tam iki oyuncu (üç değil)",
