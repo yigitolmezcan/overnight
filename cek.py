@@ -219,6 +219,24 @@ KIRPILMIS_MAC_ALANLARI = ("box_traditional", "box_summary")
 KIRPILMIS_DISLANAN = ("oyuncu_ortalama",)
 
 
+def gzip_yaz(tarih_str, cikti):
+    """Tam ham verinin sıkıştırılmış kopyası — DEPOYA GİREN taşıyıcı.
+
+    NBA servisi GitHub koşucusunu IP bazlı engelliyor (bkz. şartname,
+    "Çözülmemiş engel"). Gece verisi yerelden çekilip bu biçimde depoya
+    konuyor; koşucu NBA'e hiç gitmeden üretim yapabiliyor.
+
+    Neden kırpılmış kopya yetmiyor: onda `oyuncu_ortalama` yok ve
+    Yükselen/Düşen ile oyuncu kartı onsuz kurulamıyor. Gzip'li tam kopya
+    20MB → 1,7MB; 30 gecelik nefes alanı ~50MB tutuyor."""
+    import gzip
+    HAM_DIZIN.mkdir(exist_ok=True)
+    hedef = HAM_DIZIN / f"{tarih_str}.json.gz"
+    ham = json.dumps(cikti, ensure_ascii=False).encode("utf-8")
+    hedef.write_bytes(gzip.compress(ham, 6))
+    print(f"Yazıldı: {hedef} ({len(gzip.compress(ham, 6)) // 1024} KB, sıkıştırılmış tam kopya)")
+
+
 def kirpilmis_yaz(tarih_str, cikti):
     kirpik = {k: v for k, v in cikti.items()
               if k != "maclar" and k not in KIRPILMIS_DISLANAN}
@@ -233,6 +251,49 @@ def kirpilmis_yaz(tarih_str, cikti):
     hedef.write_text(json.dumps(kirpik, ensure_ascii=False))
     print(f"Yazıldı: {hedef} ({hedef.stat().st_size // 1024} KB, kırpılmış)")
     return hedef
+
+
+# ---------------------------------------------------------------------------
+# HAM VERİ OKUMA — tek kapı
+# ---------------------------------------------------------------------------
+#
+# Ham dosya üç biçimde bulunabiliyor ve okuyanın hangisi olduğunu
+# bilmesi gerekmiyor:
+#   ham/{tarih}.json      tam kopya (yerelde, depoya girmiyor — ~20MB)
+#   ham/{tarih}.json.gz   tam kopyanın sıkıştırılmışı (~1.7MB, DEPOYA GİRER)
+#   test_verisi/ham/...   kırpılmış kopya (~0.4MB, oyuncu_ortalama YOK)
+#
+# Sıkıştırılmış biçim, NBA servisinin GitHub koşucusunu engellemesi
+# yüzünden var: gece verisi yerelden çekilip depoya konuyor, koşucu da
+# NBA'e hiç gitmeden üretim yapabiliyor. Kırpılmış kopya doğrulama için
+# yeterli ama Yükselen/Düşen ve oyuncu kartı `oyuncu_ortalama` istiyor —
+# o yüzden asıl taşıyıcı gzip'li TAM kopya.
+def ham_yolu(tarih_str, kok=None):
+    """Var olan ham dosyanın yolu (öncelik: tam > gzip > kırpılmış)."""
+    k = Path(kok) if kok else Path(__file__).parent
+    for aday in (k / "ham" / f"{tarih_str}.json",
+                 k / "ham" / f"{tarih_str}.json.gz",
+                 k / "test_verisi" / "ham" / f"{tarih_str}.json"):
+        if aday.exists():
+            return aday
+    return None
+
+
+def ham_metni(tarih_str, kok=None):
+    """Ham verinin METNİ — biçimden bağımsız. Yoksa FileNotFoundError."""
+    yol = ham_yolu(tarih_str, kok)
+    if yol is None:
+        raise FileNotFoundError(
+            f"{tarih_str}: ham veri yok (ham/*.json, ham/*.json.gz ya da "
+            f"test_verisi/ham/*.json bekleniyordu)")
+    if yol.suffix == ".gz":
+        import gzip
+        return gzip.decompress(yol.read_bytes()).decode("utf-8")
+    return yol.read_text(encoding="utf-8")
+
+
+def ham_oku(tarih_str, kok=None):
+    return json.loads(ham_metni(tarih_str, kok))
 
 
 def cek(tarih_str: str, zorla: bool = False) -> Path:
@@ -282,6 +343,7 @@ def cek(tarih_str: str, zorla: bool = False) -> Path:
     HAM_DIZIN.mkdir(exist_ok=True)
     hedef_dosya.write_text(json.dumps(cikti, ensure_ascii=False, indent=2))
     print(f"Yazıldı: {hedef_dosya}")
+    gzip_yaz(tarih_str, cikti)
     kirpilmis_yaz(tarih_str, cikti)
     return hedef_dosya
 

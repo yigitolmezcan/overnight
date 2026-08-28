@@ -137,6 +137,23 @@ def sonraki_gece(d):
             break
         if aday in atla:
             continue
+        # ÖNCE DEPODAKİ VERİ. Ham veri elimizdeyse NBA'e hiç sorulmuyor —
+        # servis GitHub koşucusunu engellediği için o çağrı orada zaten
+        # düşüyor ve gece boşuna atlanıyordu. Yerelden çekilip depoya
+        # konmuş bir gece koşucudan sorunsuz üretilebilmeli.
+        yerel = cek.ham_yolu(aday, KOK)
+        if yerel is not None:
+            try:
+                mac_idleri = list(cek.ham_oku(aday, KOK).get("maclar") or {})
+            except Exception as hata:
+                ulasilamayan.append((aday, f"ham okunamadı: {type(hata).__name__}"))
+                continue
+            if len(mac_idleri) >= ASGARI_MAC_SAYISI:
+                if ulasilamayan:
+                    d["_ulasilamayan"] = ulasilamayan
+                return aday
+            print(f"  {aday}: {len(mac_idleri)} maç (depodan) — eşiğin altında, atlanıyor.")
+            continue
         try:
             _, mac_idleri = cek.gece_mac_idlerini_al(aday)
         except Exception as hata:
@@ -304,10 +321,8 @@ def _ham_metni(tarih):
     koşucuda checkout'la başlıyor: orada tam ham HİÇ yok. Kırpılmış kopya
     (cek.py üretiyor, ~250KB) doğrulamanın okuduğu blokları taşıyor, o
     yüzden kapı canlıda da yerelde olduğu gibi çalışıyor."""
-    tam = KOK / "ham" / f"{tarih}.json"
-    if tam.exists():
-        return tam.read_text(encoding="utf-8")
-    return (KOK / "test_verisi" / "ham" / f"{tarih}.json").read_text(encoding="utf-8")
+    import cek
+    return cek.ham_metni(tarih, KOK)
 
 
 def _isaretleri_tazele(tarih, isaretli):

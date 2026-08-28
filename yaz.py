@@ -101,6 +101,7 @@ from kalip_secici import (
     GALIBIYET_SAYISI_YUVARLAK,
     PLAY_IN_ARALIGI,
 )
+import cek
 from hesapla import takim_kalitesi_hesapla, siralama_anahtari as hesapla_siralama_anahtari
 import cumle
 
@@ -2316,7 +2317,7 @@ def yaz_sablon(tarih_str, zorla=False, dosya_soneki="-sablon"):
         return hedef_dosya
 
     gercek_gece = json.loads((GERCEK_DIZIN / f"{tarih_str}.json").read_text())
-    ham = json.loads((HAM_DIZIN / f"{tarih_str}.json").read_text())
+    ham = cek.ham_oku(tarih_str)
     skor_gece = json.loads((SKOR_DIZIN / f"{tarih_str}.json").read_text())
 
     yasakli = yasakli_yukle()
@@ -2407,7 +2408,7 @@ def yaz_hibrit(tarih_str, zorla=False):
 
     yasakli = yasakli_yukle()
     gercek_gece = json.loads((GERCEK_DIZIN / f"{tarih_str}.json").read_text())
-    ham = json.loads((HAM_DIZIN / f"{tarih_str}.json").read_text())
+    ham = cek.ham_oku(tarih_str)
     skor_gece = json.loads((SKOR_DIZIN / f"{tarih_str}.json").read_text())
 
     mutlaka, diger = _mutlaka_ve_diger(skor_gece)
@@ -2555,7 +2556,7 @@ def yaz(tarih_str, zorla=False, haber_skorlari=None, sadece_gidler=None):
     yasakli = yasakli_yukle()
 
     gercek_gece = json.loads((GERCEK_DIZIN / f"{tarih_str}.json").read_text())
-    ham = json.loads((HAM_DIZIN / f"{tarih_str}.json").read_text())
+    ham = cek.ham_oku(tarih_str)
     skor_gece = json.loads((SKOR_DIZIN / f"{tarih_str}.json").read_text())
 
     mutlaka, diger = _mutlaka_ve_diger(skor_gece)
@@ -3016,7 +3017,7 @@ def yaz_batch(tarih_str, zorla=False, haber_skorlari=None, sadece_gidler=None):
     yasakli = yasakli_yukle()
 
     gercek_gece = json.loads((GERCEK_DIZIN / f"{tarih_str}.json").read_text())
-    ham = json.loads((HAM_DIZIN / f"{tarih_str}.json").read_text())
+    ham = cek.ham_oku(tarih_str)
     skor_gece = json.loads((SKOR_DIZIN / f"{tarih_str}.json").read_text())
 
     mutlaka, diger = _mutlaka_ve_diger(skor_gece)

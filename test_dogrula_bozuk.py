@@ -61,6 +61,15 @@ def yukle():
     return gercek_gece, ham
 
 
+def _pytest_yakala(fn):
+    """Çağrının fırlattığı istisnayı döner (yoksa None)."""
+    try:
+        fn()
+        return None
+    except Exception as hata:
+        return hata
+
+
 def basar(ad, kosul):
     print(f"[{'OK' if kosul else 'FAIL'}] {ad}")
 
@@ -3177,9 +3186,11 @@ def main():
           and _derle_kaynak.count("def _kritik_anlar") == 1)
 
     # --- Görünüm ---
-    basar("Kritik: blok çeyrek şeridinin altında, sekmelerin üstünde",
-          "${ceyrekSeridi(sira[0],sira[1])}\n    ${kritikBlogu(b.kritik)}\n"
-          '    <div class="ktabs">' in _sayfa9)
+    # KONUM DEĞİŞTİ: blok kart gövdesinden TAKIM sekmesine taşındı.
+    # Gövdedeyken oyuncu tablosundan yer çalıyordu (41px → 23px).
+    basar("Kritik: blok TAKIM sekmesinin içinde, kart gövdesinde değil",
+          '<div class="kpane" data-pane="1" hidden>${kritikBlogu(b.kritik)}' in _sayfa9
+          and "${ceyrekSeridi(sira[0],sira[1])}\n    ${kritikBlogu" not in _sayfa9)
     basar("Kritik: veri yoksa hiç çizilmiyor",
           "if(!k||!(k.oyuncular||[]).length) return '';" in _sayfa9)
     basar("Kritik: zemin bir tık koyu (#0C1119)",
@@ -3196,9 +3207,13 @@ def main():
           and "flex:none" in _sayfa9.split(".krow .n{")[1].split("}")[0])
     basar("Kritik: vurgulu satırda sayı ember",
           ".krow.lead .n b{color:var(--ember)}" in _sayfa9)
-    basar("Kritik: blok sekmelerden bağımsız (pano içinde değil)",
-          '<div class="kpane" data-pane="0">${boxTablosu(sira[0])}</div>' in _sayfa9
-          and "kritikBlogu" not in _sayfa9.split("const panolar=[")[1].split("].join")[0])
+    # Blok artık TAKIM panosunda ve SADECE orada — oyuncu panolarına
+    # sızmıyor, yoksa aynı bilgi iki sekmede tekrarlanırdı.
+    _panolar9 = _sayfa9.split("const panolar=[")[1].split("].join")[0]
+    basar("Kritik: blok yalnız TAKIM panosunda",
+          _panolar9.count("kritikBlogu") == 1
+          and 'data-pane="1" hidden>${kritikBlogu' in _panolar9
+          and '<div class="kpane" data-pane="0">${boxTablosu(sira[0])}</div>' in _sayfa9)
     # 15 kişilik kadro + kritik blok, dolgu tabanı 1 iken 3px taşıyordu.
     basar("Kritik: satır dolgusu tabanı sıfıra inebiliyor (uç kadroda taşma yok)",
           "const KBS_PAD_MIN=0," in _sayfa9)
@@ -3940,6 +3955,88 @@ def main():
     # yeniden derlenmeden bozulmasın.
     basar("Sıralama: eski düz biçim de okunuyor",
           "(typeof f === 'object') ? f.g : f" in _s12)
+
+    # ==================================================================
+    # KRİTİK ANLAR BLOĞU TAKIM SEKMESİNDE
+    # Blok kart gövdesindeyken oyuncu tablosundan yer çalıyordu:
+    # aynı kadroda satır yüksekliği 41px'ten 23px'e iniyordu (ölçüldü).
+    # TAKIM sekmesi zaten maçın TAMAMINA ait veriler için var.
+    # ==================================================================
+    _s13 = _sayfa10
+    basar("Kritik: blok TAKIM sekmesinin içinde",
+          '<div class="kpane" data-pane="1" hidden>${kritikBlogu(b.kritik)}${takimPanosu('
+          in _s13)
+    basar("Kritik: blok kart gövdesinden çıktı",
+          "${ceyrekSeridi(sira[0],sira[1])}\n    <div class=\"ktabs\">" in _s13)
+    basar("Kritik: TAKIM sekmesinde kritik ÜSTTE, takım istatistiği altta",
+          _s13.index("${kritikBlogu(b.kritik)}") < _s13.index("${takimPanosu(sira[0],sira[1])}"))
+    # Sekmede işaret: okuyucu orada bir şey olduğunu bilsin.
+    basar("Kritik: blok varsa TAKIM sekmesinde işaret",
+          "b.kritik?'<i class=\"kdot\"></i>':''" in _s13
+          and ".ktabs .kdot{" in _s13)
+    # Mavi `.dot` (kaybedenin en iyisi) ile karışmasın: ayrı sınıf, ayrı renk.
+    basar("Kritik: işaret mavi noktadan ayrı (ember)",
+          "background:var(--ember)" in _s13.split(".ktabs .kdot{")[1].split("}")[0])
+    # Blok artık panonun içinde: `flex:none` gövde çocuğu değil.
+    basar("Kritik: blok pano içinde konumlanıyor",
+          "flex:none" not in _s13.split(".kritik{")[1].split("}")[0])
+
+    # Skor bloğu dolgusu kısıldı — kazanılan yer tabloya gidiyor.
+    # KONUM TUZAĞI: medya sorgusu temel kuraldan SONRA gelmezse eziliyor.
+    basar("Kart: skor bloğu dolgusu dar ekranda kısılıyor",
+          ".kteams{margin-top:8px}" in _s13 and ".kt{padding-top:9px" in _s13)
+    basar("Kart: dolgu medya sorgusu temel kuraldan SONRA yazılı",
+          _s13.index(".kt{padding-top:9px") > _s13.index(".kt+.kt{border-top"))
+
+    # ==================================================================
+    # HAM VERİ DEPODA — NBA'e gitmeden üretim
+    # NBA servisi GitHub koşucusunu IP bazlı engelliyor. Gece verisi
+    # yerelden çekilip SIKIŞTIRILMIŞ olarak depoya konuyor; koşucu
+    # NBA'e hiç gitmeden üretim yapabiliyor.
+    # ==================================================================
+    import cek as _cek
+    _cek_kaynak = open("cek.py", encoding="utf-8").read()
+
+    basar("Ham: okuma tek kapıdan (cek.ham_oku)",
+          hasattr(_cek, "ham_oku") and hasattr(_cek, "ham_yolu")
+          and hasattr(_cek, "ham_metni"))
+    # Üç biçim: tam, gzip'li, kırpılmış. Çağıranın hangisi olduğunu
+    # bilmesi gerekmiyor.
+    basar("Ham: üç biçim de tanınıyor (tam / gzip / kırpılmış)",
+          all(x in _cek_kaynak for x in
+              ('f"{tarih_str}.json"', 'f"{tarih_str}.json.gz"',
+               '"test_verisi" / "ham"')))
+    basar("Ham: sıkıştırılmış kopya çekimde yazılıyor",
+          "def gzip_yaz(" in _cek_kaynak and "gzip_yaz(tarih_str, cikti)" in _cek_kaynak)
+    # Hiçbir modül ham dosyayı KENDİ açmıyor — biçim değişince biri
+    # unutulur ve sadece o yol bozulurdu.
+    for _m in ("derle.py", "dogrula.py", "gercekler.py", "hesapla.py", "yaz.py", "yayin.py"):
+        _k = open(_m, encoding="utf-8").read()
+        basar(f"Ham: {_m} doğrudan ham dosya açmıyor",
+              'HAM_DIZIN / f"{tarih' not in _k and '"ham" / f"{tarih' not in _k)
+    # Sıkıştırılmış kopya depoya GİRMELİ, tam kopya girmemeli.
+    _gi = open(".gitignore", encoding="utf-8").read()
+    basar("Ham: tam kopya yoksayılıyor, sıkıştırılmış kopya giriyor",
+          "/ham/*.json" in _gi and "/ham/*.json.gz" not in _gi)
+    # Verisi DEPODA olan geceye NBA'e sorulmuyor.
+    # DİKKAT: `gece_mac_idlerini_al` CANLI modda da geçiyor ve dosyada
+    # daha önce yer alıyor; kıyas ARŞİV dalının içinde yapılmalı.
+    _arsiv_dali = _yayin_kaynak.split("# ÖNCE DEPODAKİ VERİ")[1][:1400]
+    basar("Ham: sıradaki gece önce depodan okunuyor",
+          "yerel = cek.ham_yolu(aday, KOK)" in _arsiv_dali
+          and _arsiv_dali.index("yerel = cek.ham_yolu")
+              < _arsiv_dali.index("cek.gece_mac_idlerini_al(aday)"))
+    # Gerçekten gzip'ten okunabiliyor mu — biçim testi, varsayım değil.
+    import gzip as _gz, tempfile as _tf, os as _os2, json as _js2
+    with _tf.TemporaryDirectory() as _td:
+        _os2.makedirs(_os2.path.join(_td, "ham"))
+        with open(_os2.path.join(_td, "ham", "1999-01-01.json.gz"), "wb") as _f:
+            _f.write(_gz.compress(_js2.dumps({"maclar": {"a": 1}}).encode()))
+        basar("Ham: gzip'li dosya gerçekten okunuyor",
+              _cek.ham_oku("1999-01-01", _td) == {"maclar": {"a": 1}})
+        basar("Ham: hiçbir biçim yoksa net hata veriyor",
+              isinstance(_pytest_yakala(lambda: _cek.ham_oku("1998-01-01", _td)),
+                         FileNotFoundError))
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",

@@ -918,7 +918,8 @@ def hesapla(tarih_str, zorla=False):
         print(f"{hedef_dosya} zaten var, atlanıyor (--force ile yeniden hesapla).")
         return hedef_dosya
 
-    ham = json.loads((HAM_DIZIN / f"{tarih_str}.json").read_text())
+    import cek
+    ham = cek.ham_oku(tarih_str)
     yildizlar = yildizlar_yukle()
 
     ay = datetime.strptime(tarih_str, "%Y-%m-%d").month

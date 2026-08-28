@@ -90,6 +90,11 @@ TAKIM_RENK = {
 
 
 def _yukle(dizin, tarih_str):
+    # Ham veri TEK KAPIDAN okunuyor (cek.ham_oku): tam, gzip'li ya da
+    # kırpılmış kopya — çağıranın hangisi olduğunu bilmesi gerekmiyor.
+    if dizin == HAM_DIZIN:
+        import cek
+        return cek.ham_oku(tarih_str)
     dosya = dizin / f"{tarih_str}.json"
     if not dosya.exists():
         raise FileNotFoundError(f"{dosya} yok — önce ilgili boru hattı adımı çalıştırılmalı")

@@ -1066,8 +1066,8 @@ def gercekler_uret(tarih_str, zorla=False):
         print(f"{hedef_dosya} zaten var, atlanıyor (--force ile yeniden üret).")
         return hedef_dosya
 
-    ham_dosya = HAM_DIZIN / f"{tarih_str}.json"
-    ham = json.loads(ham_dosya.read_text())
+    import cek
+    ham = cek.ham_oku(tarih_str)
 
     puan_durumu = puan_durumu_hesapla(ham["puan_durumu"], tarih_str)
     sezon_sayilari_by_player_id = sezon_sayilari_cikart(ham["oyuncu_ortalama"])

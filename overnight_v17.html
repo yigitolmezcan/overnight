@@ -527,8 +527,6 @@ td.oyad{color:var(--ink);cursor:pointer}
      geçince satırlar daralıyor ve göz zıplıyordu. Artık dolgu EN UZUN
      kadroya göre bir kez hesaplanıp her panoya aynı veriliyor; kısa
      kadroda altta boşluk kalması kabul (kullanıcı kararı). */
-  .kteams{margin-top:14px}
-  .kt{padding-top:15px;padding-bottom:15px}
   /* OYUNCU KARTI İÇERİĞİNE GÖRE BÜZÜLÜR — kutu skorun aksine sabit
      yükseklikte değil. Kutu skorda tam ekran doğru (uzun kadro tablosu,
      kazanılan yer satırlara dağılıyor); oyuncu kartında iki-üç kısa
@@ -556,6 +554,16 @@ td.oyad{color:var(--ink);cursor:pointer}
   border-left:7px solid var(--tc);
   background:linear-gradient(90deg,color-mix(in srgb,var(--tc) 12%,transparent),transparent 78%)}
 .kt+.kt{border-top:1px solid #1A2230}
+/* Skor bloğundaki dolgu kısıldı (kullanıcı kararı): iki takım satırında
+   13+13px saf boşluk vardı ve başlık tek başına 158px yer kaplıyordu
+   (ölçüldü). Kazanılan yer oyuncu tablosuna gidiyor.
+   KONUM ÖNEMLİ — bu dosyada ÜÇÜNCÜ kez aynı tuzağa düştüm: medya
+   sorgusu `.kt`/`.kteams` temel kurallarından SONRA gelmezse aynı
+   özgüllükte olduğu için eziliyor ve hiçbir şey değişmiyor. */
+@media(max-width:767px){
+  .kteams{margin-top:8px}
+  .kt{padding-top:9px;padding-bottom:9px}
+}
 .ktn{flex:1;min-width:0;font-family:var(--mono);font-size:19px;font-weight:500;
   letter-spacing:.01em;line-height:1.2}
 .kts{font-family:var(--mono);font-size:34px;font-weight:500;letter-spacing:-.02em;line-height:1;flex:none}
@@ -606,7 +614,13 @@ td.oyad{color:var(--ink);cursor:pointer}
    Yeri: çeyrek şeridinin ALTINDA, sekmelerin ÜSTÜNDE. Sekmelerden
    BAĞIMSIZ — iki takımı birden gösterdiği için sekmeye bağlanamaz.
    Zemin bir tık koyu, diğer bloklardan ayrılsın. */
-.kritik{flex:none;border-bottom:1px solid #1A2230;padding:11px 16px 12px;
+/* KONUM DEĞİŞTİ (kullanıcı kararı): blok artık kart gövdesinde değil,
+   TAKIM sekmesinin içinde ve en üstte. Sebep ölçüldü — kart mobilde
+   zaten tam ekran, blok gövdedeyken oyuncu tablosundan yer çalıyordu:
+   satır yüksekliği 41px'ten 23px'e iniyordu. TAKIM sekmesi zaten maçın
+   TAMAMINA ait veriler için var ve orada yer bol; kritik anlar da bir
+   oyuncu tablosu verisi değil, maç verisi. */
+.kritik{border-bottom:1px solid #1A2230;padding:13px 16px 14px;
   background:#0C1119}
 .kritik .h{display:flex;justify-content:space-between;align-items:baseline;
   gap:10px;margin-bottom:9px}
@@ -632,6 +646,12 @@ td.oyad{color:var(--ink);cursor:pointer}
 .ktabs button.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--tc)}
 .ktabs .dot{position:absolute;top:10px;right:calc(50% - 26px);width:5px;height:5px;border-radius:50%;background:#5B8DEF}
 .ktabs button.on .dot{display:none}
+/* TAKIM sekmesinde kritik anlar var mı işareti. Mavi `.dot`tan AYRI:
+   o "kaybedenin en iyisi" işareti, bu "burada bir şey var". Ember,
+   çünkü kritik anlar bloğunun kendi rengi ember. */
+.ktabs .kdot{display:inline-block;width:4px;height:4px;border-radius:50%;
+  background:var(--ember);vertical-align:2px;margin-left:6px}
+.ktabs button.mid.on .kdot{background:var(--ember);opacity:.55}
 /* Kalan dikey alan SATIRLARA dağıtılıyor (kullanıcı kararı): eskiden
    kartın altında büyük bir boşluk kalırken tablo satırları sıkışıktı.
    Yazı boyutu DEĞİŞMİYOR, sadece dolgu artıyor — dolgu JS'te ölçülüp
@@ -1651,7 +1671,7 @@ function boxKartiHTML(m){
       <span class="ktn">${esc(t.takim)}</span><span class="kts">${t.skor}</span></div>`;
   const panolar=[
     `<div class="kpane" data-pane="0">${boxTablosu(sira[0])}</div>`,
-    `<div class="kpane" data-pane="1" hidden>${takimPanosu(sira[0],sira[1])}</div>`,
+    `<div class="kpane" data-pane="1" hidden>${kritikBlogu(b.kritik)}${takimPanosu(sira[0],sira[1])}</div>`,
     `<div class="kpane" data-pane="2" hidden>${boxTablosu(sira[1])}</div>`,
   ].join('');
   return `<div class="grab"><i></i></div>
@@ -1659,8 +1679,8 @@ function boxKartiHTML(m){
       <div class="kmeta">${esc(TARIH_ETIKET)} · <b>rozet ${m.rozet.toFixed(1)}</b></div>
       <div class="kteams">${sira.map((t,i)=>takimSatiri(t,i===0)).join('')}</div></div>
     ${ceyrekSeridi(sira[0],sira[1])}
-    ${kritikBlogu(b.kritik)}
-    <div class="ktabs">${tab(sira[0],0)}<button class="mid" style="--tc:var(--ember)" data-pane="1">TAKIM</button>${tab(sira[1],1)}</div>
+    <div class="ktabs">${tab(sira[0],0)}<button class="mid" style="--tc:var(--ember)" data-pane="1">TAKIM${
+      b.kritik?'<i class="kdot"></i>':''}</button>${tab(sira[1],1)}</div>
     <div class="kbody">
       ${b.wtf?`<div class="kwtf"><span>WTF İstatistiği</span><p>${esc(b.wtf)}</p></div>`:''}
       <div class="kpanes">${panolar}</div>

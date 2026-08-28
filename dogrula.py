@@ -2287,7 +2287,8 @@ def _kayitli_gece_test_et(tarih, ham_json=False, sessiz=False):
     yakalıyor" sorusu bununla, bedavaya ve anında cevaplanır."""
     taslak = json.loads((TASLAK_DIZIN / f"{tarih}.json").read_text())
     gercek_gece = json.loads((GERCEK_DIZIN / f"{tarih}.json").read_text())
-    ham = json.loads((HAM_DIZIN / f"{tarih}.json").read_text())
+    import cek
+    ham = cek.ham_oku(tarih)
     skor_gece = json.loads((SKOR_DIZIN / f"{tarih}.json").read_text())
 
     sonuc = gece_dogrula(taslak, gercek_gece, ham, skor_gece)
