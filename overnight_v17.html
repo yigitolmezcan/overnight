@@ -813,7 +813,7 @@ td.khot{color:var(--amber);font-weight:700}
    soluk: zemin, oyuncular ön planda. */
 .besiline{border:1px solid #171E2B;cursor:pointer}
 .besiline:hover{border-color:#26303F}
-.court{position:relative;width:100%;aspect-ratio:1/1.06;margin:2px 0 0}
+.court{position:relative;width:100%;aspect-ratio:1/1.06;margin:2px 0 0;container-type:inline-size}
 .court svg{position:absolute;inset:0;width:100%;height:100%}
 .pl{position:absolute;transform:translate(-50%,-50%);text-align:center;width:104px}
 .pl .dot{width:30px;height:30px;margin:0 auto 6px;border-radius:50%;
@@ -838,13 +838,21 @@ td.khot{color:var(--amber);font-weight:700}
    sahanın %9'u yerine %6.7'si kalıyordu — kullanıcının "bol yer varken
    sıkışık" dediği şey buydu. Değerler mobilin ~1.7 katına alındı; tam
    iki kat, isimleri sahaya göre iri gösteriyordu. */
+/* ÖLÇÜ BİRİMİ SAHANIN KENDİ GENİŞLİĞİ (cqw), piksel değil. Değerler
+   sabit pikselken saha 656'dan 526'ya inince — kısa pencerede sınır
+   devreye girdiğinde — etiketler yerlerinde kalıp büyük kaldı ve
+   ÇAKIŞTI (ölçüldü: Kel'el Ware, Jalen Johnson ve Matas Buzelis'in
+   üstüne bindi). Oyuncuların KONUMU zaten yüzdeyle veriliyor; ölçü de
+   yüzdeye çevrilince yerleşim saha ne boyda olursa olsun aynı kalıyor.
+   Katsayılar 656px sahada eski piksel değerlerini birebir veriyor:
+   190/656=29cqw, 52/656=7.93cqw, 18/656=2.74cqw ... */
 @media(min-width:768px){
-  .pl{width:190px}
-  .pl .dot{width:52px;height:52px;font-size:19px;margin-bottom:10px}
-  .pl .nm{font-size:18px;line-height:1.25}
-  .pl .st{font-size:15px;margin-top:6px}
-  .pl .tg{font-size:13px;margin-top:4px}
-  .pl .dot.ring{box-shadow:0 0 0 4px var(--asil),0 0 0 6.5px #0A0D12}
+  .pl{width:29cqw}
+  .pl .dot{width:7.93cqw;height:7.93cqw;font-size:2.9cqw;margin-bottom:1.52cqw}
+  .pl .nm{font-size:2.74cqw;line-height:1.25}
+  .pl .st{font-size:2.29cqw;margin-top:.91cqw}
+  .pl .tg{font-size:1.98cqw;margin-top:.61cqw}
+  .pl .dot.ring{box-shadow:0 0 0 .61cqw var(--asil),0 0 0 .99cqw #0A0D12}
 }
 /* YÜKSELEN / DÜŞEN — "Avdija yanıyor, 5 maçtır" muhabbetinin karşılığı.
    ÖLÇÜT sadece çok sayı atmak DEĞİL, son 5 maç ortalamasının SEZON
@@ -1206,6 +1214,14 @@ td.khot{color:var(--amber);font-weight:700}
   .sr .pos s{font-size:9px}
   .sr .f10{gap:3px}
   .sr .f10 i{width:10px;height:10px}
+  /* SAHA. Sayfa 860'a çıkınca yarım saha da onunla büyüdü: 856x907,
+     yani 800px'lik bir pencereye tek başına sığmıyordu (ölçüldü).
+     Üstelik saha üstündeki öğe ölçeği (daire, isim, sayı) 656px'lik
+     sahaya göre seçilmişti — büyüyünce o oran da bozuluyor.
+     656px hem o ayarın geri geldiği yer hem de üst sınır. 66vh ise
+     pencereye bağlı sınır: saha kısa pencerede de ekrandan taşmasın.
+     Kutunun tamamı daralıyor, saha ortada kalmasın diye. */
+  .besiline{max-width:min(656px,66vh);margin-left:auto;margin-right:auto}
 }
 </style>
 </head>

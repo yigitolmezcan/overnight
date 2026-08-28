@@ -1408,8 +1408,11 @@ def main():
 
     # Masaüstünde saha öğeleri büyür, MOBİL ÖLÇÜLERE DOKUNULMAZ.
     # (Kullanıcı kuralı: "375px'teki hâli mükemmel, ölçüleri aynen kalsın.")
+    # Ölçüler artık sabit piksel değil, sahanın genişliğine oranlı
+    # (7.93cqw = 52/656) — saha küçülünce etiketler de küçülsün diye.
+    # Kural aynı: masaüstünde mobilden büyük ayrı bir ölçek var.
     basar("Saha: masaüstü için ayrı ölçü bloğu var",
-          "@media(min-width:768px){" in _sayfa and ".pl .dot{width:52px" in _sayfa)
+          "@media(min-width:768px){" in _sayfa and ".pl .dot{width:7.93cqw" in _sayfa)
     basar("Saha: mobil ölçüleri değişmedi",
           ".pl{position:absolute;transform:translate(-50%,-50%);text-align:center;width:104px}" in _sayfa
           and "width:30px;height:30px" in _sayfa)
@@ -4363,6 +4366,42 @@ def main():
           "const gozAlt=Math.min(kap.getBoundingClientRect().bottom,gorunurAlt);" in _s18)
     basar("Sıkışık: görünen alandan kfoot düşülüyor",
           "-(kfoot?kfoot.getBoundingClientRect().height:0)" in _s18)
+
+    # ==================================================================
+    # GECENİN BEŞİ — SAHA MASAÜSTÜNDE EKRANA SIĞAR
+    # ==================================================================
+    _s19 = _sayfa10
+
+    # Sayfa 860'a çıkınca saha da onunla büyüdü: 856x907, 800px'lik
+    # pencereye tek başına sığmıyordu (ölçüldü). 656px hem masaüstü
+    # öğe ölçeğinin ayarlandığı boy hem üst sınır; 66vh pencereye
+    # bağlı sınır.
+    _mb19 = _s19.split("@media(min-width:1024px){")[1]
+    _mb19 = _mb19[:_mb19.index("\n}")]
+    basar("Saha: masaüstünde hem piksel hem pencere sınırı var",
+          ".besiline{max-width:min(656px,66vh);margin-left:auto;margin-right:auto}" in _mb19)
+    # Ölçü birimi sahanın kendi genişliği olmalı: sabit pikselken saha
+    # küçülünce etiketler büyük kalıp çakışıyordu (ölçüldü: Kel'el Ware
+    # iki oyuncunun üstüne bindi).
+    basar("Saha: cqw için kapsayıcı tanımlı",
+          "container-type:inline-size" in _s19.split(".court{")[1].split("}")[0])
+    _plb = _s19.split(".pl{width:29cqw}")[0].split("@media(min-width:768px){")[-1]
+    _plb = _s19[_s19.index(".pl{width:29cqw}"):]
+    _plb = _plb[:_plb.index("\n}")]
+    _kural = [_l.strip() for _l in _plb.splitlines() if _l.strip().startswith(".pl")]
+    basar("Saha: masaüstü öğe ölçüleri sahaya oranlı",
+          len(_kural) >= 6 and all("cqw" in _l for _l in _kural))
+    # Konum zaten yüzdeyle; ölçü de yüzdeye dönünce yerleşim saha ne
+    # boyda olursa olsun aynı kalıyor — bu yüzden sabit px kalmamalı.
+    basar("Saha: masaüstü kurallarında sabit piksel kalmadı",
+          not any("px" in _l for _l in _kural))
+    # MOBİL DEĞİŞMEDİ.
+    basar("Saha: mobil taban ölçüleri yerinde",
+          ".pl{position:absolute;transform:translate(-50%,-50%);text-align:center;width:104px}"
+          in _s19
+          and ".pl .dot{width:30px;height:30px;" in _s19)
+    basar("Saha: sınır yalnız masaüstünde",
+          ".besiline{max-width:" not in _s19.split("@media(min-width:1024px){")[0])
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
