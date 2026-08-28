@@ -1,2 +1,4 @@
 nba_api==1.10.2
 anthropic==0.121.0
+# Testler iş akışı YAML'ını ayrıştırıyor (pipefail denetimi).
+PyYAML==6.0.3

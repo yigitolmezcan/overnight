@@ -68,6 +68,12 @@ jobs:
       - name: Site gerçekten değişti mi
         id: canli
         run: |
+          # pipefail ŞART: GitHub Actions kabuğu `bash -e` ile koşuyor,
+          # `-o pipefail` ile DEĞİL. Onsuz borunun çıkış kodu `tee`nin
+          # kodudur — yani her zaman 0 — ve denetim düşse bile adım
+          # başarılı görünür. Koruma tam da yakalamak istediği sınıfa
+          # kendisi düşerdi.
+          set -o pipefail
           BEKLENEN=$(python3 -c "import json;d=json.load(open('config/yayin_durumu.json'));print(d['yayinlanan'][-1] if d['yayinlanan'] else '')")
           if [ -z "$BEKLENEN" ]; then
             echo "Yayınlanmış gece yok — denetlenecek bir şey de yok."

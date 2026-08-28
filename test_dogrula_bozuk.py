@@ -3195,6 +3195,22 @@ def main():
           "--assignee yigitolmezcan" in _akislar["yayinla.yml"]
           .split("Canlıya çıkmadı")[1])
 
+    # `bash -e` pipefail'i KURMUYOR: `komut | tee` borusunun çıkış kodu
+    # `tee`nin kodudur, yani hep 0. Onsuz denetim düşse bile adım
+    # başarılı görünür — koruma yakalamak istediği sınıfa kendisi düşer.
+    import yaml as _yaml
+    _borulu = []
+    for _ad, _m in _akislar.items():
+        for _is in _yaml.safe_load(_m)["jobs"].values():
+            for _adim in _is.get("steps", []):
+                _kod = _adim.get("run") or ""
+                if "| tee" in _kod:
+                    _borulu.append((_ad, _adim.get("name", "?"), "set -o pipefail" in _kod))
+    basar("Yayın: tee'ye boru yapan her adımda pipefail kurulu",
+          bool(_borulu) and all(_tamam for _a, _n, _tamam in _borulu))
+    basar("Yayın: canlı denetim adımının çıkış kodu yutulmuyor",
+          any(_n == "Site gerçekten değişti mi" and _tamam for _a, _n, _tamam in _borulu))
+
     import canli_dogrula as _cd
     # Dağıtım birkaç dakika sürebiliyor; tek atışta "olmadı" demek
     # yanlış alarm üretir.
