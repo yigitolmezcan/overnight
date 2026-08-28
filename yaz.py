@@ -345,6 +345,38 @@ def ornekler_yukle():
     return ornekler
 
 
+# ---------------------------------------------------------------------------
+# ÖRNEK KÜTÜPHANESİ
+# ---------------------------------------------------------------------------
+#
+# Kullanıcı kararı: "Yasaklı liste büyüdükçe model çıkış yolu bulamıyor ve
+# şablona düşüyor. 20 Aralık'ta 'layup yazma' deyip karşılığını
+# vermediğimiz için üç denemede de takıldı."
+#
+# Bu dosya editörün verdiği ~70 gerçek düzeltmenin YANLIŞ/DOĞRU çiftleri.
+# Kural listesinin YERİNE geçmiyor, ÖNÜNE geçiyor: yasaklı listeler ve T
+# testleri aynen duruyor. Bir çift hem yanlışı hem doğruyu gösterdiği için
+# modelin çıkışsız kalma tuzağı kapanıyor.
+#
+# Sistem promptunun İÇİNDE duruyor; sistem promptunun tamamı zaten
+# `cache_control: ephemeral` ile işaretli, yani önbelleğin sabit
+# kısmında — çağrı başına yeniden ödenmiyor.
+ORNEK_KUTUPHANESI_DOSYASI = KOK / "overnight-ornek-kutuphanesi.md"
+_ORNEK_KUTUPHANESI = None
+
+
+def ornek_kutuphanesi():
+    """Örnek kütüphanesinin ham metni. Dosya yoksa boş dizge —
+    prompt yine kurulur, sadece örnekler olmadan."""
+    global _ORNEK_KUTUPHANESI
+    if _ORNEK_KUTUPHANESI is None:
+        try:
+            _ORNEK_KUTUPHANESI = ORNEK_KUTUPHANESI_DOSYASI.read_text(encoding="utf-8")
+        except OSError:
+            _ORNEK_KUTUPHANESI = ""
+    return _ORNEK_KUTUPHANESI
+
+
 def sistem_prompt():
     return f"""Sen OVERNIGHT sitesi için NBA gece özeti yazan bir editörsün. Türkçe yazıyorsun.
 
@@ -354,6 +386,16 @@ tek işin: sana verilen kancayı, niteleyicileri ve gerçekleri bu iskelete
 doğru cümlelerle yerleştirmek.
 
 {kalip_iskeleti()}
+
+{ornek_kutuphanesi()}
+
+ÖRNEK KÜTÜPHANESİ HAKKINDA — KRİTİK:
+Yukarıdaki çiftler BİÇİM ve YAKLAŞIM örnekleridir. İçlerindeki cümleler
+KOPYALANMAZ, uyarlanmaz, kalıp olarak kullanılmaz. "Phoenix, Booker'ın
+33 sayısıyla..." gibi bir cümle her gece çıkarsa o bir tiktir — daha
+önce kalıp kütüphanesiyle tam bu tuzağa düştük. Sen o gecenin
+gerçeklerinden KENDİ cümleni kurarsın; kütüphane sadece doğrunun neye
+benzediğini gösterir.
 
 TERİM VE DİL KURALLARI (kısa, pazarlıksız):
 - "sayı" kullan, "puan" ASLA kullanma (puan sadece lig sıralaması — "puan durumu").
@@ -431,12 +473,8 @@ TERİM VE DİL KURALLARI (kısa, pazarlıksız):
   kullandıysan sade/betimleyici dile dön.
 - "Doğu"/"Batı" konferans adları özel isimdir, büyük harfle başlar
   ("Doğu'da 9-8" — "doğu'da" değil).
-- "Taşımak/getirmek" gibi fiillerin NESNESİ SKORDUR, takım değil —
-  gerçek üretim bug'ı: "...üçlüğü Minnesota'yı 115-115'e taşıdı" bozuk
-  bir cümle (bir takım bir sayıya "taşınamaz"). Doğrusu: "...üçlüğüyle
-  skoru 115-115'e getirdi" ya da "Minnesota, ... üçlüğüyle farkı
-  kapattı" — takım CÜMLENİN ÖZNESİ olur, SKOR nesnesi olur, takım
-  nesne olamaz.
+- "Taşımak/getirmek" fiillerinin nesnesi SKORDUR, takım değil
+  (kütüphane §4).
 - Sadece istenen JSON şemasına uygun yanıt ver. Şema dışında hiçbir
   metin, açıklama, markdown kod bloğu işareti yazma — saf JSON.
 
@@ -451,19 +489,16 @@ Yasaklı ifadeler (klişeler, register hataları, renk lakabı, koç adıyla
 takım anma, haftalık çerçeve gibi) ayrıca mekanik olarak denetlenecek —
 bunlardan olabildiğince kaçın. En sık tekrarlanan somut hatalar:
 
-- "sergiledi", "kaydetti", "elde etti", "gerçekleştirdi", "imza attı"
-  YASAK (fiil şişirmesi) — düz "attı", "yaptı", "üretti" kullan.
+- Fiil şişirmesi YASAK (kütüphane §1). Kütüphanede geçmeyen iki
+  biçim de yasak: "elde etti", "gerçekleştirdi" → düz "attı"/"yaptı".
 - Skor fark rakamını (ör. "2 sayı farkla") 20'nin ALTINDA hiç yazma —
   skor zaten kartta yazılı, okuyucu farkı kendisi görüyor. 20+ bir fark
   varsa bile ayrı bir cümle kurma, kelime seçimine yansıt.
-- "açığı kapattı" YASAK → "farktan döndü" / "farkı eritti" de.
-- "farkı açtı" YASAK → "farkı yükseltti" / "farkı çıkardı" de.
+- Fark ve geri dönüş dili: kütüphane §3.
 - "çeyreği kazandı" YASAK → o çeyreğin skorunu/üstünlüğünü anlat,
   "kazandı" fiiliyle bağlama.
 - "geri getirmek" YASAK (basketbolda yanlış kullanım).
-- "ribaund" kelimesini HER ZAMAN "d" ile yaz — "ribaunt" YAZIM HATASI.
-- UZUN TİRE (—) YASAK, hiçbir alanda kullanma — virgül veya nokta kullan
-  ("Jokić çıldırdı — 56 sayı attı" DEĞİL, "Jokić çıldırdı, 56 sayı attı").
+- Yazım ve terim: kütüphane §7. Uzun tire (—) hiçbir alanda YASAK.
 - SEZON BAŞI SUSMA KURALI: "derece" faktöründe "sezon_guvenilir": false
   görürsen (takım 10 maçın altında), o takımın galibiyet-mağlubiyet
   rekoru ("1-0'a yükseldi", "0-1'e düştü", "sezona 1-0 başladı" — hiçbir
@@ -490,15 +525,8 @@ bunlardan olabildiğince kaçın. En sık tekrarlanan somut hatalar:
   indirgemek gürültü). Doğru kalıp: "Liderliğin N kez el değiştirdiği
   maçta..." — "N lider değişimli maçta" gibi bir sıfat bileşiği YASAK,
   bozuk Türkçe.
-- "Toplamak" SADECE ribaund için kullanılır ("14 ribaund topladı").
-  Sayı için HER ZAMAN "attı" ("36 sayı attı" — "36 sayı topladı" DEĞİL).
-  Asist için "verdi"/"üretti" kullanılır, "topladı" değil.
-- Konferans/lig sıralaması SADECE ilk 3 için anılır — "10. sıraya
-  oturdu", "13. sıraya oturdu" gibi bir sıra hiçbir şey anlatmıyor,
-  YAZILMAZ.
-- Bir takımın galibiyet-mağlubiyet rekoru ("sezonu 21-11 yaptı",
-  "7-31 yaptı") HİÇBİR ZAMAN yazılmaz — ne başlıkta, ne gövdede, ne
-  "neden önemli" satırında.
+- Konferans/lig sıralaması SADECE ilk 3 için anılır; takımın
+  galibiyet-mağlubiyet rekoru HİÇBİR alanda yazılmaz (kütüphane §9).
 - Bir oyuncunun YOKLUĞU / kadro dışı olması HİÇBİR ZAMAN yazılmaz
   ("X'siz sahaya çıkan", "X olmadan oynayan") — kabul edilen üç içerik
   türünden hiçbirine girmiyor. Bu olgu zaten sana verilmiyor.
@@ -527,11 +555,9 @@ bunlardan olabildiğince kaçın. En sık tekrarlanan somut hatalar:
   FAZLA BİR KEZ kullanılır — hangi takım/yön (galibiyet ya da
   mağlubiyet) olursa olsun, gece genelinde bu kalıp ikinci kez
   görünüyorsa YAZMA, düz sonuçla bitir.
-- "N sayıyla/asistle/ribaundla oynadı" YASAK (fiil yavan) → "attığı N
-  sayıyla öne çıktı" gibi bir kullanım tercih et.
-- ASİST FİİLİ: sadece "N asist yaptı" ve "N asistle oynadı" serbest.
-  "asist verdi", "asist dağıttı", "asist üretti", "asist kaydetti"
-  YASAK.
+- Fiil seçimi (asist, sayı, ribaund) için kütüphane §1 bağlayıcıdır.
+  Asistte sadece "N asist yaptı" / "N asistle oynadı" serbest;
+  "verdi", "dağıttı", "üretti", "kaydetti" yasak.
 - İNGİLİZCE BASKETBOL TERİMİ YASAK. Türkçe karşılığını kullan:
     layup / lay-up      -> turnike  (ya da "sürüşle bulduğu basket")
     driving layup       -> sürüşle bulduğu basket
@@ -558,15 +584,8 @@ bunlardan olabildiğince kaçın. En sık tekrarlanan somut hatalar:
 - Maçı belirleyen basketi anıyorsan ATAN OYUNCUYU da an. "Maçı
   belirleyen basket bitime N saniye kala geldi" gibi, kimin attığını
   söylemeyen bir cümle YASAK; ad yoksa o anı hiç anma.
-- "final oynadı" YASAK (final = şampiyonluk maçı, maç sonunu böyle
-  anlatma) → "çekişmeli bitti", "son ana kadar sürdü" gibi bir ifade
-  kullan.
-- Gazete manşeti klişesi YASAK: "güldürdü", "gülümsetti", "sevindirdi",
-  "üç puanı hanesine yazdırdı", "gol oldu" (basketbolda gol yok),
-  "zafere taşıdı", "mutlu etti" — Türk spor gazeteciliğinin yerleşik
-  kalıpları, OVERNIGHT'ın sesine yakışmıyor. Onun yerine oyuncu-taşıma
-  fiilleri kullan: "sırtladı", "taşıdı", "sürükledi", "tek başına
-  bitirdi", "omuzladı".
+- "final oynadı" YASAK (final = şampiyonluk maçı) → "çekişmeli bitti".
+- Gazete manşeti klişeleri ve karşılıkları: kütüphane §5.
 """
 
 

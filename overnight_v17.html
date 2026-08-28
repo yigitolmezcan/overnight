@@ -473,12 +473,14 @@ body.n-worst .calm{border-left-color:var(--amber)}
 /* DOKUNULABİLİRLİK — kimse isme dokunmayı denemez, işaret gerekiyor.
    Üç sinyal: ad bir tık parlak, adın sağında ince ember ok, tablo
    altında ipucu satırı. */
+/* Ad yanında ok YOK (kullanıcı kararı): her satırda tekrarlanınca
+   tablo işaret çöplüğüne dönüyordu. Sinyal iki şeye indi — ad
+   istatistiklerden bir tık parlak, ve tablonun hemen altındaki tek
+   ipucu satırı. */
 td.oyad{color:var(--ink);cursor:pointer}
-td.oyad::after{content:"›";color:var(--ember);font-family:var(--mono);
-  font-size:10px;margin-left:5px;vertical-align:1px}
-.kfoot .oipucu{font-family:var(--mono);font-size:9px;letter-spacing:.1em;
+.kalt .oipucu{font-family:var(--mono);font-size:9px;letter-spacing:.1em;
   text-transform:uppercase;color:var(--faint)}
-.kfoot .oipucu s{color:var(--ember);text-decoration:none;margin-right:4px}
+.kalt .oipucu s{color:var(--ember);text-decoration:none;margin-right:4px}
 .besikart .bpname{cursor:pointer}
 .besikart .bpname::after{content:"›";color:var(--ember);font-family:var(--mono);
   font-size:10px;margin-left:5px;vertical-align:1px}
@@ -689,10 +691,13 @@ td.khot{color:var(--amber);font-weight:700}
 .kdnp{padding:7px 16px 0;font-family:var(--mono);font-size:11px;color:var(--faint);
   line-height:1.5;white-space:normal;overflow-wrap:break-word;word-break:normal}
 /* İki ipucu yan yana: solda "ilk beş" lejantı, sağda "isme dokun". */
-.kfoot{padding:0 16px 12px;display:flex;align-items:baseline;
+/* İşaret satırı tablonun HEMEN ALTINDA (kullanıcı kararı). Kart
+   dibindeyken çok aşağıda kalıyordu; okuyucu tabloyu bitirince gözü
+   oraya değmiyordu. Artık "Oynamayanlar"ın hemen altında. */
+.kalt{padding:2px 16px 12px;display:flex;align-items:baseline;
   justify-content:space-between;gap:12px}
 /* Lejant bir KEZ, kartın altında — sekme başına değil. */
-.kbeslegend{display:block;padding-top:8px;font-family:var(--mono);font-size:10px;
+.kbeslegend{display:block;font-family:var(--mono);font-size:10px;
   color:var(--faint);letter-spacing:.04em}
 .kbeslegend i{display:inline-block;width:3px;height:9px;background:#4A5566;
   vertical-align:-1px;margin-right:6px}
@@ -1454,11 +1459,19 @@ function boxTablosu(t){
     return `<tr class="${cls}"><td${adsinif?` class="${adsinif}"`:''}${adattr}>${esc(o.isim)}</td>${huc}</tr>`;
   };
   const dnp = t.oynamayanlar || [];
+  // İşaret satırı PANONUN İÇİNDE, "Oynamayanlar"ın hemen altında.
+  // Kartın dibindeyken tablodan çok uzakta kalıyordu. Aynı anda tek
+  // pano görünür olduğu için okuyucu yine bir tane görüyor.
+  const ilkbes = t.oyuncular.some(o=>o.ilk_bes)
+    ? '<span class="kbeslegend"><i></i>ilk beş</span>' : '<span></span>';
+  const ipucu = t.oyuncular.some(o=>GECE_OYUNCULARI[String(o.id)])
+    ? '<span class="oipucu"><s>›</s>isme <span class="dokun">dokun</span><span class="tikla">tıkla</span></span>' : '';
   return `<div class="kscroll"><table class="kbs">
       <thead><tr><th>Oyuncu</th>${KOLONLAR.map(([,b])=>`<th>${b}</th>`).join('')}</tr></thead>
       <tbody>${t.oyuncular.map(satir).join('')}</tbody>
     </table></div>
-    ${dnp.length?`<p class="kdnp">Oynamayanlar · ${esc(dnp.join(', '))}</p>`:''}`;
+    ${dnp.length?`<p class="kdnp">Oynamayanlar · ${esc(dnp.join(', '))}</p>`:''}
+    <div class="kalt">${ilkbes}${ipucu}</div>`;
 }
 
 // Çeyrek başlıkları: 4 çeyrek sabit, üstü uzatma (U1, U2 ...).
@@ -1608,10 +1621,7 @@ function boxKartiHTML(m){
     <div class="kbody">
       ${b.wtf?`<div class="kwtf"><span>WTF İstatistiği</span><p>${esc(b.wtf)}</p></div>`:''}
       <div class="kpanes">${panolar}</div>
-      <div class="kfoot">${(b.ev.oyuncular||[]).some(o=>o.ilk_bes)
-        ? '<span class="kbeslegend"><i></i>ilk beş</span>' : '<span></span>'}${
-        (b.ev.oyuncular||[]).some(o=>GECE_OYUNCULARI[String(o.id)])
-        ? '<span class="oipucu"><s>›</s>isme <span class="dokun">dokun</span><span class="tikla">tıkla</span></span>' : ''}</div>
+      <div class="kfoot"></div>
     </div>`;
 }
 

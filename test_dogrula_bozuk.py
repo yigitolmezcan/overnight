@@ -3707,9 +3707,12 @@ def main():
           "const adattr=kart?` data-oyuncu=" in _sayfa10)
 
     # --- Dokunulabilirlik: üç sinyal ---
-    basar("Dokunulabilirlik: adın yanında ember ok",
-          'td.oyad::after{content:"›"' in _sayfa10
-          and "color:var(--ember)" in _sayfa10.split('td.oyad::after{')[1].split("}")[0])
+    # Satır başına ok KALDIRILDI (kullanıcı kararı): her satırda
+    # tekrarlanınca tablo işaret çöplüğüne dönüyordu. Ok tek yerde
+    # kaldı — tablonun altındaki ipucu satırında.
+    basar("Dokunulabilirlik: satır başına ok yok, ok tek yerde",
+          "td.oyad::after" not in _sayfa10
+          and '<span class="oipucu"><s>›</s>' in _sayfa10)
     basar("Dokunulabilirlik: ad istatistiklerden parlak",
           "td.oyad{color:var(--ink)" in _sayfa10)
     basar("Dokunulabilirlik: tablo altında ipucu satırı",
@@ -3746,6 +3749,70 @@ def main():
     # Uzun adlar ✕ düğmesine girmesin.
     basar("Oyuncu kartı: ad ✕ için yer bırakıyor",
           "padding-right:34px" in _sayfa10.split(".ohd .onm{")[1].split("}")[0])
+
+    # ==================================================================
+    # ÖRNEK KÜTÜPHANESİ
+    # Kullanıcı kararı: yasaklı liste büyüdükçe model çıkış yolu
+    # bulamıyor ve şablona düşüyor. Çift (yanlış/doğru) o tuzağı
+    # kapatıyor. Kural listelerinin YERİNE değil, ÖNÜNE geçiyor.
+    # ==================================================================
+    _kutup = yaz.ornek_kutuphanesi()
+    _prompt = yaz.sistem_prompt()
+
+    basar("Kütüphane: dosya var ve dolu",
+          len(_kutup) > 4000 and "## 1. Fiiller" in _kutup)
+    basar("Kütüphane: sistem promptuna OLDUĞU GİBİ giriyor",
+          _kutup.strip() in _prompt)
+    # Sistem promptunun TAMAMI cache_control ile işaretli; kütüphane
+    # onun içinde, yani önbelleğin sabit kısmında. Prompt SONUNA
+    # konulsaydı çağrı başına yeniden ödenirdi.
+    basar("Kütüphane: önbelleğin sabit kısmında (sistem promptu içinde)",
+          '"cache_control": {"type": "ephemeral"},' in _yaz_kaynak
+          and "sistem_prompt()" in _yaz_kaynak)
+    basar("Kütüphane: prompt sonunda değil, kuralların ÖNÜNDE",
+          0 < _prompt.index("## 1. Fiiller") < _prompt.index("TERİM VE DİL KURALLARI"))
+    # KRİTİK: örnek cümleler kopyalanmaz — kalıp kütüphanesiyle tam bu
+    # tuzağa düşülmüştü.
+    basar("Kütüphane: kopyalama yasağı promptta açıkça yazılı",
+          "KOPYALANMAZ" in _prompt and "tiktir" in _prompt)
+    # Yasaklı listeler ve testler AYNEN kalıyor.
+    basar("Kütüphane: yasaklı listeler yerinde",
+          len(_jj.loads(open("config/yasakli.json", encoding="utf-8").read())["klise"]) >= 20
+          and len(_jj.loads(open("config/yasakli.json", encoding="utf-8").read())["kok_kaliplari"]) >= 25)
+    basar("Kütüphane: doğrulayıcıya dokunmuyor",
+          "ornek_kutuphanesi" not in _dogrula_kaynak)
+    # Kütüphanede karşılığı OLMAYAN yasaklar promptta adıyla kalmalı —
+    # yoksa model reddedilir ama nedenini bilmez (tam kaçınılan tuzak).
+    for _y in ("gerçekleştirdi", "elde etti", "layup", "ribaunt"):
+        basar(f"Kütüphane: '{_y}' yasağı promptta hâlâ adıyla var",
+              _y in _prompt)
+    basar("Kütüphane: İngilizce terim karşılık tablosu korundu",
+          "layup / lay-up" in _prompt and "buzzer beater" in _prompt)
+    # Dosya okunamazsa prompt yine kurulmalı — üretim durmasın.
+    _eski_yol = yaz.ORNEK_KUTUPHANESI_DOSYASI
+    _eski_onbellek = yaz._ORNEK_KUTUPHANESI
+    try:
+        yaz.ORNEK_KUTUPHANESI_DOSYASI = _eski_yol.parent / "yok-boyle-dosya.md"
+        yaz._ORNEK_KUTUPHANESI = None
+        basar("Kütüphane: dosya yoksa prompt yine kuruluyor",
+              yaz.ornek_kutuphanesi() == "" and len(yaz.sistem_prompt()) > 5000)
+    finally:
+        yaz.ORNEK_KUTUPHANESI_DOSYASI = _eski_yol
+        yaz._ORNEK_KUTUPHANESI = _eski_onbellek
+
+    # ==================================================================
+    # KUTU SKOR — İŞARET SATIRI TABLONUN ALTINDA, SATIR OKU YOK
+    # ==================================================================
+    basar("Kutu skor: oyuncu adının yanında ok YOK",
+          "td.oyad::after" not in _sayfa10)
+    basar("Kutu skor: işaret satırı panonun içinde, Oynamayanlar'ın altında",
+          '<div class="kalt">${ilkbes}${ipucu}</div>' in _sayfa10
+          and _sayfa10.index('class="kdnp"') < _sayfa10.index('<div class="kalt">'))
+    basar("Kutu skor: kart dibindeki şerit boşaldı",
+          '<div class="kfoot"></div>' in _sayfa10
+          and "kbeslegend" not in _sayfa10.split('<div class="kfoot">')[1][:200])
+    basar("Kutu skor: ad hâlâ dokunulabilir ve parlak",
+          "td.oyad{color:var(--ink);cursor:pointer}" in _sayfa10)
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
