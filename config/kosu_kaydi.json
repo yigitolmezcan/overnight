@@ -180,6 +180,12 @@
       "is": "yayinla",
       "sonuc": "success",
       "not": "run 15 · workflow_dispatch"
+    },
+    {
+      "zaman": "2026-08-29T16:35:06Z",
+      "is": "yayinla",
+      "sonuc": "success",
+      "not": "run 16 · workflow_dispatch"
     }
   ]
 }
