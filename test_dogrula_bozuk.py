@@ -4808,6 +4808,37 @@ def main():
     basar("Üretim: depoda gzipli gece stoğu duruyor",
           len(_gz) >= 20, f"yalnız {len(_gz)} gece var")
 
+    # ==================================================================
+    # METİN DÖNMEYEN ÇAĞRI ŞABLONA DÜŞMEDEN ÖNCE BİR KEZ DAHA DENENİR
+    # ==================================================================
+    # Sonnet 5'te thinking varsayılan açık; bütçe tamamen düşünmeye
+    # gidince yanıtta hiç metin bloğu kalmıyor. Eskiden bu doğrudan hata
+    # olup alanı ŞABLONA düşürüyordu. Gecede yalnız 3 "Mutlaka bil" maçı
+    # var; iki böyle çağrı şablon alarmını tetikliyor ve gece HİÇ
+    # üretilmiyor. Ölçüldü, 29 Ağustos gerçek koşusu: koşucuda 2/3
+    # şablon (üretim reddedildi), aynı gece yerelde 1/3 (kabul) — fark
+    # tamamen bu çağrının dalgalanması.
+    _ysrc = open("yaz.py", encoding="utf-8").read()
+    basar("LLM: metin yoksa pay artırılıp bir kez daha deneniyor",
+          'if yanit.stop_reason == "max_tokens" and not _ikinci_deneme:' in _ysrc
+          and "_ikinci_deneme=True" in _ysrc)
+    basar("LLM: tekrar denemenin tavanı var (maliyet kontrolden çıkmasın)",
+          _yaz.LLM_MAX_TOKENS_TAVAN == 32000
+          and "min(max_tokens * 2, LLM_MAX_TOKENS_TAVAN)" in _ysrc)
+    # SONSUZ DÖNGÜ OLMAMALI: ikinci denemede de metin yoksa hata.
+    basar("LLM: tekrar deneme yalnız BİR kez",
+          _ysrc.count("_ikinci_deneme=True") == 1
+          and "def llm_cagir(" in _ysrc and "_ikinci_deneme=False" in _ysrc)
+    # Şablona düşmek hâlâ mümkün olmalı — çare kaybolmadı.
+    basar("LLM: ikinci deneme de başarısızsa hata fırlıyor (şablon devreye girer)",
+          "Yanıtta hiç metin bloğu yok" in _ysrc)
+    # Alarm eşiği ve hesabı yerinde mi.
+    _r_iyi = {"mutlaka_mac": 3, "sablon_moduna_dusen": 1}
+    _r_kotu = {"mutlaka_mac": 3, "sablon_moduna_dusen": 2}
+    basar("Alarm: 1/3 şablon kabul, 2/3 şablon RET",
+          _yaz.sablon_alarmi(_r_iyi)[0] is False
+          and _yaz.sablon_alarmi(_r_kotu)[0] is True)
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))

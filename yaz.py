@@ -766,7 +766,13 @@ def _yaniti_ayikla(metin):
         return json.loads(metin[ilk : son + 1])
 
 
-def llm_cagir(model, sistem, kullanici_mesaji, max_tokens=2000, output_config=None, effort=None):
+# Tekrar denemede payın çıkabileceği tavan. Sınırsız büyütmek maliyeti
+# kontrolden çıkarır; 32000 en pahalı çağrının (16000) iki katı.
+LLM_MAX_TOKENS_TAVAN = 32000
+
+
+def llm_cagir(model, sistem, kullanici_mesaji, max_tokens=2000, output_config=None,
+              effort=None, _ikinci_deneme=False):
     """Gerçek Anthropic API çağrısı (senkron — messages.create). Ret
     oranı düşük tekli üretimler (Grup A tek maç onarımı, gec_tier bütçe
     kısaltması, gözden geçirme) için kullanılır. Gece geneli toplu
@@ -862,6 +868,22 @@ def llm_cagir(model, sistem, kullanici_mesaji, max_tokens=2000, output_config=No
     # bloğu bulmak gerekiyor, körlemesine content[0] almak yerine.
     metin_bloklari = [b for b in yanit.content if b.type == "text"]
     if not metin_bloklari:
+        # BÜTÇEYİ DÜŞÜNMEYE HARCADI, METİN KALMADI. Eskiden burada
+        # doğrudan hata fırlatılıyordu; çağıran alanı ŞABLONA düşürüyordu.
+        # Gecede yalnız 3 "Mutlaka bil" maçı olduğu için iki böyle çağrı
+        # şablon alarmını tetikliyor ve GECE HİÇ ÜRETİLMİYOR — ölçüldü,
+        # 29 Ağustos gerçek koşusu: 2/3 şablon, üretim reddedildi. Aynı
+        # gece yerelde 1/3 çıktı; fark tamamen bu çağrının dalgalanması.
+        # Sebep belliyse (max_tokens) çare de belli: payı artırıp BİR KEZ
+        # tekrar dene. Şablona düşmek son çare olmalı, ilk tepki değil.
+        if yanit.stop_reason == "max_tokens" and not _ikinci_deneme:
+            yeni_pay = min(max_tokens * 2, LLM_MAX_TOKENS_TAVAN)
+            if yeni_pay > max_tokens:
+                print(f"    metin bloğu yok (max_tokens={max_tokens}) — "
+                      f"pay {yeni_pay}'e çıkarılıp bir kez daha deneniyor")
+                return llm_cagir(model, sistem, kullanici_mesaji,
+                                 max_tokens=yeni_pay, output_config=output_config,
+                                 effort=effort, _ikinci_deneme=True)
         raise RuntimeError(
             f"Yanıtta hiç metin bloğu yok (stop_reason={yanit.stop_reason}, "
             f"muhtemelen max_tokens thinking'e gitti, max_tokens'ı artır)"
