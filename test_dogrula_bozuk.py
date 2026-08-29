@@ -3274,6 +3274,38 @@ def main():
     basar("Yayın: canlı denetim adımının çıkış kodu yutulmuyor",
           any(_n == "Site gerçekten değişti mi" and _tamam for _a, _n, _tamam in _borulu))
 
+    # PROJE PYTHON ÇALIŞTIRAN HER İŞTE BAĞIMLILIK KURULMALI.
+    # yayinla.yml'de bu adım YOKTU: yayin.py -> yaz -> dogrula ->
+    # gercekler zinciri nba_api'yi modül düzeyinde içeri alıyor ve iş
+    # daha ilk import'ta düşüyordu. Üretim çalışıyor, yayın düşüyordu;
+    # ikisi ayrı yazıldığı için fark günlerce görünmedi ve hazır gece
+    # depoda beklerken site güncellenmedi. Adım adı DEĞİL, gerçek
+    # komut aranıyor.
+    _pysuz = []
+    for _ad, _m in _akislar.items():
+        for _isim, _is in _yaml.safe_load(_m)["jobs"].items():
+            _adimlar = _is.get("steps", [])
+            _pyvar = any("python3 " in (_a.get("run") or "") for _a in _adimlar)
+            _kurar = any("pip install -r requirements.txt" in (_a.get("run") or "")
+                         for _a in _adimlar)
+            if _pyvar and not _kurar:
+                _pysuz.append(_ad + ":" + _isim)
+    basar("Akış: python çalıştıran her iş bağımlılıkları kuruyor",
+          not _pysuz)
+    # Kurulum, python'u ÇAĞIRAN ilk adımdan önce gelmeli.
+    _gecKurulum = []
+    for _ad, _m in _akislar.items():
+        for _isim, _is in _yaml.safe_load(_m)["jobs"].items():
+            _adimlar = _is.get("steps", [])
+            _k = [_i for _i, _a in enumerate(_adimlar)
+                  if "pip install -r requirements.txt" in (_a.get("run") or "")]
+            _p = [_i for _i, _a in enumerate(_adimlar)
+                  if "python3 " in (_a.get("run") or "")]
+            if _k and _p and min(_k) > min(_p):
+                _gecKurulum.append(_ad + ":" + _isim)
+    basar("Akış: bağımlılık kurulumu ilk python adımından önce",
+          not _gecKurulum)
+
     import canli_dogrula as _cd
     # Dağıtım birkaç dakika sürebiliyor; tek atışta "olmadı" demek
     # yanlış alarm üretir.

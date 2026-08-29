@@ -28,6 +28,17 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: pip
+
+      # BU ADIM EKSİKTİ ve site 22 Aralık'ı GÜNLERCE yayınlayamadı.
+      # yayin.py -> yaz -> dogrula -> gercekler zinciri nba_api'yi
+      # modül düzeyinde içeri alıyor; yayın işi hiç bağımlılık
+      # kurmadığı için daha ilk import'ta düşüyordu. Üretim işinde bu
+      # adım vardı, yayın işinde yoktu — ikisi ayrı ayrı yazıldığı için
+      # fark uzun süre görünmedi. test_dogrula_bozuk artık python
+      # çalıştıran her işte bu adımı arıyor.
+      - name: Bağımlılıklar
+        run: pip install -r requirements.txt
 
       # Hazır gece yoksa bu adım hiçbir şey yapmaz ve iş BAŞARILI biter —
       # site olduğu gibi kalır. Kullanıcı kuralı: "Site sessizce boş
