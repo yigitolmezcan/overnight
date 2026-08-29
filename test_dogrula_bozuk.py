@@ -4848,6 +4848,34 @@ def main():
           _yaz.sablon_alarmi(_r_iyi)[0] is False
           and _yaz.sablon_alarmi(_r_kotu)[0] is True)
 
+    # ==================================================================
+    # ARŞİV LİSTESİ YAYINLANAN GECEYİ ATLAMAMALI
+    # ==================================================================
+    # SIRALAMA KUSURU: `yayinla` önce `_siteyi_kur` çağırıyor (o da
+    # `_gunleri_yaz` çağırıyor), duruma eklemeyi SONRA yapıyor. Liste o
+    # anda yayınlanan geceyi içermiyordu; gece arşivde hiç görünmüyor,
+    # "sonraki gece ›" oku ona ulaşamıyordu. 22 ve 23 Aralık'ta ölçüldü.
+    _ysrc2 = open("yayin.py", encoding="utf-8").read()
+    basar("Arşiv: liste yazılırken yayınlanan gece de katılıyor",
+          "_gunleri_yaz(ayrica=tarih)" in _ysrc2
+          and "def _gunleri_yaz(ayrica=None):" in _ysrc2)
+    basar("Arşiv: katılan gece listeye gerçekten giriyor",
+          '([ayrica] if ayrica else [])' in _ysrc2)
+    # Davranış testi: durumda olmayan bir gece verildiğinde listeye girsin.
+    import yayin as _y
+    _once = set(_jj.loads(open("site/gunler.json", encoding="utf-8").read()))
+    _sonra = set(_y._gunleri_yaz(ayrica="2099-01-01"))
+    basar("Arşiv: _gunleri_yaz verilen geceyi listeye ekliyor",
+          "2099-01-01" in _sonra and _once <= _sonra)
+    _y._gunleri_yaz()          # dosyayı eski haline getir
+    basar("Arşiv: argümansız çağrı yalnız yayınlananları yazıyor",
+          "2099-01-01" not in set(
+              _jj.loads(open("site/gunler.json", encoding="utf-8").read())))
+    # Yayındaki gece listede OLMALI (regresyonun kendisi).
+    basar("Arşiv: yayındaki gece listede",
+          _yayinda2 in _jj.loads(open("site/gunler.json", encoding="utf-8").read()),
+          f"{_yayinda2} gunler.json'da yok")
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))

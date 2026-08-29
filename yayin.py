@@ -313,7 +313,9 @@ def _siteyi_kur(tarih, kok_da=True):
     if kok_da:
         (SITE_DIZIN / "index.html").write_text(yeni, encoding="utf-8")
     (SITE_DIZIN / f"{tarih}.html").write_text(yeni, encoding="utf-8")
-    _gunleri_yaz()
+    # Yayınlanmakta olan gece duruma HENÜZ yazılmamış olabilir; listeye
+    # onu da katıyoruz (bkz. _gunleri_yaz).
+    _gunleri_yaz(ayrica=tarih)
     return len(yeni.encode("utf-8"))
 
 
@@ -388,13 +390,20 @@ def _kacir(metin):
             .replace("<", "&lt;").replace(">", "&gt;"))
 
 
-def _gunleri_yaz():
+def _gunleri_yaz(ayrica=None):
     """site/gunler.json — yayınlanmış gecelerin listesi.
 
     Oklar bu dosyayı okuyor. Liste sayfaların İÇİNDE olsaydı yeni gece
-    çıktığında bütün eski sayfaların yeniden yazılması gerekirdi."""
+    çıktığında bütün eski sayfaların yeniden yazılması gerekirdi.
+
+    `ayrica`: HENÜZ duruma yazılmamış ama yayınlanmakta olan gece.
+    SIRALAMA KUSURUYDU: `yayinla` önce `_siteyi_kur` çağırıyor (o da
+    burayı çağırıyor), duruma eklemeyi SONRA yapıyordu. Liste o anda
+    yayınlanan geceyi henüz içermiyor, dosya eksik yazılıyor ve gece
+    arşivde hiç görünmüyordu — "sonraki gece ›" oku ona ulaşamıyordu.
+    Ölçüldü: 22 Aralık'ta da, 23 Aralık'ta da liste geceyi atladı."""
     d = durum_oku()
-    gunler = sorted(set(d.get("yayinlanan") or []))
+    gunler = sorted(set((d.get("yayinlanan") or []) + ([ayrica] if ayrica else [])))
     SITE_DIZIN.mkdir(exist_ok=True)
     (SITE_DIZIN / "gunler.json").write_text(
         json.dumps(gunler, ensure_ascii=False), encoding="utf-8")
