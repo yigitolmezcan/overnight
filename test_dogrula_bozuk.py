@@ -3864,10 +3864,24 @@ def main():
                   - (k["sezon"]["son5_ort"] - k["sezon"]["sezon_ort"])
                   / k["sezon"]["sezon_ort"] * 100) < 1.5
               for k in _sezonlu if k["sezon"]["sezon_ort"]))
+    # DİZİ 5'TEN KISA OLABİLİR. Formda LİSTESİ için 5 maç şartı var
+    # ("5 maçı dolmayan için form denmez"), ama oyuncu KARTI o oyuncunun
+    # elindeki her şeyi gösteriyor — sezonun başında ya da yeni çıkan
+    # bir oyuncuda 2-3 maç olabilir. Ölçüldü, 23 Aralık: Kam Jones 2
+    # maç, Chris Mañon 3 maç; ikisinde de bu gece işareti doğru.
+    # Değişmeyen kural: en fazla 5, en az 1, bu gece TEK ve SONUNCU.
     basar("Oyuncu kartı: son 5 dizisi ve bu gece işareti",
-          all(len(k["sezon"]["son5"]) == 5 and k["sezon"]["son5"][-1]["bu_gece"]
+          all(1 <= len(k["sezon"]["son5"]) <= 5
+              and k["sezon"]["son5"][-1]["bu_gece"]
               and sum(1 for x in k["sezon"]["son5"] if x["bu_gece"]) == 1
               for k in _sezonlu))
+    # Kısa dizi gerçekten oluyor mu, yoksa kural boşa mı geçiyor —
+    # ölçüyü kaydediyoruz ama şart koşmuyoruz.
+    _kisa_dizi = [k for k in _sezonlu if len(k["sezon"]["son5"]) < 5]
+    basar("Oyuncu kartı: kısa diziler de bozulmadan üretiliyor",
+          all(k["sezon"]["son5"] and all("sayi" in x for x in k["sezon"]["son5"])
+              for k in _kisa_dizi),
+          f"{len(_kisa_dizi)} kartta 5'ten az maç var")
     # Renk kararı EKRANDA YAZAN ortalamaya göre — Yükselen/Düşen ile aynı.
     basar("Oyuncu kartı: üst/alt kararı gösterilen sezon ortalamasıyla tutarlı",
           all(x["ust"] == (x["sayi"] > k["sezon"]["sezon_ort"])
