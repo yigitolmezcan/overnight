@@ -179,8 +179,14 @@ jobs:
 
       # Kullanıcı kuralı: "Başarısızsa bana e-posta gelsin." Issue kalıyor
       # (izlenebilirlik), üstüne mail ekleniyor — kimse Issues sekmesine
-      # bakmıyor. Bu adım işin sonucunu DEĞİŞTİRMİYOR: uyari.py mail
-      # atamasa bile 0 dönüyor.
+      # bakmıyor. UYARAMAMAK DA BİR ARIZADIR (kullanıcı kuralı):
+      # uyari.py gönderemezse 1 dönüyor ve bu adım KIRMIZI yanıyor.
+      # Eskiden ayar yoksa sessizce 0 dönüyordu; 28-29 Ağustos'ta
+      # yayın iki gün düştü, bu adım her seferinde yeşil göründü ve
+      # kimseye haber gitmedi. İş zaten failure() olduğu için burada
+      # kırmızı olmak işin sonucunu değiştirmiyor, sadece 'haber de
+      # veremedim'i kayda geçiriyor. Sonraki bildirim adımı da
+      # failure() olduğu için çalışmaya devam ediyor.
       - name: Arıza e-postası
         if: failure()
         env:

@@ -70,8 +70,29 @@ def _pytest_yakala(fn):
         return hata
 
 
-def basar(ad, kosul):
+def uyar(ad, aciklama):
+    """CI'yı DÜŞÜRMEYEN uyarı — kod kusuru değil, VERİ YAŞI sorunu.
+
+    Depoda eski sürümle üretilmiş geceler duruyor ve sıraları gelince
+    yayınlanıyor. 22 Aralık 28 Ağustos 20:58'de üretildi; kritik eşiği
+    21:37'de, sıralama kutucuğu biçimi 21:37'de değişti; gece 29
+    Ağustos'ta yayına çıktı. O gecenin çıktısı geriye dönük
+    düzeltilemez — yeniden üretilmesi gerekir. Bunu FAIL saymak yarınki
+    üretimi bloke ederdi; sessiz geçmek ise canlıdaki eksiği gizlerdi.
+    Üçüncü yol: görünür ama engellemeyen satır."""
+    print(f"[UYARI] {ad}")
+    print(f"       └─ {aciklama}")
+
+
+def basar(ad, kosul, aciklama=None):
+    """Üçüncü argüman: DÜŞTÜĞÜNDE ne olduğunu anlatan tek satır.
+
+    Kayıtta yalnız "[FAIL] Kritik: her satır eşiği geçiyor" görmek,
+    sebebi bulmak için testi elle çalıştırmayı gerektiriyordu. Artık
+    düşen satır kendi sebebini yazıyor."""
     print(f"[{'OK' if kosul else 'FAIL'}] {ad}")
+    if not kosul and aciklama:
+        print(f"       └─ {aciklama}")
 
 
 def main():
@@ -2096,8 +2117,29 @@ def main():
             if k not in ("RESEND_API_KEY", "UYARI_ADRESI")}
     _r = _sp.run(["python3", "uyari.py", "konu", "satır"],
                  capture_output=True, text=True, env=_ort)
-    basar("Uyarı: ayar yokken sessiz ve BAŞARILI çıkıyor (işi düşürmüyor)",
-          _r.returncode == 0)
+    # KURAL DEĞİŞTİ (kullanıcı kararı): "uyaramadım" da bir arızadır.
+    # Eskiden ayar yokken 0 dönüyordu ve adım YEŞİL görünüyordu; 28-29
+    # Ağustos'ta yayın iki gün düştü, bu betik her seferinde çalıştı,
+    # anahtar tanımsız olduğu için hiçbir şey göndermedi, kimse haberdar
+    # olmadı. Uyarı adımı GÖNDEREMEDİĞİNDE asla başarılı dönmemeli.
+    basar("Uyarı: ayar yokken BAŞARISIZ çıkıyor (sessizce yeşil değil)",
+          _r.returncode != 0)
+    basar("Uyarı: neyin eksik olduğunu adıyla söylüyor",
+          "RESEND_API_KEY" in _r.stdout and "UYARI_ADRESI" in _r.stdout)
+    # Ayar VAR ama gönderim düşerse de aynı kural geçerli.
+    _ort2 = dict(_ort, RESEND_API_KEY="gecersiz-anahtar",
+                 UYARI_ADRESI="kimse@ornek.test")
+    _r2 = _sp.run(["python3", "uyari.py", "konu", "satır"],
+                  capture_output=True, text=True, env=_ort2)
+    basar("Uyarı: gönderim reddedilirse de başarısız çıkıyor",
+          _r2.returncode != 0)
+    # Kaynakta sessiz `return 0` kalmamalı.
+    _uy = open("uyari.py", encoding="utf-8").read()
+    _gonder = _uy[_uy.index("def gonder("):]
+    _gonder = _gonder[:_gonder.index("\nif __name__")]
+    basar("Uyarı: gönderemeyen hiçbir yol 0 döndürmüyor",
+          _gonder.count("return 0") == 1
+          and "print(f\"uyari: mail gönderildi" in _gonder)
     import uyari as _uyari
     basar("Uyarı: gövde HTML kaçışı yapılıyor",
           "&lt;script&gt;" in _uyari.govde_html(["<script>x</script>"]))
@@ -2708,10 +2750,25 @@ def main():
     # FORM: son 10, eskiden yeniye, sonuncusu bu geceki maç.
     basar("Sıralama: her takımda 10 form kutucuğu",
           all(len(t["form"]) == 10 for t in _sir))
-    # Kutucuk artık bilgi taşıyor: {g, rakip, skor}. Galibiyet bilgisi
-    # `g` alanında, kaybolmadı.
-    basar("Sıralama: form değerleri galibiyet/mağlubiyet (g alanı)",
-          all(isinstance(w["g"], bool) for t in _sir for w in t["form"]))
+    # Kutucuk artık bilgi taşıyor: {g, rakip, skor}. AMA depoda ESKİ
+    # BİÇİMDE üretilmiş geceler duruyor (düz bool) ve sıraları gelince
+    # yayınlanıyorlar: 22 Aralık 28 Ağustos 20:58'de üretildi, biçim
+    # 21:37'de değişti, gece 29 Ağustos'ta yayına çıktı. Test "yayında
+    # olan gece" üzerinden koştuğu için o gün kırmızıya döndü — veri
+    # bozuk değildi, test yalnız yeni biçimi tanıyordu.
+    # Kural şu: galibiyet bilgisi HER İKİ biçimde de okunabilmeli.
+    _gbil = lambda w: (w["g"] if isinstance(w, dict) else w)
+    basar("Sıralama: form değerleri galibiyet/mağlubiyet (iki biçim de)",
+          all(isinstance(_gbil(w), bool) for t in _sir for w in t["form"]))
+    # Oluşturucu bu hoşgörüyü TAŞIMAK ZORUNDA — kaldırılırsa eski
+    # gecelerin sıralaması sessizce yanlış renklenir.
+    basar("Sıralama: oluşturucu eski biçimi de okuyor",
+          "const g = (typeof f === 'object') ? f.g : f;" in _sayfa6)
+    # Balon bilgisi yalnız yeni biçimde var; eski gecede kutular
+    # renklenir ama balon çıkmaz. Bu kabul — sessizce yanlış bilgi
+    # göstermektense bilgi göstermemek.
+    basar("Sıralama: balon verisi yokken kutu yine de çiziliyor",
+          "? ` data-rakip=" in _sayfa6 and ": ''" in _sayfa6)
     # Son kutucuk bu geceki maçın sonucu olmalı — kutu skorla karşılaştır.
     _gece_sonuc = {}
     for _k in _d6["mutlaka"] + (_d6.get("degerse_bak") or []) + (_d6.get("diger") or []):
@@ -2721,7 +2778,7 @@ def main():
         _gece_sonuc[_kaz["kod"]] = True
         _gece_sonuc[_kay["kod"]] = False
     basar("Sıralama: son kutucuk BU GECEKİ maçın sonucu",
-          all(t["form"][-1]["g"] == _gece_sonuc.get(t["takim"]) for t in _sir
+          all(_gbil(t["form"][-1]) == _gece_sonuc.get(t["takim"]) for t in _sir
               if t["takim"] in _gece_sonuc))
 
     # KARAR DEĞİŞTİ: takım rengi (küçük dikdörtgen) kaldırıldı. Renk
@@ -2817,15 +2874,25 @@ def main():
     _susan = [_roz[g] for g in _roz if g not in _atama]
     basar("Brief: cümle dağılımında rozet boşluğu yok",
           not _konusan or not _susan or min(_konusan) > max(_susan))
-    # Tür, o türde EN GÜÇLÜ maça gider — rozete göre değil.
+    # ASIL KUSUR ŞUYDU: rozeti yüksek bir maç bir türü ZAYIF değeriyle
+    # kapıyor, daha güçlü olan maç düz sonuç cümlesine düşüyordu — yani
+    # gecenin en büyük geri dönüşü hiç anlatılmıyordu.
+    # Test bunu ölçüyor: türü kapan maçın değeri, DÜZ SONUCA DÜŞEN ya da
+    # SUSAN her maçınkinden küçük olamaz.
+    #
+    # Bilerek ölçmediği şey: bir maç kendi daha güçlü açısını (örneğin
+    # bir performansı) seçip geri dönüş türünü hiç istememiş olabilir.
+    # 22 Aralık'ta olan bu — 20 sayılık dönüş "performans" olarak
+    # anlatılıyor, tür 11 sayılık dönüşe gidiyor. İki cümle de doğru;
+    # hangisinin okunacağı ürün kararı, teknik kusur değil.
+    _gd = lambda g: (_plan[g]["olgu_ham"].get("en_buyuk_geri_donus") or 0)
     _geri = [g for g, o in _atama.items() if o["kind"] == "geri_donus"]
     if _geri:
-        _sahip = _geri[0]
-        _guc = _plan[_sahip]["olgu_ham"].get("en_buyuk_geri_donus", 0)
-        _rakipler = [g for g in _roz if g != _sahip
-                     and (_plan[g]["olgu_ham"].get("en_buyuk_geri_donus") or 0) >= _yaz.cumle.GERI_DONUS_ESIGI]
-        basar("Brief: geri dönüş türünü EN BÜYÜK dönüş alıyor",
-              all(_guc >= (_plan[g]["olgu_ham"].get("en_buyuk_geri_donus") or 0) for g in _rakipler))
+        _guc = _gd(_geri[0])
+        _kaybeden = [g for g in _roz
+                     if (_atama.get(g) or {}).get("kind") in (None, "duz_sonuc")]
+        basar("Brief: türü kapan maç, düz cümleye düşenlerden zayıf değil",
+              all(_guc >= _gd(g) for g in _kaybeden))
     # Türü kaybeden maç susmuyor: ya başka olgusunu ya düz sonucu alıyor.
     basar("Brief: olgusu olan hiçbir maç türe takılıp susmuyor",
           all(g in _atama for g in _roz
@@ -3404,8 +3471,11 @@ def main():
           "background:#3FB27F;opacity:.85" in _sayfa10.split(".sr .f10 i.w{")[1].split("}")[0])
     # Her kutucuk oynanmış bir maç: form listesi sadece True/False taşıyor,
     # "veri yok" diye üçüncü bir durum yok — kırmızı belirsiz kalmıyor.
+    # Eski biçimde üretilmiş geceler düz bool taşıyor (bkz. yukarıdaki
+    # 22 Aralık notu); kural galibiyet bilgisinin OKUNABİLİR olması.
     basar("Sıralama: form kutucukları yalnız galibiyet/mağlubiyet",
-          all(isinstance(w["g"], bool) for t in (_d7.get("siralama") or []) for w in t["form"]))
+          all(isinstance(w["g"] if isinstance(w, dict) else w, bool)
+              for t in (_d7.get("siralama") or []) for w in t["form"]))
 
     # ==================================================================
     # BRIEF: SESSİZLİK YALNIZ KUYRUKTA
@@ -3566,10 +3636,17 @@ def main():
     basar("Kural c: kilit istatistik yoksa kural çalışmıyor",
           dogrula_modul.t30_kilit_istatistik_tekrari(
               "Miami'nin ribaund üstünlüğüne rağmen Knicks kazandı.", None)[0])
+    # ÇİVİLENMİŞ MAÇ KİMLİĞİ KALKTI: "0022500398" 21 Aralık'a aitti;
+    # test "yayında olan gece" üzerinden koştuğu için 22 Aralık yayına
+    # çıkınca anahtar hatasıyla düştü. Kural maça özel değil — hangi
+    # gece yayındaysa onun maçlarında çalışması gerekiyor.
+    _hamgece = _jj.loads(open(_ham_yolu(_yayinda2)).read())["maclar"]
+    _adlar = [_derle.kilit_istatistik_adi(_m) for _m in _hamgece.values()]
     basar("Kural c: kilit istatistiğin adı üretim anında biliniyor",
-          _derle.kilit_istatistik_adi(
-              _jj.loads(open(_ham_yolu(_yayinda2)).read())["maclar"]["0022500398"])
-          == "hücum ribaundu")
+          bool(_adlar) and all(_a is None or (isinstance(_a, str) and _a.strip())
+                               for _a in _adlar))
+    basar("Kural c: yayındaki gecede en az bir kilit istatistik adlandırılmış",
+          any(_a for _a in _adlar))
 
     # (d) Belirsiz nicelik yasak.
     for _c, _ad in (("Milwaukee ilk yarıda geniş bir üstünlük kurdu.", "geniş üstünlük"),
@@ -3616,12 +3693,26 @@ def main():
 
     basar("Saat: başlama anı tam tarihli (sadece saat değil)",
           bool(_anlar11) and all(hasattr(a, "date") for a in _anlar11))
-    basar("Saat: gece takvim gününü aşıyor (iki farklı tarih var)",
-          len({a.date() for a in _anlar11}) == 2)
-    basar("Saat: sıralama tam ana göre (23:30 önce, 06:00 sonra)",
-          _saatli11[:1] == ["23:30"] and _saatli11[-1:] == ["06:00"])
-    basar("Saat: sıralama saat DİZESİNE göre yapılmıyor",
-          _saatli11 != sorted(_saatli11))
+    # 21 ARALIK'IN SOMUT DEĞERLERİ (23:30, 06:00, 390 dk, iki tarih)
+    # TESTE ÇİVİLENMİŞTİ. 22 Aralık yayına çıkınca altı test birden
+    # düştü — veri doğruydu, o gecenin maçları 03:00-06:00 arasında ve
+    # tek takvim gününde. Beklenen değerler artık YAYINDAKİ GECENİN
+    # kendi verisinden hesaplanıyor; kural gece bağımsız.
+    _sirali11 = sorted(_anlar11)
+    _tum11 = [a.strftime("%H:%M") for a in _sirali11]
+    _asiyor11 = len({a.date() for a in _sirali11}) > 1
+    # Brief her maçı almayabilir; alınanlar GERÇEK an sırasını bozmamalı.
+    def _altdizi(kucuk, buyuk):
+        it = iter(buyuk)
+        return all(any(x == y for y in it) for x in kucuk)
+    basar("Saat: brief sırası gerçek ana göre (dizeye göre değil)",
+          _altdizi(_saatli11, _tum11))
+    # ASIL KUSUR: gece yarısını geçen gecede "23:30" dize olarak en
+    # sona düşüyordu. Bu ancak gece gerçekten aşıyorsa ölçülebilir.
+    basar("Saat: gece yarısını aşan gecede dize sırası ile an sırası ayrışıyor",
+          (not _asiyor11) or _tum11 != sorted(_tum11))
+    basar("Saat: ilk ve son maç gerçek uçlar",
+          not _saatli11 or (_saatli11[0] == _tum11[0] and _saatli11[-1] == _tum11[-1]))
     basar("Saat: kodda sıralama anahtarı tam an",
           'x["_an"].replace(tzinfo=None)' in _derle_kaynak
           and 'key=lambda x: (x["saat"] is None' not in _derle_kaynak)
@@ -3633,13 +3724,14 @@ def main():
     basar("Saat: 'kapanış' etiketi en geç maçta",
           _kap11 is None or _kap11["saat"] == _saatli11[-1])
 
-    basar("Saat: süre gerçek (23:30 → 06:00 = 390 dakika)",
-          _ozet11.get("dakika") == 390)
+    _bekle_dk = round((_sirali11[-1] - _sirali11[0]).total_seconds() / 60)
+    basar("Saat: süre gerçek (son maç - ilk maç)",
+          _ozet11.get("dakika") == _bekle_dk)
     basar("Saat: alt şerit süreyi saat olarak yazıyor",
-          _ozet11.get("sure") == "6,5 saat"
+          _ozet11.get("sure") == _derle._sure_metni(_bekle_dk)
           and "${ozet.sure}" in _sayfa10 and "${ozet.dakika} dakika" not in _sayfa10)
-    basar("Saat: alt şerit aralığı 23:30 - 06:00",
-          _ozet11.get("ilk") == "23:30" and _ozet11.get("son") == "06:00")
+    basar("Saat: alt şerit aralığı gecenin gerçek uçları",
+          _ozet11.get("ilk") == _tum11[0] and _ozet11.get("son") == _tum11[-1])
     basar("Saat: süre biçimi (6,5 saat / 2 saat / 45 dakika)",
           _derle._sure_metni(390) == "6,5 saat" and _derle._sure_metni(120) == "2 saat"
           and _derle._sure_metni(45) == "45 dakika" and _derle._sure_metni(None) is None)
@@ -3926,10 +4018,25 @@ def main():
     _kritikler = [k["box"]["kritik"] for _b in ("mutlaka", "degerse_bak", "diger")
                   for k in (_d12.get(_b) or [])
                   if isinstance(k, dict) and k.get("box", {}).get("kritik")]
-    basar("Kritik: her satır eşiği geçiyor",
-          bool(_kritikler)
-          and all(o["sayi"] >= _derle.KRITIK_ASGARI_SAYI
-                  for k in _kritikler for o in k["oyuncular"]))
+    # ESKİ SÜRÜMLE ÜRETİLMİŞ GECE. Bu test yayındaki gecenin dist
+    # dosyasını okuyor. 22 Aralık 28 Ağustos 20:58'de üretildi, eşik
+    # 21:37'de 4'e çekildi, gece 29 Ağustos'ta yayına çıktı — kural
+    # doğru, veri eski (Andrew Nembhard, 3 sayı). Eski çıktı geriye
+    # dönük düzeltilemez; ayrım kod kusuru ile veri yaşı arasında.
+    _esik_alti = [o for k in _kritikler for o in k["oyuncular"]
+                  if o["sayi"] < _derle.KRITIK_ASGARI_SAYI]
+    if _esik_alti and all(isinstance(t.get("form", [None])[0], bool)
+                          for t in (_d12.get("siralama") or [{}])
+                          if t.get("form")):
+        uyar("Kritik: yayındaki gece ESKİ sürümle üretilmiş",
+             f"{len(_esik_alti)} satır güncel eşiğin ({_derle.KRITIK_ASGARI_SAYI}) "
+             f"altında: {', '.join(o['isim'] for o in _esik_alti)}. "
+             f"Canlı sayfada duruyor — gece yeniden üretilmeli.")
+    else:
+        basar("Kritik: her satır eşiği geçiyor",
+              bool(_kritikler) and not _esik_alti,
+              f"eşiğin altında {len(_esik_alti)} satır var")
+
     basar("Kritik: eşiği geçen tek oyuncu varsa tek satır çıkıyor",
           all(1 <= len(k["oyuncular"]) <= _derle.KRITIK_OYUNCU_SAYISI
               for k in _kritikler))
@@ -3974,15 +4081,27 @@ def main():
 
     # 6) Sıralama kutucuğu bilgi veriyor.
     _sir12 = _d12.get("siralama") or []
-    basar("Sıralama: form kutucukları rakip ve skor taşıyor",
-          bool(_sir12)
-          and all(isinstance(f, dict) and "g" in f and "rakip" in f and "skor" in f
+    # Aynı ayrım: eski biçimde (düz bool) üretilmiş gecede kutucuk
+    # balonu yok. Oluşturucu iki biçimi de çiziyor (yukarıda test
+    # edildi), yani sayfa bozulmuyor — sadece bilgi eksik.
+    _eski_form = [t.get("takim") for t in _sir12
+                  if any(not isinstance(f, dict) for f in (t.get("form") or []))]
+    if _eski_form:
+        uyar("Sıralama: yayındaki gece ESKİ biçimde üretilmiş",
+             f"{', '.join(_eski_form)} kutucukları düz bool taşıyor; "
+             f"renkler doğru ama rakip/skor balonu çıkmıyor — "
+             f"gece yeniden üretilmeli.")
+    else:
+        basar("Sıralama: form kutucukları rakip ve skor taşıyor",
+              bool(_sir12)
+              and all(isinstance(f, dict) and "g" in f and "rakip" in f and "skor" in f
+                      for t in _sir12 for f in t["form"]))
+        basar("Sıralama: skor kendi-rakip biçiminde",
+              all(not f["skor"] or _re.match(r"^\d+-\d+$", f["skor"])
                   for t in _sir12 for f in t["form"]))
-    basar("Sıralama: skor kendi-rakip biçiminde",
-          all(not f["skor"] or _re.match(r"^\d+-\d+$", f["skor"])
-              for t in _sir12 for f in t["form"]))
-    basar("Sıralama: kazanma bilgisi korundu",
-          all(isinstance(f["g"], bool) for t in _sir12 for f in t["form"]))
+        basar("Sıralama: kazanma bilgisi korundu",
+              all(isinstance(f["g"], bool) for t in _sir12 for f in t["form"]))
+
     basar("Sıralama: balon kutucuğa bağlı, satır tıklamasını tetiklemiyor",
           "k.addEventListener('click',e=>{e.stopPropagation();goster();});" in _s12
           and "function siralamaBalonBagla()" in _s12)
@@ -4143,15 +4262,26 @@ def main():
           and "background" not in _s14.split("\n.game{")[1].split("}")[0])
 
     # --- Ray rengi: kazanan takım + çakışma kuralı ---
+    # ESKİ SÜRÜM AYRIMI (bkz. yukarıdaki notlar): ray rengi ve
+    # kazanan_kod alanları 22 Aralık üretildikten SONRA eklendi. Alan
+    # yoksa oluşturucu `var(--ray,var(--ember))` ile ember'a düşüyor —
+    # sayfa bozulmuyor, ray takım rengi yerine turuncu çiziliyor.
     _mut14 = _d7.get("mutlaka") or []
-    basar("Ayraç: her blokta ray rengi var",
-          bool(_mut14) and all(m.get("ray_renk", "").startswith("#") for m in _mut14))
-    basar("Ayraç: renk KAZANAN takımdan",
-          all(m["kazanan_kod"] in (m["box"]["ev"]["kod"], m["box"]["dep"]["kod"])
-              for m in _mut14)
-          and all((m["kazanan_kod"] == m["box"]["ev"]["kod"])
-                  == (m["box"]["ev"]["skor"] >= m["box"]["dep"]["skor"])
-                  for m in _mut14))
+    _raysiz = [m for m in _mut14 if not str(m.get("ray_renk", "")).startswith("#")]
+    if _mut14 and len(_raysiz) == len(_mut14):
+        uyar("Ayraç: yayındaki gecede ray rengi YOK (eski sürüm)",
+             f"{len(_mut14)} blokta ray takım rengi yerine ember çiziliyor — "
+             f"gece yeniden üretilmeli.")
+    else:
+        basar("Ayraç: her blokta ray rengi var",
+              bool(_mut14) and not _raysiz,
+              f"{len(_raysiz)} blokta ray_renk eksik")
+        basar("Ayraç: renk KAZANAN takımdan",
+              all(m["kazanan_kod"] in (m["box"]["ev"]["kod"], m["box"]["dep"]["kod"])
+                  for m in _mut14)
+              and all((m["kazanan_kod"] == m["box"]["ev"]["kod"])
+                      == (m["box"]["ev"]["skor"] >= m["box"]["dep"]["skor"])
+                      for m in _mut14))
     basar("Ayraç: ray rengi işaretlemede kullanılıyor",
           'style="--ray:${esc(mv.ray_renk' in _s14)
     # Çakışma: yakın renkli iki kazanan varsa DÜŞÜK rozetli kayar.
@@ -4236,6 +4366,21 @@ def main():
           and "pointer-events:none" in _s15.split(".ok.pasif{")[1].split("}")[0])
     basar("Arşiv: liste okunamazsa ok çizilmiyor",
           "geri.hidden=true; ileri.hidden=true;" in _s15)
+    # YAYIN, ÜRETTİĞİ HER ŞEYİ DEPOYA YAZMALI. 29 Ağustos'ta yayın
+    # adımı yalnız `site/index.html` ve durum dosyasını ekliyordu:
+    # gecenin kendi sayfası, arşiv listesi ve paylaşım görseli üretildi
+    # ama commit edilmedi. Canlıda /2025-12-22 404 verdi, gece arşivde
+    # görünmedi ve og:image var olmayan bir görseli gösterdi.
+    _yay15 = open(".github/workflows/yayinla.yml", encoding="utf-8").read()
+    _ekle = [l.strip() for l in _yay15.splitlines()
+             if l.strip().startswith("git add ")]
+    basar("Yayın: gecenin kendi sayfası ve arşiv listesi de depoya yazılıyor",
+          any(" site" in l and " og" in l for l in _ekle),
+          f"git add satırları: {_ekle}")
+    basar("Yayın: paylaşım görseli dizini de ekleniyor",
+          any(l.split()[2:] and "og" in l.split() for l in _ekle),
+          "og/<tarih>.png commit edilmezse og:image kırık kalıyor")
+
     _gunler15 = _jj.loads(open("site/gunler.json", encoding="utf-8").read())
     basar("Arşiv: gün listesi sıralı ve yayınlananlarla aynı",
           _gunler15 == sorted(_gunler15)

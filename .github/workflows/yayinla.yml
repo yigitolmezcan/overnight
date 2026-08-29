@@ -61,7 +61,17 @@ jobs:
           # ulaşmıyordu. Otomatik olduğu commit MESAJINDAN belli oluyor.
           git config user.name  "yigitolmezcan"
           git config user.email "yigitolmezcan@gmail.com"
-          git add site/index.html config/yayin_durumu.json
+          # YAYININ ÜRETTİĞİ HER ŞEY GİDER. Eskiden sadece index.html ve
+          # durum dosyası ekleniyordu; oysa _siteyi_kur ayrıca gecenin
+          # KENDİ sayfasını (site/<tarih>.html), arşiv listesini
+          # (site/gunler.json) ve paylaşım görselini (og/<tarih>.png)
+          # üretiyor. Üçü de depoya hiç girmiyordu. Sonuç (22 Aralık,
+          # 29 Ağustos): /2025-12-22 adresi 404, gece arşivde yok, ve
+          # sayfanın og:image etiketi var olmayan bir görseli
+          # gösteriyordu — paylaşılan her link kırık önizleme veriyordu.
+          # Hiçbir denetim bunu yakalamadı çünkü hepsi index.html'e
+          # bakıyordu.
+          git add site og config/yayin_durumu.json
           if git diff --staged --quiet; then
             echo "Yayınlanacak yeni gece yoktu — site aynen kaldı."
           else
@@ -182,8 +192,14 @@ jobs:
 
       # Kullanıcı kuralı: "Başarısızsa bana e-posta gelsin." Issue kalıyor
       # (izlenebilirlik), üstüne mail ekleniyor — kimse Issues sekmesine
-      # bakmıyor. Bu adım işin sonucunu DEĞİŞTİRMİYOR: uyari.py mail
-      # atamasa bile 0 dönüyor.
+      # bakmıyor. UYARAMAMAK DA BİR ARIZADIR (kullanıcı kuralı):
+      # uyari.py gönderemezse 1 dönüyor ve bu adım KIRMIZI yanıyor.
+      # Eskiden ayar yoksa sessizce 0 dönüyordu; 28-29 Ağustos'ta
+      # yayın iki gün düştü, bu adım her seferinde yeşil göründü ve
+      # kimseye haber gitmedi. İş zaten failure() olduğu için burada
+      # kırmızı olmak işin sonucunu değiştirmiyor, sadece 'haber de
+      # veremedim'i kayda geçiriyor. Sonraki bildirim adımı da
+      # failure() olduğu için çalışmaya devam ediyor.
       - name: Arıza e-postası
         if: failure()
         env:

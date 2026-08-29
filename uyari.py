@@ -13,9 +13,16 @@ SINIRI: bu betik iş AKTIĞINDA çalışır. İş hiç koşmazsa buradan mail
 Kullanım:
     python3 uyari.py "konu" "gövde satırı" ["ikinci satır" ...]
 
-Ayar yoksa SESSİZCE ve BAŞARIYLA çıkar (0): uyarı gönderememek, işin
-kendisini başarısız saymak için sebep değil — asıl hata zaten
-raporlanıyor.
+GÖNDEREMEZSE BAŞARISIZ ÇIKAR (1). Eskiden tam tersiydi: ayar yoksa
+"mail atlanıyor" yazıp 0 dönüyordu ve adım YEŞİL görünüyordu. 28-29
+Ağustos'ta olan tam olarak buydu — yayın işi iki gün düştü, bu betik
+her seferinde çalıştı, anahtar tanımlı olmadığı için hiçbir şey
+göndermedi ve kimse haberdar olmadı. Kullanıcı kuralı: "uyaramadım da
+bir arızadır ve raporlanmalı."
+
+Bu betik zaten yalnız `if: failure()` altında çalışıyor; iş o noktada
+zaten kırmızı. Buradaki 1, işi kırmızıya çeviren şey değil — kayıtta
+"üstelik haber de veremedim" satırının görünmesini sağlayan şey.
 """
 import html as _html
 import json
@@ -36,9 +43,12 @@ def govde_html(satirlar):
 
 
 def gonder(konu, satirlar):
-    if not RESEND or not ADRES:
-        print("uyari: RESEND_API_KEY ya da UYARI_ADRESI yok — mail atlanıyor.")
-        return 0
+    eksik = [ad for ad, deger in (("RESEND_API_KEY", RESEND),
+                                  ("UYARI_ADRESI", ADRES)) if not deger]
+    if eksik:
+        print("uyari: UYARI GÖNDERİLEMEDİ — şu ayarlar tanımlı değil: "
+              + ", ".join(eksik))
+        return 1
     istek = urllib.request.Request(
         "https://api.resend.com/emails",
         data=json.dumps({
@@ -58,11 +68,11 @@ def gonder(konu, satirlar):
         print(f"uyari: mail gönderildi -> {ADRES}")
         return 0
     except urllib.error.HTTPError as e:
-        print(f"uyari: mail gönderilemedi ({e.code})")
-        return 0
+        print(f"uyari: UYARI GÖNDERİLEMEDİ (HTTP {e.code})")
+        return 1
     except Exception as e:
-        print(f"uyari: mail gönderilemedi ({e})")
-        return 0
+        print(f"uyari: UYARI GÖNDERİLEMEDİ ({e})")
+        return 1
 
 
 if __name__ == "__main__":
