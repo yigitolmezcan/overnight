@@ -156,6 +156,12 @@
       "is": "yayinla",
       "sonuc": "failure",
       "not": "run 14 · schedule"
+    },
+    {
+      "zaman": "2026-08-29T15:57:47Z",
+      "is": "uret",
+      "sonuc": "failure",
+      "not": "run 16 · workflow_dispatch"
     }
   ]
 }
