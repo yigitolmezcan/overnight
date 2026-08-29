@@ -120,6 +120,12 @@
       "is": "uret",
       "sonuc": "success",
       "not": "run 13 · schedule"
+    },
+    {
+      "zaman": "2026-08-29T10:13:16Z",
+      "is": "yayinla",
+      "sonuc": "success",
+      "not": "run 11 · workflow_dispatch"
     }
   ]
 }
