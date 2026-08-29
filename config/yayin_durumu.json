@@ -29,29 +29,22 @@
     "2025-12-15",
     "2025-12-18",
     "2025-12-20",
-    "2025-12-21"
+    "2025-12-21",
+    "2025-12-22"
   ],
-  "hazir": {
+  "hazir": null,
+  "son_yayin": {
     "tarih": "2025-12-22",
     "uretildi": "2026-08-28T17:55:48.779650Z",
     "mod": "hibrit",
     "maliyet_usd": 0.0801,
     "butce_asildi": false,
     "sablona_dusen_alan": 0,
-    "_not": "NBA GitHub koşucusundan erişilemiyor — yerelden önden üretildi"
-  },
-  "son_yayin": {
-    "tarih": "2025-12-21",
-    "uretildi": "2026-08-27T15:40:32.287510Z",
-    "mod": "hibrit",
-    "maliyet_usd": 0.4512,
-    "butce_asildi": false,
-    "sablona_dusen_alan": 2,
-    "_not": "NBA servisi erişilebilirken önden üretildi — yarın sabah tek şansa kalmasın",
-    "yayinlandi": "2026-08-27T17:16:01.065109Z"
+    "_not": "NBA GitHub koşucusundan erişilemiyor — yerelden önden üretildi",
+    "yayinlandi": "2026-08-29T10:12:43.968912Z"
   },
   "son_engel": null,
   "engellenen": [],
-  "sira_imleci": "2025-12-21",
+  "sira_imleci": "2025-12-22",
   "_sira_imleci_neden": "Kullanıcı kararı 2026-08-25: kronoloji sezon başından değil, ARALIK ORTASINDAN başlıyor. Sezon başı gecelerinde takımlar 10 maçı doldurmadığı için susma kuralı derece/sıralama/seri/sürpriz olgularının hepsini kapatıyor ve metinler haftalarca cılız kalıyor. Ekim-Kasım arşiv geceleri atlanıyor; sezon gerçekten Ekim'de başlayınca canlı veriye geçilecek, o geceler kullanılmayacak."
 }
