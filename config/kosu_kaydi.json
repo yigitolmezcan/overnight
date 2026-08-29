@@ -138,6 +138,12 @@
       "is": "uret",
       "sonuc": "failure",
       "not": "run 15 · schedule"
+    },
+    {
+      "zaman": "2026-08-29T12:12:44Z",
+      "is": "yayinla",
+      "sonuc": "failure",
+      "not": "run 12 · schedule"
     }
   ]
 }
