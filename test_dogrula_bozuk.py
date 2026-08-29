@@ -2643,8 +2643,13 @@ def main():
           len(_yuk) <= 5 and len(_dus) <= 5)
     basar("Form: her satırda tam 5 maç var",
           all(len(o["son5"]) == 5 for o in _yuk + _dus))
-    basar("Form: son çubuk BU GECE",
-          all(o["son5"][-1]["bu_gece"] and not any(x["bu_gece"] for x in o["son5"][:-1])
+    # KURAL DEĞİŞTİ (kullanıcı kararı): havuz tüm lig. O gece oynamamış
+    # oyuncu da listede kalabiliyor; onun dizisinde HİÇ ember kutu yok,
+    # son maç nötr kalıyor. Oynayanda ise ember TEK ve SONUNCU olmalı.
+    basar("Form: ember kutu varsa tek ve sonuncu",
+          all((not any(x["bu_gece"] for x in o["son5"]))
+              or (o["son5"][-1]["bu_gece"]
+                  and sum(1 for x in o["son5"] if x["bu_gece"]) == 1)
               for o in _yuk + _dus))
     # ÖLÇÜT sadece çok sayı atmak DEĞİL, sezon ortalamasını aşma miktarı.
     basar("Form: yükselenler sezon ortalamasının ÜSTÜNDE",
@@ -2661,12 +2666,21 @@ def main():
     basar("Form: fark gerçekten son5 - sezon",
           all(abs(o["fark"] - round(o["son5_ort"] - o["sezon_ort"], 1)) < 0.11
               for o in _yuk + _dus))
-    # O gece OYNAMAYAN oyuncu iki listede de yer almaz.
+    # ESKİ KURAL: "o gece oynamayan iki listede de yer almaz". KALDIRILDI.
+    # NBA'de her gece takımların üçte biri oynuyor; havuz o gece
+    # oynayanlarla sınırlıyken liste her sabah sıfırlanıyordu (ölçüldü,
+    # 21→22 Aralık: eski havuzla 0/5 ortak, yeni havuzla 4/5).
+    # Yerine gelen kural: oynamayan da kalabilir ama BAYATLAMAZ.
     _oynayanlar = {o["isim"] for k in _d5["mutlaka"] + (_d5.get("degerse_bak") or [])
                             + (_d5.get("diger") or [])
                    for t in ("ev", "dep") for o in k["box"][t]["oyuncular"]}
-    basar("Form: listedeki herkes o gece oynadı",
-          all(o["isim"] in _oynayanlar for o in _yuk + _dus))
+    basar("Form: havuz o gece oynayanlarla sınırlı değil",
+          any(o["isim"] not in _oynayanlar for o in _yuk + _dus),
+          "listedeki herkes o gece oynamış — havuz daralmış olabilir")
+    # Ember işareti yalnız gerçekten oynayanda.
+    basar("Form: ember yalnız o gece oynayanda",
+          all(any(x["bu_gece"] for x in o["son5"]) == (o["isim"] in _oynayanlar)
+              for o in _yuk + _dus))
 
     # Balon: mobilde hover YOK, dokunma zorunlu; aynı anda tek balon.
     basar("Form: balon görünürlüğü kap sınıfıyla (kardeş seçici değil)",
@@ -3407,9 +3421,14 @@ def main():
     basar("Form: üst/alt kararı ekranda yazan sezon ortalamasıyla tutarlı",
           all(x["ust"] == (x["sayi"] > o["sezon_ort"])
               for o in _formcular for x in o["son5"]))
-    basar("Form: her satırda tam 5 maç, sonuncusu bu gece",
-          all(len(o["son5"]) == 5 and o["son5"][-1]["bu_gece"]
-              and sum(1 for x in o["son5"] if x["bu_gece"]) == 1
+    # "Sonuncusu bu gece" artık yalnız O GECE OYNAYANLAR için geçerli
+    # (bkz. havuz kuralı). Herkes için değişmeyen kural: tam 5 maç ve
+    # en fazla bir ember kutu.
+    basar("Form: her satırda tam 5 maç, en fazla bir ember",
+          all(len(o["son5"]) == 5
+              and sum(1 for x in o["son5"] if x["bu_gece"]) <= 1
+              and (not any(x["bu_gece"] for x in o["son5"])
+                   or o["son5"][-1]["bu_gece"])
               for o in _formcular))
     # Balonda rakip KOD değil okunur ad.
     basar("Form: balondaki rakip okunur ad (üç harfli kod değil)",
@@ -4631,6 +4650,115 @@ def main():
     # Kart kapalıyken altı kartı yeniden ölçmenin anlamı yok.
     basar("Kademe: kapalı kartta yeniden ölçüm yok",
           "if(sheet.classList.contains('on')) satirAraliginiAyarla();" in _s20)
+
+    # ==================================================================
+    # FORMDA HAVUZU TÜM LİG / DÜZ SONUÇ İSKELET ÇEŞİTLİLİĞİ
+    # ==================================================================
+    # 1) HAVUZ. Eskiden yalnız o gece OYNAYAN oyunculardan seçiliyordu;
+    #    NBA'de her gece takımların üçte biri oynadığı için liste iki
+    #    günde bir sıfırlanıyordu. Ölçüldü (21→22 Aralık): eski havuzla
+    #    yükselen 0/5, düşen 0/4 ortak; yeni havuzla 4/5 ve 4/5.
+    basar("Formda: bayatlık sınırı tanımlı",
+          _derle.FORM_BAYATLIK_GUN == 5)
+    _ham16 = _jj.loads(open(_ham_yolu(_yayinda2)).read())
+    _gecmis16 = _derle._oyuncu_gecmisi(_ham16)
+    basar("Formda: lig günlüğü havuzu bu geceki kadrolardan çok daha geniş",
+          len(_gecmis16) > 300,
+          f"günlükte {len(_gecmis16)} oyuncu var")
+    _gece16 = []
+    for _b in ("mutlaka", "degerse_bak", "diger"):
+        for _k in (_d6.get(_b) or []):
+            for _taraf in ("ev", "dep"):
+                for _o in _k["box"][_taraf]["oyuncular"]:
+                    if "id" not in _o:
+                        continue
+                    _gece16.append({
+                        "id": _o["id"], "isim": _o["isim"], "takim": _o["takim"],
+                        "pos": "", "sayi": _o.get("pts", 0),
+                        "dakika": float(str(_o.get("min") or 0).split(":")[0] or 0),
+                        "rakip": _k["box"]["dep" if _taraf == "ev" else "ev"]["kod"],
+                        "_gmsc": _o.get("pts", 0)})
+    _yuk16, _dus16 = _derle._formda_listeler(_ham16, None, _gece16)
+    _gece_idler = {o["id"] for o in _gece16}
+    basar("Formda: listeler doluyor",
+          bool(_yuk16) and bool(_dus16))
+    # ASIL KURAL: o gece oynamamış oyuncu da listede kalabilmeli.
+    basar("Formda: havuz o gece oynayanlarla SINIRLI değil",
+          any(a["id"] not in _gece_idler for a in _yuk16 + _dus16),
+          "listedeki herkes o gece oynamış — havuz hâlâ daralıyor")
+    # Ama bayatlamamalı.
+    _ref = max((x["tarih"] for _l in _gecmis16.values() for x in _l), default=None)
+    if _ref:
+        _refg = _derle._gun(_ref)
+        _bayat = []
+        for a in _yuk16 + _dus16:
+            if a["id"] in _gece_idler:
+                continue
+            _sg = _derle._gun(_gecmis16[a["id"]][-1]["tarih"])
+            if _sg and (_refg - _sg).days > _derle.FORM_BAYATLIK_GUN:
+                _bayat.append(a["isim"])
+        basar("Formda: bayat oyuncu listede kalmıyor",
+              not _bayat, f"bayat: {_bayat}")
+    # EMBER İŞARETİ: yalnız o gece oynayanın dizisinde bu geceki maç var.
+    basar("Formda: oynamayanın dizisinde ember kutu yok",
+          all(not any(x["bu_gece"] for x in a["son5"])
+              for a in _yuk16 + _dus16 if a["id"] not in _gece_idler))
+    basar("Formda: oynayanın dizisinde bu geceki maç ember",
+          all(any(x["bu_gece"] for x in a["son5"])
+              for a in _yuk16 + _dus16 if a["id"] in _gece_idler))
+    basar("Formda: her satırda tam 5 maç",
+          all(len(a["son5"]) == _derle.FORM_MAC_SAYISI for a in _yuk16 + _dus16))
+    basar("Formda: oynamayanın adı ve takımı günlükten okunuyor",
+          all(a["isim"] and a["takim"] for a in _yuk16 + _dus16),
+          "adsız ya da takımsız satır var")
+
+    # 2) DÜZ SONUÇ İSKELETLERİ. Tekrar yasağı KANCA TÜRÜNE bakıyordu;
+    #    düz sonuçların hepsi tek tür olduğu için yasağın dışında kalıp
+    #    art arda diziliyorlardı (22 Aralık: yedi satırın beşi aynı).
+    basar("Düz sonuç: birden fazla iskelet var",
+          _yaz.cumle.DUZ_ISKELET_SAYISI >= 3)
+    _sayac16 = {}
+    _mac16 = {"kazanan_adi": "Denver Nuggets", "kaybeden_adi": "Utah Jazz",
+              "kazanan_kod": "DEN", "kaybeden_kod": "UTA",
+              "ev_dep": "evinde", "buyuk": 135, "kucuk": 112, "fark": 23}
+    _uretilen = []
+    for _ in range(6):
+        _m, _no = _yaz.cumle.brief_duz_sonuc_secim(_mac16, _sayac16)
+        _sayac16[_no] = _sayac16.get(_no, 0) + 1
+        _uretilen.append((_m, _no))
+    basar("Düz sonuç: aynı iskelet en fazla iki kez",
+          all(v <= 2 for v in _sayac16.values()),
+          f"sayaç: {_sayac16}")
+    basar("Düz sonuç: üçüncüden itibaren iskelet değişiyor",
+          _uretilen[0][1] == _uretilen[1][1] and _uretilen[2][1] != _uretilen[0][1])
+    # Kural "her iskelet en fazla iki kez" olduğu için ilk dört cümle
+    # İKİ iskelet kullanır (2+2). Gerçek gecede metinler yine de farklı
+    # olur (takım adları değişir); burada aynı maç tekrarlandığı için
+    # ölçüt İSKELET çeşitliliği.
+    basar("Düz sonuç: altı cümlede en az üç farklı iskelet",
+          len({no for _, no in _uretilen}) >= 3,
+          f"kullanılan iskeletler: {[no for _, no in _uretilen]}")
+    basar("Düz sonuç: hepsi doğrulamadan geçmiş",
+          all(m for m, _ in _uretilen))
+    # T22: 20'nin altındaki fark rakamla anılmaz — o iskelet hiç kurulmaz.
+    _kucuk16 = dict(_mac16, fark=7, buyuk=139, kucuk=132)
+    basar("Düz sonuç: küçük farkta rakamlı iskelet kurulmuyor",
+          _yaz.cumle._duz_iskelet(_kucuk16, 3) is None)
+    basar("Düz sonuç: küçük farkta skorlu iskelet de kurulmuyor",
+          _yaz.cumle._duz_iskelet(_kucuk16, 4) is None)
+    # Özne değişimi gerçekten oluyor mu.
+    basar("Düz sonuç: bir iskelette özne KAYBEDEN takım",
+          (_yaz.cumle._duz_iskelet(_mac16, 2) or "").startswith("Utah Jazz,"))
+    basar("Düz sonuç: yönelme eki ünlü uyumuna uyuyor",
+          _yaz.cumle.yonelme_eki("Utah") == "a"
+          and _yaz.cumle.yonelme_eki("Miami") == "ye"
+          and _yaz.cumle.yonelme_eki("Nuggets") == "e")
+    # ŞABLON — LLM çağrısı yok.
+    _csrc = open("cumle.py", encoding="utf-8").read()
+    _duz_blok = _csrc[_csrc.index("def _duz_iskelet("):_csrc.index("def brief_duz_sonuc_secim(")]
+    basar("Düz sonuç: iskeletler şablon, LLM çağrısı yok",
+          "anthropic" not in _duz_blok.lower() and "llm" not in _duz_blok.lower()
+          and "client" not in _duz_blok.lower())
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",

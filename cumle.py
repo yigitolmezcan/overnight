@@ -43,6 +43,7 @@ from dogrula import (
     t23_mimari_kural_ihlalleri,
     kelime_say,
     ASGARI_KELIME,
+    BRIEF_SKOR_FARK_ESIGI,
     OZET_CUMLE,
     OZET_KELIME_ALT,
 )
@@ -114,6 +115,17 @@ def lik_eki(ad):
     _, unlu = _son_unlu(ad)
     return {"a": "lık", "ı": "lık", "e": "lik", "i": "lik",
             "o": "luk", "u": "luk", "ö": "lük", "ü": "lük"}.get(unlu, "lik")
+
+
+def yonelme_eki(ad):
+    """-a/-e, sesliyle bitende 'y' tamponu ("Denver'a", "Miami'ye").
+
+    Düz sonuç cümlesinin "kaybeden özne" iskeleti için gerekti:
+    "Utah, Denver'a evinde kaybetti"."""
+    kucuk, unlu = _son_unlu(ad)
+    ek = "a" if unlu in ("a", "ı", "o", "u") else "e"
+    tampon = "y" if kucuk and kucuk[-1] in _SESLI else ""
+    return f"{tampon}{ek}"
 
 
 def iyelik_eki(ad):
@@ -687,8 +699,81 @@ def brief_duz_sonuc(mac):
     eklemiyor. Cümlenin kattığı şey skor değil, KİMİN kazandığı:
     şeritte "ATL 150 - CHI 152" yazıyor, kazananı okuyucu iki sayıyı
     karşılaştırarak buluyordu."""
-    return _gecir(f"{mac['kazanan_adi']}, {mac['kaybeden_adi']}'"
-                  f"{belirtme_eki(mac['kaybeden_adi'])} yendi.")
+    return _gecir(_duz_iskelet(mac, 0) or "")
+
+
+# DÜZ SONUÇ İSKELETLERİ. Tek kalıp vardı ve tekrar yasağı KANCA TÜRÜNE
+# bakıyordu; düz sonuç cümleleri o yasağın dışında kaldığı için art arda
+# diziliyorlardı. 22 Aralık gecesinde yedi satırın beşi aynı iskeletteydi
+# ("X, Y'i yendi."). Kullanıcı kuralı: aynı gecede aynı iskelet en fazla
+# İKİ kez; üçüncüden itibaren başka bir iskelet.
+#
+# Hepsi ŞABLON — LLM çağrısı yok, ek maliyet yok. Hepsi yalnız skor
+# olgusundan türüyor: kazanan/kaybeden, ev-deplasman ve fark. Uydurma
+# yok; "farkı korudu" gibi maçın akışına dair bir iddia BİLEREK yok,
+# onu final skorundan doğrulayamayız.
+DUZ_ISKELET_SAYISI = 5
+
+
+def dogrula_fark_esigi():
+    """T22'nin eşiği — tek kaynak. Kural değişirse cümle kurucu da uyar."""
+    from dogrula import FARK_RAKAMI_ESIGI
+    return FARK_RAKAMI_ESIGI
+
+
+def _duz_iskelet(mac, no):
+    """no numaralı düz sonuç iskeleti — uygun değilse None."""
+    k, y = mac["kazanan_adi"], mac["kaybeden_adi"]
+    ek = belirtme_eki(y)
+    evde = mac.get("ev_dep") == "evinde"          # KAZANAN evinde mi
+    fark = mac.get("fark") or 0
+    if no == 0:
+        return f"{k}, {y}'{ek} yendi."
+    if no == 1:
+        return (f"{k}, {y}'{ek} evinde yendi." if evde
+                else f"{k}, {y} deplasmanında kazandı.")
+    if no == 2:
+        # Özne DEĞİŞİYOR: cümle kaybedenden kuruluyor.
+        yk = yonelme_eki(k)
+        return (f"{y}, deplasmanda {k}'{yk} kaybetti." if evde
+                else f"{y}, evinde {k}'{yk} kaybetti.")
+    if no == 3:
+        # T22: 20'nin altındaki fark rakamla anılmıyor (skor zaten
+        # kartta yazılı). Eşiğin altında bu iskeleti hiç kurmuyoruz —
+        # kurup doğrulamada elemek aynı sonucu daha dolambaçlı verirdi.
+        if not fark or fark < dogrula_fark_esigi():
+            return None
+        return f"{k}, {y} karşısında {fark} sayı{lik_eki('sayı')} farkla kazandı."
+    if no == 4:
+        # SKOR yalnız fark haber değeri eşiğini geçtiğinde (T19). Altında
+        # kalırsa cümle doğrulamada elenir ve maç susardı.
+        if fark < BRIEF_SKOR_FARK_ESIGI:
+            return None
+        b, kc = mac.get("buyuk"), mac.get("kucuk")
+        if not b or not kc:
+            return None
+        return (f"{k}, evinde {y}'{ek} {b}-{kc} yendi." if evde
+                else f"{k}, {y} deplasmanında {b}-{kc} kazandı.")
+    return None
+
+
+def brief_duz_sonuc_secim(mac, sayac, ust_sinir=2):
+    """(metin, iskelet_no) — gecede az kullanılmış iskeleti seçer.
+
+    `sayac`: {iskelet_no: kaç kez kullanıldı} — çağıran gece boyunca
+    taşıyor. Bir iskelet `ust_sinir` kez kullanıldıysa atlanıyor.
+    Hepsi dolarsa temel iskelete dönülüyor: tekrar, sessizlikten iyidir.
+    """
+    for no in range(DUZ_ISKELET_SAYISI):
+        if sayac.get(no, 0) >= ust_sinir:
+            continue
+        metin = _duz_iskelet(mac, no)
+        if not metin:
+            continue
+        gecen = _gecir(metin)
+        if gecen:
+            return gecen, no
+    return _gecir(_duz_iskelet(mac, 0) or ""), 0
 
 
 def _brief_adaylari(mac, olgu, en_iyi_oyuncu, en_iyi_ad):

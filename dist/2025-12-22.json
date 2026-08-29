@@ -48,7 +48,7 @@
   ],
   "brief": [
     {
-      "metin": "Cleveland Cavaliers, Charlotte Hornets'i yendi.",
+      "metin": "Cleveland Cavaliers, Charlotte Hornets'i evinde yendi.",
       "anlatili": true,
       "hedef_id": "a-0022500402",
       "icon": "default",
@@ -814,17 +814,14 @@
               "sayi": 4,
               "fg": "1/1",
               "kazanan": true
-            },
-            {
-              "isim": "Andrew Nembhard",
-              "takim": "IND",
-              "sayi": 3,
-              "fg": "1/1",
-              "kazanan": false
             }
           ]
         }
-      }
+      },
+      "kazanan_kod": "BOS",
+      "ray_renk": "#12A05C",
+      "ray_asil": "#12A05C",
+      "ray_degisti": false
     }
   ],
   "gecenin_besi": [
@@ -9561,6 +9558,153 @@
   },
   "yukselen": [
     {
+      "id": 1642267,
+      "isim": "Bub Carrington",
+      "takim": "WAS",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 27,
+          "rakip": "Cleveland",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 11,
+          "rakip": "Indiana",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 15,
+          "rakip": "San Antonio",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 14,
+          "rakip": "Memphis",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 21,
+          "rakip": "San Antonio",
+          "bu_gece": false,
+          "ust": true
+        }
+      ],
+      "son5_ort": 17.6,
+      "sezon_ort": 8.4,
+      "fark": 9.2,
+      "yuzde": 109.5,
+      "ust_sayisi": 5,
+      "alt_sayisi": 0,
+      "son5_dakika": 37.1,
+      "renk": "#C8102E",
+      "asil_renk": "#3B7FD4",
+      "renk_degisti": true
+    },
+    {
+      "id": 1642875,
+      "isim": "Maxime Raynaud",
+      "takim": "SAC",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 15,
+          "rakip": "Denver",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 8,
+          "rakip": "Minnesota",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 29,
+          "rakip": "Portland",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 17,
+          "rakip": "Portland",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 12,
+          "rakip": "Houston",
+          "bu_gece": false,
+          "ust": true
+        }
+      ],
+      "son5_ort": 16.2,
+      "sezon_ort": 9.4,
+      "fark": 6.8,
+      "yuzde": 72.3,
+      "ust_sayisi": 4,
+      "alt_sayisi": 1,
+      "son5_dakika": 33.5,
+      "renk": "#8A5FC7",
+      "asil_renk": "#8A5FC7",
+      "renk_degisti": false
+    },
+    {
+      "id": 1630538,
+      "isim": "Bones Hyland",
+      "takim": "MIN",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 3,
+          "rakip": "Golden State",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 18,
+          "rakip": "Sacramento",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 12,
+          "rakip": "Memphis",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 13,
+          "rakip": "Oklahoma City",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 9,
+          "rakip": "Milwaukee",
+          "bu_gece": false,
+          "ust": true
+        }
+      ],
+      "son5_ort": 11.0,
+      "sezon_ort": 6.4,
+      "fark": 4.6,
+      "yuzde": 71.9,
+      "ust_sayisi": 4,
+      "alt_sayisi": 1,
+      "son5_dakika": 21.7,
+      "renk": "#78BE20",
+      "asil_renk": "#3B7FD4",
+      "renk_degisti": true
+    },
+    {
       "id": 1642285,
       "isim": "Cam Spencer",
       "takim": "MEM",
@@ -9605,208 +9749,208 @@
       "ust_sayisi": 5,
       "alt_sayisi": 0,
       "son5_dakika": 31.8,
-      "renk": "#12173F",
+      "renk": "#6C8CC7",
       "asil_renk": "#6C8CC7",
-      "renk_degisti": true
-    },
-    {
-      "id": 1629636,
-      "isim": "Darius Garland",
-      "takim": "CLE",
-      "pos": "G",
-      "_gmsc": 26.5,
-      "son5": [
-        {
-          "sayi": 18,
-          "rakip": "Washington",
-          "bu_gece": false,
-          "ust": true
-        },
-        {
-          "sayi": 26,
-          "rakip": "Charlotte",
-          "bu_gece": false,
-          "ust": true
-        },
-        {
-          "sayi": 15,
-          "rakip": "Chicago",
-          "bu_gece": false,
-          "ust": false
-        },
-        {
-          "sayi": 35,
-          "rakip": "Chicago",
-          "bu_gece": false,
-          "ust": true
-        },
-        {
-          "sayi": 27,
-          "rakip": "Charlotte",
-          "bu_gece": true,
-          "ust": true
-        }
-      ],
-      "son5_ort": 24.2,
-      "sezon_ort": 16.9,
-      "fark": 7.3,
-      "yuzde": 43.2,
-      "ust_sayisi": 4,
-      "alt_sayisi": 1,
-      "son5_dakika": 33.7,
-      "renk": "#B3123F",
-      "asil_renk": "#B3123F",
       "renk_degisti": false
     },
     {
-      "id": 1642843,
-      "isim": "Cooper Flagg",
-      "takim": "DAL",
-      "pos": "F",
-      "_gmsc": 14.0,
+      "id": 1627739,
+      "isim": "Kris Dunn",
+      "takim": "LAC",
+      "pos": "",
+      "_gmsc": 0,
       "son5": [
         {
-          "sayi": 22,
-          "rakip": "Brooklyn",
+          "sayi": 8,
+          "rakip": "Minnesota",
           "bu_gece": false,
           "ust": true
         },
         {
-          "sayi": 42,
-          "rakip": "Utah",
+          "sayi": 9,
+          "rakip": "Houston",
           "bu_gece": false,
           "ust": true
         },
         {
-          "sayi": 23,
-          "rakip": "Detroit",
-          "bu_gece": false,
-          "ust": true
-        },
-        {
-          "sayi": 24,
-          "rakip": "Philadelphia",
-          "bu_gece": false,
-          "ust": true
-        },
-        {
-          "sayi": 16,
-          "rakip": "New Orleans",
-          "bu_gece": true,
-          "ust": false
-        }
-      ],
-      "son5_ort": 25.4,
-      "sezon_ort": 17.8,
-      "fark": 7.6,
-      "yuzde": 42.7,
-      "ust_sayisi": 4,
-      "alt_sayisi": 1,
-      "son5_dakika": 37.5,
-      "renk": "#2E7BC4",
-      "asil_renk": "#2E7BC4",
-      "renk_degisti": false
-    },
-    {
-      "id": 1642851,
-      "isim": "Kon Knueppel",
-      "takim": "CHA",
-      "pos": "F",
-      "_gmsc": 12.599999999999998,
-      "son5": [
-        {
-          "sayi": 33,
-          "rakip": "Chicago",
-          "bu_gece": false,
-          "ust": true
-        },
-        {
-          "sayi": 29,
-          "rakip": "Cleveland",
-          "bu_gece": false,
-          "ust": true
-        },
-        {
-          "sayi": 28,
-          "rakip": "Atlanta",
-          "bu_gece": false,
-          "ust": true
-        },
-        {
-          "sayi": 19,
-          "rakip": "Detroit",
-          "bu_gece": false,
-          "ust": true
-        },
-        {
-          "sayi": 20,
-          "rakip": "Cleveland",
-          "bu_gece": true,
-          "ust": true
-        }
-      ],
-      "son5_ort": 25.8,
-      "sezon_ort": 18.2,
-      "fark": 7.6,
-      "yuzde": 41.8,
-      "ust_sayisi": 5,
-      "alt_sayisi": 0,
-      "son5_dakika": 36.0,
-      "renk": "#4B36A8",
-      "asil_renk": "#4B36A8",
-      "renk_degisti": false
-    },
-    {
-      "id": 1641718,
-      "isim": "Keyonte George",
-      "takim": "UTA",
-      "pos": "G",
-      "_gmsc": 16.5,
-      "son5": [
-        {
-          "sayi": 39,
+          "sayi": 17,
           "rakip": "Memphis",
           "bu_gece": false,
           "ust": true
         },
         {
-          "sayi": 37,
-          "rakip": "Dallas",
+          "sayi": 14,
+          "rakip": "Oklahoma City",
           "bu_gece": false,
           "ust": true
         },
         {
-          "sayi": 34,
+          "sayi": 8,
           "rakip": "Los Angeles",
           "bu_gece": false,
           "ust": true
+        }
+      ],
+      "son5_ort": 11.2,
+      "sezon_ort": 7.7,
+      "fark": 3.5,
+      "yuzde": 45.5,
+      "ust_sayisi": 5,
+      "alt_sayisi": 0,
+      "son5_dakika": 30.4,
+      "renk": "#1D428A",
+      "asil_renk": "#D2434A",
+      "renk_degisti": true
+    }
+  ],
+  "dusen": [
+    {
+      "id": 1630577,
+      "isim": "Julian Champagnie",
+      "takim": "SAS",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 3,
+          "rakip": "Oklahoma City",
+          "bu_gece": false,
+          "ust": false
         },
         {
-          "sayi": 27,
-          "rakip": "Orlando",
+          "sayi": 3,
+          "rakip": "New York",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 12,
+          "rakip": "Washington",
           "bu_gece": false,
           "ust": true
         },
         {
-          "sayi": 20,
-          "rakip": "Denver",
-          "bu_gece": true,
+          "sayi": 6,
+          "rakip": "Atlanta",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 3,
+          "rakip": "Washington",
+          "bu_gece": false,
           "ust": false
         }
       ],
-      "son5_ort": 31.4,
-      "sezon_ort": 22.7,
-      "fark": 8.7,
-      "yuzde": 38.3,
-      "ust_sayisi": 4,
-      "alt_sayisi": 1,
-      "son5_dakika": 37.8,
-      "renk": "#3E7A5E",
-      "asil_renk": "#3E7A5E",
+      "son5_ort": 5.4,
+      "sezon_ort": 10.8,
+      "fark": -5.4,
+      "yuzde": -50.0,
+      "ust_sayisi": 1,
+      "alt_sayisi": 4,
+      "son5_dakika": 22.8,
+      "renk": "#C4CED4",
+      "asil_renk": "#C4CED4",
       "renk_degisti": false
-    }
-  ],
-  "dusen": [
+    },
+    {
+      "id": 1629656,
+      "isim": "Quentin Grimes",
+      "takim": "PHI",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 7,
+          "rakip": "Los Angeles",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 10,
+          "rakip": "Indiana",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 14,
+          "rakip": "Atlanta",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 5,
+          "rakip": "New York",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 6,
+          "rakip": "Dallas",
+          "bu_gece": false,
+          "ust": false
+        }
+      ],
+      "son5_ort": 8.4,
+      "sezon_ort": 15.6,
+      "fark": -7.2,
+      "yuzde": -46.2,
+      "ust_sayisi": 0,
+      "alt_sayisi": 5,
+      "son5_dakika": 29.9,
+      "renk": "#3A8DDE",
+      "asil_renk": "#3A8DDE",
+      "renk_degisti": false
+    },
+    {
+      "id": 1630228,
+      "isim": "Jonathan Kuminga",
+      "takim": "GSW",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 10,
+          "rakip": "New Orleans",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 8,
+          "rakip": "Oklahoma City",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 9,
+          "rakip": "Philadelphia",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 4,
+          "rakip": "Cleveland",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 2,
+          "rakip": "Phoenix",
+          "bu_gece": false,
+          "ust": false
+        }
+      ],
+      "son5_ort": 6.6,
+      "sezon_ort": 10.9,
+      "fark": -4.3,
+      "yuzde": -39.4,
+      "ust_sayisi": 0,
+      "alt_sayisi": 5,
+      "son5_dakika": 17.1,
+      "renk": "#1B3A6B",
+      "asil_renk": "#2E6BD6",
+      "renk_degisti": true
+    },
     {
       "id": 1631097,
       "isim": "Bennedict Mathurin",
@@ -9857,52 +10001,52 @@
       "renk_degisti": false
     },
     {
-      "id": 202699,
-      "isim": "Tobias Harris",
-      "takim": "DET",
-      "pos": "F",
-      "_gmsc": 9.1,
+      "id": 1629640,
+      "isim": "Keldon Johnson",
+      "takim": "SAS",
+      "pos": "",
+      "_gmsc": 0,
       "son5": [
         {
+          "sayi": 3,
+          "rakip": "Oklahoma City",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 3,
+          "rakip": "New York",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
           "sayi": 9,
-          "rakip": "Atlanta",
+          "rakip": "Washington",
           "bu_gece": false,
           "ust": false
         },
         {
           "sayi": 13,
-          "rakip": "Boston",
-          "bu_gece": false,
-          "ust": false
-        },
-        {
-          "sayi": 0,
-          "rakip": "Dallas",
-          "bu_gece": false,
-          "ust": false
-        },
-        {
-          "sayi": 16,
-          "rakip": "Charlotte",
+          "rakip": "Atlanta",
           "bu_gece": false,
           "ust": true
         },
         {
           "sayi": 12,
-          "rakip": "Portland",
-          "bu_gece": true,
+          "rakip": "Washington",
+          "bu_gece": false,
           "ust": false
         }
       ],
-      "son5_ort": 10.0,
-      "sezon_ort": 13.6,
-      "fark": -3.6,
-      "yuzde": -26.5,
+      "son5_ort": 8.0,
+      "sezon_ort": 12.6,
+      "fark": -4.6,
+      "yuzde": -36.5,
       "ust_sayisi": 1,
       "alt_sayisi": 4,
-      "son5_dakika": 26.3,
-      "renk": "#E0384A",
-      "asil_renk": "#E0384A",
+      "son5_dakika": 18.1,
+      "renk": "#C4CED4",
+      "asil_renk": "#C4CED4",
       "renk_degisti": false
     }
   ],
@@ -9915,16 +10059,56 @@
       "degisim": 2,
       "konferans": "Batı",
       "form": [
-        false,
-        false,
-        false,
-        false,
-        false,
-        true,
-        true,
-        true,
-        true,
-        true
+        {
+          "g": false,
+          "rakip": "Los Angeles",
+          "skor": "121-133"
+        },
+        {
+          "g": false,
+          "rakip": "Minnesota",
+          "skor": "142-149"
+        },
+        {
+          "g": false,
+          "rakip": "Minnesota",
+          "skor": "116-125"
+        },
+        {
+          "g": false,
+          "rakip": "Brooklyn",
+          "skor": "101-119"
+        },
+        {
+          "g": false,
+          "rakip": "San Antonio",
+          "skor": "132-135"
+        },
+        {
+          "g": true,
+          "rakip": "Portland",
+          "skor": "143-120"
+        },
+        {
+          "g": true,
+          "rakip": "Chicago",
+          "skor": "114-104"
+        },
+        {
+          "g": true,
+          "rakip": "Houston",
+          "skor": "133-128"
+        },
+        {
+          "g": true,
+          "rakip": "Indiana",
+          "skor": "128-109"
+        },
+        {
+          "g": true,
+          "rakip": "Dallas",
+          "skor": "119-113"
+        }
       ]
     },
     {
@@ -9935,16 +10119,56 @@
       "degisim": -1,
       "konferans": "Doğu",
       "form": [
-        true,
-        true,
-        false,
-        true,
-        false,
-        true,
-        false,
-        false,
-        true,
-        false
+        {
+          "g": true,
+          "rakip": "Detroit",
+          "skor": "112-109"
+        },
+        {
+          "g": true,
+          "rakip": "Chicago",
+          "skor": "125-120"
+        },
+        {
+          "g": false,
+          "rakip": "San Antonio",
+          "skor": "112-114"
+        },
+        {
+          "g": true,
+          "rakip": "Miami",
+          "skor": "106-105"
+        },
+        {
+          "g": false,
+          "rakip": "New York",
+          "skor": "100-106"
+        },
+        {
+          "g": true,
+          "rakip": "Miami",
+          "skor": "117-108"
+        },
+        {
+          "g": false,
+          "rakip": "New York",
+          "skor": "120-132"
+        },
+        {
+          "g": false,
+          "rakip": "Denver",
+          "skor": "115-126"
+        },
+        {
+          "g": true,
+          "rakip": "Utah",
+          "skor": "128-127"
+        },
+        {
+          "g": false,
+          "rakip": "Golden State",
+          "skor": "97-120"
+        }
       ]
     }
   ],

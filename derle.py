@@ -1236,6 +1236,18 @@ YUKSELEN_ASGARI_SON5_SAYI = 10.0
 # düşse yine 4.2 fark eder ve o %42, gerçek çöküş. Mutlak fark çok sayı
 # atanları haksız yere Düşen'e sokuyor, az atanların gerçek düşüşünü
 # kaçırıyordu.
+# HAVUZ TÜM LİG. Eskiden yalnız o gece OYNAYAN oyuncular arasından
+# seçiliyordu; NBA'de her gece takımların üçte biri oynadığı için havuz
+# her sabah bambaşka oluyor ve liste iki günde bir sıfırlanıyordu.
+# Avdija dün listedeydi, ertesi gün oynamadığı için düşüyordu — formu
+# değişmediği halde. "Kim yanıyor" sorusunun cevabı takip edilebilir
+# olmalı (kullanıcı kuralı).
+# Bayatlık ölçütü buna karşılık: son maçı bu kadar günden eskiyse
+# oyuncu listeden düşer. Ölçü noktası GÜNLÜĞÜN EN SON GÜNÜ — gecenin
+# TSİ etiketi ABD maç tarihinden bir gün ileride, ondan sayarsak
+# pencere sessizce 4 güne inerdi.
+FORM_BAYATLIK_GUN = 5
+
 FORM_YUZDE_ESIGI = 25.0
 
 # TUTARLILIK ŞARTI: son 5 maçın en az DÖRDÜ aynı yönde olmalı.
@@ -1296,24 +1308,85 @@ def _rakip_kisalt(matchup):
     return ""
 
 
+def _gun(metin):
+    """'2025-12-19' -> date. Bozuk/eksik değerde None."""
+    import datetime as _datetime
+    try:
+        return _datetime.date.fromisoformat(str(metin)[:10])
+    except Exception:
+        return None
+
+
+_KUNYE_ONBELLEK = {}
+
+
+def _gunluk_kunye(ham, pid):
+    """{isim, takim} — lig günlüğünden, o gece OYNAMAMIŞ oyuncular için.
+
+    Kutu skorda olmayan oyuncunun adını başka yerden okuyamıyoruz;
+    günlükte PLAYER_NAME ve TEAM_ABBREVIATION zaten var. Oyuncunun EN
+    SON satırı kullanılıyor — sezon içinde takım değiştirmişse güncel
+    takımı görünsün."""
+    anahtar = id(ham)
+    tablo = _KUNYE_ONBELLEK.get(anahtar)
+    if tablo is None:
+        tablo = {}
+        try:
+            rs = ham["oyuncu_ortalama"]["resultSets"][0]
+            h = {ad: i for i, ad in enumerate(rs["headers"])}
+            for satir in rs["rowSet"]:
+                tablo[satir[h["PLAYER_ID"]]] = {
+                    "isim": satir[h["PLAYER_NAME"]] or "",
+                    "takim": satir[h["TEAM_ABBREVIATION"]] or "",
+                    "tarih": str(satir[h["GAME_DATE"]])[:10],
+                }
+        except Exception:
+            tablo = {}
+        _KUNYE_ONBELLEK.clear()
+        _KUNYE_ONBELLEK[anahtar] = tablo
+    return tablo.get(pid, {"isim": "", "takim": ""})
+
+
 def _formda_listeler(ham, bt_by_gid, gecenin_oyunculari):
     """(yukselen, dusen) — her biri en fazla FORM_LISTE_UZUNLUGU satır.
 
-    `gecenin_oyunculari`: bu gece OYNAYAN oyuncular
-      [{"id","isim","takim","pos","sayi","dakika","_gmsc","rakip"}]
-    O gece oynamayan oyuncu iki listede de yer almıyor (kullanıcı kuralı)."""
+    HAVUZ TÜM LİG (kullanıcı kararı). `gecenin_oyunculari` yalnız bu
+    gece oynayanları verir; o gece oynamamış bir oyuncu da listede
+    kalabilir. Ölçüt takvim günü değil, oyuncunun KENDİ son 5 maçı.
+    Bayatlık FORM_BAYATLIK_GUN ile sınırlı.
+
+    `gecenin_oyunculari`: [{"id","isim","takim","pos","sayi","dakika",
+    "_gmsc","rakip"}] — bu geceki satır buradan geliyor ve dizide EMBER
+    işaretleniyor (`bu_gece`). Oynamamış oyuncunun dizisinde hiçbir kutu
+    ember olmuyor, son maç nötr renkte kalıyor."""
     gecmis = _oyuncu_gecmisi(ham)
+    bu_gece_by_id = {o["id"]: o for o in gecenin_oyunculari}
+    # Ölçü noktası: günlükteki EN SON maç günü. Gecenin TSİ etiketinden
+    # saymak herkese bir gün ekliyordu (bkz. FORM_BAYATLIK_GUN notu).
+    tum_tarihler = [x["tarih"] for lst in gecmis.values() for x in lst]
+    referans = _gun(max(tum_tarihler)) if tum_tarihler else None
     adaylar = []
-    for o in gecenin_oyunculari:
-        onceki = gecmis.get(o["id"], [])
+    for pid, onceki in gecmis.items():
         if not onceki:
             continue                      # sezon ortalaması yoksa kıyas yok
+        o = bu_gece_by_id.get(pid)
         sezon_ort = sum(x["sayi"] for x in onceki) / len(onceki)
-        # Son 5 = bu gece + logdan son 4.
-        son5 = onceki[-(FORM_MAC_SAYISI - 1):] + [{
-            "tarih": "bu gece", "sayi": o["sayi"],
-            "dakika": o["dakika"], "rakip": o["rakip"],
-        }]
+        if o:
+            # Son 5 = bu gece + logdan son 4.
+            son5 = onceki[-(FORM_MAC_SAYISI - 1):] + [{
+                "tarih": "bu gece", "sayi": o["sayi"],
+                "dakika": o["dakika"], "rakip": o["rakip"],
+            }]
+        else:
+            # BU GECE OYNAMADI. Son 5 maçı doğrudan günlükten; bayatsa
+            # listeden düşüyor — "kim yanıyor" sorusu iki hafta önceki
+            # formla cevaplanamaz.
+            son5 = onceki[-FORM_MAC_SAYISI:]
+            son_gun = _gun(onceki[-1]["tarih"])
+            if referans is None or son_gun is None:
+                continue
+            if (referans - son_gun).days > FORM_BAYATLIK_GUN:
+                continue
         if len(son5) < FORM_MAC_SAYISI:
             continue                      # 5 maçı dolmayan için "form" denmez
         son5_ort = sum(x["sayi"] for x in son5) / len(son5)
@@ -1332,15 +1405,22 @@ def _formda_listeler(ham, bt_by_gid, gecenin_oyunculari):
         # oyuncunun normalini bilmeden söylenemez. Kıyas EKRANDA YAZAN
         # değerle yapılıyor (yuvarlanmış) — yoksa satır "sezon 21.1"
         # derken 21 sayılık maç yeşil görünebilirdi.
+        # Ad/takım: oynamamış oyuncu için günlükten okunuyor.
+        kunye = _gunluk_kunye(ham, pid)
         adaylar.append({
-            "id": o["id"], "isim": o["isim"], "takim": o["takim"], "pos": o.get("pos", ""),
-            "_gmsc": o.get("_gmsc") or 0,
+            "id": pid,
+            "isim": (o or {}).get("isim") or kunye["isim"],
+            "takim": (o or {}).get("takim") or kunye["takim"],
+            "pos": (o or {}).get("pos", ""),
+            # Renk çakışmasında öncelik: bu gece oynayan önde gelsin,
+            # kendi maçının rengini korusun.
+            "_gmsc": (o or {}).get("_gmsc") or 0,
             # Balonda rakip KOD değil okunur ad ("47 sayı · Toronto"):
             # üç harfli kod balonun tek bilgi taşıyan yarısıydı ve
             # okunması için kod bilmek gerekiyordu.
             "son5": [{"sayi": x["sayi"],
                       "rakip": cumle.TAKIM_KISA.get(x["rakip"], x["rakip"]),
-                      "bu_gece": x["tarih"] == "bu gece",
+                      "bu_gece": bool(o) and x["tarih"] == "bu gece",
                       "ust": x["sayi"] > sezon_gosterilen} for x in son5],
             "son5_ort": round(son5_ort, 1),
             "sezon_ort": round(sezon_ort, 1),

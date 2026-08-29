@@ -1215,14 +1215,22 @@ def gece_brief_ata(kalip_plani, rozet_by_gid, brief_hedefleri, ham,
     #    hiç olmayanlar dahil. Bir maç ne türe takıldığı için ne de
     #    olgusuz kaldığı için hakkını kaybetmez; kuyruğa düşmediği
     #    sürece konuşur.
+    # DÜZ SONUÇ CÜMLELERİ DE TEKRAR SAYACINA GİRİYOR (kullanıcı kuralı).
+    # Tekrar yasağı yalnız KANCA TÜRÜNE bakıyordu; düz sonuçların hepsi
+    # tek bir "duz_sonuc" türü olduğu için yasağın dışında kalıyor ve art
+    # arda diziliyorlardı — 22 Aralık gecesinde yedi satırın beşi aynı
+    # iskeletteydi. Sayaç İSKELET düzeyinde tutuluyor: aynı iskelet en
+    # fazla iki kez, üçüncüden itibaren başka bir iskelet.
+    duz_sayac = {}
     sonuc = {}
     for gid in uygun:
         if gid in atanan:
             kind, metin = atanan[gid]
         else:
-            metin = cumle.brief_duz_sonuc(baglam_by_gid[gid])
+            metin, iskelet = cumle.brief_duz_sonuc_secim(baglam_by_gid[gid], duz_sayac)
             if not metin:
                 continue
+            duz_sayac[iskelet] = duz_sayac.get(iskelet, 0) + 1
             kind = "duz_sonuc"
         sonuc[gid] = {"metin": metin, "hedef_mac": gid, "muzip": False, "kind": kind}
 
