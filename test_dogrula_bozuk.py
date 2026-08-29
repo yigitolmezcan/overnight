@@ -4409,11 +4409,20 @@ def main():
     _ekle = [l.strip() for l in _yay15.splitlines()
              if l.strip().startswith("git add ")]
     basar("Yayın: gecenin kendi sayfası ve arşiv listesi de depoya yazılıyor",
-          any(" site" in l and " og" in l for l in _ekle),
+          any(l.split()[2:3] == ["site"] for l in _ekle),
           f"git add satırları: {_ekle}")
-    basar("Yayın: paylaşım görseli dizini de ekleniyor",
-          any(l.split()[2:] and "og" in l.split() for l in _ekle),
-          "og/<tarih>.png commit edilmezse og:image kırık kalıyor")
+    # KÖKTEKİ og/ .gitignore'da — ara çıktı. Yayına giren görseller
+    # site/og/ altında, yani `site` zaten kapsıyor. `git add og` yazmak
+    # adımı "pathspec 'og' did not match any files" ile düşürüyor:
+    # bugün üç zamanlanmış yayını birden batırdı.
+    basar("Yayın: git add satırlarında kökteki og/ YOK",
+          not any("og" in l.split() for l in _ekle),
+          f"git add satırları: {_ekle}")
+    _gi = open(".gitignore", encoding="utf-8").read()
+    basar("Yayın: kökteki og/ gerçekten yok sayılıyor (varsayım değil)",
+          "/og/" in _gi)
+    basar("Yayın: paylaşım görselleri site/og altında ve izleniyor",
+          _os.path.isdir(_os.path.join("site", "og")))
 
     _gunler15 = _jj.loads(open("site/gunler.json", encoding="utf-8").read())
     basar("Arşiv: gün listesi sıralı ve yayınlananlarla aynı",

@@ -71,7 +71,13 @@ jobs:
           # gösteriyordu — paylaşılan her link kırık önizleme veriyordu.
           # Hiçbir denetim bunu yakalamadı çünkü hepsi index.html'e
           # bakıyordu.
-          git add site og config/yayin_durumu.json
+          # `og` BURADA OLMAZ. Kökteki og/ ara çıktıdır ve .gitignore'da;
+          # yayına giren görseller site/og/ altında, yani `site` zaten
+          # kapsıyor. Bugün eklediğim `git add site og ...` satırı
+          # "fatal: pathspec 'og' did not match any files" ile üç
+          # zamanlanmış yayını birden düşürdü (ölçüldü, 12:12/12:46/12:56
+          # koşuları) — hiçbir şey yayınlanmadı.
+          git add site config/yayin_durumu.json
           if git diff --staged --quiet; then
             echo "Yayınlanacak yeni gece yoktu — site aynen kaldı."
           else
