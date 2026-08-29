@@ -1,0 +1,232 @@
+{
+  "tarih": "2025-12-23",
+  "uretildi": "2026-08-29T16:26:27.608370Z",
+  "maclar": {
+    "0022500417": {
+      "gec_satiri": "Batı'nın zirvesinde San Antonio Spurs, Oklahoma City Thunder'i 130-110 yendi.",
+      "muzip": false
+    },
+    "0022500421": {
+      "gec_satiri": "Detroit Pistons deplasmanda Sacramento Kings'i 136-127 yendi.",
+      "muzip": false
+    },
+    "0022500416": {
+      "gec_satiri": "Minnesota Timberwolves evinde New York Knicks'i 115-104 yendi. Anthony Edwards 38 sayı attı.",
+      "muzip": false
+    },
+    "0022500419": {
+      "gec_satiri": "Memphis Grizzlies deplasmanda Utah Jazz'ı 137-128 yendi. Santi Aldama 37 sayı attı.",
+      "muzip": false
+    },
+    "0022500420": {
+      "gec_satiri": "Orlando Magic deplasmanda Portland Trail Blazers'i 110-106 yendi.",
+      "muzip": false
+    },
+    "0022500414": {
+      "gec_satiri": "Toronto Raptors deplasmanda Miami Heat'ı 112-91 yendi.",
+      "muzip": false
+    },
+    "0022500413": {
+      "gec_satiri": "Milwaukee Bucks deplasmanda Indiana Pacers'i 111-94 yendi.",
+      "muzip": false
+    },
+    "0022500410": {
+      "gec_satiri": "Brooklyn Nets deplasmanda Philadelphia 76ers'i 114-106 yendi.",
+      "muzip": false
+    },
+    "0022500409": {
+      "gec_satiri": "Charlotte Hornets evinde Washington Wizards'ı 126-109 yendi.",
+      "muzip": false
+    },
+    "0022500412": {
+      "gec_satiri": "Cleveland Cavaliers evinde New Orleans Pelicans'ı 141-118 yendi.",
+      "muzip": false
+    },
+    "0022500418": {
+      "gec_satiri": "Phoenix Suns evinde Los Angeles Lakers'i 132-108 ezdi.",
+      "muzip": false
+    },
+    "0022500415": {
+      "baslik": "Dallas, Jokić'in son saniye basketine karşın Denver'ı 131-130 geçti",
+      "neden_onemli": "Batı Konferansı'nın 3. sıradaki takımı Denver, gecenin sürpriz mağlubiyetlerinden birini aldı.",
+      "ozet": "Dallas ilk çeyrekte 41-27'lik üstünlükle öne geçti, ancak Denver üçüncü çeyrekte farkı eriterek maçı 103-103'e getirdi. Jokić'in bitime son saniyeler kala attığı basket farkı azaltsa da Dallas üstünlüğünü koruyarak kazandı. Cooper Flagg 33 sayı, 9 ribaund ve 9 asistle Dallas'ın en etkili ismi oldu. Flagg 21 şut denemesinin 14'ünü basketle sonuçlandırırken 39 dakika sahada kaldı.",
+      "muzip": false
+    },
+    "0022500422": {
+      "baslik": "Kawhi Leonard'ın 41 sayılık gecesinde LA Clippers, Houston Rockets'i yendi.",
+      "ozet_kisa": "LA Clippers, Houston Rockets karşısında 128-108 kazandı.",
+      "muzip": false
+    },
+    "0022500411": {
+      "baslik": "Josh Giddey triple-double yaptı, Chicago Atlanta'yı 126-123 yendi",
+      "neden_onemli": "Chicago bu sonuçla üst üste dördüncü galibiyetine yükseldi, 18 sayılık farktan döndü.",
+      "ozet_kisa": "Giddey 19 sayı, 11 ribaund ve 15 asistle triple-double yaptı ve gecenin en verimli ismi oldu. Atlanta son saniyelerde eşitledi ancak Chicago, Vučević'in serbest atışlarıyla öne geçti. Coby White'ın 24 sayısı da galibiyette etkili oldu.",
+      "muzip": false
+    }
+  },
+  "brief": [
+    {
+      "metin": "Sürpriz bir sonuçla Dallas Mavericks, Denver Nuggets'i yendi.",
+      "hedef_mac": "0022500415",
+      "muzip": false,
+      "kind": "surpriz"
+    },
+    {
+      "metin": "Kawhi Leonard, Houston Rockets karşısında 41 sayı attı.",
+      "hedef_mac": "0022500422",
+      "muzip": false,
+      "kind": "performans"
+    },
+    {
+      "metin": "Chicago Bulls, 18 sayılık farktan dönüp Atlanta Hawks'ı geçti.",
+      "hedef_mac": "0022500411",
+      "muzip": false,
+      "kind": "geri_donus"
+    },
+    {
+      "metin": "San Antonio Spurs, Oklahoma City Thunder'i yendi.",
+      "hedef_mac": "0022500417",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Detroit Pistons, Sacramento Kings'i yenerek konferansta 1. sıraya yükseldi.",
+      "hedef_mac": "0022500421",
+      "muzip": false,
+      "kind": "siralama"
+    },
+    {
+      "metin": "Minnesota Timberwolves, New York Knicks'i yendi.",
+      "hedef_mac": "0022500416",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Memphis Grizzlies, Utah Jazz deplasmanında kazandı.",
+      "hedef_mac": "0022500419",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Orlando Magic, Portland Trail Blazers deplasmanında kazandı.",
+      "hedef_mac": "0022500420",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Miami Heat, evinde Toronto Raptors'a kaybetti.",
+      "hedef_mac": "0022500414",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Indiana Pacers, evinde Milwaukee Bucks'a kaybetti.",
+      "hedef_mac": "0022500413",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Brooklyn Nets, Philadelphia 76ers'i yendi.",
+      "hedef_mac": "0022500410",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Charlotte Hornets, Washington Wizards'ı yendi.",
+      "hedef_mac": "0022500409",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 7,
+    "ilk_denemede_kabul": 0,
+    "sablon_moduna_dusen": 1,
+    "detay": [
+      {
+        "mac_id": "0022500415",
+        "deneme": 0,
+        "gerekce": [
+          "T28: başlık düz skor ama metinde güçlü olgu var (performans, siralama) — düz skor son çaredir, başlık en güçlü olguyu kullanmalı",
+          "baslik/T22: [\"'1 sayılık farkla' — 1 sayılık fark 20'nin altında, skor zaten kartta yazılı, rakamla anılmaz\"]",
+          "ozet/T23: [\"lider değişimi ALT KIRILIMI ('Son periyotta liderlik birkaç kez el değiştirdi, Anthony Davis'in serbest atışlarıyla öne geçen Dallas farkı bir daha kaptırmadı') hiçbir zaman yazılmaz — sadece maç geneli toplamı, 15+ ise\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Dallas, Denver'ı 1 sayılık farkla 131-130 mağlup etti",
+          "neden_onemli": "Batı Konferansı 3. sırasındaki Denver'ı sarstı bu sonuç",
+          "ozet": "Dallas ilk çeyrekte 14 sayı öne geçse de Denver, üçüncü çeyrek sonunda skoru 103-103'e getirdi. Son periyotta liderlik birkaç kez el değiştirdi, Anthony Davis'in serbest atışlarıyla öne geçen Dallas farkı bir daha kaptırmadı. Cooper Flagg 33 sayı, 9 ribaund ve 9 asistle gecenin en etkili ismi oldu. 14/21 isabetle oynayan Flagg, maçın kazananını neredeyse tek başına belirledi.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500422",
+        "deneme": 0,
+        "gerekce": [
+          "neden_onemli/T1: ['40']",
+          "neden_onemli/T18: [\"'ilk kez' doğrulanamaz kayıt/üstünlük iddiası — bu maçta hiçbir oyuncu olağanüstü kilometre eşiğini (60+ sayı, 25+ ribaund, 20+ asist, 15+ üçlük, quadruple-double, 50+ sayılık triple-double) geçmedi, iddia kaynaksız\"]",
+          "ozet_kisa/T4d: [\"'farkı iyice açan' (farkı açmak — 'farkı yükseltti/çıkardı' kullanılmalı)\", \"'farkı iyice açan' (belirsiz nicelik — 'farkı açtı/büyüttü' değil kaç sayıya çıktığı yazılmalı)\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Kawhi Leonard'ın 41 sayısıyla Clippers, Houston'ı 128-108 yendi",
+          "neden_onemli": "Leonard bu sezon ilk kez 40 sayı barajını geçti.",
+          "ozet_kisa": "Gecenin erken maçlarından birinde Clippers, ilk çeyreği geride tamamlamasına rağmen ikinci periyotta öne geçti. Üçüncü çeyrekte 35-24'lük üstünlükle farkı iyice açan Clippers'ta Leonard, 16/23 isabetle 8 ribaund ve 5 asistle oynadı.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500422",
+        "deneme": 1,
+        "gerekce": [
+          "neden_onemli/T1: ['40']",
+          "neden_onemli/T18: [\"'ilk kez' doğrulanamaz kayıt/üstünlük iddiası — bu maçta hiçbir oyuncu olağanüstü kilometre eşiğini (60+ sayı, 25+ ribaund, 20+ asist, 15+ üçlük, quadruple-double, 50+ sayılık triple-double) geçmedi, iddia kaynaksız\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "LA Clippers, Kawhi Leonard'ın 41 sayısıyla Houston'ı 128-108 yendi",
+          "neden_onemli": "Leonard bu sezon ilk kez 40 sayı barajını geçti.",
+          "ozet_kisa": "Houston ilk çeyreği önde kapatsa da Clippers ikinci çeyrekte öne geçti ve üçüncü periyotta rakibini geride bırakarak maçı kontrole aldı. Leonard 8 ribaund 5 asistle birlikte 16/23 isabetle oynadı, James Harden ise 29 sayı attı.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500422",
+        "deneme": 2,
+        "gerekce": [
+          "neden_onemli/T1: ['40']",
+          "neden_onemli/T18: [\"'ilk kez' doğrulanamaz kayıt/üstünlük iddiası — bu maçta hiçbir oyuncu olağanüstü kilometre eşiğini (60+ sayı, 25+ ribaund, 20+ asist, 15+ üçlük, quadruple-double, 50+ sayılık triple-double) geçmedi, iddia kaynaksız\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Kawhi Leonard'ın 41 sayısıyla Clippers, Houston'ı 128-108 yendi",
+          "neden_onemli": "Leonard bu sezon ilk kez 40 sayı eşiğini geçti.",
+          "ozet_kisa": "İstatistiksel olarak gecenin en etkili ismi olan Leonard, 8 ribaund ve 5 asistle de katkı verdi; 16/23 isabetle rahat bir gece geçirdi. Clippers, ilk yarıdaki yakın skordan sonra ikinci yarıda üstünlüğü ele geçirip rahat kazandı.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500411",
+        "deneme": 0,
+        "gerekce": [
+          "neden_onemli/T4d: [\"'galibiyetini aldı' ('galibiyeti aldı' — cümle sonu dolgusu, kim kimi yendi zaten yazılı)\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Giddey triple-double yaptı, Chicago Atlanta'yı geriden yendi",
+          "neden_onemli": "Chicago, üst üste 4. galibiyetini aldı.",
+          "ozet_kisa": "Atlanta ilk yarıda farkı 18 sayıya kadar çıkardı, ancak Chicago son çeyrekte toparlandı. Bitime son saniyeler kala Vučević'in serbest atışları maçı belirledi. Giddey 11 ribaund, 15 asistle oyunu yönetirken Coby White de kritik anlarda sayı buldu.",
+          "muzip": false
+        }
+      }
+    ],
+    "sablon_isaretli": [],
+    "mutlaka_mac": 3,
+    "ret_orani": 1.0,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 9,
+      "girdi_token": 29765,
+      "cikti_token": 47997,
+      "cache_yazma_token": 21468,
+      "cache_okuma_token": 117819,
+      "toplam_maliyet_usd": 0.6167,
+      "butce_asildi": false
+    }
+  }
+}
