@@ -43,6 +43,21 @@ NYK_ATL = "0022500479"  # New York kaybetti — olumsuzluk/negasyon testi için
 IND_SAS = "0022500476"  # SAS 2 maçlık galibiyet serisinde — çok kelimeli takım adı testi için
 
 
+def _ham_gecit(tarih):
+    """Ham veriyi TEK GEÇİTTEN okur (cek.ham_metni).
+
+    Testler `open(_ham_yolu(...))` ile doğrudan okuyordu. CI'da
+    `ham/*.json` yok — orada yalnız gzipli kopya (`ham/*.json.gz`)
+    duruyor; `_ham_yolu` o durumda `test_verisi/ham/` altındaki KIRPILMIŞ
+    kopyaya düşüyor ve o kopyada lig günlüğü (`oyuncu_ortalama`) yok.
+    Sonuç: Formda havuzu testleri yerelde geçip CI'da düşüyordu.
+    `cek.ham_metni` gzipli dosyayı da şeffaf okuyor — üretim hangi
+    geçidi kullanıyorsa test de onu kullanıyor."""
+    import cek as _cek
+    import json as _json
+    return _json.loads(_cek.ham_metni(tarih))
+
+
 def _ham_yolu(tarih):
     """Ham veri dosyası — üretimdeki tam kopya varsa o, yoksa depodaki
     kırpılmış test kopyası.
@@ -57,7 +72,7 @@ def _ham_yolu(tarih):
 
 def yukle():
     gercek_gece = json.loads(open(f"gercek/{TARIH}.json").read())
-    ham = json.loads(open(_ham_yolu(TARIH)).read())
+    ham = _ham_gecit(TARIH)
     return gercek_gece, ham
 
 
@@ -454,7 +469,7 @@ def main():
     # değil, OKC hemen ardından tekrar öne geçip kazandı).
     # ------------------------------------------------------------------
     gercek_1021 = json.loads(open("gercek/2025-10-21.json").read())
-    ham_1021_okc = json.loads(open(_ham_yolu("2025-10-21")).read())
+    ham_1021_okc = _ham_gecit("2025-10-21")
     gercekler_okc_hou = gercek_1021["maclar"]["0022500001"]  # OKC 125-124 kazandı, HOU (Şengün) kaybetti
     ham_okc_hou = ham_1021_okc["maclar"]["0022500001"]
 
@@ -541,7 +556,7 @@ def main():
     # kapsamı dışında ama AYNI ÖLÇÜDE bir kural: testi olmadığı için iki
     # tur boyunca sessizce delindi, kullanıcı gözle buldu. Şimdi test var.
     # ------------------------------------------------------------------
-    ham_1021 = json.loads(open(_ham_yolu("2025-10-21")).read())
+    ham_1021 = _ham_gecit("2025-10-21")
     son10 = gercekler.oyuncu_son10_dakika_ortalamasi(ham_1021["oyuncu_ortalama"])
     basar(
         "kadro dışı: hazırlık sezonu (preseason) satırları 'son 10 maç' hesabına hiç girmiyor (sezon açılışında 0 oyuncu)",
@@ -627,7 +642,7 @@ def main():
     # eşiği geçen oyuncu KAYBEDEN takımdaysa (LaMelo Ball, CHA kaybetti)
     # "Mağlup tarafta" çerçevesi hiç eklenmiyordu, T17'yi ihlal ediyordu.
     gercek_0108 = json.loads(open("gercek/2026-01-08.json").read())
-    ham_0108 = json.loads(open(_ham_yolu("2026-01-08")).read())
+    ham_0108 = _ham_gecit("2026-01-08")
     gercekler_ind_cha = gercek_0108["maclar"]["0022500528"]  # IND kazandı, LaMelo Ball (CHA) kaybetti
     ham_ind_cha = ham_0108["maclar"]["0022500528"]
     # Gece izni VARKEN: "Mağlup tarafta" çerçevesi eklenmek zorunda (T17).
@@ -1040,7 +1055,7 @@ def main():
     # maçın uzatmaya gitmesi anlatılır; Gordon'ın 50'si gövdede.)
     import cumle as _cumle, yaz as _y0, json as _jj
     _g23 = _jj.loads(open("gercek/2025-10-23.json").read())
-    _h23 = _jj.loads(open(_ham_yolu("2025-10-23")).read()) if _os.path.exists(_ham_yolu("2025-10-23")) else None
+    _h23 = _ham_gecit("2025-10-23") if _os.path.exists(_ham_yolu("2025-10-23")) else None
     if _h23:
         _s23 = _jj.loads(open("skor/2025-10-23.json").read())
         _p23 = _y0.gece_kalip_plani("2025-10-23", _g23, _h23, _s23)
@@ -2036,7 +2051,7 @@ def main():
     # yakalanırsa maç bazlı onarım döngüsü onu hiç göremez ve gece
     # yayınlanamaz (18 Aralık: LLM iki maçta birden yazdı).
     _g1218 = json.loads(open("gercek/2025-12-18.json").read())
-    _h1218 = json.loads(open(_ham_yolu("2025-12-18")).read())
+    _h1218 = _ham_gecit("2025-12-18")
     _s1218 = json.loads(open("skor/2025-12-18.json").read())
     _plan1218 = yaz.gece_kalip_plani("2025-12-18", _g1218, _h1218, _s1218)
     _izin1218 = _kalip_secici.gece_maglup_izni(_g1218["maclar"])
@@ -2455,31 +2470,31 @@ def main():
         t.update({k: v for k, v in d.items() if k in t})
         return {"kod": kod, "toplam": t}
 
-    def _ham(ev_kod, dep_kod, ev_paint=40, dep_paint=40, ev_2c=10, dep_2c=10):
+    def _sahte_ham(ev_kod, dep_kod, ev_paint=40, dep_paint=40, ev_2c=10, dep_2c=10):
         return {"box_summary": {"resultSets": [{"name": "OtherStats",
                 "headers": ["TEAM_ABBREVIATION", "PTS_PAINT", "PTS_2ND_CHANCE"],
                 "rowSet": [[ev_kod, ev_paint, ev_2c], [dep_kod, dep_paint, dep_2c]]}]}}
 
     # Eşik altındaysa BÖLÜM HİÇ ÇIKMAZ — boş yer kalmaz.
     basar("Kilit: hiçbir eşik aşılmazsa None",
-          _derle._kilit_istatistik(_ham("AAA", "BBB"), _taraf("AAA"), _taraf("BBB")) is None)
+          _derle._kilit_istatistik(_sahte_ham("AAA", "BBB"), _taraf("AAA"), _taraf("BBB")) is None)
     basar("Kilit: eşiğin bir altı da çıkmaz (ribaund 14)",
-          _derle._kilit_istatistik(_ham("AAA", "BBB"),
+          _derle._kilit_istatistik(_sahte_ham("AAA", "BBB"),
               _taraf("AAA", reb=54), _taraf("BBB", reb=40)) is None)
-    _r = _derle._kilit_istatistik(_ham("AAA", "BBB"),
+    _r = _derle._kilit_istatistik(_sahte_ham("AAA", "BBB"),
               _taraf("AAA", reb=55), _taraf("BBB", reb=40))
     basar("Kilit: eşiğin tam üstü çıkar (ribaund 15)",
           _r and _r["ad"] == "ribaund" and _r["fark"] == 15)
 
     # YÖN: top kaybında AZ olan kazanır. Canlı örneği yok, testle sabitli.
-    _tk = _derle._kilit_istatistik(_ham("AAA", "BBB"),
+    _tk = _derle._kilit_istatistik(_sahte_ham("AAA", "BBB"),
               _taraf("AAA", to=8), _taraf("BBB", to=20))
     basar("Kilit: top kaybında AZ olan kazanıyor",
           _tk and _tk["ad"] == "top kaybı"
           and _tk["kutular"][0]["kazandi"] is True
           and _tk["kutular"][1]["kazandi"] is False)
     # Diğer her şeyde ÇOK olan kazanır.
-    _as = _derle._kilit_istatistik(_ham("AAA", "BBB"),
+    _as = _derle._kilit_istatistik(_sahte_ham("AAA", "BBB"),
               _taraf("AAA", ast=20), _taraf("BBB", ast=36))
     basar("Kilit: asistte ÇOK olan kazanıyor",
           _as and _as["kutular"][1]["kazandi"] is True
@@ -2490,7 +2505,7 @@ def main():
     # fark eşiği ancak geçerken (21/20), asistte 13'lük fark daha büyük
     # bir aykırılık (13/12). Ham farkla karşılaştırmak ölçekleri karıştırır.
     _cok = _derle._kilit_istatistik(
-        _ham("AAA", "BBB", ev_paint=61, dep_paint=40),
+        _sahte_ham("AAA", "BBB", ev_paint=61, dep_paint=40),
         _taraf("AAA", ast=38), _taraf("BBB", ast=25))
     basar("Kilit: maç başına tek istatistik döner",
           isinstance(_cok, dict) and "ad" in _cok)
@@ -3505,7 +3520,7 @@ def main():
     # ==================================================================
     def _brief_kur(_t):
         _g = _jj.loads(open(f"gercek/{_t}.json", encoding="utf-8").read())
-        _h = _jj.loads(open(_ham_yolu(_t)).read())
+        _h = _ham_gecit(_t)
         _s = _jj.loads(open(f"skor/{_t}.json", encoding="utf-8").read())
         _mt, _dg = yaz._mutlaka_ve_diger(_s)
         _roz = {m["mac_id"]: m["rozet"] for m in _s["maclar"]}
@@ -3659,7 +3674,7 @@ def main():
     # test "yayında olan gece" üzerinden koştuğu için 22 Aralık yayına
     # çıkınca anahtar hatasıyla düştü. Kural maça özel değil — hangi
     # gece yayındaysa onun maçlarında çalışması gerekiyor.
-    _hamgece = _jj.loads(open(_ham_yolu(_yayinda2)).read())["maclar"]
+    _hamgece = _ham_gecit(_yayinda2)["maclar"]
     _adlar = [_derle.kilit_istatistik_adi(_m) for _m in _hamgece.values()]
     basar("Kural c: kilit istatistiğin adı üretim anında biliniyor",
           bool(_adlar) and all(_a is None or (isinstance(_a, str) and _a.strip())
@@ -3703,7 +3718,7 @@ def main():
     # 02:00 arasını 21,5 saat sanıyordu (gerçekte 2,5 saat) ve 23:30
     # gecenin İLKİ olduğu halde en sona düşüyordu.
     # ==================================================================
-    _ham21 = _jj.loads(open(_ham_yolu(_yayinda2)).read())
+    _ham21 = _ham_gecit(_yayinda2)
     _brief11 = _d7.get("brief") or []
     _ozet11 = _d7.get("brief_ozet") or {}
     _anlar11 = [a for a in (_derle._tsi_baslama_dt(m, _yayinda2)
@@ -4660,7 +4675,7 @@ def main():
     #    yükselen 0/5, düşen 0/4 ortak; yeni havuzla 4/5 ve 4/5.
     basar("Formda: bayatlık sınırı tanımlı",
           _derle.FORM_BAYATLIK_GUN == 5)
-    _ham16 = _jj.loads(open(_ham_yolu(_yayinda2)).read())
+    _ham16 = _ham_gecit(_yayinda2)
     _gecmis16 = _derle._oyuncu_gecmisi(_ham16)
     basar("Formda: lig günlüğü havuzu bu geceki kadrolardan çok daha geniş",
           len(_gecmis16) > 300,
