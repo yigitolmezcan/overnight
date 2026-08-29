@@ -217,7 +217,22 @@ def uret():
     print(f"Sıradaki arşiv gecesi: {tarih}")
     py = sys.executable
 
-    _kos([py, "cek.py", tarih])
+    # HAM VERİ ZATEN DEPODAYSA NBA'E HİÇ GİDİLMİYOR.
+    # 52 gecelik ham veri tam da bunun için gzipli olarak depoya
+    # konmuştu; ama bu adım koşulsuz `cek.py` çağırıyordu ve koşucu her
+    # gece NBA'e gidiyordu. NBA, GitHub'ın (Azure) IP bloğunu engelliyor:
+    # istek ReadTimeout'a düşüyor, dört deneme de başarısız oluyor ve
+    # gece hiç üretilmiyor — depoda o gecenin verisi hazır dururken.
+    # Ölçüldü (29 Ağustos, gerçek koşu): 2025-12-23 için iki üretim
+    # denemesi de `scoreboard 2025-12-23: 4 denemede de alınamadı` ile
+    # düştü, oysa ham/2025-12-23.json.gz depoda duruyordu.
+    # Geçit `cek.ham_yolu`: .json, .json.gz ve test kopyasını birden
+    # tanıyor — üretimin başka yerlerinde kullanılan geçidin aynısı.
+    import cek as _cek
+    if _cek.ham_yolu(tarih) is not None:
+        print(f"Ham veri depoda hazır ({_cek.ham_yolu(tarih).name}) — NBA'e gidilmiyor.")
+    else:
+        _kos([py, "cek.py", tarih])
     _kos([py, "gercekler.py", tarih])
     _kos([py, "hesapla.py", tarih])
 

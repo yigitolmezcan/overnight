@@ -4775,6 +4775,39 @@ def main():
           "anthropic" not in _duz_blok.lower() and "llm" not in _duz_blok.lower()
           and "client" not in _duz_blok.lower())
 
+    # ==================================================================
+    # ÜRETİM: HAM VERİ DEPODAYSA NBA'E GİDİLMEZ
+    # ==================================================================
+    # 52 gecelik ham veri tam da bunun için gzipli olarak depoya kondu.
+    # Ama `uret` koşulsuz `cek.py` çağırıyordu; NBA, GitHub'ın (Azure)
+    # IP bloğunu engellediği için istek ReadTimeout'a düşüyor ve gece
+    # HİÇ üretilmiyordu — o gecenin verisi depoda hazır dururken.
+    # Ölçüldü (29 Ağustos, gerçek koşu): 2025-12-23 için iki deneme de
+    # "scoreboard: 4 denemede de alınamadı" ile düştü.
+    _uy = open("yayin.py", encoding="utf-8").read()
+    _uret_govde = _uy[_uy.index("def uret("):]
+    _uret_govde = _uret_govde[:_uret_govde.index("\ndef ")]
+    basar("Üretim: ham veri varsa çekme adımı atlanıyor",
+          "if _cek.ham_yolu(tarih) is not None:" in _uret_govde
+          and 'else:\n        _kos([py, "cek.py", tarih])' in _uret_govde)
+    # Koşulsuz çağrı KALMAMALI — koşulun dışında bir `cek.py` çağrısı
+    # aynı arızayı geri getirir.
+    _cek_satirlari = [_l.strip() for _l in _uret_govde.splitlines()
+                      if '"cek.py"' in _l]
+    basar("Üretim: cek.py yalnız TEK yerden ve koşullu çağrılıyor",
+          len(_cek_satirlari) == 1,
+          f"cek.py çağrıları: {_cek_satirlari}")
+    # Geçit üretimin başka yerleriyle AYNI olmalı: .json, .json.gz ve
+    # test kopyasını birden tanıyan tek fonksiyon.
+    import cek as _cekm
+    basar("Üretim: geçit gzipli kopyayı da tanıyor",
+          _cekm.ham_yolu("2025-12-23") is not None
+          and _cekm.ham_yolu("2099-01-01") is None)
+    # Depodaki runway gerçekten kullanılabilir olmalı.
+    _gz = [_f for _f in _os.listdir("ham") if _f.endswith(".json.gz")]
+    basar("Üretim: depoda gzipli gece stoğu duruyor",
+          len(_gz) >= 20, f"yalnız {len(_gz)} gece var")
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))
