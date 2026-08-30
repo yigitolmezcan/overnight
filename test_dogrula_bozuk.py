@@ -5857,8 +5857,23 @@ def main():
     basar("Perf: double-double 30+ sayının üstünde",
           _H.performans_derecesi(_st(sayi=18, rib=11))[0]
           < _H.performans_derecesi(_st(sayi=31))[0])
-    basar("Perf: 5 top çalma olağanüstü sayılıyor",
-          _H.performans_derecesi(_st(sayi=9, cal=5))[1] == "olaganustu_tek")
+    # KADEME 5 İKİYE BÖLÜNDÜ (kullanıcı kararı): sayı/ribaund/asistteki
+    # olağanüstü değerler 30+ sayının ÜSTÜNDE, blok ve top çalma ALTINDA.
+    basar("Perf: 20 ribaund / 15 asist, 30+ sayının üstünde",
+          _H.performans_derecesi(_st(sayi=8, rib=20))[0]
+          < _H.performans_derecesi(_st(sayi=31))[0]
+          and _H.performans_derecesi(_st(sayi=9, ast=15))[0]
+          < _H.performans_derecesi(_st(sayi=31))[0])
+    basar("Perf: 5 blok / 5 top çalma, 30+ sayının ALTINDA",
+          _H.performans_derecesi(_st(sayi=31))[0]
+          < _H.performans_derecesi(_st(sayi=9, cal=5))[0]
+          and _H.performans_derecesi(_st(sayi=31))[0]
+          < _H.performans_derecesi(_st(sayi=10, blk=5))[0])
+    basar("Perf: ikincil tek kalem, tek-en-yükseğin üstünde",
+          _H.performans_derecesi(_st(sayi=9, cal=5))[1] == "ikincil_tek"
+          and _H.performans_derecesi(_st(sayi=9, cal=5))[0]
+          < _H.performans_derecesi(_st(sayi=12, ast=4))[0])
+    basar("Perf: dokuz kademe tanımlı", len(_H.PERF_KADEMELERI) == 9)
     basar("Perf: çift hane TEK kalemse double-double değil",
           _H.performans_derecesi(_st(sayi=8, ast=10))[1] == "en_yuksek_tek"
           and _H.performans_derecesi(_st(sayi=12, ast=10))[1] == "cifte_cifte")

@@ -978,9 +978,14 @@ if __name__ == "__main__":
 # tablosundaki "öne çıkan", gecenin beşi, prompta verilen oyuncu.
 # Burada tek kez hesaplanıyor; kimse kendi ölçütünü kurmuyor.
 
+# "Olağanüstü tek kalem" ikiye bölündü (kullanıcı kararı): 5 top çalma
+# ya da 5 blok nadirdir ama maça etkisi 31 sayı kadar değil. Sayı/ribaund/
+# asistteki olağanüstü değerler 30+ sayının ÜSTÜNDE, blok ve çalma
+# ALTINDA kalıyor.
 PERF_KADEMELERI = (
     "quadruple_double", "triple_double", "kirk_sayi", "cifte_cifte_yuksek",
-    "olaganustu_tek", "cifte_cifte", "otuz_sayi", "en_yuksek_tek",
+    "olaganustu_tek", "cifte_cifte", "otuz_sayi", "ikincil_tek",
+    "en_yuksek_tek",
 )
 
 _PERF_ALAN = (("sayi", "sayı"), ("rib", "ribaund"), ("ast", "asist"),
@@ -1020,7 +1025,8 @@ def performans_derecesi(stat):
     if len(ciftler) == 2 and (d["sayi"] >= 20 or d["rib"] >= 15 or d["ast"] >= 12):
         return (3, "cifte_cifte_yuksek", "double-double",
                 f"double-double yaptı ({_dokum(ciftler)})")
-    for alan, esik in (("sayi", 50), ("rib", 20), ("ast", 15), ("blk", 5), ("cal", 5)):
+    # 5a — gerçekten olağanüstü: 30+ sayının ÜSTÜNDE kalır.
+    for alan, esik in (("sayi", 50), ("rib", 20), ("ast", 15)):
         if d[alan] >= esik:
             return (4, "olaganustu_tek", f"{d[alan]} {ad_by_alan[alan]}",
                     f"{d[alan]} {ad_by_alan[alan]} yaptı" if alan != "sayi"
@@ -1030,11 +1036,16 @@ def performans_derecesi(stat):
                 f"double-double yaptı ({_dokum(ciftler)})")
     if d["sayi"] >= 30:
         return (6, "otuz_sayi", f"{d['sayi']} sayı", f"{d['sayi']} sayı attı")
+    # 5b — dikkat çekici ama ikincil: 30+ sayının ALTINA iner.
+    for alan, esik in (("blk", 5), ("cal", 5)):
+        if d[alan] >= esik:
+            return (7, "ikincil_tek", f"{d[alan]} {ad_by_alan[alan]}",
+                    f"{d[alan]} {ad_by_alan[alan]} yaptı")
     # Son çare: tek kalemde en yüksek değer (eski davranış).
     alan = max((a for a, _ in _PERF_ALAN), key=lambda a: (d[a], -_PERF_ALAN.index((a, ad_by_alan[a]))))
     if d[alan] <= 0:
-        return (7, "en_yuksek_tek", "", "")
-    return (7, "en_yuksek_tek", f"{d[alan]} {ad_by_alan[alan]}",
+        return (8, "en_yuksek_tek", "", "")
+    return (8, "en_yuksek_tek", f"{d[alan]} {ad_by_alan[alan]}",
             f"{d[alan]} {ad_by_alan[alan]} yaptı" if alan != "sayi"
             else f"{d['sayi']} sayı attı")
 
