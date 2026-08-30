@@ -879,6 +879,121 @@ def _mac_saniyesi(periyot, kalan):
 KRITIK_BASLANGIC_SN = 3 * 720 + (720 - KRITIK_SON_DAKIKA * 60)
 
 
+# ---------------------------------------------------------------------------
+# MAÇ AKIŞI — dört satırın seçimi
+# ---------------------------------------------------------------------------
+#
+# Olaylar gercekler.py'de üretiliyor, cümleleri cumle.py'de sabit
+# kalıplarla kuruluyor. Burada YALNIZ SEÇİM var (kullanıcı kuralları):
+#   - her maçtan 4 satır (az olay varsa 3)
+#   - kronolojik sıra
+#   - biri MUTLAKA kritik an olsun (ember): son saniye basketi,
+#     liderliğin son kez değiştiği an, ya da kopma anı
+#   - aynı olay tipi bir maçta iki kez kullanılmaz
+AKIS_SATIR_SAYISI = 4
+AKIS_ASGARI_SATIR = 3
+# Kritik an adaylığı — önce gelen kazanır.
+AKIS_KRITIK_SIRASI = ("karar_ani", "liderlik", "sayi_serisi", "en_buyuk_fark")
+# Kritik dışında kalan satırlar için tercih sırası. Maçın şekline göre
+# hangisinin bulunacağı değişiyor; liste yalnız ÖNCELİK veriyor.
+AKIS_DOLGU_SIRASI = ("ceyrek_sonu", "ceyrek_ustunlugu", "esitlik",
+                     "devre_farki", "en_buyuk_fark", "sayi_serisi",
+                     "fark_korundu", "en_etkili")
+
+
+def _akis_sirasi(o):
+    """Kronolojik anahtar. Çeyrek sonlarında saat yok — periyodun SONU
+    sayılıyor (saniye_kalan=0), yoksa çeyrek sonu o çeyrekteki anların
+    önüne düşerdi."""
+    # AYNI SANİYEDE İKİ OLAY olabiliyor (eşitlik ve hemen ardından karar
+    # basketi ikisi de 0:06'da). Toplam skor eşitlikte ayırıcı: sayı
+    # artmışsa o olay sonradır (ölçüldü, 27 Aralık ORL-DEN).
+    return (o.get("periyot") or 0, -(o.get("saniye_kalan") or 0),
+            (o.get("ev_skor") or 0) + (o.get("dep_skor") or 0))
+
+
+def _mac_akisi(gercekler, en_iyi_performans=None):
+    """[{tip, zaman, saat, cumle, detay, kritik}] — en fazla 4 satır."""
+    olaylar = [f["veri"] for f in gercekler if f["tur"] == "akis_olay"]
+    if not olaylar:
+        return []
+
+    # "Maçın en etkilisi" satırı burada kuruluyor: oyuncu istatistiği
+    # akış olayı değil, oyuncu_stat gerçeğinden geliyor.
+    if en_iyi_performans:
+        st = next((f["veri"] for f in gercekler
+                   if f["tur"] == "oyuncu_stat"
+                   and f["veri"].get("oyuncu") == en_iyi_performans), None)
+        if st:
+            son = max(olaylar, key=_akis_sirasi)
+            olaylar.append({
+                "tip": "en_etkili", "periyot": son.get("periyot") or 4,
+                "saniye_kalan": 0.0, "zaman": "Son", "saat": None,
+                "ev_skor": son.get("ev_skor"), "dep_skor": son.get("dep_skor"),
+                "fark": son.get("fark"),
+                "oyuncu": en_iyi_performans, "sayi": st.get("sayi"),
+                "ribaund": st.get("ribaund"), "asist": st.get("asist"),
+            })
+
+    by_tip = {}
+    for o in olaylar:
+        # Aynı tipten birden fazlaysa en GEÇ olanı tut: maçın kararına
+        # yakın olan daha çok şey anlatıyor.
+        mevcut = by_tip.get(o["tip"])
+        if mevcut is None or _akis_sirasi(o) > _akis_sirasi(mevcut):
+            by_tip[o["tip"]] = o
+
+    # SONRADAN BERABERE KALINDIYSA ERKEN KOPUŞ "KRİTİK" DEĞİLDİR.
+    # Ölçüldü (SAS-UTA): 2. çeyrekteki 11-0'lık seri kritik işaretlendi,
+    # oysa maç 4. çeyrekte 108-108 berabereydi — maç orada bitmemişti.
+    # Bir eşitlik/liderlik değişimi DAHA SONRA geldiyse, ondan önceki
+    # fark olayları kritik adaylığından düşüyor.
+    _son_donus = max((o for o in olaylar if o["tip"] in ("esitlik", "liderlik")),
+                     key=_akis_sirasi, default=None)
+    _adaylar = dict(by_tip)
+    if _son_donus is not None:
+        for _t in ("sayi_serisi", "en_buyuk_fark"):
+            _o = _adaylar.get(_t)
+            if _o is not None and _akis_sirasi(_o) < _akis_sirasi(_son_donus):
+                _adaylar.pop(_t)
+    kritik = next((_adaylar[t] for t in AKIS_KRITIK_SIRASI if t in _adaylar), None)
+    if kritik is None:
+        # Aday yoksa en geç GERÇEK AN işaretleniyor. Çeyrek özetleri ve
+        # "maçın en etkilisi" bir AN değil, bir toplam — ember işareti
+        # "maç burada belirlendi" demek, onlara konamaz (ölçüldü:
+        # Wembanyama satırı kritik işaretlenmişti, üstelik kaybeden
+        # taraftan).
+        _anlar = [o for o in by_tip.values()
+                  if o["tip"] not in ("en_etkili", "ceyrek_sonu",
+                                      "devre_farki", "ceyrek_ustunlugu",
+                                      "fark_korundu")]
+        kritik = max(_anlar or by_tip.values(), key=_akis_sirasi)
+
+    secili = [kritik]
+    for tip in AKIS_DOLGU_SIRASI:
+        if len(secili) >= AKIS_SATIR_SAYISI:
+            break
+        o = by_tip.get(tip)
+        if o is not None and o is not kritik:
+            secili.append(o)
+
+    secili.sort(key=_akis_sirasi)
+    satirlar = []
+    for o in secili:
+        c, d = cumle.akis_satiri(o, lambda k: cumle.TAKIM_KISA.get(k, k))
+        if not c:
+            continue
+        satirlar.append({
+            "tip": o["tip"], "zaman": o.get("zaman"), "saat": o.get("saat"),
+            "cumle": c, "detay": d, "kritik": o is kritik,
+        })
+    # Kritik satır eleme sırasında düştüyse (kalıbı kurulamadıysa) bir
+    # başkasını işaretle: işaretsiz akış çizilmez.
+    if satirlar and not any(x["kritik"] for x in satirlar):
+        satirlar[-1]["kritik"] = True
+    return satirlar if len(satirlar) >= AKIS_ASGARI_SATIR else []
+
+
 def _kritik_anlar(ham_mac, ev_taraf, dep_taraf):
     """Kritik süre + o sürede en çok sayı üreten iki oyuncu, yoksa None.
 
@@ -1671,6 +1786,10 @@ def derle(tarih_str):
 
     plan = gece_kalip_plani(tarih_str, gercek_gece, ham, skor_gece)
     rozet_by_gid = {m["mac_id"]: m for m in skor_gece["maclar"]}
+    # Akıştaki "maçın en etkilisi" satırı için — oyuncu istatistiği akış
+    # olayı değil, oyuncu_stat gerçeğinden geliyor.
+    en_iyi_performans_by_gid = {m["mac_id"]: m.get("en_iyi_performans")
+                                for m in skor_gece["maclar"]}
     taslak_maclar = taslak["maclar"]
 
     # Aynı anahtar (hesapla.siralama_anahtari) — rozet eşitliğinde dram
@@ -1763,9 +1882,16 @@ def derle(tarih_str):
             # Etiket SADECE hak edene. Öncelik: gecenin maçı > ilki > kapanış.
             if x is _en_yuksek:
                 x["etiket"], x["one_cikan"] = "gecenin maçı", True
-            elif i == 0:
+            # SAATİ BİLİNMEYEN MAÇ UÇ ETİKETİ ALAMAZ. "Gecenin ilki" ve
+            # "kapanış" birer ZAMAN iddiası; saati olmayan satır listenin
+            # sonuna konuyor (uydurma saat yazmamak için) ama bu onu
+            # gecenin son maçı yapmıyor. Gerçek arıza (26 Aralık): NBA
+            # servisi bir maçın başlama saati yerine 'Final' döndürdü,
+            # satır sona düştü ve "kapanış" rozetini aldı — bilmediğimiz
+            # bir şeyi iddia ediyorduk.
+            elif i == 0 and x["_an"] is not None:
                 x["etiket"], x["one_cikan"] = "gecenin ilki", False
-            elif i == len(brief) - 1:
+            elif i == len(brief) - 1 and x["_an"] is not None:
                 x["etiket"], x["one_cikan"] = "kapanış", False
             else:
                 x["etiket"], x["one_cikan"] = "", False
@@ -1805,7 +1931,13 @@ def derle(tarih_str):
             "rozet": mutlaka_skor["rozet"],
             "baslik": mv.get("baslik", ""),
             "neden_onemli": mv.get("neden_onemli", ""),
-            "ozet": ozet_metni,
+            # PARAGRAF GÖVDESİ KALKTI (kullanıcı kararı). Yerine maç
+            # akışı geliyor: dört satır, tamamen şablon, LLM'e hiç
+            # uğramıyor. Alan `ozet` boş bırakılmıyor, HİÇ yazılmıyor —
+            # boş string oluşturucuda "gövde var ama sessiz" gibi
+            # görünürdü.
+            "akis": _mac_akisi(gercek_gece["maclar"][gid],
+                               en_iyi_performans_by_gid.get(gid)),
             "box": _box_score(ham["maclar"][gid], tum_metin, kaybeden_kod, gercek_gece["maclar"][gid]),
             # Sol ray rengi: KAZANAN takımın rengi (aşağıda çakışma
             # çözümünden geçiyor).
@@ -1886,6 +2018,11 @@ def derle(tarih_str):
             "box": _box_score(ham["maclar"][gid], v.get("gec_satiri", ""), kaybeden_kod, gercek_gece["maclar"][gid]),
         }
         if skor_bilgi["katman"] in ("mutlaka", "ikinci"):
+            # AKIŞ "Göz at"ta da var (kullanıcı kararı: iki bölümde de
+            # paragraf kalktı). "Bunları geç" tek satırlık kalıyor —
+            # orada zaten anlatı yok.
+            girdi["akis"] = _mac_akisi(gercek_gece["maclar"][gid],
+                                       en_iyi_performans_by_gid.get(gid))
             degerse_bak.append(girdi)
         else:
             diger.append(girdi)

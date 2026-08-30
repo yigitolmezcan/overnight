@@ -747,8 +747,17 @@ def main():
     basar("A1: neden-önemli gövdede birebir tekrar etmiyor",
           not _r.get("neden_onemli") or _r["neden_onemli"] not in _r["ozet"])
 
-    # 2) Başlık en güçlü olguyu kullanıyor (düz skor son çare).
-    basar("A2: kilometre taşı varsa başlık onu kullanıyor", "Jokić" in _r["baslik"])
+    # 2) BAŞLIK TASARIMI DEĞİŞTİ (kullanıcı kararı): serbest kanca öneki
+    #    kalktı, başlık altı sabit iskeletten biri. "En güçlü olguyu
+    #    kullan" kuralı DURUYOR ama artık iskelet SEÇİMİ olarak: 55
+    #    sayılık gecede performans iskeleti (4) seçilmeli, düz skor değil.
+    basar("A2: güçlü performansta performans iskeleti seçiliyor",
+          "Jokić" in _r["baslik"] and "sayısıyla" in _r["baslik"],
+          f"başlık: {_r['baslik']!r}")
+    import dogrula as _dg31
+    basar("A2: başlık iskelet listesine uyuyor",
+          _dg31.t31_baslik_iskeleti(_r["baslik"])[0],
+          f"başlık: {_r['baslik']!r}")
 
     # 4) Aynı oyuncu iki cümlede tekrar etmiyor, istatistikler birleşik.
     basar("A4: kanca oyuncusu gövdede tekrar edilmiyor", _r["ozet"].count("Jokić") == 0)
@@ -758,8 +767,11 @@ def main():
     # koruyor: başlık her zaman sınır içinde, kanca her zaman var,
     # birleşik biçim ancak sığdığında kullanılır.
     basar("A4: başlık 10 kelime sınırını aşmıyor", len(_r["baslik"].split()) <= 10)
-    basar("A4: sınır aşılacaksa kanca daralıyor ama ATILMIYOR",
-          "Jokić" in _r["baslik"] and "sayılık gecesinde" in _r["baslik"])
+    # Kanca daraltma mekanizması iskeletlerle birlikte kalktı: iskeletler
+    # yapıları gereği kısa. Kural aynı kalıyor — başlık sınırı aşmıyor ve
+    # oyuncuyu anıyor — ama artık daraltmayla değil, iskeletle sağlanıyor.
+    basar("A4: performans iskeleti oyuncuyu ve sayısını taşıyor",
+          "Jokić" in _r["baslik"] and any(c.isdigit() for c in _r["baslik"]))
     import cumle as _cumle_erken
     _kisa_mac = _cumle_erken.sonuc({"kazanan_adi": "Utah", "kaybeden_adi": "Miami",
                               "kazanan_kisa": "Utah", "kaybeden_kisa": "Miami",
@@ -1551,10 +1563,25 @@ def main():
           # Ön ek KODDA olmamalı; CSS yorumunda geçmesi sorun değil.
           and "Neden önemli: ${esc" not in _sayfa
           and "why-inline" not in _sayfa)
-    basar("Mutlaka bil: gövde paragraflara bölünüyor",
-          "function paragraflar(" in _sayfa and '<div class="gbody">${paragraflar(mv.ozet)}</div>' in _sayfa)
-    basar("Mutlaka bil: paragraflarda vurgu/çizgi yok (sadece nefes)",
-          "border-left" not in _sayfa.split(".gbody p{")[1][:120])
+    # PARAGRAF GÖVDESİ KALKTI (kullanıcı kararı). Yerine maç akışı:
+    # dört satır, tamamen şablon, LLM'e hiç uğramıyor. Serbest anlatı
+    # sürekli ve her seferinde başka bir sınıftan patlıyordu; kural
+    # eklemek çözmüyordu çünkü model sonsuz sayıda yanlış yapabilir.
+    basar("Mutlaka bil: paragraf gövdesi çizilmiyor",
+          '<div class="gbody">${paragraflar(mv.ozet)}</div>' not in _sayfa)
+    basar("Mutlaka bil: yerine maç akışı çiziliyor",
+          "${akisBlogu(mv.akis)}" in _sayfa and "const akisBlogu" in _sayfa)
+    basar("Akış: Göz at bölümünde de var",
+          "${akisBlogu(m.akis)}" in _sayfa)
+    # Oluşturucu CÜMLE KURMUYOR — yalnız veriden gelen alanları çiziyor.
+    _akis_blok = _sayfa.split("const akisBlogu")[1].split("\n\n")[0]
+    basar("Akış: oluşturucuda cümle kurulmuyor, alanlar çiziliyor",
+          "r.cumle" in _akis_blok and "r.detay" in _akis_blok
+          and "önde kapadı" not in _akis_blok and "gitti" not in _akis_blok)
+    basar("Akış: kritik an ember nokta ile işaretli",
+          ".akis .akisr.vurgu .ray u{background:var(--ember)" in _sayfa)
+    basar("Akış: satırda vurgu/çizgi yok (sadece nefes)",
+          "border-left" not in _sayfa.split(".akis .ic p{")[1][:120])
 
     basar("Türkler: sekmeli yapı kalktı",
           "turktab" not in _sayfa and "tkpanel" not in _sayfa)
@@ -3757,6 +3784,14 @@ def main():
     _kap11 = next((b for b in _brief11 if b.get("etiket") == "kapanış"), None)
     basar("Saat: 'kapanış' etiketi en geç maçta",
           _kap11 is None or _kap11["saat"] == _saatli11[-1])
+    # SAATİ OLMAYAN SATIR UÇ ETİKETİ ALAMAZ. Gerçek arıza (26 Aralık):
+    # NBA servisi bir maçın başlama saati yerine 'Final' döndürdü; satır
+    # (uydurma saat yazmamak için) sona kondu ve "kapanış" rozetini aldı.
+    # "Gecenin ilki" ve "kapanış" birer ZAMAN iddiası.
+    basar("Saat: saati bilinmeyen maç uç etiketi almıyor",
+          all(b.get("saat") for b in _brief11
+              if b.get("etiket") in ("gecenin ilki", "kapanış")),
+          "saatsiz bir satır 'ilki'/'kapanış' rozeti almış")
 
     _bekle_dk = round((_sirali11[-1] - _sirali11[0]).total_seconds() / 60)
     basar("Saat: süre gerçek (son maç - ilk maç)",

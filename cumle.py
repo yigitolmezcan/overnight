@@ -44,6 +44,7 @@ from dogrula import (
     kelime_say,
     ASGARI_KELIME,
     BRIEF_SKOR_FARK_ESIGI,
+    sesli_biter_mi,
     OZET_CUMLE,
     OZET_KELIME_ALT,
 )
@@ -101,11 +102,20 @@ def _son_unlu(ad):
     return kucuk, next((c for c in reversed(kucuk) if c in _SESLI), None)
 
 
+# Ünlü-sonu kararı TEK KAYNAKTAN: dogrula.sesli_biter_mi. Burada bir
+# kopya tutmak, kurucunun doğru yazdığını denetleyicinin reddetmesine
+# yol açıyordu (gerçek arıza: "Curry'nin" üretildi, T21 reddetti).
+_sesli_biter_mi = sesli_biter_mi
+
+
 def belirtme_eki(ad):
     """-ı/-i/-u/-ü, sesliyle bitende 'y' tamponu ("Lakers'ı", "Utah'yı")."""
     kucuk, unlu = _son_unlu(ad)
+    sesli_biter, son_ses = _sesli_biter_mi(ad)
+    if sesli_biter and son_ses == "i" and (not kucuk or kucuk[-1] not in _SESLI):
+        unlu = "i"                     # "Anunoby" → /anunobi/
     ek = {"a": "ı", "ı": "ı", "e": "i", "i": "i", "o": "u", "u": "u", "ö": "ü", "ü": "ü"}.get(unlu, "i")
-    tampon = "y" if kucuk and kucuk[-1] in _SESLI else ""
+    tampon = "y" if sesli_biter else ""
     return f"{tampon}{ek}"
 
 
@@ -132,8 +142,11 @@ def iyelik_eki(ad):
     """-ın/-in/-un/-ün, sesliyle bitende 'n' tamponu ("Doğu'nun",
     "Edwards'ın"). DİKKAT: belirtme ekindeki 'y' tamponuyla karıştırma."""
     kucuk, unlu = _son_unlu(ad)
+    sesli_biter, son_ses = _sesli_biter_mi(ad)
+    if sesli_biter and son_ses == "i" and (not kucuk or kucuk[-1] not in _SESLI):
+        unlu = "i"                     # "Anunoby" → /anunobi/
     ek = {"a": "ın", "ı": "ın", "e": "in", "i": "in", "o": "un", "u": "un", "ö": "ün", "ü": "ün"}.get(unlu, "in")
-    tampon = "n" if kucuk and kucuk[-1] in _SESLI else ""
+    tampon = "n" if sesli_biter else ""
     return f"{tampon}{ek}"
 
 
@@ -443,6 +456,64 @@ def oyuncu_bul(gercekler, ad):
     )
 
 
+# İSKELET LİSTESİNDEN BAŞLIK — hem şablon yedeği hem LLM'in taklit
+# ettiği referans. İkisi de aynı listeye uyuyor (T31), yoksa LLM
+# reddedildiğinde devreye giren şablon kuralı ihlal ediyordu: gerçek
+# arıza (27 Aralık) — "New York Knicks deplasmanda Atlanta Hawks'ı
+# 128-125 yendi." iskelet dışı olduğu için işaretlendi.
+BASLIK_CEYREK_ADI = {1: "ilk", 2: "ikinci", 3: "üçüncü", 4: "son"}
+BASLIK_SON_SANIYE = 24.0      # karar anı bu kadar kalmışsa "son saniye"
+BASLIK_GERI_DONUS = 10        # kapatılan açık bu kadarsa "farktan dönüp"
+BASLIK_PERFORMANS = 30        # tek adamın taşıdığı maç eşiği
+
+
+def baslik_iskeletinden(mac, olgu, en_iyi_ad=None, en_iyi_sayi=None):
+    """Veriye göre iskelet seçip doldurur.
+
+    SEÇİM SIRAYLA DEĞİL GÜÇLE. İlk uyan iskeleti almak yanlış sonuç
+    veriyordu: Jokić'in 55 sayılık gecesinde başlık 10 sayılık bir geri
+    dönüşü anlatıyordu (ölçüldü). Her aday bir ağırlık alıyor, en güçlüsü
+    kazanıyor; doğrulamadan geçemeyen aday bir sonrakine bırakıyor.
+    Sıfat, niteleme, uydurma detay yok — yalnız veri."""
+    olgu = olgu or {}
+    k, y = mac["kazanan_adi"], mac["kaybeden_adi"]
+    ek = belirtme_eki(y)
+    adaylar = []   # (agirlik, metin)
+
+    karar = olgu.get("karar_ani") or {}
+    kalan = karar.get("saniye_kalan")
+    if kalan is not None and kalan <= BASLIK_SON_SANIYE:
+        # Son saniye ne kadar sonsa hikâye o kadar güçlü.
+        adaylar.append((100 - kalan, f"{k}, {y}'{ek} son saniyede devirdi."))
+
+    acik = olgu.get("en_buyuk_geri_donus") or 0
+    if acik >= BASLIK_GERI_DONUS:
+        adaylar.append((acik * 4, f"{k}, {acik} sayılık farktan dönüp {y}'{ek} yendi."))
+
+    kopma = olgu.get("kopma_ani") or {}
+    if kopma.get("periyot"):
+        ceyrek = BASLIK_CEYREK_ADI.get(kopma["periyot"], f"{kopma['periyot']}.")
+        adaylar.append((45, f"{k}, {y}'{ek} {ceyrek} çeyrekte kopardı."))
+
+    if en_iyi_ad and (en_iyi_sayi or 0) >= BASLIK_PERFORMANS:
+        adaylar.append(((en_iyi_sayi - 20) * 4,
+                        f"{en_iyi_ad}'{iyelik_eki(en_iyi_ad)} {en_iyi_sayi} sayısıyla "
+                        f"{k}, {y}'{ek} yendi."))
+
+    for _agirlik, metin in sorted(adaylar, key=lambda x: -x[0]):
+        gecen = _gecir(metin)
+        if gecen:
+            return gecen
+
+    # SON ÇARE — düz skor. Yer iddiası YALNIZ doğruyken: `ev_dep`
+    # kazananın nerede oynadığı, ev sahibiyse "deplasmanında" yanlış olur.
+    if mac.get("ev_dep") == "deplasmanda":
+        m = _gecir(f"{k}, {y} deplasmanında {mac['buyuk']}-{mac['kucuk']} kazandı.")
+        if m:
+            return m
+    return _gecir(f"{k}, {y}'{ek} {mac['buyuk']}-{mac['kucuk']} yendi.")
+
+
 def sonuc_alternatif(mac):
     """Gövde başlığın KOPYASI olamaz — aynı sonucu farklı ifadeyle
     kurar (başlık "X deplasmanda Y'yi A-B yendi", gövde "X, Y
@@ -601,18 +672,20 @@ def mutlaka_metni(gercekler, ham_mac, olgu, en_iyi_ad, takim_adi_fn, kisa=False)
     en_iyi = oyuncu_bul(gercekler, en_iyi_ad)
     kullanilan = set()
 
-    # 1) BAŞLIK — en güçlü olgu; düz skor son çare.
-    kind, onek, onek_kisa = _baslik_oneki(mac, olgu, en_iyi, gercekler)
-    baslik = sonuc(mac, onek, onek_kisa) if onek else None
-    if baslik:
-        kullanilan.add(kind)
-        # Kanca oyuncuyu zaten andıysa (ve istatistikleri birleştirdiyse)
-        # ayrıca bir performans cümlesi kurulmaz.
-        kilo = olgu.get("en_iyi_kilometre") or {}
-        if kind == "kilometre" and en_iyi and kilo.get("oyuncu") == en_iyi.get("oyuncu"):
-            kullanilan.add("performans")
-    else:
-        baslik = sonuc(mac)
+    # 1) BAŞLIK — İSKELET LİSTESİNDEN (kullanıcı kararı). Şablon yolu ile
+    #    LLM yolu AYNI listeye uyuyor; yoksa LLM reddedildiğinde devreye
+    #    giren şablon T31'i ihlal ediyordu (gerçek arıza, 27 Aralık).
+    #    Hangi iskeletin doğru olduğuna VERİ karar veriyor.
+    baslik = baslik_iskeletinden(mac, olgu, en_iyi_ad,
+                                 (en_iyi or {}).get("sayi"))
+    # Başlıkta kullanılan olgu, alt satırda tekrar edilmesin.
+    karar = olgu.get("karar_ani") or {}
+    if karar.get("saniye_kalan") is not None and karar["saniye_kalan"] <= BASLIK_SON_SANIYE:
+        kullanilan.add("karar_ani")
+    if (olgu.get("en_buyuk_geri_donus") or 0) >= BASLIK_GERI_DONUS:
+        kullanilan.add("geri_donus")
+    if en_iyi_ad and ((en_iyi or {}).get("sayi") or 0) >= BASLIK_PERFORMANS:
+        kullanilan.add("performans")
 
     havuz = _olgu_cumleleri(mac, olgu, en_iyi, en_iyi_ad, gercekler)
 
@@ -684,6 +757,81 @@ def brief_satiri(mac, olgu, en_iyi_oyuncu, en_iyi_ad, haric_kindler=None):
         if gecen:
             return kind, gecen
     return None, None
+
+
+# ---------------------------------------------------------------------------
+# MAÇ AKIŞI — SABİT KALIPLAR
+# ---------------------------------------------------------------------------
+#
+# KULLANICI KARARI: bu satırlar LLM'e HİÇ gitmez. Kalıplar burada sabit;
+# model ne görür ne üretir. "Bu kalıplar dışında cümle üretilmez; yeni
+# olay tipi gerekirse buraya eklenir, model uydurmaz."
+#
+# Her satır: (cumle, detay). `detay` küçük gri alt satır, yoksa None.
+# Girdi doğrudan `akis_olay` gerçeğinin verisi — hiçbir sayı burada
+# hesaplanmıyor, yalnız biçimleniyor.
+
+def _akis_takim(kod, ad_fn):
+    return ad_fn(kod) if ad_fn else kod
+
+
+def akis_satiri(olay, ad_fn=None):
+    """(cumle, detay) — kalıp dışında cümle kurulmaz; tanınmayan tipte
+    (None, None) döner ve satır hiç çizilmez."""
+    t = olay.get("tip")
+    ev, dep = olay.get("ev_skor"), olay.get("dep_skor")
+    skor = f"{ev}–{dep}"
+    takim = _akis_takim(olay.get("takim"), ad_fn)
+    n = olay.get("sayi")
+    oyuncu = olay.get("oyuncu")
+
+    if t == "ceyrek_sonu":
+        if olay.get("basa_bas") or not takim:
+            return "Skor başa baş gitti", skor
+        return f"{takim} önde kapadı", skor
+    if t == "devre_farki":
+        return f"Fark {n} sayı", skor
+    if t == "ceyrek_ustunlugu":
+        # Detay YÖN taşımalı: çeyreği alan takım geride kalmaya devam
+        # ediyorsa fark İNDİ, öndeyse ÇIKTI. Çıplak "fark 4" hangisi
+        # olduğunu söylemiyordu.
+        fark = abs(olay.get("fark", 0))
+        onde = ((olay.get("fark", 0) > 0 and olay.get("takim") == olay.get("ev_kod"))
+                or (olay.get("fark", 0) < 0 and olay.get("takim") != olay.get("ev_kod")))
+        yon = "çıktı" if onde else "indi"
+        detay = f"fark {fark}'e {yon}" if fark else "skor eşitlendi"
+        return f"{takim} çeyreği {n}-{olay.get('rakip_sayi')} aldı", detay
+    if t == "en_buyuk_fark":
+        return f"{takim} farkı {n}'e çıkardı", "en büyük fark"
+    if t == "sayi_serisi":
+        return f"{takim} {n}-0 gitti", f"fark {abs(olay.get('fark', 0))}"
+    if t == "esitlik":
+        return f"{takim} skoru eşitledi" if takim else "Skor eşitlendi", skor
+    if t == "liderlik":
+        # EK ELLE YAZILMAZ. "Ellis'nun" üretiyordu; ünlü uyumu ve
+        # tampon `iyelik_eki`nin işi (aynı hata lik_eki'nde de olmuştu).
+        cumle = (f"{oyuncu}'{iyelik_eki(oyuncu)} basketiyle öne geçti" if oyuncu
+                 else f"{takim} öne geçti")
+        return cumle, f"{skor} · liderlik bir daha değişmedi"
+    if t == "karar_ani":
+        cumle = (f"{oyuncu}'{iyelik_eki(oyuncu)} basketi" if oyuncu
+                 else f"{takim} son sayıyı buldu")
+        return cumle, f"{skor} · maçı bitirdi"
+    if t == "fark_korundu":
+        return f"Fark bir daha {n}'in altına inmedi", None
+    if t == "en_etkili":
+        parca = [f"{olay.get('sayi')} sayı"]
+        if olay.get("ribaund"):
+            parca.append(f"{olay['ribaund']} ribaund")
+        if olay.get("asist"):
+            parca.append(f"{olay['asist']} asist")
+        return f"{oyuncu} {', '.join(parca)}", "maçın en etkilisi"
+    return None, None
+
+
+AKIS_TIPLERI = ("ceyrek_sonu", "devre_farki", "ceyrek_ustunlugu", "en_buyuk_fark",
+                "sayi_serisi", "esitlik", "liderlik", "karar_ani",
+                "fark_korundu", "en_etkili")
 
 
 def brief_duz_sonuc(mac):

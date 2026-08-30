@@ -738,11 +738,83 @@ _SESLI_HARFLER = set("aeıioöuüAEIİOÖUÜ")
 IYELIK_TAMPON_DESENI = re.compile(r"(\w+)'(nin|nın|nun|nün)\b")
 
 
+# ---------------------------------------------------------------------------
+# T31 — BAŞLIK İSKELETİ
+# ---------------------------------------------------------------------------
+#
+# KULLANICI KARARI: paragraf anlatısı kalktı, LLM'in ürettiği TEK şey
+# başlık. Serbest yazmıyor; aşağıdaki iskeletlerden birini seçip
+# veriyle dolduruyor. Listede olmayan bir yapı kuramaz.
+#
+# Neden: dört cümlelik serbest anlatı sürekli ve her seferinde BAŞKA bir
+# sınıftan patlıyordu (uydurma detay, kılık değiştirmiş yasak ifade,
+# bozuk deyim, kopuk anlatı). Kural eklemek çözmüyor — model sonsuz
+# sayıda yanlış yapabilir, biz yalnız gördüğümüzü yasaklayabiliriz.
+# Çözüm hata yüzeyini küçültmek: tek cümle, sabit iskelet.
+#
+# Sıfat, niteleme, "yumuşak dokunuş" tarzı detay YASAK — iskelet yalnız
+# veriyle doldurulur. Yeni iskelet gerekirse BURAYA eklenir.
+_AD = r"[A-ZÇĞİÖŞÜ][\w'’\.\- ]{1,38}?"
+BASLIK_ISKELETLERI = (
+    ("son_saniye",
+     re.compile(rf"^{_AD}, {_AD}['’]\w{{1,3}} son saniyede devirdi\.$")),
+    ("geri_donus",
+     re.compile(rf"^{_AD}, \d{{1,2}} sayılık farktan dönüp {_AD}['’]\w{{1,3}} yendi\.$")),
+    ("kopardi",
+     re.compile(rf"^{_AD}, {_AD}['’]\w{{1,3}} (?:ilk|ikinci|üçüncü|son|\d\.) "
+                rf"(?:çeyrek|periyot)(?:te|ta|de|da)['’]?\w{{0,3}} kopardı\.$")),
+    ("performans",
+     re.compile(rf"^{_AD}['’]\w{{1,4}} \d{{1,2}} sayısıyla {_AD}, {_AD}['’]\w{{1,3}} yendi\.$")),
+    ("deplasman",
+     re.compile(rf"^{_AD}, {_AD} deplasmanında \d{{2,3}}-\d{{2,3}} kazandı\.$")),
+    # 6. İSKELET — LİSTEYE SONRADAN EKLENDİ. 5'inci "deplasmanında"
+    # diyor, yani bir YER iddiası taşıyor; kazanan ev sahibiyse o cümle
+    # YANLIŞ olur. Ev sahibi kazandığında yer belirtmeyen bu biçim
+    # kullanılıyor. (Yakalandı: "Sacramento Kings, Dallas Mavericks
+    # deplasmanında 113-107 kazandı" — Sacramento ev sahibiydi.)
+    ("duz_skor",
+     re.compile(rf"^{_AD}, {_AD}['’]\w{{1,3}} \d{{2,3}}-\d{{2,3}} yendi\.$")),
+)
+
+
+def t31_baslik_iskeleti(metin):
+    """Başlık iskelet listesinden birine uymuyorsa RET."""
+    m = (metin or "").strip()
+    if not m:
+        return False, ["başlık boş"]
+    for ad, desen in BASLIK_ISKELETLERI:
+        if desen.match(m):
+            return True, None
+    return False, [f"başlık iskelet listesinin dışında: '{m}'"]
+
+
+def sesli_biter_mi(ad):
+    """(sesli_mi, son_ses) — kelime SES olarak ünlüyle mi bitiyor?
+
+    TEK KAYNAK: hem cümle kurucu (cumle.iyelik_eki/belirtme_eki) hem
+    denetleyici (T21) buradan okur. İkisi ayrı olsaydı kurucunun doğru
+    yazdığını denetleyici reddederdi — nitekim etti: "Curry'nin"
+    üretilip T21'de takıldı.
+
+    Yazımda ünsüz olan 'y', ÜNSÜZDEN sonra geldiğinde /i/ okunuyor:
+    "Anunoby" → /anunobi/, "Curry" → /kari/. Bu ekleri değiştiriyor —
+    "Anunoby'un" değil "Anunoby'nin". Ünlüden sonraki 'y' gerçekten
+    ünsüz ("Murray" → /murey/), oraya kural uygulanmıyor."""
+    k = (ad or "").rstrip().rstrip(".").lower()
+    if not k:
+        return False, ""
+    if k[-1] in _SESLI_HARFLER:
+        return True, k[-1]
+    if k[-1] == "y" and len(k) >= 2 and k[-2] not in _SESLI_HARFLER:
+        return True, "i"
+    return False, ""
+
+
 def t21_iyelik_eki_tamponu(metin):
     sorunlu = []
     for m in IYELIK_TAMPON_DESENI.finditer(metin):
         kelime = m.group(1)
-        if kelime and kelime[-1] not in _SESLI_HARFLER:
+        if kelime and not sesli_biter_mi(kelime)[0]:
             sorunlu.append(f"'{kelime}'{m.group(2)}' — 'n' tamponu sadece sesli harfle biten kelimede kullanılır, '{kelime}' ünsüzle bitiyor")
     return (len(sorunlu) == 0, sorunlu or None)
 
@@ -1260,6 +1332,12 @@ def alan_dogrula(alan_adi, metin, gercekler, ham_mac, yasakli_liste, sablon=Fals
     testler["T23"] = t23_mimari_kural_ihlalleri(metin)
     testler["T24"] = t24_en_iyi_kilometre_sahibi(metin, gercekler)
     testler["T26"] = t26_karar_ani_oyuncusuz(metin, gercekler)
+    # T31 SADECE BAŞLIKTA. Paragraf anlatısı kalktıktan sonra LLM'in
+    # ürettiği tek alan başlık ve o da iskelet listesiyle sınırlı;
+    # diğer alanlar (brief, gec_satiri, şablon gövdeler) bu kuralın
+    # kapsamı dışında.
+    if alan_adi == "baslik":
+        testler["T31"] = t31_baslik_iskeleti(metin)
     gecti = all(sonuc[0] for sonuc in testler.values())
     return gecti, testler
 

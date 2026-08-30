@@ -406,6 +406,30 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
    sadece nefes (kullanıcı: "C seçeneği"). */
 .gbody p{margin:15px 0 0;font-size:15px;line-height:1.68;color:var(--ink2)}
 .gbody p:first-child{margin-top:13px}
+/* MAÇ AKIŞI — paragraf gövdesinin yerine geçti (kullanıcı kararı).
+   Görsel dil YENİ DEĞİL: "Sen uyurken" bölümündeki saat rayının aynısı,
+   tek maça uygulanmış hâli. Sol sütun zaman, orta ray + nokta, sağ olay.
+   Kritik an ember nokta ve halkayla işaretli — maçın nerede
+   belirlendiği bir bakışta görünüyor. */
+.akis{margin-top:15px;border-top:1px solid var(--line2);padding-top:4px}
+.akis .akisr{display:flex;position:relative}
+.akis .zm{width:74px;flex:none;padding:10px 0}
+.akis .zm b{font-family:var(--mono);font-size:11.5px;color:#6E7A8B;display:block;
+  font-weight:400;letter-spacing:.02em}
+.akis .zm s{font-family:var(--mono);font-size:9px;color:#3B4657;text-decoration:none;
+  display:block;margin-top:2px}
+.akis .ray{width:1px;background:var(--line2);flex:none;position:relative}
+.akis .akisr:first-child .ray{margin-top:13px}
+.akis .akisr:last-child .ray{margin-bottom:13px}
+.akis .ray u{position:absolute;left:-3px;top:14px;width:7px;height:7px;border-radius:50%;
+  background:#2A3444;text-decoration:none}
+.akis .akisr.vurgu .ray u{background:var(--ember);box-shadow:0 0 0 3px rgba(232,118,58,.15)}
+.akis .ic{flex:1;padding:10px 0 10px 14px;min-width:0}
+.akis .ic p{margin:0;font-size:13.5px;line-height:1.5;color:var(--ink2)}
+.akis .akisr.vurgu .ic p{color:var(--ink);font-weight:600}
+.akis .ic em{font-family:var(--mono);font-size:11px;color:var(--faint);font-style:normal;
+  display:block;margin-top:4px}
+.akis .akisr.vurgu .ic em{color:#8A5A38}
 
 /* Masaüstünde "dokun" yerine "tıkla". Ayrım EKRAN GENİŞLİĞİYLE DEĞİL
    giriş cihazıyla yapılıyor: geniş ama dokunmatik bir tablette "dokun"
@@ -2209,6 +2233,17 @@ function render(d){
     </div>`;
   };
 
+  // AKIŞ SATIRLARI VERİDEN GELİYOR — burada cümle KURULMUYOR.
+  // `cumle` ve `detay` derle.py'de sabit kalıplarla üretildi; oluşturucu
+  // yalnız çiziyor. Akış yoksa blok hiç çizilmiyor (boş çerçeve değil).
+  const akisBlogu = a => (a && a.length)
+    ? `<div class="akis">${a.map(r=>`<div class="akisr${r.kritik?' vurgu':''}">
+        <div class="zm"><b>${esc(r.zaman||'')}</b>${r.saat?`<s>${esc(r.saat)}</s>`:''}</div>
+        <div class="ray"><u></u></div>
+        <div class="ic"><p>${esc(r.cumle)}</p>${r.detay?`<em>${esc(r.detay)}</em>`:''}</div>
+      </div>`).join('')}</div>`
+    : '';
+
   document.getElementById('mutlakaBox').innerHTML = d.mutlaka.map(mv=>`<article class="game" id="${mv.id}" style="--ray:${esc(mv.ray_renk||'var(--ember)')}">
     <div class="gcard" data-kart="${mv.id}" role="button" tabindex="0">
       <div class="gtop">
@@ -2217,7 +2252,7 @@ function render(d){
       </div>
       <p class="recap"><b>${esc(mv.baslik)}</b></p>
       ${mv.neden_onemli?`<div class="kicker">${esc(mv.neden_onemli)}</div>`:''}
-      <div class="gbody">${paragraflar(mv.ozet)}</div>
+      ${akisBlogu(mv.akis)}
       ${kilitSerit(mv)}
       <span class="opener">Box score<i>›</i></span>
     </div>
@@ -2232,6 +2267,7 @@ function render(d){
         <div class="mblok md">${macBlok(m.mac, m.skor)}</div>
         <span class="gozgo" aria-hidden="true">›</span></button>
       ${m.metin?`<div class="dblock" style="padding:0 0 14px"><p>${esc(m.metin)}</p></div>`:''}
+      ${akisBlogu(m.akis)}
       ${kilitSerit(m)}
     </div>`).join('');
   }

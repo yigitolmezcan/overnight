@@ -684,6 +684,207 @@ def an_gerceklerini_uret(g, gid, actions, isim_haritasi):
             )
 
 
+# ---------------------------------------------------------------------------
+# MAÇ AKIŞI — dört satırlık olay dizisi
+# ---------------------------------------------------------------------------
+#
+# KULLANICI KARARI: Mutlaka bil / Göz at'ta dört cümlelik serbest anlatı
+# kalktı. Serbest üretim sürekli ve HER SEFERİNDE BAŞKA bir sınıftan
+# patlıyordu: uydurma detay ("yumuşak dokunuşla bıraktığı şut" — veride
+# öyle bir şey yok), kılık değiştirmiş yasak ifade, bozuk deyim, kopuk
+# anlatı. Kural eklemek çözmüyor; model sonsuz sayıda yanlış yapabilir,
+# biz yalnız gördüğümüzü yasaklayabiliriz.
+#
+# Akış satırları LLM'E HİÇ GİTMEZ. Buradan, sabit kalıplarla, doğrudan
+# veriden üretilirler. Bu yüzden olaylar GERÇEK KAYDI olarak yazılıyor:
+# projenin değişmez kuralı, yayınlanan her sayı ve adın bir gercekler
+# kaydına dayanmasıdır. Cümleye çevirme işi cumle.py'de, seçme işi
+# derle.py'de; burada yalnız OLAY ve VERİSİ var.
+AKIS_SERI_ASGARI = 8       # "N-0 gitti" için en az sayı
+AKIS_BASA_BAS = 3          # çeyrek sonunda bu fark "başa baş" sayılır
+AKIS_DEVRE_FARK = 10       # devrede bu farktan büyükse ayrı satır
+AKIS_SON_SANIYE = 60.0     # "Son" etiketi eşiği (periyot 4+)
+
+
+def _akis_zaman(periyot, saniye_kalan, ceyrek_sonu=False):
+    """('1Ç', None) / ('Devre', None) / ('4Ç', '2:38') / ('Son', '0:04')"""
+    if ceyrek_sonu and periyot == 2:
+        return "Devre", None
+    if ceyrek_sonu and periyot >= 4:
+        # "4Ç" etiketi, aynı çeyreğin "Son 0:06" satırından SONRA
+        # geldiğinde sıra bozuk görünüyordu (ölçüldü, ORL-DEN). Çeyreğin
+        # sonu maçın da sonu — etiket bunu söylesin.
+        return "Maç sonu", None
+    if ceyrek_sonu:
+        return f"{periyot}Ç", None
+    if periyot >= 4 and saniye_kalan is not None and saniye_kalan <= AKIS_SON_SANIYE:
+        etiket = "Son"
+    elif periyot > 4:
+        etiket = f"U{periyot - 4}"
+    else:
+        etiket = f"{periyot}Ç"
+    if saniye_kalan is None:
+        return etiket, None
+    dk, sn = divmod(int(saniye_kalan), 60)
+    return etiket, f"{dk}:{sn:02d}"
+
+
+def akis_gercekleri_uret(g, gid, actions, ev_kod, dep_kod, kazanan, ceyrek_veri):
+    """Akış olaylarını `akis_olay` kaydı olarak yazar.
+
+    Her kayıt: {tip, periyot, saniye_kalan, zaman, saat, takim, oyuncu,
+    sayi, ev_skor, dep_skor, fark}. Cümle KURULMUYOR — kalıp cumle.py'de,
+    seçim derle.py'de."""
+    seri = []   # (periyot, saniye, ev, dep, aksiyon)
+    for a in actions:
+        if a.get("scoreHome") in ("", None) or a.get("scoreAway") in ("", None):
+            continue
+        seri.append((a["period"], clock_saniye(a["clock"]),
+                     int(a["scoreHome"]), int(a["scoreAway"]), a))
+    if not seri:
+        return
+
+    kaynak = f"PlayByPlayV3:{gid}:akis"
+
+    def yaz(tip, periyot, saniye, ev, dep, **ek):
+        etiket, saat = _akis_zaman(periyot, saniye, ek.pop("ceyrek_sonu", False))
+        veri = {
+            "tip": tip, "periyot": periyot, "saniye_kalan": saniye,
+            "zaman": etiket, "saat": saat,
+            "ev_skor": ev, "dep_skor": dep, "fark": ev - dep,
+        }
+        veri.update(ek)
+        g.ekle("akis_olay", veri, kaynak, "turetilmis")
+
+    # --- 1) ÇEYREK SONLARI -------------------------------------------------
+    # Kümülatif skor `ceyrek` gerçeğinde zaten hesaplı; oradan okuyoruz ki
+    # aynı sayı iki yerde iki türlü çıkmasın.
+    for c in sorted(ceyrek_veri, key=lambda x: x["periyot"]):
+        if c["periyot"] >= 4:
+            continue                      # son çeyreğin sonu = maç sonu
+        ev, dep = c["kumulatif_ev"], c["kumulatif_dep"]
+        onde = ev_kod if ev > dep else (dep_kod if dep > ev else None)
+        yaz("ceyrek_sonu", c["periyot"], None, ev, dep,
+            ceyrek_sonu=True, takim=onde,
+            basa_bas=abs(ev - dep) <= AKIS_BASA_BAS)
+        if c["periyot"] == 2 and abs(ev - dep) >= AKIS_DEVRE_FARK:
+            yaz("devre_farki", 2, None, ev, dep, ceyrek_sonu=True,
+                takim=onde, sayi=abs(ev - dep))
+
+    # --- 2) ÇEYREK ÜSTÜNLÜĞÜ ----------------------------------------------
+    # "Boston çeyreği 29-13 aldı · fark 4'e indi" — geri dönüşü olmayan
+    # maçta akışın taşıyıcısı bu oluyor.
+    for c in sorted(ceyrek_veri, key=lambda x: x["periyot"]):
+        # 1. ÇEYREK HARİÇ: orada çeyrek skoru = kümülatif skor, yani
+        # "çeyreği 31-23 aldı" ile "31-23 önde kapadı" aynı bilgi.
+        if c["periyot"] == 1:
+            continue
+        ev_c, dep_c = c["ev_ceyrek_sayisi"], c["dep_ceyrek_sayisi"]
+        if abs(ev_c - dep_c) < AKIS_SERI_ASGARI:
+            continue
+        ustun = ev_kod if ev_c > dep_c else dep_kod
+        yaz("ceyrek_ustunlugu", c["periyot"], None,
+            c["kumulatif_ev"], c["kumulatif_dep"], ceyrek_sonu=True,
+            takim=ustun, ev_kod=ev_kod,
+            sayi=max(ev_c, dep_c), rakip_sayi=min(ev_c, dep_c))
+
+    # --- 3) EN BÜYÜK FARK --------------------------------------------------
+    en_ev = max(seri, key=lambda x: x[2] - x[3])
+    en_dep = max(seri, key=lambda x: x[3] - x[2])
+    for periyot, saniye, ev, dep, _a in (en_ev, en_dep):
+        fark = abs(ev - dep)
+        if fark < AKIS_SERI_ASGARI:
+            continue
+        yaz("en_buyuk_fark", periyot, saniye, ev, dep,
+            takim=(ev_kod if ev > dep else dep_kod), sayi=fark)
+
+    # --- 4) SAYI SERİSİ (N-0) ---------------------------------------------
+    # Tek tarafın kesintisiz sayı ürettiği en uzun aralık.
+    en_iyi_seri = None
+    i = 0
+    while i < len(seri) - 1:
+        _, _, ev0, dep0, _ = seri[i]
+        j = i + 1
+        ev_art = dep_art = 0
+        while j < len(seri):
+            _, _, ev1, dep1, _ = seri[j]
+            de, dd = ev1 - ev0, dep1 - dep0
+            if de > 0 and dd > 0:
+                break
+            ev_art, dep_art = de, dd
+            j += 1
+        uzunluk = max(ev_art, dep_art)
+        if uzunluk >= AKIS_SERI_ASGARI and (en_iyi_seri is None or uzunluk > en_iyi_seri[0]):
+            son = seri[j - 1]
+            en_iyi_seri = (uzunluk, son, ev_art > dep_art)
+        i = max(j - 1, i + 1)
+    if en_iyi_seri:
+        uzunluk, (periyot, saniye, ev, dep, _a), ev_mi = en_iyi_seri
+        yaz("sayi_serisi", periyot, saniye, ev, dep,
+            takim=(ev_kod if ev_mi else dep_kod), sayi=uzunluk)
+
+    # --- 5) LİDER DEĞİŞİMLERİ: eşitlik, son liderlik, karar anı -----------
+    onceki_fark = 0
+    esitlikler, liderlikler = [], []
+    for periyot, saniye, ev, dep, a in seri:
+        fark = ev - dep
+        if fark == 0 and onceki_fark != 0:
+            esitlikler.append((periyot, saniye, ev, dep, a))
+        elif fark != 0 and onceki_fark != 0 and (fark > 0) != (onceki_fark > 0):
+            liderlikler.append((periyot, saniye, ev, dep, a))
+        onceki_fark = fark
+
+    if esitlikler:
+        periyot, saniye, ev, dep, a = esitlikler[-1]
+        yaz("esitlik", periyot, saniye, ev, dep,
+            takim=a.get("teamTricode"))
+
+    if liderlikler:
+        periyot, saniye, ev, dep, a = liderlikler[-1]
+        # Son liderlik değişimi KAZANANA aitse "liderlik bir daha
+        # değişmedi" doğru; değilse bu satır kurulmaz.
+        onde = ev_kod if ev > dep else dep_kod
+        if onde == kazanan:
+            yaz("liderlik", periyot, saniye, ev, dep,
+                takim=onde,
+                oyuncu=_dogru_oyuncu_adi(a.get("personId"), a.get("playerName") or ""))
+
+    # --- 6) KARAR ANI: son sayı, fark küçükse -----------------------------
+    # SKORU DEĞİŞTİREN SON AKSİYON — dizideki son kayıt değil. Periyot
+    # sonu işaretleri de skor taşıyor ama oyuncusu yok; onu alınca satır
+    # " son sayıyı buldu" diye adsız çıkıyordu (ölçüldü, 27 Aralık).
+    son_sayi = None
+    onceki = None
+    for kayit in seri:
+        if onceki is not None and (kayit[2], kayit[3]) != (onceki[2], onceki[3]):
+            if kayit[4].get("personId"):
+                son_sayi = kayit
+        onceki = kayit
+    if son_sayi is not None:
+        son_periyot, son_saniye, son_ev, son_dep, son_a = son_sayi
+        if abs(son_ev - son_dep) <= 5:
+            yaz("karar_ani", son_periyot, son_saniye, son_ev, son_dep,
+                takim=son_a.get("teamTricode"),
+                oyuncu=_dogru_oyuncu_adi(son_a.get("personId"),
+                                         son_a.get("playerName") or ""))
+
+    # --- 7) FARK KORUNDU ---------------------------------------------------
+    # `fark_serisi.esik_sonrasi_hic_asilmadi` ile AYNI hesap; burada
+    # tekrarlamak yerine en yüksek aşılmamış eşiği okuyoruz.
+    son_alti = {}
+    for esik in (10, 15, 20):
+        altinda = [x for x in seri if abs(x[2] - x[3]) < esik]
+        if altinda:
+            son = altinda[-1]
+            # Son çeyreğin ortasından önce kapandıysa anlamlı.
+            if son[0] <= 3 or (son[0] == 4 and son[1] >= 360):
+                son_alti[esik] = son
+    if son_alti:
+        esik = max(son_alti)
+        periyot, saniye, ev, dep, _a = son_alti[esik]
+        yaz("fark_korundu", periyot, saniye, ev, dep, sayi=esik)
+
+
 def fark_serisi_gercegi_uret(g, gid, actions, ev_kod, dep_kod, kazanan):
     """Maç boyu fark eğrisinden türetilmiş özet: en büyük fark, lider
     değişim sayısı, kapatılan en büyük açık, eşik geçişleri, kopma anı."""
@@ -1026,6 +1227,11 @@ def mac_isle(gid, m, puan_durumu, sezon_sayilari_by_player_id=None, son10_dakika
     kilometre_gerceklerini_uret(g, gid, oyuncu_stat_ham, sezon_sayilari_by_player_id)
     an_gerceklerini_uret(g, gid, actions, isim_haritasi)
     fark_serisi_gercegi_uret(g, gid, actions, ev_kod, dep_kod, kazanan)
+    # Akış olayları ÇEYREK gerçeklerinden sonra üretilmeli: kümülatif
+    # skorları oradan okuyor, aynı sayı iki yerde iki türlü çıkmasın.
+    akis_gercekleri_uret(
+        g, gid, actions, ev_kod, dep_kod, kazanan,
+        [k["veri"] for k in g.kayitlar if k["tur"] == "ceyrek"])
     derece_ve_seri_gerceklerini_uret(g, gid, ev_kod, dep_kod, puan_durumu)
 
     # Gece özeti için özet bilgiler

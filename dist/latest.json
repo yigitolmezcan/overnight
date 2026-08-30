@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-27",
-  "uretildi": "2026-08-30T09:38:22.254807Z",
+  "uretildi": "2026-08-30T09:53:14.743489Z",
   "mac_sayisi": 9,
   "bars": [
     {
@@ -200,9 +200,42 @@
       "mac": "Orlando Magic — Denver Nuggets",
       "skor": "127–126",
       "rozet": 9.35,
-      "baslik": "Orlando, Bane'in son saniye serbest atışlarıyla Denver'i devirdi.",
-      "neden_onemli": "Batı'da 3. sıradaki Denver'e karşı alınan bir galibiyetti.",
-      "ozet": "Denver, ilk yarıda kurduğu üstünlükle farkı 17 sayıya kadar çıkararak kontrolü ele geçirdi. Orlando, üçüncü çeyrekten itibaren toparlanarak maçı son periyotta eşitledi. Jokić'in bitime 11.9 saniye kala attığı serbest atışlarla öne geçtiği maçı, Bane'in 6.9 saniye kalan iki serbest atışı Orlando lehine çevirdi. Mağlup tarafta Jokić 34 sayı, 21 ribaund ve 12 asistle triple-double yaptı.",
+      "baslik": "Orlando, Denver'ı son saniyede devirdi.",
+      "neden_onemli": "",
+      "akis": [
+        {
+          "tip": "ceyrek_sonu",
+          "zaman": "3Ç",
+          "saat": null,
+          "cumle": "Denver önde kapadı",
+          "detay": "84–93",
+          "kritik": false
+        },
+        {
+          "tip": "esitlik",
+          "zaman": "Son",
+          "saat": "0:06",
+          "cumle": "Orlando skoru eşitledi",
+          "detay": "126–126",
+          "kritik": false
+        },
+        {
+          "tip": "karar_ani",
+          "zaman": "Son",
+          "saat": "0:06",
+          "cumle": "Desmond Bane'nin basketi",
+          "detay": "127–126 · maçı bitirdi",
+          "kritik": true
+        },
+        {
+          "tip": "ceyrek_ustunlugu",
+          "zaman": "Maç sonu",
+          "saat": null,
+          "cumle": "Orlando çeyreği 43-33 aldı",
+          "detay": "fark 1'e çıktı",
+          "kritik": false
+        }
+      ],
       "box": {
         "ev": {
           "takim": "Orlando Magic",
@@ -821,9 +854,42 @@
       "mac": "Atlanta Hawks — New York Knicks",
       "skor": "125–128",
       "rozet": 8.87,
-      "baslik": "New York Knicks deplasmanda Atlanta Hawks'ı 128-125 yendi.",
+      "baslik": "Karl-Anthony Towns'un 36 sayısıyla New York Knicks, Atlanta Hawks'ı yendi.",
       "neden_onemli": "New York Knicks, konferansta 2. sıraya yükseldi.",
-      "ozet": "Karl-Anthony Towns 36 sayı attı.",
+      "akis": [
+        {
+          "tip": "devre_farki",
+          "zaman": "Devre",
+          "saat": null,
+          "cumle": "Fark 13 sayı",
+          "detay": "55–68",
+          "kritik": false
+        },
+        {
+          "tip": "ceyrek_sonu",
+          "zaman": "3Ç",
+          "saat": null,
+          "cumle": "New York önde kapadı",
+          "detay": "89–98",
+          "kritik": false
+        },
+        {
+          "tip": "esitlik",
+          "zaman": "Son",
+          "saat": "0:29",
+          "cumle": "New York skoru eşitledi",
+          "detay": "125–125",
+          "kritik": false
+        },
+        {
+          "tip": "karar_ani",
+          "zaman": "Son",
+          "saat": "0:07",
+          "cumle": "OG Anunoby'nin basketi",
+          "detay": "125–128 · maçı bitirdi",
+          "kritik": true
+        }
+      ],
       "box": {
         "ev": {
           "takim": "Atlanta Hawks",
@@ -1417,9 +1483,42 @@
       "mac": "San Antonio Spurs — Utah Jazz",
       "skor": "114–127",
       "rozet": 8.04,
-      "baslik": "Wembanyama 32 sayı 5 blokla öne çıktı, Utah kazandı",
-      "neden_onemli": "Batı'nın 2. sırasındaki San Antonio'yu deplasmanda deviren Utah sürpriz yaptı",
-      "ozet": "İlk çeyrekte 8 sayı geride kalan Utah, ikinci periyotta attığı 38 sayıyla öne geçti ve bir daha geriye düşmedi. Markkanen'in 29, George'un 28 sayısıyla oynayan Jazz, deplasmanda farkı koruyarak maçı kazandı. San Antonio tarafında Wembanyama'nın olağanüstü gecesi mağlubiyeti önleyemedi.",
+      "baslik": "Utah Jazz, San Antonio deplasmanında 127-114 kazandı.",
+      "neden_onemli": "",
+      "akis": [
+        {
+          "tip": "ceyrek_ustunlugu",
+          "zaman": "Devre",
+          "saat": null,
+          "cumle": "Utah çeyreği 38-20 aldı",
+          "detay": "fark 10'e çıktı",
+          "kritik": false
+        },
+        {
+          "tip": "devre_farki",
+          "zaman": "Devre",
+          "saat": null,
+          "cumle": "Fark 10 sayı",
+          "detay": "60–70",
+          "kritik": false
+        },
+        {
+          "tip": "ceyrek_sonu",
+          "zaman": "3Ç",
+          "saat": null,
+          "cumle": "Utah önde kapadı",
+          "detay": "87–98",
+          "kritik": false
+        },
+        {
+          "tip": "esitlik",
+          "zaman": "4Ç",
+          "saat": "7:22",
+          "cumle": "San Antonio skoru eşitledi",
+          "detay": "108–108",
+          "kritik": true
+        }
+      ],
       "box": {
         "ev": {
           "takim": "San Antonio Spurs",
@@ -2064,9 +2163,42 @@
       "mac": "Minnesota Timberwolves — Brooklyn Nets",
       "skor": "107–123",
       "rozet": 7.11,
-      "baslik": "Sürpriz bir sonuçla Brooklyn Nets, Minnesota Timberwolves'i 123-107 yendi.",
+      "baslik": "Cam Thomas'ın 30 sayısıyla Brooklyn Nets, Minnesota Timberwolves'i yendi.",
       "neden_onemli": "",
-      "ozet": "Cam Thomas 30 sayı attı.",
+      "akis": [
+        {
+          "tip": "esitlik",
+          "zaman": "2Ç",
+          "saat": "1:40",
+          "cumle": "Minnesota skoru eşitledi",
+          "detay": "60–60",
+          "kritik": false
+        },
+        {
+          "tip": "liderlik",
+          "zaman": "3Ç",
+          "saat": "10:59",
+          "cumle": "Egor Dëmin'in basketiyle öne geçti",
+          "detay": "63–65 · liderlik bir daha değişmedi",
+          "kritik": true
+        },
+        {
+          "tip": "ceyrek_sonu",
+          "zaman": "3Ç",
+          "saat": null,
+          "cumle": "Brooklyn önde kapadı",
+          "detay": "86–98",
+          "kritik": false
+        },
+        {
+          "tip": "ceyrek_ustunlugu",
+          "zaman": "3Ç",
+          "saat": null,
+          "cumle": "Brooklyn çeyreği 36-23 aldı",
+          "detay": "fark 12'e çıktı",
+          "kritik": false
+        }
+      ],
       "box": {
         "ev": {
           "takim": "Minnesota Timberwolves",

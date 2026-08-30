@@ -1670,8 +1670,32 @@ SADECE son çeyrek/periyot içindekiler. "Son çeyreği N lider
 değişimiyle geçti" gibi bir cümle kuracaksan `son_periyot_lider_degisimi`yi
 kullan — maç geneli sayıyı son çeyreğe atfetme.
 {maglup_uyarisi}{ust_uste_uyarisi}{onceki_hata_talimati}
+SENDEN İSTENEN TEK ŞEY BAŞLIK. Paragraf anlatısı KALKTI; maçın akışı
+dört satırlık bir olay dizisiyle anlatılıyor ve o satırlar doğrudan
+veriden üretiliyor — sen onlara dokunmuyorsun.
+
+Serbest cümle YAZMA. Aşağıdaki iskeletlerden BİRİNİ seç ve yalnız
+veriyle doldur:
+
+  1. [Takım], [Rakip]'i son saniyede devirdi.
+  2. [Takım], [N] sayılık farktan dönüp [Rakip]'i yendi.
+  3. [Takım], [Rakip]'i [çeyrek]'te kopardı.
+  4. [Oyuncu]'nun [N] sayısıyla [Takım], [Rakip]'i yendi.
+  5. [Takım], [Rakip] deplasmanında [skor] kazandı.
+  6. [Takım], [Rakip]'i [skor] yendi.
+
+5'inci bir YER iddiası: yalnız kazanan DEPLASMANDA oynadıysa kullan.
+Kazanan ev sahibiyse 6'ncıyı kullan.
+
+Hangi iskeletin doğru olduğuna VERİ karar verir: son saniyede biten maça
+1, kapatılan büyük açığa 2, erken kopan maça 3, tek adamın taşıdığı maça
+4, bunların hiçbiri yoksa 5.
+
+Sıfat, niteleme, "yumuşak dokunuşla bıraktığı şut" tarzı detay YASAK.
+İskeletin dışına çıkan başlık reddedilir.
+
 JSON şeması:
-{{"baslik": "...", "neden_onemli": "...", "{govde_alani}": "...", "muzip": bool}}
+{{"baslik": "..."}}
 """
     # Maç verisi promptun BAŞINA alındı ve ayrı bir parça olarak dönüyor.
     # Sebep: önbellek ÖNEK (prefix) üzerinden çalışır. Blok sondayken
@@ -2520,9 +2544,31 @@ def yaz_hibrit(tarih_str, zorla=False):
             rapor["ilk_denemede_kabul"] += 1
 
         if kabul_edildi:
-            taslak_maclar[gid] = metin_obj
+            # LLM YALNIZ BAŞLIK ÜRETİYOR. Alt satır (neden_onemli)
+            # ŞABLONDAN geliyor — kullanıcı kararı: "alt satır tek olgu,
+            # şablon üretir, mevcut haliyle kalır". Gövde alanı hiç
+            # yazılmıyor; yerini maç akışı aldı ve o akış derle.py'de
+            # doğrudan veriden kuruluyor, LLM'e hiç uğramıyor.
+            _sablon_obj = sablon_uret_mutlaka(
+                gercekler, ham_mac, kalip_plani[gid]["olgu_ham"],
+                en_iyi_performans, kisa=kisa)
+            # ALT SATIR İSTEĞE BAĞLI. Başlık en güçlü olguyu tükettiyse
+            # geriye anlatacak tek olgu kalmayabiliyor; referans tasarımda
+            # da alt satırsız maç var. BOŞSA ALAN HİÇ YAZILMIYOR — boş
+            # string yazmak doğrulamada "0 kelime" diye işaretleniyordu.
+            taslak_maclar[gid] = {"baslik": metin_obj.get("baslik", "")}
+            _alt = (_sablon_obj.get("neden_onemli") or "").strip()
+            if _alt:
+                taslak_maclar[gid]["neden_onemli"] = _alt
         else:
-            taslak_maclar[gid] = sablon_uret_mutlaka(gercekler, ham_mac, kalip_plani[gid]["olgu_ham"], en_iyi_performans, kisa=kisa)
+            # ŞABLON YEDEĞİ DE İKİ ALAN. Gövde alanı taşımıyor; yapı
+            # her iki yolda aynı, yoksa LLM'in kabul edildiği maçta akış,
+            # düştüğü maçta paragraf çıkardı.
+            _sb = sablon_uret_mutlaka(gercekler, ham_mac, kalip_plani[gid]["olgu_ham"], en_iyi_performans, kisa=kisa)
+            taslak_maclar[gid] = {"baslik": _sb.get("baslik", "")}
+            _alt2 = (_sb.get("neden_onemli") or "").strip()
+            if _alt2:
+                taslak_maclar[gid]["neden_onemli"] = _alt2
             rapor["sablon_moduna_dusen"] += 1
             _sablon_isaretle(rapor, gid, "mutlaka", taslak_maclar[gid], gercekler, ham_mac, en_iyi_performans, yasakli)
         # Kabul edilen (LLM ya da şablon) metin "üst üste/art arda"
@@ -2849,9 +2895,31 @@ def yaz(tarih_str, zorla=False, haber_skorlari=None, sadece_gidler=None):
             rapor["ilk_denemede_kabul"] += 1
 
         if kabul_edildi:
-            taslak_maclar[gid] = metin_obj
+            # LLM YALNIZ BAŞLIK ÜRETİYOR. Alt satır (neden_onemli)
+            # ŞABLONDAN geliyor — kullanıcı kararı: "alt satır tek olgu,
+            # şablon üretir, mevcut haliyle kalır". Gövde alanı hiç
+            # yazılmıyor; yerini maç akışı aldı ve o akış derle.py'de
+            # doğrudan veriden kuruluyor, LLM'e hiç uğramıyor.
+            _sablon_obj = sablon_uret_mutlaka(
+                gercekler, ham_mac, kalip_plani[gid]["olgu_ham"],
+                en_iyi_performans, kisa=kisa)
+            # ALT SATIR İSTEĞE BAĞLI. Başlık en güçlü olguyu tükettiyse
+            # geriye anlatacak tek olgu kalmayabiliyor; referans tasarımda
+            # da alt satırsız maç var. BOŞSA ALAN HİÇ YAZILMIYOR — boş
+            # string yazmak doğrulamada "0 kelime" diye işaretleniyordu.
+            taslak_maclar[gid] = {"baslik": metin_obj.get("baslik", "")}
+            _alt = (_sablon_obj.get("neden_onemli") or "").strip()
+            if _alt:
+                taslak_maclar[gid]["neden_onemli"] = _alt
         else:
-            taslak_maclar[gid] = sablon_uret_mutlaka(gercekler, ham_mac, kalip_plani[gid]["olgu_ham"], en_iyi_performans, kisa=kisa)
+            # ŞABLON YEDEĞİ DE İKİ ALAN. Gövde alanı taşımıyor; yapı
+            # her iki yolda aynı, yoksa LLM'in kabul edildiği maçta akış,
+            # düştüğü maçta paragraf çıkardı.
+            _sb = sablon_uret_mutlaka(gercekler, ham_mac, kalip_plani[gid]["olgu_ham"], en_iyi_performans, kisa=kisa)
+            taslak_maclar[gid] = {"baslik": _sb.get("baslik", "")}
+            _alt2 = (_sb.get("neden_onemli") or "").strip()
+            if _alt2:
+                taslak_maclar[gid]["neden_onemli"] = _alt2
             rapor["sablon_moduna_dusen"] += 1
             _sablon_isaretle(rapor, gid, "mutlaka", taslak_maclar[gid], gercekler, ham_mac, en_iyi_performans, yasakli)
 
