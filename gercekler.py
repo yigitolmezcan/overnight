@@ -1062,18 +1062,53 @@ def akis_gercekleri_uret(g, gid, actions, ev_kod, dep_kod, kazanan, ceyrek_veri)
         # atılan ve sonucu belirleyen basket. Bu olay varsa kritik işaret
         # HER ZAMAN onundur — şekil ne olursa olsun.
         if abs(son_ev - son_dep) <= 5 and (son_saniye or 0) <= AKIS_KARAR_SANIYE:
-            # ŞUT TÜRÜ karar cümlesi için: tek izin verilen cümle
-            # biçimi "[Oyuncu] bitime [süre] kala [şut türü] attı".
-            # Doğrudan play-by-play'den; göreli akıl yürütme yok.
+            # ŞUT TÜRÜ doğrudan play-by-play'den; skor farkından
+            # TÜRETİLMİYOR. Ayrıca skor DEĞİŞİMİYLE tutarlılığı
+            # denetleniyor: tek serbest atış 1, iki serbest atış 2,
+            # basket 2, üçlük 3 getirir. Tutmuyorsa cümle kurulmaz.
+            _onceki_kayit = seri[seri.index(son_sayi) - 1] if seri.index(son_sayi) else None
+            _degisim = ((son_ev + son_dep)
+                        - ((_onceki_kayit[2] + _onceki_kayit[3]) if _onceki_kayit else 0))
+            _sa_isabet = _sa_deneme = None
             if son_a.get("actionType") == "Free Throw":
                 _tur = "serbest atış"
+                # Aynı faul serisindeki atışlar: aynı oyuncu, aynı periyot,
+                # birbirine yakın saat. İsabet/deneme cümlede yazılıyor ki
+                # kaç sayı geldiği okuyucuya da görünsün.
+                _i0 = seri.index(son_sayi)
+                _isabet = _deneme = 0
+                for _a2 in reversed(actions[:actions.index(son_a) + 1]):
+                    if _a2.get("actionType") != "Free Throw":
+                        break
+                    if _a2.get("personId") != son_a.get("personId"):
+                        break
+                    _deneme += 1
+                    if "MISS" not in (_a2.get("description") or "").upper():
+                        _isabet += 1
+                _sa_isabet, _sa_deneme = _isabet, _deneme
             elif (son_a.get("shotValue") or 0) == 3:
                 _tur = "üçlük"
             else:
                 _tur = "basket"
+            _beklenen = {"üçlük": 3, "basket": 2, "serbest atış": 1}[_tur]
+            _tutarli = (_degisim == _beklenen)
+
+            # BELİRLEYİCİ Mİ: o atışla liderlik el değiştirdi ya da
+            # beraberlik bozuldu mu? Zaten önde olan takımın farkı
+            # büyüten atışı karar anı değildir — maç orada çoktan
+            # bitmişti (43 blokta 10 kez öyle çıkıyordu).
+            _atan_ev = son_a.get("teamTricode") == ev_kod
+            _once_f = ((_onceki_kayit[2] - _onceki_kayit[3]) if _onceki_kayit else 0)
+            _sonra_f = son_ev - son_dep
+            if not _atan_ev:
+                _once_f, _sonra_f = -_once_f, -_sonra_f
+            _belirleyici = _once_f <= 0 < _sonra_f
+
             yaz("karar_ani", son_periyot, son_saniye, son_ev, son_dep, aksiyon=son_a,
                 takim=son_a.get("teamTricode"),
-                sut_turu=_tur,
+                sut_turu=_tur, sayi_degisimi=_degisim,
+                tutarli=_tutarli, belirleyici=_belirleyici,
+                sa_isabet=_sa_isabet, sa_deneme=_sa_deneme,
                 oyuncu=_dogru_oyuncu_adi(son_a.get("personId"),
                                          son_a.get("playerName") or ""))
 

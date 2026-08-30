@@ -262,10 +262,7 @@
           "kritik": true
         }
       ],
-      "karar": {
-        "cumle": "Curry bitime 6 saniye kala basket attı.",
-        "detay": "119–116 · maçı bitirdi"
-      },
+      "karar": null,
       "box": {
         "ev": {
           "takim": "Golden State Warriors",
@@ -15651,7 +15648,7 @@
       "kazanan_kod": "BOS",
       "ceyrek_tablosu": [
         {
-          "ceyrek": "İlk yarı",
+          "ceyrek": "1. yarı",
           "skor": "51–49",
           "ev_skor": 51,
           "dep_skor": 49,
@@ -15662,7 +15659,7 @@
           "kritik": false
         },
         {
-          "ceyrek": "İkinci yarı",
+          "ceyrek": "2. yarı",
           "skor": "96–112",
           "ev_skor": 96,
           "dep_skor": 112,
@@ -16268,7 +16265,7 @@
       "kazanan_kod": "HOU",
       "ceyrek_tablosu": [
         {
-          "ceyrek": "İlk yarı",
+          "ceyrek": "1. yarı",
           "skor": "45–53",
           "ev_skor": 45,
           "dep_skor": 53,
@@ -16279,7 +16276,7 @@
           "kritik": false
         },
         {
-          "ceyrek": "İkinci yarı",
+          "ceyrek": "2. yarı",
           "skor": "101–115",
           "ev_skor": 101,
           "dep_skor": 115,
@@ -16864,7 +16861,7 @@
       "kazanan_kod": "PHI",
       "ceyrek_tablosu": [
         {
-          "ceyrek": "İlk yarı",
+          "ceyrek": "1. yarı",
           "skor": "68–62",
           "ev_skor": 68,
           "dep_skor": 62,
@@ -16875,7 +16872,7 @@
           "kritik": false
         },
         {
-          "ceyrek": "İkinci yarı",
+          "ceyrek": "2. yarı",
           "skor": "121–114",
           "ev_skor": 121,
           "dep_skor": 114,

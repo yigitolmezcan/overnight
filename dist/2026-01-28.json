@@ -13820,7 +13820,7 @@
       "kazanan_kod": "ORL",
       "ceyrek_tablosu": [
         {
-          "ceyrek": "İlk yarı",
+          "ceyrek": "1. yarı",
           "skor": "68–59",
           "ev_skor": 68,
           "dep_skor": 59,
@@ -13831,7 +13831,7 @@
           "kritik": false
         },
         {
-          "ceyrek": "İkinci yarı",
+          "ceyrek": "2. yarı",
           "skor": "124–133",
           "ev_skor": 124,
           "dep_skor": 133,
@@ -14533,7 +14533,7 @@
       "kazanan_kod": "NYK",
       "ceyrek_tablosu": [
         {
-          "ceyrek": "İlk yarı",
+          "ceyrek": "1. yarı",
           "skor": "51–47",
           "ev_skor": 51,
           "dep_skor": 47,
@@ -14544,7 +14544,7 @@
           "kritik": false
         },
         {
-          "ceyrek": "İkinci yarı",
+          "ceyrek": "2. yarı",
           "skor": "92–119",
           "ev_skor": 92,
           "dep_skor": 119,
@@ -15205,7 +15205,7 @@
       "kazanan_kod": "IND",
       "ceyrek_tablosu": [
         {
-          "ceyrek": "İlk yarı",
+          "ceyrek": "1. yarı",
           "skor": "49–53",
           "ev_skor": 49,
           "dep_skor": 53,
@@ -15216,7 +15216,7 @@
           "kritik": false
         },
         {
-          "ceyrek": "İkinci yarı",
+          "ceyrek": "2. yarı",
           "skor": "113–110",
           "ev_skor": 113,
           "dep_skor": 110,
@@ -15227,10 +15227,7 @@
           "kritik": true
         }
       ],
-      "karar": {
-        "cumle": "Furphy bitime 2 saniye kala serbest atış attı.",
-        "detay": "113–110 · maçı bitirdi"
-      },
+      "karar": null,
       "ray_renk": "#0B2C6B",
       "ray_rgb": "11,44,107"
     }

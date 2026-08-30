@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-20",
-  "uretildi": "2026-08-30T13:49:12.287174Z",
+  "uretildi": "2026-08-30T13:59:29.151730Z",
   "maclar": {
     "0022500386": [
       {
@@ -15361,6 +15361,11 @@
           "fark": 3,
           "takim": "GSW",
           "sut_turu": "basket",
+          "sayi_degisimi": 2,
+          "tutarli": true,
+          "belirleyici": false,
+          "sa_isabet": null,
+          "sa_deneme": null,
           "oyuncu": "Stephen Curry",
           "onceki_ev": 117,
           "onceki_dep": 116
@@ -17961,6 +17966,11 @@
           "fark": -1,
           "takim": "ORL",
           "sut_turu": "basket",
+          "sayi_degisimi": 2,
+          "tutarli": true,
+          "belirleyici": true,
+          "sa_isabet": null,
+          "sa_deneme": null,
           "oyuncu": "Desmond Bane",
           "onceki_ev": 127,
           "onceki_dep": 126
@@ -19829,6 +19839,11 @@
           "fark": -5,
           "takim": "POR",
           "sut_turu": "serbest atış",
+          "sayi_degisimi": 1,
+          "tutarli": true,
+          "belirleyici": false,
+          "sa_isabet": 1,
+          "sa_deneme": 1,
           "oyuncu": "Robert Williams III",
           "onceki_ev": 93,
           "onceki_dep": 97

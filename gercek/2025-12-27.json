@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-27",
-  "uretildi": "2026-08-30T13:49:13.078751Z",
+  "uretildi": "2026-08-30T13:59:30.079942Z",
   "maclar": {
     "0022500432": [
       {
@@ -4325,6 +4325,11 @@
           "fark": 1,
           "takim": "ORL",
           "sut_turu": "serbest atış",
+          "sayi_degisimi": 1,
+          "tutarli": true,
+          "belirleyici": true,
+          "sa_isabet": 1,
+          "sa_deneme": 1,
           "oyuncu": "Desmond Bane",
           "onceki_ev": 126,
           "onceki_dep": 126
@@ -8996,6 +9001,11 @@
           "fark": -3,
           "takim": "NYK",
           "sut_turu": "serbest atış",
+          "sayi_degisimi": 1,
+          "tutarli": true,
+          "belirleyici": false,
+          "sa_isabet": 2,
+          "sa_deneme": 2,
           "oyuncu": "OG Anunoby",
           "onceki_ev": 125,
           "onceki_dep": 127

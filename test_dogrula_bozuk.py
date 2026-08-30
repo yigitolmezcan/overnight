@@ -5704,7 +5704,7 @@ def main():
                     if _et5 != _bek5:
                         _yapi.append(f"{_ad5}: {_et5}")
                 else:
-                    if _et5 != ["İlk yarı", "İkinci yarı"]:
+                    if _et5 != ["1. yarı", "2. yarı"]:
                         _yapi.append(f"{_ad5}: {_et5}")
                 # TAM BİR KRİTİK SATIR
                 if sum(1 for _r5 in _tb if _r5.get("kritik")) != 1:
@@ -5727,9 +5727,11 @@ def main():
                 _k5 = _b5.get("karar")
                 if _k5:
                     _karar_var += 1
-                    if not _re.match(r"^\S.* (bitime \d+ saniye kala|son saniyede) "
-                                     r"(üçlük|basket|serbest atış) attı\.$",
-                                     _k5.get("cumle", "")):
+                    if not _re.match(
+                            r"^\S.* (bitime \d+ saniye kala|son saniyede) "
+                            r"(üçlük attı|basket attı|serbest atışını attı|"
+                            r"serbest atışları \d+/\d+ attı)\.$",
+                            _k5.get("cumle", "")):
                         _karar_bozuk.append(f"{_ad5}: {_k5.get('cumle')}")
                     if "maçı bitirdi" not in (_k5.get("detay") or ""):
                         _karar_bozuk.append(f"{_ad5}: detay {_k5.get('detay')}")
@@ -5762,6 +5764,39 @@ def main():
               and _r.get("one_cikan") for _r in _tb_ornek))
     basar("Tablo: kayda değer bir şey yoksa '—' yazılıyor",
           '"—"' in _dsrc3)
+    # ŞUT TÜRÜ ↔ SKOR DEĞİŞİMİ ve BELİRLEYİCİLİK (kullanıcı kararı)
+    _gsrc = open("gercekler.py", encoding="utf-8").read()
+    basar("Karar: şut türü skor değişimiyle denetleniyor",
+          '_beklenen = {"üçlük": 3, "basket": 2, "serbest atış": 1}' in _gsrc
+          and 'tutarli=_tutarli' in _gsrc
+          and 'karar.get("tutarli")' in _dsrc3)
+    basar("Karar: yalnız liderliği değiştiren atış",
+          "_belirleyici = _once_f <= 0 < _sonra_f" in _gsrc
+          and 'karar.get("belirleyici")' in _dsrc3)
+    basar("Karar: serbest atış isabet oranıyla yazılıyor",
+          "serbest atışları {isabet}/{deneme} attı" in _dsrc3
+          and "serbest atışını attı" in _dsrc3
+          and '"serbest atış attı"' not in _dsrc3)
+    # Üretilen her karar cümlesinde şut türü skor değişimiyle uyumlu.
+    _uyusmaz = []
+    for _t6 in _geceler:
+        _g6 = _derle._yukle(_derle.GERCEK_DIZIN, _t6)["maclar"]
+        for _gid6, _f6 in _g6.items():
+            _kk = next((x["veri"] for x in _f6 if x["tur"] == "akis_olay"
+                        and x["veri"]["tip"] == "karar_ani"), None)
+            if not _kk:
+                continue
+            _bek6 = {"üçlük": 3, "basket": 2, "serbest atış": 1}[_kk["sut_turu"]]
+            if _kk.get("sayi_degisimi") != _bek6:
+                _uyusmaz.append(f"{_t6} {_kk['oyuncu']}: {_kk['sut_turu']} "
+                                f"Δ{_kk.get('sayi_degisimi')}")
+    basar("Karar: hiçbir gerçekte şut türü ↔ skor uyuşmazlığı yok",
+          not _uyusmaz, "; ".join(_uyusmaz[:4]))
+    # "Göz at" etiketleri kısa ve kendi sütun genişliğinde.
+    basar("Göz at: kısa yarı etiketleri, geniş etiket sütunu",
+          '_satir("1. yarı"' in _dsrc3 and '_satir("2. yarı"' in _dsrc3
+          and ".gozkart .ctbl td.q{width:62px;font-size:10px" in _sayfa)
+
     basar("Karar cümlesi yalnız son 30 saniyede",
           "KARAR_SON_SANIYE = 30.0" in _dsrc3
           and "saniye > KARAR_SON_SANIYE" in _dsrc3)

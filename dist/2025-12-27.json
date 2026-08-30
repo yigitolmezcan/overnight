@@ -250,7 +250,7 @@
         }
       ],
       "karar": {
-        "cumle": "Bane bitime 7 saniye kala serbest atış attı.",
+        "cumle": "Bane bitime 7 saniye kala serbest atışını attı.",
         "detay": "127–126 · maçı bitirdi"
       },
       "box": {
@@ -921,10 +921,7 @@
           "kritik": true
         }
       ],
-      "karar": {
-        "cumle": "Anunoby bitime 7 saniye kala serbest atış attı.",
-        "detay": "125–128 · maçı bitirdi"
-      },
+      "karar": null,
       "box": {
         "ev": {
           "takim": "Atlanta Hawks",

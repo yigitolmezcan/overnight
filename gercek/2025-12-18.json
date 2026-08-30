@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-18",
-  "uretildi": "2026-08-30T13:49:12.124365Z",
+  "uretildi": "2026-08-30T13:59:28.972069Z",
   "maclar": {
     "0022500371": [
       {
@@ -4300,6 +4300,11 @@
           "fark": -1,
           "takim": "NYK",
           "sut_turu": "üçlük",
+          "sayi_degisimi": 3,
+          "tutarli": true,
+          "belirleyici": true,
+          "sa_isabet": null,
+          "sa_deneme": null,
           "oyuncu": "Jalen Brunson",
           "onceki_ev": 113,
           "onceki_dep": 111
@@ -10492,6 +10497,11 @@
           "fark": 5,
           "takim": "NOP",
           "sut_turu": "serbest atış",
+          "sayi_degisimi": 1,
+          "tutarli": true,
+          "belirleyici": false,
+          "sa_isabet": 2,
+          "sa_deneme": 2,
           "oyuncu": "Saddiq Bey",
           "onceki_ev": 132,
           "onceki_dep": 128
@@ -16840,6 +16850,11 @@
           "fark": 1,
           "takim": "PHX",
           "sut_turu": "serbest atış",
+          "sayi_degisimi": 1,
+          "tutarli": true,
+          "belirleyici": true,
+          "sa_isabet": 1,
+          "sa_deneme": 1,
           "oyuncu": "Jordan Goodwin",
           "onceki_ev": 98,
           "onceki_dep": 98
@@ -22430,6 +22445,11 @@
           "fark": 1,
           "takim": "POR",
           "sut_turu": "serbest atış",
+          "sayi_degisimi": 1,
+          "tutarli": true,
+          "belirleyici": true,
+          "sa_isabet": 2,
+          "sa_deneme": 2,
           "oyuncu": "Deni Avdija",
           "onceki_ev": 133,
           "onceki_dep": 133

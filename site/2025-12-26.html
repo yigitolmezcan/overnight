@@ -434,11 +434,17 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
 .ctbl th{font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:#39424F;
   font-weight:400;text-align:left;padding:0 0 8px}
 .ctbl td{padding:8px 0;border-top:1px solid var(--line2);font-size:12.5px;color:var(--dim)}
-.ctbl td.q{color:#6E7A8B;width:34px}
+.ctbl td.q{color:#6E7A8B;width:34px;white-space:nowrap;padding-right:8px}
+/* "Göz at" etiketleri uzun ("İkinci yarı") ve skor sütununa değiyordu.
+   Kendi sınıfı: küçük punto, sabit ve daha geniş sütun. */
+.gozkart .ctbl td.q{width:62px;font-size:10px;letter-spacing:.02em}
+.gozkart .ctbl td.s{width:70px}
+.gozkart .ctbl td.d{width:60px}
 .ctbl td.s{color:var(--ink);width:76px;letter-spacing:-.01em}
 .ctbl td.d{width:66px;font-size:11.5px}
 .ctbl td.d em{font-style:normal;color:#7FA3B8}
-.ctbl td.f{color:var(--dim);font-size:12px;padding-left:6px}
+.ctbl td.f{color:var(--dim);font-size:12px;padding-left:6px;
+  overflow-wrap:anywhere}
 .ctbl tr.k td{color:var(--ink)}
 .ctbl tr.k td.f{font-weight:600}
 .ctbl tr.k td.q{color:var(--ember)}

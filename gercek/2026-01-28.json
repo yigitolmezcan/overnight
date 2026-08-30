@@ -1,6 +1,6 @@
 {
   "tarih": "2026-01-28",
-  "uretildi": "2026-08-30T13:49:13.322385Z",
+  "uretildi": "2026-08-30T13:59:30.350663Z",
   "maclar": {
     "0022500671": [
       {
@@ -4353,6 +4353,11 @@
           "fark": 3,
           "takim": "IND",
           "sut_turu": "serbest atış",
+          "sayi_degisimi": 1,
+          "tutarli": true,
+          "belirleyici": false,
+          "sa_isabet": 2,
+          "sa_deneme": 2,
           "oyuncu": "Johnny Furphy",
           "onceki_ev": 112,
           "onceki_dep": 110

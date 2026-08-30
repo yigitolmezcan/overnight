@@ -278,10 +278,7 @@
           "kritik": true
         }
       ],
-      "karar": {
-        "cumle": "Bey bitime 2 saniye kala serbest atış attı.",
-        "detay": "133–128 · maçı bitirdi"
-      },
+      "karar": null,
       "box": {
         "ev": {
           "takim": "New Orleans Pelicans",
@@ -1621,7 +1618,7 @@
         }
       ],
       "karar": {
-        "cumle": "Avdija bitime 2 saniye kala serbest atış attı.",
+        "cumle": "Avdija bitime 2 saniye kala serbest atışları 2/2 attı.",
         "detay": "134–133 · maçı bitirdi"
       },
       "box": {
@@ -16057,7 +16054,7 @@
       "kazanan_kod": "PHX",
       "ceyrek_tablosu": [
         {
-          "ceyrek": "İlk yarı",
+          "ceyrek": "1. yarı",
           "skor": "46–53",
           "ev_skor": 46,
           "dep_skor": 53,
@@ -16068,7 +16065,7 @@
           "kritik": false
         },
         {
-          "ceyrek": "İkinci yarı",
+          "ceyrek": "2. yarı",
           "skor": "99–98",
           "ev_skor": 99,
           "dep_skor": 98,
@@ -16080,7 +16077,7 @@
         }
       ],
       "karar": {
-        "cumle": "Goodwin son saniyede serbest atış attı.",
+        "cumle": "Goodwin son saniyede serbest atışını attı.",
         "detay": "99–98 · maçı bitirdi"
       },
       "ray_renk": "#B08BE8",
@@ -16753,7 +16750,7 @@
       "kazanan_kod": "NYK",
       "ceyrek_tablosu": [
         {
-          "ceyrek": "İlk yarı",
+          "ceyrek": "1. yarı",
           "skor": "62–59",
           "ev_skor": 62,
           "dep_skor": 59,
@@ -16764,7 +16761,7 @@
           "kritik": false
         },
         {
-          "ceyrek": "İkinci yarı",
+          "ceyrek": "2. yarı",
           "skor": "113–114",
           "ev_skor": 113,
           "dep_skor": 114,
@@ -17474,7 +17471,7 @@
       "kazanan_kod": "DAL",
       "ceyrek_tablosu": [
         {
-          "ceyrek": "İlk yarı",
+          "ceyrek": "1. yarı",
           "skor": "66–57",
           "ev_skor": 66,
           "dep_skor": 57,
@@ -17485,7 +17482,7 @@
           "kritik": false
         },
         {
-          "ceyrek": "İkinci yarı",
+          "ceyrek": "2. yarı",
           "skor": "116–114",
           "ev_skor": 116,
           "dep_skor": 114,

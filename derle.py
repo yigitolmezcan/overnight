@@ -1238,8 +1238,9 @@ def _ceyrek_tablosu(gercekler, gozat=False):
         son = ceyrekler[-1]
         if ilk is None:
             return []
-        _r1 = _satir("İlk yarı", ilk, {1, 2}, False)
-        _r2 = _satir("İkinci yarı", son, set(range(3, son_periyot + 1)), True,
+        # KISA ETİKET: "İkinci yarı" skor sütununa değiyordu (375px).
+        _r1 = _satir("1. yarı", ilk, {1, 2}, False)
+        _r2 = _satir("2. yarı", son, set(range(3, son_periyot + 1)), True,
                      _r1.get("_tur"))
         _r1.pop("_tur", None); _r2.pop("_tur", None)
         return [_r1, _r2]
@@ -1276,11 +1277,31 @@ def _karar_cumlesi(gercekler):
     saniye = karar.get("saniye_kalan")
     if saniye is None or saniye > KARAR_SON_SANIYE:
         return None
+    # ŞUT TÜRÜ SKOR DEĞİŞİMİYLE TUTARLI OLMALI (üçlük 3, basket 2,
+    # serbest atış 1). Tutmuyorsa cümle hiç kurulmuyor.
+    if not karar.get("tutarli"):
+        return None
+    # BELİRLEYİCİ OLMALI: o atışla liderlik el değişmiş ya da beraberlik
+    # bozulmuş olmalı. Zaten önde olan takımın farkı büyüten atışı karar
+    # anı değil — maç orada çoktan bitmişti.
+    if not karar.get("belirleyici"):
+        return None
     n = int(round(saniye))
     sure = "son saniyede" if n <= 0 else f"bitime {n} saniye kala"
     ad = _soyad(karar["oyuncu"])
+    if karar["sut_turu"] == "serbest atış":
+        # İSABET ORANIYLA: kaç sayı geldiği cümleden anlaşılsın, okuyucu
+        # skor tutarlılığını kendisi doğrulayabilsin.
+        isabet, deneme = karar.get("sa_isabet"), karar.get("sa_deneme")
+        if not deneme:
+            return None
+        # Tek atışta oran yazmak tuhaf ("1/1"); orada sayı zaten belli.
+        sut = ("serbest atışını attı" if deneme == 1
+               else f"serbest atışları {isabet}/{deneme} attı")
+    else:
+        sut = f"{karar['sut_turu']} attı"
     return {
-        "cumle": f"{ad} {sure} {karar['sut_turu']} attı.",
+        "cumle": f"{ad} {sure} {sut}.",
         "detay": f"{karar['ev_skor']}–{karar['dep_skor']} · maçı bitirdi",
     }
 

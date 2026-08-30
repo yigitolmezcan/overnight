@@ -10838,7 +10838,7 @@
       "kazanan_kod": "OKC",
       "ceyrek_tablosu": [
         {
-          "ceyrek": "İlk yarı",
+          "ceyrek": "1. yarı",
           "skor": "67–54",
           "ev_skor": 67,
           "dep_skor": 54,
@@ -10849,7 +10849,7 @@
           "kritik": false
         },
         {
-          "ceyrek": "İkinci yarı",
+          "ceyrek": "2. yarı",
           "skor": "119–103",
           "ev_skor": 119,
           "dep_skor": 103,
@@ -11445,7 +11445,7 @@
       "kazanan_kod": "NOP",
       "ceyrek_tablosu": [
         {
-          "ceyrek": "İlk yarı",
+          "ceyrek": "1. yarı",
           "skor": "57–63",
           "ev_skor": 57,
           "dep_skor": 63,
@@ -11456,7 +11456,7 @@
           "kritik": false
         },
         {
-          "ceyrek": "İkinci yarı",
+          "ceyrek": "2. yarı",
           "skor": "119–113",
           "ev_skor": 119,
           "dep_skor": 113,
@@ -12114,7 +12114,7 @@
       "kazanan_kod": "DET",
       "ceyrek_tablosu": [
         {
-          "ceyrek": "İlk yarı",
+          "ceyrek": "1. yarı",
           "skor": "51–61",
           "ev_skor": 51,
           "dep_skor": 61,
@@ -12125,7 +12125,7 @@
           "kritik": false
         },
         {
-          "ceyrek": "İkinci yarı",
+          "ceyrek": "2. yarı",
           "skor": "102–110",
           "ev_skor": 102,
           "dep_skor": 110,
