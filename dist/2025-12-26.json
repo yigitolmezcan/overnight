@@ -195,14 +195,14 @@
       "neden_onemli": "",
       "akis": [
         {
-          "tip": "sayi_serisi",
-          "kalip": "seri_gitti",
+          "tip": "liderlik",
+          "kalip": "lider_ile",
           "yuva": "1Ç",
           "sekil": "kapsama",
           "katman": 1,
           "zaman": "1Ç",
-          "saat": "2:27",
-          "cumle": "Detroit 11-0 gitti",
+          "saat": "3:52",
+          "cumle": "Detroit, Jaden Ivey ile öne geçti, Detroit 11-0 gitti",
           "detay": "fark 7",
           "kritik": false
         },
@@ -219,14 +219,14 @@
           "kritik": false
         },
         {
-          "tip": "en_buyuk_fark",
-          "kalip": "fark_cikti",
+          "tip": "liderlik",
+          "kalip": "lider_takim_basket",
           "yuva": "3Ç",
           "sekil": "kapsama",
           "katman": 1,
           "zaman": "3Ç",
-          "saat": "2:34",
-          "cumle": "Utah farkı 15 sayıya taşıdı, Cade Cunningham 29 sayı, 5 ribaund, 17 asist",
+          "saat": "9:03",
+          "cumle": "Svi Mykhailiuk'un basketiyle Utah öne geçti, Cade Cunningham 29 sayı, 5 ribaund, 17 asist",
           "detay": "maçın en etkilisi",
           "kritik": false
         },

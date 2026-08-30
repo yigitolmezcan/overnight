@@ -877,6 +877,13 @@ def akis_kaliplari(olay, ad_fn=None):
                           detay))
                 k.append(("lider_takim_cevirdi",
                           f"{takim} skoru {oyuncu} ile çevirdi", detay))
+                # Satır başına iki cümleye geçince liderlik değişimi
+                # gecenin en sık olayı oldu; üç takım taşıyan kalıp
+                # yetmiyordu (ölçüldü: lider_ile 5 kez).
+                k.append(("lider_ileile", f"{oyuncu} ile {takim} öne geçti", detay))
+                k.append(("lider_sayisiyla",
+                          f"{oyuncu}'{iyelik_eki(oyuncu)} sayısıyla {takim} öne geçti",
+                          detay))
         elif takim:
             k.append(("lider_takim", f"{takim} öne geçti", detay))
     elif t == "karar_ani":

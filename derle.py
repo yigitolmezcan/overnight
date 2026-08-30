@@ -1292,17 +1292,30 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
     # "GÖZ AT" — iki satır: devre durumu + kararın bağlandığı çeyrek.
     _gozat = satir_sayisi <= 2
 
-    # ÇEYREK BAŞINA BİR SATIR. İkinci olay varsa aynı satıra virgülle
+    # SATIR GRUPLARI
+    #   "Mutlaka bil" → çeyrek başına bir satır (1Ç, 2Ç, 3Ç, 4Ç, UZ…)
+    #   "Göz at"      → DEVRE başına bir satır (İlk devre / İkinci devre)
+    # İki katman da maçın TAMAMINI kapsıyor; sadece çözünürlük değişiyor.
+    # "Göz at"ta çeyrek numarası kullanılmıyor: bölüm iki satır olduğu
+    # için "2Ç" görünce okuyucu maçın yarısı eksik sanıyordu.
+    if _gozat:
+        _ikinci_etiket = "İkinci devre" + (" + UZ" if _son_periyot > 4 else "")
+        gruplar = [("İlk devre", (lambda pp: 1 <= (pp or 0) <= 2), False),
+                   (_ikinci_etiket, (lambda pp: (pp or 0) >= 3), True)]
+    else:
+        gruplar = [(_ceyrek_etiketi(_p),
+                    (lambda pp, _h=_p: (pp or 0) == _h),
+                    _p == karar_periyot)
+                   for _p in _periyotlar]
+
+    # Grup başına BİR SATIR. İkinci olay varsa aynı satıra virgülle
     # ekleniyor (ek_olay); değişmezler ANA olayı denetliyor, ikinci
     # olay havuzdan zaten D5'ten geçmiş olarak geliyor.
     ek_olay = {}
     temiz, skor_hakki = [], AKIS_SKOR_TAVANI
-    _periyot_listesi = ([2, karar_periyot] if _gozat else _periyotlar)
-    for _p in _periyot_listesi:
-        _kosul = (lambda pp, _h=_p: (pp or 0) == _h)
-        _kritik = (_p == karar_periyot)
+    for _etiket, _kosul, _kritik in gruplar:
         if _kritik:
-            # Karar anı bu satırda GEÇMEK ZORUNDA. Ana olay çeyreğin
+            # Karar anı bu satırda GEÇMEK ZORUNDA. Ana olay grubun
             # daha erken bir olayı, karar ikinci cümle olarak ekleniyor;
             # başka olay yoksa karar tek başına satırı kuruyor.
             kullanilan.add(id(karar))
@@ -1311,10 +1324,10 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
                 kullanilan.add(id(_once))
                 if _kat == 3:
                     skor_hakki -= 1
-                temiz.append((_ceyrek_etiketi(_p), _once, True))
+                temiz.append((_etiket, _once, True))
                 ek_olay[id(_once)] = karar
             else:
-                temiz.append((_ceyrek_etiketi(_p), karar, True))
+                temiz.append((_etiket, karar, True))
             continue
         secilen, kat = _evre_sec(_kosul, skor_hakki)
         if secilen is None:
@@ -1322,16 +1335,20 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
         kullanilan.add(id(secilen))
         if kat == 3:
             skor_hakki -= 1
-        temiz.append((_ceyrek_etiketi(_p), secilen, _kritik))
-        # Aynı çeyrekte ikinci değerli olay varsa aynı satıra.
+        # Aynı grupta ikinci değerli olay varsa aynı satıra. Seçim en
+        # GEÇ olayı getiriyor; ikisi bulununca KRONOLOJİK sıralanıyor —
+        # yoksa ikinci cümle hep birinciden önce çıkıp eleniyordu ve
+        # satır tek olayda kalıyordu ("Göz at" ilk devre satırı).
         ikinci, _k2 = _evre_sec(_kosul, 0)      # katman 3 ikinci olamaz
-        # İkinci cümle zaman olarak SONRA gelmeli, yoksa satır kendi
-        # içinde geriye gidiyor ("öne geçti, skoru eşitledi").
-        if ikinci is not None and _akis_sirasi(ikinci) <= _akis_sirasi(secilen):
+        if ikinci is not None and _ayni_olay_ham(secilen, ikinci):
             ikinci = None
-        if ikinci is not None and not _ayni_olay_ham(secilen, ikinci):
-            kullanilan.add(id(ikinci))
-            ek_olay[id(secilen)] = ikinci
+        if ikinci is None:
+            temiz.append((_etiket, secilen, _kritik))
+            continue
+        kullanilan.add(id(ikinci))
+        _ana, _ek = sorted([secilen, ikinci], key=_akis_sirasi)
+        temiz.append((_etiket, _ana, _kritik))
+        ek_olay[id(_ana)] = _ek
     temiz.sort(key=lambda x: _akis_sirasi(x[1]))
     _evre_kosul = [(x[0], (lambda pp, _h=x[1].get("periyot"): (pp or 0) == _h))
                    for x in temiz]
@@ -1663,7 +1680,18 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
                 _uyg = [x for x in _ekad
                         if x[0] not in _blok and x[0] != kid
                         and _durum_tasiyor(_ek, x[1])]
-            _hav = _uyg or [x for x in _ekad if x[0] not in _blok and x[0] != kid] or _ekad
+            # BLOK İÇİNDE AYNI KALIP İKİ KEZ OLAMAZ. Blokta kullanılmamış
+            # kalıp kalmadıysa ikinci cümle hiç yazılmıyor — eksik cümle,
+            # tekrar eden cümleden iyi.
+            _hav = _uyg or [x for x in _ekad if x[0] not in _blok and x[0] != kid]
+            if not _hav:
+                satirlar.append({
+                    "tip": o["tip"], "kalip": kid, "yuva": yuva, "sekil": sekil,
+                    "katman": _katman(o),
+                    "zaman": yuva, "saat": o.get("saat"),
+                    "cumle": c, "detay": det, "kritik": kritik,
+                })
+                continue
             _kid2, _c2, _det2 = min(_hav, key=lambda x: (
                 (kalip_sayaci or {}).get(x[0], 0), _ekad.index(x)))
             _blok.add(_kid2)

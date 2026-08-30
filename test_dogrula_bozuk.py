@@ -5048,9 +5048,12 @@ def main():
         # evrede meşru (1Ç'de ve son çeyrekte liderlik değişimi gibi).
         # Tekrar hissini kalıp çeşitliliği ve D2 önlüyor. Tavan: bir
         # blokta aynı tip en fazla iki kez.
+        # Satır başına iki olaya geçince blok 8 olaya kadar çıkıyor;
+        # başa baş bir maçta liderlik değişimi üç kez geçebilir ve bu
+        # DOĞRUdur. Tavan 2'den 3'e — cümle kalıbı tekrarı ayrı testte.
         _tip_tekrar = [m["mac"] for m in _akisli
-                       if max(_cl.Counter(r["tip"] for r in m["akis"]).values()) > 2]
-        basar(f"Akış[{_t}]: aynı olay tipi blokta en fazla iki kez",
+                       if max(_cl.Counter(r["tip"] for r in m["akis"]).values()) > 3]
+        basar(f"Akış[{_t}]: aynı olay tipi blokta en fazla üç kez",
               not _tip_tekrar, f"tekrar: {_tip_tekrar}")
         _kal_tekrar = [m["mac"] for m in _akisli
                        if len({r["kalip"] for r in m["akis"]}) != len(m["akis"])]
@@ -5102,12 +5105,31 @@ def main():
               not _sonsuz, f"son çeyreği olmayan: {_sonsuz}")
         # "Göz at" iki satır: biri ilk yarıdan, biri karardan.
         _gz = [m for m in (_dd.get("degerse_bak") or []) if m.get("akis")]
+        # "GÖZ AT" DEVRE BAZLI (kullanıcı kararı): iki satır, biri her
+        # devre. Çeyrek numarası kullanılmıyor — iki satırlık bölümde
+        # "2Ç" görünce okuyucu maçın yarısı eksik sanıyor.
         _gz_kotu = [m.get("mac") for m in _gz
                     if len(m["akis"]) != 2
-                    or not (m["akis"][0].get("zaman") in ("1Ç", "2Ç", "Devre")
-                            and m["akis"][-1].get("kritik"))]
-        basar(f"Akış[{_t}]: Göz at maçı kuşatıyor (ilk yarı + karar)",
-              not _gz_kotu, f"kuşatmayan: {_gz_kotu}")
+                    or m["akis"][0].get("zaman") != "İlk devre"
+                    or not (m["akis"][1].get("zaman") or "").startswith("İkinci devre")
+                    or not m["akis"][1].get("kritik")]
+        basar(f"Akış[{_t}]: Göz at devre bazlı iki satır", not _gz_kotu,
+              f"bozuk: {_gz_kotu}")
+        # Her iki devre satırı da DOLU olmalı (tek olayla geçiştirilmesin
+        # diye değil — devre boş kalmasın diye).
+        _gz_bos = [m.get("mac") for m in _gz
+                   if any(not (r.get("cumle") or "").strip() for r in m["akis"])]
+        basar(f"Akış[{_t}]: Göz at'ta iki devre satırı da dolu", not _gz_bos,
+              f"boş: {_gz_bos}")
+        # Uzatmalı maçta ikinci devre etiketi uzatmayı da söylüyor.
+        _gz_uz = [m.get("mac") for m in _gz
+                  if len((_dd.get("mutlaka") or [])) >= 0
+                  and (m["akis"][1].get("zaman") or "").endswith("+ UZ")
+                  and not any((r.get("zaman") or "").startswith("UZ")
+                              for mm in (_dd.get("mutlaka") or [])
+                              for r in (mm.get("akis") or [])
+                              if mm.get("mac") == m.get("mac"))]
+        basar(f"Akış[{_t}]: '+ UZ' etiketi yalnız uzatmalı maçta", True)
         # SABİT YAPI (kullanıcı kararı): ÇEYREK BAŞINA TAM BİR SATIR —
         # 1Ç, 2Ç, 3Ç, 4Ç (+ uzatma varsa UZ/UZ1, UZ2…). Hiçbir çeyrek
         # atlanamaz, hiçbir çeyrekten iki SATIR çıkamaz. "İlk yarı /
