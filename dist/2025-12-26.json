@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-26",
-  "uretildi": "2026-08-30T02:09:51.560798Z",
+  "uretildi": "2026-08-30T10:01:18.710166Z",
   "mac_sayisi": 9,
   "bars": [
     {
@@ -190,9 +190,42 @@
       "mac": "Utah Jazz — Detroit Pistons",
       "skor": "131–129",
       "rozet": 9.19,
-      "baslik": "Utah, George'un son saniye basketiyle Detroit'i 131-129 yendi",
-      "neden_onemli": "Doğu Konferansı lideri Detroit'e karşı alınan kritik bir galibiyet.",
-      "ozet": "Detroit ilk çeyreği 36-33 önde tamamladı, ancak Utah üçüncü periyotta farkı 11 sayıya çıkardı. Detroit son çeyrekte hızla toparlanarak skoru 129-129'a getirdi ve maçı son saniyelere taşıdı. Bitime son saniyeler kala Utah'lı Keyonte George'un yumuşak dokunuşla bıraktığı şutü kararı belirledi. George 31 sayı 8 asistle oynarken, Markkanen 10 serbest atışının tamamını basketle buluşturarak 30 sayı attı.",
+      "baslik": "Utah Jazz, Detroit Pistons'ı son saniyede devirdi.",
+      "neden_onemli": "",
+      "akis": [
+        {
+          "tip": "ceyrek_sonu",
+          "zaman": "3Ç",
+          "saat": null,
+          "cumle": "Utah önde kapadı",
+          "detay": "111–103",
+          "kritik": false
+        },
+        {
+          "tip": "ceyrek_ustunlugu",
+          "zaman": "3Ç",
+          "saat": null,
+          "cumle": "Utah çeyreği 44-35 aldı",
+          "detay": "fark 8'e çıktı",
+          "kritik": false
+        },
+        {
+          "tip": "esitlik",
+          "zaman": "Son",
+          "saat": "0:18",
+          "cumle": "Detroit skoru eşitledi",
+          "detay": "129–129",
+          "kritik": false
+        },
+        {
+          "tip": "karar_ani",
+          "zaman": "Son",
+          "saat": "0:02",
+          "cumle": "Keyonte George'nin basketi",
+          "detay": "131–129 · maçı bitirdi",
+          "kritik": true
+        }
+      ],
       "box": {
         "ev": {
           "takim": "Utah Jazz",
