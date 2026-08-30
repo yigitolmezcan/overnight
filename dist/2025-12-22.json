@@ -161,8 +161,9 @@
         {
           "tip": "en_buyuk_fark",
           "kalip": "fark_cikardi",
-          "yuva": "kaybedenin_farki",
-          "sekil": "geri_donus",
+          "yuva": "ilk_yari",
+          "sekil": "kapsama",
+          "katman": 1,
           "zaman": "2Ç",
           "saat": "1:22",
           "cumle": "Indiana farkı 20'ye çıkardı",
@@ -170,36 +171,39 @@
           "kritik": false
         },
         {
-          "tip": "ceyrek_ustunlugu",
-          "kalip": "ust_aldi",
-          "yuva": "donusun_basi",
-          "sekil": "geri_donus",
+          "tip": "sayi_serisi",
+          "kalip": "seri_gitti",
+          "yuva": "ucuncu",
+          "sekil": "kapsama",
+          "katman": 1,
           "zaman": "3Ç",
-          "saat": null,
-          "cumle": "Boston çeyreği 31-21 aldı",
-          "detay": "fark 8'e indi",
-          "kritik": false
-        },
-        {
-          "tip": "liderlik",
-          "kalip": "lider_ile",
-          "yuva": "one_gecis",
-          "sekil": "geri_donus",
-          "zaman": "4Ç",
-          "saat": "6:37",
-          "cumle": "Boston, Derrick White ile öne geçti",
-          "detay": "87–86",
+          "saat": "3:15",
+          "cumle": "Boston 9-0 gitti",
+          "detay": "fark 6",
           "kritik": false
         },
         {
           "tip": "en_etkili",
           "kalip": "etkili_duz",
-          "yuva": "sonuc",
-          "sekil": "geri_donus",
+          "yuva": "son_ceyrek",
+          "sekil": "kapsama",
+          "katman": 3,
           "zaman": "Son",
           "saat": null,
           "cumle": "Jaylen Brown 31 sayı, 9 ribaund, 2 asist",
           "detay": "maçın en etkilisi",
+          "kritik": false
+        },
+        {
+          "tip": "liderlik",
+          "kalip": "lider_ile",
+          "yuva": "karar",
+          "sekil": "kapsama",
+          "katman": 1,
+          "zaman": "4Ç",
+          "saat": "6:37",
+          "cumle": "Boston, Derrick White ile öne geçti",
+          "detay": "87–86",
           "kritik": true
         }
       ],
@@ -10837,26 +10841,28 @@
       "kazanan_kod": "OKC",
       "akis": [
         {
-          "tip": "liderlik",
-          "kalip": "lider_takim_basket",
-          "yuva": "kopma",
-          "sekil": "kopma",
-          "zaman": "1Ç",
-          "saat": "4:25",
-          "cumle": "Kenrich Williams'ın basketiyle Oklahoma City öne geçti",
-          "detay": "19–18",
-          "kritik": true
+          "tip": "sayi_serisi",
+          "kalip": "seri_arka",
+          "yuva": "ilk_yari",
+          "sekil": "kapsama",
+          "katman": 1,
+          "zaman": "2Ç",
+          "saat": "1:42",
+          "cumle": "Oklahoma City arka arkaya 12 sayı buldu",
+          "detay": "fark 17",
+          "kritik": false
         },
         {
           "tip": "kopus",
           "kalip": "kopus_actik",
-          "yuva": "kapanmadi",
-          "sekil": "kopma",
+          "yuva": "karar",
+          "sekil": "kapsama",
+          "katman": 1,
           "zaman": "4Ç",
           "saat": "4:38",
           "cumle": "Oklahoma City farkı 10'a açtı",
           "detay": "107–97",
-          "kritik": false
+          "kritik": true
         }
       ],
       "ray_renk": "#31A8E0",
@@ -11443,24 +11449,26 @@
       "kazanan_kod": "NOP",
       "akis": [
         {
-          "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_basabas",
-          "yuva": "erken_ustunluk",
-          "sekil": "bastan_sona",
-          "zaman": "1Ç",
+          "tip": "en_etkili",
+          "kalip": "etkili_oncikti",
+          "yuva": "ilk_yari",
+          "sekil": "kapsama",
+          "katman": 3,
+          "zaman": "Son",
           "saat": null,
-          "cumle": "Skor başa baş gitti",
-          "detay": "36–34",
+          "cumle": "Anthony Davis 35 sayı, 17 ribaund, 2 asist ile öne çıktı",
+          "detay": null,
           "kritik": false
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_takim_cevirdi",
-          "yuva": "kopus",
-          "sekil": "bastan_sona",
+          "kalip": "lider_takim_basket",
+          "yuva": "karar",
+          "sekil": "kapsama",
+          "katman": 1,
           "zaman": "4Ç",
           "saat": "5:14",
-          "cumle": "New Orleans skoru Derik Queen ile çevirdi",
+          "cumle": "Derik Queen'in basketiyle New Orleans öne geçti",
           "detay": "103–102",
           "kritik": true
         }
@@ -12111,26 +12119,28 @@
       "kazanan_kod": "DET",
       "akis": [
         {
-          "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_onde",
-          "yuva": "erken_ustunluk",
-          "sekil": "bastan_sona",
-          "zaman": "1Ç",
+          "tip": "en_etkili",
+          "kalip": "etkili_enler",
+          "yuva": "ilk_yari",
+          "sekil": "kapsama",
+          "katman": 3,
+          "zaman": "Son",
           "saat": null,
-          "cumle": "Detroit önde kapadı",
-          "detay": "26–30",
-          "kritik": true
+          "cumle": "Maçın en etkilisi Jalen Duren",
+          "detay": "26 sayı, 10 ribaund, 2 asist",
+          "kritik": false
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_takim_onu",
-          "yuva": "kopus",
-          "sekil": "bastan_sona",
+          "kalip": "lider_takim_cevirdi",
+          "yuva": "karar",
+          "sekil": "kapsama",
+          "katman": 1,
           "zaman": "4Ç",
           "saat": "3:44",
-          "cumle": "Detroit önü Tobias Harris ile aldı",
+          "cumle": "Detroit skoru Tobias Harris ile çevirdi",
           "detay": "100–101 · liderlik bir daha değişmedi",
-          "kritik": false
+          "kritik": true
         }
       ],
       "ray_renk": "#E0384A",

@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-18",
-  "uretildi": "2026-08-30T12:40:53.905319Z",
+  "uretildi": "2026-08-30T13:05:38.346143Z",
   "maclar": {
     "0022500371": [
       {
@@ -1961,6 +1961,27 @@
         "tur": "akis_olay",
         "veri": {
           "tip": "sayi_serisi",
+          "periyot": 1,
+          "saniye_kalan": 609.0,
+          "zaman": "1Ç",
+          "saat": "10:09",
+          "ev_skor": 8,
+          "dep_skor": 0,
+          "fark": 8,
+          "takim": "CHA",
+          "sayi": 8,
+          "dusuk_esik": false,
+          "onceki_ev": 5,
+          "onceki_dep": 0
+        },
+        "kaynak": "PlayByPlayV3:0022500371:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f128",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
           "periyot": 2,
           "saniye_kalan": 564.0,
           "zaman": "2Ç",
@@ -1970,14 +1991,57 @@
           "fark": 17,
           "takim": "CHA",
           "sayi": 11,
-          "onceki_ev": 133,
-          "onceki_dep": 126
+          "dusuk_esik": false,
+          "onceki_ev": 49,
+          "onceki_dep": 35
         },
         "kaynak": "PlayByPlayV3:0022500371:akis",
         "guven": "turetilmis"
       },
       {
-        "id": "f128",
+        "id": "f129",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 3,
+          "saniye_kalan": 657.0,
+          "zaman": "3Ç",
+          "saat": "10:57",
+          "ev_skor": 86,
+          "dep_skor": 71,
+          "fark": 15,
+          "takim": "CHA",
+          "sayi": 6,
+          "dusuk_esik": true,
+          "onceki_ev": 83,
+          "onceki_dep": 71
+        },
+        "kaynak": "PlayByPlayV3:0022500371:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f130",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 4,
+          "saniye_kalan": 703.0,
+          "zaman": "4Ç",
+          "saat": "11:43",
+          "ev_skor": 107,
+          "dep_skor": 97,
+          "fark": 10,
+          "takim": "ATL",
+          "sayi": 7,
+          "dusuk_esik": true,
+          "onceki_ev": 107,
+          "onceki_dep": 95
+        },
+        "kaynak": "PlayByPlayV3:0022500371:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f131",
         "tur": "akis_olay",
         "veri": {
           "tip": "rakip_yaklasti",
@@ -1997,7 +2061,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f129",
+        "id": "f132",
         "tur": "derece",
         "veri": {
           "takim": "CHA",
@@ -2020,7 +2084,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f130",
+        "id": "f133",
         "tur": "seri",
         "veri": {
           "takim": "CHA",
@@ -2031,7 +2095,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f131",
+        "id": "f134",
         "tur": "derece",
         "veri": {
           "takim": "ATL",
@@ -3949,14 +4013,78 @@
           "fark": 10,
           "takim": "IND",
           "sayi": 9,
-          "onceki_ev": 113,
-          "onceki_dep": 114
+          "dusuk_esik": false,
+          "onceki_ev": 14,
+          "onceki_dep": 6
         },
         "kaynak": "PlayByPlayV3:0022500372:akis",
         "guven": "turetilmis"
       },
       {
         "id": "f121",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 2,
+          "saniye_kalan": 608.0,
+          "zaman": "2Ç",
+          "saat": "10:08",
+          "ev_skor": 36,
+          "dep_skor": 28,
+          "fark": 8,
+          "takim": "NYK",
+          "sayi": 6,
+          "dusuk_esik": true,
+          "onceki_ev": 36,
+          "onceki_dep": 25
+        },
+        "kaynak": "PlayByPlayV3:0022500372:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f122",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 3,
+          "saniye_kalan": 91.0,
+          "zaman": "3Ç",
+          "saat": "1:31",
+          "ev_skor": 87,
+          "dep_skor": 80,
+          "fark": 7,
+          "takim": "NYK",
+          "sayi": 8,
+          "dusuk_esik": false,
+          "onceki_ev": 87,
+          "onceki_dep": 79
+        },
+        "kaynak": "PlayByPlayV3:0022500372:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f123",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 4,
+          "saniye_kalan": 579.0,
+          "zaman": "4Ç",
+          "saat": "9:39",
+          "ev_skor": 92,
+          "dep_skor": 91,
+          "fark": 1,
+          "takim": "NYK",
+          "sayi": 8,
+          "dusuk_esik": false,
+          "onceki_ev": 92,
+          "onceki_dep": 89
+        },
+        "kaynak": "PlayByPlayV3:0022500372:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f124",
         "tur": "akis_olay",
         "veri": {
           "tip": "esitlik",
@@ -3975,29 +4103,145 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f122",
+        "id": "f125",
         "tur": "akis_olay",
         "veri": {
           "tip": "liderlik",
-          "periyot": 4,
-          "saniye_kalan": 5.6,
-          "zaman": "Son",
-          "saat": "0:05",
-          "ev_skor": 113,
-          "dep_skor": 114,
-          "fark": -1,
-          "takim": "NYK",
-          "kesin": true,
-          "kazanan_mi": true,
-          "oyuncu": "Jalen Brunson",
-          "onceki_ev": 113,
-          "onceki_dep": 111
+          "periyot": 1,
+          "saniye_kalan": 682.0,
+          "zaman": "1Ç",
+          "saat": "11:22",
+          "ev_skor": 3,
+          "dep_skor": 2,
+          "fark": 1,
+          "takim": "IND",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Andrew Nembhard",
+          "onceki_ev": 0,
+          "onceki_dep": 2
         },
         "kaynak": "PlayByPlayV3:0022500372:akis",
         "guven": "turetilmis"
       },
       {
-        "id": "f123",
+        "id": "f126",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 646.0,
+          "zaman": "1Ç",
+          "saat": "10:46",
+          "ev_skor": 3,
+          "dep_skor": 5,
+          "fark": -2,
+          "takim": "NYK",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Jalen Brunson",
+          "onceki_ev": 3,
+          "onceki_dep": 2
+        },
+        "kaynak": "PlayByPlayV3:0022500372:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f127",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 584.0,
+          "zaman": "1Ç",
+          "saat": "9:44",
+          "ev_skor": 6,
+          "dep_skor": 5,
+          "fark": 1,
+          "takim": "IND",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Pascal Siakam",
+          "onceki_ev": 5,
+          "onceki_dep": 5
+        },
+        "kaynak": "PlayByPlayV3:0022500372:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f128",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 4,
+          "saniye_kalan": 521.0,
+          "zaman": "4Ç",
+          "saat": "8:41",
+          "ev_skor": 94,
+          "dep_skor": 95,
+          "fark": -1,
+          "takim": "NYK",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Tyler Kolek",
+          "onceki_ev": 94,
+          "onceki_dep": 93
+        },
+        "kaynak": "PlayByPlayV3:0022500372:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f129",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 4,
+          "saniye_kalan": 458.0,
+          "zaman": "4Ç",
+          "saat": "7:38",
+          "ev_skor": 99,
+          "dep_skor": 97,
+          "fark": 2,
+          "takim": "IND",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Pascal Siakam",
+          "onceki_ev": 96,
+          "onceki_dep": 97
+        },
+        "kaynak": "PlayByPlayV3:0022500372:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f130",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 4,
+          "saniye_kalan": 411.0,
+          "zaman": "4Ç",
+          "saat": "6:51",
+          "ev_skor": 101,
+          "dep_skor": 102,
+          "fark": -1,
+          "takim": "NYK",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Jordan Clarkson",
+          "onceki_ev": 101,
+          "onceki_dep": 99
+        },
+        "kaynak": "PlayByPlayV3:0022500372:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f131",
         "tur": "akis_olay",
         "veri": {
           "tip": "liderlik",
@@ -4011,6 +4255,7 @@
           "takim": "IND",
           "kesin": false,
           "kazanan_mi": false,
+          "son_mu": true,
           "oyuncu": "Andrew Nembhard",
           "onceki_ev": 101,
           "onceki_dep": 102
@@ -4019,7 +4264,30 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f124",
+        "id": "f132",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 4,
+          "saniye_kalan": 5.6,
+          "zaman": "Son",
+          "saat": "0:05",
+          "ev_skor": 113,
+          "dep_skor": 114,
+          "fark": -1,
+          "takim": "NYK",
+          "kesin": true,
+          "kazanan_mi": true,
+          "son_mu": true,
+          "oyuncu": "Jalen Brunson",
+          "onceki_ev": 113,
+          "onceki_dep": 111
+        },
+        "kaynak": "PlayByPlayV3:0022500372:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f133",
         "tur": "akis_olay",
         "veri": {
           "tip": "karar_ani",
@@ -4039,7 +4307,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f125",
+        "id": "f134",
         "tur": "akis_olay",
         "veri": {
           "tip": "rakip_yaklasti",
@@ -4059,7 +4327,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f126",
+        "id": "f135",
         "tur": "derece",
         "veri": {
           "takim": "IND",
@@ -4082,7 +4350,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f127",
+        "id": "f136",
         "tur": "seri",
         "veri": {
           "takim": "IND",
@@ -4093,7 +4361,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f128",
+        "id": "f137",
         "tur": "derece",
         "veri": {
           "takim": "NYK",
@@ -4116,7 +4384,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f129",
+        "id": "f138",
         "tur": "seri",
         "veri": {
           "takim": "NYK",
@@ -5802,14 +6070,78 @@
           "fark": -11,
           "takim": "MIA",
           "sayi": 10,
-          "onceki_ev": 95,
-          "onceki_dep": 106
+          "dusuk_esik": false,
+          "onceki_ev": 10,
+          "onceki_dep": 19
         },
         "kaynak": "PlayByPlayV3:0022500373:akis",
         "guven": "turetilmis"
       },
       {
         "id": "f108",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 2,
+          "saniye_kalan": 239.0,
+          "zaman": "2Ç",
+          "saat": "3:59",
+          "ev_skor": 47,
+          "dep_skor": 44,
+          "fark": 3,
+          "takim": "BKN",
+          "sayi": 10,
+          "dusuk_esik": false,
+          "onceki_ev": 45,
+          "onceki_dep": 44
+        },
+        "kaynak": "PlayByPlayV3:0022500373:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f109",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 3,
+          "saniye_kalan": 544.0,
+          "zaman": "3Ç",
+          "saat": "9:04",
+          "ev_skor": 58,
+          "dep_skor": 58,
+          "fark": 0,
+          "takim": "BKN",
+          "sayi": 6,
+          "dusuk_esik": true,
+          "onceki_ev": 56,
+          "onceki_dep": 58
+        },
+        "kaynak": "PlayByPlayV3:0022500373:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f110",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 4,
+          "saniye_kalan": 241.0,
+          "zaman": "4Ç",
+          "saat": "4:01",
+          "ev_skor": 82,
+          "dep_skor": 93,
+          "fark": -11,
+          "takim": "MIA",
+          "sayi": 7,
+          "dusuk_esik": true,
+          "onceki_ev": 82,
+          "onceki_dep": 91
+        },
+        "kaynak": "PlayByPlayV3:0022500373:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f111",
         "tur": "akis_olay",
         "veri": {
           "tip": "esitlik",
@@ -5828,29 +6160,99 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f109",
+        "id": "f112",
         "tur": "akis_olay",
         "veri": {
           "tip": "liderlik",
-          "periyot": 3,
-          "saniye_kalan": 160.0,
-          "zaman": "3Ç",
-          "saat": "2:40",
-          "ev_skor": 69,
-          "dep_skor": 71,
-          "fark": -2,
-          "takim": "MIA",
+          "periyot": 2,
+          "saniye_kalan": 268.0,
+          "zaman": "2Ç",
+          "saat": "4:28",
+          "ev_skor": 45,
+          "dep_skor": 44,
+          "fark": 1,
+          "takim": "BKN",
           "kesin": false,
-          "kazanan_mi": true,
-          "oyuncu": "Simone Fontecchio",
-          "onceki_ev": 69,
-          "onceki_dep": 68
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Terance Mann",
+          "onceki_ev": 43,
+          "onceki_dep": 44
         },
         "kaynak": "PlayByPlayV3:0022500373:akis",
         "guven": "turetilmis"
       },
       {
-        "id": "f110",
+        "id": "f113",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 2,
+          "saniye_kalan": 129.0,
+          "zaman": "2Ç",
+          "saat": "2:09",
+          "ev_skor": 47,
+          "dep_skor": 49,
+          "fark": -2,
+          "takim": "MIA",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Andrew Wiggins",
+          "onceki_ev": 47,
+          "onceki_dep": 46
+        },
+        "kaynak": "PlayByPlayV3:0022500373:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f114",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 3,
+          "saniye_kalan": 327.0,
+          "zaman": "3Ç",
+          "saat": "5:27",
+          "ev_skor": 65,
+          "dep_skor": 64,
+          "fark": 1,
+          "takim": "BKN",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Michael Porter Jr.",
+          "onceki_ev": 64,
+          "onceki_dep": 64
+        },
+        "kaynak": "PlayByPlayV3:0022500373:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f115",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 3,
+          "saniye_kalan": 316.0,
+          "zaman": "3Ç",
+          "saat": "5:16",
+          "ev_skor": 65,
+          "dep_skor": 66,
+          "fark": -1,
+          "takim": "MIA",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Norman Powell",
+          "onceki_ev": 65,
+          "onceki_dep": 64
+        },
+        "kaynak": "PlayByPlayV3:0022500373:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f116",
         "tur": "akis_olay",
         "veri": {
           "tip": "liderlik",
@@ -5864,6 +6266,7 @@
           "takim": "BKN",
           "kesin": false,
           "kazanan_mi": false,
+          "son_mu": true,
           "oyuncu": "Terance Mann",
           "onceki_ev": 67,
           "onceki_dep": 68
@@ -5872,7 +6275,30 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f111",
+        "id": "f117",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 3,
+          "saniye_kalan": 160.0,
+          "zaman": "3Ç",
+          "saat": "2:40",
+          "ev_skor": 69,
+          "dep_skor": 71,
+          "fark": -2,
+          "takim": "MIA",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": true,
+          "oyuncu": "Simone Fontecchio",
+          "onceki_ev": 69,
+          "onceki_dep": 68
+        },
+        "kaynak": "PlayByPlayV3:0022500373:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f118",
         "tur": "akis_olay",
         "veri": {
           "tip": "rakip_yaklasti",
@@ -5892,7 +6318,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f112",
+        "id": "f119",
         "tur": "akis_olay",
         "veri": {
           "tip": "kopus",
@@ -5912,7 +6338,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f113",
+        "id": "f120",
         "tur": "derece",
         "veri": {
           "takim": "BKN",
@@ -5935,7 +6361,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f114",
+        "id": "f121",
         "tur": "derece",
         "veri": {
           "takim": "MIA",
@@ -7545,14 +7971,57 @@
           "fark": -10,
           "takim": "TOR",
           "sayi": 10,
-          "onceki_ev": 105,
-          "onceki_dep": 111
+          "dusuk_esik": false,
+          "onceki_ev": 2,
+          "onceki_dep": 9
         },
         "kaynak": "PlayByPlayV3:0022500374:akis",
         "guven": "turetilmis"
       },
       {
         "id": "f103",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 2,
+          "saniye_kalan": 153.0,
+          "zaman": "2Ç",
+          "saat": "2:33",
+          "ev_skor": 50,
+          "dep_skor": 50,
+          "fark": 0,
+          "takim": "MIL",
+          "sayi": 6,
+          "dusuk_esik": true,
+          "onceki_ev": 49,
+          "onceki_dep": 50
+        },
+        "kaynak": "PlayByPlayV3:0022500374:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f104",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 3,
+          "saniye_kalan": 155.0,
+          "zaman": "3Ç",
+          "saat": "2:35",
+          "ev_skor": 69,
+          "dep_skor": 79,
+          "fark": -10,
+          "takim": "TOR",
+          "sayi": 8,
+          "dusuk_esik": false,
+          "onceki_ev": 69,
+          "onceki_dep": 77
+        },
+        "kaynak": "PlayByPlayV3:0022500374:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f105",
         "tur": "akis_olay",
         "veri": {
           "tip": "esitlik",
@@ -7571,29 +8040,53 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f104",
+        "id": "f106",
         "tur": "akis_olay",
         "veri": {
           "tip": "liderlik",
-          "periyot": 3,
-          "saniye_kalan": 598.0,
-          "zaman": "3Ç",
-          "saat": "9:58",
-          "ev_skor": 59,
-          "dep_skor": 60,
-          "fark": -1,
-          "takim": "TOR",
-          "kesin": true,
-          "kazanan_mi": true,
-          "oyuncu": "Scottie Barnes",
-          "onceki_ev": 59,
-          "onceki_dep": 59
+          "periyot": 2,
+          "saniye_kalan": 95.0,
+          "zaman": "2Ç",
+          "saat": "1:35",
+          "ev_skor": 53,
+          "dep_skor": 52,
+          "fark": 1,
+          "takim": "MIL",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Ryan Rollins",
+          "onceki_ev": 50,
+          "onceki_dep": 52
         },
         "kaynak": "PlayByPlayV3:0022500374:akis",
         "guven": "turetilmis"
       },
       {
-        "id": "f105",
+        "id": "f107",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 2,
+          "saniye_kalan": 51.7,
+          "zaman": "2Ç",
+          "saat": "0:51",
+          "ev_skor": 53,
+          "dep_skor": 54,
+          "fark": -1,
+          "takim": "TOR",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Scottie Barnes",
+          "onceki_ev": 53,
+          "onceki_dep": 52
+        },
+        "kaynak": "PlayByPlayV3:0022500374:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f108",
         "tur": "akis_olay",
         "veri": {
           "tip": "liderlik",
@@ -7607,6 +8100,7 @@
           "takim": "MIL",
           "kesin": false,
           "kazanan_mi": false,
+          "son_mu": true,
           "oyuncu": "Bobby Portis",
           "onceki_ev": 56,
           "onceki_dep": 57
@@ -7615,7 +8109,30 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f106",
+        "id": "f109",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 3,
+          "saniye_kalan": 598.0,
+          "zaman": "3Ç",
+          "saat": "9:58",
+          "ev_skor": 59,
+          "dep_skor": 60,
+          "fark": -1,
+          "takim": "TOR",
+          "kesin": true,
+          "kazanan_mi": true,
+          "son_mu": true,
+          "oyuncu": "Scottie Barnes",
+          "onceki_ev": 59,
+          "onceki_dep": 59
+        },
+        "kaynak": "PlayByPlayV3:0022500374:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f110",
         "tur": "akis_olay",
         "veri": {
           "tip": "rakip_yaklasti",
@@ -7635,7 +8152,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f107",
+        "id": "f111",
         "tur": "akis_olay",
         "veri": {
           "tip": "kopus",
@@ -7655,7 +8172,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f108",
+        "id": "f112",
         "tur": "derece",
         "veri": {
           "takim": "MIL",
@@ -7678,7 +8195,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f109",
+        "id": "f113",
         "tur": "seri",
         "veri": {
           "takim": "MIL",
@@ -7689,7 +8206,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f110",
+        "id": "f114",
         "tur": "derece",
         "veri": {
           "takim": "TOR",
@@ -7712,7 +8229,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f111",
+        "id": "f115",
         "tur": "seri",
         "veri": {
           "takim": "TOR",
@@ -9758,14 +10275,99 @@
           "fark": -7,
           "takim": "HOU",
           "sayi": 13,
-          "onceki_ev": 133,
-          "onceki_dep": 128
+          "dusuk_esik": false,
+          "onceki_ev": 15,
+          "onceki_dep": 19
         },
         "kaynak": "PlayByPlayV3:0022500375:akis",
         "guven": "turetilmis"
       },
       {
         "id": "f132",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 2,
+          "saniye_kalan": 543.0,
+          "zaman": "2Ç",
+          "saat": "9:03",
+          "ev_skor": 27,
+          "dep_skor": 44,
+          "fark": -17,
+          "takim": "HOU",
+          "sayi": 6,
+          "dusuk_esik": true,
+          "onceki_ev": 27,
+          "onceki_dep": 43
+        },
+        "kaynak": "PlayByPlayV3:0022500375:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f133",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 3,
+          "saniye_kalan": 500.0,
+          "zaman": "3Ç",
+          "saat": "8:20",
+          "ev_skor": 60,
+          "dep_skor": 77,
+          "fark": -17,
+          "takim": "NOP",
+          "sayi": 7,
+          "dusuk_esik": true,
+          "onceki_ev": 57,
+          "onceki_dep": 77
+        },
+        "kaynak": "PlayByPlayV3:0022500375:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f134",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 4,
+          "saniye_kalan": 562.0,
+          "zaman": "4Ç",
+          "saat": "9:22",
+          "ev_skor": 96,
+          "dep_skor": 101,
+          "fark": -5,
+          "takim": "NOP",
+          "sayi": 11,
+          "dusuk_esik": false,
+          "onceki_ev": 94,
+          "onceki_dep": 101
+        },
+        "kaynak": "PlayByPlayV3:0022500375:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f135",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 5,
+          "saniye_kalan": 58.2,
+          "zaman": "Son",
+          "saat": "0:58",
+          "ev_skor": 127,
+          "dep_skor": 123,
+          "fark": 4,
+          "takim": "NOP",
+          "sayi": 6,
+          "dusuk_esik": true,
+          "onceki_ev": 125,
+          "onceki_dep": 123
+        },
+        "kaynak": "PlayByPlayV3:0022500375:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f136",
         "tur": "akis_olay",
         "veri": {
           "tip": "esitlik",
@@ -9784,29 +10386,53 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f133",
+        "id": "f137",
         "tur": "akis_olay",
         "veri": {
           "tip": "liderlik",
-          "periyot": 5,
-          "saniye_kalan": 123.0,
-          "zaman": "U1",
-          "saat": "2:03",
-          "ev_skor": 125,
-          "dep_skor": 123,
-          "fark": 2,
-          "takim": "NOP",
-          "kesin": true,
-          "kazanan_mi": true,
-          "oyuncu": "Saddiq Bey",
-          "onceki_ev": 123,
-          "onceki_dep": 123
+          "periyot": 1,
+          "saniye_kalan": 642.0,
+          "zaman": "1Ç",
+          "saat": "10:42",
+          "ev_skor": 2,
+          "dep_skor": 4,
+          "fark": -2,
+          "takim": "HOU",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Amen Thompson",
+          "onceki_ev": 2,
+          "onceki_dep": 2
         },
         "kaynak": "PlayByPlayV3:0022500375:akis",
         "guven": "turetilmis"
       },
       {
-        "id": "f134",
+        "id": "f138",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 624.0,
+          "zaman": "1Ç",
+          "saat": "10:24",
+          "ev_skor": 5,
+          "dep_skor": 4,
+          "fark": 1,
+          "takim": "NOP",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Saddiq Bey",
+          "onceki_ev": 2,
+          "onceki_dep": 4
+        },
+        "kaynak": "PlayByPlayV3:0022500375:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f139",
         "tur": "akis_olay",
         "veri": {
           "tip": "liderlik",
@@ -9820,6 +10446,7 @@
           "takim": "HOU",
           "kesin": false,
           "kazanan_mi": false,
+          "son_mu": true,
           "oyuncu": "Amen Thompson",
           "onceki_ev": 15,
           "onceki_dep": 14
@@ -9828,7 +10455,30 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f135",
+        "id": "f140",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 5,
+          "saniye_kalan": 123.0,
+          "zaman": "U1",
+          "saat": "2:03",
+          "ev_skor": 125,
+          "dep_skor": 123,
+          "fark": 2,
+          "takim": "NOP",
+          "kesin": true,
+          "kazanan_mi": true,
+          "son_mu": true,
+          "oyuncu": "Saddiq Bey",
+          "onceki_ev": 123,
+          "onceki_dep": 123
+        },
+        "kaynak": "PlayByPlayV3:0022500375:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f141",
         "tur": "akis_olay",
         "veri": {
           "tip": "karar_ani",
@@ -9848,7 +10498,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f136",
+        "id": "f142",
         "tur": "akis_olay",
         "veri": {
           "tip": "rakip_yaklasti",
@@ -9868,7 +10518,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f137",
+        "id": "f143",
         "tur": "derece",
         "veri": {
           "takim": "NOP",
@@ -9891,7 +10541,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f138",
+        "id": "f144",
         "tur": "seri",
         "veri": {
           "takim": "NOP",
@@ -9902,7 +10552,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f139",
+        "id": "f145",
         "tur": "derece",
         "veri": {
           "takim": "HOU",
@@ -9925,7 +10575,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f140",
+        "id": "f146",
         "tur": "seri",
         "veri": {
           "takim": "HOU",
@@ -11920,6 +12570,27 @@
         "tur": "akis_olay",
         "veri": {
           "tip": "sayi_serisi",
+          "periyot": 1,
+          "saniye_kalan": 411.0,
+          "zaman": "1Ç",
+          "saat": "6:51",
+          "ev_skor": 18,
+          "dep_skor": 9,
+          "fark": 9,
+          "takim": "DAL",
+          "sayi": 10,
+          "dusuk_esik": false,
+          "onceki_ev": 16,
+          "onceki_dep": 9
+        },
+        "kaynak": "PlayByPlayV3:0022500376:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f128",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
           "periyot": 2,
           "saniye_kalan": 446.0,
           "zaman": "2Ç",
@@ -11929,14 +12600,36 @@
           "fark": -3,
           "takim": "DET",
           "sayi": 12,
-          "onceki_ev": 116,
-          "onceki_dep": 114
+          "dusuk_esik": false,
+          "onceki_ev": 39,
+          "onceki_dep": 40
         },
         "kaynak": "PlayByPlayV3:0022500376:akis",
         "guven": "turetilmis"
       },
       {
-        "id": "f128",
+        "id": "f129",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 4,
+          "saniye_kalan": 560.0,
+          "zaman": "4Ç",
+          "saat": "9:20",
+          "ev_skor": 93,
+          "dep_skor": 91,
+          "fark": 2,
+          "takim": "DET",
+          "sayi": 7,
+          "dusuk_esik": true,
+          "onceki_ev": 93,
+          "onceki_dep": 89
+        },
+        "kaynak": "PlayByPlayV3:0022500376:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f130",
         "tur": "akis_olay",
         "veri": {
           "tip": "esitlik",
@@ -11955,29 +12648,191 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f129",
+        "id": "f131",
         "tur": "akis_olay",
         "veri": {
           "tip": "liderlik",
-          "periyot": 4,
-          "saniye_kalan": 19.2,
-          "zaman": "Son",
-          "saat": "0:19",
-          "ev_skor": 110,
-          "dep_skor": 109,
-          "fark": 1,
-          "takim": "DAL",
+          "periyot": 1,
+          "saniye_kalan": 628.0,
+          "zaman": "1Ç",
+          "saat": "10:28",
+          "ev_skor": 2,
+          "dep_skor": 4,
+          "fark": -2,
+          "takim": "DET",
           "kesin": false,
-          "kazanan_mi": true,
-          "oyuncu": "Cooper Flagg",
-          "onceki_ev": 108,
-          "onceki_dep": 109
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Ausar Thompson",
+          "onceki_ev": 2,
+          "onceki_dep": 2
         },
         "kaynak": "PlayByPlayV3:0022500376:akis",
         "guven": "turetilmis"
       },
       {
-        "id": "f130",
+        "id": "f132",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 507.0,
+          "zaman": "1Ç",
+          "saat": "8:27",
+          "ev_skor": 8,
+          "dep_skor": 7,
+          "fark": 1,
+          "takim": "DAL",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "P.J. Washington",
+          "onceki_ev": 6,
+          "onceki_dep": 7
+        },
+        "kaynak": "PlayByPlayV3:0022500376:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f133",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 499.0,
+          "zaman": "1Ç",
+          "saat": "8:19",
+          "ev_skor": 8,
+          "dep_skor": 9,
+          "fark": -1,
+          "takim": "DET",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Jalen Duren",
+          "onceki_ev": 8,
+          "onceki_dep": 7
+        },
+        "kaynak": "PlayByPlayV3:0022500376:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f134",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 482.0,
+          "zaman": "1Ç",
+          "saat": "8:02",
+          "ev_skor": 10,
+          "dep_skor": 9,
+          "fark": 1,
+          "takim": "DAL",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Cooper Flagg",
+          "onceki_ev": 8,
+          "onceki_dep": 9
+        },
+        "kaynak": "PlayByPlayV3:0022500376:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f135",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 2,
+          "saniye_kalan": 478.0,
+          "zaman": "2Ç",
+          "saat": "7:58",
+          "ev_skor": 39,
+          "dep_skor": 40,
+          "fark": -1,
+          "takim": "DET",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Isaiah Stewart",
+          "onceki_ev": 39,
+          "onceki_dep": 38
+        },
+        "kaynak": "PlayByPlayV3:0022500376:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f136",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 2,
+          "saniye_kalan": 415.0,
+          "zaman": "2Ç",
+          "saat": "6:55",
+          "ev_skor": 44,
+          "dep_skor": 42,
+          "fark": 2,
+          "takim": "DAL",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Klay Thompson",
+          "onceki_ev": 41,
+          "onceki_dep": 42
+        },
+        "kaynak": "PlayByPlayV3:0022500376:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f137",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 4,
+          "saniye_kalan": 361.0,
+          "zaman": "4Ç",
+          "saat": "6:01",
+          "ev_skor": 97,
+          "dep_skor": 99,
+          "fark": -2,
+          "takim": "DET",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Isaiah Stewart",
+          "onceki_ev": 97,
+          "onceki_dep": 97
+        },
+        "kaynak": "PlayByPlayV3:0022500376:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f138",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 4,
+          "saniye_kalan": 159.0,
+          "zaman": "4Ç",
+          "saat": "2:39",
+          "ev_skor": 104,
+          "dep_skor": 103,
+          "fark": 1,
+          "takim": "DAL",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Naji Marshall",
+          "onceki_ev": 102,
+          "onceki_dep": 103
+        },
+        "kaynak": "PlayByPlayV3:0022500376:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f139",
         "tur": "akis_olay",
         "veri": {
           "tip": "liderlik",
@@ -11991,6 +12846,7 @@
           "takim": "DET",
           "kesin": false,
           "kazanan_mi": false,
+          "son_mu": true,
           "oyuncu": "Cade Cunningham",
           "onceki_ev": 106,
           "onceki_dep": 105
@@ -11999,7 +12855,30 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f131",
+        "id": "f140",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 4,
+          "saniye_kalan": 19.2,
+          "zaman": "Son",
+          "saat": "0:19",
+          "ev_skor": 110,
+          "dep_skor": 109,
+          "fark": 1,
+          "takim": "DAL",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": true,
+          "oyuncu": "Cooper Flagg",
+          "onceki_ev": 108,
+          "onceki_dep": 109
+        },
+        "kaynak": "PlayByPlayV3:0022500376:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f141",
         "tur": "akis_olay",
         "veri": {
           "tip": "rakip_yaklasti",
@@ -12019,7 +12898,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f132",
+        "id": "f142",
         "tur": "derece",
         "veri": {
           "takim": "DAL",
@@ -12042,7 +12921,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f133",
+        "id": "f143",
         "tur": "derece",
         "veri": {
           "takim": "DET",
@@ -13736,6 +14615,48 @@
         "tur": "akis_olay",
         "veri": {
           "tip": "sayi_serisi",
+          "periyot": 1,
+          "saniye_kalan": 343.0,
+          "zaman": "1Ç",
+          "saat": "5:43",
+          "ev_skor": 12,
+          "dep_skor": 20,
+          "fark": -8,
+          "takim": "ORL",
+          "sayi": 8,
+          "dusuk_esik": false,
+          "onceki_ev": 12,
+          "onceki_dep": 17
+        },
+        "kaynak": "PlayByPlayV3:0022500377:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f109",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 2,
+          "saniye_kalan": 308.0,
+          "zaman": "2Ç",
+          "saat": "5:08",
+          "ev_skor": 44,
+          "dep_skor": 47,
+          "fark": -3,
+          "takim": "DEN",
+          "sayi": 11,
+          "dusuk_esik": false,
+          "onceki_ev": 42,
+          "onceki_dep": 47
+        },
+        "kaynak": "PlayByPlayV3:0022500377:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f110",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
           "periyot": 3,
           "saniye_kalan": 703.0,
           "zaman": "3Ç",
@@ -13745,14 +14666,36 @@
           "fark": 16,
           "takim": "DEN",
           "sayi": 14,
-          "onceki_ev": 126,
-          "onceki_dep": 115
+          "dusuk_esik": false,
+          "onceki_ev": 68,
+          "onceki_dep": 54
         },
         "kaynak": "PlayByPlayV3:0022500377:akis",
         "guven": "turetilmis"
       },
       {
-        "id": "f109",
+        "id": "f111",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 4,
+          "saniye_kalan": 92.0,
+          "zaman": "4Ç",
+          "saat": "1:32",
+          "ev_skor": 121,
+          "dep_skor": 115,
+          "fark": 6,
+          "takim": "ORL",
+          "sayi": 11,
+          "dusuk_esik": false,
+          "onceki_ev": 121,
+          "onceki_dep": 113
+        },
+        "kaynak": "PlayByPlayV3:0022500377:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f112",
         "tur": "akis_olay",
         "veri": {
           "tip": "esitlik",
@@ -13771,7 +14714,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f110",
+        "id": "f113",
         "tur": "akis_olay",
         "veri": {
           "tip": "liderlik",
@@ -13785,6 +14728,7 @@
           "takim": "DEN",
           "kesin": true,
           "kazanan_mi": true,
+          "son_mu": true,
           "oyuncu": "Nikola Jokić",
           "onceki_ev": 51,
           "onceki_dep": 52
@@ -13793,7 +14737,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f111",
+        "id": "f114",
         "tur": "akis_olay",
         "veri": {
           "tip": "rakip_yaklasti",
@@ -13813,7 +14757,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f112",
+        "id": "f115",
         "tur": "akis_olay",
         "veri": {
           "tip": "kopus",
@@ -13833,7 +14777,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f113",
+        "id": "f116",
         "tur": "derece",
         "veri": {
           "takim": "DEN",
@@ -13856,7 +14800,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f114",
+        "id": "f117",
         "tur": "seri",
         "veri": {
           "takim": "DEN",
@@ -13867,7 +14811,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f115",
+        "id": "f118",
         "tur": "derece",
         "veri": {
           "takim": "ORL",
@@ -13890,7 +14834,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f116",
+        "id": "f119",
         "tur": "seri",
         "veri": {
           "takim": "ORL",
@@ -15596,6 +16540,27 @@
         "tur": "akis_olay",
         "veri": {
           "tip": "sayi_serisi",
+          "periyot": 1,
+          "saniye_kalan": 176.0,
+          "zaman": "1Ç",
+          "saat": "2:56",
+          "ev_skor": 17,
+          "dep_skor": 22,
+          "fark": -5,
+          "takim": "GSW",
+          "sayi": 8,
+          "dusuk_esik": false,
+          "onceki_ev": 17,
+          "onceki_dep": 21
+        },
+        "kaynak": "PlayByPlayV3:0022500378:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f109",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
           "periyot": 3,
           "saniye_kalan": 446.0,
           "zaman": "3Ç",
@@ -15605,14 +16570,36 @@
           "fark": -2,
           "takim": "PHX",
           "sayi": 12,
-          "onceki_ev": 99,
-          "onceki_dep": 98
+          "dusuk_esik": false,
+          "onceki_ev": 58,
+          "onceki_dep": 62
         },
         "kaynak": "PlayByPlayV3:0022500378:akis",
         "guven": "turetilmis"
       },
       {
-        "id": "f109",
+        "id": "f110",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 4,
+          "saniye_kalan": 681.0,
+          "zaman": "4Ç",
+          "saat": "11:21",
+          "ev_skor": 75,
+          "dep_skor": 71,
+          "fark": 4,
+          "takim": "PHX",
+          "sayi": 9,
+          "dusuk_esik": false,
+          "onceki_ev": 74,
+          "onceki_dep": 71
+        },
+        "kaynak": "PlayByPlayV3:0022500378:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f111",
         "tur": "akis_olay",
         "veri": {
           "tip": "esitlik",
@@ -15631,29 +16618,168 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f110",
+        "id": "f112",
         "tur": "akis_olay",
         "veri": {
           "tip": "liderlik",
-          "periyot": 4,
-          "saniye_kalan": 234.0,
-          "zaman": "4Ç",
-          "saat": "3:54",
-          "ev_skor": 88,
-          "dep_skor": 87,
+          "periyot": 1,
+          "saniye_kalan": 658.0,
+          "zaman": "1Ç",
+          "saat": "10:58",
+          "ev_skor": 4,
+          "dep_skor": 3,
           "fark": 1,
           "takim": "PHX",
           "kesin": false,
           "kazanan_mi": true,
-          "oyuncu": "Collin Gillespie",
-          "onceki_ev": 87,
-          "onceki_dep": 87
+          "son_mu": false,
+          "oyuncu": "Mark Williams",
+          "onceki_ev": 3,
+          "onceki_dep": 3
         },
         "kaynak": "PlayByPlayV3:0022500378:akis",
         "guven": "turetilmis"
       },
       {
-        "id": "f111",
+        "id": "f113",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 624.0,
+          "zaman": "1Ç",
+          "saat": "10:24",
+          "ev_skor": 5,
+          "dep_skor": 6,
+          "fark": -1,
+          "takim": "GSW",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Jimmy Butler III",
+          "onceki_ev": 5,
+          "onceki_dep": 5
+        },
+        "kaynak": "PlayByPlayV3:0022500378:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f114",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 463.0,
+          "zaman": "1Ç",
+          "saat": "7:43",
+          "ev_skor": 12,
+          "dep_skor": 11,
+          "fark": 1,
+          "takim": "PHX",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Dillon Brooks",
+          "onceki_ev": 9,
+          "onceki_dep": 11
+        },
+        "kaynak": "PlayByPlayV3:0022500378:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f115",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 257.0,
+          "zaman": "1Ç",
+          "saat": "4:17",
+          "ev_skor": 17,
+          "dep_skor": 19,
+          "fark": -2,
+          "takim": "GSW",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Draymond Green",
+          "onceki_ev": 17,
+          "onceki_dep": 16
+        },
+        "kaynak": "PlayByPlayV3:0022500378:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f116",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 4,
+          "saniye_kalan": 704.0,
+          "zaman": "4Ç",
+          "saat": "11:44",
+          "ev_skor": 72,
+          "dep_skor": 71,
+          "fark": 1,
+          "takim": "PHX",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Collin Gillespie",
+          "onceki_ev": 70,
+          "onceki_dep": 71
+        },
+        "kaynak": "PlayByPlayV3:0022500378:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f117",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 4,
+          "saniye_kalan": 598.0,
+          "zaman": "4Ç",
+          "saat": "9:58",
+          "ev_skor": 75,
+          "dep_skor": 76,
+          "fark": -1,
+          "takim": "GSW",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Brandin Podziemski",
+          "onceki_ev": 75,
+          "onceki_dep": 73
+        },
+        "kaynak": "PlayByPlayV3:0022500378:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f118",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 4,
+          "saniye_kalan": 575.0,
+          "zaman": "4Ç",
+          "saat": "9:35",
+          "ev_skor": 77,
+          "dep_skor": 76,
+          "fark": 1,
+          "takim": "PHX",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Jamaree Bouyea",
+          "onceki_ev": 75,
+          "onceki_dep": 76
+        },
+        "kaynak": "PlayByPlayV3:0022500378:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f119",
         "tur": "akis_olay",
         "veri": {
           "tip": "liderlik",
@@ -15667,6 +16793,7 @@
           "takim": "GSW",
           "kesin": false,
           "kazanan_mi": false,
+          "son_mu": true,
           "oyuncu": "Brandin Podziemski",
           "onceki_ev": 86,
           "onceki_dep": 84
@@ -15675,7 +16802,30 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f112",
+        "id": "f120",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 4,
+          "saniye_kalan": 234.0,
+          "zaman": "4Ç",
+          "saat": "3:54",
+          "ev_skor": 88,
+          "dep_skor": 87,
+          "fark": 1,
+          "takim": "PHX",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": true,
+          "oyuncu": "Collin Gillespie",
+          "onceki_ev": 87,
+          "onceki_dep": 87
+        },
+        "kaynak": "PlayByPlayV3:0022500378:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f121",
         "tur": "akis_olay",
         "veri": {
           "tip": "karar_ani",
@@ -15695,7 +16845,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f113",
+        "id": "f122",
         "tur": "akis_olay",
         "veri": {
           "tip": "rakip_yaklasti",
@@ -15715,7 +16865,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f114",
+        "id": "f123",
         "tur": "derece",
         "veri": {
           "takim": "PHX",
@@ -15738,7 +16888,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f115",
+        "id": "f124",
         "tur": "derece",
         "veri": {
           "takim": "GSW",
@@ -15761,7 +16911,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f116",
+        "id": "f125",
         "tur": "seri",
         "veri": {
           "takim": "GSW",
@@ -17924,6 +19074,48 @@
         "tur": "akis_olay",
         "veri": {
           "tip": "sayi_serisi",
+          "periyot": 1,
+          "saniye_kalan": 473.0,
+          "zaman": "1Ç",
+          "saat": "7:53",
+          "ev_skor": 17,
+          "dep_skor": 9,
+          "fark": 8,
+          "takim": "UTA",
+          "sayi": 6,
+          "dusuk_esik": true,
+          "onceki_ev": 14,
+          "onceki_dep": 9
+        },
+        "kaynak": "PlayByPlayV3:0022500379:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f139",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 3,
+          "saniye_kalan": 398.0,
+          "zaman": "3Ç",
+          "saat": "6:38",
+          "ev_skor": 93,
+          "dep_skor": 84,
+          "fark": 9,
+          "takim": "UTA",
+          "sayi": 6,
+          "dusuk_esik": true,
+          "onceki_ev": 90,
+          "onceki_dep": 84
+        },
+        "kaynak": "PlayByPlayV3:0022500379:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f140",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
           "periyot": 4,
           "saniye_kalan": 502.0,
           "zaman": "4Ç",
@@ -17933,14 +19125,15 @@
           "fark": -6,
           "takim": "LAL",
           "sayi": 10,
-          "onceki_ev": 135,
-          "onceki_dep": 143
+          "dusuk_esik": false,
+          "onceki_ev": 108,
+          "onceki_dep": 113
         },
         "kaynak": "PlayByPlayV3:0022500379:akis",
         "guven": "turetilmis"
       },
       {
-        "id": "f139",
+        "id": "f141",
         "tur": "akis_olay",
         "veri": {
           "tip": "esitlik",
@@ -17959,29 +19152,30 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f140",
+        "id": "f142",
         "tur": "akis_olay",
         "veri": {
           "tip": "liderlik",
-          "periyot": 4,
-          "saniye_kalan": 607.0,
-          "zaman": "4Ç",
-          "saat": "10:07",
-          "ev_skor": 108,
-          "dep_skor": 109,
+          "periyot": 1,
+          "saniye_kalan": 624.0,
+          "zaman": "1Ç",
+          "saat": "10:24",
+          "ev_skor": 3,
+          "dep_skor": 4,
           "fark": -1,
           "takim": "LAL",
-          "kesin": true,
+          "kesin": false,
           "kazanan_mi": true,
-          "oyuncu": "Maxi Kleber",
-          "onceki_ev": 108,
-          "onceki_dep": 108
+          "son_mu": false,
+          "oyuncu": "Marcus Smart",
+          "onceki_ev": 3,
+          "onceki_dep": 2
         },
         "kaynak": "PlayByPlayV3:0022500379:akis",
         "guven": "turetilmis"
       },
       {
-        "id": "f141",
+        "id": "f143",
         "tur": "akis_olay",
         "veri": {
           "tip": "liderlik",
@@ -17995,6 +19189,7 @@
           "takim": "UTA",
           "kesin": false,
           "kazanan_mi": false,
+          "son_mu": true,
           "oyuncu": "Jusuf Nurkić",
           "onceki_ev": 3,
           "onceki_dep": 4
@@ -18003,7 +19198,30 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f142",
+        "id": "f144",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 4,
+          "saniye_kalan": 607.0,
+          "zaman": "4Ç",
+          "saat": "10:07",
+          "ev_skor": 108,
+          "dep_skor": 109,
+          "fark": -1,
+          "takim": "LAL",
+          "kesin": true,
+          "kazanan_mi": true,
+          "son_mu": true,
+          "oyuncu": "Maxi Kleber",
+          "onceki_ev": 108,
+          "onceki_dep": 108
+        },
+        "kaynak": "PlayByPlayV3:0022500379:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f145",
         "tur": "akis_olay",
         "veri": {
           "tip": "rakip_yaklasti",
@@ -18023,7 +19241,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f143",
+        "id": "f146",
         "tur": "derece",
         "veri": {
           "takim": "UTA",
@@ -18046,7 +19264,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f144",
+        "id": "f147",
         "tur": "derece",
         "veri": {
           "takim": "LAL",
@@ -18069,7 +19287,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f145",
+        "id": "f148",
         "tur": "seri",
         "veri": {
           "takim": "LAL",
@@ -20570,6 +21788,69 @@
         "tur": "akis_olay",
         "veri": {
           "tip": "sayi_serisi",
+          "periyot": 1,
+          "saniye_kalan": 114.0,
+          "zaman": "1Ç",
+          "saat": "1:54",
+          "ev_skor": 32,
+          "dep_skor": 36,
+          "fark": -4,
+          "takim": "SAC",
+          "sayi": 6,
+          "dusuk_esik": true,
+          "onceki_ev": 32,
+          "onceki_dep": 33
+        },
+        "kaynak": "PlayByPlayV3:0022500380:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f163",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 2,
+          "saniye_kalan": 160.0,
+          "zaman": "2Ç",
+          "saat": "2:40",
+          "ev_skor": 61,
+          "dep_skor": 56,
+          "fark": 5,
+          "takim": "POR",
+          "sayi": 9,
+          "dusuk_esik": false,
+          "onceki_ev": 60,
+          "onceki_dep": 56
+        },
+        "kaynak": "PlayByPlayV3:0022500380:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f164",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 3,
+          "saniye_kalan": 179.0,
+          "zaman": "3Ç",
+          "saat": "2:59",
+          "ev_skor": 76,
+          "dep_skor": 79,
+          "fark": -3,
+          "takim": "SAC",
+          "sayi": 6,
+          "dusuk_esik": true,
+          "onceki_ev": 76,
+          "onceki_dep": 78
+        },
+        "kaynak": "PlayByPlayV3:0022500380:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f165",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
           "periyot": 4,
           "saniye_kalan": 15.0,
           "zaman": "Son",
@@ -20579,14 +21860,36 @@
           "fark": 1,
           "takim": "SAC",
           "sayi": 14,
-          "onceki_ev": 134,
+          "dusuk_esik": false,
+          "onceki_ev": 113,
+          "onceki_dep": 111
+        },
+        "kaynak": "PlayByPlayV3:0022500380:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f166",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 5,
+          "saniye_kalan": 1.5,
+          "zaman": "Son",
+          "saat": "0:01",
+          "ev_skor": 132,
+          "dep_skor": 133,
+          "fark": -1,
+          "takim": "SAC",
+          "sayi": 7,
+          "dusuk_esik": true,
+          "onceki_ev": 132,
           "onceki_dep": 133
         },
         "kaynak": "PlayByPlayV3:0022500380:akis",
         "guven": "turetilmis"
       },
       {
-        "id": "f163",
+        "id": "f167",
         "tur": "akis_olay",
         "veri": {
           "tip": "esitlik",
@@ -20605,29 +21908,467 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f164",
+        "id": "f168",
         "tur": "akis_olay",
         "veri": {
           "tip": "liderlik",
-          "periyot": 5,
-          "saniye_kalan": 1.5,
-          "zaman": "Son",
-          "saat": "0:01",
-          "ev_skor": 134,
-          "dep_skor": 133,
-          "fark": 1,
-          "takim": "POR",
-          "kesin": true,
-          "kazanan_mi": true,
-          "oyuncu": "Deni Avdija",
-          "onceki_ev": 133,
-          "onceki_dep": 133
+          "periyot": 1,
+          "saniye_kalan": 480.0,
+          "zaman": "1Ç",
+          "saat": "8:00",
+          "ev_skor": 11,
+          "dep_skor": 13,
+          "fark": -2,
+          "takim": "SAC",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Maxime Raynaud",
+          "onceki_ev": 11,
+          "onceki_dep": 10
         },
         "kaynak": "PlayByPlayV3:0022500380:akis",
         "guven": "turetilmis"
       },
       {
-        "id": "f165",
+        "id": "f169",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 462.0,
+          "zaman": "1Ç",
+          "saat": "7:42",
+          "ev_skor": 14,
+          "dep_skor": 13,
+          "fark": 1,
+          "takim": "POR",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Donovan Clingan",
+          "onceki_ev": 11,
+          "onceki_dep": 13
+        },
+        "kaynak": "PlayByPlayV3:0022500380:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f170",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 446.0,
+          "zaman": "1Ç",
+          "saat": "7:26",
+          "ev_skor": 14,
+          "dep_skor": 15,
+          "fark": -1,
+          "takim": "SAC",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Keegan Murray",
+          "onceki_ev": 14,
+          "onceki_dep": 13
+        },
+        "kaynak": "PlayByPlayV3:0022500380:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f171",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 422.0,
+          "zaman": "1Ç",
+          "saat": "7:02",
+          "ev_skor": 16,
+          "dep_skor": 15,
+          "fark": 1,
+          "takim": "POR",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Shaedon Sharpe",
+          "onceki_ev": 14,
+          "onceki_dep": 15
+        },
+        "kaynak": "PlayByPlayV3:0022500380:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f172",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 404.0,
+          "zaman": "1Ç",
+          "saat": "6:44",
+          "ev_skor": 16,
+          "dep_skor": 17,
+          "fark": -1,
+          "takim": "SAC",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Maxime Raynaud",
+          "onceki_ev": 16,
+          "onceki_dep": 15
+        },
+        "kaynak": "PlayByPlayV3:0022500380:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f173",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 393.0,
+          "zaman": "1Ç",
+          "saat": "6:33",
+          "ev_skor": 19,
+          "dep_skor": 18,
+          "fark": 1,
+          "takim": "POR",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Toumani Camara",
+          "onceki_ev": 16,
+          "onceki_dep": 18
+        },
+        "kaynak": "PlayByPlayV3:0022500380:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f174",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 345.0,
+          "zaman": "1Ç",
+          "saat": "5:45",
+          "ev_skor": 19,
+          "dep_skor": 20,
+          "fark": -1,
+          "takim": "SAC",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "DeMar DeRozan",
+          "onceki_ev": 19,
+          "onceki_dep": 18
+        },
+        "kaynak": "PlayByPlayV3:0022500380:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f175",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 329.0,
+          "zaman": "1Ç",
+          "saat": "5:29",
+          "ev_skor": 22,
+          "dep_skor": 20,
+          "fark": 2,
+          "takim": "POR",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Shaedon Sharpe",
+          "onceki_ev": 19,
+          "onceki_dep": 20
+        },
+        "kaynak": "PlayByPlayV3:0022500380:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f176",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 202.0,
+          "zaman": "1Ç",
+          "saat": "3:22",
+          "ev_skor": 27,
+          "dep_skor": 28,
+          "fark": -1,
+          "takim": "SAC",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Keon Ellis",
+          "onceki_ev": 27,
+          "onceki_dep": 26
+        },
+        "kaynak": "PlayByPlayV3:0022500380:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f177",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 186.0,
+          "zaman": "1Ç",
+          "saat": "3:06",
+          "ev_skor": 29,
+          "dep_skor": 28,
+          "fark": 1,
+          "takim": "POR",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Shaedon Sharpe",
+          "onceki_ev": 27,
+          "onceki_dep": 28
+        },
+        "kaynak": "PlayByPlayV3:0022500380:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f178",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 174.0,
+          "zaman": "1Ç",
+          "saat": "2:54",
+          "ev_skor": 29,
+          "dep_skor": 30,
+          "fark": -1,
+          "takim": "SAC",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Dylan Cardwell",
+          "onceki_ev": 29,
+          "onceki_dep": 28
+        },
+        "kaynak": "PlayByPlayV3:0022500380:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f179",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 161.0,
+          "zaman": "1Ç",
+          "saat": "2:41",
+          "ev_skor": 32,
+          "dep_skor": 30,
+          "fark": 2,
+          "takim": "POR",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Sidy Cissoko",
+          "onceki_ev": 29,
+          "onceki_dep": 30
+        },
+        "kaynak": "PlayByPlayV3:0022500380:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f180",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 146.0,
+          "zaman": "1Ç",
+          "saat": "2:26",
+          "ev_skor": 32,
+          "dep_skor": 33,
+          "fark": -1,
+          "takim": "SAC",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Keegan Murray",
+          "onceki_ev": 32,
+          "onceki_dep": 30
+        },
+        "kaynak": "PlayByPlayV3:0022500380:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f181",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 2,
+          "saniye_kalan": 184.0,
+          "zaman": "2Ç",
+          "saat": "3:04",
+          "ev_skor": 58,
+          "dep_skor": 56,
+          "fark": 2,
+          "takim": "POR",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Toumani Camara",
+          "onceki_ev": 55,
+          "onceki_dep": 56
+        },
+        "kaynak": "PlayByPlayV3:0022500380:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f182",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 3,
+          "saniye_kalan": 567.0,
+          "zaman": "3Ç",
+          "saat": "9:27",
+          "ev_skor": 65,
+          "dep_skor": 66,
+          "fark": -1,
+          "takim": "SAC",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "DeMar DeRozan",
+          "onceki_ev": 65,
+          "onceki_dep": 64
+        },
+        "kaynak": "PlayByPlayV3:0022500380:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f183",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 3,
+          "saniye_kalan": 546.0,
+          "zaman": "3Ç",
+          "saat": "9:06",
+          "ev_skor": 67,
+          "dep_skor": 66,
+          "fark": 1,
+          "takim": "POR",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Shaedon Sharpe",
+          "onceki_ev": 65,
+          "onceki_dep": 66
+        },
+        "kaynak": "PlayByPlayV3:0022500380:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f184",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 3,
+          "saniye_kalan": 534.0,
+          "zaman": "3Ç",
+          "saat": "8:54",
+          "ev_skor": 67,
+          "dep_skor": 68,
+          "fark": -1,
+          "takim": "SAC",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Maxime Raynaud",
+          "onceki_ev": 67,
+          "onceki_dep": 66
+        },
+        "kaynak": "PlayByPlayV3:0022500380:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f185",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 3,
+          "saniye_kalan": 477.0,
+          "zaman": "3Ç",
+          "saat": "7:57",
+          "ev_skor": 71,
+          "dep_skor": 70,
+          "fark": 1,
+          "takim": "POR",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Deni Avdija",
+          "onceki_ev": 69,
+          "onceki_dep": 70
+        },
+        "kaynak": "PlayByPlayV3:0022500380:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f186",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 3,
+          "saniye_kalan": 313.0,
+          "zaman": "3Ç",
+          "saat": "5:13",
+          "ev_skor": 76,
+          "dep_skor": 77,
+          "fark": -1,
+          "takim": "SAC",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Russell Westbrook",
+          "onceki_ev": 76,
+          "onceki_dep": 75
+        },
+        "kaynak": "PlayByPlayV3:0022500380:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f187",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 4,
+          "saniye_kalan": 658.0,
+          "zaman": "4Ç",
+          "saat": "10:58",
+          "ev_skor": 84,
+          "dep_skor": 83,
+          "fark": 1,
+          "takim": "POR",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Deni Avdija",
+          "onceki_ev": 82,
+          "onceki_dep": 83
+        },
+        "kaynak": "PlayByPlayV3:0022500380:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f188",
         "tur": "akis_olay",
         "veri": {
           "tip": "liderlik",
@@ -20641,6 +22382,7 @@
           "takim": "SAC",
           "kesin": false,
           "kazanan_mi": false,
+          "son_mu": true,
           "oyuncu": "DeMar DeRozan",
           "onceki_ev": 132,
           "onceki_dep": 131
@@ -20649,7 +22391,30 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f166",
+        "id": "f189",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 5,
+          "saniye_kalan": 1.5,
+          "zaman": "Son",
+          "saat": "0:01",
+          "ev_skor": 134,
+          "dep_skor": 133,
+          "fark": 1,
+          "takim": "POR",
+          "kesin": true,
+          "kazanan_mi": true,
+          "son_mu": true,
+          "oyuncu": "Deni Avdija",
+          "onceki_ev": 133,
+          "onceki_dep": 133
+        },
+        "kaynak": "PlayByPlayV3:0022500380:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f190",
         "tur": "akis_olay",
         "veri": {
           "tip": "karar_ani",
@@ -20669,7 +22434,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f167",
+        "id": "f191",
         "tur": "akis_olay",
         "veri": {
           "tip": "rakip_yaklasti",
@@ -20689,7 +22454,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f168",
+        "id": "f192",
         "tur": "derece",
         "veri": {
           "takim": "POR",
@@ -20712,7 +22477,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f169",
+        "id": "f193",
         "tur": "seri",
         "veri": {
           "takim": "POR",
@@ -20723,7 +22488,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f170",
+        "id": "f194",
         "tur": "derece",
         "veri": {
           "takim": "SAC",
@@ -20746,7 +22511,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f171",
+        "id": "f195",
         "tur": "seri",
         "veri": {
           "takim": "SAC",

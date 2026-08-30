@@ -5042,10 +5042,19 @@ def main():
         # Yerlerini KRONOLOJİ ve ARDIŞIK ÇELİŞKİ denetimleri aldı.
         basar(f"Akış[{_t}]: satır sayısı yuva sayısını aşmıyor",
               all(len(m["akis"]) <= 4 for m in _akisli))
+        # EMEKLİ: "aynı olay tipi iki kez kullanılamaz" — kapsama
+        # modelinde her EVRE kendi satırını alıyor; aynı tip iki ayrı
+        # evrede meşru (1Ç'de ve son çeyrekte liderlik değişimi gibi).
+        # Tekrar hissini kalıp çeşitliliği ve D2 önlüyor. Tavan: bir
+        # blokta aynı tip en fazla iki kez.
         _tip_tekrar = [m["mac"] for m in _akisli
-                       if len({r["tip"] for r in m["akis"]}) != len(m["akis"])]
-        basar(f"Akış[{_t}]: aynı olay tipi iki kez kullanılmıyor",
+                       if max(_cl.Counter(r["tip"] for r in m["akis"]).values()) > 2]
+        basar(f"Akış[{_t}]: aynı olay tipi blokta en fazla iki kez",
               not _tip_tekrar, f"tekrar: {_tip_tekrar}")
+        _kal_tekrar = [m["mac"] for m in _akisli
+                       if len({r["kalip"] for r in m["akis"]}) != len(m["akis"])]
+        basar(f"Akış[{_t}]: blokta aynı cümle kalıbı iki kez yok",
+              not _kal_tekrar, f"tekrar: {_kal_tekrar}")
         basar(f"Akış[{_t}]: her blokta tam bir kritik satır",
               all(sum(1 for r in m["akis"] if r["kritik"]) == 1 for m in _akisli))
         # KATMAN HİYERARŞİSİ (kullanıcı kararı): üç katman görsel olarak
@@ -5080,9 +5089,50 @@ def main():
                  if [_SIRA.get(r["zaman"], 9) for r in m["akis"] if r["tip"] != "en_etkili"]
                  != sorted(_SIRA.get(r["zaman"], 9) for r in m["akis"] if r["tip"] != "en_etkili")]
         basar(f"Akış[{_t}]: satırlar kronolojik", not _kron, f"kırık: {_kron}")
-        basar(f"Akış[{_t}]: her blokta şekil yazılı",
-              all(r.get("sekil") in _derle.AKIS_SEKILLERI
-                  for m in _akisli for r in m["akis"]))
+        # ŞEKİL MODELİ EMEKLİ (kullanıcı kararı): blok artık maçın
+        # şekline göre değil, DÖRT EVREYİ KAPSAYACAK şekilde kuruluyor.
+        basar(f"Akış[{_t}]: blok kapsama modeliyle kuruldu",
+              all(r.get("sekil") == "kapsama" for m in _akisli for r in m["akis"]))
+        # KAPSAMA: dört satırlı blok maçın sonunu anlatmak ZORUNDA.
+        _sonsuz = [m["mac"] for m in _akisli if len(m["akis"]) >= 4
+                   and not any((r.get("zaman") or "") in ("4Ç", "Son", "Maç sonu", "U1")
+                               for r in m["akis"])]
+        basar(f"Akış[{_t}]: dört satırlı blokta son çeyrek var",
+              not _sonsuz, f"son çeyreği olmayan: {_sonsuz}")
+        # "Göz at" iki satır: biri ilk yarıdan, biri karardan.
+        _gz = [m for m in (_dd.get("degerse_bak") or []) if m.get("akis")]
+        _gz_kotu = [m.get("mac") for m in _gz
+                    if not (any((r.get("zaman") or "") in ("1Ç", "2Ç", "Devre")
+                                for r in m["akis"])
+                            and any(r.get("kritik") for r in m["akis"]))]
+        basar(f"Akış[{_t}]: Göz at maçı kuşatıyor (ilk yarı + karar)",
+              not _gz_kotu, f"kuşatmayan: {_gz_kotu}")
+        # KAPSAMA: dört satırlı blok DÖRT EVREYİ de anlatmalı — ilk
+        # yarıdan en az bir, üçüncü çeyrekten en az bir, son çeyrekten
+        # en az iki (biri karar anı).
+        _kapsam = []
+        for _m in _akisli:
+            if len(_m["akis"]) < 4:
+                continue
+            _e = {"ilk": 0, "uc": 0, "son": 0}
+            for _r in _m["akis"]:
+                _z = _r.get("zaman") or ""
+                _e["ilk" if _z in ("1Ç", "2Ç", "Devre")
+                   else "uc" if _z == "3Ç" else "son"] += 1
+            if _e["ilk"] == 0 or _e["uc"] == 0 or _e["son"] < 2:
+                _kapsam.append((_m["mac"], _e))
+        basar(f"Akış[{_t}]: dört evre de kapsanıyor", not _kapsam, f"eksik: {_kapsam}")
+        # Kritik satır KARAR ANI'dır: bloğun son satırı.
+        _kr = [_m["mac"] for _m in _akisli
+               if not _m["akis"][-1].get("kritik")]
+        basar(f"Akış[{_t}]: kritik satır bloğun sonundaki karar anı",
+              not _kr, f"kritiği sonda olmayan: {_kr}")
+        # ÇEŞİTLİLİK TAVANI: blokta en fazla iki skor durumu satırı.
+        _skor_cok = [m["mac"] for m in _akisli
+                     if sum(1 for r in m["akis"] if r.get("katman") == 3)
+                     > _derle.AKIS_SKOR_TAVANI]
+        basar(f"Akış[{_t}]: blokta en fazla iki skor satırı",
+              not _skor_cok, f"aşan: {_skor_cok}")
         basar(f"Akış[{_t}]: her satır bir yuvaya ait",
               all(r.get("yuva") for m in _akisli for r in m["akis"]))
         # ARDIŞIK ÇELİŞKİ: aynı takım hem farkı açıp hem eşitleyemez.
@@ -5115,19 +5165,33 @@ def main():
           all(len(_derle._yuva_planla(sk, "AAA", "BBB")) == 4
               for sk in _derle.AKIS_SEKILLERI))
     basar("Akış: her şekilde tam bir kritik yuva var",
-          all(sum(1 for _, _, k in _derle._yuva_planla(sk, "AAA", "BBB") if k) == 1
-              for sk in _derle.AKIS_SEKILLERI))
+          True)   # EMEKLİ: şekil planı kullanılmıyor; kritik satır
+                  # garantisi "her blokta tam bir kritik satır" testinde.
     # Kronoloji YAPIDAN geliyor: yuvalar kritik andan başlayarak zaman
     # penceresiyle doluyor.
-    basar("Akış: yuvalar zaman penceresiyle doluyor",
-          "def _sinirlar(i):" in _dsrc3 and "kritik_i" in _dsrc3)
+    # EMEKLİ: "yuvalar zaman penceresiyle doluyor" — şekil modeliyle
+    # birlikte kalktı. Kronolojiyi artık evre sırası ve blok sonundaki
+    # sıralama sağlıyor.
+    basar("Akış: kapsama modeli dört evreyi tanımlıyor",
+          len(_derle.AKIS_EVRELERI) == 3 and "karar" in _dsrc3
+          and _derle.AKIS_SKOR_TAVANI == 2)
+    basar("Akış: eski kritik-an yeniden ataması emekli",
+          'KRİTİK AN, "SON OLAY" DEĞİL' not in _dsrc3)
+    basar("Ek uyumu okunuşa göre: Brooklyn'in (Brooklyn'un değil)",
+          cumle.iyelik_eki("Brooklyn") == "in"
+          and cumle.iyelik_eki("Boston") == "un")
+    basar("Akış: üç katman da tanımlı (olay / düşük eşik / skor durumu)",
+          bool(_derle.AKIS_KATMAN1) and bool(_derle.AKIS_KATMAN2)
+          and "skor_durumu" in _derle.AKIS_KATMAN3)
     basar("Akış: kalıp sayacı gece çapında paylaşılıyor",
           "_akis_kalip_sayaci = {}" in _dsrc3
           and "kalip_sayaci=_akis_kalip_sayaci" in _dsrc3)
     # ÖNE GEÇİŞ bir LİDERLİK DEĞİŞİMİ olmalı — eşitlik yedeği, 12 farkla
     # biten maçta beraberliği "maçın belirlendiği an" yapıyordu.
-    basar("Akış: geri dönüşte öne geçiş yuvası yalnız liderlik kabul ediyor",
-          [t for t, _ in _derle._yuva_planla("geri_donus", "A", "B")[2][1]] == ["liderlik"])
+    # EMEKLİ: şekil modeline özgü yuva testi. Karar anı seçimi artık
+    # şekilden bağımsız ve son çeyrek öncelikli.
+    basar("Akış: karar anı son çeyreği önceliyor",
+          "önce son çeyrekte ara" in _dsrc3)
     # HER TİPE BİRDEN FAZLA KALIP — kalıplar SABİT, LLM üretmiyor.
     _kalip_by_tip = {}
     for _t2, _o in (

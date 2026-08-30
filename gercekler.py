@@ -701,6 +701,7 @@ def an_gerceklerini_uret(g, gid, actions, isim_haritasi):
 # kaydına dayanmasıdır. Cümleye çevirme işi cumle.py'de, seçme işi
 # derle.py'de; burada yalnız OLAY ve VERİSİ var.
 AKIS_SERI_ASGARI = 8       # "N-0 gitti" için en az sayı
+AKIS_SERI_DUSUK = 6        # kapsama için düşük eşik (blokta olay yoksa)
 AKIS_BASA_BAS = 3          # çeyrek sonunda bu fark "başa baş" sayılır
 AKIS_DEVRE_FARK = 10       # devrede bu farktan büyükse ayrı satır
 AKIS_SON_SANIYE = 60.0     # "Son" etiketi eşiği (periyot 4+)
@@ -761,9 +762,18 @@ def _akis_zaman(periyot, saniye_kalan, ceyrek_sonu=False, son_periyot=None):
 
 D5_ONDE, D5_BERABERE, D5_GERIDE = "onde", "berabere", "geride"
 
+# Bu tipler bir EYLEM değil, o anın DURUMUNU anlatıyor. Kalıpları da
+# durum kipinde ("X n sayı geride"), fiil kipinde değil — özne eylemi
+# yapabilecek tarafta olmadığı için.
+D5_DURUM_TIPLERI = frozenset({"rakip_yaklasti"})
+
 D5_KURAL = {
     # tip:              (öznenin ÖNCEKİ durumu, SONRAKİ durumu)
-    "rakip_yaklasti":   (D5_GERIDE, D5_GERIDE),   # farkı indirdi: hâlâ geride
+    # DURUM satırı — eylem değil. "Farkı indirdi" diyen özne hep yanlış
+    # taraftaydı: farkı kapatan öndeki takım, geride kalan sadece geriye
+    # düşüyor. Cümle artık durumu söylüyor ("Denver 1 sayı geride"),
+    # şart da o duruma karşılık geliyor: önce de sonra da geride.
+    "rakip_yaklasti":   (D5_GERIDE, D5_GERIDE),
     "esitlik":          (D5_GERIDE, D5_BERABERE),  # skoru eşitledi
     # "öne geçti": özne ÖNDE OLMAMALIYDI. Kullanıcı tarifi "önce geride"
     # idi; harfiyen uygulayınca beraberlikten kırılan liderlikler
@@ -936,7 +946,12 @@ def akis_gercekleri_uret(g, gid, actions, ev_kod, dep_kod, kazanan, ceyrek_veri)
 
     # --- 4) SAYI SERİSİ (N-0) ---------------------------------------------
     # Tek tarafın kesintisiz sayı ürettiği en uzun aralık.
-    en_iyi_seri = None
+    # KAPSAMA: maçın tamamı anlatılacaksa her ÇEYREĞİN kendi serisi
+    # lazım — tek "maçın en uzun serisi" bir çeyreği anlatıyor, geri
+    # kalan üçü boş kalıyordu. Eşik 6'ya iniyor; 8'in altındakiler
+    # `dusuk_esik` işaretli, seçim katmanı onları ancak gerçek olay
+    # bulamayınca kullanıyor.
+    ceyrek_serileri = {}
     i = 0
     while i < len(seri) - 1:
         _, _, ev0, dep0, _ = seri[i]
@@ -950,14 +965,17 @@ def akis_gercekleri_uret(g, gid, actions, ev_kod, dep_kod, kazanan, ceyrek_veri)
             ev_art, dep_art = de, dd
             j += 1
         uzunluk = max(ev_art, dep_art)
-        if uzunluk >= AKIS_SERI_ASGARI and (en_iyi_seri is None or uzunluk > en_iyi_seri[0]):
-            son = seri[j - 1]
-            en_iyi_seri = (uzunluk, son, ev_art > dep_art)
+        son = seri[j - 1]
+        if uzunluk >= AKIS_SERI_DUSUK:
+            p_ = son[0]
+            if p_ not in ceyrek_serileri or uzunluk > ceyrek_serileri[p_][0]:
+                ceyrek_serileri[p_] = (uzunluk, son, ev_art > dep_art)
         i = max(j - 1, i + 1)
-    if en_iyi_seri:
-        uzunluk, (periyot, saniye, ev, dep, _a), ev_mi = en_iyi_seri
-        yaz("sayi_serisi", periyot, saniye, ev, dep, aksiyon=a,
-            takim=(ev_kod if ev_mi else dep_kod), sayi=uzunluk)
+    for _p in sorted(ceyrek_serileri):
+        uzunluk, (periyot, saniye, ev, dep, _sa), ev_mi = ceyrek_serileri[_p]
+        yaz("sayi_serisi", periyot, saniye, ev, dep, aksiyon=_sa,
+            takim=(ev_kod if ev_mi else dep_kod), sayi=uzunluk,
+            dusuk_esik=uzunluk < AKIS_SERI_ASGARI)
 
     # --- 5) LİDER DEĞİŞİMLERİ: eşitlik, son liderlik, karar anı -----------
     # ATIF GÜVENCESİ: olayın öznesi, o eylemi GERÇEKTEN yapan takım
@@ -1000,12 +1018,16 @@ def akis_gercekleri_uret(g, gid, actions, ev_kod, dep_kod, kazanan, ceyrek_veri)
     # HER İKİ TARAFIN son öne geçişi de yazılıyor. Kaybedenin öne geçtiği
     # an olmadan "X eşitledi" satırı zincirsiz kalıyordu: okuyucu rakibin
     # ne zaman öne geçtiğini göremiyordu (26 Aralık ATL-NYK).
-    for _taraf in (kazanan, (dep_kod if kazanan == ev_kod else ev_kod)):
-        _liste = [x for x in liderlikler
-                  if (ev_kod if x[2] > x[3] else dep_kod) == _taraf]
-        if not _liste:
-            continue
-        periyot, saniye, ev, dep, a = _liste[-1]
+    # DEĞİŞMEZ 6: HER liderlik değişimi gerçek olarak yazılıyor, sadece
+    # her tarafın SONUNCUSU değil. Aradaki değişimler hiç üretilmeyince
+    # blokta zincir kopuyordu: 27 Aralık ORL-DEN'de "Denver 9 önde"nin
+    # ardından "Denver 1 geride" geliyordu ve Orlando'nun öne geçtiği an
+    # kayıt olmadığı için gösterilemiyordu. Hangisinin gösterileceğine
+    # seçim katmanı karar veriyor; üretim katmanı olayı saklamıyor.
+    _son_by_taraf = {}
+    for x in liderlikler:
+        _son_by_taraf[(ev_kod if x[2] > x[3] else dep_kod)] = x
+    for periyot, saniye, ev, dep, a in liderlikler:
         onde = ev_kod if ev > dep else dep_kod
         if True:
             # "Liderlik bir daha değişmedi" iddiası, sonradan BERABERLİK
@@ -1019,6 +1041,8 @@ def akis_gercekleri_uret(g, gid, actions, ev_kod, dep_kod, kazanan, ceyrek_veri)
                              or any(_sonra(x) for x in liderlikler))
             yaz("liderlik", periyot, saniye, ev, dep, aksiyon=a,
                 takim=onde, kesin=not sonra_esitlik, kazanan_mi=(onde == kazanan),
+                son_mu=(_son_by_taraf.get(onde) is not None
+                        and _son_by_taraf[onde][:2] == (periyot, saniye)),
                 oyuncu=_dogru_oyuncu_adi(a.get("personId"), a.get("playerName") or ""))
 
     # --- 6) KARAR ANI: son sayı, fark küçükse -----------------------------

@@ -807,6 +807,14 @@ _ARKA_IKILI = ("oo", "ou", "au", "aw")                   # arka (kalın) yuvarla
 # SON 'e' GERÇEKTEN OKUNAN adlar — kural bunlarda ters çalışırdı.
 # Ad ad çözüm DEĞİL, kuralın bilinen sınırı: bu adlarda son harf ünlü
 # sesidir ve ek ona göre gelir ("Dante'nin").
+# YAZILIŞ ile OKUNUŞ ayrıştığında ek uyumu OKUNUŞA göre kurulur.
+# "Brooklyn" yazılışta son ünlüsü 'o' (y burada ünsüz), ama Türkçede
+# "bruklin" okunuyor — "Brooklyn'un" değil "Brooklyn'in". TEK KAYNAK:
+# hem cümle kurucu hem T21 buradan okuyor.
+OKUNUS_SON_UNLU = {
+    "brooklyn": "i",
+}
+
 SON_E_OKUNAN = {"dante", "ante", "andre", "jose", "vasilije", "nikola",
                 "kobe", "andrea", "giannis"}
 
@@ -895,6 +903,8 @@ def sesli_biter_mi(ad):
     k = k.split()[-1] if k.split() else k          # soyadı belirler
     if not k:
         return False, ""
+    if k in OKUNUS_SON_UNLU:
+        return False, OKUNUS_SON_UNLU[k]
     if k in SON_E_OKUNAN:
         return True, k[-1]
     # 1) SESSİZ 'e' / '-es'

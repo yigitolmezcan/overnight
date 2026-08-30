@@ -959,6 +959,41 @@ AKIS_SON_DK_FARK = 3           # ya da fark bu kadarsa: son saniye maçı
 SON_DENETIM = {}
 DENETIM_LOG = []
 
+# ===========================================================================
+# KAPSAMA ZORUNLULUĞU (kullanıcı kararı — seçim yarışının yerine geçti)
+# ===========================================================================
+#
+# ESKİ YAKLAŞIM: havuzdan "en ilginç" dört olay seçiliyor, kısıtlarla
+# eleniyordu. Kısıtlar sadece REDDEDEBİLİYOR, KURAMIYOR — hiçbiri "maçın
+# tamamını anlat" demiyordu. Sonuç: 133-124 biten maçta akış üçüncü
+# çeyrekte bitiyor, son çeyrekten tek satır çıkmıyordu.
+#
+# YENİ: blok maçın DÖRT EVRESİNİ kapsamak zorunda, her evre bir satır.
+#   1. İLK YARI (1Ç+2Ç)   2. ÜÇÜNCÜ ÇEYREK   3. SON ÇEYREK   4. KARAR ANI
+#
+# Her evre için sırayla: (1) eşiği geçen olay, (2) eşiğin altında ama
+# kayda değer olay, (3) skor durumu — SON ÇARE.
+#
+# ÇEŞİTLİLİK TAVANI: bir blokta en fazla İKİ skor durumu satırı. Üçüncüsü
+# gerekiyorsa o evrenin eşiği düşürülüyor. Dördü de skor satırı olursa
+# okuyucu hikâye değil tablo okur.
+AKIS_EVRELERI = (
+    ("ilk_yari",   lambda p: 1 <= (p or 0) <= 2),
+    ("ucuncu",     lambda p: (p or 0) == 3),
+    ("son_ceyrek", lambda p: (p or 0) >= 4),
+)
+# Katman 1 — eşiği geçen gerçek olay.
+AKIS_KATMAN1 = ("liderlik", "karar_ani", "sayi_serisi", "en_buyuk_fark", "kopus")
+# Katman 2 — eşiğin altında ama kayda değer.
+AKIS_KATMAN2 = ("esitlik", "rakip_yaklasti", "ceyrek_ustunlugu",
+                "fark_korundu", "ceyrek_yildizi")
+# Katman 3 — skor durumu. SON ÇARE.
+AKIS_KATMAN3 = ("skor_durumu", "ceyrek_sonu", "devre_farki")
+AKIS_SKOR_TAVANI = 2
+# Onarımda feda edilebilir satır = katman 3 (skor durumu).
+ZAYIF = AKIS_KATMAN3
+AKIS_YILDIZ_ASGARI = 6      # çeyrek yıldızı için o çeyrekte en az sayı
+
 AKIS_SEKILLERI = ("geri_donus", "son_saniye", "kopma", "bastan_sona")
 
 
@@ -1099,17 +1134,6 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
             if _f:
                 _o["takim"] = skor.get("ev") if _f > 0 else skor.get("dep")
 
-    sekil = _akis_sekli(gercekler, olaylar, skor)
-    plan = _yuva_planla(sekil, kazanan, kaybeden)
-    plan_secenek = [(y, sec) for y, sec, _k in plan]
-
-    # YUVALAR ZAMAN PENCERESİYLE DOLUYOR. Önce KRİTİK yuva sabitleniyor,
-    # sonra soldakiler ondan ÖNCE, sağdakiler ondan SONRA olacak şekilde
-    # dolduruluyor. Bu, kronolojiyi kurgudan değil YAPIDAN alıyor.
-    # Eskiden yuvalar soldan sağa doldurulup sonra sırayı bozanlar
-    # atılıyordu; çeyrek ÖZETİ (çeyreğin sonuna düşer) bir sonraki
-    # yuvanın önünü kesiyor ve kritik satır boş kalıyordu (ölçüldü,
-    # 26 Aralık: Utah'ın öne geçtiği an elendi).
     # DEĞİŞMEZ 5 üretim tarafında da uygulanıyor: eylem/durum uyuşmayan
     # olay havuza hiç girmiyor (eski gerçeklerde onceki_* yoksa denetim
     # sessizce geçiyor, uydurma yapmıyoruz).
@@ -1123,83 +1147,148 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
             _d5_elenen[o["tip"]] = _d5_elenen.get(o["tip"], 0) + 1
     olaylar = _kalanlar
 
-    def _sec(secenekler, alt, ust, kullanilan):
-        for tip, filtre in secenekler:
-            adaylar = [o for o in olaylar
-                       if o["tip"] == tip and filtre(o) and id(o) not in kullanilan]
-            if tip != "en_etkili":
-                if alt is not None:
-                    adaylar = [o for o in adaylar if _akis_sirasi(o) > alt]
-                if ust is not None:
-                    adaylar = [o for o in adaylar if _akis_sirasi(o) < ust]
-            if adaylar:
-                # Pencere içinde en GEÇ olan: karara yakın olan daha çok
-                # şey anlatıyor.
-                return max(adaylar, key=_akis_sirasi)
+    # ---- KAPSAMA: sentetik olaylar --------------------------------
+    # Katman 2 ve 3'ün her evrede DOLU olmasını garantiliyor. Çeyrek
+    # skorları her maçta var, o yüzden hiçbir evre boş kalamaz.
+    _ceyrekler = sorted((f["veri"] for f in gercekler if f["tur"] == "ceyrek"),
+                        key=lambda c: c["periyot"])
+    _oc = [f["veri"] for f in gercekler if f["tur"] == "oyuncu_ceyrek"]
+    _takim_by_oyuncu = {f["veri"]["oyuncu"]: f["veri"].get("takim")
+                        for f in gercekler if f["tur"] == "oyuncu_stat"}
+    for c in _ceyrekler:
+        p_ = c["periyot"]
+        ev_, dep_ = c["kumulatif_ev"], c["kumulatif_dep"]
+        onde_ = skor.get("ev") if ev_ > dep_ else (skor.get("dep") if dep_ > ev_ else None)
+        # ÖZET SATIRLARI ÇEYREĞİN TAMAMINI anlatıyor, bir ANI değil:
+        # çeyreğin BAŞINA sıralanıyorlar ki aynı çeyrekteki karar anı
+        # bloğun sonunda kalsın. Etiket de çeyreğin kendisi ("4Ç"),
+        # "Maç sonu" değil.
+        _ozet_zaman = "Devre" if p_ == 2 else f"{p_}Ç"
+        if p_ < 4:      # son çeyreğin "skor durumu" = maç sonucu, kartın
+                        # başlığında zaten var; satır olarak tekrarlamıyoruz
+            olaylar.append({
+                "tip": "skor_durumu", "periyot": p_, "saniye_kalan": 720.0,
+                "zaman": _ozet_zaman, "saat": None,
+                "ev_skor": ev_, "dep_skor": dep_, "fark": ev_ - dep_,
+                "onceki_ev": ev_, "onceki_dep": dep_,   # durum satırı, geçiş yok
+                "takim": onde_, "sayi": abs(ev_ - dep_), "berabere": ev_ == dep_,
+            })
+        # Çeyreğin en çok sayı atanı — katman 2.
+        _aday = [x for x in _oc if x["periyot"] == p_
+                 and (x.get("sayi") or 0) >= AKIS_YILDIZ_ASGARI]
+        if _aday:
+            _y = max(_aday, key=lambda x: x["sayi"])
+            _tk = _takim_by_oyuncu.get(_y["oyuncu"])
+            olaylar.append({
+                "tip": "ceyrek_yildizi", "periyot": p_, "saniye_kalan": 720.0,
+                "zaman": _ozet_zaman, "saat": None,
+                "ev_skor": ev_, "dep_skor": dep_, "fark": ev_ - dep_,
+                "onceki_ev": ev_, "onceki_dep": dep_,
+                "takim": _tk, "oyuncu": _y["oyuncu"], "sayi": _y["sayi"],
+            })
+
+    # ---- KAPSAMA: evre planı --------------------------------------
+    # Şekil modeli (geri_donus/kopma/son_saniye) ARTIK KULLANILMIYOR —
+    # kullanıcı kararı. `_akis_sekli` ve `_yuva_planla` silinmedi, devre
+    # dışı: kapsama modeli maçın şeklinden bağımsız olarak dört evreyi
+    # de anlatıyor.
+    sekil = "kapsama"
+
+    def _katman(o):
+        if o["tip"] in AKIS_KATMAN1 and not o.get("dusuk_esik"):
+            return 1
+        if o["tip"] in AKIS_KATMAN2 or o.get("dusuk_esik"):
+            return 2
+        return 3
+
+    # KARAR ANI — dördüncü satır, kritik. Sırayla: maçı bitiren basket,
+    # kazananın son öne geçişi, kopuş, son olay.
+    def _karar_sec():
+        # SON ÇEYREK ÖNCELİKLİ: karar anı bloğun son satırı olmalı.
+        # Kopuş üçüncü çeyrekteyse bile son çeyrekten bir kapanış
+        # aranıyor — yoksa "son çeyrek" evresi karar satırıyla
+        # çakışıyor ve maçın sonu hiç anlatılmıyordu.
+        _gec = lambda liste: [o for o in liste if (o.get("periyot") or 0) >= 4]
+        _siralar = (
+            [o for o in olaylar if o["tip"] == "karar_ani"],
+            [o for o in olaylar if o["tip"] == "liderlik" and o.get("kazanan_mi")
+             and o.get("son_mu")],
+            [o for o in olaylar if o["tip"] == "kopus"],
+            [o for o in olaylar if o["tip"] == "liderlik" and o.get("kazanan_mi")],
+            [o for o in olaylar if o["tip"] == "fark_korundu"],
+            [o for o in olaylar if o["tip"] == "en_buyuk_fark"],
+            [o for o in olaylar if o["tip"] in ("liderlik", "esitlik", "sayi_serisi")],
+            # Çeyrek yıldızı ve çeyrek özeti KARAR olamaz: maçın nerede
+            # belirlendiğini söylemiyorlar. Ancak hiçbir olay yoksa
+            # skor durumu son çare.
+            [o for o in olaylar if o["tip"] == "skor_durumu"],
+        )
+        for _ad in _siralar:                # önce son çeyrekte ara
+            if _gec(_ad):
+                return max(_gec(_ad), key=_akis_sirasi)
+        for _ad in _siralar:
+            if _ad:
+                return max(_ad, key=_akis_sirasi)
         return None
 
-    kullanilan = set()
-    yerlesim = [None] * len(plan)
+    karar = _karar_sec()
+    if karar is None:
+        return []
+    kullanilan = {id(karar)}
+    karar_sira = _akis_sirasi(karar)
 
-    def _sinirlar(i):
-        alt = ust = None
-        for j in range(i - 1, -1, -1):
-            if yerlesim[j] is not None and yerlesim[j]["tip"] != "en_etkili":
-                alt = _akis_sirasi(yerlesim[j]); break
-        for j in range(i + 1, len(plan)):
-            if yerlesim[j] is not None and yerlesim[j]["tip"] != "en_etkili":
-                ust = _akis_sirasi(yerlesim[j]); break
-        return alt, ust
+    def _evre_sec(kosul, skor_hakki, karardan_once=True):
+        """Katman 1 → 2 → 3. Skor hakkı bittiyse katman 3 atlanıyor.
 
-    kritik_i = next((i for i, (_, _, k) in enumerate(plan) if k), 0)
-    sira = [kritik_i] + [i for i in range(len(plan)) if i != kritik_i]
-    for i in sira:
-        _yuva, secenekler, _k = plan[i]
-        alt, ust = _sinirlar(i)
-        secilen = _sec(secenekler, alt, ust, kullanilan)
-        if secilen is not None:
-            kullanilan.add(id(secilen))
-            yerlesim[i] = secilen
-
-    temiz = [(plan[i][0], yerlesim[i], plan[i][2])
-             for i in range(len(plan)) if yerlesim[i] is not None]
-
-    # LİDERLİK ZİNCİRİ (kullanıcı kuralı 4): "X eşitledi" satırı,
-    # öncesinde rakibin öne geçtiği gösterilmeden kullanılamaz. Bilgi
-    # yanlış değil ama zincir eksik kalıyor — okuyucu rakibin ne zaman
-    # öne geçtiğini göremiyor.
-    # Önce ZAYIF bir satırı (çeyrek özeti) liderlik değişimiyle
-    # değiştirmeye çalışıyoruz; olmazsa eşitlik satırı düşüyor.
-    ZAYIF = ("ceyrek_sonu", "devre_farki", "ceyrek_ustunlugu")
-    for i, (_y, o, _k) in enumerate(temiz):
-        if o["tip"] != "esitlik":
-            continue
-        if any(x[1]["tip"] == "liderlik" for x in temiz[:i]):
-            continue
-        yerine = None
-        for j in range(i - 1, -1, -1):
-            if temiz[j][2] or temiz[j][1]["tip"] not in ZAYIF:
+        Evre satırları KARAR ANINDAN ÖNCE olmalı — karar bloğun son
+        satırı. Hiçbir katmanda aday yoksa kısıt gevşetiliyor (kritik
+        işaretin sonda kalması için çağıran yeniden sıralıyor)."""
+        for kat in (1, 2, 3):
+            if kat == 3 and skor_hakki <= 0:
                 continue
-            alt = _akis_sirasi(temiz[j - 1][1]) if j > 0 else None
-            ust = _akis_sirasi(o)
-            aday = [x for x in olaylar
-                    if x["tip"] == "liderlik" and id(x) not in kullanilan
-                    and (alt is None or _akis_sirasi(x) > alt)
-                    and _akis_sirasi(x) < ust]
-            if aday:
-                yerine = (j, max(aday, key=_akis_sirasi))
-                break
-        if yerine:
-            j, yeni_o = yerine
-            kullanilan.add(id(yeni_o))
-            temiz[j] = (temiz[j][0], yeni_o, temiz[j][2])
-        else:
-            temiz[i] = None
-    temiz = [x for x in temiz if x is not None]
+            # KARAR ANIYLA ÇAKIŞMASIN: aynı ana düşen evre satırını
+            # D2 zaten eliyor ve o evre boş kalıyordu — son çeyreğin
+            # tek satırı karar anı oluyordu (27 Aralık MIN-BKN).
+            ad = [o for o in olaylar
+                  if id(o) not in kullanilan and o["tip"] != "en_etkili"
+                  and kosul(o.get("periyot")) and _katman(o) == kat
+                  and not (o.get("periyot") == karar.get("periyot")
+                           and abs((o.get("saniye_kalan") or 0)
+                                   - (karar.get("saniye_kalan") or 0)) < 10)
+                  and (not karardan_once or _akis_sirasi(o) < karar_sira)]
+            if ad:
+                return max(ad, key=_akis_sirasi), kat
+        return None, None
 
-    # EN İYİ PERFORMANS KARTTA ANILMALI (T14). Başlık ve alt satır onu
-    # anmıyorsa akış anmak zorunda; yoksa yayın kapısı geceyi durduruyor.
-    # Şekil modeline geçerken bu güvence düşmüştü (22 Aralık).
+    # "GÖZ AT" — iki satır ama maçı KUŞATIR: birincisi ilk yarıdan
+    # (olay yoksa devre durumu), ikincisi karar anı. Eskiden iki satır
+    # da 1Ç ve 3Ç'de kalabiliyordu, maçın sonu hiç görünmüyordu.
+    _evreler = (AKIS_EVRELERI if satir_sayisi >= 4
+                else (AKIS_EVRELERI[0],) if satir_sayisi == 2
+                else AKIS_EVRELERI[:max(satir_sayisi - 1, 1)])
+
+    temiz, skor_hakki = [], AKIS_SKOR_TAVANI
+    for _ad, _kosul in _evreler:
+        secilen, kat = _evre_sec(_kosul, skor_hakki)
+        if secilen is None:
+            secilen, kat = _evre_sec(_kosul, skor_hakki, karardan_once=False)
+        if secilen is None:
+            continue                        # o evrede hiç olay yok
+        kullanilan.add(id(secilen))
+        if kat == 3:
+            skor_hakki -= 1
+        temiz.append((_ad, secilen, False))
+    temiz.append(("karar", karar, True))
+    # Kronoloji yapıdan geliyor; karar anı HER ZAMAN son satır.
+    temiz.sort(key=lambda x: (x[2], _akis_sirasi(x[1])))
+    temiz = [x for x in temiz if not x[2]] + [x for x in temiz if x[2]]
+    _evre_kosul = list(_evreler)
+
+    # T14 GÜVENCESİ: gecenin en iyi performansı kartın hiçbir yerinde
+    # anılmıyorsa yayın kapısı geceyi reddediyor. Kapsama modelinde
+    # oyuncu adı ancak çeyrek yıldızı ya da karar anıyla geliyor; yoksa
+    # en zayıf satır (skor durumu) onun yerine "maçın en etkilisi"
+    # satırına bırakılıyor.
     if en_iyi_performans and anilan_metin is not None:
         _soyad = en_iyi_performans.strip().split()[-1].lower()
         _var = _soyad in (anilan_metin or "").lower() or any(
@@ -1207,21 +1296,14 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
         _etkili = next((o for o in olaylar if o["tip"] == "en_etkili"), None)
         if not _var and _etkili is not None:
             for _i in range(len(temiz) - 1, -1, -1):
-                if not temiz[_i][2]:            # kritik satırı bozma
+                if not temiz[_i][2] and _katman(temiz[_i][1]) == 3:
                     temiz[_i] = (temiz[_i][0], _etkili, False)
                     break
             else:
-                temiz.append(("en_etkili", _etkili, False))
-
-    if len(temiz) > satir_sayisi:
-        # Fazlalık: kritik olmayan yuvalardan SONDAN atılıyor — ilk
-        # yuvalar hikâyenin kurulumu.
-        kritik_var = [i for i, (_, _, k) in enumerate(temiz) if k]
-        atilabilir = [i for i in range(len(temiz)) if i not in kritik_var]
-        while len(temiz) > satir_sayisi and atilabilir:
-            temiz.pop(atilabilir.pop(-1))
-    if len(temiz) < min(AKIS_ASGARI_SATIR, satir_sayisi):
-        return []
+                for _i in range(len(temiz) - 1, -1, -1):
+                    if not temiz[_i][2]:
+                        temiz[_i] = (temiz[_i][0], _etkili, False)
+                        break
 
     # ==================================================================
     # BLOK DEĞİŞMEZLERİ (kullanıcı kararı)
@@ -1243,14 +1325,22 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
     #     "farkı açtı" diyen önde olmalı. Tablo gercekler.D5_KURAL'da,
     #     tek kaynak. İlk dördü biçimseldi; bu, eylemin mantığını
     #     denetliyor.
+    #  6. LİDERLİK DEĞİŞİMİ ATLANAMAZ — iki ardışık satır arasında önde
+    #     olan taraf değiştiyse, o değişim bloğa girmek zorunda. Yer
+    #     yoksa daha zayıf satır (çeyrek özeti) eleniyor. Zincir kopuk
+    #     kalırsa okuyucu "Denver 9 önde" ile "Denver 1 geride"yi yan
+    #     yana görüyor ve arada ne olduğunu bilmiyor.
     #
     # Dördü sağlanamıyorsa blok 3'e, gerekirse 2 satıra iner. EKSİK
     # SATIR, YANLIŞ SATIRDAN İYİDİR.
     _kisa = lambda kod: cumle.TAKIM_KISA.get(kod, kod)
-    _sayac = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
+    _sayac = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
     _onarim = {1: 0}          # DEĞİŞMEZ 1: elenmeden kalıp değiştirildi
     _sayac[5] += sum(_d5_elenen.values())
     _sn = {"sekil": sekil, "sayac": _sayac, "onarim": _onarim, "elenen": 0,
+           "kurulus": [(y, o["tip"], o.get("zaman"), o.get("saat"),
+                        o.get("ev_skor"), o.get("dep_skor")) for y, o, _k in temiz],
+           "skor_hakki": skor_hakki,
            "d5_tipler": _d5_elenen,
            "kurulan": len(temiz), "takimlar": (skor.get("ev"), skor.get("dep")),
            "satir_sayisi": satir_sayisi}
@@ -1303,11 +1393,15 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
                 continue
             # Onarım kalıbı SEÇERKEN de çeşitlilik sayacına uy — yoksa
             # takım taşıyan ilk kalıp gece boyunca tekrarlanıyor.
+            # Blok içinde ZORLANMIŞ kalıplar tekrar edilemez: onarım
+            # sırasında `_blok` henüz boş olduğu için aynı kalıp iki
+            # satıra birden yazılabiliyordu (ölçüldü, 21 Aralık).
+            _alinmis = {v for k, v in zorla.items() if k != id(o)}
             _uygunlar = [kid for kid, c, _d in cumle.akis_kaliplari(o, _kisa)
-                         if _durum_tasiyor(o, c)]
+                         if _durum_tasiyor(o, c) and kid not in _alinmis]
             uygun = min(_uygunlar,
                         key=lambda kid: ((kalip_sayaci or {}).get(kid, 0),
-                                         kid in _blok, _uygunlar.index(kid)),
+                                         _uygunlar.index(kid)),
                         default=None)
             if uygun is not None:
                 if zorla.get(id(o)) != uygun:
@@ -1324,10 +1418,15 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
             if _ayni_olay(secim[i][1], secim[i + 1][1]):
                 # Kritik satır korunur, komşusu elenir.
                 return (i if not secim[i][2] else i + 1), 2
-        if secim and not _kazanan_lehine(secim[-1][1]):
-            return len(secim) - 1, 3
+        # DEĞİŞMEZ 3 KALDIRILDI (kullanıcı kararı): "blok kazananla
+        # biter" kuralı gereksiz — dördüncü satır zaten KARAR ANI,
+        # kapsama modeli onu garanti ediyor.
         for i in range(1, len(secim)):
-            if secim[i][1]["tip"] == "en_etkili" or secim[i - 1][1]["tip"] == "en_etkili":
+            # ÖZET satırları (çeyrek yıldızı, skor durumu, çeyrek özeti)
+            # skor dizisine girmiyor: bir anı değil, çeyreğin tamamını
+            # anlatıyorlar. En etkili de öyle.
+            _OZET = ("en_etkili", "ceyrek_yildizi") + tuple(AKIS_KATMAN3)
+            if secim[i][1]["tip"] in _OZET or secim[i - 1][1]["tip"] in _OZET:
                 continue
             if _toplam(secim[i][1]) <= _toplam(secim[i - 1][1]):
                 return (i if not secim[i][2] else i - 1), 4
@@ -1342,13 +1441,72 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
                 return c
         return ad[0][1] if ad else ""
 
+    def _isaret(o):
+        f = (o.get("ev_skor") or 0) - (o.get("dep_skor") or 0)
+        return 0 if f == 0 else (1 if f > 0 else -1)
+
+    def _isaret_once(o):
+        e, d = o.get("onceki_ev"), o.get("onceki_dep")
+        if e is None or d is None:
+            return None                     # eski gerçek — denetlenemez
+        return 0 if e == d else (1 if e > d else -1)
+
+    def _d6_onar(secim):
+        """DEĞİŞMEZ 6 — atlanmış liderlik değişimini bloğa sokar.
+
+        Diğer değişmezler satır ELİYOR; bu satır EKLİYOR. Ardışık iki
+        satır arasında skorun işareti döndüyse aradaki liderlik olayı
+        gösterilmek zorunda."""
+        for i in range(len(secim) - 1):
+            a_o, b_o = secim[i][1], secim[i + 1][1]
+            sa, sb = _isaret(a_o), _isaret(b_o)
+            if sa == 0 or sb == 0 or sa == sb:
+                continue
+            # Sonraki satırın KENDİSİ değişimi taşıyorsa zincir kopuk
+            # değil: "Orlando maçı Bane ile aldı 127-126" satırı zaten
+            # liderliğin el değiştirdiği andır, araya bir şey sokmaya
+            # gerek yok. Kopukluk, satırın öncesi ve sonrası AYNI iken
+            # bir öncekiyle ters düşmesidir (27 Aralık ORL-DEN 105-104).
+            _ob = _isaret_once(b_o)
+            if _ob is not None and _ob != sb:
+                continue
+            alt, ust = _akis_sirasi(a_o), _akis_sirasi(b_o)
+            ad = [x for x in olaylar
+                  if x["tip"] == "liderlik" and id(x) not in kullanilan
+                  and id(x) not in yasak and alt < _akis_sirasi(x) < ust]
+            if not ad:
+                continue                    # olay yoksa uydurmuyoruz
+            yeni = max(ad, key=_akis_sirasi)
+            yer = i
+            if len(secim) >= satir_sayisi:
+                # Yer aç: en zayıf satır gitsin. Boşluğun HEMEN
+                # ÖNCESİNDEKİ zayıf satır önce — eklenen liderlik
+                # zaten onun anlattığı durumu geçersiz kılıyor.
+                zayif = sorted([j for j, (_y, o, k) in enumerate(secim)
+                                if not k and o["tip"] in ZAYIF],
+                               key=lambda j: (j != i, abs(j - i)))
+                if not zayif:
+                    continue
+                j = zayif[0]
+                yasak.add(id(secim[j][1]))
+                secim.pop(j)
+                if j <= yer:
+                    yer -= 1
+            kullanilan.add(id(yeni))
+            secim.insert(yer + 1, ("liderlik_zinciri", yeni, False))
+            _sayac[6] += 1
+            return True
+        return False
+
     _blok = set()
     yasak = set()            # elenen olaylar geri gelmesin (sonsuz döngü)
     guvenlik = 0
-    while guvenlik < 12:
+    while guvenlik < 16:
         guvenlik += 1
         i, no = _denetle(temiz)
         if i is None:
+            if _d6_onar(temiz):
+                continue                    # ekleme yapıldı, baştan denetle
             break
         _sayac[no] += 1
         _sn["elenen"] += 1
@@ -1359,9 +1517,12 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
         alt = _akis_sirasi(temiz[i - 1][1]) if i > 0 else None
         ust = _akis_sirasi(temiz[i][1]) if i < len(temiz) else None
         yeni = None
-        for _tip, _filtre in dict(plan_secenek).get(_dusen[0], []):
-            ad = [x for x in olaylar if x["tip"] == _tip and _filtre(x)
-                  and id(x) not in kullanilan and id(x) not in yasak
+        _kosul = dict(_evre_kosul).get(_dusen[0])
+        for _kat in (1, 2, 3):
+            ad = [x for x in olaylar
+                  if id(x) not in kullanilan and id(x) not in yasak
+                  and x["tip"] != "en_etkili" and _katman(x) == _kat
+                  and (_kosul is None or _kosul(x.get("periyot")))
                   and (alt is None or _akis_sirasi(x) > alt)
                   and (ust is None or _akis_sirasi(x) < ust)]
             if ad:
@@ -1374,10 +1535,14 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
             # Blokta zaten bulunan TİP aday olamaz: "aynı olay tipi iki
             # kez" kuralı geniş aramada da geçerli. Aday kalmazsa blok
             # kısalıyor — eksik satır, tekrar eden satırdan iyi.
+            # KAPSAMA: geniş arama da EVRE KOŞULUNU aşamaz. Aşınca
+            # "son çeyrek" yuvasına 3. çeyrekten satır giriyor ve maçın
+            # sonu anlatılmamış oluyordu (ölçüldü, 27 Aralık MIN-BKN).
             _var = {x[1]["tip"] for x in temiz}
             genis = [x for x in olaylar
                      if id(x) not in kullanilan and id(x) not in yasak
                      and x["tip"] != "en_etkili" and x["tip"] not in _var
+                     and (_kosul is None or _kosul(x.get("periyot")))
                      and (alt is None or _akis_sirasi(x) > alt)
                      and (ust is None or _akis_sirasi(x) < ust)]
             if genis:
@@ -1395,11 +1560,15 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
         adaylar = cumle.akis_kaliplari(o, lambda k: cumle.TAKIM_KISA.get(k, k))
         if not adaylar:
             continue
-        if id(o) in zorla:
+        if id(o) in zorla and zorla[id(o)] not in _blok:
             # DEĞİŞMEZ 1 bu satırın kalıbını sabitledi — çeşitlilik
-            # sayacı bunu bozamaz.
+            # sayacı bunu bozamaz. Ama blokta zaten kullanılmış bir
+            # kalıba zorlamıyoruz: aşağıdaki havuz durum taşıyanlar
+            # arasından seçer.
             kid, c, det = next(x for x in adaylar if x[0] == zorla[id(o)])
         else:
+            if id(o) in zorla:      # durum taşıması şart, kalıbı değişebilir
+                adaylar = [x for x in adaylar if _durum_tasiyor(o, x[1])] or adaylar
             uygun = [x for x in adaylar if x[0] not in _blok
                      and (kalip_sayaci or {}).get(x[0], 0) < AKIS_KALIP_LIMITI]
             havuz = uygun or [x for x in adaylar if x[0] not in _blok] or adaylar
@@ -1410,58 +1579,19 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
             kalip_sayaci[kid] = kalip_sayaci.get(kid, 0) + 1
         satirlar.append({
             "tip": o["tip"], "kalip": kid, "yuva": yuva, "sekil": sekil,
+            "katman": _katman(o),
             "zaman": o.get("zaman"), "saat": o.get("saat"),
             "cumle": c, "detay": det, "kritik": kritik,
         })
-    # ---- KRİTİK AN: KARAR ANI, "SON OLAY" DEĞİL ----------------------
-    # Kurallar (kullanıcı), sırayla:
-    #  1. Maçı bitiren basket varsa kritik HER ZAMAN odur — şekil ne
-    #     olursa olsun, öncesinde ne yaşanmış olursa olsun. Bu kural
-    #     diğer bütün kritik an kurallarının ÜSTÜNDE.
-    #  2. Yoksa: kazananın SON KEZ öne geçtiği an.
-    #  3. Kazanan hiç geride kalmadıysa: rakibin son kez farkı 5'in
-    #     altına indirdiği andan sonraki ilk kopuş.
-    #  4. Fark 15'i geçtikten sonraki hiçbir olay kritik olamaz — orası
-    #     çöp zaman (27 Aralık MIN-BKN: "fark 21" kritik işaretlenmişti).
-    if satirlar:
-        _fark15_sonrasi = None
-        for o in sorted(olaylar, key=_akis_sirasi):
-            if abs(o.get("fark") or 0) > AKIS_KRITIK_FARK_TAVANI:
-                _fark15_sonrasi = _akis_sirasi(o)
-                break
-
-        def _uygun_kritik(i):
-            o = temiz[i][1]
-            if o["tip"] == "karar_ani":
-                return True          # 1. kural tavanı da aşar
-            # Tavanı AŞAN olayın kendisi de kritik olamaz: maç orada
-            # zaten kopmuş oluyor, sonrası çöp zaman.
-            if _fark15_sonrasi is not None and _akis_sirasi(o) >= _fark15_sonrasi:
-                return False
-            return True
-
-        _sec_i = None
-        for _oncelik in ("karar_ani", "liderlik", "kopus"):
-            for i, (_y, o, _k) in enumerate(temiz):
-                if o["tip"] != _oncelik:
-                    continue
-                if _oncelik == "liderlik" and not o.get("kazanan_mi", True):
-                    continue          # kaybedenin öne geçişi karar anı değil
-                if not _uygun_kritik(i):
-                    continue
-                _sec_i = i
-            if _sec_i is not None:
-                break
-        if _sec_i is None:
-            # Hiçbiri yoksa tavanı aşmayan SON satır.
-            for i in range(len(temiz) - 1, -1, -1):
-                if _uygun_kritik(i):
-                    _sec_i = i
-                    break
-        for i, r in enumerate(satirlar):
-            r["kritik"] = (i == _sec_i)
-        if not any(r["kritik"] for r in satirlar):
-            satirlar[-1]["kritik"] = True
+    # ---- KRİTİK AN --------------------------------------------------
+    # EMEKLİ: kritik işaret eskiden blok kurulduktan SONRA yeniden
+    # atanıyordu (maçı bitiren basket → kazananın son öne geçişi →
+    # kopuş...). Kapsama modelinde bu gereksiz ve zararlı: dördüncü
+    # satır ZATEN karar anı, `_karar_sec` onu son çeyreği önceleyerek
+    # seçiyor. Sonradan atama işareti geri alıp 2. çeyrekteki bir seriye
+    # taşıyordu (ölçüldü, 27 Aralık SAS-UTA ve MIN-BKN).
+    if satirlar and not any(r["kritik"] for r in satirlar):
+        satirlar[-1]["kritik"] = True
     return satirlar
 
 

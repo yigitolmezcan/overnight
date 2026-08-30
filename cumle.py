@@ -908,10 +908,43 @@ def akis_kaliplari(olay, ad_fn=None):
         k.append(("kopus_actik", f"{takim} farkı {n}'{dogrula_sayi_eki(n)} açtı", skor))
         k.append(("kopus_uzaklasti", f"{takim} bir daha yakalatmadı", skor))
         k.append(("kopus_kopardi", f"{takim} maçı burada kopardı", skor))
+    elif t == "ceyrek_yildizi":
+        # KAPSAMA katmanı 2: o çeyrekte olay yoksa oyuncunun katkısı.
+        _ce = {1: "İlk çeyrekte", 2: "İkinci çeyrekte", 3: "Üçüncü çeyrekte",
+               4: "Son çeyrekte"}.get(olay.get("periyot"), "O çeyrekte")
+        # Çeyrek özeti bir ANI değil, çeyreğin TAMAMINI anlatıyor:
+        # yanına kümülatif skor yazılmıyor. Yazılınca aynı çeyrekteki
+        # karar anından ileri bir skor gösteriyor ve dizi geri gidiyormuş
+        # gibi okunuyordu (27 Aralık MIN-BKN).
+        k.append(("yildiz_ceyrek", f"{_ce} {oyuncu} {n} sayı attı", None))
+        k.append(("yildiz_buldu", f"{oyuncu} o çeyrekte {n} sayı buldu", None))
+        if takim:
+            k.append(("yildiz_takim",
+                      f"{takim}'{iyelik_eki(takim)} çeyreğini {oyuncu} taşıdı",
+                      f"{n} sayı"))
+            k.append(("yildiz_takim_sayi",
+                      f"{takim} adına {oyuncu} o çeyrekte {n} sayı attı", None))
+    elif t == "skor_durumu":
+        # KAPSAMA katmanı 3 — SON ÇARE. Blokta en fazla iki kez.
+        _ce = {2: "Devrede", 3: "Üçüncü çeyrek sonunda", 4: "Son çeyrekte"}.get(
+            olay.get("periyot"), "O anda")
+        if olay.get("berabere"):
+            k.append(("durum_esit", f"{_ce} skor eşitti", skor))
+            k.append(("durum_basabas", f"{_ce} skor başa baştı", skor))
+        else:
+            k.append(("durum_onde", f"{_ce} {takim} {n} sayı öndeydi", skor))
+            k.append(("durum_farkla", f"{_ce} fark {n}, üstünlük {takim}", skor))
+            k.append(("durum_tasiyor", f"{_ce} {takim} {n} sayılık üstünlükteydi", skor))
     elif t == "rakip_yaklasti":
-        k.append(("yaklasti_kadar", f"{takim} farkı {n} sayıya kadar indirdi", skor))
-        k.append(("yaklasti_enyakin", f"{takim} en fazla {n} sayıya yaklaştı", skor))
-        k.append(("yaklasti_duser", f"{takim} arayı {n} sayıya indirdi", skor))
+        # DURUM SATIRI, EYLEM DEĞİL (kullanıcı kararı). Geride kalan
+        # takım farkı "indirmiyor" — öndeki taraf farkı eritiyor, o
+        # geriye düşüyor. Eylem kurmaya çalışınca özne hep yanlış
+        # tarafta kalıyordu ("Denver farkı 1'e indirdi", oysa kapatan
+        # Orlando'ydu). Cümle artık o anın DURUMUNU söylüyor.
+        k.append(("yaklasti_geride", f"{takim} {n} sayı geride", skor))
+        k.append(("yaklasti_kaldi", f"{takim} {n} sayı geride kaldı", skor))
+        k.append(("yaklasti_acik", f"{takim}'{iyelik_eki(takim)} açığı {n} sayı", skor))
+        k.append(("yaklasti_fark", f"Fark {takim} aleyhine {n} sayı", skor))
     elif t == "fark_korundu":
         # DEĞİŞMEZ 1: satır kimin önde olduğunu söylemeli. Takım taşıyan
         # biçim önce geliyor; takımsız biçimler yedek.
