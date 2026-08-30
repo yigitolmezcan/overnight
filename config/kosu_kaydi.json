@@ -186,6 +186,12 @@
       "is": "yayinla",
       "sonuc": "success",
       "not": "run 16 · workflow_dispatch"
+    },
+    {
+      "zaman": "2026-08-30T02:09:54Z",
+      "is": "uret",
+      "sonuc": "success",
+      "not": "run 19 · workflow_dispatch"
     }
   ]
 }
