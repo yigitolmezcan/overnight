@@ -1,0 +1,127 @@
+{
+  "tarih": "2025-12-28",
+  "uretildi": "2026-08-30T22:48:16.603848Z",
+  "maclar": {
+    "0022500442": {
+      "gec_satiri": "Oklahoma City Thunder evinde Philadelphia 76ers'i 129-104 ezdi.",
+      "muzip": false
+    },
+    "0022500443": {
+      "gec_satiri": "Washington Wizards evinde Memphis Grizzlies'i 116-112 yendi.",
+      "muzip": false
+    },
+    "0022500446": {
+      "gec_satiri": "Los Angeles Lakers evinde Sacramento Kings'i 125-101 yendi. Luka Dončić 34 sayı attı.",
+      "muzip": false
+    },
+    "0022500445": {
+      "baslik": "Kawhi Leonard'ın 55 sayısıyla Clippers, Pistons'ı yendi.",
+      "neden_onemli": "LA Clippers, 4 maçlık galibiyet serisini sürdürdü."
+    },
+    "0022500441": {
+      "baslik": "Toronto Raptors, 13 sayılık farktan dönüp Golden State Warriors'u yendi."
+    },
+    "0022500444": {
+      "baslik": "Portland, Boston'ı son saniyede devirdi."
+    }
+  },
+  "brief": [
+    {
+      "metin": "Kawhi Leonard, Detroit Pistons karşısında 55 sayı attı.",
+      "hedef_mac": "0022500445",
+      "muzip": false,
+      "kind": "performans"
+    },
+    {
+      "metin": "Toronto Raptors, 13 sayılık farktan dönüp Golden State Warriors'u geçti.",
+      "hedef_mac": "0022500441",
+      "muzip": false,
+      "kind": "geri_donus"
+    },
+    {
+      "metin": "Sürpriz bir sonuçla Portland Trail Blazers, Boston Celtics'i yendi.",
+      "hedef_mac": "0022500444",
+      "muzip": false,
+      "kind": "surpriz"
+    },
+    {
+      "metin": "Oklahoma City Thunder, Philadelphia 76ers'i yenerek konferansta 1. sıraya yükseldi.",
+      "hedef_mac": "0022500442",
+      "muzip": false,
+      "kind": "siralama"
+    },
+    {
+      "metin": "Washington Wizards, Memphis Grizzlies'i yendi.",
+      "hedef_mac": "0022500443",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Los Angeles Lakers, Sacramento Kings'i yendi.",
+      "hedef_mac": "0022500446",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 5,
+    "ilk_denemede_kabul": 2,
+    "sablon_moduna_dusen": 1,
+    "detay": [
+      {
+        "mac_id": "0022500441",
+        "deneme": 0,
+        "gerekce": [
+          "T14: en iyi performans (Scottie Barnes) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Toronto, 13 sayılık farktan dönüp Golden State'i yendi."
+        }
+      },
+      {
+        "mac_id": "0022500441",
+        "deneme": 1,
+        "gerekce": [
+          "T14: en iyi performans (Scottie Barnes) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Toronto, 13 sayılık farktan dönüp Golden State'i yendi."
+        }
+      },
+      {
+        "mac_id": "0022500441",
+        "deneme": 2,
+        "gerekce": [
+          "T14: en iyi performans (Scottie Barnes) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Toronto, 13 sayılık farktan dönüp Golden State'i yendi."
+        }
+      }
+    ],
+    "sablon_isaretli": [
+      {
+        "mac_id": "0022500441",
+        "alan": "mutlaka",
+        "gerekce": [
+          "T14: en iyi performans (Scottie Barnes) hiç anılmadı"
+        ],
+        "metin": {
+          "baslik": "Toronto Raptors, 13 sayılık farktan dönüp Golden State Warriors'u yendi."
+        }
+      }
+    ],
+    "mutlaka_mac": 3,
+    "ret_orani": 0.6,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 5,
+      "girdi_token": 18633,
+      "cikti_token": 1472,
+      "cache_yazma_token": 39098,
+      "cache_okuma_token": 40053,
+      "toplam_maliyet_usd": 0.1577,
+      "butce_asildi": false
+    }
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "tarih": "2025-12-28",
+  "hesaplandi": "2026-08-30T22:47:51.056649Z",
+  "en_iyi_skor": 9.16,
+  "maclar": [
+    {
+      "rozet": 9.16,
+      "ham": 11.45,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 10,
+        "K": 0.32,
+        "T": 6,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.44,
+        "F": 0,
+        "G": 0,
+        "A": 5.5
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500445",
+      "ev": "LAC",
+      "dep": "DET",
+      "ev_skor": 112,
+      "dep_skor": 99,
+      "en_iyi_performans": "Kawhi Leonard",
+      "esitlik_bozucu": [
+        0,
+        -13
+      ]
+    },
+    {
+      "rozet": 8.96,
+      "ham": 10.61,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 10,
+        "K": 1.36,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 9.5,
+        "F": 0,
+        "G": 6,
+        "A": 5.58
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500441",
+      "ev": "TOR",
+      "dep": "GSW",
+      "ev_skor": 141,
+      "dep_skor": 127,
+      "en_iyi_performans": "Scottie Barnes",
+      "esitlik_bozucu": [
+        0,
+        -14
+      ]
+    },
+    {
+      "rozet": 8.31,
+      "ham": 8.67,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 4.53,
+        "K": 6.66,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 7.34,
+        "F": 6,
+        "G": 6,
+        "A": 4.08
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500444",
+      "ev": "POR",
+      "dep": "BOS",
+      "ev_skor": 114,
+      "dep_skor": 108,
+      "en_iyi_performans": "Jaylen Brown",
+      "esitlik_bozucu": [
+        0,
+        -6
+      ]
+    },
+    {
+      "rozet": 5.7,
+      "ham": 5.7,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 5.58,
+        "K": 2.25,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.32,
+        "F": 0,
+        "G": 0,
+        "A": 7.12
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500442",
+      "ev": "OKC",
+      "dep": "PHI",
+      "ev_skor": 129,
+      "dep_skor": 104,
+      "en_iyi_performans": "Shai Gilgeous-Alexander",
+      "esitlik_bozucu": [
+        0,
+        -25
+      ]
+    },
+    {
+      "rozet": 5.43,
+      "ham": 5.43,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 4.81,
+        "K": 0.81,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 5.92,
+        "F": 6,
+        "G": 6,
+        "A": 5.0
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500443",
+      "ev": "WAS",
+      "dep": "MEM",
+      "ev_skor": 116,
+      "dep_skor": 112,
+      "en_iyi_performans": "Jaren Jackson Jr.",
+      "esitlik_bozucu": [
+        0,
+        -4
+      ]
+    },
+    {
+      "rozet": 5.2,
+      "ham": 5.2,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 5.42,
+        "K": 1.29,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.68,
+        "F": 0,
+        "G": 0,
+        "A": 6.58
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500446",
+      "ev": "LAL",
+      "dep": "SAC",
+      "ev_skor": 125,
+      "dep_skor": 101,
+      "en_iyi_performans": "Luka Dončić",
+      "esitlik_bozucu": [
+        0,
+        -24
+      ]
+    }
+  ]
+}
