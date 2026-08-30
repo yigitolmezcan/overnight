@@ -195,6 +195,7 @@
       "akis": [
         {
           "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_basabas",
           "zaman": "Devre",
           "saat": null,
           "cumle": "Skor başa baş gitti",
@@ -203,6 +204,7 @@
         },
         {
           "tip": "ceyrek_ustunlugu",
+          "kalip": "ust_aldi",
           "zaman": "3Ç",
           "saat": null,
           "cumle": "Utah çeyreği 44-35 aldı",
@@ -211,6 +213,7 @@
         },
         {
           "tip": "esitlik",
+          "kalip": "esit_esitledi",
           "zaman": "Son",
           "saat": "0:18",
           "cumle": "Detroit skoru eşitledi",
@@ -219,6 +222,7 @@
         },
         {
           "tip": "karar_ani",
+          "kalip": "karar_basket",
           "zaman": "Son",
           "saat": "0:02",
           "cumle": "Keyonte George'un basketi",

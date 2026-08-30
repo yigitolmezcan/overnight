@@ -5041,6 +5041,18 @@ def main():
               f"{[len(m.get('akis') or []) for m in (_dd.get('degerse_bak') or [])]}")
         basar(f"Akış[{_t}]: Bunları geç katmanında akış YOK",
               all(not m.get("akis") for m in (_dd.get("diger") or [])))
+        # CÜMLE KALIBI ÇEŞİTLİLİĞİ (kullanıcı kararı): okuyucu tipi
+        # değil CÜMLEYİ görüyor. Tip sayacı tek başına yetmiyordu —
+        # "X skoru eşitledi" gecede üç blokta geçiyordu (27 Aralık).
+        _kal = _cl.Counter(r.get("kalip") for m in _akisli for r in m["akis"])
+        basar(f"Akış[{_t}]: her satırın kalıp kimliği var",
+              all(r.get("kalip") for m in _akisli for r in m["akis"]))
+        basar(f"Akış[{_t}]: aynı cümle kalıbı gecede en fazla iki kez",
+              (not _kal) or max(_kal.values()) <= _derle.AKIS_KALIP_LIMITI,
+              f"fazla kullanılan: {[k for k,v in _kal.items() if v > _derle.AKIS_KALIP_LIMITI]}")
+        basar(f"Akış[{_t}]: blok içinde aynı kalıp tekrarlanmıyor",
+              all(len({r.get("kalip") for r in m["akis"]}) == len(m["akis"])
+                  for m in _akisli))
         # GECE ÇAPINDA ÇEŞİTLİLİK: aynı açılış tipi en fazla iki blokta.
         _mb = [m for m in (_dd.get("mutlaka") or []) if m.get("akis")]
         if len(_mb) >= 3:
@@ -5055,6 +5067,58 @@ def main():
     # KRİTİK SATIR ÇEŞİTLİLİK İÇİN FEDA EDİLMEZ (kullanıcı kuralı).
     basar("Akış: kritik satır sayaçtan etkilenmiyor",
           '_ilk != kritik["tip"]' in _dsrc3)
+    basar("Akış: kalıp sayacı da gece çapında paylaşılıyor",
+          "_akis_kalip_sayaci = {}" in _dsrc3
+          and "kalip_sayaci=_akis_kalip_sayaci" in _dsrc3)
+    # HER TİPE BİRDEN FAZLA KALIP — kalıplar SABİT, LLM üretmiyor.
+    _kalip_by_tip = {}
+    for _t2, _o in (
+        ("ceyrek_sonu", {"tip": "ceyrek_sonu", "ev_skor": 55, "dep_skor": 48,
+                         "fark": 7, "takim": "BOS"}),
+        ("devre_farki", {"tip": "devre_farki", "ev_skor": 60, "dep_skor": 48,
+                         "fark": 12, "takim": "BOS", "sayi": 12}),
+        ("ceyrek_ustunlugu", {"tip": "ceyrek_ustunlugu", "ev_skor": 80, "dep_skor": 70,
+                              "fark": 10, "takim": "BOS", "ev_kod": "BOS",
+                              "sayi": 30, "rakip_sayi": 20}),
+        ("en_buyuk_fark", {"tip": "en_buyuk_fark", "ev_skor": 90, "dep_skor": 70,
+                           "fark": 20, "takim": "BOS", "sayi": 20}),
+        ("sayi_serisi", {"tip": "sayi_serisi", "ev_skor": 50, "dep_skor": 40,
+                         "fark": 10, "takim": "BOS", "sayi": 10}),
+        ("esitlik", {"tip": "esitlik", "ev_skor": 60, "dep_skor": 60,
+                     "fark": 0, "takim": "BOS"}),
+        ("liderlik", {"tip": "liderlik", "ev_skor": 61, "dep_skor": 60, "fark": 1,
+                      "takim": "BOS", "oyuncu": "Jayson Tatum"}),
+        ("karar_ani", {"tip": "karar_ani", "ev_skor": 101, "dep_skor": 100,
+                       "fark": 1, "takim": "BOS", "oyuncu": "Jayson Tatum"}),
+        ("fark_korundu", {"tip": "fark_korundu", "ev_skor": 90, "dep_skor": 75,
+                          "fark": 15, "sayi": 15}),
+        ("en_etkili", {"tip": "en_etkili", "ev_skor": 101, "dep_skor": 100, "fark": 1,
+                       "oyuncu": "Jayson Tatum", "sayi": 30, "ribaund": 9, "asist": 5}),
+    ):
+        # ad_fn ÜRETİMDEKİ GİBİ: üç harfli kod değil okunur ad. Kodla
+        # çağrılınca T4e (takım kodu yasağı) haklı olarak eliyordu.
+        _kalip_by_tip[_t2] = _yaz.cumle.akis_kaliplari(
+            _o, lambda k: {"BOS": "Boston"}.get(k, k))
+    _az = {t: len(v) for t, v in _kalip_by_tip.items() if len(v) < 2}
+    basar("Akış: her olay tipinin en az iki kalıbı var",
+          not _az, f"tek kalıplı tip: {_az}")
+    basar("Akış: kalıp kimlikleri benzersiz",
+          len({kid for v in _kalip_by_tip.values() for kid, _, _ in v})
+          == sum(len(v) for v in _kalip_by_tip.values()))
+    basar("Akış: üretilen bütün kalıplar doğrulamadan geçiyor",
+          all(_yaz.cumle._gecir(c) for v in _kalip_by_tip.values() for _, c, _ in v),
+          str([c for v in _kalip_by_tip.values() for _, c, _ in v
+               if not _yaz.cumle._gecir(c)]))
+    # SAYI EKİ OKUNUŞA UYAR: "17'e" yanlış, "17'ye" doğru. Canlıya çıkmıştı.
+    _sayi_bek = {1: "e", 2: "ye", 6: "ya", 9: "a", 10: "a", 17: "ye",
+                 20: "ye", 21: "e", 30: "a", 40: "a", 70: "e", 100: "e"}
+    _sy = {n: dogrula_modul.sayi_eki(n) for n, b in _sayi_bek.items()
+           if dogrula_modul.sayi_eki(n) != b}
+    basar("Akış: sayı eki okunuşa göre geliyor", not _sy, f"yanlış: {_sy}")
+    basar("Akış: sayı iyelik eki de okunuşa göre",
+          dogrula_modul.sayi_eki(17, "iyelik") == "nin"
+          and dogrula_modul.sayi_eki(10, "iyelik") == "un"
+          and dogrula_modul.sayi_eki(15, "iyelik") == "in")
     _csrc2 = open("cumle.py", encoding="utf-8").read()
     basar("Akış: devre satırı önde olan takımı anıyor",
           '{takim} {n} sayı önde' in _csrc2)

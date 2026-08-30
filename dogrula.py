@@ -811,6 +811,44 @@ SON_E_OKUNAN = {"dante", "ante", "andre", "jose", "vasilije", "nikola",
                 "kobe", "andrea", "giannis"}
 
 
+# SAYI EKİ — okunuşa göre. "17'e" YANLIŞ, "17'ye" doğru; ek sayının
+# OKUNUŞUNA uyar ve bunu belirleyen son bileşendir (17 = on YEDİ).
+# Akış satırlarında canlıya çıkmıştı: "farkı 17'e çıkardı".
+_SAYI_BILESEN = {
+    1: ("bir", "i", False), 2: ("iki", "i", True), 3: ("üç", "ü", False),
+    4: ("dört", "ö", False), 5: ("beş", "e", False), 6: ("altı", "ı", True),
+    7: ("yedi", "i", True), 8: ("sekiz", "i", False), 9: ("dokuz", "u", False),
+    10: ("on", "o", False), 20: ("yirmi", "i", True), 30: ("otuz", "u", False),
+    40: ("kırk", "ı", False), 50: ("elli", "i", True), 60: ("altmış", "ı", False),
+    70: ("yetmiş", "i", False), 80: ("seksen", "e", False), 90: ("doksan", "a", False),
+    100: ("yüz", "ü", False),
+}
+
+
+def _sayi_son_bilesen(n):
+    """Ekin uyacağı SON okunuş bileşeni: 17 → 'yedi', 20 → 'yirmi'."""
+    n = abs(int(n))
+    if n == 0:
+        return ("sıfır", "ı", False)
+    if n % 10:
+        return _SAYI_BILESEN[n % 10]
+    if n % 100:
+        return _SAYI_BILESEN[n % 100]
+    return _SAYI_BILESEN[100]
+
+
+def sayi_eki(n, tur="yonelme"):
+    """Sayıya gelecek ek: 'yonelme' (-e/-a/-ye/-ya) ya da
+    'iyelik' (-in/-ın/-un/-ün, sesliden sonra -nin/...)."""
+    _, unlu, sesli_biter = _sayi_son_bilesen(n)
+    if tur == "iyelik":
+        ek = {"a": "ın", "ı": "ın", "e": "in", "i": "in",
+              "o": "un", "u": "un", "ö": "ün", "ü": "ün"}[unlu]
+        return ("n" if sesli_biter else "") + ek
+    ek = "a" if unlu in ("a", "ı", "o", "u") else "e"
+    return ("y" if sesli_biter else "") + ek
+
+
 def _son_unlu_obegi(k):
     """Sondaki ünlü öbeği ('ea', 'oo', 'ay', 'a', ...) ya da ''.
 

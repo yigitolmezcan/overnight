@@ -45,6 +45,7 @@ from dogrula import (
     ASGARI_KELIME,
     BRIEF_SKOR_FARK_ESIGI,
     sesli_biter_mi,
+    sayi_eki as dogrula_sayi_eki,
     OZET_CUMLE,
     OZET_KELIME_ALT,
 )
@@ -775,59 +776,112 @@ def _akis_takim(kod, ad_fn):
     return ad_fn(kod) if ad_fn else kod
 
 
-def akis_satiri(olay, ad_fn=None):
-    """(cumle, detay) — kalıp dışında cümle kurulmaz; tanınmayan tipte
-    (None, None) döner ve satır hiç çizilmez."""
+def akis_kaliplari(olay, ad_fn=None):
+    """[(kalip_id, cumle, detay)] — o olay için TÜM uygun kalıplar.
+
+    HER TİPE BİRDEN FAZLA KALIP (kullanıcı kararı): okuyucu tipi değil
+    CÜMLEYİ görüyor. Tip çeşitliliği sağlandıktan sonra bile "X skoru
+    eşitledi" gecede üç blokta geçiyordu (ölçüldü, 27 Aralık).
+    Kalıplar SABİT — LLM üretmiyor, seçimi derle.py yapıyor (gece çapında
+    en az kullanılmış kalıp önce).
+
+    Sayı ekleri `dogrula.sayi_eki` ile: "17'e" yanlış, "17'ye" doğru —
+    ek sayının OKUNUŞUNA uyar. Canlıya çıkmıştı."""
     t = olay.get("tip")
     ev, dep = olay.get("ev_skor"), olay.get("dep_skor")
     skor = f"{ev}–{dep}"
     takim = _akis_takim(olay.get("takim"), ad_fn)
     n = olay.get("sayi")
     oyuncu = olay.get("oyuncu")
+    fark = abs(olay.get("fark", 0) or 0)
+    k = []
 
     if t == "ceyrek_sonu":
         if olay.get("basa_bas") or not takim:
-            return "Skor başa baş gitti", skor
-        return f"{takim} önde kapadı", skor
-    if t == "devre_farki":
-        # "Fark 15 sayı" kimin önde olduğunu söylemiyordu.
-        return (f"{takim} {n} sayı önde" if takim else f"Fark {n} sayı"), skor
-    if t == "ceyrek_ustunlugu":
-        # Detay YÖN taşımalı: çeyreği alan takım geride kalmaya devam
-        # ediyorsa fark İNDİ, öndeyse ÇIKTI. Çıplak "fark 4" hangisi
-        # olduğunu söylemiyordu.
-        fark = abs(olay.get("fark", 0))
+            k.append(("ceyrek_basabas", "Skor başa baş gitti", skor))
+            k.append(("ceyrek_denk", "Çeyrek denk geçti", skor))
+        else:
+            k.append(("ceyrek_onde", f"{takim} önde kapadı", skor))
+            k.append(("ceyrek_lehine", f"Çeyrek {takim} lehine bitti", skor))
+            if fark:
+                k.append(("ceyrek_farkla",
+                          f"{takim} {fark} sayı önde bitirdi", skor))
+    elif t == "devre_farki":
+        k.append(("devre_onde", f"{takim} {n} sayı önde", skor))
+        k.append(("devre_fark", f"Devrede fark {n}", skor))
+        k.append(("devre_girdi", f"Devreye {takim} {n} sayı önde girdi", skor))
+    elif t == "ceyrek_ustunlugu":
+        rakip = olay.get("rakip_sayi")
         onde = ((olay.get("fark", 0) > 0 and olay.get("takim") == olay.get("ev_kod"))
                 or (olay.get("fark", 0) < 0 and olay.get("takim") != olay.get("ev_kod")))
         yon = "çıktı" if onde else "indi"
-        detay = f"fark {fark}'e {yon}" if fark else "skor eşitlendi"
-        return f"{takim} çeyreği {n}-{olay.get('rakip_sayi')} aldı", detay
-    if t == "en_buyuk_fark":
-        return f"{takim} farkı {n}'e çıkardı", "en büyük fark"
-    if t == "sayi_serisi":
-        return f"{takim} {n}-0 gitti", f"fark {abs(olay.get('fark', 0))}"
-    if t == "esitlik":
-        return f"{takim} skoru eşitledi" if takim else "Skor eşitlendi", skor
-    if t == "liderlik":
-        # EK ELLE YAZILMAZ. "Ellis'nun" üretiyordu; ünlü uyumu ve
-        # tampon `iyelik_eki`nin işi (aynı hata lik_eki'nde de olmuştu).
-        cumle = (f"{oyuncu}'{iyelik_eki(oyuncu)} basketiyle öne geçti" if oyuncu
-                 else f"{takim} öne geçti")
-        return cumle, f"{skor} · liderlik bir daha değişmedi"
-    if t == "karar_ani":
-        cumle = (f"{oyuncu}'{iyelik_eki(oyuncu)} basketi" if oyuncu
-                 else f"{takim} son sayıyı buldu")
-        return cumle, f"{skor} · maçı bitirdi"
-    if t == "fark_korundu":
-        return f"Fark bir daha {n}'in altına inmedi", None
-    if t == "en_etkili":
+        detay = f"fark {fark}'{dogrula_sayi_eki(fark)} {yon}" if fark else "skor eşitlendi"
+        k.append(("ust_aldi", f"{takim} çeyreği {n}-{rakip} aldı", detay))
+        k.append(("ust_ustun", f"{takim} o çeyrekte {n}-{rakip} üstün geldi", detay))
+        k.append(("ust_oldu", f"Çeyrek {n}-{rakip} {takim}'{iyelik_eki(takim)} oldu", detay))
+    elif t == "en_buyuk_fark":
+        k.append(("fark_cikardi",
+                  f"{takim} farkı {n}'{dogrula_sayi_eki(n)} çıkardı", "en büyük fark"))
+        k.append(("fark_cikti",
+                  f"Fark {n}'{dogrula_sayi_eki(n)} çıktı", f"{takim} önde"))
+        k.append(("fark_onu", f"{takim} önü {n} sayıya çıkardı", "en büyük fark"))
+    elif t == "sayi_serisi":
+        k.append(("seri_gitti", f"{takim} {n}-0 gitti", f"fark {fark}"))
+        k.append(("seri_arka", f"{takim} arka arkaya {n} sayı buldu", f"fark {fark}"))
+        # Ayrılma hâli ("Boston'dan") ayrı bir ek; iyelik ekiyle
+        # kurulunca "Boston'undan" gibi bozuk bir biçim çıkıyordu.
+        # Ekten kaçınan bir kalıp seçildi.
+        k.append(("seri_yapti", f"{takim} seriyi {n}-0 yaptı", f"fark {fark}"))
+    elif t == "esitlik":
+        if takim:
+            k.append(("esit_esitledi", f"{takim} skoru eşitledi", skor))
+            k.append(("esit_kapatti", f"{takim} farkı kapattı", skor))
+            k.append(("esit_yakaladi", f"{takim} beraberliği yakaladı", skor))
+        else:
+            k.append(("esit_duz", "Skor eşitlendi", skor))
+    elif t == "liderlik":
+        detay = f"{skor} · liderlik bir daha değişmedi"
+        if oyuncu:
+            k.append(("lider_basket",
+                      f"{oyuncu}'{iyelik_eki(oyuncu)} basketiyle öne geçti", detay))
+            k.append(("lider_cevirdi", f"{oyuncu} skoru çevirdi", detay))
+            if takim:
+                k.append(("lider_ile", f"{takim}, {oyuncu} ile öne geçti", detay))
+        elif takim:
+            k.append(("lider_takim", f"{takim} öne geçti", detay))
+    elif t == "karar_ani":
+        if oyuncu:
+            k.append(("karar_basket", f"{oyuncu}'{iyelik_eki(oyuncu)} basketi",
+                      f"{skor} · maçı bitirdi"))
+            k.append(("karar_sonsoz", f"Son sözü {oyuncu} söyledi", skor))
+            k.append(("karar_bitirdi", f"Maçı {oyuncu} bitirdi", skor))
+        elif takim:
+            k.append(("karar_takim", f"{takim} son sayıyı buldu",
+                      f"{skor} · maçı bitirdi"))
+    elif t == "fark_korundu":
+        k.append(("korundu_altina",
+                  f"Fark bir daha {n}'{dogrula_sayi_eki(n, 'iyelik')} altına inmedi", None))
+        k.append(("korundu_inilmedi",
+                  f"{n} sayının altına bir daha inilmedi", None))
+    elif t == "en_etkili":
         parca = [f"{olay.get('sayi')} sayı"]
         if olay.get("ribaund"):
             parca.append(f"{olay['ribaund']} ribaund")
         if olay.get("asist"):
             parca.append(f"{olay['asist']} asist")
-        return f"{oyuncu} {', '.join(parca)}", "maçın en etkilisi"
-    return None, None
+        ist = ", ".join(parca)
+        k.append(("etkili_duz", f"{oyuncu} {ist}", "maçın en etkilisi"))
+        k.append(("etkili_oncikti", f"{oyuncu} {ist} ile öne çıktı", None))
+        k.append(("etkili_enler", f"Maçın en etkilisi {oyuncu}", ist))
+
+    return [(kid, _gecir(c) or c, d) for kid, c, d in k if c]
+
+
+def akis_satiri(olay, ad_fn=None):
+    """(cumle, detay) — ilk kalıp. Geriye dönük uyumluluk için duruyor;
+    seçim artık derle.py'de kalıp sayacıyla yapılıyor."""
+    k = akis_kaliplari(olay, ad_fn)
+    return (k[0][1], k[0][2]) if k else (None, None)
 
 
 AKIS_TIPLERI = ("ceyrek_sonu", "devre_farki", "ceyrek_ustunlugu", "en_buyuk_fark",

@@ -205,6 +205,7 @@
       "akis": [
         {
           "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_onde",
           "zaman": "Devre",
           "saat": null,
           "cumle": "Denver önde kapadı",
@@ -213,14 +214,16 @@
         },
         {
           "tip": "en_buyuk_fark",
+          "kalip": "fark_cikardi",
           "zaman": "3Ç",
           "saat": "9:50",
-          "cumle": "Denver farkı 17'e çıkardı",
+          "cumle": "Denver farkı 17'ye çıkardı",
           "detay": "en büyük fark",
           "kritik": false
         },
         {
           "tip": "karar_ani",
+          "kalip": "karar_basket",
           "zaman": "Son",
           "saat": "0:06",
           "cumle": "Desmond Bane'in basketi",
@@ -229,6 +232,7 @@
         },
         {
           "tip": "ceyrek_ustunlugu",
+          "kalip": "ust_aldi",
           "zaman": "Maç sonu",
           "saat": null,
           "cumle": "Orlando çeyreği 43-33 aldı",
@@ -859,6 +863,7 @@
       "akis": [
         {
           "tip": "devre_farki",
+          "kalip": "devre_onde",
           "zaman": "Devre",
           "saat": null,
           "cumle": "New York 13 sayı önde",
@@ -867,14 +872,16 @@
         },
         {
           "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_lehine",
           "zaman": "3Ç",
           "saat": null,
-          "cumle": "New York önde kapadı",
+          "cumle": "Çeyrek New York lehine bitti",
           "detay": "89–98",
           "kritik": false
         },
         {
           "tip": "esitlik",
+          "kalip": "esit_esitledi",
           "zaman": "Son",
           "saat": "0:29",
           "cumle": "New York skoru eşitledi",
@@ -883,10 +890,11 @@
         },
         {
           "tip": "karar_ani",
+          "kalip": "karar_sonsoz",
           "zaman": "Son",
           "saat": "0:07",
-          "cumle": "OG Anunoby'nin basketi",
-          "detay": "125–128 · maçı bitirdi",
+          "cumle": "Son sözü OG Anunoby söyledi",
+          "detay": "125–128",
           "kritik": true
         }
       ],
@@ -1488,14 +1496,16 @@
       "akis": [
         {
           "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_farkla",
           "zaman": "1Ç",
           "saat": null,
-          "cumle": "San Antonio önde kapadı",
+          "cumle": "San Antonio 8 sayı önde bitirdi",
           "detay": "40–32",
           "kritik": false
         },
         {
           "tip": "sayi_serisi",
+          "kalip": "seri_gitti",
           "zaman": "2Ç",
           "saat": "2:14",
           "cumle": "Utah 11-0 gitti",
@@ -1504,17 +1514,19 @@
         },
         {
           "tip": "en_buyuk_fark",
+          "kalip": "fark_cikti",
           "zaman": "3Ç",
           "saat": "8:42",
-          "cumle": "Utah farkı 17'e çıkardı",
-          "detay": "en büyük fark",
+          "cumle": "Fark 17'ye çıktı",
+          "detay": "Utah önde",
           "kritik": false
         },
         {
           "tip": "esitlik",
+          "kalip": "esit_kapatti",
           "zaman": "4Ç",
           "saat": "7:22",
-          "cumle": "San Antonio skoru eşitledi",
+          "cumle": "San Antonio farkı kapattı",
           "detay": "108–108",
           "kritik": true
         }
@@ -2168,6 +2180,7 @@
       "akis": [
         {
           "tip": "esitlik",
+          "kalip": "esit_esitledi",
           "zaman": "2Ç",
           "saat": "1:40",
           "cumle": "Minnesota skoru eşitledi",
@@ -2176,6 +2189,7 @@
         },
         {
           "tip": "liderlik",
+          "kalip": "lider_basket",
           "zaman": "3Ç",
           "saat": "10:59",
           "cumle": "Egor Dëmin'in basketiyle öne geçti",
@@ -2184,6 +2198,7 @@
         },
         {
           "tip": "en_buyuk_fark",
+          "kalip": "fark_cikardi",
           "zaman": "4Ç",
           "saat": "1:17",
           "cumle": "Brooklyn farkı 21'e çıkardı",

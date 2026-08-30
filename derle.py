@@ -921,10 +921,11 @@ def _akis_sirasi(o):
 
 
 AKIS_ACILIS_LIMITI = 2      # aynı tip gecede en fazla bu kadar blok açar
+AKIS_KALIP_LIMITI = 2       # aynı CÜMLE KALIBI gecede en fazla bu kadar
 
 
 def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI,
-               tip_sayaci=None, _yasak_tipler=()):
+               tip_sayaci=None, kalip_sayaci=None, _yasak_tipler=()):
     """[{tip, zaman, saat, cumle, detay, kritik}] — en fazla `satir_sayisi`.
 
     `tip_sayaci`: GECE ÇAPINDA paylaşılan {tip: kaç kez kullanıldı}.
@@ -1074,13 +1075,29 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
         _tipten_ekle(tip)
 
     secili.sort(key=_akis_sirasi)
+    # CÜMLE KALIBI ÇEŞİTLİLİĞİ (kullanıcı kararı). Tip sayacı yetmiyor:
+    # okuyucu tipi değil CÜMLEYİ görüyor. Aynı kalıp gecede en fazla
+    # AKIS_KALIP_LIMITI kez; blok içinde zaten tekrarlanamaz.
+    _blok_kaliplari = set()
     satirlar = []
     for o in secili:
-        c, d = cumle.akis_satiri(o, lambda k: cumle.TAKIM_KISA.get(k, k))
-        if not c:
+        adaylar = cumle.akis_kaliplari(o, lambda k: cumle.TAKIM_KISA.get(k, k))
+        if not adaylar:
             continue
+        _uygun = [x for x in adaylar
+                  if x[0] not in _blok_kaliplari
+                  and (kalip_sayaci or {}).get(x[0], 0) < AKIS_KALIP_LIMITI]
+        # Hepsi limiti doldurduysa yine de bir cümle kurulur: sessiz
+        # satır, tekrardan kötüdür.
+        havuz = _uygun or [x for x in adaylar if x[0] not in _blok_kaliplari] or adaylar
+        kid, c, d = min(havuz, key=lambda x: ((kalip_sayaci or {}).get(x[0], 0),
+                                              adaylar.index(x)))
+        _blok_kaliplari.add(kid)
+        if kalip_sayaci is not None:
+            kalip_sayaci[kid] = kalip_sayaci.get(kid, 0) + 1
         satirlar.append({
-            "tip": o["tip"], "zaman": o.get("zaman"), "saat": o.get("saat"),
+            "tip": o["tip"], "kalip": kid,
+            "zaman": o.get("zaman"), "saat": o.get("saat"),
             "cumle": c, "detay": d, "kritik": o is kritik,
         })
     # Kritik satır eleme sırasında düştüyse (kalıbı kurulamadıysa) bir
@@ -1111,7 +1128,8 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
         if (_acilis >= AKIS_ACILIS_LIMITI and _ilk != kritik["tip"]
                 and satir_sayisi >= AKIS_ASGARI_SATIR):
             _alt = _mac_akisi(gercekler, en_iyi_performans, satir_sayisi,
-                              tip_sayaci=None, _yasak_tipler=(_ilk,))
+                              tip_sayaci=None, kalip_sayaci=None,
+                              _yasak_tipler=(_ilk,))
             if (_alt and _alt[0]["tip"] != _ilk and len(_alt) >= asgari
                     and (_ilk_yari_var(_alt) or not _ilk_yari_var(satirlar))):
                 satirlar = _alt
@@ -1921,6 +1939,7 @@ def derle(tarih_str):
                                 for m in skor_gece["maclar"]}
     # GECE ÇAPINDA tip sayacı — bloklar arası çeşitliliği bu sağlıyor.
     _akis_tip_sayaci = {}
+    _akis_kalip_sayaci = {}
     taslak_maclar = taslak["maclar"]
 
     # Aynı anahtar (hesapla.siralama_anahtari) — rozet eşitliğinde dram
@@ -2069,7 +2088,8 @@ def derle(tarih_str):
             # görünürdü.
             "akis": _mac_akisi(gercek_gece["maclar"][gid],
                                en_iyi_performans_by_gid.get(gid),
-                               tip_sayaci=_akis_tip_sayaci),
+                               tip_sayaci=_akis_tip_sayaci,
+                               kalip_sayaci=_akis_kalip_sayaci),
             "box": _box_score(ham["maclar"][gid], tum_metin, kaybeden_kod, gercek_gece["maclar"][gid]),
             # Sol ray rengi: KAZANAN takımın rengi (aşağıda çakışma
             # çözümünden geçiyor).
@@ -2156,7 +2176,8 @@ def derle(tarih_str):
             girdi["akis"] = _mac_akisi(gercek_gece["maclar"][gid],
                                        en_iyi_performans_by_gid.get(gid),
                                        satir_sayisi=AKIS_GOZAT_SATIR,
-                                       tip_sayaci=_akis_tip_sayaci)
+                                       tip_sayaci=_akis_tip_sayaci,
+                                       kalip_sayaci=_akis_kalip_sayaci)
             degerse_bak.append(girdi)
         else:
             diger.append(girdi)
