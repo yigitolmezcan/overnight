@@ -788,26 +788,91 @@ def t31_baslik_iskeleti(metin):
     return False, [f"başlık iskelet listesinin dışında: '{m}'"]
 
 
+# SES BELİRLER, HARF DEĞİL. Türkçe eki son SESE göre gelir; İngilizce
+# adlarda son harf çoğu zaman okunmuyor.
+#
+#   George → "Corc" biter, son ses 'o' → George'UN
+#   Wade   → "Veyd"      , son ses 'e' → Wade'İN
+#   White  → "Vayt"      , son ses 'a' → White'IN
+#
+# Sondaki 'e' (ve '-es') İngilizcede genelde OKUNMUYOR; kendinden önceki
+# ünlüyü uzatıyor. İki kalıp ayrı davranıyor:
+#   * "-e" ile biten: ünlü UZUYOR (wade→/eyd/, white→/ayt/, cole→/oul/)
+#   * "-es" ile biten: ünlü uzamıyor (barnes→/barnz/, holmes→/houmz/)
+# İstisna: 'e'den önce 'c' ya da 'g' varsa o 'e' ünsüzü YUMUŞATMAK için
+# oradadır, ünlüyü uzatmaz (vince→/vins/, pierce→/piers/, george→/corc/).
+_UZUN_UNLU = {"a": "e", "i": "ı", "o": "u", "u": "u", "e": "i"}
+_ON_IKILI = ("ea", "ee", "ie", "ai", "ay", "ei", "ey")   # ön (ince) okunur
+_ARKA_IKILI = ("oo", "ou", "au", "aw")                   # arka (kalın) yuvarlak
+# SON 'e' GERÇEKTEN OKUNAN adlar — kural bunlarda ters çalışırdı.
+# Ad ad çözüm DEĞİL, kuralın bilinen sınırı: bu adlarda son harf ünlü
+# sesidir ve ek ona göre gelir ("Dante'nin").
+SON_E_OKUNAN = {"dante", "ante", "andre", "jose", "vasilije", "nikola",
+                "kobe", "andrea", "giannis"}
+
+
+def _son_unlu_obegi(k):
+    """Sondaki ünlü öbeği ('ea', 'oo', 'ay', 'a', ...) ya da ''.
+
+    Sondaki 'y' öbeğe DAHİL: İngilizcede 'ay/ey/oy' bir ünlü sesi
+    ("Hayes" → /heyz/, ince). 'y'yi ünsüz sayınca öbek 'a' kalıyor ve
+    ek kalın geliyordu ("Hayes'ın")."""
+    son = len(k)
+    if son and k[son - 1] == "y" and son > 1 and k[son - 2] in _SESLI_HARFLER:
+        obek_sonu = son
+        bas = son - 1
+        while bas > 0 and k[bas - 1] in _SESLI_HARFLER:
+            bas -= 1
+        return k[bas:obek_sonu]
+    while son > 0 and k[son - 1] not in _SESLI_HARFLER:
+        son -= 1
+    if son == 0:
+        return ""
+    bas = son
+    while bas > 0 and k[bas - 1] in _SESLI_HARFLER:
+        bas -= 1
+    return k[bas:son]
+
+
+def _obek_sesi(obek, uzat):
+    """Ünlü öbeğinden Türkçe uyum ünlüsü."""
+    if not obek:
+        return ""
+    if obek[-2:] in _ON_IKILI or obek in _ON_IKILI:
+        return "e"
+    if obek[-2:] in _ARKA_IKILI:
+        return "u"
+    son = obek[-1]
+    return _UZUN_UNLU.get(son, son) if uzat else son
+
+
 def sesli_biter_mi(ad):
-    """(sesli_mi, son_ses) — kelime SES olarak ünlüyle mi bitiyor?
+    """(sesli_mi, son_ses) — TEK KAYNAK: hem cümle kurucu
+    (cumle.iyelik_eki/belirtme_eki) hem denetleyici (T21) buradan okur.
+    İkisi ayrı olsaydı kurucunun doğru yazdığını denetleyici reddederdi.
 
-    TEK KAYNAK: hem cümle kurucu (cumle.iyelik_eki/belirtme_eki) hem
-    denetleyici (T21) buradan okur. İkisi ayrı olsaydı kurucunun doğru
-    yazdığını denetleyici reddederdi — nitekim etti: "Curry'nin"
-    üretilip T21'de takıldı.
-
-    Yazımda ünsüz olan 'y', ÜNSÜZDEN sonra geldiğinde /i/ okunuyor:
-    "Anunoby" → /anunobi/, "Curry" → /kari/. Bu ekleri değiştiriyor —
-    "Anunoby'un" değil "Anunoby'nin". Ünlüden sonraki 'y' gerçekten
-    ünsüz ("Murray" → /murey/), oraya kural uygulanmıyor."""
-    k = (ad or "").rstrip().rstrip(".").lower()
+    `son_ses` ek uyumunu belirleyen ünlü; sesli_mi ise EKE TAMPON gerekip
+    gerekmediği (gerçekten ünlüyle bitiyorsa 'n'/'y' tamponu)."""
+    k = (ad or "").strip().rstrip(".").lower()
+    k = k.split()[-1] if k.split() else k          # soyadı belirler
     if not k:
         return False, ""
+    if k in SON_E_OKUNAN:
+        return True, k[-1]
+    # 1) SESSİZ 'e' / '-es'
+    if len(k) > 2 and k.endswith("es") and k[-3] not in _SESLI_HARFLER:
+        return False, _obek_sesi(_son_unlu_obegi(k[:-2]), uzat=False)
+    if len(k) > 2 and k.endswith("e") and k[-2] not in _SESLI_HARFLER:
+        yumusatan = k[-2] in ("c", "g")
+        return False, _obek_sesi(_son_unlu_obegi(k[:-1]), uzat=not yumusatan)
+    # 2) Gerçekten ünlüyle bitiyor
     if k[-1] in _SESLI_HARFLER:
         return True, k[-1]
+    # 3) Ünsüzden sonra gelen 'y' /i/ okunuyor: "Anunoby", "Curry"
     if k[-1] == "y" and len(k) >= 2 and k[-2] not in _SESLI_HARFLER:
         return True, "i"
-    return False, ""
+    # 4) Düz ünsüz sonu — son ünlü öbeği belirler
+    return False, _obek_sesi(_son_unlu_obegi(k), uzat=False)
 
 
 def t21_iyelik_eki_tamponu(metin):

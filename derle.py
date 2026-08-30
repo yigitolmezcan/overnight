@@ -969,13 +969,69 @@ def _mac_akisi(gercekler, en_iyi_performans=None):
                                       "fark_korundu")]
         kritik = max(_anlar or by_tip.values(), key=_akis_sirasi)
 
+    # --- SEÇİM KURALLARI (kullanıcı) --------------------------------
+    # (a) Aynı çeyrekten en fazla BİR satır. İki olay aynı çeyrekteyse
+    #     güçlü olan kalır. 26 Aralık Utah-Detroit'te ilk iki satır da
+    #     3. çeyreğin sonucunu anlatıyordu — aynı bilgi, iki satır.
+    #     İSTİSNA: karar anı çeyrek sınırına takılmaz.
+    # (b) Dört satırdan EN AZ BİRİ ilk yarıdan olmalı; yoksa hikâye
+    #     ortadan açılıyor, okuyucu maçın nasıl başladığını bilmiyor.
+    #     İlk yarıda kayda değer olay yoksa devre satırı kullanılıyor —
+    #     o her maçta var.
+    def _ceyrek(o):
+        return o.get("periyot") or 0
+
+    def _sinirsiz(o):
+        return o["tip"] == "karar_ani"
+
     secili = [kritik]
+    dolu_ceyrekler = set() if _sinirsiz(kritik) else {_ceyrek(kritik)}
+
+    def _ekle(o):
+        if o is None or o in secili:
+            return False
+        if not _sinirsiz(o) and _ceyrek(o) in dolu_ceyrekler:
+            return False
+        secili.append(o)
+        if not _sinirsiz(o):
+            dolu_ceyrekler.add(_ceyrek(o))
+        return True
+
+    # ADAY HAVUZU TİP BAŞINA TEK DEĞİL. `by_tip` her tipten yalnız en geç
+    # olayı tutuyor; çeyrek kısıtı devreye girince o tek aday elenip satır
+    # sayısı 4'ün altına düşüyordu (ölçüldü: 27 Aralık'ta iki blok üç
+    # satıra indi, çünkü tek "çeyrek sonu" adayı doldurulmuş bir çeyrekte
+    # kalmıştı). Aynı tipin BAŞKA ÇEYREKTEKİ örneği hâlâ kullanılabilir —
+    # "aynı tip iki kez kullanılmaz" kuralı bozulmadan.
+    kullanilan_tip = {kritik["tip"]}
+
+    def _adaylar(tip, yalniz_ilk_yari=False):
+        liste = [o for o in olaylar if o["tip"] == tip
+                 and (not yalniz_ilk_yari or _ceyrek(o) <= 2)]
+        # Maçın kararına yakın olan daha çok şey anlatıyor.
+        return sorted(liste, key=_akis_sirasi, reverse=True)
+
+    def _tipten_ekle(tip, yalniz_ilk_yari=False):
+        if tip in kullanilan_tip:
+            return False
+        for o in _adaylar(tip, yalniz_ilk_yari):
+            if _ekle(o):
+                kullanilan_tip.add(tip)
+                return True
+        return False
+
+    # (b) önce: ilk yarı payı garanti altına alınıyor, yoksa dolgu sırası
+    #     onu kolayca dışarıda bırakıyor. Devre satırı son çare değil,
+    #     GARANTİ: kayda değer olay yoksa o kullanılıyor.
+    if not any(_ceyrek(o) <= 2 for o in secili):
+        for tip in ("devre_farki", "ceyrek_sonu") + AKIS_DOLGU_SIRASI:
+            if _tipten_ekle(tip, yalniz_ilk_yari=True):
+                break
+
     for tip in AKIS_DOLGU_SIRASI:
         if len(secili) >= AKIS_SATIR_SAYISI:
             break
-        o = by_tip.get(tip)
-        if o is not None and o is not kritik:
-            secili.append(o)
+        _tipten_ekle(tip)
 
     secili.sort(key=_akis_sirasi)
     satirlar = []

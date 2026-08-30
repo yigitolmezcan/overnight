@@ -195,10 +195,10 @@
       "akis": [
         {
           "tip": "ceyrek_sonu",
-          "zaman": "3Ç",
+          "zaman": "Devre",
           "saat": null,
-          "cumle": "Utah önde kapadı",
-          "detay": "111–103",
+          "cumle": "Skor başa baş gitti",
+          "detay": "67–68",
           "kritik": false
         },
         {
@@ -221,7 +221,7 @@
           "tip": "karar_ani",
           "zaman": "Son",
           "saat": "0:02",
-          "cumle": "Keyonte George'nin basketi",
+          "cumle": "Keyonte George'un basketi",
           "detay": "131–129 · maçı bitirdi",
           "kritik": true
         }

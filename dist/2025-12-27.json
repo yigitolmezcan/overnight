@@ -204,6 +204,14 @@
       "neden_onemli": "",
       "akis": [
         {
+          "tip": "devre_farki",
+          "zaman": "Devre",
+          "saat": null,
+          "cumle": "Denver 14 sayı önde",
+          "detay": "48–62",
+          "kritik": false
+        },
+        {
           "tip": "ceyrek_sonu",
           "zaman": "3Ç",
           "saat": null,
@@ -212,18 +220,10 @@
           "kritik": false
         },
         {
-          "tip": "esitlik",
-          "zaman": "Son",
-          "saat": "0:06",
-          "cumle": "Orlando skoru eşitledi",
-          "detay": "126–126",
-          "kritik": false
-        },
-        {
           "tip": "karar_ani",
           "zaman": "Son",
           "saat": "0:06",
-          "cumle": "Desmond Bane'nin basketi",
+          "cumle": "Desmond Bane'in basketi",
           "detay": "127–126 · maçı bitirdi",
           "kritik": true
         },
@@ -861,7 +861,7 @@
           "tip": "devre_farki",
           "zaman": "Devre",
           "saat": null,
-          "cumle": "Fark 13 sayı",
+          "cumle": "New York 13 sayı önde",
           "detay": "55–68",
           "kritik": false
         },
@@ -1487,18 +1487,18 @@
       "neden_onemli": "",
       "akis": [
         {
-          "tip": "ceyrek_ustunlugu",
-          "zaman": "Devre",
-          "saat": null,
-          "cumle": "Utah çeyreği 38-20 aldı",
-          "detay": "fark 10'e çıktı",
+          "tip": "en_buyuk_fark",
+          "zaman": "1Ç",
+          "saat": "3:55",
+          "cumle": "San Antonio farkı 11'e çıkardı",
+          "detay": "en büyük fark",
           "kritik": false
         },
         {
           "tip": "devre_farki",
           "zaman": "Devre",
           "saat": null,
-          "cumle": "Fark 10 sayı",
+          "cumle": "Utah 10 sayı önde",
           "detay": "60–70",
           "kritik": false
         },
@@ -2167,11 +2167,11 @@
       "neden_onemli": "",
       "akis": [
         {
-          "tip": "esitlik",
-          "zaman": "2Ç",
-          "saat": "1:40",
-          "cumle": "Minnesota skoru eşitledi",
-          "detay": "60–60",
+          "tip": "ceyrek_sonu",
+          "zaman": "Devre",
+          "saat": null,
+          "cumle": "Skor başa baş gitti",
+          "detay": "63–62",
           "kritik": false
         },
         {
@@ -2183,19 +2183,11 @@
           "kritik": true
         },
         {
-          "tip": "ceyrek_sonu",
-          "zaman": "3Ç",
-          "saat": null,
-          "cumle": "Brooklyn önde kapadı",
-          "detay": "86–98",
-          "kritik": false
-        },
-        {
-          "tip": "ceyrek_ustunlugu",
-          "zaman": "3Ç",
-          "saat": null,
-          "cumle": "Brooklyn çeyreği 36-23 aldı",
-          "detay": "fark 12'e çıktı",
+          "tip": "en_buyuk_fark",
+          "zaman": "4Ç",
+          "saat": "1:17",
+          "cumle": "Brooklyn farkı 21'e çıkardı",
+          "detay": "en büyük fark",
           "kritik": false
         }
       ],

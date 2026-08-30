@@ -110,11 +110,12 @@ _sesli_biter_mi = sesli_biter_mi
 
 def belirtme_eki(ad):
     """-ı/-i/-u/-ü, sesliyle bitende 'y' tamponu ("Lakers'ı", "Utah'yı")."""
-    kucuk, unlu = _son_unlu(ad)
+    # UYUM SESE GÖRE. `sesli_biter_mi` hem tampon gerekip gerekmediğini
+    # hem uyumu belirleyen SESİ döndürüyor (sessiz 'e', okunan 'y' vb.).
     sesli_biter, son_ses = _sesli_biter_mi(ad)
-    if sesli_biter and son_ses == "i" and (not kucuk or kucuk[-1] not in _SESLI):
-        unlu = "i"                     # "Anunoby" → /anunobi/
-    ek = {"a": "ı", "ı": "ı", "e": "i", "i": "i", "o": "u", "u": "u", "ö": "ü", "ü": "ü"}.get(unlu, "i")
+    if not son_ses:
+        _, son_ses = _son_unlu(ad)
+    ek = {"a": "ı", "ı": "ı", "e": "i", "i": "i", "o": "u", "u": "u", "ö": "ü", "ü": "ü"}.get(son_ses, "i")
     tampon = "y" if sesli_biter else ""
     return f"{tampon}{ek}"
 
@@ -141,11 +142,10 @@ def yonelme_eki(ad):
 def iyelik_eki(ad):
     """-ın/-in/-un/-ün, sesliyle bitende 'n' tamponu ("Doğu'nun",
     "Edwards'ın"). DİKKAT: belirtme ekindeki 'y' tamponuyla karıştırma."""
-    kucuk, unlu = _son_unlu(ad)
     sesli_biter, son_ses = _sesli_biter_mi(ad)
-    if sesli_biter and son_ses == "i" and (not kucuk or kucuk[-1] not in _SESLI):
-        unlu = "i"                     # "Anunoby" → /anunobi/
-    ek = {"a": "ın", "ı": "ın", "e": "in", "i": "in", "o": "un", "u": "un", "ö": "ün", "ü": "ün"}.get(unlu, "in")
+    if not son_ses:
+        _, son_ses = _son_unlu(ad)
+    ek = {"a": "ın", "ı": "ın", "e": "in", "i": "in", "o": "un", "u": "un", "ö": "ün", "ü": "ün"}.get(son_ses, "in")
     tampon = "n" if sesli_biter else ""
     return f"{tampon}{ek}"
 
@@ -790,7 +790,8 @@ def akis_satiri(olay, ad_fn=None):
             return "Skor başa baş gitti", skor
         return f"{takim} önde kapadı", skor
     if t == "devre_farki":
-        return f"Fark {n} sayı", skor
+        # "Fark 15 sayı" kimin önde olduğunu söylemiyordu.
+        return (f"{takim} {n} sayı önde" if takim else f"Fark {n} sayı"), skor
     if t == "ceyrek_ustunlugu":
         # Detay YÖN taşımalı: çeyreği alan takım geride kalmaya devam
         # ediyorsa fark İNDİ, öndeyse ÇIKTI. Çıplak "fark 4" hangisi

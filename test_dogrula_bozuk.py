@@ -4992,6 +4992,83 @@ def main():
     basar("Yayın kapısı: tanınmayan alanda gerekçe korunuyor",
           "üretim anındaki gerekçe korunuyor" in _ysrc2)
 
+    # ==================================================================
+    # AKIŞ SEÇİM KURALLARI VE SES TABANLI EK
+    # ==================================================================
+    # 1) AYNI ÇEYREKTEN EN FAZLA BİR SATIR. 26 Aralık Utah-Detroit'te
+    #    ilk iki satır da 3. çeyreğin sonucunu anlatıyordu — aynı bilgi,
+    #    iki satır. İstisna: karar anı çeyrek sınırına takılmaz.
+    # 2) DÖRT SATIRDAN EN AZ BİRİ İLK YARIDAN. Hepsi 3Ç ve sonrasından
+    #    olunca hikâye ortadan açılıyordu.
+    import collections as _cl
+    for _t in ("2025-12-26", "2025-12-27"):
+        if not _os.path.exists(f"dist/{_t}.json"):
+            continue
+        _dd = _jj.loads(open(f"dist/{_t}.json", encoding="utf-8").read())
+        _bloklar = (_dd.get("mutlaka") or []) + (_dd.get("degerse_bak") or [])
+        _akisli = [m for m in _bloklar if m.get("akis")]
+        basar(f"Akış[{_t}]: blok başına en fazla 4 satır",
+              all(len(m["akis"]) <= 4 for m in _akisli))
+        basar(f"Akış[{_t}]: en az 3 satır",
+              all(len(m["akis"]) >= 3 for m in _akisli))
+        _ihlal = []
+        for m in _akisli:
+            _c = _cl.Counter(r["zaman"] for r in m["akis"]
+                             if r["tip"] != "karar_ani")
+            if any(v > 1 for v in _c.values()):
+                _ihlal.append(m["mac"])
+        basar(f"Akış[{_t}]: aynı çeyrekten iki satır yok",
+              not _ihlal, f"ihlal: {_ihlal}")
+        _yarisiz = [m["mac"] for m in _akisli
+                    if not any(r["zaman"] in ("1Ç", "2Ç", "Devre") for r in m["akis"])]
+        basar(f"Akış[{_t}]: her blokta ilk yarıdan en az bir satır",
+              not _yarisiz, f"ilk yarısı yok: {_yarisiz}")
+        _tip_tekrar = [m["mac"] for m in _akisli
+                       if len({r["tip"] for r in m["akis"]}) != len(m["akis"])]
+        basar(f"Akış[{_t}]: aynı olay tipi iki kez kullanılmıyor",
+              not _tip_tekrar, f"tekrar: {_tip_tekrar}")
+        basar(f"Akış[{_t}]: her blokta tam bir kritik satır",
+              all(sum(1 for r in m["akis"] if r["kritik"]) == 1 for m in _akisli))
+    # Devre satırı kimin önde olduğunu söylemeli ("Fark 15 sayı" demiyordu).
+    _csrc2 = open("cumle.py", encoding="utf-8").read()
+    basar("Akış: devre satırı önde olan takımı anıyor",
+          '{takim} {n} sayı önde' in _csrc2)
+
+    # 3) EK SESE GÖRE, HARFE GÖRE DEĞİL. Sondaki 'e' İngilizcede genelde
+    #    okunmuyor: "George" → /corc/, son ses 'o' → George'UN.
+    #    Gerileme: 'y' düzeltmesi sessiz 'e' ile biten adlara uygulanınca
+    #    "George'nin" üretiliyordu.
+    _EK_BEKLENEN = {
+        "George": "un", "Wade": "in", "Bane": "in", "Poole": "un",
+        "Cole": "un", "Moore": "un", "White": "ın", "Vince": "in",
+        "Pierce": "in", "Hayes": "in", "Reaves": "in", "Barnes": "ın",
+        "Holmes": "un", "Hughes": "un",
+    }
+    _yanlis = {a: _yaz.cumle.iyelik_eki(a) for a, b in _EK_BEKLENEN.items()
+               if _yaz.cumle.iyelik_eki(a) != b}
+    basar("Ek: sessiz 'e' ile biten 14 adın hepsi doğru ek alıyor",
+          not _yanlis, f"yanlış: {_yanlis}")
+    # Dünkü 'y' düzeltmesi BOZULMAMALI.
+    basar("Ek: ünsüzden sonra gelen 'y' hâlâ /i/ okunuyor",
+          _yaz.cumle.iyelik_eki("Anunoby") == "nin"
+          and _yaz.cumle.iyelik_eki("Curry") == "nin")
+    # Gerçekten ünlüyle biten adlar tampon almaya devam etmeli.
+    basar("Ek: gerçek ünlü sonu tamponunu koruyor",
+          _yaz.cumle.iyelik_eki("Miami") == "nin"
+          and _yaz.cumle.iyelik_eki("Dante") == "nin"
+          and _yaz.cumle.iyelik_eki("Şengün") == "ün")
+    # Kurucu ile denetleyici AYNI kaynaktan okumalı.
+    basar("Ek: kural tek kaynakta (kurucu ve T21 aynı fonksiyonu okuyor)",
+          "sesli_biter_mi" in _csrc2
+          and "def sesli_biter_mi(ad):" in open("dogrula.py", encoding="utf-8").read())
+    for _ad in _EK_BEKLENEN:
+        _m = f"{_ad}'{_yaz.cumle.iyelik_eki(_ad)} basketi"
+        if not dogrula_modul.t21_iyelik_eki_tamponu(_m)[0]:
+            basar(f"Ek: '{_m}' T21'den geçiyor", False)
+            break
+    else:
+        basar("Ek: üretilen 14 ekin hepsi T21'den geçiyor", True)
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))
