@@ -1,0 +1,238 @@
+{
+  "tarih": "2025-12-27",
+  "uretildi": "2026-08-30T09:38:22.254807Z",
+  "maclar": {
+    "0022500437": {
+      "gec_satiri": "Milwaukee Bucks deplasmanda Chicago Bulls'u 112-103 yendi.",
+      "muzip": false
+    },
+    "0022500436": {
+      "gec_satiri": "Miami Heat evinde Indiana Pacers'i 142-116 ezdi.",
+      "muzip": false
+    },
+    "0022500438": {
+      "gec_satiri": "Houston Rockets evinde Cleveland Cavaliers'i 117-100 yendi. Kevin Durant 30 sayı attı.",
+      "muzip": false
+    },
+    "0022500434": {
+      "gec_satiri": "Phoenix Suns deplasmanda New Orleans Pelicans'ı 123-114 yendi.",
+      "muzip": false
+    },
+    "0022500432": {
+      "gec_satiri": "Sacramento Kings evinde Dallas Mavericks'i 113-107 yendi.",
+      "muzip": false
+    },
+    "0022500433": {
+      "baslik": "Orlando, Bane'in son saniye serbest atışlarıyla Denver'i devirdi.",
+      "neden_onemli": "Batı'da 3. sıradaki Denver'e karşı alınan bir galibiyetti.",
+      "ozet": "Denver, ilk yarıda kurduğu üstünlükle farkı 17 sayıya kadar çıkararak kontrolü ele geçirdi. Orlando, üçüncü çeyrekten itibaren toparlanarak maçı son periyotta eşitledi. Jokić'in bitime 11.9 saniye kala attığı serbest atışlarla öne geçtiği maçı, Bane'in 6.9 saniye kalan iki serbest atışı Orlando lehine çevirdi. Mağlup tarafta Jokić 34 sayı, 21 ribaund ve 12 asistle triple-double yaptı.",
+      "muzip": false
+    },
+    "0022500435": {
+      "baslik": "New York Knicks deplasmanda Atlanta Hawks'ı 128-125 yendi.",
+      "ozet_kisa": "Karl-Anthony Towns 36 sayı attı.",
+      "muzip": false,
+      "neden_onemli": "New York Knicks, konferansta 2. sıraya yükseldi."
+    },
+    "0022500440": {
+      "baslik": "Wembanyama 32 sayı 5 blokla öne çıktı, Utah kazandı",
+      "neden_onemli": "Batı'nın 2. sırasındaki San Antonio'yu deplasmanda deviren Utah sürpriz yaptı",
+      "ozet_kisa": "İlk çeyrekte 8 sayı geride kalan Utah, ikinci periyotta attığı 38 sayıyla öne geçti ve bir daha geriye düşmedi. Markkanen'in 29, George'un 28 sayısıyla oynayan Jazz, deplasmanda farkı koruyarak maçı kazandı. San Antonio tarafında Wembanyama'nın olağanüstü gecesi mağlubiyeti önleyemedi.",
+      "muzip": false
+    },
+    "0022500439": {
+      "baslik": "Sürpriz bir sonuçla Brooklyn Nets, Minnesota Timberwolves'i 123-107 yendi.",
+      "ozet_kisa": "Cam Thomas 30 sayı attı.",
+      "muzip": false
+    }
+  },
+  "brief": [
+    {
+      "metin": "Orlando Magic, 17 sayılık farktan dönüp Denver Nuggets'i geçti.",
+      "hedef_mac": "0022500433",
+      "muzip": false,
+      "kind": "geri_donus"
+    },
+    {
+      "metin": "Karl-Anthony Towns, Atlanta Hawks karşısında 36 sayı attı.",
+      "hedef_mac": "0022500435",
+      "muzip": false,
+      "kind": "performans"
+    },
+    {
+      "metin": "Utah Jazz, San Antonio Spurs'u yendi.",
+      "hedef_mac": "0022500440",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Sürpriz bir sonuçla Brooklyn Nets, Minnesota Timberwolves'i yendi.",
+      "hedef_mac": "0022500439",
+      "muzip": false,
+      "kind": "surpriz"
+    },
+    {
+      "metin": "Milwaukee Bucks, Chicago Bulls'u yendi.",
+      "hedef_mac": "0022500437",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Miami Heat, Indiana Pacers'i evinde yendi.",
+      "hedef_mac": "0022500436",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Houston Rockets, Cleveland Cavaliers'i evinde yendi.",
+      "hedef_mac": "0022500438",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 9,
+    "ilk_denemede_kabul": 1,
+    "sablon_moduna_dusen": 2,
+    "detay": [
+      {
+        "mac_id": "0022500435",
+        "deneme": 0,
+        "gerekce": [
+          "T28: başlık düz skor ama metinde güçlü olgu var (kilometre, performans, siralama) — düz skor son çaredir, başlık en güçlü olguyu kullanmalı",
+          "neden_onemli/T16: [\"'üst üste' iddiası (NYK, seri uzunluğu 2) 4 eşiğinin altında\"]",
+          "ozet_kisa/T21: [\"'Anunoby'nin' — 'n' tamponu sadece sesli harfle biten kelimede kullanılır, 'Anunoby' ünsüzle bitiyor\"]",
+          "T30: 'ribaund' — bu maçın KİLİT İSTATİSTİĞİ (hücum ribaundu) zaten kendi kutusunda gösteriliyor, metinde tekrarlanmaz"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "New York, deplasmanda Atlanta'yı 128-125 yendi.",
+          "neden_onemli": "Doğu Konferansı'nda 2. sıraya oturan Knicks, üst üste 6. mağlubiyet alan Hawks'ı devirdi.",
+          "ozet_kisa": "Karl-Anthony Towns, 36 sayı 15 ribaundla double-double yaptı ve New York'un en etkili ismi oldu. Maçı Anunoby'nin bitime 7 saniye kala attığı serbest atışlar belirledi. Liderlik gece boyunca 14 kez el değiştirdi.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500435",
+        "deneme": 1,
+        "gerekce": [
+          "ozet_kisa/T4d: [\"'farkı 18 sayıya kadar açtı' (farkı açmak — 'farkı yükseltti/çıkardı' kullanılmalı)\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Anunoby'in son saniye serbest atışlarıyla New York, Atlanta'yı 128-125 geçti.",
+          "neden_onemli": "Atlanta üst üste 6. mağlubiyetini alırken New York geceyi Doğu'da 2. sırada kapattı.",
+          "ozet_kisa": "New York farkı 18 sayıya kadar açtı ancak Atlanta son çeyrekte inatla asıldı ve Alexander-Walker'ın son dakika basketiyle öne geçti. Towns'un 36 sayısı Knicks'i ayakta tutan en önemli performans oldu.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500435",
+        "deneme": 2,
+        "gerekce": [
+          "T28: başlık düz skor ama metinde güçlü olgu var (performans, siralama, son_saniye) — düz skor son çaredir, başlık en güçlü olguyu kullanmalı",
+          "ozet_kisa/T11: [\"'çift-çift' (double-double yerine İngilizce hâliyle yazılmalı)\"]",
+          "ozet_kisa/T21: [\"'Anunoby'nin' — 'n' tamponu sadece sesli harfle biten kelimede kullanılır, 'Anunoby' ünsüzle bitiyor\"]",
+          "T30: 'ribaund' — bu maçın KİLİT İSTATİSTİĞİ (hücum ribaundu) zaten kendi kutusunda gösteriliyor, metinde tekrarlanmaz"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "New York, deplasmanda Atlanta'yı 128-125 yendi.",
+          "neden_onemli": "Atlanta üst üste 6. mağlubiyetini alırken New York konferansta 2. sıraya yükseldi.",
+          "ozet_kisa": "Karl-Anthony Towns 36 sayı 15 ribaundla çift-çift yaptı ve New York'un en etkili ismi oldu. Knicks farkı 18 sayıya kadar çıkardı, ancak Atlanta son çeyrekte yaklaşınca maç gerildi. Anunoby'nin son saniyelerdeki serbest atışları New York'un galibiyetini garantiledi.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500440",
+        "deneme": 0,
+        "gerekce": [
+          "T30: 'ribaund' — bu maçın KİLİT İSTATİSTİĞİ (hücum ribaundu) zaten kendi kutusunda gösteriliyor, metinde tekrarlanmaz"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Wembanyama 5 blokla öne çıkarken Utah, San Antonio'yu deplasmanda yendi.",
+          "neden_onemli": "Wembanyama'nın blok üretimi, takımının mağlubiyetine rağmen gecenin en dikkat çeken performansıydı.",
+          "ozet_kisa": "San Antonio ilk çeyreği 40-32 önde kapadı, ancak Utah ikinci periyotta 38-20'lik üstünlükle öne geçti. Wembanyama 32 sayı ve 7 ribaundla oynarken Markkanen'in 29 sayısı Utah'ın 127-114 kazanmasında etkili oldu.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500439",
+        "deneme": 0,
+        "gerekce": [
+          "T28: başlık düz skor ama metinde güçlü olgu var (performans) — düz skor son çaredir, başlık en güçlü olguyu kullanmalı",
+          "ozet_kisa/T4d: [\"'farkı açıp' (farkı açmak — 'farkı yükseltti/çıkardı' kullanılmalı)\"]",
+          "ozet_kisa/T16: [\"'üst üste' iddiası (MIN, seri uzunluğu 2) 4 eşiğinin altında\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Brooklyn, favori Minnesota'yı deplasmanda 123-107 yendi",
+          "neden_onemli": "Doğu'nun en kötü takımlarından biri, sezonun 10. galibiyetini deplasmanda kazandı.",
+          "ozet_kisa": "Üçüncü çeyrekte Minnesota'yı 36-23 geçen Brooklyn, farkı açıp maçı kopardı. Cam Thomas 9/9 serbest atışla 30 sayı attı ve gecenin en etkili ismi oldu. Minnesota tarafında Edwards'ın 28 sayısı yetersiz kaldı, ev sahibi üst üste ikinci kez kaybetti.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500439",
+        "deneme": 1,
+        "gerekce": [
+          "neden_onemli/T16: [\"'farktan dönen' civarındaki geri dönüş 10 sayının altında\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "10. galibiyetini alan Brooklyn, favori Minnesota'yı deplasmanda yendi",
+          "neden_onemli": "7 sayılık farktan dönen Brooklyn, gecenin en sürpriz sonucunu çıkardı.",
+          "ozet_kisa": "Cam Thomas, 9/9 serbest atış ve 9/15 saha içi isabetle 30 sayı attı ve gecenin en etkili ismi oldu. Brooklyn, ilk yarıyı denge içinde geçirdikten sonra üçüncü çeyrekte öne geçti ve dördüncü periyotta farkı yükseltti. Minnesota bu üstünlüğü kıramadı.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500439",
+        "deneme": 2,
+        "gerekce": [
+          "T28: başlık düz skor ama metinde güçlü olgu var (performans) — düz skor son çaredir, başlık en güçlü olguyu kullanmalı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Brooklyn, favori Minnesota'yı deplasmanda 123-107 ile yendi",
+          "neden_onemli": "10. galibiyetini alan Brooklyn için sezonun en sürpriz sonuçlarından biri oldu.",
+          "ozet_kisa": "Brooklyn, üçüncü çeyrekte Minnesota'yı 36-23 geride bırakarak maçın kontrolünü ele geçirdi. Cam Thomas 30 sayı, 9/9 serbest atış isabetiyle takımının en skorer ismi oldu. Minnesota son çeyrekte farkı kapatamadı ve maç Brooklyn'in üstünlüğüyle bitti.",
+          "muzip": false
+        }
+      }
+    ],
+    "sablon_isaretli": [
+      {
+        "mac_id": "0022500435",
+        "alan": "mutlaka",
+        "gerekce": [
+          "T28: başlık düz skor ama metinde güçlü olgu var (performans, siralama) — düz skor son çaredir, başlık en güçlü olguyu kullanmalı"
+        ],
+        "metin": {
+          "baslik": "New York Knicks deplasmanda Atlanta Hawks'ı 128-125 yendi.",
+          "ozet_kisa": "Karl-Anthony Towns 36 sayı attı.",
+          "muzip": false,
+          "neden_onemli": "New York Knicks, konferansta 2. sıraya yükseldi."
+        }
+      },
+      {
+        "mac_id": "0022500439",
+        "alan": "mutlaka",
+        "gerekce": [
+          "T28: başlık düz skor ama metinde güçlü olgu var (performans) — düz skor son çaredir, başlık en güçlü olguyu kullanmalı"
+        ],
+        "metin": {
+          "baslik": "Sürpriz bir sonuçla Brooklyn Nets, Minnesota Timberwolves'i 123-107 yendi.",
+          "ozet_kisa": "Cam Thomas 30 sayı attı.",
+          "muzip": false
+        }
+      }
+    ],
+    "mutlaka_mac": 4,
+    "ret_orani": 0.889,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 9,
+      "girdi_token": 27875,
+      "cikti_token": 31563,
+      "cache_yazma_token": 47415,
+      "cache_okuma_token": 90632,
+      "toplam_maliyet_usd": 0.508,
+      "butce_asildi": false
+    }
+  }
+}

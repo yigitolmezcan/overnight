@@ -1,0 +1,259 @@
+{
+  "tarih": "2025-12-27",
+  "hesaplandi": "2026-08-30T09:31:55.175315Z",
+  "en_iyi_skor": 9.35,
+  "maclar": [
+    {
+      "rozet": 9.35,
+      "ham": 12.52,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 10,
+        "K": 2.3,
+        "T": 0,
+        "D": 8
+      },
+      "yukselticiler": {
+        "Y": 6.3,
+        "F": 10,
+        "G": 8,
+        "A": 6.42
+      },
+      "dram_terfi": true,
+      "mac_id": "0022500433",
+      "ev": "ORL",
+      "dep": "DEN",
+      "ev_skor": 127,
+      "dep_skor": 126,
+      "en_iyi_performans": "Nikola Jokić",
+      "esitlik_bozucu": [
+        8,
+        -1
+      ]
+    },
+    {
+      "rozet": 8.87,
+      "ham": 10.3,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 8.64,
+        "K": 2.25,
+        "T": 0,
+        "D": 6
+      },
+      "yukselticiler": {
+        "Y": 5.49,
+        "F": 8,
+        "G": 0,
+        "A": 6.58
+      },
+      "dram_terfi": true,
+      "mac_id": "0022500435",
+      "ev": "ATL",
+      "dep": "NYK",
+      "ev_skor": 125,
+      "dep_skor": 128,
+      "en_iyi_performans": "Karl-Anthony Towns",
+      "esitlik_bozucu": [
+        6,
+        -3
+      ]
+    },
+    {
+      "rozet": 8.04,
+      "ham": 8.08,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.9,
+        "K": 6.25,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 4.2,
+        "F": 0,
+        "G": 0,
+        "A": 4.75
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500440",
+      "ev": "SAS",
+      "dep": "UTA",
+      "ev_skor": 114,
+      "dep_skor": 127,
+      "en_iyi_performans": "Victor Wembanyama",
+      "esitlik_bozucu": [
+        0,
+        -13
+      ]
+    },
+    {
+      "rozet": 7.11,
+      "ham": 7.11,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 5.27,
+        "K": 6.25,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.4,
+        "F": 0,
+        "G": 0,
+        "A": 5.75
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500439",
+      "ev": "MIN",
+      "dep": "BKN",
+      "ev_skor": 107,
+      "dep_skor": 123,
+      "en_iyi_performans": "Cam Thomas",
+      "esitlik_bozucu": [
+        0,
+        -16
+      ]
+    },
+    {
+      "rozet": 5.96,
+      "ham": 5.96,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 5.14,
+        "K": 2.71,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 5.81,
+        "F": 3,
+        "G": 0,
+        "A": 6.67
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500437",
+      "ev": "CHI",
+      "dep": "MIL",
+      "ev_skor": 103,
+      "dep_skor": 112,
+      "en_iyi_performans": "Giannis Antetokounmpo",
+      "esitlik_bozucu": [
+        0,
+        -9
+      ]
+    },
+    {
+      "rozet": 5.91,
+      "ham": 5.91,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 6.25,
+        "K": 1.78,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.23,
+        "F": 0,
+        "G": 0,
+        "A": 2.0
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500436",
+      "ev": "MIA",
+      "dep": "IND",
+      "ev_skor": 142,
+      "dep_skor": 116,
+      "en_iyi_performans": "Andrew Wiggins",
+      "esitlik_bozucu": [
+        0,
+        -26
+      ]
+    },
+    {
+      "rozet": 5.84,
+      "ham": 5.84,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 5.56,
+        "K": 2.96,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.73,
+        "F": 0,
+        "G": 0,
+        "A": 7.35
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500438",
+      "ev": "HOU",
+      "dep": "CLE",
+      "ev_skor": 117,
+      "dep_skor": 100,
+      "en_iyi_performans": "Kevin Durant",
+      "esitlik_bozucu": [
+        0,
+        -17
+      ]
+    },
+    {
+      "rozet": 2.96,
+      "ham": 2.96,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 2.85,
+        "K": 1.23,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 4.15,
+        "F": 0,
+        "G": 0,
+        "A": 4.75
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500434",
+      "ev": "NOP",
+      "dep": "PHX",
+      "ev_skor": 114,
+      "dep_skor": 123,
+      "en_iyi_performans": "Trey Murphy III",
+      "esitlik_bozucu": [
+        0,
+        -9
+      ]
+    },
+    {
+      "rozet": 1.93,
+      "ham": 1.93,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 1.38,
+        "K": 1.71,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.03,
+        "F": 3,
+        "G": 0,
+        "A": 2.67
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500432",
+      "ev": "SAC",
+      "dep": "DAL",
+      "ev_skor": 113,
+      "dep_skor": 107,
+      "en_iyi_performans": "Cooper Flagg",
+      "esitlik_bozucu": [
+        0,
+        -6
+      ]
+    }
+  ]
+}
