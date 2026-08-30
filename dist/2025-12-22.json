@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-22",
-  "uretildi": "2026-08-28T17:55:19.359124Z",
+  "uretildi": "2026-08-30T11:05:40.381450Z",
   "mac_sayisi": 7,
   "bars": [
     {
@@ -150,13 +150,51 @@
   "mutlaka": [
     {
       "id": "g-mutlaka-0",
+      "mac_id": "0022500403",
       "kisa": false,
       "mac": "Boston Celtics — Indiana Pacers",
       "skor": "103–95",
       "rozet": 8.31,
-      "baslik": "Boston, 20 sayılık farktan dönerek Indiana'yı 103-95 yendi.",
-      "neden_onemli": "Boston, geceyi Doğu Konferansı'nda 3. sırada kapattı.",
-      "ozet": "Indiana, ilk çeyreği 35-26 kazanıp ilk yarı sonunda farkı 18 sayıya çıkararak kontrolü ele geçirdi. Üçüncü çeyrekte toparlanan Boston, son periyotta rakibini 29-13 üstünlükle geride bırakarak farkı kapattı. Dördüncü çeyrekte Derrick White'ın bulduğu basketle öne geçen Celtics, bir daha liderliği rakibine kaptırmadı. Maçın en etkili ismi Jaylen Brown, 31 sayı ve 9 ribaundla Boston'ı sırtladı.",
+      "baslik": "Boston Celtics, 20 sayılık farktan dönüp Indiana Pacers'i yendi.",
+      "neden_onemli": "Boston Celtics, konferansta 3. sıraya yükseldi.",
+      "akis": [
+        {
+          "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_onde",
+          "zaman": "Devre",
+          "saat": null,
+          "cumle": "Indiana önde kapadı",
+          "detay": "43–61",
+          "kritik": false
+        },
+        {
+          "tip": "ceyrek_ustunlugu",
+          "kalip": "ust_aldi",
+          "zaman": "3Ç",
+          "saat": null,
+          "cumle": "Boston çeyreği 31-21 aldı",
+          "detay": "fark 8'e indi",
+          "kritik": false
+        },
+        {
+          "tip": "liderlik",
+          "kalip": "lider_basket",
+          "zaman": "4Ç",
+          "saat": "6:37",
+          "cumle": "Derrick White'ın basketiyle öne geçti",
+          "detay": "87–86 · liderlik bir daha değişmedi",
+          "kritik": true
+        },
+        {
+          "tip": "en_etkili",
+          "kalip": "etkili_duz",
+          "zaman": "Son",
+          "saat": null,
+          "cumle": "Jaylen Brown 31 sayı",
+          "detay": "maçın en etkilisi",
+          "kritik": false
+        }
+      ],
       "box": {
         "ev": {
           "takim": "Boston Celtics",
@@ -10786,7 +10824,27 @@
           ]
         },
         "kritik": null
-      }
+      },
+      "akis": [
+        {
+          "tip": "liderlik",
+          "kalip": "lider_cevirdi",
+          "zaman": "1Ç",
+          "saat": "4:25",
+          "cumle": "Kenrich Williams skoru çevirdi",
+          "detay": "19–18 · liderlik bir daha değişmedi",
+          "kritik": true
+        },
+        {
+          "tip": "esitlik",
+          "kalip": "esit_esitledi",
+          "zaman": "2Ç",
+          "saat": "9:50",
+          "cumle": "Memphis skoru eşitledi",
+          "detay": "37–37",
+          "kritik": false
+        }
+      ]
     },
     {
       "id": "a-0022500404",
@@ -11365,7 +11423,27 @@
         "wtf": null,
         "kilit": null,
         "kritik": null
-      }
+      },
+      "akis": [
+        {
+          "tip": "liderlik",
+          "kalip": "lider_ile",
+          "zaman": "4Ç",
+          "saat": "5:14",
+          "cumle": "New Orleans, Derik Queen ile öne geçti",
+          "detay": "103–102 · liderlik bir daha değişmedi",
+          "kritik": true
+        },
+        {
+          "tip": "en_etkili",
+          "kalip": "etkili_oncikti",
+          "zaman": "Son",
+          "saat": null,
+          "cumle": "Anthony Davis 35 sayı ile öne çıktı",
+          "detay": null,
+          "kritik": false
+        }
+      ]
     },
     {
       "id": "a-0022500408",
@@ -12006,7 +12084,27 @@
             }
           ]
         }
-      }
+      },
+      "akis": [
+        {
+          "tip": "esitlik",
+          "kalip": "esit_kapatti",
+          "zaman": "4Ç",
+          "saat": "3:44",
+          "cumle": "Detroit farkı kapattı",
+          "detay": "100–100",
+          "kritik": true
+        },
+        {
+          "tip": "en_etkili",
+          "kalip": "etkili_enler",
+          "zaman": "Son",
+          "saat": null,
+          "cumle": "Maçın en etkilisi Jalen Duren",
+          "detay": "26 sayı",
+          "kritik": false
+        }
+      ]
     }
   ],
   "diger": [

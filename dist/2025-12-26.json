@@ -186,6 +186,7 @@
   "mutlaka": [
     {
       "id": "g-mutlaka-0",
+      "mac_id": "0022500430",
       "kisa": false,
       "mac": "Utah Jazz — Detroit Pistons",
       "skor": "131–129",
@@ -212,15 +213,6 @@
           "kritik": false
         },
         {
-          "tip": "esitlik",
-          "kalip": "esit_esitledi",
-          "zaman": "Son",
-          "saat": "0:18",
-          "cumle": "Detroit skoru eşitledi",
-          "detay": "129–129",
-          "kritik": false
-        },
-        {
           "tip": "karar_ani",
           "kalip": "karar_basket",
           "zaman": "Son",
@@ -228,6 +220,15 @@
           "cumle": "Keyonte George'un basketi",
           "detay": "131–129 · maçı bitirdi",
           "kritik": true
+        },
+        {
+          "tip": "en_etkili",
+          "kalip": "etkili_duz",
+          "zaman": "Son",
+          "saat": null,
+          "cumle": "Cade Cunningham 29 sayı",
+          "detay": "maçın en etkilisi",
+          "kritik": false
         }
       ],
       "box": {

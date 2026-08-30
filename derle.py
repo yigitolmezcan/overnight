@@ -925,7 +925,8 @@ AKIS_KALIP_LIMITI = 2       # aynı CÜMLE KALIBI gecede en fazla bu kadar
 
 
 def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI,
-               tip_sayaci=None, kalip_sayaci=None, _yasak_tipler=()):
+               tip_sayaci=None, kalip_sayaci=None, anilan_metin=None,
+               _yasak_tipler=()):
     """[{tip, zaman, saat, cumle, detay, kritik}] — en fazla `satir_sayisi`.
 
     `tip_sayaci`: GECE ÇAPINDA paylaşılan {tip: kaç kez kullanıldı}.
@@ -977,6 +978,16 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
             _o = _adaylar.get(_t)
             if _o is not None and _akis_sirasi(_o) < _akis_sirasi(_son_donus):
                 _adaylar.pop(_t)
+    # EN İYİ PERFORMANS KARTTA ANILMALI (T14). Paragraf gövdesi kalkınca
+    # oyuncu başlığa ya da alt satıra sığmayabiliyor; o zaman akışın
+    # "maçın en etkilisi" satırı onu anıyor. Dört gece bu yüzden yayın
+    # kapısında durmuştu.
+    _zorunlu = None
+    if en_iyi_performans and anilan_metin is not None:
+        _soyad = en_iyi_performans.strip().split()[-1].lower()
+        if _soyad not in (anilan_metin or "").lower():
+            _zorunlu = by_tip.get("en_etkili")
+
     kritik = next((_adaylar[t] for t in AKIS_KRITIK_SIRASI if t in _adaylar), None)
     if kritik is None:
         # Aday yoksa en geç GERÇEK AN işaretleniyor. Çeyrek özetleri ve
@@ -1003,7 +1014,11 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
         return o.get("periyot") or 0
 
     def _sinirsiz(o):
-        return o["tip"] == "karar_ani"
+        # Çeyrek kısıtı ANLARA uygulanıyor. "Karar anı" istisnası zaten
+        # vardı; "maçın en etkilisi" de bir an değil, maçın TOPLAMI —
+        # bir çeyreğe ait değil. Kısıta takılınca T14'ün gerektirdiği
+        # satır bloğa giremiyordu (22 Aralık, Jaylen Brown).
+        return o["tip"] in ("karar_ani", "en_etkili")
 
     secili = [kritik]
     dolu_ceyrekler = set() if _sinirsiz(kritik) else {_ceyrek(kritik)}
@@ -1069,10 +1084,28 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
             if _tipten_ekle(tip, yalniz_ilk_yari=True):
                 break
 
+    # Zorunlu satır dolgudan ÖNCE: yeri kapılmasın.
+    if _zorunlu is not None and _zorunlu not in secili:
+        _ekle(_zorunlu)
+        kullanilan_tip.add("en_etkili")
+
     for tip in _sirali(AKIS_DOLGU_SIRASI):
         if len(secili) >= satir_sayisi:
             break
         _tipten_ekle(tip)
+
+    # SATIR SINIRI ZORUNLU SATIRDAN SONRA DA GEÇERLİ. "Maçın en etkilisi"
+    # satırı T14 için garanti ediliyor ama sayıyı aşamaz: "Göz at" iki
+    # satır demek, üç değil (ölçüldü: dört gecede katman hiyerarşisi
+    # bozuldu). Fazlalık, kritik ve zorunlu OLMAYAN satırlardan atılıyor.
+    if len(secili) > satir_sayisi:
+        korunan = {id(kritik)} | ({id(_zorunlu)} if _zorunlu is not None else set())
+        atilabilir = [o for o in secili if id(o) not in korunan]
+        # En az anlatan önce gider: dolgu sırasında en sonda olan.
+        atilabilir.sort(key=lambda o: -(AKIS_DOLGU_SIRASI.index(o["tip"])
+                                        if o["tip"] in AKIS_DOLGU_SIRASI else 99))
+        while len(secili) > satir_sayisi and atilabilir:
+            secili.remove(atilabilir.pop(0))
 
     secili.sort(key=_akis_sirasi)
     # CÜMLE KALIBI ÇEŞİTLİLİĞİ (kullanıcı kararı). Tip sayacı yetmiyor:
@@ -1108,6 +1141,7 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
     if len(satirlar) < asgari:
         return []
 
+    _ilk_satirlar = satirlar
     # AÇILIŞ ÇEŞİTLİLİĞİ. Bloğun ilk satırı KRONOLOJİK sıradan doğuyor,
     # seçim sırasından değil — bu yüzden dolgu sayacı ona yetişmiyordu
     # (ölçüldü: sayaç eklendikten sonra da dört bloğun üçü `ceyrek_sonu`
@@ -1127,15 +1161,26 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
                                       or o["zaman"] in ("1Ç", "2Ç", "Devre") for o in l)
         if (_acilis >= AKIS_ACILIS_LIMITI and _ilk != kritik["tip"]
                 and satir_sayisi >= AKIS_ASGARI_SATIR):
+            # Yeniden kurma KOPYA sayaçla seçim yapıyor: gerçek sayacı
+            # kirletmesin ama limiti de görsün. Sayaçsız çağrılınca
+            # kalıp limiti atlanıyordu — 18 Aralık'ta 'etkili_duz' üç kez
+            # geçti (limit iki).
             _alt = _mac_akisi(gercekler, en_iyi_performans, satir_sayisi,
-                              tip_sayaci=None, kalip_sayaci=None,
-                              _yasak_tipler=(_ilk,))
+                              tip_sayaci=None, kalip_sayaci=dict(kalip_sayaci or {}),
+                              anilan_metin=anilan_metin, _yasak_tipler=(_ilk,))
             if (_alt and _alt[0]["tip"] != _ilk and len(_alt) >= asgari
                     and (_ilk_yari_var(_alt) or not _ilk_yari_var(satirlar))):
                 satirlar = _alt
     if tip_sayaci is not None:
         for x in satirlar:
             tip_sayaci[x["tip"]] = tip_sayaci.get(x["tip"], 0) + 1
+        # Yeniden kurma kabul edildiyse onun kalıpları gerçek sayaca
+        # burada işleniyor (seçim kopyada yapılmıştı).
+        if kalip_sayaci is not None and satirlar is not _ilk_satirlar:
+            for x in _ilk_satirlar:
+                kalip_sayaci[x["kalip"]] = max(0, kalip_sayaci.get(x["kalip"], 1) - 1)
+            for x in satirlar:
+                kalip_sayaci[x["kalip"]] = kalip_sayaci.get(x["kalip"], 0) + 1
         _ilk = satirlar[0]["tip"]
         tip_sayaci[("acilis", _ilk)] = tip_sayaci.get(("acilis", _ilk), 0) + 1
     return satirlar
@@ -2075,6 +2120,10 @@ def derle(tarih_str):
         kaybeden_kod = plan.get(gid, {}).get("olgu_ham", {}).get("kaybeden")
         mutlaka.append({
             "id": mutlaka_id_by_gid[gid],
+            # Yayın kapısı bloğu maç kimliğinden buluyor (akış satırlarını
+            # okumak için). Blok id'si sıra numarası taşıyor, maç kimliği
+            # değil — eşleşme için ayrı alan gerekti.
+            "mac_id": gid,
             "kisa": i > 0,
             "mac": f"{_takim_adi(mutlaka_skor['ev'])} — {_takim_adi(mutlaka_skor['dep'])}",
             "skor": f"{mutlaka_skor['ev_skor']}–{mutlaka_skor['dep_skor']}",
@@ -2089,7 +2138,9 @@ def derle(tarih_str):
             "akis": _mac_akisi(gercek_gece["maclar"][gid],
                                en_iyi_performans_by_gid.get(gid),
                                tip_sayaci=_akis_tip_sayaci,
-                               kalip_sayaci=_akis_kalip_sayaci),
+                               kalip_sayaci=_akis_kalip_sayaci,
+                               anilan_metin=" ".join(
+                                   [mv.get("baslik", ""), mv.get("neden_onemli", "")])),
             "box": _box_score(ham["maclar"][gid], tum_metin, kaybeden_kod, gercek_gece["maclar"][gid]),
             # Sol ray rengi: KAZANAN takımın rengi (aşağıda çakışma
             # çözümünden geçiyor).
@@ -2177,7 +2228,8 @@ def derle(tarih_str):
                                        en_iyi_performans_by_gid.get(gid),
                                        satir_sayisi=AKIS_GOZAT_SATIR,
                                        tip_sayaci=_akis_tip_sayaci,
-                                       kalip_sayaci=_akis_kalip_sayaci)
+                                       kalip_sayaci=_akis_kalip_sayaci,
+                                       anilan_metin=v.get("gec_satiri", ""))
             degerse_bak.append(girdi)
         else:
             diger.append(girdi)

@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-21",
-  "uretildi": "2026-08-28T14:04:29.934615Z",
+  "uretildi": "2026-08-30T11:05:27.855549Z",
   "mac_sayisi": 6,
   "bars": [
     {
@@ -81,7 +81,7 @@
       "metin": "Minnesota Timberwolves, 16 sayılık farktan dönüp Milwaukee Bucks'u geçti.",
       "anlatili": true,
       "hedef_id": "g-mutlaka-3",
-      "icon": "standings",
+      "icon": "default",
       "saat": "03:00",
       "rozet": 7.14,
       "skor": "MIN 103 – MIL 100",
@@ -126,13 +126,51 @@
   "mutlaka": [
     {
       "id": "g-mutlaka-0",
+      "mac_id": "0022500401",
       "kisa": false,
       "mac": "Sacramento Kings — Houston Rockets",
       "skor": "125–124",
       "rozet": 9.06,
-      "baslik": "Uzatmaya giden maçta Sacramento Kings, Houston Rockets'i 125-124 yendi.",
+      "baslik": "Sacramento Kings, Houston Rockets'i son saniyede devirdi.",
       "neden_onemli": "",
-      "ozet": "Sacramento Kings, 14 sayılık farkı eritti. Dennis Schröder 10 asist yaptı.",
+      "akis": [
+        {
+          "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_onde",
+          "zaman": "Devre",
+          "saat": null,
+          "cumle": "Houston önde kapadı",
+          "detay": "57–68",
+          "kritik": false
+        },
+        {
+          "tip": "ceyrek_ustunlugu",
+          "kalip": "ust_aldi",
+          "zaman": "Maç sonu",
+          "saat": null,
+          "cumle": "Sacramento çeyreği 30-21 aldı",
+          "detay": "skor eşitlendi",
+          "kritik": false
+        },
+        {
+          "tip": "karar_ani",
+          "kalip": "karar_basket",
+          "zaman": "Son",
+          "saat": "0:03",
+          "cumle": "Dennis Schröder'in basketi",
+          "detay": "125–124 · maçı bitirdi",
+          "kritik": true
+        },
+        {
+          "tip": "en_etkili",
+          "kalip": "etkili_duz",
+          "zaman": "Son",
+          "saat": null,
+          "cumle": "Dennis Schröder 24 sayı",
+          "detay": "maçın en etkilisi",
+          "kritik": false
+        }
+      ],
       "box": {
         "ev": {
           "takim": "Sacramento Kings",
@@ -686,13 +724,51 @@
     },
     {
       "id": "g-mutlaka-1",
+      "mac_id": "0022500396",
       "kisa": true,
       "mac": "Atlanta Hawks — Chicago Bulls",
       "skor": "150–152",
       "rozet": 9.06,
-      "baslik": "Chicago Bulls, Atlanta Hawks deplasmanında son saniyelerde 152-150 kazandı",
-      "neden_onemli": "Doğu Konferansı'nda play-in sıralamasını etkileyen bir maçtı, liderlik 19 kez el değiştirdi.",
-      "ozet": "Maça eşit başlayan Chicago, ikinci periyotta hücumda üstünlük kurup rakibinin önüne geçti. Bulls farkını bir ara 11 sayıya kadar genişletse de, maç son çeyreğe gergin bir skorla girdi. Son çeyrekte taraflar sırayla öne geçti, kararı son saniyelerde Chicago'dan Matas Buzelis'in serbest atışları verdi. Bulls'ta 28 sayı atan Buzelis, 11 şut denemesinde sadece bir kez hedefi ıskaladı.",
+      "baslik": "Chicago, Atlanta'yı son saniyede devirdi.",
+      "neden_onemli": "",
+      "akis": [
+        {
+          "tip": "devre_farki",
+          "kalip": "devre_onde",
+          "zaman": "Devre",
+          "saat": null,
+          "cumle": "Chicago 10 sayı önde",
+          "detay": "73–83",
+          "kritik": false
+        },
+        {
+          "tip": "esitlik",
+          "kalip": "esit_esitledi",
+          "zaman": "3Ç",
+          "saat": "0:57",
+          "cumle": "Chicago skoru eşitledi",
+          "detay": "112–112",
+          "kritik": false
+        },
+        {
+          "tip": "karar_ani",
+          "kalip": "karar_sonsoz",
+          "zaman": "Son",
+          "saat": "0:04",
+          "cumle": "Son sözü Matas Buzelis söyledi",
+          "detay": "150–152",
+          "kritik": true
+        },
+        {
+          "tip": "en_etkili",
+          "kalip": "etkili_oncikti",
+          "zaman": "Son",
+          "saat": null,
+          "cumle": "Trae Young 35 sayı ile öne çıktı",
+          "detay": null,
+          "kritik": false
+        }
+      ],
       "box": {
         "ev": {
           "takim": "Atlanta Hawks",
@@ -1317,13 +1393,51 @@
     },
     {
       "id": "g-mutlaka-2",
+      "mac_id": "0022500398",
       "kisa": true,
       "mac": "New York Knicks — Miami Heat",
       "skor": "132–125",
       "rozet": 8.84,
-      "baslik": "Jalen Brunson'ın 47 sayısıyla New York, Miami'yi 132-125 yendi",
-      "neden_onemli": "20. galibiyetini alan Knicks, geceyi Doğu Konferansı'nda 2. sırada kapattı.",
-      "ozet": "Knicks, Miami'nin açtığı 10 sayılık farktan dönerek maçı kazandı. Brunson, 11 serbest atışının tamamını kullanarak sahadan yüksek isabetle oynadı ve 8 asistle takımını yönetti. Miami'nin ribaund üstünlüğüne rağmen Knicks üçlükte üstün geldi.",
+      "baslik": "Brunson'ın 47 sayısıyla New York, Miami'yi yendi.",
+      "neden_onemli": "New York Knicks, konferansta 2. sıraya yükseldi.",
+      "akis": [
+        {
+          "tip": "liderlik",
+          "kalip": "lider_basket",
+          "zaman": "2Ç",
+          "saat": "2:43",
+          "cumle": "Jalen Brunson'un basketiyle öne geçti",
+          "detay": "58–57 · liderlik bir daha değişmedi",
+          "kritik": true
+        },
+        {
+          "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_lehine",
+          "zaman": "3Ç",
+          "saat": null,
+          "cumle": "Çeyrek New York lehine bitti",
+          "detay": "105–99",
+          "kritik": false
+        },
+        {
+          "tip": "en_buyuk_fark",
+          "kalip": "fark_cikardi",
+          "zaman": "4Ç",
+          "saat": "9:50",
+          "cumle": "New York farkı 11'e çıkardı",
+          "detay": "en büyük fark",
+          "kritik": false
+        },
+        {
+          "tip": "en_etkili",
+          "kalip": "etkili_enler",
+          "zaman": "Son",
+          "saat": null,
+          "cumle": "Maçın en etkilisi Jalen Brunson",
+          "detay": "47 sayı",
+          "kritik": false
+        }
+      ],
       "box": {
         "ev": {
           "takim": "New York Knicks",
@@ -1867,13 +1981,51 @@
     },
     {
       "id": "g-mutlaka-3",
+      "mac_id": "0022500400",
       "kisa": true,
       "mac": "Minnesota Timberwolves — Milwaukee Bucks",
       "skor": "103–100",
       "rozet": 7.14,
-      "baslik": "Minnesota, sahasında Milwaukee'yi 103-100 yendi.",
-      "neden_onemli": "Timberwolves, 16 sayılık farktan dönerek maçı son çeyrekte kontrol altına aldı.",
-      "ozet": "Milwaukee Bucks ilk yarıda geniş bir üstünlük kurdu, ancak üçüncü çeyrekte Minnesota Timberwolves'un 27-15'lik üstünlüğüyle skor eşitlendi. Liderliğin maç boyunca üç kez el değiştirdiği karşılaşmada son çeyreği kontrollü geçen Timberwolves, farkı koruyarak sahasında galibiyeti aldı.",
+      "baslik": "Minnesota, Milwaukee'yi son saniyede devirdi.",
+      "neden_onemli": "",
+      "akis": [
+        {
+          "tip": "devre_farki",
+          "kalip": "devre_fark",
+          "zaman": "Devre",
+          "saat": null,
+          "cumle": "Devrede fark 12",
+          "detay": "48–60",
+          "kritik": false
+        },
+        {
+          "tip": "sayi_serisi",
+          "kalip": "seri_gitti",
+          "zaman": "3Ç",
+          "saat": "3:06",
+          "cumle": "Minnesota 20-0 gitti",
+          "detay": "fark 5",
+          "kritik": false
+        },
+        {
+          "tip": "karar_ani",
+          "kalip": "karar_bitirdi",
+          "zaman": "Son",
+          "saat": "0:00",
+          "cumle": "Maçı Kevin Porter Jr. bitirdi",
+          "detay": "103–100",
+          "kritik": true
+        },
+        {
+          "tip": "en_etkili",
+          "kalip": "etkili_kisa",
+          "zaman": "Son",
+          "saat": null,
+          "cumle": "Kevin Porter Jr. öne çıktı",
+          "detay": "24 sayı",
+          "kritik": false
+        }
+      ],
       "box": {
         "ev": {
           "takim": "Minnesota Timberwolves",
@@ -9267,52 +9419,101 @@
       "renk_degisti": true
     },
     {
-      "id": 1628978,
-      "isim": "Donte DiVincenzo",
-      "takim": "MIN",
-      "pos": "G",
-      "_gmsc": 15.600000000000001,
+      "id": 1642285,
+      "isim": "Cam Spencer",
+      "takim": "MEM",
+      "pos": "",
+      "_gmsc": 0,
       "son5": [
         {
-          "sayi": 21,
-          "rakip": "Golden State",
+          "sayi": 17,
+          "rakip": "LA Clippers",
           "bu_gece": false,
           "ust": true
         },
         {
-          "sayi": 18,
-          "rakip": "Sacramento",
+          "sayi": 12,
+          "rakip": "Portland",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 20,
+          "rakip": "Utah",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 27,
+          "rakip": "LA Clippers",
           "bu_gece": false,
           "ust": true
         },
         {
           "sayi": 19,
-          "rakip": "Memphis",
+          "rakip": "Washington",
           "bu_gece": false,
-          "ust": true
-        },
-        {
-          "sayi": 15,
-          "rakip": "Oklahoma City",
-          "bu_gece": false,
-          "ust": true
-        },
-        {
-          "sayi": 18,
-          "rakip": "Milwaukee",
-          "bu_gece": true,
           "ust": true
         }
       ],
-      "son5_ort": 18.2,
-      "sezon_ort": 12.9,
-      "fark": 5.3,
-      "yuzde": 41.1,
+      "son5_ort": 19.0,
+      "sezon_ort": 11.9,
+      "fark": 7.1,
+      "yuzde": 59.7,
       "ust_sayisi": 5,
       "alt_sayisi": 0,
-      "son5_dakika": 34.5,
-      "renk": "#78BE20",
-      "asil_renk": "#3B7FD4",
+      "son5_dakika": 30.6,
+      "renk": "#12173F",
+      "asil_renk": "#6C8CC7",
+      "renk_degisti": true
+    },
+    {
+      "id": 1642366,
+      "isim": "Quinten Post",
+      "takim": "GSW",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 19,
+          "rakip": "Chicago",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 16,
+          "rakip": "Minnesota",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 11,
+          "rakip": "Portland",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 9,
+          "rakip": "Phoenix",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 7,
+          "rakip": "Phoenix",
+          "bu_gece": false,
+          "ust": false
+        }
+      ],
+      "son5_ort": 12.4,
+      "sezon_ort": 8.3,
+      "fark": 4.1,
+      "yuzde": 49.4,
+      "ust_sayisi": 4,
+      "alt_sayisi": 1,
+      "son5_dakika": 26.3,
+      "renk": "#FFC72C",
+      "asil_renk": "#2E6BD6",
       "renk_degisti": true
     }
   ],
@@ -9367,6 +9568,153 @@
       "renk_degisti": false
     },
     {
+      "id": 1629656,
+      "isim": "Quentin Grimes",
+      "takim": "PHI",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 7,
+          "rakip": "Los Angeles",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 10,
+          "rakip": "Indiana",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 14,
+          "rakip": "Atlanta",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 5,
+          "rakip": "New York",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 6,
+          "rakip": "Dallas",
+          "bu_gece": false,
+          "ust": false
+        }
+      ],
+      "son5_ort": 8.4,
+      "sezon_ort": 15.6,
+      "fark": -7.2,
+      "yuzde": -46.2,
+      "ust_sayisi": 0,
+      "alt_sayisi": 5,
+      "son5_dakika": 29.9,
+      "renk": "#3A8DDE",
+      "asil_renk": "#3A8DDE",
+      "renk_degisti": false
+    },
+    {
+      "id": 1630228,
+      "isim": "Jonathan Kuminga",
+      "takim": "GSW",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 10,
+          "rakip": "New Orleans",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 8,
+          "rakip": "Oklahoma City",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 9,
+          "rakip": "Philadelphia",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 4,
+          "rakip": "Cleveland",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 2,
+          "rakip": "Phoenix",
+          "bu_gece": false,
+          "ust": false
+        }
+      ],
+      "son5_ort": 6.6,
+      "sezon_ort": 10.9,
+      "fark": -4.3,
+      "yuzde": -39.4,
+      "ust_sayisi": 0,
+      "alt_sayisi": 5,
+      "son5_dakika": 17.1,
+      "renk": "#FFC72C",
+      "asil_renk": "#2E6BD6",
+      "renk_degisti": true
+    },
+    {
+      "id": 1629631,
+      "isim": "De'Andre Hunter",
+      "takim": "CLE",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 6,
+          "rakip": "Golden State",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 15,
+          "rakip": "Washington",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 4,
+          "rakip": "Charlotte",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 12,
+          "rakip": "Chicago",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 11,
+          "rakip": "Chicago",
+          "bu_gece": false,
+          "ust": false
+        }
+      ],
+      "son5_ort": 9.6,
+      "sezon_ort": 15.3,
+      "fark": -5.7,
+      "yuzde": -37.3,
+      "ust_sayisi": 0,
+      "alt_sayisi": 5,
+      "son5_dakika": 28.1,
+      "renk": "#B3123F",
+      "asil_renk": "#B3123F",
+      "renk_degisti": false
+    },
+    {
       "id": 1629640,
       "isim": "Keldon Johnson",
       "takim": "SAS",
@@ -9413,104 +9761,6 @@
       "son5_dakika": 18.1,
       "renk": "#C4CED4",
       "asil_renk": "#C4CED4",
-      "renk_degisti": false
-    },
-    {
-      "id": 203084,
-      "isim": "Harrison Barnes",
-      "takim": "SAS",
-      "pos": "F",
-      "_gmsc": 9.600000000000001,
-      "son5": [
-        {
-          "sayi": 6,
-          "rakip": "Oklahoma City",
-          "bu_gece": false,
-          "ust": false
-        },
-        {
-          "sayi": 11,
-          "rakip": "New York",
-          "bu_gece": false,
-          "ust": false
-        },
-        {
-          "sayi": 2,
-          "rakip": "Washington",
-          "bu_gece": false,
-          "ust": false
-        },
-        {
-          "sayi": 7,
-          "rakip": "Atlanta",
-          "bu_gece": false,
-          "ust": false
-        },
-        {
-          "sayi": 14,
-          "rakip": "Washington",
-          "bu_gece": true,
-          "ust": true
-        }
-      ],
-      "son5_ort": 8.0,
-      "sezon_ort": 11.3,
-      "fark": -3.3,
-      "yuzde": -29.2,
-      "ust_sayisi": 1,
-      "alt_sayisi": 4,
-      "son5_dakika": 23.3,
-      "renk": "#C4CED4",
-      "asil_renk": "#C4CED4",
-      "renk_degisti": false
-    },
-    {
-      "id": 1630193,
-      "isim": "Immanuel Quickley",
-      "takim": "TOR",
-      "pos": "G",
-      "_gmsc": 14.9,
-      "son5": [
-        {
-          "sayi": 11,
-          "rakip": "Boston",
-          "bu_gece": false,
-          "ust": false
-        },
-        {
-          "sayi": 15,
-          "rakip": "Miami",
-          "bu_gece": false,
-          "ust": false
-        },
-        {
-          "sayi": 9,
-          "rakip": "Milwaukee",
-          "bu_gece": false,
-          "ust": false
-        },
-        {
-          "sayi": 3,
-          "rakip": "Boston",
-          "bu_gece": false,
-          "ust": false
-        },
-        {
-          "sayi": 17,
-          "rakip": "Brooklyn",
-          "bu_gece": true,
-          "ust": true
-        }
-      ],
-      "son5_ort": 11.0,
-      "sezon_ort": 15.3,
-      "fark": -4.3,
-      "yuzde": -28.1,
-      "ust_sayisi": 1,
-      "alt_sayisi": 4,
-      "son5_dakika": 31.5,
-      "renk": "#CE1141",
-      "asil_renk": "#CE1141",
       "renk_degisti": false
     }
   ],
@@ -10477,7 +10727,7 @@
       "mac": "Brooklyn Nets — Toronto Raptors",
       "skor": "96–81",
       "rozet": 2.45,
-      "why": "",
+      "why": "gece sırası 2",
       "metin": "Brooklyn Nets evinde Toronto Raptors'u 96-81 yendi.",
       "box": {
         "ev": {

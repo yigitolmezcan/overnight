@@ -496,7 +496,15 @@ def baslik_iskeletinden(mac, olgu, en_iyi_ad=None, en_iyi_sayi=None):
         ceyrek = BASLIK_CEYREK_ADI.get(kopma["periyot"], f"{kopma['periyot']}.")
         adaylar.append((45, f"{k}, {y}'{ek} {ceyrek} çeyrekte kopardı."))
 
-    if en_iyi_ad and (en_iyi_sayi or 0) >= BASLIK_PERFORMANS:
+    # T24 KORUMASI: aynı maçta DAHA YÜKSEK GmSc'li bir kilometre sahibi
+    # varsa (tipik olarak kaybeden tarafta) kazananın daha küçük
+    # performansını başlığa taşımak "en iyisi anılmalı" kuralını çiğner.
+    # Bu koruma eski başlık kurucusunda vardı, iskelete taşınmamıştı ve
+    # yayın kapısı 23 Ekim'i durdurdu: başlık Curry'yi anıyordu, oysa
+    # aynı maçta Gordon daha yüksek GmSc ile eşiği geçmişti.
+    _kilo = (olgu.get("en_iyi_kilometre") or {}).get("oyuncu")
+    _kilo_baskasi = bool(_kilo) and _kilo != en_iyi_ad
+    if en_iyi_ad and (en_iyi_sayi or 0) >= BASLIK_PERFORMANS and not _kilo_baskasi:
         adaylar.append(((en_iyi_sayi - 20) * 4,
                         f"{en_iyi_ad}'{iyelik_eki(en_iyi_ad)} {en_iyi_sayi} sayısıyla "
                         f"{k}, {y}'{ek} yendi."))
@@ -667,7 +675,13 @@ _BAGLAM_AILESI = {"derece", "siralama", "seri"}
 
 
 def mutlaka_metni(gercekler, ham_mac, olgu, en_iyi_ad, takim_adi_fn, kisa=False):
-    """Mutlaka bil'in üç alanı — hiçbir olgu iki alanda birden geçmez."""
+    """Mutlaka bil'in üç alanı — hiçbir olgu iki alanda birden geçmez.
+
+    GÖVDE ALANI (`ozet`/`ozet_kisa`) DEVRE DIŞI, SİLİNMEDİ (kullanıcı
+    kararı: "geri dönmek gerekirse dursun"). Burada üretilmeye devam
+    ediyor ama yaz.py taslağa yalnız `baslik` ve `neden_onemli` yazıyor,
+    derle.py de gövdeyi hiç okumuyor. Geri dönmek için yaz.py'deki iki
+    alanlık sözlüğe `ozet`i eklemek yeterli."""
     olgu = olgu or {}
     mac = mac_baglami(gercekler, ham_mac, olgu, takim_adi_fn)
     en_iyi = oyuncu_bul(gercekler, en_iyi_ad)
@@ -873,6 +887,10 @@ def akis_kaliplari(olay, ad_fn=None):
         k.append(("etkili_duz", f"{oyuncu} {ist}", "maçın en etkilisi"))
         k.append(("etkili_oncikti", f"{oyuncu} {ist} ile öne çıktı", None))
         k.append(("etkili_enler", f"Maçın en etkilisi {oyuncu}", ist))
+        # DÖRDÜNCÜ KALIP. "En etkili" satırı T14 yüzünden neredeyse her
+        # blokta zorunlu; yoğun gecede yedi blok oluyor ve üç kalıp x iki
+        # limit = altı kapasite yetmiyordu (18 Aralık: etkili_duz 3 kez).
+        k.append(("etkili_kisa", f"{oyuncu} öne çıktı", ist))
 
     return [(kid, _gecir(c) or c, d) for kid, c, d in k if c]
 

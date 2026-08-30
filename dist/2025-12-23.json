@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-23",
-  "uretildi": "2026-08-29T16:26:27.608370Z",
+  "uretildi": "2026-08-30T11:05:59.209358Z",
   "mac_sayisi": 14,
   "bars": [
     {
@@ -281,13 +281,51 @@
   "mutlaka": [
     {
       "id": "g-mutlaka-0",
+      "mac_id": "0022500415",
       "kisa": false,
       "mac": "Dallas Mavericks — Denver Nuggets",
       "skor": "131–130",
       "rozet": 9.2,
-      "baslik": "Dallas, Jokić'in son saniye basketine karşın Denver'ı 131-130 geçti",
-      "neden_onemli": "Batı Konferansı'nın 3. sıradaki takımı Denver, gecenin sürpriz mağlubiyetlerinden birini aldı.",
-      "ozet": "Dallas ilk çeyrekte 41-27'lik üstünlükle öne geçti, ancak Denver üçüncü çeyrekte farkı eriterek maçı 103-103'e getirdi. Jokić'in bitime son saniyeler kala attığı basket farkı azaltsa da Dallas üstünlüğünü koruyarak kazandı. Cooper Flagg 33 sayı, 9 ribaund ve 9 asistle Dallas'ın en etkili ismi oldu. Flagg 21 şut denemesinin 14'ünü basketle sonuçlandırırken 39 dakika sahada kaldı.",
+      "baslik": "Cooper Flagg'ın 33 sayısıyla Dallas Mavericks, Denver Nuggets'i yendi.",
+      "neden_onemli": "",
+      "akis": [
+        {
+          "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_onde",
+          "zaman": "Devre",
+          "saat": null,
+          "cumle": "Dallas önde kapadı",
+          "detay": "66–56",
+          "kritik": false
+        },
+        {
+          "tip": "ceyrek_ustunlugu",
+          "kalip": "ust_aldi",
+          "zaman": "3Ç",
+          "saat": null,
+          "cumle": "Denver çeyreği 47-37 aldı",
+          "detay": "skor eşitlendi",
+          "kritik": false
+        },
+        {
+          "tip": "esitlik",
+          "kalip": "esit_esitledi",
+          "zaman": "4Ç",
+          "saat": "4:29",
+          "cumle": "Denver skoru eşitledi",
+          "detay": "121–121",
+          "kritik": false
+        },
+        {
+          "tip": "karar_ani",
+          "kalip": "karar_basket",
+          "zaman": "Son",
+          "saat": "0:31",
+          "cumle": "Nikola Jokić'in basketi",
+          "detay": "131–130 · maçı bitirdi",
+          "kritik": true
+        }
+      ],
       "box": {
         "ev": {
           "takim": "Dallas Mavericks",
@@ -903,13 +941,51 @@
     },
     {
       "id": "g-mutlaka-1",
+      "mac_id": "0022500422",
       "kisa": true,
       "mac": "LA Clippers — Houston Rockets",
       "skor": "128–108",
       "rozet": 8.66,
-      "baslik": "Kawhi Leonard'ın 41 sayılık gecesinde LA Clippers, Houston Rockets'i yendi.",
+      "baslik": "Kawhi Leonard'ın 41 sayısıyla Clippers, Houston'ı yendi.",
       "neden_onemli": "",
-      "ozet": "LA Clippers, Houston Rockets karşısında 128-108 kazandı.",
+      "akis": [
+        {
+          "tip": "liderlik",
+          "kalip": "lider_basket",
+          "zaman": "2Ç",
+          "saat": "3:38",
+          "cumle": "Kris Dunn'un basketiyle öne geçti",
+          "detay": "56–54 · liderlik bir daha değişmedi",
+          "kritik": true
+        },
+        {
+          "tip": "sayi_serisi",
+          "kalip": "seri_gitti",
+          "zaman": "3Ç",
+          "saat": "3:15",
+          "cumle": "LA Clippers 11-0 gitti",
+          "detay": "fark 17",
+          "kritik": false
+        },
+        {
+          "tip": "en_buyuk_fark",
+          "kalip": "fark_cikardi",
+          "zaman": "4Ç",
+          "saat": "1:35",
+          "cumle": "LA Clippers farkı 26'ya çıkardı",
+          "detay": "en büyük fark",
+          "kritik": false
+        },
+        {
+          "tip": "en_etkili",
+          "kalip": "etkili_duz",
+          "zaman": "Son",
+          "saat": null,
+          "cumle": "Kawhi Leonard 41 sayı",
+          "detay": "maçın en etkilisi",
+          "kritik": false
+        }
+      ],
       "box": {
         "ev": {
           "takim": "LA Clippers",
@@ -1619,13 +1695,51 @@
     },
     {
       "id": "g-mutlaka-2",
+      "mac_id": "0022500411",
       "kisa": true,
       "mac": "Atlanta Hawks — Chicago Bulls",
       "skor": "123–126",
       "rozet": 8.59,
-      "baslik": "Josh Giddey triple-double yaptı, Chicago Atlanta'yı 126-123 yendi",
-      "neden_onemli": "Chicago bu sonuçla üst üste dördüncü galibiyetine yükseldi, 18 sayılık farktan döndü.",
-      "ozet": "Giddey 19 sayı, 11 ribaund ve 15 asistle triple-double yaptı ve gecenin en verimli ismi oldu. Atlanta son saniyelerde eşitledi ancak Chicago, Vučević'in serbest atışlarıyla öne geçti. Coby White'ın 24 sayısı da galibiyette etkili oldu.",
+      "baslik": "Chicago, Atlanta'yı son saniyede devirdi.",
+      "neden_onemli": "Chicago Bulls, 4 maçlık galibiyet serisini sürdürdü.",
+      "akis": [
+        {
+          "tip": "devre_farki",
+          "kalip": "devre_onde",
+          "zaman": "Devre",
+          "saat": null,
+          "cumle": "Atlanta 13 sayı önde",
+          "detay": "68–55",
+          "kritik": false
+        },
+        {
+          "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_lehine",
+          "zaman": "3Ç",
+          "saat": null,
+          "cumle": "Çeyrek Atlanta lehine bitti",
+          "detay": "105–92",
+          "kritik": false
+        },
+        {
+          "tip": "karar_ani",
+          "kalip": "karar_sonsoz",
+          "zaman": "Son",
+          "saat": "0:01",
+          "cumle": "Son sözü Nikola Vučević söyledi",
+          "detay": "123–126",
+          "kritik": true
+        },
+        {
+          "tip": "en_etkili",
+          "kalip": "etkili_oncikti",
+          "zaman": "Son",
+          "saat": null,
+          "cumle": "Trae Young 22 sayı ile öne çıktı",
+          "detay": null,
+          "kritik": false
+        }
+      ],
       "box": {
         "ev": {
           "takim": "Atlanta Hawks",
@@ -21254,7 +21368,27 @@
           ]
         },
         "kritik": null
-      }
+      },
+      "akis": [
+        {
+          "tip": "liderlik",
+          "kalip": "lider_cevirdi",
+          "zaman": "3Ç",
+          "saat": "4:38",
+          "cumle": "Stephon Castle skoru çevirdi",
+          "detay": "77–76 · liderlik bir daha değişmedi",
+          "kritik": true
+        },
+        {
+          "tip": "en_etkili",
+          "kalip": "etkili_enler",
+          "zaman": "Son",
+          "saat": null,
+          "cumle": "Maçın en etkilisi Shai Gilgeous-Alexander",
+          "detay": "33 sayı",
+          "kritik": false
+        }
+      ]
     },
     {
       "id": "a-0022500421",
@@ -21821,7 +21955,27 @@
           ]
         },
         "kritik": null
-      }
+      },
+      "akis": [
+        {
+          "tip": "liderlik",
+          "kalip": "lider_ile",
+          "zaman": "1Ç",
+          "saat": "7:29",
+          "cumle": "Detroit, Cade Cunningham ile öne geçti",
+          "detay": "12–14 · liderlik bir daha değişmedi",
+          "kritik": true
+        },
+        {
+          "tip": "en_etkili",
+          "kalip": "etkili_kisa",
+          "zaman": "Son",
+          "saat": null,
+          "cumle": "DeMar DeRozan öne çıktı",
+          "detay": "37 sayı",
+          "kritik": false
+        }
+      ]
     },
     {
       "id": "a-0022500416",
@@ -22413,7 +22567,27 @@
           ]
         },
         "kritik": null
-      }
+      },
+      "akis": [
+        {
+          "tip": "liderlik",
+          "kalip": "lider_basket",
+          "zaman": "1Ç",
+          "saat": "1:45",
+          "cumle": "Anthony Edwards'ın basketiyle öne geçti",
+          "detay": "27–26 · liderlik bir daha değişmedi",
+          "kritik": true
+        },
+        {
+          "tip": "esitlik",
+          "kalip": "esit_kapatti",
+          "zaman": "3Ç",
+          "saat": "4:49",
+          "cumle": "Minnesota farkı kapattı",
+          "detay": "71–71",
+          "kritik": false
+        }
+      ]
     },
     {
       "id": "a-0022500419",
@@ -23028,7 +23202,27 @@
           ]
         },
         "kritik": null
-      }
+      },
+      "akis": [
+        {
+          "tip": "en_buyuk_fark",
+          "kalip": "fark_cikti",
+          "zaman": "2Ç",
+          "saat": "4:38",
+          "cumle": "Fark 15'e çıktı",
+          "detay": "Memphis önde",
+          "kritik": false
+        },
+        {
+          "tip": "liderlik",
+          "kalip": "lider_cevirdi",
+          "zaman": "3Ç",
+          "saat": "8:19",
+          "cumle": "Cam Spencer skoru çevirdi",
+          "detay": "74–76 · liderlik bir daha değişmedi",
+          "kritik": true
+        }
+      ]
     }
   ],
   "diger": [
@@ -23639,7 +23833,7 @@
       "skor": "91–112",
       "rozet": 4.92,
       "why": "",
-      "metin": "Toronto Raptors deplasmanda Miami Heat'ı 112-91 yendi.",
+      "metin": "Toronto Raptors deplasmanda Miami Heat'i 112-91 yendi.",
       "box": {
         "ev": {
           "takim": "Miami Heat",

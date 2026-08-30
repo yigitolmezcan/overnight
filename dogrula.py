@@ -2160,7 +2160,16 @@ def t14_en_iyi_performans_anildi(tum_metin, en_iyi_performans, gercekler, maglup
     return False, en_iyi_performans
 
 
-def mac_metnini_dogrula(metin, gercekler, ham_mac, haber_skoru, yasakli_liste, en_iyi_performans=None, sablon=False, maglup_izinli_ad=None):
+def mac_metnini_dogrula(metin, gercekler, ham_mac, haber_skoru, yasakli_liste,
+                        en_iyi_performans=None, sablon=False, maglup_izinli_ad=None,
+                        ek_metin=""):
+    """`ek_metin`: KARTTA GÖRÜNEN ama metin alanlarında olmayan yazı.
+
+    Paragraf gövdesi kalkınca en iyi performans başlığa ya da alt satıra
+    sığmayabiliyor; maç akışının "maçın en etkilisi" satırı onu anıyor
+    ama T14 yalnız metin alanlarına bakıyordu ve dört geceyi yayın
+    kapısında durdurdu. Akış satırları buradan geçiriliyor — kural aynı
+    ("en iyisi anılmalı"), kapsamı KARTIN TAMAMI."""
     sonuc = {"alanlar": {}, "gerekce": []}
     # T25 alan bazlı DEĞİL nesne bazlı: başlık ile gövdeyi karşılaştırıyor,
     # yani tek bir alana bakarak karar verilemez.
@@ -2216,7 +2225,10 @@ def mac_metnini_dogrula(metin, gercekler, ham_mac, haber_skoru, yasakli_liste, e
             hepsi_gecti = False
             sonuc["gerekce"].append(f"T5: {detay5}")
 
-        gecti14, detay14 = t14_en_iyi_performans_anildi(tum_metin, en_iyi_performans, gercekler, maglup_izinli_ad)
+        # T14 KARTIN TAMAMINA bakıyor: metin alanları + akış satırları.
+        gecti14, detay14 = t14_en_iyi_performans_anildi(
+            " ".join(x for x in (tum_metin, ek_metin) if x),
+            en_iyi_performans, gercekler, maglup_izinli_ad)
         sonuc["alanlar"]["T14"] = {"gecti": gecti14, "detay": detay14}
         if not gecti14:
             hepsi_gecti = False

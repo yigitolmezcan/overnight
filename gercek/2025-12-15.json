@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-15",
-  "uretildi": "2026-08-26T06:19:05.419991Z",
+  "uretildi": "2026-08-30T11:03:16.979003Z",
   "maclar": {
     "0022501222": [
       {
@@ -1882,6 +1882,169 @@
       },
       {
         "id": "f122",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 1,
+          "saniye_kalan": null,
+          "zaman": "1Ç",
+          "saat": null,
+          "ev_skor": 33,
+          "dep_skor": 25,
+          "fark": 8,
+          "takim": "BOS",
+          "basa_bas": false
+        },
+        "kaynak": "PlayByPlayV3:0022501222:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f123",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 2,
+          "saniye_kalan": null,
+          "zaman": "Devre",
+          "saat": null,
+          "ev_skor": 57,
+          "dep_skor": 53,
+          "fark": 4,
+          "takim": "BOS",
+          "basa_bas": false
+        },
+        "kaynak": "PlayByPlayV3:0022501222:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f124",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 3,
+          "saniye_kalan": null,
+          "zaman": "3Ç",
+          "saat": null,
+          "ev_skor": 81,
+          "dep_skor": 85,
+          "fark": -4,
+          "takim": "DET",
+          "basa_bas": false
+        },
+        "kaynak": "PlayByPlayV3:0022501222:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f125",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_ustunlugu",
+          "periyot": 3,
+          "saniye_kalan": null,
+          "zaman": "3Ç",
+          "saat": null,
+          "ev_skor": 81,
+          "dep_skor": 85,
+          "fark": -4,
+          "takim": "DET",
+          "ev_kod": "BOS",
+          "sayi": 32,
+          "rakip_sayi": 24
+        },
+        "kaynak": "PlayByPlayV3:0022501222:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f126",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "en_buyuk_fark",
+          "periyot": 2,
+          "saniye_kalan": 667.0,
+          "zaman": "2Ç",
+          "saat": "11:07",
+          "ev_skor": 39,
+          "dep_skor": 27,
+          "fark": 12,
+          "takim": "BOS",
+          "sayi": 12
+        },
+        "kaynak": "PlayByPlayV3:0022501222:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f127",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "en_buyuk_fark",
+          "periyot": 4,
+          "saniye_kalan": 353.0,
+          "zaman": "4Ç",
+          "saat": "5:53",
+          "ev_skor": 93,
+          "dep_skor": 103,
+          "fark": -10,
+          "takim": "DET",
+          "sayi": 10
+        },
+        "kaynak": "PlayByPlayV3:0022501222:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f128",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 1,
+          "saniye_kalan": 129.0,
+          "zaman": "1Ç",
+          "saat": "2:09",
+          "ev_skor": 28,
+          "dep_skor": 19,
+          "fark": 9,
+          "takim": "BOS",
+          "sayi": 14
+        },
+        "kaynak": "PlayByPlayV3:0022501222:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f129",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "esitlik",
+          "periyot": 2,
+          "saniye_kalan": 58.6,
+          "zaman": "2Ç",
+          "saat": "0:58",
+          "ev_skor": 53,
+          "dep_skor": 53,
+          "fark": 0,
+          "takim": "BOS"
+        },
+        "kaynak": "PlayByPlayV3:0022501222:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f130",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 3,
+          "saniye_kalan": 189.0,
+          "zaman": "3Ç",
+          "saat": "3:09",
+          "ev_skor": 71,
+          "dep_skor": 72,
+          "fark": -1,
+          "takim": "DET",
+          "oyuncu": "Jaden Ivey"
+        },
+        "kaynak": "PlayByPlayV3:0022501222:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f131",
         "tur": "derece",
         "veri": {
           "takim": "BOS",
@@ -1904,7 +2067,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f123",
+        "id": "f132",
         "tur": "seri",
         "veri": {
           "takim": "BOS",
@@ -1915,7 +2078,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f124",
+        "id": "f133",
         "tur": "derece",
         "veri": {
           "takim": "DET",
@@ -1938,7 +2101,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f125",
+        "id": "f134",
         "tur": "seri",
         "veri": {
           "takim": "DET",
@@ -3611,6 +3774,169 @@
       },
       {
         "id": "f109",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 1,
+          "saniye_kalan": null,
+          "zaman": "1Ç",
+          "saat": null,
+          "ev_skor": 22,
+          "dep_skor": 23,
+          "fark": -1,
+          "takim": "TOR",
+          "basa_bas": true
+        },
+        "kaynak": "PlayByPlayV3:0022501227:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f110",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 2,
+          "saniye_kalan": null,
+          "zaman": "Devre",
+          "saat": null,
+          "ev_skor": 52,
+          "dep_skor": 46,
+          "fark": 6,
+          "takim": "MIA",
+          "basa_bas": false
+        },
+        "kaynak": "PlayByPlayV3:0022501227:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f111",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 3,
+          "saniye_kalan": null,
+          "zaman": "3Ç",
+          "saat": null,
+          "ev_skor": 77,
+          "dep_skor": 74,
+          "fark": 3,
+          "takim": "MIA",
+          "basa_bas": true
+        },
+        "kaynak": "PlayByPlayV3:0022501227:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f112",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_ustunlugu",
+          "periyot": 4,
+          "saniye_kalan": null,
+          "zaman": "Maç sonu",
+          "saat": null,
+          "ev_skor": 96,
+          "dep_skor": 106,
+          "fark": -10,
+          "takim": "TOR",
+          "ev_kod": "MIA",
+          "sayi": 32,
+          "rakip_sayi": 19
+        },
+        "kaynak": "PlayByPlayV3:0022501227:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f113",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "en_buyuk_fark",
+          "periyot": 2,
+          "saniye_kalan": 528.0,
+          "zaman": "2Ç",
+          "saat": "8:48",
+          "ev_skor": 36,
+          "dep_skor": 25,
+          "fark": 11,
+          "takim": "MIA",
+          "sayi": 11
+        },
+        "kaynak": "PlayByPlayV3:0022501227:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f114",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "en_buyuk_fark",
+          "periyot": 4,
+          "saniye_kalan": 215.0,
+          "zaman": "4Ç",
+          "saat": "3:35",
+          "ev_skor": 89,
+          "dep_skor": 100,
+          "fark": -11,
+          "takim": "TOR",
+          "sayi": 11
+        },
+        "kaynak": "PlayByPlayV3:0022501227:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f115",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 2,
+          "saniye_kalan": 528.0,
+          "zaman": "2Ç",
+          "saat": "8:48",
+          "ev_skor": 36,
+          "dep_skor": 25,
+          "fark": 11,
+          "takim": "MIA",
+          "sayi": 14
+        },
+        "kaynak": "PlayByPlayV3:0022501227:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f116",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "esitlik",
+          "periyot": 4,
+          "saniye_kalan": 634.0,
+          "zaman": "4Ç",
+          "saat": "10:34",
+          "ev_skor": 79,
+          "dep_skor": 79,
+          "fark": 0,
+          "takim": "TOR"
+        },
+        "kaynak": "PlayByPlayV3:0022501227:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f117",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 3,
+          "saniye_kalan": 174.0,
+          "zaman": "3Ç",
+          "saat": "2:54",
+          "ev_skor": 68,
+          "dep_skor": 70,
+          "fark": -2,
+          "takim": "TOR",
+          "oyuncu": "Gradey Dick"
+        },
+        "kaynak": "PlayByPlayV3:0022501227:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f118",
         "tur": "derece",
         "veri": {
           "takim": "MIA",
@@ -3633,7 +3959,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f110",
+        "id": "f119",
         "tur": "seri",
         "veri": {
           "takim": "MIA",
@@ -3644,7 +3970,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f111",
+        "id": "f120",
         "tur": "derece",
         "veri": {
           "takim": "TOR",
@@ -5777,6 +6103,131 @@
       },
       {
         "id": "f138",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 1,
+          "saniye_kalan": null,
+          "zaman": "1Ç",
+          "saat": null,
+          "ev_skor": 37,
+          "dep_skor": 43,
+          "fark": -6,
+          "takim": "DAL",
+          "basa_bas": false
+        },
+        "kaynak": "PlayByPlayV3:0022501224:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f139",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 2,
+          "saniye_kalan": null,
+          "zaman": "Devre",
+          "saat": null,
+          "ev_skor": 71,
+          "dep_skor": 75,
+          "fark": -4,
+          "takim": "DAL",
+          "basa_bas": false
+        },
+        "kaynak": "PlayByPlayV3:0022501224:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f140",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 3,
+          "saniye_kalan": null,
+          "zaman": "3Ç",
+          "saat": null,
+          "ev_skor": 92,
+          "dep_skor": 99,
+          "fark": -7,
+          "takim": "DAL",
+          "basa_bas": false
+        },
+        "kaynak": "PlayByPlayV3:0022501224:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f141",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "en_buyuk_fark",
+          "periyot": 1,
+          "saniye_kalan": 421.0,
+          "zaman": "1Ç",
+          "saat": "7:01",
+          "ev_skor": 24,
+          "dep_skor": 14,
+          "fark": 10,
+          "takim": "UTA",
+          "sayi": 10
+        },
+        "kaynak": "PlayByPlayV3:0022501224:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f142",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "en_buyuk_fark",
+          "periyot": 3,
+          "saniye_kalan": 133.0,
+          "zaman": "3Ç",
+          "saat": "2:13",
+          "ev_skor": 86,
+          "dep_skor": 96,
+          "fark": -10,
+          "takim": "DAL",
+          "sayi": 10
+        },
+        "kaynak": "PlayByPlayV3:0022501224:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f143",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 4,
+          "saniye_kalan": 53.6,
+          "zaman": "Son",
+          "saat": "0:53",
+          "ev_skor": 127,
+          "dep_skor": 124,
+          "fark": 3,
+          "takim": "UTA",
+          "sayi": 11
+        },
+        "kaynak": "PlayByPlayV3:0022501224:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f144",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "esitlik",
+          "periyot": 4,
+          "saniye_kalan": 3.9,
+          "zaman": "Son",
+          "saat": "0:03",
+          "ev_skor": 129,
+          "dep_skor": 129,
+          "fark": 0,
+          "takim": "DAL"
+        },
+        "kaynak": "PlayByPlayV3:0022501224:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f145",
         "tur": "derece",
         "veri": {
           "takim": "UTA",
@@ -5799,7 +6250,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f139",
+        "id": "f146",
         "tur": "seri",
         "veri": {
           "takim": "UTA",
@@ -5810,7 +6261,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f140",
+        "id": "f147",
         "tur": "derece",
         "veri": {
           "takim": "DAL",
@@ -7981,6 +8432,169 @@
       },
       {
         "id": "f141",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 1,
+          "saniye_kalan": null,
+          "zaman": "1Ç",
+          "saat": null,
+          "ev_skor": 24,
+          "dep_skor": 30,
+          "fark": -6,
+          "takim": "HOU",
+          "basa_bas": false
+        },
+        "kaynak": "PlayByPlayV3:0022501225:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f142",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 2,
+          "saniye_kalan": null,
+          "zaman": "Devre",
+          "saat": null,
+          "ev_skor": 58,
+          "dep_skor": 51,
+          "fark": 7,
+          "takim": "DEN",
+          "basa_bas": false
+        },
+        "kaynak": "PlayByPlayV3:0022501225:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f143",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 3,
+          "saniye_kalan": null,
+          "zaman": "3Ç",
+          "saat": null,
+          "ev_skor": 89,
+          "dep_skor": 86,
+          "fark": 3,
+          "takim": "DEN",
+          "basa_bas": true
+        },
+        "kaynak": "PlayByPlayV3:0022501225:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f144",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_ustunlugu",
+          "periyot": 2,
+          "saniye_kalan": null,
+          "zaman": "Devre",
+          "saat": null,
+          "ev_skor": 58,
+          "dep_skor": 51,
+          "fark": 7,
+          "takim": "DEN",
+          "ev_kod": "DEN",
+          "sayi": 34,
+          "rakip_sayi": 21
+        },
+        "kaynak": "PlayByPlayV3:0022501225:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f145",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "en_buyuk_fark",
+          "periyot": 2,
+          "saniye_kalan": 24.3,
+          "zaman": "2Ç",
+          "saat": "0:24",
+          "ev_skor": 58,
+          "dep_skor": 49,
+          "fark": 9,
+          "takim": "DEN",
+          "sayi": 9
+        },
+        "kaynak": "PlayByPlayV3:0022501225:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f146",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "en_buyuk_fark",
+          "periyot": 1,
+          "saniye_kalan": 111.0,
+          "zaman": "1Ç",
+          "saat": "1:51",
+          "ev_skor": 19,
+          "dep_skor": 28,
+          "fark": -9,
+          "takim": "HOU",
+          "sayi": 9
+        },
+        "kaynak": "PlayByPlayV3:0022501225:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f147",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 2,
+          "saniye_kalan": 24.3,
+          "zaman": "2Ç",
+          "saat": "0:24",
+          "ev_skor": 58,
+          "dep_skor": 49,
+          "fark": 9,
+          "takim": "DEN",
+          "sayi": 10
+        },
+        "kaynak": "PlayByPlayV3:0022501225:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f148",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "esitlik",
+          "periyot": 4,
+          "saniye_kalan": 2.3,
+          "zaman": "Son",
+          "saat": "0:02",
+          "ev_skor": 117,
+          "dep_skor": 117,
+          "fark": 0,
+          "takim": "DEN"
+        },
+        "kaynak": "PlayByPlayV3:0022501225:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f149",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "karar_ani",
+          "periyot": 5,
+          "saniye_kalan": 37.7,
+          "zaman": "Son",
+          "saat": "0:37",
+          "ev_skor": 128,
+          "dep_skor": 125,
+          "fark": 3,
+          "takim": "HOU",
+          "oyuncu": "Alperen Şengün"
+        },
+        "kaynak": "PlayByPlayV3:0022501225:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f150",
         "tur": "derece",
         "veri": {
           "takim": "DEN",
@@ -8003,7 +8617,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f142",
+        "id": "f151",
         "tur": "seri",
         "veri": {
           "takim": "DEN",
@@ -8014,7 +8628,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f143",
+        "id": "f152",
         "tur": "derece",
         "veri": {
           "takim": "HOU",
@@ -9750,6 +10364,186 @@
       },
       {
         "id": "f111",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 1,
+          "saniye_kalan": null,
+          "zaman": "1Ç",
+          "saat": null,
+          "ev_skor": 27,
+          "dep_skor": 25,
+          "fark": 2,
+          "takim": "LAC",
+          "basa_bas": true
+        },
+        "kaynak": "PlayByPlayV3:0022501226:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f112",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 2,
+          "saniye_kalan": null,
+          "zaman": "Devre",
+          "saat": null,
+          "ev_skor": 48,
+          "dep_skor": 56,
+          "fark": -8,
+          "takim": "MEM",
+          "basa_bas": false
+        },
+        "kaynak": "PlayByPlayV3:0022501226:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f113",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 3,
+          "saniye_kalan": null,
+          "zaman": "3Ç",
+          "saat": null,
+          "ev_skor": 76,
+          "dep_skor": 90,
+          "fark": -14,
+          "takim": "MEM",
+          "basa_bas": false
+        },
+        "kaynak": "PlayByPlayV3:0022501226:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f114",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_ustunlugu",
+          "periyot": 2,
+          "saniye_kalan": null,
+          "zaman": "Devre",
+          "saat": null,
+          "ev_skor": 48,
+          "dep_skor": 56,
+          "fark": -8,
+          "takim": "MEM",
+          "ev_kod": "LAC",
+          "sayi": 31,
+          "rakip_sayi": 21
+        },
+        "kaynak": "PlayByPlayV3:0022501226:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f115",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "en_buyuk_fark",
+          "periyot": 1,
+          "saniye_kalan": 279.0,
+          "zaman": "1Ç",
+          "saat": "4:39",
+          "ev_skor": 23,
+          "dep_skor": 14,
+          "fark": 9,
+          "takim": "LAC",
+          "sayi": 9
+        },
+        "kaynak": "PlayByPlayV3:0022501226:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f116",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "en_buyuk_fark",
+          "periyot": 4,
+          "saniye_kalan": 224.0,
+          "zaman": "4Ç",
+          "saat": "3:44",
+          "ev_skor": 93,
+          "dep_skor": 116,
+          "fark": -23,
+          "takim": "MEM",
+          "sayi": 23
+        },
+        "kaynak": "PlayByPlayV3:0022501226:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f117",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 3,
+          "saniye_kalan": 577.0,
+          "zaman": "3Ç",
+          "saat": "9:37",
+          "ev_skor": 59,
+          "dep_skor": 57,
+          "fark": 2,
+          "takim": "LAC",
+          "sayi": 11
+        },
+        "kaynak": "PlayByPlayV3:0022501226:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f118",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "esitlik",
+          "periyot": 3,
+          "saniye_kalan": 505.0,
+          "zaman": "3Ç",
+          "saat": "8:25",
+          "ev_skor": 61,
+          "dep_skor": 61,
+          "fark": 0,
+          "takim": "LAC"
+        },
+        "kaynak": "PlayByPlayV3:0022501226:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f119",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 3,
+          "saniye_kalan": 389.0,
+          "zaman": "3Ç",
+          "saat": "6:29",
+          "ev_skor": 64,
+          "dep_skor": 65,
+          "fark": -1,
+          "takim": "MEM",
+          "oyuncu": "Cedric Coward"
+        },
+        "kaynak": "PlayByPlayV3:0022501226:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f120",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "fark_korundu",
+          "periyot": 4,
+          "saniye_kalan": 465.0,
+          "zaman": "4Ç",
+          "saat": "7:45",
+          "ev_skor": 86,
+          "dep_skor": 100,
+          "fark": -14,
+          "sayi": 15
+        },
+        "kaynak": "PlayByPlayV3:0022501226:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f121",
         "tur": "derece",
         "veri": {
           "takim": "LAC",
@@ -9772,7 +10566,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f112",
+        "id": "f122",
         "tur": "seri",
         "veri": {
           "takim": "LAC",
@@ -9783,7 +10577,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f113",
+        "id": "f123",
         "tur": "derece",
         "veri": {
           "takim": "MEM",

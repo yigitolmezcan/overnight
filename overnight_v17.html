@@ -404,6 +404,11 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
   color:var(--ember);margin-top:10px;line-height:1.5}
 /* Gövde tek blok değil, cümle grupları. Vurgu/çizgi/renk farkı YOK —
    sadece nefes (kullanıcı: "C seçeneği"). */
+/* DEVRE DIŞI — SİLİNMEDİ (kullanıcı kararı: "geri dönmek gerekirse
+   dursun"). Paragraf gövdesi Mutlaka bil / Göz at'ta kalktı, yerine maç
+   akışı geldi. Bu kurallar ve `paragraflar()` yardımcısı yerinde
+   duruyor; hiçbir yerden ÇAĞRILMIYOR. Geri dönmek için tek satır:
+   akisBlogu(mv.akis) yerine <div class="gbody">${paragraflar(mv.ozet)}</div>. */
 .gbody p{margin:15px 0 0;font-size:15px;line-height:1.68;color:var(--ink2)}
 .gbody p:first-child{margin-top:13px}
 /* MAÇ AKIŞI — paragraf gövdesinin yerine geçti (kullanıcı kararı).

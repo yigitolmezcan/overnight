@@ -196,6 +196,7 @@
   "mutlaka": [
     {
       "id": "g-mutlaka-0",
+      "mac_id": "0022500433",
       "kisa": false,
       "mac": "Orlando Magic — Denver Nuggets",
       "skor": "127–126",
@@ -213,15 +214,6 @@
           "kritik": false
         },
         {
-          "tip": "en_buyuk_fark",
-          "kalip": "fark_cikardi",
-          "zaman": "3Ç",
-          "saat": "9:50",
-          "cumle": "Denver farkı 17'ye çıkardı",
-          "detay": "en büyük fark",
-          "kritik": false
-        },
-        {
           "tip": "karar_ani",
           "kalip": "karar_basket",
           "zaman": "Son",
@@ -229,6 +221,15 @@
           "cumle": "Desmond Bane'in basketi",
           "detay": "127–126 · maçı bitirdi",
           "kritik": true
+        },
+        {
+          "tip": "en_etkili",
+          "kalip": "etkili_duz",
+          "zaman": "Son",
+          "saat": null,
+          "cumle": "Nikola Jokić 34 sayı",
+          "detay": "maçın en etkilisi",
+          "kritik": false
         },
         {
           "tip": "ceyrek_ustunlugu",
@@ -854,6 +855,7 @@
     },
     {
       "id": "g-mutlaka-1",
+      "mac_id": "0022500435",
       "kisa": true,
       "mac": "Atlanta Hawks — New York Knicks",
       "skor": "125–128",
@@ -871,12 +873,12 @@
           "kritik": false
         },
         {
-          "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_lehine",
+          "tip": "en_buyuk_fark",
+          "kalip": "fark_cikardi",
           "zaman": "3Ç",
-          "saat": null,
-          "cumle": "Çeyrek New York lehine bitti",
-          "detay": "89–98",
+          "saat": "6:55",
+          "cumle": "New York farkı 18'e çıkardı",
+          "detay": "en büyük fark",
           "kritik": false
         },
         {
@@ -1487,6 +1489,7 @@
     },
     {
       "id": "g-mutlaka-2",
+      "mac_id": "0022500440",
       "kisa": true,
       "mac": "San Antonio Spurs — Utah Jazz",
       "skor": "114–127",
@@ -1494,15 +1497,6 @@
       "baslik": "Utah Jazz, San Antonio deplasmanında 127-114 kazandı.",
       "neden_onemli": "",
       "akis": [
-        {
-          "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_farkla",
-          "zaman": "1Ç",
-          "saat": null,
-          "cumle": "San Antonio 8 sayı önde bitirdi",
-          "detay": "40–32",
-          "kritik": false
-        },
         {
           "tip": "sayi_serisi",
           "kalip": "seri_gitti",
@@ -1513,12 +1507,12 @@
           "kritik": false
         },
         {
-          "tip": "en_buyuk_fark",
-          "kalip": "fark_cikti",
+          "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_lehine",
           "zaman": "3Ç",
-          "saat": "8:42",
-          "cumle": "Fark 17'ye çıktı",
-          "detay": "Utah önde",
+          "saat": null,
+          "cumle": "Çeyrek Utah lehine bitti",
+          "detay": "87–98",
           "kritik": false
         },
         {
@@ -1529,6 +1523,15 @@
           "cumle": "San Antonio farkı kapattı",
           "detay": "108–108",
           "kritik": true
+        },
+        {
+          "tip": "en_etkili",
+          "kalip": "etkili_oncikti",
+          "zaman": "Son",
+          "saat": null,
+          "cumle": "Victor Wembanyama 32 sayı ile öne çıktı",
+          "detay": null,
+          "kritik": false
         }
       ],
       "box": {
@@ -2171,6 +2174,7 @@
     },
     {
       "id": "g-mutlaka-3",
+      "mac_id": "0022500439",
       "kisa": true,
       "mac": "Minnesota Timberwolves — Brooklyn Nets",
       "skor": "107–123",
@@ -2179,11 +2183,20 @@
       "neden_onemli": "",
       "akis": [
         {
+          "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_basabas",
+          "zaman": "1Ç",
+          "saat": null,
+          "cumle": "Skor başa baş gitti",
+          "detay": "30–33",
+          "kritik": false
+        },
+        {
           "tip": "esitlik",
-          "kalip": "esit_esitledi",
+          "kalip": "esit_yakaladi",
           "zaman": "2Ç",
           "saat": "1:40",
-          "cumle": "Minnesota skoru eşitledi",
+          "cumle": "Minnesota beraberliği yakaladı",
           "detay": "60–60",
           "kritik": false
         },
@@ -2198,11 +2211,11 @@
         },
         {
           "tip": "en_buyuk_fark",
-          "kalip": "fark_cikardi",
+          "kalip": "fark_cikti",
           "zaman": "4Ç",
           "saat": "1:17",
-          "cumle": "Brooklyn farkı 21'e çıkardı",
-          "detay": "en büyük fark",
+          "cumle": "Fark 21'e çıktı",
+          "detay": "Brooklyn önde",
           "kritik": false
         }
       ],

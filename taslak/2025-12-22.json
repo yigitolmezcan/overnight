@@ -1,93 +1,134 @@
 {
- "tarih": "2025-12-22",
- "uretildi": "2026-08-28T17:55:19.359124Z",
- "maclar": {
-  "0022500406": {
-   "gec_satiri": "Lig lideri Oklahoma City Thunder, Memphis Grizzlies'i 119-103 yendi. Shai Gilgeous-Alexander 31 sayı attı.",
-   "muzip": false
+  "tarih": "2025-12-22",
+  "uretildi": "2026-08-30T11:05:40.381450Z",
+  "maclar": {
+    "0022500406": {
+      "gec_satiri": "Lig lideri Oklahoma City Thunder, Memphis Grizzlies'i 119-103 yendi. Shai Gilgeous-Alexander 31 sayı attı.",
+      "muzip": false
+    },
+    "0022500404": {
+      "gec_satiri": "Son maçlarında formda olan New Orleans Pelicans, Dallas Mavericks'i yendi. New Orleans Pelicans, 11 sayılık farktan dönerek kazandı.",
+      "muzip": false
+    },
+    "0022500408": {
+      "gec_satiri": "Detroit Pistons deplasmanda Portland Trail Blazers'i 110-102 yendi.",
+      "muzip": false
+    },
+    "0022500405": {
+      "gec_satiri": "Denver Nuggets evinde Utah Jazz'ı 135-112 ezdi. Nikola Jokić 13 asist yaptı.",
+      "muzip": false
+    },
+    "0022500402": {
+      "gec_satiri": "Cleveland Cavaliers evinde Charlotte Hornets'i 139-132 yendi. Darius Garland 10 asist yaptı.",
+      "muzip": false
+    },
+    "0022500407": {
+      "gec_satiri": "Golden State Warriors evinde Orlando Magic'i 120-97 yendi.",
+      "muzip": false
+    },
+    "0022500403": {
+      "baslik": "Boston Celtics, 20 sayılık farktan dönüp Indiana Pacers'i yendi.",
+      "neden_onemli": "Boston Celtics, konferansta 3. sıraya yükseldi."
+    }
   },
-  "0022500404": {
-   "gec_satiri": "Son maçlarında formda olan New Orleans Pelicans, Dallas Mavericks'i yendi. New Orleans Pelicans, 11 sayılık farktan dönerek kazandı.",
-   "muzip": false
-  },
-  "0022500408": {
-   "gec_satiri": "Detroit Pistons deplasmanda Portland Trail Blazers'i 110-102 yendi.",
-   "muzip": false
-  },
-  "0022500405": {
-   "gec_satiri": "Denver Nuggets evinde Utah Jazz'ı 135-112 ezdi. Nikola Jokić 13 asist yaptı.",
-   "muzip": false
-  },
-  "0022500402": {
-   "gec_satiri": "Cleveland Cavaliers evinde Charlotte Hornets'i 139-132 yendi. Darius Garland 10 asist yaptı.",
-   "muzip": false
-  },
-  "0022500407": {
-   "gec_satiri": "Golden State Warriors evinde Orlando Magic'i 120-97 yendi.",
-   "muzip": false
-  },
-  "0022500403": {
-   "baslik": "Boston, 20 sayılık farktan dönerek Indiana'yı 103-95 yendi.",
-   "neden_onemli": "Boston, geceyi Doğu Konferansı'nda 3. sırada kapattı.",
-   "ozet": "Indiana, ilk çeyreği 35-26 kazanıp ilk yarı sonunda farkı 18 sayıya çıkararak kontrolü ele geçirdi. Üçüncü çeyrekte toparlanan Boston, son periyotta rakibini 29-13 üstünlükle geride bırakarak farkı kapattı. Dördüncü çeyrekte Derrick White'ın bulduğu basketle öne geçen Celtics, bir daha liderliği rakibine kaptırmadı. Maçın en etkili ismi Jaylen Brown, 31 sayı ve 9 ribaundla Boston'ı sırtladı.",
-   "muzip": false
+  "brief": [
+    {
+      "metin": "Jaylen Brown, Indiana Pacers karşısında 31 sayı attı.",
+      "hedef_mac": "0022500403",
+      "muzip": false,
+      "kind": "performans"
+    },
+    {
+      "metin": "Oklahoma City Thunder, Memphis Grizzlies'i yendi.",
+      "hedef_mac": "0022500406",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "New Orleans Pelicans, 11 sayılık farktan dönüp Dallas Mavericks'i geçti.",
+      "hedef_mac": "0022500404",
+      "muzip": false,
+      "kind": "geri_donus"
+    },
+    {
+      "metin": "Detroit Pistons, Portland Trail Blazers'i yenerek konferansta 1. sıraya yükseldi.",
+      "hedef_mac": "0022500408",
+      "muzip": false,
+      "kind": "siralama"
+    },
+    {
+      "metin": "Denver Nuggets, Utah Jazz'ı yendi.",
+      "hedef_mac": "0022500405",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Cleveland Cavaliers, Charlotte Hornets'i evinde yendi.",
+      "hedef_mac": "0022500402",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 3,
+    "ilk_denemede_kabul": 0,
+    "sablon_moduna_dusen": 1,
+    "detay": [
+      {
+        "mac_id": "0022500403",
+        "deneme": 0,
+        "gerekce": [
+          "T14: en iyi performans (Jaylen Brown) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Boston, 18 sayılık farktan dönüp Indiana'yı yendi."
+        }
+      },
+      {
+        "mac_id": "0022500403",
+        "deneme": 1,
+        "gerekce": [
+          "T14: en iyi performans (Jaylen Brown) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Boston, 20 sayılık farktan dönüp Indiana'yı yendi."
+        }
+      },
+      {
+        "mac_id": "0022500403",
+        "deneme": 2,
+        "gerekce": [
+          "T14: en iyi performans (Jaylen Brown) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Boston, 20 sayılık farktan dönüp Indiana'yı yendi."
+        }
+      }
+    ],
+    "sablon_isaretli": [
+      {
+        "mac_id": "0022500403",
+        "alan": "mutlaka",
+        "gerekce": [
+          "T14: en iyi performans (Jaylen Brown) hiç anılmadı"
+        ],
+        "metin": {
+          "baslik": "Boston Celtics, 20 sayılık farktan dönüp Indiana Pacers'i yendi.",
+          "neden_onemli": "Boston Celtics, konferansta 3. sıraya yükseldi."
+        }
+      }
+    ],
+    "mutlaka_mac": 1,
+    "ret_orani": 1.0,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 3,
+      "girdi_token": 12194,
+      "cikti_token": 506,
+      "cache_yazma_token": 6648,
+      "cache_okuma_token": 39255,
+      "toplam_maliyet_usd": 0.0539,
+      "butce_asildi": false
+    }
   }
- },
- "brief": [
-  {
-   "metin": "Jaylen Brown, Indiana Pacers karşısında 31 sayı attı.",
-   "hedef_mac": "0022500403",
-   "muzip": false,
-   "kind": "performans"
-  },
-  {
-   "metin": "Oklahoma City Thunder, Memphis Grizzlies'i yendi.",
-   "hedef_mac": "0022500406",
-   "muzip": false,
-   "kind": "duz_sonuc"
-  },
-  {
-   "metin": "New Orleans Pelicans, 11 sayılık farktan dönüp Dallas Mavericks'i geçti.",
-   "hedef_mac": "0022500404",
-   "muzip": false,
-   "kind": "geri_donus"
-  },
-  {
-   "metin": "Detroit Pistons, Portland Trail Blazers'i yenerek konferansta 1. sıraya yükseldi.",
-   "hedef_mac": "0022500408",
-   "muzip": false,
-   "kind": "siralama"
-  },
-  {
-   "metin": "Denver Nuggets, Utah Jazz'ı yendi.",
-   "hedef_mac": "0022500405",
-   "muzip": false,
-   "kind": "duz_sonuc"
-  },
-  {
-   "metin": "Cleveland Cavaliers, Charlotte Hornets'i evinde yendi.",
-   "hedef_mac": "0022500402",
-   "muzip": false,
-   "kind": "duz_sonuc"
-  }
- ],
- "rapor": {
-  "toplam_alan": 1,
-  "ilk_denemede_kabul": 1,
-  "sablon_moduna_dusen": 0,
-  "detay": [],
-  "sablon_isaretli": [],
-  "mutlaka_mac": 1,
-  "ret_orani": 0.0,
-  "uretim_modu": "hibrit",
-  "kullanim": {
-   "cagri_sayisi": 1,
-   "girdi_token": 3434,
-   "cikti_token": 3493,
-   "cache_yazma_token": 15301,
-   "cache_okuma_token": 0,
-   "toplam_maliyet_usd": 0.0801,
-   "butce_asildi": false
-  }
- }
 }

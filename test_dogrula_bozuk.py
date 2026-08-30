@@ -1567,8 +1567,24 @@ def main():
     # dört satır, tamamen şablon, LLM'e hiç uğramıyor. Serbest anlatı
     # sürekli ve her seferinde başka bir sınıftan patlıyordu; kural
     # eklemek çözmüyordu çünkü model sonsuz sayıda yanlış yapabilir.
+    # ESKİ GÖVDE KODU DEVRE DIŞI AMA DURUYOR (kullanıcı kararı: "geri
+    # dönmek gerekirse dursun"). Test iki şeyi birden koruyor: yolun
+    # KAPALI olduğunu ve kodun SİLİNMEDİĞİNİ.
+    basar("Gövde: paragraflar() yardımcısı duruyor (silinmedi)",
+          "function paragraflar(" in _sayfa)
+    basar("Gövde: .gbody biçimi duruyor (silinmedi)",
+          ".gbody p{" in _sayfa)
+    basar("Gövde: devre dışı olduğu kaynakta yazılı",
+          "DEVRE DIŞI — SİLİNMEDİ" in _sayfa)
+    basar("Gövde: cumle.mutlaka_metni hâlâ gövde üretebiliyor",
+          "GÖVDE ALANI (`ozet`/`ozet_kisa`) DEVRE DIŞI, SİLİNMEDİ"
+          in open("cumle.py", encoding="utf-8").read())
+    # YORUMLAR AYIKLANIYOR. Bu dosyada BEŞİNCİ kez: kapalı olduğunu
+    # anlatan yorum, kapalılığı denetleyen testi düşürüyor. Denetim
+    # yalnız GERÇEK KODA bakmalı.
+    _sayfa_kodu = _re.sub(r"/\*.*?\*/", "", _sayfa, flags=_re.S)
     basar("Mutlaka bil: paragraf gövdesi çizilmiyor",
-          '<div class="gbody">${paragraflar(mv.ozet)}</div>' not in _sayfa)
+          '<div class="gbody">${paragraflar(mv.ozet)}</div>' not in _sayfa_kodu)
     basar("Mutlaka bil: yerine maç akışı çiziliyor",
           "${akisBlogu(mv.akis)}" in _sayfa and "const akisBlogu" in _sayfa)
     basar("Akış: Göz at bölümünde de var",
@@ -4963,6 +4979,13 @@ def main():
         basar("T13: iki taraflı doğru cümle yanlışlıkla reddedilmiyor",
               dogrula_modul.t13_atif_dogrulugu(_ikili, _gc26, _hm26)[0])
     # Eleme kuralı kaynakta duruyor mu.
+    # T31 YAYINI DURDURUR (kullanıcı kararı). İskelet dışı başlık yayına
+    # çıkmamalı; şablon yedeği her zaman uyumlu başlık ürettiği için
+    # kapı çaresiz kalmıyor.
+    import yayin as _y31
+    basar("T31: yayın kapısını durduran testler arasında",
+          "T31" in _y31.ENGELLEYICI_TESTLER)
+
     _dsrc = open("dogrula.py", encoding="utf-8").read()
     basar("T13: bir adayın aralığına gömülü aday eleniyor",
           "if not any(p2 <= pos and bitis <= b2 and (b2 - p2) > (bitis - pos)" in _dsrc)
@@ -5157,6 +5180,58 @@ def main():
             break
     else:
         basar("Ek: üretilen 14 ekin hepsi T21'den geçiyor", True)
+
+    # ==================================================================
+    # TÜM GECELER — YAPI, HİYERARŞİ, KALIP LİMİTİ
+    # ==================================================================
+    # Yeni yapı yayındaki bütün gecelere uygulandı. Bu blok her gecede
+    # aynı üç şeyi ölçüyor; bir gece eski yapıya dönerse burada düşer.
+    import statistics as _st
+    _durum_t = _yayin.durum_oku()
+    _hazir_t = (_durum_t.get("hazir") or {}).get("tarih")
+    _geceler = sorted(set(_durum_t["yayinlanan"] + ([_hazir_t] if _hazir_t else [])))
+    _yapisiz, _hiy, _asan, _farkli = [], [], [], []
+    for _t3 in _geceler:
+        if not _os.path.exists(f"dist/{_t3}.json"):
+            continue
+        _x = _jj.loads(open(f"dist/{_t3}.json", encoding="utf-8").read())
+        _mb = _x.get("mutlaka") or []
+        _ga = _x.get("degerse_bak") or []
+        _bg = _x.get("diger") or []
+        if _mb and not any(m.get("akis") for m in _mb):
+            _yapisiz.append(_t3)
+        if not (all(len(m.get("akis") or []) <= _derle.AKIS_SATIR_SAYISI for m in _mb)
+                and all(len(m.get("akis") or []) == _derle.AKIS_GOZAT_SATIR
+                        for m in _ga if m.get("akis"))
+                and all(not m.get("akis") for m in _bg)):
+            _hiy.append(_t3)
+        _sat = [r for m in _mb + _ga for r in (m.get("akis") or [])]
+        _kal = _cl.Counter(r.get("kalip") for r in _sat)
+        if _kal:
+            _farkli.append(len(_kal))
+            if max(_kal.values()) > _derle.AKIS_KALIP_LIMITI:
+                _asan.append((_t3, {k: v for k, v in _kal.items()
+                                    if v > _derle.AKIS_KALIP_LIMITI}))
+        # Gövde alanı hiçbir gecede kalmamalı.
+        if any(m.get("ozet") for m in _mb):
+            _yapisiz.append(_t3 + " (gövde)")
+    basar("Tüm geceler: hepsi yeni yapıda (akış var, gövde yok)",
+          not _yapisiz, f"eski yapıda: {_yapisiz}")
+    basar("Tüm geceler: katman hiyerarşisi 4/2/0",
+          not _hiy, f"ihlal: {_hiy}")
+    basar("Tüm geceler: kalıp limiti hiçbir gecede aşılmıyor",
+          not _asan, f"aşan: {_asan}")
+    basar("Tüm geceler: gece başına ortalama en az 8 farklı kalıp",
+          (not _farkli) or _st.mean(_farkli) >= 8,
+          f"ortalama {_st.mean(_farkli):.1f}" if _farkli else "veri yok")
+    # "En etkili" satırı T14 yüzünden neredeyse her blokta zorunlu;
+    # kalıp kapasitesi buna yetmeli (3 kalıp x 2 limit = 6 yetmiyordu).
+    _etkili = _yaz.cumle.akis_kaliplari(
+        {"tip": "en_etkili", "ev_skor": 100, "dep_skor": 90, "fark": 10,
+         "oyuncu": "Jayson Tatum", "sayi": 30, "ribaund": 9, "asist": 5},
+        lambda k: k)
+    basar("Akış: 'en etkili' tipinin en az dört kalıbı var",
+          len(_etkili) >= 4, f"{len(_etkili)} kalıp")
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",

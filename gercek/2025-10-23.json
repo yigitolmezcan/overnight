@@ -1,6 +1,6 @@
 {
   "tarih": "2025-10-23",
-  "uretildi": "2026-08-25T09:38:37.312238Z",
+  "uretildi": "2026-08-30T11:03:10.043867Z",
   "maclar": {
     "0022500005": [
       {
@@ -2445,6 +2445,133 @@
       },
       {
         "id": "f160",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 1,
+          "saniye_kalan": null,
+          "zaman": "1Ç",
+          "saat": null,
+          "ev_skor": 25,
+          "dep_skor": 22,
+          "fark": 3,
+          "takim": "IND",
+          "basa_bas": true
+        },
+        "kaynak": "PlayByPlayV3:0022500005:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f161",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 2,
+          "saniye_kalan": null,
+          "zaman": "Devre",
+          "saat": null,
+          "ev_skor": 47,
+          "dep_skor": 54,
+          "fark": -7,
+          "takim": "OKC",
+          "basa_bas": false
+        },
+        "kaynak": "PlayByPlayV3:0022500005:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f162",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 3,
+          "saniye_kalan": null,
+          "zaman": "3Ç",
+          "saat": null,
+          "ev_skor": 78,
+          "dep_skor": 81,
+          "fark": -3,
+          "takim": "OKC",
+          "basa_bas": true
+        },
+        "kaynak": "PlayByPlayV3:0022500005:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f163",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_ustunlugu",
+          "periyot": 2,
+          "saniye_kalan": null,
+          "zaman": "Devre",
+          "saat": null,
+          "ev_skor": 47,
+          "dep_skor": 54,
+          "fark": -7,
+          "takim": "OKC",
+          "ev_kod": "IND",
+          "sayi": 32,
+          "rakip_sayi": 22
+        },
+        "kaynak": "PlayByPlayV3:0022500005:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f164",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 2,
+          "saniye_kalan": 398.0,
+          "zaman": "2Ç",
+          "saat": "6:38",
+          "ev_skor": 33,
+          "dep_skor": 39,
+          "fark": -6,
+          "takim": "OKC",
+          "sayi": 10
+        },
+        "kaynak": "PlayByPlayV3:0022500005:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f165",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "esitlik",
+          "periyot": 6,
+          "saniye_kalan": 251.0,
+          "zaman": "U2",
+          "saat": "4:11",
+          "ev_skor": 126,
+          "dep_skor": 126,
+          "fark": 0,
+          "takim": "OKC"
+        },
+        "kaynak": "PlayByPlayV3:0022500005:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f166",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 6,
+          "saniye_kalan": 193.0,
+          "zaman": "U2",
+          "saat": "3:13",
+          "ev_skor": 128,
+          "dep_skor": 130,
+          "fark": -2,
+          "takim": "OKC",
+          "oyuncu": "Aaron Wiggins"
+        },
+        "kaynak": "PlayByPlayV3:0022500005:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f167",
         "tur": "derece",
         "veri": {
           "takim": "IND",
@@ -2467,7 +2594,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f161",
+        "id": "f168",
         "tur": "derece",
         "veri": {
           "takim": "OKC",
@@ -4535,6 +4662,169 @@
       },
       {
         "id": "f135",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 1,
+          "saniye_kalan": null,
+          "zaman": "1Ç",
+          "saat": null,
+          "ev_skor": 27,
+          "dep_skor": 31,
+          "fark": -4,
+          "takim": "DEN",
+          "basa_bas": false
+        },
+        "kaynak": "PlayByPlayV3:0022500006:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f136",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 2,
+          "saniye_kalan": null,
+          "zaman": "Devre",
+          "saat": null,
+          "ev_skor": 61,
+          "dep_skor": 70,
+          "fark": -9,
+          "takim": "DEN",
+          "basa_bas": false
+        },
+        "kaynak": "PlayByPlayV3:0022500006:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f137",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 3,
+          "saniye_kalan": null,
+          "zaman": "3Ç",
+          "saat": null,
+          "ev_skor": 94,
+          "dep_skor": 94,
+          "fark": 0,
+          "takim": null,
+          "basa_bas": true
+        },
+        "kaynak": "PlayByPlayV3:0022500006:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f138",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_ustunlugu",
+          "periyot": 3,
+          "saniye_kalan": null,
+          "zaman": "3Ç",
+          "saat": null,
+          "ev_skor": 94,
+          "dep_skor": 94,
+          "fark": 0,
+          "takim": "GSW",
+          "ev_kod": "GSW",
+          "sayi": 33,
+          "rakip_sayi": 24
+        },
+        "kaynak": "PlayByPlayV3:0022500006:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f139",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "en_buyuk_fark",
+          "periyot": 1,
+          "saniye_kalan": 620.0,
+          "zaman": "1Ç",
+          "saat": "10:20",
+          "ev_skor": 10,
+          "dep_skor": 0,
+          "fark": 10,
+          "takim": "GSW",
+          "sayi": 10
+        },
+        "kaynak": "PlayByPlayV3:0022500006:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f140",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "en_buyuk_fark",
+          "periyot": 2,
+          "saniye_kalan": 142.0,
+          "zaman": "2Ç",
+          "saat": "2:22",
+          "ev_skor": 54,
+          "dep_skor": 68,
+          "fark": -14,
+          "takim": "DEN",
+          "sayi": 14
+        },
+        "kaynak": "PlayByPlayV3:0022500006:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f141",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 1,
+          "saniye_kalan": 386.0,
+          "zaman": "1Ç",
+          "saat": "6:26",
+          "ev_skor": 10,
+          "dep_skor": 12,
+          "fark": -2,
+          "takim": "DEN",
+          "sayi": 12
+        },
+        "kaynak": "PlayByPlayV3:0022500006:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f142",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "esitlik",
+          "periyot": 5,
+          "saniye_kalan": 225.0,
+          "zaman": "U1",
+          "saat": "3:45",
+          "ev_skor": 123,
+          "dep_skor": 123,
+          "fark": 0,
+          "takim": "DEN"
+        },
+        "kaynak": "PlayByPlayV3:0022500006:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f143",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 5,
+          "saniye_kalan": 178.0,
+          "zaman": "U1",
+          "saat": "2:58",
+          "ev_skor": 126,
+          "dep_skor": 125,
+          "fark": 1,
+          "takim": "GSW",
+          "oyuncu": "Al Horford"
+        },
+        "kaynak": "PlayByPlayV3:0022500006:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f144",
         "tur": "derece",
         "veri": {
           "takim": "GSW",
@@ -4557,7 +4847,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f136",
+        "id": "f145",
         "tur": "derece",
         "veri": {
           "takim": "DEN",

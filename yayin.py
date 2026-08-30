@@ -431,6 +431,12 @@ ENGELLEYICI_TESTLER = (
     "T24",  # kilometre taşının sahibi yanlış
     "T26",  # karar anı oyuncu adı olmadan anıldı
     "T27",  # "Mağlup tarafta" gece kuralı (GECE kapsamlı)
+    # T31 — başlık iskelet listesinin dışında. Paragraf anlatısı
+    # kalktıktan sonra LLM'in ürettiği TEK alan başlık ve o da altı
+    # iskeletle sınırlı; listeden çıkan bir başlık yayına çıkmamalı
+    # (kullanıcı kuralı). Şablon yedeği her zaman uyumlu bir başlık
+    # ürettiği için kapı çaresiz kalmıyor.
+    "T31",
 )
 
 
@@ -443,6 +449,24 @@ def _ham_metni(tarih):
     yüzden kapı canlıda da yerelde olduğu gibi çalışıyor."""
     import cek
     return cek.ham_metni(tarih, KOK)
+
+
+def _akis_metni(tarih, gid):
+    """O maçın akış satırlarının düz metni — kapı bunu da okuyor.
+
+    Akış derle.py'nin çıktısında (dist) duruyor; kapı üretimden SONRA
+    çalıştığı için oradan okunabiliyor. Dosya yoksa boş dönüyor: kural
+    eskisi gibi yalnız metin alanlarına bakar."""
+    try:
+        veri = json.loads((DIST_DIZIN / f"{tarih}.json").read_text(encoding="utf-8"))
+    except Exception:
+        return ""
+    for bolum in ("mutlaka", "degerse_bak", "diger"):
+        for blok in (veri.get(bolum) or []):
+            if str(blok.get("id", "")).endswith(gid) or blok.get("mac_id") == gid:
+                return " ".join(f"{r.get('cumle','')} {r.get('detay') or ''}"
+                                for r in (blok.get("akis") or []))
+    return ""
 
 
 def _isaretleri_tazele(tarih, isaretli):
@@ -494,10 +518,16 @@ def _isaretleri_tazele(tarih, isaretli):
         elif alan_adi in _dog.ALAN_UZUNLUK_ADI or isinstance(ham_metin, dict):
             metin_sozlugu = ({alan_adi: ham_metin}
                              if isinstance(ham_metin, str) else (ham_metin or {}))
+            # AKIŞ SATIRLARI DA KARTTA. T14 "en iyisi anılmalı" diyor;
+            # paragraf gövdesi kalkınca oyuncu çoğu zaman akışın "maçın
+            # en etkilisi" satırında anılıyor. Kapı yalnız metin
+            # alanlarına baksaydı kartta yazan bir adı yok sayardı —
+            # dört geceyi böyle durdurdu.
             sonuc = _dog.mac_metnini_dogrula(
                 metin_sozlugu, gercek_gece["maclar"][gid], ham["maclar"][gid], 0,
                 yasakli, en_iyi_performans=en_iyi.get(gid), sablon=True,
                 maglup_izinli_ad=izin.get(gid),
+                ek_metin=_akis_metni(tarih, gid),
             )
             gerekce = list(sonuc.get("gerekce", []))
             for alan, ad in sonuc.get("alanlar", {}).items():

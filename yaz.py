@@ -1694,6 +1694,10 @@ Hangi iskeletin doğru olduğuna VERİ karar verir: son saniyede biten maça
 Sıfat, niteleme, "yumuşak dokunuşla bıraktığı şut" tarzı detay YASAK.
 İskeletin dışına çıkan başlık reddedilir.
 
+4'üncü iskeleti (oyuncu adlı) SADECE o oyuncu maçın EN İYİSİYSE kullan.
+Aynı maçta daha yüksek katkısı olan başka bir oyuncu varsa — kaybeden
+tarafta bile olsa — o iskeleti kurma, başka birini seç.
+
 JSON şeması:
 {{"baslik": "..."}}
 """

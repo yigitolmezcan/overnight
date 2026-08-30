@@ -1,9 +1,9 @@
 {
   "tarih": "2026-01-28",
-  "uretildi": "2026-08-25T12:38:30.403344Z",
+  "uretildi": "2026-08-30T11:06:14.948943Z",
   "maclar": {
     "0022500674": {
-      "gec_satiri": "Orlando Magic deplasmanda Miami Heat'ı 133-124 yendi. Paolo Banchero 31 sayı attı.",
+      "gec_satiri": "Orlando Magic deplasmanda Miami Heat'i 133-124 yendi. Paolo Banchero 31 sayı attı.",
       "muzip": false
     },
     "0022500675": {
@@ -11,7 +11,7 @@
       "muzip": false
     },
     "0022500672": {
-      "gec_satiri": "Bitime 13.9 saniye kala bulduğu basketle Indiana, Chicago'yu yendi.",
+      "gec_satiri": "Indiana Pacers evinde Chicago Bulls'u 113-110 yendi. Indiana Pacers, 14 sayılık farktan dönerek kazandı.",
       "muzip": false
     },
     "0022500677": {
@@ -35,76 +35,121 @@
       "muzip": false
     },
     "0022500679": {
-      "baslik": "San Antonio Spurs, 16 sayılık farktan dönüp Houston Rockets'ı yendi.",
-      "neden_onemli": "San Antonio bu galibiyetle Batı Konferansı'nda 2. sıraya yükseldi.",
-      "ozet": "Houston, ilk periyotta hızlı başlayarak erken üstünlük kurdu ve devreye kadar farkını korudu. San Antonio, üçüncü periyotta farkı tek haneye indirdi ve dördüncü periyotun başında Wembanyama'nın serbest atışıyla öne geçti. Houston son periyotta sadece 13 sayı üretebilirken, San Antonio bu periyotta bulduğu 27 sayıyla maçı kopardı. Wembanyama 28 sayı, 5 blok ve çift haneli ribaundla double-double yaptı.",
-      "muzip": false
+      "baslik": "San Antonio Spurs, 16 sayılık farktan dönüp Houston Rockets'i yendi.",
+      "neden_onemli": "San Antonio Spurs, konferansta 2. sıraya yükseldi."
     }
   },
   "brief": [
     {
-      "metin": "Victor Wembanyama, Houston Rockets karşısında 16 ribaund topladı.",
+      "metin": "San Antonio Spurs, 16 sayılık farktan dönüp Houston Rockets'i geçti.",
       "hedef_mac": "0022500679",
-      "muzip": false
+      "muzip": false,
+      "kind": "geri_donus"
     },
     {
-      "metin": "Orlando Magic, 11 sayılık farktan dönüp Miami Heat'ı geçti.",
+      "metin": "Paolo Banchero, Miami Heat karşısında 31 sayı attı.",
       "hedef_mac": "0022500674",
-      "muzip": false
+      "muzip": false,
+      "kind": "performans"
     },
     {
       "metin": "New York Knicks, Toronto Raptors'u yenerek konferansta 2. sıraya yükseldi.",
       "hedef_mac": "0022500675",
-      "muzip": false
+      "muzip": false,
+      "kind": "siralama"
     },
     {
-      "metin": "Indiana Pacers, son saniyede attığı basketle Chicago Bulls'u geçti.",
+      "metin": "Indiana Pacers, Chicago Bulls'u yendi.",
       "hedef_mac": "0022500672",
-      "muzip": false
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Minnesota Timberwolves, Dallas Mavericks'i yendi.",
+      "hedef_mac": "0022500677",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Cleveland Cavaliers, Los Angeles Lakers'i evinde yendi.",
+      "hedef_mac": "0022500671",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Atlanta Hawks, Boston Celtics'i yenerek 4 maçlık galibiyet serisini sürdürdü.",
+      "hedef_mac": "0022500673",
+      "muzip": false,
+      "kind": "seri"
+    },
+    {
+      "metin": "Charlotte Hornets, Memphis Grizzlies deplasmanında kazandı.",
+      "hedef_mac": "0022500676",
+      "muzip": false,
+      "kind": "duz_sonuc"
     }
   ],
   "rapor": {
     "toplam_alan": 3,
     "ilk_denemede_kabul": 0,
-    "sablon_moduna_dusen": 0,
+    "sablon_moduna_dusen": 1,
     "detay": [
       {
         "mac_id": "0022500679",
         "deneme": 0,
         "gerekce": [
-          "neden_onemli/T4: ['imza at']"
+          "baslik/T31: [\"başlık iskelet listesinin dışında: 'San Antonio, Wembanyama'nın 28 sayısıyla Houston'ı yendi.'\"]"
         ],
         "reddedilen_taslak": {
-          "baslik": "San Antonio, 16 sayılık farktan dönüp Houston'ı deplasmanda yendi.",
-          "neden_onemli": "Wembanyama 28 sayı, 16 ribaund ve 5 blokla nadir bir performansa imza attı.",
-          "ozet": "Houston, ilk çeyreği 36-26 önde kapatarak farkı erkenden yükseltti. San Antonio üçüncü periyotta baskısını artırıp farkı tek haneye indirdi, son periyotta Wembanyama'nın serbest atışıyla öne geçti. Houston son çeyrekte sadece 13 sayı üretebilirken Spurs bu üstünlüğü sona kadar korudu. Gecenin tek yıldızı Wembanyama olurken, 5 blokla geçtiği eşik onu bu sezonun en etkileyici savunma performansına taşıdı.",
-          "muzip": false
+          "baslik": "San Antonio, Wembanyama'nın 28 sayısıyla Houston'ı yendi."
         }
       },
       {
         "mac_id": "0022500679",
         "deneme": 1,
         "gerekce": [
-          "baslik/T23: [\"geri dönüş sayısız anıldı ('San Antonio, Wembanyama'nın blok gecesinde farktan döndü') — kaç sayılık açığın kapatıldığı yazılmalı (fark_serisi.kazanan_en_buyuk_acigi)\"]"
+          "baslik/T31: [\"başlık iskelet listesinin dışında: 'San Antonio, Houston'ın açtığı 16 sayılık farktan dönüp yendi.'\"]",
+          "T14: en iyi performans (Victor Wembanyama) hiç anılmadı"
         ],
         "reddedilen_taslak": {
-          "baslik": "San Antonio, Wembanyama'nın blok gecesinde farktan döndü.",
-          "neden_onemli": "San Antonio, konferansta 2. sırasını bu galibiyetle korudu.",
-          "ozet": "Houston Rockets, ilk çeyreği 36-26 önde tamamlayıp farkı 16 sayıya kadar çıkardı. San Antonio Spurs üçüncü çeyrekte farkı tek sayıya indirdi ve son periyotta Wembanyama'nın serbest atışıyla öne geçti. Ev sahibi Rockets son çeyrekte sadece 13 sayı atarken Spurs farkı hiç kaybetmedi. Wembanyama, attığı 28 sayı, 16 ribaund ve 5 blokla maçın en etkili ismi oldu.",
-          "muzip": false
+          "baslik": "San Antonio, Houston'ın açtığı 16 sayılık farktan dönüp yendi."
+        }
+      },
+      {
+        "mac_id": "0022500679",
+        "deneme": 2,
+        "gerekce": [
+          "baslik/T31: [\"başlık iskelet listesinin dışında: 'San Antonio, Houston'ı deplasmanda 111-99 yendi.'\"]",
+          "T14: en iyi performans (Victor Wembanyama) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "San Antonio, Houston'ı deplasmanda 111-99 yendi."
         }
       }
     ],
-    "sablon_isaretli": [],
+    "sablon_isaretli": [
+      {
+        "mac_id": "0022500679",
+        "alan": "mutlaka",
+        "gerekce": [
+          "T14: en iyi performans (Victor Wembanyama) hiç anılmadı"
+        ],
+        "metin": {
+          "baslik": "San Antonio Spurs, 16 sayılık farktan dönüp Houston Rockets'i yendi.",
+          "neden_onemli": "San Antonio Spurs, konferansta 2. sıraya yükseldi."
+        }
+      }
+    ],
+    "mutlaka_mac": 1,
     "ret_orani": 1.0,
     "uretim_modu": "hibrit",
     "kullanim": {
       "cagri_sayisi": 3,
-      "girdi_token": 8564,
-      "cikti_token": 10816,
-      "cache_yazma_token": 20776,
-      "cache_okuma_token": 10388,
-      "toplam_maliyet_usd": 0.1793,
+      "girdi_token": 12803,
+      "cikti_token": 762,
+      "cache_yazma_token": 6166,
+      "cache_okuma_token": 39014,
+      "toplam_maliyet_usd": 0.0564,
       "butce_asildi": false
     }
   }

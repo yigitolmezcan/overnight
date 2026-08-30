@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-18",
-  "uretildi": "2026-08-26T23:42:05.831505Z",
+  "uretildi": "2026-08-30T11:04:44.294267Z",
   "maclar": {
     "0022500378": {
       "gec_satiri": "Phoenix Suns evinde Golden State Warriors'u 99-98 yendi. Phoenix Suns, 14 sayılık farktan dönerek kazandı.",
@@ -27,122 +27,97 @@
       "muzip": false
     },
     "0022500375": {
-      "baslik": "New Orleans, 25 sayılık farktan dönerek Houston'ı 133-128 yendi.",
-      "neden_onemli": "Sezonun en büyük sürprizlerinden biri sahada yaşandı, güçlü bir Houston kadrosu genç Pelicans'a takıldı.",
-      "ozet": "Houston, ilk yarıda hücumda üstünlük kurdu ve farkı 22 sayıya kadar çıkardı. New Orleans, üçüncü çeyrekte oyunun akışını çevirdi ve dördüncü çeyreğin sonunda skoru eşitledi. Uzatmada son saniyelerde attığı iki serbest atışla farkı belirleyen isim Saddiq Bey oldu. 29 sayı 9 ribaund üreten Bey'in yanında Trey Murphy III de 27 sayıyla üretken bir gece geçirdi.",
-      "muzip": false
+      "baslik": "New Orleans, 22 sayılık farktan dönüp Houston'ı yendi."
     },
     "0022500379": {
-      "baslik": "Los Angeles Lakers, Utah Jazz'ı 143-135 yendi.",
-      "neden_onemli": "Lakers, geceyi Batı Konferansı'nda 3. sırada kapattı.",
-      "ozet_kisa": "Utah, ilk çeyrekte 10 sayıya kadar açılan farkla öne geçti ama Lakers maç boyunca geri döndü ve son çeyrekte üstünlüğü ele aldı. Dončić 45 sayı, 11 ribaund, 14 asistle triple-double yaptı ve takımını sırtladı. LeBron James'in 28 sayı, 10 asistle katkısı da öne çıktı.",
-      "muzip": false
+      "baslik": "Luka Dončić'in 45 sayısıyla Lakers, Utah'ı yendi.",
+      "neden_onemli": "Los Angeles Lakers, konferansta 3. sıraya yükseldi."
     },
     "0022500380": {
-      "baslik": "Portland, Sacramento'yu son saniyede 134-133 yendi.",
-      "neden_onemli": "Liderliğin 22 kez el değiştirdiği maçta karar son saniyeye kadar belirsiz kaldı.",
-      "ozet_kisa": "Deni Avdija attığı 35 sayıyla Portland'ı sırtladı ve bitime 1.5 saniye kala attığı iki serbest atışla farkı yarattı. Öncesinde DeMar DeRozan'ın basketiyle öne geçen Sacramento, son hücumda cevap veremedi. Portland böylece çekişmeli geçen maçtan galip ayrıldı.",
-      "muzip": false
+      "baslik": "Portland, Sacramento'yı son saniyede devirdi."
     },
     "0022500371": {
-      "baslik": "Charlotte, Atlanta'yı 133-126 yendi.",
-      "neden_onemli": "Hornets, farkı 24 sayıya kadar çıkarıp maçı hiç baskı altında kalmadan bitirdi.",
-      "ozet_kisa": "Gecenin ilk maçında Charlotte, ilk çeyrekten itibaren kurduğu üstünlüğü sonuna kadar korudu. Mağlup tarafta Jalen Johnson 43 sayı, 11 ribaund ve 9 asistle çift rakamlı istatistik üretti. Hornets tarafında Kon Knueppel 28 sayıyla öne çıktı.",
-      "muzip": false
+      "baslik": "Charlotte, Atlanta'yı 133-126 yendi."
     }
   },
   "brief": [
     {
       "metin": "Sürpriz bir sonuçla New Orleans Pelicans, Houston Rockets'i yendi.",
       "hedef_mac": "0022500375",
-      "muzip": false
+      "muzip": false,
+      "kind": "surpriz"
     },
     {
       "metin": "Luka Dončić, Utah Jazz karşısında 45 sayı attı.",
       "hedef_mac": "0022500379",
-      "muzip": false
+      "muzip": false,
+      "kind": "performans"
     },
     {
       "metin": "Portland Trail Blazers, Sacramento Kings'i uzatmada geçti.",
       "hedef_mac": "0022500380",
-      "muzip": false
+      "muzip": false,
+      "kind": "uzatma"
     },
     {
-      "metin": "Phoenix Suns, 14 sayılık farktan dönüp Golden State Warriors'u geçti.",
+      "metin": "Charlotte Hornets, Atlanta Hawks'ı yendi.",
+      "hedef_mac": "0022500371",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Phoenix Suns, Golden State Warriors'u yendi.",
       "hedef_mac": "0022500378",
-      "muzip": false
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "New York Knicks, 16 sayılık farktan dönüp Indiana Pacers'i geçti.",
+      "hedef_mac": "0022500372",
+      "muzip": false,
+      "kind": "geri_donus"
+    },
+    {
+      "metin": "Dallas Mavericks, Detroit Pistons'u evinde yendi.",
+      "hedef_mac": "0022500376",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Miami Heat, Brooklyn Nets deplasmanında kazandı.",
+      "hedef_mac": "0022500373",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Denver Nuggets, Orlando Magic'i yenerek konferansta 2. sıraya yükseldi.",
+      "hedef_mac": "0022500377",
+      "muzip": false,
+      "kind": "siralama"
+    },
+    {
+      "metin": "Milwaukee Bucks, evinde Toronto Raptors'a kaybetti.",
+      "hedef_mac": "0022500374",
+      "muzip": false,
+      "kind": "duz_sonuc"
     }
   ],
   "rapor": {
-    "toplam_alan": 8,
-    "ilk_denemede_kabul": 1,
+    "toplam_alan": 4,
+    "ilk_denemede_kabul": 4,
     "sablon_moduna_dusen": 0,
-    "detay": [
-      {
-        "mac_id": "0022500375",
-        "deneme": 0,
-        "gerekce": [
-          "ozet/T10: ['dağılmış']",
-          "ozet/T16: [\"'üst üste' iddiası (NOP, seri uzunluğu 3) 4 eşiğinin altında\"]"
-        ],
-        "reddedilen_taslak": {
-          "baslik": "New Orleans, 25 sayılık farktan dönüp Houston'ı devirdi.",
-          "neden_onemli": "Batı'nın dip sıralarındaki Pelicans, üst sıradaki Houston'ı sahasında yıktı.",
-          "ozet": "Houston, ilk yarıda savunmasını sıkılaştırıp farkı 22 sayıya kadar çıkardı ve New Orleans dağılmış görünüyordu. Üçüncü çeyrekte Pelicans toparlandı, dördüncü periyotta 36-20'lik üstünlükle skoru eşitledi. Son periyotta Saddiq Bey'in art arda attığı serbest atışlar farkı beşe çıkardı ve maçı bitirdi. Bey 29 sayı, 9 ribaundla öne çıkarken Trey Murphy III de 7'de 7 şutla 27 sayı üretti.",
-          "muzip": false
-        }
-      },
-      {
-        "mac_id": "0022500375",
-        "deneme": 1,
-        "gerekce": [
-          "ozet/T4d: [\"'farkı 22 sayıya kadar açtırdı' (farkı açmak — 'farkı yükseltti/çıkardı' kullanılmalı)\"]"
-        ],
-        "reddedilen_taslak": {
-          "baslik": "New Orleans, 25 sayılık farktan dönerek Houston'ı 133-128 yendi",
-          "neden_onemli": "Konferansın en zayıf takımlarından biri, üst sıradaki bir rakibi kendi sahasında devirdi.",
-          "ozet": "New Orleans, sahasında ağırladığı Houston karşısında ilk yarıda hücumda tutunamayarak farkı 22 sayıya kadar açtırdı. Üçüncü periyotta Trey Murphy III'ün etkili hücumuyla çıkışa geçen Pelicans, dördüncü periyot sonunda skoru eşitleyip maçı uzatmaya taşıdı. Uzatmada son saniyelerde attığı serbest atışlarla galibiyeti kesinleştiren isim Saddiq Bey oldu. 29 sayı ve 9 ribaund üreten Bey, gecenin en skorer ismi oldu.",
-          "muzip": false
-        }
-      },
-      {
-        "mac_id": "0022500379",
-        "deneme": 0,
-        "gerekce": [
-          "ozet_kisa/T16: [\"'üst üste' iddiası (UTA, seri uzunluğu 1) 4 eşiğinin altında\"]"
-        ],
-        "reddedilen_taslak": {
-          "baslik": "Dončić'in triple-double'ıyla Lakers, Utah'ı deplasmanda yendi.",
-          "neden_onemli": "Bu sezon 6. kez 40+ sayı atan Dončić, gecenin en etkili ismiydi.",
-          "ozet_kisa": "Los Angeles Lakers, Utah deplasmanında 143-135 kazandı. Luka Dončić 45 sayı, 11 ribaund ve 14 asistle triple-double yaptı ve maçın en etkili ismi oldu. Utah'ta Keyonte George son periyotta üst üste serbest atışlarla farkı kapatmaya çalıştı ama yetmedi.",
-          "muzip": false
-        }
-      },
-      {
-        "mac_id": "0022500371",
-        "deneme": 0,
-        "gerekce": [
-          "ozet_kisa/T1: ['40']",
-          "ozet_kisa/T6: 3 cümle / 50 kelime (hedef 2-3 cümle / 30-45 kelime)"
-        ],
-        "reddedilen_taslak": {
-          "baslik": "Charlotte, Atlanta'yı 133-126 mağlup etti.",
-          "neden_onemli": "Charlotte, maç boyunca hiçbir anını geride geçirmeden kontrolü elinde tuttu.",
-          "ozet_kisa": "Mağlup tarafta Jalen Johnson 43 sayı, 11 ribaund ve 9 asistle double-double yaptı, üstelik bu sezon ikinci kez 40 sayı barajını geçti. Johnson, son periyotta bitime saniyeler kala attığı üçlükle farkı beşe indirse de Charlotte'ın üstünlüğünü kıramadı. Charlotte tarafında ise skor tablosu daha dengeliydi, öne çıkan tek bir isim yoktu.",
-          "muzip": false
-        }
-      }
-    ],
+    "detay": [],
     "sablon_isaretli": [],
-    "ret_orani": 0.875,
+    "mutlaka_mac": 4,
+    "ret_orani": 0.0,
     "uretim_modu": "hibrit",
     "kullanim": {
-      "cagri_sayisi": 8,
-      "girdi_token": 19957,
-      "cikti_token": 16925,
-      "cache_yazma_token": 26431,
-      "cache_okuma_token": 65037,
-      "toplam_maliyet_usd": 0.2882,
+      "cagri_sayisi": 4,
+      "girdi_token": 14387,
+      "cikti_token": 558,
+      "cache_yazma_token": 15148,
+      "cache_okuma_token": 47908,
+      "toplam_maliyet_usd": 0.0818,
       "butce_asildi": false
     }
   }

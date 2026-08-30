@@ -1,49 +1,89 @@
 {
   "tarih": "2025-10-23",
-  "uretildi": "2026-08-25T10:01:02.185025Z",
+  "uretildi": "2026-08-30T11:10:37.076236Z",
   "maclar": {
-    "0022500006": {
-      "baslik": "Uzatmaya giden maçta Golden State Warriors, Denver Nuggets'i 137-131 yendi.",
-      "ozet": "Golden State Warriors, Denver Nuggets karşısında 137-131 kazandı. Golden State Warriors, 14 sayılık farkı eritti. Stephen Curry 42 sayı attı. Mağlup tarafta Aaron Gordon 50 sayı attı.",
+    "0022500005": {
+      "gec_satiri": "Shai Gilgeous-Alexander'in 55 sayılık gecesinde Oklahoma City, Indiana'yı yendi. Oklahoma City Thunder, maçı uzatmada kazandı.",
       "muzip": false
     },
-    "0022500005": {
-      "baslik": "Shai Gilgeous-Alexander'in 55 sayılık gecesinde Oklahoma City Thunder, Indiana Pacers'i 141-135 yendi.",
-      "ozet": "Oklahoma City Thunder, Indiana Pacers karşısında 141-135 kazandı. Oklahoma City Thunder, maçı uzatmada kazandı.",
-      "muzip": false
+    "0022500006": {
+      "baslik": "Golden State Warriors, 14 sayılık farktan dönüp Denver Nuggets'i yendi."
     }
   },
   "brief": [
     {
       "metin": "Golden State Warriors, 14 sayılık farktan dönüp Denver Nuggets'i geçti.",
       "hedef_mac": "0022500006",
-      "muzip": false
+      "muzip": false,
+      "kind": "geri_donus"
     },
     {
       "metin": "Shai Gilgeous-Alexander, Indiana Pacers karşısında 55 sayı attı.",
       "hedef_mac": "0022500005",
-      "muzip": false
+      "muzip": false,
+      "kind": "performans"
     }
   ],
   "rapor": {
-    "uretim_modu": "sablon",
-    "kullanim": {
-      "cagri_sayisi": 0,
-      "toplam_maliyet_usd": 0.0
-    },
-    "sablon_isaretli": [
+    "toplam_alan": 3,
+    "ilk_denemede_kabul": 0,
+    "sablon_moduna_dusen": 1,
+    "detay": [
       {
-        "mac_id": "0022500005",
-        "alan": "mutlaka",
+        "mac_id": "0022500006",
+        "deneme": 0,
         "gerekce": [
-          "baslik/T6: 12 kelime (sınır 10)"
+          "baslik/T16: [\"'farktan dönüp' civarındaki geri dönüş 10 sayının altında\"]",
+          "T14: en iyi performans (Stephen Curry) hiç anılmadı"
         ],
-        "metin": {
-          "baslik": "Shai Gilgeous-Alexander'in 55 sayılık gecesinde Oklahoma City Thunder, Indiana Pacers'i 141-135 yendi.",
-          "ozet": "Oklahoma City Thunder, Indiana Pacers karşısında 141-135 kazandı. Oklahoma City Thunder, maçı uzatmada kazandı.",
-          "muzip": false
+        "reddedilen_taslak": {
+          "baslik": "Golden State Warriors, 9 sayılık farktan dönüp Denver'ı yendi."
+        }
+      },
+      {
+        "mac_id": "0022500006",
+        "deneme": 1,
+        "gerekce": [
+          "T14: en iyi performans (Stephen Curry) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Golden State, 14 sayılık farktan dönüp Denver'ı yendi."
+        }
+      },
+      {
+        "mac_id": "0022500006",
+        "deneme": 2,
+        "gerekce": [
+          "T14: en iyi performans (Stephen Curry) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Golden State, 14 sayılık farktan dönüp Denver'ı yendi."
         }
       }
-    ]
+    ],
+    "sablon_isaretli": [
+      {
+        "mac_id": "0022500006",
+        "alan": "mutlaka",
+        "gerekce": [
+          "T14: en iyi performans (Stephen Curry) hiç anılmadı"
+        ],
+        "metin": {
+          "baslik": "Golden State Warriors, 14 sayılık farktan dönüp Denver Nuggets'i yendi."
+        }
+      }
+    ],
+    "mutlaka_mac": 1,
+    "ret_orani": 1.0,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 3,
+      "girdi_token": 12479,
+      "cikti_token": 1050,
+      "cache_yazma_token": 8574,
+      "cache_okuma_token": 40218,
+      "toplam_maliyet_usd": 0.0649,
+      "butce_asildi": false
+    }
   }
 }

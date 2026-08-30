@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-21",
-  "uretildi": "2026-08-28T14:04:29.934615Z",
+  "uretildi": "2026-08-30T11:05:27.855549Z",
   "maclar": {
     "0022500399": {
       "gec_satiri": "San Antonio Spurs deplasmanda Washington Wizards'ı 124-113 yendi.",
@@ -10,42 +10,32 @@
       "gec_satiri": "Brooklyn Nets evinde Toronto Raptors'u 96-81 yendi.",
       "muzip": false
     },
-    "0022500396": {
-      "baslik": "Chicago Bulls, Atlanta Hawks deplasmanında son saniyelerde 152-150 kazandı",
-      "neden_onemli": "Doğu Konferansı'nda play-in sıralamasını etkileyen bir maçtı, liderlik 19 kez el değiştirdi.",
-      "ozet": "Maça eşit başlayan Chicago, ikinci periyotta hücumda üstünlük kurup rakibinin önüne geçti. Bulls farkını bir ara 11 sayıya kadar genişletse de, maç son çeyreğe gergin bir skorla girdi. Son çeyrekte taraflar sırayla öne geçti, kararı son saniyelerde Chicago'dan Matas Buzelis'in serbest atışları verdi. Bulls'ta 28 sayı atan Buzelis, 11 şut denemesinde sadece bir kez hedefi ıskaladı.",
-      "muzip": false
-    },
     "0022500401": {
-      "baslik": "Uzatmaya giden maçta Sacramento Kings, Houston Rockets'i 125-124 yendi.",
-      "ozet_kisa": "Sacramento Kings, 14 sayılık farkı eritti. Dennis Schröder 10 asist yaptı.",
-      "muzip": false
+      "baslik": "Sacramento Kings, Houston Rockets'i son saniyede devirdi."
+    },
+    "0022500396": {
+      "baslik": "Chicago, Atlanta'yı son saniyede devirdi."
     },
     "0022500398": {
-      "baslik": "Jalen Brunson'ın 47 sayısıyla New York, Miami'yi 132-125 yendi",
-      "neden_onemli": "20. galibiyetini alan Knicks, geceyi Doğu Konferansı'nda 2. sırada kapattı.",
-      "ozet_kisa": "Knicks, Miami'nin açtığı 10 sayılık farktan dönerek maçı kazandı. Brunson, 11 serbest atışının tamamını kullanarak sahadan yüksek isabetle oynadı ve 8 asistle takımını yönetti. Miami'nin ribaund üstünlüğüne rağmen Knicks üçlükte üstün geldi.",
-      "muzip": false
+      "baslik": "Brunson'ın 47 sayısıyla New York, Miami'yi yendi.",
+      "neden_onemli": "New York Knicks, konferansta 2. sıraya yükseldi."
     },
     "0022500400": {
-      "baslik": "Minnesota, sahasında Milwaukee'yi 103-100 yendi.",
-      "neden_onemli": "Timberwolves, 16 sayılık farktan dönerek maçı son çeyrekte kontrol altına aldı.",
-      "ozet_kisa": "Milwaukee Bucks ilk yarıda geniş bir üstünlük kurdu, ancak üçüncü çeyrekte Minnesota Timberwolves'un 27-15'lik üstünlüğüyle skor eşitlendi. Liderliğin maç boyunca üç kez el değiştirdiği karşılaşmada son çeyreği kontrollü geçen Timberwolves, farkı koruyarak sahasında galibiyeti aldı.",
-      "muzip": false
+      "baslik": "Minnesota, Milwaukee'yi son saniyede devirdi."
     }
   },
   "brief": [
-    {
-      "metin": "Chicago Bulls, Atlanta Hawks'ı yendi.",
-      "hedef_mac": "0022500396",
-      "muzip": false,
-      "kind": "duz_sonuc"
-    },
     {
       "metin": "Sürpriz bir sonuçla Sacramento Kings, Houston Rockets'i yendi.",
       "hedef_mac": "0022500401",
       "muzip": false,
       "kind": "surpriz"
+    },
+    {
+      "metin": "Chicago Bulls, Atlanta Hawks'ı yendi.",
+      "hedef_mac": "0022500396",
+      "muzip": false,
+      "kind": "duz_sonuc"
     },
     {
       "metin": "Jalen Brunson, Miami Heat karşısında 47 sayı attı.",
@@ -67,115 +57,63 @@
     }
   ],
   "rapor": {
-    "toplam_alan": 10,
-    "ilk_denemede_kabul": 0,
+    "toplam_alan": 6,
+    "ilk_denemede_kabul": 3,
     "sablon_moduna_dusen": 1,
     "detay": [
-      {
-        "mac_id": "0022500396",
-        "deneme": 0,
-        "gerekce": [
-          "ozet/T13: [\"geri dönüş kaybedene atfedilmiş: 'Atlanta üçüncü periyotta farkı eritip maçı son periyoda taşıdı ve liderlik defalarca el değiştirdi'\"]"
-        ],
-        "reddedilen_taslak": {
-          "baslik": "Chicago Bulls, Atlanta'yı son saniye serbest atışlarıyla 152-150 yendi.",
-          "neden_onemli": "Doğu'da play-in sırasını paylaşan iki takım karşı karşıya geldi.",
-          "ozet": "Play-in sıralamasını yakından ilgilendiren karşılaşmada ilk periyot berabere kapandı, ardından Chicago ikinci periyotta öne çıktı. Atlanta üçüncü periyotta farkı eritip maçı son periyoda taşıdı ve liderlik defalarca el değiştirdi. Bitime dört saniye kala Matas Buzelis'in kullandığı serbest atış Bulls'u öne geçirdi ve Atlanta'nın son hücumu sonuçsuz kaldı. Buzelis 10/11 şutla 28 sayı atarken Josh Giddey 12 asistle oyunu yönetti.",
-          "muzip": false
-        }
-      },
       {
         "mac_id": "0022500401",
         "deneme": 0,
         "gerekce": [
-          "ozet_kisa/T23: [\"lider değişimi ALT KIRILIMI ('Liderlik son periyotta dört kez el değiştirdi') hiçbir zaman yazılmaz — sadece maç geneli toplamı, 15+ ise\"]"
+          "T14: en iyi performans (Dennis Schröder) hiç anılmadı"
         ],
         "reddedilen_taslak": {
-          "baslik": "Sacramento, Houston'ı son saniye basketiyle 125-124 yendi.",
-          "neden_onemli": "Kings, 14 sayılık farktan dönerek maçı kazandı.",
-          "ozet_kisa": "Gecenin nefes kesen maçında Sacramento, Houston'ı bitime 3.1 saniye kala Dennis Schröder'in attığı üçlükle yendi. Schröder 24 sayı, 7 ribaund ve 10 asistle maçın en etkili ismi oldu. Liderlik son periyotta dört kez el değiştirdi.",
-          "muzip": false
+          "baslik": "Sacramento, Houston'ı son saniyede devirdi."
         }
       },
       {
         "mac_id": "0022500401",
         "deneme": 1,
         "gerekce": [
-          "ozet_kisa/T4d: [\"'açı kapattı' (açığı kapatmak — 'farktan döndü/farkı eritti' kullanılmalı)\"]",
-          "ozet_kisa/T16: [\"'açı kapattı' civarındaki geri dönüş 10 sayının altında\"]",
-          "ozet_kisa/T23: [\"'topladı' — 'toplamak' SADECE ribaund fiilidir, aynı cümlede sayı/asist de bu fiile bağlanmış; sayı 'atılır', asist 'verilir'\"]"
+          "T14: en iyi performans (Dennis Schröder) hiç anılmadı"
         ],
         "reddedilen_taslak": {
-          "baslik": "Sacramento, Schröder'in son saniye üçlüğüyle Houston'ı 125-124 yendi",
-          "neden_onemli": "Sacramento, 14 sayılık farktan dönerek gecenin en çarpıcı geri dönüşünü tamamladı.",
-          "ozet_kisa": "Dennis Schröder, son periyotta bitime 3 saniye kala attığı üçlükle Sacramento'yu öne geçirdi ve maçı kapattı. Houston Rockets'ın son hücumu sonuçsuz kaldı. Schröder gecenin en etkili ismi oldu, 24 sayı attı, 7 ribaund topladı ve 10 asist yaptı.",
-          "muzip": false
+          "baslik": "Sacramento, Houston'ı son saniyede devirdi."
         }
       },
       {
         "mac_id": "0022500401",
         "deneme": 2,
         "gerekce": [
-          "ozet_kisa/T16: [\"'geri döndü' civarındaki geri dönüş 10 sayının altında\"]"
+          "T14: en iyi performans (Dennis Schröder) hiç anılmadı"
         ],
         "reddedilen_taslak": {
-          "baslik": "Sacramento, Houston'ı son saniyede 125-124 yendi.",
-          "neden_onemli": "Kings, 14 sayılık farktan dönerek galibiyeti kaptı.",
-          "ozet_kisa": "Kazananı son saniyelerde belli olan maçta Sacramento, Houston'ın büyük farkını eriterek geri döndü. Dennis Schröder, bitime 3 saniye kala attığı üçlükle Kings'i öne geçirdi ve maçı bitirdi. Schröder, attığı 24 sayı ve verdiği 10 asistle gecenin en etkili ismi oldu.",
-          "muzip": false
-        }
-      },
-      {
-        "mac_id": "0022500398",
-        "deneme": 0,
-        "gerekce": [
-          "T25: üst satırdaki olgu gövdede tekrar edildi (47) — başlıkta geçen bir sayı gövdede yeniden yazılmaz"
-        ],
-        "reddedilen_taslak": {
-          "baslik": "New York, Brunson'ın 47 sayısıyla Miami'yi mağlup etti.",
-          "neden_onemli": "20. galibiyetini alan New York, geceyi konferansta 2. sırada kapattı.",
-          "ozet_kisa": "Gecenin tek yıldızı Jalen Brunson oldu. Guard, 26 şuttan 15'ini bularak 47 sayı attı, 8 asist de yaptı. New York ilk çeyrekte geride kalmasına karşın ikinci periyotta öne geçti ve bu üstünlüğü maç sonuna kadar bırakmadı.",
-          "muzip": false
-        }
-      },
-      {
-        "mac_id": "0022500398",
-        "deneme": 1,
-        "gerekce": [
-          "ozet_kisa/T17: [\"'Kel'el Ware' (kaybeden MIA) cümle öznesi: 'Kel'el Ware'in 19 ribaundu Miami'yi maçta tutmaya yetmedi'\"]"
-        ],
-        "reddedilen_taslak": {
-          "baslik": "Jalen Brunson'ın 47 sayısıyla New York, Miami'yi 132-125 yendi.",
-          "neden_onemli": "Knicks bu galibiyetle 20. zaferini aldı ve konferansta 2. sıraya yerleşti.",
-          "ozet_kisa": "Miami ilk çeyrekte 10 sayı öne geçse de Knicks ikinci yarıda maçın kontrolünü ele aldı. Brunson attığı 8 asistle takımını sırtladı, sezon içinde ikinci kez 40+ sayı barajını geçti. Kel'el Ware'in 19 ribaundu Miami'yi maçta tutmaya yetmedi.",
-          "muzip": false
-        }
-      },
-      {
-        "mac_id": "0022500400",
-        "deneme": 0,
-        "gerekce": [
-          "ozet_kisa/T13: [\"geri dönüş kaybedene atfedilmiş: 'Milwaukee, en büyük farkı 16 sayıya çıkardıktan sonra geri döndü, Kevin Porter Jr.'ın bitime son anda attığı üçlükle skoru yakınlaştırdı'\"]"
-        ],
-        "reddedilen_taslak": {
-          "baslik": "Minnesota, sahasında Milwaukee'yi 103-100 yendi.",
-          "neden_onemli": "Karşılaşma, son saniyeye kadar gerilimini korudu.",
-          "ozet_kisa": "Milwaukee, en büyük farkı 16 sayıya çıkardıktan sonra geri döndü, Kevin Porter Jr.'ın bitime son anda attığı üçlükle skoru yakınlaştırdı. Porter Jr. 24 sayı, 10 ribaund ve 9 asistle double-double yaptı ama Minnesota farkı korudu.",
-          "muzip": false
+          "baslik": "Sacramento, Houston'ı son saniyede devirdi."
         }
       }
     ],
-    "sablon_isaretli": [],
+    "sablon_isaretli": [
+      {
+        "mac_id": "0022500401",
+        "alan": "mutlaka",
+        "gerekce": [
+          "T14: en iyi performans (Dennis Schröder) hiç anılmadı"
+        ],
+        "metin": {
+          "baslik": "Sacramento Kings, Houston Rockets'i son saniyede devirdi."
+        }
+      }
+    ],
     "mutlaka_mac": 4,
-    "ret_orani": 1.0,
+    "ret_orani": 0.5,
     "uretim_modu": "hibrit",
     "kullanim": {
-      "cagri_sayisi": 10,
-      "girdi_token": 24358,
-      "cikti_token": 27107,
-      "cache_yazma_token": 44350,
-      "cache_okuma_token": 71319,
-      "toplam_maliyet_usd": 0.4449,
+      "cagri_sayisi": 6,
+      "girdi_token": 22377,
+      "cikti_token": 312,
+      "cache_yazma_token": 17951,
+      "cache_okuma_token": 75687,
+      "toplam_maliyet_usd": 0.1079,
       "butce_asildi": false
     }
   }

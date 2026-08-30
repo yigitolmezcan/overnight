@@ -1,63 +1,176 @@
 {
   "tarih": "2025-12-15",
-  "uretildi": "2026-08-26T06:19:38.940415Z",
+  "uretildi": "2026-08-30T11:04:29.285470Z",
   "maclar": {
-    "0022501226": {
-      "gec_satiri": "Memphis Grizzlies deplasmanda LA Clippers'i 121-103 yendi. Jaren Jackson Jr. 31 sayı attı.",
-      "muzip": false
-    },
-    "0022501222": {
-      "gec_satiri": "Liderliğin 15 kez el değiştirdiği maçta Detroit, Boston'u yendi. Cade Cunningham 32 sayı attı.",
-      "muzip": false
-    },
     "0022501227": {
-      "gec_satiri": "Toronto Raptors deplasmanda Miami Heat'ı 106-96 yendi.",
+      "gec_satiri": "Toronto Raptors deplasmanda Miami Heat'i 106-96 yendi.",
       "muzip": false
     },
     "0022501225": {
-      "baslik": "Jokić'in triple-double'ıyla Denver, Houston'ı 128-125 yendi.",
-      "neden_onemli": "Liderliğin 17 kez el değiştirdiği maç, gece boyunca gerilimini hiç kaybetmedi.",
-      "ozet": "Houston, ilk çeyreği 30-24 önde tamamlayarak maça güçlü bir başlangıç yaptı. Denver ikinci çeyrekte toparlanıp liderliği ele geçirdi, ardından iki takım maç sonuna kadar sırayla öne geçerek gerilimi hiç düşürmedi. Son dakikada Alperen Şengün'ün basketiyle fark üçe inince, Nikola Jokić'in serbest atışları Denver'ın avantajını korudu. Geceyi konferansta 2. sırada kapatan Denver'da Jokić, 39 sayı, 15 ribaund ve 10 asistle triple-double yaptı.",
-      "muzip": false
+      "baslik": "Nikola Jokić'in 39 sayısıyla Denver Nuggets, Houston Rockets'i yendi.",
+      "neden_onemli": "Denver Nuggets, konferansta 2. sıraya yükseldi."
     },
     "0022501224": {
-      "baslik": "Uzatmaya giden maçta Utah Jazz, Dallas Mavericks'i 140-133 yendi.",
-      "ozet_kisa": "Utah Jazz, 10 sayılık farkı eritti. Lauri Markkanen 33 sayı attı.",
-      "muzip": false
+      "baslik": "Lauri Markkanen'in 33 sayısıyla Utah Jazz, Dallas Mavericks'i yendi."
+    },
+    "0022501226": {
+      "baslik": "Jaren Jackson Jr.'un 31 sayısıyla Memphis Grizzlies, LA Clippers'i yendi."
+    },
+    "0022501222": {
+      "baslik": "Cade Cunningham'ın 32 sayısıyla Detroit, Boston'u yendi.",
+      "neden_onemli": "Detroit Pistons, konferansta 1. sıraya yükseldi."
     }
   },
   "brief": [
     {
       "metin": "Nikola Jokić, Houston Rockets karşısında 39 sayı attı.",
       "hedef_mac": "0022501225",
-      "muzip": false
+      "muzip": false,
+      "kind": "performans"
     },
     {
-      "metin": "Utah Jazz, 10 sayılık farktan dönüp Dallas Mavericks'i geçti.",
+      "metin": "Utah Jazz, Dallas Mavericks'i uzatmada geçti.",
       "hedef_mac": "0022501224",
-      "muzip": false
+      "muzip": false,
+      "kind": "uzatma"
     },
     {
-      "metin": "Detroit Pistons, Boston Celtics'i yenerek konferansta 1. sıraya yükseldi.",
+      "metin": "Memphis Grizzlies, LA Clippers'i yendi.",
+      "hedef_mac": "0022501226",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Detroit Pistons, 12 sayılık farktan dönüp Boston Celtics'i geçti.",
       "hedef_mac": "0022501222",
-      "muzip": false
+      "muzip": false,
+      "kind": "geri_donus"
+    },
+    {
+      "metin": "Toronto Raptors, Miami Heat'i yenerek konferansta 3. sıraya yükseldi.",
+      "hedef_mac": "0022501227",
+      "muzip": false,
+      "kind": "siralama"
     }
   ],
   "rapor": {
-    "toplam_alan": 1,
-    "ilk_denemede_kabul": 1,
-    "sablon_moduna_dusen": 0,
-    "detay": [],
+    "toplam_alan": 11,
+    "ilk_denemede_kabul": 0,
+    "sablon_moduna_dusen": 3,
+    "detay": [
+      {
+        "mac_id": "0022501225",
+        "deneme": 0,
+        "gerekce": [
+          "T14: en iyi performans (Nikola Jokić) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Denver, Houston'ı son saniyede devirdi."
+        }
+      },
+      {
+        "mac_id": "0022501225",
+        "deneme": 1,
+        "gerekce": [
+          "baslik/T31: [\"başlık iskelet listesinin dışında: 'Denver, Houston'u uzatmada son saniyede devirdi.'\"]",
+          "T14: en iyi performans (Nikola Jokić) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Denver, Houston'u uzatmada son saniyede devirdi."
+        }
+      },
+      {
+        "mac_id": "0022501225",
+        "deneme": 2,
+        "gerekce": [
+          "T14: en iyi performans (Nikola Jokić) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Denver, Houston'u son saniyede devirdi."
+        }
+      },
+      {
+        "mac_id": "0022501224",
+        "deneme": 0,
+        "gerekce": [
+          "T14: en iyi performans (Lauri Markkanen) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Utah, 10 sayılık farktan dönüp Dallas'ı yendi."
+        }
+      },
+      {
+        "mac_id": "0022501224",
+        "deneme": 1,
+        "gerekce": [
+          "T14: en iyi performans (Lauri Markkanen) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Utah, 10 sayılık farktan dönüp Dallas'ı yendi."
+        }
+      },
+      {
+        "mac_id": "0022501224",
+        "deneme": 2,
+        "gerekce": [
+          "T14: en iyi performans (Lauri Markkanen) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Utah, 10 sayılık farktan dönüp Dallas'ı yendi."
+        }
+      },
+      {
+        "mac_id": "0022501226",
+        "deneme": 0,
+        "gerekce": [
+          "T14: en iyi performans (Jaren Jackson Jr.) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Memphis, LA Clippers deplasmanında 121-103 kazandı."
+        }
+      },
+      {
+        "mac_id": "0022501226",
+        "deneme": 1,
+        "gerekce": [
+          "T14: en iyi performans (Jaren Jackson Jr.) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Memphis, LA Clippers'ı üçüncü çeyrekte kopardı."
+        }
+      },
+      {
+        "mac_id": "0022501226",
+        "deneme": 2,
+        "gerekce": [
+          "T14: en iyi performans (Jaren Jackson Jr.) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Memphis, LA Clippers deplasmanında 121-103 kazandı."
+        }
+      },
+      {
+        "mac_id": "0022501222",
+        "deneme": 0,
+        "gerekce": [
+          "T14: en iyi performans (Cade Cunningham) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Detroit, Boston deplasmanında 112-105 kazandı."
+        }
+      }
+    ],
     "sablon_isaretli": [],
-    "ret_orani": 0.0,
+    "mutlaka_mac": 4,
+    "ret_orani": 1.0,
     "uretim_modu": "hibrit",
     "kullanim": {
-      "cagri_sayisi": 1,
-      "girdi_token": 2726,
-      "cikti_token": 2884,
-      "cache_yazma_token": 11466,
-      "cache_okuma_token": 0,
-      "toplam_maliyet_usd": 0.063,
+      "cagri_sayisi": 11,
+      "girdi_token": 39821,
+      "cikti_token": 4188,
+      "cache_yazma_token": 28968,
+      "cache_okuma_token": 143003,
+      "toplam_maliyet_usd": 0.2225,
       "butce_asildi": false
     }
   }
