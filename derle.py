@@ -2300,6 +2300,9 @@ def derle(tarih_str):
             "metin": v.get("gec_satiri", ""),
             "box": _box_score(ham["maclar"][gid], v.get("gec_satiri", ""), kaybeden_kod, gercek_gece["maclar"][gid]),
         }
+        girdi["kazanan_kod"] = (skor_bilgi["ev"]
+                               if skor_bilgi["ev_skor"] >= skor_bilgi["dep_skor"]
+                               else skor_bilgi["dep"])
         if skor_bilgi["katman"] in ("mutlaka", "ikinci"):
             # AKIŞ "Göz at"ta da var (kullanıcı kararı: iki bölümde de
             # paragraf kalktı). "Bunları geç" tek satırlık kalıyor —
@@ -2312,6 +2315,14 @@ def derle(tarih_str):
             degerse_bak.append(girdi)
         else:
             diger.append(girdi)
+
+    # SOL RAY "Göz at"ta da var (blok zemini kullanıcı kararı). Renk
+    # çakışması burada da çözülüyor — aynı gecede yakın renkli iki
+    # kazanan varsa düşük rozetli kendi ikincil rengine geçiyor.
+    _ray_g = [{"takim": m["kazanan_kod"], "_gmsc": m["rozet"]} for m in degerse_bak]
+    renk_cakismasini_coz(_ray_g)
+    for m, r in zip(degerse_bak, _ray_g):
+        m["ray_renk"] = r["renk"]
 
     # ---- türkler ----
     turkler = _turkler(ham, turk_oyunculari, mutlaka_id_by_gid, rozet_by_gid)

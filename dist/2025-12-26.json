@@ -13511,7 +13511,8 @@
             }
           ]
         }
-      }
+      },
+      "kazanan_kod": "PHX"
     },
     {
       "id": "a-0022500431",
@@ -14129,7 +14130,8 @@
           ]
         },
         "kritik": null
-      }
+      },
+      "kazanan_kod": "LAC"
     },
     {
       "id": "a-0022500427",
@@ -14749,7 +14751,8 @@
             }
           ]
         }
-      }
+      },
+      "kazanan_kod": "CHI"
     },
     {
       "id": "a-0022500423",
@@ -15318,7 +15321,8 @@
           ]
         },
         "kritik": null
-      }
+      },
+      "kazanan_kod": "MIA"
     },
     {
       "id": "a-0022500425",
@@ -16042,7 +16046,8 @@
         "wtf": null,
         "kilit": null,
         "kritik": null
-      }
+      },
+      "kazanan_kod": "WAS"
     },
     {
       "id": "a-0022500426",
@@ -16691,7 +16696,8 @@
         "wtf": null,
         "kilit": null,
         "kritik": null
-      }
+      },
+      "kazanan_kod": "BOS"
     },
     {
       "id": "a-0022500428",
@@ -17354,7 +17360,8 @@
           ]
         },
         "kritik": null
-      }
+      },
+      "kazanan_kod": "MEM"
     },
     {
       "id": "a-0022500424",
@@ -18039,7 +18046,8 @@
           ]
         },
         "kritik": null
-      }
+      },
+      "kazanan_kod": "CHA"
     }
   ],
   "turkler": [

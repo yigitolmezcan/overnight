@@ -15522,7 +15522,8 @@
             }
           ]
         }
-      }
+      },
+      "kazanan_kod": "MIL"
     },
     {
       "id": "a-0022500436",
@@ -16235,7 +16236,8 @@
           ]
         },
         "kritik": null
-      }
+      },
+      "kazanan_kod": "MIA"
     },
     {
       "id": "a-0022500438",
@@ -16930,7 +16932,8 @@
         "wtf": null,
         "kilit": null,
         "kritik": null
-      }
+      },
+      "kazanan_kod": "HOU"
     },
     {
       "id": "a-0022500434",
@@ -17548,7 +17551,8 @@
           ]
         },
         "kritik": null
-      }
+      },
+      "kazanan_kod": "PHX"
     },
     {
       "id": "a-0022500432",
@@ -18186,7 +18190,8 @@
           ]
         },
         "kritik": null
-      }
+      },
+      "kazanan_kod": "SAC"
     }
   ],
   "turkler": [

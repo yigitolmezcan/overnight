@@ -105,7 +105,7 @@
       "metin": "Charlotte Hornets, Washington Wizards'ı yendi.",
       "anlatili": true,
       "hedef_id": "a-0022500409",
-      "icon": "standings",
+      "icon": "default",
       "saat": "03:00",
       "rozet": 2.98,
       "skor": "CHA 126 – WAS 109",
@@ -249,7 +249,7 @@
       "metin": "Kawhi Leonard, Houston Rockets karşısında 41 sayı attı.",
       "anlatili": true,
       "hedef_id": "g-mutlaka-1",
-      "icon": "default",
+      "icon": "standings",
       "saat": "07:00",
       "rozet": 8.66,
       "skor": "LAC 128 – HOU 108",
@@ -21382,6 +21382,7 @@
         },
         "kritik": null
       },
+      "kazanan_kod": "SAS",
       "akis": [
         {
           "tip": "ceyrek_sonu",
@@ -21405,7 +21406,8 @@
           "detay": "77–76 · liderlik bir daha değişmedi",
           "kritik": true
         }
-      ]
+      ],
+      "ray_renk": "#C4CED4"
     },
     {
       "id": "a-0022500421",
@@ -21973,6 +21975,7 @@
         },
         "kritik": null
       },
+      "kazanan_kod": "DET",
       "akis": [
         {
           "tip": "liderlik",
@@ -21996,7 +21999,8 @@
           "detay": "37 sayı, 3 ribaund, 8 asist",
           "kritik": false
         }
-      ]
+      ],
+      "ray_renk": "#E0384A"
     },
     {
       "id": "a-0022500416",
@@ -22589,6 +22593,7 @@
         },
         "kritik": null
       },
+      "kazanan_kod": "MIN",
       "akis": [
         {
           "tip": "ceyrek_sonu",
@@ -22612,7 +22617,8 @@
           "detay": "73–71 · liderlik bir daha değişmedi",
           "kritik": false
         }
-      ]
+      ],
+      "ray_renk": "#3B7FD4"
     },
     {
       "id": "a-0022500419",
@@ -23228,6 +23234,7 @@
         },
         "kritik": null
       },
+      "kazanan_kod": "MEM",
       "akis": [
         {
           "tip": "ceyrek_sonu",
@@ -23251,7 +23258,8 @@
           "detay": "74–76",
           "kritik": true
         }
-      ]
+      ],
+      "ray_renk": "#12173F"
     }
   ],
   "diger": [
@@ -23854,7 +23862,8 @@
             }
           ]
         }
-      }
+      },
+      "kazanan_kod": "ORL"
     },
     {
       "id": "a-0022500414",
@@ -24456,7 +24465,8 @@
         "wtf": null,
         "kilit": null,
         "kritik": null
-      }
+      },
+      "kazanan_kod": "TOR"
     },
     {
       "id": "a-0022500413",
@@ -25203,7 +25213,8 @@
         "wtf": null,
         "kilit": null,
         "kritik": null
-      }
+      },
+      "kazanan_kod": "MIL"
     },
     {
       "id": "a-0022500410",
@@ -25841,14 +25852,15 @@
           ]
         },
         "kritik": null
-      }
+      },
+      "kazanan_kod": "BKN"
     },
     {
       "id": "a-0022500409",
       "mac": "Charlotte Hornets — Washington Wizards",
       "skor": "126–109",
       "rozet": 2.98,
-      "why": "gece sırası 1",
+      "why": "10. galibiyetini alan (kazanan)",
       "metin": "Charlotte Hornets evinde Washington Wizards'ı 126-109 yendi.",
       "box": {
         "ev": {
@@ -26601,7 +26613,8 @@
           ]
         },
         "kritik": null
-      }
+      },
+      "kazanan_kod": "CHA"
     },
     {
       "id": "a-0022500412",
@@ -27242,7 +27255,8 @@
           ]
         },
         "kritik": null
-      }
+      },
+      "kazanan_kod": "CLE"
     },
     {
       "id": "a-0022500418",
@@ -27954,7 +27968,8 @@
           ]
         },
         "kritik": null
-      }
+      },
+      "kazanan_kod": "PHX"
     }
   ],
   "turkler": [

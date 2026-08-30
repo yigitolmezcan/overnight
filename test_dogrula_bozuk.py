@@ -1544,8 +1544,10 @@ def main():
     # Üç bölüm üç farklı ağırlıkta olmalı. Aynı görünüm aynı okuma
     # davranışını doğuruyordu: göz Göz at'ı da Bunları geç gibi
     # kaydırıyordu. Göz at KART, Bunları geç DÜZ SATIR.
-    basar("Göz at: kendi kart sınıfı var",
-          ".gozkart{border:1px solid" in _sayfa and 'class="gozkart"' in _sayfa)
+    # ÇERÇEVE KALKTI (kullanıcı kararı): kart dili bu sitede "dokununca
+    # açılır" demek. Sınıf duruyor, sınırı ZEMİN tonu gösteriyor.
+    basar("Göz at: kendi blok sınıfı var",
+          ".gozkart{" in _sayfa and 'class="gozkart"' in _sayfa)
     basar("Göz at: Mutlaka bil'in .gcard sınıfıyla ÇAKIŞMIYOR",
           ".gozkart" in _sayfa and _sayfa.count(".gcard{border") == 0)
     basar("Göz at: orta boy skor bloğu (üç kademe)",
@@ -4342,23 +4344,19 @@ def main():
     basar("Ayraç: yatay çizgi kalktı",
           "border-bottom" not in _game_kural
           and ".game:last-child{border-bottom:0" not in _s14)
-    basar("Ayraç: sol ray 2px ve sönen degrade",
-          "width:2px" in _s14.split(".game::before{")[1].split("}")[0]
-          and "linear-gradient(180deg,var(--ray" in _s14)
-    # HİZA: ray rozetin ÜST KENARINDAN başlıyor, üstte boşluk yok.
-    basar("Ayraç: ray blokun tepesinden başlıyor",
-          "top:0" in _s14.split(".game::before{")[1].split("}")[0])
-    basar("Ayraç: altta metin bitmeden sönüyor",
-          "bottom:18px" in _s14.split(".game::before{")[1].split("}")[0])
-    basar("Ayraç: içerik raydan 17px içeride",
-          "padding:0 0 0 17px" in _s14.split("\n.game{")[1].split("}")[0])
-    basar("Ayraç: bloklar arası 26px",
-          "margin-bottom:26px" in _s14.split("\n.game{")[1].split("}")[0])
+    # EMEKLİ ÖLÇÜLER: 2px degrade ray, 26px ara, dolgusuz blok. Akış
+    # eklenince bloklar uzadı; degradenin alt yarısı görünmez oluyordu
+    # ve boşluk tek başına maçları ayırmıyordu. Yeni ölçüler "Ayraç —
+    # hafif kart zemini" bloğunda denetleniyor.
     # KART DEĞİL: kart dili sitede dokunulabilirlik demek; Mutlaka bil
     # blokları okunacak metin.
-    basar("Ayraç: blok kartlaştırılmadı (kutu/çerçeve yok)",
+    # KURAL DARALDI (kullanıcı kararı): zemin tonu artık VAR, çerçeve
+    # yok. Kart dili bu sitede "dokununca açılır" demek; sınırı zemin
+    # gösteriyor, çerçeve değil. Denetlenen şey ÇERÇEVESİZLİK.
+    basar("Ayraç: blok kartlaştırılmadı (çerçeve yok, yalnız üst çizgi)",
           "border:" not in _s14.split("\n.game{")[1].split("}")[0]
-          and "background" not in _s14.split("\n.game{")[1].split("}")[0])
+          and "border-left" not in _s14.split("\n.game{")[1].split("}")[0]
+          and "border-bottom" not in _s14.split("\n.game{")[1].split("}")[0])
 
     # --- Ray rengi: kazanan takım + çakışma kuralı ---
     # ESKİ SÜRÜM AYRIMI (bkz. yukarıdaki notlar): ray rengi ve
@@ -5269,6 +5267,49 @@ def main():
         lambda k: k)
     basar("Akış: 'en etkili' tipinin en az dört kalıbı var",
           len(_etkili) >= 4, f"{len(_etkili)} kalıp")
+
+    # ==================================================================
+    # BLOK AYRACI — HAFİF KART ZEMİNİ
+    # ==================================================================
+    # Akış eklenince bloklar uzadı; sol ray ve boşluk tek başına maçları
+    # ayırmaya yetmiyordu. ÇERÇEVE YOK: bu sitede çerçeveli kart dili
+    # "dokununca açılır" demek (box score, oyuncu kartı). Zemin tonu
+    # sınırı gösteriyor ama tıklanabilirlik iddiasında bulunmuyor.
+    _s21 = _sayfa10
+    _game = _s21.split("\n.game{")[1].split("}")[0]
+    basar("Ayraç: blok zemini sayfadan bir tık açık",
+          "background:#0D1219" in _game)
+    basar("Ayraç: üstte ince çizgi var",
+          "border-top:1px solid #151C26" in _game)
+    basar("Ayraç: ÇERÇEVE YOK (yalnız üst çizgi)",
+          "border:1px" not in _game and "border-left" not in _game
+          and "border-right" not in _game and "border-bottom" not in _game)
+    basar("Ayraç: iç dolgu 16/16/14/17",
+          "padding:16px 16px 14px 17px" in _game)
+    basar("Ayraç: bloklar arası 14px",
+          "margin-bottom:14px" in _game)
+    _ray = _s21.split(".game::before{")[1].split("}")[0]
+    basar("Ayraç: ray tam boy (degrade değil)",
+          "top:0;bottom:0" in _ray and "linear-gradient" not in _ray)
+    basar("Ayraç: ray 3px ve düz takım rengi",
+          "width:3px" in _ray and "background:var(--ray" in _ray)
+    # "Göz at" da aynı zemini alıyor, çerçevesi KALKTI.
+    _goz = _s21.split("\n.gozkart{")[1].split("}")[0]
+    basar("Ayraç: Göz at aynı zemini alıyor",
+          "background:#0D1219" in _goz and "border-top:1px solid #151C26" in _goz)
+    basar("Ayraç: Göz at çerçevesi kalktı",
+          "border:1px solid" not in _goz)
+    basar("Ayraç: Göz at bloğunda da ray var",
+          ".gozkart::before{" in _s21
+          and 'class="gozkart" id="${m.id}" style="--ray:' in _s21)
+    # "Bunları geç" tek satır — orada zemin YOK.
+    basar("Ayraç: Bunları geç katmanında zemin uygulanmıyor",
+          ".archrow{" in _s21
+          and "background:#0D1219" not in _s21.split(".archrow{")[1].split("}")[0])
+    # Ray rengi "Göz at" için de üretiliyor.
+    _dsrc4 = open("derle.py", encoding="utf-8").read()
+    basar("Ayraç: Göz at ray rengi derlemede üretiliyor",
+          '_ray_g = [{"takim": m["kazanan_kod"]' in _dsrc4)
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
