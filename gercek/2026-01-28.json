@@ -1,6 +1,6 @@
 {
   "tarih": "2026-01-28",
-  "uretildi": "2026-08-30T13:05:39.555984Z",
+  "uretildi": "2026-08-30T13:49:13.322385Z",
   "maclar": {
     "0022500671": [
       {
@@ -4352,6 +4352,7 @@
           "dep_skor": 110,
           "fark": 3,
           "takim": "IND",
+          "sut_turu": "serbest atış",
           "oyuncu": "Johnny Furphy",
           "onceki_ev": 112,
           "onceki_dep": 110

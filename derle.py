@@ -1103,6 +1103,188 @@ def _yuva_planla(sekil, kazanan, kaybeden):
     ]
 
 
+# ===========================================================================
+# ÇEYREK TABLOSU — YÜKLEMSİZ (kullanıcı kararı)
+# ===========================================================================
+#
+# Cümle akışı kalktı. Şimdiye kadarki bütün hatalar YÜKLEMDEN çıkmıştı:
+# yanlış özne ("Denver farkı indirdi" — indiren Orlando'ydu), çelişik
+# eylem ("önde olan takım skoru eşitledi"), uydurma fiil ("önü aldı").
+# Veri hiç yanlış olmadı, cümle yanlış oldu. Çözüm yüklemi kaldırmak.
+#
+# Tablo: çeyrek · kümülatif skor · durum (kim kaç önde) · öne çıkan.
+# "Öne çıkan" ETİKET biçiminde — fiil yok, özne-nesne ilişkisi yok,
+# dolayısıyla yanlış olamaz.
+#
+# `_mac_akisi` ve kalıp kütüphanesinin akış bölümü SİLİNMEDİ, DEVRE DIŞI:
+# geri dönmek gerekirse duruyor. D1-D6 değişmezleri, katman sistemi ve
+# düşük eşikli olay üretimi de onunla birlikte devre dışı — hepsi cümle
+# kurmak için vardı.
+
+ONE_CIKAN_LIDERLIK = 3      # bu kadar liderlik değişimi "öne çıkan" olur
+ONE_CIKAN_SERI = 8          # bu uzunlukta seri
+ONE_CIKAN_SAYI = 10         # çeyrekte bu kadar sayı atan oyuncu
+ONE_CIKAN_SERI_ALT = 6
+ONE_CIKAN_SAYI_ALT = 7
+KARAR_SON_SANIYE = 30.0     # karar cümlesi yalnız son bu kadar saniyede
+
+
+def _soyad(ad):
+    """Etikette yalnız soyadı: 'Paolo Banchero' -> 'Banchero'."""
+    parcalar = (ad or "").split()
+    if len(parcalar) < 2:
+        return ad or ""
+    son = parcalar[-1]
+    # "Jr.", "III" gibi ekler soyadın parçası
+    if son.rstrip(".").upper() in ("JR", "SR", "II", "III", "IV") and len(parcalar) > 2:
+        return " ".join(parcalar[-2:])
+    return son
+
+
+def _ceyrek_tablosu(gercekler, gozat=False):
+    """[{ceyrek, skor, durum, fark, one_cikan, kritik}] — YÜKLEMSİZ.
+
+    `gozat=True` iki satır verir: İlk yarı / İkinci yarı."""
+    skor = next((f["veri"] for f in gercekler if f["tur"] == "skor"), {}) or {}
+    ev_kod, dep_kod = skor.get("ev"), skor.get("dep")
+    ceyrekler = sorted((f["veri"] for f in gercekler if f["tur"] == "ceyrek"),
+                       key=lambda c: c["periyot"])
+    if not ceyrekler or not ev_kod:
+        return []
+    olaylar = [f["veri"] for f in gercekler if f["tur"] == "akis_olay"]
+    oyuncu_ceyrek = [f["veri"] for f in gercekler if f["tur"] == "oyuncu_ceyrek"]
+    kisa = lambda k: cumle.TAKIM_KISA.get(k, k)
+    son_periyot = max(c["periyot"] for c in ceyrekler)
+
+    # Kararın bağlandığı çeyrek — satır ember işaretli.
+    karar_olay = next((o for o in olaylar if o["tip"] == "karar_ani"), None)
+    if karar_olay is None:
+        # Maçı bitiren basket yoksa: kopuş anı. Kazananın son öne geçişi
+        # yalnız İKİNCİ YARIDAYSA sayılıyor — baştan sona önde giden bir
+        # maçta o an 1. çeyrekte kalıyor ve "maç 1Ç'de karara bağlandı"
+        # gibi okunuyordu (ölçüldü, SAC-DAL 113-107).
+        _ad = ([o for o in olaylar if o["tip"] == "kopus"]
+               or [o for o in olaylar if o["tip"] == "liderlik"
+                   and o.get("kazanan_mi") and o.get("son_mu")
+                   and (o.get("periyot") or 0) >= 3]
+               or [o for o in olaylar if o["tip"] == "en_buyuk_fark"
+                   and (o.get("periyot") or 0) >= 3])
+        karar_olay = max(_ad, key=lambda o: (o.get("periyot") or 0,
+                                             -(o.get("saniye_kalan") or 0))) if _ad else None
+    karar_periyot = (karar_olay or {}).get("periyot") or son_periyot
+
+    def _one_cikan(periyotlar, onceki_tur=None):
+        """ETİKET — yüklem yok. Öncelik sırası sabit.
+
+        `onceki_tur`: bir önceki satırın etiket türü. Aynı tür arka arkaya
+        gelince tablo tekdüze oluyordu (üç satır üst üste "N-0 seri"),
+        o yüzden aynı tür bir basamak geriye atılıyor."""
+        lider = [o for o in olaylar
+                 if o["tip"] == "liderlik" and (o.get("periyot") or 0) in periyotlar]
+        seriler = [o for o in olaylar
+                   if o["tip"] == "sayi_serisi" and (o.get("periyot") or 0) in periyotlar]
+        en_seri = max(seriler, key=lambda o: o.get("sayi") or 0) if seriler else None
+        sayilar = [o for o in oyuncu_ceyrek if (o.get("periyot") or 0) in periyotlar]
+        # Aynı oyuncunun birden fazla çeyreği toplanıyor ("İlk yarı").
+        toplam = {}
+        for o in sayilar:
+            toplam[o["oyuncu"]] = toplam.get(o["oyuncu"], 0) + (o.get("sayi") or 0)
+        en_oyuncu = max(toplam.items(), key=lambda kv: kv[1]) if toplam else None
+        buyuk = [o for o in olaylar
+                 if o["tip"] == "en_buyuk_fark" and (o.get("periyot") or 0) in periyotlar]
+
+        adaylar = []
+        if len(lider) >= ONE_CIKAN_LIDERLIK:
+            adaylar.append(("lider", f"{len(lider)} kez liderlik değişti"))
+        if en_seri is not None and (en_seri.get("sayi") or 0) >= ONE_CIKAN_SERI:
+            adaylar.append(("seri", f"{kisa(en_seri.get('takim'))} {en_seri['sayi']}-0 seri"))
+        if en_oyuncu and en_oyuncu[1] >= ONE_CIKAN_SAYI:
+            adaylar.append(("sayi", f"{_soyad(en_oyuncu[0])} {en_oyuncu[1]} sayı"))
+        if buyuk:
+            adaylar.append(("fark",
+                            f"en büyük fark {max(o.get('sayi') or 0 for o in buyuk)}"))
+        if en_seri is not None and (en_seri.get("sayi") or 0) >= ONE_CIKAN_SERI_ALT:
+            adaylar.append(("seri", f"{kisa(en_seri.get('takim'))} {en_seri['sayi']}-0 seri"))
+        if en_oyuncu and en_oyuncu[1] >= ONE_CIKAN_SAYI_ALT:
+            adaylar.append(("sayi", f"{_soyad(en_oyuncu[0])} {en_oyuncu[1]} sayı"))
+        if len(lider) >= 2:
+            adaylar.append(("lider", f"{len(lider)} kez liderlik değişti"))
+        if not adaylar:
+            return "—", None
+        for tur, metin in adaylar:
+            if tur != onceki_tur:
+                return metin, tur
+        return adaylar[0][1], adaylar[0][0]
+
+    def _satir(etiket, c, periyotlar, kritik, onceki_tur=None):
+        ev, dep = c["kumulatif_ev"], c["kumulatif_dep"]
+        fark = ev - dep
+        return {
+            "ceyrek": etiket,
+            "skor": f"{ev}–{dep}",
+            "ev_skor": ev, "dep_skor": dep,
+            "durum": ("berabere" if fark == 0
+                      else f"{(ev_kod if fark > 0 else dep_kod)} +{abs(fark)}"),
+            "durum_takim": None if fark == 0 else (ev_kod if fark > 0 else dep_kod),
+            "fark": abs(fark),
+            "one_cikan": _one_cikan(periyotlar, onceki_tur)[0],
+            "_tur": _one_cikan(periyotlar, onceki_tur)[1],
+            "kritik": kritik,
+        }
+
+    if gozat:
+        # İki satır: ilk yarı (2. çeyrek sonu) ve maç sonu.
+        ilk = next((c for c in ceyrekler if c["periyot"] == 2), None)
+        son = ceyrekler[-1]
+        if ilk is None:
+            return []
+        _r1 = _satir("İlk yarı", ilk, {1, 2}, False)
+        _r2 = _satir("İkinci yarı", son, set(range(3, son_periyot + 1)), True,
+                     _r1.get("_tur"))
+        _r1.pop("_tur", None); _r2.pop("_tur", None)
+        return [_r1, _r2]
+
+    tablo = []
+    _onceki_tur = None
+    for c in ceyrekler:
+        p = c["periyot"]
+        if p <= 4:
+            etiket = f"{p}Ç"
+        elif son_periyot == 5:
+            etiket = "UZ"
+        else:
+            etiket = f"UZ{p - 4}"
+        _r = _satir(etiket, c, {p}, p == karar_periyot, _onceki_tur)
+        _onceki_tur = _r.pop("_tur")
+        tablo.append(_r)
+    return tablo
+
+
+def _karar_cumlesi(gercekler):
+    """{cumle, detay} ya da None — TEK izin verilen biçim.
+
+    "[Oyuncu] bitime [süre] kala [şut türü] attı."
+
+    Yalnız maçı bitiren belirgin bir basket varsa çıkar: son 30 saniyede
+    atılmış ve sonucu belirlemiş. Yoksa HİÇ ÇIKMAZ — farklı biten maçta
+    zorlamaya gerek yok. Özne şutu atan oyuncu, yüklem "attı"; ikisi de
+    play-by-play'den doğrudan geliyor, göreli akıl yürütme yok."""
+    karar = next((f["veri"] for f in gercekler
+                  if f["tur"] == "akis_olay" and f["veri"]["tip"] == "karar_ani"), None)
+    if not karar or not karar.get("oyuncu") or not karar.get("sut_turu"):
+        return None
+    saniye = karar.get("saniye_kalan")
+    if saniye is None or saniye > KARAR_SON_SANIYE:
+        return None
+    n = int(round(saniye))
+    sure = "son saniyede" if n <= 0 else f"bitime {n} saniye kala"
+    ad = _soyad(karar["oyuncu"])
+    return {
+        "cumle": f"{ad} {sure} {karar['sut_turu']} attı.",
+        "detay": f"{karar['ev_skor']}–{karar['dep_skor']} · maçı bitirdi",
+    }
+
+
 def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI,
                kalip_sayaci=None, anilan_metin=None):
     """[{tip, kalip, zaman, saat, cumle, detay, kritik, sekil}]
@@ -2684,11 +2866,10 @@ def derle(tarih_str):
             # uğramıyor. Alan `ozet` boş bırakılmıyor, HİÇ yazılmıyor —
             # boş string oluşturucuda "gövde var ama sessiz" gibi
             # görünürdü.
-            "akis": _mac_akisi(gercek_gece["maclar"][gid],
-                               en_iyi_performans_by_gid.get(gid),
-                               kalip_sayaci=_akis_kalip_sayaci,
-                               anilan_metin=" ".join(
-                                   [mv.get("baslik", ""), mv.get("neden_onemli", "")])),
+            # AKIŞ DEVRE DIŞI (kullanıcı kararı) — yerine yüklemsiz
+            # çeyrek tablosu. `_mac_akisi` silinmedi, çağrılmıyor.
+            "ceyrek_tablosu": _ceyrek_tablosu(gercek_gece["maclar"][gid]),
+            "karar": _karar_cumlesi(gercek_gece["maclar"][gid]),
             "box": _box_score(ham["maclar"][gid], tum_metin, kaybeden_kod, gercek_gece["maclar"][gid]),
             # Sol ray rengi: KAZANAN takımın rengi (aşağıda çakışma
             # çözümünden geçiyor).
@@ -2776,11 +2957,10 @@ def derle(tarih_str):
             # AKIŞ "Göz at"ta da var (kullanıcı kararı: iki bölümde de
             # paragraf kalktı). "Bunları geç" tek satırlık kalıyor —
             # orada zaten anlatı yok.
-            girdi["akis"] = _mac_akisi(gercek_gece["maclar"][gid],
-                                       en_iyi_performans_by_gid.get(gid),
-                                       satir_sayisi=AKIS_GOZAT_SATIR,
-                                       kalip_sayaci=_akis_kalip_sayaci,
-                                       anilan_metin=v.get("gec_satiri", ""))
+            # "Göz at": iki satırlık kısa tablo (İlk yarı / İkinci yarı).
+            girdi["ceyrek_tablosu"] = _ceyrek_tablosu(
+                gercek_gece["maclar"][gid], gozat=True)
+            girdi["karar"] = _karar_cumlesi(gercek_gece["maclar"][gid])
             degerse_bak.append(girdi)
         else:
             diger.append(girdi)

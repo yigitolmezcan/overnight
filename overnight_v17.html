@@ -428,6 +428,30 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
    tek maça uygulanmış hâli. Sol sütun zaman, orta ray + nokta, sağ olay.
    Kritik an ember nokta ve halkayla işaretli — maçın nerede
    belirlendiği bir bakışta görünüyor. */
+/* ÇEYREK TABLOSU — yüklemsiz. Cümle akışının yerine geçti; akış CSS'i
+   aşağıda DEVRE DIŞI olarak duruyor (kullanıcı kararı: silme, bırak). */
+.ctbl{margin-top:15px;width:100%;border-collapse:collapse;font-family:var(--mono)}
+.ctbl th{font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:#39424F;
+  font-weight:400;text-align:left;padding:0 0 8px}
+.ctbl td{padding:8px 0;border-top:1px solid var(--line2);font-size:12.5px;color:var(--dim)}
+.ctbl td.q{color:#6E7A8B;width:34px}
+.ctbl td.s{color:var(--ink);width:76px;letter-spacing:-.01em}
+.ctbl td.d{width:66px;font-size:11.5px}
+.ctbl td.d em{font-style:normal;color:#7FA3B8}
+.ctbl td.f{color:var(--dim);font-size:12px;padding-left:6px}
+.ctbl tr.k td{color:var(--ink)}
+.ctbl tr.k td.f{font-weight:600}
+.ctbl tr.k td.q{color:var(--ember)}
+.ctbl tr.k td.d em{color:var(--ember)}
+.kararc{margin-top:14px;padding-top:12px;border-top:1px solid var(--line2);
+  display:flex;gap:11px;align-items:flex-start}
+.kararc u{width:7px;height:7px;border-radius:50%;background:var(--ember);flex:none;
+  margin-top:5px;text-decoration:none;box-shadow:0 0 0 3px rgba(232,118,58,.15)}
+.kararc p{font-size:13.5px;line-height:1.5;color:var(--ink);font-weight:600}
+.kararc em{display:block;font-family:var(--mono);font-size:10.5px;color:#8A5A38;
+  font-style:normal;margin-top:4px;font-weight:400}
+
+/* DEVRE DIŞI — SİLİNMEDİ: cümle akışının stilleri */
 .akis{margin-top:15px;border-top:1px solid var(--line2);padding-top:4px}
 .akis .akisr{display:flex;position:relative}
 .akis .zm{width:74px;flex:none;padding:10px 0}
@@ -2261,6 +2285,23 @@ function render(d){
   // AKIŞ SATIRLARI VERİDEN GELİYOR — burada cümle KURULMUYOR.
   // `cumle` ve `detay` derle.py'de sabit kalıplarla üretildi; oluşturucu
   // yalnız çiziyor. Akış yoksa blok hiç çizilmiyor (boş çerçeve değil).
+  // ÇEYREK TABLOSU — veriden geliyor, burada cümle KURULMUYOR.
+  // Yüklemsiz: "Öne çıkan" bir etiket, cümle değil.
+  const ctablo = t => (t && t.length)
+    ? `<table class="ctbl"><tr><th></th><th>Skor</th><th>Durum</th><th>Öne çıkan</th></tr>
+       ${t.map(r=>`<tr class="${r.kritik?'k':''}">
+         <td class="q">${esc(r.ceyrek)}</td>
+         <td class="s">${esc(r.skor)}</td>
+         <td class="d"><em>${esc(r.durum)}</em></td>
+         <td class="f">${esc(r.one_cikan)}</td></tr>`).join('')}</table>`
+    : '';
+  // TEK karar cümlesi — yalnız maçı bitiren belirgin basket varsa.
+  const kararBlogu = k => k
+    ? `<div class="kararc"><u></u><div><p>${esc(k.cumle)}</p>
+       ${k.detay?`<em>${esc(k.detay)}</em>`:''}</div></div>`
+    : '';
+
+  // DEVRE DIŞI — SİLİNMEDİ: cümle akışı oluşturucusu.
   const akisBlogu = a => (a && a.length)
     ? `<div class="akis">${a.map(r=>`<div class="akisr${r.kritik?' vurgu':''}">
         <div class="zm"><b>${esc(r.zaman||'')}</b>${r.saat?`<s>${esc(r.saat)}</s>`:''}</div>
@@ -2277,7 +2318,8 @@ function render(d){
       </div>
       <p class="recap"><b>${esc(mv.baslik)}</b></p>
       ${mv.neden_onemli?`<div class="kicker">${esc(mv.neden_onemli)}</div>`:''}
-      ${akisBlogu(mv.akis)}
+      ${ctablo(mv.ceyrek_tablosu)}
+      ${kararBlogu(mv.karar)}
       ${kilitSerit(mv)}
       <span class="opener">Box score<i>›</i></span>
     </div>
@@ -2292,7 +2334,8 @@ function render(d){
         <div class="mblok md">${macBlok(m.mac, m.skor)}</div>
         <span class="gozgo" aria-hidden="true">›</span></button>
       ${m.metin?`<div class="dblock" style="padding:0 0 14px"><p>${esc(m.metin)}</p></div>`:''}
-      ${akisBlogu(m.akis)}
+      ${ctablo(m.ceyrek_tablosu)}
+      ${kararBlogu(m.karar)}
       ${kilitSerit(m)}
     </div>`).join('');
   }

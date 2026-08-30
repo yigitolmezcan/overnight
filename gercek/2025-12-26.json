@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-26",
-  "uretildi": "2026-08-30T13:05:39.142788Z",
+  "uretildi": "2026-08-30T13:49:12.921562Z",
   "maclar": {
     "0022500423": [
       {
@@ -17698,6 +17698,7 @@
           "dep_skor": 129,
           "fark": 2,
           "takim": "UTA",
+          "sut_turu": "basket",
           "oyuncu": "Keyonte George",
           "onceki_ev": 129,
           "onceki_dep": 129

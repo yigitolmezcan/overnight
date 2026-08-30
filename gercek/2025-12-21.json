@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-21",
-  "uretildi": "2026-08-30T13:05:38.646477Z",
+  "uretildi": "2026-08-30T13:49:12.422348Z",
   "maclar": {
     "0022500396": [
       {
@@ -2885,6 +2885,7 @@
           "dep_skor": 152,
           "fark": -2,
           "takim": "CHI",
+          "sut_turu": "serbest atış",
           "oyuncu": "Matas Buzelis",
           "onceki_ev": 150,
           "onceki_dep": 151
@@ -11392,6 +11393,7 @@
           "dep_skor": 100,
           "fark": 3,
           "takim": "MIL",
+          "sut_turu": "üçlük",
           "oyuncu": "Kevin Porter Jr.",
           "onceki_ev": 103,
           "onceki_dep": 97
@@ -13900,6 +13902,7 @@
           "dep_skor": 124,
           "fark": 1,
           "takim": "SAC",
+          "sut_turu": "üçlük",
           "oyuncu": "Dennis Schröder",
           "onceki_ev": 122,
           "onceki_dep": 124

@@ -1587,10 +1587,18 @@ def main():
     _sayfa_kodu = _re.sub(r"/\*.*?\*/", "", _sayfa, flags=_re.S)
     basar("Mutlaka bil: paragraf gövdesi çizilmiyor",
           '<div class="gbody">${paragraflar(mv.ozet)}</div>' not in _sayfa_kodu)
-    basar("Mutlaka bil: yerine maç akışı çiziliyor",
-          "${akisBlogu(mv.akis)}" in _sayfa and "const akisBlogu" in _sayfa)
-    basar("Akış: Göz at bölümünde de var",
-          "${akisBlogu(m.akis)}" in _sayfa)
+    # CÜMLE AKIŞI DEVRE DIŞI (kullanıcı kararı): yerine YÜKLEMSİZ
+    # çeyrek tablosu. Hatalar hep yüklemden çıkıyordu.
+    basar("Mutlaka bil: yerine çeyrek tablosu çiziliyor",
+          "${ctablo(mv.ceyrek_tablosu)}" in _sayfa and "const ctablo" in _sayfa)
+    basar("Tablo: Göz at bölümünde de var",
+          "${ctablo(m.ceyrek_tablosu)}" in _sayfa)
+    basar("Tablo: karar cümlesi bloğu var, koşullu çiziliyor",
+          "${kararBlogu(mv.karar)}" in _sayfa and "const kararBlogu = k => k" in _sayfa)
+    basar("Akış oluşturucusu devre dışı — silinmedi",
+          "const akisBlogu" in _sayfa
+          and "${akisBlogu(mv.akis)}" not in _sayfa_kodu
+          and "${akisBlogu(m.akis)}" not in _sayfa_kodu)
     # Oluşturucu CÜMLE KURMUYOR — yalnız veriden gelen alanları çiziyor.
     _akis_blok = _sayfa.split("const akisBlogu")[1].split("\n\n")[0]
     basar("Akış: oluşturucuda cümle kurulmuyor, alanlar çiziliyor",
@@ -5282,9 +5290,11 @@ def main():
     basar("Akış: üç katman da tanımlı (olay / düşük eşik / skor durumu)",
           bool(_derle.AKIS_KATMAN1) and bool(_derle.AKIS_KATMAN2)
           and "skor_durumu" in _derle.AKIS_KATMAN3)
-    basar("Akış: kalıp sayacı gece çapında paylaşılıyor",
-          "_akis_kalip_sayaci = {}" in _dsrc3
-          and "kalip_sayaci=_akis_kalip_sayaci" in _dsrc3)
+    # EMEKLİ: kalıp sayacı akışa aitti, akış devre dışı.
+    basar("Akış devre dışı: _mac_akisi artık çağrılmıyor",
+          "def _mac_akisi" in _dsrc3
+          and '"akis": _mac_akisi(' not in _dsrc3
+          and 'girdi["akis"] = _mac_akisi(' not in _dsrc3)
     # ÖNE GEÇİŞ bir LİDERLİK DEĞİŞİMİ olmalı — eşitlik yedeği, 12 farkla
     # biten maçta beraberliği "maçın belirlendiği an" yapıyordu.
     # EMEKLİ: şekil modeline özgü yuva testi. Karar anı seçimi artık
@@ -5396,31 +5406,23 @@ def main():
         _mb = _x.get("mutlaka") or []
         _ga = _x.get("degerse_bak") or []
         _bg = _x.get("diger") or []
-        if _mb and not any(m.get("akis") for m in _mb):
+        if _mb and not any(m.get("ceyrek_tablosu") for m in _mb):
             _yapisiz.append(_t3)
-        # SABİT YAPI: "Mutlaka bil" dört çeyrek + varsa uzatma(lar);
-        # "Göz at" iki satır; "Bunları geç"te akış yok.
-        if not (all(len(m.get("akis") or []) >= _derle.AKIS_SATIR_SAYISI for m in _mb)
-                and all(len(m.get("akis") or []) == _derle.AKIS_GOZAT_SATIR
-                        for m in _ga if m.get("akis"))
-                and all(not m.get("akis") for m in _bg)):
+        # KATMAN HİYERARŞİSİ: "Mutlaka bil" tam tablo (4 çeyrek + varsa
+        # uzatma), "Göz at" iki satır (İlk yarı / İkinci yarı),
+        # "Bunları geç"te tablo yok.
+        if not (all(len(m.get("ceyrek_tablosu") or []) >= 4 for m in _mb)
+                and all(len(m.get("ceyrek_tablosu") or []) == 2
+                        for m in _ga if m.get("ceyrek_tablosu"))
+                and all(not m.get("ceyrek_tablosu") for m in _bg)):
             _hiy.append(_t3)
-        _sat = [r for m in _mb + _ga for r in (m.get("akis") or [])]
-        _kal = _cl.Counter(r.get("kalip") for r in _sat)
-        if _kal:
-            _farkli.append(len(_kal))
-            if max(_kal.values()) > _derle.AKIS_KALIP_LIMITI:
-                _asan.append((_t3, {k: v for k, v in _kal.items()
-                                    if v > _derle.AKIS_KALIP_LIMITI}))
-        # Gövde alanı hiçbir gecede kalmamalı.
-        if any(m.get("ozet") for m in _mb):
-            _yapisiz.append(_t3 + " (gövde)")
-    basar("Tüm geceler: hepsi yeni yapıda (akış var, gövde yok)",
+        # Akış alanı hiçbir gecede kalmamalı (gövde de).
+        if any(m.get("ozet") or m.get("akis") for m in _mb):
+            _yapisiz.append(_t3 + " (eski alan)")
+    basar("Tüm geceler: hepsi tablo yapısında (akış ve gövde yok)",
           not _yapisiz, f"eski yapıda: {_yapisiz}")
-    basar("Tüm geceler: katman hiyerarşisi (4+ çeyrek / 2 / 0)",
+    basar("Tüm geceler: katman hiyerarşisi (tam tablo / 2 satır / yok)",
           not _hiy, f"ihlal: {_hiy}")
-    basar("Tüm geceler: kalıp limiti hiçbir gecede aşılmıyor",
-          not _asan, f"aşan: {_asan}")
     basar("Tüm geceler: gece başına ortalama en az 8 farklı kalıp",
           (not _farkli) or _st.mean(_farkli) >= 8,
           f"ortalama {_st.mean(_farkli):.1f}" if _farkli else "veri yok")
@@ -5501,7 +5503,12 @@ def main():
                 if _b.get("akis"):
                     _bloklar.append((_t, _b, _derle._yukle(_derle.GERCEK_DIZIN, _t)
                                      ["maclar"][_b["mac_id"]]))
-    basar("Değişmez: iki gecede de akış bloğu üretiliyor", len(_bloklar) >= 5)
+    # EMEKLİ: D1-D6 değişmezleri cümle akışını denetliyordu; akış
+    # devre dışı, yerine yüklemsiz tablo geldi. Aşağıdaki D1-D5 birim
+    # testleri (sentetik olaylarla) DURUYOR — mekanizma geri gelirse
+    # çalışır durumda olsun. Gerçek bloklar üzerindeki denetimler
+    # çalışmıyor, çünkü blokta artık cümle yok.
+    basar("Değişmezler devre dışı: akış bloğu üretilmiyor", not _bloklar)
 
     for _t, _b, _g in _bloklar:
         _skor = next(f["veri"] for f in _g if f["tur"] == "skor")
@@ -5655,6 +5662,115 @@ def main():
                 _rgb_eksik.append(_t4)
     basar("Ray: rengi olan her blokta kanal değeri de var",
           not _rgb_eksik, f"eksik: {sorted(set(_rgb_eksik))}")
+
+    # ------------------------------------------------------------------
+    # ÇEYREK TABLOSU — YÜKLEMSİZ
+    # ------------------------------------------------------------------
+    # Cümle akışının yerine geçti. Bütün hatalar yüklemden çıkıyordu;
+    # tabloda yüklem yok, dolayısıyla yanlış özne / çelişik eylem /
+    # uydurma fiil YAPISAL OLARAK kurulamıyor. Testler bunu denetliyor.
+    _FIIL = _re.compile(
+        r"\b\w*(attı|çıkardı|indirdi|kapattı|açtı|geçti|geçirdi|çevirdi|aldı|"
+        r"yaptı|buldu|bitirdi|kazandı|kapadı|taşıdı|düşürmedi|inmedi|kaldı|"
+        r"gitti|yakalatmadı|kopardı|eşitledi|söyledi|oldu|geldi|bitirdi)\b")
+    _tablolu = 0
+    _yuklem, _yapi, _kritik, _durum_hata, _skor_hata = [], [], [], [], []
+    _karar_var = _karar_yok = 0
+    _karar_bozuk = []
+    for _t5 in _geceler:
+        if not _os.path.exists(f"dist/{_t5}.json"):
+            continue
+        _x5 = _jj.loads(open(f"dist/{_t5}.json", encoding="utf-8").read())
+        for _kat5, _tam in (("mutlaka", True), ("degerse_bak", False)):
+            for _b5 in (_x5.get(_kat5) or []):
+                _tb = _b5.get("ceyrek_tablosu") or []
+                if not _tb:
+                    continue
+                _tablolu += 1
+                _ad5 = f"{_t5} {_b5.get('mac')}"
+                # YÜKLEM YOK — "öne çıkan" bir etiket, cümle değil.
+                for _r5 in _tb:
+                    if _FIIL.search((_r5.get("one_cikan") or "").lower()):
+                        _yuklem.append(f"{_ad5}: {_r5['one_cikan']}")
+                # YAPI
+                _et5 = [_r5.get("ceyrek") for _r5 in _tb]
+                if _tam:
+                    _bek5 = ["1Ç", "2Ç", "3Ç", "4Ç"]
+                    _uz5 = len(_et5) - 4
+                    if _uz5 == 1:
+                        _bek5.append("UZ")
+                    elif _uz5 > 1:
+                        _bek5 += [f"UZ{_i}" for _i in range(1, _uz5 + 1)]
+                    if _et5 != _bek5:
+                        _yapi.append(f"{_ad5}: {_et5}")
+                else:
+                    if _et5 != ["İlk yarı", "İkinci yarı"]:
+                        _yapi.append(f"{_ad5}: {_et5}")
+                # TAM BİR KRİTİK SATIR
+                if sum(1 for _r5 in _tb if _r5.get("kritik")) != 1:
+                    _kritik.append(_ad5)
+                # DURUM alanı skorla tutarlı
+                for _r5 in _tb:
+                    _f5 = (_r5.get("ev_skor") or 0) - (_r5.get("dep_skor") or 0)
+                    if _f5 == 0 and _r5.get("durum") != "berabere":
+                        _durum_hata.append(f"{_ad5}: {_r5['durum']}")
+                    elif _f5 != 0 and not _r5.get("durum", "").endswith(f"+{abs(_f5)}"):
+                        _durum_hata.append(f"{_ad5}: {_r5['durum']} ({_f5})")
+                # SKOR İLERLER (kümülatif)
+                _onc5 = None
+                for _r5 in _tb:
+                    _tp5 = (_r5.get("ev_skor") or 0) + (_r5.get("dep_skor") or 0)
+                    if _onc5 is not None and _tp5 <= _onc5:
+                        _skor_hata.append(f"{_ad5}: {_tp5} <= {_onc5}")
+                    _onc5 = _tp5
+                # KARAR CÜMLESİ — tek izin verilen biçim
+                _k5 = _b5.get("karar")
+                if _k5:
+                    _karar_var += 1
+                    if not _re.match(r"^\S.* (bitime \d+ saniye kala|son saniyede) "
+                                     r"(üçlük|basket|serbest atış) attı\.$",
+                                     _k5.get("cumle", "")):
+                        _karar_bozuk.append(f"{_ad5}: {_k5.get('cumle')}")
+                    if "maçı bitirdi" not in (_k5.get("detay") or ""):
+                        _karar_bozuk.append(f"{_ad5}: detay {_k5.get('detay')}")
+                else:
+                    _karar_yok += 1
+    basar("Tablo: hiçbir gecede blok tablosuz kalmadı", _tablolu >= 40,
+          f"tablolu blok: {_tablolu}")
+    basar("Tablo: 'öne çıkan' alanında YÜKLEM yok", not _yuklem,
+          "; ".join(_yuklem[:4]))
+    basar("Tablo: satır yapısı doğru (çeyrekler / iki yarı)", not _yapi,
+          "; ".join(_yapi[:4]))
+    basar("Tablo: her blokta tam bir kritik satır", not _kritik,
+          "; ".join(_kritik[:4]))
+    basar("Tablo: durum alanı skorla tutarlı", not _durum_hata,
+          "; ".join(_durum_hata[:4]))
+    basar("Tablo: kümülatif skor ilerliyor", not _skor_hata,
+          "; ".join(_skor_hata[:4]))
+    basar("Karar cümlesi: yalnız tek izin verilen biçim", not _karar_bozuk,
+          "; ".join(_karar_bozuk[:4]))
+    basar("Karar cümlesi: hem çıkan hem çıkmayan blok var",
+          _karar_var > 0 and _karar_yok > 0,
+          f"var {_karar_var} / yok {_karar_yok}")
+
+    # Yasaklı yapılar tabloda kurulamaz — etiket biçimleri sabit.
+    _tb_ornek = _derle._ceyrek_tablosu(
+        _derle._yukle(_derle.GERCEK_DIZIN, "2025-12-27")["maclar"][
+            list(_derle._yukle(_derle.GERCEK_DIZIN, "2025-12-27")["maclar"])[0]])
+    basar("Tablo: dört alan da dolu (çeyrek, skor, durum, öne çıkan)",
+          all(_r.get("ceyrek") and _r.get("skor") and _r.get("durum")
+              and _r.get("one_cikan") for _r in _tb_ornek))
+    basar("Tablo: kayda değer bir şey yoksa '—' yazılıyor",
+          '"—"' in _dsrc3)
+    basar("Karar cümlesi yalnız son 30 saniyede",
+          "KARAR_SON_SANIYE = 30.0" in _dsrc3
+          and "saniye > KARAR_SON_SANIYE" in _dsrc3)
+    basar("Karar cümlesi şut türü play-by-play'den",
+          'sut_turu=_tur' in open("gercekler.py", encoding="utf-8").read())
+    basar("Soyadı ekleri korunuyor (Jr., III)",
+          _derle._soyad("Michael Porter Jr.") == "Porter Jr."
+          and _derle._soyad("Jimmy Butler III") == "Butler III"
+          and _derle._soyad("Desmond Bane") == "Bane")
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",

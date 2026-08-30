@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-20",
-  "uretildi": "2026-08-30T13:05:38.509233Z",
+  "uretildi": "2026-08-30T13:49:12.287174Z",
   "maclar": {
     "0022500386": [
       {
@@ -15360,6 +15360,7 @@
           "dep_skor": 116,
           "fark": 3,
           "takim": "GSW",
+          "sut_turu": "basket",
           "oyuncu": "Stephen Curry",
           "onceki_ev": 117,
           "onceki_dep": 116
@@ -17959,6 +17960,7 @@
           "dep_skor": 128,
           "fark": -1,
           "takim": "ORL",
+          "sut_turu": "basket",
           "oyuncu": "Desmond Bane",
           "onceki_ev": 127,
           "onceki_dep": 126
@@ -19826,6 +19828,7 @@
           "dep_skor": 98,
           "fark": -5,
           "takim": "POR",
+          "sut_turu": "serbest atış",
           "oyuncu": "Robert Williams III",
           "onceki_ev": 93,
           "onceki_dep": 97

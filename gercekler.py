@@ -1062,8 +1062,18 @@ def akis_gercekleri_uret(g, gid, actions, ev_kod, dep_kod, kazanan, ceyrek_veri)
         # atılan ve sonucu belirleyen basket. Bu olay varsa kritik işaret
         # HER ZAMAN onundur — şekil ne olursa olsun.
         if abs(son_ev - son_dep) <= 5 and (son_saniye or 0) <= AKIS_KARAR_SANIYE:
+            # ŞUT TÜRÜ karar cümlesi için: tek izin verilen cümle
+            # biçimi "[Oyuncu] bitime [süre] kala [şut türü] attı".
+            # Doğrudan play-by-play'den; göreli akıl yürütme yok.
+            if son_a.get("actionType") == "Free Throw":
+                _tur = "serbest atış"
+            elif (son_a.get("shotValue") or 0) == 3:
+                _tur = "üçlük"
+            else:
+                _tur = "basket"
             yaz("karar_ani", son_periyot, son_saniye, son_ev, son_dep, aksiyon=son_a,
                 takim=son_a.get("teamTricode"),
+                sut_turu=_tur,
                 oyuncu=_dogru_oyuncu_adi(son_a.get("personId"),
                                          son_a.get("playerName") or ""))
 
