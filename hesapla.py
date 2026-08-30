@@ -964,3 +964,85 @@ if __name__ == "__main__":
     ayristirici.add_argument("--force", action="store_true")
     args = ayristirici.parse_args()
     hesapla(args.tarih, zorla=args.force)
+
+
+# ===========================================================================
+# PERFORMANS SIRALAMASI — TEK KAYNAK (kullanıcı kararı)
+# ===========================================================================
+#
+# Eskiden "en dikkat çekici istatistik" tek kalem üzerinden seçiliyordu:
+# sayı, ribaund ve asistten en yükseği. Bileşik başarılar görünmüyordu —
+# triple-double yapan Cade Cunningham için "10 asist yaptı" yazılmıştı.
+#
+# Sıra (yüksekten alçağa) HER YERDE aynı: "Bunları geç" cümlesi, çeyrek
+# tablosundaki "öne çıkan", gecenin beşi, prompta verilen oyuncu.
+# Burada tek kez hesaplanıyor; kimse kendi ölçütünü kurmuyor.
+
+PERF_KADEMELERI = (
+    "quadruple_double", "triple_double", "kirk_sayi", "cifte_cifte_yuksek",
+    "olaganustu_tek", "cifte_cifte", "otuz_sayi", "en_yuksek_tek",
+)
+
+_PERF_ALAN = (("sayi", "sayı"), ("rib", "ribaund"), ("ast", "asist"),
+              ("cal", "top çalma"), ("blk", "blok"))
+
+
+def _perf_deger(stat, alan):
+    return int(stat.get(alan) or 0)
+
+
+def performans_derecesi(stat):
+    """(kademe_index, kademe_adi, etiket, cumle_ekseni) — TEK KAYNAK.
+
+    `etiket`: tabloda kullanılacak kısa biçim ("triple-double", "55 sayı")
+    `cumle_ekseni`: cümlede kullanılacak gövde
+                    ("triple-double yaptı (22 sayı, 12 ribaund, 10 asist)")
+    Küçük kademe index = daha dikkat çekici."""
+    d = {a: _perf_deger(stat, a) for a, _ in _PERF_ALAN}
+    ciftler = [a for a, _ in _PERF_ALAN if d[a] >= 10]
+    ad_by_alan = dict(_PERF_ALAN)
+
+    def _dokum(alanlar):
+        # Kanonik sıra (sayı, ribaund, asist, çalma, blok) — değere göre
+        # değil. "22 sayı, 12 ribaund, 10 asist" okunuşu böyle.
+        sira = [a for a, _ in _PERF_ALAN]
+        return ", ".join(f"{d[a]} {ad_by_alan[a]}"
+                         for a in sorted(alanlar, key=sira.index))
+
+    if len(ciftler) >= 4:
+        return (0, "quadruple_double", "quadruple-double",
+                f"quadruple-double yaptı ({_dokum(ciftler)})")
+    if len(ciftler) == 3:
+        return (1, "triple_double", "triple-double",
+                f"triple-double yaptı ({_dokum(ciftler)})")
+    if d["sayi"] >= 40:
+        return (2, "kirk_sayi", f"{d['sayi']} sayı", f"{d['sayi']} sayı attı")
+    if len(ciftler) == 2 and (d["sayi"] >= 20 or d["rib"] >= 15 or d["ast"] >= 12):
+        return (3, "cifte_cifte_yuksek", "double-double",
+                f"double-double yaptı ({_dokum(ciftler)})")
+    for alan, esik in (("sayi", 50), ("rib", 20), ("ast", 15), ("blk", 5), ("cal", 5)):
+        if d[alan] >= esik:
+            return (4, "olaganustu_tek", f"{d[alan]} {ad_by_alan[alan]}",
+                    f"{d[alan]} {ad_by_alan[alan]} yaptı" if alan != "sayi"
+                    else f"{d['sayi']} sayı attı")
+    if len(ciftler) == 2:
+        return (5, "cifte_cifte", "double-double",
+                f"double-double yaptı ({_dokum(ciftler)})")
+    if d["sayi"] >= 30:
+        return (6, "otuz_sayi", f"{d['sayi']} sayı", f"{d['sayi']} sayı attı")
+    # Son çare: tek kalemde en yüksek değer (eski davranış).
+    alan = max((a for a, _ in _PERF_ALAN), key=lambda a: (d[a], -_PERF_ALAN.index((a, ad_by_alan[a]))))
+    if d[alan] <= 0:
+        return (7, "en_yuksek_tek", "", "")
+    return (7, "en_yuksek_tek", f"{d[alan]} {ad_by_alan[alan]}",
+            f"{d[alan]} {ad_by_alan[alan]} yaptı" if alan != "sayi"
+            else f"{d['sayi']} sayı attı")
+
+
+def performans_sirala(statlar):
+    """En dikkat çekiciden aza. `statlar`: oyuncu_stat sözlükleri."""
+    def anahtar(st):
+        kademe = performans_derecesi(st)[0]
+        return (kademe, -_perf_deger(st, "sayi"), -_perf_deger(st, "rib"),
+                -_perf_deger(st, "ast"))
+    return sorted(statlar, key=anahtar)

@@ -2137,10 +2137,18 @@ def main():
         for _k in _dist.get(_bolum, []) or []:
             if _k.get("metin"):
                 _dist_metinleri.append(_k["metin"])
-    basar("Yayın: dist metni taslakla aynı (tazele gerçekten yeniden derliyor)",
+    # "Bunları geç" satırının OYUNCU cümlesi artık şablondan geliyor
+    # (tek kaynak performans sıralaması), maç sonucu cümlesi taslaktan.
+    # Değişmez: İLK cümle taslakla aynı olmalı — "tazele" hâlâ gerçekten
+    # yeniden derliyor mu, onu denetliyor.
+    basar("Yayın: dist'in maç cümlesi taslakla aynı (tazele yeniden derliyor)",
           bool(_dist_metinleri) and all(
-              _c.strip() in _taslak_metni
-              for _m in _dist_metinleri for _c in _m.split(". ") if len(_c.strip()) > 25))
+              _m.split(". ")[0].strip() in _taslak_metni
+              for _m in _dist_metinleri if len(_m.split(". ")[0].strip()) > 25))
+    # Oyuncu cümlesi ise ŞABLONDAN: taslakta olmayan biçimler çıkabilir.
+    _sablon_izi = [_m for _m in _dist_metinleri
+                   if "double yaptı (" in _m or " sayı attı." in _m]
+    basar("Yayın: oyuncu cümlesi şablondan kuruluyor", bool(_sablon_izi))
 
     # İngilizce terim: "driving layup" 20 Aralık'ta yayına kadar geldi —
     # listede sadece dunk/assist/rebound gibi birkaç terim vardı.
@@ -5773,13 +5781,18 @@ def main():
     basar("Karar: yalnız liderliği değiştiren atış",
           "_belirleyici = _once_f <= 0 < _sonra_f" in _gsrc
           and 'karar.get("belirleyici")' in _dsrc3)
-    basar("Karar: tek serbest atış karar anı sayılmıyor",
-          "deneme < 2 or isabet != deneme" in _dsrc3
-          and "serbest atışını attı" not in _dsrc3
-          and '"serbest atış attı"' not in _dsrc3)
     # KENDİ YORUMUM TESTİME TAKILMASIN: yalnız gerçek koda bak.
     _dsrc_kod = "\n".join(l for l in _dsrc3.split("\n")
                           if not l.lstrip().startswith("#"))
+    # ŞUT TÜRÜNE GÖRE ELEME YOK (kullanıcı kararı geri alındı): tek
+    # serbest atış da karar cümlesi alabilir, tek ölçüt belirleyicilik.
+    # Tek/eksik atışta biçim "sayıyı buldu" — Türkçede serbest atış
+    # "atılmaz". "serbest atışını attı" ve "serbest atış attı" yasak.
+    basar("Karar: şut türüne göre eleme yok, ölçüt belirleyicilik",
+          "deneme < 2 or isabet != deneme" not in _dsrc_kod
+          and "serbest atışını attı" not in _dsrc_kod
+          and '"serbest atış attı"' not in _dsrc_kod
+          and 'karar.get("belirleyici")' in _dsrc_kod)
     basar("Karar: 'basket attı' yerine 'sayıyı buldu'",
           'sut = "sayıyı buldu"' in _dsrc_kod and '"basket attı"' not in _dsrc_kod)
     # Üretilen cümlelerde yasak biçim kalmasın.
@@ -5790,7 +5803,8 @@ def main():
         _x7 = _jj.loads(open(f"dist/{_t7}.json", encoding="utf-8").read())
         for _b7 in (_x7.get("mutlaka") or []) + (_x7.get("degerse_bak") or []):
             _c7 = ((_b7.get("karar") or {}).get("cumle") or "")
-            if "serbest atışını" in _c7 or "basket attı" in _c7 or "1/1" in _c7:
+            if ("serbest atışını" in _c7 or "basket attı" in _c7
+                    or "1/1" in _c7 or "serbest atış attı" in _c7):
                 _kotu_karar.append(f"{_t7}: {_c7}")
     basar("Karar: yayında tek serbest atış / 'basket attı' cümlesi yok",
           not _kotu_karar, "; ".join(_kotu_karar[:4]))
@@ -5823,6 +5837,58 @@ def main():
           _derle._soyad("Michael Porter Jr.") == "Porter Jr."
           and _derle._soyad("Jimmy Butler III") == "Butler III"
           and _derle._soyad("Desmond Bane") == "Bane")
+
+    # ------------------------------------------------------------------
+    # PERFORMANS SIRALAMASI — TEK KAYNAK
+    # ------------------------------------------------------------------
+    import hesapla as _H
+    def _st(**kw):
+        d = {"sayi": 0, "rib": 0, "ast": 0, "cal": 0, "blk": 0}
+        d.update(kw); return d
+    basar("Perf: quadruple-double en üstte",
+          _H.performans_derecesi(_st(sayi=20, rib=12, ast=11, blk=10))[1]
+          == "quadruple_double")
+    basar("Perf: triple-double 40+ sayının üstünde",
+          _H.performans_derecesi(_st(sayi=22, rib=12, ast=10))[0]
+          < _H.performans_derecesi(_st(sayi=41))[0])
+    basar("Perf: 40+ sayı, yüksek double-double'ın üstünde",
+          _H.performans_derecesi(_st(sayi=41))[0]
+          < _H.performans_derecesi(_st(sayi=24, rib=15))[0])
+    basar("Perf: double-double 30+ sayının üstünde",
+          _H.performans_derecesi(_st(sayi=18, rib=11))[0]
+          < _H.performans_derecesi(_st(sayi=31))[0])
+    basar("Perf: 5 top çalma olağanüstü sayılıyor",
+          _H.performans_derecesi(_st(sayi=9, cal=5))[1] == "olaganustu_tek")
+    basar("Perf: çift hane TEK kalemse double-double değil",
+          _H.performans_derecesi(_st(sayi=8, ast=10))[1] == "en_yuksek_tek"
+          and _H.performans_derecesi(_st(sayi=12, ast=10))[1] == "cifte_cifte")
+    basar("Perf: son çare tek kalemde en yüksek",
+          _H.performans_derecesi(_st(sayi=8, ast=6))[2] == "8 sayı")
+    basar("Perf: döküm kanonik sırada (sayı, ribaund, asist)",
+          _H.performans_derecesi(_st(sayi=22, rib=12, ast=10))[3]
+          == "triple-double yaptı (22 sayı, 12 ribaund, 10 asist)")
+    basar("Perf: etiket biçimi tabloya uygun",
+          _H.performans_derecesi(_st(sayi=22, rib=12, ast=10))[2] == "triple-double"
+          and _H.performans_derecesi(_st(sayi=55))[2] == "55 sayı")
+    basar("Perf: sıralama tek kaynaktan (derle kendi ölçütünü kurmuyor)",
+          "hesapla.performans_sirala" in _dsrc_kod
+          and "hesapla.performans_derecesi" in _dsrc_kod)
+    # "Jr." isim eki cümle sonu sayılmamalı.
+    basar("Perf: 'Jr.' cümleyi bölmüyor",
+          _derle._gec_metni("A takımı yendi. Jabari Smith Jr. 22 sayı attı.", [])
+          == "A takımı yendi. Jabari Smith Jr. 22 sayı attı.")
+    # Yayındaki metinlerde bileşik başarı görünüyor.
+    _bilesik = 0
+    for _t8 in _geceler:
+        if not _os.path.exists(f"dist/{_t8}.json"):
+            continue
+        _x8 = _jj.loads(open(f"dist/{_t8}.json", encoding="utf-8").read())
+        for _b8 in ((_x8.get("mutlaka") or []) + (_x8.get("degerse_bak") or [])
+                    + (_x8.get("diger") or [])):
+            if "double yaptı (" in (_b8.get("metin") or ""):
+                _bilesik += 1
+    basar("Perf: yayında bileşik başarı cümlesi var", _bilesik >= 5,
+          f"bulunan: {_bilesik}")
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",

@@ -21,6 +21,7 @@ import unicodedata
 from datetime import datetime
 from pathlib import Path
 
+import hesapla
 from hesapla import gmsc, siralama_anahtari
 from yaz import gece_kalip_plani, _mutlaka_ve_diger
 from kalip_secici import _KILOMETRE_ONCELIK
@@ -509,7 +510,11 @@ def _gecenin_besi(ham, gercek_gece, id_by_gid, skor_by_gid):
                     "_kilo": kilo_by_oyuncu.get(satir["isim"], []),
                 })
                 aday.append(satir)
-    aday.sort(key=lambda o: -o["gmsc"])
+    # TEK KAYNAK SIRALAMA: önce performans kademesi (triple-double,
+    # 40+ sayı...), eşitlikte Game Score. Eskiden yalnız GmSc'ydi.
+    aday.sort(key=lambda o: (hesapla.performans_derecesi(
+        {"sayi": o["pts"], "rib": o["reb"], "ast": o["ast"],
+         "cal": o.get("stl") or 0, "blk": o.get("blk") or 0})[0], -o["gmsc"]))
 
     kullanilmis = set()
     slot_gid = {}
@@ -1141,6 +1146,47 @@ def _soyad(ad):
     return son
 
 
+def _en_iyi_performans_stat(gercekler):
+    """Maçın en dikkat çekici performansı — TEK KAYNAK sıralamayla.
+
+    Sıralama hesapla.performans_sirala'da; burada yalnız o maçın
+    oyuncularına uygulanıyor. Eskiden her yer kendi ölçütünü kuruyordu
+    ve bileşik başarılar görünmüyordu (triple-double yapan oyuncu için
+    "10 asist yaptı" yazılmıştı)."""
+    statlar = [f["veri"] for f in gercekler if f["tur"] == "oyuncu_stat"]
+    if not statlar:
+        return None
+    return hesapla.performans_sirala(statlar)[0]
+
+
+def _gec_metni(gec_satiri, gercekler):
+    """"Bunları geç" satırındaki OYUNCU cümlesini tek kaynak sıralamayla
+    yeniden kurar. Maç sonucu cümlesi (LLM) olduğu gibi kalıyor; yalnız
+    sondaki oyuncu cümlesi şablondan geliyor — LLM çağrısı gerekmiyor."""
+    if not gec_satiri:
+        return gec_satiri
+    en_iyi = _en_iyi_performans_stat(gercekler)
+    if not en_iyi:
+        return gec_satiri
+    _k, _ad, _etiket, eksen = hesapla.performans_derecesi(en_iyi)
+    if not eksen:
+        return gec_satiri
+    # "Jr." / "Sr." / "III." isim ekleri cümle sonu DEĞİL: düz ". "
+    # bölmesi "Jabari Smith Jr. 22 sayı attı" cümlesini ikiye kesiyordu.
+    cumleler = [c.strip() for c in
+                re.split(r"(?<!\bJr)(?<!\bSr)(?<!\bII)(?<!\bIII)(?<!\bIV)\. ",
+                          gec_satiri) if c.strip()]
+    if len(cumleler) < 2:
+        return gec_satiri
+    adlar = {f["veri"]["oyuncu"] for f in gercekler if f["tur"] == "oyuncu_stat"}
+    son = cumleler[-1].rstrip(".")
+    # Son cümle bir OYUNCU cümlesi mi? (o maçın oyuncusuyla başlıyorsa)
+    if not any(son.startswith(a) for a in adlar):
+        return gec_satiri
+    cumleler[-1] = f"{en_iyi['oyuncu']} {eksen}"
+    return ". ".join(cumleler) + "."
+
+
 def _ceyrek_tablosu(gercekler, gozat=False):
     """[{ceyrek, skor, durum, fark, one_cikan, kritik}] — YÜKLEMSİZ.
 
@@ -1153,6 +1199,21 @@ def _ceyrek_tablosu(gercekler, gozat=False):
         return []
     olaylar = [f["veri"] for f in gercekler if f["tur"] == "akis_olay"]
     oyuncu_ceyrek = [f["veri"] for f in gercekler if f["tur"] == "oyuncu_ceyrek"]
+    # BİLEŞİK BAŞARI TABLODA DA GÖRÜNSÜN: maçın en dikkat çekici
+    # performansı üst kademelerdense (quadruple/triple-double, 40+ sayı,
+    # yüksek double-double), o oyuncunun EN ÇOK SAYI ATTIĞI çeyreğin
+    # satırında çeyrek sayısı yerine başarı etiketi yazılıyor. Diğer
+    # satırlar çeyrek verisiyle kalıyor — bir çeyrek satırı maç geneli
+    # bir iddiayı tekrar tekrar taşımasın.
+    _en_iyi = _en_iyi_performans_stat(gercekler)
+    _bilesik_etiket = _bilesik_periyot = None
+    if _en_iyi:
+        _kd, _knm, _et, _ek = hesapla.performans_derecesi(_en_iyi)
+        if _kd <= 3 and _et:
+            _oc = [o for o in oyuncu_ceyrek if o["oyuncu"] == _en_iyi["oyuncu"]]
+            if _oc:
+                _bilesik_periyot = max(_oc, key=lambda o: o.get("sayi") or 0)["periyot"]
+                _bilesik_etiket = f"{_soyad(_en_iyi['oyuncu'])} {_et}"
     kisa = lambda k: cumle.TAKIM_KISA.get(k, k)
     son_periyot = max(c["periyot"] for c in ceyrekler)
 
@@ -1198,6 +1259,8 @@ def _ceyrek_tablosu(gercekler, gozat=False):
             adaylar.append(("lider", f"{len(lider)} kez liderlik değişti"))
         if en_seri is not None and (en_seri.get("sayi") or 0) >= ONE_CIKAN_SERI:
             adaylar.append(("seri", f"{kisa(en_seri.get('takim'))} {en_seri['sayi']}-0 seri"))
+        if _bilesik_etiket and _bilesik_periyot in periyotlar:
+            adaylar.append(("sayi", _bilesik_etiket))
         if en_oyuncu and en_oyuncu[1] >= ONE_CIKAN_SAYI:
             adaylar.append(("sayi", f"{_soyad(en_oyuncu[0])} {en_oyuncu[1]} sayı"))
         if buyuk:
@@ -1289,16 +1352,17 @@ def _karar_cumlesi(gercekler):
     n = int(round(saniye))
     sure = "son saniyede" if n <= 0 else f"bitime {n} saniye kala"
     ad = _soyad(karar["oyuncu"])
+    # ŞUT TÜRÜNE GÖRE ELEME YOK (kullanıcı kararı). Tek ölçüt
+    # belirleyicilik: son saniyede atılan ve maçı kazandıran bir serbest
+    # atış da dramatiktir. Tek atışın sorunu dramatiklik değil, Türkçede
+    # serbest atışın "atılmaması"ydı — onu "sayıyı buldu" çözdü.
     if karar["sut_turu"] == "serbest atış":
-        # TEK SERBEST ATIŞ KARAR ANI DEĞİL (kullanıcı kararı): öyle
-        # biten maç dramatik değil, tablo tek başına kalsın. Yalnız iki
-        # atışın ikisi de girdiyse cümle çıkıyor, isabet oranıyla.
-        # Ayrıca Türkçede serbest atış "atılmaz", "kullanılır" — bu
-        # yüzden tek atış için bir kalıp aranmıyor.
         isabet, deneme = karar.get("sa_isabet"), karar.get("sa_deneme")
-        if not deneme or deneme < 2 or isabet != deneme:
-            return None
-        sut = f"serbest atışları {isabet}/{deneme} attı"
+        if deneme and deneme >= 2 and isabet == deneme:
+            # İki atışın ikisi de: oran bilgi taşıyor, korunuyor.
+            sut = f"serbest atışları {isabet}/{deneme} attı"
+        else:
+            sut = "sayıyı buldu"
     elif karar["sut_turu"] == "üçlük":
         sut = "üçlük attı"
     else:
@@ -2973,7 +3037,8 @@ def derle(tarih_str):
             "skor": f"{skor_bilgi['ev_skor']}–{skor_bilgi['dep_skor']}",
             "rozet": skor_bilgi["rozet"],
             "why": _why_metni(plan.get(gid, {})),
-            "metin": v.get("gec_satiri", ""),
+            "metin": _gec_metni(v.get("gec_satiri", ""),
+                                gercek_gece["maclar"].get(gid, [])),
             "box": _box_score(ham["maclar"][gid], v.get("gec_satiri", ""), kaybeden_kod, gercek_gece["maclar"][gid]),
         }
         girdi["kazanan_kod"] = (skor_bilgi["ev"]
