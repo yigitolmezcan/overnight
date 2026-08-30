@@ -5311,6 +5311,85 @@ def main():
     basar("Ayraç: Göz at ray rengi derlemede üretiliyor",
           '_ray_g = [{"takim": m["kazanan_kod"]' in _dsrc4)
 
+    # ------------------------------------------------------------------
+    # BLOK DEĞİŞMEZLERİ — kurulduktan sonra denetim
+    # ------------------------------------------------------------------
+    # Olay tipi başına kural yok; blok kurulur, dört değişmez denetlenir,
+    # bozan satır elenir. Aşağıdaki testler MEKANİZMAYI denetliyor:
+    # gerçek gecelerin ÜRETİLMİŞ bloklarında dördü de sağlanmalı.
+    _dsrc5 = open("derle.py", encoding="utf-8").read()
+    basar("Değişmez: denetim tek mekanizma olarak kurulu",
+          "def _denetle(secim)" in _dsrc5 and "_blok_degismez" not in _dsrc5)
+    basar("Değişmez: eleme sonsuz döngüye girmiyor (elenen olay geri gelmiyor)",
+          "yasak.add(id(_dusen[1]))" in _dsrc5
+          and "id(x) not in yasak" in _dsrc5)
+    basar("Değişmez: blok asgari satırın altına inebiliyor (eksik > yanlış)",
+          "AKIS_ASGARI_SATIR" in _dsrc5.split("def _denetle")[1])
+
+    _K = cumle.TAKIM_KISA
+    _bloklar = []
+    for _t in ("2025-12-26", "2025-12-27"):
+        _d = _derle.derle(_t)
+        for _kat in ("mutlaka", "degerse_bak"):
+            for _b in (_d.get(_kat) or []):
+                if _b.get("akis"):
+                    _bloklar.append((_t, _b, _derle._yukle(_derle.GERCEK_DIZIN, _t)
+                                     ["maclar"][_b["mac_id"]]))
+    basar("Değişmez: iki gecede de akış bloğu üretiliyor", len(_bloklar) >= 5)
+
+    for _t, _b, _g in _bloklar:
+        _skor = next(f["veri"] for f in _g if f["tur"] == "skor")
+        _kaz, _ev, _dep = _skor["kazanan"], _skor["ev"], _skor["dep"]
+        _ad = f"{_t} {_K.get(_ev, _ev)}-{_K.get(_dep, _dep)}"
+        _sat = _b["akis"]
+
+        # D1 — her satır durumu taşır.
+        _eksik = [x["cumle"] for x in _sat
+                  if x["tip"] != "en_etkili"
+                  and not any(_K.get(k, k).lower() in x["cumle"].lower()
+                              for k in (_ev, _dep))
+                  and not any(w in x["cumle"].lower()
+                              for w in ("başa baş", "eşitle", "denk", "beraberl"))]
+        basar(f"D1 {_ad}: her satır kimin önde olduğunu söylüyor",
+              not _eksik, "; ".join(_eksik))
+
+        # D2 — ardışık satırlar aynı olay olamaz.
+        _cakisma = []
+        for _i in range(len(_sat) - 1):
+            _a, _c = _sat[_i], _sat[_i + 1]
+            if _a.get("saat") and _a.get("saat") == _c.get("saat") \
+                    and _a.get("zaman") == _c.get("zaman"):
+                _cakisma.append(f"{_a['cumle']} / {_c['cumle']}")
+        _oyuncular = [x.get("oyuncu_ad") for x in _sat if x.get("oyuncu_ad")]
+        basar(f"D2 {_ad}: ardışık satırlar aynı olay değil",
+              not _cakisma, "; ".join(_cakisma))
+
+        # D3 — blok kazananla biter.
+        _son = _sat[-1]
+        _lehte = (_K.get(_kaz, _kaz).lower() in _son["cumle"].lower()
+                  or _son["tip"] == "en_etkili")
+        if _son["tip"] == "en_etkili":
+            _oy = _son["cumle"].split(" ")[0:2]
+            _st = next((f["veri"] for f in _g if f["tur"] == "oyuncu_stat"
+                        and f["veri"]["oyuncu"].startswith(_oy[0])), None)
+            _lehte = bool(_st) and _st.get("takim") == _kaz
+        basar(f"D3 {_ad}: son satır kazananın lehine", _lehte, _son["cumle"])
+
+        # D4 — skor dizisi ilerler.
+        _oncekiler, _geri = None, []
+        for _x in _sat:
+            _d2 = _x.get("detay") or ""
+            _m = _re.match(r"^(\d+)[–-](\d+)", _d2)
+            if not _m:
+                continue
+            _tp = int(_m.group(1)) + int(_m.group(2))
+            if _oncekiler is not None and _tp <= _oncekiler:
+                _geri.append(_d2)
+            _oncekiler = _tp
+        basar(f"D4 {_ad}: skor dizisi ileri gidiyor", not _geri, "; ".join(_geri))
+
+        basar(f"Değişmez {_ad}: blok 2 satırın altına inmedi", len(_sat) >= 2)
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))

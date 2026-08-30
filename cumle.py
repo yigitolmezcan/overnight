@@ -821,9 +821,11 @@ def akis_kaliplari(olay, ad_fn=None):
                 k.append(("ceyrek_farkla",
                           f"{takim} {fark} sayı önde bitirdi", skor))
     elif t == "devre_farki":
+        # "Devrede fark 13" kimin önde olduğunu söylemiyordu (DEĞİŞMEZ 1);
+        # takımsız biçim kaldırıldı.
         k.append(("devre_onde", f"{takim} {n} sayı önde", skor))
-        k.append(("devre_fark", f"Devrede fark {n}", skor))
         k.append(("devre_girdi", f"Devreye {takim} {n} sayı önde girdi", skor))
+        k.append(("devre_ustun", f"Devreyi {takim} {n} sayı önde kapadı", skor))
     elif t == "ceyrek_ustunlugu":
         rakip = olay.get("rakip_sayi")
         onde = ((olay.get("fark", 0) > 0 and olay.get("takim") == olay.get("ev_kod"))
@@ -837,7 +839,7 @@ def akis_kaliplari(olay, ad_fn=None):
         k.append(("fark_cikardi",
                   f"{takim} farkı {n}'{dogrula_sayi_eki(n)} çıkardı", "en büyük fark"))
         k.append(("fark_cikti",
-                  f"Fark {n}'{dogrula_sayi_eki(n)} çıktı", f"{takim} önde"))
+                  f"{takim} farkı {n} sayıya taşıdı", "en büyük fark"))
         k.append(("fark_onu", f"{takim} önü {n} sayıya çıkardı", "en büyük fark"))
     elif t == "sayi_serisi":
         k.append(("seri_gitti", f"{takim} {n}-0 gitti", f"fark {fark}"))
@@ -876,6 +878,15 @@ def akis_kaliplari(olay, ad_fn=None):
                       f"{skor} · maçı bitirdi"))
             k.append(("karar_sonsoz", f"Son sözü {oyuncu} söyledi", skor))
             k.append(("karar_bitirdi", f"Maçı {oyuncu} bitirdi", skor))
+            # DEĞİŞMEZ 1: karar anı da kimin kazandığını söylemeli.
+            # Takımsız biçimler duruyor (yedek), takımlı olanlar tercih
+            # ediliyor — satır elenmesin diye.
+            if takim:
+                k.append(("karar_takim_aldi", f"{takim} maçı {oyuncu} ile aldı",
+                          f"{skor} · maçı bitirdi"))
+                k.append(("karar_takim_basket",
+                          f"{oyuncu}'{iyelik_eki(oyuncu)} basketiyle {takim} kazandı",
+                          skor))
         elif takim:
             k.append(("karar_takim", f"{takim} son sayıyı buldu",
                       f"{skor} · maçı bitirdi"))
@@ -886,8 +897,13 @@ def akis_kaliplari(olay, ad_fn=None):
     elif t == "rakip_yaklasti":
         k.append(("yaklasti_kadar", f"{takim} farkı {n} sayıya kadar indirdi", skor))
         k.append(("yaklasti_enyakin", f"{takim} en fazla {n} sayıya yaklaştı", skor))
-        k.append(("yaklasti_duser", f"Fark {n} sayıya kadar düştü", f"{takim} yaklaştı"))
+        k.append(("yaklasti_duser", f"{takim} arayı {n} sayıya indirdi", skor))
     elif t == "fark_korundu":
+        # DEĞİŞMEZ 1: satır kimin önde olduğunu söylemeli. Takım taşıyan
+        # biçim önce geliyor; takımsız biçimler yedek.
+        if takim:
+            k.append(("korundu_takim",
+                      f"{takim} farkı {n}'{dogrula_sayi_eki(n, 'iyelik')} altına düşürmedi", skor))
         k.append(("korundu_altina",
                   f"Fark bir daha {n}'{dogrula_sayi_eki(n, 'iyelik')} altına inmedi", None))
         k.append(("korundu_inilmedi",

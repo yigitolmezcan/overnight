@@ -51,7 +51,7 @@
       "metin": "Cleveland Cavaliers, Charlotte Hornets'i evinde yendi.",
       "anlatili": true,
       "hedef_id": "a-0022500402",
-      "icon": "default",
+      "icon": "standings",
       "saat": "03:00",
       "rozet": 5.22,
       "skor": "CLE 139 – CHA 132",
@@ -111,7 +111,7 @@
       "metin": "Detroit Pistons, Portland Trail Blazers'i yenerek konferansta 1. sıraya yükseldi.",
       "anlatili": true,
       "hedef_id": "a-0022500408",
-      "icon": "standings",
+      "icon": "default",
       "saat": "06:00",
       "rozet": 6.12,
       "skor": "POR 102 – DET 110",
@@ -182,12 +182,12 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_basket",
+          "kalip": "lider_ile",
           "yuva": "one_gecis",
           "sekil": "geri_donus",
           "zaman": "4Ç",
           "saat": "6:37",
-          "cumle": "Derrick White'ın basketiyle öne geçti",
+          "cumle": "Boston, Derrick White ile öne geçti",
           "detay": "87–86",
           "kritik": false
         },
@@ -10833,15 +10833,16 @@
         },
         "kritik": null
       },
+      "kazanan_kod": "OKC",
       "akis": [
         {
           "tip": "liderlik",
-          "kalip": "lider_cevirdi",
+          "kalip": "lider_ile",
           "yuva": "kopma",
           "sekil": "kopma",
           "zaman": "1Ç",
           "saat": "4:25",
-          "cumle": "Kenrich Williams skoru çevirdi",
+          "cumle": "Oklahoma City, Kenrich Williams ile öne geçti",
           "detay": "19–18",
           "kritik": true
         },
@@ -10856,7 +10857,8 @@
           "detay": "107–97",
           "kritik": false
         }
-      ]
+      ],
+      "ray_renk": "#31A8E0"
     },
     {
       "id": "a-0022500404",
@@ -11436,6 +11438,7 @@
         "kilit": null,
         "kritik": null
       },
+      "kazanan_kod": "NOP",
       "akis": [
         {
           "tip": "ceyrek_sonu",
@@ -11450,23 +11453,24 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_gecirdi",
+          "kalip": "lider_ile",
           "yuva": "kopus",
           "sekil": "bastan_sona",
           "zaman": "4Ç",
           "saat": "5:14",
-          "cumle": "Derik Queen takımını öne geçirdi",
+          "cumle": "New Orleans, Derik Queen ile öne geçti",
           "detay": "103–102",
           "kritik": true
         }
-      ]
+      ],
+      "ray_renk": "#B4975A"
     },
     {
       "id": "a-0022500408",
       "mac": "Portland Trail Blazers — Detroit Pistons",
       "skor": "102–110",
       "rozet": 6.12,
-      "why": "gece sırası 7",
+      "why": "",
       "metin": "Detroit Pistons deplasmanda Portland Trail Blazers'i 110-102 yendi.",
       "box": {
         "ev": {
@@ -12101,6 +12105,7 @@
           ]
         }
       },
+      "kazanan_kod": "DET",
       "akis": [
         {
           "tip": "ceyrek_sonu",
@@ -12124,7 +12129,8 @@
           "detay": "100–101 · liderlik bir daha değişmedi",
           "kritik": false
         }
-      ]
+      ],
+      "ray_renk": "#E0384A"
     }
   ],
   "diger": [
@@ -12788,14 +12794,15 @@
           ]
         },
         "kritik": null
-      }
+      },
+      "kazanan_kod": "DEN"
     },
     {
       "id": "a-0022500402",
       "mac": "Cleveland Cavaliers — Charlotte Hornets",
       "skor": "139–132",
       "rozet": 5.22,
-      "why": "",
+      "why": "gece sırası 1",
       "metin": "Cleveland Cavaliers evinde Charlotte Hornets'i 139-132 yendi. Darius Garland 10 asist yaptı.",
       "box": {
         "ev": {
@@ -13473,7 +13480,8 @@
           ]
         },
         "kritik": null
-      }
+      },
+      "kazanan_kod": "CLE"
     },
     {
       "id": "a-0022500407",
@@ -14160,7 +14168,8 @@
           ]
         },
         "kritik": null
-      }
+      },
+      "kazanan_kod": "GSW"
     }
   ],
   "turkler": [],

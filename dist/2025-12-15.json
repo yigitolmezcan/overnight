@@ -144,14 +144,14 @@
           "kritik": false
         },
         {
-          "tip": "liderlik",
-          "kalip": "lider_basket",
+          "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_basabas",
           "yuva": "liderlik_degisimi",
           "sekil": "son_saniye",
-          "zaman": "Son",
-          "saat": "0:02",
-          "cumle": "Alperen Şengün'ün basketiyle öne geçti",
-          "detay": "116–117",
+          "zaman": "3Ç",
+          "saat": null,
+          "cumle": "Skor başa baş gitti",
+          "detay": "89–86",
           "kritik": false
         },
         {
@@ -167,12 +167,12 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_cevirdi",
+          "kalip": "lider_ile",
           "yuva": "karar",
           "sekil": "son_saniye",
           "zaman": "U1",
           "saat": "4:12",
-          "cumle": "Jamal Murray skoru çevirdi",
+          "cumle": "Denver, Jamal Murray ile öne geçti",
           "detay": "119–117 · liderlik bir daha değişmedi",
           "kritik": true
         }
@@ -761,12 +761,12 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_gecirdi",
+          "kalip": "lider_ile",
           "yuva": "karar",
           "sekil": "son_saniye",
           "zaman": "4Ç",
           "saat": "1:09",
-          "cumle": "Kyle Filipowski takımını öne geçirdi",
+          "cumle": "Utah, Kyle Filipowski ile öne geçti",
           "detay": "125–124",
           "kritik": true
         }
@@ -1382,12 +1382,12 @@
       "akis": [
         {
           "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_basabas",
+          "kalip": "ceyrek_denk",
           "yuva": "erken",
           "sekil": "kopma",
           "zaman": "1Ç",
           "saat": null,
-          "cumle": "Skor başa baş gitti",
+          "cumle": "Çeyrek denk geçti",
           "detay": "27–25",
           "kritik": false
         },
@@ -1404,13 +1404,13 @@
         },
         {
           "tip": "fark_korundu",
-          "kalip": "korundu_altina",
+          "kalip": "korundu_takim",
           "yuva": "kapanmadi",
           "sekil": "kopma",
           "zaman": "4Ç",
           "saat": "7:45",
-          "cumle": "Fark bir daha 15'in altına inmedi",
-          "detay": null,
+          "cumle": "Memphis farkı 15'in altına düşürmedi",
+          "detay": "86–100",
           "kritik": false
         },
         {
@@ -2080,12 +2080,12 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_basket",
+          "kalip": "lider_ile",
           "yuva": "one_gecis",
           "sekil": "geri_donus",
           "zaman": "3Ç",
           "saat": "3:09",
-          "cumle": "Jaden Ivey'in basketiyle öne geçti",
+          "cumle": "Detroit, Jaden Ivey ile öne geçti",
           "detay": "71–72 · liderlik bir daha değişmedi",
           "kritik": true
         },
@@ -9957,7 +9957,8 @@
           ]
         },
         "kritik": null
-      }
+      },
+      "kazanan_kod": "TOR"
     }
   ],
   "turkler": [

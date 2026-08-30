@@ -965,7 +965,10 @@ def akis_gercekleri_uret(g, gid, actions, ev_kod, dep_kod, kazanan, ceyrek_veri)
     if son_alti:
         esik = max(son_alti)
         periyot, saniye, ev, dep, _a = son_alti[esik]
-        yaz("fark_korundu", periyot, saniye, ev, dep, sayi=esik)
+        # DEĞİŞMEZ 1: satır kimin önde olduğunu söylemeli — takım
+        # olmadan "fark 20'nin altına inmedi" kimin lehine belli değil.
+        yaz("fark_korundu", periyot, saniye, ev, dep, sayi=esik,
+            takim=(ev_kod if ev > dep else dep_kod))
 
 
 def fark_serisi_gercegi_uret(g, gid, actions, ev_kod, dep_kod, kazanan):

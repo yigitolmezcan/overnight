@@ -207,34 +207,34 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_basket",
+          "kalip": "lider_ile",
           "yuva": "liderlik_degisimi",
           "sekil": "son_saniye",
           "zaman": "3Ç",
           "saat": "9:03",
-          "cumle": "Svi Mykhailiuk'un basketiyle öne geçti",
+          "cumle": "Utah, Svi Mykhailiuk ile öne geçti",
           "detay": "76–75",
           "kritik": false
         },
         {
-          "tip": "en_etkili",
-          "kalip": "etkili_duz",
+          "tip": "ceyrek_ustunlugu",
+          "kalip": "ust_aldi",
           "yuva": "son_donus",
           "sekil": "son_saniye",
-          "zaman": "Son",
+          "zaman": "3Ç",
           "saat": null,
-          "cumle": "Cade Cunningham 29 sayı, 5 ribaund, 17 asist",
-          "detay": "maçın en etkilisi",
+          "cumle": "Utah çeyreği 44-35 aldı",
+          "detay": "fark 8'e çıktı",
           "kritik": false
         },
         {
           "tip": "karar_ani",
-          "kalip": "karar_basket",
+          "kalip": "karar_takim_aldi",
           "yuva": "karar",
           "sekil": "son_saniye",
           "zaman": "Son",
           "saat": "0:02",
-          "cumle": "Keyonte George'un basketi",
+          "cumle": "Utah maçı Keyonte George ile aldı",
           "detay": "131–129 · maçı bitirdi",
           "kritik": true
         }

@@ -102,25 +102,14 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_basket",
+          "kalip": "lider_ile",
           "yuva": "one_gecis",
           "sekil": "geri_donus",
           "zaman": "U1",
           "saat": "2:58",
-          "cumle": "Al Horford'un basketiyle öne geçti",
+          "cumle": "Golden State, Al Horford ile öne geçti",
           "detay": "126–125 · liderlik bir daha değişmedi",
           "kritik": true
-        },
-        {
-          "tip": "en_etkili",
-          "kalip": "etkili_duz",
-          "yuva": "sonuc",
-          "sekil": "geri_donus",
-          "zaman": "Son",
-          "saat": null,
-          "cumle": "Stephen Curry 42 sayı, 6 ribaund, 7 asist",
-          "detay": "maçın en etkilisi",
-          "kritik": false
         }
       ],
       "box": {
@@ -3304,7 +3293,7 @@
       "mac": "Indiana Pacers — Oklahoma City Thunder",
       "skor": "135–141",
       "rozet": 9.29,
-      "why": "uzatma",
+      "why": "bireysel performans: 50_sayi eşiğini geçen Shai Gilgeous-Alexander",
       "metin": "Shai Gilgeous-Alexander'in 55 sayılık gecesinde Oklahoma City, Indiana'yı yendi. Oklahoma City Thunder, maçı uzatmada kazandı.",
       "box": {
         "ev": {
@@ -3973,6 +3962,7 @@
           ]
         }
       },
+      "kazanan_kod": "OKC",
       "akis": [
         {
           "tip": "ceyrek_sonu",
@@ -3987,16 +3977,17 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_cevirdi",
+          "kalip": "lider_ile",
           "yuva": "kopus",
           "sekil": "bastan_sona",
           "zaman": "U2",
           "saat": "3:13",
-          "cumle": "Aaron Wiggins skoru çevirdi",
+          "cumle": "Oklahoma City, Aaron Wiggins ile öne geçti",
           "detay": "128–130 · liderlik bir daha değişmedi",
           "kritik": true
         }
-      ]
+      ],
+      "ray_renk": "#31A8E0"
     }
   ],
   "diger": [],

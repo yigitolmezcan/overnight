@@ -230,34 +230,34 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_basket",
+          "kalip": "lider_ile",
           "yuva": "liderlik_degisimi",
           "sekil": "son_saniye",
           "zaman": "3Ç",
           "saat": "9:44",
-          "cumle": "Jimmy Butler III'nin basketiyle öne geçti",
+          "cumle": "Golden State, Jimmy Butler III ile öne geçti",
           "detay": "71–70",
           "kritik": false
         },
         {
-          "tip": "en_etkili",
-          "kalip": "etkili_duz",
+          "tip": "en_buyuk_fark",
+          "kalip": "fark_cikardi",
           "yuva": "son_donus",
           "sekil": "son_saniye",
-          "zaman": "Son",
-          "saat": null,
-          "cumle": "Devin Booker 38 sayı, 1 ribaund, 5 asist",
-          "detay": "maçın en etkilisi",
+          "zaman": "4Ç",
+          "saat": "7:10",
+          "cumle": "Golden State farkı 11'e çıkardı",
+          "detay": "en büyük fark",
           "kritik": false
         },
         {
           "tip": "karar_ani",
-          "kalip": "karar_basket",
+          "kalip": "karar_takim_aldi",
           "yuva": "karar",
           "sekil": "son_saniye",
           "zaman": "Son",
           "saat": "0:05",
-          "cumle": "Stephen Curry'nin basketi",
+          "cumle": "Golden State maçı Stephen Curry ile aldı",
           "detay": "119–116 · maçı bitirdi",
           "kritik": true
         }
@@ -911,12 +911,12 @@
       "akis": [
         {
           "tip": "en_buyuk_fark",
-          "kalip": "fark_cikardi",
+          "kalip": "fark_cikti",
           "yuva": "kaybedenin_farki",
           "sekil": "geri_donus",
           "zaman": "2Ç",
           "saat": "1:09",
-          "cumle": "Memphis farkı 20'ye çıkardı",
+          "cumle": "Memphis farkı 20 sayıya taşıdı",
           "detay": "en büyük fark",
           "kritik": false
         },
@@ -933,24 +933,24 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_cevirdi",
+          "kalip": "lider_ile",
           "yuva": "one_gecis",
           "sekil": "geri_donus",
           "zaman": "4Ç",
           "saat": "2:16",
-          "cumle": "Alex Sarr skoru çevirdi",
+          "cumle": "Washington, Alex Sarr ile öne geçti",
           "detay": "119–121 · liderlik bir daha değişmedi",
           "kritik": false
         },
         {
-          "tip": "en_etkili",
-          "kalip": "etkili_oncikti",
+          "tip": "ceyrek_ustunlugu",
+          "kalip": "ust_ustun",
           "yuva": "sonuc",
           "sekil": "geri_donus",
-          "zaman": "Son",
+          "zaman": "Maç sonu",
           "saat": null,
-          "cumle": "Santi Aldama 37 sayı, 10 ribaund, 2 asist ile öne çıktı",
-          "detay": null,
+          "cumle": "Washington o çeyrekte 35-27 üstün geldi",
+          "detay": "fark 8'e çıktı",
           "kritik": true
         }
       ],
@@ -1548,25 +1548,25 @@
           "kritik": false
         },
         {
-          "tip": "liderlik",
-          "kalip": "lider_gecirdi",
+          "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_lehine",
           "yuva": "liderlik_degisimi",
           "sekil": "son_saniye",
-          "zaman": "Son",
-          "saat": "0:04",
-          "cumle": "Keyonte George takımını öne geçirdi",
-          "detay": "127–126",
+          "zaman": "3Ç",
+          "saat": null,
+          "cumle": "Çeyrek Orlando lehine bitti",
+          "detay": "82–97",
           "kritik": false
         },
         {
           "tip": "karar_ani",
-          "kalip": "karar_sonsoz",
+          "kalip": "karar_takim_aldi",
           "yuva": "karar",
           "sekil": "son_saniye",
           "zaman": "Son",
           "saat": "0:00",
-          "cumle": "Son sözü Desmond Bane söyledi",
-          "detay": "127–128",
+          "cumle": "Orlando maçı Desmond Bane ile aldı",
+          "detay": "127–128 · maçı bitirdi",
           "kritik": true
         }
       ],
@@ -15614,15 +15614,16 @@
         },
         "kritik": null
       },
+      "kazanan_kod": "BOS",
       "akis": [
         {
           "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_lehine",
+          "kalip": "ceyrek_farkla",
           "yuva": "erken",
           "sekil": "kopma",
           "zaman": "1Ç",
           "saat": null,
-          "cumle": "Çeyrek Boston lehine bitti",
+          "cumle": "Boston 12 sayı önde bitirdi",
           "detay": "20–32",
           "kritik": false
         },
@@ -15637,7 +15638,8 @@
           "detay": "80–81 · liderlik bir daha değişmedi",
           "kritik": true
         }
-      ]
+      ],
+      "ray_renk": "#12A05C"
     },
     {
       "id": "a-0022500386",
@@ -16227,6 +16229,7 @@
         },
         "kritik": null
       },
+      "kazanan_kod": "HOU",
       "akis": [
         {
           "tip": "ceyrek_sonu",
@@ -16241,16 +16244,17 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_basket",
+          "kalip": "lider_ile",
           "yuva": "kopma",
           "sekil": "kopma",
           "zaman": "2Ç",
           "saat": "7:00",
-          "cumle": "Josh Okogie'nin basketiyle öne geçti",
+          "cumle": "Houston, Josh Okogie ile öne geçti",
           "detay": "37–39 · liderlik bir daha değişmedi",
           "kritik": true
         }
-      ]
+      ],
+      "ray_renk": "#CE1141"
     },
     {
       "id": "a-0022500387",
@@ -16819,30 +16823,32 @@
         },
         "kritik": null
       },
+      "kazanan_kod": "PHI",
       "akis": [
         {
           "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_farkla",
+          "kalip": "ceyrek_onde",
           "yuva": "erken_ustunluk",
           "sekil": "bastan_sona",
           "zaman": "1Ç",
           "saat": null,
-          "cumle": "Philadelphia 5 sayı önde bitirdi",
+          "cumle": "Philadelphia önde kapadı",
           "detay": "38–33",
           "kritik": false
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_cevirdi",
+          "kalip": "lider_ile",
           "yuva": "kopus",
           "sekil": "bastan_sona",
           "zaman": "4Ç",
           "saat": "10:00",
-          "cumle": "Tyrese Maxey skoru çevirdi",
+          "cumle": "Philadelphia, Tyrese Maxey ile öne geçti",
           "detay": "102–100",
           "kritik": true
         }
-      ]
+      ],
+      "ray_renk": "#3A8DDE"
     }
   ],
   "diger": [
@@ -17459,7 +17465,8 @@
           ]
         },
         "kritik": null
-      }
+      },
+      "kazanan_kod": "LAC"
     },
     {
       "id": "a-0022500389",
@@ -18134,7 +18141,8 @@
         "wtf": null,
         "kilit": null,
         "kritik": null
-      }
+      },
+      "kazanan_kod": "NOP"
     },
     {
       "id": "a-0022500394",
@@ -18744,7 +18752,8 @@
             }
           ]
         }
-      }
+      },
+      "kazanan_kod": "POR"
     },
     {
       "id": "a-0022500390",
@@ -19456,7 +19465,8 @@
           ]
         },
         "kritik": null
-      }
+      },
+      "kazanan_kod": "DET"
     }
   ],
   "turkler": [

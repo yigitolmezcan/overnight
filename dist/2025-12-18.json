@@ -234,24 +234,24 @@
           "kritik": false
         },
         {
-          "tip": "en_etkili",
-          "kalip": "etkili_duz",
+          "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_onde",
           "yuva": "liderlik_degisimi",
           "sekil": "son_saniye",
-          "zaman": "Son",
+          "zaman": "3Ç",
           "saat": null,
-          "cumle": "Kevin Durant 32 sayı, 7 ribaund, 2 asist",
-          "detay": "maçın en etkilisi",
+          "cumle": "Houston önde kapadı",
+          "detay": "83–99",
           "kritik": false
         },
         {
           "tip": "karar_ani",
-          "kalip": "karar_basket",
+          "kalip": "karar_takim_aldi",
           "yuva": "karar",
           "sekil": "son_saniye",
           "zaman": "Son",
           "saat": "0:02",
-          "cumle": "Saddiq Bey'in basketi",
+          "cumle": "New Orleans maçı Saddiq Bey ile aldı",
           "detay": "133–128 · maçı bitirdi",
           "kritik": true
         }
@@ -885,23 +885,23 @@
       "akis": [
         {
           "tip": "liderlik",
-          "kalip": "lider_basket",
+          "kalip": "lider_ile",
           "yuva": "erken_ustunluk",
           "sekil": "bastan_sona",
           "zaman": "1Ç",
           "saat": "10:13",
-          "cumle": "Jusuf Nurkić'in basketiyle öne geçti",
+          "cumle": "Utah, Jusuf Nurkić ile öne geçti",
           "detay": "5–4",
           "kritik": false
         },
         {
           "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_onde",
+          "kalip": "ceyrek_lehine",
           "yuva": "devre",
           "sekil": "bastan_sona",
           "zaman": "Devre",
           "saat": null,
-          "cumle": "Utah önde kapadı",
+          "cumle": "Çeyrek Utah lehine bitti",
           "detay": "78–73",
           "kritik": false
         },
@@ -918,12 +918,12 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_cevirdi",
+          "kalip": "lider_ile",
           "yuva": "kopus",
           "sekil": "bastan_sona",
           "zaman": "4Ç",
           "saat": "10:07",
-          "cumle": "Maxi Kleber skoru çevirdi",
+          "cumle": "Los Angeles, Maxi Kleber ile öne geçti",
           "detay": "108–109 · liderlik bir daha değişmedi",
           "kritik": true
         }
@@ -1547,36 +1547,36 @@
           "kritik": false
         },
         {
-          "tip": "liderlik",
-          "kalip": "lider_gecirdi",
+          "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_denk",
           "yuva": "liderlik_degisimi",
           "sekil": "son_saniye",
-          "zaman": "Son",
-          "saat": "0:04",
-          "cumle": "DeMar DeRozan takımını öne geçirdi",
-          "detay": "132–133",
+          "zaman": "3Ç",
+          "saat": null,
+          "cumle": "Çeyrek denk geçti",
+          "detay": "82–83",
           "kritik": false
         },
         {
-          "tip": "esitlik",
-          "kalip": "esit_kapatti",
+          "tip": "en_buyuk_fark",
+          "kalip": "fark_cikardi",
           "yuva": "son_donus",
           "sekil": "son_saniye",
-          "zaman": "Son",
-          "saat": "0:01",
-          "cumle": "Portland farkı kapattı",
-          "detay": "133–133",
+          "zaman": "4Ç",
+          "saat": "5:05",
+          "cumle": "Portland farkı 18'e çıkardı",
+          "detay": "en büyük fark",
           "kritik": false
         },
         {
           "tip": "karar_ani",
-          "kalip": "karar_sonsoz",
+          "kalip": "karar_takim_aldi",
           "yuva": "karar",
           "sekil": "son_saniye",
           "zaman": "Son",
           "saat": "0:01",
-          "cumle": "Son sözü Deni Avdija söyledi",
-          "detay": "134–133",
+          "cumle": "Portland maçı Deni Avdija ile aldı",
+          "detay": "134–133 · maçı bitirdi",
           "kritik": true
         }
       ],
@@ -2232,46 +2232,35 @@
       "akis": [
         {
           "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_lehine",
+          "kalip": "ceyrek_farkla",
           "yuva": "erken_ustunluk",
           "sekil": "bastan_sona",
           "zaman": "1Ç",
           "saat": null,
-          "cumle": "Çeyrek Charlotte lehine bitti",
+          "cumle": "Charlotte 5 sayı önde bitirdi",
           "detay": "37–32",
           "kritik": true
         },
         {
           "tip": "devre_farki",
-          "kalip": "devre_fark",
+          "kalip": "devre_girdi",
           "yuva": "devre",
           "sekil": "bastan_sona",
           "zaman": "Devre",
           "saat": null,
-          "cumle": "Devrede fark 11",
+          "cumle": "Devreye Charlotte 11 sayı önde girdi",
           "detay": "80–69",
           "kritik": false
         },
         {
-          "tip": "rakip_yaklasti",
-          "kalip": "yaklasti_kadar",
+          "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_onde",
           "yuva": "rakip_yaklasti",
           "sekil": "bastan_sona",
-          "zaman": "4Ç",
-          "saat": "2:39",
-          "cumle": "Atlanta farkı 1 sayıya kadar indirdi",
-          "detay": "122–121",
-          "kritik": false
-        },
-        {
-          "tip": "en_etkili",
-          "kalip": "etkili_oncikti",
-          "yuva": "kopus",
-          "sekil": "bastan_sona",
-          "zaman": "Son",
+          "zaman": "3Ç",
           "saat": null,
-          "cumle": "Jalen Johnson 43 sayı, 11 ribaund, 9 asist ile öne çıktı",
-          "detay": null,
+          "cumle": "Charlotte önde kapadı",
+          "detay": "107–95",
           "kritik": false
         }
       ],
@@ -16007,30 +15996,32 @@
           ]
         }
       },
+      "kazanan_kod": "PHX",
       "akis": [
         {
           "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_farkla",
+          "kalip": "ceyrek_lehine",
           "yuva": "devre",
           "sekil": "son_saniye",
           "zaman": "Devre",
           "saat": null,
-          "cumle": "Golden State 7 sayı önde bitirdi",
+          "cumle": "Çeyrek Golden State lehine bitti",
           "detay": "46–53",
           "kritik": false
         },
         {
           "tip": "karar_ani",
-          "kalip": "karar_bitirdi",
+          "kalip": "karar_takim_aldi",
           "yuva": "karar",
           "sekil": "son_saniye",
           "zaman": "Son",
           "saat": "0:00",
-          "cumle": "Maçı Jordan Goodwin bitirdi",
-          "detay": "99–98",
+          "cumle": "Phoenix maçı Jordan Goodwin ile aldı",
+          "detay": "99–98 · maçı bitirdi",
           "kritik": true
         }
-      ]
+      ],
+      "ray_renk": "#B08BE8"
     },
     {
       "id": "a-0022500372",
@@ -16696,30 +16687,32 @@
           ]
         }
       },
+      "kazanan_kod": "NYK",
       "akis": [
         {
           "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_denk",
+          "kalip": "ceyrek_basabas",
           "yuva": "devre",
           "sekil": "son_saniye",
           "zaman": "Devre",
           "saat": null,
-          "cumle": "Çeyrek denk geçti",
+          "cumle": "Skor başa baş gitti",
           "detay": "62–59",
           "kritik": false
         },
         {
           "tip": "karar_ani",
-          "kalip": "karar_basket",
+          "kalip": "karar_takim_aldi",
           "yuva": "karar",
           "sekil": "son_saniye",
           "zaman": "Son",
           "saat": "0:05",
-          "cumle": "Jalen Brunson'un basketi",
+          "cumle": "New York maçı Jalen Brunson ile aldı",
           "detay": "113–114 · maçı bitirdi",
           "kritik": true
         }
-      ]
+      ],
+      "ray_renk": "#F58426"
     },
     {
       "id": "a-0022500376",
@@ -17410,15 +17403,16 @@
           ]
         }
       },
+      "kazanan_kod": "DAL",
       "akis": [
         {
           "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_onde",
+          "kalip": "ceyrek_farkla",
           "yuva": "devre",
           "sekil": "son_saniye",
           "zaman": "Devre",
           "saat": null,
-          "cumle": "Dallas önde kapadı",
+          "cumle": "Dallas 9 sayı önde bitirdi",
           "detay": "66–57",
           "kritik": true
         },
@@ -17433,7 +17427,8 @@
           "detay": "110–109",
           "kritik": false
         }
-      ]
+      ],
+      "ray_renk": "#2E7BC4"
     }
   ],
   "diger": [
@@ -18012,7 +18007,8 @@
         "wtf": null,
         "kilit": null,
         "kritik": null
-      }
+      },
+      "kazanan_kod": "MIA"
     },
     {
       "id": "a-0022500377",
@@ -18562,7 +18558,8 @@
         "wtf": null,
         "kilit": null,
         "kritik": null
-      }
+      },
+      "kazanan_kod": "DEN"
     },
     {
       "id": "a-0022500374",
@@ -19092,7 +19089,8 @@
         "wtf": null,
         "kilit": null,
         "kritik": null
-      }
+      },
+      "kazanan_kod": "TOR"
     }
   ],
   "turkler": [

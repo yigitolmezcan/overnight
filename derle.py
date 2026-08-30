@@ -954,6 +954,10 @@ AKIS_SON_DK_FARK = 3           # ya da fark bu kadarsa: son saniye maçı
 #
 # Yuva bir SORGU: (tip, filtre). Karşılığı yoksa yuva boş kalır; blok
 # AKIS_ASGARI_SATIR'ın altına düşerse çizilmez.
+# Değişmez denetiminin tanı kaydı — sadece rapor için, ürüne girmiyor.
+SON_DENETIM = {}
+DENETIM_LOG = []
+
 AKIS_SEKILLERI = ("geri_donus", "son_saniye", "kopma", "bastan_sona")
 
 
@@ -1085,8 +1089,18 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
                 "asist": st.get("ast"),
             })
 
+    # DEĞİŞMEZ 1 için takım alanı: bazı olay tipleri (fark_korundu gibi)
+    # takım taşımıyor. Skorun işaretinden türetiliyor — gerçekleri
+    # yeniden üretmeye gerek yok, eski geceler de kapsanıyor.
+    for _o in olaylar:
+        if not _o.get("takim") and _o["tip"] != "en_etkili":
+            _f = _o.get("fark")
+            if _f:
+                _o["takim"] = skor.get("ev") if _f > 0 else skor.get("dep")
+
     sekil = _akis_sekli(gercekler, olaylar, skor)
     plan = _yuva_planla(sekil, kazanan, kaybeden)
+    plan_secenek = [(y, sec) for y, sec, _k in plan]
 
     # YUVALAR ZAMAN PENCERESİYLE DOLUYOR. Önce KRİTİK yuva sabitleniyor,
     # sonra soldakiler ondan ÖNCE, sağdakiler ondan SONRA olacak şekilde
@@ -1195,17 +1209,168 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
     if len(temiz) < min(AKIS_ASGARI_SATIR, satir_sayisi):
         return []
 
+    # ==================================================================
+    # BLOK DEĞİŞMEZLERİ (kullanıcı kararı)
+    # ==================================================================
+    # Olay tipi başına kural DEĞİL, blok başına değişmez. Blok kurulur,
+    # dört değişmez denetlenir; bozan satır atılır ve yerine sıradaki
+    # aday gelir. Yeni bir olay tipi eklendiğinde ayrıca kural yazmak
+    # gerekmiyor — denetim zaten çalışıyor.
+    #
+    #  1. HER SATIR DURUMU TAŞIR — cümle kimin önde olduğunu söylemeli.
+    #     Skor çifti tek başına yetmez. ("Devrede fark 13" ✗)
+    #  2. ARDIŞIK SATIRLAR AYNI OLAY OLAMAZ — aynı zaman damgası, aynı
+    #     oyuncu, ya da aynı skor değişiminin iki parçası (serbest atış
+    #     çifti gibi).
+    #  3. BLOK KAZANANLA BİTER — son satır kazananın lehine olmalı.
+    #     "Maçın en etkilisi" kaybeden taraftansa sona konulamaz.
+    #  4. SKOR DİZİSİ İLERLER — her satırın skoru bir öncekinden ileri.
+    #
+    # Dördü sağlanamıyorsa blok 3'e, gerekirse 2 satıra iner. EKSİK
+    # SATIR, YANLIŞ SATIRDAN İYİDİR.
+    _kisa = lambda kod: cumle.TAKIM_KISA.get(kod, kod)
+    _sayac = {1: 0, 2: 0, 3: 0, 4: 0}
+    _onarim = {1: 0}          # DEĞİŞMEZ 1: elenmeden kalıp değiştirildi
+    _sn = {"sekil": sekil, "sayac": _sayac, "onarim": _onarim, "elenen": 0,
+           "kurulan": len(temiz), "takimlar": (skor.get("ev"), skor.get("dep")),
+           "satir_sayisi": satir_sayisi}
+    SON_DENETIM.clear(); SON_DENETIM.update(_sn); DENETIM_LOG.append(_sn)
+
+    def _durum_tasiyor(o, cml):
+        if o["tip"] == "en_etkili":
+            return True                      # oyuncu özeti, durum iddiası değil
+        d = (cml or "").lower()
+        if "başa baş" in d or "eşitle" in d or "denk" in d or "beraberl" in d:
+            return True
+        return any(_kisa(k).lower() in d for k in (kazanan, kaybeden) if k)
+
+    def _ayni_olay(a, b):
+        pa, pb = a.get("periyot"), b.get("periyot")
+        sa, sb = a.get("saniye_kalan"), b.get("saniye_kalan")
+        if a.get("oyuncu") and a.get("oyuncu") == b.get("oyuncu"):
+            return True                      # aynı oyuncu iki satırda
+        if pa == pb and sa is not None and sb is not None:
+            if abs(sa - sb) < 10:            # aynı ya da bitişik an
+                return True
+        if (a.get("ev_skor"), a.get("dep_skor")) == (b.get("ev_skor"), b.get("dep_skor")):
+            return True
+        return False
+
+    def _kazanan_lehine(o):
+        if o["tip"] == "en_etkili":
+            st = next((f["veri"] for f in gercekler
+                       if f["tur"] == "oyuncu_stat"
+                       and f["veri"].get("oyuncu") == o.get("oyuncu")), None)
+            return bool(st) and st.get("takim") == kazanan
+        if o.get("takim"):
+            return o["takim"] == kazanan
+        ev_onde = (o.get("ev_skor") or 0) > (o.get("dep_skor") or 0)
+        return (kazanan == (skor.get("ev") if ev_onde else skor.get("dep")))
+
+    def _toplam(o):
+        return (o.get("ev_skor") or 0) + (o.get("dep_skor") or 0)
+
+    zorla = {}          # id(olay) -> kalip_id (DEĞİŞMEZ 1 onarımı)
+
+    def _denetle(secim):
+        """(ihlal_index, degismez_no) ya da (None, None).
+
+        DEĞİŞMEZ 1'de satır hemen elenmiyor: önce aynı olayın durumu
+        taşıyan başka bir kalıbı deneniyor. Eleme son çare — game
+        winner gibi satırlar sırf cümle biçimi yüzünden düşmesin."""
+        for i, (_y, o, _k) in enumerate(secim):
+            if _durum_tasiyor(o, _kalip_metni(o)):
+                continue
+            uygun = next((kid for kid, c, _d in cumle.akis_kaliplari(o, _kisa)
+                          if _durum_tasiyor(o, c)), None)
+            if uygun is not None:
+                if zorla.get(id(o)) != uygun:
+                    _onarim[1] += 1           # onarıldı, satır kalıyor
+                zorla[id(o)] = uygun
+                continue
+            return i, 1
+        for i in range(len(secim) - 1):
+            if _ayni_olay(secim[i][1], secim[i + 1][1]):
+                # Kritik satır korunur, komşusu elenir.
+                return (i if not secim[i][2] else i + 1), 2
+        if secim and not _kazanan_lehine(secim[-1][1]):
+            return len(secim) - 1, 3
+        for i in range(1, len(secim)):
+            if secim[i][1]["tip"] == "en_etkili" or secim[i - 1][1]["tip"] == "en_etkili":
+                continue
+            if _toplam(secim[i][1]) <= _toplam(secim[i - 1][1]):
+                return (i if not secim[i][2] else i - 1), 4
+        return None, None
+
+    def _kalip_metni(o):
+        ad = cumle.akis_kaliplari(o, _kisa)
+        if id(o) in zorla:
+            return next((c for kid, c, _d in ad if kid == zorla[id(o)]), ad[0][1])
+        for kid, c, _d in ad:
+            if kid not in _blok and (kalip_sayaci or {}).get(kid, 0) < AKIS_KALIP_LIMITI:
+                return c
+        return ad[0][1] if ad else ""
+
     _blok = set()
+    yasak = set()            # elenen olaylar geri gelmesin (sonsuz döngü)
+    guvenlik = 0
+    while guvenlik < 12:
+        guvenlik += 1
+        i, no = _denetle(temiz)
+        if i is None:
+            break
+        _sayac[no] += 1
+        _sn["elenen"] += 1
+        _dusen = temiz.pop(i)
+        yasak.add(id(_dusen[1]))
+        # Yerine sıradaki aday: aynı yuvanın seçeneklerinden, pencereye
+        # uyan bir başkası.
+        alt = _akis_sirasi(temiz[i - 1][1]) if i > 0 else None
+        ust = _akis_sirasi(temiz[i][1]) if i < len(temiz) else None
+        yeni = None
+        for _tip, _filtre in dict(plan_secenek).get(_dusen[0], []):
+            ad = [x for x in olaylar if x["tip"] == _tip and _filtre(x)
+                  and id(x) not in kullanilan and id(x) not in yasak
+                  and (alt is None or _akis_sirasi(x) > alt)
+                  and (ust is None or _akis_sirasi(x) < ust)]
+            if ad:
+                yeni = max(ad, key=_akis_sirasi)
+                break
+        if yeni is None:
+            # Yuvanın kendi tipleri tükendiyse pencereye uyan HERHANGİ
+            # bir kullanılmamış olay — blok gereksiz yere kısalmasın.
+            # Blokta zaten bulunan tipler en sona düşüyor.
+            _var = {x[1]["tip"] for x in temiz}
+            genis = [x for x in olaylar
+                     if id(x) not in kullanilan and id(x) not in yasak
+                     and x["tip"] != "en_etkili"
+                     and (alt is None or _akis_sirasi(x) > alt)
+                     and (ust is None or _akis_sirasi(x) < ust)]
+            if genis:
+                yeni = min(genis, key=lambda x: (x["tip"] in _var, -_akis_sirasi(x)[0]))
+        if yeni is not None:
+            kullanilan.add(id(yeni))
+            temiz.insert(i, (_dusen[0], yeni, _dusen[2]))
+        elif _dusen[2] and temiz:
+            temiz[-1] = (temiz[-1][0], temiz[-1][1], True)   # kritik kaybolmasın
+        if len(temiz) < min(AKIS_ASGARI_SATIR, satir_sayisi):
+            break
+
     satirlar = []
     for yuva, o, kritik in temiz:
         adaylar = cumle.akis_kaliplari(o, lambda k: cumle.TAKIM_KISA.get(k, k))
         if not adaylar:
             continue
-        uygun = [x for x in adaylar if x[0] not in _blok
-                 and (kalip_sayaci or {}).get(x[0], 0) < AKIS_KALIP_LIMITI]
-        havuz = uygun or [x for x in adaylar if x[0] not in _blok] or adaylar
-        kid, c, det = min(havuz, key=lambda x: ((kalip_sayaci or {}).get(x[0], 0),
-                                                adaylar.index(x)))
+        if id(o) in zorla:
+            # DEĞİŞMEZ 1 bu satırın kalıbını sabitledi — çeşitlilik
+            # sayacı bunu bozamaz.
+            kid, c, det = next(x for x in adaylar if x[0] == zorla[id(o)])
+        else:
+            uygun = [x for x in adaylar if x[0] not in _blok
+                     and (kalip_sayaci or {}).get(x[0], 0) < AKIS_KALIP_LIMITI]
+            havuz = uygun or [x for x in adaylar if x[0] not in _blok] or adaylar
+            kid, c, det = min(havuz, key=lambda x: ((kalip_sayaci or {}).get(x[0], 0),
+                                                    adaylar.index(x)))
         _blok.add(kid)
         if kalip_sayaci is not None:
             kalip_sayaci[kid] = kalip_sayaci.get(kid, 0) + 1

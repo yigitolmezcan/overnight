@@ -223,12 +223,12 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_basket",
+          "kalip": "lider_ile",
           "yuva": "one_gecis",
           "sekil": "geri_donus",
           "zaman": "4Ç",
           "saat": "11:12",
-          "cumle": "Victor Wembanyama'nın basketiyle öne geçti",
+          "cumle": "San Antonio, Victor Wembanyama ile öne geçti",
           "detay": "86–87 · liderlik bir daha değişmedi",
           "kritik": false
         },
@@ -13815,6 +13815,7 @@
         },
         "kritik": null
       },
+      "kazanan_kod": "ORL",
       "akis": [
         {
           "tip": "ceyrek_sonu",
@@ -13829,16 +13830,17 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_cevirdi",
+          "kalip": "lider_ile",
           "yuva": "kopus",
           "sekil": "bastan_sona",
           "zaman": "3Ç",
           "saat": "6:37",
-          "cumle": "Desmond Bane skoru çevirdi",
+          "cumle": "Orlando, Desmond Bane ile öne geçti",
           "detay": "75–77",
           "kritik": true
         }
-      ]
+      ],
+      "ray_renk": "#1E8FD5"
     },
     {
       "id": "a-0022500675",
@@ -14524,6 +14526,7 @@
         },
         "kritik": null
       },
+      "kazanan_kod": "NYK",
       "akis": [
         {
           "tip": "en_buyuk_fark",
@@ -14532,22 +14535,23 @@
           "sekil": "geri_donus",
           "zaman": "2Ç",
           "saat": "9:15",
-          "cumle": "Fark 12'ye çıktı",
-          "detay": "Toronto önde",
+          "cumle": "Toronto farkı 12 sayıya taşıdı",
+          "detay": "en büyük fark",
           "kritik": false
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_gecirdi",
+          "kalip": "lider_ile",
           "yuva": "one_gecis",
           "sekil": "geri_donus",
           "zaman": "3Ç",
           "saat": "2:59",
-          "cumle": "OG Anunoby takımını öne geçirdi",
+          "cumle": "New York, OG Anunoby ile öne geçti",
           "detay": "70–71 · liderlik bir daha değişmedi",
           "kritik": true
         }
-      ]
+      ],
+      "ray_renk": "#F58426"
     },
     {
       "id": "a-0022500672",
@@ -15192,6 +15196,7 @@
           ]
         }
       },
+      "kazanan_kod": "IND",
       "akis": [
         {
           "tip": "ceyrek_sonu",
@@ -15206,16 +15211,17 @@
         },
         {
           "tip": "karar_ani",
-          "kalip": "karar_basket",
+          "kalip": "karar_takim_aldi",
           "yuva": "karar",
           "sekil": "son_saniye",
           "zaman": "Son",
           "saat": "0:02",
-          "cumle": "Johnny Furphy'nin basketi",
+          "cumle": "Indiana maçı Johnny Furphy ile aldı",
           "detay": "113–110 · maçı bitirdi",
           "kritik": true
         }
-      ]
+      ],
+      "ray_renk": "#0B2C6B"
     }
   ],
   "diger": [
@@ -15809,7 +15815,8 @@
           ]
         },
         "kritik": null
-      }
+      },
+      "kazanan_kod": "MIN"
     },
     {
       "id": "a-0022500671",
@@ -16519,7 +16526,8 @@
           ]
         },
         "kritik": null
-      }
+      },
+      "kazanan_kod": "CLE"
     },
     {
       "id": "a-0022500673",
@@ -17159,7 +17167,8 @@
           ]
         },
         "kritik": null
-      }
+      },
+      "kazanan_kod": "ATL"
     },
     {
       "id": "a-0022500676",
@@ -17785,7 +17794,8 @@
         "wtf": null,
         "kilit": null,
         "kritik": null
-      }
+      },
+      "kazanan_kod": "CHA"
     },
     {
       "id": "a-0022500678",
@@ -18451,7 +18461,8 @@
           ]
         },
         "kritik": null
-      }
+      },
+      "kazanan_kod": "GSW"
     }
   ],
   "turkler": [
