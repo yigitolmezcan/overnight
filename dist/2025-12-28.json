@@ -180,7 +180,7 @@
           "durum": "LAC +23",
           "durum_takim": "LAC",
           "fark": 23,
-          "one_cikan": "Detroit 12-0 seri",
+          "one_cikan": "Leonard 55 sayı",
           "kritik": false
         },
         {
@@ -191,7 +191,7 @@
           "durum": "LAC +13",
           "durum_takim": "LAC",
           "fark": 13,
-          "one_cikan": "Cunningham 12 sayı",
+          "one_cikan": "Detroit 8-0 seri",
           "kritik": false
         }
       ],
@@ -825,7 +825,7 @@
           "durum": "TOR +1",
           "durum_takim": "TOR",
           "fark": 1,
-          "one_cikan": "Golden State 13-0 seri",
+          "one_cikan": "Barnes triple-double",
           "kritik": false
         },
         {
@@ -836,7 +836,7 @@
           "durum": "GSW +4",
           "durum_takim": "GSW",
           "fark": 4,
-          "one_cikan": "Curry 14 sayı",
+          "one_cikan": "Golden State 10-0 seri",
           "kritik": false
         },
         {
@@ -847,7 +847,7 @@
           "durum": "berabere",
           "durum_takim": null,
           "fark": 0,
-          "one_cikan": "Toronto 8-0 seri",
+          "one_cikan": "Curry 10 sayı",
           "kritik": false
         },
         {
@@ -858,7 +858,7 @@
           "durum": "TOR +14",
           "durum_takim": "TOR",
           "fark": 14,
-          "one_cikan": "en büyük fark 14",
+          "one_cikan": "Toronto 12-0 seri",
           "kritik": true
         }
       ],
@@ -1566,7 +1566,7 @@
           "durum": "POR +1",
           "durum_takim": "POR",
           "fark": 1,
-          "one_cikan": "5 kez liderlik değişti",
+          "one_cikan": "Avdija double-double",
           "kritik": true
         },
         {

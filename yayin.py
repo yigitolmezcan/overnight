@@ -452,11 +452,17 @@ def _ham_metni(tarih):
 
 
 def _akis_metni(tarih, gid):
-    """O maçın akış satırlarının düz metni — kapı bunu da okuyor.
+    """O maçın KARTINDA GÖRÜNEN metin — kapı bunu da okuyor.
 
-    Akış derle.py'nin çıktısında (dist) duruyor; kapı üretimden SONRA
-    çalıştığı için oradan okunabiliyor. Dosya yoksa boş dönüyor: kural
-    eskisi gibi yalnız metin alanlarına bakar."""
+    Cümle akışı kalkıp yerine çeyrek tablosu gelince buranın da
+    değişmesi gerekti: kapı akış satırlarını okuyordu, akış boşalınca
+    T14 ("en iyi performans anıldı mı") kartta yazan tablo etiketlerini
+    göremiyordu ve 28 Aralık'ta triple-double yapan Scottie Barnes için
+    geceyi reddediyordu. Artık tablo etiketleri ve karar cümlesi de
+    okunuyor — kart ne gösteriyorsa kapı onu görüyor.
+
+    Dosya yoksa boş dönüyor: kural eskisi gibi yalnız metin alanlarına
+    bakar."""
     try:
         veri = json.loads((DIST_DIZIN / f"{tarih}.json").read_text(encoding="utf-8"))
     except Exception:
@@ -464,8 +470,13 @@ def _akis_metni(tarih, gid):
     for bolum in ("mutlaka", "degerse_bak", "diger"):
         for blok in (veri.get(bolum) or []):
             if str(blok.get("id", "")).endswith(gid) or blok.get("mac_id") == gid:
-                return " ".join(f"{r.get('cumle','')} {r.get('detay') or ''}"
-                                for r in (blok.get("akis") or []))
+                parcalar = [f"{r.get('cumle','')} {r.get('detay') or ''}"
+                            for r in (blok.get("akis") or [])]
+                parcalar += [str(r.get("one_cikan") or "")
+                             for r in (blok.get("ceyrek_tablosu") or [])]
+                karar = blok.get("karar") or {}
+                parcalar += [karar.get("cumle") or "", karar.get("detay") or ""]
+                return " ".join(p for p in parcalar if p)
     return ""
 
 

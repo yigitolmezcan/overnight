@@ -975,9 +975,10 @@ def main():
     # (transfer, kesilme, draft) sessizce geçmesin, testi düşürsün ve
     # elle gözden geçirilsin. NBA'de aktif Türk oyuncu sayısı tek haneli
     # olduğu için bu bakım yükü değil, koruma.
-    basar("türk listesi: sadece aktif iki oyuncu (Şengün, Bona)",
+    basar("türk listesi: aktif üç oyuncu (Şengün, Bona, Biberoviç)",
           {(o["ad"], o["takim"]) for o in _turk}
-          == {("Alperen Şengün", "HOU"), ("Adem Bona", "PHI")})
+          == {("Alperen Şengün", "HOU"), ("Adem Bona", "PHI"),
+              ("Tarık Biberoviç", "DAL")})
     basar("türk listesi: her oyuncunun takım kodu geçerli",
           all(o["takim"] in _derle.TAKIM_ADI for o in _turk))
 
@@ -5925,6 +5926,14 @@ def main():
           == max(_yy), f"latest={_jj.loads(open('dist/latest.json', encoding='utf-8').read())['tarih']}")
     basar("Arşiv: sıra imleci listenin sonuyla tutarlı",
           (_dm.get("sira_imleci") or max(_yy)) == max(_yy))
+    # latest işaretçisi ÇAĞIRANIN DİKKATİNE bırakılmıyor: `uret` işi
+    # henüz yayınlanmamış geceyi "en güncel" diye işaretlemişti.
+    basar("Arşiv: latest yalnız yayınlanan geceye yazılıyor",
+          "latest = (tarih_str == _yayinlanan_son())" in _dsrc_kod
+          and "def yaz_dosya(tarih_str, latest=None)" in _dsrc_kod)
+    basar("Arşiv: hazır (yayınlanmamış) gece latest olamaz",
+          ((_dm.get("hazir") or {}).get("tarih")
+           != _jj.loads(open("dist/latest.json", encoding="utf-8").read())["tarih"]))
     basar("Arşiv: her yayınlanmış gecenin sayfası var",
           all(_os.path.exists(f"site/{_t9}.html") for _t9 in _yy))
 

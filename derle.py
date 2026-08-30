@@ -1255,12 +1255,15 @@ def _ceyrek_tablosu(gercekler, gozat=False):
                  if o["tip"] == "en_buyuk_fark" and (o.get("periyot") or 0) in periyotlar]
 
         adaylar = []
+        # BİLEŞİK BAŞARI EN ÖNDE: triple-double / 40+ sayı gibi bir gece
+        # "5 kez liderlik değişti"nin arkasında kalamaz. Tek kaynak
+        # sıralama neyi üste koyuyorsa tabloda da o görünüyor.
+        if _bilesik_etiket and _bilesik_periyot in periyotlar:
+            adaylar.append(("bilesik", _bilesik_etiket))
         if len(lider) >= ONE_CIKAN_LIDERLIK:
             adaylar.append(("lider", f"{len(lider)} kez liderlik değişti"))
         if en_seri is not None and (en_seri.get("sayi") or 0) >= ONE_CIKAN_SERI:
             adaylar.append(("seri", f"{kisa(en_seri.get('takim'))} {en_seri['sayi']}-0 seri"))
-        if _bilesik_etiket and _bilesik_periyot in periyotlar:
-            adaylar.append(("sayi", _bilesik_etiket))
         if en_oyuncu and en_oyuncu[1] >= ONE_CIKAN_SAYI:
             adaylar.append(("sayi", f"{_soyad(en_oyuncu[0])} {en_oyuncu[1]} sayı"))
         if buyuk:
@@ -3099,13 +3102,33 @@ def derle(tarih_str):
     }
 
 
-def yaz_dosya(tarih_str, latest=True):
+def _yayinlanan_son():
+    """En son YAYINLANAN gece — latest işaretçisinin tek ölçütü."""
+    try:
+        d = json.loads((KOK / "config" / "yayin_durumu.json").read_text(encoding="utf-8"))
+    except Exception:
+        return None
+    y = d.get("yayinlanan") or []
+    return max(y) if y else None
+
+
+def yaz_dosya(tarih_str, latest=None):
+    """`latest=None` (varsayılan): işaretçi YALNIZCA gece en son
+    yayınlanan geceyse yazılır.
+
+    Gerçek kusur: `uret` işi bu fonksiyonu çağırıyor ve latest
+    varsayılan True olduğu için HENÜZ YAYINLANMAMIŞ geceyi "en güncel"
+    diye işaretliyordu (ölçüldü: 30 Ağustos üretim koşusu latest'ı
+    28 Aralık'a çevirdi, o gece yayında değildi). Karar artık tek
+    ölçüte bağlı ve çağıranın dikkatine bırakılmıyor."""
     veri = derle(tarih_str)
     DIST_DIZIN.mkdir(exist_ok=True)
     metin = json.dumps(veri, ensure_ascii=False, indent=2)
     hedef = DIST_DIZIN / f"{tarih_str}.json"
     hedef.write_text(metin)
     print(f"Yazıldı: {hedef}")
+    if latest is None:
+        latest = (tarih_str == _yayinlanan_son())
     if latest:
         (DIST_DIZIN / "latest.json").write_text(metin)
         print(f"Yazıldı: {DIST_DIZIN / 'latest.json'} (en güncel gece işaretçisi)")

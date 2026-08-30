@@ -245,7 +245,7 @@
           "durum": "ORL +1",
           "durum_takim": "ORL",
           "fark": 1,
-          "one_cikan": "9 kez liderlik değişti",
+          "one_cikan": "Jokić triple-double",
           "kritik": true
         }
       ],
@@ -917,7 +917,7 @@
           "durum": "NYK +3",
           "durum_takim": "NYK",
           "fark": 3,
-          "one_cikan": "4 kez liderlik değişti",
+          "one_cikan": "Towns double-double",
           "kritik": true
         }
       ],
@@ -1528,7 +1528,7 @@
           "durum": "SAS +8",
           "durum_takim": "SAS",
           "fark": 8,
-          "one_cikan": "5 kez liderlik değişti",
+          "one_cikan": "Johnson double-double",
           "kritik": false
         },
         {
@@ -2245,7 +2245,7 @@
           "durum": "BKN +12",
           "durum_takim": "BKN",
           "fark": 12,
-          "one_cikan": "Brooklyn 9-0 seri",
+          "one_cikan": "Porter Jr. double-double",
           "kritik": true
         },
         {
@@ -2256,7 +2256,7 @@
           "durum": "BKN +16",
           "durum_takim": "BKN",
           "fark": 16,
-          "one_cikan": "en büyük fark 21",
+          "one_cikan": "Brooklyn 12-0 seri",
           "kritik": false
         }
       ],
@@ -18223,15 +18223,23 @@
       "oynadi": false,
       "takim_adi": "Houston Rockets",
       "renk": "#CE1141"
+    },
+    {
+      "isim": "Tarık Biberoviç",
+      "takim": "DAL",
+      "oynadi": false,
+      "takim_adi": "Dallas Mavericks",
+      "renk": "#2E7BC4"
     }
   ],
   "turkler_bekleyen": {
     "isimler": [
       "Bona",
-      "Şengün"
+      "Şengün",
+      "Biberoviç"
     ],
     "tarih": "28 Aralık'ta",
-    "metin": "Bu gece Türk oyuncu sahaya çıkmadı. Bona 28 Aralık'ta, Şengün 29 Aralık'ta sahaya çıkıyor."
+    "metin": "Bu gece Türk oyuncu sahaya çıkmadı. Bona 28 Aralık'ta, Şengün ve Biberoviç 29 Aralık'ta sahaya çıkıyor."
   },
   "gecenin_notlari": [],
   "genis_aci": null
