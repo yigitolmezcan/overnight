@@ -133,17 +133,10 @@
       "neden_onemli": "Denver Nuggets, konferansta 2. sıraya yükseldi.",
       "akis": [
         {
-          "tip": "en_buyuk_fark",
-          "kalip": "fark_cikardi",
-          "zaman": "1Ç",
-          "saat": "1:51",
-          "cumle": "Houston farkı 9'a çıkardı",
-          "detay": "en büyük fark",
-          "kritik": false
-        },
-        {
           "tip": "ceyrek_sonu",
           "kalip": "ceyrek_onde",
+          "yuva": "devre",
+          "sekil": "son_saniye",
           "zaman": "Devre",
           "saat": null,
           "cumle": "Denver önde kapadı",
@@ -151,8 +144,21 @@
           "kritik": false
         },
         {
+          "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_basabas",
+          "yuva": "son_ceyrege_giris",
+          "sekil": "son_saniye",
+          "zaman": "3Ç",
+          "saat": null,
+          "cumle": "Skor başa baş gitti",
+          "detay": "89–86",
+          "kritik": false
+        },
+        {
           "tip": "esitlik",
           "kalip": "esit_esitledi",
+          "yuva": "son_donus",
+          "sekil": "son_saniye",
           "zaman": "Son",
           "saat": "0:02",
           "cumle": "Denver skoru eşitledi",
@@ -162,6 +168,8 @@
         {
           "tip": "karar_ani",
           "kalip": "karar_basket",
+          "yuva": "karar",
+          "sekil": "son_saniye",
           "zaman": "Son",
           "saat": "0:37",
           "cumle": "Alperen Şengün'ün basketi",
@@ -730,40 +738,37 @@
       "neden_onemli": "",
       "akis": [
         {
-          "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_lehine",
-          "zaman": "Devre",
-          "saat": null,
-          "cumle": "Çeyrek Dallas lehine bitti",
-          "detay": "71–75",
-          "kritik": false
-        },
-        {
           "tip": "en_buyuk_fark",
-          "kalip": "fark_cikti",
+          "kalip": "fark_cikardi",
+          "yuva": "kaybedenin_farki",
+          "sekil": "geri_donus",
           "zaman": "3Ç",
           "saat": "2:13",
-          "cumle": "Fark 10'a çıktı",
-          "detay": "Dallas önde",
+          "cumle": "Dallas farkı 10'a çıkardı",
+          "detay": "en büyük fark",
           "kritik": false
         },
         {
-          "tip": "esitlik",
-          "kalip": "esit_kapatti",
+          "tip": "sayi_serisi",
+          "kalip": "seri_gitti",
+          "yuva": "donusun_basi",
+          "sekil": "geri_donus",
           "zaman": "Son",
-          "saat": "0:03",
-          "cumle": "Dallas farkı kapattı",
-          "detay": "129–129",
-          "kritik": true
+          "saat": "0:53",
+          "cumle": "Utah 11-0 gitti",
+          "detay": "fark 3",
+          "kritik": false
         },
         {
           "tip": "en_etkili",
           "kalip": "etkili_duz",
+          "yuva": "sonuc",
+          "sekil": "geri_donus",
           "zaman": "Son",
           "saat": null,
-          "cumle": "Lauri Markkanen 33 sayı",
+          "cumle": "Lauri Markkanen 33 sayı, 16 ribaund, 5 asist",
           "detay": "maçın en etkilisi",
-          "kritik": false
+          "kritik": true
         }
       ],
       "box": {
@@ -1376,26 +1381,32 @@
       "neden_onemli": "",
       "akis": [
         {
+          "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_denk",
+          "yuva": "erken",
+          "sekil": "kopma",
+          "zaman": "1Ç",
+          "saat": null,
+          "cumle": "Çeyrek denk geçti",
+          "detay": "27–25",
+          "kritik": false
+        },
+        {
           "tip": "ceyrek_ustunlugu",
           "kalip": "ust_aldi",
+          "yuva": "kopma",
+          "sekil": "kopma",
           "zaman": "Devre",
           "saat": null,
           "cumle": "Memphis çeyreği 31-21 aldı",
           "detay": "fark 8'e çıktı",
-          "kritik": false
-        },
-        {
-          "tip": "liderlik",
-          "kalip": "lider_basket",
-          "zaman": "3Ç",
-          "saat": "6:29",
-          "cumle": "Cedric Coward'ın basketiyle öne geçti",
-          "detay": "64–65 · liderlik bir daha değişmedi",
           "kritik": true
         },
         {
           "tip": "fark_korundu",
           "kalip": "korundu_altina",
+          "yuva": "kapanmadi",
+          "sekil": "kopma",
           "zaman": "4Ç",
           "saat": "7:45",
           "cumle": "Fark bir daha 15'in altına inmedi",
@@ -1405,9 +1416,11 @@
         {
           "tip": "en_etkili",
           "kalip": "etkili_oncikti",
+          "yuva": "en_etkili",
+          "sekil": "kopma",
           "zaman": "Son",
           "saat": null,
-          "cumle": "Jaren Jackson Jr. 31 sayı ile öne çıktı",
+          "cumle": "Jaren Jackson Jr. 31 sayı, 4 ribaund, 4 asist ile öne çıktı",
           "detay": null,
           "kritik": false
         }
@@ -2044,39 +2057,47 @@
       "neden_onemli": "Detroit Pistons, konferansta 1. sıraya yükseldi.",
       "akis": [
         {
-          "tip": "sayi_serisi",
-          "kalip": "seri_gitti",
-          "zaman": "1Ç",
-          "saat": "2:09",
-          "cumle": "Boston 14-0 gitti",
-          "detay": "fark 9",
+          "tip": "en_buyuk_fark",
+          "kalip": "fark_cikti",
+          "yuva": "kaybedenin_farki",
+          "sekil": "geri_donus",
+          "zaman": "2Ç",
+          "saat": "11:07",
+          "cumle": "Fark 12'ye çıktı",
+          "detay": "Boston önde",
           "kritik": false
         },
         {
           "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_farkla",
+          "kalip": "ceyrek_lehine",
+          "yuva": "donusun_basi",
+          "sekil": "geri_donus",
           "zaman": "Devre",
           "saat": null,
-          "cumle": "Boston 4 sayı önde bitirdi",
+          "cumle": "Çeyrek Boston lehine bitti",
           "detay": "57–53",
           "kritik": false
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_cevirdi",
+          "kalip": "lider_basket",
+          "yuva": "one_gecis",
+          "sekil": "geri_donus",
           "zaman": "3Ç",
           "saat": "3:09",
-          "cumle": "Jaden Ivey skoru çevirdi",
+          "cumle": "Jaden Ivey'in basketiyle öne geçti",
           "detay": "71–72 · liderlik bir daha değişmedi",
           "kritik": true
         },
         {
-          "tip": "en_buyuk_fark",
-          "kalip": "fark_onu",
-          "zaman": "4Ç",
-          "saat": "5:53",
-          "cumle": "Detroit önü 10 sayıya çıkardı",
-          "detay": "en büyük fark",
+          "tip": "en_etkili",
+          "kalip": "etkili_enler",
+          "yuva": "sonuc",
+          "sekil": "geri_donus",
+          "zaman": "Son",
+          "saat": null,
+          "cumle": "Maçın en etkilisi Cade Cunningham",
+          "detay": "32 sayı, 4 ribaund, 10 asist",
           "kritik": false
         }
       ],

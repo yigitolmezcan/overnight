@@ -706,10 +706,17 @@ AKIS_DEVRE_FARK = 10       # devrede bu farktan büyükse ayrı satır
 AKIS_SON_SANIYE = 60.0     # "Son" etiketi eşiği (periyot 4+)
 
 
-def _akis_zaman(periyot, saniye_kalan, ceyrek_sonu=False):
-    """('1Ç', None) / ('Devre', None) / ('4Ç', '2:38') / ('Son', '0:04')"""
+def _akis_zaman(periyot, saniye_kalan, ceyrek_sonu=False, son_periyot=None):
+    """('1Ç', None) / ('Devre', None) / ('4Ç', '2:38') / ('Son', '0:04')
+
+    `son_periyot`: maçın gerçekten bittiği periyot. UZATMAYA GİDEN maçta
+    4. çeyreğin sonu "Maç sonu" DEĞİLDİR — maç orada bitmedi (ölçüldü,
+    18 Aralık ve 21 Aralık: "Maç sonu" satırından sonra uzatma satırları
+    geliyordu, sıra kırık görünüyordu)."""
     if ceyrek_sonu and periyot == 2:
         return "Devre", None
+    if ceyrek_sonu and periyot >= 4 and (son_periyot or periyot) > periyot:
+        return f"{periyot}Ç", None
     if ceyrek_sonu and periyot >= 4:
         # "4Ç" etiketi, aynı çeyreğin "Son 0:06" satırından SONRA
         # geldiğinde sıra bozuk görünüyordu (ölçüldü, ORL-DEN). Çeyreğin
@@ -746,8 +753,11 @@ def akis_gercekleri_uret(g, gid, actions, ev_kod, dep_kod, kazanan, ceyrek_veri)
 
     kaynak = f"PlayByPlayV3:{gid}:akis"
 
+    son_periyot = max((p for p, _, _, _, _ in seri), default=4)
+
     def yaz(tip, periyot, saniye, ev, dep, **ek):
-        etiket, saat = _akis_zaman(periyot, saniye, ek.pop("ceyrek_sonu", False))
+        etiket, saat = _akis_zaman(periyot, saniye, ek.pop("ceyrek_sonu", False),
+                                   son_periyot=son_periyot)
         veri = {
             "tip": tip, "periyot": periyot, "saniye_kalan": saniye,
             "zaman": etiket, "saat": saat,
@@ -824,14 +834,22 @@ def akis_gercekleri_uret(g, gid, actions, ev_kod, dep_kod, kazanan, ceyrek_veri)
             takim=(ev_kod if ev_mi else dep_kod), sayi=uzunluk)
 
     # --- 5) LİDER DEĞİŞİMLERİ: eşitlik, son liderlik, karar anı -----------
+    # ATIF GÜVENCESİ: olayın öznesi, o eylemi GERÇEKTEN yapan takım
+    # olmalı. Skor taşıyan her satır sayı atan satır değil (ribaund,
+    # faul, mola satırları da o anki skoru taşıyor). Yalnız skoru
+    # DEĞİŞTİREN satır dikkate alınıyor.
     onceki_fark = 0
+    onceki_skor = None
     esitlikler, liderlikler = [], []
     for periyot, saniye, ev, dep, a in seri:
         fark = ev - dep
-        if fark == 0 and onceki_fark != 0:
-            esitlikler.append((periyot, saniye, ev, dep, a))
-        elif fark != 0 and onceki_fark != 0 and (fark > 0) != (onceki_fark > 0):
-            liderlikler.append((periyot, saniye, ev, dep, a))
+        skor_degisti = onceki_skor is not None and (ev, dep) != onceki_skor
+        if skor_degisti:
+            if fark == 0 and onceki_fark != 0:
+                esitlikler.append((periyot, saniye, ev, dep, a))
+            elif fark != 0 and onceki_fark != 0 and (fark > 0) != (onceki_fark > 0):
+                liderlikler.append((periyot, saniye, ev, dep, a))
+        onceki_skor = (ev, dep)
         onceki_fark = fark
 
     if esitlikler:
@@ -845,8 +863,14 @@ def akis_gercekleri_uret(g, gid, actions, ev_kod, dep_kod, kazanan, ceyrek_veri)
         # değişmedi" doğru; değilse bu satır kurulmaz.
         onde = ev_kod if ev > dep else dep_kod
         if onde == kazanan:
+            # "Liderlik bir daha değişmedi" iddiası, sonradan BERABERLİK
+            # olduysa yanıltıcı: 26 Aralık'ta Utah öne geçti, Detroit
+            # 129-129 eşitledi, maç son saniyede bitti. Lider teknik
+            # olarak değişmedi ama cümle maçın kapandığını ima ediyordu.
+            sonra_esitlik = any(e[0] > periyot or (e[0] == periyot and e[1] < saniye)
+                                for e in ((x[0], x[1]) for x in esitlikler))
             yaz("liderlik", periyot, saniye, ev, dep,
-                takim=onde,
+                takim=onde, kesin=not sonra_esitlik,
                 oyuncu=_dogru_oyuncu_adi(a.get("personId"), a.get("playerName") or ""))
 
     # --- 6) KARAR ANI: son sayı, fark küçükse -----------------------------
@@ -867,6 +891,24 @@ def akis_gercekleri_uret(g, gid, actions, ev_kod, dep_kod, kazanan, ceyrek_veri)
                 takim=son_a.get("teamTricode"),
                 oyuncu=_dogru_oyuncu_adi(son_a.get("personId"),
                                          son_a.get("playerName") or ""))
+
+    # --- 6b) RAKİP EN ÇOK NE KADAR YAKLAŞTI -------------------------------
+    # "Baştan sona" şeklinin üçüncü yuvası: kazanan hiç geride kalmadıysa
+    # hikâyenin gerilimi rakibin en çok yaklaştığı andır.
+    kazanan_ev = kazanan == ev_kod
+    yakin = None
+    for periyot, saniye, ev, dep, a in seri:
+        if periyot < 2:
+            continue
+        f = (ev - dep) if kazanan_ev else (dep - ev)
+        if f <= 0:
+            continue                       # kazanan önde değilken sayılmaz
+        if yakin is None or f < yakin[0]:
+            yakin = (f, periyot, saniye, ev, dep)
+    if yakin and yakin[0] <= 8:
+        f, periyot, saniye, ev, dep = yakin
+        yaz("rakip_yaklasti", periyot, saniye, ev, dep,
+            takim=(dep_kod if kazanan_ev else ev_kod), sayi=f)
 
     # --- 7) FARK KORUNDU ---------------------------------------------------
     # `fark_serisi.esik_sonrasi_hic_asilmadi` ile AYNI hesap; burada

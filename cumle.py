@@ -854,7 +854,10 @@ def akis_kaliplari(olay, ad_fn=None):
         else:
             k.append(("esit_duz", "Skor eşitlendi", skor))
     elif t == "liderlik":
-        detay = f"{skor} · liderlik bir daha değişmedi"
+        # İddia yalnız gerçekten kesinse: sonradan beraberlik olduysa
+        # "bir daha değişmedi" maçın kapandığını ima ediyor ve yanıltıyor.
+        detay = (f"{skor} · liderlik bir daha değişmedi"
+                 if olay.get("kesin", True) else skor)
         if oyuncu:
             k.append(("lider_basket",
                       f"{oyuncu}'{iyelik_eki(oyuncu)} basketiyle öne geçti", detay))
@@ -872,6 +875,10 @@ def akis_kaliplari(olay, ad_fn=None):
         elif takim:
             k.append(("karar_takim", f"{takim} son sayıyı buldu",
                       f"{skor} · maçı bitirdi"))
+    elif t == "rakip_yaklasti":
+        k.append(("yaklasti_kadar", f"{takim} farkı {n} sayıya kadar indirdi", skor))
+        k.append(("yaklasti_enyakin", f"{takim} en fazla {n} sayıya yaklaştı", skor))
+        k.append(("yaklasti_duser", f"Fark {n} sayıya kadar düştü", f"{takim} yaklaştı"))
     elif t == "fark_korundu":
         k.append(("korundu_altina",
                   f"Fark bir daha {n}'{dogrula_sayi_eki(n, 'iyelik')} altına inmedi", None))
@@ -904,7 +911,7 @@ def akis_satiri(olay, ad_fn=None):
 
 AKIS_TIPLERI = ("ceyrek_sonu", "devre_farki", "ceyrek_ustunlugu", "en_buyuk_fark",
                 "sayi_serisi", "esitlik", "liderlik", "karar_ani",
-                "fark_korundu", "en_etkili")
+                "fark_korundu", "en_etkili", "rakip_yaklasti")
 
 
 def brief_duz_sonuc(mac):

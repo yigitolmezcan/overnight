@@ -5034,18 +5034,16 @@ def main():
               all(len(m["akis"]) <= 4 for m in _akisli))
         basar(f"Akış[{_t}]: en az 3 satır",
               all(len(m["akis"]) >= 3 for m in _akisli))
-        _ihlal = []
-        for m in _akisli:
-            _c = _cl.Counter(r["zaman"] for r in m["akis"]
-                             if r["tip"] != "karar_ani")
-            if any(v > 1 for v in _c.values()):
-                _ihlal.append(m["mac"])
-        basar(f"Akış[{_t}]: aynı çeyrekten iki satır yok",
-              not _ihlal, f"ihlal: {_ihlal}")
-        _yarisiz = [m["mac"] for m in _akisli
-                    if not any(r["zaman"] in ("1Ç", "2Ç", "Devre") for r in m["akis"])]
-        basar(f"Akış[{_t}]: her blokta ilk yarıdan en az bir satır",
-              not _yarisiz, f"ilk yarısı yok: {_yarisiz}")
+        # EMEKLİ İKİ KURAL: "aynı çeyrekten tek satır" ve "en az bir ilk
+        # yarı satırı". İkisi de satırlar BAĞIMSIZ seçilirken konulmuştu;
+        # hikâye modeli olmadığı için kronolojiyi ve dengeyi elle
+        # zorluyorlardı. Şekil modeli ikisini de gereksiz kıldı ve
+        # bazen YANLIŞ hale getirdi: geri dönüşte "rakip farkı açtı" ve
+        # "dönüş başladı" aynı çeyrekte olabilir (27 Aralık ORL-DEN, 3Ç);
+        # son saniye şeklinde son iki yuva zaten 4. çeyrektedir.
+        # Yerlerini KRONOLOJİ ve ARDIŞIK ÇELİŞKİ denetimleri aldı.
+        basar(f"Akış[{_t}]: satır sayısı yuva sayısını aşmıyor",
+              all(len(m["akis"]) <= 4 for m in _akisli))
         _tip_tekrar = [m["mac"] for m in _akisli
                        if len({r["tip"] for r in m["akis"]}) != len(m["akis"])]
         basar(f"Akış[{_t}]: aynı olay tipi iki kez kullanılmıyor",
@@ -5076,23 +5074,62 @@ def main():
         basar(f"Akış[{_t}]: blok içinde aynı kalıp tekrarlanmıyor",
               all(len({r.get("kalip") for r in m["akis"]}) == len(m["akis"])
                   for m in _akisli))
-        # GECE ÇAPINDA ÇEŞİTLİLİK: aynı açılış tipi en fazla iki blokta.
-        _mb = [m for m in (_dd.get("mutlaka") or []) if m.get("akis")]
-        if len(_mb) >= 3:
-            _ac = _cl.Counter(m["akis"][0]["tip"] for m in _mb)
-            basar(f"Akış[{_t}]: aynı açılış tipi en fazla iki blokta",
-                  max(_ac.values()) <= _derle.AKIS_ACILIS_LIMITI,
-                  f"açılış tipleri: {dict(_ac)}")
+        # ŞEKİL VE KRONOLOJİ. Yuvalar sıralı olduğu için satırlar da
+        # sıralı olmalı; "en etkili" zamansız bir özet, sıraya girmez.
+        _SIRA = {"1Ç": 1, "2Ç": 2, "Devre": 2.5, "3Ç": 3, "4Ç": 4,
+                 "U1": 4.6, "U2": 4.7, "Son": 4.8, "Maç sonu": 5}
+        _kron = [m["mac"] for m in _akisli
+                 if [_SIRA.get(r["zaman"], 9) for r in m["akis"] if r["tip"] != "en_etkili"]
+                 != sorted(_SIRA.get(r["zaman"], 9) for r in m["akis"] if r["tip"] != "en_etkili")]
+        basar(f"Akış[{_t}]: satırlar kronolojik", not _kron, f"kırık: {_kron}")
+        basar(f"Akış[{_t}]: her blokta şekil yazılı",
+              all(r.get("sekil") in _derle.AKIS_SEKILLERI
+                  for m in _akisli for r in m["akis"]))
+        basar(f"Akış[{_t}]: her satır bir yuvaya ait",
+              all(r.get("yuva") for m in _akisli for r in m["akis"]))
+        # ARDIŞIK ÇELİŞKİ: aynı takım hem farkı açıp hem eşitleyemez.
+        _cel = []
+        for m in _akisli:
+            _a = m["akis"]
+            for _i in range(len(_a) - 1):
+                if _a[_i]["tip"] == "en_buyuk_fark" and _a[_i + 1]["tip"] == "esitlik":
+                    if _a[_i]["cumle"].split()[0] == _a[_i + 1]["cumle"].split()[0]:
+                        _cel.append(m["mac"])
+            _kr = [r for r in _a if r["kritik"]]
+            if _kr and _kr[0]["tip"] == "esitlik":
+                try:
+                    _f = abs(int(m["skor"].split("–")[0]) - int(m["skor"].split("–")[1]))
+                except Exception:
+                    _f = 0
+                if _f >= 10:
+                    _cel.append(m["mac"] + " (kritik eşitlik, fark %d)" % _f)
+        basar(f"Akış[{_t}]: ardışık çelişki yok", not _cel, f"çelişki: {_cel}")
     # Devre satırı kimin önde olduğunu söylemeli ("Fark 15 sayı" demiyordu).
     _dsrc3 = open("derle.py", encoding="utf-8").read()
-    basar("Akış: çeşitlilik sayacı gece çapında paylaşılıyor",
-          "_akis_tip_sayaci = {}" in _dsrc3 and "tip_sayaci=_akis_tip_sayaci" in _dsrc3)
-    # KRİTİK SATIR ÇEŞİTLİLİK İÇİN FEDA EDİLMEZ (kullanıcı kuralı).
-    basar("Akış: kritik satır sayaçtan etkilenmiyor",
-          '_ilk != kritik["tip"]' in _dsrc3)
-    basar("Akış: kalıp sayacı da gece çapında paylaşılıyor",
+    # ŞEKİL MODELİ (kullanıcı kararı). Satırlar bağımsız seçilmiyor;
+    # maçın şekli belirlenip olaylar SABİT YUVALARA yerleşiyor. Tip
+    # sayacı kalktı — tip artık şekilden geliyor, çeşitlilik için
+    # oynatılamaz.
+    basar("Akış: dört maç şekli tanımlı",
+          set(_derle.AKIS_SEKILLERI) ==
+          {"geri_donus", "son_saniye", "kopma", "bastan_sona"})
+    basar("Akış: her şeklin yuva planı var",
+          all(len(_derle._yuva_planla(sk, "AAA", "BBB")) == 4
+              for sk in _derle.AKIS_SEKILLERI))
+    basar("Akış: her şekilde tam bir kritik yuva var",
+          all(sum(1 for _, _, k in _derle._yuva_planla(sk, "AAA", "BBB") if k) == 1
+              for sk in _derle.AKIS_SEKILLERI))
+    # Kronoloji YAPIDAN geliyor: yuvalar kritik andan başlayarak zaman
+    # penceresiyle doluyor.
+    basar("Akış: yuvalar zaman penceresiyle doluyor",
+          "def _sinirlar(i):" in _dsrc3 and "kritik_i" in _dsrc3)
+    basar("Akış: kalıp sayacı gece çapında paylaşılıyor",
           "_akis_kalip_sayaci = {}" in _dsrc3
           and "kalip_sayaci=_akis_kalip_sayaci" in _dsrc3)
+    # ÖNE GEÇİŞ bir LİDERLİK DEĞİŞİMİ olmalı — eşitlik yedeği, 12 farkla
+    # biten maçta beraberliği "maçın belirlendiği an" yapıyordu.
+    basar("Akış: geri dönüşte öne geçiş yuvası yalnız liderlik kabul ediyor",
+          [t for t, _ in _derle._yuva_planla("geri_donus", "A", "B")[2][1]] == ["liderlik"])
     # HER TİPE BİRDEN FAZLA KALIP — kalıplar SABİT, LLM üretmiyor.
     _kalip_by_tip = {}
     for _t2, _o in (

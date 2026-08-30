@@ -1,6 +1,6 @@
 {
   "tarih": "2025-10-23",
-  "uretildi": "2026-08-30T11:03:10.043867Z",
+  "uretildi": "2026-08-30T11:31:42.892614Z",
   "maclar": {
     "0022500005": [
       {
@@ -2565,6 +2565,7 @@
           "dep_skor": 130,
           "fark": -2,
           "takim": "OKC",
+          "kesin": true,
           "oyuncu": "Aaron Wiggins"
         },
         "kaynak": "PlayByPlayV3:0022500005:akis",
@@ -2572,6 +2573,24 @@
       },
       {
         "id": "f167",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "rakip_yaklasti",
+          "periyot": 2,
+          "saniye_kalan": 450.0,
+          "zaman": "2Ç",
+          "saat": "7:30",
+          "ev_skor": 33,
+          "dep_skor": 34,
+          "fark": -1,
+          "takim": "IND",
+          "sayi": 1
+        },
+        "kaynak": "PlayByPlayV3:0022500005:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f168",
         "tur": "derece",
         "veri": {
           "takim": "IND",
@@ -2594,7 +2613,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f168",
+        "id": "f169",
         "tur": "derece",
         "veri": {
           "takim": "OKC",
@@ -4818,6 +4837,7 @@
           "dep_skor": 125,
           "fark": 1,
           "takim": "GSW",
+          "kesin": true,
           "oyuncu": "Al Horford"
         },
         "kaynak": "PlayByPlayV3:0022500006:akis",
@@ -4825,6 +4845,24 @@
       },
       {
         "id": "f144",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "rakip_yaklasti",
+          "periyot": 3,
+          "saniye_kalan": 93.0,
+          "zaman": "3Ç",
+          "saat": "1:33",
+          "ev_skor": 89,
+          "dep_skor": 88,
+          "fark": 1,
+          "takim": "DEN",
+          "sayi": 1
+        },
+        "kaynak": "PlayByPlayV3:0022500006:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f145",
         "tur": "derece",
         "veri": {
           "takim": "GSW",
@@ -4847,7 +4885,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f145",
+        "id": "f146",
         "tur": "derece",
         "veri": {
           "takim": "DEN",

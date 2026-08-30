@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-15",
-  "uretildi": "2026-08-30T11:03:16.979003Z",
+  "uretildi": "2026-08-30T11:31:43.814450Z",
   "maclar": {
     "0022501222": [
       {
@@ -2038,6 +2038,7 @@
           "dep_skor": 72,
           "fark": -1,
           "takim": "DET",
+          "kesin": true,
           "oyuncu": "Jaden Ivey"
         },
         "kaynak": "PlayByPlayV3:0022501222:akis",
@@ -2045,6 +2046,24 @@
       },
       {
         "id": "f131",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "rakip_yaklasti",
+          "periyot": 2,
+          "saniye_kalan": 74.0,
+          "zaman": "2Ç",
+          "saat": "1:14",
+          "ev_skor": 51,
+          "dep_skor": 52,
+          "fark": -1,
+          "takim": "BOS",
+          "sayi": 1
+        },
+        "kaynak": "PlayByPlayV3:0022501222:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f132",
         "tur": "derece",
         "veri": {
           "takim": "BOS",
@@ -2067,7 +2086,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f132",
+        "id": "f133",
         "tur": "seri",
         "veri": {
           "takim": "BOS",
@@ -2078,7 +2097,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f133",
+        "id": "f134",
         "tur": "derece",
         "veri": {
           "takim": "DET",
@@ -2101,7 +2120,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f134",
+        "id": "f135",
         "tur": "seri",
         "veri": {
           "takim": "DET",
@@ -3930,6 +3949,7 @@
           "dep_skor": 70,
           "fark": -2,
           "takim": "TOR",
+          "kesin": false,
           "oyuncu": "Gradey Dick"
         },
         "kaynak": "PlayByPlayV3:0022501227:akis",
@@ -3937,6 +3957,24 @@
       },
       {
         "id": "f118",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "rakip_yaklasti",
+          "periyot": 2,
+          "saniye_kalan": 720.0,
+          "zaman": "2Ç",
+          "saat": "12:00",
+          "ev_skor": 22,
+          "dep_skor": 23,
+          "fark": -1,
+          "takim": "MIA",
+          "sayi": 1
+        },
+        "kaynak": "PlayByPlayV3:0022501227:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f119",
         "tur": "derece",
         "veri": {
           "takim": "MIA",
@@ -3959,7 +3997,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f119",
+        "id": "f120",
         "tur": "seri",
         "veri": {
           "takim": "MIA",
@@ -3970,7 +4008,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f120",
+        "id": "f121",
         "tur": "derece",
         "veri": {
           "takim": "TOR",
@@ -6228,6 +6266,24 @@
       },
       {
         "id": "f145",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "rakip_yaklasti",
+          "periyot": 2,
+          "saniye_kalan": 451.0,
+          "zaman": "2Ç",
+          "saat": "7:31",
+          "ev_skor": 49,
+          "dep_skor": 48,
+          "fark": 1,
+          "takim": "DAL",
+          "sayi": 1
+        },
+        "kaynak": "PlayByPlayV3:0022501224:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f146",
         "tur": "derece",
         "veri": {
           "takim": "UTA",
@@ -6250,7 +6306,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f146",
+        "id": "f147",
         "tur": "seri",
         "veri": {
           "takim": "UTA",
@@ -6261,7 +6317,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f147",
+        "id": "f148",
         "tur": "derece",
         "veri": {
           "takim": "DAL",
@@ -8595,6 +8651,24 @@
       },
       {
         "id": "f150",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "rakip_yaklasti",
+          "periyot": 2,
+          "saniye_kalan": 363.0,
+          "zaman": "2Ç",
+          "saat": "6:03",
+          "ev_skor": 37,
+          "dep_skor": 36,
+          "fark": 1,
+          "takim": "HOU",
+          "sayi": 1
+        },
+        "kaynak": "PlayByPlayV3:0022501225:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f151",
         "tur": "derece",
         "veri": {
           "takim": "DEN",
@@ -8617,7 +8691,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f151",
+        "id": "f152",
         "tur": "seri",
         "veri": {
           "takim": "DEN",
@@ -8628,7 +8702,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f152",
+        "id": "f153",
         "tur": "derece",
         "veri": {
           "takim": "HOU",
@@ -10520,6 +10594,7 @@
           "dep_skor": 65,
           "fark": -1,
           "takim": "MEM",
+          "kesin": true,
           "oyuncu": "Cedric Coward"
         },
         "kaynak": "PlayByPlayV3:0022501226:akis",
@@ -10527,6 +10602,24 @@
       },
       {
         "id": "f120",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "rakip_yaklasti",
+          "periyot": 2,
+          "saniye_kalan": 705.0,
+          "zaman": "2Ç",
+          "saat": "11:45",
+          "ev_skor": 27,
+          "dep_skor": 28,
+          "fark": -1,
+          "takim": "LAC",
+          "sayi": 1
+        },
+        "kaynak": "PlayByPlayV3:0022501226:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f121",
         "tur": "akis_olay",
         "veri": {
           "tip": "fark_korundu",
@@ -10543,7 +10636,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f121",
+        "id": "f122",
         "tur": "derece",
         "veri": {
           "takim": "LAC",
@@ -10566,7 +10659,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f122",
+        "id": "f123",
         "tur": "seri",
         "veri": {
           "takim": "LAC",
@@ -10577,7 +10670,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f123",
+        "id": "f124",
         "tur": "derece",
         "veri": {
           "takim": "MEM",

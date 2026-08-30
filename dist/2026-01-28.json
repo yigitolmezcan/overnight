@@ -200,31 +200,37 @@
       "neden_onemli": "San Antonio Spurs, konferansta 2. sıraya yükseldi.",
       "akis": [
         {
-          "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_onde",
-          "zaman": "Devre",
-          "saat": null,
-          "cumle": "Houston önde kapadı",
-          "detay": "62–54",
+          "tip": "en_buyuk_fark",
+          "kalip": "fark_cikardi",
+          "yuva": "kaybedenin_farki",
+          "sekil": "geri_donus",
+          "zaman": "2Ç",
+          "saat": "3:22",
+          "cumle": "Houston farkı 16'ya çıkardı",
+          "detay": "en büyük fark",
           "kritik": false
         },
         {
-          "tip": "sayi_serisi",
-          "kalip": "seri_gitti",
-          "zaman": "4Ç",
-          "saat": "8:08",
-          "cumle": "San Antonio 11-0 gitti",
-          "detay": "fark 9",
-          "kritik": true
+          "tip": "ceyrek_ustunlugu",
+          "kalip": "ust_aldi",
+          "yuva": "donusun_basi",
+          "sekil": "geri_donus",
+          "zaman": "Maç sonu",
+          "saat": null,
+          "cumle": "San Antonio çeyreği 27-13 aldı",
+          "detay": "fark 12'ye çıktı",
+          "kritik": false
         },
         {
           "tip": "en_etkili",
           "kalip": "etkili_duz",
+          "yuva": "sonuc",
+          "sekil": "geri_donus",
           "zaman": "Son",
           "saat": null,
-          "cumle": "Victor Wembanyama 28 sayı",
+          "cumle": "Victor Wembanyama 28 sayı, 16 ribaund, 3 asist",
           "detay": "maçın en etkilisi",
-          "kritik": false
+          "kritik": true
         }
       ],
       "box": {
@@ -13800,21 +13806,25 @@
       },
       "akis": [
         {
-          "tip": "ceyrek_ustunlugu",
-          "kalip": "ust_aldi",
-          "zaman": "Devre",
-          "saat": null,
-          "cumle": "Miami çeyreği 41-25 aldı",
-          "detay": "fark 9'a çıktı",
+          "tip": "en_buyuk_fark",
+          "kalip": "fark_cikti",
+          "yuva": "kaybedenin_farki",
+          "sekil": "geri_donus",
+          "zaman": "3Ç",
+          "saat": "11:32",
+          "cumle": "Fark 11'e çıktı",
+          "detay": "Miami önde",
           "kritik": false
         },
         {
           "tip": "liderlik",
           "kalip": "lider_basket",
+          "yuva": "one_gecis",
+          "sekil": "geri_donus",
           "zaman": "3Ç",
           "saat": "6:37",
           "cumle": "Desmond Bane'in basketiyle öne geçti",
-          "detay": "75–77 · liderlik bir daha değişmedi",
+          "detay": "75–77",
           "kritik": true
         }
       ]
@@ -14505,22 +14515,26 @@
       },
       "akis": [
         {
+          "tip": "en_buyuk_fark",
+          "kalip": "fark_onu",
+          "yuva": "kaybedenin_farki",
+          "sekil": "geri_donus",
+          "zaman": "2Ç",
+          "saat": "9:15",
+          "cumle": "Toronto önü 12 sayıya çıkardı",
+          "detay": "en büyük fark",
+          "kritik": false
+        },
+        {
           "tip": "liderlik",
           "kalip": "lider_cevirdi",
+          "yuva": "one_gecis",
+          "sekil": "geri_donus",
           "zaman": "3Ç",
           "saat": "2:59",
           "cumle": "OG Anunoby skoru çevirdi",
           "detay": "70–71 · liderlik bir daha değişmedi",
           "kritik": true
-        },
-        {
-          "tip": "en_etkili",
-          "kalip": "etkili_oncikti",
-          "zaman": "Son",
-          "saat": null,
-          "cumle": "OG Anunoby 26 sayı ile öne çıktı",
-          "detay": null,
-          "kritik": false
         }
       ]
     },
@@ -15169,22 +15183,26 @@
       },
       "akis": [
         {
-          "tip": "karar_ani",
-          "kalip": "karar_basket",
-          "zaman": "Son",
-          "saat": "0:02",
-          "cumle": "Johnny Furphy'nin basketi",
-          "detay": "113–110 · maçı bitirdi",
-          "kritik": true
+          "tip": "en_buyuk_fark",
+          "kalip": "fark_cikardi",
+          "yuva": "kaybedenin_farki",
+          "sekil": "geri_donus",
+          "zaman": "4Ç",
+          "saat": "7:36",
+          "cumle": "Chicago farkı 14'e çıkardı",
+          "detay": "en büyük fark",
+          "kritik": false
         },
         {
-          "tip": "en_etkili",
-          "kalip": "etkili_enler",
+          "tip": "liderlik",
+          "kalip": "lider_ile",
+          "yuva": "one_gecis",
+          "sekil": "geri_donus",
           "zaman": "Son",
-          "saat": null,
-          "cumle": "Maçın en etkilisi Nikola Vučević",
-          "detay": "25 sayı",
-          "kritik": false
+          "saat": "0:13",
+          "cumle": "Indiana, Aaron Nesmith ile öne geçti",
+          "detay": "111–110 · liderlik bir daha değişmedi",
+          "kritik": true
         }
       ]
     }

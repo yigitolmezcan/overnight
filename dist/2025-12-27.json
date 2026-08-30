@@ -205,39 +205,47 @@
       "neden_onemli": "",
       "akis": [
         {
-          "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_onde",
-          "zaman": "Devre",
-          "saat": null,
-          "cumle": "Denver önde kapadı",
-          "detay": "48–62",
+          "tip": "en_buyuk_fark",
+          "kalip": "fark_cikardi",
+          "yuva": "kaybedenin_farki",
+          "sekil": "geri_donus",
+          "zaman": "3Ç",
+          "saat": "9:50",
+          "cumle": "Denver farkı 17'ye çıkardı",
+          "detay": "en büyük fark",
           "kritik": false
+        },
+        {
+          "tip": "sayi_serisi",
+          "kalip": "seri_gitti",
+          "yuva": "donusun_basi",
+          "sekil": "geri_donus",
+          "zaman": "3Ç",
+          "saat": "7:28",
+          "cumle": "Orlando 10-0 gitti",
+          "detay": "fark 5",
+          "kritik": false
+        },
+        {
+          "tip": "liderlik",
+          "kalip": "lider_basket",
+          "yuva": "one_gecis",
+          "sekil": "geri_donus",
+          "zaman": "Son",
+          "saat": "0:33",
+          "cumle": "Tristan da Silva'nın basketiyle öne geçti",
+          "detay": "125–124",
+          "kritik": true
         },
         {
           "tip": "karar_ani",
           "kalip": "karar_basket",
+          "yuva": "sonuc",
+          "sekil": "geri_donus",
           "zaman": "Son",
           "saat": "0:06",
           "cumle": "Desmond Bane'in basketi",
           "detay": "127–126 · maçı bitirdi",
-          "kritik": true
-        },
-        {
-          "tip": "en_etkili",
-          "kalip": "etkili_duz",
-          "zaman": "Son",
-          "saat": null,
-          "cumle": "Nikola Jokić 34 sayı",
-          "detay": "maçın en etkilisi",
-          "kritik": false
-        },
-        {
-          "tip": "ceyrek_ustunlugu",
-          "kalip": "ust_aldi",
-          "zaman": "Maç sonu",
-          "saat": null,
-          "cumle": "Orlando çeyreği 43-33 aldı",
-          "detay": "fark 1'e çıktı",
           "kritik": false
         }
       ],
@@ -866,6 +874,8 @@
         {
           "tip": "devre_farki",
           "kalip": "devre_onde",
+          "yuva": "devre",
+          "sekil": "son_saniye",
           "zaman": "Devre",
           "saat": null,
           "cumle": "New York 13 sayı önde",
@@ -873,17 +883,21 @@
           "kritik": false
         },
         {
-          "tip": "en_buyuk_fark",
-          "kalip": "fark_cikardi",
+          "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_onde",
+          "yuva": "son_ceyrege_giris",
+          "sekil": "son_saniye",
           "zaman": "3Ç",
-          "saat": "6:55",
-          "cumle": "New York farkı 18'e çıkardı",
-          "detay": "en büyük fark",
+          "saat": null,
+          "cumle": "New York önde kapadı",
+          "detay": "89–98",
           "kritik": false
         },
         {
           "tip": "esitlik",
           "kalip": "esit_esitledi",
+          "yuva": "son_donus",
+          "sekil": "son_saniye",
           "zaman": "Son",
           "saat": "0:29",
           "cumle": "New York skoru eşitledi",
@@ -893,6 +907,8 @@
         {
           "tip": "karar_ani",
           "kalip": "karar_sonsoz",
+          "yuva": "karar",
+          "sekil": "son_saniye",
           "zaman": "Son",
           "saat": "0:07",
           "cumle": "Son sözü OG Anunoby söyledi",
@@ -1498,40 +1514,37 @@
       "neden_onemli": "",
       "akis": [
         {
-          "tip": "sayi_serisi",
-          "kalip": "seri_gitti",
-          "zaman": "2Ç",
-          "saat": "2:14",
-          "cumle": "Utah 11-0 gitti",
-          "detay": "fark 11",
+          "tip": "en_buyuk_fark",
+          "kalip": "fark_cikti",
+          "yuva": "kaybedenin_farki",
+          "sekil": "geri_donus",
+          "zaman": "1Ç",
+          "saat": "3:55",
+          "cumle": "Fark 11'e çıktı",
+          "detay": "San Antonio önde",
           "kritik": false
         },
         {
-          "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_lehine",
-          "zaman": "3Ç",
+          "tip": "ceyrek_ustunlugu",
+          "kalip": "ust_aldi",
+          "yuva": "donusun_basi",
+          "sekil": "geri_donus",
+          "zaman": "Devre",
           "saat": null,
-          "cumle": "Çeyrek Utah lehine bitti",
-          "detay": "87–98",
+          "cumle": "Utah çeyreği 38-20 aldı",
+          "detay": "fark 10'a çıktı",
           "kritik": false
-        },
-        {
-          "tip": "esitlik",
-          "kalip": "esit_kapatti",
-          "zaman": "4Ç",
-          "saat": "7:22",
-          "cumle": "San Antonio farkı kapattı",
-          "detay": "108–108",
-          "kritik": true
         },
         {
           "tip": "en_etkili",
-          "kalip": "etkili_oncikti",
+          "kalip": "etkili_duz",
+          "yuva": "sonuc",
+          "sekil": "geri_donus",
           "zaman": "Son",
           "saat": null,
-          "cumle": "Victor Wembanyama 32 sayı ile öne çıktı",
-          "detay": null,
-          "kritik": false
+          "cumle": "Victor Wembanyama 32 sayı, 7 ribaund, 3 asist",
+          "detay": "maçın en etkilisi",
+          "kritik": true
         }
       ],
       "box": {
@@ -2185,6 +2198,8 @@
         {
           "tip": "ceyrek_sonu",
           "kalip": "ceyrek_basabas",
+          "yuva": "erken",
+          "sekil": "kopma",
           "zaman": "1Ç",
           "saat": null,
           "cumle": "Skor başa baş gitti",
@@ -2192,30 +2207,25 @@
           "kritik": false
         },
         {
-          "tip": "esitlik",
-          "kalip": "esit_yakaladi",
-          "zaman": "2Ç",
-          "saat": "1:40",
-          "cumle": "Minnesota beraberliği yakaladı",
-          "detay": "60–60",
-          "kritik": false
-        },
-        {
-          "tip": "liderlik",
-          "kalip": "lider_basket",
-          "zaman": "3Ç",
-          "saat": "10:59",
-          "cumle": "Egor Dëmin'in basketiyle öne geçti",
-          "detay": "63–65 · liderlik bir daha değişmedi",
+          "tip": "sayi_serisi",
+          "kalip": "seri_arka",
+          "yuva": "kopma",
+          "sekil": "kopma",
+          "zaman": "4Ç",
+          "saat": "1:17",
+          "cumle": "Brooklyn arka arkaya 12 sayı buldu",
+          "detay": "fark 21",
           "kritik": true
         },
         {
-          "tip": "en_buyuk_fark",
-          "kalip": "fark_cikti",
-          "zaman": "4Ç",
-          "saat": "1:17",
-          "cumle": "Fark 21'e çıktı",
-          "detay": "Brooklyn önde",
+          "tip": "en_etkili",
+          "kalip": "etkili_oncikti",
+          "yuva": "en_etkili",
+          "sekil": "kopma",
+          "zaman": "Son",
+          "saat": null,
+          "cumle": "Cam Thomas 30 sayı, 3 ribaund, 4 asist ile öne çıktı",
+          "detay": null,
           "kritik": false
         }
       ],

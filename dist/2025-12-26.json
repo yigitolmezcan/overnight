@@ -195,8 +195,21 @@
       "neden_onemli": "",
       "akis": [
         {
+          "tip": "en_buyuk_fark",
+          "kalip": "fark_cikardi",
+          "yuva": "kaybedenin_farki",
+          "sekil": "geri_donus",
+          "zaman": "2Ç",
+          "saat": "6:02",
+          "cumle": "Detroit farkı 11'e çıkardı",
+          "detay": "en büyük fark",
+          "kritik": false
+        },
+        {
           "tip": "ceyrek_sonu",
           "kalip": "ceyrek_basabas",
+          "yuva": "donusun_basi",
+          "sekil": "geri_donus",
           "zaman": "Devre",
           "saat": null,
           "cumle": "Skor başa baş gitti",
@@ -204,30 +217,25 @@
           "kritik": false
         },
         {
-          "tip": "ceyrek_ustunlugu",
-          "kalip": "ust_aldi",
+          "tip": "liderlik",
+          "kalip": "lider_basket",
+          "yuva": "one_gecis",
+          "sekil": "geri_donus",
           "zaman": "3Ç",
-          "saat": null,
-          "cumle": "Utah çeyreği 44-35 aldı",
-          "detay": "fark 8'e çıktı",
-          "kritik": false
+          "saat": "9:03",
+          "cumle": "Svi Mykhailiuk'un basketiyle öne geçti",
+          "detay": "76–75",
+          "kritik": true
         },
         {
           "tip": "karar_ani",
           "kalip": "karar_basket",
+          "yuva": "sonuc",
+          "sekil": "geri_donus",
           "zaman": "Son",
           "saat": "0:02",
           "cumle": "Keyonte George'un basketi",
           "detay": "131–129 · maçı bitirdi",
-          "kritik": true
-        },
-        {
-          "tip": "en_etkili",
-          "kalip": "etkili_duz",
-          "zaman": "Son",
-          "saat": null,
-          "cumle": "Cade Cunningham 29 sayı",
-          "detay": "maçın en etkilisi",
           "kritik": false
         }
       ],

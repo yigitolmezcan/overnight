@@ -79,17 +79,21 @@
       "neden_onemli": "",
       "akis": [
         {
-          "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_onde",
-          "zaman": "Devre",
-          "saat": null,
-          "cumle": "Denver önde kapadı",
-          "detay": "61–70",
+          "tip": "en_buyuk_fark",
+          "kalip": "fark_cikardi",
+          "yuva": "kaybedenin_farki",
+          "sekil": "geri_donus",
+          "zaman": "2Ç",
+          "saat": "2:22",
+          "cumle": "Denver farkı 14'e çıkardı",
+          "detay": "en büyük fark",
           "kritik": false
         },
         {
           "tip": "ceyrek_ustunlugu",
           "kalip": "ust_aldi",
+          "yuva": "donusun_basi",
+          "sekil": "geri_donus",
           "zaman": "3Ç",
           "saat": null,
           "cumle": "Golden State çeyreği 33-24 aldı",
@@ -99,6 +103,8 @@
         {
           "tip": "liderlik",
           "kalip": "lider_basket",
+          "yuva": "one_gecis",
+          "sekil": "geri_donus",
           "zaman": "U1",
           "saat": "2:58",
           "cumle": "Al Horford'un basketiyle öne geçti",
@@ -108,9 +114,11 @@
         {
           "tip": "en_etkili",
           "kalip": "etkili_duz",
+          "yuva": "sonuc",
+          "sekil": "geri_donus",
           "zaman": "Son",
           "saat": null,
-          "cumle": "Stephen Curry 42 sayı",
+          "cumle": "Stephen Curry 42 sayı, 6 ribaund, 7 asist",
           "detay": "maçın en etkilisi",
           "kritik": false
         }
@@ -3967,21 +3975,25 @@
       },
       "akis": [
         {
-          "tip": "sayi_serisi",
-          "kalip": "seri_gitti",
-          "zaman": "2Ç",
-          "saat": "6:38",
-          "cumle": "Oklahoma City 10-0 gitti",
-          "detay": "fark 6",
+          "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_basabas",
+          "yuva": "erken_ustunluk",
+          "sekil": "bastan_sona",
+          "zaman": "1Ç",
+          "saat": null,
+          "cumle": "Skor başa baş gitti",
+          "detay": "25–22",
           "kritik": false
         },
         {
-          "tip": "liderlik",
-          "kalip": "lider_cevirdi",
-          "zaman": "U2",
-          "saat": "3:13",
-          "cumle": "Aaron Wiggins skoru çevirdi",
-          "detay": "128–130 · liderlik bir daha değişmedi",
+          "tip": "en_etkili",
+          "kalip": "etkili_oncikti",
+          "yuva": "kapanis",
+          "sekil": "bastan_sona",
+          "zaman": "Son",
+          "saat": null,
+          "cumle": "Shai Gilgeous-Alexander 55 sayı, 8 ribaund, 5 asist ile öne çıktı",
+          "detay": null,
           "kritik": true
         }
       ]
