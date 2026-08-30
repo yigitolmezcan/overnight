@@ -204,19 +204,19 @@
       "neden_onemli": "",
       "akis": [
         {
-          "tip": "devre_farki",
+          "tip": "ceyrek_sonu",
           "zaman": "Devre",
           "saat": null,
-          "cumle": "Denver 14 sayı önde",
+          "cumle": "Denver önde kapadı",
           "detay": "48–62",
           "kritik": false
         },
         {
-          "tip": "ceyrek_sonu",
+          "tip": "en_buyuk_fark",
           "zaman": "3Ç",
-          "saat": null,
-          "cumle": "Denver önde kapadı",
-          "detay": "84–93",
+          "saat": "9:50",
+          "cumle": "Denver farkı 17'e çıkardı",
+          "detay": "en büyük fark",
           "kritik": false
         },
         {
@@ -1487,27 +1487,27 @@
       "neden_onemli": "",
       "akis": [
         {
-          "tip": "en_buyuk_fark",
-          "zaman": "1Ç",
-          "saat": "3:55",
-          "cumle": "San Antonio farkı 11'e çıkardı",
-          "detay": "en büyük fark",
-          "kritik": false
-        },
-        {
-          "tip": "devre_farki",
-          "zaman": "Devre",
-          "saat": null,
-          "cumle": "Utah 10 sayı önde",
-          "detay": "60–70",
-          "kritik": false
-        },
-        {
           "tip": "ceyrek_sonu",
-          "zaman": "3Ç",
+          "zaman": "1Ç",
           "saat": null,
-          "cumle": "Utah önde kapadı",
-          "detay": "87–98",
+          "cumle": "San Antonio önde kapadı",
+          "detay": "40–32",
+          "kritik": false
+        },
+        {
+          "tip": "sayi_serisi",
+          "zaman": "2Ç",
+          "saat": "2:14",
+          "cumle": "Utah 11-0 gitti",
+          "detay": "fark 11",
+          "kritik": false
+        },
+        {
+          "tip": "en_buyuk_fark",
+          "zaman": "3Ç",
+          "saat": "8:42",
+          "cumle": "Utah farkı 17'e çıkardı",
+          "detay": "en büyük fark",
           "kritik": false
         },
         {
@@ -2167,11 +2167,11 @@
       "neden_onemli": "",
       "akis": [
         {
-          "tip": "ceyrek_sonu",
-          "zaman": "Devre",
-          "saat": null,
-          "cumle": "Skor başa baş gitti",
-          "detay": "63–62",
+          "tip": "esitlik",
+          "zaman": "2Ç",
+          "saat": "1:40",
+          "cumle": "Minnesota skoru eşitledi",
+          "detay": "60–60",
           "kritik": false
         },
         {

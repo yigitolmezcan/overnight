@@ -890,7 +890,15 @@ KRITIK_BASLANGIC_SN = 3 * 720 + (720 - KRITIK_SON_DAKIKA * 60)
 #   - biri MUTLAKA kritik an olsun (ember): son saniye basketi,
 #     liderliğin son kez değiştiği an, ya da kopma anı
 #   - aynı olay tipi bir maçta iki kez kullanılmaz
+# KATMANA GÖRE SATIR SAYISI (kullanıcı kararı). Üç katman görsel olarak
+# da ayrışmalı; akış hiyerarşiyi bozmamalı, güçlendirmeli:
+#   Mutlaka bil → başlık + 4 satır
+#   Göz at      → başlık + 2 satır  (kritik an + bir bağlam satırı)
+#   Bunları geç → tek satır, akış YOK
+# Dört satırla "Göz at" bloğu "Mutlaka bil" ağırlığına çıkıyor ve katman
+# farkı kayboluyordu.
 AKIS_SATIR_SAYISI = 4
+AKIS_GOZAT_SATIR = 2
 AKIS_ASGARI_SATIR = 3
 # Kritik an adaylığı — önce gelen kazanır.
 AKIS_KRITIK_SIRASI = ("karar_ani", "liderlik", "sayi_serisi", "en_buyuk_fark")
@@ -912,8 +920,20 @@ def _akis_sirasi(o):
             (o.get("ev_skor") or 0) + (o.get("dep_skor") or 0))
 
 
-def _mac_akisi(gercekler, en_iyi_performans=None):
-    """[{tip, zaman, saat, cumle, detay, kritik}] — en fazla 4 satır."""
+AKIS_ACILIS_LIMITI = 2      # aynı tip gecede en fazla bu kadar blok açar
+
+
+def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI,
+               tip_sayaci=None, _yasak_tipler=()):
+    """[{tip, zaman, saat, cumle, detay, kritik}] — en fazla `satir_sayisi`.
+
+    `tip_sayaci`: GECE ÇAPINDA paylaşılan {tip: kaç kez kullanıldı}.
+    Dolgu satırları seçilirken o gece EN AZ kullanılmış tip tercih
+    ediliyor. Ölçüldü (27 Aralık, sayaç yokken): dört bloğun üçü
+    "Devre → 3Ç" ile açılıyordu, üstelik aynı iki cümle kalıbıyla —
+    ilk yarı garantisi hep aynı kapıdan giriyordu.
+    KRİTİK SATIR BU SAYAÇTAN ETKİLENMEZ: o satır maçın kendisi,
+    çeşitlilik için feda edilmez (kullanıcı kuralı)."""
     olaylar = [f["veri"] for f in gercekler if f["tur"] == "akis_olay"]
     if not olaylar:
         return []
@@ -1011,8 +1031,11 @@ def _mac_akisi(gercekler, en_iyi_performans=None):
         # Maçın kararına yakın olan daha çok şey anlatıyor.
         return sorted(liste, key=_akis_sirasi, reverse=True)
 
+    def _sayac(tip):
+        return (tip_sayaci or {}).get(tip, 0)
+
     def _tipten_ekle(tip, yalniz_ilk_yari=False):
-        if tip in kullanilan_tip:
+        if tip in kullanilan_tip or tip in _yasak_tipler:
             return False
         for o in _adaylar(tip, yalniz_ilk_yari):
             if _ekle(o):
@@ -1023,13 +1046,30 @@ def _mac_akisi(gercekler, en_iyi_performans=None):
     # (b) önce: ilk yarı payı garanti altına alınıyor, yoksa dolgu sırası
     #     onu kolayca dışarıda bırakıyor. Devre satırı son çare değil,
     #     GARANTİ: kayda değer olay yoksa o kullanılıyor.
+    # SIRALAMA: önce o gece EN AZ kullanılmış tip, eşitlikte sabit
+    # tercih sırası. Böylece "Devre → 3Ç" zinciri kendiliğinden kırılıyor.
+    def _sirali(tipler):
+        return sorted(tipler, key=lambda t: (_sayac(t), AKIS_DOLGU_SIRASI.index(t)
+                                             if t in AKIS_DOLGU_SIRASI else 99))
+
     if not any(_ceyrek(o) <= 2 for o in secili):
-        for tip in ("devre_farki", "ceyrek_sonu") + AKIS_DOLGU_SIRASI:
+        # İlk yarı payı garanti; hangi tiple sağlanacağını gece sayacı
+        # belirliyor. AYRICA AÇILIŞ SAYACI: bu satır pratikte bloğun İLK
+        # satırı oluyor, o yüzden başka blokları AÇMAMIŞ tip önce geliyor.
+        # Yalnız genel sayaçla ölçüldüğünde dört bloğun üçü hâlâ aynı
+        # tiple açılıyordu (ceyrek_sonu — her maçta var).
+        def _acilis(t):
+            return (tip_sayaci or {}).get(("acilis", t), 0)
+        _ilk_aday = sorted(
+            [t for t in AKIS_DOLGU_SIRASI
+             if any(_ceyrek(o) <= 2 for o in olaylar if o["tip"] == t)],
+            key=lambda t: (_acilis(t), _sayac(t), AKIS_DOLGU_SIRASI.index(t)))
+        for tip in _ilk_aday + ["devre_farki", "ceyrek_sonu"]:
             if _tipten_ekle(tip, yalniz_ilk_yari=True):
                 break
 
-    for tip in AKIS_DOLGU_SIRASI:
-        if len(secili) >= AKIS_SATIR_SAYISI:
+    for tip in _sirali(AKIS_DOLGU_SIRASI):
+        if len(secili) >= satir_sayisi:
             break
         _tipten_ekle(tip)
 
@@ -1047,7 +1087,40 @@ def _mac_akisi(gercekler, en_iyi_performans=None):
     # başkasını işaretle: işaretsiz akış çizilmez.
     if satirlar and not any(x["kritik"] for x in satirlar):
         satirlar[-1]["kritik"] = True
-    return satirlar if len(satirlar) >= AKIS_ASGARI_SATIR else []
+    asgari = min(AKIS_ASGARI_SATIR, satir_sayisi)
+    if len(satirlar) < asgari:
+        return []
+
+    # AÇILIŞ ÇEŞİTLİLİĞİ. Bloğun ilk satırı KRONOLOJİK sıradan doğuyor,
+    # seçim sırasından değil — bu yüzden dolgu sayacı ona yetişmiyordu
+    # (ölçüldü: sayaç eklendikten sonra da dört bloğun üçü `ceyrek_sonu`
+    # ile açılıyordu). Blok kurulduktan SONRA bakılıyor: o tip gecede
+    # zaten limit kadar blok açtıysa, o tipi dolgudan çıkarıp bir kez
+    # yeniden kuruluyor. Kritik satır bundan etkilenmez — o satır maçın
+    # kendisi, çeşitlilik için feda edilmez (kullanıcı kuralı).
+    if satirlar and tip_sayaci is not None and not _yasak_tipler:
+        _ilk = satirlar[0]["tip"]
+        _acilis = tip_sayaci.get(("acilis", _ilk), 0)
+        # Yeniden kurma yalnız DÖRT satırlık bloklarda ve ancak DİĞER
+        # KURALLARI BOZMUYORSA kabul ediliyor. "Göz at"ın iki satırında
+        # tek dolgu var; onu çeşitlilik için değiştirmek ilk yarı payını
+        # düşürüyordu (ölçüldü, 23 Aralık SAS-OKC: blok 3Ç ve maç sonu
+        # satırlarıyla kalıp maçın ilk yarısı hiç görünmüyordu).
+        _ilk_yari_var = lambda l: any((o.get("periyot") or 0) <= 2
+                                      or o["zaman"] in ("1Ç", "2Ç", "Devre") for o in l)
+        if (_acilis >= AKIS_ACILIS_LIMITI and _ilk != kritik["tip"]
+                and satir_sayisi >= AKIS_ASGARI_SATIR):
+            _alt = _mac_akisi(gercekler, en_iyi_performans, satir_sayisi,
+                              tip_sayaci=None, _yasak_tipler=(_ilk,))
+            if (_alt and _alt[0]["tip"] != _ilk and len(_alt) >= asgari
+                    and (_ilk_yari_var(_alt) or not _ilk_yari_var(satirlar))):
+                satirlar = _alt
+    if tip_sayaci is not None:
+        for x in satirlar:
+            tip_sayaci[x["tip"]] = tip_sayaci.get(x["tip"], 0) + 1
+        _ilk = satirlar[0]["tip"]
+        tip_sayaci[("acilis", _ilk)] = tip_sayaci.get(("acilis", _ilk), 0) + 1
+    return satirlar
 
 
 def _kritik_anlar(ham_mac, ev_taraf, dep_taraf):
@@ -1846,6 +1919,8 @@ def derle(tarih_str):
     # olayı değil, oyuncu_stat gerçeğinden geliyor.
     en_iyi_performans_by_gid = {m["mac_id"]: m.get("en_iyi_performans")
                                 for m in skor_gece["maclar"]}
+    # GECE ÇAPINDA tip sayacı — bloklar arası çeşitliliği bu sağlıyor.
+    _akis_tip_sayaci = {}
     taslak_maclar = taslak["maclar"]
 
     # Aynı anahtar (hesapla.siralama_anahtari) — rozet eşitliğinde dram
@@ -1993,7 +2068,8 @@ def derle(tarih_str):
             # boş string oluşturucuda "gövde var ama sessiz" gibi
             # görünürdü.
             "akis": _mac_akisi(gercek_gece["maclar"][gid],
-                               en_iyi_performans_by_gid.get(gid)),
+                               en_iyi_performans_by_gid.get(gid),
+                               tip_sayaci=_akis_tip_sayaci),
             "box": _box_score(ham["maclar"][gid], tum_metin, kaybeden_kod, gercek_gece["maclar"][gid]),
             # Sol ray rengi: KAZANAN takımın rengi (aşağıda çakışma
             # çözümünden geçiyor).
@@ -2078,7 +2154,9 @@ def derle(tarih_str):
             # paragraf kalktı). "Bunları geç" tek satırlık kalıyor —
             # orada zaten anlatı yok.
             girdi["akis"] = _mac_akisi(gercek_gece["maclar"][gid],
-                                       en_iyi_performans_by_gid.get(gid))
+                                       en_iyi_performans_by_gid.get(gid),
+                                       satir_sayisi=AKIS_GOZAT_SATIR,
+                                       tip_sayaci=_akis_tip_sayaci)
             degerse_bak.append(girdi)
         else:
             diger.append(girdi)

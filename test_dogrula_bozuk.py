@@ -5029,7 +5029,32 @@ def main():
               not _tip_tekrar, f"tekrar: {_tip_tekrar}")
         basar(f"Akış[{_t}]: her blokta tam bir kritik satır",
               all(sum(1 for r in m["akis"] if r["kritik"]) == 1 for m in _akisli))
+        # KATMAN HİYERARŞİSİ (kullanıcı kararı): üç katman görsel olarak
+        # da ayrışmalı. Dört satırla "Göz at" bloğu "Mutlaka bil"
+        # ağırlığına çıkıyor ve katman farkı kayboluyordu.
+        basar(f"Akış[{_t}]: Mutlaka bil dört satır",
+              all(len(m["akis"]) <= _derle.AKIS_SATIR_SAYISI
+                  for m in (_dd.get("mutlaka") or []) if m.get("akis")))
+        basar(f"Akış[{_t}]: Göz at iki satır",
+              all(len(m["akis"]) == _derle.AKIS_GOZAT_SATIR
+                  for m in (_dd.get("degerse_bak") or []) if m.get("akis")),
+              f"{[len(m.get('akis') or []) for m in (_dd.get('degerse_bak') or [])]}")
+        basar(f"Akış[{_t}]: Bunları geç katmanında akış YOK",
+              all(not m.get("akis") for m in (_dd.get("diger") or [])))
+        # GECE ÇAPINDA ÇEŞİTLİLİK: aynı açılış tipi en fazla iki blokta.
+        _mb = [m for m in (_dd.get("mutlaka") or []) if m.get("akis")]
+        if len(_mb) >= 3:
+            _ac = _cl.Counter(m["akis"][0]["tip"] for m in _mb)
+            basar(f"Akış[{_t}]: aynı açılış tipi en fazla iki blokta",
+                  max(_ac.values()) <= _derle.AKIS_ACILIS_LIMITI,
+                  f"açılış tipleri: {dict(_ac)}")
     # Devre satırı kimin önde olduğunu söylemeli ("Fark 15 sayı" demiyordu).
+    _dsrc3 = open("derle.py", encoding="utf-8").read()
+    basar("Akış: çeşitlilik sayacı gece çapında paylaşılıyor",
+          "_akis_tip_sayaci = {}" in _dsrc3 and "tip_sayaci=_akis_tip_sayaci" in _dsrc3)
+    # KRİTİK SATIR ÇEŞİTLİLİK İÇİN FEDA EDİLMEZ (kullanıcı kuralı).
+    basar("Akış: kritik satır sayaçtan etkilenmiyor",
+          '_ilk != kritik["tip"]' in _dsrc3)
     _csrc2 = open("cumle.py", encoding="utf-8").read()
     basar("Akış: devre satırı önde olan takımı anıyor",
           '{takim} {n} sayı önde' in _csrc2)
