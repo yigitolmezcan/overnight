@@ -81,7 +81,7 @@
       "metin": "Minnesota Timberwolves, 16 sayılık farktan dönüp Milwaukee Bucks'u geçti.",
       "anlatili": true,
       "hedef_id": "g-mutlaka-3",
-      "icon": "standings",
+      "icon": "default",
       "saat": "03:00",
       "rozet": 7.14,
       "skor": "MIN 103 – MIL 100",
@@ -10782,7 +10782,7 @@
       "mac": "Brooklyn Nets — Toronto Raptors",
       "skor": "96–81",
       "rozet": 2.45,
-      "why": "",
+      "why": "gece sırası 2",
       "metin": "Brooklyn Nets evinde Toronto Raptors'u 96-81 yendi.",
       "box": {
         "ev": {

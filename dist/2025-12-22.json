@@ -51,7 +51,7 @@
       "metin": "Cleveland Cavaliers, Charlotte Hornets'i evinde yendi.",
       "anlatili": true,
       "hedef_id": "a-0022500402",
-      "icon": "default",
+      "icon": "standings",
       "saat": "03:00",
       "rozet": 5.22,
       "skor": "CLE 139 – CHA 132",
@@ -111,7 +111,7 @@
       "metin": "Detroit Pistons, Portland Trail Blazers'i yenerek konferansta 1. sıraya yükseldi.",
       "anlatili": true,
       "hedef_id": "a-0022500408",
-      "icon": "standings",
+      "icon": "default",
       "saat": "06:00",
       "rozet": 6.12,
       "skor": "POR 102 – DET 110",
@@ -11476,7 +11476,7 @@
       "mac": "Portland Trail Blazers — Detroit Pistons",
       "skor": "102–110",
       "rozet": 6.12,
-      "why": "gece sırası 7",
+      "why": "",
       "metin": "Detroit Pistons deplasmanda Portland Trail Blazers'i 110-102 yendi.",
       "box": {
         "ev": {
@@ -12810,7 +12810,7 @@
       "mac": "Cleveland Cavaliers — Charlotte Hornets",
       "skor": "139–132",
       "rozet": 5.22,
-      "why": "",
+      "why": "gece sırası 1",
       "metin": "Cleveland Cavaliers evinde Charlotte Hornets'i 139-132 yendi. Darius Garland double-double yaptı (27 sayı, 10 asist).",
       "box": {
         "ev": {

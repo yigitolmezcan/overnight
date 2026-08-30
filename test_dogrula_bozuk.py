@@ -5745,8 +5745,11 @@ def main():
                         _karar_bozuk.append(f"{_ad5}: detay {_k5.get('detay')}")
                 else:
                     _karar_yok += 1
-    basar("Tablo: hiçbir gecede blok tablosuz kalmadı", _tablolu >= 40,
-          f"tablolu blok: {_tablolu}")
+    # Eşik gece sayısına bağlı (28 Ocak vitrin gecesi listeden çıkınca
+    # blok sayısı 43'ten 39'a indi) — gece başına en az 3 blok.
+    basar("Tablo: hiçbir gecede blok tablosuz kalmadı",
+          _tablolu >= 3 * len(_geceler),
+          f"tablolu blok: {_tablolu} / gece: {len(_geceler)}")
     basar("Tablo: 'öne çıkan' alanında YÜKLEM yok", not _yuklem,
           "; ".join(_yuklem[:4]))
     basar("Tablo: satır yapısı doğru (çeyrekler / iki yarı)", not _yapi,
@@ -5904,6 +5907,26 @@ def main():
                 _bilesik += 1
     basar("Perf: yayında bileşik başarı cümlesi var", _bilesik >= 5,
           f"bulunan: {_bilesik}")
+
+    # ------------------------------------------------------------------
+    # ARŞİV SIRASI VE "EN SON GECE"
+    # ------------------------------------------------------------------
+    # 28 Ocak sıra dışı yayınlanmış bir vitrin gecesiydi; kronolojik
+    # listenin sonunda durup "site açılınca en son gece gelsin"
+    # kuralını bozuyordu (site 27 Aralık açıyor, sağ ok 28 Ocak'a
+    # gidiyordu). Listeden çıkarıldı; dosyaları duruyor.
+    _dm = _yayin.durum_oku()
+    _yy = _dm["yayinlanan"]
+    basar("Arşiv: yayın listesi kronolojik", _yy == sorted(_yy), f"{_yy}")
+    basar("Arşiv: gunler.json listeyle aynı ve sıralı",
+          _jj.loads(open("site/gunler.json", encoding="utf-8").read()) == sorted(_yy))
+    basar("Arşiv: latest.json EN SON yayınlanan geceyi gösteriyor",
+          _jj.loads(open("dist/latest.json", encoding="utf-8").read())["tarih"]
+          == max(_yy), f"latest={_jj.loads(open('dist/latest.json', encoding='utf-8').read())['tarih']}")
+    basar("Arşiv: sıra imleci listenin sonuyla tutarlı",
+          (_dm.get("sira_imleci") or max(_yy)) == max(_yy))
+    basar("Arşiv: her yayınlanmış gecenin sayfası var",
+          all(_os.path.exists(f"site/{_t9}.html") for _t9 in _yy))
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",

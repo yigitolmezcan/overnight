@@ -25,7 +25,6 @@
   "_atlanan_neden": "Düzeltme turlarında defalarca üretilen 14 gece. Kurallar bu gecelere elle uyduruldu; sistemin gerçek performansını yansıtmıyorlar, o yüzden yayına girmiyorlar. 2025-12-19: iki üretim hakkını doldurdu ve ikisinde de 'Mağlup tarafta' kuralını ihlal etti; üçüncü üretim yerine emekli edildi.",
   "yayinlanan": [
     "2025-10-23",
-    "2026-01-28",
     "2025-12-15",
     "2025-12-18",
     "2025-12-20",
@@ -48,5 +47,9 @@
   "son_engel": null,
   "engellenen": [],
   "sira_imleci": "2025-12-27",
-  "_sira_imleci_neden": "Kullanıcı kararı 2026-08-25: kronoloji sezon başından değil, ARALIK ORTASINDAN başlıyor. Sezon başı gecelerinde takımlar 10 maçı doldurmadığı için susma kuralı derece/sıralama/seri/sürpriz olgularının hepsini kapatıyor ve metinler haftalarca cılız kalıyor. Ekim-Kasım arşiv geceleri atlanıyor; sezon gerçekten Ekim'de başlayınca canlı veriye geçilecek, o geceler kullanılmayacak."
+  "_sira_imleci_neden": "Kullanıcı kararı 2026-08-25: kronoloji sezon başından değil, ARALIK ORTASINDAN başlıyor. Sezon başı gecelerinde takımlar 10 maçı doldurmadığı için susma kuralı derece/sıralama/seri/sürpriz olgularının hepsini kapatıyor ve metinler haftalarca cılız kalıyor. Ekim-Kasım arşiv geceleri atlanıyor; sezon gerçekten Ekim'de başlayınca canlı veriye geçilecek, o geceler kullanılmayacak.",
+  "_vitrin_geri_alindi": {
+    "tarih": "2026-01-28",
+    "neden": "Sıra dışı yayınlanmış vitrin gecesiydi; kronolojik arşivin sonunda durup \"en son gece\" mantığını bozuyordu. Yayın listesinden çıkarıldı, dosyaları (taslak/gercek/dist/site) DURUYOR — geri eklemek için listeye tarihi yazmak yeterli."
+  }
 }
