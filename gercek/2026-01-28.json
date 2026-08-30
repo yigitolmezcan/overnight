@@ -1,6 +1,6 @@
 {
   "tarih": "2026-01-28",
-  "uretildi": "2026-08-30T11:31:52.586038Z",
+  "uretildi": "2026-08-30T11:35:27.149869Z",
   "maclar": {
     "0022500671": [
       {
@@ -17475,6 +17475,25 @@
         "id": "f110",
         "tur": "akis_olay",
         "veri": {
+          "tip": "liderlik",
+          "periyot": 3,
+          "saniye_kalan": 135.0,
+          "zaman": "3Ç",
+          "saat": "2:15",
+          "ev_skor": 78,
+          "dep_skor": 79,
+          "fark": -1,
+          "takim": "SAS",
+          "kesin": false,
+          "oyuncu": "Dylan Harper"
+        },
+        "kaynak": "PlayByPlayV3:0022500679:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f111",
+        "tur": "akis_olay",
+        "veri": {
           "tip": "rakip_yaklasti",
           "periyot": 3,
           "saniye_kalan": 135.0,
@@ -17490,7 +17509,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f111",
+        "id": "f112",
         "tur": "derece",
         "veri": {
           "takim": "HOU",
@@ -17513,7 +17532,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f112",
+        "id": "f113",
         "tur": "derece",
         "veri": {
           "takim": "SAS",

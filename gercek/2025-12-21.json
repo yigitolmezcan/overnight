@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-21",
-  "uretildi": "2026-08-30T11:31:47.045017Z",
+  "uretildi": "2026-08-30T11:35:21.285094Z",
   "maclar": {
     "0022500396": [
       {
@@ -8331,6 +8331,25 @@
         "id": "f126",
         "tur": "akis_olay",
         "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 300.0,
+          "zaman": "1Ç",
+          "saat": "5:00",
+          "ev_skor": 17,
+          "dep_skor": 18,
+          "fark": -1,
+          "takim": "SAS",
+          "kesin": false,
+          "oyuncu": "Victor Wembanyama"
+        },
+        "kaynak": "PlayByPlayV3:0022500399:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f127",
+        "tur": "akis_olay",
+        "veri": {
           "tip": "rakip_yaklasti",
           "periyot": 2,
           "saniye_kalan": 631.0,
@@ -8346,7 +8365,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f127",
+        "id": "f128",
         "tur": "derece",
         "veri": {
           "takim": "WAS",
@@ -8369,7 +8388,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f128",
+        "id": "f129",
         "tur": "derece",
         "veri": {
           "takim": "SAS",
@@ -8392,7 +8411,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f129",
+        "id": "f130",
         "tur": "seri",
         "veri": {
           "takim": "SAS",

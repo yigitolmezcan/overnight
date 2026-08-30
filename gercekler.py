@@ -857,18 +857,27 @@ def akis_gercekleri_uret(g, gid, actions, ev_kod, dep_kod, kazanan, ceyrek_veri)
         yaz("esitlik", periyot, saniye, ev, dep,
             takim=a.get("teamTricode"))
 
-    if liderlikler:
-        periyot, saniye, ev, dep, a = liderlikler[-1]
-        # Son liderlik değişimi KAZANANA aitse "liderlik bir daha
-        # değişmedi" doğru; değilse bu satır kurulmaz.
+    # KAZANANIN ÖNE GEÇTİĞİ SON AN. Eskiden yalnız maçın SON lider
+    # değişimine bakılıyordu; kazanan öne geçtikten sonra başka bir
+    # değişim olduysa (sonra geri aldıysa) hiçbir kayıt kalmıyordu ve
+    # "geri dönüş" şeklinin kritik yuvası boş kalıyordu — kritik işaret
+    # kaybeden taraftan bir istatistik satırına düşüyordu (ölçüldü,
+    # 27 Aralık SAS-UTA).
+    kazanan_liderlikleri = [x for x in liderlikler
+                            if (ev_kod if x[2] > x[3] else dep_kod) == kazanan]
+    if kazanan_liderlikleri:
+        periyot, saniye, ev, dep, a = kazanan_liderlikleri[-1]
         onde = ev_kod if ev > dep else dep_kod
-        if onde == kazanan:
+        if True:
             # "Liderlik bir daha değişmedi" iddiası, sonradan BERABERLİK
             # olduysa yanıltıcı: 26 Aralık'ta Utah öne geçti, Detroit
             # 129-129 eşitledi, maç son saniyede bitti. Lider teknik
             # olarak değişmedi ama cümle maçın kapandığını ima ediyordu.
-            sonra_esitlik = any(e[0] > periyot or (e[0] == periyot and e[1] < saniye)
-                                for e in ((x[0], x[1]) for x in esitlikler))
+            # "Bir daha değişmedi" iddiası: bundan SONRA ne beraberlik
+            # ne de başka bir lider değişimi olmamalı.
+            _sonra = lambda x: x[0] > periyot or (x[0] == periyot and x[1] < saniye)
+            sonra_esitlik = (any(_sonra(x) for x in esitlikler)
+                             or any(_sonra(x) for x in liderlikler))
             yaz("liderlik", periyot, saniye, ev, dep,
                 takim=onde, kesin=not sonra_esitlik,
                 oyuncu=_dogru_oyuncu_adi(a.get("personId"), a.get("playerName") or ""))

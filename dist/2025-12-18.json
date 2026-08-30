@@ -221,41 +221,7 @@
       "rozet": 9.09,
       "baslik": "New Orleans, 22 sayılık farktan dönüp Houston'ı yendi.",
       "neden_onemli": "",
-      "akis": [
-        {
-          "tip": "en_buyuk_fark",
-          "kalip": "fark_cikardi",
-          "yuva": "kaybedenin_farki",
-          "sekil": "geri_donus",
-          "zaman": "3Ç",
-          "saat": "11:02",
-          "cumle": "Houston farkı 25'e çıkardı",
-          "detay": "en büyük fark",
-          "kritik": false
-        },
-        {
-          "tip": "ceyrek_ustunlugu",
-          "kalip": "ust_aldi",
-          "yuva": "donusun_basi",
-          "sekil": "geri_donus",
-          "zaman": "4Ç",
-          "saat": null,
-          "cumle": "New Orleans çeyreği 36-20 aldı",
-          "detay": "skor eşitlendi",
-          "kritik": false
-        },
-        {
-          "tip": "karar_ani",
-          "kalip": "karar_basket",
-          "yuva": "sonuc",
-          "sekil": "geri_donus",
-          "zaman": "Son",
-          "saat": "0:02",
-          "cumle": "Saddiq Bey'in basketi",
-          "detay": "133–128 · maçı bitirdi",
-          "kritik": true
-        }
-      ],
+      "akis": [],
       "box": {
         "ev": {
           "takim": "New Orleans Pelicans",
@@ -882,41 +848,7 @@
       "rozet": 8.91,
       "baslik": "Luka Dončić'in 45 sayısıyla Lakers, Utah'ı yendi.",
       "neden_onemli": "Los Angeles Lakers, konferansta 3. sıraya yükseldi.",
-      "akis": [
-        {
-          "tip": "en_buyuk_fark",
-          "kalip": "fark_cikti",
-          "yuva": "kaybedenin_farki",
-          "sekil": "geri_donus",
-          "zaman": "1Ç",
-          "saat": "1:28",
-          "cumle": "Fark 10'a çıktı",
-          "detay": "Utah önde",
-          "kritik": false
-        },
-        {
-          "tip": "ceyrek_ustunlugu",
-          "kalip": "ust_ustun",
-          "yuva": "donusun_basi",
-          "sekil": "geri_donus",
-          "zaman": "Maç sonu",
-          "saat": null,
-          "cumle": "Los Angeles o çeyrekte 41-29 üstün geldi",
-          "detay": "fark 8'e çıktı",
-          "kritik": false
-        },
-        {
-          "tip": "en_etkili",
-          "kalip": "etkili_duz",
-          "yuva": "sonuc",
-          "sekil": "geri_donus",
-          "zaman": "Son",
-          "saat": null,
-          "cumle": "Luka Dončić 45 sayı, 11 ribaund, 14 asist",
-          "detay": "maçın en etkilisi",
-          "kritik": true
-        }
-      ],
+      "akis": [],
       "box": {
         "ev": {
           "takim": "Utah Jazz",
@@ -1559,13 +1491,13 @@
         },
         {
           "tip": "karar_ani",
-          "kalip": "karar_sonsoz",
+          "kalip": "karar_basket",
           "yuva": "karar",
           "sekil": "son_saniye",
           "zaman": "Son",
           "saat": "0:01",
-          "cumle": "Son sözü Deni Avdija söyledi",
-          "detay": "134–133",
+          "cumle": "Deni Avdija'nın basketi",
+          "detay": "134–133 · maçı bitirdi",
           "kritik": true
         }
       ],
@@ -2254,13 +2186,13 @@
         },
         {
           "tip": "en_etkili",
-          "kalip": "etkili_oncikti",
+          "kalip": "etkili_duz",
           "yuva": "kapanis",
           "sekil": "bastan_sona",
           "zaman": "Son",
           "saat": null,
-          "cumle": "Jalen Johnson 43 sayı, 11 ribaund, 9 asist ile öne çıktı",
-          "detay": null,
+          "cumle": "Jalen Johnson 43 sayı, 11 ribaund, 9 asist",
+          "detay": "maçın en etkilisi",
           "kritik": true
         }
       ],
@@ -15999,24 +15931,24 @@
       "akis": [
         {
           "tip": "en_buyuk_fark",
-          "kalip": "fark_onu",
+          "kalip": "fark_cikardi",
           "yuva": "kaybedenin_farki",
           "sekil": "geri_donus",
           "zaman": "3Ç",
           "saat": "10:33",
-          "cumle": "Golden State önü 14 sayıya çıkardı",
+          "cumle": "Golden State farkı 14'e çıkardı",
           "detay": "en büyük fark",
           "kritik": false
         },
         {
-          "tip": "sayi_serisi",
-          "kalip": "seri_gitti",
-          "yuva": "donusun_basi",
+          "tip": "liderlik",
+          "kalip": "lider_basket",
+          "yuva": "one_gecis",
           "sekil": "geri_donus",
-          "zaman": "3Ç",
-          "saat": "7:26",
-          "cumle": "Phoenix 12-0 gitti",
-          "detay": "fark 2",
+          "zaman": "4Ç",
+          "saat": "9:35",
+          "cumle": "Jamaree Bouyea'nın basketiyle öne geçti",
+          "detay": "77–76",
           "kritik": true
         }
       ]
@@ -16688,23 +16620,23 @@
       "akis": [
         {
           "tip": "en_buyuk_fark",
-          "kalip": "fark_cikardi",
+          "kalip": "fark_cikti",
           "yuva": "kaybedenin_farki",
           "sekil": "geri_donus",
           "zaman": "1Ç",
           "saat": "4:29",
-          "cumle": "Indiana farkı 16'ya çıkardı",
-          "detay": "en büyük fark",
+          "cumle": "Fark 16'ya çıktı",
+          "detay": "Indiana önde",
           "kritik": false
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_basket",
+          "kalip": "lider_cevirdi",
           "yuva": "one_gecis",
           "sekil": "geri_donus",
           "zaman": "Son",
           "saat": "0:05",
-          "cumle": "Jalen Brunson'un basketiyle öne geçti",
+          "cumle": "Jalen Brunson skoru çevirdi",
           "detay": "113–114 · liderlik bir daha değişmedi",
           "kritik": true
         }
@@ -17413,12 +17345,12 @@
         },
         {
           "tip": "karar_ani",
-          "kalip": "karar_bitirdi",
+          "kalip": "karar_sonsoz",
           "yuva": "karar",
           "sekil": "son_saniye",
           "zaman": "U1",
           "saat": "1:32",
-          "cumle": "Maçı Anthony Davis bitirdi",
+          "cumle": "Son sözü Anthony Davis söyledi",
           "detay": "116–114",
           "kritik": true
         }

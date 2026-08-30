@@ -211,15 +211,26 @@
           "kritik": false
         },
         {
-          "tip": "ceyrek_ustunlugu",
-          "kalip": "ust_aldi",
+          "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_onde",
           "yuva": "donusun_basi",
           "sekil": "geri_donus",
-          "zaman": "Maç sonu",
+          "zaman": "Devre",
           "saat": null,
-          "cumle": "San Antonio çeyreği 27-13 aldı",
-          "detay": "fark 12'ye çıktı",
+          "cumle": "Houston önde kapadı",
+          "detay": "62–54",
           "kritik": false
+        },
+        {
+          "tip": "liderlik",
+          "kalip": "lider_basket",
+          "yuva": "one_gecis",
+          "sekil": "geri_donus",
+          "zaman": "3Ç",
+          "saat": "2:15",
+          "cumle": "Dylan Harper'in basketiyle öne geçti",
+          "detay": "78–79",
+          "kritik": true
         },
         {
           "tip": "en_etkili",
@@ -230,7 +241,7 @@
           "saat": null,
           "cumle": "Victor Wembanyama 28 sayı, 16 ribaund, 3 asist",
           "detay": "maçın en etkilisi",
-          "kritik": true
+          "kritik": false
         }
       ],
       "box": {
@@ -13818,12 +13829,12 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_basket",
+          "kalip": "lider_cevirdi",
           "yuva": "one_gecis",
           "sekil": "geri_donus",
           "zaman": "3Ç",
           "saat": "6:37",
-          "cumle": "Desmond Bane'in basketiyle öne geçti",
+          "cumle": "Desmond Bane skoru çevirdi",
           "detay": "75–77",
           "kritik": true
         }
@@ -14527,12 +14538,12 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_cevirdi",
+          "kalip": "lider_ile",
           "yuva": "one_gecis",
           "sekil": "geri_donus",
           "zaman": "3Ç",
           "saat": "2:59",
-          "cumle": "OG Anunoby skoru çevirdi",
+          "cumle": "New York, OG Anunoby ile öne geçti",
           "detay": "70–71 · liderlik bir daha değişmedi",
           "kritik": true
         }
@@ -15195,12 +15206,12 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_ile",
+          "kalip": "lider_basket",
           "yuva": "one_gecis",
           "sekil": "geri_donus",
           "zaman": "Son",
           "saat": "0:13",
-          "cumle": "Indiana, Aaron Nesmith ile öne geçti",
+          "cumle": "Aaron Nesmith'in basketiyle öne geçti",
           "detay": "111–110 · liderlik bir daha değişmedi",
           "kritik": true
         }

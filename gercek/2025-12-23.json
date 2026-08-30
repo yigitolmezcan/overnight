@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-23",
-  "uretildi": "2026-08-30T11:31:49.216823Z",
+  "uretildi": "2026-08-30T11:35:23.446946Z",
   "maclar": {
     "0022500409": [
       {
@@ -13981,6 +13981,25 @@
         "id": "f122",
         "tur": "akis_olay",
         "veri": {
+          "tip": "liderlik",
+          "periyot": 4,
+          "saniye_kalan": 524.0,
+          "zaman": "4Ç",
+          "saat": "8:44",
+          "ev_skor": 111,
+          "dep_skor": 110,
+          "fark": 1,
+          "takim": "DAL",
+          "kesin": false,
+          "oyuncu": "Anthony Davis"
+        },
+        "kaynak": "PlayByPlayV3:0022500415:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f123",
+        "tur": "akis_olay",
+        "veri": {
           "tip": "karar_ani",
           "periyot": 4,
           "saniye_kalan": 31.8,
@@ -13996,7 +14015,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f123",
+        "id": "f124",
         "tur": "akis_olay",
         "veri": {
           "tip": "rakip_yaklasti",
@@ -14014,7 +14033,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f124",
+        "id": "f125",
         "tur": "derece",
         "veri": {
           "takim": "DAL",
@@ -14037,7 +14056,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f125",
+        "id": "f126",
         "tur": "derece",
         "veri": {
           "takim": "DEN",

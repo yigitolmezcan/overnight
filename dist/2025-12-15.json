@@ -736,41 +736,7 @@
       "rozet": 8.92,
       "baslik": "Lauri Markkanen'in 33 sayısıyla Utah Jazz, Dallas Mavericks'i yendi.",
       "neden_onemli": "",
-      "akis": [
-        {
-          "tip": "en_buyuk_fark",
-          "kalip": "fark_cikardi",
-          "yuva": "kaybedenin_farki",
-          "sekil": "geri_donus",
-          "zaman": "3Ç",
-          "saat": "2:13",
-          "cumle": "Dallas farkı 10'a çıkardı",
-          "detay": "en büyük fark",
-          "kritik": false
-        },
-        {
-          "tip": "sayi_serisi",
-          "kalip": "seri_gitti",
-          "yuva": "donusun_basi",
-          "sekil": "geri_donus",
-          "zaman": "Son",
-          "saat": "0:53",
-          "cumle": "Utah 11-0 gitti",
-          "detay": "fark 3",
-          "kritik": false
-        },
-        {
-          "tip": "en_etkili",
-          "kalip": "etkili_duz",
-          "yuva": "sonuc",
-          "sekil": "geri_donus",
-          "zaman": "Son",
-          "saat": null,
-          "cumle": "Lauri Markkanen 33 sayı, 16 ribaund, 5 asist",
-          "detay": "maçın en etkilisi",
-          "kritik": true
-        }
-      ],
+      "akis": [],
       "box": {
         "ev": {
           "takim": "Utah Jazz",
@@ -1415,13 +1381,13 @@
         },
         {
           "tip": "en_etkili",
-          "kalip": "etkili_oncikti",
+          "kalip": "etkili_duz",
           "yuva": "en_etkili",
           "sekil": "kopma",
           "zaman": "Son",
           "saat": null,
-          "cumle": "Jaren Jackson Jr. 31 sayı, 4 ribaund, 4 asist ile öne çıktı",
-          "detay": null,
+          "cumle": "Jaren Jackson Jr. 31 sayı, 4 ribaund, 4 asist",
+          "detay": "maçın en etkilisi",
           "kritik": false
         }
       ],
@@ -2058,13 +2024,13 @@
       "akis": [
         {
           "tip": "en_buyuk_fark",
-          "kalip": "fark_cikti",
+          "kalip": "fark_cikardi",
           "yuva": "kaybedenin_farki",
           "sekil": "geri_donus",
           "zaman": "2Ç",
           "saat": "11:07",
-          "cumle": "Fark 12'ye çıktı",
-          "detay": "Boston önde",
+          "cumle": "Boston farkı 12'ye çıkardı",
+          "detay": "en büyük fark",
           "kritik": false
         },
         {
@@ -2091,13 +2057,13 @@
         },
         {
           "tip": "en_etkili",
-          "kalip": "etkili_enler",
+          "kalip": "etkili_oncikti",
           "yuva": "sonuc",
           "sekil": "geri_donus",
           "zaman": "Son",
           "saat": null,
-          "cumle": "Maçın en etkilisi Cade Cunningham",
-          "detay": "32 sayı, 4 ribaund, 10 asist",
+          "cumle": "Cade Cunningham 32 sayı, 4 ribaund, 10 asist ile öne çıktı",
+          "detay": null,
           "kritik": false
         }
       ],

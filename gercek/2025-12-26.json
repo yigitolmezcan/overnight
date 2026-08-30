@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-26",
-  "uretildi": "2026-08-30T11:31:50.343164Z",
+  "uretildi": "2026-08-30T11:35:24.702938Z",
   "maclar": {
     "0022500423": [
       {
@@ -1890,6 +1890,25 @@
         "id": "f123",
         "tur": "akis_olay",
         "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 418.0,
+          "zaman": "1Ç",
+          "saat": "6:58",
+          "ev_skor": 15,
+          "dep_skor": 16,
+          "fark": -1,
+          "takim": "MIA",
+          "kesin": false,
+          "oyuncu": "Kel'el Ware"
+        },
+        "kaynak": "PlayByPlayV3:0022500423:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f124",
+        "tur": "akis_olay",
+        "veri": {
           "tip": "rakip_yaklasti",
           "periyot": 2,
           "saniye_kalan": 631.0,
@@ -1905,7 +1924,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f124",
+        "id": "f125",
         "tur": "akis_olay",
         "veri": {
           "tip": "fark_korundu",
@@ -1922,7 +1941,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f125",
+        "id": "f126",
         "tur": "derece",
         "veri": {
           "takim": "ATL",
@@ -1945,7 +1964,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f126",
+        "id": "f127",
         "tur": "seri",
         "veri": {
           "takim": "ATL",
@@ -1956,7 +1975,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f127",
+        "id": "f128",
         "tur": "derece",
         "veri": {
           "takim": "MIA",
@@ -11876,6 +11895,25 @@
         "id": "f122",
         "tur": "akis_olay",
         "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 166.0,
+          "zaman": "1Ç",
+          "saat": "2:46",
+          "ev_skor": 23,
+          "dep_skor": 22,
+          "fark": 1,
+          "takim": "MEM",
+          "kesin": false,
+          "oyuncu": "GG Jackson"
+        },
+        "kaynak": "PlayByPlayV3:0022500428:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f123",
+        "tur": "akis_olay",
+        "veri": {
           "tip": "rakip_yaklasti",
           "periyot": 2,
           "saniye_kalan": 361.0,
@@ -11891,7 +11929,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f123",
+        "id": "f124",
         "tur": "akis_olay",
         "veri": {
           "tip": "fark_korundu",
@@ -11908,7 +11946,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f124",
+        "id": "f125",
         "tur": "derece",
         "veri": {
           "takim": "MEM",
@@ -11931,7 +11969,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f125",
+        "id": "f126",
         "tur": "seri",
         "veri": {
           "takim": "MEM",
@@ -11942,7 +11980,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f126",
+        "id": "f127",
         "tur": "derece",
         "veri": {
           "takim": "MIL",
@@ -13970,6 +14008,25 @@
         "id": "f130",
         "tur": "akis_olay",
         "veri": {
+          "tip": "liderlik",
+          "periyot": 2,
+          "saniye_kalan": 489.0,
+          "zaman": "2Ç",
+          "saat": "8:09",
+          "ev_skor": 31,
+          "dep_skor": 33,
+          "fark": -2,
+          "takim": "PHX",
+          "kesin": false,
+          "oyuncu": "Collin Gillespie"
+        },
+        "kaynak": "PlayByPlayV3:0022500429:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f131",
+        "tur": "akis_olay",
+        "veri": {
           "tip": "rakip_yaklasti",
           "periyot": 2,
           "saniye_kalan": 550.0,
@@ -13985,7 +14042,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f131",
+        "id": "f132",
         "tur": "derece",
         "veri": {
           "takim": "NOP",
@@ -14008,7 +14065,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f132",
+        "id": "f133",
         "tur": "seri",
         "veri": {
           "takim": "NOP",
@@ -14019,7 +14076,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f133",
+        "id": "f134",
         "tur": "derece",
         "veri": {
           "takim": "PHX",
@@ -14042,7 +14099,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f134",
+        "id": "f135",
         "tur": "seri",
         "veri": {
           "takim": "PHX",

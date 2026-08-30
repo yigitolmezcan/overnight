@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-15",
-  "uretildi": "2026-08-30T11:31:43.814450Z",
+  "uretildi": "2026-08-30T11:35:18.161969Z",
   "maclar": {
     "0022501222": [
       {
@@ -6268,6 +6268,25 @@
         "id": "f145",
         "tur": "akis_olay",
         "veri": {
+          "tip": "liderlik",
+          "periyot": 2,
+          "saniye_kalan": 158.0,
+          "zaman": "2Ç",
+          "saat": "2:38",
+          "ev_skor": 64,
+          "dep_skor": 63,
+          "fark": 1,
+          "takim": "UTA",
+          "kesin": false,
+          "oyuncu": "Keyonte George"
+        },
+        "kaynak": "PlayByPlayV3:0022501224:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f146",
+        "tur": "akis_olay",
+        "veri": {
           "tip": "rakip_yaklasti",
           "periyot": 2,
           "saniye_kalan": 451.0,
@@ -6283,7 +6302,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f146",
+        "id": "f147",
         "tur": "derece",
         "veri": {
           "takim": "UTA",
@@ -6306,7 +6325,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f147",
+        "id": "f148",
         "tur": "seri",
         "veri": {
           "takim": "UTA",
@@ -6317,7 +6336,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f148",
+        "id": "f149",
         "tur": "derece",
         "veri": {
           "takim": "DAL",
@@ -8635,6 +8654,25 @@
         "id": "f149",
         "tur": "akis_olay",
         "veri": {
+          "tip": "liderlik",
+          "periyot": 4,
+          "saniye_kalan": 589.0,
+          "zaman": "4Ç",
+          "saat": "9:49",
+          "ev_skor": 95,
+          "dep_skor": 93,
+          "fark": 2,
+          "takim": "DEN",
+          "kesin": false,
+          "oyuncu": "Jamal Murray"
+        },
+        "kaynak": "PlayByPlayV3:0022501225:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f150",
+        "tur": "akis_olay",
+        "veri": {
           "tip": "karar_ani",
           "periyot": 5,
           "saniye_kalan": 37.7,
@@ -8650,7 +8688,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f150",
+        "id": "f151",
         "tur": "akis_olay",
         "veri": {
           "tip": "rakip_yaklasti",
@@ -8668,7 +8706,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f151",
+        "id": "f152",
         "tur": "derece",
         "veri": {
           "takim": "DEN",
@@ -8691,7 +8729,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f152",
+        "id": "f153",
         "tur": "seri",
         "veri": {
           "takim": "DEN",
@@ -8702,7 +8740,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f153",
+        "id": "f154",
         "tur": "derece",
         "veri": {
           "takim": "HOU",

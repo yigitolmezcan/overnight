@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-27",
-  "uretildi": "2026-08-30T11:31:51.450544Z",
+  "uretildi": "2026-08-30T11:35:25.923236Z",
   "maclar": {
     "0022500432": [
       {
@@ -7908,6 +7908,25 @@
         "id": "f128",
         "tur": "akis_olay",
         "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 155.0,
+          "zaman": "1Ç",
+          "saat": "2:35",
+          "ev_skor": 20,
+          "dep_skor": 21,
+          "fark": -1,
+          "takim": "NYK",
+          "kesin": false,
+          "oyuncu": "OG Anunoby"
+        },
+        "kaynak": "PlayByPlayV3:0022500435:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f129",
+        "tur": "akis_olay",
+        "veri": {
           "tip": "karar_ani",
           "periyot": 4,
           "saniye_kalan": 7.3,
@@ -7923,7 +7942,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f129",
+        "id": "f130",
         "tur": "akis_olay",
         "veri": {
           "tip": "rakip_yaklasti",
@@ -7941,7 +7960,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f130",
+        "id": "f131",
         "tur": "derece",
         "veri": {
           "takim": "ATL",
@@ -7964,7 +7983,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f131",
+        "id": "f132",
         "tur": "seri",
         "veri": {
           "takim": "ATL",
@@ -7975,7 +7994,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f132",
+        "id": "f133",
         "tur": "derece",
         "veri": {
           "takim": "NYK",
@@ -7998,7 +8017,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f133",
+        "id": "f134",
         "tur": "seri",
         "veri": {
           "takim": "NYK",
@@ -10159,6 +10178,25 @@
         "id": "f137",
         "tur": "akis_olay",
         "veri": {
+          "tip": "liderlik",
+          "periyot": 3,
+          "saniye_kalan": 377.0,
+          "zaman": "3Ç",
+          "saat": "6:17",
+          "ev_skor": 76,
+          "dep_skor": 75,
+          "fark": 1,
+          "takim": "MIA",
+          "kesin": false,
+          "oyuncu": "Jaime Jaquez Jr."
+        },
+        "kaynak": "PlayByPlayV3:0022500436:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f138",
+        "tur": "akis_olay",
+        "veri": {
           "tip": "rakip_yaklasti",
           "periyot": 2,
           "saniye_kalan": 720.0,
@@ -10174,7 +10212,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f138",
+        "id": "f139",
         "tur": "akis_olay",
         "veri": {
           "tip": "fark_korundu",
@@ -10191,7 +10229,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f139",
+        "id": "f140",
         "tur": "derece",
         "veri": {
           "takim": "MIA",
@@ -10214,7 +10252,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f140",
+        "id": "f141",
         "tur": "seri",
         "veri": {
           "takim": "MIA",
@@ -10225,7 +10263,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f141",
+        "id": "f142",
         "tur": "derece",
         "veri": {
           "takim": "IND",
@@ -10248,7 +10286,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f142",
+        "id": "f143",
         "tur": "seri",
         "veri": {
           "takim": "IND",
@@ -14060,6 +14098,25 @@
         "id": "f119",
         "tur": "akis_olay",
         "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 611.0,
+          "zaman": "1Ç",
+          "saat": "10:11",
+          "ev_skor": 4,
+          "dep_skor": 3,
+          "fark": 1,
+          "takim": "HOU",
+          "kesin": false,
+          "oyuncu": "Kevin Durant"
+        },
+        "kaynak": "PlayByPlayV3:0022500438:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f120",
+        "tur": "akis_olay",
+        "veri": {
           "tip": "rakip_yaklasti",
           "periyot": 2,
           "saniye_kalan": 496.0,
@@ -14075,7 +14132,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f120",
+        "id": "f121",
         "tur": "akis_olay",
         "veri": {
           "tip": "fark_korundu",
@@ -14092,7 +14149,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f121",
+        "id": "f122",
         "tur": "derece",
         "veri": {
           "takim": "HOU",
@@ -14115,7 +14172,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f122",
+        "id": "f123",
         "tur": "seri",
         "veri": {
           "takim": "HOU",
@@ -14126,7 +14183,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f123",
+        "id": "f124",
         "tur": "derece",
         "veri": {
           "takim": "CLE",
@@ -14149,7 +14206,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f124",
+        "id": "f125",
         "tur": "seri",
         "veri": {
           "takim": "CLE",
@@ -18135,6 +18192,25 @@
         "id": "f121",
         "tur": "akis_olay",
         "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 422.0,
+          "zaman": "1Ç",
+          "saat": "7:02",
+          "ev_skor": 13,
+          "dep_skor": 15,
+          "fark": -2,
+          "takim": "UTA",
+          "kesin": false,
+          "oyuncu": "Jusuf Nurkić"
+        },
+        "kaynak": "PlayByPlayV3:0022500440:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f122",
+        "tur": "akis_olay",
+        "veri": {
           "tip": "rakip_yaklasti",
           "periyot": 4,
           "saniye_kalan": 453.0,
@@ -18150,7 +18226,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f122",
+        "id": "f123",
         "tur": "derece",
         "veri": {
           "takim": "SAS",
@@ -18173,7 +18249,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f123",
+        "id": "f124",
         "tur": "derece",
         "veri": {
           "takim": "UTA",
@@ -18196,7 +18272,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f124",
+        "id": "f125",
         "tur": "seri",
         "veri": {
           "takim": "UTA",

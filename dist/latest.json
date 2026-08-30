@@ -1512,41 +1512,7 @@
       "rozet": 8.04,
       "baslik": "Utah Jazz, San Antonio deplasmanında 127-114 kazandı.",
       "neden_onemli": "",
-      "akis": [
-        {
-          "tip": "en_buyuk_fark",
-          "kalip": "fark_cikti",
-          "yuva": "kaybedenin_farki",
-          "sekil": "geri_donus",
-          "zaman": "1Ç",
-          "saat": "3:55",
-          "cumle": "Fark 11'e çıktı",
-          "detay": "San Antonio önde",
-          "kritik": false
-        },
-        {
-          "tip": "ceyrek_ustunlugu",
-          "kalip": "ust_aldi",
-          "yuva": "donusun_basi",
-          "sekil": "geri_donus",
-          "zaman": "Devre",
-          "saat": null,
-          "cumle": "Utah çeyreği 38-20 aldı",
-          "detay": "fark 10'a çıktı",
-          "kritik": false
-        },
-        {
-          "tip": "en_etkili",
-          "kalip": "etkili_duz",
-          "yuva": "sonuc",
-          "sekil": "geri_donus",
-          "zaman": "Son",
-          "saat": null,
-          "cumle": "Victor Wembanyama 32 sayı, 7 ribaund, 3 asist",
-          "detay": "maçın en etkilisi",
-          "kritik": true
-        }
-      ],
+      "akis": [],
       "box": {
         "ev": {
           "takim": "San Antonio Spurs",
@@ -2219,13 +2185,13 @@
         },
         {
           "tip": "en_etkili",
-          "kalip": "etkili_oncikti",
+          "kalip": "etkili_duz",
           "yuva": "en_etkili",
           "sekil": "kopma",
           "zaman": "Son",
           "saat": null,
-          "cumle": "Cam Thomas 30 sayı, 3 ribaund, 4 asist ile öne çıktı",
-          "detay": null,
+          "cumle": "Cam Thomas 30 sayı, 3 ribaund, 4 asist",
+          "detay": "maçın en etkilisi",
           "kritik": false
         }
       ],
