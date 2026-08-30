@@ -5729,8 +5729,8 @@ def main():
                     _karar_var += 1
                     if not _re.match(
                             r"^\S.* (bitime \d+ saniye kala|son saniyede) "
-                            r"(üçlük attı|basket attı|serbest atışını attı|"
-                            r"serbest atışları \d+/\d+ attı)\.$",
+                            r"(üçlük attı|sayıyı buldu|"
+                            r"serbest atışları (\d+)/\3 attı)\.$",
                             _k5.get("cumle", "")):
                         _karar_bozuk.append(f"{_ad5}: {_k5.get('cumle')}")
                     if "maçı bitirdi" not in (_k5.get("detay") or ""):
@@ -5773,10 +5773,27 @@ def main():
     basar("Karar: yalnız liderliği değiştiren atış",
           "_belirleyici = _once_f <= 0 < _sonra_f" in _gsrc
           and 'karar.get("belirleyici")' in _dsrc3)
-    basar("Karar: serbest atış isabet oranıyla yazılıyor",
-          "serbest atışları {isabet}/{deneme} attı" in _dsrc3
-          and "serbest atışını attı" in _dsrc3
+    basar("Karar: tek serbest atış karar anı sayılmıyor",
+          "deneme < 2 or isabet != deneme" in _dsrc3
+          and "serbest atışını attı" not in _dsrc3
           and '"serbest atış attı"' not in _dsrc3)
+    # KENDİ YORUMUM TESTİME TAKILMASIN: yalnız gerçek koda bak.
+    _dsrc_kod = "\n".join(l for l in _dsrc3.split("\n")
+                          if not l.lstrip().startswith("#"))
+    basar("Karar: 'basket attı' yerine 'sayıyı buldu'",
+          'sut = "sayıyı buldu"' in _dsrc_kod and '"basket attı"' not in _dsrc_kod)
+    # Üretilen cümlelerde yasak biçim kalmasın.
+    _kotu_karar = []
+    for _t7 in _geceler:
+        if not _os.path.exists(f"dist/{_t7}.json"):
+            continue
+        _x7 = _jj.loads(open(f"dist/{_t7}.json", encoding="utf-8").read())
+        for _b7 in (_x7.get("mutlaka") or []) + (_x7.get("degerse_bak") or []):
+            _c7 = ((_b7.get("karar") or {}).get("cumle") or "")
+            if "serbest atışını" in _c7 or "basket attı" in _c7 or "1/1" in _c7:
+                _kotu_karar.append(f"{_t7}: {_c7}")
+    basar("Karar: yayında tek serbest atış / 'basket attı' cümlesi yok",
+          not _kotu_karar, "; ".join(_kotu_karar[:4]))
     # Üretilen her karar cümlesinde şut türü skor değişimiyle uyumlu.
     _uyusmaz = []
     for _t6 in _geceler:

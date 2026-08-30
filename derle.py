@@ -1290,16 +1290,21 @@ def _karar_cumlesi(gercekler):
     sure = "son saniyede" if n <= 0 else f"bitime {n} saniye kala"
     ad = _soyad(karar["oyuncu"])
     if karar["sut_turu"] == "serbest atış":
-        # İSABET ORANIYLA: kaç sayı geldiği cümleden anlaşılsın, okuyucu
-        # skor tutarlılığını kendisi doğrulayabilsin.
+        # TEK SERBEST ATIŞ KARAR ANI DEĞİL (kullanıcı kararı): öyle
+        # biten maç dramatik değil, tablo tek başına kalsın. Yalnız iki
+        # atışın ikisi de girdiyse cümle çıkıyor, isabet oranıyla.
+        # Ayrıca Türkçede serbest atış "atılmaz", "kullanılır" — bu
+        # yüzden tek atış için bir kalıp aranmıyor.
         isabet, deneme = karar.get("sa_isabet"), karar.get("sa_deneme")
-        if not deneme:
+        if not deneme or deneme < 2 or isabet != deneme:
             return None
-        # Tek atışta oran yazmak tuhaf ("1/1"); orada sayı zaten belli.
-        sut = ("serbest atışını attı" if deneme == 1
-               else f"serbest atışları {isabet}/{deneme} attı")
+        sut = f"serbest atışları {isabet}/{deneme} attı"
+    elif karar["sut_turu"] == "üçlük":
+        sut = "üçlük attı"
     else:
-        sut = f"{karar['sut_turu']} attı"
+        # "basket attı" kuru duruyordu; "sayıyı buldu" hem doğru hem
+        # doğal. Kaç sayı geldiği alt satırdaki skordan görünüyor.
+        sut = "sayıyı buldu"
     return {
         "cumle": f"{ad} {sure} {sut}.",
         "detay": f"{karar['ev_skor']}–{karar['dep_skor']} · maçı bitirdi",
