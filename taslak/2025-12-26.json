@@ -1,0 +1,149 @@
+{
+  "tarih": "2025-12-26",
+  "uretildi": "2026-08-30T02:09:51.560798Z",
+  "maclar": {
+    "0022500429": {
+      "gec_satiri": "Phoenix Suns deplasmanda New Orleans Pelicans'ı 115-108 yendi. Devin Booker 30 sayı attı.",
+      "muzip": false
+    },
+    "0022500431": {
+      "gec_satiri": "LA Clippers deplasmanda Portland Trail Blazers'i 119-103 yendi. James Harden 34 sayı attı.",
+      "muzip": false
+    },
+    "0022500427": {
+      "gec_satiri": "Chicago Bulls evinde Philadelphia 76ers'i 109-102 yendi.",
+      "muzip": false
+    },
+    "0022500423": {
+      "gec_satiri": "Miami Heat deplasmanda Atlanta Hawks'ı 126-111 yendi.",
+      "muzip": false
+    },
+    "0022500425": {
+      "gec_satiri": "Washington Wizards evinde Toronto Raptors'u 138-117 ezdi.",
+      "muzip": false
+    },
+    "0022500426": {
+      "gec_satiri": "Boston Celtics deplasmanda Indiana Pacers'i 140-122 yendi. Jaylen Brown 30 sayı attı.",
+      "muzip": false
+    },
+    "0022500428": {
+      "gec_satiri": "Memphis Grizzlies evinde Milwaukee Bucks'u 125-104 yendi.",
+      "muzip": false
+    },
+    "0022500424": {
+      "gec_satiri": "Charlotte Hornets deplasmanda Orlando Magic'i 120-105 yendi.",
+      "muzip": false
+    },
+    "0022500430": {
+      "baslik": "Utah, George'un son saniye basketiyle Detroit'i 131-129 yendi",
+      "neden_onemli": "Doğu Konferansı lideri Detroit'e karşı alınan kritik bir galibiyet.",
+      "ozet": "Detroit ilk çeyreği 36-33 önde tamamladı, ancak Utah üçüncü periyotta farkı 11 sayıya çıkardı. Detroit son çeyrekte hızla toparlanarak skoru 129-129'a getirdi ve maçı son saniyelere taşıdı. Bitime son saniyeler kala Utah'lı Keyonte George'un yumuşak dokunuşla bıraktığı şutü kararı belirledi. George 31 sayı 8 asistle oynarken, Markkanen 10 serbest atışının tamamını basketle buluşturarak 30 sayı attı.",
+      "muzip": false
+    }
+  },
+  "brief": [
+    {
+      "metin": "Sürpriz bir sonuçla Utah Jazz, Detroit Pistons'u yendi.",
+      "hedef_mac": "0022500430",
+      "muzip": false,
+      "kind": "surpriz"
+    },
+    {
+      "metin": "Phoenix Suns, New Orleans Pelicans'ı yendi.",
+      "hedef_mac": "0022500429",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "James Harden, Portland Trail Blazers karşısında 34 sayı attı.",
+      "hedef_mac": "0022500431",
+      "muzip": false,
+      "kind": "performans"
+    },
+    {
+      "metin": "Chicago Bulls, Philadelphia 76ers'i yenerek 5 maçlık galibiyet serisini sürdürdü.",
+      "hedef_mac": "0022500427",
+      "muzip": false,
+      "kind": "seri"
+    },
+    {
+      "metin": "Miami Heat, Atlanta Hawks'ı yendi.",
+      "hedef_mac": "0022500423",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Washington Wizards, Toronto Raptors'u evinde yendi.",
+      "hedef_mac": "0022500425",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Boston Celtics, 15 sayılık farktan dönüp Indiana Pacers'i geçti.",
+      "hedef_mac": "0022500426",
+      "muzip": false,
+      "kind": "geri_donus"
+    },
+    {
+      "metin": "Memphis Grizzlies, Milwaukee Bucks'u evinde yendi.",
+      "hedef_mac": "0022500428",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 3,
+    "ilk_denemede_kabul": 0,
+    "sablon_moduna_dusen": 0,
+    "detay": [
+      {
+        "mac_id": "0022500430",
+        "deneme": 0,
+        "gerekce": [
+          "baslik/T22: [\"'2 sayı farkla' — 2 sayılık fark 20'nin altında, skor zaten kartta yazılı, rakamla anılmaz\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Utah, Detroit'i son saniyede George'un basketiyle 2 sayı farkla geçti",
+          "neden_onemli": "Doğu Konferansı lideri Detroit, sezonun en zayıf takımlarından birine düştü",
+          "ozet": "Detroit, ilk çeyreği önde kapadı ve maç genelinde 11 sayıya kadar açıldı. Utah, üçüncü çeyrekte 44 sayı atarak farkı tersine çevirdi ve inisiyatifi ele geçirdi. Son çeyrekte taraflar art arda basket üretti, Cunningham serbest atışlarla skoru eşitledi ama bitime 2 saniye kala Keyonte George'un bulduğu basketle Utah maçı kazandı. George 31 sayı 8 asistle öne çıkarken Markkanen 10/10 serbest atışla 30 sayı attı.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500430",
+        "deneme": 1,
+        "gerekce": [
+          "ozet/T4d: [\"'farkı 11 sayıya kadar açarak' (farkı açmak — 'farkı yükseltti/çıkardı' kullanılmalı)\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Utah, son saniye basketiyle deplasmandaki Detroit'i devirdi",
+          "neden_onemli": "Doğu'nun lig lideri Detroit, dört maçlık mağlubiyet serisini bitiren Utah'a kaybetti.",
+          "ozet": "Detroit, ilk yarıda farkı 11 sayıya kadar açarak maça iyi başladı. Utah, üçüncü çeyrekte 44 sayı atarak farkı tersine çevirdi ve öne geçti. Son çeyrekte Cunningham'ın serbest atışlarıyla 129-129'a gelen skoru, George'un bitime iki saniye kala attığı basket belirledi. Utah'da en çok sayıyı atan George 31 sayı 8 asistle oynarken, Nurkić 16 sayı 11 ribaundla double-double yaptı.",
+          "muzip": false
+        }
+      }
+    ],
+    "sablon_isaretli": [
+      {
+        "mac_id": "0022500427",
+        "alan": "brief",
+        "gerekce": [
+          "T13: [\"seri türü ters: 'Chicago Bulls, Philadelphia 76ers'i yenerek 5 maçlık galibiyet serisini sürdürdü' (PHI aslında mağlubiyet serisinde)\"]"
+        ],
+        "metin": "Chicago Bulls, Philadelphia 76ers'i yenerek 5 maçlık galibiyet serisini sürdürdü."
+      }
+    ],
+    "mutlaka_mac": 1,
+    "ret_orani": 1.0,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 3,
+      "girdi_token": 10401,
+      "cikti_token": 12564,
+      "cache_yazma_token": 30992,
+      "cache_okuma_token": 15496,
+      "toplam_maliyet_usd": 0.227,
+      "butce_asildi": false
+    }
+  }
+}
