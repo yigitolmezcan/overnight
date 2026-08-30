@@ -79,9 +79,21 @@
       "neden_onemli": "",
       "akis": [
         {
+          "tip": "sayi_serisi",
+          "kalip": "seri_gitti",
+          "yuva": "1Ç",
+          "sekil": "kapsama",
+          "katman": 1,
+          "zaman": "1Ç",
+          "saat": "6:26",
+          "cumle": "Denver 12-0 gitti",
+          "detay": "fark 2",
+          "kritik": false
+        },
+        {
           "tip": "en_buyuk_fark",
           "kalip": "fark_cikardi",
-          "yuva": "ilk_yari",
+          "yuva": "2Ç",
           "sekil": "kapsama",
           "katman": 1,
           "zaman": "2Ç",
@@ -93,36 +105,36 @@
         {
           "tip": "liderlik",
           "kalip": "lider_ile",
-          "yuva": "ucuncu",
+          "yuva": "3Ç",
           "sekil": "kapsama",
           "katman": 1,
           "zaman": "3Ç",
           "saat": "2:58",
-          "cumle": "Golden State, Al Horford ile öne geçti",
-          "detay": "87–85",
+          "cumle": "Golden State, Al Horford ile öne geçti, çeyrek 33-24 Golden State'in oldu",
+          "detay": "skor eşitlendi",
           "kritik": false
         },
         {
-          "tip": "en_etkili",
-          "kalip": "etkili_duz",
-          "yuva": "son_ceyrek",
+          "tip": "sayi_serisi",
+          "kalip": "seri_arka",
+          "yuva": "4Ç",
           "sekil": "kapsama",
-          "katman": 3,
-          "zaman": "Son",
-          "saat": null,
-          "cumle": "Stephen Curry 42 sayı, 6 ribaund, 7 asist",
+          "katman": 1,
+          "zaman": "4Ç",
+          "saat": "7:22",
+          "cumle": "Denver arka arkaya 10 sayı buldu, Stephen Curry 42 sayı, 6 ribaund, 7 asist",
           "detay": "maçın en etkilisi",
           "kritik": false
         },
         {
           "tip": "liderlik",
           "kalip": "lider_takim_basket",
-          "yuva": "karar",
+          "yuva": "UZ",
           "sekil": "kapsama",
           "katman": 1,
-          "zaman": "U1",
-          "saat": "2:58",
-          "cumle": "Al Horford'un basketiyle Golden State öne geçti",
+          "zaman": "UZ",
+          "saat": "3:13",
+          "cumle": "Nikola Jokić'in basketiyle Denver öne geçti, Golden State skoru Al Horford ile çevirdi",
           "detay": "126–125 · liderlik bir daha değişmedi",
           "kritik": true
         }
@@ -3309,7 +3321,7 @@
       "mac": "Indiana Pacers — Oklahoma City Thunder",
       "skor": "135–141",
       "rozet": 9.29,
-      "why": "bireysel performans: 50_sayi eşiğini geçen Shai Gilgeous-Alexander",
+      "why": "uzatma",
       "metin": "Shai Gilgeous-Alexander'in 55 sayılık gecesinde Oklahoma City, Indiana'yı yendi. Oklahoma City Thunder, maçı uzatmada kazandı.",
       "box": {
         "ev": {
@@ -3982,25 +3994,25 @@
       "akis": [
         {
           "tip": "sayi_serisi",
-          "kalip": "seri_gitti",
-          "yuva": "ilk_yari",
+          "kalip": "seri_yapti",
+          "yuva": "2Ç",
           "sekil": "kapsama",
           "katman": 1,
           "zaman": "2Ç",
           "saat": "6:38",
-          "cumle": "Oklahoma City 10-0 gitti",
+          "cumle": "Oklahoma City seriyi 10-0 yaptı",
           "detay": "fark 6",
           "kritik": false
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_takim_cevirdi",
-          "yuva": "karar",
+          "kalip": "lider_ile",
+          "yuva": "UZ2",
           "sekil": "kapsama",
           "katman": 1,
-          "zaman": "U2",
-          "saat": "3:13",
-          "cumle": "Oklahoma City skoru Aaron Wiggins ile çevirdi",
+          "zaman": "UZ2",
+          "saat": "3:32",
+          "cumle": "Indiana, Obi Toppin ile öne geçti, Aaron Wiggins'in basketiyle Oklahoma City öne geçti",
           "detay": "128–130 · liderlik bir daha değişmedi",
           "kritik": true
         }

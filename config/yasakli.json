@@ -194,6 +194,18 @@
     {
       "aciklama": "'galibiyeti aldı' — cümle sonu dolgusu, kim kimi yendi zaten yazılı",
       "desen": "galibiyet[ıi]?\\s*(\\w+\\s+){0,2}al[dt]\\w*"
+    },
+    {
+      "aciklama": "önü almak/çıkarmak/kapmak — Türkçede 'öne geçmek' kullanılır; 'önü almak' başka anlama gelir",
+      "desen": "ön[üu](\\s+\\S+){0,3}\\s+(al|çıkar|kap|ele)\\w*"
+    },
+    {
+      "aciklama": "önü ele geçirmek — uydurma",
+      "desen": "ön[üu]\\s+ele\\s+geçir\\w*"
+    },
+    {
+      "aciklama": "liderliği devralmak — uydurma; 'öne geçti' kullanılmalı",
+      "desen": "liderli[ğg]i\\s+devral\\w*"
     }
   ]
 }

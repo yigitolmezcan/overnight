@@ -833,14 +833,13 @@ def akis_kaliplari(olay, ad_fn=None):
         yon = "çıktı" if onde else "indi"
         detay = f"fark {fark}'{dogrula_sayi_eki(fark)} {yon}" if fark else "skor eşitlendi"
         k.append(("ust_aldi", f"{takim} çeyreği {n}-{rakip} aldı", detay))
-        k.append(("ust_ustun", f"{takim} o çeyrekte {n}-{rakip} üstün geldi", detay))
+        k.append(("ust_ustun", f"{takim} çeyreği {n}-{rakip} önde bitirdi", detay))
         k.append(("ust_oldu", f"Çeyrek {n}-{rakip} {takim}'{iyelik_eki(takim)} oldu", detay))
     elif t == "en_buyuk_fark":
         k.append(("fark_cikardi",
                   f"{takim} farkı {n}'{dogrula_sayi_eki(n)} çıkardı", "en büyük fark"))
         k.append(("fark_cikti",
                   f"{takim} farkı {n} sayıya taşıdı", "en büyük fark"))
-        k.append(("fark_onu", f"{takim} önü {n} sayıya çıkardı", "en büyük fark"))
     elif t == "sayi_serisi":
         k.append(("seri_gitti", f"{takim} {n}-0 gitti", f"fark {fark}"))
         k.append(("seri_arka", f"{takim} arka arkaya {n} sayı buldu", f"fark {fark}"))
@@ -848,6 +847,7 @@ def akis_kaliplari(olay, ad_fn=None):
         # kurulunca "Boston'undan" gibi bozuk bir biçim çıkıyordu.
         # Ekten kaçınan bir kalıp seçildi.
         k.append(("seri_yapti", f"{takim} seriyi {n}-0 yaptı", f"fark {fark}"))
+        k.append(("seri_cevapsiz", f"{takim} cevapsız {n} sayı buldu", f"fark {fark}"))
     elif t == "esitlik":
         if takim:
             k.append(("esit_esitledi", f"{takim} skoru eşitledi", skor))
@@ -861,8 +861,6 @@ def akis_kaliplari(olay, ad_fn=None):
         detay = (f"{skor} · liderlik bir daha değişmedi"
                  if olay.get("kesin", True) else skor)
         if oyuncu:
-            k.append(("lider_basket",
-                      f"{oyuncu}'{iyelik_eki(oyuncu)} basketiyle öne geçti", detay))
             k.append(("lider_cevirdi", f"{oyuncu} skoru çevirdi", detay))
             # DÖRDÜNCÜ KALIP. "Liderlik" artık her şekilde kritik yuvayı
             # dolduruyor; üç kalıp x iki limit = altı kapasite yoğun
@@ -879,8 +877,6 @@ def akis_kaliplari(olay, ad_fn=None):
                           detay))
                 k.append(("lider_takim_cevirdi",
                           f"{takim} skoru {oyuncu} ile çevirdi", detay))
-                k.append(("lider_takim_onu",
-                          f"{takim} önü {oyuncu} ile aldı", detay))
         elif takim:
             k.append(("lider_takim", f"{takim} öne geçti", detay))
     elif t == "karar_ani":
@@ -898,9 +894,6 @@ def akis_kaliplari(olay, ad_fn=None):
                 k.append(("karar_takim_basket",
                           f"{oyuncu}'{iyelik_eki(oyuncu)} basketiyle {takim} kazandı",
                           skor))
-                k.append(("karar_takim_sonsoz",
-                          f"Son sözü {takim} adına {oyuncu} söyledi",
-                          f"{skor} · maçı bitirdi"))
         elif takim:
             k.append(("karar_takim", f"{takim} son sayıyı buldu",
                       f"{skor} · maçı bitirdi"))
@@ -919,11 +912,14 @@ def akis_kaliplari(olay, ad_fn=None):
         k.append(("yildiz_ceyrek", f"{_ce} {oyuncu} {n} sayı attı", None))
         k.append(("yildiz_buldu", f"{oyuncu} o çeyrekte {n} sayı buldu", None))
         if takim:
-            k.append(("yildiz_takim",
-                      f"{takim}'{iyelik_eki(takim)} çeyreğini {oyuncu} taşıdı",
-                      f"{n} sayı"))
+            # DEĞİŞMEZ 1 takım taşıyan kalıp istiyor; tek tane olunca
+            # gece boyunca aynı cümle tekrarlanıyordu (ölçüldü: 4 kez).
             k.append(("yildiz_takim_sayi",
                       f"{takim} adına {oyuncu} o çeyrekte {n} sayı attı", None))
+            k.append(("yildiz_icin",
+                      f"{oyuncu} o çeyrekte {takim} için {n} sayı attı", None))
+            k.append(("yildiz_takim_buldu",
+                      f"{takim} o çeyrekte {n} sayıyı {oyuncu} ile buldu", None))
     elif t == "skor_durumu":
         # KAPSAMA katmanı 3 — SON ÇARE. Blokta en fazla iki kez.
         _ce = {2: "Devrede", 3: "Üçüncü çeyrek sonunda", 4: "Son çeyrekte"}.get(
@@ -934,7 +930,6 @@ def akis_kaliplari(olay, ad_fn=None):
         else:
             k.append(("durum_onde", f"{_ce} {takim} {n} sayı öndeydi", skor))
             k.append(("durum_farkla", f"{_ce} fark {n}, üstünlük {takim}", skor))
-            k.append(("durum_tasiyor", f"{_ce} {takim} {n} sayılık üstünlükteydi", skor))
     elif t == "rakip_yaklasti":
         # DURUM SATIRI, EYLEM DEĞİL (kullanıcı kararı). Geride kalan
         # takım farkı "indirmiyor" — öndeki taraf farkı eritiyor, o
@@ -943,18 +938,16 @@ def akis_kaliplari(olay, ad_fn=None):
         # Orlando'ydu). Cümle artık o anın DURUMUNU söylüyor.
         k.append(("yaklasti_geride", f"{takim} {n} sayı geride", skor))
         k.append(("yaklasti_kaldi", f"{takim} {n} sayı geride kaldı", skor))
-        k.append(("yaklasti_acik", f"{takim}'{iyelik_eki(takim)} açığı {n} sayı", skor))
-        k.append(("yaklasti_fark", f"Fark {takim} aleyhine {n} sayı", skor))
     elif t == "fark_korundu":
         # DEĞİŞMEZ 1: satır kimin önde olduğunu söylemeli. Takım taşıyan
         # biçim önce geliyor; takımsız biçimler yedek.
         if takim:
             k.append(("korundu_takim",
                       f"{takim} farkı {n}'{dogrula_sayi_eki(n, 'iyelik')} altına düşürmedi", skor))
+        k.append(("korundu_kapanmadi",
+                  f"Aradaki fark bir daha kapanmadı", skor))
         k.append(("korundu_altina",
                   f"Fark bir daha {n}'{dogrula_sayi_eki(n, 'iyelik')} altına inmedi", None))
-        k.append(("korundu_inilmedi",
-                  f"{n} sayının altına bir daha inilmedi", None))
     elif t == "en_etkili":
         parca = [f"{olay.get('sayi')} sayı"]
         if olay.get("ribaund"):

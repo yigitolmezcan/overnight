@@ -5028,8 +5028,9 @@ def main():
         _dd = _jj.loads(open(f"dist/{_t}.json", encoding="utf-8").read())
         _bloklar = (_dd.get("mutlaka") or []) + (_dd.get("degerse_bak") or [])
         _akisli = [m for m in _bloklar if m.get("akis")]
-        basar(f"Akış[{_t}]: blok başına en fazla 4 satır",
-              all(len(m["akis"]) <= 4 for m in _akisli))
+        basar(f"Akış[{_t}]: blok 4 satır, uzatmada daha fazla",
+              all(len(m["akis"]) in (2, 4) or len(m["akis"]) >= 5
+                  for m in _akisli))
         basar(f"Akış[{_t}]: en az 3 satır",
               all(len(m["akis"]) >= 3 for m in _akisli))
         # EMEKLİ İKİ KURAL: "aynı çeyrekten tek satır" ve "en az bir ilk
@@ -5102,30 +5103,43 @@ def main():
         # "Göz at" iki satır: biri ilk yarıdan, biri karardan.
         _gz = [m for m in (_dd.get("degerse_bak") or []) if m.get("akis")]
         _gz_kotu = [m.get("mac") for m in _gz
-                    if not (any((r.get("zaman") or "") in ("1Ç", "2Ç", "Devre")
-                                for r in m["akis"])
-                            and any(r.get("kritik") for r in m["akis"]))]
+                    if len(m["akis"]) != 2
+                    or not (m["akis"][0].get("zaman") in ("1Ç", "2Ç", "Devre")
+                            and m["akis"][-1].get("kritik"))]
         basar(f"Akış[{_t}]: Göz at maçı kuşatıyor (ilk yarı + karar)",
               not _gz_kotu, f"kuşatmayan: {_gz_kotu}")
-        # KAPSAMA: dört satırlı blok DÖRT EVREYİ de anlatmalı — ilk
-        # yarıdan en az bir, üçüncü çeyrekten en az bir, son çeyrekten
-        # en az iki (biri karar anı).
-        _kapsam = []
+        # SABİT YAPI (kullanıcı kararı): ÇEYREK BAŞINA TAM BİR SATIR —
+        # 1Ç, 2Ç, 3Ç, 4Ç (+ uzatma varsa UZ/UZ1, UZ2…). Hiçbir çeyrek
+        # atlanamaz, hiçbir çeyrekten iki SATIR çıkamaz. "İlk yarı /
+        # 3Ç / son çeyrek / karar anı" evre modeli emekli.
+        _yapi = []
         for _m in _akisli:
             if len(_m["akis"]) < 4:
-                continue
-            _e = {"ilk": 0, "uc": 0, "son": 0}
-            for _r in _m["akis"]:
-                _z = _r.get("zaman") or ""
-                _e["ilk" if _z in ("1Ç", "2Ç", "Devre")
-                   else "uc" if _z == "3Ç" else "son"] += 1
-            if _e["ilk"] == 0 or _e["uc"] == 0 or _e["son"] < 2:
-                _kapsam.append((_m["mac"], _e))
-        basar(f"Akış[{_t}]: dört evre de kapsanıyor", not _kapsam, f"eksik: {_kapsam}")
-        # Kritik satır KARAR ANI'dır: bloğun son satırı.
+                continue                    # "Göz at" iki satır, ayrı test
+            _et = [_r.get("zaman") for _r in _m["akis"]]
+            _bek = ["1Ç", "2Ç", "3Ç", "4Ç"]
+            _uz = len(_et) - 4
+            if _uz == 1:
+                _bek.append("UZ")
+            elif _uz > 1:
+                _bek += [f"UZ{_i}" for _i in range(1, _uz + 1)]
+            if _et != _bek:
+                _yapi.append((_m["mac"], _et))
+        basar(f"Akış[{_t}]: çeyrek başına tam bir satır", not _yapi,
+              f"yapı bozuk: {_yapi}")
+        # Kritik satırda KARAR ANI geçmeli.
+        _kr2 = [_m["mac"] for _m in _akisli
+                if not any(_r.get("kritik") for _r in _m["akis"])]
+        basar(f"Akış[{_t}]: her blokta kritik satır var", not _kr2, f"{_kr2}")
+        # Satır başına en fazla iki olay (bir virgülle bağlı ikinci cümle).
+        _cok = [_m["mac"] for _m in _akisli
+                for _r in _m["akis"] if _r["cumle"].count(",") > 3]
+        basar(f"Akış[{_t}]: satırda en fazla iki olay", not _cok, f"{_cok}")
+        # Kritik işaret, maçın karara bağlandığı ÇEYREĞİN satırında.
+        # Normal maçta 4Ç, uzatmalıda UZ — yani bloğun son satırı.
         _kr = [_m["mac"] for _m in _akisli
                if not _m["akis"][-1].get("kritik")]
-        basar(f"Akış[{_t}]: kritik satır bloğun sonundaki karar anı",
+        basar(f"Akış[{_t}]: kritik işaret kararın bağlandığı çeyrekte",
               not _kr, f"kritiği sonda olmayan: {_kr}")
         # ÇEŞİTLİLİK TAVANI: blokta en fazla iki skor durumu satırı.
         _skor_cok = [m["mac"] for m in _akisli
@@ -5172,9 +5186,72 @@ def main():
     # EMEKLİ: "yuvalar zaman penceresiyle doluyor" — şekil modeliyle
     # birlikte kalktı. Kronolojiyi artık evre sırası ve blok sonundaki
     # sıralama sağlıyor.
-    basar("Akış: kapsama modeli dört evreyi tanımlıyor",
-          len(_derle.AKIS_EVRELERI) == 3 and "karar" in _dsrc3
+    basar("Akış: sabit yapı — çeyrek başına bir satır",
+          "AKIS_EVRELERI" not in _dsrc3
+          and "def _ceyrek_etiketi" in _dsrc3
+          and _derle.AKIS_SATIR_OLAY_TAVANI == 2
           and _derle.AKIS_SKOR_TAVANI == 2)
+    basar("Akış: uzatma etiketleri UZ / UZ1, UZ2",
+          '"UZ" if _son_periyot == 5' in _dsrc3)
+    # ------------------------------------------------------------------
+    # AKIŞ KALIPLARI YASAKLI KAPISINDAN GEÇİYOR
+    # ------------------------------------------------------------------
+    # Boşluk kapatıldı: akış satırları LLM'e uğramadığı için yasaklı
+    # sözcük denetimine de girmiyorlardı. "Atlanta önü Alexander-Walker
+    # ile aldı" böyle yayına çıkmıştı — Türkçede öyle bir kullanım yok.
+    _yasak = _jj.loads(open("config/yasakli.json", encoding="utf-8").read())
+    _kokler = _yasak.get("kok_kaliplari", [])
+    _kelimeler = [w for w in yasakli_yukle() if len(w) > 3]
+    _K2 = lambda x: cumle.TAKIM_KISA.get(x, x)
+    _ORNEK = {
+        "ceyrek_sonu": {"ev_skor": 36, "dep_skor": 33, "fark": 3, "takim": "UTA",
+                        "periyot": 1, "sayi": 3},
+        "ceyrek_ustunlugu": {"ev_skor": 90, "dep_skor": 82, "fark": 8, "takim": "MIA",
+                             "periyot": 3, "sayi": 31, "rakip_sayi": 19, "ev_kod": "MIA"},
+        "devre_farki": {"ev_skor": 60, "dep_skor": 48, "fark": 12, "takim": "MIA",
+                        "periyot": 2, "sayi": 12},
+        "en_buyuk_fark": {"ev_skor": 90, "dep_skor": 73, "fark": 17, "takim": "MIA",
+                          "periyot": 3, "sayi": 17},
+        "esitlik": {"ev_skor": 101, "dep_skor": 101, "fark": 0, "takim": "ATL",
+                    "periyot": 4, "sayi": 0},
+        "fark_korundu": {"ev_skor": 110, "dep_skor": 95, "fark": 15, "takim": "MIA",
+                         "periyot": 4, "sayi": 10},
+        "karar_ani": {"ev_skor": 131, "dep_skor": 129, "fark": 2, "takim": "UTA",
+                      "oyuncu": "Keyonte George", "periyot": 4},
+        "kopus": {"ev_skor": 100, "dep_skor": 85, "fark": 15, "takim": "MIA",
+                  "periyot": 3, "sayi": 10},
+        "liderlik": {"ev_skor": 85, "dep_skor": 84, "fark": 1, "takim": "MIA",
+                     "oyuncu": "Pelle Larsson", "periyot": 4},
+        "rakip_yaklasti": {"ev_skor": 105, "dep_skor": 104, "fark": 1, "takim": "DEN",
+                           "periyot": 4, "sayi": 1},
+        "sayi_serisi": {"ev_skor": 68, "dep_skor": 44, "fark": 24, "takim": "MIA",
+                        "periyot": 2, "sayi": 12},
+        "ceyrek_yildizi": {"ev_skor": 90, "dep_skor": 82, "fark": 8, "takim": "DET",
+                           "oyuncu": "Cade Cunningham", "periyot": 3, "sayi": 14},
+        "skor_durumu": {"ev_skor": 60, "dep_skor": 53, "fark": 7, "takim": "UTA",
+                        "periyot": 2, "sayi": 7},
+        "en_etkili": {"ev_skor": 120, "dep_skor": 110, "fark": 10, "oyuncu": "Jaylen Brown",
+                      "sayi": 31, "ribaund": 9, "asist": 4, "periyot": 4},
+    }
+    _kirli, _tum_kalip = [], 0
+    for _tp, _ov in _ORNEK.items():
+        _ov = dict(_ov); _ov["tip"] = _tp
+        for _kid, _c, _dt in cumle.akis_kaliplari(_ov, _K2):
+            _tum_kalip += 1
+            _dus = _c.lower()
+            for _kk in _kokler:
+                if _re.search(_kk["desen"], _dus):
+                    _kirli.append(f"{_kid}: {_c} ← {_kk['aciklama'][:40]}")
+            for _w in _kelimeler:
+                if _re.search(r"\b" + _re.escape(_w.lower()), _dus):
+                    _kirli.append(f"{_kid}: {_c} ← yasaklı '{_w}'")
+    basar("Akış kalıpları yasaklı kapısından geçiyor",
+          not _kirli, "; ".join(_kirli[:4]))
+    basar("Akış kalıp kütüphanesi boş değil", _tum_kalip >= 30)
+    basar("Yasaklı: 'önü al-', 'liderliği devral-' listede",
+          any(_re.search(_k["desen"], "atlanta önü nickeil alexander-walker ile aldı") for _k in _kokler)
+          and any(_re.search(_k["desen"], "boston liderliği devraldı") for _k in _kokler))
+
     basar("Akış: eski kritik-an yeniden ataması emekli",
           'KRİTİK AN, "SON OLAY" DEĞİL' not in _dsrc3)
     basar("Ek uyumu okunuşa göre: Brooklyn'in (Brooklyn'un değil)",
@@ -5299,7 +5376,9 @@ def main():
         _bg = _x.get("diger") or []
         if _mb and not any(m.get("akis") for m in _mb):
             _yapisiz.append(_t3)
-        if not (all(len(m.get("akis") or []) <= _derle.AKIS_SATIR_SAYISI for m in _mb)
+        # SABİT YAPI: "Mutlaka bil" dört çeyrek + varsa uzatma(lar);
+        # "Göz at" iki satır; "Bunları geç"te akış yok.
+        if not (all(len(m.get("akis") or []) >= _derle.AKIS_SATIR_SAYISI for m in _mb)
                 and all(len(m.get("akis") or []) == _derle.AKIS_GOZAT_SATIR
                         for m in _ga if m.get("akis"))
                 and all(not m.get("akis") for m in _bg)):
@@ -5316,7 +5395,7 @@ def main():
             _yapisiz.append(_t3 + " (gövde)")
     basar("Tüm geceler: hepsi yeni yapıda (akış var, gövde yok)",
           not _yapisiz, f"eski yapıda: {_yapisiz}")
-    basar("Tüm geceler: katman hiyerarşisi 4/2/0",
+    basar("Tüm geceler: katman hiyerarşisi (4+ çeyrek / 2 / 0)",
           not _hiy, f"ihlal: {_hiy}")
     basar("Tüm geceler: kalıp limiti hiçbir gecede aşılmıyor",
           not _asan, f"aşan: {_asan}")
