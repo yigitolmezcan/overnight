@@ -5390,6 +5390,67 @@ def main():
 
         basar(f"Değişmez {_ad}: blok 2 satırın altına inmedi", len(_sat) >= 2)
 
+    # ------------------------------------------------------------------
+    # DEĞİŞMEZ 5 — EYLEM / DURUM TUTARLILIĞI
+    # ------------------------------------------------------------------
+    import gercekler as _G
+    basar("D5: kural tablosu tek kaynak (üretim, denetim, test aynı yerden)",
+          hasattr(_G, "D5_KURAL") and "_gerc.d5_uyar" in _dsrc5
+          and "D5_KURAL" not in open("derle.py", encoding="utf-8").read()
+          .replace("gercekler.D5_KURAL", ""))
+
+    # Sentetik olaylar: tablo ne diyorsa o.
+    def _olay(tip, oe, od, e, d, takim):
+        return {"tip": tip, "onceki_ev": oe, "onceki_dep": od,
+                "ev_skor": e, "dep_skor": d, "takim": takim}
+    basar("D5: 'farkı indirdi' öznesi ÖNDEYSE reddedilir",
+          not _G.d5_uyar(_olay("rakip_yaklasti", 100, 91, 102, 101, "EV"),
+                         "EV", "DEP")[0])
+    basar("D5: 'farkı indirdi' öznesi geride ise kabul",
+          _G.d5_uyar(_olay("rakip_yaklasti", 91, 100, 101, 102, "EV"),
+                     "EV", "DEP")[0])
+    basar("D5: 'farkı açtı' öznesi GERİDEYSE reddedilir",
+          not _G.d5_uyar(_olay("kopus", 90, 100, 92, 102, "EV"), "EV", "DEP")[0])
+    basar("D5: 'öne geçti' öznesi zaten ÖNDEYSE reddedilir",
+          not _G.d5_uyar(_olay("liderlik", 100, 90, 102, 90, "EV"), "EV", "DEP")[0])
+    basar("D5: 'öne geçti' beraberlikten kırılınca KABUL (123-123 → 123-125)",
+          _G.d5_uyar(_olay("liderlik", 123, 123, 123, 125, "DEP"), "EV", "DEP")[0])
+    basar("D5: 'maçı bitirdi' öznesi geride ise reddedilir",
+          not _G.d5_uyar(_olay("karar_ani", 103, 97, 103, 100, "DEP"),
+                         "EV", "DEP")[0])
+    basar("D5: 'skoru eşitledi' öznesi önce geride, sonra berabere",
+          _G.d5_uyar(_olay("esitlik", 99, 101, 101, 101, "EV"), "EV", "DEP")[0]
+          and not _G.d5_uyar(_olay("esitlik", 103, 101, 101, 101, "EV"),
+                             "EV", "DEP")[0])
+    basar("D5: eski gerçekte onceki_* yoksa denetim sessizce geçer",
+          _G.d5_uyar({"tip": "liderlik", "ev_skor": 102, "dep_skor": 100,
+                      "takim": "EV"}, "EV", "DEP")[0])
+
+    # Tip skordan türetiliyor: 102–101'de öne geçen taraf için "daralma" olamaz.
+    basar("D5: tip skor işaretinden türetiliyor (geride→önde = liderlik)",
+          _G.d5_gecis(_olay("x", 100, 101, 102, 101, "EV"), "EV", "EV", "DEP")
+          == "liderlik")
+    basar("D5: geride→geride = fark daralması",
+          _G.d5_gecis(_olay("x", 90, 101, 99, 101, "EV"), "EV", "EV", "DEP")
+          == "rakip_yaklasti")
+    basar("D5: geride→berabere = eşitlik",
+          _G.d5_gecis(_olay("x", 99, 101, 101, 101, "EV"), "EV", "EV", "DEP")
+          == "esitlik")
+
+    # Üretim tarafı: yayındaki HİÇBİR blokta D5 ihlali kalmamalı.
+    _d5_kalan = []
+    for _t, _b, _g in _bloklar:
+        _sk = next(f["veri"] for f in _g if f["tur"] == "skor")
+        for _x in _b["akis"]:
+            _oy = next((f["veri"] for f in _g if f["tur"] == "akis_olay"
+                        and f["veri"]["tip"] == _x["tip"]
+                        and f["veri"].get("zaman") == _x.get("zaman")
+                        and f["veri"].get("saat") == _x.get("saat")), None)
+            if _oy and not _G.d5_uyar(_oy, _sk["ev"], _sk["dep"])[0]:
+                _d5_kalan.append(f"{_t}: {_x['cumle']}")
+    basar("D5: yayındaki bloklarda eylem/durum ihlali yok",
+          not _d5_kalan, "; ".join(_d5_kalan))
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))

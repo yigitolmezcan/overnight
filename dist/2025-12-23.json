@@ -105,7 +105,7 @@
       "metin": "Charlotte Hornets, Washington Wizards'ı yendi.",
       "anlatili": true,
       "hedef_id": "a-0022500409",
-      "icon": "default",
+      "icon": "standings",
       "saat": "03:00",
       "rozet": 2.98,
       "skor": "CHA 126 – WAS 109",
@@ -249,7 +249,7 @@
       "metin": "Kawhi Leonard, Houston Rockets karşısında 41 sayı attı.",
       "anlatili": true,
       "hedef_id": "g-mutlaka-1",
-      "icon": "standings",
+      "icon": "default",
       "saat": "07:00",
       "rozet": 8.66,
       "skor": "LAC 128 – HOU 108",
@@ -959,12 +959,12 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_ile",
+          "kalip": "lider_takim_basket",
           "yuva": "kopma",
           "sekil": "kopma",
           "zaman": "2Ç",
           "saat": "3:38",
-          "cumle": "LA Clippers, Kris Dunn ile öne geçti",
+          "cumle": "Kris Dunn'un basketiyle LA Clippers öne geçti",
           "detay": "56–54 · liderlik bir daha değişmedi",
           "kritik": true
         },
@@ -1721,12 +1721,12 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_ile",
+          "kalip": "lider_takim_cevirdi",
           "yuva": "liderlik_degisimi",
           "sekil": "son_saniye",
           "zaman": "4Ç",
           "saat": "1:20",
-          "cumle": "Chicago, Tre Jones ile öne geçti",
+          "cumle": "Chicago skoru Tre Jones ile çevirdi",
           "detay": "119–120",
           "kritik": false
         },
@@ -21386,12 +21386,12 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_ile",
+          "kalip": "lider_takim_onu",
           "yuva": "kopma",
           "sekil": "kopma",
           "zaman": "3Ç",
           "saat": "4:38",
-          "cumle": "San Antonio, Stephon Castle ile öne geçti",
+          "cumle": "San Antonio önü Stephon Castle ile aldı",
           "detay": "77–76 · liderlik bir daha değişmedi",
           "kritik": true
         }
@@ -21968,12 +21968,12 @@
       "akis": [
         {
           "tip": "liderlik",
-          "kalip": "lider_ile",
+          "kalip": "lider_takim_basket",
           "yuva": "kopus",
           "sekil": "bastan_sona",
           "zaman": "1Ç",
           "saat": "7:29",
-          "cumle": "Detroit, Cade Cunningham ile öne geçti",
+          "cumle": "Cade Cunningham'ın basketiyle Detroit öne geçti",
           "detay": "12–14 · liderlik bir daha değişmedi",
           "kritik": true
         },
@@ -22597,12 +22597,12 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_ile",
+          "kalip": "lider_takim_cevirdi",
           "yuva": "kopus",
           "sekil": "bastan_sona",
           "zaman": "3Ç",
           "saat": "4:07",
-          "cumle": "Minnesota, Anthony Edwards ile öne geçti",
+          "cumle": "Minnesota skoru Anthony Edwards ile çevirdi",
           "detay": "73–71 · liderlik bir daha değişmedi",
           "kritik": false
         }
@@ -23238,12 +23238,12 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_ile",
+          "kalip": "lider_takim_onu",
           "yuva": "kopus",
           "sekil": "bastan_sona",
           "zaman": "3Ç",
           "saat": "8:19",
-          "cumle": "Memphis, Cam Spencer ile öne geçti",
+          "cumle": "Memphis önü Cam Spencer ile aldı",
           "detay": "74–76",
           "kritik": true
         }
@@ -25849,7 +25849,7 @@
       "mac": "Charlotte Hornets — Washington Wizards",
       "skor": "126–109",
       "rozet": 2.98,
-      "why": "10. galibiyetini alan (kazanan)",
+      "why": "gece sırası 1",
       "metin": "Charlotte Hornets evinde Washington Wizards'ı 126-109 yendi.",
       "box": {
         "ev": {

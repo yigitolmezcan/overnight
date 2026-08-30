@@ -933,12 +933,12 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_ile",
+          "kalip": "lider_takim_basket",
           "yuva": "one_gecis",
           "sekil": "geri_donus",
           "zaman": "4Ç",
           "saat": "2:16",
-          "cumle": "Washington, Alex Sarr ile öne geçti",
+          "cumle": "Alex Sarr'ın basketiyle Washington öne geçti",
           "detay": "119–121 · liderlik bir daha değişmedi",
           "kritik": false
         },
@@ -1560,13 +1560,13 @@
         },
         {
           "tip": "karar_ani",
-          "kalip": "karar_takim_aldi",
+          "kalip": "karar_takim_basket",
           "yuva": "karar",
           "sekil": "son_saniye",
           "zaman": "Son",
           "saat": "0:00",
-          "cumle": "Orlando maçı Desmond Bane ile aldı",
-          "detay": "127–128 · maçı bitirdi",
+          "cumle": "Desmond Bane'in basketiyle Orlando kazandı",
+          "detay": "127–128",
           "kritik": true
         }
       ],
@@ -15629,12 +15629,12 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_ile",
+          "kalip": "lider_takim_cevirdi",
           "yuva": "kopma",
           "sekil": "kopma",
           "zaman": "3Ç",
           "saat": "0:32",
-          "cumle": "Boston, Baylor Scheierman ile öne geçti",
+          "cumle": "Boston skoru Baylor Scheierman ile çevirdi",
           "detay": "80–81 · liderlik bir daha değişmedi",
           "kritik": true
         }
@@ -16244,12 +16244,12 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_ile",
+          "kalip": "lider_takim_onu",
           "yuva": "kopma",
           "sekil": "kopma",
           "zaman": "2Ç",
           "saat": "7:00",
-          "cumle": "Houston, Josh Okogie ile öne geçti",
+          "cumle": "Houston önü Josh Okogie ile aldı",
           "detay": "37–39 · liderlik bir daha değişmedi",
           "kritik": true
         }

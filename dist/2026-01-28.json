@@ -13830,12 +13830,12 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_ile",
+          "kalip": "lider_takim_basket",
           "yuva": "kopus",
           "sekil": "bastan_sona",
           "zaman": "3Ç",
           "saat": "6:37",
-          "cumle": "Orlando, Desmond Bane ile öne geçti",
+          "cumle": "Desmond Bane'in basketiyle Orlando öne geçti",
           "detay": "75–77",
           "kritik": true
         }
@@ -14541,12 +14541,12 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_ile",
+          "kalip": "lider_takim_cevirdi",
           "yuva": "one_gecis",
           "sekil": "geri_donus",
           "zaman": "3Ç",
           "saat": "2:59",
-          "cumle": "New York, OG Anunoby ile öne geçti",
+          "cumle": "New York skoru OG Anunoby ile çevirdi",
           "detay": "70–71 · liderlik bir daha değişmedi",
           "kritik": true
         }

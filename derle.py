@@ -24,6 +24,7 @@ from pathlib import Path
 from hesapla import gmsc, siralama_anahtari
 from yaz import gece_kalip_plani, _mutlaka_ve_diger
 from kalip_secici import _KILOMETRE_ONCELIK
+import gercekler as _gerc   # `gercekler` yerel parametre adı olarak kullanılıyor
 from gercekler import _dogru_oyuncu_adi
 import cumle
 
@@ -1109,6 +1110,19 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
     # atılıyordu; çeyrek ÖZETİ (çeyreğin sonuna düşer) bir sonraki
     # yuvanın önünü kesiyor ve kritik satır boş kalıyordu (ölçüldü,
     # 26 Aralık: Utah'ın öne geçtiği an elendi).
+    # DEĞİŞMEZ 5 üretim tarafında da uygulanıyor: eylem/durum uyuşmayan
+    # olay havuza hiç girmiyor (eski gerçeklerde onceki_* yoksa denetim
+    # sessizce geçiyor, uydurma yapmıyoruz).
+    _d5_elenen = {}
+    _kalanlar = []
+    for o in olaylar:
+        ok, _sb = _gerc.d5_uyar(o, skor.get("ev"), skor.get("dep"))
+        if ok:
+            _kalanlar.append(o)
+        else:
+            _d5_elenen[o["tip"]] = _d5_elenen.get(o["tip"], 0) + 1
+    olaylar = _kalanlar
+
     def _sec(secenekler, alt, ust, kullanilan):
         for tip, filtre in secenekler:
             adaylar = [o for o in olaylar
@@ -1225,13 +1239,19 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
     #  3. BLOK KAZANANLA BİTER — son satır kazananın lehine olmalı.
     #     "Maçın en etkilisi" kaybeden taraftansa sona konulamaz.
     #  4. SKOR DİZİSİ İLERLER — her satırın skoru bir öncekinden ileri.
+    #  5. EYLEM ÖZNESİYLE TUTARLI — "farkı indirdi" diyen taraf geride,
+    #     "farkı açtı" diyen önde olmalı. Tablo gercekler.D5_KURAL'da,
+    #     tek kaynak. İlk dördü biçimseldi; bu, eylemin mantığını
+    #     denetliyor.
     #
     # Dördü sağlanamıyorsa blok 3'e, gerekirse 2 satıra iner. EKSİK
     # SATIR, YANLIŞ SATIRDAN İYİDİR.
     _kisa = lambda kod: cumle.TAKIM_KISA.get(kod, kod)
-    _sayac = {1: 0, 2: 0, 3: 0, 4: 0}
+    _sayac = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
     _onarim = {1: 0}          # DEĞİŞMEZ 1: elenmeden kalıp değiştirildi
+    _sayac[5] += sum(_d5_elenen.values())
     _sn = {"sekil": sekil, "sayac": _sayac, "onarim": _onarim, "elenen": 0,
+           "d5_tipler": _d5_elenen,
            "kurulan": len(temiz), "takimlar": (skor.get("ev"), skor.get("dep")),
            "satir_sayisi": satir_sayisi}
     SON_DENETIM.clear(); SON_DENETIM.update(_sn); DENETIM_LOG.append(_sn)
@@ -1281,14 +1301,25 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
         for i, (_y, o, _k) in enumerate(secim):
             if _durum_tasiyor(o, _kalip_metni(o)):
                 continue
-            uygun = next((kid for kid, c, _d in cumle.akis_kaliplari(o, _kisa)
-                          if _durum_tasiyor(o, c)), None)
+            # Onarım kalıbı SEÇERKEN de çeşitlilik sayacına uy — yoksa
+            # takım taşıyan ilk kalıp gece boyunca tekrarlanıyor.
+            _uygunlar = [kid for kid, c, _d in cumle.akis_kaliplari(o, _kisa)
+                         if _durum_tasiyor(o, c)]
+            uygun = min(_uygunlar,
+                        key=lambda kid: ((kalip_sayaci or {}).get(kid, 0),
+                                         kid in _blok, _uygunlar.index(kid)),
+                        default=None)
             if uygun is not None:
                 if zorla.get(id(o)) != uygun:
                     _onarim[1] += 1           # onarıldı, satır kalıyor
                 zorla[id(o)] = uygun
                 continue
             return i, 1
+        # D5 en önce: yanlış özneli satır hiç kurulmasın.
+        for i, (_y, o, _k) in enumerate(secim):
+            ok, _sebep = _gerc.d5_uyar(o, skor.get("ev"), skor.get("dep"))
+            if not ok:
+                return i, 5
         for i in range(len(secim) - 1):
             if _ayni_olay(secim[i][1], secim[i + 1][1]):
                 # Kritik satır korunur, komşusu elenir.
@@ -1340,14 +1371,17 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
             # Yuvanın kendi tipleri tükendiyse pencereye uyan HERHANGİ
             # bir kullanılmamış olay — blok gereksiz yere kısalmasın.
             # Blokta zaten bulunan tipler en sona düşüyor.
+            # Blokta zaten bulunan TİP aday olamaz: "aynı olay tipi iki
+            # kez" kuralı geniş aramada da geçerli. Aday kalmazsa blok
+            # kısalıyor — eksik satır, tekrar eden satırdan iyi.
             _var = {x[1]["tip"] for x in temiz}
             genis = [x for x in olaylar
                      if id(x) not in kullanilan and id(x) not in yasak
-                     and x["tip"] != "en_etkili"
+                     and x["tip"] != "en_etkili" and x["tip"] not in _var
                      and (alt is None or _akis_sirasi(x) > alt)
                      and (ust is None or _akis_sirasi(x) < ust)]
             if genis:
-                yeni = min(genis, key=lambda x: (x["tip"] in _var, -_akis_sirasi(x)[0]))
+                yeni = max(genis, key=_akis_sirasi)
         if yeni is not None:
             kullanilan.add(id(yeni))
             temiz.insert(i, (_dusen[0], yeni, _dusen[2]))

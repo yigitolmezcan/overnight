@@ -761,12 +761,12 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_ile",
+          "kalip": "lider_takim_basket",
           "yuva": "karar",
           "sekil": "son_saniye",
           "zaman": "4Ç",
           "saat": "1:09",
-          "cumle": "Utah, Kyle Filipowski ile öne geçti",
+          "cumle": "Kyle Filipowski'nin basketiyle Utah öne geçti",
           "detay": "125–124",
           "kritik": true
         }
@@ -1393,12 +1393,12 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_ile",
+          "kalip": "lider_takim_cevirdi",
           "yuva": "kopma",
           "sekil": "kopma",
           "zaman": "3Ç",
           "saat": "6:29",
-          "cumle": "Memphis, Cedric Coward ile öne geçti",
+          "cumle": "Memphis skoru Cedric Coward ile çevirdi",
           "detay": "64–65 · liderlik bir daha değişmedi",
           "kritik": true
         },
@@ -2080,12 +2080,12 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_ile",
+          "kalip": "lider_takim_onu",
           "yuva": "one_gecis",
           "sekil": "geri_donus",
           "zaman": "3Ç",
           "saat": "3:09",
-          "cumle": "Detroit, Jaden Ivey ile öne geçti",
+          "cumle": "Detroit önü Jaden Ivey ile aldı",
           "detay": "71–72 · liderlik bir daha değişmedi",
           "kritik": true
         },

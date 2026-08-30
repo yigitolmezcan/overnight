@@ -753,13 +753,13 @@
         },
         {
           "tip": "karar_ani",
-          "kalip": "karar_takim_aldi",
+          "kalip": "karar_takim_basket",
           "yuva": "karar",
           "sekil": "son_saniye",
           "zaman": "Son",
           "saat": "0:04",
-          "cumle": "Chicago maçı Matas Buzelis ile aldı",
-          "detay": "150–152 · maçı bitirdi",
+          "cumle": "Matas Buzelis'in basketiyle Chicago kazandı",
+          "detay": "150–152",
           "kritik": true
         }
       ],
@@ -1408,12 +1408,12 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_ile",
+          "kalip": "lider_takim_basket",
           "yuva": "kopus",
           "sekil": "bastan_sona",
           "zaman": "2Ç",
           "saat": "2:43",
-          "cumle": "New York, Jalen Brunson ile öne geçti",
+          "cumle": "Jalen Brunson'un basketiyle New York öne geçti",
           "detay": "58–57 · liderlik bir daha değişmedi",
           "kritik": true
         }
@@ -1982,24 +1982,35 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_ile",
+          "kalip": "lider_takim_cevirdi",
           "yuva": "liderlik_degisimi",
           "sekil": "son_saniye",
-          "zaman": "4Ç",
-          "saat": "8:32",
-          "cumle": "Minnesota, Terrence Shannon Jr. ile öne geçti",
-          "detay": "86–85 · liderlik bir daha değişmedi",
+          "zaman": "3Ç",
+          "saat": "0:56",
+          "cumle": "Milwaukee skoru Ryan Rollins ile çevirdi",
+          "detay": "73–75",
           "kritik": false
         },
         {
-          "tip": "en_buyuk_fark",
-          "kalip": "fark_cikardi",
+          "tip": "esitlik",
+          "kalip": "esit_esitledi",
+          "yuva": "son_donus",
+          "sekil": "son_saniye",
+          "zaman": "4Ç",
+          "saat": "9:40",
+          "cumle": "Minnesota skoru eşitledi",
+          "detay": "83–83",
+          "kritik": false
+        },
+        {
+          "tip": "liderlik",
+          "kalip": "lider_takim_cevirdi",
           "yuva": "karar",
           "sekil": "son_saniye",
           "zaman": "4Ç",
-          "saat": "2:41",
-          "cumle": "Minnesota farkı 8'e çıkardı",
-          "detay": "en büyük fark",
+          "saat": "8:32",
+          "cumle": "Minnesota skoru Terrence Shannon Jr. ile çevirdi",
+          "detay": "86–85 · liderlik bir daha değişmedi",
           "kritik": false
         }
       ],

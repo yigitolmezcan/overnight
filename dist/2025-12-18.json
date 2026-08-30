@@ -1558,25 +1558,25 @@
           "kritik": false
         },
         {
-          "tip": "en_buyuk_fark",
-          "kalip": "fark_cikardi",
+          "tip": "sayi_serisi",
+          "kalip": "seri_gitti",
           "yuva": "son_donus",
           "sekil": "son_saniye",
-          "zaman": "4Ç",
-          "saat": "5:05",
-          "cumle": "Portland farkı 18'e çıkardı",
-          "detay": "en büyük fark",
+          "zaman": "Son",
+          "saat": "0:15",
+          "cumle": "Sacramento 14-0 gitti",
+          "detay": "fark 1",
           "kritik": false
         },
         {
           "tip": "karar_ani",
-          "kalip": "karar_takim_aldi",
+          "kalip": "karar_takim_basket",
           "yuva": "karar",
           "sekil": "son_saniye",
           "zaman": "Son",
           "saat": "0:01",
-          "cumle": "Portland maçı Deni Avdija ile aldı",
-          "detay": "134–133 · maçı bitirdi",
+          "cumle": "Deni Avdija'nın basketiyle Portland kazandı",
+          "detay": "134–133",
           "kritik": true
         }
       ],
@@ -2250,17 +2250,6 @@
           "saat": null,
           "cumle": "Devreye Charlotte 11 sayı önde girdi",
           "detay": "80–69",
-          "kritik": false
-        },
-        {
-          "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_onde",
-          "yuva": "rakip_yaklasti",
-          "sekil": "bastan_sona",
-          "zaman": "3Ç",
-          "saat": null,
-          "cumle": "Charlotte önde kapadı",
-          "detay": "107–95",
           "kritik": false
         }
       ],
@@ -16000,23 +15989,23 @@
       "akis": [
         {
           "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_lehine",
+          "kalip": "ceyrek_onde",
           "yuva": "devre",
           "sekil": "son_saniye",
           "zaman": "Devre",
           "saat": null,
-          "cumle": "Çeyrek Golden State lehine bitti",
+          "cumle": "Golden State önde kapadı",
           "detay": "46–53",
           "kritik": false
         },
         {
           "tip": "karar_ani",
-          "kalip": "karar_takim_aldi",
+          "kalip": "karar_takim_sonsoz",
           "yuva": "karar",
           "sekil": "son_saniye",
           "zaman": "Son",
           "saat": "0:00",
-          "cumle": "Phoenix maçı Jordan Goodwin ile aldı",
+          "cumle": "Son sözü Phoenix adına Jordan Goodwin söyledi",
           "detay": "99–98 · maçı bitirdi",
           "kritik": true
         }
@@ -17407,23 +17396,23 @@
       "akis": [
         {
           "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_farkla",
+          "kalip": "ceyrek_lehine",
           "yuva": "devre",
           "sekil": "son_saniye",
           "zaman": "Devre",
           "saat": null,
-          "cumle": "Dallas 9 sayı önde bitirdi",
+          "cumle": "Çeyrek Dallas lehine bitti",
           "detay": "66–57",
           "kritik": true
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_ile",
+          "kalip": "lider_takim_basket",
           "yuva": "karar",
           "sekil": "son_saniye",
           "zaman": "Son",
           "saat": "0:19",
-          "cumle": "Dallas, Cooper Flagg ile öne geçti",
+          "cumle": "Cooper Flagg'ın basketiyle Dallas öne geçti",
           "detay": "110–109",
           "kritik": false
         }

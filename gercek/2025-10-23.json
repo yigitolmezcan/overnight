@@ -1,6 +1,6 @@
 {
   "tarih": "2025-10-23",
-  "uretildi": "2026-08-30T11:44:18.496364Z",
+  "uretildi": "2026-08-30T12:40:53.575477Z",
   "maclar": {
     "0022500005": [
       {
@@ -2530,7 +2530,9 @@
           "dep_skor": 39,
           "fark": -6,
           "takim": "OKC",
-          "sayi": 10
+          "sayi": 10,
+          "onceki_ev": 135,
+          "onceki_dep": 141
         },
         "kaynak": "PlayByPlayV3:0022500005:akis",
         "guven": "turetilmis"
@@ -2547,7 +2549,9 @@
           "ev_skor": 126,
           "dep_skor": 126,
           "fark": 0,
-          "takim": "OKC"
+          "takim": "OKC",
+          "onceki_ev": 126,
+          "onceki_dep": 124
         },
         "kaynak": "PlayByPlayV3:0022500005:akis",
         "guven": "turetilmis"
@@ -2567,7 +2571,9 @@
           "takim": "OKC",
           "kesin": true,
           "kazanan_mi": true,
-          "oyuncu": "Aaron Wiggins"
+          "oyuncu": "Aaron Wiggins",
+          "onceki_ev": 128,
+          "onceki_dep": 127
         },
         "kaynak": "PlayByPlayV3:0022500005:akis",
         "guven": "turetilmis"
@@ -2587,7 +2593,9 @@
           "takim": "IND",
           "kesin": false,
           "kazanan_mi": false,
-          "oyuncu": "Obi Toppin"
+          "oyuncu": "Obi Toppin",
+          "onceki_ev": 126,
+          "onceki_dep": 127
         },
         "kaynak": "PlayByPlayV3:0022500005:akis",
         "guven": "turetilmis"
@@ -2597,15 +2605,17 @@
         "tur": "akis_olay",
         "veri": {
           "tip": "rakip_yaklasti",
-          "periyot": 2,
-          "saniye_kalan": 450.0,
-          "zaman": "2Ç",
-          "saat": "7:30",
-          "ev_skor": 33,
-          "dep_skor": 34,
+          "periyot": 4,
+          "saniye_kalan": 537.0,
+          "zaman": "4Ç",
+          "saat": "8:57",
+          "ev_skor": 86,
+          "dep_skor": 87,
           "fark": -1,
           "takim": "IND",
-          "sayi": 1
+          "sayi": 1,
+          "onceki_ev": 85,
+          "onceki_dep": 87
         },
         "kaynak": "PlayByPlayV3:0022500005:akis",
         "guven": "turetilmis"
@@ -4787,7 +4797,9 @@
           "dep_skor": 0,
           "fark": 10,
           "takim": "GSW",
-          "sayi": 10
+          "sayi": 10,
+          "onceki_ev": 137,
+          "onceki_dep": 131
         },
         "kaynak": "PlayByPlayV3:0022500006:akis",
         "guven": "turetilmis"
@@ -4805,7 +4817,9 @@
           "dep_skor": 68,
           "fark": -14,
           "takim": "DEN",
-          "sayi": 14
+          "sayi": 14,
+          "onceki_ev": 137,
+          "onceki_dep": 131
         },
         "kaynak": "PlayByPlayV3:0022500006:akis",
         "guven": "turetilmis"
@@ -4823,7 +4837,9 @@
           "dep_skor": 12,
           "fark": -2,
           "takim": "DEN",
-          "sayi": 12
+          "sayi": 12,
+          "onceki_ev": 137,
+          "onceki_dep": 131
         },
         "kaynak": "PlayByPlayV3:0022500006:akis",
         "guven": "turetilmis"
@@ -4840,7 +4856,9 @@
           "ev_skor": 123,
           "dep_skor": 123,
           "fark": 0,
-          "takim": "DEN"
+          "takim": "DEN",
+          "onceki_ev": 123,
+          "onceki_dep": 122
         },
         "kaynak": "PlayByPlayV3:0022500006:akis",
         "guven": "turetilmis"
@@ -4860,7 +4878,9 @@
           "takim": "GSW",
           "kesin": true,
           "kazanan_mi": true,
-          "oyuncu": "Al Horford"
+          "oyuncu": "Al Horford",
+          "onceki_ev": 123,
+          "onceki_dep": 125
         },
         "kaynak": "PlayByPlayV3:0022500006:akis",
         "guven": "turetilmis"
@@ -4880,7 +4900,9 @@
           "takim": "DEN",
           "kesin": false,
           "kazanan_mi": false,
-          "oyuncu": "Nikola Jokić"
+          "oyuncu": "Nikola Jokić",
+          "onceki_ev": 123,
+          "onceki_dep": 123
         },
         "kaynak": "PlayByPlayV3:0022500006:akis",
         "guven": "turetilmis"
@@ -4898,7 +4920,9 @@
           "dep_skor": 88,
           "fark": 1,
           "takim": "DEN",
-          "sayi": 1
+          "sayi": 1,
+          "onceki_ev": 89,
+          "onceki_dep": 87
         },
         "kaynak": "PlayByPlayV3:0022500006:akis",
         "guven": "turetilmis"

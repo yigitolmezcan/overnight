@@ -217,14 +217,14 @@
           "kritik": false
         },
         {
-          "tip": "ceyrek_ustunlugu",
-          "kalip": "ust_aldi",
+          "tip": "rakip_yaklasti",
+          "kalip": "yaklasti_kadar",
           "yuva": "son_donus",
           "sekil": "son_saniye",
-          "zaman": "3Ç",
-          "saat": null,
-          "cumle": "Utah çeyreği 44-35 aldı",
-          "detay": "fark 8'e çıktı",
+          "zaman": "Son",
+          "saat": "0:18",
+          "cumle": "Detroit farkı 1 sayıya kadar indirdi",
+          "detay": "129–128",
           "kritik": false
         },
         {

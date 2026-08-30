@@ -869,7 +869,18 @@ def akis_kaliplari(olay, ad_fn=None):
             # gecede yetmiyordu (23 Aralık).
             k.append(("lider_gecirdi", f"{oyuncu} takımını öne geçirdi", detay))
             if takim:
+                # DEĞİŞMEZ 1 onarımı takım taşıyan kalıba yöneliyor; tek
+                # alternatif olursa gece boyunca aynı cümle tekrarlanıyor
+                # (ölçüldü: bir gecede 8 kez). Üç biçim var ki çeşitlilik
+                # sayacı seçebilsin.
                 k.append(("lider_ile", f"{takim}, {oyuncu} ile öne geçti", detay))
+                k.append(("lider_takim_basket",
+                          f"{oyuncu}'{iyelik_eki(oyuncu)} basketiyle {takim} öne geçti",
+                          detay))
+                k.append(("lider_takim_cevirdi",
+                          f"{takim} skoru {oyuncu} ile çevirdi", detay))
+                k.append(("lider_takim_onu",
+                          f"{takim} önü {oyuncu} ile aldı", detay))
         elif takim:
             k.append(("lider_takim", f"{takim} öne geçti", detay))
     elif t == "karar_ani":
@@ -887,6 +898,9 @@ def akis_kaliplari(olay, ad_fn=None):
                 k.append(("karar_takim_basket",
                           f"{oyuncu}'{iyelik_eki(oyuncu)} basketiyle {takim} kazandı",
                           skor))
+                k.append(("karar_takim_sonsoz",
+                          f"Son sözü {takim} adına {oyuncu} söyledi",
+                          f"{skor} · maçı bitirdi"))
         elif takim:
             k.append(("karar_takim", f"{takim} son sayıyı buldu",
                       f"{skor} · maçı bitirdi"))

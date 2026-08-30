@@ -737,6 +737,119 @@ def _akis_zaman(periyot, saniye_kalan, ceyrek_sonu=False, son_periyot=None):
     return etiket, f"{dk}:{sn:02d}"
 
 
+# ---------------------------------------------------------------------------
+# DEĞİŞMEZ 5 — EYLEM / DURUM TUTARLILIĞI
+# ---------------------------------------------------------------------------
+#
+# Kullanıcı kararı: her olay tipi, ÖZNESİNİN hangi durumda olması
+# gerektiğini tanımlar. Durum skordan türetilir; satır kurulmadan ÖNCE
+# denetlenir. İlk dört değişmez biçimseldi (satır takım söylüyor mu,
+# skor ilerliyor mu) — hiçbiri eylemin mantığını denetlemiyordu:
+#
+#   "Denver farkı 1 sayıya indirdi · 102–101"
+#
+# Denver o anda 9 ÖNDEYDİ; farkı kapatan Orlando. Üstelik 102–101'de
+# Orlando öne geçmişti, yani olay "fark daralması" değil LİDERLİK
+# DEĞİŞİMİ. İkisi de tek bir eksikten çıkıyordu: tip, önceden atanmış
+# etiketten alınıyordu, skorun işaretinden değil.
+#
+# Tablo TEK KAYNAK: hem üretim (gercekler.py) hem denetim (derle.py)
+# hem test buradan okuyor.
+#
+#   ONDE / BERABERE / GERIDE — öznenin rakibine göre durumu.
+#   (once, sonra) — None "şart yok" demek.
+
+D5_ONDE, D5_BERABERE, D5_GERIDE = "onde", "berabere", "geride"
+
+D5_KURAL = {
+    # tip:              (öznenin ÖNCEKİ durumu, SONRAKİ durumu)
+    "rakip_yaklasti":   (D5_GERIDE, D5_GERIDE),   # farkı indirdi: hâlâ geride
+    "esitlik":          (D5_GERIDE, D5_BERABERE),  # skoru eşitledi
+    # "öne geçti": özne ÖNDE OLMAMALIYDI. Kullanıcı tarifi "önce geride"
+    # idi; harfiyen uygulayınca beraberlikten kırılan liderlikler
+    # (123–123 → 123–125) da eleniyordu ve ölçünce D5'e takılan 48
+    # olayın TAMAMI bu meşru biçimdi. Şart "önde değildi" olarak
+    # okunuyor — iddia yine korunuyor, doğru satır ölmüyor.
+    "liderlik":         ((D5_GERIDE, D5_BERABERE), D5_ONDE),
+    "kopus":            (None, D5_ONDE),           # farkı açtı
+    "en_buyuk_fark":    (None, D5_ONDE),           # farkı çıkardı
+    "fark_korundu":     (None, D5_ONDE),           # liderlik korundu
+    "ceyrek_sonu":      (None, D5_ONDE),           # önde kapadı
+    "devre_farki":      (None, D5_ONDE),
+    "karar_ani":        (None, D5_ONDE),           # maçı bitirdi
+    "sayi_serisi":      (None, None),              # seri sahipliği ayrıca denetli
+    "ceyrek_ustunlugu": (None, None),              # çeyreği aldı — skor şartı yok
+}
+
+
+def d5_durum(veri, takim_kod, ev_kod, dep_kod, once=False):
+    """Öznenin (takim_kod) skor durumu: ONDE / BERABERE / GERIDE / None."""
+    if takim_kod is None:
+        return None
+    if once:
+        ev, dep = veri.get("onceki_ev"), veri.get("onceki_dep")
+        if ev is None or dep is None:
+            return None                    # eski gerçekler — denetlenemez
+    else:
+        ev, dep = veri.get("ev_skor"), veri.get("dep_skor")
+    if ev is None or dep is None:
+        return None
+    if takim_kod == ev_kod:
+        f = ev - dep
+    elif takim_kod == dep_kod:
+        f = dep - ev
+    else:
+        return None
+    return D5_ONDE if f > 0 else (D5_GERIDE if f < 0 else D5_BERABERE)
+
+
+def d5_gecis(veri, takim_kod, ev_kod, dep_kod):
+    """Skor işaretinden TİP türet — önceden atanmış etiketten değil.
+
+    geride → önde     = liderlik
+    geride → berabere = esitlik
+    geride → geride   = rakip_yaklasti (fark daralması)
+    önde   → önde     = kopus / en_buyuk_fark (fark açılması)
+    """
+    o = d5_durum(veri, takim_kod, ev_kod, dep_kod, once=True)
+    y = d5_durum(veri, takim_kod, ev_kod, dep_kod)
+    if o is None or y is None:
+        return None
+    if o == D5_GERIDE and y == D5_ONDE:
+        return "liderlik"
+    if o == D5_GERIDE and y == D5_BERABERE:
+        return "esitlik"
+    if o == D5_GERIDE and y == D5_GERIDE:
+        return "rakip_yaklasti"
+    if y == D5_ONDE:
+        return "kopus"
+    return None
+
+
+def d5_uyar(veri, ev_kod, dep_kod):
+    """(uygun_mu, sebep). Satır kurulmadan önce çağrılır."""
+    tip = veri.get("tip")
+    if tip not in D5_KURAL:
+        return True, ""
+    takim = veri.get("takim")
+    if takim is None:
+        return True, ""                    # öznesi yok — eylem iddiası da yok
+    ist_once, ist_sonra = D5_KURAL[tip]
+    if ist_sonra is not None:
+        var = d5_durum(veri, takim, ev_kod, dep_kod)
+        kabul = ist_sonra if isinstance(ist_sonra, tuple) else (ist_sonra,)
+        if var is not None and var not in kabul:
+            return False, (f"{tip}: özne sonrasında {'/'.join(kabul)} "
+                           f"olmalı, {var}")
+    if ist_once is not None:
+        var = d5_durum(veri, takim, ev_kod, dep_kod, once=True)
+        kabul = ist_once if isinstance(ist_once, tuple) else (ist_once,)
+        if var is not None and var not in kabul:
+            return False, (f"{tip}: özne öncesinde {'/'.join(kabul)} "
+                           f"olmalı, {var}")
+    return True, ""
+
+
 def akis_gercekleri_uret(g, gid, actions, ev_kod, dep_kod, kazanan, ceyrek_veri):
     """Akış olaylarını `akis_olay` kaydı olarak yazar.
 
@@ -756,7 +869,19 @@ def akis_gercekleri_uret(g, gid, actions, ev_kod, dep_kod, kazanan, ceyrek_veri)
 
     son_periyot = max((p for p, _, _, _, _ in seri), default=4)
 
+    # DEĞİŞMEZ 5 için: her olayın ÖNCESİNDEKİ skor. Eylemin öznesi
+    # ("farkı indirdi", "öne geçti") ancak önce/sonra karşılaştırmasıyla
+    # denetlenebiliyor — tek başına sonuç skoru yetmiyor.
+    onceki_by_aksiyon = {}
+    for _i, (_p, _sn, _e, _d, _a) in enumerate(seri):
+        onceki_by_aksiyon[id(_a)] = (seri[_i - 1][2], seri[_i - 1][3]) if _i else (0, 0)
+
     def yaz(tip, periyot, saniye, ev, dep, **ek):
+        _aks = ek.pop("aksiyon", None)
+        if _aks is not None and id(_aks) in onceki_by_aksiyon:
+            _oe, _od = onceki_by_aksiyon[id(_aks)]
+            ek.setdefault("onceki_ev", _oe)
+            ek.setdefault("onceki_dep", _od)
         etiket, saat = _akis_zaman(periyot, saniye, ek.pop("ceyrek_sonu", False),
                                    son_periyot=son_periyot)
         veri = {
@@ -806,7 +931,7 @@ def akis_gercekleri_uret(g, gid, actions, ev_kod, dep_kod, kazanan, ceyrek_veri)
         fark = abs(ev - dep)
         if fark < AKIS_SERI_ASGARI:
             continue
-        yaz("en_buyuk_fark", periyot, saniye, ev, dep,
+        yaz("en_buyuk_fark", periyot, saniye, ev, dep, aksiyon=a,
             takim=(ev_kod if ev > dep else dep_kod), sayi=fark)
 
     # --- 4) SAYI SERİSİ (N-0) ---------------------------------------------
@@ -831,7 +956,7 @@ def akis_gercekleri_uret(g, gid, actions, ev_kod, dep_kod, kazanan, ceyrek_veri)
         i = max(j - 1, i + 1)
     if en_iyi_seri:
         uzunluk, (periyot, saniye, ev, dep, _a), ev_mi = en_iyi_seri
-        yaz("sayi_serisi", periyot, saniye, ev, dep,
+        yaz("sayi_serisi", periyot, saniye, ev, dep, aksiyon=a,
             takim=(ev_kod if ev_mi else dep_kod), sayi=uzunluk)
 
     # --- 5) LİDER DEĞİŞİMLERİ: eşitlik, son liderlik, karar anı -----------
@@ -863,7 +988,7 @@ def akis_gercekleri_uret(g, gid, actions, ev_kod, dep_kod, kazanan, ceyrek_veri)
 
     if esitlikler:
         periyot, saniye, ev, dep, a = esitlikler[-1]
-        yaz("esitlik", periyot, saniye, ev, dep,
+        yaz("esitlik", periyot, saniye, ev, dep, aksiyon=a,
             takim=a.get("teamTricode"))
 
     # KAZANANIN ÖNE GEÇTİĞİ SON AN. Eskiden yalnız maçın SON lider
@@ -892,7 +1017,7 @@ def akis_gercekleri_uret(g, gid, actions, ev_kod, dep_kod, kazanan, ceyrek_veri)
             _sonra = lambda x: x[0] > periyot or (x[0] == periyot and x[1] < saniye)
             sonra_esitlik = (any(_sonra(x) for x in esitlikler)
                              or any(_sonra(x) for x in liderlikler))
-            yaz("liderlik", periyot, saniye, ev, dep,
+            yaz("liderlik", periyot, saniye, ev, dep, aksiyon=a,
                 takim=onde, kesin=not sonra_esitlik, kazanan_mi=(onde == kazanan),
                 oyuncu=_dogru_oyuncu_adi(a.get("personId"), a.get("playerName") or ""))
 
@@ -913,7 +1038,7 @@ def akis_gercekleri_uret(g, gid, actions, ev_kod, dep_kod, kazanan, ceyrek_veri)
         # atılan ve sonucu belirleyen basket. Bu olay varsa kritik işaret
         # HER ZAMAN onundur — şekil ne olursa olsun.
         if abs(son_ev - son_dep) <= 5 and (son_saniye or 0) <= AKIS_KARAR_SANIYE:
-            yaz("karar_ani", son_periyot, son_saniye, son_ev, son_dep,
+            yaz("karar_ani", son_periyot, son_saniye, son_ev, son_dep, aksiyon=son_a,
                 takim=son_a.get("teamTricode"),
                 oyuncu=_dogru_oyuncu_adi(son_a.get("personId"),
                                          son_a.get("playerName") or ""))
@@ -921,20 +1046,31 @@ def akis_gercekleri_uret(g, gid, actions, ev_kod, dep_kod, kazanan, ceyrek_veri)
     # --- 6b) RAKİP EN ÇOK NE KADAR YAKLAŞTI -------------------------------
     # "Baştan sona" şeklinin üçüncü yuvası: kazanan hiç geride kalmadıysa
     # hikâyenin gerilimi rakibin en çok yaklaştığı andır.
+    # DEĞİŞMEZ 5: "farkı indirdi" diyebilmek için özne ÖNCESİNDE de
+    # SONRASINDA da geride olmalı. Önceden önde olup arkaya düştüğü an
+    # bir daralma değil, LİDERLİK DEĞİŞİMİDİR — ve o zaten kendi tipiyle
+    # üretiliyor. Eski kod sadece sonuç skoruna bakıyordu; 27 Aralık
+    # ORL-DEN'de 102–101 anını "Denver farkı 1 sayıya indirdi" diye
+    # yazmıştı, oysa orada Orlando öne geçmişti.
     kazanan_ev = kazanan == ev_kod
+    yaklasan = dep_kod if kazanan_ev else ev_kod
     yakin = None
-    for periyot, saniye, ev, dep, a in seri:
-        if periyot < 2:
+    for i, (periyot, saniye, ev, dep, a) in enumerate(seri):
+        if periyot < 2 or i == 0:
             continue
         f = (ev - dep) if kazanan_ev else (dep - ev)
         if f <= 0:
             continue                       # kazanan önde değilken sayılmaz
+        o_ev, o_dep = seri[i - 1][2], seri[i - 1][3]
+        o_f = (o_ev - o_dep) if kazanan_ev else (o_dep - o_ev)
+        if o_f <= 0:
+            continue                       # yaklaşan ÖNCE geride değildi
         if yakin is None or f < yakin[0]:
-            yakin = (f, periyot, saniye, ev, dep)
+            yakin = (f, periyot, saniye, ev, dep, a)
     if yakin and yakin[0] <= 8:
-        f, periyot, saniye, ev, dep = yakin
+        f, periyot, saniye, ev, dep, a = yakin
         yaz("rakip_yaklasti", periyot, saniye, ev, dep,
-            takim=(dep_kod if kazanan_ev else ev_kod), sayi=f)
+            takim=yaklasan, sayi=f, aksiyon=a)
 
     # --- 6c) KOPUŞ ANI ------------------------------------------------------
     # "Kazanan hiç geride kalmadıysa kritik an, rakibin son kez farkı
@@ -948,7 +1084,7 @@ def akis_gercekleri_uret(g, gid, actions, ev_kod, dep_kod, kazanan, ceyrek_veri)
         for periyot, saniye, ev, dep, a in seri[son_yakin_i + 1:]:
             f = (ev - dep) if kazanan_ev else (dep - ev)
             if f >= 10:
-                yaz("kopus", periyot, saniye, ev, dep, takim=kazanan, sayi=f)
+                yaz("kopus", periyot, saniye, ev, dep, takim=kazanan, sayi=f, aksiyon=a)
                 break
 
     # --- 7) FARK KORUNDU ---------------------------------------------------

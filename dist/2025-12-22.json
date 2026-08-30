@@ -10837,12 +10837,12 @@
       "akis": [
         {
           "tip": "liderlik",
-          "kalip": "lider_ile",
+          "kalip": "lider_takim_basket",
           "yuva": "kopma",
           "sekil": "kopma",
           "zaman": "1Ç",
           "saat": "4:25",
-          "cumle": "Oklahoma City, Kenrich Williams ile öne geçti",
+          "cumle": "Kenrich Williams'ın basketiyle Oklahoma City öne geçti",
           "detay": "19–18",
           "kritik": true
         },
@@ -11453,12 +11453,12 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_ile",
+          "kalip": "lider_takim_cevirdi",
           "yuva": "kopus",
           "sekil": "bastan_sona",
           "zaman": "4Ç",
           "saat": "5:14",
-          "cumle": "New Orleans, Derik Queen ile öne geçti",
+          "cumle": "New Orleans skoru Derik Queen ile çevirdi",
           "detay": "103–102",
           "kritik": true
         }
@@ -12120,12 +12120,12 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_ile",
+          "kalip": "lider_takim_onu",
           "yuva": "kopus",
           "sekil": "bastan_sona",
           "zaman": "4Ç",
           "saat": "3:44",
-          "cumle": "Detroit, Tobias Harris ile öne geçti",
+          "cumle": "Detroit önü Tobias Harris ile aldı",
           "detay": "100–101 · liderlik bir daha değişmedi",
           "kritik": false
         }

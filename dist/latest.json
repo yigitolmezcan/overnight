@@ -232,9 +232,9 @@
           "yuva": "son_donus",
           "sekil": "son_saniye",
           "zaman": "4Ç",
-          "saat": "8:18",
+          "saat": "7:04",
           "cumle": "Denver farkı 1 sayıya kadar indirdi",
-          "detay": "102–101",
+          "detay": "105–104",
           "kritik": false
         },
         {
@@ -895,13 +895,13 @@
         },
         {
           "tip": "karar_ani",
-          "kalip": "karar_takim_aldi",
+          "kalip": "karar_takim_basket",
           "yuva": "karar",
           "sekil": "son_saniye",
           "zaman": "Son",
           "saat": "0:07",
-          "cumle": "New York maçı OG Anunoby ile aldı",
-          "detay": "125–128 · maçı bitirdi",
+          "cumle": "OG Anunoby'nin basketiyle New York kazandı",
+          "detay": "125–128",
           "kritik": true
         }
       ],
@@ -1515,12 +1515,12 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_ile",
+          "kalip": "lider_takim_basket",
           "yuva": "kopma",
           "sekil": "kopma",
           "zaman": "2Ç",
           "saat": "5:37",
-          "cumle": "Utah, Walter Clayton Jr. ile öne geçti",
+          "cumle": "Walter Clayton Jr.'un basketiyle Utah öne geçti",
           "detay": "49–51",
           "kritik": true
         },
@@ -1533,17 +1533,6 @@
           "saat": "8:42",
           "cumle": "Utah farkı 17'ye çıkardı",
           "detay": "en büyük fark",
-          "kritik": false
-        },
-        {
-          "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_farkla",
-          "yuva": "en_etkili",
-          "sekil": "kopma",
-          "zaman": "3Ç",
-          "saat": null,
-          "cumle": "Utah 11 sayı önde bitirdi",
-          "detay": "87–98",
           "kritik": false
         }
       ],
@@ -2208,12 +2197,12 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_ile",
+          "kalip": "lider_takim_cevirdi",
           "yuva": "kopma",
           "sekil": "kopma",
           "zaman": "3Ç",
           "saat": "10:59",
-          "cumle": "Brooklyn, Egor Dëmin ile öne geçti",
+          "cumle": "Brooklyn skoru Egor Dëmin ile çevirdi",
           "detay": "63–65 · liderlik bir daha değişmedi",
           "kritik": true
         },
