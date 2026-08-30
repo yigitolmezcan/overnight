@@ -301,36 +301,25 @@
           "kritik": false
         },
         {
-          "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_basabas",
-          "yuva": "son_ceyrege_giris",
-          "sekil": "son_saniye",
-          "zaman": "3Ç",
-          "saat": null,
-          "cumle": "Skor başa baş gitti",
-          "detay": "103–103",
-          "kritik": false
-        },
-        {
-          "tip": "esitlik",
-          "kalip": "esit_esitledi",
-          "yuva": "son_donus",
+          "tip": "liderlik",
+          "kalip": "lider_basket",
+          "yuva": "liderlik_degisimi",
           "sekil": "son_saniye",
           "zaman": "4Ç",
-          "saat": "4:29",
-          "cumle": "Denver skoru eşitledi",
-          "detay": "121–121",
+          "saat": "5:29",
+          "cumle": "Nikola Jokić'in basketiyle öne geçti",
+          "detay": "117–118",
           "kritik": false
         },
         {
-          "tip": "karar_ani",
-          "kalip": "karar_basket",
+          "tip": "liderlik",
+          "kalip": "lider_cevirdi",
           "yuva": "karar",
           "sekil": "son_saniye",
-          "zaman": "Son",
-          "saat": "0:31",
-          "cumle": "Nikola Jokić'in basketi",
-          "detay": "131–130 · maçı bitirdi",
+          "zaman": "4Ç",
+          "saat": "5:09",
+          "cumle": "Anthony Davis skoru çevirdi",
+          "detay": "119–118",
           "kritik": true
         }
       ],
@@ -969,14 +958,14 @@
           "kritik": false
         },
         {
-          "tip": "sayi_serisi",
-          "kalip": "seri_gitti",
+          "tip": "liderlik",
+          "kalip": "lider_gecirdi",
           "yuva": "kopma",
           "sekil": "kopma",
-          "zaman": "3Ç",
-          "saat": "3:15",
-          "cumle": "LA Clippers 11-0 gitti",
-          "detay": "fark 17",
+          "zaman": "2Ç",
+          "saat": "3:38",
+          "cumle": "Kris Dunn takımını öne geçirdi",
+          "detay": "56–54 · liderlik bir daha değişmedi",
           "kritik": true
         },
         {
@@ -1720,21 +1709,10 @@
       "neden_onemli": "Chicago Bulls, 4 maçlık galibiyet serisini sürdürdü.",
       "akis": [
         {
-          "tip": "en_buyuk_fark",
-          "kalip": "fark_cikardi",
-          "yuva": "kaybedenin_farki",
-          "sekil": "geri_donus",
-          "zaman": "2Ç",
-          "saat": "4:51",
-          "cumle": "Atlanta farkı 18'e çıkardı",
-          "detay": "en büyük fark",
-          "kritik": false
-        },
-        {
           "tip": "devre_farki",
           "kalip": "devre_fark",
-          "yuva": "donusun_basi",
-          "sekil": "geri_donus",
+          "yuva": "devre",
+          "sekil": "son_saniye",
           "zaman": "Devre",
           "saat": null,
           "cumle": "Devrede fark 13",
@@ -1743,25 +1721,36 @@
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_basket",
-          "yuva": "one_gecis",
-          "sekil": "geri_donus",
+          "kalip": "lider_ile",
+          "yuva": "liderlik_degisimi",
+          "sekil": "son_saniye",
           "zaman": "4Ç",
           "saat": "1:20",
-          "cumle": "Tre Jones'un basketiyle öne geçti",
+          "cumle": "Chicago, Tre Jones ile öne geçti",
           "detay": "119–120",
-          "kritik": true
+          "kritik": false
+        },
+        {
+          "tip": "en_etkili",
+          "kalip": "etkili_oncikti",
+          "yuva": "son_donus",
+          "sekil": "son_saniye",
+          "zaman": "Son",
+          "saat": null,
+          "cumle": "Trae Young 22 sayı, 1 ribaund, 15 asist ile öne çıktı",
+          "detay": null,
+          "kritik": false
         },
         {
           "tip": "karar_ani",
-          "kalip": "karar_sonsoz",
-          "yuva": "sonuc",
-          "sekil": "geri_donus",
+          "kalip": "karar_basket",
+          "yuva": "karar",
+          "sekil": "son_saniye",
           "zaman": "Son",
           "saat": "0:01",
-          "cumle": "Son sözü Nikola Vučević söyledi",
-          "detay": "123–126",
-          "kritik": false
+          "cumle": "Nikola Vučević'in basketi",
+          "detay": "123–126 · maçı bitirdi",
+          "kritik": true
         }
       ],
       "box": {
@@ -21396,24 +21385,24 @@
       "akis": [
         {
           "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_denk",
+          "kalip": "ceyrek_basabas",
           "yuva": "erken",
           "sekil": "kopma",
           "zaman": "1Ç",
           "saat": null,
-          "cumle": "Çeyrek denk geçti",
+          "cumle": "Skor başa baş gitti",
           "detay": "31–29",
           "kritik": false
         },
         {
-          "tip": "sayi_serisi",
-          "kalip": "seri_arka",
+          "tip": "liderlik",
+          "kalip": "lider_basket",
           "yuva": "kopma",
           "sekil": "kopma",
           "zaman": "3Ç",
-          "saat": "2:26",
-          "cumle": "San Antonio arka arkaya 10 sayı buldu",
-          "detay": "fark 8",
+          "saat": "4:38",
+          "cumle": "Stephon Castle'in basketiyle öne geçti",
+          "detay": "77–76 · liderlik bir daha değişmedi",
           "kritik": true
         }
       ]
@@ -21986,26 +21975,26 @@
       },
       "akis": [
         {
-          "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_lehine",
-          "yuva": "erken_ustunluk",
+          "tip": "liderlik",
+          "kalip": "lider_cevirdi",
+          "yuva": "kopus",
           "sekil": "bastan_sona",
           "zaman": "1Ç",
-          "saat": null,
-          "cumle": "Çeyrek Detroit lehine bitti",
-          "detay": "24–37",
-          "kritik": false
+          "saat": "7:29",
+          "cumle": "Cade Cunningham skoru çevirdi",
+          "detay": "12–14 · liderlik bir daha değişmedi",
+          "kritik": true
         },
         {
           "tip": "en_etkili",
-          "kalip": "etkili_oncikti",
-          "yuva": "kapanis",
+          "kalip": "etkili_enler",
+          "yuva": "en_etkili",
           "sekil": "bastan_sona",
           "zaman": "Son",
           "saat": null,
-          "cumle": "DeMar DeRozan 37 sayı, 3 ribaund, 8 asist ile öne çıktı",
-          "detay": null,
-          "kritik": true
+          "cumle": "Maçın en etkilisi DeMar DeRozan",
+          "detay": "37 sayı, 3 ribaund, 8 asist",
+          "kritik": false
         }
       ]
     },
@@ -22603,25 +22592,25 @@
       "akis": [
         {
           "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_basabas",
+          "kalip": "ceyrek_denk",
           "yuva": "erken_ustunluk",
           "sekil": "bastan_sona",
           "zaman": "1Ç",
           "saat": null,
-          "cumle": "Skor başa baş gitti",
+          "cumle": "Çeyrek denk geçti",
           "detay": "31–28",
-          "kritik": false
+          "kritik": true
         },
         {
-          "tip": "en_etkili",
-          "kalip": "etkili_enler",
-          "yuva": "kapanis",
+          "tip": "liderlik",
+          "kalip": "lider_gecirdi",
+          "yuva": "kopus",
           "sekil": "bastan_sona",
-          "zaman": "Son",
-          "saat": null,
-          "cumle": "Maçın en etkilisi Anthony Edwards",
-          "detay": "38 sayı, 2 ribaund, 2 asist",
-          "kritik": true
+          "zaman": "3Ç",
+          "saat": "4:07",
+          "cumle": "Anthony Edwards takımını öne geçirdi",
+          "detay": "73–71 · liderlik bir daha değişmedi",
+          "kritik": false
         }
       ]
     },
@@ -23242,24 +23231,24 @@
       "akis": [
         {
           "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_farkla",
+          "kalip": "ceyrek_lehine",
           "yuva": "erken_ustunluk",
           "sekil": "bastan_sona",
           "zaman": "1Ç",
           "saat": null,
-          "cumle": "Memphis 6 sayı önde bitirdi",
+          "cumle": "Çeyrek Memphis lehine bitti",
           "detay": "31–37",
           "kritik": false
         },
         {
-          "tip": "en_etkili",
-          "kalip": "etkili_kisa",
-          "yuva": "kapanis",
+          "tip": "liderlik",
+          "kalip": "lider_ile",
+          "yuva": "kopus",
           "sekil": "bastan_sona",
-          "zaman": "Son",
-          "saat": null,
-          "cumle": "Santi Aldama öne çıktı",
-          "detay": "37 sayı, 5 ribaund, 7 asist",
+          "zaman": "3Ç",
+          "saat": "8:19",
+          "cumle": "Memphis, Cam Spencer ile öne geçti",
+          "detay": "74–76",
           "kritik": true
         }
       ]

@@ -862,6 +862,10 @@ def akis_kaliplari(olay, ad_fn=None):
             k.append(("lider_basket",
                       f"{oyuncu}'{iyelik_eki(oyuncu)} basketiyle öne geçti", detay))
             k.append(("lider_cevirdi", f"{oyuncu} skoru çevirdi", detay))
+            # DÖRDÜNCÜ KALIP. "Liderlik" artık her şekilde kritik yuvayı
+            # dolduruyor; üç kalıp x iki limit = altı kapasite yoğun
+            # gecede yetmiyordu (23 Aralık).
+            k.append(("lider_gecirdi", f"{oyuncu} takımını öne geçirdi", detay))
             if takim:
                 k.append(("lider_ile", f"{takim}, {oyuncu} ile öne geçti", detay))
         elif takim:
@@ -875,6 +879,10 @@ def akis_kaliplari(olay, ad_fn=None):
         elif takim:
             k.append(("karar_takim", f"{takim} son sayıyı buldu",
                       f"{skor} · maçı bitirdi"))
+    elif t == "kopus":
+        k.append(("kopus_actik", f"{takim} farkı {n}'{dogrula_sayi_eki(n)} açtı", skor))
+        k.append(("kopus_uzaklasti", f"{takim} bir daha yakalatmadı", skor))
+        k.append(("kopus_kopardi", f"{takim} maçı burada kopardı", skor))
     elif t == "rakip_yaklasti":
         k.append(("yaklasti_kadar", f"{takim} farkı {n} sayıya kadar indirdi", skor))
         k.append(("yaklasti_enyakin", f"{takim} en fazla {n} sayıya yaklaştı", skor))
@@ -911,7 +919,7 @@ def akis_satiri(olay, ad_fn=None):
 
 AKIS_TIPLERI = ("ceyrek_sonu", "devre_farki", "ceyrek_ustunlugu", "en_buyuk_fark",
                 "sayi_serisi", "esitlik", "liderlik", "karar_ani",
-                "fark_korundu", "en_etkili", "rakip_yaklasti")
+                "fark_korundu", "en_etkili", "rakip_yaklasti", "kopus")
 
 
 def brief_duz_sonuc(mac):

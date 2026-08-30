@@ -1,6 +1,6 @@
 {
   "tarih": "2025-10-23",
-  "uretildi": "2026-08-30T11:35:17.274386Z",
+  "uretildi": "2026-08-30T11:44:18.496364Z",
   "maclar": {
     "0022500005": [
       {
@@ -2566,6 +2566,7 @@
           "fark": -2,
           "takim": "OKC",
           "kesin": true,
+          "kazanan_mi": true,
           "oyuncu": "Aaron Wiggins"
         },
         "kaynak": "PlayByPlayV3:0022500005:akis",
@@ -2573,6 +2574,26 @@
       },
       {
         "id": "f167",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 6,
+          "saniye_kalan": 212.0,
+          "zaman": "U2",
+          "saat": "3:32",
+          "ev_skor": 128,
+          "dep_skor": 127,
+          "fark": 1,
+          "takim": "IND",
+          "kesin": false,
+          "kazanan_mi": false,
+          "oyuncu": "Obi Toppin"
+        },
+        "kaynak": "PlayByPlayV3:0022500005:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f168",
         "tur": "akis_olay",
         "veri": {
           "tip": "rakip_yaklasti",
@@ -2590,7 +2611,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f168",
+        "id": "f169",
         "tur": "derece",
         "veri": {
           "takim": "IND",
@@ -2613,7 +2634,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f169",
+        "id": "f170",
         "tur": "derece",
         "veri": {
           "takim": "OKC",
@@ -4838,6 +4859,7 @@
           "fark": 1,
           "takim": "GSW",
           "kesin": true,
+          "kazanan_mi": true,
           "oyuncu": "Al Horford"
         },
         "kaynak": "PlayByPlayV3:0022500006:akis",
@@ -4845,6 +4867,26 @@
       },
       {
         "id": "f144",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 5,
+          "saniye_kalan": 193.0,
+          "zaman": "U1",
+          "saat": "3:13",
+          "ev_skor": 123,
+          "dep_skor": 125,
+          "fark": -2,
+          "takim": "DEN",
+          "kesin": false,
+          "kazanan_mi": false,
+          "oyuncu": "Nikola Jokić"
+        },
+        "kaynak": "PlayByPlayV3:0022500006:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f145",
         "tur": "akis_olay",
         "veri": {
           "tip": "rakip_yaklasti",
@@ -4862,7 +4904,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f145",
+        "id": "f146",
         "tur": "derece",
         "veri": {
           "takim": "GSW",
@@ -4885,7 +4927,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f146",
+        "id": "f147",
         "tur": "derece",
         "veri": {
           "takim": "DEN",

@@ -226,22 +226,22 @@
           "kalip": "lider_basket",
           "yuva": "one_gecis",
           "sekil": "geri_donus",
-          "zaman": "3Ç",
-          "saat": "2:15",
-          "cumle": "Dylan Harper'in basketiyle öne geçti",
-          "detay": "78–79",
-          "kritik": true
+          "zaman": "4Ç",
+          "saat": "11:12",
+          "cumle": "Victor Wembanyama'nın basketiyle öne geçti",
+          "detay": "86–87 · liderlik bir daha değişmedi",
+          "kritik": false
         },
         {
-          "tip": "en_etkili",
-          "kalip": "etkili_duz",
+          "tip": "kopus",
+          "kalip": "kopus_actik",
           "yuva": "sonuc",
           "sekil": "geri_donus",
-          "zaman": "Son",
-          "saat": null,
-          "cumle": "Victor Wembanyama 28 sayı, 16 ribaund, 3 asist",
-          "detay": "maçın en etkilisi",
-          "kritik": false
+          "zaman": "4Ç",
+          "saat": "2:39",
+          "cumle": "San Antonio farkı 11'e açtı",
+          "detay": "96–107",
+          "kritik": true
         }
       ],
       "box": {
@@ -13817,21 +13817,21 @@
       },
       "akis": [
         {
-          "tip": "en_buyuk_fark",
-          "kalip": "fark_cikti",
-          "yuva": "kaybedenin_farki",
-          "sekil": "geri_donus",
-          "zaman": "3Ç",
-          "saat": "11:32",
-          "cumle": "Fark 11'e çıktı",
-          "detay": "Miami önde",
+          "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_lehine",
+          "yuva": "erken_ustunluk",
+          "sekil": "bastan_sona",
+          "zaman": "1Ç",
+          "saat": null,
+          "cumle": "Çeyrek Orlando lehine bitti",
+          "detay": "27–34",
           "kritik": false
         },
         {
           "tip": "liderlik",
           "kalip": "lider_cevirdi",
-          "yuva": "one_gecis",
-          "sekil": "geri_donus",
+          "yuva": "kopus",
+          "sekil": "bastan_sona",
           "zaman": "3Ç",
           "saat": "6:37",
           "cumle": "Desmond Bane skoru çevirdi",
@@ -14527,23 +14527,23 @@
       "akis": [
         {
           "tip": "en_buyuk_fark",
-          "kalip": "fark_onu",
+          "kalip": "fark_cikti",
           "yuva": "kaybedenin_farki",
           "sekil": "geri_donus",
           "zaman": "2Ç",
           "saat": "9:15",
-          "cumle": "Toronto önü 12 sayıya çıkardı",
-          "detay": "en büyük fark",
+          "cumle": "Fark 12'ye çıktı",
+          "detay": "Toronto önde",
           "kritik": false
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_ile",
+          "kalip": "lider_gecirdi",
           "yuva": "one_gecis",
           "sekil": "geri_donus",
           "zaman": "3Ç",
           "saat": "2:59",
-          "cumle": "New York, OG Anunoby ile öne geçti",
+          "cumle": "OG Anunoby takımını öne geçirdi",
           "detay": "70–71 · liderlik bir daha değişmedi",
           "kritik": true
         }
@@ -15194,25 +15194,25 @@
       },
       "akis": [
         {
-          "tip": "en_buyuk_fark",
-          "kalip": "fark_cikardi",
-          "yuva": "kaybedenin_farki",
-          "sekil": "geri_donus",
-          "zaman": "4Ç",
-          "saat": "7:36",
-          "cumle": "Chicago farkı 14'e çıkardı",
-          "detay": "en büyük fark",
+          "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_farkla",
+          "yuva": "devre",
+          "sekil": "son_saniye",
+          "zaman": "Devre",
+          "saat": null,
+          "cumle": "Chicago 4 sayı önde bitirdi",
+          "detay": "49–53",
           "kritik": false
         },
         {
-          "tip": "liderlik",
-          "kalip": "lider_basket",
-          "yuva": "one_gecis",
-          "sekil": "geri_donus",
+          "tip": "karar_ani",
+          "kalip": "karar_basket",
+          "yuva": "karar",
+          "sekil": "son_saniye",
           "zaman": "Son",
-          "saat": "0:13",
-          "cumle": "Aaron Nesmith'in basketiyle öne geçti",
-          "detay": "111–110 · liderlik bir daha değişmedi",
+          "saat": "0:02",
+          "cumle": "Johnny Furphy'nin basketi",
+          "detay": "113–110 · maçı bitirdi",
           "kritik": true
         }
       ]

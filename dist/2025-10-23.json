@@ -3304,7 +3304,7 @@
       "mac": "Indiana Pacers — Oklahoma City Thunder",
       "skor": "135–141",
       "rozet": 9.29,
-      "why": "bireysel performans: 50_sayi eşiğini geçen Shai Gilgeous-Alexander",
+      "why": "uzatma",
       "metin": "Shai Gilgeous-Alexander'in 55 sayılık gecesinde Oklahoma City, Indiana'yı yendi. Oklahoma City Thunder, maçı uzatmada kazandı.",
       "box": {
         "ev": {
@@ -3986,14 +3986,14 @@
           "kritik": false
         },
         {
-          "tip": "en_etkili",
-          "kalip": "etkili_oncikti",
-          "yuva": "kapanis",
+          "tip": "liderlik",
+          "kalip": "lider_cevirdi",
+          "yuva": "kopus",
           "sekil": "bastan_sona",
-          "zaman": "Son",
-          "saat": null,
-          "cumle": "Shai Gilgeous-Alexander 55 sayı, 8 ribaund, 5 asist ile öne çıktı",
-          "detay": null,
+          "zaman": "U2",
+          "saat": "3:13",
+          "cumle": "Aaron Wiggins skoru çevirdi",
+          "detay": "128–130 · liderlik bir daha değişmedi",
           "kritik": true
         }
       ]

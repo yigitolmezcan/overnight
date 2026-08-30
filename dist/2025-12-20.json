@@ -69,7 +69,7 @@
       "metin": "Houston Rockets, Denver Nuggets deplasmanında kazandı.",
       "anlatili": true,
       "hedef_id": "a-0022500386",
-      "icon": "default",
+      "icon": "standings",
       "saat": "01:00",
       "rozet": 6.39,
       "skor": "DEN 101 – HOU 115",
@@ -177,7 +177,7 @@
       "metin": "LA Clippers, Los Angeles Lakers'i evinde yendi.",
       "anlatili": true,
       "hedef_id": "a-0022500395",
-      "icon": "standings",
+      "icon": "default",
       "saat": "06:30",
       "rozet": 5.07,
       "skor": "LAC 103 – LAL 88",
@@ -218,48 +218,48 @@
       "neden_onemli": "",
       "akis": [
         {
-          "tip": "en_buyuk_fark",
-          "kalip": "fark_cikardi",
-          "yuva": "kaybedenin_farki",
-          "sekil": "geri_donus",
-          "zaman": "2Ç",
-          "saat": "11:21",
-          "cumle": "Phoenix farkı 14'e çıkardı",
-          "detay": "en büyük fark",
-          "kritik": false
-        },
-        {
-          "tip": "ceyrek_ustunlugu",
-          "kalip": "ust_aldi",
-          "yuva": "donusun_basi",
-          "sekil": "geri_donus",
+          "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_basabas",
+          "yuva": "devre",
+          "sekil": "son_saniye",
           "zaman": "Devre",
           "saat": null,
-          "cumle": "Golden State çeyreği 32-23 aldı",
-          "detay": "fark 3'e indi",
+          "cumle": "Skor başa baş gitti",
+          "detay": "64–67",
           "kritik": false
         },
         {
           "tip": "liderlik",
           "kalip": "lider_basket",
-          "yuva": "one_gecis",
-          "sekil": "geri_donus",
+          "yuva": "liderlik_degisimi",
+          "sekil": "son_saniye",
           "zaman": "3Ç",
           "saat": "9:44",
           "cumle": "Jimmy Butler III'nin basketiyle öne geçti",
           "detay": "71–70",
-          "kritik": true
+          "kritik": false
+        },
+        {
+          "tip": "en_etkili",
+          "kalip": "etkili_duz",
+          "yuva": "son_donus",
+          "sekil": "son_saniye",
+          "zaman": "Son",
+          "saat": null,
+          "cumle": "Devin Booker 38 sayı, 1 ribaund, 5 asist",
+          "detay": "maçın en etkilisi",
+          "kritik": false
         },
         {
           "tip": "karar_ani",
           "kalip": "karar_basket",
-          "yuva": "sonuc",
-          "sekil": "geri_donus",
+          "yuva": "karar",
+          "sekil": "son_saniye",
           "zaman": "Son",
           "saat": "0:05",
           "cumle": "Stephen Curry'nin basketi",
           "detay": "119–116 · maçı bitirdi",
-          "kritik": false
+          "kritik": true
         }
       ],
       "box": {
@@ -911,23 +911,23 @@
       "akis": [
         {
           "tip": "en_buyuk_fark",
-          "kalip": "fark_cikti",
+          "kalip": "fark_cikardi",
           "yuva": "kaybedenin_farki",
           "sekil": "geri_donus",
           "zaman": "2Ç",
           "saat": "1:09",
-          "cumle": "Fark 20'ye çıktı",
-          "detay": "Memphis önde",
+          "cumle": "Memphis farkı 20'ye çıkardı",
+          "detay": "en büyük fark",
           "kritik": false
         },
         {
           "tip": "ceyrek_ustunlugu",
-          "kalip": "ust_ustun",
+          "kalip": "ust_aldi",
           "yuva": "donusun_basi",
           "sekil": "geri_donus",
           "zaman": "3Ç",
           "saat": null,
-          "cumle": "Washington o çeyrekte 42-27 üstün geldi",
+          "cumle": "Washington çeyreği 42-27 aldı",
           "detay": "skor eşitlendi",
           "kritik": false
         },
@@ -940,18 +940,18 @@
           "saat": "2:16",
           "cumle": "Alex Sarr skoru çevirdi",
           "detay": "119–121 · liderlik bir daha değişmedi",
-          "kritik": true
+          "kritik": false
         },
         {
           "tip": "en_etkili",
-          "kalip": "etkili_duz",
+          "kalip": "etkili_oncikti",
           "yuva": "sonuc",
           "sekil": "geri_donus",
           "zaman": "Son",
           "saat": null,
-          "cumle": "Santi Aldama 37 sayı, 10 ribaund, 2 asist",
-          "detay": "maçın en etkilisi",
-          "kritik": false
+          "cumle": "Santi Aldama 37 sayı, 10 ribaund, 2 asist ile öne çıktı",
+          "detay": null,
+          "kritik": true
         }
       ],
       "box": {
@@ -1548,25 +1548,14 @@
           "kritik": false
         },
         {
-          "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_lehine",
-          "yuva": "son_ceyrege_giris",
-          "sekil": "son_saniye",
-          "zaman": "3Ç",
-          "saat": null,
-          "cumle": "Çeyrek Orlando lehine bitti",
-          "detay": "82–97",
-          "kritik": false
-        },
-        {
-          "tip": "esitlik",
-          "kalip": "esit_esitledi",
-          "yuva": "son_donus",
+          "tip": "liderlik",
+          "kalip": "lider_gecirdi",
+          "yuva": "liderlik_degisimi",
           "sekil": "son_saniye",
           "zaman": "Son",
           "saat": "0:04",
-          "cumle": "Utah skoru eşitledi",
-          "detay": "126–126",
+          "cumle": "Keyonte George takımını öne geçirdi",
+          "detay": "127–126",
           "kritik": false
         },
         {
@@ -15628,24 +15617,24 @@
       "akis": [
         {
           "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_farkla",
+          "kalip": "ceyrek_lehine",
           "yuva": "erken",
           "sekil": "kopma",
           "zaman": "1Ç",
           "saat": null,
-          "cumle": "Boston 12 sayı önde bitirdi",
+          "cumle": "Çeyrek Boston lehine bitti",
           "detay": "20–32",
           "kritik": false
         },
         {
-          "tip": "sayi_serisi",
-          "kalip": "seri_gitti",
+          "tip": "liderlik",
+          "kalip": "lider_ile",
           "yuva": "kopma",
           "sekil": "kopma",
-          "zaman": "2Ç",
-          "saat": "12:00",
-          "cumle": "Boston 16-0 gitti",
-          "detay": "fark 12",
+          "zaman": "3Ç",
+          "saat": "0:32",
+          "cumle": "Boston, Baylor Scheierman ile öne geçti",
+          "detay": "80–81 · liderlik bir daha değişmedi",
           "kritik": true
         }
       ]
@@ -15655,7 +15644,7 @@
       "mac": "Denver Nuggets — Houston Rockets",
       "skor": "101–115",
       "rozet": 6.39,
-      "why": "",
+      "why": "gece sırası 1",
       "metin": "Houston Rockets deplasmanda Denver Nuggets'i 115-101 yendi. Kevin Durant 31 sayı attı.",
       "box": {
         "ev": {
@@ -16241,24 +16230,24 @@
       "akis": [
         {
           "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_basabas",
+          "kalip": "ceyrek_denk",
           "yuva": "erken",
           "sekil": "kopma",
           "zaman": "1Ç",
           "saat": null,
-          "cumle": "Skor başa baş gitti",
+          "cumle": "Çeyrek denk geçti",
           "detay": "29–26",
           "kritik": false
         },
         {
-          "tip": "sayi_serisi",
-          "kalip": "seri_arka",
+          "tip": "liderlik",
+          "kalip": "lider_basket",
           "yuva": "kopma",
           "sekil": "kopma",
           "zaman": "2Ç",
-          "saat": "6:00",
-          "cumle": "Houston arka arkaya 11 sayı buldu",
-          "detay": "fark 8",
+          "saat": "7:00",
+          "cumle": "Josh Okogie'nin basketiyle öne geçti",
+          "detay": "37–39 · liderlik bir daha değişmedi",
           "kritik": true
         }
       ]
@@ -16833,24 +16822,24 @@
       "akis": [
         {
           "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_onde",
+          "kalip": "ceyrek_farkla",
           "yuva": "erken_ustunluk",
           "sekil": "bastan_sona",
           "zaman": "1Ç",
           "saat": null,
-          "cumle": "Philadelphia önde kapadı",
+          "cumle": "Philadelphia 5 sayı önde bitirdi",
           "detay": "38–33",
           "kritik": false
         },
         {
-          "tip": "en_etkili",
-          "kalip": "etkili_oncikti",
-          "yuva": "kapanis",
+          "tip": "liderlik",
+          "kalip": "lider_cevirdi",
+          "yuva": "kopus",
           "sekil": "bastan_sona",
-          "zaman": "Son",
-          "saat": null,
-          "cumle": "Tyrese Maxey 38 sayı, 2 ribaund, 4 asist ile öne çıktı",
-          "detay": null,
+          "zaman": "4Ç",
+          "saat": "10:00",
+          "cumle": "Tyrese Maxey skoru çevirdi",
+          "detay": "102–100",
           "kritik": true
         }
       ]
@@ -16862,7 +16851,7 @@
       "mac": "LA Clippers — Los Angeles Lakers",
       "skor": "103–88",
       "rozet": 5.07,
-      "why": "gece sırası 10",
+      "why": "",
       "metin": "LA Clippers evinde Los Angeles Lakers'i 103-88 yendi.",
       "box": {
         "ev": {

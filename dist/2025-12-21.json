@@ -81,7 +81,7 @@
       "metin": "Minnesota Timberwolves, 16 sayılık farktan dönüp Milwaukee Bucks'u geçti.",
       "anlatili": true,
       "hedef_id": "g-mutlaka-3",
-      "icon": "standings",
+      "icon": "default",
       "saat": "03:00",
       "rozet": 7.14,
       "skor": "MIN 103 – MIL 100",
@@ -135,48 +135,37 @@
       "neden_onemli": "",
       "akis": [
         {
-          "tip": "en_buyuk_fark",
-          "kalip": "fark_cikardi",
-          "yuva": "kaybedenin_farki",
-          "sekil": "geri_donus",
-          "zaman": "4Ç",
-          "saat": "9:58",
-          "cumle": "Houston farkı 14'e çıkardı",
-          "detay": "en büyük fark",
-          "kritik": false
-        },
-        {
-          "tip": "ceyrek_ustunlugu",
-          "kalip": "ust_aldi",
-          "yuva": "donusun_basi",
-          "sekil": "geri_donus",
-          "zaman": "4Ç",
+          "tip": "devre_farki",
+          "kalip": "devre_onde",
+          "yuva": "devre",
+          "sekil": "son_saniye",
+          "zaman": "Devre",
           "saat": null,
-          "cumle": "Sacramento çeyreği 30-21 aldı",
-          "detay": "skor eşitlendi",
+          "cumle": "Houston 11 sayı önde",
+          "detay": "57–68",
           "kritik": false
         },
         {
           "tip": "liderlik",
           "kalip": "lider_basket",
-          "yuva": "one_gecis",
-          "sekil": "geri_donus",
+          "yuva": "liderlik_degisimi",
+          "sekil": "son_saniye",
           "zaman": "Son",
-          "saat": "0:03",
-          "cumle": "Dennis Schröder'in basketiyle öne geçti",
-          "detay": "125–124 · liderlik bir daha değişmedi",
-          "kritik": true
+          "saat": "0:10",
+          "cumle": "Jabari Smith Jr.'in basketiyle öne geçti",
+          "detay": "122–123",
+          "kritik": false
         },
         {
-          "tip": "en_etkili",
-          "kalip": "etkili_duz",
-          "yuva": "sonuc",
-          "sekil": "geri_donus",
+          "tip": "karar_ani",
+          "kalip": "karar_basket",
+          "yuva": "karar",
+          "sekil": "son_saniye",
           "zaman": "Son",
-          "saat": null,
-          "cumle": "Dennis Schröder 24 sayı, 7 ribaund, 10 asist",
-          "detay": "maçın en etkilisi",
-          "kritik": false
+          "saat": "0:03",
+          "cumle": "Dennis Schröder'in basketi",
+          "detay": "125–124 · maçı bitirdi",
+          "kritik": true
         }
       ],
       "box": {
@@ -742,46 +731,35 @@
       "akis": [
         {
           "tip": "devre_farki",
-          "kalip": "devre_onde",
+          "kalip": "devre_fark",
           "yuva": "devre",
           "sekil": "son_saniye",
           "zaman": "Devre",
           "saat": null,
-          "cumle": "Chicago 10 sayı önde",
+          "cumle": "Devrede fark 10",
           "detay": "73–83",
           "kritik": false
         },
         {
-          "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_basabas",
-          "yuva": "son_ceyrege_giris",
+          "tip": "en_etkili",
+          "kalip": "etkili_duz",
+          "yuva": "liderlik_degisimi",
           "sekil": "son_saniye",
-          "zaman": "3Ç",
+          "zaman": "Son",
           "saat": null,
-          "cumle": "Skor başa baş gitti",
-          "detay": "115–116",
-          "kritik": false
-        },
-        {
-          "tip": "liderlik",
-          "kalip": "lider_cevirdi",
-          "yuva": "son_donus",
-          "sekil": "son_saniye",
-          "zaman": "4Ç",
-          "saat": "8:24",
-          "cumle": "Matas Buzelis skoru çevirdi",
-          "detay": "120–122 · liderlik bir daha değişmedi",
+          "cumle": "Trae Young 35 sayı, 1 ribaund, 9 asist",
+          "detay": "maçın en etkilisi",
           "kritik": false
         },
         {
           "tip": "karar_ani",
-          "kalip": "karar_basket",
+          "kalip": "karar_sonsoz",
           "yuva": "karar",
           "sekil": "son_saniye",
           "zaman": "Son",
           "saat": "0:04",
-          "cumle": "Matas Buzelis'in basketi",
-          "detay": "150–152 · maçı bitirdi",
+          "cumle": "Son sözü Matas Buzelis söyledi",
+          "detay": "150–152",
           "kritik": true
         }
       ],
@@ -1418,37 +1396,26 @@
       "neden_onemli": "New York Knicks, konferansta 2. sıraya yükseldi.",
       "akis": [
         {
-          "tip": "en_buyuk_fark",
-          "kalip": "fark_cikti",
-          "yuva": "kaybedenin_farki",
-          "sekil": "geri_donus",
+          "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_onde",
+          "yuva": "erken_ustunluk",
+          "sekil": "bastan_sona",
           "zaman": "1Ç",
-          "saat": "3:32",
-          "cumle": "Fark 10'a çıktı",
-          "detay": "Miami önde",
+          "saat": null,
+          "cumle": "Miami önde kapadı",
+          "detay": "30–37",
           "kritik": false
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_ile",
-          "yuva": "one_gecis",
-          "sekil": "geri_donus",
+          "kalip": "lider_cevirdi",
+          "yuva": "kopus",
+          "sekil": "bastan_sona",
           "zaman": "2Ç",
           "saat": "2:43",
-          "cumle": "New York, Jalen Brunson ile öne geçti",
+          "cumle": "Jalen Brunson skoru çevirdi",
           "detay": "58–57 · liderlik bir daha değişmedi",
           "kritik": true
-        },
-        {
-          "tip": "en_etkili",
-          "kalip": "etkili_oncikti",
-          "yuva": "sonuc",
-          "sekil": "geri_donus",
-          "zaman": "Son",
-          "saat": null,
-          "cumle": "Jalen Brunson 47 sayı, 3 ribaund, 8 asist ile öne çıktı",
-          "detay": null,
-          "kritik": false
         }
       ],
       "box": {
@@ -2003,48 +1970,37 @@
       "neden_onemli": "",
       "akis": [
         {
-          "tip": "en_buyuk_fark",
-          "kalip": "fark_onu",
-          "yuva": "kaybedenin_farki",
-          "sekil": "geri_donus",
-          "zaman": "3Ç",
-          "saat": "9:51",
-          "cumle": "Milwaukee önü 16 sayıya çıkardı",
-          "detay": "en büyük fark",
-          "kritik": false
-        },
-        {
-          "tip": "ceyrek_ustunlugu",
-          "kalip": "ust_ustun",
-          "yuva": "donusun_basi",
-          "sekil": "geri_donus",
-          "zaman": "3Ç",
+          "tip": "devre_farki",
+          "kalip": "devre_girdi",
+          "yuva": "devre",
+          "sekil": "son_saniye",
+          "zaman": "Devre",
           "saat": null,
-          "cumle": "Minnesota o çeyrekte 27-15 üstün geldi",
-          "detay": "skor eşitlendi",
+          "cumle": "Devreye Milwaukee 12 sayı önde girdi",
+          "detay": "48–60",
           "kritik": false
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_basket",
-          "yuva": "one_gecis",
-          "sekil": "geri_donus",
+          "kalip": "lider_gecirdi",
+          "yuva": "liderlik_degisimi",
+          "sekil": "son_saniye",
           "zaman": "4Ç",
           "saat": "8:32",
-          "cumle": "Terrence Shannon Jr.'un basketiyle öne geçti",
+          "cumle": "Terrence Shannon Jr. takımını öne geçirdi",
           "detay": "86–85 · liderlik bir daha değişmedi",
-          "kritik": true
+          "kritik": false
         },
         {
           "tip": "karar_ani",
-          "kalip": "karar_sonsoz",
-          "yuva": "sonuc",
-          "sekil": "geri_donus",
+          "kalip": "karar_bitirdi",
+          "yuva": "karar",
+          "sekil": "son_saniye",
           "zaman": "Son",
           "saat": "0:00",
-          "cumle": "Son sözü Kevin Porter Jr. söyledi",
+          "cumle": "Maçı Kevin Porter Jr. bitirdi",
           "detay": "103–100",
-          "kritik": false
+          "kritik": true
         }
       ],
       "box": {
@@ -10748,7 +10704,7 @@
       "mac": "Brooklyn Nets — Toronto Raptors",
       "skor": "96–81",
       "rozet": 2.45,
-      "why": "",
+      "why": "gece sırası 2",
       "metin": "Brooklyn Nets evinde Toronto Raptors'u 96-81 yendi.",
       "box": {
         "ev": {

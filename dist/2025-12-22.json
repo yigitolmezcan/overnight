@@ -189,7 +189,7 @@
           "saat": "6:37",
           "cumle": "Derrick White'ın basketiyle öne geçti",
           "detay": "87–86",
-          "kritik": true
+          "kritik": false
         },
         {
           "tip": "en_etkili",
@@ -200,7 +200,7 @@
           "saat": null,
           "cumle": "Jaylen Brown 31 sayı, 9 ribaund, 2 asist",
           "detay": "maçın en etkilisi",
-          "kritik": false
+          "kritik": true
         }
       ],
       "box": {
@@ -10835,26 +10835,26 @@
       },
       "akis": [
         {
-          "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_basabas",
-          "yuva": "erken",
-          "sekil": "kopma",
-          "zaman": "1Ç",
-          "saat": null,
-          "cumle": "Skor başa baş gitti",
-          "detay": "31–28",
-          "kritik": false
-        },
-        {
-          "tip": "sayi_serisi",
-          "kalip": "seri_gitti",
+          "tip": "liderlik",
+          "kalip": "lider_cevirdi",
           "yuva": "kopma",
           "sekil": "kopma",
-          "zaman": "2Ç",
-          "saat": "1:42",
-          "cumle": "Oklahoma City 12-0 gitti",
-          "detay": "fark 17",
+          "zaman": "1Ç",
+          "saat": "4:25",
+          "cumle": "Kenrich Williams skoru çevirdi",
+          "detay": "19–18",
           "kritik": true
+        },
+        {
+          "tip": "kopus",
+          "kalip": "kopus_actik",
+          "yuva": "kapanmadi",
+          "sekil": "kopma",
+          "zaman": "4Ç",
+          "saat": "4:38",
+          "cumle": "Oklahoma City farkı 10'a açtı",
+          "detay": "107–97",
+          "kritik": false
         }
       ]
     },
@@ -11438,24 +11438,24 @@
       },
       "akis": [
         {
-          "tip": "en_buyuk_fark",
-          "kalip": "fark_cikti",
-          "yuva": "kaybedenin_farki",
-          "sekil": "geri_donus",
-          "zaman": "3Ç",
-          "saat": "6:24",
-          "cumle": "Fark 11'e çıktı",
-          "detay": "Dallas önde",
+          "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_basabas",
+          "yuva": "erken_ustunluk",
+          "sekil": "bastan_sona",
+          "zaman": "1Ç",
+          "saat": null,
+          "cumle": "Skor başa baş gitti",
+          "detay": "36–34",
           "kritik": false
         },
         {
           "tip": "liderlik",
-          "kalip": "lider_cevirdi",
-          "yuva": "one_gecis",
-          "sekil": "geri_donus",
+          "kalip": "lider_gecirdi",
+          "yuva": "kopus",
+          "sekil": "bastan_sona",
           "zaman": "4Ç",
           "saat": "5:14",
-          "cumle": "Derik Queen skoru çevirdi",
+          "cumle": "Derik Queen takımını öne geçirdi",
           "detay": "103–102",
           "kritik": true
         }
@@ -12111,18 +12111,18 @@
           "saat": null,
           "cumle": "Detroit önde kapadı",
           "detay": "26–30",
-          "kritik": false
+          "kritik": true
         },
         {
-          "tip": "en_etkili",
-          "kalip": "etkili_oncikti",
-          "yuva": "kapanis",
+          "tip": "liderlik",
+          "kalip": "lider_ile",
+          "yuva": "kopus",
           "sekil": "bastan_sona",
-          "zaman": "Son",
-          "saat": null,
-          "cumle": "Jalen Duren 26 sayı, 10 ribaund, 2 asist ile öne çıktı",
-          "detay": null,
-          "kritik": true
+          "zaman": "4Ç",
+          "saat": "3:44",
+          "cumle": "Detroit, Tobias Harris ile öne geçti",
+          "detay": "100–101 · liderlik bir daha değişmedi",
+          "kritik": false
         }
       ]
     }

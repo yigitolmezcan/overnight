@@ -144,14 +144,14 @@
           "kritik": false
         },
         {
-          "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_basabas",
-          "yuva": "son_ceyrege_giris",
+          "tip": "liderlik",
+          "kalip": "lider_basket",
+          "yuva": "liderlik_degisimi",
           "sekil": "son_saniye",
-          "zaman": "3Ç",
-          "saat": null,
-          "cumle": "Skor başa baş gitti",
-          "detay": "89–86",
+          "zaman": "Son",
+          "saat": "0:02",
+          "cumle": "Alperen Şengün'ün basketiyle öne geçti",
+          "detay": "116–117",
           "kritik": false
         },
         {
@@ -166,14 +166,14 @@
           "kritik": false
         },
         {
-          "tip": "karar_ani",
-          "kalip": "karar_basket",
+          "tip": "liderlik",
+          "kalip": "lider_cevirdi",
           "yuva": "karar",
           "sekil": "son_saniye",
-          "zaman": "Son",
-          "saat": "0:37",
-          "cumle": "Alperen Şengün'ün basketi",
-          "detay": "128–125 · maçı bitirdi",
+          "zaman": "U1",
+          "saat": "4:12",
+          "cumle": "Jamal Murray skoru çevirdi",
+          "detay": "119–117 · liderlik bir daha değişmedi",
           "kritik": true
         }
       ],
@@ -736,7 +736,41 @@
       "rozet": 8.92,
       "baslik": "Lauri Markkanen'in 33 sayısıyla Utah Jazz, Dallas Mavericks'i yendi.",
       "neden_onemli": "",
-      "akis": [],
+      "akis": [
+        {
+          "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_lehine",
+          "yuva": "devre",
+          "sekil": "son_saniye",
+          "zaman": "Devre",
+          "saat": null,
+          "cumle": "Çeyrek Dallas lehine bitti",
+          "detay": "71–75",
+          "kritik": false
+        },
+        {
+          "tip": "ceyrek_sonu",
+          "kalip": "ceyrek_farkla",
+          "yuva": "liderlik_degisimi",
+          "sekil": "son_saniye",
+          "zaman": "3Ç",
+          "saat": null,
+          "cumle": "Dallas 7 sayı önde bitirdi",
+          "detay": "92–99",
+          "kritik": false
+        },
+        {
+          "tip": "liderlik",
+          "kalip": "lider_gecirdi",
+          "yuva": "karar",
+          "sekil": "son_saniye",
+          "zaman": "4Ç",
+          "saat": "1:09",
+          "cumle": "Kyle Filipowski takımını öne geçirdi",
+          "detay": "125–124",
+          "kritik": true
+        }
+      ],
       "box": {
         "ev": {
           "takim": "Utah Jazz",
@@ -1348,24 +1382,24 @@
       "akis": [
         {
           "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_denk",
+          "kalip": "ceyrek_basabas",
           "yuva": "erken",
           "sekil": "kopma",
           "zaman": "1Ç",
           "saat": null,
-          "cumle": "Çeyrek denk geçti",
+          "cumle": "Skor başa baş gitti",
           "detay": "27–25",
           "kritik": false
         },
         {
-          "tip": "ceyrek_ustunlugu",
-          "kalip": "ust_aldi",
+          "tip": "liderlik",
+          "kalip": "lider_ile",
           "yuva": "kopma",
           "sekil": "kopma",
-          "zaman": "Devre",
-          "saat": null,
-          "cumle": "Memphis çeyreği 31-21 aldı",
-          "detay": "fark 8'e çıktı",
+          "zaman": "3Ç",
+          "saat": "6:29",
+          "cumle": "Memphis, Cedric Coward ile öne geçti",
+          "detay": "64–65 · liderlik bir daha değişmedi",
           "kritik": true
         },
         {
@@ -2035,12 +2069,12 @@
         },
         {
           "tip": "ceyrek_sonu",
-          "kalip": "ceyrek_lehine",
+          "kalip": "ceyrek_onde",
           "yuva": "donusun_basi",
           "sekil": "geri_donus",
           "zaman": "Devre",
           "saat": null,
-          "cumle": "Çeyrek Boston lehine bitti",
+          "cumle": "Boston önde kapadı",
           "detay": "57–53",
           "kritik": false
         },

@@ -704,6 +704,7 @@ AKIS_SERI_ASGARI = 8       # "N-0 gitti" için en az sayı
 AKIS_BASA_BAS = 3          # çeyrek sonunda bu fark "başa baş" sayılır
 AKIS_DEVRE_FARK = 10       # devrede bu farktan büyükse ayrı satır
 AKIS_SON_SANIYE = 60.0     # "Son" etiketi eşiği (periyot 4+)
+AKIS_KARAR_SANIYE = 30.0   # maçı bitiren basket bu kadar kala atılmış olmalı
 
 
 def _akis_zaman(periyot, saniye_kalan, ceyrek_sonu=False, son_periyot=None):
@@ -838,19 +839,27 @@ def akis_gercekleri_uret(g, gid, actions, ev_kod, dep_kod, kazanan, ceyrek_veri)
     # olmalı. Skor taşıyan her satır sayı atan satır değil (ribaund,
     # faul, mola satırları da o anki skoru taşıyor). Yalnız skoru
     # DEĞİŞTİREN satır dikkate alınıyor.
-    onceki_fark = 0
+    # LİDERLİK DEĞİŞİMİ BERABERLİKTEN GEÇER. Basketbolda öne geçiş
+    # neredeyse her zaman önce eşitlikten geçiyor (100-102 → 102-102 →
+    # 104-102). Karşılaştırma bir ÖNCEKİ SATIRLA yapılınca aradaki
+    # beraberlik zinciri kırıyor ve değişim hiç kaydedilmiyordu:
+    # 27 Aralık SAS-UTA'da altı lider değişiminin yalnız ikisi
+    # görülüyordu ve kazananın öne geçtiği an yanlış çıkıyordu.
+    # Ölçüt: son SIFIR OLMAYAN farkın işareti.
+    onceki_isaret = 0
     onceki_skor = None
     esitlikler, liderlikler = [], []
     for periyot, saniye, ev, dep, a in seri:
         fark = ev - dep
         skor_degisti = onceki_skor is not None and (ev, dep) != onceki_skor
         if skor_degisti:
-            if fark == 0 and onceki_fark != 0:
+            if fark == 0 and onceki_isaret != 0:
                 esitlikler.append((periyot, saniye, ev, dep, a))
-            elif fark != 0 and onceki_fark != 0 and (fark > 0) != (onceki_fark > 0):
+            elif fark != 0 and onceki_isaret != 0 and (fark > 0) != (onceki_isaret > 0):
                 liderlikler.append((periyot, saniye, ev, dep, a))
         onceki_skor = (ev, dep)
-        onceki_fark = fark
+        if fark != 0:
+            onceki_isaret = fark
 
     if esitlikler:
         periyot, saniye, ev, dep, a = esitlikler[-1]
@@ -863,10 +872,15 @@ def akis_gercekleri_uret(g, gid, actions, ev_kod, dep_kod, kazanan, ceyrek_veri)
     # "geri dönüş" şeklinin kritik yuvası boş kalıyordu — kritik işaret
     # kaybeden taraftan bir istatistik satırına düşüyordu (ölçüldü,
     # 27 Aralık SAS-UTA).
-    kazanan_liderlikleri = [x for x in liderlikler
-                            if (ev_kod if x[2] > x[3] else dep_kod) == kazanan]
-    if kazanan_liderlikleri:
-        periyot, saniye, ev, dep, a = kazanan_liderlikleri[-1]
+    # HER İKİ TARAFIN son öne geçişi de yazılıyor. Kaybedenin öne geçtiği
+    # an olmadan "X eşitledi" satırı zincirsiz kalıyordu: okuyucu rakibin
+    # ne zaman öne geçtiğini göremiyordu (26 Aralık ATL-NYK).
+    for _taraf in (kazanan, (dep_kod if kazanan == ev_kod else ev_kod)):
+        _liste = [x for x in liderlikler
+                  if (ev_kod if x[2] > x[3] else dep_kod) == _taraf]
+        if not _liste:
+            continue
+        periyot, saniye, ev, dep, a = _liste[-1]
         onde = ev_kod if ev > dep else dep_kod
         if True:
             # "Liderlik bir daha değişmedi" iddiası, sonradan BERABERLİK
@@ -879,7 +893,7 @@ def akis_gercekleri_uret(g, gid, actions, ev_kod, dep_kod, kazanan, ceyrek_veri)
             sonra_esitlik = (any(_sonra(x) for x in esitlikler)
                              or any(_sonra(x) for x in liderlikler))
             yaz("liderlik", periyot, saniye, ev, dep,
-                takim=onde, kesin=not sonra_esitlik,
+                takim=onde, kesin=not sonra_esitlik, kazanan_mi=(onde == kazanan),
                 oyuncu=_dogru_oyuncu_adi(a.get("personId"), a.get("playerName") or ""))
 
     # --- 6) KARAR ANI: son sayı, fark küçükse -----------------------------
@@ -895,7 +909,10 @@ def akis_gercekleri_uret(g, gid, actions, ev_kod, dep_kod, kazanan, ceyrek_veri)
         onceki = kayit
     if son_sayi is not None:
         son_periyot, son_saniye, son_ev, son_dep, son_a = son_sayi
-        if abs(son_ev - son_dep) <= 5:
+        # KULLANICI TANIMI: "maçı bitiren basket" = son 30 saniyede
+        # atılan ve sonucu belirleyen basket. Bu olay varsa kritik işaret
+        # HER ZAMAN onundur — şekil ne olursa olsun.
+        if abs(son_ev - son_dep) <= 5 and (son_saniye or 0) <= AKIS_KARAR_SANIYE:
             yaz("karar_ani", son_periyot, son_saniye, son_ev, son_dep,
                 takim=son_a.get("teamTricode"),
                 oyuncu=_dogru_oyuncu_adi(son_a.get("personId"),
@@ -918,6 +935,21 @@ def akis_gercekleri_uret(g, gid, actions, ev_kod, dep_kod, kazanan, ceyrek_veri)
         f, periyot, saniye, ev, dep = yakin
         yaz("rakip_yaklasti", periyot, saniye, ev, dep,
             takim=(dep_kod if kazanan_ev else ev_kod), sayi=f)
+
+    # --- 6c) KOPUŞ ANI ------------------------------------------------------
+    # "Kazanan hiç geride kalmadıysa kritik an, rakibin son kez farkı
+    # 5'in altına indirdiği andan SONRAKİ ilk kopuştur" (kullanıcı kuralı).
+    son_yakin_i = None
+    for i, (periyot, saniye, ev, dep, a) in enumerate(seri):
+        f = (ev - dep) if kazanan_ev else (dep - ev)
+        if 0 <= f <= 5:
+            son_yakin_i = i
+    if son_yakin_i is not None:
+        for periyot, saniye, ev, dep, a in seri[son_yakin_i + 1:]:
+            f = (ev - dep) if kazanan_ev else (dep - ev)
+            if f >= 10:
+                yaz("kopus", periyot, saniye, ev, dep, takim=kazanan, sayi=f)
+                break
 
     # --- 7) FARK KORUNDU ---------------------------------------------------
     # `fark_serisi.esik_sonrasi_hic_asilmadi` ile AYNI hesap; burada
