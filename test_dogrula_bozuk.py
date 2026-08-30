@@ -4890,6 +4890,73 @@ def main():
           _yayinda2 in _jj.loads(open("site/gunler.json", encoding="utf-8").read()),
           f"{_yayinda2} gunler.json'da yok")
 
+    # ==================================================================
+    # T13 — SERİ ATFI: GÖMÜLÜ TAKIM KODU VE İLGEÇ
+    # ==================================================================
+    # GERÇEK ÜRETİM ARIZASI (26 Aralık, brief). Takım KODU şehir adının
+    # ORTASINDA da eşleşiyor: "Philadel(phi)a" içindeki "PHI" ayrı bir
+    # aday oluyor ve seri ifadesine "Philadelphia 76ers"tan daha yakın
+    # düşüyor. Uzun aday ek kontrolüyle ("'i yenerek") elenirken içine
+    # gömülü kısa aday elenmeyip özne sanıldı; CHI'nin GERÇEK olan
+    # galibiyet serisi PHI'ye atfedildi, doğru cümle reddedildi ve gece
+    # yayına çıkamadı.
+    _g26 = _jj.loads(open("gercek/2025-12-26.json", encoding="utf-8").read())
+    _mid26 = "0022500427"
+    if _mid26 in _g26["maclar"]:
+        _gc26 = _g26["maclar"][_mid26]
+        _hm26 = _ham_gecit("2025-12-26")["maclar"][_mid26]
+        _dogru = ("Chicago Bulls, Philadelphia 76ers'i yenerek "
+                  "5 maçlık galibiyet serisini sürdürdü.")
+        basar("T13: gömülü takım kodu doğru cümleyi reddettirmiyor",
+              dogrula_modul.t13_atif_dogrulugu(_dogru, _gc26, _hm26)[0],
+              "CHI'nin galibiyet serisi gerçek — cümle doğru")
+        # Kural GEVŞEMEDİ: seri türü gerçekten tersse hâlâ reddedilmeli.
+        _ters = ("Chicago Bulls, Philadelphia 76ers'i yenerek "
+                 "5 maçlık mağlubiyet serisini sürdürdü.")
+        basar("T13: seri türü ters olan cümle hâlâ reddediliyor",
+              not dogrula_modul.t13_atif_dogrulugu(_ters, _gc26, _hm26)[0])
+        # İLGEÇ AÇIĞI: "X karşısında" ek almıyor ama özne de değil.
+        # Bu cümlenin öznesi PHI ve PHI mağlubiyet serisinde — RET.
+        _ilgec = ("Philadelphia 76ers, Chicago Bulls karşısında "
+                  "5 maçlık galibiyet serisini sürdürdü.")
+        basar("T13: ilgeçli tümleç özne sanılmıyor",
+              not dogrula_modul.t13_atif_dogrulugu(_ilgec, _gc26, _hm26)[0],
+              "cümlenin öznesi PHI ve PHI mağlubiyet serisinde")
+        # İki takımdan da bahseden DOĞRU cümle yanlışlıkla düşmemeli.
+        _ikili = ("Chicago galibiyet serisini sürdürürken "
+                  "Philadelphia mağlubiyet serisine girdi.")
+        basar("T13: iki taraflı doğru cümle yanlışlıkla reddedilmiyor",
+              dogrula_modul.t13_atif_dogrulugu(_ikili, _gc26, _hm26)[0])
+    # Eleme kuralı kaynakta duruyor mu.
+    _dsrc = open("dogrula.py", encoding="utf-8").read()
+    basar("T13: bir adayın aralığına gömülü aday eleniyor",
+          "if not any(p2 <= pos and bitis <= b2 and (b2 - p2) > (bitis - pos)" in _dsrc)
+    basar("T13: ilgeç listesi özne dışı işaretlere dahil",
+          "OZNE_DISI_ILGECLER" in _dsrc
+          and "OZNE_DISI_EKLER = (IYELIK_EKI_REGEX, NESNE_EKI_REGEX, OZNE_DISI_ILGECLER)" in _dsrc)
+    # İlgeçler 6 karakterden uzun — pencere büyümüş olmalı.
+    basar("T13: ek penceresi ilgeçleri de kapsıyor",
+          "oncesi[bitis : bitis + 14]" in _dsrc)
+
+    # ==================================================================
+    # YAYIN KAPISI: İŞARETLİ ALANI TAZELERKEN ÇÖKMEMELİ
+    # ==================================================================
+    # İşaretli kayıt {mac_id, alan, gerekce, metin} ve `metin` DÜZ YAZI.
+    # Kapı ise {alan: metin} SÖZLÜĞÜ bekleyen doğrulayıcıya onu doğrudan
+    # geçiriyordu: AttributeError ('str' object has no attribute 'items').
+    # Bu yol ilk kez işaretli alanı olan bir geceyle karşılaştı (26
+    # Aralık) ve yayın işi düştü — gece hazır dururken site güncellenmedi.
+    basar("Yayın kapısı: brief alanı kendi doğrulayıcısına gidiyor",
+          'if alan_adi == "brief":' in _ysrc2
+          and "_dog.brief_metnini_dogrula(" in _ysrc2)
+    basar("Yayın kapısı: düz yazı sözlüğe çevriliyor",
+          "{alan_adi: ham_metin}" in _ysrc2)
+    basar("Yayın kapısı: tanınmayan alan kapıyı çökertmiyor",
+          "tanınmayan alan" in _ysrc2)
+    # Sessizce GEÇMEMELİ: gerekçe korunmalı, yoksa engelleyici test kaçar.
+    basar("Yayın kapısı: tanınmayan alanda gerekçe korunuyor",
+          "üretim anındaki gerekçe korunuyor" in _ysrc2)
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))

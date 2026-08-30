@@ -1361,7 +1361,16 @@ def _son_yan_cumleyi_al(cumle, pozisyon):
 # atlamak gerekiyor (gerçek üretim bug'ı: "üst üste" iddiası yanlışlıkla
 # nesneye, Denver'a, atfedildi).
 NESNE_EKI_REGEX = re.compile(r"^['’]?(y?[ıiuü])\b", re.IGNORECASE)
-OZNE_DISI_EKLER = (IYELIK_EKI_REGEX, NESNE_EKI_REGEX)
+# SONRAKİ KELİME DE ÖZNE OLMADIĞINI SÖYLEYEBİLİR. Ek yeterli değil:
+# "Philadelphia 76ers, Chicago Bulls KARŞISINDA 5 maçlık galibiyet
+# serisini sürdürdü" cümlesinde "Chicago Bulls" ek almıyor ama özne de
+# değil — cümlenin öznesi Philadelphia ve iddia YANLIŞ (PHI mağlubiyet
+# serisinde). Ek listesi tek başınayken bu cümle T13'ten geçiyordu.
+# Bunlar ilgeç: kendinden önceki adı tümleç yapıyorlar.
+OZNE_DISI_ILGECLER = re.compile(
+    r"^\s*(karşısında|karşısına|karşısında[kn]i|önünde|deplasmanında|"
+    r"evinde|sahasında|deplasmanda|idmanında)\b", re.IGNORECASE)
+OZNE_DISI_EKLER = (IYELIK_EKI_REGEX, NESNE_EKI_REGEX, OZNE_DISI_ILGECLER)
 
 
 def _en_yakin_ozne_takim(cumle, pozisyon, aliaslar_by_etiket):
@@ -1395,9 +1404,27 @@ def _en_yakin_ozne_takim(cumle, pozisyon, aliaslar_by_etiket):
         if mevcut is None or (bitis - pos) > (mevcut[1] - pos):
             en_uzun_by_pos[pos] = (etiket, bitis)
     adaylar = [(pos, etiket, bitis) for pos, (etiket, bitis) in en_uzun_by_pos.items()]
+    # AYNI POZİSYON YETMİYOR: takım KODU, şehir adının ORTASINDA da
+    # eşleşiyor — "Philadel(phi)a" içindeki "PHI" 23. karakterde ayrı bir
+    # aday oluyor, üstelik seri ifadesine "Philadelphia 76ers"tan DAHA
+    # YAKIN. Uzun adayın ek kontrolü ("'i yenerek" → özne değil) onu
+    # elerken, içine gömülü kısa aday eleme dışında kalıp özne sanılıyordu.
+    # Gerçek üretim arızası (26 Aralık, brief):
+    #   "Chicago Bulls, Philadelphia 76ers'i yenerek 5 maçlık galibiyet
+    #    serisini sürdürdü."
+    # CHI'nin 5 maçlık galibiyet serisi GERÇEK; cümle doğru. T13 seriyi
+    # PHI'ye atfedip doğru cümleyi reddetti ve gece yayına çıkamadı.
+    # Çare: başka bir adayın ARALIĞININ İÇİNDE kalan adayı ele.
+    adaylar = [
+        (pos, etiket, bitis) for pos, etiket, bitis in adaylar
+        if not any(p2 <= pos and bitis <= b2 and (b2 - p2) > (bitis - pos)
+                   for p2, _, b2 in adaylar)
+    ]
     adaylar.sort(key=lambda a: -a[0])
     for pos, etiket, bitis in adaylar:
-        sonrasi = oncesi[bitis : bitis + 6]
+        # Pencere 6 karakter EK'ler için yeterliydi; ilgeçler
+        # ("karşısında") daha uzun, pencere büyütüldü.
+        sonrasi = oncesi[bitis : bitis + 14]
         if any(desen.match(sonrasi) for desen in OZNE_DISI_EKLER):
             continue
         return etiket

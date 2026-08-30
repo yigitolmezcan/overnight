@@ -472,16 +472,46 @@ def _isaretleri_tazele(tarih, isaretli):
         if gid not in gercek_gece["maclar"]:
             yeni.append(i)
             continue
-        sonuc = _dog.mac_metnini_dogrula(
-            i.get("metin", {}), gercek_gece["maclar"][gid], ham["maclar"][gid], 0,
-            yasakli, en_iyi_performans=en_iyi.get(gid), sablon=True,
-            maglup_izinli_ad=izin.get(gid),
-        )
-        gerekce = list(sonuc.get("gerekce", []))
-        for alan, ad in sonuc.get("alanlar", {}).items():
-            for test, (gecti, detay) in ad.get("testler", {}).items():
-                if not gecti:
-                    gerekce.append(f"{alan}/{test}: {detay}")
+        # İŞARETLİ KAYDIN BİÇİMİ: {mac_id, alan, gerekce, metin} ve
+        # `metin` DÜZ YAZI, `alan` hangi alan olduğunu söylüyor.
+        # `mac_metnini_dogrula` ise {alan: metin} SÖZLÜĞÜ bekliyor —
+        # düz yazı geçirilince `.items()` ile patlıyordu
+        # (AttributeError: 'str' object has no attribute 'items').
+        # Bu yol bugüne dek hiç işaretli alanı olan bir geceyle
+        # karşılaşmamıştı; 26 Aralık ilk oldu ve yayın işi düştü,
+        # gece hazır dururken site güncellenmedi (ölçüldü, 30 Ağustos
+        # 06:23 koşusu).
+        # Ayrıca `brief` alanının doğrulayıcısı AYRI: mac_metnini_dogrula
+        # yalnız maç metni alanlarını (baslik/ozet/...) tanıyor.
+        alan_adi = i.get("alan")
+        ham_metin = i.get("metin")
+        gerekce = []
+        if alan_adi == "brief":
+            sonuc = _dog.brief_metnini_dogrula(
+                {"metin": ham_metin} if isinstance(ham_metin, str) else (ham_metin or {}),
+                gercek_gece["maclar"][gid], ham["maclar"][gid], 0, yasakli)
+            gerekce = list(sonuc.get("gerekce", []))
+        elif alan_adi in _dog.ALAN_UZUNLUK_ADI or isinstance(ham_metin, dict):
+            metin_sozlugu = ({alan_adi: ham_metin}
+                             if isinstance(ham_metin, str) else (ham_metin or {}))
+            sonuc = _dog.mac_metnini_dogrula(
+                metin_sozlugu, gercek_gece["maclar"][gid], ham["maclar"][gid], 0,
+                yasakli, en_iyi_performans=en_iyi.get(gid), sablon=True,
+                maglup_izinli_ad=izin.get(gid),
+            )
+            gerekce = list(sonuc.get("gerekce", []))
+            for alan, ad in sonuc.get("alanlar", {}).items():
+                for test, (gecti, detay) in ad.get("testler", {}).items():
+                    if not gecti:
+                        gerekce.append(f"{alan}/{test}: {detay}")
+        else:
+            # TANINMAYAN ALAN: kapıyı çökertmek yerine üretim anındaki
+            # gerekçeyle devam. Sessizce GEÇMİYOR — gerekçe duruyor, yani
+            # engelleyici bir test varsa gece yine bloke olur.
+            print(f"UYARI: {tarih} · '{alan_adi}' alanı tazelenemedi "
+                  f"(tanınmayan alan) — üretim anındaki gerekçe korunuyor.")
+            yeni.append(i)
+            continue
         if gerekce:
             yeni.append({**i, "gerekce": gerekce})
     return yeni
