@@ -69,7 +69,7 @@
       "metin": "Houston Rockets, Denver Nuggets deplasmanında kazandı.",
       "anlatili": true,
       "hedef_id": "a-0022500386",
-      "icon": "standings",
+      "icon": "default",
       "saat": "01:00",
       "rozet": 6.39,
       "skor": "DEN 101 – HOU 115",
@@ -177,7 +177,7 @@
       "metin": "LA Clippers, Los Angeles Lakers'i evinde yendi.",
       "anlatili": true,
       "hedef_id": "a-0022500395",
-      "icon": "default",
+      "icon": "standings",
       "saat": "06:30",
       "rozet": 5.07,
       "skor": "LAC 103 – LAL 88",
@@ -896,6 +896,7 @@
       },
       "kazanan_kod": "GSW",
       "ray_renk": "#2E6BD6",
+      "ray_rgb": "46,107,214",
       "ray_asil": "#2E6BD6",
       "ray_degisti": false
     },
@@ -1523,6 +1524,7 @@
       },
       "kazanan_kod": "WAS",
       "ray_renk": "#C8102E",
+      "ray_rgb": "200,16,46",
       "ray_asil": "#3B7FD4",
       "ray_degisti": true
     },
@@ -2189,6 +2191,7 @@
       },
       "kazanan_kod": "ORL",
       "ray_renk": "#C4CED4",
+      "ray_rgb": "196,206,212",
       "ray_asil": "#1E8FD5",
       "ray_degisti": true
     }
@@ -15639,14 +15642,15 @@
           "kritik": true
         }
       ],
-      "ray_renk": "#12A05C"
+      "ray_renk": "#12A05C",
+      "ray_rgb": "18,160,92"
     },
     {
       "id": "a-0022500386",
       "mac": "Denver Nuggets — Houston Rockets",
       "skor": "101–115",
       "rozet": 6.39,
-      "why": "gece sırası 1",
+      "why": "",
       "metin": "Houston Rockets deplasmanda Denver Nuggets'i 115-101 yendi. Kevin Durant 31 sayı attı.",
       "box": {
         "ev": {
@@ -16254,7 +16258,8 @@
           "kritik": true
         }
       ],
-      "ray_renk": "#CE1141"
+      "ray_renk": "#CE1141",
+      "ray_rgb": "206,17,65"
     },
     {
       "id": "a-0022500387",
@@ -16848,7 +16853,8 @@
           "kritik": true
         }
       ],
-      "ray_renk": "#3A8DDE"
+      "ray_renk": "#3A8DDE",
+      "ray_rgb": "58,141,222"
     }
   ],
   "diger": [
@@ -16857,7 +16863,7 @@
       "mac": "LA Clippers — Los Angeles Lakers",
       "skor": "103–88",
       "rozet": 5.07,
-      "why": "",
+      "why": "gece sırası 10",
       "metin": "LA Clippers evinde Los Angeles Lakers'i 103-88 yendi.",
       "box": {
         "ev": {

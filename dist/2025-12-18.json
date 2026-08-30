@@ -870,6 +870,7 @@
       },
       "kazanan_kod": "NOP",
       "ray_renk": "#B4975A",
+      "ray_rgb": "180,151,90",
       "ray_asil": "#B4975A",
       "ray_degisti": false
     },
@@ -1522,6 +1523,7 @@
       },
       "kazanan_kod": "LAL",
       "ray_renk": "#8B62D9",
+      "ray_rgb": "139,98,217",
       "ray_asil": "#8B62D9",
       "ray_degisti": false
     },
@@ -2217,6 +2219,7 @@
       },
       "kazanan_kod": "POR",
       "ray_renk": "#E03A3E",
+      "ray_rgb": "224,58,62",
       "ray_asil": "#E03A3E",
       "ray_degisti": false
     },
@@ -2885,6 +2888,7 @@
       },
       "kazanan_kod": "CHA",
       "ray_renk": "#00908C",
+      "ray_rgb": "0,144,140",
       "ray_asil": "#4B36A8",
       "ray_degisti": true
     }
@@ -16010,7 +16014,8 @@
           "kritik": true
         }
       ],
-      "ray_renk": "#B08BE8"
+      "ray_renk": "#B08BE8",
+      "ray_rgb": "176,139,232"
     },
     {
       "id": "a-0022500372",
@@ -16701,7 +16706,8 @@
           "kritik": true
         }
       ],
-      "ray_renk": "#F58426"
+      "ray_renk": "#F58426",
+      "ray_rgb": "245,132,38"
     },
     {
       "id": "a-0022500376",
@@ -17417,7 +17423,8 @@
           "kritik": false
         }
       ],
-      "ray_renk": "#2E7BC4"
+      "ray_renk": "#2E7BC4",
+      "ray_rgb": "46,123,196"
     }
   ],
   "diger": [

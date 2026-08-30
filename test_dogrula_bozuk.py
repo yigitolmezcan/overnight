@@ -5288,11 +5288,12 @@ def main():
           "padding:16px 16px 14px 17px" in _game)
     basar("Ayraç: bloklar arası 14px",
           "margin-bottom:14px" in _game)
+    # EMEKLİ: "ray düz renk, degrade değil" — kullanıcı kararı değişti,
+    # ray artık üstte tam renk / altta %25 degrade. Yerine aşağıdaki
+    # "Ray[...]" testleri geçti; boy ve genişlik iddiası orada duruyor.
     _ray = _s21.split(".game::before{")[1].split("}")[0]
-    basar("Ayraç: ray tam boy (degrade değil)",
-          "top:0;bottom:0" in _ray and "linear-gradient" not in _ray)
-    basar("Ayraç: ray 3px ve düz takım rengi",
-          "width:3px" in _ray and "background:var(--ray" in _ray)
+    basar("Ayraç: ray tam boy ve 3px",
+          "top:0" in _ray and "bottom:0" in _ray and "width:3px" in _ray)
     # "Göz at" da aynı zemini alıyor, çerçevesi KALKTI.
     _goz = _s21.split("\n.gozkart{")[1].split("}")[0]
     basar("Ayraç: Göz at aynı zemini alıyor",
@@ -5450,6 +5451,45 @@ def main():
                 _d5_kalan.append(f"{_t}: {_x['cumle']}")
     basar("D5: yayındaki bloklarda eylem/durum ihlali yok",
           not _d5_kalan, "; ".join(_d5_kalan))
+
+    # ------------------------------------------------------------------
+    # SOL RAY — degrade, ama sönmüyor
+    # ------------------------------------------------------------------
+    # Akış eklenince bloklar uzadı; tamamen şeffaflaşan ray alt yarıda
+    # görünmez oluyordu. Üstte tam renk, altta AYNI rengin %25'i.
+    _s22 = _re.sub(r"/\*.*?\*/", "", open("overnight_v17.html", encoding="utf-8").read(),
+                   flags=_re.S)
+    for _sec, _ad in ((".game::before{", "Mutlaka bil"), (".gozkart::before{", "Göz at")):
+        _blk = _s22.split(_sec)[1].split("}")[0]
+        basar(f"Ray[{_ad}]: degrade var, düz renk değil",
+              "linear-gradient(180deg" in _blk)
+        basar(f"Ray[{_ad}]: üstte tam renk 0% ve 30%",
+              "var(--ray,var(--ember)) 0%" in _blk
+              and "var(--ray,var(--ember)) 30%" in _blk)
+        basar(f"Ray[{_ad}]: altta %25 opaklık, tam şeffaf DEĞİL",
+              "rgba(var(--ray-rgb,226,112,28),.25) 100%" in _blk
+              and "transparent" not in _blk)
+        basar(f"Ray[{_ad}]: 3px ve tam boy korunuyor",
+              "width:3px" in _blk and "top:0" in _blk and "bottom:0" in _blk)
+    basar("Ray: her iki katman da --ray-rgb değişkenini alıyor",
+          _s22.count("--ray-rgb:${esc(") == 2)
+
+    # Kanal dönüşümü tek kaynak, rgba() için gerekli.
+    basar("Ray: hex → kanal dönüşümü doğru",
+          _derle.renk_kanallari("#007A33") == "0,122,51"
+          and _derle.renk_kanallari("#FFF") == "255,255,255"
+          and _derle.renk_kanallari("bozuk") is None)
+    # Yayındaki her gecede ray_rgb üretiliyor (renk varsa).
+    _rgb_eksik = []
+    for _t4 in _geceler:
+        if not _os.path.exists(f"dist/{_t4}.json"):
+            continue
+        _x4 = _jj.loads(open(f"dist/{_t4}.json", encoding="utf-8").read())
+        for _m4 in (_x4.get("mutlaka") or []) + (_x4.get("degerse_bak") or []):
+            if _m4.get("ray_renk") and not _m4.get("ray_rgb"):
+                _rgb_eksik.append(_t4)
+    basar("Ray: rengi olan her blokta kanal değeri de var",
+          not _rgb_eksik, f"eksik: {sorted(set(_rgb_eksik))}")
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",

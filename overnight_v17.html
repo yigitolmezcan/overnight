@@ -379,7 +379,11 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
    Degrade blok kısayken işe yarıyordu; akışla birlikte uzayınca alt
    yarısı görünmez oluyordu. */
 .game::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
-  background:var(--ray,var(--ember));display:block}
+  background:linear-gradient(180deg,
+    var(--ray,var(--ember)) 0%,
+    var(--ray,var(--ember)) 30%,
+    rgba(var(--ray-rgb,226,112,28),.25) 100%);
+  display:block}
 .gcard{display:block;width:100%}
 /* Rozet — üç bölümde de aynı biçim (ember zemin, koyu yazı, mono,
    kalın), satırın SOLUNDA. Sadece boyut değişir. */
@@ -1156,7 +1160,11 @@ td.khot{color:var(--amber);font-weight:700}
 .gozkart{position:relative;background:#0D1219;border-top:1px solid #151C26;
   padding:16px 16px 14px 17px;margin-bottom:14px;scroll-margin-top:20px}
 .gozkart::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
-  background:var(--ray,var(--ember));display:block}
+  background:linear-gradient(180deg,
+    var(--ray,var(--ember)) 0%,
+    var(--ray,var(--ember)) 30%,
+    rgba(var(--ray-rgb,226,112,28),.25) 100%);
+  display:block}
 .gozkart:last-child{margin-bottom:0}
 .gozkart .archrow{padding:0 0 12px}
 .gozkart .dblock{margin-bottom:14px}
@@ -2261,7 +2269,7 @@ function render(d){
       </div>`).join('')}</div>`
     : '';
 
-  document.getElementById('mutlakaBox').innerHTML = d.mutlaka.map(mv=>`<article class="game" id="${mv.id}" style="--ray:${esc(mv.ray_renk||'var(--ember)')}">
+  document.getElementById('mutlakaBox').innerHTML = d.mutlaka.map(mv=>`<article class="game" id="${mv.id}" style="--ray:${esc(mv.ray_renk||'var(--ember)')};--ray-rgb:${esc(mv.ray_rgb||'226,112,28')}">
     <div class="gcard" data-kart="${mv.id}" role="button" tabindex="0">
       <div class="gtop">
         <span class="roz lg">${mv.rozet.toFixed(1)}</span>
@@ -2278,7 +2286,7 @@ function render(d){
   // ---- göz at (katman "ikinci" — veri yoksa bölüm gizli) ----
   document.getElementById('secDegerseBak').hidden = !(d.degerse_bak && d.degerse_bak.length);
   if(d.degerse_bak && d.degerse_bak.length){
-    document.getElementById('degerseBak').innerHTML=d.degerse_bak.map(m=>`<div class="gozkart" id="${m.id}" style="--ray:${esc(m.ray_renk||'var(--ember)')}">
+    document.getElementById('degerseBak').innerHTML=d.degerse_bak.map(m=>`<div class="gozkart" id="${m.id}" style="--ray:${esc(m.ray_renk||'var(--ember)')};--ray-rgb:${esc(m.ray_rgb||'226,112,28')}">
       <button class="archrow" data-kart="${m.id}" aria-label="${esc(m.mac)} — box score">
         <span class="roz sm">${m.rozet.toFixed(1)}</span>
         <div class="mblok md">${macBlok(m.mac, m.skor)}</div>

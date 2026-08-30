@@ -858,6 +858,7 @@
       },
       "kazanan_kod": "ORL",
       "ray_renk": "#1E8FD5",
+      "ray_rgb": "30,143,213",
       "ray_asil": "#1E8FD5",
       "ray_degisti": false
     },
@@ -1489,6 +1490,7 @@
       },
       "kazanan_kod": "NYK",
       "ray_renk": "#F58426",
+      "ray_rgb": "245,132,38",
       "ray_asil": "#F58426",
       "ray_degisti": false
     },
@@ -2171,6 +2173,7 @@
       },
       "kazanan_kod": "UTA",
       "ray_renk": "#3E7A5E",
+      "ray_rgb": "62,122,94",
       "ray_asil": "#3E7A5E",
       "ray_degisti": false
     },
@@ -2874,6 +2877,7 @@
       },
       "kazanan_kod": "BKN",
       "ray_renk": "#8A8F98",
+      "ray_rgb": "138,143,152",
       "ray_asil": "#8A8F98",
       "ray_degisti": false
     }

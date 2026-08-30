@@ -1739,6 +1739,21 @@ def takim_renk_secenekleri():
         return {kod: [renk] for kod, renk in TAKIM_RENK.items()}
 
 
+def renk_kanallari(hex_renk):
+    """'#007A33' -> '0,122,51'. Ray degradesi rgba() ile kuruluyor;
+    color-mix() eski Safari'de çalışmıyor, kanalları vermek her yerde
+    çalışan tek yol."""
+    h = (hex_renk or "").strip().lstrip("#")
+    if len(h) == 3:
+        h = "".join(c * 2 for c in h)
+    if len(h) != 6:
+        return None
+    try:
+        return ",".join(str(int(h[i:i + 2], 16)) for i in (0, 2, 4))
+    except ValueError:
+        return None
+
+
 def renk_cakismasini_coz(oyuncular):
     """Aynı listedeki oyunculara çakışmayan renk atar.
 
@@ -2437,6 +2452,7 @@ def derle(tarih_str):
     renk_cakismasini_coz(_ray)
     for m, r in zip(mutlaka, _ray):
         m["ray_renk"] = r["renk"]
+        m["ray_rgb"] = renk_kanallari(r["renk"])
         m["ray_asil"] = r["asil_renk"]
         m["ray_degisti"] = r["renk_degisti"]
 
@@ -2522,6 +2538,7 @@ def derle(tarih_str):
     renk_cakismasini_coz(_ray_g)
     for m, r in zip(degerse_bak, _ray_g):
         m["ray_renk"] = r["renk"]
+        m["ray_rgb"] = renk_kanallari(r["renk"])
 
     # ---- türkler ----
     turkler = _turkler(ham, turk_oyunculari, mutlaka_id_by_gid, rozet_by_gid)

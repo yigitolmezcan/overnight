@@ -51,7 +51,7 @@
       "metin": "Cleveland Cavaliers, Charlotte Hornets'i evinde yendi.",
       "anlatili": true,
       "hedef_id": "a-0022500402",
-      "icon": "standings",
+      "icon": "default",
       "saat": "03:00",
       "rozet": 5.22,
       "skor": "CLE 139 – CHA 132",
@@ -111,7 +111,7 @@
       "metin": "Detroit Pistons, Portland Trail Blazers'i yenerek konferansta 1. sıraya yükseldi.",
       "anlatili": true,
       "hedef_id": "a-0022500408",
-      "icon": "default",
+      "icon": "standings",
       "saat": "06:00",
       "rozet": 6.12,
       "skor": "POR 102 – DET 110",
@@ -866,6 +866,7 @@
       },
       "kazanan_kod": "BOS",
       "ray_renk": "#12A05C",
+      "ray_rgb": "18,160,92",
       "ray_asil": "#12A05C",
       "ray_degisti": false
     }
@@ -10858,7 +10859,8 @@
           "kritik": false
         }
       ],
-      "ray_renk": "#31A8E0"
+      "ray_renk": "#31A8E0",
+      "ray_rgb": "49,168,224"
     },
     {
       "id": "a-0022500404",
@@ -11463,14 +11465,15 @@
           "kritik": true
         }
       ],
-      "ray_renk": "#B4975A"
+      "ray_renk": "#B4975A",
+      "ray_rgb": "180,151,90"
     },
     {
       "id": "a-0022500408",
       "mac": "Portland Trail Blazers — Detroit Pistons",
       "skor": "102–110",
       "rozet": 6.12,
-      "why": "",
+      "why": "gece sırası 7",
       "metin": "Detroit Pistons deplasmanda Portland Trail Blazers'i 110-102 yendi.",
       "box": {
         "ev": {
@@ -12130,7 +12133,8 @@
           "kritik": false
         }
       ],
-      "ray_renk": "#E0384A"
+      "ray_renk": "#E0384A",
+      "ray_rgb": "224,56,74"
     }
   ],
   "diger": [
@@ -12802,7 +12806,7 @@
       "mac": "Cleveland Cavaliers — Charlotte Hornets",
       "skor": "139–132",
       "rozet": 5.22,
-      "why": "gece sırası 1",
+      "why": "",
       "metin": "Cleveland Cavaliers evinde Charlotte Hornets'i 139-132 yendi. Darius Garland 10 asist yaptı.",
       "box": {
         "ev": {

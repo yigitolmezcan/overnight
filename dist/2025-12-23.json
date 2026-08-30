@@ -933,6 +933,7 @@
       },
       "kazanan_kod": "DAL",
       "ray_renk": "#2E7BC4",
+      "ray_rgb": "46,123,196",
       "ray_asil": "#2E7BC4",
       "ray_degisti": false
     },
@@ -1695,6 +1696,7 @@
       },
       "kazanan_kod": "LAC",
       "ray_renk": "#D2434A",
+      "ray_rgb": "210,67,74",
       "ray_asil": "#D2434A",
       "ray_degisti": false
     },
@@ -2330,6 +2332,7 @@
       },
       "kazanan_kod": "CHI",
       "ray_renk": "#B8B9BC",
+      "ray_rgb": "184,185,188",
       "ray_asil": "#CE1141",
       "ray_degisti": true
     }
@@ -21396,7 +21399,8 @@
           "kritik": true
         }
       ],
-      "ray_renk": "#C4CED4"
+      "ray_renk": "#C4CED4",
+      "ray_rgb": "196,206,212"
     },
     {
       "id": "a-0022500421",
@@ -21989,7 +21993,8 @@
           "kritik": false
         }
       ],
-      "ray_renk": "#E0384A"
+      "ray_renk": "#E0384A",
+      "ray_rgb": "224,56,74"
     },
     {
       "id": "a-0022500416",
@@ -22607,7 +22612,8 @@
           "kritik": false
         }
       ],
-      "ray_renk": "#3B7FD4"
+      "ray_renk": "#3B7FD4",
+      "ray_rgb": "59,127,212"
     },
     {
       "id": "a-0022500419",
@@ -23248,7 +23254,8 @@
           "kritik": true
         }
       ],
-      "ray_renk": "#12173F"
+      "ray_renk": "#12173F",
+      "ray_rgb": "18,23,63"
     }
   ],
   "diger": [

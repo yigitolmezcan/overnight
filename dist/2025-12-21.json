@@ -716,6 +716,7 @@
       },
       "kazanan_kod": "SAC",
       "ray_renk": "#8A5FC7",
+      "ray_rgb": "138,95,199",
       "ray_asil": "#8A5FC7",
       "ray_degisti": false
     },
@@ -1382,6 +1383,7 @@
       },
       "kazanan_kod": "CHI",
       "ray_renk": "#CE1141",
+      "ray_rgb": "206,17,65",
       "ray_asil": "#CE1141",
       "ray_degisti": false
     },
@@ -1956,6 +1958,7 @@
       },
       "kazanan_kod": "NYK",
       "ray_renk": "#F58426",
+      "ray_rgb": "245,132,38",
       "ray_asil": "#F58426",
       "ray_degisti": false
     },
@@ -2580,6 +2583,7 @@
       },
       "kazanan_kod": "MIN",
       "ray_renk": "#3B7FD4",
+      "ray_rgb": "59,127,212",
       "ray_asil": "#3B7FD4",
       "ray_degisti": false
     }

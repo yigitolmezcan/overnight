@@ -724,6 +724,7 @@
       },
       "kazanan_kod": "DEN",
       "ray_renk": "#FEC524",
+      "ray_rgb": "254,197,36",
       "ray_asil": "#FEC524",
       "ray_degisti": false
     },
@@ -1367,6 +1368,7 @@
       },
       "kazanan_kod": "UTA",
       "ray_renk": "#3E7A5E",
+      "ray_rgb": "62,122,94",
       "ray_asil": "#3E7A5E",
       "ray_degisti": false
     },
@@ -2043,6 +2045,7 @@
       },
       "kazanan_kod": "MEM",
       "ray_renk": "#6C8CC7",
+      "ray_rgb": "108,140,199",
       "ray_asil": "#6C8CC7",
       "ray_degisti": false
     },
@@ -2715,6 +2718,7 @@
       },
       "kazanan_kod": "DET",
       "ray_renk": "#E0384A",
+      "ray_rgb": "224,56,74",
       "ray_asil": "#E0384A",
       "ray_degisti": false
     }

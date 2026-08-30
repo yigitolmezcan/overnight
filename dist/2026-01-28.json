@@ -928,6 +928,7 @@
       },
       "kazanan_kod": "SAS",
       "ray_renk": "#C4CED4",
+      "ray_rgb": "196,206,212",
       "ray_asil": "#C4CED4",
       "ray_degisti": false
     }
@@ -13840,7 +13841,8 @@
           "kritik": true
         }
       ],
-      "ray_renk": "#1E8FD5"
+      "ray_renk": "#1E8FD5",
+      "ray_rgb": "30,143,213"
     },
     {
       "id": "a-0022500675",
@@ -14551,7 +14553,8 @@
           "kritik": true
         }
       ],
-      "ray_renk": "#F58426"
+      "ray_renk": "#F58426",
+      "ray_rgb": "245,132,38"
     },
     {
       "id": "a-0022500672",
@@ -15221,7 +15224,8 @@
           "kritik": true
         }
       ],
-      "ray_renk": "#0B2C6B"
+      "ray_renk": "#0B2C6B",
+      "ray_rgb": "11,44,107"
     }
   ],
   "diger": [

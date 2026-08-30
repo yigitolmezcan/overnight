@@ -711,6 +711,7 @@
       },
       "kazanan_kod": "GSW",
       "ray_renk": "#2E6BD6",
+      "ray_rgb": "46,107,214",
       "ray_asil": "#2E6BD6",
       "ray_degisti": false
     }
@@ -3987,7 +3988,8 @@
           "kritik": true
         }
       ],
-      "ray_renk": "#31A8E0"
+      "ray_renk": "#31A8E0",
+      "ray_rgb": "49,168,224"
     }
   ],
   "diger": [],
