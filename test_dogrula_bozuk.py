@@ -6401,6 +6401,29 @@ def main():
         if _kl2 != sorted(_kl2):
             _kron.append(_tm5)
     basar("Kapak: liste saate göre sıralı", not _kron, str(_kron))
+    # LİSTE YAPISI: saat GRUP BAŞLIĞI, satırlar içeriden, sol ray
+    # tek degradenin dilimleri, rozet üç kademe.
+    basar("Liste: saat grup başlığı (sütun değil)",
+          "gruplar.push({saat:" in _sayfa
+          and 'class="saat"' in _sayfa
+          and 'span class="sa"' not in _sayfa)
+    _sa = _sayfa.split(".kaplist .saat{")[1].split("}")[0]
+    basar("Liste: grup başlığı mono 11px gri",
+          "font-size:11px" in _sa and "#6E7A8B" in _sa)
+    basar("Liste: satırlar 15px içeriden",
+          "padding:0 0 12px 15px" in _sayfa.split(".kaplist .grp{")[1].split("}")[0])
+    _ry = _sayfa.split(".kaplist .gray{")[1].split("}")[0]
+    basar("Liste: sol ray 2px, gece→şafak degradesi, %55 opaklık",
+          "width:2px" in _ry and "#1E2636" in _ry and "#4A3520" in _ry
+          and "#E8763A" in _ry and "opacity:.55" in _ry)
+    basar("Liste: degrade TÜM LİSTE boyunca tek parça (dilimler hizalanıyor)",
+          "backgroundSize=`2px ${H}px`" in _sayfa
+          and "backgroundPosition=`0 ${-g.offsetTop}px`" in _sayfa)
+    basar("Liste: rozet üç kademe",
+          ".kaplist .k1 i{background:var(--ember)" in _sayfa
+          and ".kaplist .k2 i{background:#3A2216" in _sayfa
+          and ".kaplist .k3 i{background:#161D28" in _sayfa
+          and ".kaplist .k3 span.tk{color:var(--faint)}" in _sayfa)
     # SEZON BAŞI: bağlamlı kalıp ilk 10 maçta kurulamaz.
     basar("Manşet: sezon başı bağlam eşiği susma kuralıyla aynı",
           _derle.MANSET_BAGLAM_ASGARI == _gerc_modul.SEZON_ACILISI_TAZE_MAC_SAYISI

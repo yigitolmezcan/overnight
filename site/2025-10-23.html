@@ -1213,21 +1213,30 @@ td.khot{color:var(--amber);font-weight:700}
 .mn .h.k3 .s u{background:#232C39;color:#6C7787}
 /* ===== KAPAK MAÇ LİSTESİ — punch line yok, rozet + takımlar + saat ===== */
 .kaplist{padding:6px 0 2px}
-.kaplist{padding-top:10px;margin-top:6px;border-top:1px solid var(--line2)}
-.kaplist a{display:flex;align-items:center;gap:10px;padding:6px 0;
+.kaplist{padding-top:10px;margin-top:6px;border-top:1px solid var(--line2);
+  position:relative}
+.kaplist .grp{position:relative;padding:0 0 12px 15px}
+.kaplist .grp:last-child{padding-bottom:2px}
+/* SOL RAY: dikey gece degradesi. Renkler üstteki gece bandıyla aynı
+   yolu izliyor — listenin üstü gece, altı şafak. Her grup toplam
+   degradenin KENDİ DİLİMİNİ alıyor (konum JS'te hizalanıyor). */
+.kaplist .gray{position:absolute;left:0;top:0;bottom:0;width:2px;opacity:.55;
+  background-image:linear-gradient(180deg,#1E2636 0%,#4A3520 55%,#E8763A 100%);
+  background-repeat:no-repeat}
+.kaplist .saat{font-family:var(--mono);font-size:11px;color:#6E7A8B;
+  letter-spacing:.04em;padding:6px 0 3px}
+.kaplist a{display:flex;align-items:center;gap:10px;padding:5px 0;
   text-decoration:none;color:inherit}
-.kaplist span.sa{font-family:var(--mono);font-size:10.5px;color:var(--faint);
-  flex:none;min-width:38px}
+/* ROZET ÜÇ KADEME — hiyerarşi görünsün. */
 .kaplist i{font-family:var(--mono);font-size:10px;font-weight:700;font-style:normal;
-  padding:1px 5px;flex:none;min-width:30px;text-align:center;
-  background:#1A2230;color:#8A94A3}
-.kaplist .yuksek i{background:var(--ember);color:#0A0603}
-.kaplist .orta i{background:#2A2118;color:#B4713F}
+  padding:1px 5px;flex:none;min-width:30px;text-align:center}
+.kaplist .k1 i{background:var(--ember);color:#0A0603}
+.kaplist .k2 i{background:#3A2216;color:#C08050}
+.kaplist .k3 i{background:#161D28;color:#6E7A8B}
 .kaplist span.tk{flex:1;min-width:0;font-family:var(--mono);font-size:12px;
   color:var(--dim);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-/* Düşük rozetli satır TAMAMEN soluk — göz yüksek rozete gitsin. */
-.kaplist .dusuk{opacity:.52}
-.kaplist .dusuk span.tk{color:var(--faint)}
+/* Düşük rozetli satırın maç adı da soluk. */
+.kaplist .k3 span.tk{color:var(--faint)}
 
 /* "Bunları geç" sol rayı — YAPI VERİR, DİKKAT ÇEKMEZ (kullanıcı kararı).
    Üst katmanlarda 3px ve tam renk; burada 2px ve %30'dan %10'a sönen
@@ -2406,14 +2415,40 @@ function render(d){
   // önem sırasını söylüyor. Düşük rozetli satır tamamen soluk.
   // "Bunları geç" ŞERİDİ KALKTI: sarmalanan skor metni okunmuyordu ve
   // bu liste onu zaten çözüyor (aşağıdaki "Bunları geç" BÖLÜMÜ ayrı).
-  document.getElementById('kapakListe').innerHTML = kap.map(x=>{
-    const r = x.rozet||0;
-    const sinif = r>=7 ? 'yuksek' : (r>=5 ? 'orta' : 'dusuk');
-    return `<a class="${sinif}" href="#${esc(x.hedef_id||'')}">
-      <span class="sa">${esc(x.saat||'')}</span>
-      <i>${r.toFixed(1)}</i>
-      <span class="tk">${esc(x.ev)} ${x.ev_skor}–${x.dep_skor} ${esc(x.dep)}</span></a>`;
-  }).join('');
+  // SAAT SÜTUN DEĞİL GRUP BAŞLIĞI: aynı saatte başlayan maçlar bir
+  // grupta toplanıyor, saat o grubun başlığı oluyor. Eskiden saat her
+  // satırda tekrar ediyordu (03:00 iki kez, 04:00 beş kez).
+  const kapListe=document.getElementById('kapakListe');
+  const gruplar=[];
+  kap.forEach(x=>{
+    const son=gruplar[gruplar.length-1];
+    if(son && son.saat===(x.saat||'')) son.satirlar.push(x);
+    else gruplar.push({saat:x.saat||'', satirlar:[x]});
+  });
+  // Rozet ÜÇ KADEME: katman zaten hiyerarşiyi söylüyor.
+  const kademeSinif={mutlaka:'k1', gozat:'k2', gec:'k3'};
+  kapListe.innerHTML=gruplar.map(g=>`<div class="grp">
+      <span class="gray"></span>
+      <div class="saat">${esc(g.saat)}</div>
+      ${g.satirlar.map(x=>`<a class="${kademeSinif[x.katman]||'k3'}" href="#${esc(x.hedef_id||'')}">
+        <i>${(x.rozet||0).toFixed(1)}</i>
+        <span class="tk">${esc(x.ev)} ${x.ev_skor}–${x.dep_skor} ${esc(x.dep)}</span></a>`).join('')}
+    </div>`).join('');
+  // SOL RAY — TÜM LİSTE BOYUNCA TEK DEGRADE, gruplara bölünmüş
+  // parçalar halinde. Her grubun rayı toplam degradenin kendi dilimini
+  // alıyor: dilim, grubun listedeki dikey konumundan hesaplanıyor.
+  // Saf CSS ile yapılamıyor (her ray kendi yüksekliğinde ayrı bir
+  // degrade çizerdi ve gruplar arasında kopardı).
+  const rayHizala=()=>{
+    const H=kapListe.scrollHeight||1;
+    kapListe.querySelectorAll('.grp').forEach(g=>{
+      const r=g.querySelector('.gray'); if(!r) return;
+      r.style.backgroundSize=`2px ${H}px`;
+      r.style.backgroundPosition=`0 ${-g.offsetTop}px`;
+    });
+  };
+  rayHizala();
+  addEventListener('resize', rayHizala);
 
   // DEVRE DIŞI — SİLİNMEDİ: saat rayı / cümle akışı oluşturucusu.
   const briefList=document.getElementById('briefList');
