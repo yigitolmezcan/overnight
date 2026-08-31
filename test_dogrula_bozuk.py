@@ -5958,6 +5958,11 @@ def main():
     basar("Kilit: takım panosu kilit satırını işaretliyor",
           "function takimPanosu(ust,alt,kilit)" in _sayfa
           and "kilitsatir" in _sayfa and ".cr.kilitsatir{" in _sayfa)
+    # Kullanıcı kararı: vurgu YALNIZ renk/çerçeve — satırda "kilit"
+    # yazmıyor. Rozet kaldırıldı, geri gelmesin.
+    basar("Kilit: satırda 'kilit' etiketi yazmıyor, turuncu yeter",
+          "kilitim" not in _sayfa
+          and ".cr.kilitsatir .lb{color:var(--ember)}" in _sayfa)
     _kilitli = 0
     for _ta in _geceler:
         if not _os.path.exists(f"dist/{_ta}.json"):

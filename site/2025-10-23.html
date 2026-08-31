@@ -763,10 +763,6 @@ td.oyad{color:var(--ink);cursor:pointer}
   padding-left:8px;padding-right:8px;margin:2px -8px;
   background:rgba(232,118,58,.06)}
 .cr.kilitsatir .lb{color:var(--ember)}
-.cr.kilitsatir .kilitim{font-family:var(--mono);font-size:8.5px;font-style:normal;
-  letter-spacing:.1em;text-transform:uppercase;color:var(--ember);
-  border:1px solid rgba(232,118,58,.4);border-radius:2px;
-  padding:1px 4px;margin-left:6px;vertical-align:1px}
 .cr .v{font-family:var(--mono);font-size:15px;width:56px;flex:none;color:var(--faint)}
 .cr .v.l{text-align:left}
 .cr .v.r{text-align:right}
@@ -2079,7 +2075,7 @@ function takimPanosu(ust,alt,kilit){
     const kilitMi = alan===kilitAlan;
     return `<div class="cr${kilitMi?' kilitsatir':''}"${kilitMi?' data-kilit':''}>
         <span class="v l${solKazandi?' win':''}">${esc(String(sv))}</span>
-        <span class="lb">${esc(etiket)}${kilitMi?'<i class="kilitim">kilit</i>':''}</span>
+        <span class="lb">${esc(etiket)}</span>
         <span class="v r${sagKazandi?' win':''}">${esc(String(av))}</span></div>`;
   };
   return `<div class="cmp">
