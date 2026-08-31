@@ -22,6 +22,7 @@ from datetime import datetime
 from pathlib import Path
 
 import hesapla
+import dogrula as _dog
 from hesapla import gmsc, siralama_anahtari
 from yaz import gece_kalip_plani, _mutlaka_ve_diger
 from kalip_secici import _KILOMETRE_ONCELIK
@@ -1153,6 +1154,53 @@ def _soyad(ad):
     if son.rstrip(".").upper() in ("JR", "SR", "II", "III", "IV") and len(parcalar) > 2:
         return " ".join(parcalar[-2:])
     return son
+
+
+def _baslik_gecerli_mi(baslik, gercekler):
+    """(gecerli_mi, sebep) — T31'in ön koşul denetimi."""
+    return _dog.t31_baslik_iskeleti(baslik, _dog.iskelet_baglami(gercekler))
+
+
+def _baslik_kur(baslik, gercekler, ham_mac, en_iyi_ad=None):
+    """LLM başlığını DOĞRULAR; iddiası veriyle çelişiyorsa şablona düşer.
+
+    GERÇEK ARIZA (üç kez bildirildi): "New York, New Orleans'ı son
+    saniyede devirdi" başlığı 130-125 biten maç için yayında kaldı.
+    T31'e ön koşul denetimi eklenmişti ama denetim YALNIZ yayın anında,
+    YALNIZ o gece yayınlanan geceye uygulanıyordu. 29 Aralık 15:34'te
+    yayınlanmıştı, denetim 22:15'te eklendi — kapı o başlığı hiç
+    görmedi. Üstelik burası taslaktaki başlığı `mv.get("baslik")` ile
+    doğrudan kopyalıyordu, yani sonraki HER yeniden derleme yanlış
+    başlığı sadakatle geri yazıyordu.
+
+    Artık doğrulama DERLEME anında: her yeniden derleme kendini
+    düzeltiyor, yayınlanmış geceler dahil."""
+    if not baslik:
+        return baslik
+    gecerli, _sebep = _baslik_gecerli_mi(baslik, gercekler)
+    if gecerli:
+        return baslik
+    olgu = {}
+    for f in gercekler:
+        if f["tur"] == "fark_serisi":
+            olgu["en_buyuk_geri_donus"] = f["veri"].get("kazanan_en_buyuk_acigi")
+            olgu["kopma_ani"] = f["veri"].get("kopma_ani")
+        elif f["tur"] == "akis_olay" and f["veri"]["tip"] == "karar_ani":
+            olgu["karar_ani"] = f["veri"]
+    skor = next((f["veri"] for f in gercekler if f["tur"] == "skor"), {}) or {}
+    statlar = [f["veri"] for f in gercekler if f["tur"] == "oyuncu_stat"]
+    kazananin = [x for x in statlar if x.get("takim") == skor.get("kazanan")]
+    en_iyi = hesapla.performans_sirala(kazananin)[0] if kazananin else {}
+    mac = cumle.mac_baglami(gercekler, ham_mac, olgu, lambda k, *a: _takim_adi(k))
+    yedek = cumle.baslik_iskeletinden(
+        mac, olgu, en_iyi.get("oyuncu"), en_iyi.get("sayi"),
+        baglam=_dog.iskelet_baglami(gercekler, ham_mac))
+    # Şablon da geçemezse (olmamalı) nötr düz skora düşülüyor.
+    if yedek and _baslik_gecerli_mi(yedek, gercekler)[0]:
+        return yedek
+    return (f"{mac['kazanan_adi']}, {mac['kaybeden_adi']}'"
+            f"{cumle.belirtme_eki(mac['kaybeden_adi'])} "
+            f"{mac['buyuk']}-{mac['kucuk']} yendi.")
 
 
 def _en_iyi_performans_stat(gercekler):
@@ -3023,7 +3071,10 @@ def derle(tarih_str):
             "mac": f"{_takim_adi(mutlaka_skor['ev'])} — {_takim_adi(mutlaka_skor['dep'])}",
             "skor": f"{mutlaka_skor['ev_skor']}–{mutlaka_skor['dep_skor']}",
             "rozet": mutlaka_skor["rozet"],
-            "baslik": mv.get("baslik", ""),
+            "baslik": _baslik_kur(mv.get("baslik", ""),
+                                  gercek_gece["maclar"][gid],
+                                  ham["maclar"][gid],
+                                  en_iyi_performans_by_gid.get(gid)),
             "neden_onemli": mv.get("neden_onemli", ""),
             # PARAGRAF GÖVDESİ KALKTI (kullanıcı kararı). Yerine maç
             # akışı geliyor: dört satır, tamamen şablon, LLM'e hiç

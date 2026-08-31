@@ -81,7 +81,7 @@
       "metin": "Minnesota Timberwolves, 16 sayılık farktan dönüp Milwaukee Bucks'u geçti.",
       "anlatili": true,
       "hedef_id": "g-mutlaka-3",
-      "icon": "standings",
+      "icon": "default",
       "saat": "03:00",
       "rozet": 7.14,
       "skor": "MIN 103 – MIL 100",
@@ -131,7 +131,7 @@
       "mac": "Atlanta Hawks — Chicago Bulls",
       "skor": "150–152",
       "rozet": 9.24,
-      "baslik": "Chicago, Atlanta'yı son saniyede devirdi.",
+      "baslik": "Chicago Bulls, Atlanta Hawks deplasmanında 152-150 kazandı.",
       "neden_onemli": "",
       "ceyrek_tablosu": [
         {
@@ -2031,7 +2031,7 @@
       "mac": "Minnesota Timberwolves — Milwaukee Bucks",
       "skor": "103–100",
       "rozet": 7.14,
-      "baslik": "Minnesota, Milwaukee'yi son saniyede devirdi.",
+      "baslik": "Minnesota Timberwolves, 16 sayılık farktan dönüp Milwaukee Bucks'u yendi.",
       "neden_onemli": "",
       "ceyrek_tablosu": [
         {
@@ -10796,7 +10796,7 @@
       "mac": "Brooklyn Nets — Toronto Raptors",
       "skor": "96–81",
       "rozet": 2.45,
-      "why": "",
+      "why": "gece sırası 2",
       "metin": "Brooklyn Nets evinde Toronto Raptors'u 96-81 yendi.",
       "box": {
         "ev": {

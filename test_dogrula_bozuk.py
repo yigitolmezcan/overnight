@@ -6260,6 +6260,35 @@ def main():
     basar("Künye: bölüm başlıklarında slogan yok",
           "Molasız" not in _sayfa.split('class="sechead"')[1])
 
+    # ------------------------------------------------------------------
+    # BAŞLIK DOĞRULAMASI DERLEME ANINDA (üç kez bildirilen arıza)
+    # ------------------------------------------------------------------
+    # T31'e ön koşul denetimi eklenmişti ama denetim YALNIZ yayın anında,
+    # YALNIZ o gün yayınlanan geceye uygulanıyordu. derle.py taslaktaki
+    # başlığı doğrudan kopyaladığı için yayınlanmış gecelerdeki yanlış
+    # başlıklar her yeniden derlemede geri geliyordu.
+    basar("Başlık: derleme anında doğrulanıyor",
+          "def _baslik_kur(" in _dsrc_kod
+          and '"baslik": _baslik_kur(' in _dsrc_kod
+          and '"baslik": mv.get("baslik", "")' not in _dsrc_kod)
+    # YAYINDAKİ HİÇBİR BAŞLIĞIN İDDİASI VERİYLE ÇELİŞMEMELİ.
+    _celisen = []
+    for _tc in _yayin.durum_oku()["yayinlanan"]:
+        if not _os.path.exists(f"dist/{_tc}.json"):
+            continue
+        _gc = _derle._yukle(_derle.GERCEK_DIZIN, _tc)["maclar"]
+        _xc = _jj.loads(open(f"dist/{_tc}.json", encoding="utf-8").read())
+        for _bc in (_xc.get("mutlaka") or []):
+            _gid = _bc.get("mac_id"); _bas = _bc.get("baslik")
+            if not _gid or not _bas or _gid not in _gc:
+                continue
+            _ok, _sb = dogrula_modul.t31_baslik_iskeleti(
+                _bas, dogrula_modul.iskelet_baglami(_gc[_gid]))
+            if not _ok:
+                _celisen.append(f"{_tc}: {_bas} → {_sb[0] if _sb else ''}")
+    basar("Başlık: yayındaki hiçbir başlığın iddiası veriyle çelişmiyor",
+          not _celisen, " | ".join(_celisen[:3]))
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))
