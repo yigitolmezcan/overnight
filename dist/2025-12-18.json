@@ -18089,7 +18089,9 @@
         "kilit": null,
         "kritik": null
       },
-      "kazanan_kod": "MIA"
+      "kazanan_kod": "MIA",
+      "ray_renk": "#C0304A",
+      "ray_rgb": "192,48,74"
     },
     {
       "id": "a-0022500377",
@@ -18640,7 +18642,9 @@
         "kilit": null,
         "kritik": null
       },
-      "kazanan_kod": "DEN"
+      "kazanan_kod": "DEN",
+      "ray_renk": "#FEC524",
+      "ray_rgb": "254,197,36"
     },
     {
       "id": "a-0022500374",
@@ -19171,7 +19175,9 @@
         "kilit": null,
         "kritik": null
       },
-      "kazanan_kod": "TOR"
+      "kazanan_kod": "TOR",
+      "ray_renk": "#B4B9BE",
+      "ray_rgb": "180,185,190"
     }
   ],
   "turkler": [

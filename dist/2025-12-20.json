@@ -16874,7 +16874,9 @@
         },
         "kritik": null
       },
-      "kazanan_kod": "PHI"
+      "kazanan_kod": "PHI",
+      "ray_renk": "#3A8DDE",
+      "ray_rgb": "58,141,222"
     },
     {
       "id": "a-0022500395",
@@ -17491,7 +17493,9 @@
         },
         "kritik": null
       },
-      "kazanan_kod": "LAC"
+      "kazanan_kod": "LAC",
+      "ray_renk": "#D2434A",
+      "ray_rgb": "210,67,74"
     },
     {
       "id": "a-0022500389",
@@ -18167,7 +18171,9 @@
         "kilit": null,
         "kritik": null
       },
-      "kazanan_kod": "NOP"
+      "kazanan_kod": "NOP",
+      "ray_renk": "#B4975A",
+      "ray_rgb": "180,151,90"
     },
     {
       "id": "a-0022500394",
@@ -18779,7 +18785,9 @@
           ]
         }
       },
-      "kazanan_kod": "POR"
+      "kazanan_kod": "POR",
+      "ray_renk": "#B6BDC7",
+      "ray_rgb": "182,189,199"
     },
     {
       "id": "a-0022500390",
@@ -19493,7 +19501,9 @@
         },
         "kritik": null
       },
-      "kazanan_kod": "DET"
+      "kazanan_kod": "DET",
+      "ray_renk": "#E0384A",
+      "ray_rgb": "224,56,74"
     }
   ],
   "turkler": [

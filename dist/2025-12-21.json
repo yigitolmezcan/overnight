@@ -10787,7 +10787,9 @@
         },
         "kritik": null
       },
-      "kazanan_kod": "SAS"
+      "kazanan_kod": "SAS",
+      "ray_renk": "#C4CED4",
+      "ray_rgb": "196,206,212"
     },
     {
       "id": "a-0022500397",
@@ -11411,7 +11413,9 @@
         "kilit": null,
         "kritik": null
       },
-      "kazanan_kod": "BKN"
+      "kazanan_kod": "BKN",
+      "ray_renk": "#8A8F98",
+      "ray_rgb": "138,143,152"
     }
   ],
   "turkler": [

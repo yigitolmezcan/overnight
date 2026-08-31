@@ -10721,7 +10721,9 @@
         },
         "kritik": null
       },
-      "kazanan_kod": "OKC"
+      "kazanan_kod": "OKC",
+      "ray_renk": "#31A8E0",
+      "ray_rgb": "49,168,224"
     },
     {
       "id": "a-0022500443",
@@ -11348,7 +11350,9 @@
           ]
         }
       },
-      "kazanan_kod": "WAS"
+      "kazanan_kod": "WAS",
+      "ray_renk": "#C8102E",
+      "ray_rgb": "200,16,46"
     },
     {
       "id": "a-0022500446",
@@ -11996,7 +12000,9 @@
         "kilit": null,
         "kritik": null
       },
-      "kazanan_kod": "LAL"
+      "kazanan_kod": "LAL",
+      "ray_renk": "#8B62D9",
+      "ray_rgb": "139,98,217"
     }
   ],
   "turkler": [

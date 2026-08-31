@@ -3139,6 +3139,15 @@ def derle(tarih_str):
         m["ray_renk"] = r["renk"]
         m["ray_rgb"] = renk_kanallari(r["renk"])
 
+    # SOL RAY "Bunları geç"te de var — ama SOLUK (kullanıcı kararı):
+    # 2px, %35 opaklıkta başlayıp %10'a sönüyor, zemin YOK. Amaç yapı
+    # vermek, dikkat çekmek değil. Renk çakışması burada da çözülüyor.
+    _ray_d = [{"takim": m["kazanan_kod"], "_gmsc": m["rozet"]} for m in diger]
+    renk_cakismasini_coz(_ray_d)
+    for m, r in zip(diger, _ray_d):
+        m["ray_renk"] = r["renk"]
+        m["ray_rgb"] = renk_kanallari(r["renk"])
+
     # ---- türkler ----
     turkler = _turkler(ham, turk_oyunculari, mutlaka_id_by_gid, rozet_by_gid)
 

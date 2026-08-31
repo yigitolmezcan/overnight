@@ -14250,7 +14250,7 @@
       "mac": "Minnesota Timberwolves — Brooklyn Nets",
       "skor": "107–123",
       "rozet": 7.11,
-      "why": "10. galibiyetini alan (kazanan)",
+      "why": "sürpriz sonuç: belirgin şekilde kötü bir takım, belirgin şekilde iyi bir takımı yendi",
       "metin": "",
       "box": {
         "ev": {
@@ -16270,7 +16270,9 @@
         },
         "kritik": null
       },
-      "kazanan_kod": "MIA"
+      "kazanan_kod": "MIA",
+      "ray_renk": "#C0304A",
+      "ray_rgb": "192,48,74"
     },
     {
       "id": "a-0022500438",
@@ -16966,7 +16968,9 @@
         "kilit": null,
         "kritik": null
       },
-      "kazanan_kod": "HOU"
+      "kazanan_kod": "HOU",
+      "ray_renk": "#9EA2A6",
+      "ray_rgb": "158,162,166"
     },
     {
       "id": "a-0022500434",
@@ -17586,7 +17590,9 @@
         },
         "kritik": null
       },
-      "kazanan_kod": "PHX"
+      "kazanan_kod": "PHX",
+      "ray_renk": "#B08BE8",
+      "ray_rgb": "176,139,232"
     },
     {
       "id": "a-0022500432",
@@ -18226,7 +18232,9 @@
         },
         "kritik": null
       },
-      "kazanan_kod": "SAC"
+      "kazanan_kod": "SAC",
+      "ray_renk": "#3B2352",
+      "ray_rgb": "59,35,82"
     }
   ],
   "turkler": [

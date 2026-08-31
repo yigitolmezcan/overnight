@@ -14176,7 +14176,9 @@
         },
         "kritik": null
       },
-      "kazanan_kod": "LAC"
+      "kazanan_kod": "LAC",
+      "ray_renk": "#D2434A",
+      "ray_rgb": "210,67,74"
     },
     {
       "id": "a-0022500427",
@@ -14797,7 +14799,9 @@
           ]
         }
       },
-      "kazanan_kod": "CHI"
+      "kazanan_kod": "CHI",
+      "ray_renk": "#B8B9BC",
+      "ray_rgb": "184,185,188"
     },
     {
       "id": "a-0022500423",
@@ -15368,7 +15372,9 @@
         },
         "kritik": null
       },
-      "kazanan_kod": "MIA"
+      "kazanan_kod": "MIA",
+      "ray_renk": "#F9A01B",
+      "ray_rgb": "249,160,27"
     },
     {
       "id": "a-0022500425",
@@ -16093,7 +16099,9 @@
         "kilit": null,
         "kritik": null
       },
-      "kazanan_kod": "WAS"
+      "kazanan_kod": "WAS",
+      "ray_renk": "#3B7FD4",
+      "ray_rgb": "59,127,212"
     },
     {
       "id": "a-0022500426",
@@ -16743,7 +16751,9 @@
         "kilit": null,
         "kritik": null
       },
-      "kazanan_kod": "BOS"
+      "kazanan_kod": "BOS",
+      "ray_renk": "#12A05C",
+      "ray_rgb": "18,160,92"
     },
     {
       "id": "a-0022500428",
@@ -17408,7 +17418,9 @@
         },
         "kritik": null
       },
-      "kazanan_kod": "MEM"
+      "kazanan_kod": "MEM",
+      "ray_renk": "#12173F",
+      "ray_rgb": "18,23,63"
     },
     {
       "id": "a-0022500424",
@@ -18095,7 +18107,9 @@
         },
         "kritik": null
       },
-      "kazanan_kod": "CHA"
+      "kazanan_kod": "CHA",
+      "ray_renk": "#4B36A8",
+      "ray_rgb": "75,54,168"
     }
   ],
   "turkler": [

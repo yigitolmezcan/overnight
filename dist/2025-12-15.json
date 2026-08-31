@@ -10010,7 +10010,9 @@
         },
         "kritik": null
       },
-      "kazanan_kod": "TOR"
+      "kazanan_kod": "TOR",
+      "ray_renk": "#CE1141",
+      "ray_rgb": "206,17,65"
     }
   ],
   "turkler": [

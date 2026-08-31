@@ -1175,12 +1175,24 @@ td.khot{color:var(--amber);font-weight:700}
 /* archive */
 /* Bunları geç: DÜZ LİSTE, satırlar birbirine yakın. Bölümün işi zaten
    "geçebilirsin" demek; hafif durması doğru. */
-.arch{border-bottom:1px solid #171E2B}
+/* "Bunları geç" sol rayı — YAPI VERİR, DİKKAT ÇEKMEZ (kullanıcı kararı).
+   Üst katmanlarda 3px ve tam renk; burada 2px ve %25'ten %8'e sönen
+   degrade. Zemin YOK: bu katmanın kart iddiası yok.
+   %35 ile başlandı, ÖLÇÜLDÜ: 6 maç alt alta dururken renkler tek tek
+   seçilebiliyordu (Cleveland kırmızısı, Miami'nin turuncusu) — yani
+   bölüm dikkat çekiyordu. Kullanıcı ölçütü gereği %25'e indirildi. */
+.arch{border-bottom:1px solid #171E2B;position:relative;padding-left:11px}
+.arch::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:linear-gradient(180deg,
+    rgba(var(--ray-rgb,226,112,28),.25) 0%,
+    rgba(var(--ray-rgb,226,112,28),.08) 100%)}
 .arch:last-child{border-bottom:0}
 /* Geçen sezondan gelen form kutucuğu: bu sezonunkiyle karışmasın diye
    soluk ve kesikli. Renk aynı (kazanma/kaybetme), yoğunluk farklı. */
 .f10 i.gs{opacity:.42;box-shadow:inset 0 0 0 1px rgba(152,162,176,.35)}
-.archrow{display:flex;gap:12px;align-items:flex-start;width:100%;padding:12px 0;text-align:left}
+/* Satır aralığı bir tık açıldı — üst katmanlardaki kadar değil
+   (Mutlaka bil 16px, Göz at 12px, burası 14px). */
+.archrow{display:flex;gap:12px;align-items:flex-start;width:100%;padding:14px 0;text-align:left}
 .arch .dblock{margin-bottom:10px}
 .arch .dblock p{font-size:13.5px;line-height:1.5}
 
@@ -2621,7 +2633,7 @@ function render(d){
   besiAc.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();kartAc(besiKartiHTML());}});
 
   // ---- bunları geç ----
-  document.getElementById('archive').innerHTML=d.diger.map(m=>`<div class="arch" id="${m.id}">
+  document.getElementById('archive').innerHTML=d.diger.map(m=>`<div class="arch" id="${m.id}" style="--ray-rgb:${esc(m.ray_rgb||'226,112,28')}">
     <button class="archrow" data-kart="${m.id}" aria-label="${esc(m.mac)} — box score">
       <span class="roz sm">${m.rozet.toFixed(1)}</span>
       <div class="mblok sm">${macBlok(m.mac, m.skor)}</div>

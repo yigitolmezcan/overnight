@@ -5662,8 +5662,9 @@ def main():
               and "transparent" not in _blk)
         basar(f"Ray[{_ad}]: 3px ve tam boy korunuyor",
               "width:3px" in _blk and "top:0" in _blk and "bottom:0" in _blk)
-    basar("Ray: her iki katman da --ray-rgb değişkenini alıyor",
-          _s22.count("--ray-rgb:${esc(") == 2)
+    # ÜÇ katman: Mutlaka bil, Göz at ve (soluk rayla) Bunları geç.
+    basar("Ray: üç katman da --ray-rgb değişkenini alıyor",
+          _s22.count("--ray-rgb:${esc(") == 3)
 
     # Kanal dönüşümü tek kaynak, rgba() için gerekli.
     basar("Ray: hex → kanal dönüşümü doğru",
@@ -6185,6 +6186,40 @@ def main():
     basar("İskelet: şablon yolu T31'den geçen başlık üretiyor",
           "baglam=iskelet_baglami(gercekler, ham_mac)"
           in open("cumle.py", encoding="utf-8").read())
+
+    # ------------------------------------------------------------------
+    # "BUNLARI GEÇ" SOL RAYI — yapı verir, dikkat çekmez
+    # ------------------------------------------------------------------
+    _ar = _s21.split(".arch::before{")[1].split("}")[0]
+    basar("Geç rayı: 2px (üst katmanlarda 3px, fark korunuyor)",
+          "width:2px" in _ar and "width:3px" in _s21.split(".game::before{")[1].split("}")[0])
+    basar("Geç rayı: %25'ten %8'e sönen degrade",
+          "rgba(var(--ray-rgb,226,112,28),.25) 0%" in _ar
+          and "rgba(var(--ray-rgb,226,112,28),.08) 100%" in _ar)
+    basar("Geç rayı: tam boy",
+          "top:0" in _ar and "bottom:0" in _ar)
+    _arch = _s21.split("\n.arch{")[1].split("}")[0]
+    basar("Geç rayı: ZEMİN YOK (kart iddiası yok)",
+          "background:#" not in _arch and "background-color" not in _arch)
+    basar("Geç: satır aralığı açıldı ama üst katmanların altında",
+          "padding:14px 0" in _s21.split(".archrow{")[1].split("}")[0])
+    basar("Geç: ray rengi bloğa veriliyor",
+          'class="arch" id="${m.id}" style="--ray-rgb:' in _s21)
+    # Renk çakışma kuralı bu katmanda da çalışıyor.
+    basar("Geç: renk çakışması çözülüyor",
+          "_ray_d = [{\"takim\": m[\"kazanan_kod\"]" in _dsrc_kod
+          and "renk_cakismasini_coz(_ray_d)" in _dsrc_kod)
+    # Yayındaki her "Bunları geç" bloğunda kanal değeri var.
+    _eksik_d = []
+    for _tb in _geceler:
+        if not _os.path.exists(f"dist/{_tb}.json"):
+            continue
+        _xb = _jj.loads(open(f"dist/{_tb}.json", encoding="utf-8").read())
+        for _bb in (_xb.get("diger") or []):
+            if not _bb.get("ray_rgb"):
+                _eksik_d.append(_tb)
+    basar("Geç: her blokta ray kanal değeri var", not _eksik_d,
+          f"eksik: {sorted(set(_eksik_d))}")
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",

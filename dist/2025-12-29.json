@@ -18844,7 +18844,9 @@
         },
         "kritik": null
       },
-      "kazanan_kod": "PHX"
+      "kazanan_kod": "PHX",
+      "ray_renk": "#B08BE8",
+      "ray_rgb": "176,139,232"
     },
     {
       "id": "a-0022500456",
@@ -19441,7 +19443,9 @@
         },
         "kritik": null
       },
-      "kazanan_kod": "CLE"
+      "kazanan_kod": "CLE",
+      "ray_renk": "#B3123F",
+      "ray_rgb": "179,18,63"
     },
     {
       "id": "a-0022500453",
@@ -20203,7 +20207,9 @@
         },
         "kritik": null
       },
-      "kazanan_kod": "HOU"
+      "kazanan_kod": "HOU",
+      "ray_renk": "#9EA2A6",
+      "ray_rgb": "158,162,166"
     },
     {
       "id": "a-0022500449",
@@ -20871,7 +20877,9 @@
         },
         "kritik": null
       },
-      "kazanan_kod": "GSW"
+      "kazanan_kod": "GSW",
+      "ray_renk": "#2E6BD6",
+      "ray_rgb": "46,107,214"
     },
     {
       "id": "a-0022500450",
@@ -21610,7 +21618,9 @@
         },
         "kritik": null
       },
-      "kazanan_kod": "MIA"
+      "kazanan_kod": "MIA",
+      "ray_renk": "#F9A01B",
+      "ray_rgb": "249,160,27"
     },
     {
       "id": "a-0022500447",
@@ -22229,7 +22239,9 @@
         },
         "kritik": null
       },
-      "kazanan_kod": "MIL"
+      "kazanan_kod": "MIL",
+      "ray_renk": "#1E9E5A",
+      "ray_rgb": "30,158,90"
     }
   ],
   "turkler": [

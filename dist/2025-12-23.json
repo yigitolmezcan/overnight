@@ -105,7 +105,7 @@
       "metin": "Charlotte Hornets, Washington Wizards'ı yendi.",
       "anlatili": true,
       "hedef_id": "a-0022500409",
-      "icon": "standings",
+      "icon": "default",
       "saat": "03:00",
       "rozet": 2.98,
       "skor": "CHA 126 – WAS 109",
@@ -249,7 +249,7 @@
       "metin": "Kawhi Leonard, Houston Rockets karşısında 41 sayı attı.",
       "anlatili": true,
       "hedef_id": "g-mutlaka-1",
-      "icon": "default",
+      "icon": "standings",
       "saat": "07:00",
       "rozet": 8.66,
       "skor": "LAC 128 – HOU 108",
@@ -23904,7 +23904,9 @@
           ]
         }
       },
-      "kazanan_kod": "ORL"
+      "kazanan_kod": "ORL",
+      "ray_renk": "#1E8FD5",
+      "ray_rgb": "30,143,213"
     },
     {
       "id": "a-0022500414",
@@ -24507,7 +24509,9 @@
         "kilit": null,
         "kritik": null
       },
-      "kazanan_kod": "TOR"
+      "kazanan_kod": "TOR",
+      "ray_renk": "#CE1141",
+      "ray_rgb": "206,17,65"
     },
     {
       "id": "a-0022500413",
@@ -25255,7 +25259,9 @@
         "kilit": null,
         "kritik": null
       },
-      "kazanan_kod": "MIL"
+      "kazanan_kod": "MIL",
+      "ray_renk": "#1E9E5A",
+      "ray_rgb": "30,158,90"
     },
     {
       "id": "a-0022500410",
@@ -25895,14 +25901,16 @@
         },
         "kritik": null
       },
-      "kazanan_kod": "BKN"
+      "kazanan_kod": "BKN",
+      "ray_renk": "#8A8F98",
+      "ray_rgb": "138,143,152"
     },
     {
       "id": "a-0022500409",
       "mac": "Charlotte Hornets — Washington Wizards",
       "skor": "126–109",
       "rozet": 2.98,
-      "why": "gece sırası 1",
+      "why": "10. galibiyetini alan (kazanan)",
       "metin": "Charlotte Hornets evinde Washington Wizards'ı 126-109 yendi.",
       "box": {
         "ev": {
@@ -26657,7 +26665,9 @@
         },
         "kritik": null
       },
-      "kazanan_kod": "CHA"
+      "kazanan_kod": "CHA",
+      "ray_renk": "#4B36A8",
+      "ray_rgb": "75,54,168"
     },
     {
       "id": "a-0022500412",
@@ -27300,7 +27310,9 @@
         },
         "kritik": null
       },
-      "kazanan_kod": "CLE"
+      "kazanan_kod": "CLE",
+      "ray_renk": "#F5B335",
+      "ray_rgb": "245,179,53"
     },
     {
       "id": "a-0022500418",
@@ -28014,7 +28026,9 @@
         },
         "kritik": null
       },
-      "kazanan_kod": "PHX"
+      "kazanan_kod": "PHX",
+      "ray_renk": "#B08BE8",
+      "ray_rgb": "176,139,232"
     }
   ],
   "turkler": [
