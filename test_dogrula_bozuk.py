@@ -6031,6 +6031,30 @@ def main():
     basar("Sürükleme: başlık alanında tarayıcı kaydırması kapalı",
           ".khead,.ohd{touch-action:none}" in _sayfa)
 
+    # ------------------------------------------------------------------
+    # GÜNDE TEK GECE
+    # ------------------------------------------------------------------
+    # GitHub'ın yedek cron'u saatlerce gecikip bir sonraki hazır geceyi
+    # de yayınlıyordu (31 Ağustos: 28 Aralık 09:01, 29 Aralık 15:33).
+    _ysrc = open("yayin.py", encoding="utf-8").read()
+    _ykod = "\n".join(l for l in _ysrc.split("\n") if not l.lstrip().startswith("#"))
+    basar("Yayın: günde tek gece koruması kurulu",
+          "def _bugun_yayinlandi_mi(d)" in _ykod
+          and "_bugun_yayinlandi_mi(d)" in _ykod.split("def yayinla()")[1][:900])
+    basar("Yayın: koruma elle aşılabilir (YAYIN_GUNDE_TEK=0)",
+          'os.environ.get("YAYIN_GUNDE_TEK", "1") != "0"' in _ykod)
+    # Bugün yayın yapılmışsa iş sessizce dönüyor.
+    _bugun = _yayin._bugun_yayinlandi_mi(_yayin.durum_oku())
+    _son = (_yayin.durum_oku().get("son_yayin") or {}).get("yayinlandi")
+    basar("Yayın: bugünkü yayın tarihten doğru okunuyor",
+          isinstance(_bugun, bool) and bool(_son))
+    # Dünkü yayın bugünü engellemez.
+    _dun = dict(_yayin.durum_oku())
+    _dun["son_yayin"] = {"yayinlandi":
+                         (_tarih.datetime.utcnow() - _tarih.timedelta(days=1)).isoformat() + "Z"}
+    basar("Yayın: dünkü yayın bugünü engellemiyor",
+          not _yayin._bugun_yayinlandi_mi(_dun))
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))

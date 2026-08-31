@@ -621,9 +621,36 @@ def _gece_kapsamli_engeller(tarih, taslak):
     }]
 
 
+def _bugun_yayinlandi_mi(d):
+    """Bu takvim gününde (TSİ) zaten yayın yapıldı mı?"""
+    son = (d.get("son_yayin") or {}).get("yayinlandi")
+    if not son:
+        return False
+    try:
+        an = datetime.fromisoformat(str(son).replace("Z", "+00:00"))
+    except ValueError:
+        return False
+    return (an + timedelta(hours=3)).date() == (datetime.utcnow() + timedelta(hours=3)).date()
+
+
 def yayinla():
-    """09:00 işi — hazır gece varsa siteye gömer. Yoksa hiçbir şey yapmaz."""
+    """09:00 işi — hazır gece varsa siteye gömer. Yoksa hiçbir şey yapmaz.
+
+    GÜNDE TEK GECE (kullanıcı kuralı). Asıl tetikleyici Vercel nöbetçisi
+    09:00'da ateşliyor; GitHub'ın kendi cron'u yedek ve SAATLERCE
+    gecikebiliyor (ölçüldü: 30 Ağustos 5 saat, 31 Ağustos 9,5 saat).
+    Yedek geç ateşlediğinde bir sonraki gece çoktan üretilmiş oluyordu ve
+    iş onu da yayınlıyordu: 31 Ağustos'ta 28 Aralık 09:01'de, 29 Aralık
+    15:33'te çıktı — aynı gün iki gece. Arşiv iki kat hızlı tükeniyordu.
+
+    Artık o gün yayın yapılmışsa iş sessizce dönüyor. Elle zorlamak için
+    YAYIN_GUNDE_TEK=0."""
     d = durum_oku()
+    if os.environ.get("YAYIN_GUNDE_TEK", "1") != "0" and _bugun_yayinlandi_mi(d):
+        son = (d.get("son_yayin") or {}).get("tarih")
+        print(f"Bugün zaten yayın yapıldı ({son}) — site değişmiyor. "
+              f"Günde tek gece kuralı (YAYIN_GUNDE_TEK=0 ile aşılır).")
+        return 0
     hazir = d.get("hazir")
     if not hazir:
         print("Hazır gece yok — site olduğu gibi kalıyor (bir önceki gece yayında).")
