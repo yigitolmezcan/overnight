@@ -1,31 +1,35 @@
 {
   "tarih": "2026-02-10",
-  "hesaplandi": "2026-08-25T20:12:08.402702Z",
-  "en_iyi_skor": 8.99,
+  "hesaplandi": "2026-08-31T18:51:30.028078Z",
+  "en_iyi_skor": 9.15,
   "maclar": [
     {
-      "rozet": 8.99,
-      "ham": 10.73,
+      "rozet": 9.15,
+      "ham": 11.45,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 8.57,
         "K": 5.22,
         "T": 0,
-        "D": 0
+        "D": 8
       },
       "yukselticiler": {
         "Y": 9.5,
-        "F": 6,
+        "F": 10,
         "G": 0,
         "A": 4.83
       },
-      "dram_terfi": false,
+      "dram_terfi": true,
       "mac_id": "0022500771",
       "ev": "NYK",
       "dep": "IND",
       "ev_skor": 134,
       "dep_skor": 137,
-      "en_iyi_performans": "Jalen Brunson"
+      "en_iyi_performans": "Jalen Brunson",
+      "esitlik_bozucu": [
+        8,
+        -3
+      ]
     },
     {
       "rozet": 8.95,
@@ -49,11 +53,15 @@
       "dep": "SAS",
       "ev_skor": 108,
       "dep_skor": 136,
-      "en_iyi_performans": "Victor Wembanyama"
+      "en_iyi_performans": "Victor Wembanyama",
+      "esitlik_bozucu": [
+        0,
+        -28
+      ]
     },
     {
-      "rozet": 5.58,
-      "ham": 5.58,
+      "rozet": 5.84,
+      "ham": 5.84,
       "katman": "gec",
       "tasiyicilar": {
         "S": 0.58,
@@ -63,7 +71,7 @@
       },
       "yukselticiler": {
         "Y": 3.65,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 6.9
       },
@@ -73,11 +81,15 @@
       "dep": "LAC",
       "ev_skor": 102,
       "dep_skor": 95,
-      "en_iyi_performans": "Alperen Şengün"
+      "en_iyi_performans": "Alperen Şengün",
+      "esitlik_bozucu": [
+        0,
+        -7
+      ]
     },
     {
-      "rozet": 5.35,
-      "ham": 5.35,
+      "rozet": 5.61,
+      "ham": 5.61,
       "katman": "gec",
       "tasiyicilar": {
         "S": 5.05,
@@ -87,7 +99,7 @@
       },
       "yukselticiler": {
         "Y": 2.31,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 4.33
       },
@@ -97,7 +109,11 @@
       "dep": "DAL",
       "ev_skor": 120,
       "dep_skor": 111,
-      "en_iyi_performans": "Naji Marshall"
+      "en_iyi_performans": "Naji Marshall",
+      "esitlik_bozucu": [
+        0,
+        -9
+      ]
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "tarih": "2026-01-02",
-  "hesaplandi": "2026-08-25T20:12:06.661178Z",
+  "hesaplandi": "2026-08-31T18:51:28.762508Z",
   "en_iyi_skor": 8.9,
   "maclar": [
     {
@@ -25,7 +25,39 @@
       "dep": "CHA",
       "ev_skor": 122,
       "dep_skor": 121,
-      "en_iyi_performans": "Giannis Antetokounmpo"
+      "en_iyi_performans": "Giannis Antetokounmpo",
+      "esitlik_bozucu": [
+        8,
+        -1
+      ]
+    },
+    {
+      "rozet": 7.61,
+      "ham": 7.61,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 5.94,
+        "K": 4.43,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 6.42,
+        "F": 6,
+        "G": 0,
+        "A": 7.0
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500485",
+      "ev": "LAL",
+      "dep": "MEM",
+      "ev_skor": 128,
+      "dep_skor": 121,
+      "en_iyi_performans": "Luka Dončić",
+      "esitlik_bozucu": [
+        0,
+        -7
+      ]
     },
     {
       "rozet": 7.15,
@@ -49,31 +81,11 @@
       "dep": "POR",
       "ev_skor": 109,
       "dep_skor": 122,
-      "en_iyi_performans": "Zion Williamson"
-    },
-    {
-      "rozet": 7.13,
-      "ham": 7.13,
-      "katman": "ikinci",
-      "tasiyicilar": {
-        "S": 5.94,
-        "K": 4.43,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 6.42,
-        "F": 0,
-        "G": 0,
-        "A": 7.0
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500485",
-      "ev": "LAL",
-      "dep": "MEM",
-      "ev_skor": 128,
-      "dep_skor": 121,
-      "en_iyi_performans": "Luka Dončić"
+      "en_iyi_performans": "Zion Williamson",
+      "esitlik_bozucu": [
+        0,
+        -13
+      ]
     },
     {
       "rozet": 7.06,
@@ -97,11 +109,15 @@
       "dep": "ORL",
       "ev_skor": 121,
       "dep_skor": 114,
-      "en_iyi_performans": "Paolo Banchero"
+      "en_iyi_performans": "Paolo Banchero",
+      "esitlik_bozucu": [
+        0,
+        -7
+      ]
     },
     {
-      "rozet": 6.26,
-      "ham": 6.26,
+      "rozet": 6.32,
+      "ham": 6.32,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 4.42,
@@ -111,7 +127,7 @@
       },
       "yukselticiler": {
         "Y": 6.96,
-        "F": 6,
+        "F": 7,
         "G": 6,
         "A": 6.5
       },
@@ -121,7 +137,11 @@
       "dep": "DEN",
       "ev_skor": 113,
       "dep_skor": 108,
-      "en_iyi_performans": "Donovan Mitchell"
+      "en_iyi_performans": "Donovan Mitchell",
+      "esitlik_bozucu": [
+        0,
+        -5
+      ]
     },
     {
       "rozet": 3.6,
@@ -145,11 +165,15 @@
       "dep": "SAC",
       "ev_skor": 129,
       "dep_skor": 102,
-      "en_iyi_performans": "Devin Booker"
+      "en_iyi_performans": "Devin Booker",
+      "esitlik_bozucu": [
+        0,
+        -27
+      ]
     },
     {
-      "rozet": 3.23,
-      "ham": 3.23,
+      "rozet": 3.39,
+      "ham": 3.39,
       "katman": "gec",
       "tasiyicilar": {
         "S": 2.26,
@@ -159,7 +183,7 @@
       },
       "yukselticiler": {
         "Y": 1.65,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 4.17
       },
@@ -169,7 +193,11 @@
       "dep": "ATL",
       "ev_skor": 99,
       "dep_skor": 111,
-      "en_iyi_performans": "Onyeka Okongwu"
+      "en_iyi_performans": "Onyeka Okongwu",
+      "esitlik_bozucu": [
+        0,
+        -12
+      ]
     },
     {
       "rozet": 2.37,
@@ -193,11 +221,15 @@
       "dep": "OKC",
       "ev_skor": 94,
       "dep_skor": 131,
-      "en_iyi_performans": "Shai Gilgeous-Alexander"
+      "en_iyi_performans": "Shai Gilgeous-Alexander",
+      "esitlik_bozucu": [
+        0,
+        -37
+      ]
     },
     {
-      "rozet": 0.76,
-      "ham": 0.76,
+      "rozet": 0.8,
+      "ham": 0.8,
       "katman": "gec",
       "tasiyicilar": {
         "S": 0.87,
@@ -207,7 +239,7 @@
       },
       "yukselticiler": {
         "Y": 2.39,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 3.33
       },
@@ -217,7 +249,11 @@
       "dep": "SAS",
       "ev_skor": 113,
       "dep_skor": 123,
-      "en_iyi_performans": "De'Aaron Fox"
+      "en_iyi_performans": "De'Aaron Fox",
+      "esitlik_bozucu": [
+        0,
+        -10
+      ]
     },
     {
       "rozet": 0.64,
@@ -241,7 +277,11 @@
       "dep": "BKN",
       "ev_skor": 119,
       "dep_skor": 99,
-      "en_iyi_performans": "Alex Sarr"
+      "en_iyi_performans": "Alex Sarr",
+      "esitlik_bozucu": [
+        0,
+        -20
+      ]
     }
   ]
 }

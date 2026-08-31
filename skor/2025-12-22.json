@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-22",
-  "hesaplandi": "2026-08-28T17:54:36.016434Z",
+  "hesaplandi": "2026-08-31T18:51:27.686872Z",
   "en_iyi_skor": 8.31,
   "maclar": [
     {
@@ -15,7 +15,7 @@
       },
       "yukselticiler": {
         "Y": 5.73,
-        "F": 0,
+        "F": 6,
         "G": 10,
         "A": 4.0
       },
@@ -32,8 +32,8 @@
       ]
     },
     {
-      "rozet": 6.71,
-      "ham": 6.71,
+      "rozet": 7.03,
+      "ham": 7.03,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 6.89,
@@ -43,7 +43,7 @@
       },
       "yukselticiler": {
         "Y": 2.46,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 6.23
       },
@@ -60,8 +60,8 @@
       ]
     },
     {
-      "rozet": 6.24,
-      "ham": 6.24,
+      "rozet": 6.51,
+      "ham": 6.51,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 5.77,
@@ -71,7 +71,7 @@
       },
       "yukselticiler": {
         "Y": 5.13,
-        "F": 3,
+        "F": 7,
         "G": 6,
         "A": 4.25
       },
@@ -88,8 +88,8 @@
       ]
     },
     {
-      "rozet": 6.12,
-      "ham": 6.12,
+      "rozet": 6.33,
+      "ham": 6.33,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 5.8,
@@ -99,7 +99,7 @@
       },
       "yukselticiler": {
         "Y": 4.08,
-        "F": 3,
+        "F": 6,
         "G": 0,
         "A": 4.25
       },
@@ -113,6 +113,34 @@
       "esitlik_bozucu": [
         0,
         -8
+      ]
+    },
+    {
+      "rozet": 5.48,
+      "ham": 5.48,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 5.34,
+        "K": 1.83,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.64,
+        "F": 4,
+        "G": 0,
+        "A": 3.83
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500402",
+      "ev": "CLE",
+      "dep": "CHA",
+      "ev_skor": 139,
+      "dep_skor": 132,
+      "en_iyi_performans": "Darius Garland",
+      "esitlik_bozucu": [
+        0,
+        -7
       ]
     },
     {
@@ -144,36 +172,8 @@
       ]
     },
     {
-      "rozet": 5.22,
-      "ham": 5.22,
-      "katman": "gec",
-      "tasiyicilar": {
-        "S": 5.34,
-        "K": 1.83,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 2.64,
-        "F": 0,
-        "G": 0,
-        "A": 3.83
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500402",
-      "ev": "CLE",
-      "dep": "CHA",
-      "ev_skor": 139,
-      "dep_skor": 132,
-      "en_iyi_performans": "Darius Garland",
-      "esitlik_bozucu": [
-        0,
-        -7
-      ]
-    },
-    {
-      "rozet": 2.58,
-      "ham": 2.58,
+      "rozet": 2.71,
+      "ham": 2.71,
       "katman": "gec",
       "tasiyicilar": {
         "S": 1.12,
@@ -183,7 +183,7 @@
       },
       "yukselticiler": {
         "Y": 2.73,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 5.38
       },

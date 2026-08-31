@@ -1,6 +1,6 @@
 {
   "tarih": "2026-03-10",
-  "hesaplandi": "2026-08-25T20:12:09.290449Z",
+  "hesaplandi": "2026-08-31T18:51:30.762923Z",
   "en_iyi_skor": 9.21,
   "maclar": [
     {
@@ -25,11 +25,15 @@
       "dep": "WAS",
       "ev_skor": 150,
       "dep_skor": 129,
-      "en_iyi_performans": "Bam Adebayo"
+      "en_iyi_performans": "Bam Adebayo",
+      "esitlik_bozucu": [
+        0,
+        -21
+      ]
     },
     {
-      "rozet": 8.97,
-      "ham": 10.64,
+      "rozet": 9.0,
+      "ham": 10.78,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 9.8,
@@ -39,7 +43,7 @@
       },
       "yukselticiler": {
         "Y": 4.06,
-        "F": 0,
+        "F": 4,
         "G": 6,
         "A": 2.92
       },
@@ -49,35 +53,15 @@
       "dep": "MEM",
       "ev_skor": 139,
       "dep_skor": 129,
-      "en_iyi_performans": "Cameron Payne"
+      "en_iyi_performans": "Cameron Payne",
+      "esitlik_bozucu": [
+        0,
+        -10
+      ]
     },
     {
-      "rozet": 8.79,
-      "ham": 10.01,
-      "katman": "mutlaka",
-      "tasiyicilar": {
-        "S": 8.47,
-        "K": 5.0,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 4.58,
-        "F": 3,
-        "G": 0,
-        "A": 8.21
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500942",
-      "ev": "SAS",
-      "dep": "BOS",
-      "ev_skor": 125,
-      "dep_skor": 116,
-      "en_iyi_performans": "Victor Wembanyama"
-    },
-    {
-      "rozet": 8.75,
-      "ham": 9.89,
+      "rozet": 8.86,
+      "ham": 10.25,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 8.79,
@@ -87,7 +71,7 @@
       },
       "yukselticiler": {
         "Y": 9.5,
-        "F": 3,
+        "F": 7,
         "G": 0,
         "A": 2.17
       },
@@ -97,36 +81,72 @@
       "dep": "CHI",
       "ev_skor": 124,
       "dep_skor": 130,
-      "en_iyi_performans": "Matas Buzelis"
+      "en_iyi_performans": "Matas Buzelis",
+      "esitlik_bozucu": [
+        0,
+        -6
+      ]
     },
     {
-      "rozet": 8.65,
-      "ham": 9.56,
+      "rozet": 8.82,
+      "ham": 10.12,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 8.47,
+        "K": 5.0,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 4.58,
+        "F": 4,
+        "G": 0,
+        "A": 8.21
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500942",
+      "ev": "SAS",
+      "dep": "BOS",
+      "ev_skor": 125,
+      "dep_skor": 116,
+      "en_iyi_performans": "Victor Wembanyama",
+      "esitlik_bozucu": [
+        0,
+        -9
+      ]
+    },
+    {
+      "rozet": 8.69,
+      "ham": 9.69,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 2.06,
         "K": 8.5,
         "T": 0,
-        "D": 0
+        "D": 6
       },
       "yukselticiler": {
         "Y": 6.98,
-        "F": 6,
+        "F": 8,
         "G": 6,
         "A": 1.92
       },
-      "dram_terfi": false,
+      "dram_terfi": true,
       "mac_id": "0022500944",
       "ev": "POR",
       "dep": "CHA",
       "ev_skor": 101,
       "dep_skor": 103,
-      "en_iyi_performans": "Jerami Grant"
+      "en_iyi_performans": "Jerami Grant",
+      "esitlik_bozucu": [
+        6,
+        -2
+      ]
     },
     {
-      "rozet": 8.38,
-      "ham": 8.84,
-      "katman": "ikinci",
+      "rozet": 8.54,
+      "ham": 9.25,
+      "katman": "mutlaka",
       "tasiyicilar": {
         "S": 7.01,
         "K": 7.33,
@@ -135,7 +155,7 @@
       },
       "yukselticiler": {
         "Y": 2.89,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 7.42
       },
@@ -145,7 +165,11 @@
       "dep": "TOR",
       "ev_skor": 113,
       "dep_skor": 99,
-      "en_iyi_performans": "Kevin Durant"
+      "en_iyi_performans": "Kevin Durant",
+      "esitlik_bozucu": [
+        0,
+        -14
+      ]
     },
     {
       "rozet": 8.33,
@@ -159,7 +183,7 @@
       },
       "yukselticiler": {
         "Y": 5.41,
-        "F": 6,
+        "F": 7,
         "G": 10,
         "A": 0.58
       },
@@ -169,7 +193,11 @@
       "dep": "IND",
       "ev_skor": 114,
       "dep_skor": 109,
-      "en_iyi_performans": "Devin Carter"
+      "en_iyi_performans": "Devin Carter",
+      "esitlik_bozucu": [
+        8,
+        -5
+      ]
     },
     {
       "rozet": 8.31,
@@ -193,11 +221,15 @@
       "dep": "MIN",
       "ev_skor": 120,
       "dep_skor": 106,
-      "en_iyi_performans": "Luka Dončić"
+      "en_iyi_performans": "Luka Dončić",
+      "esitlik_bozucu": [
+        0,
+        -14
+      ]
     },
     {
-      "rozet": 6.73,
-      "ham": 6.73,
+      "rozet": 7.03,
+      "ham": 7.03,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 5.46,
@@ -207,7 +239,7 @@
       },
       "yukselticiler": {
         "Y": 3.81,
-        "F": 0,
+        "F": 4,
         "G": 6,
         "A": 6.0
       },
@@ -217,11 +249,15 @@
       "dep": "PHX",
       "ev_skor": 114,
       "dep_skor": 129,
-      "en_iyi_performans": "Kyle Kuzma"
+      "en_iyi_performans": "Kyle Kuzma",
+      "esitlik_bozucu": [
+        0,
+        -15
+      ]
     },
     {
-      "rozet": 5.04,
-      "ham": 5.04,
+      "rozet": 5.29,
+      "ham": 5.29,
       "katman": "gec",
       "tasiyicilar": {
         "S": 4.7,
@@ -231,7 +267,7 @@
       },
       "yukselticiler": {
         "Y": 3.83,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 2.67
       },
@@ -241,7 +277,11 @@
       "dep": "DAL",
       "ev_skor": 124,
       "dep_skor": 112,
-      "en_iyi_performans": "Jalen Johnson"
+      "en_iyi_performans": "Jalen Johnson",
+      "esitlik_bozucu": [
+        0,
+        -12
+      ]
     },
     {
       "rozet": 4.94,
@@ -265,7 +305,11 @@
       "dep": "DET",
       "ev_skor": 100,
       "dep_skor": 138,
-      "en_iyi_performans": "Cade Cunningham"
+      "en_iyi_performans": "Cade Cunningham",
+      "esitlik_bozucu": [
+        0,
+        -38
+      ]
     }
   ]
 }

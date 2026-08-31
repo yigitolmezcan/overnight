@@ -6,31 +6,31 @@
     {
       "sira": 1,
       "mac": "Boston Celtics — Detroit Pistons",
-      "rozet": 6.33,
+      "rozet": 6.54,
       "id": "g-mutlaka-3"
     },
     {
       "sira": 2,
       "mac": "Utah Jazz — Dallas Mavericks",
-      "rozet": 8.92,
+      "rozet": 8.99,
       "id": "g-mutlaka-1"
     },
     {
       "sira": 3,
       "mac": "Denver Nuggets — Houston Rockets",
-      "rozet": 9.0,
+      "rozet": 9.39,
       "id": "g-mutlaka-0"
     },
     {
       "sira": 4,
       "mac": "LA Clippers — Memphis Grizzlies",
-      "rozet": 7.8,
+      "rozet": 8.09,
       "id": "g-mutlaka-2"
     },
     {
       "sira": 5,
       "mac": "Miami Heat — Toronto Raptors",
-      "rozet": 3.83,
+      "rozet": 3.96,
       "id": "a-0022501227"
     }
   ],
@@ -41,7 +41,7 @@
       "hedef_id": "g-mutlaka-0",
       "icon": "default",
       "saat": null,
-      "rozet": 9.0,
+      "rozet": 9.39,
       "skor": "DEN 128 – HOU 125",
       "skor_tam": "Denver Nuggets 128 – Houston Rockets 125",
       "etiket": "gecenin maçı",
@@ -53,7 +53,7 @@
       "hedef_id": "g-mutlaka-1",
       "icon": "default",
       "saat": null,
-      "rozet": 8.92,
+      "rozet": 8.99,
       "skor": "UTA 140 – DAL 133",
       "skor_tam": "Utah Jazz 140 – Dallas Mavericks 133",
       "etiket": "",
@@ -65,7 +65,7 @@
       "hedef_id": "g-mutlaka-2",
       "icon": "standings",
       "saat": null,
-      "rozet": 7.8,
+      "rozet": 8.09,
       "skor": "LAC 103 – MEM 121",
       "skor_tam": "LA Clippers 103 – Memphis Grizzlies 121",
       "etiket": "",
@@ -77,7 +77,7 @@
       "hedef_id": "g-mutlaka-3",
       "icon": "default",
       "saat": null,
-      "rozet": 6.33,
+      "rozet": 6.54,
       "skor": "BOS 105 – DET 112",
       "skor_tam": "Boston Celtics 105 – Detroit Pistons 112",
       "etiket": "",
@@ -89,7 +89,7 @@
       "hedef_id": "a-0022501227",
       "icon": "default",
       "saat": null,
-      "rozet": 3.83,
+      "rozet": 3.96,
       "skor": "MIA 96 – TOR 106",
       "skor_tam": "Miami Heat 96 – Toronto Raptors 106",
       "etiket": "",
@@ -128,7 +128,7 @@
       "kisa": false,
       "mac": "Denver Nuggets — Houston Rockets",
       "skor": "128–125",
-      "rozet": 9.0,
+      "rozet": 9.39,
       "baslik": "Nikola Jokić'in 39 sayısıyla Denver Nuggets, Houston Rockets'i yendi.",
       "neden_onemli": "Denver Nuggets, konferansta 2. sıraya yükseldi.",
       "ceyrek_tablosu": [
@@ -746,7 +746,7 @@
       "kisa": true,
       "mac": "Utah Jazz — Dallas Mavericks",
       "skor": "140–133",
-      "rozet": 8.92,
+      "rozet": 8.99,
       "baslik": "Lauri Markkanen'in 33 sayısıyla Utah Jazz, Dallas Mavericks'i yendi.",
       "neden_onemli": "",
       "ceyrek_tablosu": [
@@ -1413,7 +1413,7 @@
       "kisa": true,
       "mac": "LA Clippers — Memphis Grizzlies",
       "skor": "103–121",
-      "rozet": 7.8,
+      "rozet": 8.09,
       "baslik": "Jaren Jackson Jr.'un 31 sayısıyla Memphis Grizzlies, LA Clippers'i yendi.",
       "neden_onemli": "",
       "ceyrek_tablosu": [
@@ -2091,7 +2091,7 @@
       "kisa": true,
       "mac": "Boston Celtics — Detroit Pistons",
       "skor": "105–112",
-      "rozet": 6.33,
+      "rozet": 6.54,
       "baslik": "Cade Cunningham'ın 32 sayısıyla Detroit, Boston'u yendi.",
       "neden_onemli": "Detroit Pistons, konferansta 1. sıraya yükseldi.",
       "ceyrek_tablosu": [
@@ -9421,7 +9421,7 @@
       "id": "a-0022501227",
       "mac": "Miami Heat — Toronto Raptors",
       "skor": "96–106",
-      "rozet": 3.83,
+      "rozet": 3.96,
       "why": "",
       "metin": "Toronto Raptors deplasmanda Miami Heat'i 106-96 yendi.",
       "box": {

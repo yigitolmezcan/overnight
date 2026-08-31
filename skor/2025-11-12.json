@@ -1,6 +1,6 @@
 {
   "tarih": "2025-11-12",
-  "hesaplandi": "2026-08-25T20:12:06.231024Z",
+  "hesaplandi": "2026-08-31T18:51:26.867606Z",
   "en_iyi_skor": 9.16,
   "maclar": [
     {
@@ -25,11 +25,15 @@
       "dep": "DEN",
       "ev_skor": 116,
       "dep_skor": 130,
-      "en_iyi_performans": "Nikola Jokić"
+      "en_iyi_performans": "Nikola Jokić",
+      "esitlik_bozucu": [
+        0,
+        -14
+      ]
     },
     {
-      "rozet": 8.83,
-      "ham": 10.16,
+      "rozet": 8.86,
+      "ham": 10.26,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 10,
@@ -39,7 +43,7 @@
       },
       "yukselticiler": {
         "Y": 4.97,
-        "F": 3,
+        "F": 6,
         "G": 6,
         "A": 6.21
       },
@@ -49,11 +53,15 @@
       "dep": "GSW",
       "ev_skor": 120,
       "dep_skor": 125,
-      "en_iyi_performans": "Stephen Curry"
+      "en_iyi_performans": "Stephen Curry",
+      "esitlik_bozucu": [
+        0,
+        -5
+      ]
     },
     {
-      "rozet": 7.77,
-      "ham": 7.77,
+      "rozet": 8.08,
+      "ham": 8.15,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 8.53,
@@ -63,7 +71,7 @@
       },
       "yukselticiler": {
         "Y": 3.11,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 2.83
       },
@@ -73,7 +81,11 @@
       "dep": "CHI",
       "ev_skor": 124,
       "dep_skor": 113,
-      "en_iyi_performans": "Paul Reed"
+      "en_iyi_performans": "Paul Reed",
+      "esitlik_bozucu": [
+        0,
+        -11
+      ]
     },
     {
       "rozet": 7.58,
@@ -97,11 +109,15 @@
       "dep": "LAL",
       "ev_skor": 121,
       "dep_skor": 92,
-      "en_iyi_performans": "Shai Gilgeous-Alexander"
+      "en_iyi_performans": "Shai Gilgeous-Alexander",
+      "esitlik_bozucu": [
+        0,
+        -29
+      ]
     },
     {
-      "rozet": 6.83,
-      "ham": 6.83,
+      "rozet": 7.35,
+      "ham": 7.35,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 7.83,
@@ -111,7 +127,7 @@
       },
       "yukselticiler": {
         "Y": 4.07,
-        "F": 0,
+        "F": 6,
         "G": 0,
         "A": 0.92
       },
@@ -121,7 +137,11 @@
       "dep": "POR",
       "ev_skor": 117,
       "dep_skor": 125,
-      "en_iyi_performans": "Shaedon Sharpe"
+      "en_iyi_performans": "Shaedon Sharpe",
+      "esitlik_bozucu": [
+        0,
+        -8
+      ]
     },
     {
       "rozet": 5.6,
@@ -145,11 +165,15 @@
       "dep": "ATL",
       "ev_skor": 100,
       "dep_skor": 133,
-      "en_iyi_performans": "Jalen Johnson"
+      "en_iyi_performans": "Jalen Johnson",
+      "esitlik_bozucu": [
+        0,
+        -33
+      ]
     },
     {
-      "rozet": 5.28,
-      "ham": 5.28,
+      "rozet": 5.52,
+      "ham": 5.52,
       "katman": "gec",
       "tasiyicilar": {
         "S": 4.94,
@@ -159,7 +183,7 @@
       },
       "yukselticiler": {
         "Y": 3.93,
-        "F": 0,
+        "F": 4,
         "G": 6,
         "A": 4.08
       },
@@ -169,11 +193,15 @@
       "dep": "CLE",
       "ev_skor": 116,
       "dep_skor": 130,
-      "en_iyi_performans": "Jarrett Allen"
+      "en_iyi_performans": "Jarrett Allen",
+      "esitlik_bozucu": [
+        0,
+        -14
+      ]
     },
     {
-      "rozet": 5.09,
-      "ham": 5.09,
+      "rozet": 5.34,
+      "ham": 5.34,
       "katman": "gec",
       "tasiyicilar": {
         "S": 4.94,
@@ -183,7 +211,7 @@
       },
       "yukselticiler": {
         "Y": 1.7,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 6.67
       },
@@ -193,7 +221,11 @@
       "dep": "ORL",
       "ev_skor": 107,
       "dep_skor": 124,
-      "en_iyi_performans": "Franz Wagner"
+      "en_iyi_performans": "Franz Wagner",
+      "esitlik_bozucu": [
+        0,
+        -17
+      ]
     },
     {
       "rozet": 4.65,
@@ -217,7 +249,11 @@
       "dep": "MEM",
       "ev_skor": 131,
       "dep_skor": 95,
-      "en_iyi_performans": "Payton Pritchard"
+      "en_iyi_performans": "Payton Pritchard",
+      "esitlik_bozucu": [
+        0,
+        -36
+      ]
     },
     {
       "rozet": 3.73,
@@ -241,11 +277,15 @@
       "dep": "MIL",
       "ev_skor": 111,
       "dep_skor": 100,
-      "en_iyi_performans": "Ryan Rollins"
+      "en_iyi_performans": "Ryan Rollins",
+      "esitlik_bozucu": [
+        0,
+        -11
+      ]
     },
     {
-      "rozet": 3.05,
-      "ham": 3.05,
+      "rozet": 3.16,
+      "ham": 3.16,
       "katman": "gec",
       "tasiyicilar": {
         "S": 3.09,
@@ -255,7 +295,7 @@
       },
       "yukselticiler": {
         "Y": 3.3,
-        "F": 3,
+        "F": 6,
         "G": 0,
         "A": 3.67
       },
@@ -265,7 +305,11 @@
       "dep": "PHX",
       "ev_skor": 114,
       "dep_skor": 123,
-      "en_iyi_performans": "Grayson Allen"
+      "en_iyi_performans": "Grayson Allen",
+      "esitlik_bozucu": [
+        0,
+        -9
+      ]
     },
     {
       "rozet": 2.7,
@@ -289,7 +333,11 @@
       "dep": "WAS",
       "ev_skor": 135,
       "dep_skor": 112,
-      "en_iyi_performans": "Kevin Durant"
+      "en_iyi_performans": "Kevin Durant",
+      "esitlik_bozucu": [
+        0,
+        -23
+      ]
     }
   ]
 }

@@ -1,11 +1,11 @@
 {
   "tarih": "2026-02-12",
-  "hesaplandi": "2026-08-25T20:12:08.657683Z",
-  "en_iyi_skor": 7.5,
+  "hesaplandi": "2026-08-31T18:51:30.226760Z",
+  "en_iyi_skor": 7.89,
   "maclar": [
     {
-      "rozet": 7.5,
-      "ham": 7.5,
+      "rozet": 7.89,
+      "ham": 7.89,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 7.75,
@@ -15,7 +15,7 @@
       },
       "yukselticiler": {
         "Y": 3.08,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 0.75
       },
@@ -25,7 +25,11 @@
       "dep": "POR",
       "ev_skor": 119,
       "dep_skor": 135,
-      "en_iyi_performans": "Jrue Holiday"
+      "en_iyi_performans": "Jrue Holiday",
+      "esitlik_bozucu": [
+        0,
+        -16
+      ]
     },
     {
       "rozet": 6.81,
@@ -49,7 +53,11 @@
       "dep": "DAL",
       "ev_skor": 124,
       "dep_skor": 104,
-      "en_iyi_performans": "LeBron James"
+      "en_iyi_performans": "LeBron James",
+      "esitlik_bozucu": [
+        0,
+        -20
+      ]
     },
     {
       "rozet": 6.69,
@@ -73,7 +81,11 @@
       "dep": "MIL",
       "ev_skor": 93,
       "dep_skor": 110,
-      "en_iyi_performans": "Ousmane Dieng"
+      "en_iyi_performans": "Ousmane Dieng",
+      "esitlik_bozucu": [
+        0,
+        -17
+      ]
     }
   ]
 }

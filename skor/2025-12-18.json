@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-18",
-  "hesaplandi": "2026-08-26T15:45:36.414356Z",
+  "hesaplandi": "2026-08-31T18:51:27.148688Z",
   "en_iyi_skor": 9.09,
   "maclar": [
     {
@@ -15,7 +15,7 @@
       },
       "yukselticiler": {
         "Y": 9.5,
-        "F": 6,
+        "F": 7,
         "G": 10,
         "A": 6.67
       },
@@ -25,11 +25,15 @@
       "dep": "HOU",
       "ev_skor": 133,
       "dep_skor": 128,
-      "en_iyi_performans": "Kevin Durant"
+      "en_iyi_performans": "Kevin Durant",
+      "esitlik_bozucu": [
+        8,
+        -5
+      ]
     },
     {
-      "rozet": 8.91,
-      "ham": 10.41,
+      "rozet": 8.93,
+      "ham": 10.52,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 10,
@@ -39,7 +43,7 @@
       },
       "yukselticiler": {
         "Y": 5.07,
-        "F": 3,
+        "F": 6,
         "G": 0,
         "A": 4.92
       },
@@ -49,7 +53,11 @@
       "dep": "LAL",
       "ev_skor": 135,
       "dep_skor": 143,
-      "en_iyi_performans": "Luka Dončić"
+      "en_iyi_performans": "Luka Dončić",
+      "esitlik_bozucu": [
+        0,
+        -8
+      ]
     },
     {
       "rozet": 8.88,
@@ -73,7 +81,11 @@
       "dep": "SAC",
       "ev_skor": 134,
       "dep_skor": 133,
-      "en_iyi_performans": "DeMar DeRozan"
+      "en_iyi_performans": "DeMar DeRozan",
+      "esitlik_bozucu": [
+        8,
+        -1
+      ]
     },
     {
       "rozet": 8.85,
@@ -97,7 +109,11 @@
       "dep": "ATL",
       "ev_skor": 133,
       "dep_skor": 126,
-      "en_iyi_performans": "Jalen Johnson"
+      "en_iyi_performans": "Jalen Johnson",
+      "esitlik_bozucu": [
+        0,
+        -7
+      ]
     },
     {
       "rozet": 8.63,
@@ -121,7 +137,11 @@
       "dep": "GSW",
       "ev_skor": 99,
       "dep_skor": 98,
-      "en_iyi_performans": "Jimmy Butler III"
+      "en_iyi_performans": "Jimmy Butler III",
+      "esitlik_bozucu": [
+        8,
+        -1
+      ]
     },
     {
       "rozet": 8.22,
@@ -145,35 +165,43 @@
       "dep": "NYK",
       "ev_skor": 113,
       "dep_skor": 114,
-      "en_iyi_performans": "Jalen Brunson"
+      "en_iyi_performans": "Jalen Brunson",
+      "esitlik_bozucu": [
+        8,
+        -1
+      ]
     },
     {
-      "rozet": 7.13,
-      "ham": 7.13,
+      "rozet": 8.06,
+      "ham": 8.11,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 3.22,
         "K": 5.65,
         "T": 0,
-        "D": 0
+        "D": 6
       },
       "yukselticiler": {
         "Y": 9.5,
-        "F": 6,
+        "F": 8,
         "G": 0,
         "A": 6.08
       },
-      "dram_terfi": false,
+      "dram_terfi": true,
       "mac_id": "0022500376",
       "ev": "DAL",
       "dep": "DET",
       "ev_skor": 116,
       "dep_skor": 114,
-      "en_iyi_performans": "Cooper Flagg"
+      "en_iyi_performans": "Cooper Flagg",
+      "esitlik_bozucu": [
+        6,
+        -2
+      ]
     },
     {
-      "rozet": 5.15,
-      "ham": 5.15,
+      "rozet": 5.4,
+      "ham": 5.4,
       "katman": "gec",
       "tasiyicilar": {
         "S": 4.88,
@@ -183,7 +211,7 @@
       },
       "yukselticiler": {
         "Y": 5.12,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 4.33
       },
@@ -193,11 +221,15 @@
       "dep": "MIA",
       "ev_skor": 95,
       "dep_skor": 106,
-      "en_iyi_performans": "Kel'el Ware"
+      "en_iyi_performans": "Kel'el Ware",
+      "esitlik_bozucu": [
+        0,
+        -11
+      ]
     },
     {
-      "rozet": 4.4,
-      "ham": 4.4,
+      "rozet": 4.61,
+      "ham": 4.61,
       "katman": "gec",
       "tasiyicilar": {
         "S": 4.13,
@@ -207,7 +239,7 @@
       },
       "yukselticiler": {
         "Y": 2.04,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 6.75
       },
@@ -217,11 +249,15 @@
       "dep": "ORL",
       "ev_skor": 126,
       "dep_skor": 115,
-      "en_iyi_performans": "Nikola Jokić"
+      "en_iyi_performans": "Nikola Jokić",
+      "esitlik_bozucu": [
+        0,
+        -11
+      ]
     },
     {
-      "rozet": 3.78,
-      "ham": 3.78,
+      "rozet": 3.96,
+      "ham": 3.96,
       "katman": "gec",
       "tasiyicilar": {
         "S": 3.35,
@@ -231,7 +267,7 @@
       },
       "yukselticiler": {
         "Y": 4.5,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 3.92
       },
@@ -241,7 +277,11 @@
       "dep": "TOR",
       "ev_skor": 105,
       "dep_skor": 111,
-      "en_iyi_performans": "Scottie Barnes"
+      "en_iyi_performans": "Scottie Barnes",
+      "esitlik_bozucu": [
+        0,
+        -6
+      ]
     }
   ]
 }

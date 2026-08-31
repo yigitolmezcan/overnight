@@ -6,7 +6,7 @@
     {
       "sira": 1,
       "mac": "Toronto Raptors — Golden State Warriors",
-      "rozet": 8.96,
+      "rozet": 9.01,
       "id": "g-mutlaka-1"
     },
     {
@@ -24,7 +24,7 @@
     {
       "sira": 4,
       "mac": "Portland Trail Blazers — Boston Celtics",
-      "rozet": 8.31,
+      "rozet": 8.35,
       "id": "g-mutlaka-2"
     },
     {
@@ -47,7 +47,7 @@
       "hedef_id": "g-mutlaka-1",
       "icon": "default",
       "saat": "23:30",
-      "rozet": 8.96,
+      "rozet": 9.01,
       "skor": "TOR 141 – GSW 127",
       "skor_tam": "Toronto Raptors 141 – Golden State Warriors 127",
       "etiket": "gecenin ilki",
@@ -71,7 +71,7 @@
       "hedef_id": "g-mutlaka-2",
       "icon": "default",
       "saat": "02:00",
-      "rozet": 8.31,
+      "rozet": 8.35,
       "skor": "POR 114 – BOS 108",
       "skor_tam": "Portland Trail Blazers 114 – Boston Celtics 108",
       "etiket": "",
@@ -797,7 +797,7 @@
       "kisa": true,
       "mac": "Toronto Raptors — Golden State Warriors",
       "skor": "141–127",
-      "rozet": 8.96,
+      "rozet": 9.01,
       "baslik": "Toronto Raptors, 13 sayılık farktan dönüp Golden State Warriors'u yendi.",
       "neden_onemli": "",
       "ceyrek_tablosu": [
@@ -1528,7 +1528,7 @@
       "kisa": true,
       "mac": "Portland Trail Blazers — Boston Celtics",
       "skor": "114–108",
-      "rozet": 8.31,
+      "rozet": 8.35,
       "baslik": "Portland, Boston'ı son saniyede devirdi.",
       "neden_onemli": "",
       "ceyrek_tablosu": [

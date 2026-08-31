@@ -1,25 +1,25 @@
 {
   "tarih": "2025-12-21",
-  "hesaplandi": "2026-08-28T14:31:42.037518Z",
-  "en_iyi_skor": 9.06,
+  "hesaplandi": "2026-08-31T18:51:27.538712Z",
+  "en_iyi_skor": 9.24,
   "maclar": [
     {
-      "rozet": 9.06,
-      "ham": 11.02,
+      "rozet": 9.24,
+      "ham": 11.85,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 9.83,
         "K": 3.68,
         "T": 0,
-        "D": 0
+        "D": 6
       },
       "yukselticiler": {
         "Y": 6.4,
-        "F": 6,
+        "F": 8,
         "G": 0,
         "A": 5.33
       },
-      "dram_terfi": false,
+      "dram_terfi": true,
       "mac_id": "0022500396",
       "ev": "ATL",
       "dep": "CHI",
@@ -27,7 +27,7 @@
       "dep_skor": 152,
       "en_iyi_performans": "Trae Young",
       "esitlik_bozucu": [
-        0,
+        6,
         -2
       ]
     },
@@ -60,8 +60,8 @@
       ]
     },
     {
-      "rozet": 8.84,
-      "ham": 10.19,
+      "rozet": 8.9,
+      "ham": 10.4,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 10,
@@ -71,7 +71,7 @@
       },
       "yukselticiler": {
         "Y": 4.5,
-        "F": 0,
+        "F": 6,
         "G": 0,
         "A": 7.08
       },
@@ -99,7 +99,7 @@
       },
       "yukselticiler": {
         "Y": 5.92,
-        "F": 6,
+        "F": 8,
         "G": 8,
         "A": 4.67
       },
@@ -116,8 +116,8 @@
       ]
     },
     {
-      "rozet": 3.93,
-      "ham": 3.93,
+      "rozet": 4.12,
+      "ham": 4.12,
       "katman": "gec",
       "tasiyicilar": {
         "S": 4.33,
@@ -127,7 +127,7 @@
       },
       "yukselticiler": {
         "Y": 1.97,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 6.0
       },
@@ -144,8 +144,8 @@
       ]
     },
     {
-      "rozet": 2.45,
-      "ham": 2.45,
+      "rozet": 2.56,
+      "ham": 2.56,
       "katman": "gec",
       "tasiyicilar": {
         "S": 1.42,
@@ -155,7 +155,7 @@
       },
       "yukselticiler": {
         "Y": 3.52,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 5.0
       },

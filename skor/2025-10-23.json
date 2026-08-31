@@ -1,11 +1,39 @@
 {
   "tarih": "2025-10-23",
-  "hesaplandi": "2026-08-25T20:12:06.050851Z",
-  "en_iyi_skor": 9.34,
+  "hesaplandi": "2026-08-31T18:51:26.755173Z",
+  "en_iyi_skor": 9.43,
   "maclar": [
     {
-      "rozet": 9.34,
-      "ham": 12.41,
+      "rozet": 9.43,
+      "ham": 13.04,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 10,
+        "K": 2.0,
+        "T": 6,
+        "D": 8
+      },
+      "yukselticiler": {
+        "Y": 9.5,
+        "F": 10,
+        "G": 0,
+        "A": 6.04
+      },
+      "dram_terfi": true,
+      "mac_id": "0022500005",
+      "ev": "IND",
+      "dep": "OKC",
+      "ev_skor": 135,
+      "dep_skor": 141,
+      "en_iyi_performans": "Shai Gilgeous-Alexander",
+      "esitlik_bozucu": [
+        8,
+        -6
+      ]
+    },
+    {
+      "rozet": 9.36,
+      "ham": 12.57,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 10,
@@ -15,7 +43,7 @@
       },
       "yukselticiler": {
         "Y": 9.5,
-        "F": 3,
+        "F": 7,
         "G": 6,
         "A": 6.83
       },
@@ -25,31 +53,11 @@
       "dep": "DEN",
       "ev_skor": 137,
       "dep_skor": 131,
-      "en_iyi_performans": "Stephen Curry"
-    },
-    {
-      "rozet": 9.29,
-      "ham": 12.16,
-      "katman": "mutlaka",
-      "tasiyicilar": {
-        "S": 10,
-        "K": 2.0,
-        "T": 6,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 9.5,
-        "F": 3,
-        "G": 0,
-        "A": 6.04
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500005",
-      "ev": "IND",
-      "dep": "OKC",
-      "ev_skor": 135,
-      "dep_skor": 141,
-      "en_iyi_performans": "Shai Gilgeous-Alexander"
+      "en_iyi_performans": "Stephen Curry",
+      "esitlik_bozucu": [
+        0,
+        -6
+      ]
     }
   ]
 }

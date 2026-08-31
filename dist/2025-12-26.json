@@ -6,7 +6,7 @@
     {
       "sira": 1,
       "mac": "Atlanta Hawks — Miami Heat",
-      "rozet": 4.66,
+      "rozet": 4.88,
       "id": "a-0022500423"
     },
     {
@@ -18,7 +18,7 @@
     {
       "sira": 3,
       "mac": "Washington Wizards — Toronto Raptors",
-      "rozet": 4.44,
+      "rozet": 4.66,
       "id": "a-0022500425"
     },
     {
@@ -30,19 +30,19 @@
     {
       "sira": 5,
       "mac": "Chicago Bulls — Philadelphia 76ers",
-      "rozet": 5.05,
+      "rozet": 5.21,
       "id": "a-0022500427"
     },
     {
       "sira": 6,
       "mac": "Memphis Grizzlies — Milwaukee Bucks",
-      "rozet": 2.71,
+      "rozet": 2.85,
       "id": "a-0022500428"
     },
     {
       "sira": 7,
       "mac": "New Orleans Pelicans — Phoenix Suns",
-      "rozet": 5.88,
+      "rozet": 6.07,
       "id": "a-0022500429"
     },
     {
@@ -54,7 +54,7 @@
     {
       "sira": 9,
       "mac": "Portland Trail Blazers — LA Clippers",
-      "rozet": 5.76,
+      "rozet": 6.03,
       "id": "a-0022500431"
     }
   ],
@@ -65,7 +65,7 @@
       "hedef_id": "a-0022500425",
       "icon": "default",
       "saat": "03:00",
-      "rozet": 4.44,
+      "rozet": 4.66,
       "skor": "WAS 138 – TOR 117",
       "skor_tam": "Washington Wizards 138 – Toronto Raptors 117",
       "etiket": "gecenin ilki",
@@ -101,7 +101,7 @@
       "hedef_id": "a-0022500429",
       "icon": "default",
       "saat": "04:00",
-      "rozet": 5.88,
+      "rozet": 6.07,
       "skor": "NOP 108 – PHX 115",
       "skor_tam": "New Orleans Pelicans 108 – Phoenix Suns 115",
       "etiket": "",
@@ -113,7 +113,7 @@
       "hedef_id": "a-0022500427",
       "icon": "streak",
       "saat": "04:00",
-      "rozet": 5.05,
+      "rozet": 5.21,
       "skor": "CHI 109 – PHI 102",
       "skor_tam": "Chicago Bulls 109 – Philadelphia 76ers 102",
       "etiket": "",
@@ -125,7 +125,7 @@
       "hedef_id": "a-0022500428",
       "icon": "default",
       "saat": "04:00",
-      "rozet": 2.71,
+      "rozet": 2.85,
       "skor": "MEM 125 – MIL 104",
       "skor_tam": "Memphis Grizzlies 125 – Milwaukee Bucks 104",
       "etiket": "",
@@ -149,7 +149,7 @@
       "hedef_id": "a-0022500431",
       "icon": "standings",
       "saat": "06:00",
-      "rozet": 5.76,
+      "rozet": 6.03,
       "skor": "POR 103 – LAC 119",
       "skor_tam": "Portland Trail Blazers 103 – LA Clippers 119",
       "etiket": "",
@@ -161,7 +161,7 @@
       "hedef_id": "a-0022500423",
       "icon": "standings",
       "saat": null,
-      "rozet": 4.66,
+      "rozet": 4.88,
       "skor": "ATL 111 – MIA 126",
       "skor_tam": "Atlanta Hawks 111 – Miami Heat 126",
       "etiket": "",
@@ -12892,13 +12892,12 @@
       ]
     }
   ],
-  "degerse_bak": [],
-  "diger": [
+  "degerse_bak": [
     {
       "id": "a-0022500429",
       "mac": "New Orleans Pelicans — Phoenix Suns",
       "skor": "108–115",
-      "rozet": 5.88,
+      "rozet": 6.07,
       "why": "",
       "metin": "Phoenix Suns deplasmanda New Orleans Pelicans'ı 115-108 yendi. Mark Williams double-double yaptı (24 sayı, 13 ribaund).",
       "box": {
@@ -13528,13 +13527,40 @@
           ]
         }
       },
-      "kazanan_kod": "PHX"
+      "kazanan_kod": "PHX",
+      "ceyrek_tablosu": [
+        {
+          "ceyrek": "1. yarı",
+          "skor": "48–53",
+          "ev_skor": 48,
+          "dep_skor": 53,
+          "durum": "PHX +5",
+          "durum_takim": "PHX",
+          "fark": 5,
+          "one_cikan": "9 kez liderlik değişti",
+          "kritik": false
+        },
+        {
+          "ceyrek": "2. yarı",
+          "skor": "108–115",
+          "ev_skor": 108,
+          "dep_skor": 115,
+          "durum": "PHX +7",
+          "durum_takim": "PHX",
+          "fark": 7,
+          "one_cikan": "Williams double-double",
+          "kritik": true
+        }
+      ],
+      "karar": null,
+      "ray_renk": "#B08BE8",
+      "ray_rgb": "176,139,232"
     },
     {
       "id": "a-0022500431",
       "mac": "Portland Trail Blazers — LA Clippers",
       "skor": "103–119",
-      "rozet": 5.76,
+      "rozet": 6.03,
       "why": "gece sırası 9",
       "metin": "LA Clippers deplasmanda Portland Trail Blazers'i 119-103 yendi. James Harden 34 sayı attı.",
       "box": {
@@ -14148,13 +14174,42 @@
         },
         "kritik": null
       },
-      "kazanan_kod": "LAC"
-    },
+      "kazanan_kod": "LAC",
+      "ceyrek_tablosu": [
+        {
+          "ceyrek": "1. yarı",
+          "skor": "62–56",
+          "ev_skor": 62,
+          "dep_skor": 56,
+          "durum": "POR +6",
+          "durum_takim": "POR",
+          "fark": 6,
+          "one_cikan": "Portland 9-0 seri",
+          "kritik": false
+        },
+        {
+          "ceyrek": "2. yarı",
+          "skor": "103–119",
+          "ev_skor": 103,
+          "dep_skor": 119,
+          "durum": "LAC +16",
+          "durum_takim": "LAC",
+          "fark": 16,
+          "one_cikan": "Leonard 21 sayı",
+          "kritik": true
+        }
+      ],
+      "karar": null,
+      "ray_renk": "#D2434A",
+      "ray_rgb": "210,67,74"
+    }
+  ],
+  "diger": [
     {
       "id": "a-0022500427",
       "mac": "Chicago Bulls — Philadelphia 76ers",
       "skor": "109–102",
-      "rozet": 5.05,
+      "rozet": 5.21,
       "why": "kazananın 5 maçlık galibiyet serisi (takım kalitesi 3.0/10, sürpriz)",
       "metin": "Chicago Bulls evinde Philadelphia 76ers'i 109-102 yendi.",
       "box": {
@@ -14775,7 +14830,7 @@
       "id": "a-0022500423",
       "mac": "Atlanta Hawks — Miami Heat",
       "skor": "111–126",
-      "rozet": 4.66,
+      "rozet": 4.88,
       "why": "konferans sıraları 8-10",
       "metin": "Miami Heat deplasmanda Atlanta Hawks'ı 126-111 yendi.",
       "box": {
@@ -15346,7 +15401,7 @@
       "id": "a-0022500425",
       "mac": "Washington Wizards — Toronto Raptors",
       "skor": "138–117",
-      "rozet": 4.44,
+      "rozet": 4.66,
       "why": "",
       "metin": "Washington Wizards evinde Toronto Raptors'u 138-117 ezdi.",
       "box": {
@@ -16721,7 +16776,7 @@
       "id": "a-0022500428",
       "mac": "Memphis Grizzlies — Milwaukee Bucks",
       "skor": "125–104",
-      "rozet": 2.71,
+      "rozet": 2.85,
       "why": "bireysel performans: 5_blok eşiğini geçen Jaren Jackson Jr.",
       "metin": "Memphis Grizzlies evinde Milwaukee Bucks'u 125-104 yendi.",
       "box": {

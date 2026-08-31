@@ -18,13 +18,13 @@
     {
       "sira": 3,
       "mac": "Brooklyn Nets — Miami Heat",
-      "rozet": 5.15,
+      "rozet": 5.4,
       "id": "a-0022500373"
     },
     {
       "sira": 4,
       "mac": "Milwaukee Bucks — Toronto Raptors",
-      "rozet": 3.78,
+      "rozet": 3.96,
       "id": "a-0022500374"
     },
     {
@@ -36,13 +36,13 @@
     {
       "sira": 6,
       "mac": "Dallas Mavericks — Detroit Pistons",
-      "rozet": 7.13,
+      "rozet": 8.06,
       "id": "a-0022500376"
     },
     {
       "sira": 7,
       "mac": "Denver Nuggets — Orlando Magic",
-      "rozet": 4.4,
+      "rozet": 4.61,
       "id": "a-0022500377"
     },
     {
@@ -54,7 +54,7 @@
     {
       "sira": 9,
       "mac": "Utah Jazz — Los Angeles Lakers",
-      "rozet": 8.91,
+      "rozet": 8.93,
       "id": "g-mutlaka-1"
     },
     {
@@ -95,7 +95,7 @@
       "hedef_id": "a-0022500373",
       "icon": "default",
       "saat": "03:30",
-      "rozet": 5.15,
+      "rozet": 5.4,
       "skor": "BKN 95 – MIA 106",
       "skor_tam": "Brooklyn Nets 95 – Miami Heat 106",
       "etiket": "",
@@ -119,7 +119,7 @@
       "hedef_id": "a-0022500374",
       "icon": "default",
       "saat": "04:00",
-      "rozet": 3.78,
+      "rozet": 3.96,
       "skor": "MIL 105 – TOR 111",
       "skor_tam": "Milwaukee Bucks 105 – Toronto Raptors 111",
       "etiket": "",
@@ -131,7 +131,7 @@
       "hedef_id": "a-0022500376",
       "icon": "default",
       "saat": "04:30",
-      "rozet": 7.13,
+      "rozet": 8.06,
       "skor": "DAL 116 – DET 114",
       "skor_tam": "Dallas Mavericks 116 – Detroit Pistons 114",
       "etiket": "",
@@ -143,7 +143,7 @@
       "hedef_id": "g-mutlaka-1",
       "icon": "default",
       "saat": "05:00",
-      "rozet": 8.91,
+      "rozet": 8.93,
       "skor": "UTA 135 – LAL 143",
       "skor_tam": "Utah Jazz 135 – Los Angeles Lakers 143",
       "etiket": "",
@@ -167,7 +167,7 @@
       "hedef_id": "a-0022500377",
       "icon": "default",
       "saat": "05:00",
-      "rozet": 4.4,
+      "rozet": 4.61,
       "skor": "DEN 126 – ORL 115",
       "skor_tam": "Denver Nuggets 126 – Orlando Magic 115",
       "etiket": "",
@@ -904,7 +904,7 @@
       "kisa": true,
       "mac": "Utah Jazz — Los Angeles Lakers",
       "skor": "135–143",
-      "rozet": 8.91,
+      "rozet": 8.93,
       "baslik": "Luka Dončić'in 45 sayısıyla Lakers, Utah'ı yendi.",
       "neden_onemli": "Los Angeles Lakers, konferansta 3. sıraya yükseldi.",
       "ceyrek_tablosu": [
@@ -16796,7 +16796,7 @@
       "id": "a-0022500376",
       "mac": "Dallas Mavericks — Detroit Pistons",
       "skor": "116–114",
-      "rozet": 7.13,
+      "rozet": 8.06,
       "why": "",
       "metin": "Dallas Mavericks evinde Detroit Pistons'u 116-114 yendi. Dallas Mavericks, maçı uzatmada kazandı.",
       "box": {
@@ -17517,7 +17517,7 @@
       "id": "a-0022500373",
       "mac": "Brooklyn Nets — Miami Heat",
       "skor": "95–106",
-      "rozet": 5.15,
+      "rozet": 5.4,
       "why": "",
       "metin": "Miami Heat deplasmanda Brooklyn Nets'i 106-95 yendi.",
       "box": {
@@ -18095,7 +18095,7 @@
       "id": "a-0022500377",
       "mac": "Denver Nuggets — Orlando Magic",
       "skor": "126–115",
-      "rozet": 4.4,
+      "rozet": 4.61,
       "why": "20. galibiyetini alan (kazanan)",
       "metin": "Denver Nuggets evinde Orlando Magic'i 126-115 yendi. Paolo Banchero triple-double yaptı (26 sayı, 16 ribaund, 10 asist).",
       "box": {
@@ -18646,7 +18646,7 @@
       "id": "a-0022500374",
       "mac": "Milwaukee Bucks — Toronto Raptors",
       "skor": "105–111",
-      "rozet": 3.78,
+      "rozet": 3.96,
       "why": "",
       "metin": "Toronto Raptors deplasmanda Milwaukee Bucks'u 111-105 yendi.",
       "box": {

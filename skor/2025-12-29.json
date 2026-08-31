@@ -1,11 +1,11 @@
 {
   "tarih": "2025-12-29",
-  "hesaplandi": "2026-08-31T07:58:48.969981Z",
-  "en_iyi_skor": 8.8,
+  "hesaplandi": "2026-08-31T18:51:28.602802Z",
+  "en_iyi_skor": 8.86,
   "maclar": [
     {
-      "rozet": 8.8,
-      "ham": 10.06,
+      "rozet": 8.86,
+      "ham": 10.26,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 9.57,
@@ -15,7 +15,7 @@
       },
       "yukselticiler": {
         "Y": 4.07,
-        "F": 0,
+        "F": 6,
         "G": 0,
         "A": 6.33
       },
@@ -32,8 +32,8 @@
       ]
     },
     {
-      "rozet": 8.61,
-      "ham": 9.46,
+      "rozet": 8.64,
+      "ham": 9.54,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 8.7,
@@ -43,7 +43,7 @@
       },
       "yukselticiler": {
         "Y": 7.22,
-        "F": 6,
+        "F": 7,
         "G": 6,
         "A": 5.67
       },
@@ -60,22 +60,22 @@
       ]
     },
     {
-      "rozet": 7.4,
-      "ham": 7.4,
+      "rozet": 7.64,
+      "ham": 7.64,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 5.88,
         "K": 3.51,
         "T": 0,
-        "D": 0
+        "D": 6
       },
       "yukselticiler": {
         "Y": 5.59,
-        "F": 6,
+        "F": 8,
         "G": 6,
         "A": 4.83
       },
-      "dram_terfi": false,
+      "dram_terfi": true,
       "mac_id": "0022500451",
       "ev": "TOR",
       "dep": "ORL",
@@ -83,8 +83,36 @@
       "dep_skor": 106,
       "en_iyi_performans": "Paolo Banchero",
       "esitlik_bozucu": [
-        0,
+        6,
         -1
+      ]
+    },
+    {
+      "rozet": 7.43,
+      "ham": 7.43,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 5.7,
+        "K": 2.86,
+        "T": 0,
+        "D": 6
+      },
+      "yukselticiler": {
+        "Y": 6.96,
+        "F": 8,
+        "G": 0,
+        "A": 2.42
+      },
+      "dram_terfi": true,
+      "mac_id": "0022500457",
+      "ev": "POR",
+      "dep": "DAL",
+      "ev_skor": 125,
+      "dep_skor": 122,
+      "en_iyi_performans": "Max Christie",
+      "esitlik_bozucu": [
+        6,
+        -3
       ]
     },
     {
@@ -116,36 +144,8 @@
       ]
     },
     {
-      "rozet": 6.52,
-      "ham": 6.52,
-      "katman": "ikinci",
-      "tasiyicilar": {
-        "S": 5.7,
-        "K": 2.86,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 6.96,
-        "F": 6,
-        "G": 0,
-        "A": 2.42
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500457",
-      "ev": "POR",
-      "dep": "DAL",
-      "ev_skor": 125,
-      "dep_skor": 122,
-      "en_iyi_performans": "Max Christie",
-      "esitlik_bozucu": [
-        0,
-        -3
-      ]
-    },
-    {
-      "rozet": 4.87,
-      "ham": 4.87,
+      "rozet": 5.1,
+      "ham": 5.1,
       "katman": "gec",
       "tasiyicilar": {
         "S": 5.01,
@@ -155,7 +155,7 @@
       },
       "yukselticiler": {
         "Y": 3.01,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 4.67
       },
@@ -172,8 +172,8 @@
       ]
     },
     {
-      "rozet": 4.77,
-      "ham": 4.77,
+      "rozet": 4.99,
+      "ham": 4.99,
       "katman": "gec",
       "tasiyicilar": {
         "S": 4.32,
@@ -183,7 +183,7 @@
       },
       "yukselticiler": {
         "Y": 4.13,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 7.62
       },
@@ -200,8 +200,8 @@
       ]
     },
     {
-      "rozet": 4.66,
-      "ham": 4.66,
+      "rozet": 4.9,
+      "ham": 4.9,
       "katman": "gec",
       "tasiyicilar": {
         "S": 4.83,
@@ -211,7 +211,7 @@
       },
       "yukselticiler": {
         "Y": 1.23,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 4.88
       },
@@ -225,6 +225,34 @@
       "esitlik_bozucu": [
         0,
         -7
+      ]
+    },
+    {
+      "rozet": 3.6,
+      "ham": 3.6,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 3.56,
+        "K": 0.15,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 5.26,
+        "F": 6,
+        "G": 0,
+        "A": 4.5
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500449",
+      "ev": "BKN",
+      "dep": "GSW",
+      "ev_skor": 107,
+      "dep_skor": 120,
+      "en_iyi_performans": "Stephen Curry",
+      "esitlik_bozucu": [
+        0,
+        -13
       ]
     },
     {
@@ -256,36 +284,8 @@
       ]
     },
     {
-      "rozet": 3.48,
-      "ham": 3.48,
-      "katman": "gec",
-      "tasiyicilar": {
-        "S": 3.56,
-        "K": 0.15,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 5.26,
-        "F": 3,
-        "G": 0,
-        "A": 4.5
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500449",
-      "ev": "BKN",
-      "dep": "GSW",
-      "ev_skor": 107,
-      "dep_skor": 120,
-      "en_iyi_performans": "Stephen Curry",
-      "esitlik_bozucu": [
-        0,
-        -13
-      ]
-    },
-    {
-      "rozet": 2.86,
-      "ham": 2.86,
+      "rozet": 2.99,
+      "ham": 2.99,
       "katman": "gec",
       "tasiyicilar": {
         "S": 2.47,
@@ -295,7 +295,7 @@
       },
       "yukselticiler": {
         "Y": 4.38,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 6.42
       },

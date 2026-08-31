@@ -1,11 +1,11 @@
 {
   "tarih": "2025-12-19",
-  "hesaplandi": "2026-08-26T22:52:55.026324Z",
-  "en_iyi_skor": 8.79,
+  "hesaplandi": "2026-08-31T18:51:27.266517Z",
+  "en_iyi_skor": 8.82,
   "maclar": [
     {
-      "rozet": 8.79,
-      "ham": 10.02,
+      "rozet": 8.82,
+      "ham": 10.11,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 8.74,
@@ -15,7 +15,7 @@
       },
       "yukselticiler": {
         "Y": 7.45,
-        "F": 6,
+        "F": 7,
         "G": 0,
         "A": 8.21
       },
@@ -25,11 +25,15 @@
       "dep": "OKC",
       "ev_skor": 112,
       "dep_skor": 107,
-      "en_iyi_performans": "Shai Gilgeous-Alexander"
+      "en_iyi_performans": "Shai Gilgeous-Alexander",
+      "esitlik_bozucu": [
+        0,
+        -5
+      ]
     },
     {
-      "rozet": 8.33,
-      "ham": 8.73,
+      "rozet": 8.45,
+      "ham": 9.03,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 5.24,
@@ -39,7 +43,7 @@
       },
       "yukselticiler": {
         "Y": 5.83,
-        "F": 3,
+        "F": 6,
         "G": 0,
         "A": 2.67
       },
@@ -49,11 +53,15 @@
       "dep": "CHI",
       "ev_skor": 125,
       "dep_skor": 136,
-      "en_iyi_performans": "Darius Garland"
+      "en_iyi_performans": "Darius Garland",
+      "esitlik_bozucu": [
+        0,
+        -11
+      ]
     },
     {
-      "rozet": 7.34,
-      "ham": 7.34,
+      "rozet": 7.69,
+      "ham": 7.69,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 7.0,
@@ -63,7 +71,7 @@
       },
       "yukselticiler": {
         "Y": 3.37,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 5.83
       },
@@ -73,11 +81,15 @@
       "dep": "MIA",
       "ev_skor": 129,
       "dep_skor": 116,
-      "en_iyi_performans": "Derrick White"
+      "en_iyi_performans": "Derrick White",
+      "esitlik_bozucu": [
+        0,
+        -13
+      ]
     },
     {
-      "rozet": 6.08,
-      "ham": 6.08,
+      "rozet": 6.49,
+      "ham": 6.49,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 5.72,
@@ -87,7 +99,7 @@
       },
       "yukselticiler": {
         "Y": 6.36,
-        "F": 0,
+        "F": 6,
         "G": 0,
         "A": 6.42
       },
@@ -97,7 +109,11 @@
       "dep": "PHI",
       "ev_skor": 107,
       "dep_skor": 116,
-      "en_iyi_performans": "Mitchell Robinson"
+      "en_iyi_performans": "Mitchell Robinson",
+      "esitlik_bozucu": [
+        0,
+        -9
+      ]
     },
     {
       "rozet": 5.18,
@@ -121,7 +137,11 @@
       "dep": "SAS",
       "ev_skor": 98,
       "dep_skor": 126,
-      "en_iyi_performans": "Victor Wembanyama"
+      "en_iyi_performans": "Victor Wembanyama",
+      "esitlik_bozucu": [
+        0,
+        -28
+      ]
     }
   ]
 }

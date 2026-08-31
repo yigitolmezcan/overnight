@@ -6055,6 +6055,53 @@ def main():
     basar("Yayın: dünkü yayın bugünü engellemiyor",
           not _yayin._bugun_yayinlandi_mi(_dun))
 
+    # ------------------------------------------------------------------
+    # F MERDİVENİ — MAÇ SONU GERGİNLİĞİ
+    # ------------------------------------------------------------------
+    # Eski F yalnız "son 30 saniyede liderlik değişimi" arıyordu ve
+    # FİNAL FARKINI hiç kullanmıyordu; 107-106 biten maç F=6'da kalıp
+    # 35 farkla biten maçın altına düşüyordu.
+    import hesapla as _H2
+    def _ser(*noktalar):
+        """(periyot, saniye_kalan, ev, dep) dizisi."""
+        return list(noktalar)
+    # F=8: 3 fark veya daha yakın bitti (liderlik değişimi olmasa bile).
+    basar("F: 3 farkla biten maç taşıyıcı eşiğine çıkıyor",
+          _H2.F_hesapla(_ser((4, 600, 90, 80), (4, 87, 106, 106),
+                             (4, 87, 107, 106), (4, 0, 107, 106)), 4, False) >= 8)
+    # F=9: son 30 saniyede liderlik değişimi.
+    basar("F: son 30 saniyede liderlik değişimi 9",
+          _H2.F_hesapla(_ser((4, 600, 90, 95), (4, 20, 100, 99),
+                             (4, 0, 108, 99)), 4, False) == 9)
+    # F=10: son 10 saniyede liderlik değişimi — EN ÜST basamak.
+    basar("F: son 10 saniyede liderlik değişimi 10",
+          _H2.F_hesapla(_ser((4, 600, 90, 95), (4, 5, 100, 99),
+                             (4, 0, 100, 99)), 4, False) == 10)
+    # F=10: uzatma + son çeyrekte fark hiç 5'i geçmedi.
+    basar("F: dengeli son çeyrek + uzatma 10",
+          _H2.F_hesapla(_ser((4, 600, 90, 88), (4, 0, 95, 95),
+                             (5, 0, 105, 103)), 5, True) == 10)
+    # F=7: 6 fark veya daha yakın + son 5 dakikada liderlik değişimi.
+    # DİKKAT: son kayıt 0. saniyede liderlik çeviriyorsa o bir bitiş
+    # basketidir ve F=10 olur — sentetik veride kazanan önden bitmeli.
+    basar("F: 6 farka kadar + son 5 dk liderlik değişimi 7",
+          _H2.F_hesapla(_ser((4, 600, 90, 88), (4, 200, 95, 97),
+                             (4, 120, 104, 100), (4, 0, 110, 104)), 4, False) == 7)
+    # F=4: son çeyrekte fark 10'un altına indi ama maç açıldı.
+    basar("F: son çeyrekte yaklaşma 4",
+          _H2.F_hesapla(_ser((4, 600, 90, 82), (4, 0, 120, 100)), 4, False) == 4)
+    basar("F: hiçbiri 0",
+          _H2.F_hesapla(_ser((4, 600, 90, 70), (4, 0, 120, 95)), 4, False) == 0)
+    # Merdiven monoton: yakın biten maç uzak bitenden düşük olamaz.
+    basar("F: final farkı merdivende gerçekten kullanılıyor",
+          "son_fark <= 3" in open("hesapla.py", encoding="utf-8").read())
+    # Dram F>=8'de TAŞIYICI oluyor.
+    _yakin = _H2.formulu_uygula(5.9, 3.5, 0, 5.6, 8, 6, 4.8)
+    _uzak = _H2.formulu_uygula(5.9, 3.5, 0, 5.6, 0, 6, 4.8)
+    basar("F: taşıyıcıya terfi rozeti gerçekten yükseltiyor",
+          _yakin["rozet"] > _uzak["rozet"],
+          f"{_uzak['rozet']:.2f} → {_yakin['rozet']:.2f}")
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))

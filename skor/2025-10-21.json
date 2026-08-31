@@ -1,6 +1,6 @@
 {
   "tarih": "2025-10-21",
-  "hesaplandi": "2026-08-25T20:12:05.809843Z",
+  "hesaplandi": "2026-08-31T18:51:26.639372Z",
   "en_iyi_skor": 9.43,
   "maclar": [
     {
@@ -25,11 +25,15 @@
       "dep": "HOU",
       "ev_skor": 125,
       "dep_skor": 124,
-      "en_iyi_performans": "Alperen Şengün"
+      "en_iyi_performans": "Alperen Şengün",
+      "esitlik_bozucu": [
+        8,
+        -1
+      ]
     },
     {
-      "rozet": 8.7,
-      "ham": 9.73,
+      "rozet": 8.75,
+      "ham": 9.86,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 10,
@@ -39,7 +43,7 @@
       },
       "yukselticiler": {
         "Y": 2.8,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 5.5
       },
@@ -49,7 +53,11 @@
       "dep": "GSW",
       "ev_skor": 109,
       "dep_skor": 119,
-      "en_iyi_performans": "Luka Dončić"
+      "en_iyi_performans": "Luka Dončić",
+      "esitlik_bozucu": [
+        0,
+        -10
+      ]
     }
   ]
 }

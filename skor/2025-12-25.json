@@ -1,11 +1,11 @@
 {
   "tarih": "2025-12-25",
-  "hesaplandi": "2026-08-25T20:12:06.425691Z",
-  "en_iyi_skor": 9.34,
+  "hesaplandi": "2026-08-31T18:51:27.985843Z",
+  "en_iyi_skor": 9.35,
   "maclar": [
     {
-      "rozet": 9.34,
-      "ham": 12.43,
+      "rozet": 9.35,
+      "ham": 12.47,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 10,
@@ -15,7 +15,7 @@
       },
       "yukselticiler": {
         "Y": 9.5,
-        "F": 6,
+        "F": 7,
         "G": 0,
         "A": 8.42
       },
@@ -25,7 +25,11 @@
       "dep": "MIN",
       "ev_skor": 142,
       "dep_skor": 138,
-      "en_iyi_performans": "Nikola Jokić"
+      "en_iyi_performans": "Nikola Jokić",
+      "esitlik_bozucu": [
+        0,
+        -4
+      ]
     },
     {
       "rozet": 8.99,
@@ -39,7 +43,7 @@
       },
       "yukselticiler": {
         "Y": 5.31,
-        "F": 6,
+        "F": 8,
         "G": 8,
         "A": 7.58
       },
@@ -49,11 +53,15 @@
       "dep": "CLE",
       "ev_skor": 126,
       "dep_skor": 124,
-      "en_iyi_performans": "Donovan Mitchell"
+      "en_iyi_performans": "Donovan Mitchell",
+      "esitlik_bozucu": [
+        6,
+        -2
+      ]
     },
     {
-      "rozet": 6.45,
-      "ham": 6.45,
+      "rozet": 6.75,
+      "ham": 6.75,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 4.64,
@@ -63,7 +71,7 @@
       },
       "yukselticiler": {
         "Y": 2.04,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 8.27
       },
@@ -73,7 +81,11 @@
       "dep": "SAS",
       "ev_skor": 102,
       "dep_skor": 117,
-      "en_iyi_performans": "De'Aaron Fox"
+      "en_iyi_performans": "De'Aaron Fox",
+      "esitlik_bozucu": [
+        0,
+        -15
+      ]
     },
     {
       "rozet": 6.15,
@@ -97,11 +109,15 @@
       "dep": "HOU",
       "ev_skor": 96,
       "dep_skor": 119,
-      "en_iyi_performans": "Kevin Durant"
+      "en_iyi_performans": "Kevin Durant",
+      "esitlik_bozucu": [
+        0,
+        -23
+      ]
     },
     {
-      "rozet": 3.02,
-      "ham": 3.02,
+      "rozet": 3.17,
+      "ham": 3.17,
       "katman": "gec",
       "tasiyicilar": {
         "S": 2.81,
@@ -111,7 +127,7 @@
       },
       "yukselticiler": {
         "Y": 3.06,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 5.33
       },
@@ -121,7 +137,11 @@
       "dep": "DAL",
       "ev_skor": 126,
       "dep_skor": 116,
-      "en_iyi_performans": "Cooper Flagg"
+      "en_iyi_performans": "Cooper Flagg",
+      "esitlik_bozucu": [
+        0,
+        -10
+      ]
     }
   ]
 }

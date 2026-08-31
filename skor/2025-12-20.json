@@ -1,31 +1,35 @@
 {
   "tarih": "2025-12-20",
-  "hesaplandi": "2026-08-26T23:22:14.582056Z",
-  "en_iyi_skor": 8.69,
+  "hesaplandi": "2026-08-31T18:51:27.415646Z",
+  "en_iyi_skor": 9.05,
   "maclar": [
     {
-      "rozet": 8.69,
-      "ham": 9.69,
+      "rozet": 9.05,
+      "ham": 10.97,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 9.33,
         "K": 1.0,
         "T": 0,
-        "D": 0
+        "D": 6
       },
       "yukselticiler": {
         "Y": 5.39,
-        "F": 6,
+        "F": 8,
         "G": 0,
         "A": 5.58
       },
-      "dram_terfi": false,
+      "dram_terfi": true,
       "mac_id": "0022500392",
       "ev": "GSW",
       "dep": "PHX",
       "ev_skor": 119,
       "dep_skor": 116,
-      "en_iyi_performans": "Devin Booker"
+      "en_iyi_performans": "Devin Booker",
+      "esitlik_bozucu": [
+        6,
+        -3
+      ]
     },
     {
       "rozet": 8.62,
@@ -49,7 +53,11 @@
       "dep": "WAS",
       "ev_skor": 122,
       "dep_skor": 130,
-      "en_iyi_performans": "Santi Aldama"
+      "en_iyi_performans": "Santi Aldama",
+      "esitlik_bozucu": [
+        6,
+        -8
+      ]
     },
     {
       "rozet": 8.48,
@@ -73,11 +81,15 @@
       "dep": "ORL",
       "ev_skor": 127,
       "dep_skor": 128,
-      "en_iyi_performans": "Desmond Bane"
+      "en_iyi_performans": "Desmond Bane",
+      "esitlik_bozucu": [
+        8,
+        -1
+      ]
     },
     {
-      "rozet": 7.35,
-      "ham": 7.35,
+      "rozet": 7.7,
+      "ham": 7.7,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 7.02,
@@ -87,7 +99,7 @@
       },
       "yukselticiler": {
         "Y": 3.87,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 4.75
       },
@@ -97,7 +109,11 @@
       "dep": "BOS",
       "ev_skor": 96,
       "dep_skor": 112,
-      "en_iyi_performans": "Payton Pritchard"
+      "en_iyi_performans": "Payton Pritchard",
+      "esitlik_bozucu": [
+        0,
+        -16
+      ]
     },
     {
       "rozet": 6.39,
@@ -121,11 +137,15 @@
       "dep": "HOU",
       "ev_skor": 101,
       "dep_skor": 115,
-      "en_iyi_performans": "Kevin Durant"
+      "en_iyi_performans": "Kevin Durant",
+      "esitlik_bozucu": [
+        0,
+        -14
+      ]
     },
     {
-      "rozet": 6.0,
-      "ham": 6.0,
+      "rozet": 6.07,
+      "ham": 6.07,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 5.3,
@@ -135,7 +155,7 @@
       },
       "yukselticiler": {
         "Y": 5.34,
-        "F": 3,
+        "F": 4,
         "G": 0,
         "A": 5.08
       },
@@ -145,11 +165,15 @@
       "dep": "DAL",
       "ev_skor": 121,
       "dep_skor": 114,
-      "en_iyi_performans": "Tyrese Maxey"
+      "en_iyi_performans": "Tyrese Maxey",
+      "esitlik_bozucu": [
+        0,
+        -7
+      ]
     },
     {
-      "rozet": 5.07,
-      "ham": 5.07,
+      "rozet": 5.32,
+      "ham": 5.32,
       "katman": "gec",
       "tasiyicilar": {
         "S": 5.3,
@@ -159,7 +183,7 @@
       },
       "yukselticiler": {
         "Y": 2.04,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 6.5
       },
@@ -169,11 +193,15 @@
       "dep": "LAL",
       "ev_skor": 103,
       "dep_skor": 88,
-      "en_iyi_performans": "LeBron James"
+      "en_iyi_performans": "LeBron James",
+      "esitlik_bozucu": [
+        0,
+        -15
+      ]
     },
     {
-      "rozet": 4.05,
-      "ham": 4.05,
+      "rozet": 4.26,
+      "ham": 4.26,
       "katman": "gec",
       "tasiyicilar": {
         "S": 4.77,
@@ -183,7 +211,7 @@
       },
       "yukselticiler": {
         "Y": 1.31,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 2.33
       },
@@ -193,7 +221,11 @@
       "dep": "IND",
       "ev_skor": 128,
       "dep_skor": 109,
-      "en_iyi_performans": "Zion Williamson"
+      "en_iyi_performans": "Zion Williamson",
+      "esitlik_bozucu": [
+        0,
+        -19
+      ]
     },
     {
       "rozet": 2.65,
@@ -217,11 +249,15 @@
       "dep": "POR",
       "ev_skor": 93,
       "dep_skor": 98,
-      "en_iyi_performans": "Dennis Schröder"
+      "en_iyi_performans": "Dennis Schröder",
+      "esitlik_bozucu": [
+        0,
+        -5
+      ]
     },
     {
-      "rozet": 2.45,
-      "ham": 2.45,
+      "rozet": 2.57,
+      "ham": 2.57,
       "katman": "gec",
       "tasiyicilar": {
         "S": 2.73,
@@ -231,7 +267,7 @@
       },
       "yukselticiler": {
         "Y": 1.58,
-        "F": 0,
+        "F": 4,
         "G": 0,
         "A": 5.75
       },
@@ -241,7 +277,11 @@
       "dep": "CHA",
       "ev_skor": 112,
       "dep_skor": 86,
-      "en_iyi_performans": "Cade Cunningham"
+      "en_iyi_performans": "Cade Cunningham",
+      "esitlik_bozucu": [
+        0,
+        -26
+      ]
     }
   ]
 }

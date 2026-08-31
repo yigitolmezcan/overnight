@@ -579,40 +579,90 @@ def _son_nokta_konumu(seri):
 
 
 def F_hesapla(seri, son_periyot, uzatma_var):
-    """Anchor tablosundaki "F=10: son saniye galibiyet basketi" ve
-    "F=8: son 30 saniyede öne geçme" kelimenin tam anlamıyla bir OLAY
-    gerektiriyor — sadece o an farkın küçük olması yetmez (maç zaten
-    kazanılmışken atılan serbest atışlar da farkı küçük gösterebilir).
-    Bu yüzden burada gerçek lider değişimi / eşitlenme anlarını
-    (işaret değişimi) arıyoruz, tek bir anlık farkı değil."""
+    """F — MAÇ SONU GERGİNLİĞİ. En yüksek eşleşen kademe alınır.
+
+    ESKİ KUSUR (kullanıcı ölçümü): F yalnız "son 30 saniyede liderlik
+    değişimi" arıyordu ve FİNAL FARKINI hiç kullanmıyordu. Dram bunun
+    çok ötesinde:
+      · 1:27 kala 106-106, sonra kimse sayı atamıyor → daha da gergin,
+        eski merdivende F=6 (29 Aralık TOR-ORL)
+      · son 5 dakikada 15 lider değişimi, 8 farkla bitiş → görünmüyor
+      · son dakikada uzatmaya giden maç → görünmüyor
+    Final farkı KENDİ BAŞINA bir dram göstergesi; merdivene doğrudan
+    girdi. Tek tek vaka yaması değil, genel kural.
+
+      F=10  Uzatmaya gitti VE son çeyrekte fark hiç 5'i geçmedi
+      F=9   Son 30 saniyede liderlik değişti / beraberlik bozuldu
+      F=8   Maç 3 fark veya daha yakın bitti
+      F=7   Maç 6 fark veya daha yakın bitti VE son 5 dakikada
+            liderlik en az bir kez değişti
+      F=6   Son 5 dakikada fark 5'in altına indi
+      F=4   Son çeyrekte fark 10'un altına indi
+      F=0   Hiçbiri
+
+    F>=8 olduğunda dram TAŞIYICI oluyor (bkz. formulu_uygula); altında
+    yalnız çarpana katkı veriyor."""
+    if not seri:
+        return 0
     son = [x for x in seri if x[0] == son_periyot]
     if not son:
         return 0
 
-    degisim_anlari = []  # (saniye_kalan, yeni_fark)
-    onceki_fark = None
-    for _, saniye, ev, dep in son:
-        yeni_fark = ev - dep
-        if onceki_fark is not None:
-            onceki_isaret = (onceki_fark > 0) - (onceki_fark < 0)
-            yeni_isaret = (yeni_fark > 0) - (yeni_fark < 0)
-            if onceki_isaret != yeni_isaret:
-                degisim_anlari.append((saniye, yeni_fark))
-        onceki_fark = yeni_fark
+    def _isaret_degisimleri(kayitlar):
+        """[(saniye_kalan, yeni_fark)] — gerçek lider değişimi / eşitlenme."""
+        anlar = []
+        onceki = None
+        for _, saniye, ev, dep in kayitlar:
+            yeni = ev - dep
+            if onceki is not None:
+                o = (onceki > 0) - (onceki < 0)
+                y = (yeni > 0) - (yeni < 0)
+                if o != y:
+                    anlar.append((saniye, yeni))
+            onceki = yeni
+        return anlar
 
+    degisim_anlari = _isaret_degisimleri(son)
+    son_fark = abs(son[-1][2] - son[-1][3])
+    ceyrek4 = [x for x in seri if x[0] == 4]
+
+    # F=10 — iki yoldan biri:
+    #  (a) son 10 saniyede liderlik değişti / beraberlik bozuldu, ya da
+    #  (b) uzatmaya gitti VE son çeyrek boyunca fark hiç 5'i geçmedi.
+    #
+    # (a) BASAMAĞI SONRADAN GERİ KONDU. Yeni merdiven yalnız (b) ile
+    # yazılınca ölçümde ters sonuç çıktı: 21 Aralık SAC-HOU uzatmada
+    # 125-124 bitti, son 3 saniyede liderlik değişti, ama 4. çeyrekte
+    # fark bir ara 5'i geçtiği için F=10'dan F=9'a düştü ve maç
+    # "Mutlaka bil"den çıktı. Son saniye galibiyeti merdivenin en üst
+    # basamağıdır; final farkı eklemek onu düşürmemeli.
     if any(saniye <= 10 for saniye, _ in degisim_anlari):
-        return 10  # son 10 saniyede lider değişti veya eşitlendi (uzatma dahil)
+        return 10
+    if uzatma_var and ceyrek4 and max(abs(e - d) for _, _, e, d in ceyrek4) <= 5:
+        return 10
 
+    # F=9 — son 30 saniyede liderlik değişti ya da beraberlik bozuldu.
     if any(saniye <= 30 for saniye, _ in degisim_anlari):
-        return 8  # son 30 saniyede öne geçildi
+        return 9
 
-    son_1dk = [x for x in son if x[1] <= 60]
-    if son_1dk and min(abs(e - d) for _, _, e, d in son_1dk) <= 3:
+    # F=8 — maç 3 fark veya daha yakın bitti. Kim ne zaman öne geçerse
+    # geçsin, son dakikalarda gerginlik vardır.
+    if son_fark <= 3:
+        return 8
+
+    # F=7 — 6 fark veya daha yakın bitti VE son 5 dakikada liderlik
+    # en az bir kez değişti.
+    if son_fark <= 6 and any(saniye <= 300 for saniye, _ in degisim_anlari):
+        return 7
+
+    son_5dk = [x for x in son if x[1] <= 300]
+    # F=6 — son 5 dakikada fark 5'in altına indi.
+    if son_5dk and min(abs(e - d) for _, _, e, d in son_5dk) < 5:
         return 6
 
-    son_2dk = [x for x in son if x[1] <= 120]
-    if son_2dk and min(abs(e - d) for _, _, e, d in son_2dk) <= 5:
-        return 3
+    # F=4 — son çeyrekte fark 10'un altına indi.
+    if ceyrek4 and min(abs(e - d) for _, _, e, d in ceyrek4) < 10:
+        return 4
 
     return 0
 
