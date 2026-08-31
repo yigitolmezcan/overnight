@@ -1,0 +1,168 @@
+{
+  "tarih": "2025-12-29",
+  "uretildi": "2026-08-31T07:59:19.103243Z",
+  "maclar": {
+    "0022500451": {
+      "gec_satiri": "Nefes kesen bir maçta Toronto Raptors, Orlando Magic'i 107-106 yendi. Jamal Shead 19 sayı attı. Mağlup tarafta Paolo Banchero 15 ribaund topladı.",
+      "muzip": false
+    },
+    "0022500452": {
+      "gec_satiri": "Minnesota Timberwolves deplasmanda Chicago Bulls'u 136-101 ezdi. Naz Reid 33 sayı attı.",
+      "muzip": false
+    },
+    "0022500457": {
+      "gec_satiri": "Portland Trail Blazers evinde Dallas Mavericks'i 125-122 yendi.",
+      "muzip": false
+    },
+    "0022500448": {
+      "gec_satiri": "Phoenix Suns deplasmanda Washington Wizards'ı 115-101 yendi.",
+      "muzip": false
+    },
+    "0022500456": {
+      "gec_satiri": "Cleveland Cavaliers deplasmanda San Antonio Spurs'u 113-101 yendi.",
+      "muzip": false
+    },
+    "0022500453": {
+      "gec_satiri": "Houston Rockets evinde Indiana Pacers'i 126-119 yendi. Kevin Durant 30 sayı attı.",
+      "muzip": false
+    },
+    "0022500450": {
+      "gec_satiri": "Miami Heat evinde Denver Nuggets'i 147-123 yendi.",
+      "muzip": false
+    },
+    "0022500449": {
+      "gec_satiri": "Golden State Warriors deplasmanda Brooklyn Nets'i 120-107 yendi.",
+      "muzip": false
+    },
+    "0022500447": {
+      "gec_satiri": "Milwaukee Bucks deplasmanda Charlotte Hornets'i 123-113 yendi.",
+      "muzip": false
+    },
+    "0022500455": {
+      "baslik": "Shai Gilgeous-Alexander'in 39 sayısıyla Oklahoma City Thunder, Atlanta Hawks'ı yendi.",
+      "neden_onemli": "Oklahoma City Thunder lig liderliğini sürdürdü."
+    },
+    "0022500454": {
+      "baslik": "New York, New Orleans'ı son saniyede devirdi.",
+      "neden_onemli": "New York Knicks, konferansta 2. sıraya yükseldi."
+    }
+  },
+  "brief": [
+    {
+      "metin": "Shai Gilgeous-Alexander, Atlanta Hawks karşısında 39 sayı attı.",
+      "hedef_mac": "0022500455",
+      "muzip": false,
+      "kind": "performans"
+    },
+    {
+      "metin": "New York Knicks, New Orleans Pelicans'ı yenerek konferansta 2. sıraya yükseldi.",
+      "hedef_mac": "0022500454",
+      "muzip": false,
+      "kind": "siralama"
+    },
+    {
+      "metin": "Toronto Raptors, 21 sayılık farktan dönüp Orlando Magic'i geçti.",
+      "hedef_mac": "0022500451",
+      "muzip": false,
+      "kind": "geri_donus"
+    },
+    {
+      "metin": "Minnesota Timberwolves, Chicago Bulls'u yendi.",
+      "hedef_mac": "0022500452",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Portland Trail Blazers, Dallas Mavericks'i yendi.",
+      "hedef_mac": "0022500457",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Phoenix Suns, Washington Wizards'ı yenerek 4 maçlık galibiyet serisini sürdürdü.",
+      "hedef_mac": "0022500448",
+      "muzip": false,
+      "kind": "seri"
+    },
+    {
+      "metin": "Cleveland Cavaliers, San Antonio Spurs deplasmanında kazandı.",
+      "hedef_mac": "0022500456",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Houston Rockets, Indiana Pacers'i evinde yendi.",
+      "hedef_mac": "0022500453",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Denver Nuggets, deplasmanda Miami Heat'a kaybetti.",
+      "hedef_mac": "0022500450",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Brooklyn Nets, evinde Golden State Warriors'a kaybetti.",
+      "hedef_mac": "0022500449",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Milwaukee Bucks, Charlotte Hornets'i yendi.",
+      "hedef_mac": "0022500447",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 4,
+    "ilk_denemede_kabul": 1,
+    "sablon_moduna_dusen": 1,
+    "detay": [
+      {
+        "mac_id": "0022500455",
+        "deneme": 0,
+        "gerekce": [
+          "T14: en iyi performans (Shai Gilgeous-Alexander) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Lider Oklahoma City, Atlanta'yı 140-129 yendi."
+        }
+      },
+      {
+        "mac_id": "0022500455",
+        "deneme": 1,
+        "gerekce": [
+          "T14: en iyi performans (Shai Gilgeous-Alexander) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Oklahoma City, Atlanta'yı 3. çeyrekte kopardı."
+        }
+      },
+      {
+        "mac_id": "0022500455",
+        "deneme": 2,
+        "gerekce": [
+          "T14: en iyi performans (Shai Gilgeous-Alexander) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Oklahoma City, 10 sayılık farktan dönüp Atlanta'yı yendi."
+        }
+      }
+    ],
+    "sablon_isaretli": [],
+    "mutlaka_mac": 2,
+    "ret_orani": 0.75,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 4,
+      "girdi_token": 16473,
+      "cikti_token": 1382,
+      "cache_yazma_token": 33686,
+      "cache_okuma_token": 26937,
+      "toplam_maliyet_usd": 0.1364,
+      "butce_asildi": false
+    }
+  }
+}
