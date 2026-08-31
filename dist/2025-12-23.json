@@ -299,7 +299,7 @@
       "metin": "Charlotte Hornets, Washington Wizards'ı yendi.",
       "anlatili": true,
       "hedef_id": "a-0022500409",
-      "icon": "default",
+      "icon": "standings",
       "saat": "03:00",
       "rozet": 2.98,
       "skor": "CHA 126 – WAS 109",
@@ -443,7 +443,7 @@
       "metin": "Kawhi Leonard, Houston Rockets karşısında 41 sayı attı.",
       "anlatili": true,
       "hedef_id": "g-mutlaka-1",
-      "icon": "standings",
+      "icon": "default",
       "saat": "07:00",
       "rozet": 8.66,
       "skor": "LAC 128 – HOU 108",
@@ -477,10 +477,12 @@
           "skor": "41–27",
           "ev_skor": 41,
           "dep_skor": 27,
-          "durum": "DAL +14",
-          "durum_takim": "DAL",
+          "onde": "ev",
           "fark": 14,
-          "one_cikan": "Dallas 12-0 seri",
+          "one_cikan": [
+            "Flagg 14 sayı",
+            "Denver 5 üçlük"
+          ],
           "kritik": false
         },
         {
@@ -488,10 +490,12 @@
           "skor": "66–56",
           "ev_skor": 66,
           "dep_skor": 56,
-          "durum": "DAL +10",
-          "durum_takim": "DAL",
+          "onde": "ev",
           "fark": 10,
-          "one_cikan": "Murray double-double",
+          "one_cikan": [
+            "Murray double-double",
+            "en büyük fark 21"
+          ],
           "kritik": false
         },
         {
@@ -499,10 +503,11 @@
           "skor": "103–103",
           "ev_skor": 103,
           "dep_skor": 103,
-          "durum": "berabere",
-          "durum_takim": null,
+          "onde": null,
           "fark": 0,
-          "one_cikan": "Dallas 15-0 seri",
+          "one_cikan": [
+            "Denver 18/25 şut"
+          ],
           "kritik": false
         },
         {
@@ -510,10 +515,12 @@
           "skor": "131–130",
           "ev_skor": 131,
           "dep_skor": 130,
-          "durum": "DAL +1",
-          "durum_takim": "DAL",
+          "onde": "ev",
           "fark": 1,
-          "one_cikan": "6 kez liderlik değişti",
+          "one_cikan": [
+            "6 kez liderlik değişti",
+            "Denver 8-0 seri"
+          ],
           "kritik": true
         }
       ],
@@ -1148,10 +1155,12 @@
           "skor": "29–35",
           "ev_skor": 29,
           "dep_skor": 35,
-          "durum": "HOU +6",
-          "durum_takim": "HOU",
+          "onde": "dep",
           "fark": 6,
-          "one_cikan": "Durant 11 sayı",
+          "one_cikan": [
+            "en büyük fark 9",
+            "Houston 15/23 şut"
+          ],
           "kritik": false
         },
         {
@@ -1159,10 +1168,12 @@
           "skor": "63–58",
           "ev_skor": 63,
           "dep_skor": 58,
-          "durum": "LAC +5",
-          "durum_takim": "LAC",
+          "onde": "ev",
           "fark": 5,
-          "one_cikan": "3 kez liderlik değişti",
+          "one_cikan": [
+            "3 kez liderlik değişti",
+            "LA Clippers 6 üçlük"
+          ],
           "kritik": false
         },
         {
@@ -1170,10 +1181,12 @@
           "skor": "98–82",
           "ev_skor": 98,
           "dep_skor": 82,
-          "durum": "LAC +16",
-          "durum_takim": "LAC",
+          "onde": "ev",
           "fark": 16,
-          "one_cikan": "LA Clippers 11-0 seri",
+          "one_cikan": [
+            "LA Clippers 11-0 seri",
+            "Harden 14 sayı"
+          ],
           "kritik": true
         },
         {
@@ -1181,10 +1194,11 @@
           "skor": "128–108",
           "ev_skor": 128,
           "dep_skor": 108,
-          "durum": "LAC +20",
-          "durum_takim": "LAC",
+          "onde": "ev",
           "fark": 20,
-          "one_cikan": "Leonard 41 sayı",
+          "one_cikan": [
+            "Leonard 41 sayı"
+          ],
           "kritik": false
         }
       ],
@@ -1913,10 +1927,11 @@
           "skor": "36–30",
           "ev_skor": 36,
           "dep_skor": 30,
-          "durum": "ATL +6",
-          "durum_takim": "ATL",
+          "onde": "ev",
           "fark": 6,
-          "one_cikan": "Alexander-Walker 12 sayı",
+          "one_cikan": [
+            "Alexander-Walker 12 sayı"
+          ],
           "kritik": false
         },
         {
@@ -1924,10 +1939,12 @@
           "skor": "68–55",
           "ev_skor": 68,
           "dep_skor": 55,
-          "durum": "ATL +13",
-          "durum_takim": "ATL",
+          "onde": "ev",
           "fark": 13,
-          "one_cikan": "Atlanta 13-0 seri",
+          "one_cikan": [
+            "en büyük fark 18",
+            "Chicago 6 üçlük"
+          ],
           "kritik": false
         },
         {
@@ -1935,10 +1952,11 @@
           "skor": "105–92",
           "ev_skor": 105,
           "dep_skor": 92,
-          "durum": "ATL +13",
-          "durum_takim": "ATL",
+          "onde": "ev",
           "fark": 13,
-          "one_cikan": "Young 9 sayı",
+          "one_cikan": [
+            "Chicago 15/21 şut"
+          ],
           "kritik": false
         },
         {
@@ -1946,10 +1964,12 @@
           "skor": "123–126",
           "ev_skor": 123,
           "dep_skor": 126,
-          "durum": "CHI +3",
-          "durum_takim": "CHI",
+          "onde": "dep",
           "fark": 3,
-          "one_cikan": "Giddey triple-double",
+          "one_cikan": [
+            "Giddey triple-double",
+            "Chicago 10-0 seri"
+          ],
           "kritik": true
         }
       ],
@@ -21603,10 +21623,12 @@
           "skor": "58–60",
           "ev_skor": 58,
           "dep_skor": 60,
-          "durum": "OKC +2",
-          "durum_takim": "OKC",
+          "onde": "dep",
           "fark": 2,
-          "one_cikan": "12 kez liderlik değişti",
+          "one_cikan": [
+            "Gilgeous-Alexander 16 sayı",
+            "Oklahoma City 6 üçlük"
+          ],
           "kritik": false
         },
         {
@@ -21614,10 +21636,12 @@
           "skor": "130–110",
           "ev_skor": 130,
           "dep_skor": 110,
-          "durum": "SAS +20",
-          "durum_takim": "SAS",
+          "onde": "ev",
           "fark": 20,
-          "one_cikan": "San Antonio 10-0 seri",
+          "one_cikan": [
+            "3 kez liderlik değişti",
+            "San Antonio 10-0 seri"
+          ],
           "kritik": true
         }
       ],
@@ -22200,10 +22224,12 @@
           "skor": "58–75",
           "ev_skor": 58,
           "dep_skor": 75,
-          "durum": "DET +17",
-          "durum_takim": "DET",
+          "onde": "dep",
           "fark": 17,
-          "one_cikan": "9 kez liderlik değişti",
+          "one_cikan": [
+            "9 kez liderlik değişti",
+            "en büyük fark 24"
+          ],
           "kritik": false
         },
         {
@@ -22211,10 +22237,12 @@
           "skor": "127–136",
           "ev_skor": 127,
           "dep_skor": 136,
-          "durum": "DET +9",
-          "durum_takim": "DET",
+          "onde": "dep",
           "fark": 9,
-          "one_cikan": "Duren double-double",
+          "one_cikan": [
+            "Duren double-double",
+            "Westbrook 18 sayı"
+          ],
           "kritik": true
         }
       ],
@@ -22822,10 +22850,12 @@
           "skor": "58–52",
           "ev_skor": 58,
           "dep_skor": 52,
-          "durum": "MIN +6",
-          "durum_takim": "MIN",
+          "onde": "ev",
           "fark": 6,
-          "one_cikan": "Towns 40 sayı",
+          "one_cikan": [
+            "Towns 40 sayı",
+            "8 kez liderlik değişti"
+          ],
           "kritik": false
         },
         {
@@ -22833,10 +22863,12 @@
           "skor": "115–104",
           "ev_skor": 115,
           "dep_skor": 104,
-          "durum": "MIN +11",
-          "durum_takim": "MIN",
+          "onde": "ev",
           "fark": 11,
-          "one_cikan": "Minnesota 11-0 seri",
+          "one_cikan": [
+            "Minnesota 11-0 seri",
+            "Edwards 20 sayı"
+          ],
           "kritik": true
         }
       ],
@@ -23467,10 +23499,12 @@
           "skor": "67–69",
           "ev_skor": 67,
           "dep_skor": 69,
-          "durum": "MEM +2",
-          "durum_takim": "MEM",
+          "onde": "dep",
           "fark": 2,
-          "one_cikan": "Filipowski double-double",
+          "one_cikan": [
+            "Filipowski double-double",
+            "en büyük fark 15"
+          ],
           "kritik": false
         },
         {
@@ -23478,10 +23512,12 @@
           "skor": "128–137",
           "ev_skor": 128,
           "dep_skor": 137,
-          "durum": "MEM +9",
-          "durum_takim": "MEM",
+          "onde": "dep",
           "fark": 9,
-          "one_cikan": "Utah 8-0 seri",
+          "one_cikan": [
+            "Utah 8-0 seri",
+            "Aldama 20 sayı"
+          ],
           "kritik": true
         }
       ],
@@ -26102,7 +26138,7 @@
       "mac": "Charlotte Hornets — Washington Wizards",
       "skor": "126–109",
       "rozet": 2.98,
-      "why": "10. galibiyetini alan (kazanan)",
+      "why": "gece sırası 1",
       "metin": "Charlotte Hornets evinde Washington Wizards'ı 126-109 yendi.",
       "box": {
         "ev": {

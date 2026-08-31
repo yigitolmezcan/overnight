@@ -367,10 +367,12 @@
           "skor": "24–33",
           "ev_skor": 24,
           "dep_skor": 33,
-          "durum": "HOU +9",
-          "durum_takim": "HOU",
+          "onde": "dep",
           "fark": 9,
-          "one_cikan": "3 kez liderlik değişti",
+          "one_cikan": [
+            "3 kez liderlik değişti",
+            "Durant 13 sayı"
+          ],
           "kritik": false
         },
         {
@@ -378,10 +380,9 @@
           "skor": "45–67",
           "ev_skor": 45,
           "dep_skor": 67,
-          "durum": "HOU +22",
-          "durum_takim": "HOU",
+          "onde": "dep",
           "fark": 22,
-          "one_cikan": "Houston 6-0 seri",
+          "one_cikan": [],
           "kritik": false
         },
         {
@@ -389,10 +390,12 @@
           "skor": "83–99",
           "ev_skor": 83,
           "dep_skor": 99,
-          "durum": "HOU +16",
-          "durum_takim": "HOU",
+          "onde": "dep",
           "fark": 16,
-          "one_cikan": "Şengün double-double",
+          "one_cikan": [
+            "Şengün double-double",
+            "en büyük fark 25"
+          ],
           "kritik": false
         },
         {
@@ -400,10 +403,11 @@
           "skor": "119–119",
           "ev_skor": 119,
           "dep_skor": 119,
-          "durum": "berabere",
-          "durum_takim": null,
+          "onde": null,
           "fark": 0,
-          "one_cikan": "New Orleans 11-0 seri",
+          "one_cikan": [
+            "New Orleans 13/20 şut"
+          ],
           "kritik": false
         },
         {
@@ -411,10 +415,11 @@
           "skor": "133–128",
           "ev_skor": 133,
           "dep_skor": 128,
-          "durum": "NOP +5",
-          "durum_takim": "NOP",
+          "onde": "ev",
           "fark": 5,
-          "one_cikan": "New Orleans 6-0 seri",
+          "one_cikan": [
+            "New Orleans 6-0 seri"
+          ],
           "kritik": true
         }
       ],
@@ -1053,10 +1058,12 @@
           "skor": "41–32",
           "ev_skor": 41,
           "dep_skor": 32,
-          "durum": "UTA +9",
-          "durum_takim": "UTA",
+          "onde": "ev",
           "fark": 9,
-          "one_cikan": "Dončić triple-double",
+          "one_cikan": [
+            "Dončić triple-double",
+            "en büyük fark 10"
+          ],
           "kritik": false
         },
         {
@@ -1064,10 +1071,11 @@
           "skor": "78–73",
           "ev_skor": 78,
           "dep_skor": 73,
-          "durum": "UTA +5",
-          "durum_takim": "UTA",
+          "onde": "ev",
           "fark": 5,
-          "one_cikan": "George 13 sayı",
+          "one_cikan": [
+            "Los Angeles 17/28 şut"
+          ],
           "kritik": false
         },
         {
@@ -1075,10 +1083,9 @@
           "skor": "106–102",
           "ev_skor": 106,
           "dep_skor": 102,
-          "durum": "UTA +4",
-          "durum_takim": "UTA",
+          "onde": "ev",
           "fark": 4,
-          "one_cikan": "Utah 6-0 seri",
+          "one_cikan": [],
           "kritik": false
         },
         {
@@ -1086,10 +1093,12 @@
           "skor": "135–143",
           "ev_skor": 135,
           "dep_skor": 143,
-          "durum": "LAL +8",
-          "durum_takim": "LAL",
+          "onde": "dep",
           "fark": 8,
-          "one_cikan": "George 13 sayı",
+          "one_cikan": [
+            "Los Angeles 10-0 seri",
+            "George 13 sayı"
+          ],
           "kritik": true
         }
       ],
@@ -1707,10 +1716,12 @@
           "skor": "36–40",
           "ev_skor": 36,
           "dep_skor": 40,
-          "durum": "SAC +4",
-          "durum_takim": "SAC",
+          "onde": "dep",
           "fark": 4,
-          "one_cikan": "Raynaud double-double",
+          "one_cikan": [
+            "Raynaud double-double",
+            "13 kez liderlik değişti"
+          ],
           "kritik": false
         },
         {
@@ -1718,10 +1729,11 @@
           "skor": "63–60",
           "ev_skor": 63,
           "dep_skor": 60,
-          "durum": "POR +3",
-          "durum_takim": "POR",
+          "onde": "ev",
           "fark": 3,
-          "one_cikan": "Portland 9-0 seri",
+          "one_cikan": [
+            "en büyük fark 8"
+          ],
           "kritik": false
         },
         {
@@ -1729,10 +1741,11 @@
           "skor": "82–83",
           "ev_skor": 82,
           "dep_skor": 83,
-          "durum": "SAC +1",
-          "durum_takim": "SAC",
+          "onde": "dep",
           "fark": 1,
-          "one_cikan": "5 kez liderlik değişti",
+          "one_cikan": [
+            "Portland 7/24 şut"
+          ],
           "kritik": false
         },
         {
@@ -1740,10 +1753,9 @@
           "skor": "115–115",
           "ev_skor": 115,
           "dep_skor": 115,
-          "durum": "berabere",
-          "durum_takim": null,
+          "onde": null,
           "fark": 0,
-          "one_cikan": "Sacramento 14-0 seri",
+          "one_cikan": [],
           "kritik": false
         },
         {
@@ -1751,10 +1763,12 @@
           "skor": "134–133",
           "ev_skor": 134,
           "dep_skor": 133,
-          "durum": "POR +1",
-          "durum_takim": "POR",
+          "onde": "ev",
           "fark": 1,
-          "one_cikan": "DeRozan 14 sayı",
+          "one_cikan": [
+            "DeRozan 14 sayı",
+            "Sacramento 7-0 seri"
+          ],
           "kritik": true
         }
       ],
@@ -2419,10 +2433,12 @@
           "skor": "37–32",
           "ev_skor": 37,
           "dep_skor": 32,
-          "durum": "CHA +5",
-          "durum_takim": "CHA",
+          "onde": "ev",
           "fark": 5,
-          "one_cikan": "Charlotte 8-0 seri",
+          "one_cikan": [
+            "Charlotte 9 üçlük",
+            "Atlanta 14/23 şut"
+          ],
           "kritik": false
         },
         {
@@ -2430,10 +2446,11 @@
           "skor": "80–69",
           "ev_skor": 80,
           "dep_skor": 69,
-          "durum": "CHA +11",
-          "durum_takim": "CHA",
+          "onde": "ev",
           "fark": 11,
-          "one_cikan": "Ball 15 sayı",
+          "one_cikan": [
+            "en büyük fark 24"
+          ],
           "kritik": false
         },
         {
@@ -2441,10 +2458,11 @@
           "skor": "107–95",
           "ev_skor": 107,
           "dep_skor": 95,
-          "durum": "CHA +12",
-          "durum_takim": "CHA",
+          "onde": "ev",
           "fark": 12,
-          "one_cikan": "Johnson 43 sayı",
+          "one_cikan": [
+            "Johnson 43 sayı"
+          ],
           "kritik": false
         },
         {
@@ -2452,10 +2470,12 @@
           "skor": "133–126",
           "ev_skor": 133,
           "dep_skor": 126,
-          "durum": "CHA +7",
-          "durum_takim": "CHA",
+          "onde": "ev",
           "fark": 7,
-          "one_cikan": "Johnson 14 sayı",
+          "one_cikan": [
+            "Johnson 14 sayı",
+            "Atlanta 7-0 seri"
+          ],
           "kritik": true
         }
       ],
@@ -16212,10 +16232,12 @@
           "skor": "46–53",
           "ev_skor": 46,
           "dep_skor": 53,
-          "durum": "GSW +7",
-          "durum_takim": "GSW",
+          "onde": "dep",
           "fark": 7,
-          "one_cikan": "4 kez liderlik değişti",
+          "one_cikan": [
+            "Brooks 20 sayı",
+            "Golden State 8 üçlük"
+          ],
           "kritik": false
         },
         {
@@ -16223,10 +16245,12 @@
           "skor": "99–98",
           "ev_skor": 99,
           "dep_skor": 98,
-          "durum": "PHX +1",
-          "durum_takim": "PHX",
+          "onde": "ev",
           "fark": 1,
-          "one_cikan": "Phoenix 12-0 seri",
+          "one_cikan": [
+            "5 kez liderlik değişti",
+            "Phoenix 12-0 seri"
+          ],
           "kritik": true
         }
       ],
@@ -16909,10 +16933,12 @@
           "skor": "62–59",
           "ev_skor": 62,
           "dep_skor": 59,
-          "durum": "IND +3",
-          "durum_takim": "IND",
+          "onde": "ev",
           "fark": 3,
-          "one_cikan": "3 kez liderlik değişti",
+          "one_cikan": [
+            "Brunson 18 sayı",
+            "en büyük fark 16"
+          ],
           "kritik": false
         },
         {
@@ -16920,10 +16946,12 @@
           "skor": "113–114",
           "ev_skor": 113,
           "dep_skor": 114,
-          "durum": "NYK +1",
-          "durum_takim": "NYK",
+          "onde": "dep",
           "fark": 1,
-          "one_cikan": "New York 8-0 seri",
+          "one_cikan": [
+            "5 kez liderlik değişti",
+            "New York 8-0 seri"
+          ],
           "kritik": true
         }
       ],
@@ -17632,10 +17660,12 @@
           "skor": "66–57",
           "ev_skor": 66,
           "dep_skor": 57,
-          "durum": "DAL +9",
-          "durum_takim": "DAL",
+          "onde": "ev",
           "fark": 9,
-          "one_cikan": "Cunningham double-double",
+          "one_cikan": [
+            "Cunningham double-double",
+            "Detroit 12-0 seri"
+          ],
           "kritik": false
         },
         {
@@ -17643,10 +17673,12 @@
           "skor": "116–114",
           "ev_skor": 116,
           "dep_skor": 114,
-          "durum": "DAL +2",
-          "durum_takim": "DAL",
+          "onde": "ev",
           "fark": 2,
-          "one_cikan": "4 kez liderlik değişti",
+          "one_cikan": [
+            "4 kez liderlik değişti",
+            "Cunningham 19 sayı"
+          ],
           "kritik": true
         }
       ],

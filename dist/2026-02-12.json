@@ -22,35 +22,193 @@
       "id": "a-0022500791"
     }
   ],
-  "brief": [
+  "mansetler": [
     {
-      "metin": "Jrue Holiday, Utah Jazz karşısında 31 sayı attı.",
-      "hedef_id": "g-mutlaka-0",
-      "icon": "standings"
+      "metin": "LeBron James triple-double yaptı.",
+      "vurgu": "triple-double",
+      "kalip": "triple_double",
+      "kademe": 1,
+      "rozet": 6.8,
+      "mac": "Los Angeles 124 – 104 Dallas",
+      "saat": "06:00",
+      "renk": "#8B62D9",
+      "hedef_id": "a-0022500791",
+      "mac_id": "0022500791"
     },
     {
-      "metin": "Sürpriz bir sonuçla Milwaukee Bucks, Oklahoma City Thunder'i yendi.",
-      "hedef_id": "a-0022500789",
-      "icon": "default"
+      "metin": "Jrue Holiday sezonun en iyi gecesini oynadı.",
+      "vurgu": "sezonun en iyi gecesini",
+      "kalip": "sezon_en_iyi",
+      "kademe": 2,
+      "rozet": 7.5,
+      "mac": "Utah 119 – 135 Portland",
+      "saat": "05:00",
+      "renk": "#E03A3E",
+      "hedef_id": "g-mutlaka-0",
+      "mac_id": "0022500790"
     }
   ],
+  "kapak_listesi": [
+    {
+      "katman": "gozat",
+      "rozet": 6.7,
+      "kazanan": "Milwaukee",
+      "kaybeden": "Oklahoma City",
+      "kazanan_skor": 110,
+      "kaybeden_skor": 93,
+      "saat": "03:30",
+      "hedef_id": "a-0022500789",
+      "_sira": "2026-02-13T03:30:00+03:00"
+    },
+    {
+      "katman": "mutlaka",
+      "rozet": 7.5,
+      "kazanan": "Portland",
+      "kaybeden": "Utah",
+      "kazanan_skor": 135,
+      "kaybeden_skor": 119,
+      "saat": "05:00",
+      "hedef_id": "g-mutlaka-0",
+      "_sira": "2026-02-13T05:00:00+03:00"
+    },
+    {
+      "katman": "gozat",
+      "rozet": 6.8,
+      "kazanan": "LA Lakers",
+      "kaybeden": "Dallas",
+      "kazanan_skor": 124,
+      "kaybeden_skor": 104,
+      "saat": "06:00",
+      "hedef_id": "a-0022500791",
+      "_sira": "2026-02-13T06:00:00+03:00"
+    }
+  ],
+  "brief": [
+    {
+      "metin": "Sürpriz bir sonuçla Milwaukee Bucks, Oklahoma City Thunder'i yendi.",
+      "anlatili": true,
+      "hedef_id": "a-0022500789",
+      "icon": "default",
+      "saat": "03:30",
+      "rozet": 6.69,
+      "skor": "OKC 93 – MIL 110",
+      "skor_tam": "Oklahoma City Thunder 93 – Milwaukee Bucks 110",
+      "etiket": "gecenin ilki",
+      "one_cikan": false
+    },
+    {
+      "metin": "Jrue Holiday, Utah Jazz karşısında 31 sayı attı.",
+      "anlatili": true,
+      "hedef_id": "g-mutlaka-0",
+      "icon": "standings",
+      "saat": "05:00",
+      "rozet": 7.5,
+      "skor": "UTA 119 – POR 135",
+      "skor_tam": "Utah Jazz 119 – Portland Trail Blazers 135",
+      "etiket": "gecenin maçı",
+      "one_cikan": true
+    },
+    {
+      "metin": "",
+      "anlatili": false,
+      "hedef_id": "a-0022500791",
+      "icon": "default",
+      "saat": "06:00",
+      "rozet": 6.81,
+      "skor": "LAL 124 – DAL 104",
+      "skor_tam": "Los Angeles Lakers 124 – Dallas Mavericks 104",
+      "etiket": "kapanış",
+      "one_cikan": false
+    }
+  ],
+  "brief_ozet": {
+    "ilk": "03:30",
+    "son": "06:00",
+    "mac": 3,
+    "anlatili": 2,
+    "dakika": 150,
+    "sure": "2,5 saat"
+  },
+  "brief_ayrica": [],
   "mutlaka": [
     {
       "id": "g-mutlaka-0",
+      "mac_id": "0022500790",
       "kisa": false,
       "mac": "Utah Jazz — Portland Trail Blazers",
       "skor": "119–135",
       "rozet": 7.5,
-      "baslik": "Portland Trail Blazers deplasmanda Utah Jazz'ı 135-119 yendi.",
+      "baslik": "Portland Trail Blazers, Utah Jazz deplasmanında 135-119 kazandı.",
       "neden_onemli": "",
-      "ozet": "Portland Trail Blazers deplasmanda Utah Jazz'ı 135-119 yendi. Jrue Holiday 31 sayı attı.",
+      "ceyrek_tablosu": [
+        {
+          "ceyrek": "1Ç",
+          "skor": "31–28",
+          "ev_skor": 31,
+          "dep_skor": 28,
+          "onde": "ev",
+          "fark": 3,
+          "one_cikan": [],
+          "kritik": false
+        },
+        {
+          "ceyrek": "2Ç",
+          "skor": "63–61",
+          "ev_skor": 63,
+          "dep_skor": 61,
+          "onde": "ev",
+          "fark": 2,
+          "one_cikan": [
+            "4 kez liderlik değişti",
+            "Portland 5 üçlük"
+          ],
+          "kritik": false
+        },
+        {
+          "ceyrek": "3Ç",
+          "skor": "86–101",
+          "ev_skor": 86,
+          "dep_skor": 101,
+          "onde": "dep",
+          "fark": 15,
+          "one_cikan": [
+            "Clingan double-double",
+            "Utah 7/24 şut"
+          ],
+          "kritik": false
+        },
+        {
+          "ceyrek": "4Ç",
+          "skor": "119–135",
+          "ev_skor": 119,
+          "dep_skor": 135,
+          "onde": "dep",
+          "fark": 16,
+          "one_cikan": [
+            "Portland 8-0 seri",
+            "Mykhailiuk 14 sayı"
+          ],
+          "kritik": true
+        }
+      ],
+      "karar": null,
       "box": {
         "ev": {
           "takim": "Utah Jazz",
+          "kod": "UTA",
+          "renk": "#3E7A5E",
+          "skor": 119,
+          "oynamayanlar": [
+            "Elijah Harkless",
+            "Kevin Love",
+            "Jusuf Nurkić"
+          ],
           "oyuncular": [
             {
+              "id": 1641729,
               "isim": "Brice Sensabaugh",
               "takim": "UTA",
+              "ilk_bes": true,
               "min": "35",
               "pts": 28,
               "reb": 4,
@@ -69,11 +227,14 @@
               "cold": false,
               "gecti_mi": false,
               "aykiri": false,
+              "aykiri_alan": null,
               "kaybedenin_en_iyisi": true
             },
             {
+              "id": 1642846,
               "isim": "Ace Bailey",
               "takim": "UTA",
+              "ilk_bes": true,
               "min": "34",
               "pts": 15,
               "reb": 8,
@@ -91,11 +252,14 @@
               "pm_ham": -19.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1642271,
               "isim": "Kyle Filipowski",
               "takim": "UTA",
+              "ilk_bes": true,
               "min": "29",
               "pts": 15,
               "reb": 9,
@@ -113,11 +277,14 @@
               "pm_ham": -17.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": true
+              "aykiri": true,
+              "aykiri_alan": "stl"
             },
             {
+              "id": 1642268,
               "isim": "Isaiah Collier",
               "takim": "UTA",
+              "ilk_bes": true,
               "min": "36",
               "pts": 15,
               "reb": 2,
@@ -135,11 +302,14 @@
               "pm_ham": -24.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1629004,
               "isim": "Svi Mykhailiuk",
               "takim": "UTA",
+              "ilk_bes": false,
               "min": "17",
               "pts": 14,
               "reb": 1,
@@ -157,11 +327,14 @@
               "pm_ham": -3.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1642396,
               "isim": "Blake Hinson",
               "takim": "UTA",
+              "ilk_bes": false,
               "min": "24",
               "pts": 11,
               "reb": 1,
@@ -179,11 +352,14 @@
               "pm_ham": 0.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1642262,
               "isim": "Cody Williams",
               "takim": "UTA",
+              "ilk_bes": true,
               "min": "24",
               "pts": 9,
               "reb": 2,
@@ -201,11 +377,14 @@
               "pm_ham": -13.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1629723,
               "isim": "John Konchar",
               "takim": "UTA",
+              "ilk_bes": false,
               "min": "25",
               "pts": 6,
               "reb": 7,
@@ -223,11 +402,14 @@
               "pm_ham": 9.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1631246,
               "isim": "Vince Williams Jr.",
               "takim": "UTA",
+              "ilk_bes": false,
               "min": "7",
               "pts": 6,
               "reb": 3,
@@ -245,11 +427,14 @@
               "pm_ham": 6.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1631131,
               "isim": "Oscar Tshiebwe",
               "takim": "UTA",
+              "ilk_bes": false,
               "min": "4",
               "pts": 0,
               "reb": 1,
@@ -267,7 +452,8 @@
               "pm_ham": 8.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             }
           ],
           "toplam": {
@@ -279,15 +465,33 @@
             "to": 19,
             "fg": "42/87",
             "3p": "14/38",
-            "ft": "21/29"
-          }
+            "ft": "21/29",
+            "oreb": 12,
+            "dreb": 26
+          },
+          "ceyrek": [
+            31,
+            32,
+            23,
+            33
+          ]
         },
         "dep": {
           "takim": "Portland Trail Blazers",
+          "kod": "POR",
+          "renk": "#E03A3E",
+          "skor": 135,
+          "oynamayanlar": [
+            "Deni Avdija",
+            "Shaedon Sharpe",
+            "Robert Williams III"
+          ],
           "oyuncular": [
             {
+              "id": 201950,
               "isim": "Jrue Holiday",
               "takim": "POR",
+              "ilk_bes": true,
               "min": "32",
               "pts": 31,
               "reb": 9,
@@ -305,11 +509,14 @@
               "pm_ham": 29.0,
               "cold": false,
               "gecti_mi": true,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1642270,
               "isim": "Donovan Clingan",
               "takim": "POR",
+              "ilk_bes": true,
               "min": "31",
               "pts": 23,
               "reb": 18,
@@ -327,11 +534,14 @@
               "pm_ham": 21.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 203924,
               "isim": "Jerami Grant",
               "takim": "POR",
+              "ilk_bes": true,
               "min": "32",
               "pts": 18,
               "reb": 3,
@@ -349,11 +559,14 @@
               "pm_ham": 23.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1630703,
               "isim": "Scoot Henderson",
               "takim": "POR",
+              "ilk_bes": false,
               "min": "20",
               "pts": 15,
               "reb": 1,
@@ -371,11 +584,14 @@
               "pm_ham": -6.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1641739,
               "isim": "Toumani Camara",
               "takim": "POR",
+              "ilk_bes": true,
               "min": "29",
               "pts": 14,
               "reb": 8,
@@ -393,11 +609,14 @@
               "pm_ham": 24.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1630249,
               "isim": "Vít Krejčí",
               "takim": "POR",
+              "ilk_bes": false,
               "min": "25",
               "pts": 11,
               "reb": 5,
@@ -415,11 +634,14 @@
               "pm_ham": 4.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1631126,
               "isim": "Caleb Love",
               "takim": "POR",
+              "ilk_bes": false,
               "min": "14",
               "pts": 11,
               "reb": 0,
@@ -437,11 +659,14 @@
               "pm_ham": -14.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1631321,
               "isim": "Sidy Cissoko",
               "takim": "POR",
+              "ilk_bes": true,
               "min": "29",
               "pts": 8,
               "reb": 4,
@@ -459,11 +684,14 @@
               "pm_ham": 25.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1641712,
               "isim": "Rayan Rupert",
               "takim": "POR",
+              "ilk_bes": false,
               "min": "15",
               "pts": 2,
               "reb": 4,
@@ -481,11 +709,14 @@
               "pm_ham": -3.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1642905,
               "isim": "Yang Hansen",
               "takim": "POR",
+              "ilk_bes": false,
               "min": "3",
               "pts": 2,
               "reb": 0,
@@ -503,11 +734,14 @@
               "pm_ham": -8.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1631104,
               "isim": "Blake Wesley",
               "takim": "POR",
+              "ilk_bes": false,
               "min": "3",
               "pts": 0,
               "reb": 0,
@@ -525,11 +759,14 @@
               "pm_ham": -12.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1631451,
               "isim": "Javonte Cooke",
               "takim": "POR",
+              "ilk_bes": false,
               "min": "0",
               "pts": 0,
               "reb": 0,
@@ -547,7 +784,8 @@
               "pm_ham": -3.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             }
           ],
           "toplam": {
@@ -559,70 +797,4638 @@
             "to": 19,
             "fg": "46/90",
             "3p": "18/46",
-            "ft": "25/33"
-          }
+            "ft": "25/33",
+            "oreb": 19,
+            "dreb": 33
+          },
+          "ceyrek": [
+            28,
+            33,
+            40,
+            34
+          ]
         },
-        "wtf": null
-      }
+        "wtf": null,
+        "kilit": null,
+        "kritik": null
+      },
+      "kazanan_kod": "POR",
+      "ray_renk": "#E03A3E",
+      "ray_rgb": "224,58,62",
+      "ray_asil": "#E03A3E",
+      "ray_degisti": false
     }
   ],
   "gecenin_besi": [
     {
-      "pos": "G",
+      "id": 201950,
       "isim": "Jrue Holiday",
       "takim": "POR",
+      "ilk_bes": true,
+      "min": "32",
+      "pts": 31,
+      "reb": 9,
+      "ast": 7,
+      "stl": 0,
+      "blk": 0,
+      "to": 1,
+      "fga": 15,
+      "fta": 9,
+      "3pa": 8,
+      "fg": "10/15",
+      "3p": "4/8",
+      "ft": "7/9",
+      "pm": "+29",
+      "pm_ham": 29.0,
+      "cold": false,
+      "pos": "G",
+      "renk": "#E03A3E",
+      "takim_adi": "Portland Trail Blazers",
+      "mac": "Utah Jazz — Portland Trail Blazers",
+      "mac_skor": "119–135",
+      "mac_kisa": "POR 135–119 UTA",
+      "mac_id": "g-mutlaka-0",
+      "sebep": "gecenin en çok sayı atanı",
+      "etiket": null,
       "num": 31,
       "unit": "pts",
-      "st": "9 REB · 7 AST"
+      "st": "9 REB · 7 AST",
+      "asil_renk": "#E03A3E",
+      "renk_degisti": false
     },
     {
-      "pos": "G",
+      "id": 1641729,
       "isim": "Brice Sensabaugh",
       "takim": "UTA",
+      "ilk_bes": true,
+      "min": "35",
+      "pts": 28,
+      "reb": 4,
+      "ast": 0,
+      "stl": 0,
+      "blk": 0,
+      "to": 1,
+      "fga": 19,
+      "fta": 9,
+      "3pa": 11,
+      "fg": "8/19",
+      "3p": "5/11",
+      "ft": "7/9",
+      "pm": "-27",
+      "pm_ham": -27.0,
+      "cold": false,
+      "pos": "G",
+      "renk": "#3E7A5E",
+      "takim_adi": "Utah Jazz",
+      "mac": "Utah Jazz — Portland Trail Blazers",
+      "mac_skor": "119–135",
+      "mac_kisa": "POR 135–119 UTA",
+      "mac_id": "g-mutlaka-0",
+      "sebep": "mevkisinde gecenin en iyisi",
+      "etiket": null,
       "num": 28,
       "unit": "pts",
-      "st": "4 REB · 0 AST"
+      "st": "4 REB · 0 AST",
+      "asil_renk": "#3E7A5E",
+      "renk_degisti": false
     },
     {
-      "pos": "F",
+      "id": 2544,
       "isim": "LeBron James",
       "takim": "LAL",
+      "ilk_bes": true,
+      "min": "35",
+      "pts": 28,
+      "reb": 10,
+      "ast": 12,
+      "stl": 0,
+      "blk": 1,
+      "to": 4,
+      "fga": 20,
+      "fta": 7,
+      "3pa": 7,
+      "fg": "10/20",
+      "3p": "2/7",
+      "ft": "6/7",
+      "pm": "+6",
+      "pm_ham": 6.0,
+      "cold": false,
+      "pos": "F",
+      "renk": "#8B62D9",
+      "takim_adi": "Los Angeles Lakers",
+      "mac": "Los Angeles Lakers — Dallas Mavericks",
+      "mac_skor": "124–104",
+      "mac_kisa": "LAL 124–104 DAL",
+      "mac_id": "a-0022500791",
+      "sebep": "triple-double",
+      "etiket": "triple-double",
       "num": 28,
       "unit": "pts",
-      "st": "10 REB · 12 AST"
+      "st": "10 REB · 12 AST",
+      "asil_renk": "#8B62D9",
+      "renk_degisti": false
     },
     {
-      "pos": "F",
+      "id": 1631172,
       "isim": "Ousmane Dieng",
       "takim": "MIL",
+      "ilk_bes": true,
+      "min": "36",
+      "pts": 19,
+      "reb": 11,
+      "ast": 6,
+      "stl": 1,
+      "blk": 4,
+      "to": 0,
+      "fga": 12,
+      "fta": 4,
+      "3pa": 6,
+      "fg": "7/12",
+      "3p": "3/6",
+      "ft": "2/4",
+      "pm": "+16",
+      "pm_ham": 16.0,
+      "cold": false,
+      "pos": "F",
+      "renk": "#1E9E5A",
+      "takim_adi": "Milwaukee Bucks",
+      "mac": "Oklahoma City Thunder — Milwaukee Bucks",
+      "mac_skor": "93–110",
+      "mac_kisa": "MIL 110–93 OKC",
+      "mac_id": "a-0022500789",
+      "sebep": "mevkisinde gecenin en iyisi",
+      "etiket": null,
       "num": 19,
       "unit": "pts",
-      "st": "11 REB · 6 AST"
+      "st": "11 REB · 6 AST",
+      "asil_renk": "#1E9E5A",
+      "renk_degisti": false
     },
     {
-      "pos": "C",
+      "id": 1642270,
       "isim": "Donovan Clingan",
       "takim": "POR",
+      "ilk_bes": true,
+      "min": "31",
+      "pts": 23,
+      "reb": 18,
+      "ast": 7,
+      "stl": 0,
+      "blk": 3,
+      "to": 0,
+      "fga": 12,
+      "fta": 9,
+      "3pa": 1,
+      "fg": "8/12",
+      "3p": "0/1",
+      "ft": "7/9",
+      "pm": "+21",
+      "pm_ham": 21.0,
+      "cold": false,
+      "pos": "C",
+      "renk": "#E03A3E",
+      "takim_adi": "Portland Trail Blazers",
+      "mac": "Utah Jazz — Portland Trail Blazers",
+      "mac_skor": "119–135",
+      "mac_kisa": "POR 135–119 UTA",
+      "mac_id": "g-mutlaka-0",
+      "sebep": "gecenin en çok ribaund alanı",
+      "etiket": null,
       "num": 23,
       "unit": "pts",
-      "st": "18 REB · 7 AST"
+      "st": "18 REB · 7 AST",
+      "asil_renk": "#E03A3E",
+      "renk_degisti": false
+    }
+  ],
+  "oyuncular": {
+    "1629652": {
+      "id": 1629652,
+      "isim": "Luguentz Dort",
+      "pos": "Forward",
+      "takim": "Oklahoma City Thunder",
+      "takim_kod": "OKC",
+      "renk": "#31A8E0",
+      "mac_skor": "Oklahoma City 93 – Milwaukee 110",
+      "saat": "03:30",
+      "bu_gece": {
+        "pts": 9,
+        "reb": 2,
+        "ast": 1,
+        "min": "28",
+        "fg": "4/12",
+        "3p": "1/6",
+        "ft": "0/0",
+        "stl": 1,
+        "blk": 0,
+        "to": 2,
+        "pm": "-14"
+      },
+      "sezon": {
+        "sezon_ort": 8.6,
+        "son5_ort": 9.0,
+        "yuzde": 4.7,
+        "son5": [
+          {
+            "sayi": 18,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 7,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1629026": {
+      "id": 1629026,
+      "isim": "Kenrich Williams",
+      "pos": "Forward",
+      "takim": "Oklahoma City Thunder",
+      "takim_kod": "OKC",
+      "renk": "#31A8E0",
+      "mac_skor": "Oklahoma City 93 – Milwaukee 110",
+      "saat": "03:30",
+      "bu_gece": {
+        "pts": 9,
+        "reb": 8,
+        "ast": 1,
+        "min": "22",
+        "fg": "3/8",
+        "3p": "2/4",
+        "ft": "1/2",
+        "stl": 0,
+        "blk": 0,
+        "to": 2,
+        "pm": "-8"
+      },
+      "sezon": {
+        "sezon_ort": 6.9,
+        "son5_ort": 10.4,
+        "yuzde": 50.7,
+        "son5": [
+          {
+            "sayi": 25,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 3,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 15,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1631096": {
+      "id": 1631096,
+      "isim": "Chet Holmgren",
+      "pos": "Center",
+      "takim": "Oklahoma City Thunder",
+      "takim_kod": "OKC",
+      "renk": "#31A8E0",
+      "mac_skor": "Oklahoma City 93 – Milwaukee 110",
+      "saat": "03:30",
+      "bu_gece": {
+        "pts": 16,
+        "reb": 13,
+        "ast": 4,
+        "min": "27",
+        "fg": "5/12",
+        "3p": "0/4",
+        "ft": "6/6",
+        "stl": 0,
+        "blk": 2,
+        "to": 0,
+        "pm": "-8"
+      },
+      "sezon": {
+        "sezon_ort": 17.3,
+        "son5_ort": 15.0,
+        "yuzde": -13.3,
+        "son5": [
+          {
+            "sayi": 16,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 17,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 13,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 13,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 16,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1630198": {
+      "id": 1630198,
+      "isim": "Isaiah Joe",
+      "pos": "Guard",
+      "takim": "Oklahoma City Thunder",
+      "takim_kod": "OKC",
+      "renk": "#31A8E0",
+      "mac_skor": "Oklahoma City 93 – Milwaukee 110",
+      "saat": "03:30",
+      "bu_gece": {
+        "pts": 17,
+        "reb": 4,
+        "ast": 2,
+        "min": "28",
+        "fg": "5/11",
+        "3p": "4/9",
+        "ft": "3/3",
+        "stl": 0,
+        "blk": 0,
+        "to": 0,
+        "pm": "-14"
+      },
+      "sezon": {
+        "sezon_ort": 10.2,
+        "son5_ort": 16.0,
+        "yuzde": 56.9,
+        "son5": [
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 21,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 19,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 21,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 17,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1641717": {
+      "id": 1641717,
+      "isim": "Cason Wallace",
+      "pos": "Guard",
+      "takim": "Oklahoma City Thunder",
+      "takim_kod": "OKC",
+      "renk": "#31A8E0",
+      "mac_skor": "Oklahoma City 93 – Milwaukee 110",
+      "saat": "03:30",
+      "bu_gece": {
+        "pts": 3,
+        "reb": 2,
+        "ast": 3,
+        "min": "28",
+        "fg": "1/7",
+        "3p": "0/2",
+        "ft": "1/2",
+        "stl": 0,
+        "blk": 2,
+        "to": 0,
+        "pm": "-3"
+      },
+      "sezon": {
+        "sezon_ort": 8.2,
+        "son5_ort": 11.0,
+        "yuzde": 34.1,
+        "son5": [
+          {
+            "sayi": 13,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 23,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 12,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 4,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 3,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1631119": {
+      "id": 1631119,
+      "isim": "Jaylin Williams",
+      "pos": "",
+      "takim": "Oklahoma City Thunder",
+      "takim_kod": "OKC",
+      "renk": "#31A8E0",
+      "mac_skor": "Oklahoma City 93 – Milwaukee 110",
+      "saat": "03:30",
+      "bu_gece": {
+        "pts": 7,
+        "reb": 2,
+        "ast": 3,
+        "min": "15",
+        "fg": "3/5",
+        "3p": "1/3",
+        "ft": "0/1",
+        "stl": 0,
+        "blk": 1,
+        "to": 1,
+        "pm": "-19"
+      },
+      "sezon": {
+        "sezon_ort": 6.8,
+        "son5_ort": 11.8,
+        "yuzde": 73.5,
+        "son5": [
+          {
+            "sayi": 24,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 6,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 11,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 11,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 7,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1630598": {
+      "id": 1630598,
+      "isim": "Aaron Wiggins",
+      "pos": "",
+      "takim": "Oklahoma City Thunder",
+      "takim_kod": "OKC",
+      "renk": "#31A8E0",
+      "mac_skor": "Oklahoma City 93 – Milwaukee 110",
+      "saat": "03:30",
+      "bu_gece": {
+        "pts": 5,
+        "reb": 4,
+        "ast": 2,
+        "min": "20",
+        "fg": "2/6",
+        "3p": "1/2",
+        "ft": "0/0",
+        "stl": 1,
+        "blk": 0,
+        "to": 4,
+        "pm": "-8"
+      },
+      "sezon": {
+        "sezon_ort": 10.7,
+        "son5_ort": 10.8,
+        "yuzde": 0.9,
+        "son5": [
+          {
+            "sayi": 20,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 17,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 12,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 5,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1627936": {
+      "id": 1627936,
+      "isim": "Alex Caruso",
+      "pos": "",
+      "takim": "Oklahoma City Thunder",
+      "takim_kod": "OKC",
+      "renk": "#31A8E0",
+      "mac_skor": "Oklahoma City 93 – Milwaukee 110",
+      "saat": "03:30",
+      "bu_gece": {
+        "pts": 9,
+        "reb": 3,
+        "ast": 1,
+        "min": "19",
+        "fg": "3/6",
+        "3p": "3/4",
+        "ft": "0/0",
+        "stl": 1,
+        "blk": 0,
+        "to": 2,
+        "pm": "-8"
+      },
+      "sezon": {
+        "sezon_ort": 6.4,
+        "son5_ort": 8.0,
+        "yuzde": 25.0,
+        "son5": [
+          {
+            "sayi": 6,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 8,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 17,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1642272": {
+      "id": 1642272,
+      "isim": "Jared McCain",
+      "pos": "",
+      "takim": "Oklahoma City Thunder",
+      "takim_kod": "OKC",
+      "renk": "#31A8E0",
+      "mac_skor": "Oklahoma City 93 – Milwaukee 110",
+      "saat": "03:30",
+      "bu_gece": {
+        "pts": 13,
+        "reb": 3,
+        "ast": 2,
+        "min": "24",
+        "fg": "3/9",
+        "3p": "2/6",
+        "ft": "5/6",
+        "stl": 0,
+        "blk": 0,
+        "to": 2,
+        "pm": "-3"
+      },
+      "sezon": {
+        "sezon_ort": 6.7,
+        "son5_ort": 7.4,
+        "yuzde": 10.4,
+        "son5": [
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 5,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 7,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 12,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 13,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1642260": {
+      "id": 1642260,
+      "isim": "Nikola Topić",
+      "pos": "",
+      "takim": "Oklahoma City Thunder",
+      "takim_kod": "OKC",
+      "renk": "#31A8E0",
+      "mac_skor": "Oklahoma City 93 – Milwaukee 110",
+      "saat": "03:30",
+      "bu_gece": {
+        "pts": 2,
+        "reb": 1,
+        "ast": 1,
+        "min": "12",
+        "fg": "1/3",
+        "3p": "0/2",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 3,
+        "pm": "-5"
+      },
+      "sezon": {
+        "sezon_ort": 10.0,
+        "son5_ort": 6.0,
+        "yuzde": -40.0,
+        "son5": [
+          {
+            "sayi": 10,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1642964": {
+      "id": 1642964,
+      "isim": "Brooks Barnhizer",
+      "pos": "",
+      "takim": "Oklahoma City Thunder",
+      "takim_kod": "OKC",
+      "renk": "#31A8E0",
+      "mac_skor": "Oklahoma City 93 – Milwaukee 110",
+      "saat": "03:30",
+      "bu_gece": {
+        "pts": 0,
+        "reb": 5,
+        "ast": 2,
+        "min": "7",
+        "fg": "0/2",
+        "3p": "0/1",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 1,
+        "to": 0,
+        "pm": "+2"
+      },
+      "sezon": {
+        "sezon_ort": 3.0,
+        "son5_ort": 3.2,
+        "yuzde": 6.7,
+        "son5": [
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 14,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1631205": {
+      "id": 1631205,
+      "isim": "Buddy Boeheim",
+      "pos": "",
+      "takim": "Oklahoma City Thunder",
+      "takim_kod": "OKC",
+      "renk": "#31A8E0",
+      "mac_skor": "Oklahoma City 93 – Milwaukee 110",
+      "saat": "03:30",
+      "bu_gece": {
+        "pts": 3,
+        "reb": 0,
+        "ast": 0,
+        "min": "4",
+        "fg": "1/2",
+        "3p": "1/2",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 0,
+        "pm": "+3"
+      },
+      "sezon": {
+        "sezon_ort": 3.0,
+        "son5_ort": 3.0,
+        "yuzde": 0.0,
+        "son5": [
+          {
+            "sayi": 3,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 3,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1631172": {
+      "id": 1631172,
+      "isim": "Ousmane Dieng",
+      "pos": "Forward",
+      "takim": "Milwaukee Bucks",
+      "takim_kod": "MIL",
+      "renk": "#1E9E5A",
+      "mac_skor": "Oklahoma City 93 – Milwaukee 110",
+      "saat": "03:30",
+      "bu_gece": {
+        "pts": 19,
+        "reb": 11,
+        "ast": 6,
+        "min": "36",
+        "fg": "7/12",
+        "3p": "3/6",
+        "ft": "2/4",
+        "stl": 1,
+        "blk": 4,
+        "to": 0,
+        "pm": "+16"
+      },
+      "sezon": {
+        "sezon_ort": 5.2,
+        "son5_ort": 8.0,
+        "yuzde": 53.8,
+        "son5": [
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 17,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 19,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1628398": {
+      "id": 1628398,
+      "isim": "Kyle Kuzma",
+      "pos": "Forward",
+      "takim": "Milwaukee Bucks",
+      "takim_kod": "MIL",
+      "renk": "#1E9E5A",
+      "mac_skor": "Oklahoma City 93 – Milwaukee 110",
+      "saat": "03:30",
+      "bu_gece": {
+        "pts": 14,
+        "reb": 4,
+        "ast": 2,
+        "min": "28",
+        "fg": "5/15",
+        "3p": "2/6",
+        "ft": "2/2",
+        "stl": 0,
+        "blk": 0,
+        "to": 0,
+        "pm": "+8"
+      },
+      "sezon": {
+        "sezon_ort": 12.6,
+        "son5_ort": 14.0,
+        "yuzde": 11.1,
+        "son5": [
+          {
+            "sayi": 31,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 7,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 3,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 15,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 14,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1630579": {
+      "id": 1630579,
+      "isim": "Jericho Sims",
+      "pos": "Center",
+      "takim": "Milwaukee Bucks",
+      "takim_kod": "MIL",
+      "renk": "#1E9E5A",
+      "mac_skor": "Oklahoma City 93 – Milwaukee 110",
+      "saat": "03:30",
+      "bu_gece": {
+        "pts": 8,
+        "reb": 5,
+        "ast": 0,
+        "min": "19",
+        "fg": "4/5",
+        "3p": "0/0",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 1,
+        "to": 3,
+        "pm": "+6"
+      },
+      "sezon": {
+        "sezon_ort": 3.3,
+        "son5_ort": 8.4,
+        "yuzde": 154.5,
+        "son5": [
+          {
+            "sayi": 8,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 4,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 5,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 17,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 8,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1629645": {
+      "id": 1629645,
+      "isim": "Kevin Porter Jr.",
+      "pos": "Guard",
+      "takim": "Milwaukee Bucks",
+      "takim_kod": "MIL",
+      "renk": "#1E9E5A",
+      "mac_skor": "Oklahoma City 93 – Milwaukee 110",
+      "saat": "03:30",
+      "bu_gece": {
+        "pts": 12,
+        "reb": 3,
+        "ast": 7,
+        "min": "31",
+        "fg": "6/15",
+        "3p": "0/1",
+        "ft": "0/0",
+        "stl": 3,
+        "blk": 0,
+        "to": 3,
+        "pm": "+12"
+      },
+      "sezon": {
+        "sezon_ort": 16.6,
+        "son5_ort": 19.8,
+        "yuzde": 19.3,
+        "son5": [
+          {
+            "sayi": 18,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 23,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 28,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 18,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 12,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1631260": {
+      "id": 1631260,
+      "isim": "AJ Green",
+      "pos": "Guard",
+      "takim": "Milwaukee Bucks",
+      "takim_kod": "MIL",
+      "renk": "#1E9E5A",
+      "mac_skor": "Oklahoma City 93 – Milwaukee 110",
+      "saat": "03:30",
+      "bu_gece": {
+        "pts": 17,
+        "reb": 2,
+        "ast": 3,
+        "min": "38",
+        "fg": "6/14",
+        "3p": "5/11",
+        "ft": "0/0",
+        "stl": 1,
+        "blk": 0,
+        "to": 0,
+        "pm": "+17"
+      },
+      "sezon": {
+        "sezon_ort": 10.6,
+        "son5_ort": 14.4,
+        "yuzde": 35.8,
+        "son5": [
+          {
+            "sayi": 20,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 14,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 15,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 6,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 17,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1626171": {
+      "id": 1626171,
+      "isim": "Bobby Portis",
+      "pos": "",
+      "takim": "Milwaukee Bucks",
+      "takim_kod": "MIL",
+      "renk": "#1E9E5A",
+      "mac_skor": "Oklahoma City 93 – Milwaukee 110",
+      "saat": "03:30",
+      "bu_gece": {
+        "pts": 15,
+        "reb": 12,
+        "ast": 3,
+        "min": "29",
+        "fg": "6/11",
+        "3p": "3/6",
+        "ft": "0/0",
+        "stl": 4,
+        "blk": 0,
+        "to": 1,
+        "pm": "+19"
+      },
+      "sezon": {
+        "sezon_ort": 12.6,
+        "son5_ort": 11.6,
+        "yuzde": -7.9,
+        "son5": [
+          {
+            "sayi": 8,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 21,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 10,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 4,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 15,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1631250": {
+      "id": 1631250,
+      "isim": "Pete Nance",
+      "pos": "",
+      "takim": "Milwaukee Bucks",
+      "takim_kod": "MIL",
+      "renk": "#1E9E5A",
+      "mac_skor": "Oklahoma City 93 – Milwaukee 110",
+      "saat": "03:30",
+      "bu_gece": {
+        "pts": 11,
+        "reb": 7,
+        "ast": 2,
+        "min": "23",
+        "fg": "4/6",
+        "3p": "3/5",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 1,
+        "to": 1,
+        "pm": "+4"
+      },
+      "sezon": {
+        "sezon_ort": 4.8,
+        "son5_ort": 7.4,
+        "yuzde": 54.2,
+        "son5": [
+          {
+            "sayi": 16,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 5,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 5,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 11,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1630560": {
+      "id": 1630560,
+      "isim": "Cam Thomas",
+      "pos": "",
+      "takim": "Milwaukee Bucks",
+      "takim_kod": "MIL",
+      "renk": "#1E9E5A",
+      "mac_skor": "Oklahoma City 93 – Milwaukee 110",
+      "saat": "03:30",
+      "bu_gece": {
+        "pts": 12,
+        "reb": 1,
+        "ast": 2,
+        "min": "20",
+        "fg": "5/13",
+        "3p": "1/6",
+        "ft": "1/1",
+        "stl": 0,
+        "blk": 0,
+        "to": 1,
+        "pm": "+15"
+      },
+      "sezon": {
+        "sezon_ort": 15.8,
+        "son5_ort": 14.0,
+        "yuzde": -11.4,
+        "son5": [
+          {
+            "sayi": 12,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 8,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 4,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 34,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 12,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1641748": {
+      "id": 1641748,
+      "isim": "Andre Jackson Jr.",
+      "pos": "",
+      "takim": "Milwaukee Bucks",
+      "takim_kod": "MIL",
+      "renk": "#1E9E5A",
+      "mac_skor": "Oklahoma City 93 – Milwaukee 110",
+      "saat": "03:30",
+      "bu_gece": {
+        "pts": 2,
+        "reb": 3,
+        "ast": 0,
+        "min": "5",
+        "fg": "1/1",
+        "3p": "0/0",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 1,
+        "pm": "-2"
+      },
+      "sezon": {
+        "sezon_ort": 1.6,
+        "son5_ort": 0.8,
+        "yuzde": -50.0,
+        "son5": [
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1629018": {
+      "id": 1629018,
+      "isim": "Gary Trent Jr.",
+      "pos": "",
+      "takim": "Milwaukee Bucks",
+      "takim_kod": "MIL",
+      "renk": "#1E9E5A",
+      "mac_skor": "Oklahoma City 93 – Milwaukee 110",
+      "saat": "03:30",
+      "bu_gece": {
+        "pts": 0,
+        "reb": 0,
+        "ast": 0,
+        "min": "3",
+        "fg": "0/3",
+        "3p": "0/1",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 0,
+        "pm": "-5"
+      },
+      "sezon": {
+        "sezon_ort": 8.7,
+        "son5_ort": 8.8,
+        "yuzde": 1.1,
+        "son5": [
+          {
+            "sayi": 9,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 15,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 13,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 7,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "203648": {
+      "id": 203648,
+      "isim": "Thanasis Antetokounmpo",
+      "pos": "",
+      "takim": "Milwaukee Bucks",
+      "takim_kod": "MIL",
+      "renk": "#1E9E5A",
+      "mac_skor": "Oklahoma City 93 – Milwaukee 110",
+      "saat": "03:30",
+      "bu_gece": {
+        "pts": 0,
+        "reb": 1,
+        "ast": 0,
+        "min": "3",
+        "fg": "0/0",
+        "3p": "0/0",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 0,
+        "pm": "-5"
+      },
+      "sezon": {
+        "sezon_ort": 1.4,
+        "son5_ort": 0.0,
+        "yuzde": -100.0,
+        "son5": [
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1642846": {
+      "id": 1642846,
+      "isim": "Ace Bailey",
+      "pos": "Forward",
+      "takim": "Utah Jazz",
+      "takim_kod": "UTA",
+      "renk": "#3E7A5E",
+      "mac_skor": "Utah 119 – Portland 135",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 15,
+        "reb": 8,
+        "ast": 3,
+        "min": "34",
+        "fg": "7/15",
+        "3p": "1/5",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 4,
+        "pm": "-19"
+      },
+      "sezon": {
+        "sezon_ort": 11.9,
+        "son5_ort": 14.8,
+        "yuzde": 24.4,
+        "son5": [
+          {
+            "sayi": 20,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 10,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 16,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 13,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 15,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1642262": {
+      "id": 1642262,
+      "isim": "Cody Williams",
+      "pos": "Forward",
+      "takim": "Utah Jazz",
+      "takim_kod": "UTA",
+      "renk": "#3E7A5E",
+      "mac_skor": "Utah 119 – Portland 135",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 9,
+        "reb": 2,
+        "ast": 3,
+        "min": "24",
+        "fg": "4/9",
+        "3p": "0/3",
+        "ft": "1/1",
+        "stl": 2,
+        "blk": 1,
+        "to": 4,
+        "pm": "-13"
+      },
+      "sezon": {
+        "sezon_ort": 6.0,
+        "son5_ort": 5.0,
+        "yuzde": -16.7,
+        "son5": [
+          {
+            "sayi": 5,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1642271": {
+      "id": 1642271,
+      "isim": "Kyle Filipowski",
+      "pos": "Center",
+      "takim": "Utah Jazz",
+      "takim_kod": "UTA",
+      "renk": "#3E7A5E",
+      "mac_skor": "Utah 119 – Portland 135",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 15,
+        "reb": 9,
+        "ast": 3,
+        "min": "29",
+        "fg": "6/9",
+        "3p": "1/4",
+        "ft": "2/4",
+        "stl": 6,
+        "blk": 0,
+        "to": 2,
+        "pm": "-17"
+      },
+      "sezon": {
+        "sezon_ort": 9.5,
+        "son5_ort": 11.8,
+        "yuzde": 24.2,
+        "son5": [
+          {
+            "sayi": 15,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 16,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 4,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 15,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1641729": {
+      "id": 1641729,
+      "isim": "Brice Sensabaugh",
+      "pos": "Guard",
+      "takim": "Utah Jazz",
+      "takim_kod": "UTA",
+      "renk": "#3E7A5E",
+      "mac_skor": "Utah 119 – Portland 135",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 28,
+        "reb": 4,
+        "ast": 0,
+        "min": "35",
+        "fg": "8/19",
+        "3p": "5/11",
+        "ft": "7/9",
+        "stl": 0,
+        "blk": 0,
+        "to": 1,
+        "pm": "-27"
+      },
+      "sezon": {
+        "sezon_ort": 12.8,
+        "son5_ort": 16.6,
+        "yuzde": 29.7,
+        "son5": [
+          {
+            "sayi": 18,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 4,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 14,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 19,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 28,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1642268": {
+      "id": 1642268,
+      "isim": "Isaiah Collier",
+      "pos": "Guard",
+      "takim": "Utah Jazz",
+      "takim_kod": "UTA",
+      "renk": "#3E7A5E",
+      "mac_skor": "Utah 119 – Portland 135",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 15,
+        "reb": 2,
+        "ast": 9,
+        "min": "36",
+        "fg": "3/8",
+        "3p": "0/0",
+        "ft": "9/12",
+        "stl": 3,
+        "blk": 0,
+        "to": 4,
+        "pm": "-24"
+      },
+      "sezon": {
+        "sezon_ort": 10.3,
+        "son5_ort": 17.0,
+        "yuzde": 65.0,
+        "son5": [
+          {
+            "sayi": 25,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 20,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 13,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 12,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 15,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1629723": {
+      "id": 1629723,
+      "isim": "John Konchar",
+      "pos": "",
+      "takim": "Utah Jazz",
+      "takim_kod": "UTA",
+      "renk": "#3E7A5E",
+      "mac_skor": "Utah 119 – Portland 135",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 6,
+        "reb": 7,
+        "ast": 3,
+        "min": "25",
+        "fg": "2/7",
+        "3p": "0/3",
+        "ft": "2/3",
+        "stl": 3,
+        "blk": 2,
+        "to": 0,
+        "pm": "+9"
+      },
+      "sezon": {
+        "sezon_ort": 3.0,
+        "son5_ort": 3.8,
+        "yuzde": 26.7,
+        "son5": [
+          {
+            "sayi": 9,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 4,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 6,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1631131": {
+      "id": 1631131,
+      "isim": "Oscar Tshiebwe",
+      "pos": "",
+      "takim": "Utah Jazz",
+      "takim_kod": "UTA",
+      "renk": "#3E7A5E",
+      "mac_skor": "Utah 119 – Portland 135",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 0,
+        "reb": 1,
+        "ast": 3,
+        "min": "4",
+        "fg": "0/0",
+        "3p": "0/0",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 0,
+        "pm": "+8"
+      },
+      "sezon": {
+        "sezon_ort": 2.7,
+        "son5_ort": 2.0,
+        "yuzde": -25.9,
+        "son5": [
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 4,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1631246": {
+      "id": 1631246,
+      "isim": "Vince Williams Jr.",
+      "pos": "",
+      "takim": "Utah Jazz",
+      "takim_kod": "UTA",
+      "renk": "#3E7A5E",
+      "mac_skor": "Utah 119 – Portland 135",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 6,
+        "reb": 3,
+        "ast": 0,
+        "min": "7",
+        "fg": "3/5",
+        "3p": "0/1",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 1,
+        "pm": "+6"
+      },
+      "sezon": {
+        "sezon_ort": 7.7,
+        "son5_ort": 7.2,
+        "yuzde": -6.5,
+        "son5": [
+          {
+            "sayi": 16,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 5,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 6,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1642396": {
+      "id": 1642396,
+      "isim": "Blake Hinson",
+      "pos": "",
+      "takim": "Utah Jazz",
+      "takim_kod": "UTA",
+      "renk": "#3E7A5E",
+      "mac_skor": "Utah 119 – Portland 135",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 11,
+        "reb": 1,
+        "ast": 1,
+        "min": "24",
+        "fg": "4/7",
+        "3p": "3/6",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 1,
+        "pm": "+0"
+      }
+    },
+    "1629004": {
+      "id": 1629004,
+      "isim": "Svi Mykhailiuk",
+      "pos": "",
+      "takim": "Utah Jazz",
+      "takim_kod": "UTA",
+      "renk": "#3E7A5E",
+      "mac_skor": "Utah 119 – Portland 135",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 14,
+        "reb": 1,
+        "ast": 3,
+        "min": "17",
+        "fg": "5/8",
+        "3p": "4/5",
+        "ft": "0/0",
+        "stl": 1,
+        "blk": 0,
+        "to": 2,
+        "pm": "-3"
+      },
+      "sezon": {
+        "sezon_ort": 8.8,
+        "son5_ort": 11.4,
+        "yuzde": 29.5,
+        "son5": [
+          {
+            "sayi": 3,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 8,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 18,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 14,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 14,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1631321": {
+      "id": 1631321,
+      "isim": "Sidy Cissoko",
+      "pos": "Forward",
+      "takim": "Portland Trail Blazers",
+      "takim_kod": "POR",
+      "renk": "#E03A3E",
+      "mac_skor": "Utah 119 – Portland 135",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 8,
+        "reb": 4,
+        "ast": 1,
+        "min": "29",
+        "fg": "3/4",
+        "3p": "1/2",
+        "ft": "1/1",
+        "stl": 2,
+        "blk": 0,
+        "to": 1,
+        "pm": "+25"
+      },
+      "sezon": {
+        "sezon_ort": 6.3,
+        "son5_ort": 7.2,
+        "yuzde": 14.3,
+        "son5": [
+          {
+            "sayi": 12,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 7,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 8,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1641739": {
+      "id": 1641739,
+      "isim": "Toumani Camara",
+      "pos": "Forward",
+      "takim": "Portland Trail Blazers",
+      "takim_kod": "POR",
+      "renk": "#E03A3E",
+      "mac_skor": "Utah 119 – Portland 135",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 14,
+        "reb": 8,
+        "ast": 3,
+        "min": "29",
+        "fg": "5/9",
+        "3p": "4/7",
+        "ft": "0/2",
+        "stl": 1,
+        "blk": 1,
+        "to": 4,
+        "pm": "+24"
+      },
+      "sezon": {
+        "sezon_ort": 12.9,
+        "son5_ort": 15.2,
+        "yuzde": 17.8,
+        "son5": [
+          {
+            "sayi": 15,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 8,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 30,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 14,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1642270": {
+      "id": 1642270,
+      "isim": "Donovan Clingan",
+      "pos": "Center",
+      "takim": "Portland Trail Blazers",
+      "takim_kod": "POR",
+      "renk": "#E03A3E",
+      "mac_skor": "Utah 119 – Portland 135",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 23,
+        "reb": 18,
+        "ast": 7,
+        "min": "31",
+        "fg": "8/12",
+        "3p": "0/1",
+        "ft": "7/9",
+        "stl": 0,
+        "blk": 3,
+        "to": 0,
+        "pm": "+21"
+      },
+      "sezon": {
+        "sezon_ort": 11.1,
+        "son5_ort": 15.8,
+        "yuzde": 42.3,
+        "son5": [
+          {
+            "sayi": 13,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 20,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 15,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 8,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 23,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "203924": {
+      "id": 203924,
+      "isim": "Jerami Grant",
+      "pos": "Guard",
+      "takim": "Portland Trail Blazers",
+      "takim_kod": "POR",
+      "renk": "#E03A3E",
+      "mac_skor": "Utah 119 – Portland 135",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 18,
+        "reb": 3,
+        "ast": 0,
+        "min": "32",
+        "fg": "7/17",
+        "3p": "2/8",
+        "ft": "2/2",
+        "stl": 1,
+        "blk": 2,
+        "to": 4,
+        "pm": "+23"
+      },
+      "sezon": {
+        "sezon_ort": 18.7,
+        "son5_ort": 19.0,
+        "yuzde": 1.6,
+        "son5": [
+          {
+            "sayi": 23,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 29,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 15,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 10,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 18,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "201950": {
+      "id": 201950,
+      "isim": "Jrue Holiday",
+      "pos": "Guard",
+      "takim": "Portland Trail Blazers",
+      "takim_kod": "POR",
+      "renk": "#E03A3E",
+      "mac_skor": "Utah 119 – Portland 135",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 31,
+        "reb": 9,
+        "ast": 7,
+        "min": "32",
+        "fg": "10/15",
+        "3p": "4/8",
+        "ft": "7/9",
+        "stl": 0,
+        "blk": 0,
+        "to": 1,
+        "pm": "+29"
+      },
+      "sezon": {
+        "sezon_ort": 14.9,
+        "son5_ort": 21.6,
+        "yuzde": 45.0,
+        "son5": [
+          {
+            "sayi": 20,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 21,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 13,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 23,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 31,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1641712": {
+      "id": 1641712,
+      "isim": "Rayan Rupert",
+      "pos": "",
+      "takim": "Portland Trail Blazers",
+      "takim_kod": "POR",
+      "renk": "#E03A3E",
+      "mac_skor": "Utah 119 – Portland 135",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 2,
+        "reb": 4,
+        "ast": 0,
+        "min": "15",
+        "fg": "1/4",
+        "3p": "0/1",
+        "ft": "0/0",
+        "stl": 1,
+        "blk": 0,
+        "to": 2,
+        "pm": "-3"
+      },
+      "sezon": {
+        "sezon_ort": 2.9,
+        "son5_ort": 3.8,
+        "yuzde": 31.0,
+        "son5": [
+          {
+            "sayi": 12,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 3,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1630703": {
+      "id": 1630703,
+      "isim": "Scoot Henderson",
+      "pos": "",
+      "takim": "Portland Trail Blazers",
+      "takim_kod": "POR",
+      "renk": "#E03A3E",
+      "mac_skor": "Utah 119 – Portland 135",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 15,
+        "reb": 1,
+        "ast": 4,
+        "min": "20",
+        "fg": "4/6",
+        "3p": "2/4",
+        "ft": "5/6",
+        "stl": 1,
+        "blk": 0,
+        "to": 6,
+        "pm": "-6"
+      },
+      "sezon": {
+        "sezon_ort": 13.7,
+        "son5_ort": 14.0,
+        "yuzde": 2.2,
+        "son5": [
+          {
+            "sayi": 11,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 12,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 18,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 15,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1630249": {
+      "id": 1630249,
+      "isim": "Vít Krejčí",
+      "pos": "",
+      "takim": "Portland Trail Blazers",
+      "takim_kod": "POR",
+      "renk": "#E03A3E",
+      "mac_skor": "Utah 119 – Portland 135",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 11,
+        "reb": 5,
+        "ast": 2,
+        "min": "25",
+        "fg": "4/9",
+        "3p": "2/6",
+        "ft": "1/2",
+        "stl": 1,
+        "blk": 1,
+        "to": 1,
+        "pm": "+4"
+      },
+      "sezon": {
+        "sezon_ort": 8.8,
+        "son5_ort": 10.8,
+        "yuzde": 22.7,
+        "son5": [
+          {
+            "sayi": 11,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 10,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 5,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 17,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 11,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1642905": {
+      "id": 1642905,
+      "isim": "Yang Hansen",
+      "pos": "",
+      "takim": "Portland Trail Blazers",
+      "takim_kod": "POR",
+      "renk": "#E03A3E",
+      "mac_skor": "Utah 119 – Portland 135",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 2,
+        "reb": 0,
+        "ast": 0,
+        "min": "3",
+        "fg": "0/1",
+        "3p": "0/0",
+        "ft": "2/2",
+        "stl": 0,
+        "blk": 0,
+        "to": 0,
+        "pm": "-8"
+      },
+      "sezon": {
+        "sezon_ort": 2.8,
+        "son5_ort": 1.6,
+        "yuzde": -42.9,
+        "son5": [
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1631126": {
+      "id": 1631126,
+      "isim": "Caleb Love",
+      "pos": "",
+      "takim": "Portland Trail Blazers",
+      "takim_kod": "POR",
+      "renk": "#E03A3E",
+      "mac_skor": "Utah 119 – Portland 135",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 11,
+        "reb": 0,
+        "ast": 2,
+        "min": "14",
+        "fg": "4/12",
+        "3p": "3/8",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 0,
+        "pm": "-14"
+      },
+      "sezon": {
+        "sezon_ort": 11.4,
+        "son5_ort": 12.2,
+        "yuzde": 7.0,
+        "son5": [
+          {
+            "sayi": 12,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 21,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 17,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 11,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1631104": {
+      "id": 1631104,
+      "isim": "Blake Wesley",
+      "pos": "",
+      "takim": "Portland Trail Blazers",
+      "takim_kod": "POR",
+      "renk": "#E03A3E",
+      "mac_skor": "Utah 119 – Portland 135",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 0,
+        "reb": 0,
+        "ast": 0,
+        "min": "3",
+        "fg": "0/1",
+        "3p": "0/1",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 0,
+        "pm": "-12"
+      },
+      "sezon": {
+        "sezon_ort": 6.1,
+        "son5_ort": 4.4,
+        "yuzde": -27.9,
+        "son5": [
+          {
+            "sayi": 4,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 10,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 4,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 4,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1631451": {
+      "id": 1631451,
+      "isim": "Javonte Cooke",
+      "pos": "",
+      "takim": "Portland Trail Blazers",
+      "takim_kod": "POR",
+      "renk": "#E03A3E",
+      "mac_skor": "Utah 119 – Portland 135",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 0,
+        "reb": 0,
+        "ast": 0,
+        "min": "0",
+        "fg": "0/0",
+        "3p": "0/0",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 0,
+        "pm": "-3"
+      },
+      "sezon": {
+        "sezon_ort": 1.8,
+        "son5_ort": 0.8,
+        "yuzde": -55.6,
+        "son5": [
+          {
+            "sayi": 2,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "2544": {
+      "id": 2544,
+      "isim": "LeBron James",
+      "pos": "Forward",
+      "takim": "Los Angeles Lakers",
+      "takim_kod": "LAL",
+      "renk": "#8B62D9",
+      "mac_skor": "Los Angeles 124 – Dallas 104",
+      "saat": "06:00",
+      "bu_gece": {
+        "pts": 28,
+        "reb": 10,
+        "ast": 12,
+        "min": "35",
+        "fg": "10/20",
+        "3p": "2/7",
+        "ft": "6/7",
+        "stl": 0,
+        "blk": 1,
+        "to": 4,
+        "pm": "+6"
+      },
+      "sezon": {
+        "sezon_ort": 21.8,
+        "son5_ort": 22.4,
+        "yuzde": 2.8,
+        "son5": [
+          {
+            "sayi": 25,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 17,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 20,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 22,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 28,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1629060": {
+      "id": 1629060,
+      "isim": "Rui Hachimura",
+      "pos": "Forward",
+      "takim": "Los Angeles Lakers",
+      "takim_kod": "LAL",
+      "renk": "#8B62D9",
+      "mac_skor": "Los Angeles 124 – Dallas 104",
+      "saat": "06:00",
+      "bu_gece": {
+        "pts": 21,
+        "reb": 3,
+        "ast": 1,
+        "min": "34",
+        "fg": "9/13",
+        "3p": "3/4",
+        "ft": "0/0",
+        "stl": 1,
+        "blk": 0,
+        "to": 1,
+        "pm": "+18"
+      },
+      "sezon": {
+        "sezon_ort": 12.1,
+        "son5_ort": 14.2,
+        "yuzde": 17.4,
+        "son5": [
+          {
+            "sayi": 14,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 18,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 12,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 6,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 21,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1629637": {
+      "id": 1629637,
+      "isim": "Jaxson Hayes",
+      "pos": "Center",
+      "takim": "Los Angeles Lakers",
+      "takim_kod": "LAL",
+      "renk": "#8B62D9",
+      "mac_skor": "Los Angeles 124 – Dallas 104",
+      "saat": "06:00",
+      "bu_gece": {
+        "pts": 16,
+        "reb": 7,
+        "ast": 4,
+        "min": "33",
+        "fg": "8/10",
+        "3p": "0/0",
+        "ft": "0/0",
+        "stl": 3,
+        "blk": 1,
+        "to": 1,
+        "pm": "+26"
+      },
+      "sezon": {
+        "sezon_ort": 6.8,
+        "son5_ort": 11.2,
+        "yuzde": 64.7,
+        "son5": [
+          {
+            "sayi": 9,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 6,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 12,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 13,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 16,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1631222": {
+      "id": 1631222,
+      "isim": "Jake LaRavia",
+      "pos": "Guard",
+      "takim": "Los Angeles Lakers",
+      "takim_kod": "LAL",
+      "renk": "#8B62D9",
+      "mac_skor": "Los Angeles 124 – Dallas 104",
+      "saat": "06:00",
+      "bu_gece": {
+        "pts": 11,
+        "reb": 3,
+        "ast": 2,
+        "min": "25",
+        "fg": "4/6",
+        "3p": "0/1",
+        "ft": "3/3",
+        "stl": 0,
+        "blk": 0,
+        "to": 2,
+        "pm": "+21"
+      },
+      "sezon": {
+        "sezon_ort": 9.2,
+        "son5_ort": 10.2,
+        "yuzde": 10.9,
+        "son5": [
+          {
+            "sayi": 14,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 14,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 10,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 11,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "203935": {
+      "id": 203935,
+      "isim": "Marcus Smart",
+      "pos": "Guard",
+      "takim": "Los Angeles Lakers",
+      "takim_kod": "LAL",
+      "renk": "#8B62D9",
+      "mac_skor": "Los Angeles 124 – Dallas 104",
+      "saat": "06:00",
+      "bu_gece": {
+        "pts": 9,
+        "reb": 2,
+        "ast": 6,
+        "min": "25",
+        "fg": "4/14",
+        "3p": "1/9",
+        "ft": "0/0",
+        "stl": 1,
+        "blk": 1,
+        "to": 0,
+        "pm": "+6"
+      },
+      "sezon": {
+        "sezon_ort": 9.7,
+        "son5_ort": 11.2,
+        "yuzde": 15.5,
+        "son5": [
+          {
+            "sayi": 6,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 7,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 15,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 19,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1630559": {
+      "id": 1630559,
+      "isim": "Austin Reaves",
+      "pos": "",
+      "takim": "Los Angeles Lakers",
+      "takim_kod": "LAL",
+      "renk": "#8B62D9",
+      "mac_skor": "Los Angeles 124 – Dallas 104",
+      "saat": "06:00",
+      "bu_gece": {
+        "pts": 18,
+        "reb": 4,
+        "ast": 6,
+        "min": "28",
+        "fg": "5/10",
+        "3p": "1/3",
+        "ft": "7/9",
+        "stl": 0,
+        "blk": 0,
+        "to": 2,
+        "pm": "+6"
+      },
+      "sezon": {
+        "sezon_ort": 24.8,
+        "son5_ort": 20.0,
+        "yuzde": -19.4,
+        "son5": [
+          {
+            "sayi": 15,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 35,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 16,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 16,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 18,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1628379": {
+      "id": 1628379,
+      "isim": "Luke Kennard",
+      "pos": "",
+      "takim": "Los Angeles Lakers",
+      "takim_kod": "LAL",
+      "renk": "#8B62D9",
+      "mac_skor": "Los Angeles 124 – Dallas 104",
+      "saat": "06:00",
+      "bu_gece": {
+        "pts": 9,
+        "reb": 7,
+        "ast": 3,
+        "min": "17",
+        "fg": "3/4",
+        "3p": "1/2",
+        "ft": "2/2",
+        "stl": 1,
+        "blk": 0,
+        "to": 0,
+        "pm": "+13"
+      },
+      "sezon": {
+        "sezon_ort": 8.0,
+        "son5_ort": 10.4,
+        "yuzde": 30.0,
+        "son5": [
+          {
+            "sayi": 12,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 10,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 7,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 14,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1628467": {
+      "id": 1628467,
+      "isim": "Maxi Kleber",
+      "pos": "",
+      "takim": "Los Angeles Lakers",
+      "takim_kod": "LAL",
+      "renk": "#8B62D9",
+      "mac_skor": "Los Angeles 124 – Dallas 104",
+      "saat": "06:00",
+      "bu_gece": {
+        "pts": 5,
+        "reb": 1,
+        "ast": 0,
+        "min": "12",
+        "fg": "2/3",
+        "3p": "1/2",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 1,
+        "pm": "-6"
+      },
+      "sezon": {
+        "sezon_ort": 2.2,
+        "son5_ort": 4.0,
+        "yuzde": 81.8,
+        "son5": [
+          {
+            "sayi": 4,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 5,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 6,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 5,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1629020": {
+      "id": 1629020,
+      "isim": "Jarred Vanderbilt",
+      "pos": "",
+      "takim": "Los Angeles Lakers",
+      "takim_kod": "LAL",
+      "renk": "#8B62D9",
+      "mac_skor": "Los Angeles 124 – Dallas 104",
+      "saat": "06:00",
+      "bu_gece": {
+        "pts": 5,
+        "reb": 6,
+        "ast": 0,
+        "min": "17",
+        "fg": "2/3",
+        "3p": "1/2",
+        "ft": "0/0",
+        "stl": 2,
+        "blk": 0,
+        "to": 1,
+        "pm": "+10"
+      },
+      "sezon": {
+        "sezon_ort": 5.1,
+        "son5_ort": 6.4,
+        "yuzde": 25.5,
+        "son5": [
+          {
+            "sayi": 6,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 13,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 6,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 5,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1641723": {
+      "id": 1641723,
+      "isim": "Kobe Bufkin",
+      "pos": "",
+      "takim": "Los Angeles Lakers",
+      "takim_kod": "LAL",
+      "renk": "#8B62D9",
+      "mac_skor": "Los Angeles 124 – Dallas 104",
+      "saat": "06:00",
+      "bu_gece": {
+        "pts": 0,
+        "reb": 0,
+        "ast": 0,
+        "min": "1",
+        "fg": "0/1",
+        "3p": "0/0",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 0,
+        "pm": "+0"
+      },
+      "sezon": {
+        "sezon_ort": 4.2,
+        "son5_ort": 3.2,
+        "yuzde": -23.8,
+        "son5": [
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 7,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1642876": {
+      "id": 1642876,
+      "isim": "Adou Thiero",
+      "pos": "",
+      "takim": "Los Angeles Lakers",
+      "takim_kod": "LAL",
+      "renk": "#8B62D9",
+      "mac_skor": "Los Angeles 124 – Dallas 104",
+      "saat": "06:00",
+      "bu_gece": {
+        "pts": 2,
+        "reb": 0,
+        "ast": 0,
+        "min": "1",
+        "fg": "1/1",
+        "3p": "0/0",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 0,
+        "pm": "+0"
+      },
+      "sezon": {
+        "sezon_ort": 1.4,
+        "son5_ort": 1.8,
+        "yuzde": 28.6,
+        "son5": [
+          {
+            "sayi": 2,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 3,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1631166": {
+      "id": 1631166,
+      "isim": "Drew Timme",
+      "pos": "",
+      "takim": "Los Angeles Lakers",
+      "takim_kod": "LAL",
+      "renk": "#8B62D9",
+      "mac_skor": "Los Angeles 124 – Dallas 104",
+      "saat": "06:00",
+      "bu_gece": {
+        "pts": 0,
+        "reb": 0,
+        "ast": 1,
+        "min": "1",
+        "fg": "0/0",
+        "3p": "0/0",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 0,
+        "pm": "+0"
+      },
+      "sezon": {
+        "sezon_ort": 3.6,
+        "son5_ort": 4.0,
+        "yuzde": 11.1,
+        "son5": [
+          {
+            "sayi": 4,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 14,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1642355": {
+      "id": 1642355,
+      "isim": "Bronny James",
+      "pos": "",
+      "takim": "Los Angeles Lakers",
+      "takim_kod": "LAL",
+      "renk": "#8B62D9",
+      "mac_skor": "Los Angeles 124 – Dallas 104",
+      "saat": "06:00",
+      "bu_gece": {
+        "pts": 0,
+        "reb": 0,
+        "ast": 0,
+        "min": "1",
+        "fg": "0/1",
+        "3p": "0/1",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 0,
+        "pm": "+0"
+      },
+      "sezon": {
+        "sezon_ort": 2.8,
+        "son5_ort": 5.6,
+        "yuzde": 100.0,
+        "son5": [
+          {
+            "sayi": 8,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 4,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 4,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 12,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1642261": {
+      "id": 1642261,
+      "isim": "Dalton Knecht",
+      "pos": "",
+      "takim": "Los Angeles Lakers",
+      "takim_kod": "LAL",
+      "renk": "#8B62D9",
+      "mac_skor": "Los Angeles 124 – Dallas 104",
+      "saat": "06:00",
+      "bu_gece": {
+        "pts": 0,
+        "reb": 1,
+        "ast": 0,
+        "min": "1",
+        "fg": "0/0",
+        "3p": "0/0",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 0,
+        "pm": "+0"
+      },
+      "sezon": {
+        "sezon_ort": 5.2,
+        "son5_ort": 3.0,
+        "yuzde": -42.3,
+        "son5": [
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 4,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1630230": {
+      "id": 1630230,
+      "isim": "Naji Marshall",
+      "pos": "Forward",
+      "takim": "Dallas Mavericks",
+      "takim_kod": "DAL",
+      "renk": "#2E7BC4",
+      "mac_skor": "Los Angeles 124 – Dallas 104",
+      "saat": "06:00",
+      "bu_gece": {
+        "pts": 19,
+        "reb": 2,
+        "ast": 4,
+        "min": "29",
+        "fg": "8/13",
+        "3p": "0/3",
+        "ft": "3/5",
+        "stl": 2,
+        "blk": 0,
+        "to": 2,
+        "pm": "-2"
+      },
+      "sezon": {
+        "sezon_ort": 14.6,
+        "son5_ort": 19.4,
+        "yuzde": 32.9,
+        "son5": [
+          {
+            "sayi": 9,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 32,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 6,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 31,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 19,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1629023": {
+      "id": 1629023,
+      "isim": "P.J. Washington",
+      "pos": "Forward",
+      "takim": "Dallas Mavericks",
+      "takim_kod": "DAL",
+      "renk": "#2E7BC4",
+      "mac_skor": "Los Angeles 124 – Dallas 104",
+      "saat": "06:00",
+      "bu_gece": {
+        "pts": 18,
+        "reb": 4,
+        "ast": 2,
+        "min": "33",
+        "fg": "5/10",
+        "3p": "1/4",
+        "ft": "7/8",
+        "stl": 0,
+        "blk": 0,
+        "to": 0,
+        "pm": "-4"
+      },
+      "sezon": {
+        "sezon_ort": 13.8,
+        "son5_ort": 12.8,
+        "yuzde": -7.2,
+        "son5": [
+          {
+            "sayi": 14,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 10,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 13,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 18,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1629655": {
+      "id": 1629655,
+      "isim": "Daniel Gafford",
+      "pos": "Center",
+      "takim": "Dallas Mavericks",
+      "takim_kod": "DAL",
+      "renk": "#2E7BC4",
+      "mac_skor": "Los Angeles 124 – Dallas 104",
+      "saat": "06:00",
+      "bu_gece": {
+        "pts": 2,
+        "reb": 6,
+        "ast": 1,
+        "min": "27",
+        "fg": "1/2",
+        "3p": "0/0",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 1,
+        "to": 2,
+        "pm": "-2"
+      },
+      "sezon": {
+        "sezon_ort": 8.2,
+        "son5_ort": 8.2,
+        "yuzde": 0.0,
+        "son5": [
+          {
+            "sayi": 10,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 16,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 4,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1631108": {
+      "id": 1631108,
+      "isim": "Max Christie",
+      "pos": "Guard",
+      "takim": "Dallas Mavericks",
+      "takim_kod": "DAL",
+      "renk": "#2E7BC4",
+      "mac_skor": "Los Angeles 124 – Dallas 104",
+      "saat": "06:00",
+      "bu_gece": {
+        "pts": 19,
+        "reb": 1,
+        "ast": 4,
+        "min": "30",
+        "fg": "7/12",
+        "3p": "2/4",
+        "ft": "3/4",
+        "stl": 1,
+        "blk": 0,
+        "to": 1,
+        "pm": "-28"
+      },
+      "sezon": {
+        "sezon_ort": 12.7,
+        "son5_ort": 14.2,
+        "yuzde": 11.8,
+        "son5": [
+          {
+            "sayi": 10,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 20,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 17,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 5,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 19,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1630314": {
+      "id": 1630314,
+      "isim": "Brandon Williams",
+      "pos": "Guard",
+      "takim": "Dallas Mavericks",
+      "takim_kod": "DAL",
+      "renk": "#2E7BC4",
+      "mac_skor": "Los Angeles 124 – Dallas 104",
+      "saat": "06:00",
+      "bu_gece": {
+        "pts": 17,
+        "reb": 5,
+        "ast": 7,
+        "min": "29",
+        "fg": "6/11",
+        "3p": "1/3",
+        "ft": "4/5",
+        "stl": 1,
+        "blk": 0,
+        "to": 4,
+        "pm": "+2"
+      },
+      "sezon": {
+        "sezon_ort": 12.4,
+        "son5_ort": 13.6,
+        "yuzde": 9.7,
+        "son5": [
+          {
+            "sayi": 15,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 13,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 18,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 5,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 17,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "203114": {
+      "id": 203114,
+      "isim": "Khris Middleton",
+      "pos": "",
+      "takim": "Dallas Mavericks",
+      "takim_kod": "DAL",
+      "renk": "#2E7BC4",
+      "mac_skor": "Los Angeles 124 – Dallas 104",
+      "saat": "06:00",
+      "bu_gece": {
+        "pts": 8,
+        "reb": 1,
+        "ast": 1,
+        "min": "20",
+        "fg": "3/11",
+        "3p": "1/5",
+        "ft": "1/1",
+        "stl": 0,
+        "blk": 0,
+        "to": 1,
+        "pm": "-16"
+      },
+      "sezon": {
+        "sezon_ort": 10.2,
+        "son5_ort": 11.8,
+        "yuzde": 15.7,
+        "son5": [
+          {
+            "sayi": 13,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 13,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 12,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 13,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 8,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1628963": {
+      "id": 1628963,
+      "isim": "Marvin Bagley III",
+      "pos": "",
+      "takim": "Dallas Mavericks",
+      "takim_kod": "DAL",
+      "renk": "#2E7BC4",
+      "mac_skor": "Los Angeles 124 – Dallas 104",
+      "saat": "06:00",
+      "bu_gece": {
+        "pts": 7,
+        "reb": 4,
+        "ast": 0,
+        "min": "20",
+        "fg": "3/7",
+        "3p": "0/1",
+        "ft": "1/2",
+        "stl": 1,
+        "blk": 0,
+        "to": 0,
+        "pm": "-18"
+      },
+      "sezon": {
+        "sezon_ort": 10.4,
+        "son5_ort": 11.6,
+        "yuzde": 11.5,
+        "son5": [
+          {
+            "sayi": 15,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 11,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 16,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 7,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1626145": {
+      "id": 1626145,
+      "isim": "Tyus Jones",
+      "pos": "",
+      "takim": "Dallas Mavericks",
+      "takim_kod": "DAL",
+      "renk": "#2E7BC4",
+      "mac_skor": "Los Angeles 124 – Dallas 104",
+      "saat": "06:00",
+      "bu_gece": {
+        "pts": 3,
+        "reb": 0,
+        "ast": 3,
+        "min": "18",
+        "fg": "1/3",
+        "3p": "1/3",
+        "ft": "0/0",
+        "stl": 1,
+        "blk": 0,
+        "to": 1,
+        "pm": "-22"
+      },
+      "sezon": {
+        "sezon_ort": 3.0,
+        "son5_ort": 1.8,
+        "yuzde": -40.0,
+        "son5": [
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 4,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 3,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "202691": {
+      "id": 202691,
+      "isim": "Klay Thompson",
+      "pos": "",
+      "takim": "Dallas Mavericks",
+      "takim_kod": "DAL",
+      "renk": "#2E7BC4",
+      "mac_skor": "Los Angeles 124 – Dallas 104",
+      "saat": "06:00",
+      "bu_gece": {
+        "pts": 9,
+        "reb": 3,
+        "ast": 0,
+        "min": "23",
+        "fg": "4/8",
+        "3p": "1/3",
+        "ft": "0/0",
+        "stl": 1,
+        "blk": 0,
+        "to": 4,
+        "pm": "-2"
+      },
+      "sezon": {
+        "sezon_ort": 11.4,
+        "son5_ort": 9.2,
+        "yuzde": -19.3,
+        "son5": [
+          {
+            "sayi": 9,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 4,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 5,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 19,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "203939": {
+      "id": 203939,
+      "isim": "Dwight Powell",
+      "pos": "",
+      "takim": "Dallas Mavericks",
+      "takim_kod": "DAL",
+      "renk": "#2E7BC4",
+      "mac_skor": "Los Angeles 124 – Dallas 104",
+      "saat": "06:00",
+      "bu_gece": {
+        "pts": 2,
+        "reb": 1,
+        "ast": 0,
+        "min": "3",
+        "fg": "1/1",
+        "3p": "0/0",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 0,
+        "pm": "-4"
+      },
+      "sezon": {
+        "sezon_ort": 3.1,
+        "son5_ort": 1.4,
+        "yuzde": -54.8,
+        "son5": [
+          {
+            "sayi": 4,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 1,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1642358": {
+      "id": 1642358,
+      "isim": "AJ Johnson",
+      "pos": "",
+      "takim": "Dallas Mavericks",
+      "takim_kod": "DAL",
+      "renk": "#2E7BC4",
+      "mac_skor": "Los Angeles 124 – Dallas 104",
+      "saat": "06:00",
+      "bu_gece": {
+        "pts": 0,
+        "reb": 1,
+        "ast": 0,
+        "min": "3",
+        "fg": "0/1",
+        "3p": "0/0",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 0,
+        "pm": "-4"
+      },
+      "sezon": {
+        "sezon_ort": 2.6,
+        "son5_ort": 6.2,
+        "yuzde": 138.5,
+        "son5": [
+          {
+            "sayi": 17,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 14,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    }
+  },
+  "yukselen": [
+    {
+      "id": 1630611,
+      "isim": "Gui Santos",
+      "takim": "GSW",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 13,
+          "rakip": "Philadelphia",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 18,
+          "rakip": "Phoenix",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 15,
+          "rakip": "Los Angeles",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 16,
+          "rakip": "Memphis",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 9,
+          "rakip": "San Antonio",
+          "bu_gece": false,
+          "ust": true
+        }
+      ],
+      "son5_ort": 14.2,
+      "sezon_ort": 5.7,
+      "taban": "bu_sezon",
+      "fark": 8.5,
+      "yuzde": 149.1,
+      "ust_sayisi": 5,
+      "alt_sayisi": 0,
+      "son5_dakika": 29.7,
+      "renk": "#2E6BD6",
+      "asil_renk": "#2E6BD6",
+      "renk_degisti": false
+    },
+    {
+      "id": 1642269,
+      "isim": "Devin Carter",
+      "takim": "SAC",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 10,
+          "rakip": "Memphis",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 14,
+          "rakip": "LA Clippers",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 18,
+          "rakip": "Cleveland",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 12,
+          "rakip": "New Orleans",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 19,
+          "rakip": "Utah",
+          "bu_gece": false,
+          "ust": true
+        }
+      ],
+      "son5_ort": 14.6,
+      "sezon_ort": 5.9,
+      "taban": "bu_sezon",
+      "fark": 8.7,
+      "yuzde": 147.5,
+      "ust_sayisi": 5,
+      "alt_sayisi": 0,
+      "son5_dakika": 26.5,
+      "renk": "#8A5FC7",
+      "asil_renk": "#8A5FC7",
+      "renk_degisti": false
+    },
+    {
+      "id": 1631124,
+      "isim": "Julian Strawther",
+      "takim": "DEN",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 15,
+          "rakip": "Detroit",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 11,
+          "rakip": "New York",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 19,
+          "rakip": "Chicago",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 20,
+          "rakip": "Cleveland",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 11,
+          "rakip": "Memphis",
+          "bu_gece": false,
+          "ust": true
+        }
+      ],
+      "son5_ort": 15.2,
+      "sezon_ort": 6.5,
+      "taban": "bu_sezon",
+      "fark": 8.7,
+      "yuzde": 133.8,
+      "ust_sayisi": 5,
+      "alt_sayisi": 0,
+      "son5_dakika": 25.6,
+      "renk": "#FEC524",
+      "asil_renk": "#FEC524",
+      "renk_degisti": false
+    },
+    {
+      "id": 1642364,
+      "isim": "Jamir Watkins",
+      "takim": "WAS",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 8,
+          "rakip": "Sacramento",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 6,
+          "rakip": "Detroit",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 13,
+          "rakip": "Brooklyn",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 12,
+          "rakip": "Miami",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 16,
+          "rakip": "Cleveland",
+          "bu_gece": false,
+          "ust": true
+        }
+      ],
+      "son5_ort": 11.0,
+      "sezon_ort": 4.9,
+      "taban": "bu_sezon",
+      "fark": 6.1,
+      "yuzde": 124.5,
+      "ust_sayisi": 5,
+      "alt_sayisi": 0,
+      "son5_dakika": 29.8,
+      "renk": "#C8102E",
+      "asil_renk": "#3B7FD4",
+      "renk_degisti": true
+    },
+    {
+      "id": 1630311,
+      "isim": "Pat Spencer",
+      "takim": "GSW",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 13,
+          "rakip": "Philadelphia",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 20,
+          "rakip": "Phoenix",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 14,
+          "rakip": "Los Angeles",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 17,
+          "rakip": "Memphis",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 9,
+          "rakip": "San Antonio",
+          "bu_gece": false,
+          "ust": true
+        }
+      ],
+      "son5_ort": 14.6,
+      "sezon_ort": 6.6,
+      "taban": "bu_sezon",
+      "fark": 8.0,
+      "yuzde": 121.2,
+      "ust_sayisi": 5,
+      "alt_sayisi": 0,
+      "son5_dakika": 29.8,
+      "renk": "#2E6BD6",
+      "asil_renk": "#2E6BD6",
+      "renk_degisti": false
+    }
+  ],
+  "dusen": [
+    {
+      "id": 1630224,
+      "isim": "Jalen Green",
+      "takim": "PHX",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 12,
+          "rakip": "Philadelphia",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 4,
+          "rakip": "Atlanta",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 11,
+          "rakip": "Cleveland",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 8,
+          "rakip": "Philadelphia",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 12,
+          "rakip": "Dallas",
+          "bu_gece": false,
+          "ust": false
+        }
+      ],
+      "son5_ort": 9.4,
+      "sezon_ort": 21.0,
+      "taban": "gecen_sezon",
+      "fark": -11.6,
+      "yuzde": -55.2,
+      "ust_sayisi": 0,
+      "alt_sayisi": 5,
+      "son5_dakika": 15.4,
+      "renk": "#B08BE8",
+      "asil_renk": "#B08BE8",
+      "renk_degisti": false
+    },
+    {
+      "id": 1628989,
+      "isim": "Kevin Huerter",
+      "takim": "CHI",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 9,
+          "rakip": "Miami",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 0,
+          "rakip": "Washington",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 8,
+          "rakip": "New York",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 0,
+          "rakip": "Charlotte",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 9,
+          "rakip": "Toronto",
+          "bu_gece": false,
+          "ust": false
+        }
+      ],
+      "son5_ort": 5.2,
+      "sezon_ort": 10.1,
+      "taban": "bu_sezon",
+      "fark": -4.9,
+      "yuzde": -48.5,
+      "ust_sayisi": 0,
+      "alt_sayisi": 5,
+      "son5_dakika": 13.9,
+      "renk": "#CE1141",
+      "asil_renk": "#CE1141",
+      "renk_degisti": false
+    },
+    {
+      "id": 1630532,
+      "isim": "Franz Wagner",
+      "takim": "ORL",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 7,
+          "rakip": "New York",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 18,
+          "rakip": "Memphis",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 14,
+          "rakip": "Memphis",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 14,
+          "rakip": "Milwaukee",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 5,
+          "rakip": "Milwaukee",
+          "bu_gece": false,
+          "ust": false
+        }
+      ],
+      "son5_ort": 11.6,
+      "sezon_ort": 20.8,
+      "taban": "bu_sezon",
+      "fark": -9.2,
+      "yuzde": -44.2,
+      "ust_sayisi": 0,
+      "alt_sayisi": 5,
+      "son5_dakika": 19.4,
+      "renk": "#1E8FD5",
+      "asil_renk": "#1E8FD5",
+      "renk_degisti": false
+    },
+    {
+      "id": 203471,
+      "isim": "Dennis Schröder",
+      "takim": "SAC",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 4,
+          "rakip": "Boston",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 11,
+          "rakip": "LA Clippers",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 7,
+          "rakip": "Sacramento",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 5,
+          "rakip": "Denver",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 7,
+          "rakip": "Washington",
+          "bu_gece": false,
+          "ust": false
+        }
+      ],
+      "son5_ort": 6.8,
+      "sezon_ort": 12.1,
+      "taban": "bu_sezon",
+      "fark": -5.3,
+      "yuzde": -43.8,
+      "ust_sayisi": 0,
+      "alt_sayisi": 5,
+      "son5_dakika": 20.5,
+      "renk": "#8E9090",
+      "asil_renk": "#8A5FC7",
+      "renk_degisti": true
+    },
+    {
+      "id": 1628978,
+      "isim": "Donte DiVincenzo",
+      "takim": "MIN",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 15,
+          "rakip": "Toronto",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 6,
+          "rakip": "New Orleans",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 1,
+          "rakip": "LA Clippers",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 10,
+          "rakip": "Atlanta",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 3,
+          "rakip": "Portland",
+          "bu_gece": false,
+          "ust": false
+        }
+      ],
+      "son5_ort": 7.0,
+      "sezon_ort": 12.3,
+      "taban": "bu_sezon",
+      "fark": -5.3,
+      "yuzde": -43.1,
+      "ust_sayisi": 1,
+      "alt_sayisi": 4,
+      "son5_dakika": 27.1,
+      "renk": "#78BE20",
+      "asil_renk": "#3B7FD4",
+      "renk_degisti": true
+    }
+  ],
+  "siralama": [
+    {
+      "takim": "LAL",
+      "takim_adi": "Los Angeles Lakers",
+      "eski": 6,
+      "yeni": 5,
+      "degisim": 1,
+      "konferans": "Batı",
+      "form": [
+        {
+          "g": true,
+          "rakip": "Chicago",
+          "skor": "129-118"
+        },
+        {
+          "g": false,
+          "rakip": "Cleveland",
+          "skor": "99-129"
+        },
+        {
+          "g": true,
+          "rakip": "Washington",
+          "skor": "142-111"
+        },
+        {
+          "g": false,
+          "rakip": "New York",
+          "skor": "100-112"
+        },
+        {
+          "g": true,
+          "rakip": "Brooklyn",
+          "skor": "125-109"
+        },
+        {
+          "g": true,
+          "rakip": "Philadelphia",
+          "skor": "119-115"
+        },
+        {
+          "g": true,
+          "rakip": "Golden State",
+          "skor": "105-99"
+        },
+        {
+          "g": false,
+          "rakip": "Oklahoma City",
+          "skor": "110-119"
+        },
+        {
+          "g": false,
+          "rakip": "San Antonio",
+          "skor": "108-136"
+        },
+        {
+          "g": true,
+          "rakip": "Dallas",
+          "skor": "124-104"
+        }
+      ]
+    },
+    {
+      "takim": "POR",
+      "takim_adi": "Portland Trail Blazers",
+      "eski": 10,
+      "yeni": 9,
+      "degisim": 1,
+      "konferans": "Batı",
+      "form": [
+        {
+          "g": false,
+          "rakip": "Boston",
+          "skor": "94-102"
+        },
+        {
+          "g": false,
+          "rakip": "Washington",
+          "skor": "111-115"
+        },
+        {
+          "g": false,
+          "rakip": "New York",
+          "skor": "97-127"
+        },
+        {
+          "g": false,
+          "rakip": "Cleveland",
+          "skor": "111-130"
+        },
+        {
+          "g": false,
+          "rakip": "Phoenix",
+          "skor": "125-130"
+        },
+        {
+          "g": true,
+          "rakip": "Memphis",
+          "skor": "135-115"
+        },
+        {
+          "g": true,
+          "rakip": "Memphis",
+          "skor": "122-115"
+        },
+        {
+          "g": true,
+          "rakip": "Philadelphia",
+          "skor": "135-118"
+        },
+        {
+          "g": false,
+          "rakip": "Minnesota",
+          "skor": "109-133"
+        },
+        {
+          "g": true,
+          "rakip": "Utah",
+          "skor": "135-119"
+        }
+      ]
     }
   ],
   "degerse_bak": [
     {
       "id": "a-0022500791",
+      "mac_id": "0022500791",
       "mac": "Los Angeles Lakers — Dallas Mavericks",
       "skor": "124–104",
       "rozet": 6.81,
       "why": "bireysel performans: triple_double eşiğini geçen LeBron James",
-      "metin": "LeBron James'in 28 sayılık gecesinde Los Angeles Lakers, Dallas Mavericks'i 124-104 yendi. LeBron James 12 asist verdi.",
+      "metin": "LeBron James'in 28 sayılık gecesinde Los Angeles Lakers, Dallas Mavericks'i 124-104 yendi. LeBron James triple-double yaptı (28 sayı, 10 ribaund, 12 asist).",
       "box": {
         "ev": {
           "takim": "Los Angeles Lakers",
+          "kod": "LAL",
+          "renk": "#8B62D9",
+          "skor": 124,
+          "oynamayanlar": [],
           "oyuncular": [
             {
+              "id": 2544,
               "isim": "LeBron James",
               "takim": "LAL",
+              "ilk_bes": true,
               "min": "35",
               "pts": 28,
               "reb": 10,
@@ -640,11 +5446,14 @@
               "pm_ham": 6.0,
               "cold": false,
               "gecti_mi": true,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1629060,
               "isim": "Rui Hachimura",
               "takim": "LAL",
+              "ilk_bes": true,
               "min": "34",
               "pts": 21,
               "reb": 3,
@@ -662,11 +5471,14 @@
               "pm_ham": 18.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1630559,
               "isim": "Austin Reaves",
               "takim": "LAL",
+              "ilk_bes": false,
               "min": "28",
               "pts": 18,
               "reb": 4,
@@ -684,11 +5496,14 @@
               "pm_ham": 6.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1629637,
               "isim": "Jaxson Hayes",
               "takim": "LAL",
+              "ilk_bes": true,
               "min": "33",
               "pts": 16,
               "reb": 7,
@@ -706,11 +5521,14 @@
               "pm_ham": 26.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1631222,
               "isim": "Jake LaRavia",
               "takim": "LAL",
+              "ilk_bes": true,
               "min": "25",
               "pts": 11,
               "reb": 3,
@@ -728,11 +5546,14 @@
               "pm_ham": 21.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 203935,
               "isim": "Marcus Smart",
               "takim": "LAL",
+              "ilk_bes": true,
               "min": "25",
               "pts": 9,
               "reb": 2,
@@ -750,11 +5571,14 @@
               "pm_ham": 6.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1628379,
               "isim": "Luke Kennard",
               "takim": "LAL",
+              "ilk_bes": false,
               "min": "17",
               "pts": 9,
               "reb": 7,
@@ -772,11 +5596,14 @@
               "pm_ham": 13.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1628467,
               "isim": "Maxi Kleber",
               "takim": "LAL",
+              "ilk_bes": false,
               "min": "12",
               "pts": 5,
               "reb": 1,
@@ -794,11 +5621,14 @@
               "pm_ham": -6.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1629020,
               "isim": "Jarred Vanderbilt",
               "takim": "LAL",
+              "ilk_bes": false,
               "min": "17",
               "pts": 5,
               "reb": 6,
@@ -816,11 +5646,14 @@
               "pm_ham": 10.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1642876,
               "isim": "Adou Thiero",
               "takim": "LAL",
+              "ilk_bes": false,
               "min": "1",
               "pts": 2,
               "reb": 0,
@@ -838,11 +5671,14 @@
               "pm_ham": 0.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1641723,
               "isim": "Kobe Bufkin",
               "takim": "LAL",
+              "ilk_bes": false,
               "min": "1",
               "pts": 0,
               "reb": 0,
@@ -860,11 +5696,14 @@
               "pm_ham": 0.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1631166,
               "isim": "Drew Timme",
               "takim": "LAL",
+              "ilk_bes": false,
               "min": "1",
               "pts": 0,
               "reb": 0,
@@ -882,11 +5721,14 @@
               "pm_ham": 0.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1642355,
               "isim": "Bronny James",
               "takim": "LAL",
+              "ilk_bes": false,
               "min": "1",
               "pts": 0,
               "reb": 0,
@@ -903,12 +5745,15 @@
               "pm": "+0",
               "pm_ham": 0.0,
               "cold": false,
-              "gecti_mi": true,
-              "aykiri": false
+              "gecti_mi": false,
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1642261,
               "isim": "Dalton Knecht",
               "takim": "LAL",
+              "ilk_bes": false,
               "min": "1",
               "pts": 0,
               "reb": 1,
@@ -926,7 +5771,8 @@
               "pm_ham": 0.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             }
           ],
           "toplam": {
@@ -938,15 +5784,31 @@
             "to": 12,
             "fg": "48/86",
             "3p": "10/31",
-            "ft": "18/21"
-          }
+            "ft": "18/21",
+            "oreb": 10,
+            "dreb": 34
+          },
+          "ceyrek": [
+            36,
+            28,
+            32,
+            28
+          ]
         },
         "dep": {
           "takim": "Dallas Mavericks",
+          "kod": "DAL",
+          "renk": "#2E7BC4",
+          "skor": 104,
+          "oynamayanlar": [
+            "Caleb Martin"
+          ],
           "oyuncular": [
             {
+              "id": 1630230,
               "isim": "Naji Marshall",
               "takim": "DAL",
+              "ilk_bes": true,
               "min": "29",
               "pts": 19,
               "reb": 2,
@@ -965,11 +5827,14 @@
               "cold": false,
               "gecti_mi": false,
               "aykiri": false,
+              "aykiri_alan": null,
               "kaybedenin_en_iyisi": true
             },
             {
+              "id": 1631108,
               "isim": "Max Christie",
               "takim": "DAL",
+              "ilk_bes": true,
               "min": "30",
               "pts": 19,
               "reb": 1,
@@ -987,11 +5852,14 @@
               "pm_ham": -28.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1629023,
               "isim": "P.J. Washington",
               "takim": "DAL",
+              "ilk_bes": true,
               "min": "33",
               "pts": 18,
               "reb": 4,
@@ -1009,11 +5877,14 @@
               "pm_ham": -4.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1630314,
               "isim": "Brandon Williams",
               "takim": "DAL",
+              "ilk_bes": true,
               "min": "29",
               "pts": 17,
               "reb": 5,
@@ -1031,11 +5902,14 @@
               "pm_ham": 2.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 202691,
               "isim": "Klay Thompson",
               "takim": "DAL",
+              "ilk_bes": false,
               "min": "23",
               "pts": 9,
               "reb": 3,
@@ -1053,11 +5927,14 @@
               "pm_ham": -2.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 203114,
               "isim": "Khris Middleton",
               "takim": "DAL",
+              "ilk_bes": false,
               "min": "20",
               "pts": 8,
               "reb": 1,
@@ -1075,11 +5952,14 @@
               "pm_ham": -16.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1628963,
               "isim": "Marvin Bagley III",
               "takim": "DAL",
+              "ilk_bes": false,
               "min": "20",
               "pts": 7,
               "reb": 4,
@@ -1097,11 +5977,14 @@
               "pm_ham": -18.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1626145,
               "isim": "Tyus Jones",
               "takim": "DAL",
+              "ilk_bes": false,
               "min": "18",
               "pts": 3,
               "reb": 0,
@@ -1119,11 +6002,14 @@
               "pm_ham": -22.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1629655,
               "isim": "Daniel Gafford",
               "takim": "DAL",
+              "ilk_bes": true,
               "min": "27",
               "pts": 2,
               "reb": 6,
@@ -1141,11 +6027,14 @@
               "pm_ham": -2.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 203939,
               "isim": "Dwight Powell",
               "takim": "DAL",
+              "ilk_bes": false,
               "min": "3",
               "pts": 2,
               "reb": 1,
@@ -1163,11 +6052,14 @@
               "pm_ham": -4.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1642358,
               "isim": "AJ Johnson",
               "takim": "DAL",
+              "ilk_bes": false,
               "min": "3",
               "pts": 0,
               "reb": 1,
@@ -1185,7 +6077,8 @@
               "pm_ham": -4.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             }
           ],
           "toplam": {
@@ -1197,14 +6090,73 @@
             "to": 15,
             "fg": "39/79",
             "3p": "7/26",
-            "ft": "19/25"
-          }
+            "ft": "19/25",
+            "oreb": 4,
+            "dreb": 24
+          },
+          "ceyrek": [
+            31,
+            32,
+            19,
+            22
+          ]
         },
-        "wtf": null
-      }
+        "wtf": null,
+        "kilit": {
+          "ad": "asist",
+          "fark": 13,
+          "alan": "ast",
+          "kutular": [
+            {
+              "kod": "LAL",
+              "deger": 35,
+              "kazandi": true
+            },
+            {
+              "kod": "DAL",
+              "deger": 22,
+              "kazandi": false
+            }
+          ]
+        },
+        "kritik": null
+      },
+      "kazanan_kod": "LAL",
+      "ceyrek_tablosu": [
+        {
+          "ceyrek": "1. yarı",
+          "skor": "64–63",
+          "ev_skor": 64,
+          "dep_skor": 63,
+          "onde": "ev",
+          "fark": 1,
+          "one_cikan": [
+            "James triple-double",
+            "James 18 sayı"
+          ],
+          "kritik": false
+        },
+        {
+          "ceyrek": "2. yarı",
+          "skor": "124–104",
+          "ev_skor": 124,
+          "dep_skor": 104,
+          "onde": "ev",
+          "fark": 20,
+          "one_cikan": [
+            "6 kez liderlik değişti",
+            "Dallas 15-0 seri"
+          ],
+          "kritik": true
+        }
+      ],
+      "karar": null,
+      "ray_renk": "#8B62D9",
+      "ray_rgb": "139,98,217"
     },
     {
       "id": "a-0022500789",
+      "mac_id": "0022500789",
       "mac": "Oklahoma City Thunder — Milwaukee Bucks",
       "skor": "93–110",
       "rozet": 6.69,
@@ -1213,10 +6165,16 @@
       "box": {
         "ev": {
           "takim": "Oklahoma City Thunder",
+          "kod": "OKC",
+          "renk": "#31A8E0",
+          "skor": 93,
+          "oynamayanlar": [],
           "oyuncular": [
             {
+              "id": 1630198,
               "isim": "Isaiah Joe",
               "takim": "OKC",
+              "ilk_bes": true,
               "min": "28",
               "pts": 17,
               "reb": 4,
@@ -1235,11 +6193,14 @@
               "cold": false,
               "gecti_mi": false,
               "aykiri": false,
+              "aykiri_alan": null,
               "kaybedenin_en_iyisi": true
             },
             {
+              "id": 1631096,
               "isim": "Chet Holmgren",
               "takim": "OKC",
+              "ilk_bes": true,
               "min": "27",
               "pts": 16,
               "reb": 13,
@@ -1257,11 +6218,14 @@
               "pm_ham": -8.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1642272,
               "isim": "Jared McCain",
               "takim": "OKC",
+              "ilk_bes": false,
               "min": "24",
               "pts": 13,
               "reb": 3,
@@ -1279,11 +6243,14 @@
               "pm_ham": -3.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1629652,
               "isim": "Luguentz Dort",
               "takim": "OKC",
+              "ilk_bes": true,
               "min": "28",
               "pts": 9,
               "reb": 2,
@@ -1301,11 +6268,14 @@
               "pm_ham": -14.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1629026,
               "isim": "Kenrich Williams",
               "takim": "OKC",
+              "ilk_bes": true,
               "min": "22",
               "pts": 9,
               "reb": 8,
@@ -1323,11 +6293,14 @@
               "pm_ham": -8.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1627936,
               "isim": "Alex Caruso",
               "takim": "OKC",
+              "ilk_bes": false,
               "min": "19",
               "pts": 9,
               "reb": 3,
@@ -1345,11 +6318,14 @@
               "pm_ham": -8.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1631119,
               "isim": "Jaylin Williams",
               "takim": "OKC",
+              "ilk_bes": false,
               "min": "15",
               "pts": 7,
               "reb": 2,
@@ -1367,11 +6343,14 @@
               "pm_ham": -19.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1630598,
               "isim": "Aaron Wiggins",
               "takim": "OKC",
+              "ilk_bes": false,
               "min": "20",
               "pts": 5,
               "reb": 4,
@@ -1389,11 +6368,14 @@
               "pm_ham": -8.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1641717,
               "isim": "Cason Wallace",
               "takim": "OKC",
+              "ilk_bes": true,
               "min": "28",
               "pts": 3,
               "reb": 2,
@@ -1411,11 +6393,14 @@
               "pm_ham": -3.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1631205,
               "isim": "Buddy Boeheim",
               "takim": "OKC",
+              "ilk_bes": false,
               "min": "4",
               "pts": 3,
               "reb": 0,
@@ -1433,11 +6418,14 @@
               "pm_ham": 3.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1642260,
               "isim": "Nikola Topić",
               "takim": "OKC",
+              "ilk_bes": false,
               "min": "12",
               "pts": 2,
               "reb": 1,
@@ -1455,11 +6443,14 @@
               "pm_ham": -5.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1642964,
               "isim": "Brooks Barnhizer",
               "takim": "OKC",
+              "ilk_bes": false,
               "min": "7",
               "pts": 0,
               "reb": 5,
@@ -1477,7 +6468,8 @@
               "pm_ham": 2.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             }
           ],
           "toplam": {
@@ -1489,15 +6481,32 @@
             "to": 16,
             "fg": "31/83",
             "3p": "15/45",
-            "ft": "16/20"
-          }
+            "ft": "16/20",
+            "oreb": 14,
+            "dreb": 33
+          },
+          "ceyrek": [
+            25,
+            30,
+            18,
+            20
+          ]
         },
         "dep": {
           "takim": "Milwaukee Bucks",
+          "kod": "MIL",
+          "renk": "#1E9E5A",
+          "skor": 110,
+          "oynamayanlar": [
+            "Gary Harris",
+            "Myles Turner"
+          ],
           "oyuncular": [
             {
+              "id": 1631172,
               "isim": "Ousmane Dieng",
               "takim": "MIL",
+              "ilk_bes": true,
               "min": "36",
               "pts": 19,
               "reb": 11,
@@ -1514,12 +6523,15 @@
               "pm": "+16",
               "pm_ham": 16.0,
               "cold": false,
-              "gecti_mi": false,
-              "aykiri": false
+              "gecti_mi": true,
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1631260,
               "isim": "AJ Green",
               "takim": "MIL",
+              "ilk_bes": true,
               "min": "38",
               "pts": 17,
               "reb": 2,
@@ -1537,11 +6549,14 @@
               "pm_ham": 17.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1626171,
               "isim": "Bobby Portis",
               "takim": "MIL",
+              "ilk_bes": false,
               "min": "29",
               "pts": 15,
               "reb": 12,
@@ -1559,11 +6574,14 @@
               "pm_ham": 19.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1628398,
               "isim": "Kyle Kuzma",
               "takim": "MIL",
+              "ilk_bes": true,
               "min": "28",
               "pts": 14,
               "reb": 4,
@@ -1581,11 +6599,14 @@
               "pm_ham": 8.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1629645,
               "isim": "Kevin Porter Jr.",
               "takim": "MIL",
+              "ilk_bes": true,
               "min": "31",
               "pts": 12,
               "reb": 3,
@@ -1603,11 +6624,14 @@
               "pm_ham": 12.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1630560,
               "isim": "Cam Thomas",
               "takim": "MIL",
+              "ilk_bes": false,
               "min": "20",
               "pts": 12,
               "reb": 1,
@@ -1625,11 +6649,14 @@
               "pm_ham": 15.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1631250,
               "isim": "Pete Nance",
               "takim": "MIL",
+              "ilk_bes": false,
               "min": "23",
               "pts": 11,
               "reb": 7,
@@ -1647,11 +6674,14 @@
               "pm_ham": 4.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1630579,
               "isim": "Jericho Sims",
               "takim": "MIL",
+              "ilk_bes": true,
               "min": "19",
               "pts": 8,
               "reb": 5,
@@ -1669,11 +6699,14 @@
               "pm_ham": 6.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1641748,
               "isim": "Andre Jackson Jr.",
               "takim": "MIL",
+              "ilk_bes": false,
               "min": "5",
               "pts": 2,
               "reb": 3,
@@ -1691,11 +6724,14 @@
               "pm_ham": -2.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1629018,
               "isim": "Gary Trent Jr.",
               "takim": "MIL",
+              "ilk_bes": false,
               "min": "3",
               "pts": 0,
               "reb": 0,
@@ -1713,11 +6749,14 @@
               "pm_ham": -5.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 203648,
               "isim": "Thanasis Antetokounmpo",
               "takim": "MIL",
+              "ilk_bes": false,
               "min": "3",
               "pts": 0,
               "reb": 1,
@@ -1735,7 +6774,8 @@
               "pm_ham": -5.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             }
           ],
           "toplam": {
@@ -1747,15 +6787,72 @@
             "to": 10,
             "fg": "44/95",
             "3p": "17/42",
-            "ft": "5/7"
-          }
+            "ft": "5/7",
+            "oreb": 15,
+            "dreb": 34
+          },
+          "ceyrek": [
+            30,
+            37,
+            22,
+            21
+          ]
         },
-        "wtf": null
-      }
+        "wtf": null,
+        "kilit": null,
+        "kritik": null
+      },
+      "kazanan_kod": "MIL",
+      "ceyrek_tablosu": [
+        {
+          "ceyrek": "1. yarı",
+          "skor": "55–67",
+          "ev_skor": 55,
+          "dep_skor": 67,
+          "onde": "dep",
+          "fark": 12,
+          "one_cikan": [
+            "Milwaukee 10 üçlük"
+          ],
+          "kritik": false
+        },
+        {
+          "ceyrek": "2. yarı",
+          "skor": "93–110",
+          "ev_skor": 93,
+          "dep_skor": 110,
+          "onde": "dep",
+          "fark": 17,
+          "one_cikan": [
+            "Milwaukee 13-0 seri",
+            "Dieng 10 sayı"
+          ],
+          "kritik": true
+        }
+      ],
+      "karar": null,
+      "ray_renk": "#1E9E5A",
+      "ray_rgb": "30,158,90"
     }
   ],
   "diger": [],
-  "turkler": [],
+  "turkler": [
+    {
+      "isim": "Tarık Biberoviç",
+      "takim": "DAL",
+      "oynadi": false,
+      "takim_adi": "Dallas Mavericks",
+      "renk": "#2E7BC4"
+    }
+  ],
+  "turkler_bekleyen": {
+    "isimler": [
+      "Bona",
+      "Şengün"
+    ],
+    "tarih": null,
+    "metin": "Bu gece Türk oyuncu sahaya çıkmadı."
+  },
   "gecenin_notlari": [],
   "genis_aci": null
 }

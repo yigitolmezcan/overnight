@@ -85,6 +85,12 @@ def mail_govdesi(veri, cikis_bag):
     )
     turk = ""
     for t in veri.get("turkler", []):
+        # OYNAMAYAN OYUNCU MAİLE GİRMEZ. Listede kadroda olup sahaya
+        # çıkmayan isim de duruyor (sitede "bu gece oynamadı" satırı
+        # oluyor) ve istatistik alanları hiç yok — mail üretimi
+        # KeyError ile çöküyordu.
+        if t.get("oynadi") is False or "pts" not in t:
+            continue
         turk += (f'<p style="margin:0 0 6px;font-size:15px"><strong>{_kacis(t["isim"])}</strong> '
                  f'<span style="color:#666">{t["pts"]} sayı · {t["reb"]} ribaund · {t["ast"]} asist</span></p>')
 

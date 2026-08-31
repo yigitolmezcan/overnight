@@ -472,8 +472,11 @@ def _akis_metni(tarih, gid):
             if str(blok.get("id", "")).endswith(gid) or blok.get("mac_id") == gid:
                 parcalar = [f"{r.get('cumle','')} {r.get('detay') or ''}"
                             for r in (blok.get("akis") or [])]
-                parcalar += [str(r.get("one_cikan") or "")
-                             for r in (blok.get("ceyrek_tablosu") or [])]
+                # one_cikan artık LİSTE (en fazla iki olgu).
+                for r in (blok.get("ceyrek_tablosu") or []):
+                    _o = r.get("one_cikan") or []
+                    parcalar += [str(x) for x in
+                                 (_o if isinstance(_o, list) else [_o])]
                 karar = blok.get("karar") or {}
                 parcalar += [karar.get("cumle") or "", karar.get("detay") or ""]
                 return " ".join(p for p in parcalar if p)

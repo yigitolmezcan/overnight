@@ -367,10 +367,12 @@
           "skor": "32–44",
           "ev_skor": 32,
           "dep_skor": 44,
-          "durum": "PHX +12",
-          "durum_takim": "PHX",
+          "onde": "dep",
           "fark": 12,
-          "one_cikan": "Brooks 12 sayı",
+          "one_cikan": [
+            "Phoenix 6 üçlük",
+            "Phoenix 17/24 şut"
+          ],
           "kritik": false
         },
         {
@@ -378,10 +380,12 @@
           "skor": "64–67",
           "ev_skor": 64,
           "dep_skor": 67,
-          "durum": "PHX +3",
-          "durum_takim": "PHX",
+          "onde": "dep",
           "fark": 3,
-          "one_cikan": "en büyük fark 14",
+          "one_cikan": [
+            "en büyük fark 14",
+            "Golden State 6-0 seri"
+          ],
           "kritik": false
         },
         {
@@ -389,10 +393,11 @@
           "skor": "93–87",
           "ev_skor": 93,
           "dep_skor": 87,
-          "durum": "GSW +6",
-          "durum_takim": "GSW",
+          "onde": "ev",
           "fark": 6,
-          "one_cikan": "3 kez liderlik değişti",
+          "one_cikan": [
+            "3 kez liderlik değişti"
+          ],
           "kritik": false
         },
         {
@@ -400,10 +405,12 @@
           "skor": "119–116",
           "ev_skor": 119,
           "dep_skor": 116,
-          "durum": "GSW +3",
-          "durum_takim": "GSW",
+          "onde": "ev",
           "fark": 3,
-          "one_cikan": "Curry double-double",
+          "one_cikan": [
+            "Curry double-double",
+            "Curry 14 sayı"
+          ],
           "kritik": true
         }
       ],
@@ -1062,10 +1069,12 @@
           "skor": "30–25",
           "ev_skor": 30,
           "dep_skor": 25,
-          "durum": "MEM +5",
-          "durum_takim": "MEM",
+          "onde": "ev",
           "fark": 5,
-          "one_cikan": "Aldama double-double",
+          "one_cikan": [
+            "Aldama double-double",
+            "Aldama 13 sayı"
+          ],
           "kritik": false
         },
         {
@@ -1073,10 +1082,12 @@
           "skor": "68–53",
           "ev_skor": 68,
           "dep_skor": 53,
-          "durum": "MEM +15",
-          "durum_takim": "MEM",
+          "onde": "ev",
           "fark": 15,
-          "one_cikan": "Washington 8-0 seri",
+          "one_cikan": [
+            "en büyük fark 20",
+            "Memphis 5 üçlük"
+          ],
           "kritik": false
         },
         {
@@ -1084,10 +1095,11 @@
           "skor": "95–95",
           "ev_skor": 95,
           "dep_skor": 95,
-          "durum": "berabere",
-          "durum_takim": null,
+          "onde": null,
           "fark": 0,
-          "one_cikan": "George 13 sayı",
+          "one_cikan": [
+            "Washington 15/24 şut"
+          ],
           "kritik": false
         },
         {
@@ -1095,10 +1107,12 @@
           "skor": "122–130",
           "ev_skor": 122,
           "dep_skor": 130,
-          "durum": "WAS +8",
-          "durum_takim": "WAS",
+          "onde": "dep",
           "fark": 8,
-          "one_cikan": "3 kez liderlik değişti",
+          "one_cikan": [
+            "3 kez liderlik değişti",
+            "Washington 11-0 seri"
+          ],
           "kritik": true
         }
       ],
@@ -1691,10 +1705,12 @@
           "skor": "38–36",
           "ev_skor": 38,
           "dep_skor": 36,
-          "durum": "UTA +2",
-          "durum_takim": "UTA",
+          "onde": "ev",
           "fark": 2,
-          "one_cikan": "Love double-double",
+          "one_cikan": [
+            "Love double-double",
+            "Banchero 11 sayı"
+          ],
           "kritik": false
         },
         {
@@ -1702,10 +1718,11 @@
           "skor": "60–65",
           "ev_skor": 60,
           "dep_skor": 65,
-          "durum": "ORL +5",
-          "durum_takim": "ORL",
+          "onde": "dep",
           "fark": 5,
-          "one_cikan": "Utah 8-0 seri",
+          "one_cikan": [
+            "Utah 8-0 seri"
+          ],
           "kritik": false
         },
         {
@@ -1713,10 +1730,12 @@
           "skor": "82–97",
           "ev_skor": 82,
           "dep_skor": 97,
-          "durum": "ORL +15",
-          "durum_takim": "ORL",
+          "onde": "dep",
           "fark": 15,
-          "one_cikan": "Black 13 sayı",
+          "one_cikan": [
+            "en büyük fark 19",
+            "Orlando 12/19 şut"
+          ],
           "kritik": false
         },
         {
@@ -1724,10 +1743,9 @@
           "skor": "118–118",
           "ev_skor": 118,
           "dep_skor": 118,
-          "durum": "berabere",
-          "durum_takim": null,
+          "onde": null,
           "fark": 0,
-          "one_cikan": "Utah 9-0 seri",
+          "one_cikan": [],
           "kritik": false
         },
         {
@@ -1735,10 +1753,11 @@
           "skor": "127–128",
           "ev_skor": 127,
           "dep_skor": 128,
-          "durum": "ORL +1",
-          "durum_takim": "ORL",
+          "onde": "dep",
           "fark": 1,
-          "one_cikan": "6 kez liderlik değişti",
+          "one_cikan": [
+            "6 kez liderlik değişti"
+          ],
           "kritik": true
         }
       ],
@@ -15810,10 +15829,12 @@
           "skor": "51–49",
           "ev_skor": 51,
           "dep_skor": 49,
-          "durum": "TOR +2",
-          "durum_takim": "TOR",
+          "onde": "ev",
           "fark": 2,
-          "one_cikan": "5 kez liderlik değişti",
+          "one_cikan": [
+            "Boston 16-0 seri",
+            "Ingram 12 sayı"
+          ],
           "kritik": false
         },
         {
@@ -15821,10 +15842,12 @@
           "skor": "96–112",
           "ev_skor": 96,
           "dep_skor": 112,
-          "durum": "BOS +16",
-          "durum_takim": "BOS",
+          "onde": "dep",
           "fark": 16,
-          "one_cikan": "Pritchard double-double",
+          "one_cikan": [
+            "Pritchard double-double",
+            "9 kez liderlik değişti"
+          ],
           "kritik": true
         }
       ],
@@ -16429,10 +16452,12 @@
           "skor": "45–53",
           "ev_skor": 45,
           "dep_skor": 53,
-          "durum": "HOU +8",
-          "durum_takim": "HOU",
+          "onde": "dep",
           "fark": 8,
-          "one_cikan": "4 kez liderlik değişti",
+          "one_cikan": [
+            "4 kez liderlik değişti",
+            "Durant 16 sayı"
+          ],
           "kritik": false
         },
         {
@@ -16440,10 +16465,12 @@
           "skor": "101–115",
           "ev_skor": 101,
           "dep_skor": 115,
-          "durum": "HOU +14",
-          "durum_takim": "HOU",
+          "onde": "dep",
           "fark": 14,
-          "one_cikan": "Smith Jr. double-double",
+          "one_cikan": [
+            "Smith Jr. double-double",
+            "Houston 11-0 seri"
+          ],
           "kritik": true
         }
       ],

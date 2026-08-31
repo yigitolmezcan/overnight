@@ -586,6 +586,43 @@ def oyuncu_ceyrek_gerceklerini_uret(g, gid, actions, oyuncu_isimleri):
         )
 
 
+# Bir çeyrekte bu kadar saha içi denemesi olmayan takımın yüzdesi
+# anlam taşımıyor (7/10 ile 21/35 aynı şey değil).
+TAKIM_CEYREK_ASGARI_DENEME = 12
+
+
+def takim_ceyrek_gerceklerini_uret(g, gid, actions):
+    """Play-by-play'den TAKIM başına periyot içi saha içi şut ve üçlük.
+
+    Çeyrek tablosundaki "60%+ / 30%- şut" ve "5 üçlük" olguları buradan
+    çıkıyor; hiçbiri derle.py'de hesaplanmıyor."""
+    dagilim = {}
+    for a in actions:
+        if not a.get("isFieldGoal"):
+            continue
+        kod = a.get("teamTricode")
+        if not kod:
+            continue
+        r = dagilim.setdefault((kod, a["period"]),
+                               {"fg_isabet": 0, "fg_deneme": 0,
+                                "uc_isabet": 0, "uc_deneme": 0})
+        isabet = a.get("shotResult") == "Made"
+        r["fg_deneme"] += 1
+        r["fg_isabet"] += 1 if isabet else 0
+        if (a.get("shotValue") or 0) == 3:
+            r["uc_deneme"] += 1
+            r["uc_isabet"] += 1 if isabet else 0
+    for (kod, periyot), r in sorted(dagilim.items()):
+        if r["fg_deneme"] < TAKIM_CEYREK_ASGARI_DENEME:
+            continue
+        g.ekle(
+            "takim_ceyrek",
+            {"takim": kod, "periyot": periyot, **r},
+            f"PlayByPlayV3:{gid}:turetilmis",
+            "turetilmis",
+        )
+
+
 def kilometre_gerceklerini_uret(g, gid, oyuncu_stat_ham, sezon_sayilari_by_player_id=None):
     sezon_sayilari_by_player_id = sezon_sayilari_by_player_id or {}
     for personId, veri, s in oyuncu_stat_ham:
@@ -1520,6 +1557,7 @@ def mac_isle(gid, m, puan_durumu, sezon_sayilari_by_player_id=None, son10_dakika
     takim_stat_gerceklerini_uret(g, gid, bt)
     kadro_disi_gerceklerini_uret(g, gid, bt, son10_dakika_by_id)
     oyuncu_ceyrek_gerceklerini_uret(g, gid, actions, isim_haritasi)
+    takim_ceyrek_gerceklerini_uret(g, gid, actions)
     kilometre_gerceklerini_uret(g, gid, oyuncu_stat_ham, sezon_sayilari_by_player_id)
     an_gerceklerini_uret(g, gid, actions, isim_haritasi)
     fark_serisi_gercegi_uret(g, gid, actions, ev_kod, dep_kod, kazanan)

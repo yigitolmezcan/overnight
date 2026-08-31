@@ -6,51 +6,195 @@
     {
       "sira": 1,
       "mac": "Charlotte Hornets — Indiana Pacers",
-      "rozet": 6.96,
+      "rozet": 7.88,
       "id": "g-mutlaka-0"
     },
     {
       "sira": 2,
       "mac": "Minnesota Timberwolves — Cleveland Cavaliers",
-      "rozet": 6.18,
+      "rozet": 6.39,
       "id": "a-0022500530"
     },
     {
       "sira": 3,
       "mac": "Utah Jazz — Dallas Mavericks",
-      "rozet": 6.76,
+      "rozet": 7.76,
       "id": "a-0022500531"
+    }
+  ],
+  "mansetler": [
+    {
+      "metin": "Donovan Mitchell üst üste 3. kez 30 sayıyı geçti.",
+      "vurgu": "3. kez",
+      "kalip": "ustuste_otuz",
+      "kademe": 2,
+      "rozet": 6.4,
+      "mac": "Minnesota 131 – 122 Cleveland",
+      "saat": "04:00",
+      "renk": "#3B7FD4",
+      "hedef_id": "a-0022500530",
+      "mac_id": "0022500530"
+    }
+  ],
+  "kapak_listesi": [
+    {
+      "katman": "mutlaka",
+      "rozet": 7.9,
+      "kazanan": "Indiana",
+      "kaybeden": "Charlotte",
+      "kazanan_skor": 114,
+      "kaybeden_skor": 112,
+      "saat": "03:00",
+      "hedef_id": "g-mutlaka-0",
+      "_sira": "2026-01-09T03:00:00+03:00"
+    },
+    {
+      "katman": "gozat",
+      "rozet": 6.4,
+      "kazanan": "Minnesota",
+      "kaybeden": "Cleveland",
+      "kazanan_skor": 131,
+      "kaybeden_skor": 122,
+      "saat": "04:00",
+      "hedef_id": "a-0022500530",
+      "_sira": "2026-01-09T04:00:00+03:00"
+    },
+    {
+      "katman": "gozat",
+      "rozet": 7.8,
+      "kazanan": "Utah",
+      "kaybeden": "Dallas",
+      "kazanan_skor": 116,
+      "kaybeden_skor": 114,
+      "saat": "05:00",
+      "hedef_id": "a-0022500531",
+      "_sira": "2026-01-09T05:00:00+03:00"
     }
   ],
   "brief": [
     {
       "metin": "Indiana Pacers, son saniyede attığı basketle Charlotte Hornets'i geçti.",
+      "anlatili": true,
       "hedef_id": "g-mutlaka-0",
-      "icon": "default"
+      "icon": "default",
+      "saat": "03:00",
+      "rozet": 7.88,
+      "skor": "CHA 112 – IND 114",
+      "skor_tam": "Charlotte Hornets 112 – Indiana Pacers 114",
+      "etiket": "gecenin maçı",
+      "one_cikan": true
     },
     {
       "metin": "Minnesota Timberwolves, 3. çeyrekte kurduğu üstünlükle Cleveland Cavaliers'i geçti.",
+      "anlatili": true,
       "hedef_id": "a-0022500530",
-      "icon": "standings"
+      "icon": "standings",
+      "saat": "04:00",
+      "rozet": 6.39,
+      "skor": "MIN 131 – CLE 122",
+      "skor_tam": "Minnesota Timberwolves 131 – Cleveland Cavaliers 122",
+      "etiket": "",
+      "one_cikan": false
+    },
+    {
+      "metin": "",
+      "anlatili": false,
+      "hedef_id": "a-0022500531",
+      "icon": "default",
+      "saat": "05:00",
+      "rozet": 7.76,
+      "skor": "UTA 116 – DAL 114",
+      "skor_tam": "Utah Jazz 116 – Dallas Mavericks 114",
+      "etiket": "kapanış",
+      "one_cikan": false
     }
   ],
+  "brief_ozet": {
+    "ilk": "03:00",
+    "son": "05:00",
+    "mac": 3,
+    "anlatili": 2,
+    "dakika": 120,
+    "sure": "2 saat"
+  },
+  "brief_ayrica": [],
   "mutlaka": [
     {
       "id": "g-mutlaka-0",
+      "mac_id": "0022500528",
       "kisa": false,
       "mac": "Charlotte Hornets — Indiana Pacers",
       "skor": "112–114",
-      "rozet": 6.96,
+      "rozet": 7.88,
       "baslik": "Indiana Pacers, Charlotte Hornets'i 114-112 yendi.",
       "neden_onemli": "Indiana Pacers sezonu 7-31 yaptı.",
-      "ozet": "Indiana Pacers, bitime 11.5 saniye kala bulduğu basketle Charlotte Hornets'i 114-112 yendi. Mağlup tarafta LaMelo Ball 33 sayı attı.",
+      "ceyrek_tablosu": [
+        {
+          "ceyrek": "1Ç",
+          "skor": "30–33",
+          "ev_skor": 30,
+          "dep_skor": 33,
+          "onde": "dep",
+          "fark": 3,
+          "one_cikan": [
+            "Siakam double-double",
+            "Siakam 15 sayı"
+          ],
+          "kritik": false
+        },
+        {
+          "ceyrek": "2Ç",
+          "skor": "58–60",
+          "ev_skor": 58,
+          "dep_skor": 60,
+          "onde": "dep",
+          "fark": 2,
+          "one_cikan": [],
+          "kritik": false
+        },
+        {
+          "ceyrek": "3Ç",
+          "skor": "87–90",
+          "ev_skor": 87,
+          "dep_skor": 90,
+          "onde": "dep",
+          "fark": 3,
+          "one_cikan": [
+            "Charlotte 5 üçlük"
+          ],
+          "kritik": false
+        },
+        {
+          "ceyrek": "4Ç",
+          "skor": "112–114",
+          "ev_skor": 112,
+          "dep_skor": 114,
+          "onde": "dep",
+          "fark": 2,
+          "one_cikan": [
+            "6 kez liderlik değişti",
+            "Charlotte 10-0 seri"
+          ],
+          "kritik": true
+        }
+      ],
+      "karar": null,
       "box": {
         "ev": {
           "takim": "Charlotte Hornets",
+          "kod": "CHA",
+          "renk": "#4B36A8",
+          "skor": 112,
+          "oynamayanlar": [
+            "Pat Connaughton",
+            "Tre Mann"
+          ],
           "oyuncular": [
             {
+              "id": 1630163,
               "isim": "LaMelo Ball",
               "takim": "CHA",
+              "ilk_bes": false,
               "min": "26",
               "pts": 33,
               "reb": 3,
@@ -67,13 +211,16 @@
               "pm": "+19",
               "pm_ham": 19.0,
               "cold": false,
-              "gecti_mi": true,
+              "gecti_mi": false,
               "aykiri": true,
+              "aykiri_alan": "3p",
               "kaybedenin_en_iyisi": true
             },
             {
+              "id": 1628970,
               "isim": "Miles Bridges",
               "takim": "CHA",
+              "ilk_bes": true,
               "min": "36",
               "pts": 19,
               "reb": 6,
@@ -91,11 +238,14 @@
               "pm_ham": 0.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1642851,
               "isim": "Kon Knueppel",
               "takim": "CHA",
+              "ilk_bes": true,
               "min": "29",
               "pts": 18,
               "reb": 8,
@@ -113,11 +263,14 @@
               "pm_ham": -14.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1629012,
               "isim": "Collin Sexton",
               "takim": "CHA",
+              "ilk_bes": true,
               "min": "17",
               "pts": 11,
               "reb": 0,
@@ -135,11 +288,14 @@
               "pm_ham": -22.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1631217,
               "isim": "Moussa Diabaté",
               "takim": "CHA",
+              "ilk_bes": true,
               "min": "35",
               "pts": 10,
               "reb": 5,
@@ -157,11 +313,14 @@
               "pm_ham": -3.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1641706,
               "isim": "Brandon Miller",
               "takim": "CHA",
+              "ilk_bes": true,
               "min": "19",
               "pts": 6,
               "reb": 4,
@@ -179,11 +338,14 @@
               "pm_ham": -7.0,
               "cold": true,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1642275,
               "isim": "Tidjane Salaün",
               "takim": "CHA",
+              "ilk_bes": false,
               "min": "13",
               "pts": 4,
               "reb": 2,
@@ -201,11 +363,14 @@
               "pm_ham": 1.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1642883,
               "isim": "Sion James",
               "takim": "CHA",
+              "ilk_bes": false,
               "min": "22",
               "pts": 4,
               "reb": 2,
@@ -223,11 +388,14 @@
               "pm_ham": 3.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1630182,
               "isim": "Josh Green",
               "takim": "CHA",
+              "ilk_bes": false,
               "min": "17",
               "pts": 3,
               "reb": 0,
@@ -245,11 +413,14 @@
               "pm_ham": 8.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1641790,
               "isim": "PJ Hall",
               "takim": "CHA",
+              "ilk_bes": false,
               "min": "10",
               "pts": 2,
               "reb": 4,
@@ -267,11 +438,14 @@
               "pm_ham": -2.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1642862,
               "isim": "Liam McNeeley",
               "takim": "CHA",
+              "ilk_bes": false,
               "min": "11",
               "pts": 2,
               "reb": 1,
@@ -289,7 +463,8 @@
               "pm_ham": 7.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             }
           ],
           "toplam": {
@@ -301,15 +476,31 @@
             "to": 16,
             "fg": "39/86",
             "3p": "16/44",
-            "ft": "18/24"
-          }
+            "ft": "18/24",
+            "oreb": 8,
+            "dreb": 27
+          },
+          "ceyrek": [
+            30,
+            28,
+            29,
+            25
+          ]
         },
         "dep": {
           "takim": "Indiana Pacers",
+          "kod": "IND",
+          "renk": "#F2C230",
+          "skor": 114,
+          "oynamayanlar": [
+            "Andrew Nembhard"
+          ],
           "oyuncular": [
             {
+              "id": 1627783,
               "isim": "Pascal Siakam",
               "takim": "IND",
+              "ilk_bes": true,
               "min": "35",
               "pts": 30,
               "reb": 14,
@@ -326,12 +517,15 @@
               "pm": "+7",
               "pm_ham": 7.0,
               "cold": false,
-              "gecti_mi": false,
-              "aykiri": false
+              "gecti_mi": true,
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 204456,
               "isim": "T.J. McConnell",
               "takim": "IND",
+              "ilk_bes": false,
               "min": "27",
               "pts": 23,
               "reb": 4,
@@ -349,11 +543,14 @@
               "pm_ham": 10.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1630174,
               "isim": "Aaron Nesmith",
               "takim": "IND",
+              "ilk_bes": true,
               "min": "35",
               "pts": 16,
               "reb": 5,
@@ -371,11 +568,14 @@
               "pm_ham": 17.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1630643,
               "isim": "Jay Huff",
               "takim": "IND",
+              "ilk_bes": true,
               "min": "24",
               "pts": 10,
               "reb": 2,
@@ -393,11 +593,14 @@
               "pm_ham": 13.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1642277,
               "isim": "Johnny Furphy",
               "takim": "IND",
+              "ilk_bes": true,
               "min": "26",
               "pts": 7,
               "reb": 6,
@@ -415,11 +618,14 @@
               "pm_ham": 5.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1641767,
               "isim": "Ben Sheppard",
               "takim": "IND",
+              "ilk_bes": false,
               "min": "26",
               "pts": 7,
               "reb": 4,
@@ -437,11 +643,14 @@
               "pm_ham": -16.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1628396,
               "isim": "Tony Bradley",
               "takim": "IND",
+              "ilk_bes": false,
               "min": "15",
               "pts": 7,
               "reb": 3,
@@ -459,11 +668,14 @@
               "pm_ham": 7.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1630695,
               "isim": "Micah Potter",
               "takim": "IND",
+              "ilk_bes": false,
               "min": "8",
               "pts": 5,
               "reb": 0,
@@ -481,11 +693,14 @@
               "pm_ham": -16.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1631245,
               "isim": "Quenton Jackson",
               "takim": "IND",
+              "ilk_bes": true,
               "min": "17",
               "pts": 4,
               "reb": 0,
@@ -503,11 +718,14 @@
               "pm_ham": -6.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1630679,
               "isim": "Ethan Thompson",
               "takim": "IND",
+              "ilk_bes": false,
               "min": "8",
               "pts": 3,
               "reb": 0,
@@ -525,11 +743,14 @@
               "pm_ham": -2.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1641716,
               "isim": "Jarace Walker",
               "takim": "IND",
+              "ilk_bes": false,
               "min": "12",
               "pts": 2,
               "reb": 3,
@@ -547,11 +768,14 @@
               "pm_ham": -7.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1642880,
               "isim": "Kam Jones",
               "takim": "IND",
+              "ilk_bes": false,
               "min": "2",
               "pts": 0,
               "reb": 0,
@@ -569,7 +793,8 @@
               "pm_ham": -2.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             }
           ],
           "toplam": {
@@ -581,70 +806,4179 @@
             "to": 19,
             "fg": "41/82",
             "3p": "12/27",
-            "ft": "20/21"
-          }
+            "ft": "20/21",
+            "oreb": 10,
+            "dreb": 31
+          },
+          "ceyrek": [
+            33,
+            27,
+            30,
+            24
+          ]
         },
-        "wtf": "LaMelo Ball: 7/15 üçlük denemesi"
-      }
+        "wtf": null,
+        "kilit": null,
+        "kritik": {
+          "sure_sn": 300,
+          "sure": "5:00",
+          "skor": "8-8",
+          "onde": null,
+          "ev_puan": 8,
+          "dep_puan": 8,
+          "oyuncular": [
+            {
+              "isim": "Pascal Siakam",
+              "takim": "IND",
+              "sayi": 5,
+              "fg": "2/2",
+              "kazanan": true
+            }
+          ]
+        }
+      },
+      "kazanan_kod": "IND",
+      "ray_renk": "#F2C230",
+      "ray_rgb": "242,194,48",
+      "ray_asil": "#F2C230",
+      "ray_degisti": false
     }
   ],
   "gecenin_besi": [
     {
-      "pos": "G",
+      "id": 1641718,
       "isim": "Keyonte George",
       "takim": "UTA",
+      "ilk_bes": true,
+      "min": "36",
+      "pts": 19,
+      "reb": 3,
+      "ast": 7,
+      "stl": 3,
+      "blk": 0,
+      "to": 0,
+      "fga": 12,
+      "fta": 3,
+      "3pa": 4,
+      "fg": "8/12",
+      "3p": "1/4",
+      "ft": "2/3",
+      "pm": "-1",
+      "pm_ham": -1.0,
+      "cold": false,
+      "pos": "G",
+      "renk": "#3E7A5E",
+      "takim_adi": "Utah Jazz",
+      "mac": "Utah Jazz — Dallas Mavericks",
+      "mac_skor": "116–114",
+      "mac_kisa": "UTA 116–114 DAL",
+      "mac_id": "a-0022500531",
+      "sebep": "mevkisinde gecenin en iyisi",
+      "etiket": null,
       "num": 19,
       "unit": "pts",
-      "st": "3 REB · 7 AST"
+      "st": "3 REB · 7 AST",
+      "asil_renk": "#3E7A5E",
+      "renk_degisti": false
     },
     {
-      "pos": "G",
+      "id": 1630162,
       "isim": "Anthony Edwards",
       "takim": "MIN",
+      "ilk_bes": true,
+      "min": "37",
+      "pts": 25,
+      "reb": 7,
+      "ast": 9,
+      "stl": 1,
+      "blk": 1,
+      "to": 4,
+      "fga": 20,
+      "fta": 2,
+      "3pa": 7,
+      "fg": "10/20",
+      "3p": "4/7",
+      "ft": "1/2",
+      "pm": "+19",
+      "pm_ham": 19.0,
+      "cold": false,
+      "pos": "G",
+      "renk": "#78BE20",
+      "takim_adi": "Minnesota Timberwolves",
+      "mac": "Minnesota Timberwolves — Cleveland Cavaliers",
+      "mac_skor": "131–122",
+      "mac_kisa": "MIN 131–122 CLE",
+      "mac_id": "a-0022500530",
+      "sebep": "gecenin en çok asist dağıtanı",
+      "etiket": null,
       "num": 25,
       "unit": "pts",
-      "st": "7 REB · 9 AST"
+      "st": "7 REB · 9 AST",
+      "asil_renk": "#3B7FD4",
+      "renk_degisti": true
     },
     {
-      "pos": "F",
+      "id": 1642843,
       "isim": "Cooper Flagg",
       "takim": "DAL",
+      "ilk_bes": true,
+      "min": "37",
+      "pts": 26,
+      "reb": 10,
+      "ast": 8,
+      "stl": 3,
+      "blk": 1,
+      "to": 3,
+      "fga": 18,
+      "fta": 4,
+      "3pa": 6,
+      "fg": "10/18",
+      "3p": "3/6",
+      "ft": "3/4",
+      "pm": "+3",
+      "pm_ham": 3.0,
+      "cold": false,
+      "pos": "F",
+      "renk": "#2E7BC4",
+      "takim_adi": "Dallas Mavericks",
+      "mac": "Utah Jazz — Dallas Mavericks",
+      "mac_skor": "116–114",
+      "mac_kisa": "UTA 116–114 DAL",
+      "mac_id": "a-0022500531",
+      "sebep": "mevkisinde gecenin en iyisi",
+      "etiket": null,
       "num": 26,
       "unit": "pts",
-      "st": "10 REB · 8 AST"
+      "st": "10 REB · 8 AST",
+      "asil_renk": "#2E7BC4",
+      "renk_degisti": false
     },
     {
+      "id": 203944,
+      "isim": "Julius Randle",
+      "takim": "MIN",
+      "ilk_bes": true,
+      "min": "35",
+      "pts": 28,
+      "reb": 11,
+      "ast": 8,
+      "stl": 0,
+      "blk": 0,
+      "to": 4,
+      "fga": 21,
+      "fta": 6,
+      "3pa": 7,
+      "fg": "10/21",
+      "3p": "3/7",
+      "ft": "5/6",
+      "pm": "+31",
+      "pm_ham": 31.0,
+      "cold": false,
       "pos": "F",
-      "isim": "Donovan Mitchell",
-      "takim": "CLE",
-      "num": 30,
+      "renk": "#78BE20",
+      "takim_adi": "Minnesota Timberwolves",
+      "mac": "Minnesota Timberwolves — Cleveland Cavaliers",
+      "mac_skor": "131–122",
+      "mac_kisa": "MIN 131–122 CLE",
+      "mac_id": "a-0022500530",
+      "sebep": "mevkisinde gecenin en iyisi",
+      "etiket": null,
+      "num": 28,
       "unit": "pts",
-      "st": "7 REB · 8 AST"
+      "st": "11 REB · 8 AST",
+      "asil_renk": "#3B7FD4",
+      "renk_degisti": true
     },
     {
-      "pos": "C",
+      "id": 203497,
       "isim": "Rudy Gobert",
       "takim": "MIN",
+      "ilk_bes": true,
+      "min": "36",
+      "pts": 11,
+      "reb": 13,
+      "ast": 3,
+      "stl": 2,
+      "blk": 0,
+      "to": 1,
+      "fga": 5,
+      "fta": 3,
+      "3pa": 0,
+      "fg": "5/5",
+      "3p": "0/0",
+      "ft": "1/3",
+      "pm": "+8",
+      "pm_ham": 8.0,
+      "cold": false,
+      "pos": "C",
+      "renk": "#78BE20",
+      "takim_adi": "Minnesota Timberwolves",
+      "mac": "Minnesota Timberwolves — Cleveland Cavaliers",
+      "mac_skor": "131–122",
+      "mac_kisa": "MIN 131–122 CLE",
+      "mac_id": "a-0022500530",
+      "sebep": "mevkisinde gecenin en iyisi",
+      "etiket": null,
       "num": 11,
       "unit": "pts",
-      "st": "13 REB · 3 AST"
+      "st": "13 REB · 3 AST",
+      "asil_renk": "#3B7FD4",
+      "renk_degisti": true
+    }
+  ],
+  "oyuncular": {
+    "1642851": {
+      "id": 1642851,
+      "isim": "Kon Knueppel",
+      "pos": "Forward",
+      "takim": "Charlotte Hornets",
+      "takim_kod": "CHA",
+      "renk": "#4B36A8",
+      "mac_skor": "Charlotte 112 – Indiana 114",
+      "saat": "03:00",
+      "bu_gece": {
+        "pts": 18,
+        "reb": 8,
+        "ast": 3,
+        "min": "29",
+        "fg": "5/12",
+        "3p": "2/6",
+        "ft": "6/6",
+        "stl": 1,
+        "blk": 0,
+        "to": 0,
+        "pm": "-14"
+      },
+      "sezon": {
+        "sezon_ort": 18.4,
+        "son5_ort": 19.2,
+        "yuzde": 4.3,
+        "son5": [
+          {
+            "sayi": 26,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 18,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 23,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 11,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 18,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1628970": {
+      "id": 1628970,
+      "isim": "Miles Bridges",
+      "pos": "Forward",
+      "takim": "Charlotte Hornets",
+      "takim_kod": "CHA",
+      "renk": "#4B36A8",
+      "mac_skor": "Charlotte 112 – Indiana 114",
+      "saat": "03:00",
+      "bu_gece": {
+        "pts": 19,
+        "reb": 6,
+        "ast": 4,
+        "min": "36",
+        "fg": "7/13",
+        "3p": "3/6",
+        "ft": "2/4",
+        "stl": 1,
+        "blk": 0,
+        "to": 2,
+        "pm": "+0"
+      },
+      "sezon": {
+        "sezon_ort": 19.5,
+        "son5_ort": 19.8,
+        "yuzde": 1.5,
+        "son5": [
+          {
+            "sayi": 25,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 26,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 17,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 12,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 19,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1631217": {
+      "id": 1631217,
+      "isim": "Moussa Diabaté",
+      "pos": "Center",
+      "takim": "Charlotte Hornets",
+      "takim_kod": "CHA",
+      "renk": "#4B36A8",
+      "mac_skor": "Charlotte 112 – Indiana 114",
+      "saat": "03:00",
+      "bu_gece": {
+        "pts": 10,
+        "reb": 5,
+        "ast": 1,
+        "min": "35",
+        "fg": "2/5",
+        "3p": "0/0",
+        "ft": "6/8",
+        "stl": 0,
+        "blk": 1,
+        "to": 1,
+        "pm": "-3"
+      },
+      "sezon": {
+        "sezon_ort": 8.3,
+        "son5_ort": 7.8,
+        "yuzde": -6.0,
+        "son5": [
+          {
+            "sayi": 14,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 6,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 10,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1641706": {
+      "id": 1641706,
+      "isim": "Brandon Miller",
+      "pos": "Guard",
+      "takim": "Charlotte Hornets",
+      "takim_kod": "CHA",
+      "renk": "#4B36A8",
+      "mac_skor": "Charlotte 112 – Indiana 114",
+      "saat": "03:00",
+      "bu_gece": {
+        "pts": 6,
+        "reb": 4,
+        "ast": 3,
+        "min": "19",
+        "fg": "2/8",
+        "3p": "1/5",
+        "ft": "1/2",
+        "stl": 0,
+        "blk": 2,
+        "to": 3,
+        "pm": "-7"
+      },
+      "sezon": {
+        "sezon_ort": 19.2,
+        "son5_ort": 21.6,
+        "yuzde": 12.5,
+        "son5": [
+          {
+            "sayi": 33,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 19,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 22,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 28,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 6,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1629012": {
+      "id": 1629012,
+      "isim": "Collin Sexton",
+      "pos": "Guard",
+      "takim": "Charlotte Hornets",
+      "takim_kod": "CHA",
+      "renk": "#4B36A8",
+      "mac_skor": "Charlotte 112 – Indiana 114",
+      "saat": "03:00",
+      "bu_gece": {
+        "pts": 11,
+        "reb": 0,
+        "ast": 5,
+        "min": "17",
+        "fg": "5/9",
+        "3p": "1/3",
+        "ft": "0/0",
+        "stl": 2,
+        "blk": 0,
+        "to": 3,
+        "pm": "-22"
+      },
+      "sezon": {
+        "sezon_ort": 15.2,
+        "son5_ort": 14.4,
+        "yuzde": -5.3,
+        "son5": [
+          {
+            "sayi": 16,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 13,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 10,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 22,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 11,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1630163": {
+      "id": 1630163,
+      "isim": "LaMelo Ball",
+      "pos": "",
+      "takim": "Charlotte Hornets",
+      "takim_kod": "CHA",
+      "renk": "#4B36A8",
+      "mac_skor": "Charlotte 112 – Indiana 114",
+      "saat": "03:00",
+      "bu_gece": {
+        "pts": 33,
+        "reb": 3,
+        "ast": 8,
+        "min": "26",
+        "fg": "12/24",
+        "3p": "7/15",
+        "ft": "2/2",
+        "stl": 3,
+        "blk": 0,
+        "to": 3,
+        "pm": "+19"
+      },
+      "sezon": {
+        "sezon_ort": 19.2,
+        "son5_ort": 18.6,
+        "yuzde": -3.1,
+        "son5": [
+          {
+            "sayi": 12,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 17,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 16,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 15,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 33,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1630182": {
+      "id": 1630182,
+      "isim": "Josh Green",
+      "pos": "",
+      "takim": "Charlotte Hornets",
+      "takim_kod": "CHA",
+      "renk": "#4B36A8",
+      "mac_skor": "Charlotte 112 – Indiana 114",
+      "saat": "03:00",
+      "bu_gece": {
+        "pts": 3,
+        "reb": 0,
+        "ast": 0,
+        "min": "17",
+        "fg": "1/3",
+        "3p": "1/2",
+        "ft": "0/0",
+        "stl": 1,
+        "blk": 0,
+        "to": 1,
+        "pm": "+8"
+      },
+      "sezon": {
+        "sezon_ort": 4.5,
+        "son5_ort": 1.8,
+        "yuzde": -60.0,
+        "son5": [
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 3,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 3,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 3,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1642275": {
+      "id": 1642275,
+      "isim": "Tidjane Salaün",
+      "pos": "",
+      "takim": "Charlotte Hornets",
+      "takim_kod": "CHA",
+      "renk": "#4B36A8",
+      "mac_skor": "Charlotte 112 – Indiana 114",
+      "saat": "03:00",
+      "bu_gece": {
+        "pts": 4,
+        "reb": 2,
+        "ast": 1,
+        "min": "13",
+        "fg": "2/5",
+        "3p": "0/3",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 0,
+        "pm": "+1"
+      },
+      "sezon": {
+        "sezon_ort": 6.4,
+        "son5_ort": 5.2,
+        "yuzde": -18.8,
+        "son5": [
+          {
+            "sayi": 6,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 12,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 4,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 4,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1641790": {
+      "id": 1641790,
+      "isim": "PJ Hall",
+      "pos": "",
+      "takim": "Charlotte Hornets",
+      "takim_kod": "CHA",
+      "renk": "#4B36A8",
+      "mac_skor": "Charlotte 112 – Indiana 114",
+      "saat": "03:00",
+      "bu_gece": {
+        "pts": 2,
+        "reb": 4,
+        "ast": 1,
+        "min": "10",
+        "fg": "1/2",
+        "3p": "0/0",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 2,
+        "pm": "-2"
+      },
+      "sezon": {
+        "sezon_ort": 5.3,
+        "son5_ort": 7.4,
+        "yuzde": 39.6,
+        "son5": [
+          {
+            "sayi": 4,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 10,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 13,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 8,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1642883": {
+      "id": 1642883,
+      "isim": "Sion James",
+      "pos": "",
+      "takim": "Charlotte Hornets",
+      "takim_kod": "CHA",
+      "renk": "#4B36A8",
+      "mac_skor": "Charlotte 112 – Indiana 114",
+      "saat": "03:00",
+      "bu_gece": {
+        "pts": 4,
+        "reb": 2,
+        "ast": 2,
+        "min": "22",
+        "fg": "1/3",
+        "3p": "1/3",
+        "ft": "1/2",
+        "stl": 0,
+        "blk": 0,
+        "to": 1,
+        "pm": "+3"
+      },
+      "sezon": {
+        "sezon_ort": 6.2,
+        "son5_ort": 5.4,
+        "yuzde": -12.9,
+        "son5": [
+          {
+            "sayi": 7,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 3,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 5,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 8,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 4,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1642862": {
+      "id": 1642862,
+      "isim": "Liam McNeeley",
+      "pos": "",
+      "takim": "Charlotte Hornets",
+      "takim_kod": "CHA",
+      "renk": "#4B36A8",
+      "mac_skor": "Charlotte 112 – Indiana 114",
+      "saat": "03:00",
+      "bu_gece": {
+        "pts": 2,
+        "reb": 1,
+        "ast": 1,
+        "min": "11",
+        "fg": "1/2",
+        "3p": "0/1",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 0,
+        "pm": "+7"
+      },
+      "sezon": {
+        "sezon_ort": 4.7,
+        "son5_ort": 2.4,
+        "yuzde": -48.9,
+        "son5": [
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 3,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 7,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1642277": {
+      "id": 1642277,
+      "isim": "Johnny Furphy",
+      "pos": "Forward",
+      "takim": "Indiana Pacers",
+      "takim_kod": "IND",
+      "renk": "#F2C230",
+      "mac_skor": "Charlotte 112 – Indiana 114",
+      "saat": "03:00",
+      "bu_gece": {
+        "pts": 7,
+        "reb": 6,
+        "ast": 2,
+        "min": "26",
+        "fg": "1/3",
+        "3p": "1/2",
+        "ft": "4/4",
+        "stl": 1,
+        "blk": 1,
+        "to": 1,
+        "pm": "+5"
+      },
+      "sezon": {
+        "sezon_ort": 5.2,
+        "son5_ort": 5.0,
+        "yuzde": -3.8,
+        "son5": [
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 7,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 7,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1627783": {
+      "id": 1627783,
+      "isim": "Pascal Siakam",
+      "pos": "Forward",
+      "takim": "Indiana Pacers",
+      "takim_kod": "IND",
+      "renk": "#F2C230",
+      "mac_skor": "Charlotte 112 – Indiana 114",
+      "saat": "03:00",
+      "bu_gece": {
+        "pts": 30,
+        "reb": 14,
+        "ast": 3,
+        "min": "35",
+        "fg": "12/23",
+        "3p": "3/4",
+        "ft": "3/3",
+        "stl": 0,
+        "blk": 0,
+        "to": 6,
+        "pm": "+7"
+      },
+      "sezon": {
+        "sezon_ort": 22.9,
+        "son5_ort": 27.0,
+        "yuzde": 17.9,
+        "son5": [
+          {
+            "sayi": 26,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 23,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 34,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 22,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 30,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1630643": {
+      "id": 1630643,
+      "isim": "Jay Huff",
+      "pos": "Center",
+      "takim": "Indiana Pacers",
+      "takim_kod": "IND",
+      "renk": "#F2C230",
+      "mac_skor": "Charlotte 112 – Indiana 114",
+      "saat": "03:00",
+      "bu_gece": {
+        "pts": 10,
+        "reb": 2,
+        "ast": 0,
+        "min": "24",
+        "fg": "4/4",
+        "3p": "2/2",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 3,
+        "to": 1,
+        "pm": "+13"
+      },
+      "sezon": {
+        "sezon_ort": 7.9,
+        "son5_ort": 8.6,
+        "yuzde": 8.9,
+        "son5": [
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 11,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 20,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 10,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1630174": {
+      "id": 1630174,
+      "isim": "Aaron Nesmith",
+      "pos": "Guard",
+      "takim": "Indiana Pacers",
+      "takim_kod": "IND",
+      "renk": "#F2C230",
+      "mac_skor": "Charlotte 112 – Indiana 114",
+      "saat": "03:00",
+      "bu_gece": {
+        "pts": 16,
+        "reb": 5,
+        "ast": 2,
+        "min": "35",
+        "fg": "5/12",
+        "3p": "3/7",
+        "ft": "3/3",
+        "stl": 1,
+        "blk": 1,
+        "to": 2,
+        "pm": "+17"
+      },
+      "sezon": {
+        "sezon_ort": 14.2,
+        "son5_ort": 14.6,
+        "yuzde": 2.8,
+        "son5": [
+          {
+            "sayi": 9,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 25,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 14,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 16,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1631245": {
+      "id": 1631245,
+      "isim": "Quenton Jackson",
+      "pos": "Guard",
+      "takim": "Indiana Pacers",
+      "takim_kod": "IND",
+      "renk": "#F2C230",
+      "mac_skor": "Charlotte 112 – Indiana 114",
+      "saat": "03:00",
+      "bu_gece": {
+        "pts": 4,
+        "reb": 0,
+        "ast": 5,
+        "min": "17",
+        "fg": "2/7",
+        "3p": "0/2",
+        "ft": "0/0",
+        "stl": 1,
+        "blk": 1,
+        "to": 1,
+        "pm": "-6"
+      },
+      "sezon": {
+        "sezon_ort": 7.3,
+        "son5_ort": 4.2,
+        "yuzde": -42.5,
+        "son5": [
+          {
+            "sayi": 6,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 4,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 7,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 4,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "204456": {
+      "id": 204456,
+      "isim": "T.J. McConnell",
+      "pos": "",
+      "takim": "Indiana Pacers",
+      "takim_kod": "IND",
+      "renk": "#F2C230",
+      "mac_skor": "Charlotte 112 – Indiana 114",
+      "saat": "03:00",
+      "bu_gece": {
+        "pts": 23,
+        "reb": 4,
+        "ast": 8,
+        "min": "27",
+        "fg": "10/17",
+        "3p": "1/3",
+        "ft": "2/2",
+        "stl": 4,
+        "blk": 0,
+        "to": 4,
+        "pm": "+10"
+      },
+      "sezon": {
+        "sezon_ort": 9.5,
+        "son5_ort": 11.6,
+        "yuzde": 22.1,
+        "son5": [
+          {
+            "sayi": 4,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 14,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 10,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 7,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 23,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1641767": {
+      "id": 1641767,
+      "isim": "Ben Sheppard",
+      "pos": "",
+      "takim": "Indiana Pacers",
+      "takim_kod": "IND",
+      "renk": "#F2C230",
+      "mac_skor": "Charlotte 112 – Indiana 114",
+      "saat": "03:00",
+      "bu_gece": {
+        "pts": 7,
+        "reb": 4,
+        "ast": 2,
+        "min": "26",
+        "fg": "2/4",
+        "3p": "1/3",
+        "ft": "2/3",
+        "stl": 0,
+        "blk": 0,
+        "to": 0,
+        "pm": "-16"
+      },
+      "sezon": {
+        "sezon_ort": 6.7,
+        "son5_ort": 8.2,
+        "yuzde": 22.4,
+        "son5": [
+          {
+            "sayi": 12,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 8,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 8,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 6,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 7,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1630695": {
+      "id": 1630695,
+      "isim": "Micah Potter",
+      "pos": "",
+      "takim": "Indiana Pacers",
+      "takim_kod": "IND",
+      "renk": "#F2C230",
+      "mac_skor": "Charlotte 112 – Indiana 114",
+      "saat": "03:00",
+      "bu_gece": {
+        "pts": 5,
+        "reb": 0,
+        "ast": 0,
+        "min": "8",
+        "fg": "2/4",
+        "3p": "1/2",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 0,
+        "pm": "-16"
+      },
+      "sezon": {
+        "sezon_ort": 6.5,
+        "son5_ort": 10.2,
+        "yuzde": 56.9,
+        "son5": [
+          {
+            "sayi": 8,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 16,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 11,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 11,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 5,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1642880": {
+      "id": 1642880,
+      "isim": "Kam Jones",
+      "pos": "",
+      "takim": "Indiana Pacers",
+      "takim_kod": "IND",
+      "renk": "#F2C230",
+      "mac_skor": "Charlotte 112 – Indiana 114",
+      "saat": "03:00",
+      "bu_gece": {
+        "pts": 0,
+        "reb": 0,
+        "ast": 2,
+        "min": "2",
+        "fg": "0/0",
+        "3p": "0/0",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 0,
+        "pm": "-2"
+      },
+      "sezon": {
+        "sezon_ort": 2.4,
+        "son5_ort": 1.6,
+        "yuzde": -33.3,
+        "son5": [
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 4,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1641716": {
+      "id": 1641716,
+      "isim": "Jarace Walker",
+      "pos": "",
+      "takim": "Indiana Pacers",
+      "takim_kod": "IND",
+      "renk": "#F2C230",
+      "mac_skor": "Charlotte 112 – Indiana 114",
+      "saat": "03:00",
+      "bu_gece": {
+        "pts": 2,
+        "reb": 3,
+        "ast": 1,
+        "min": "12",
+        "fg": "0/5",
+        "3p": "0/2",
+        "ft": "2/2",
+        "stl": 1,
+        "blk": 0,
+        "to": 1,
+        "pm": "-7"
+      },
+      "sezon": {
+        "sezon_ort": 9.2,
+        "son5_ort": 7.6,
+        "yuzde": -17.4,
+        "son5": [
+          {
+            "sayi": 9,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 11,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 6,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 10,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1628396": {
+      "id": 1628396,
+      "isim": "Tony Bradley",
+      "pos": "",
+      "takim": "Indiana Pacers",
+      "takim_kod": "IND",
+      "renk": "#F2C230",
+      "mac_skor": "Charlotte 112 – Indiana 114",
+      "saat": "03:00",
+      "bu_gece": {
+        "pts": 7,
+        "reb": 3,
+        "ast": 0,
+        "min": "15",
+        "fg": "3/3",
+        "3p": "0/0",
+        "ft": "1/1",
+        "stl": 1,
+        "blk": 0,
+        "to": 2,
+        "pm": "+7"
+      },
+      "sezon": {
+        "sezon_ort": 3.7,
+        "son5_ort": 2.0,
+        "yuzde": -45.9,
+        "son5": [
+          {
+            "sayi": 3,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 7,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1630679": {
+      "id": 1630679,
+      "isim": "Ethan Thompson",
+      "pos": "",
+      "takim": "Indiana Pacers",
+      "takim_kod": "IND",
+      "renk": "#F2C230",
+      "mac_skor": "Charlotte 112 – Indiana 114",
+      "saat": "03:00",
+      "bu_gece": {
+        "pts": 3,
+        "reb": 0,
+        "ast": 0,
+        "min": "8",
+        "fg": "0/0",
+        "3p": "0/0",
+        "ft": "3/3",
+        "stl": 0,
+        "blk": 0,
+        "to": 1,
+        "pm": "-2"
+      },
+      "sezon": {
+        "sezon_ort": 5.2,
+        "son5_ort": 1.4,
+        "yuzde": -73.1,
+        "son5": [
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 3,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1630183": {
+      "id": 1630183,
+      "isim": "Jaden McDaniels",
+      "pos": "Forward",
+      "takim": "Minnesota Timberwolves",
+      "takim_kod": "MIN",
+      "renk": "#3B7FD4",
+      "mac_skor": "Minnesota 131 – Cleveland 122",
+      "saat": "04:00",
+      "bu_gece": {
+        "pts": 26,
+        "reb": 5,
+        "ast": 1,
+        "min": "38",
+        "fg": "11/14",
+        "3p": "3/4",
+        "ft": "1/4",
+        "stl": 2,
+        "blk": 0,
+        "to": 1,
+        "pm": "+12"
+      },
+      "sezon": {
+        "sezon_ort": 13.9,
+        "son5_ort": 14.0,
+        "yuzde": 0.7,
+        "son5": [
+          {
+            "sayi": 8,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 5,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 12,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 19,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 26,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "203944": {
+      "id": 203944,
+      "isim": "Julius Randle",
+      "pos": "Forward",
+      "takim": "Minnesota Timberwolves",
+      "takim_kod": "MIN",
+      "renk": "#3B7FD4",
+      "mac_skor": "Minnesota 131 – Cleveland 122",
+      "saat": "04:00",
+      "bu_gece": {
+        "pts": 28,
+        "reb": 11,
+        "ast": 8,
+        "min": "35",
+        "fg": "10/21",
+        "3p": "3/7",
+        "ft": "5/6",
+        "stl": 0,
+        "blk": 0,
+        "to": 4,
+        "pm": "+31"
+      },
+      "sezon": {
+        "sezon_ort": 21.8,
+        "son5_ort": 21.4,
+        "yuzde": -1.8,
+        "son5": [
+          {
+            "sayi": 19,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 23,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 22,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 15,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 28,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "203497": {
+      "id": 203497,
+      "isim": "Rudy Gobert",
+      "pos": "Center",
+      "takim": "Minnesota Timberwolves",
+      "takim_kod": "MIN",
+      "renk": "#3B7FD4",
+      "mac_skor": "Minnesota 131 – Cleveland 122",
+      "saat": "04:00",
+      "bu_gece": {
+        "pts": 11,
+        "reb": 13,
+        "ast": 3,
+        "min": "36",
+        "fg": "5/5",
+        "3p": "0/0",
+        "ft": "1/3",
+        "stl": 2,
+        "blk": 0,
+        "to": 1,
+        "pm": "+8"
+      },
+      "sezon": {
+        "sezon_ort": 11.0,
+        "son5_ort": 12.2,
+        "yuzde": 10.9,
+        "son5": [
+          {
+            "sayi": 6,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 13,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 18,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 13,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 11,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1630162": {
+      "id": 1630162,
+      "isim": "Anthony Edwards",
+      "pos": "Guard",
+      "takim": "Minnesota Timberwolves",
+      "takim_kod": "MIN",
+      "renk": "#3B7FD4",
+      "mac_skor": "Minnesota 131 – Cleveland 122",
+      "saat": "04:00",
+      "bu_gece": {
+        "pts": 25,
+        "reb": 7,
+        "ast": 9,
+        "min": "37",
+        "fg": "10/20",
+        "3p": "4/7",
+        "ft": "1/2",
+        "stl": 1,
+        "blk": 1,
+        "to": 4,
+        "pm": "+19"
+      },
+      "sezon": {
+        "sezon_ort": 28.5,
+        "son5_ort": 29.8,
+        "yuzde": 4.6,
+        "son5": [
+          {
+            "sayi": 30,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 33,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 35,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 26,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 25,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1628978": {
+      "id": 1628978,
+      "isim": "Donte DiVincenzo",
+      "pos": "Guard",
+      "takim": "Minnesota Timberwolves",
+      "takim_kod": "MIN",
+      "renk": "#3B7FD4",
+      "mac_skor": "Minnesota 131 – Cleveland 122",
+      "saat": "04:00",
+      "bu_gece": {
+        "pts": 22,
+        "reb": 1,
+        "ast": 4,
+        "min": "34",
+        "fg": "8/13",
+        "3p": "6/10",
+        "ft": "0/0",
+        "stl": 1,
+        "blk": 0,
+        "to": 1,
+        "pm": "+15"
+      },
+      "sezon": {
+        "sezon_ort": 12.3,
+        "son5_ort": 11.2,
+        "yuzde": -8.9,
+        "son5": [
+          {
+            "sayi": 6,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 11,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 5,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 12,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 22,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "201144": {
+      "id": 201144,
+      "isim": "Mike Conley",
+      "pos": "",
+      "takim": "Minnesota Timberwolves",
+      "takim_kod": "MIN",
+      "renk": "#3B7FD4",
+      "mac_skor": "Minnesota 131 – Cleveland 122",
+      "saat": "04:00",
+      "bu_gece": {
+        "pts": 3,
+        "reb": 1,
+        "ast": 2,
+        "min": "14",
+        "fg": "1/2",
+        "3p": "1/2",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 1,
+        "pm": "-6"
+      },
+      "sezon": {
+        "sezon_ort": 4.9,
+        "son5_ort": 4.0,
+        "yuzde": -18.4,
+        "son5": [
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 5,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 7,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 3,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 3,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1629675": {
+      "id": 1629675,
+      "isim": "Naz Reid",
+      "pos": "",
+      "takim": "Minnesota Timberwolves",
+      "takim_kod": "MIN",
+      "renk": "#3B7FD4",
+      "mac_skor": "Minnesota 131 – Cleveland 122",
+      "saat": "04:00",
+      "bu_gece": {
+        "pts": 9,
+        "reb": 6,
+        "ast": 3,
+        "min": "23",
+        "fg": "3/6",
+        "3p": "2/4",
+        "ft": "1/2",
+        "stl": 1,
+        "blk": 1,
+        "to": 4,
+        "pm": "-21"
+      },
+      "sezon": {
+        "sezon_ort": 13.9,
+        "son5_ort": 13.4,
+        "yuzde": -3.6,
+        "son5": [
+          {
+            "sayi": 6,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 29,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 14,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1641740": {
+      "id": 1641740,
+      "isim": "Jaylen Clark",
+      "pos": "",
+      "takim": "Minnesota Timberwolves",
+      "takim_kod": "MIN",
+      "renk": "#3B7FD4",
+      "mac_skor": "Minnesota 131 – Cleveland 122",
+      "saat": "04:00",
+      "bu_gece": {
+        "pts": 5,
+        "reb": 0,
+        "ast": 0,
+        "min": "10",
+        "fg": "2/4",
+        "3p": "1/1",
+        "ft": "0/0",
+        "stl": 1,
+        "blk": 0,
+        "to": 1,
+        "pm": "-6"
+      },
+      "sezon": {
+        "sezon_ort": 4.5,
+        "son5_ort": 4.8,
+        "yuzde": 6.7,
+        "son5": [
+          {
+            "sayi": 3,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 12,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 5,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1630538": {
+      "id": 1630538,
+      "isim": "Bones Hyland",
+      "pos": "",
+      "takim": "Minnesota Timberwolves",
+      "takim_kod": "MIN",
+      "renk": "#3B7FD4",
+      "mac_skor": "Minnesota 131 – Cleveland 122",
+      "saat": "04:00",
+      "bu_gece": {
+        "pts": 2,
+        "reb": 1,
+        "ast": 3,
+        "min": "9",
+        "fg": "1/4",
+        "3p": "0/3",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 0,
+        "pm": "-7"
+      },
+      "sezon": {
+        "sezon_ort": 6.7,
+        "son5_ort": 3.8,
+        "yuzde": -43.3,
+        "son5": [
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 4,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 7,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 6,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1628378": {
+      "id": 1628378,
+      "isim": "Donovan Mitchell",
+      "pos": "Forward",
+      "takim": "Cleveland Cavaliers",
+      "takim_kod": "CLE",
+      "renk": "#B3123F",
+      "mac_skor": "Minnesota 131 – Cleveland 122",
+      "saat": "04:00",
+      "bu_gece": {
+        "pts": 30,
+        "reb": 7,
+        "ast": 8,
+        "min": "36",
+        "fg": "10/20",
+        "3p": "2/8",
+        "ft": "8/9",
+        "stl": 1,
+        "blk": 0,
+        "to": 4,
+        "pm": "+4"
+      },
+      "sezon": {
+        "sezon_ort": 28.6,
+        "son5_ort": 27.4,
+        "yuzde": -4.2,
+        "son5": [
+          {
+            "sayi": 10,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 34,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 33,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 30,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 30,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1630596": {
+      "id": 1630596,
+      "isim": "Evan Mobley",
+      "pos": "Forward",
+      "takim": "Cleveland Cavaliers",
+      "takim_kod": "CLE",
+      "renk": "#B3123F",
+      "mac_skor": "Minnesota 131 – Cleveland 122",
+      "saat": "04:00",
+      "bu_gece": {
+        "pts": 19,
+        "reb": 4,
+        "ast": 3,
+        "min": "37",
+        "fg": "8/11",
+        "3p": "3/5",
+        "ft": "0/1",
+        "stl": 0,
+        "blk": 1,
+        "to": 3,
+        "pm": "+2"
+      },
+      "sezon": {
+        "sezon_ort": 17.5,
+        "son5_ort": 15.6,
+        "yuzde": -10.9,
+        "son5": [
+          {
+            "sayi": 16,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 8,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 15,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 20,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 19,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1628386": {
+      "id": 1628386,
+      "isim": "Jarrett Allen",
+      "pos": "Center",
+      "takim": "Cleveland Cavaliers",
+      "takim_kod": "CLE",
+      "renk": "#B3123F",
+      "mac_skor": "Minnesota 131 – Cleveland 122",
+      "saat": "04:00",
+      "bu_gece": {
+        "pts": 11,
+        "reb": 10,
+        "ast": 1,
+        "min": "29",
+        "fg": "5/9",
+        "3p": "0/0",
+        "ft": "1/2",
+        "stl": 2,
+        "blk": 0,
+        "to": 0,
+        "pm": "-29"
+      },
+      "sezon": {
+        "sezon_ort": 13.3,
+        "son5_ort": 16.2,
+        "yuzde": 21.8,
+        "son5": [
+          {
+            "sayi": 27,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 16,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 8,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 19,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 11,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1641854": {
+      "id": 1641854,
+      "isim": "Craig Porter Jr.",
+      "pos": "Guard",
+      "takim": "Cleveland Cavaliers",
+      "takim_kod": "CLE",
+      "renk": "#B3123F",
+      "mac_skor": "Minnesota 131 – Cleveland 122",
+      "saat": "04:00",
+      "bu_gece": {
+        "pts": 4,
+        "reb": 1,
+        "ast": 2,
+        "min": "14",
+        "fg": "2/5",
+        "3p": "0/1",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 1,
+        "to": 0,
+        "pm": "-17"
+      },
+      "sezon": {
+        "sezon_ort": 5.3,
+        "son5_ort": 5.2,
+        "yuzde": -1.9,
+        "son5": [
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 10,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 8,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 4,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1629636": {
+      "id": 1629636,
+      "isim": "Darius Garland",
+      "pos": "Guard",
+      "takim": "Cleveland Cavaliers",
+      "takim_kod": "CLE",
+      "renk": "#B3123F",
+      "mac_skor": "Minnesota 131 – Cleveland 122",
+      "saat": "04:00",
+      "bu_gece": {
+        "pts": 16,
+        "reb": 1,
+        "ast": 8,
+        "min": "36",
+        "fg": "7/16",
+        "3p": "1/4",
+        "ft": "1/4",
+        "stl": 2,
+        "blk": 0,
+        "to": 2,
+        "pm": "-24"
+      },
+      "sezon": {
+        "sezon_ort": 17.5,
+        "son5_ort": 19.6,
+        "yuzde": 12.0,
+        "son5": [
+          {
+            "sayi": 19,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 18,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 16,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 29,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 16,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1629631": {
+      "id": 1629631,
+      "isim": "De'Andre Hunter",
+      "pos": "",
+      "takim": "Cleveland Cavaliers",
+      "takim_kod": "CLE",
+      "renk": "#B3123F",
+      "mac_skor": "Minnesota 131 – Cleveland 122",
+      "saat": "04:00",
+      "bu_gece": {
+        "pts": 14,
+        "reb": 7,
+        "ast": 4,
+        "min": "27",
+        "fg": "6/11",
+        "3p": "0/3",
+        "ft": "2/2",
+        "stl": 2,
+        "blk": 0,
+        "to": 2,
+        "pm": "+13"
+      },
+      "sezon": {
+        "sezon_ort": 14.8,
+        "son5_ort": 13.4,
+        "yuzde": -9.5,
+        "son5": [
+          {
+            "sayi": 11,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 16,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 14,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 12,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 14,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1642281": {
+      "id": 1642281,
+      "isim": "Jaylon Tyson",
+      "pos": "",
+      "takim": "Cleveland Cavaliers",
+      "takim_kod": "CLE",
+      "renk": "#B3123F",
+      "mac_skor": "Minnesota 131 – Cleveland 122",
+      "saat": "04:00",
+      "bu_gece": {
+        "pts": 4,
+        "reb": 5,
+        "ast": 1,
+        "min": "18",
+        "fg": "2/5",
+        "3p": "0/1",
+        "ft": "0/0",
+        "stl": 1,
+        "blk": 0,
+        "to": 1,
+        "pm": "-5"
+      },
+      "sezon": {
+        "sezon_ort": 12.3,
+        "son5_ort": 7.8,
+        "yuzde": -36.6,
+        "son5": [
+          {
+            "sayi": 18,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 8,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 6,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 3,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 4,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1630241": {
+      "id": 1630241,
+      "isim": "Sam Merrill",
+      "pos": "",
+      "takim": "Cleveland Cavaliers",
+      "takim_kod": "CLE",
+      "renk": "#B3123F",
+      "mac_skor": "Minnesota 131 – Cleveland 122",
+      "saat": "04:00",
+      "bu_gece": {
+        "pts": 22,
+        "reb": 2,
+        "ast": 3,
+        "min": "30",
+        "fg": "7/13",
+        "3p": "5/11",
+        "ft": "3/3",
+        "stl": 1,
+        "blk": 0,
+        "to": 0,
+        "pm": "+6"
+      },
+      "sezon": {
+        "sezon_ort": 13.4,
+        "son5_ort": 15.4,
+        "yuzde": 14.9,
+        "son5": [
+          {
+            "sayi": 5,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 16,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 15,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 19,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 22,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1641772": {
+      "id": 1641772,
+      "isim": "Nae'Qwan Tomlin",
+      "pos": "",
+      "takim": "Cleveland Cavaliers",
+      "takim_kod": "CLE",
+      "renk": "#B3123F",
+      "mac_skor": "Minnesota 131 – Cleveland 122",
+      "saat": "04:00",
+      "bu_gece": {
+        "pts": 2,
+        "reb": 1,
+        "ast": 1,
+        "min": "7",
+        "fg": "1/1",
+        "3p": "0/0",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 0,
+        "pm": "+5"
+      },
+      "sezon": {
+        "sezon_ort": 6.2,
+        "son5_ort": 4.0,
+        "yuzde": -35.5,
+        "son5": [
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 6,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 5,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 7,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1642262": {
+      "id": 1642262,
+      "isim": "Cody Williams",
+      "pos": "Forward",
+      "takim": "Utah Jazz",
+      "takim_kod": "UTA",
+      "renk": "#3E7A5E",
+      "mac_skor": "Utah 116 – Dallas 114",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 8,
+        "reb": 3,
+        "ast": 4,
+        "min": "22",
+        "fg": "4/5",
+        "3p": "0/1",
+        "ft": "0/0",
+        "stl": 2,
+        "blk": 0,
+        "to": 0,
+        "pm": "+2"
+      },
+      "sezon": {
+        "sezon_ort": 4.5,
+        "son5_ort": 9.0,
+        "yuzde": 100.0,
+        "son5": [
+          {
+            "sayi": 18,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 6,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 8,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 5,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 8,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1628374": {
+      "id": 1628374,
+      "isim": "Lauri Markkanen",
+      "pos": "Forward",
+      "takim": "Utah Jazz",
+      "takim_kod": "UTA",
+      "renk": "#3E7A5E",
+      "mac_skor": "Utah 116 – Dallas 114",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 33,
+        "reb": 7,
+        "ast": 4,
+        "min": "39",
+        "fg": "14/26",
+        "3p": "2/8",
+        "ft": "3/6",
+        "stl": 0,
+        "blk": 2,
+        "to": 3,
+        "pm": "+7"
+      },
+      "sezon": {
+        "sezon_ort": 26.8,
+        "son5_ort": 28.2,
+        "yuzde": 5.2,
+        "son5": [
+          {
+            "sayi": 22,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 35,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 22,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 29,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 33,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "201567": {
+      "id": 201567,
+      "isim": "Kevin Love",
+      "pos": "Center",
+      "takim": "Utah Jazz",
+      "takim_kod": "UTA",
+      "renk": "#3E7A5E",
+      "mac_skor": "Utah 116 – Dallas 114",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 10,
+        "reb": 10,
+        "ast": 2,
+        "min": "23",
+        "fg": "3/11",
+        "3p": "1/6",
+        "ft": "3/3",
+        "stl": 0,
+        "blk": 0,
+        "to": 0,
+        "pm": "+13"
+      },
+      "sezon": {
+        "sezon_ort": 7.2,
+        "son5_ort": 10.2,
+        "yuzde": 41.7,
+        "son5": [
+          {
+            "sayi": 16,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 6,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 14,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 5,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 10,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1641729": {
+      "id": 1641729,
+      "isim": "Brice Sensabaugh",
+      "pos": "Guard",
+      "takim": "Utah Jazz",
+      "takim_kod": "UTA",
+      "renk": "#3E7A5E",
+      "mac_skor": "Utah 116 – Dallas 114",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 14,
+        "reb": 5,
+        "ast": 3,
+        "min": "30",
+        "fg": "6/12",
+        "3p": "2/6",
+        "ft": "0/0",
+        "stl": 1,
+        "blk": 0,
+        "to": 0,
+        "pm": "-4"
+      },
+      "sezon": {
+        "sezon_ort": 10.7,
+        "son5_ort": 13.4,
+        "yuzde": 25.2,
+        "son5": [
+          {
+            "sayi": 20,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 12,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 8,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 13,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 14,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1641718": {
+      "id": 1641718,
+      "isim": "Keyonte George",
+      "pos": "Guard",
+      "takim": "Utah Jazz",
+      "takim_kod": "UTA",
+      "renk": "#3E7A5E",
+      "mac_skor": "Utah 116 – Dallas 114",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 19,
+        "reb": 3,
+        "ast": 7,
+        "min": "36",
+        "fg": "8/12",
+        "3p": "1/4",
+        "ft": "2/3",
+        "stl": 3,
+        "blk": 0,
+        "to": 0,
+        "pm": "-1"
+      },
+      "sezon": {
+        "sezon_ort": 23.3,
+        "son5_ort": 23.6,
+        "yuzde": 1.3,
+        "son5": [
+          {
+            "sayi": 37,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 22,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 15,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 25,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 19,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1642271": {
+      "id": 1642271,
+      "isim": "Kyle Filipowski",
+      "pos": "",
+      "takim": "Utah Jazz",
+      "takim_kod": "UTA",
+      "renk": "#3E7A5E",
+      "mac_skor": "Utah 116 – Dallas 114",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 8,
+        "reb": 4,
+        "ast": 1,
+        "min": "17",
+        "fg": "3/5",
+        "3p": "1/1",
+        "ft": "1/2",
+        "stl": 1,
+        "blk": 0,
+        "to": 2,
+        "pm": "+1"
+      },
+      "sezon": {
+        "sezon_ort": 9.1,
+        "son5_ort": 6.8,
+        "yuzde": -25.3,
+        "son5": [
+          {
+            "sayi": 4,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 7,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 13,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 8,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1642268": {
+      "id": 1642268,
+      "isim": "Isaiah Collier",
+      "pos": "",
+      "takim": "Utah Jazz",
+      "takim_kod": "UTA",
+      "renk": "#3E7A5E",
+      "mac_skor": "Utah 116 – Dallas 114",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 7,
+        "reb": 1,
+        "ast": 6,
+        "min": "18",
+        "fg": "3/5",
+        "3p": "1/2",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 1,
+        "to": 4,
+        "pm": "-10"
+      },
+      "sezon": {
+        "sezon_ort": 8.4,
+        "son5_ort": 9.4,
+        "yuzde": 11.9,
+        "son5": [
+          {
+            "sayi": 16,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 8,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 10,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 6,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 7,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "203937": {
+      "id": 203937,
+      "isim": "Kyle Anderson",
+      "pos": "",
+      "takim": "Utah Jazz",
+      "takim_kod": "UTA",
+      "renk": "#3E7A5E",
+      "mac_skor": "Utah 116 – Dallas 114",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 2,
+        "reb": 7,
+        "ast": 2,
+        "min": "26",
+        "fg": "1/5",
+        "3p": "0/0",
+        "ft": "0/0",
+        "stl": 2,
+        "blk": 0,
+        "to": 0,
+        "pm": "-4"
+      },
+      "sezon": {
+        "sezon_ort": 7.0,
+        "son5_ort": 7.8,
+        "yuzde": 11.4,
+        "son5": [
+          {
+            "sayi": 8,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 7,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 22,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1641707": {
+      "id": 1641707,
+      "isim": "Taylor Hendricks",
+      "pos": "",
+      "takim": "Utah Jazz",
+      "takim_kod": "UTA",
+      "renk": "#3E7A5E",
+      "mac_skor": "Utah 116 – Dallas 114",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 3,
+        "reb": 2,
+        "ast": 0,
+        "min": "4",
+        "fg": "1/4",
+        "3p": "1/4",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 0,
+        "pm": "-4"
+      },
+      "sezon": {
+        "sezon_ort": 6.5,
+        "son5_ort": 4.2,
+        "yuzde": -35.4,
+        "son5": [
+          {
+            "sayi": 5,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 1,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 7,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 5,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 3,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1642383": {
+      "id": 1642383,
+      "isim": "Walter Clayton Jr.",
+      "pos": "",
+      "takim": "Utah Jazz",
+      "takim_kod": "UTA",
+      "renk": "#3E7A5E",
+      "mac_skor": "Utah 116 – Dallas 114",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 12,
+        "reb": 0,
+        "ast": 3,
+        "min": "21",
+        "fg": "4/10",
+        "3p": "4/9",
+        "ft": "0/0",
+        "stl": 2,
+        "blk": 0,
+        "to": 0,
+        "pm": "+10"
+      },
+      "sezon": {
+        "sezon_ort": 7.2,
+        "son5_ort": 9.8,
+        "yuzde": 36.1,
+        "son5": [
+          {
+            "sayi": 9,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 8,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 5,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 15,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 12,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1642843": {
+      "id": 1642843,
+      "isim": "Cooper Flagg",
+      "pos": "Forward",
+      "takim": "Dallas Mavericks",
+      "takim_kod": "DAL",
+      "renk": "#2E7BC4",
+      "mac_skor": "Utah 116 – Dallas 114",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 26,
+        "reb": 10,
+        "ast": 8,
+        "min": "37",
+        "fg": "10/18",
+        "3p": "3/6",
+        "ft": "3/4",
+        "stl": 3,
+        "blk": 1,
+        "to": 3,
+        "pm": "+3"
+      },
+      "sezon": {
+        "sezon_ort": 18.2,
+        "son5_ort": 16.6,
+        "yuzde": -8.8,
+        "son5": [
+          {
+            "sayi": 15,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 12,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 10,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 20,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 26,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "203076": {
+      "id": 203076,
+      "isim": "Anthony Davis",
+      "pos": "Forward",
+      "takim": "Dallas Mavericks",
+      "takim_kod": "DAL",
+      "renk": "#2E7BC4",
+      "mac_skor": "Utah 116 – Dallas 114",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 21,
+        "reb": 11,
+        "ast": 4,
+        "min": "35",
+        "fg": "10/20",
+        "3p": "0/2",
+        "ft": "1/1",
+        "stl": 1,
+        "blk": 1,
+        "to": 2,
+        "pm": "-6"
+      },
+      "sezon": {
+        "sezon_ort": 19.5,
+        "son5_ort": 16.4,
+        "yuzde": -15.9,
+        "son5": [
+          {
+            "sayi": 3,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 13,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 26,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 19,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 21,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1629655": {
+      "id": 1629655,
+      "isim": "Daniel Gafford",
+      "pos": "Center",
+      "takim": "Dallas Mavericks",
+      "takim_kod": "DAL",
+      "renk": "#2E7BC4",
+      "mac_skor": "Utah 116 – Dallas 114",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 0,
+        "reb": 7,
+        "ast": 0,
+        "min": "25",
+        "fg": "0/0",
+        "3p": "0/0",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 2,
+        "pm": "+0"
+      },
+      "sezon": {
+        "sezon_ort": 8.3,
+        "son5_ort": 8.8,
+        "yuzde": 6.0,
+        "son5": [
+          {
+            "sayi": 17,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 8,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 10,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1630230": {
+      "id": 1630230,
+      "isim": "Naji Marshall",
+      "pos": "Guard",
+      "takim": "Dallas Mavericks",
+      "takim_kod": "DAL",
+      "renk": "#2E7BC4",
+      "mac_skor": "Utah 116 – Dallas 114",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 17,
+        "reb": 2,
+        "ast": 4,
+        "min": "36",
+        "fg": "7/11",
+        "3p": "2/5",
+        "ft": "1/2",
+        "stl": 0,
+        "blk": 0,
+        "to": 1,
+        "pm": "-9"
+      },
+      "sezon": {
+        "sezon_ort": 12.9,
+        "son5_ort": 13.6,
+        "yuzde": 5.4,
+        "son5": [
+          {
+            "sayi": 17,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 10,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 15,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 17,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1631108": {
+      "id": 1631108,
+      "isim": "Max Christie",
+      "pos": "Guard",
+      "takim": "Dallas Mavericks",
+      "takim_kod": "DAL",
+      "renk": "#2E7BC4",
+      "mac_skor": "Utah 116 – Dallas 114",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 16,
+        "reb": 4,
+        "ast": 4,
+        "min": "31",
+        "fg": "5/9",
+        "3p": "3/6",
+        "ft": "3/3",
+        "stl": 0,
+        "blk": 0,
+        "to": 1,
+        "pm": "-10"
+      },
+      "sezon": {
+        "sezon_ort": 11.8,
+        "son5_ort": 18.8,
+        "yuzde": 59.3,
+        "son5": [
+          {
+            "sayi": 25,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 18,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 24,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 11,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 16,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1630314": {
+      "id": 1630314,
+      "isim": "Brandon Williams",
+      "pos": "",
+      "takim": "Dallas Mavericks",
+      "takim_kod": "DAL",
+      "renk": "#2E7BC4",
+      "mac_skor": "Utah 116 – Dallas 114",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 2,
+        "reb": 3,
+        "ast": 1,
+        "min": "8",
+        "fg": "1/4",
+        "3p": "0/2",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 3,
+        "pm": "-8"
+      },
+      "sezon": {
+        "sezon_ort": 11.6,
+        "son5_ort": 14.2,
+        "yuzde": 22.4,
+        "son5": [
+          {
+            "sayi": 22,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 14,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 15,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 18,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "202691": {
+      "id": 202691,
+      "isim": "Klay Thompson",
+      "pos": "",
+      "takim": "Dallas Mavericks",
+      "takim_kod": "DAL",
+      "renk": "#2E7BC4",
+      "mac_skor": "Utah 116 – Dallas 114",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 23,
+        "reb": 3,
+        "ast": 5,
+        "min": "28",
+        "fg": "7/13",
+        "3p": "6/11",
+        "ft": "3/3",
+        "stl": 0,
+        "blk": 0,
+        "to": 3,
+        "pm": "+3"
+      },
+      "sezon": {
+        "sezon_ort": 10.7,
+        "son5_ort": 12.2,
+        "yuzde": 14.0,
+        "son5": [
+          {
+            "sayi": 14,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 6,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 23,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1628997": {
+      "id": 1628997,
+      "isim": "Caleb Martin",
+      "pos": "",
+      "takim": "Dallas Mavericks",
+      "takim_kod": "DAL",
+      "renk": "#2E7BC4",
+      "mac_skor": "Utah 116 – Dallas 114",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 2,
+        "reb": 5,
+        "ast": 0,
+        "min": "13",
+        "fg": "1/2",
+        "3p": "0/0",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 2,
+        "pm": "+4"
+      },
+      "sezon": {
+        "sezon_ort": 1.6,
+        "son5_ort": 1.4,
+        "yuzde": -12.5,
+        "son5": [
+          {
+            "sayi": 2,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 1,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 2,
+            "ust": true,
+            "bu_gece": true
+          }
+        ]
+      }
+    },
+    "1642948": {
+      "id": 1642948,
+      "isim": "Ryan Nembhard",
+      "pos": "",
+      "takim": "Dallas Mavericks",
+      "takim_kod": "DAL",
+      "renk": "#2E7BC4",
+      "mac_skor": "Utah 116 – Dallas 114",
+      "saat": "05:00",
+      "bu_gece": {
+        "pts": 7,
+        "reb": 2,
+        "ast": 4,
+        "min": "21",
+        "fg": "3/8",
+        "3p": "1/4",
+        "ft": "0/0",
+        "stl": 0,
+        "blk": 0,
+        "to": 3,
+        "pm": "+13"
+      },
+      "sezon": {
+        "sezon_ort": 7.0,
+        "son5_ort": 4.2,
+        "yuzde": -40.0,
+        "son5": [
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 9,
+            "ust": true,
+            "bu_gece": false
+          },
+          {
+            "sayi": 5,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 0,
+            "ust": false,
+            "bu_gece": false
+          },
+          {
+            "sayi": 7,
+            "ust": false,
+            "bu_gece": true
+          }
+        ]
+      }
+    }
+  },
+  "yukselen": [
+    {
+      "id": 1630192,
+      "isim": "Zeke Nnaji",
+      "takim": "DEN",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 4,
+          "rakip": "Miami",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 13,
+          "rakip": "Cleveland",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 4,
+          "rakip": "Brooklyn",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 21,
+          "rakip": "Philadelphia",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 12,
+          "rakip": "Boston",
+          "bu_gece": false,
+          "ust": true
+        }
+      ],
+      "son5_ort": 10.8,
+      "sezon_ort": 3.6,
+      "taban": "bu_sezon",
+      "fark": 7.2,
+      "yuzde": 200.0,
+      "ust_sayisi": 5,
+      "alt_sayisi": 0,
+      "son5_dakika": 21.6,
+      "renk": "#FEC524",
+      "asil_renk": "#FEC524",
+      "renk_degisti": false
+    },
+    {
+      "id": 1629618,
+      "isim": "Jalen Pickett",
+      "takim": "DEN",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 10,
+          "rakip": "Toronto",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 9,
+          "rakip": "Cleveland",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 3,
+          "rakip": "Brooklyn",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 29,
+          "rakip": "Philadelphia",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 7,
+          "rakip": "Boston",
+          "bu_gece": false,
+          "ust": true
+        }
+      ],
+      "son5_ort": 11.6,
+      "sezon_ort": 5.3,
+      "taban": "bu_sezon",
+      "fark": 6.3,
+      "yuzde": 118.9,
+      "ust_sayisi": 4,
+      "alt_sayisi": 1,
+      "son5_dakika": 24.7,
+      "renk": "#FEC524",
+      "asil_renk": "#FEC524",
+      "renk_degisti": false
+    },
+    {
+      "id": 1631212,
+      "isim": "Peyton Watson",
+      "takim": "DEN",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 24,
+          "rakip": "Toronto",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 21,
+          "rakip": "Cleveland",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 23,
+          "rakip": "Brooklyn",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 24,
+          "rakip": "Philadelphia",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 30,
+          "rakip": "Boston",
+          "bu_gece": false,
+          "ust": true
+        }
+      ],
+      "son5_ort": 24.4,
+      "sezon_ort": 12.3,
+      "taban": "bu_sezon",
+      "fark": 12.1,
+      "yuzde": 98.4,
+      "ust_sayisi": 5,
+      "alt_sayisi": 0,
+      "son5_dakika": 37.3,
+      "renk": "#FEC524",
+      "asil_renk": "#FEC524",
+      "renk_degisti": false
+    },
+    {
+      "id": 203994,
+      "isim": "Jusuf Nurkić",
+      "takim": "UTA",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 16,
+          "rakip": "Detroit",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 16,
+          "rakip": "San Antonio",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 26,
+          "rakip": "Boston",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 21,
+          "rakip": "Portland",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 15,
+          "rakip": "Oklahoma City",
+          "bu_gece": false,
+          "ust": true
+        }
+      ],
+      "son5_ort": 18.8,
+      "sezon_ort": 10.6,
+      "taban": "bu_sezon",
+      "fark": 8.2,
+      "yuzde": 77.4,
+      "ust_sayisi": 5,
+      "alt_sayisi": 0,
+      "son5_dakika": 31.0,
+      "renk": "#3E7A5E",
+      "asil_renk": "#3E7A5E",
+      "renk_degisti": false
+    },
+    {
+      "id": 1629750,
+      "isim": "Javonte Green",
+      "takim": "DET",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 8,
+          "rakip": "Los Angeles",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 11,
+          "rakip": "Miami",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 11,
+          "rakip": "Cleveland",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 17,
+          "rakip": "New York",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 11,
+          "rakip": "Chicago",
+          "bu_gece": false,
+          "ust": true
+        }
+      ],
+      "son5_ort": 11.6,
+      "sezon_ort": 6.9,
+      "taban": "bu_sezon",
+      "fark": 4.7,
+      "yuzde": 68.1,
+      "ust_sayisi": 5,
+      "alt_sayisi": 0,
+      "son5_dakika": 27.3,
+      "renk": "#E0384A",
+      "asil_renk": "#E0384A",
+      "renk_degisti": false
+    }
+  ],
+  "dusen": [
+    {
+      "id": 1631166,
+      "isim": "Drew Timme",
+      "takim": "BKN",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 2,
+          "rakip": "Phoenix",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 2,
+          "rakip": "LA Clippers",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 0,
+          "rakip": "Boston",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 0,
+          "rakip": "Sacramento",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 0,
+          "rakip": "San Antonio",
+          "bu_gece": false,
+          "ust": false
+        }
+      ],
+      "son5_ort": 0.8,
+      "sezon_ort": 12.1,
+      "taban": "gecen_sezon",
+      "fark": -11.3,
+      "yuzde": -93.4,
+      "ust_sayisi": 0,
+      "alt_sayisi": 5,
+      "son5_dakika": 4.7,
+      "renk": "#8A8F98",
+      "asil_renk": "#8A8F98",
+      "renk_degisti": false
+    },
+    {
+      "id": 1642449,
+      "isim": "Tolu Smith",
+      "takim": "DET",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 0,
+          "rakip": "Washington",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 11,
+          "rakip": "Cleveland",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 6,
+          "rakip": "Chicago",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 0,
+          "rakip": "New York",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 0,
+          "rakip": "Chicago",
+          "bu_gece": false,
+          "ust": false
+        }
+      ],
+      "son5_ort": 3.4,
+      "sezon_ort": 14.0,
+      "taban": "gecen_sezon",
+      "fark": -10.6,
+      "yuzde": -75.7,
+      "ust_sayisi": 0,
+      "alt_sayisi": 5,
+      "son5_dakika": 7.2,
+      "renk": "#1A5FB4",
+      "asil_renk": "#E0384A",
+      "renk_degisti": true
+    },
+    {
+      "id": 1629632,
+      "isim": "Coby White",
+      "takim": "CHI",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 24,
+          "rakip": "Atlanta",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 13,
+          "rakip": "Philadelphia",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 16,
+          "rakip": "Milwaukee",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 0,
+          "rakip": "Minnesota",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 5,
+          "rakip": "Boston",
+          "bu_gece": false,
+          "ust": false
+        }
+      ],
+      "son5_ort": 11.6,
+      "sezon_ort": 18.4,
+      "taban": "bu_sezon",
+      "fark": -6.8,
+      "yuzde": -37.0,
+      "ust_sayisi": 1,
+      "alt_sayisi": 4,
+      "son5_dakika": 24.2,
+      "renk": "#3A3E45",
+      "asil_renk": "#CE1141",
+      "renk_degisti": true
+    },
+    {
+      "id": 1642281,
+      "isim": "Jaylon Tyson",
+      "takim": "CLE",
+      "pos": "",
+      "_gmsc": 3.8999999999999995,
+      "son5": [
+        {
+          "sayi": 18,
+          "rakip": "Phoenix",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 8,
+          "rakip": "Denver",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 6,
+          "rakip": "Detroit",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 3,
+          "rakip": "Indiana",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 4,
+          "rakip": "Minnesota",
+          "bu_gece": true,
+          "ust": false
+        }
+      ],
+      "son5_ort": 7.8,
+      "sezon_ort": 12.3,
+      "taban": "bu_sezon",
+      "fark": -4.5,
+      "yuzde": -36.6,
+      "ust_sayisi": 1,
+      "alt_sayisi": 4,
+      "son5_dakika": 25.2,
+      "renk": "#B3123F",
+      "asil_renk": "#B3123F",
+      "renk_degisti": false
+    },
+    {
+      "id": 203084,
+      "isim": "Harrison Barnes",
+      "takim": "SAS",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 7,
+          "rakip": "New York",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 5,
+          "rakip": "Indiana",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 14,
+          "rakip": "Portland",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 2,
+          "rakip": "Memphis",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 7,
+          "rakip": "Los Angeles",
+          "bu_gece": false,
+          "ust": false
+        }
+      ],
+      "son5_ort": 7.0,
+      "sezon_ort": 11.0,
+      "taban": "bu_sezon",
+      "fark": -4.0,
+      "yuzde": -36.4,
+      "ust_sayisi": 1,
+      "alt_sayisi": 4,
+      "son5_dakika": 25.8,
+      "renk": "#C4CED4",
+      "asil_renk": "#C4CED4",
+      "renk_degisti": false
+    }
+  ],
+  "siralama": [
+    {
+      "takim": "MIN",
+      "takim_adi": "Minnesota Timberwolves",
+      "eski": 5,
+      "yeni": 4,
+      "degisim": 1,
+      "konferans": "Batı",
+      "form": [
+        {
+          "g": true,
+          "rakip": "Milwaukee",
+          "skor": "103-100"
+        },
+        {
+          "g": true,
+          "rakip": "New York",
+          "skor": "115-104"
+        },
+        {
+          "g": false,
+          "rakip": "Denver",
+          "skor": "138-142"
+        },
+        {
+          "g": false,
+          "rakip": "Brooklyn",
+          "skor": "107-123"
+        },
+        {
+          "g": true,
+          "rakip": "Chicago",
+          "skor": "136-101"
+        },
+        {
+          "g": false,
+          "rakip": "Atlanta",
+          "skor": "102-126"
+        },
+        {
+          "g": true,
+          "rakip": "Miami",
+          "skor": "125-115"
+        },
+        {
+          "g": true,
+          "rakip": "Washington",
+          "skor": "141-115"
+        },
+        {
+          "g": true,
+          "rakip": "Miami",
+          "skor": "122-94"
+        },
+        {
+          "g": true,
+          "rakip": "Cleveland",
+          "skor": "131-122"
+        }
+      ]
+    },
+    {
+      "takim": "CLE",
+      "takim_adi": "Cleveland Cavaliers",
+      "eski": 6,
+      "yeni": 8,
+      "degisim": -2,
+      "konferans": "Doğu",
+      "form": [
+        {
+          "g": true,
+          "rakip": "Charlotte",
+          "skor": "139-132"
+        },
+        {
+          "g": true,
+          "rakip": "New Orleans",
+          "skor": "141-118"
+        },
+        {
+          "g": false,
+          "rakip": "New York",
+          "skor": "124-126"
+        },
+        {
+          "g": false,
+          "rakip": "Houston",
+          "skor": "100-117"
+        },
+        {
+          "g": true,
+          "rakip": "San Antonio",
+          "skor": "113-101"
+        },
+        {
+          "g": true,
+          "rakip": "Phoenix",
+          "skor": "129-113"
+        },
+        {
+          "g": true,
+          "rakip": "Denver",
+          "skor": "113-108"
+        },
+        {
+          "g": false,
+          "rakip": "Detroit",
+          "skor": "110-114"
+        },
+        {
+          "g": true,
+          "rakip": "Indiana",
+          "skor": "120-116"
+        },
+        {
+          "g": false,
+          "rakip": "Minnesota",
+          "skor": "122-131"
+        }
+      ]
     }
   ],
   "degerse_bak": [
     {
       "id": "a-0022500531",
+      "mac_id": "0022500531",
       "mac": "Utah Jazz — Dallas Mavericks",
       "skor": "116–114",
-      "rozet": 6.76,
+      "rozet": 7.76,
       "why": "lider değişim 15",
       "metin": "Liderliğin 15 kez el değiştirdiği maçta Utah Jazz, Dallas Mavericks'i 116-114 yendi.",
       "box": {
         "ev": {
           "takim": "Utah Jazz",
+          "kod": "UTA",
+          "renk": "#3E7A5E",
+          "skor": 116,
+          "oynamayanlar": [
+            "Svi Mykhailiuk",
+            "Oscar Tshiebwe"
+          ],
           "oyuncular": [
             {
+              "id": 1628374,
               "isim": "Lauri Markkanen",
               "takim": "UTA",
+              "ilk_bes": true,
               "min": "39",
               "pts": 33,
               "reb": 7,
@@ -661,12 +4995,15 @@
               "pm": "+7",
               "pm_ham": 7.0,
               "cold": false,
-              "gecti_mi": false,
-              "aykiri": false
+              "gecti_mi": true,
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1641718,
               "isim": "Keyonte George",
               "takim": "UTA",
+              "ilk_bes": true,
               "min": "36",
               "pts": 19,
               "reb": 3,
@@ -684,11 +5021,14 @@
               "pm_ham": -1.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1641729,
               "isim": "Brice Sensabaugh",
               "takim": "UTA",
+              "ilk_bes": true,
               "min": "30",
               "pts": 14,
               "reb": 5,
@@ -706,11 +5046,14 @@
               "pm_ham": -4.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1642383,
               "isim": "Walter Clayton Jr.",
               "takim": "UTA",
+              "ilk_bes": false,
               "min": "21",
               "pts": 12,
               "reb": 0,
@@ -728,11 +5071,14 @@
               "pm_ham": 10.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 201567,
               "isim": "Kevin Love",
               "takim": "UTA",
+              "ilk_bes": true,
               "min": "23",
               "pts": 10,
               "reb": 10,
@@ -750,11 +5096,14 @@
               "pm_ham": 13.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1642262,
               "isim": "Cody Williams",
               "takim": "UTA",
+              "ilk_bes": true,
               "min": "22",
               "pts": 8,
               "reb": 3,
@@ -772,11 +5121,14 @@
               "pm_ham": 2.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1642271,
               "isim": "Kyle Filipowski",
               "takim": "UTA",
+              "ilk_bes": false,
               "min": "17",
               "pts": 8,
               "reb": 4,
@@ -794,11 +5146,14 @@
               "pm_ham": 1.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1642268,
               "isim": "Isaiah Collier",
               "takim": "UTA",
+              "ilk_bes": false,
               "min": "18",
               "pts": 7,
               "reb": 1,
@@ -816,11 +5171,14 @@
               "pm_ham": -10.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1641707,
               "isim": "Taylor Hendricks",
               "takim": "UTA",
+              "ilk_bes": false,
               "min": "4",
               "pts": 3,
               "reb": 2,
@@ -838,11 +5196,14 @@
               "pm_ham": -4.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 203937,
               "isim": "Kyle Anderson",
               "takim": "UTA",
+              "ilk_bes": false,
               "min": "26",
               "pts": 2,
               "reb": 7,
@@ -860,7 +5221,8 @@
               "pm_ham": -4.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             }
           ],
           "toplam": {
@@ -872,15 +5234,33 @@
             "to": 9,
             "fg": "47/95",
             "3p": "13/41",
-            "ft": "9/14"
-          }
+            "ft": "9/14",
+            "oreb": 10,
+            "dreb": 32
+          },
+          "ceyrek": [
+            34,
+            24,
+            30,
+            28
+          ]
         },
         "dep": {
           "takim": "Dallas Mavericks",
+          "kod": "DAL",
+          "renk": "#2E7BC4",
+          "skor": 114,
+          "oynamayanlar": [
+            "Jaden Hardy",
+            "Dwight Powell",
+            "D'Angelo Russell"
+          ],
           "oyuncular": [
             {
+              "id": 1642843,
               "isim": "Cooper Flagg",
               "takim": "DAL",
+              "ilk_bes": true,
               "min": "37",
               "pts": 26,
               "reb": 10,
@@ -899,11 +5279,14 @@
               "cold": false,
               "gecti_mi": false,
               "aykiri": false,
+              "aykiri_alan": null,
               "kaybedenin_en_iyisi": true
             },
             {
+              "id": 202691,
               "isim": "Klay Thompson",
               "takim": "DAL",
+              "ilk_bes": false,
               "min": "28",
               "pts": 23,
               "reb": 3,
@@ -921,11 +5304,14 @@
               "pm_ham": 3.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 203076,
               "isim": "Anthony Davis",
               "takim": "DAL",
+              "ilk_bes": true,
               "min": "35",
               "pts": 21,
               "reb": 11,
@@ -943,11 +5329,14 @@
               "pm_ham": -6.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1630230,
               "isim": "Naji Marshall",
               "takim": "DAL",
+              "ilk_bes": true,
               "min": "36",
               "pts": 17,
               "reb": 2,
@@ -965,11 +5354,14 @@
               "pm_ham": -9.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1631108,
               "isim": "Max Christie",
               "takim": "DAL",
+              "ilk_bes": true,
               "min": "31",
               "pts": 16,
               "reb": 4,
@@ -987,11 +5379,14 @@
               "pm_ham": -10.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1642948,
               "isim": "Ryan Nembhard",
               "takim": "DAL",
+              "ilk_bes": false,
               "min": "21",
               "pts": 7,
               "reb": 2,
@@ -1009,11 +5404,14 @@
               "pm_ham": 13.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1630314,
               "isim": "Brandon Williams",
               "takim": "DAL",
+              "ilk_bes": false,
               "min": "8",
               "pts": 2,
               "reb": 3,
@@ -1031,11 +5429,14 @@
               "pm_ham": -8.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1628997,
               "isim": "Caleb Martin",
               "takim": "DAL",
+              "ilk_bes": false,
               "min": "13",
               "pts": 2,
               "reb": 5,
@@ -1053,11 +5454,14 @@
               "pm_ham": 4.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1629655,
               "isim": "Daniel Gafford",
               "takim": "DAL",
+              "ilk_bes": true,
               "min": "25",
               "pts": 0,
               "reb": 7,
@@ -1075,7 +5479,8 @@
               "pm_ham": 0.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             }
           ],
           "toplam": {
@@ -1087,26 +5492,120 @@
             "to": 20,
             "fg": "44/85",
             "3p": "15/36",
-            "ft": "11/13"
-          }
+            "ft": "11/13",
+            "oreb": 9,
+            "dreb": 38
+          },
+          "ceyrek": [
+            29,
+            26,
+            34,
+            25
+          ]
         },
-        "wtf": null
-      }
+        "wtf": null,
+        "kilit": {
+          "ad": "top kaybı",
+          "fark": 11,
+          "alan": "to",
+          "kutular": [
+            {
+              "kod": "UTA",
+              "deger": 9,
+              "kazandi": true
+            },
+            {
+              "kod": "DAL",
+              "deger": 20,
+              "kazandi": false
+            }
+          ]
+        },
+        "kritik": {
+          "sure_sn": 277,
+          "sure": "4:37",
+          "skor": "13-7",
+          "onde": "UTA",
+          "ev_puan": 13,
+          "dep_puan": 7,
+          "oyuncular": [
+            {
+              "isim": "Lauri Markkanen",
+              "takim": "UTA",
+              "sayi": 6,
+              "fg": "3/4",
+              "kazanan": true
+            },
+            {
+              "isim": "Brice Sensabaugh",
+              "takim": "UTA",
+              "sayi": 5,
+              "fg": "2/2",
+              "kazanan": false
+            }
+          ]
+        }
+      },
+      "kazanan_kod": "UTA",
+      "ceyrek_tablosu": [
+        {
+          "ceyrek": "1. yarı",
+          "skor": "58–55",
+          "ev_skor": 58,
+          "dep_skor": 55,
+          "onde": "ev",
+          "fark": 3,
+          "one_cikan": [
+            "Flagg double-double",
+            "Markkanen 15 sayı"
+          ],
+          "kritik": false
+        },
+        {
+          "ceyrek": "2. yarı",
+          "skor": "116–114",
+          "ev_skor": 116,
+          "dep_skor": 114,
+          "onde": "ev",
+          "fark": 2,
+          "one_cikan": [
+            "14 kez liderlik değişti",
+            "Utah 12-0 seri"
+          ],
+          "kritik": true
+        }
+      ],
+      "karar": null,
+      "ray_renk": "#3E7A5E",
+      "ray_rgb": "62,122,94"
     },
     {
       "id": "a-0022500530",
+      "mac_id": "0022500530",
       "mac": "Minnesota Timberwolves — Cleveland Cavaliers",
       "skor": "131–122",
-      "rozet": 6.18,
+      "rozet": 6.39,
       "why": "gece sırası 3",
       "metin": "Minnesota Timberwolves evinde 131-122 kazandı. Mağlup tarafta Donovan Mitchell 30 sayı attı.",
       "box": {
         "ev": {
           "takim": "Minnesota Timberwolves",
+          "kod": "MIN",
+          "renk": "#3B7FD4",
+          "skor": 131,
+          "oynamayanlar": [
+            "Joan Beringer",
+            "Rob Dillingham",
+            "Joe Ingles",
+            "Johnny Juzang",
+            "Leonard Miller"
+          ],
           "oyuncular": [
             {
+              "id": 203944,
               "isim": "Julius Randle",
               "takim": "MIN",
+              "ilk_bes": true,
               "min": "35",
               "pts": 28,
               "reb": 11,
@@ -1123,12 +5622,15 @@
               "pm": "+31",
               "pm_ham": 31.0,
               "cold": false,
-              "gecti_mi": false,
-              "aykiri": false
+              "gecti_mi": true,
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1630183,
               "isim": "Jaden McDaniels",
               "takim": "MIN",
+              "ilk_bes": true,
               "min": "38",
               "pts": 26,
               "reb": 5,
@@ -1146,11 +5648,14 @@
               "pm_ham": 12.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1630162,
               "isim": "Anthony Edwards",
               "takim": "MIN",
+              "ilk_bes": true,
               "min": "37",
               "pts": 25,
               "reb": 7,
@@ -1168,11 +5673,14 @@
               "pm_ham": 19.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1628978,
               "isim": "Donte DiVincenzo",
               "takim": "MIN",
+              "ilk_bes": true,
               "min": "34",
               "pts": 22,
               "reb": 1,
@@ -1190,11 +5698,14 @@
               "pm_ham": 15.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 203497,
               "isim": "Rudy Gobert",
               "takim": "MIN",
+              "ilk_bes": true,
               "min": "36",
               "pts": 11,
               "reb": 13,
@@ -1212,11 +5723,14 @@
               "pm_ham": 8.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1629675,
               "isim": "Naz Reid",
               "takim": "MIN",
+              "ilk_bes": false,
               "min": "23",
               "pts": 9,
               "reb": 6,
@@ -1234,11 +5748,14 @@
               "pm_ham": -21.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1641740,
               "isim": "Jaylen Clark",
               "takim": "MIN",
+              "ilk_bes": false,
               "min": "10",
               "pts": 5,
               "reb": 0,
@@ -1256,11 +5773,14 @@
               "pm_ham": -6.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 201144,
               "isim": "Mike Conley",
               "takim": "MIN",
+              "ilk_bes": false,
               "min": "14",
               "pts": 3,
               "reb": 1,
@@ -1278,11 +5798,14 @@
               "pm_ham": -6.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1630538,
               "isim": "Bones Hyland",
               "takim": "MIN",
+              "ilk_bes": false,
               "min": "9",
               "pts": 2,
               "reb": 1,
@@ -1300,7 +5823,8 @@
               "pm_ham": -7.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             }
           ],
           "toplam": {
@@ -1312,15 +5836,34 @@
             "to": 17,
             "fg": "51/89",
             "3p": "20/38",
-            "ft": "9/17"
-          }
+            "ft": "9/17",
+            "oreb": 10,
+            "dreb": 35
+          },
+          "ceyrek": [
+            32,
+            31,
+            43,
+            25
+          ]
         },
         "dep": {
           "takim": "Cleveland Cavaliers",
+          "kod": "CLE",
+          "renk": "#B3123F",
+          "skor": 122,
+          "oynamayanlar": [
+            "Lonzo Ball",
+            "Thomas Bryant",
+            "Larry Nance Jr.",
+            "Tyrese Proctor"
+          ],
           "oyuncular": [
             {
+              "id": 1628378,
               "isim": "Donovan Mitchell",
               "takim": "CLE",
+              "ilk_bes": true,
               "min": "36",
               "pts": 30,
               "reb": 7,
@@ -1337,13 +5880,16 @@
               "pm": "+4",
               "pm_ham": 4.0,
               "cold": false,
-              "gecti_mi": true,
+              "gecti_mi": false,
               "aykiri": false,
+              "aykiri_alan": null,
               "kaybedenin_en_iyisi": true
             },
             {
+              "id": 1630241,
               "isim": "Sam Merrill",
               "takim": "CLE",
+              "ilk_bes": false,
               "min": "30",
               "pts": 22,
               "reb": 2,
@@ -1361,11 +5907,14 @@
               "pm_ham": 6.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1630596,
               "isim": "Evan Mobley",
               "takim": "CLE",
+              "ilk_bes": true,
               "min": "37",
               "pts": 19,
               "reb": 4,
@@ -1383,11 +5932,14 @@
               "pm_ham": 2.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1629636,
               "isim": "Darius Garland",
               "takim": "CLE",
+              "ilk_bes": true,
               "min": "36",
               "pts": 16,
               "reb": 1,
@@ -1405,11 +5957,14 @@
               "pm_ham": -24.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1629631,
               "isim": "De'Andre Hunter",
               "takim": "CLE",
+              "ilk_bes": false,
               "min": "27",
               "pts": 14,
               "reb": 7,
@@ -1427,11 +5982,14 @@
               "pm_ham": 13.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1628386,
               "isim": "Jarrett Allen",
               "takim": "CLE",
+              "ilk_bes": true,
               "min": "29",
               "pts": 11,
               "reb": 10,
@@ -1449,11 +6007,14 @@
               "pm_ham": -29.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1641854,
               "isim": "Craig Porter Jr.",
               "takim": "CLE",
+              "ilk_bes": true,
               "min": "14",
               "pts": 4,
               "reb": 1,
@@ -1471,11 +6032,14 @@
               "pm_ham": -17.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1642281,
               "isim": "Jaylon Tyson",
               "takim": "CLE",
+              "ilk_bes": false,
               "min": "18",
               "pts": 4,
               "reb": 5,
@@ -1493,11 +6057,14 @@
               "pm_ham": -5.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             },
             {
+              "id": 1641772,
               "isim": "Nae'Qwan Tomlin",
               "takim": "CLE",
+              "ilk_bes": false,
               "min": "7",
               "pts": 2,
               "reb": 1,
@@ -1515,7 +6082,8 @@
               "pm_ham": 5.0,
               "cold": false,
               "gecti_mi": false,
-              "aykiri": false
+              "aykiri": false,
+              "aykiri_alan": null
             }
           ],
           "toplam": {
@@ -1527,15 +6095,89 @@
             "to": 12,
             "fg": "48/91",
             "3p": "11/33",
-            "ft": "15/21"
-          }
+            "ft": "15/21",
+            "oreb": 9,
+            "dreb": 29
+          },
+          "ceyrek": [
+            31,
+            36,
+            22,
+            33
+          ]
         },
-        "wtf": null
-      }
+        "wtf": null,
+        "kilit": {
+          "ad": "üçlük",
+          "fark": 9,
+          "alan": "3p",
+          "kutular": [
+            {
+              "kod": "MIN",
+              "deger": 20,
+              "kazandi": true
+            },
+            {
+              "kod": "CLE",
+              "deger": 11,
+              "kazandi": false
+            }
+          ]
+        },
+        "kritik": null
+      },
+      "kazanan_kod": "MIN",
+      "ceyrek_tablosu": [
+        {
+          "ceyrek": "1. yarı",
+          "skor": "63–67",
+          "ev_skor": 63,
+          "dep_skor": 67,
+          "onde": "dep",
+          "fark": 4,
+          "one_cikan": [
+            "3 kez liderlik değişti",
+            "Randle 12 sayı"
+          ],
+          "kritik": false
+        },
+        {
+          "ceyrek": "2. yarı",
+          "skor": "131–122",
+          "ev_skor": 131,
+          "dep_skor": 122,
+          "onde": "ev",
+          "fark": 9,
+          "one_cikan": [
+            "Randle double-double",
+            "Minnesota 13-0 seri"
+          ],
+          "kritik": true
+        }
+      ],
+      "karar": null,
+      "ray_renk": "#3B7FD4",
+      "ray_rgb": "59,127,212"
     }
   ],
   "diger": [],
-  "turkler": [],
+  "turkler": [
+    {
+      "isim": "Tarık Biberoviç",
+      "takim": "DAL",
+      "oynadi": false,
+      "takim_adi": "Dallas Mavericks",
+      "renk": "#2E7BC4"
+    }
+  ],
+  "turkler_bekleyen": {
+    "isimler": [
+      "Bona",
+      "Şengün"
+    ],
+    "tarih": null,
+    "metin": "Bu gece Türk oyuncu sahaya çıkmadı."
+  },
   "gecenin_notlari": [],
   "genis_aci": null
 }

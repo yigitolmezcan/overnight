@@ -128,10 +128,11 @@
           "skor": "25–22",
           "ev_skor": 25,
           "dep_skor": 22,
-          "durum": "IND +3",
-          "durum_takim": "IND",
+          "onde": "ev",
           "fark": 3,
-          "one_cikan": "Siakam 11 sayı",
+          "one_cikan": [
+            "Siakam 11 sayı"
+          ],
           "kritik": false
         },
         {
@@ -139,10 +140,11 @@
           "skor": "47–54",
           "ev_skor": 47,
           "dep_skor": 54,
-          "durum": "OKC +7",
-          "durum_takim": "OKC",
+          "onde": "dep",
           "fark": 7,
-          "one_cikan": "Gilgeous-Alexander 55 sayı",
+          "one_cikan": [
+            "Gilgeous-Alexander 55 sayı"
+          ],
           "kritik": false
         },
         {
@@ -150,10 +152,9 @@
           "skor": "78–81",
           "ev_skor": 78,
           "dep_skor": 81,
-          "durum": "OKC +3",
-          "durum_takim": "OKC",
+          "onde": "dep",
           "fark": 3,
-          "one_cikan": "4 kez liderlik değişti",
+          "one_cikan": [],
           "kritik": false
         },
         {
@@ -161,10 +162,9 @@
           "skor": "113–113",
           "ev_skor": 113,
           "dep_skor": 113,
-          "durum": "berabere",
-          "durum_takim": null,
+          "onde": null,
           "fark": 0,
-          "one_cikan": "Mathurin 15 sayı",
+          "one_cikan": [],
           "kritik": false
         },
         {
@@ -172,10 +172,9 @@
           "skor": "124–124",
           "ev_skor": 124,
           "dep_skor": 124,
-          "durum": "berabere",
-          "durum_takim": null,
+          "onde": null,
           "fark": 0,
-          "one_cikan": "Indiana 7-0 seri",
+          "one_cikan": [],
           "kritik": false
         },
         {
@@ -183,10 +182,12 @@
           "skor": "135–141",
           "ev_skor": 135,
           "dep_skor": 141,
-          "durum": "OKC +6",
-          "durum_takim": "OKC",
+          "onde": "dep",
           "fark": 6,
-          "one_cikan": "4 kez liderlik değişti",
+          "one_cikan": [
+            "4 kez liderlik değişti",
+            "Oklahoma City 8-0 seri"
+          ],
           "kritik": true
         }
       ],
@@ -3846,7 +3847,7 @@
       "mac": "Golden State Warriors — Denver Nuggets",
       "skor": "137–131",
       "rozet": 9.36,
-      "why": "uzatma",
+      "why": "bireysel performans: triple_double eşiğini geçen Nikola Jokić",
       "metin": "",
       "box": {
         "ev": {
@@ -4452,10 +4453,12 @@
           "skor": "61–70",
           "ev_skor": 61,
           "dep_skor": 70,
-          "durum": "DEN +9",
-          "durum_takim": "DEN",
+          "onde": "dep",
           "fark": 9,
-          "one_cikan": "Jokić triple-double",
+          "one_cikan": [
+            "Jokić triple-double",
+            "Gordon 25 sayı"
+          ],
           "kritik": false
         },
         {
@@ -4463,10 +4466,12 @@
           "skor": "137–131",
           "ev_skor": 137,
           "dep_skor": 131,
-          "durum": "GSW +6",
-          "durum_takim": "GSW",
+          "onde": "ev",
           "fark": 6,
-          "one_cikan": "7 kez liderlik değişti",
+          "one_cikan": [
+            "7 kez liderlik değişti",
+            "Denver 10-0 seri"
+          ],
           "kritik": true
         }
       ],

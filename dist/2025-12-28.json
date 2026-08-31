@@ -245,10 +245,12 @@
           "skor": "33–20",
           "ev_skor": 33,
           "dep_skor": 20,
-          "durum": "LAC +13",
-          "durum_takim": "LAC",
+          "onde": "ev",
           "fark": 13,
-          "one_cikan": "LA Clippers 11-0 seri",
+          "one_cikan": [
+            "LA Clippers 11-0 seri",
+            "Harden 12 sayı"
+          ],
           "kritik": true
         },
         {
@@ -256,10 +258,9 @@
           "skor": "60–42",
           "ev_skor": 60,
           "dep_skor": 42,
-          "durum": "LAC +18",
-          "durum_takim": "LAC",
+          "onde": "ev",
           "fark": 18,
-          "one_cikan": "Leonard 15 sayı",
+          "one_cikan": [],
           "kritik": false
         },
         {
@@ -267,10 +268,12 @@
           "skor": "92–69",
           "ev_skor": 92,
           "dep_skor": 69,
-          "durum": "LAC +23",
-          "durum_takim": "LAC",
+          "onde": "ev",
           "fark": 23,
-          "one_cikan": "Leonard 55 sayı",
+          "one_cikan": [
+            "Leonard 55 sayı",
+            "LA Clippers 5 üçlük"
+          ],
           "kritik": false
         },
         {
@@ -278,10 +281,12 @@
           "skor": "112–99",
           "ev_skor": 112,
           "dep_skor": 99,
-          "durum": "LAC +13",
-          "durum_takim": "LAC",
+          "onde": "ev",
           "fark": 13,
-          "one_cikan": "Detroit 8-0 seri",
+          "one_cikan": [
+            "en büyük fark 26",
+            "LA Clippers 4/18 şut"
+          ],
           "kritik": false
         }
       ],
@@ -901,10 +906,12 @@
           "skor": "33–29",
           "ev_skor": 33,
           "dep_skor": 29,
-          "durum": "TOR +4",
-          "durum_takim": "TOR",
+          "onde": "ev",
           "fark": 4,
-          "one_cikan": "5 kez liderlik değişti",
+          "one_cikan": [
+            "5 kez liderlik değişti",
+            "Toronto 14/22 şut"
+          ],
           "kritik": false
         },
         {
@@ -912,10 +919,12 @@
           "skor": "65–64",
           "ev_skor": 65,
           "dep_skor": 64,
-          "durum": "TOR +1",
-          "durum_takim": "TOR",
+          "onde": "ev",
           "fark": 1,
-          "one_cikan": "Barnes triple-double",
+          "one_cikan": [
+            "Barnes triple-double",
+            "Green 10 sayı"
+          ],
           "kritik": false
         },
         {
@@ -923,10 +932,9 @@
           "skor": "96–100",
           "ev_skor": 96,
           "dep_skor": 100,
-          "durum": "GSW +4",
-          "durum_takim": "GSW",
+          "onde": "dep",
           "fark": 4,
-          "one_cikan": "Golden State 10-0 seri",
+          "one_cikan": [],
           "kritik": false
         },
         {
@@ -934,10 +942,9 @@
           "skor": "122–122",
           "ev_skor": 122,
           "dep_skor": 122,
-          "durum": "berabere",
-          "durum_takim": null,
+          "onde": null,
           "fark": 0,
-          "one_cikan": "Curry 10 sayı",
+          "one_cikan": [],
           "kritik": false
         },
         {
@@ -945,10 +952,12 @@
           "skor": "141–127",
           "ev_skor": 141,
           "dep_skor": 127,
-          "durum": "TOR +14",
-          "durum_takim": "TOR",
+          "onde": "ev",
           "fark": 14,
-          "one_cikan": "Toronto 12-0 seri",
+          "one_cikan": [
+            "Toronto 12-0 seri",
+            "en büyük fark 14"
+          ],
           "kritik": true
         }
       ],
@@ -1632,10 +1641,12 @@
           "skor": "31–30",
           "ev_skor": 31,
           "dep_skor": 30,
-          "durum": "POR +1",
-          "durum_takim": "POR",
+          "onde": "ev",
           "fark": 1,
-          "one_cikan": "3 kez liderlik değişti",
+          "one_cikan": [
+            "Brown 13 sayı",
+            "Boston 7-0 seri"
+          ],
           "kritik": false
         },
         {
@@ -1643,10 +1654,9 @@
           "skor": "55–63",
           "ev_skor": 55,
           "dep_skor": 63,
-          "durum": "BOS +8",
-          "durum_takim": "BOS",
+          "onde": "dep",
           "fark": 8,
-          "one_cikan": "Brown 14 sayı",
+          "one_cikan": [],
           "kritik": false
         },
         {
@@ -1654,10 +1664,12 @@
           "skor": "86–85",
           "ev_skor": 86,
           "dep_skor": 85,
-          "durum": "POR +1",
-          "durum_takim": "POR",
+          "onde": "ev",
           "fark": 1,
-          "one_cikan": "Avdija double-double",
+          "one_cikan": [
+            "Avdija double-double",
+            "5 kez liderlik değişti"
+          ],
           "kritik": true
         },
         {
@@ -1665,10 +1677,9 @@
           "skor": "114–108",
           "ev_skor": 114,
           "dep_skor": 108,
-          "durum": "POR +6",
-          "durum_takim": "POR",
+          "onde": "ev",
           "fark": 6,
-          "one_cikan": "Love 10 sayı",
+          "one_cikan": [],
           "kritik": false
         }
       ],

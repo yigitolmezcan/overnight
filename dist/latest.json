@@ -390,10 +390,12 @@
           "skor": "35–38",
           "ev_skor": 35,
           "dep_skor": 38,
-          "durum": "ATL +3",
-          "durum_takim": "ATL",
+          "onde": "dep",
           "fark": 3,
-          "one_cikan": "Okongwu double-double",
+          "one_cikan": [
+            "Okongwu double-double",
+            "8 kez liderlik değişti"
+          ],
           "kritik": false
         },
         {
@@ -401,10 +403,12 @@
           "skor": "70–74",
           "ev_skor": 70,
           "dep_skor": 74,
-          "durum": "ATL +4",
-          "durum_takim": "ATL",
+          "onde": "dep",
           "fark": 4,
-          "one_cikan": "en büyük fark 10",
+          "one_cikan": [
+            "en büyük fark 10",
+            "Atlanta 7 üçlük"
+          ],
           "kritik": false
         },
         {
@@ -412,10 +416,11 @@
           "skor": "113–103",
           "ev_skor": 113,
           "dep_skor": 103,
-          "durum": "OKC +10",
-          "durum_takim": "OKC",
+          "onde": "ev",
           "fark": 10,
-          "one_cikan": "Oklahoma City 12-0 seri",
+          "one_cikan": [
+            "Oklahoma City 16/26 şut"
+          ],
           "kritik": false
         },
         {
@@ -423,10 +428,12 @@
           "skor": "140–129",
           "ev_skor": 140,
           "dep_skor": 129,
-          "durum": "OKC +11",
-          "durum_takim": "OKC",
+          "onde": "ev",
           "fark": 11,
-          "one_cikan": "Alexander-Walker 12 sayı",
+          "one_cikan": [
+            "Oklahoma City 9-0 seri",
+            "Alexander-Walker 12 sayı"
+          ],
           "kritik": true
         }
       ],
@@ -1036,10 +1043,12 @@
           "skor": "41–37",
           "ev_skor": 41,
           "dep_skor": 37,
-          "durum": "NOP +4",
-          "durum_takim": "NOP",
+          "onde": "ev",
           "fark": 4,
-          "one_cikan": "5 kez liderlik değişti",
+          "one_cikan": [
+            "New Orleans 9-0 seri",
+            "Bey 23 sayı"
+          ],
           "kritik": false
         },
         {
@@ -1047,10 +1056,9 @@
           "skor": "75–72",
           "ev_skor": 75,
           "dep_skor": 72,
-          "durum": "NOP +3",
-          "durum_takim": "NOP",
+          "onde": "ev",
           "fark": 3,
-          "one_cikan": "Anunoby 16 sayı",
+          "one_cikan": [],
           "kritik": false
         },
         {
@@ -1058,10 +1066,11 @@
           "skor": "103–96",
           "ev_skor": 103,
           "dep_skor": 96,
-          "durum": "NOP +7",
-          "durum_takim": "NOP",
+          "onde": "ev",
           "fark": 7,
-          "one_cikan": "en büyük fark 10",
+          "one_cikan": [
+            "en büyük fark 10"
+          ],
           "kritik": false
         },
         {
@@ -1069,10 +1078,12 @@
           "skor": "125–130",
           "ev_skor": 125,
           "dep_skor": 130,
-          "durum": "NYK +5",
-          "durum_takim": "NYK",
+          "onde": "dep",
           "fark": 5,
-          "one_cikan": "Brunson double-double",
+          "one_cikan": [
+            "Brunson double-double",
+            "7 kez liderlik değişti"
+          ],
           "kritik": true
         }
       ],
@@ -16897,10 +16908,12 @@
           "skor": "54–65",
           "ev_skor": 54,
           "dep_skor": 65,
-          "durum": "ORL +11",
-          "durum_takim": "ORL",
+          "onde": "dep",
           "fark": 11,
-          "one_cikan": "Banchero triple-double",
+          "one_cikan": [
+            "Banchero triple-double",
+            "Bane 18 sayı"
+          ],
           "kritik": false
         },
         {
@@ -16908,10 +16921,12 @@
           "skor": "107–106",
           "ev_skor": 107,
           "dep_skor": 106,
-          "durum": "TOR +1",
-          "durum_takim": "TOR",
+          "onde": "ev",
           "fark": 1,
-          "one_cikan": "3 kez liderlik değişti",
+          "one_cikan": [
+            "3 kez liderlik değişti",
+            "Toronto 13-0 seri"
+          ],
           "kritik": true
         }
       ],
@@ -17521,10 +17536,12 @@
           "skor": "75–63",
           "ev_skor": 75,
           "dep_skor": 63,
-          "durum": "POR +12",
-          "durum_takim": "POR",
+          "onde": "ev",
           "fark": 12,
-          "one_cikan": "Avdija double-double",
+          "one_cikan": [
+            "Avdija double-double",
+            "Avdija 16 sayı"
+          ],
           "kritik": false
         },
         {
@@ -17532,10 +17549,12 @@
           "skor": "125–122",
           "ev_skor": 125,
           "dep_skor": 122,
-          "durum": "POR +3",
-          "durum_takim": "POR",
+          "onde": "ev",
           "fark": 3,
-          "one_cikan": "8 kez liderlik değişti",
+          "one_cikan": [
+            "8 kez liderlik değişti",
+            "Dallas 10-0 seri"
+          ],
           "kritik": true
         }
       ],
@@ -18288,10 +18307,12 @@
           "skor": "50–55",
           "ev_skor": 50,
           "dep_skor": 55,
-          "durum": "MIN +5",
-          "durum_takim": "MIN",
+          "onde": "dep",
           "fark": 5,
-          "one_cikan": "Randle double-double",
+          "one_cikan": [
+            "Randle double-double",
+            "6 kez liderlik değişti"
+          ],
           "kritik": false
         },
         {
@@ -18299,10 +18320,12 @@
           "skor": "101–136",
           "ev_skor": 101,
           "dep_skor": 136,
-          "durum": "MIN +35",
-          "durum_takim": "MIN",
+          "onde": "dep",
           "fark": 35,
-          "one_cikan": "Minnesota 12-0 seri",
+          "one_cikan": [
+            "Minnesota 12-0 seri",
+            "Reid 23 sayı"
+          ],
           "kritik": true
         }
       ],

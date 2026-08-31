@@ -245,10 +245,12 @@
           "skor": "38–38",
           "ev_skor": 38,
           "dep_skor": 38,
-          "durum": "berabere",
-          "durum_takim": null,
+          "onde": null,
           "fark": 0,
-          "one_cikan": "4 kez liderlik değişti",
+          "one_cikan": [
+            "Atlanta 9-0 seri",
+            "Okongwu 15 sayı"
+          ],
           "kritik": false
         },
         {
@@ -256,10 +258,12 @@
           "skor": "73–83",
           "ev_skor": 73,
           "dep_skor": 83,
-          "durum": "CHI +10",
-          "durum_takim": "CHI",
+          "onde": "dep",
           "fark": 10,
-          "one_cikan": "Young 10 sayı",
+          "one_cikan": [
+            "Chicago 6 üçlük",
+            "Chicago 12/20 şut"
+          ],
           "kritik": false
         },
         {
@@ -267,10 +271,9 @@
           "skor": "115–116",
           "ev_skor": 115,
           "dep_skor": 116,
-          "durum": "CHI +1",
-          "durum_takim": "CHI",
+          "onde": "dep",
           "fark": 1,
-          "one_cikan": "4 kez liderlik değişti",
+          "one_cikan": [],
           "kritik": false
         },
         {
@@ -278,10 +281,12 @@
           "skor": "150–152",
           "ev_skor": 150,
           "dep_skor": 152,
-          "durum": "CHI +2",
-          "durum_takim": "CHI",
+          "onde": "dep",
           "fark": 2,
-          "one_cikan": "Johnson double-double",
+          "one_cikan": [
+            "Johnson double-double",
+            "4 kez liderlik değişti"
+          ],
           "kritik": true
         }
       ],
@@ -924,10 +929,12 @@
           "skor": "30–31",
           "ev_skor": 30,
           "dep_skor": 31,
-          "durum": "HOU +1",
-          "durum_takim": "HOU",
+          "onde": "dep",
           "fark": 1,
-          "one_cikan": "5 kez liderlik değişti",
+          "one_cikan": [
+            "Murray 10 sayı",
+            "en büyük fark 10"
+          ],
           "kritik": false
         },
         {
@@ -935,10 +942,12 @@
           "skor": "57–68",
           "ev_skor": 57,
           "dep_skor": 68,
-          "durum": "HOU +11",
-          "durum_takim": "HOU",
+          "onde": "dep",
           "fark": 11,
-          "one_cikan": "Durant double-double",
+          "one_cikan": [
+            "Durant double-double",
+            "Houston 13/21 şut"
+          ],
           "kritik": false
         },
         {
@@ -946,10 +955,9 @@
           "skor": "82–91",
           "ev_skor": 82,
           "dep_skor": 91,
-          "durum": "HOU +9",
-          "durum_takim": "HOU",
+          "onde": "dep",
           "fark": 9,
-          "one_cikan": "Sacramento 7-0 seri",
+          "one_cikan": [],
           "kritik": false
         },
         {
@@ -957,10 +965,9 @@
           "skor": "112–112",
           "ev_skor": 112,
           "dep_skor": 112,
-          "durum": "berabere",
-          "durum_takim": null,
+          "onde": null,
           "fark": 0,
-          "one_cikan": "Murray 10 sayı",
+          "one_cikan": [],
           "kritik": false
         },
         {
@@ -968,10 +975,12 @@
           "skor": "125–124",
           "ev_skor": 125,
           "dep_skor": 124,
-          "durum": "SAC +1",
-          "durum_takim": "SAC",
+          "onde": "ev",
           "fark": 1,
-          "one_cikan": "5 kez liderlik değişti",
+          "one_cikan": [
+            "5 kez liderlik değişti",
+            "Sacramento 7-0 seri"
+          ],
           "kritik": true
         }
       ],
@@ -1546,10 +1555,12 @@
           "skor": "30–37",
           "ev_skor": 30,
           "dep_skor": 37,
-          "durum": "MIA +7",
-          "durum_takim": "MIA",
+          "onde": "dep",
           "fark": 7,
-          "one_cikan": "Brunson 47 sayı",
+          "one_cikan": [
+            "Brunson 47 sayı",
+            "4 kez liderlik değişti"
+          ],
           "kritik": false
         },
         {
@@ -1557,10 +1568,12 @@
           "skor": "66–62",
           "ev_skor": 66,
           "dep_skor": 62,
-          "durum": "NYK +4",
-          "durum_takim": "NYK",
+          "onde": "ev",
           "fark": 4,
-          "one_cikan": "New York 13-0 seri",
+          "one_cikan": [
+            "Bridges 14 sayı",
+            "New York 8 üçlük"
+          ],
           "kritik": false
         },
         {
@@ -1568,10 +1581,11 @@
           "skor": "105–99",
           "ev_skor": 105,
           "dep_skor": 99,
-          "durum": "NYK +6",
-          "durum_takim": "NYK",
+          "onde": "ev",
           "fark": 6,
-          "one_cikan": "Powell 19 sayı",
+          "one_cikan": [
+            "New York 15/21 şut"
+          ],
           "kritik": false
         },
         {
@@ -1579,10 +1593,12 @@
           "skor": "132–125",
           "ev_skor": 132,
           "dep_skor": 125,
-          "durum": "NYK +7",
-          "durum_takim": "NYK",
+          "onde": "ev",
           "fark": 7,
-          "one_cikan": "New York 8-0 seri",
+          "one_cikan": [
+            "New York 8-0 seri",
+            "en büyük fark 11"
+          ],
           "kritik": true
         }
       ],
@@ -2145,10 +2161,12 @@
           "skor": "23–29",
           "ev_skor": 23,
           "dep_skor": 29,
-          "durum": "MIL +6",
-          "durum_takim": "MIL",
+          "onde": "dep",
           "fark": 6,
-          "one_cikan": "Edwards 10 sayı",
+          "one_cikan": [
+            "Edwards 10 sayı",
+            "Minnesota 6/20 şut"
+          ],
           "kritik": false
         },
         {
@@ -2156,10 +2174,12 @@
           "skor": "48–60",
           "ev_skor": 48,
           "dep_skor": 60,
-          "durum": "MIL +12",
-          "durum_takim": "MIL",
+          "onde": "dep",
           "fark": 12,
-          "one_cikan": "Porter Jr. double-double",
+          "one_cikan": [
+            "Porter Jr. double-double",
+            "Milwaukee 11-0 seri"
+          ],
           "kritik": false
         },
         {
@@ -2167,10 +2187,9 @@
           "skor": "75–75",
           "ev_skor": 75,
           "dep_skor": 75,
-          "durum": "berabere",
-          "durum_takim": null,
+          "onde": null,
           "fark": 0,
-          "one_cikan": "Minnesota 20-0 seri",
+          "one_cikan": [],
           "kritik": false
         },
         {
@@ -2178,10 +2197,12 @@
           "skor": "103–100",
           "ev_skor": 103,
           "dep_skor": 100,
-          "durum": "MIN +3",
-          "durum_takim": "MIN",
+          "onde": "ev",
           "fark": 3,
-          "one_cikan": "en büyük fark 8",
+          "one_cikan": [
+            "en büyük fark 8",
+            "Minnesota 6 üçlük"
+          ],
           "kritik": true
         }
       ],

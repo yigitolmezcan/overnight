@@ -326,10 +326,12 @@
           "skor": "23–31",
           "ev_skor": 23,
           "dep_skor": 31,
-          "durum": "DEN +8",
-          "durum_takim": "DEN",
+          "onde": "dep",
           "fark": 8,
-          "one_cikan": "4 kez liderlik değişti",
+          "one_cikan": [
+            "Orlando 9-0 seri",
+            "Black 15 sayı"
+          ],
           "kritik": false
         },
         {
@@ -337,10 +339,9 @@
           "skor": "48–62",
           "ev_skor": 48,
           "dep_skor": 62,
-          "durum": "DEN +14",
-          "durum_takim": "DEN",
+          "onde": "dep",
           "fark": 14,
-          "one_cikan": "Denver 8-0 seri",
+          "one_cikan": [],
           "kritik": false
         },
         {
@@ -348,10 +349,12 @@
           "skor": "84–93",
           "ev_skor": 84,
           "dep_skor": 93,
-          "durum": "DEN +9",
-          "durum_takim": "DEN",
+          "onde": "dep",
           "fark": 9,
-          "one_cikan": "Carter Jr. 13 sayı",
+          "one_cikan": [
+            "en büyük fark 17",
+            "Orlando 16/22 şut"
+          ],
           "kritik": false
         },
         {
@@ -359,10 +362,12 @@
           "skor": "127–126",
           "ev_skor": 127,
           "dep_skor": 126,
-          "durum": "ORL +1",
-          "durum_takim": "ORL",
+          "onde": "ev",
           "fark": 1,
-          "one_cikan": "Jokić triple-double",
+          "one_cikan": [
+            "Jokić triple-double",
+            "9 kez liderlik değişti"
+          ],
           "kritik": true
         }
       ],
@@ -999,10 +1004,12 @@
           "skor": "27–33",
           "ev_skor": 27,
           "dep_skor": 33,
-          "durum": "NYK +6",
-          "durum_takim": "NYK",
+          "onde": "dep",
           "fark": 6,
-          "one_cikan": "10 kez liderlik değişti",
+          "one_cikan": [
+            "Brunson 11 sayı",
+            "Atlanta 5 üçlük"
+          ],
           "kritik": false
         },
         {
@@ -1010,10 +1017,11 @@
           "skor": "55–68",
           "ev_skor": 55,
           "dep_skor": 68,
-          "durum": "NYK +13",
-          "durum_takim": "NYK",
+          "onde": "dep",
           "fark": 13,
-          "one_cikan": "Towns 10 sayı",
+          "one_cikan": [
+            "New York 7-0 seri"
+          ],
           "kritik": false
         },
         {
@@ -1021,10 +1029,11 @@
           "skor": "89–98",
           "ev_skor": 89,
           "dep_skor": 98,
-          "durum": "NYK +9",
-          "durum_takim": "NYK",
+          "onde": "dep",
           "fark": 9,
-          "one_cikan": "en büyük fark 18",
+          "one_cikan": [
+            "en büyük fark 18"
+          ],
           "kritik": false
         },
         {
@@ -1032,10 +1041,12 @@
           "skor": "125–128",
           "ev_skor": 125,
           "dep_skor": 128,
-          "durum": "NYK +3",
-          "durum_takim": "NYK",
+          "onde": "dep",
           "fark": 3,
-          "one_cikan": "Towns double-double",
+          "one_cikan": [
+            "Towns double-double",
+            "4 kez liderlik değişti"
+          ],
           "kritik": true
         }
       ],
@@ -1644,10 +1655,12 @@
           "skor": "40–32",
           "ev_skor": 40,
           "dep_skor": 32,
-          "durum": "SAS +8",
-          "durum_takim": "SAS",
+          "onde": "ev",
           "fark": 8,
-          "one_cikan": "Johnson double-double",
+          "one_cikan": [
+            "Johnson double-double",
+            "5 kez liderlik değişti"
+          ],
           "kritik": false
         },
         {
@@ -1655,10 +1668,12 @@
           "skor": "60–70",
           "ev_skor": 60,
           "dep_skor": 70,
-          "durum": "UTA +10",
-          "durum_takim": "UTA",
+          "onde": "dep",
           "fark": 10,
-          "one_cikan": "Utah 11-0 seri",
+          "one_cikan": [
+            "Clayton Jr. 11 sayı",
+            "Utah 14/22 şut"
+          ],
           "kritik": false
         },
         {
@@ -1666,10 +1681,11 @@
           "skor": "87–98",
           "ev_skor": 87,
           "dep_skor": 98,
-          "durum": "UTA +11",
-          "durum_takim": "UTA",
+          "onde": "dep",
           "fark": 11,
-          "one_cikan": "Wembanyama 11 sayı",
+          "one_cikan": [
+            "en büyük fark 17"
+          ],
           "kritik": false
         },
         {
@@ -1677,10 +1693,12 @@
           "skor": "114–127",
           "ev_skor": 114,
           "dep_skor": 127,
-          "durum": "UTA +13",
-          "durum_takim": "UTA",
+          "onde": "dep",
           "fark": 13,
-          "one_cikan": "San Antonio 9-0 seri",
+          "one_cikan": [
+            "San Antonio 9-0 seri",
+            "Utah 5 üçlük"
+          ],
           "kritik": true
         }
       ],
@@ -14373,7 +14391,7 @@
       "mac": "Minnesota Timberwolves — Brooklyn Nets",
       "skor": "107–123",
       "rozet": 7.11,
-      "why": "sürpriz sonuç: belirgin şekilde kötü bir takım, belirgin şekilde iyi bir takımı yendi",
+      "why": "10. galibiyetini alan (kazanan)",
       "metin": "",
       "box": {
         "ev": {
@@ -15025,10 +15043,12 @@
           "skor": "63–62",
           "ev_skor": 63,
           "dep_skor": 62,
-          "durum": "MIN +1",
-          "durum_takim": "MIN",
+          "onde": "ev",
           "fark": 1,
-          "one_cikan": "9 kez liderlik değişti",
+          "one_cikan": [
+            "9 kez liderlik değişti",
+            "Edwards 13 sayı"
+          ],
           "kritik": false
         },
         {
@@ -15036,10 +15056,12 @@
           "skor": "107–123",
           "ev_skor": 107,
           "dep_skor": 123,
-          "durum": "BKN +16",
-          "durum_takim": "BKN",
+          "onde": "dep",
           "fark": 16,
-          "one_cikan": "Porter Jr. double-double",
+          "one_cikan": [
+            "Porter Jr. double-double",
+            "Brooklyn 12-0 seri"
+          ],
           "kritik": true
         }
       ],
@@ -15657,10 +15679,12 @@
           "skor": "50–54",
           "ev_skor": 50,
           "dep_skor": 54,
-          "durum": "MIL +4",
-          "durum_takim": "MIL",
+          "onde": "dep",
           "fark": 4,
-          "one_cikan": "5 kez liderlik değişti",
+          "one_cikan": [
+            "Antetokounmpo 15 sayı",
+            "en büyük fark 15"
+          ],
           "kritik": false
         },
         {
@@ -15668,10 +15692,12 @@
           "skor": "103–112",
           "ev_skor": 103,
           "dep_skor": 112,
-          "durum": "MIL +9",
-          "durum_takim": "MIL",
+          "onde": "dep",
           "fark": 9,
-          "one_cikan": "Milwaukee 8-0 seri",
+          "one_cikan": [
+            "4 kez liderlik değişti",
+            "Milwaukee 8-0 seri"
+          ],
           "kritik": true
         }
       ],

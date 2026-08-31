@@ -227,10 +227,12 @@
           "skor": "24–30",
           "ev_skor": 24,
           "dep_skor": 30,
-          "durum": "HOU +6",
-          "durum_takim": "HOU",
+          "onde": "dep",
           "fark": 6,
-          "one_cikan": "4 kez liderlik değişti",
+          "one_cikan": [
+            "4 kez liderlik değişti",
+            "Durant 10 sayı"
+          ],
           "kritik": false
         },
         {
@@ -238,10 +240,11 @@
           "skor": "58–51",
           "ev_skor": 58,
           "dep_skor": 51,
-          "durum": "DEN +7",
-          "durum_takim": "DEN",
+          "onde": "ev",
           "fark": 7,
-          "one_cikan": "Denver 10-0 seri",
+          "one_cikan": [
+            "en büyük fark 9"
+          ],
           "kritik": false
         },
         {
@@ -249,10 +252,12 @@
           "skor": "89–86",
           "ev_skor": 89,
           "dep_skor": 86,
-          "durum": "DEN +3",
-          "durum_takim": "DEN",
+          "onde": "ev",
           "fark": 3,
-          "one_cikan": "Jokić triple-double",
+          "one_cikan": [
+            "Jokić triple-double",
+            "Houston 15/22 şut"
+          ],
           "kritik": false
         },
         {
@@ -260,10 +265,11 @@
           "skor": "117–117",
           "ev_skor": 117,
           "dep_skor": 117,
-          "durum": "berabere",
-          "durum_takim": null,
+          "onde": null,
           "fark": 0,
-          "one_cikan": "3 kez liderlik değişti",
+          "one_cikan": [
+            "Denver 5 üçlük"
+          ],
           "kritik": false
         },
         {
@@ -271,10 +277,11 @@
           "skor": "128–125",
           "ev_skor": 128,
           "dep_skor": 125,
-          "durum": "DEN +3",
-          "durum_takim": "DEN",
+          "onde": "ev",
           "fark": 3,
-          "one_cikan": "Denver 8-0 seri",
+          "one_cikan": [
+            "Denver 8-0 seri"
+          ],
           "kritik": true
         }
       ],
@@ -845,10 +852,12 @@
           "skor": "37–43",
           "ev_skor": 37,
           "dep_skor": 43,
-          "durum": "DAL +6",
-          "durum_takim": "DAL",
+          "onde": "dep",
           "fark": 6,
-          "one_cikan": "Flagg 42 sayı",
+          "one_cikan": [
+            "Flagg 42 sayı",
+            "7 kez liderlik değişti"
+          ],
           "kritik": false
         },
         {
@@ -856,10 +865,11 @@
           "skor": "71–75",
           "ev_skor": 71,
           "dep_skor": 75,
-          "durum": "DAL +4",
-          "durum_takim": "DAL",
+          "onde": "dep",
           "fark": 4,
-          "one_cikan": "4 kez liderlik değişti",
+          "one_cikan": [
+            "Dallas 12/20 şut"
+          ],
           "kritik": false
         },
         {
@@ -867,10 +877,11 @@
           "skor": "92–99",
           "ev_skor": 92,
           "dep_skor": 99,
-          "durum": "DAL +7",
-          "durum_takim": "DAL",
+          "onde": "dep",
           "fark": 7,
-          "one_cikan": "Dallas 8-0 seri",
+          "one_cikan": [
+            "en büyük fark 10"
+          ],
           "kritik": false
         },
         {
@@ -878,10 +889,12 @@
           "skor": "129–129",
           "ev_skor": 129,
           "dep_skor": 129,
-          "durum": "berabere",
-          "durum_takim": null,
+          "onde": null,
           "fark": 0,
-          "one_cikan": "Filipowski 14 sayı",
+          "one_cikan": [
+            "Utah 11-0 seri",
+            "Filipowski 14 sayı"
+          ],
           "kritik": true
         },
         {
@@ -889,10 +902,9 @@
           "skor": "140–133",
           "ev_skor": 140,
           "dep_skor": 133,
-          "durum": "UTA +7",
-          "durum_takim": "UTA",
+          "onde": "ev",
           "fark": 7,
-          "one_cikan": "—",
+          "one_cikan": [],
           "kritik": false
         }
       ],
@@ -1512,10 +1524,12 @@
           "skor": "27–25",
           "ev_skor": 27,
           "dep_skor": 25,
-          "durum": "LAC +2",
-          "durum_takim": "LAC",
+          "onde": "ev",
           "fark": 2,
-          "one_cikan": "en büyük fark 9",
+          "one_cikan": [
+            "en büyük fark 9",
+            "LA Clippers 11/18 şut"
+          ],
           "kritik": false
         },
         {
@@ -1523,10 +1537,11 @@
           "skor": "48–56",
           "ev_skor": 48,
           "dep_skor": 56,
-          "durum": "MEM +8",
-          "durum_takim": "MEM",
+          "onde": "dep",
           "fark": 8,
-          "one_cikan": "Jackson Jr. 14 sayı",
+          "one_cikan": [
+            "Jackson Jr. 14 sayı"
+          ],
           "kritik": false
         },
         {
@@ -1534,10 +1549,12 @@
           "skor": "76–90",
           "ev_skor": 76,
           "dep_skor": 90,
-          "durum": "MEM +14",
-          "durum_takim": "MEM",
+          "onde": "dep",
           "fark": 14,
-          "one_cikan": "4 kez liderlik değişti",
+          "one_cikan": [
+            "4 kez liderlik değişti",
+            "LA Clippers 11-0 seri"
+          ],
           "kritik": true
         },
         {
@@ -1545,10 +1562,11 @@
           "skor": "103–121",
           "ev_skor": 103,
           "dep_skor": 121,
-          "durum": "MEM +18",
-          "durum_takim": "MEM",
+          "onde": "dep",
           "fark": 18,
-          "one_cikan": "Memphis 11-0 seri",
+          "one_cikan": [
+            "Memphis 7 üçlük"
+          ],
           "kritik": false
         }
       ],
@@ -2190,10 +2208,12 @@
           "skor": "33–25",
           "ev_skor": 33,
           "dep_skor": 25,
-          "durum": "BOS +8",
-          "durum_takim": "BOS",
+          "onde": "ev",
           "fark": 8,
-          "one_cikan": "8 kez liderlik değişti",
+          "one_cikan": [
+            "Boston 14-0 seri",
+            "Brown 10 sayı"
+          ],
           "kritik": false
         },
         {
@@ -2201,10 +2221,11 @@
           "skor": "57–53",
           "ev_skor": 57,
           "dep_skor": 53,
-          "durum": "BOS +4",
-          "durum_takim": "BOS",
+          "onde": "ev",
           "fark": 4,
-          "one_cikan": "Detroit 9-0 seri",
+          "one_cikan": [
+            "en büyük fark 12"
+          ],
           "kritik": false
         },
         {
@@ -2212,10 +2233,12 @@
           "skor": "81–85",
           "ev_skor": 81,
           "dep_skor": 85,
-          "durum": "DET +4",
-          "durum_takim": "DET",
+          "onde": "dep",
           "fark": 4,
-          "one_cikan": "Cunningham double-double",
+          "one_cikan": [
+            "Cunningham double-double",
+            "3 kez liderlik değişti"
+          ],
           "kritik": true
         },
         {
@@ -2223,10 +2246,9 @@
           "skor": "105–112",
           "ev_skor": 105,
           "dep_skor": 112,
-          "durum": "DET +7",
-          "durum_takim": "DET",
+          "onde": "dep",
           "fark": 7,
-          "one_cikan": "White 14 sayı",
+          "one_cikan": [],
           "kritik": false
         }
       ],

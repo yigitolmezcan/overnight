@@ -1277,6 +1277,20 @@ def main():
     _html = _bulten.mail_govdesi(_veri, _cikis)
     _metin = _bulten.mail_metni(_veri, _cikis)
 
+    # ÇÖKME REGRESYONU: kadroda olup SAHAYA ÇIKMAYAN Türk oyuncusunun
+    # istatistik alanları hiç yok; bülten onu da yazmaya çalışıp
+    # KeyError ile çöküyordu (27 gecenin 22'sinde böyle bir kayıt var).
+    _dnp = {"tarih": "2026-01-28", "mutlaka": [], "brief": [],
+            "turkler": [{"isim": "Test Oyuncu", "takim": "DAL",
+                         "oynadi": False, "takim_adi": "Dallas Mavericks"}]}
+    try:
+        _dnp_html = _bulten.mail_govdesi(_dnp, _cikis)
+        _dnp_ok = "Test Oyuncu" not in _dnp_html
+    except Exception as _e:
+        _dnp_ok = False
+    basar("Bülten: oynamayan Türk oyuncusu maili çökertmiyor, yazılmıyor",
+          _dnp_ok)
+
     # Kutu skor maile girmez. Ölçüt "hiç oyuncu adı geçmesin" DEĞİL —
     # Türkler bölümü ve brief satırları bilerek isim taşıyor. Doğru
     # ölçüt: SADECE kutu skorda olan (metnin hiçbir yerinde anılmayan)
@@ -5719,8 +5733,10 @@ def main():
                 _ad5 = f"{_t5} {_b5.get('mac')}"
                 # YÜKLEM YOK — "öne çıkan" bir etiket, cümle değil.
                 for _r5 in _tb:
-                    if _FIIL.search((_r5.get("one_cikan") or "").lower()):
-                        _yuklem.append(f"{_ad5}: {_r5['one_cikan']}")
+                    # one_cikan LİSTE: en fazla iki olgu.
+                    for _o5 in (_r5.get("one_cikan") or []):
+                        if _FIIL.search(str(_o5).lower()):
+                            _yuklem.append(f"{_ad5}: {_o5}")
                 # YAPI
                 _et5 = [_r5.get("ceyrek") for _r5 in _tb]
                 if _tam:
@@ -5738,13 +5754,23 @@ def main():
                 # TAM BİR KRİTİK SATIR
                 if sum(1 for _r5 in _tb if _r5.get("kritik")) != 1:
                     _kritik.append(_ad5)
-                # DURUM alanı skorla tutarlı
+                # DURUM SÜTUNU KALKTI — yerine "önde olan taraf" işareti,
+                # ve o da skorla tutarlı olmalı (şablon kalın yazıyor).
                 for _r5 in _tb:
                     _f5 = (_r5.get("ev_skor") or 0) - (_r5.get("dep_skor") or 0)
-                    if _f5 == 0 and _r5.get("durum") != "berabere":
-                        _durum_hata.append(f"{_ad5}: {_r5['durum']}")
-                    elif _f5 != 0 and not _r5.get("durum", "").endswith(f"+{abs(_f5)}"):
-                        _durum_hata.append(f"{_ad5}: {_r5['durum']} ({_f5})")
+                    _bek_onde = None if _f5 == 0 else ("ev" if _f5 > 0 else "dep")
+                    if _r5.get("onde") != _bek_onde:
+                        _durum_hata.append(
+                            f"{_ad5}: onde={_r5.get('onde')} fark={_f5}")
+                    if "durum" in _r5:
+                        _durum_hata.append(f"{_ad5}: durum alanı hâlâ var")
+                # AYNI OLGU TİPİ BİR MAÇTA İKİ KEZ KULLANILMAZ.
+                _gorulen = []
+                for _r5 in _tb:
+                    for _o5 in (_r5.get("one_cikan") or []):
+                        _gorulen.append(_o5)
+                if len(_gorulen) != len(set(_gorulen)):
+                    _durum_hata.append(f"{_ad5}: olgu tekrarı {_gorulen}")
                 # SKOR İLERLER (kümülatif)
                 _onc5 = None
                 for _r5 in _tb:
@@ -5791,11 +5817,115 @@ def main():
     _tb_ornek = _derle._ceyrek_tablosu(
         _derle._yukle(_derle.GERCEK_DIZIN, "2025-12-27")["maclar"][
             list(_derle._yukle(_derle.GERCEK_DIZIN, "2025-12-27")["maclar"])[0]])
-    basar("Tablo: dört alan da dolu (çeyrek, skor, durum, öne çıkan)",
-          all(_r.get("ceyrek") and _r.get("skor") and _r.get("durum")
-              and _r.get("one_cikan") for _r in _tb_ornek))
-    basar("Tablo: kayda değer bir şey yoksa '—' yazılıyor",
-          '"—"' in _dsrc3)
+    # DURUM SÜTUNU KALKTI: "NYK +7" çeyrek skorundan zaten çıkarılabiliyordu.
+    basar("Tablo: iki sütun — çeyrek skoru ve öne çıkan",
+          all(_r.get("ceyrek") and _r.get("skor") for _r in _tb_ornek)
+          and not any("durum" in _r for _r in _tb_ornek))
+    basar("Tablo: önde olan taraf işaretli, skor metni ayrıştırılmıyor",
+          all(_r.get("onde") in ("ev", "dep", None) for _r in _tb_ornek)
+          and ".ctbl td.s b{color:var(--ink)" in _sayfa)
+    # ZORLA DOLDURMA YOK: hiçbir olgu eşiği geçmiyorsa satır BOŞ kalır,
+    # dolgu işareti yazılmaz. Yayındaki gecelerde gerçekten oluyor mu?
+    _bos_satir = _dolu_satir = 0
+    for _t9 in _geceler:
+        if not _os.path.exists(f"dist/{_t9}.json"):
+            continue
+        _x9 = _jj.loads(open(f"dist/{_t9}.json", encoding="utf-8").read())
+        for _kat9 in ("mutlaka", "degerse_bak", "diger"):
+            for _b9 in (_x9.get(_kat9) or []):
+                for _r9 in (_b9.get("ceyrek_tablosu") or []):
+                    _o9 = _r9.get("one_cikan") or []
+                    if any(str(_x) == "—" for _x in _o9):
+                        _bos_satir = -999          # dolgu işareti yazılmış
+                    if _o9:
+                        _dolu_satir += 1
+                    else:
+                        _bos_satir += 1
+    basar("Tablo: sakin çeyrekte satır boş kalıyor, dolgu yazılmıyor",
+          _bos_satir > 0 and _dolu_satir > 0,
+          f"boş {_bos_satir} / dolu {_dolu_satir}")
+    # --------------------------------------------------------------
+    # OLGU HAVUZU — altı kaynağın altısı da üretimde çalışıyor mu?
+    # --------------------------------------------------------------
+    # Yeni iki kaynak (takım şut isabeti, üçlük) öncelik sırasında altta;
+    # gerçekten çıkıyor mu diye YAYINDAKİ veriden sayılıyor. Bir kez
+    # sıfır çıktı: gercek/ dosyalarında takim_ceyrek kaydı yoktu.
+    _havuz = {"liderlik": 0, "seri": 0, "fark": 0, "uclluk": 0,
+              "sut": 0, "oyuncu": 0}
+    _olgu_satir = {0: 0, 1: 0, 2: 0}
+    for _t8 in _geceler:
+        if not _os.path.exists(f"dist/{_t8}.json"):
+            continue
+        _x8 = _jj.loads(open(f"dist/{_t8}.json", encoding="utf-8").read())
+        for _kat8 in ("mutlaka", "degerse_bak", "diger"):
+            for _b8 in (_x8.get(_kat8) or []):
+                for _r8 in (_b8.get("ceyrek_tablosu") or []):
+                    _o8 = _r8.get("one_cikan") or []
+                    _olgu_satir[min(len(_o8), 2)] = _olgu_satir.get(len(_o8), 0) + 1
+                    for _x in _o8:
+                        if "liderlik" in _x: _havuz["liderlik"] += 1
+                        elif "-0 seri" in _x: _havuz["seri"] += 1
+                        elif "en büyük fark" in _x: _havuz["fark"] += 1
+                        elif "üçlük" in _x: _havuz["uclluk"] += 1
+                        elif _x.endswith("şut"): _havuz["sut"] += 1
+                        else: _havuz["oyuncu"] += 1
+    # KARAR ÇEYREĞİ ÖNCE SEÇER: sırayla seçilince 1. çeyrek "liderlik" ve
+    # "seri"yi alıp bitiriyor, maçın karara bağlandığı çeyrek olgusuz
+    # kalıyordu (127 satırın 24'ü). Tablo yine kronolojik yazılıyor.
+    _kar_top = _kar_bos = 0
+    for _t7 in _geceler:
+        if not _os.path.exists(f"dist/{_t7}.json"):
+            continue
+        _x7 = _jj.loads(open(f"dist/{_t7}.json", encoding="utf-8").read())
+        for _kat7 in ("mutlaka", "degerse_bak", "diger"):
+            for _b7 in (_x7.get(_kat7) or []):
+                for _r7 in (_b7.get("ceyrek_tablosu") or []):
+                    if _r7.get("kritik"):
+                        _kar_top += 1
+                        if not (_r7.get("one_cikan") or []):
+                            _kar_bos += 1
+    basar("Tablo: karar çeyreği olgusuz kalmıyor (en fazla %5)",
+          _kar_top and _kar_bos <= 0.05 * _kar_top,
+          f"{_kar_bos}/{_kar_top}")
+    basar("Tablo: olgu seçimi karar çeyreğinden başlıyor",
+          'key=lambda c: (c["periyot"] != karar_periyot' in _dsrc3)
+
+    basar("Olgu havuzu: altı kaynağın altısı da yayında çıkıyor",
+          all(_v > 0 for _v in _havuz.values()), str(_havuz))
+    # Yeni kaynaklar gercekler.py'de ÜRETİLİYOR — derle.py'de hesaplanmıyor.
+    _gsrc_tc = open("gercekler.py", encoding="utf-8").read()
+    basar("Olgu havuzu: takım çeyrek şutu bir GERÇEK kaydı",
+          "takim_ceyrek_gerceklerini_uret" in _gsrc_tc
+          and '"takim_ceyrek",' in _gsrc_tc
+          and "TAKIM_CEYREK_ASGARI_DENEME" in _gsrc_tc
+          and "takim_ceyrek" not in _dsrc3.split("def _ceyrek_tablosu")[0])
+    basar("Olgu havuzu: eşikler tek kaynak (derle sabitleri)",
+          (_derle.ONE_CIKAN_LIDERLIK, _derle.ONE_CIKAN_SERI_ALT,
+           _derle.ONE_CIKAN_SAYI_ALT, _derle.ONE_CIKAN_UCLUK,
+           _derle.ONE_CIKAN_SUT_UST, _derle.ONE_CIKAN_SUT_ALT)
+          == (3, 6, 8, 5, 60, 30))
+    # --------------------------------------------------------------
+    # ŞABLON — üç sütun değil iki, ve sarmalanan ikinci olgu düşüyor
+    # --------------------------------------------------------------
+    basar("Tablo şablonu: Durum sütunu kalktı",
+          "<th>Durum</th>" not in _sayfa
+          and 'td class="d"' not in _sayfa
+          and ".ctbl td.d{" not in _sayfa
+          and "<th>Çeyrek</th><th>Öne çıkan</th>" in _sayfa)
+    basar("Tablo şablonu: iki olgu orta noktayla ayrılıyor",
+          '<span class="nk">·</span>' in _sayfa
+          and '.ctbl td.f .nk{' in _sayfa)
+    # SARMALANIRSA İKİNCİ OLGU DÜŞER, PUNTO KÜÇÜLMEZ (kullanıcı kuralı).
+    basar("Tablo şablonu: sarmalanan ikinci olgu ölçümle gizleniyor",
+          "function ceyrekOlguHizala()" in _sayfa
+          and "td.classList.add('tek')" in _sayfa
+          and ".ctbl td.f.tek .nk" in _sayfa)
+    basar("Tablo şablonu: sarmalanınca punto küçültülmüyor",
+          "font-size" not in _sayfa.split(".ctbl td.f.tek")[1].split("}")[0])
+
+    basar("Tablo: satır başına en fazla iki olgu",
+          _derle.ONE_CIKAN_EN_FAZLA == 2
+          and all(len(_r.get("one_cikan") or []) <= 2 for _r in _tb_ornek))
     # ŞUT TÜRÜ ↔ SKOR DEĞİŞİMİ ve BELİRLEYİCİLİK (kullanıcı kararı)
     _gsrc = open("gercekler.py", encoding="utf-8").read()
     basar("Karar: şut türü skor değişimiyle denetleniyor",

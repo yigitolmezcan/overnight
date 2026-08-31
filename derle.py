@@ -1347,8 +1347,17 @@ def _yuva_planla(sekil, kazanan, kaybeden):
 ONE_CIKAN_LIDERLIK = 3      # bu kadar liderlik değişimi "öne çıkan" olur
 ONE_CIKAN_SERI = 8          # bu uzunlukta seri
 ONE_CIKAN_SAYI = 10         # çeyrekte bu kadar sayı atan oyuncu
-ONE_CIKAN_SERI_ALT = 6
-ONE_CIKAN_SAYI_ALT = 7
+ONE_CIKAN_SERI_ALT = 6      # kesintisiz seri alt eşiği
+ONE_CIKAN_SAYI_ALT = 8      # çeyreğin en skoreri alt eşiği
+ONE_CIKAN_EN_FAZLA = 2      # bir satırda en fazla iki olgu
+ONE_CIKAN_SUT_UST = 60      # çeyrek saha içi isabet yüzdesi bu ve üstü
+ONE_CIKAN_SUT_ALT = 30      # ... ya da bu ve altı
+ONE_CIKAN_UCLUK = 5         # çeyrekte bu kadar üçlük
+# SARMALAMA KARARI BURADA DEĞİL: hücre genişliği ekrana göre değişiyor
+# (375px'te 192px ≈ 26 karakter, 1440px'te 717px ≈ 99). Sabit bir
+# karakter bütçesi masaüstünde rahat sığan ikinci olguyu da düşürüyordu.
+# Derleme İKİ OLGUYU DA yazıyor; sarmalanma ölçülüp ikincisi şablonda
+# gizleniyor (bkz. ceyrekOlguHizala). Punto küçültme yok.
 KARAR_SON_SANIYE = 30.0     # karar cümlesi yalnız son bu kadar saniyede
 
 
@@ -1453,7 +1462,9 @@ def _gec_metni(gec_satiri, gercekler):
 
 
 def _ceyrek_tablosu(gercekler, gozat=False):
-    """[{ceyrek, skor, durum, fark, one_cikan, kritik}] — YÜKLEMSİZ.
+    """[{ceyrek, skor, onde, fark, one_cikan, kritik}] — YÜKLEMSİZ.
+
+    `one_cikan` EN FAZLA İKİ etiketlik liste; hiçbiri eşiği geçmiyorsa boş.
 
     `gozat=True` iki satır verir: İlk yarı / İkinci yarı."""
     skor = next((f["veri"] for f in gercekler if f["tur"] == "skor"), {}) or {}
@@ -1499,12 +1510,18 @@ def _ceyrek_tablosu(gercekler, gozat=False):
                                              -(o.get("saniye_kalan") or 0))) if _ad else None
     karar_periyot = (karar_olay or {}).get("periyot") or son_periyot
 
-    def _one_cikan(periyotlar, onceki_tur=None):
-        """ETİKET — yüklem yok. Öncelik sırası sabit.
+    takim_ceyrek = [f["veri"] for f in gercekler if f["tur"] == "takim_ceyrek"]
 
-        `onceki_tur`: bir önceki satırın etiket türü. Aynı tür arka arkaya
-        gelince tablo tekdüze oluyordu (üç satır üst üste "N-0 seri"),
-        o yüzden aynı tür bir basamak geriye atılıyor."""
+    def _one_cikan(periyotlar, kullanilan):
+        """EN FAZLA İKİ ETİKET — yüklem yok, sabit öncelik sırası.
+
+        `kullanilan`: bu MAÇTA daha önce yazılmış olgu türleri. Aynı tür
+        bir maçta iki kez kullanılmıyor (kullanıcı kuralı) — eskiden
+        sadece arka arkaya gelmesi engelleniyordu, üç satırda iki kez
+        "N-0 seri" çıkabiliyordu.
+
+        Hiçbir aday eşiği geçmiyorsa BOŞ liste döner: satır sadece çeyrek
+        skorunu taşır. Zorla doldurma yok."""
         lider = [o for o in olaylar
                  if o["tip"] == "liderlik" and (o.get("periyot") or 0) in periyotlar]
         seriler = [o for o in olaylar
@@ -1518,6 +1535,16 @@ def _ceyrek_tablosu(gercekler, gozat=False):
         en_oyuncu = max(toplam.items(), key=lambda kv: kv[1]) if toplam else None
         buyuk = [o for o in olaylar
                  if o["tip"] == "en_buyuk_fark" and (o.get("periyot") or 0) in periyotlar]
+        # TAKIM ŞUTU: "İlk yarı" gibi çok periyotlu satırda çeyrekler
+        # TOPLANIYOR — iki ayrı yüzdenin ortalaması yanlış olurdu.
+        sut = {}
+        for t in takim_ceyrek:
+            if (t.get("periyot") or 0) not in periyotlar:
+                continue
+            r = sut.setdefault(t["takim"], {"fg_isabet": 0, "fg_deneme": 0,
+                                            "uc_isabet": 0})
+            for k in r:
+                r[k] += t.get(k) or 0
 
         adaylar = []
         # BİLEŞİK BAŞARI EN ÖNDE: triple-double / 40+ sayı gibi bir gece
@@ -1534,32 +1561,54 @@ def _ceyrek_tablosu(gercekler, gozat=False):
         if buyuk:
             adaylar.append(("fark",
                             f"en büyük fark {max(o.get('sayi') or 0 for o in buyuk)}"))
+        # ÜÇLÜK: çeyrekte 5 ve üstü. En çok atan takım.
+        _uc = [(k, v["uc_isabet"]) for k, v in sut.items()
+               if v["uc_isabet"] >= ONE_CIKAN_UCLUK]
+        if _uc:
+            _k, _n = max(_uc, key=lambda kv: kv[1])
+            adaylar.append(("uclluk", f"{kisa(_k)} {_n} üçlük"))
+        # ŞUT İSABETİ: yalnız uçlarda haber değeri var (60%+ ya da 30%-).
+        _sut_aday = []
+        for k, v in sut.items():
+            if not v["fg_deneme"]:
+                continue
+            yuzde = 100.0 * v["fg_isabet"] / v["fg_deneme"]
+            if yuzde >= ONE_CIKAN_SUT_UST or yuzde <= ONE_CIKAN_SUT_ALT:
+                _sut_aday.append((abs(yuzde - 50), k, v))
+        if _sut_aday:
+            _, _k, _v = max(_sut_aday)
+            adaylar.append(("sut",
+                            f"{kisa(_k)} {_v['fg_isabet']}/{_v['fg_deneme']} şut"))
         if en_seri is not None and (en_seri.get("sayi") or 0) >= ONE_CIKAN_SERI_ALT:
             adaylar.append(("seri", f"{kisa(en_seri.get('takim'))} {en_seri['sayi']}-0 seri"))
         if en_oyuncu and en_oyuncu[1] >= ONE_CIKAN_SAYI_ALT:
             adaylar.append(("sayi", f"{_soyad(en_oyuncu[0])} {en_oyuncu[1]} sayı"))
-        if len(lider) >= 2:
-            adaylar.append(("lider", f"{len(lider)} kez liderlik değişti"))
-        if not adaylar:
-            return "—", None
-        for tur, metin in adaylar:
-            if tur != onceki_tur:
-                return metin, tur
-        return adaylar[0][1], adaylar[0][0]
 
-    def _satir(etiket, c, periyotlar, kritik, onceki_tur=None):
+        secilen = []
+        for tur, metin in adaylar:
+            if tur in kullanilan or any(tur == t for t, _ in secilen):
+                continue
+            secilen.append((tur, metin))
+            if len(secilen) == ONE_CIKAN_EN_FAZLA:
+                break
+        for tur, _ in secilen:
+            kullanilan.add(tur)
+        return [m for _, m in secilen]
+
+    def _satir(etiket, c, kritik, olgular):
+        """DURUM SÜTUNU YOK: "NYK +7" çeyrek skorundan zaten çıkarılabiliyordu,
+        yer kaplayıp bilgi eklemiyordu (kullanıcı kararı). Yerine "öne çıkan"
+        genişledi ve iki olgu taşıyabiliyor. Önde olan taraf `onde` ile
+        işaretleniyor — şablon o rakamı kalın yazıyor."""
         ev, dep = c["kumulatif_ev"], c["kumulatif_dep"]
         fark = ev - dep
         return {
             "ceyrek": etiket,
             "skor": f"{ev}–{dep}",
             "ev_skor": ev, "dep_skor": dep,
-            "durum": ("berabere" if fark == 0
-                      else f"{(ev_kod if fark > 0 else dep_kod)} +{abs(fark)}"),
-            "durum_takim": None if fark == 0 else (ev_kod if fark > 0 else dep_kod),
+            "onde": None if fark == 0 else ("ev" if fark > 0 else "dep"),
             "fark": abs(fark),
-            "one_cikan": _one_cikan(periyotlar, onceki_tur)[0],
-            "_tur": _one_cikan(periyotlar, onceki_tur)[1],
+            "one_cikan": olgular,
             "kritik": kritik,
         }
 
@@ -1570,14 +1619,25 @@ def _ceyrek_tablosu(gercekler, gozat=False):
         if ilk is None:
             return []
         # KISA ETİKET: "İkinci yarı" skor sütununa değiyordu (375px).
-        _r1 = _satir("1. yarı", ilk, {1, 2}, False)
-        _r2 = _satir("2. yarı", son, set(range(3, son_periyot + 1)), True,
-                     _r1.get("_tur"))
-        _r1.pop("_tur", None); _r2.pop("_tur", None)
-        return [_r1, _r2]
+        _kullanilan = set()
+        # KARAR SATIRI ÖNCE SEÇER (aşağıdaki nota bak).
+        _o2 = _one_cikan(set(range(3, son_periyot + 1)), _kullanilan)
+        _o1 = _one_cikan({1, 2}, _kullanilan)
+        return [_satir("1. yarı", ilk, False, _o1),
+                _satir("2. yarı", son, True, _o2)]
+
+    # OLGU SEÇİMİ KARAR ÇEYREĞİNDEN BAŞLIYOR. Aynı olgu tipi bir maçta
+    # bir kez kullanıldığı için sırayla seçilince 1. çeyrek "liderlik" ve
+    # "seri"yi alıp bitiriyor, maçın karara bağlandığı çeyrek olgusuz
+    # kalıyordu (127 karar satırının 24'ü, ölçüldü). Tablo yine
+    # KRONOLOJİK yazılıyor; değişen sadece seçim sırası.
+    _kullanilan = set()
+    _olgu = {}
+    for c in sorted(ceyrekler,
+                    key=lambda c: (c["periyot"] != karar_periyot, c["periyot"])):
+        _olgu[c["periyot"]] = _one_cikan({c["periyot"]}, _kullanilan)
 
     tablo = []
-    _onceki_tur = None
     for c in ceyrekler:
         p = c["periyot"]
         if p <= 4:
@@ -1586,9 +1646,7 @@ def _ceyrek_tablosu(gercekler, gozat=False):
             etiket = "UZ"
         else:
             etiket = f"UZ{p - 4}"
-        _r = _satir(etiket, c, {p}, p == karar_periyot, _onceki_tur)
-        _onceki_tur = _r.pop("_tur")
-        tablo.append(_r)
+        tablo.append(_satir(etiket, c, p == karar_periyot, _olgu[p]))
     return tablo
 
 

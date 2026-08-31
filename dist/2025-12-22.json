@@ -274,10 +274,12 @@
           "skor": "26–35",
           "ev_skor": 26,
           "dep_skor": 35,
-          "durum": "IND +9",
-          "durum_takim": "IND",
+          "onde": "dep",
           "fark": 9,
-          "one_cikan": "3 kez liderlik değişti",
+          "one_cikan": [
+            "Indiana 8 üçlük",
+            "Brown 9 sayı"
+          ],
           "kritik": false
         },
         {
@@ -285,10 +287,11 @@
           "skor": "43–61",
           "ev_skor": 43,
           "dep_skor": 61,
-          "durum": "IND +18",
-          "durum_takim": "IND",
+          "onde": "dep",
           "fark": 18,
-          "one_cikan": "Indiana 9-0 seri",
+          "one_cikan": [
+            "en büyük fark 20"
+          ],
           "kritik": false
         },
         {
@@ -296,10 +299,9 @@
           "skor": "74–82",
           "ev_skor": 74,
           "dep_skor": 82,
-          "durum": "IND +8",
-          "durum_takim": "IND",
+          "onde": "dep",
           "fark": 8,
-          "one_cikan": "Simons 9 sayı",
+          "one_cikan": [],
           "kritik": false
         },
         {
@@ -307,10 +309,12 @@
           "skor": "103–95",
           "ev_skor": 103,
           "dep_skor": 95,
-          "durum": "BOS +8",
-          "durum_takim": "BOS",
+          "onde": "ev",
           "fark": 8,
-          "one_cikan": "3 kez liderlik değişti",
+          "one_cikan": [
+            "3 kez liderlik değişti",
+            "Boston 10-0 seri"
+          ],
           "kritik": true
         }
       ],
@@ -10965,10 +10969,12 @@
           "skor": "67–54",
           "ev_skor": 67,
           "dep_skor": 54,
-          "durum": "OKC +13",
-          "durum_takim": "OKC",
+          "onde": "ev",
           "fark": 13,
-          "one_cikan": "3 kez liderlik değişti",
+          "one_cikan": [
+            "3 kez liderlik değişti",
+            "Gilgeous-Alexander 17 sayı"
+          ],
           "kritik": false
         },
         {
@@ -10976,10 +10982,12 @@
           "skor": "119–103",
           "ev_skor": 119,
           "dep_skor": 103,
-          "durum": "OKC +16",
-          "durum_takim": "OKC",
+          "onde": "ev",
           "fark": 16,
-          "one_cikan": "Gilgeous-Alexander double-double",
+          "one_cikan": [
+            "Gilgeous-Alexander double-double",
+            "Oklahoma City 8-0 seri"
+          ],
           "kritik": true
         }
       ],
@@ -11573,10 +11581,12 @@
           "skor": "57–63",
           "ev_skor": 57,
           "dep_skor": 63,
-          "durum": "DAL +6",
-          "durum_takim": "DAL",
+          "onde": "dep",
           "fark": 6,
-          "one_cikan": "Davis double-double",
+          "one_cikan": [
+            "Davis double-double",
+            "Davis 22 sayı"
+          ],
           "kritik": false
         },
         {
@@ -11584,10 +11594,12 @@
           "skor": "119–113",
           "ev_skor": 119,
           "dep_skor": 113,
-          "durum": "NOP +6",
-          "durum_takim": "NOP",
+          "onde": "ev",
           "fark": 6,
-          "one_cikan": "3 kez liderlik değişti",
+          "one_cikan": [
+            "3 kez liderlik değişti",
+            "New Orleans 10-0 seri"
+          ],
           "kritik": true
         }
       ],
@@ -12244,10 +12256,12 @@
           "skor": "51–61",
           "ev_skor": 51,
           "dep_skor": 61,
-          "durum": "DET +10",
-          "durum_takim": "DET",
+          "onde": "dep",
           "fark": 10,
-          "one_cikan": "Detroit 10-0 seri",
+          "one_cikan": [
+            "Sharpe 16 sayı",
+            "Detroit 6 üçlük"
+          ],
           "kritik": false
         },
         {
@@ -12255,10 +12269,12 @@
           "skor": "102–110",
           "ev_skor": 102,
           "dep_skor": 110,
-          "durum": "DET +8",
-          "durum_takim": "DET",
+          "onde": "dep",
           "fark": 8,
-          "one_cikan": "Duren double-double",
+          "one_cikan": [
+            "Duren double-double",
+            "Portland 11-0 seri"
+          ],
           "kritik": true
         }
       ],

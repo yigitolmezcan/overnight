@@ -468,16 +468,21 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
    Kendi sınıfı: küçük punto, sabit ve daha geniş sütun. */
 .gozkart .ctbl td.q{width:62px;font-size:10px;letter-spacing:.02em}
 .gozkart .ctbl td.s{width:70px}
-.gozkart .ctbl td.d{width:60px}
-.ctbl td.s{color:var(--ink);width:76px;letter-spacing:-.01em}
-.ctbl td.d{width:66px;font-size:11.5px}
-.ctbl td.d em{font-style:normal;color:#7FA3B8}
-.ctbl td.f{color:var(--dim);font-size:12px;padding-left:6px;
+/* DURUM SÜTUNU KALKTI ("NYK +7" skordan zaten çıkıyordu). Kalan iki
+   sütun: çeyrek skoru ve genişleyen "öne çıkan". */
+.ctbl td.s{color:var(--dim);width:76px;letter-spacing:-.01em}
+.ctbl td.s b{color:var(--ink);font-weight:700}   /* önde olan taraf */
+.ctbl td.f{color:var(--dim);font-size:12px;padding-left:10px;
   overflow-wrap:anywhere}
+/* İki olgu arasındaki orta nokta — olguların kendisinden soluk. */
+.ctbl td.f .nk{color:#39424F;padding:0 6px}
+/* SARMALANDIĞINDA İKİNCİ OLGU DÜŞER — punto küçülmez (kullanıcı kuralı).
+   Karar ölçümle veriliyor, bkz. ceyrekOlguHizala. */
+.ctbl td.f.tek .nk,.ctbl td.f.tek .o+.nk+.o{display:none}
 .ctbl tr.k td{color:var(--ink)}
 .ctbl tr.k td.f{font-weight:600}
 .ctbl tr.k td.q{color:var(--ember)}
-.ctbl tr.k td.d em{color:var(--ember)}
+.ctbl tr.k td.s b{color:var(--ember)}
 .kararc{margin-top:14px;padding-top:12px;border-top:1px solid var(--line2);
   display:flex;gap:11px;align-items:flex-start}
 .kararc u{width:7px;height:7px;border-radius:50%;background:var(--ember);flex:none;
@@ -2628,12 +2633,25 @@ function render(d){
   // ÇEYREK TABLOSU — veriden geliyor, burada cümle KURULMUYOR.
   // Yüklemsiz: "Öne çıkan" bir etiket, cümle değil.
   const ctablo = t => (t && t.length)
-    ? `<table class="ctbl"><tr><th></th><th>Skor</th><th>Durum</th><th>Öne çıkan</th></tr>
-       ${t.map(r=>`<tr class="${r.kritik?'k':''}">
-         <td class="q">${esc(r.ceyrek)}</td>
-         <td class="s">${esc(r.skor)}</td>
-         <td class="d"><em>${esc(r.durum)}</em></td>
-         <td class="f">${esc(r.one_cikan)}</td></tr>`).join('')}</table>`
+    ? `<table class="ctbl"><tr><th></th><th>Çeyrek</th><th>Öne çıkan</th></tr>
+       ${t.map(r=>{
+         // ÖNDE OLAN TARAF KALIN. Hangisi olduğu derle.py'den geliyor,
+         // burada skor metni ayrıştırılmıyor.
+         const [ev,dep]=String(r.skor).split('–');
+         const sk = r.onde==='ev' ? `<b>${esc(ev)}</b>–${esc(dep)}`
+                  : r.onde==='dep' ? `${esc(ev)}–<b>${esc(dep)}</b>`
+                  : `${esc(ev)}–${esc(dep)}`;
+         // EN FAZLA İKİ OLGU, orta noktayla. Hiçbiri eşiği geçmediyse
+         // hücre BOŞ kalıyor — zorla doldurma yok (kullanıcı kuralı).
+         const og = (r.one_cikan||[]);
+         const ol = (Array.isArray(og)?og:[og]).filter(Boolean)
+                    .map(x=>`<span class="o">${esc(x)}</span>`)
+                    .join('<span class="nk">·</span>');
+         return `<tr class="${r.kritik?'k':''}">
+           <td class="q">${esc(r.ceyrek)}</td>
+           <td class="s">${sk}</td>
+           <td class="f">${ol}</td></tr>`;
+       }).join('')}</table>`
     : '';
   // TEK karar cümlesi — yalnız maçı bitiren belirgin basket varsa.
   const kararBlogu = k => k
@@ -2679,6 +2697,26 @@ function render(d){
       ${kilitSerit(m)}
     </div>`).join('');
   }
+
+  // ---- ÇEYREK TABLOSU: SARMALANAN İKİNCİ OLGUYU DÜŞÜR ----
+  // Hücre genişliği ekrana göre değişiyor (375px'te ~192px, 1440px'te
+  // ~717px), o yüzden karar derlemede verilemiyor: sabit bir karakter
+  // bütçesi masaüstünde rahat sığan olguyu da atıyordu. Burada ÖLÇÜLÜYOR:
+  // iki olgu tek satıra sığmıyorsa ikincisi gizleniyor. Punto küçültme
+  // yok (kullanıcı kuralı).
+  function ceyrekOlguHizala(){
+    document.querySelectorAll('.ctbl td.f').forEach(td=>{
+      if(td.querySelectorAll('.o').length < 2) return;
+      td.classList.remove('tek');
+      const ikiyle = td.offsetHeight;
+      td.classList.add('tek');
+      // Tek olguyla da aynı yüksekliktEyse iki olgu zaten sığıyordu.
+      if(td.offsetHeight === ikiyle) td.classList.remove('tek');
+    });
+  }
+  ceyrekOlguHizala();
+  let _olguZ; addEventListener('resize',()=>{
+    clearTimeout(_olguZ); _olguZ=setTimeout(ceyrekOlguHizala,120); });
 
   // ---- yükselen / düşen ----
   // Aynı anda TEK balon açık kalıyor: ikinciye dokununca birincisi kapanır.

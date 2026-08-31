@@ -338,10 +338,12 @@
           "skor": "33–36",
           "ev_skor": 33,
           "dep_skor": 36,
-          "durum": "DET +3",
-          "durum_takim": "DET",
+          "onde": "dep",
           "fark": 3,
-          "one_cikan": "Detroit 11-0 seri",
+          "one_cikan": [
+            "Detroit 11-0 seri",
+            "Detroit 16/25 şut"
+          ],
           "kritik": false
         },
         {
@@ -349,10 +351,12 @@
           "skor": "67–68",
           "ev_skor": 67,
           "dep_skor": 68,
-          "durum": "DET +1",
-          "durum_takim": "DET",
+          "onde": "dep",
           "fark": 1,
-          "one_cikan": "George 13 sayı",
+          "one_cikan": [
+            "en büyük fark 11",
+            "Utah 7 üçlük"
+          ],
           "kritik": false
         },
         {
@@ -360,10 +364,11 @@
           "skor": "111–103",
           "ev_skor": 111,
           "dep_skor": 103,
-          "durum": "UTA +8",
-          "durum_takim": "UTA",
+          "onde": "ev",
           "fark": 8,
-          "one_cikan": "3 kez liderlik değişti",
+          "one_cikan": [
+            "3 kez liderlik değişti"
+          ],
           "kritik": false
         },
         {
@@ -371,10 +376,12 @@
           "skor": "131–129",
           "ev_skor": 131,
           "dep_skor": 129,
-          "durum": "UTA +2",
-          "durum_takim": "UTA",
+          "onde": "ev",
           "fark": 2,
-          "one_cikan": "Cunningham double-double",
+          "one_cikan": [
+            "Cunningham double-double",
+            "Cunningham 12 sayı"
+          ],
           "kritik": true
         }
       ],
@@ -13674,10 +13681,12 @@
           "skor": "48–53",
           "ev_skor": 48,
           "dep_skor": 53,
-          "durum": "PHX +5",
-          "durum_takim": "PHX",
+          "onde": "dep",
           "fark": 5,
-          "one_cikan": "9 kez liderlik değişti",
+          "one_cikan": [
+            "Phoenix 9-0 seri",
+            "Poole 11 sayı"
+          ],
           "kritik": false
         },
         {
@@ -13685,10 +13694,12 @@
           "skor": "108–115",
           "ev_skor": 108,
           "dep_skor": 115,
-          "durum": "PHX +7",
-          "durum_takim": "PHX",
+          "onde": "dep",
           "fark": 7,
-          "one_cikan": "Williams double-double",
+          "one_cikan": [
+            "Williams double-double",
+            "4 kez liderlik değişti"
+          ],
           "kritik": true
         }
       ],
