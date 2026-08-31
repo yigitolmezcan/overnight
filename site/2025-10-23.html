@@ -1176,16 +1176,20 @@ td.khot{color:var(--amber);font-weight:700}
 /* Bunları geç: DÜZ LİSTE, satırlar birbirine yakın. Bölümün işi zaten
    "geçebilirsin" demek; hafif durması doğru. */
 /* "Bunları geç" sol rayı — YAPI VERİR, DİKKAT ÇEKMEZ (kullanıcı kararı).
-   Üst katmanlarda 3px ve tam renk; burada 2px ve %25'ten %8'e sönen
+   Üst katmanlarda 3px ve tam renk; burada 2px ve %30'dan %10'a sönen
    degrade. Zemin YOK: bu katmanın kart iddiası yok.
-   %35 ile başlandı, ÖLÇÜLDÜ: 6 maç alt alta dururken renkler tek tek
-   seçilebiliyordu (Cleveland kırmızısı, Miami'nin turuncusu) — yani
-   bölüm dikkat çekiyordu. Kullanıcı ölçütü gereği %25'e indirildi. */
+   AYAR GEÇMİŞİ (hepsi 29 Aralık'ta 6 maç alt alta bakılarak):
+     %35 → renkler tek tek seçiliyordu, bölüm dikkat çekiyordu
+     %25 → aşırı soluk
+     %30 → kabul (kullanıcı seçimi)
+   Alternatif denendi: %30 + 2.5px ("kalın ama soluk çizgi, ince ve
+   renkli çizgiden daha az dikkat çeker"). Genişlik tek satır:
+   `.arch::before` içindeki width. */
 .arch{border-bottom:1px solid #171E2B;position:relative;padding-left:11px}
 .arch::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;
   background:linear-gradient(180deg,
-    rgba(var(--ray-rgb,226,112,28),.25) 0%,
-    rgba(var(--ray-rgb,226,112,28),.08) 100%)}
+    rgba(var(--ray-rgb,226,112,28),.30) 0%,
+    rgba(var(--ray-rgb,226,112,28),.10) 100%)}
 .arch:last-child{border-bottom:0}
 /* Geçen sezondan gelen form kutucuğu: bu sezonunkiyle karışmasın diye
    soluk ve kesikli. Renk aynı (kazanma/kaybetme), yoğunluk farklı. */

@@ -6191,11 +6191,11 @@ def main():
     # "BUNLARI GEÇ" SOL RAYI — yapı verir, dikkat çekmez
     # ------------------------------------------------------------------
     _ar = _s21.split(".arch::before{")[1].split("}")[0]
-    basar("Geç rayı: 2px (üst katmanlarda 3px, fark korunuyor)",
-          "width:2px" in _ar and "width:3px" in _s21.split(".game::before{")[1].split("}")[0])
-    basar("Geç rayı: %25'ten %8'e sönen degrade",
-          "rgba(var(--ray-rgb,226,112,28),.25) 0%" in _ar
-          and "rgba(var(--ray-rgb,226,112,28),.08) 100%" in _ar)
+    basar("Geç rayı: üst katmanlardan ince (3px değil)",
+          ("width:2px" in _ar or "width:2.5px" in _ar) and "width:3px" in _s21.split(".game::before{")[1].split("}")[0])
+    basar("Geç rayı: %30'dan %10'a sönen degrade",
+          "rgba(var(--ray-rgb,226,112,28),.30) 0%" in _ar
+          and "rgba(var(--ray-rgb,226,112,28),.10) 100%" in _ar)
     basar("Geç rayı: tam boy",
           "top:0" in _ar and "bottom:0" in _ar)
     _arch = _s21.split("\n.arch{")[1].split("}")[0]
