@@ -1181,6 +1181,55 @@ td.khot{color:var(--amber);font-weight:700}
 /* archive */
 /* Bunları geç: DÜZ LİSTE, satırlar birbirine yakın. Bölümün işi zaten
    "geçebilirsin" demek; hafif durması doğru. */
+/* ===== MANŞETLER — kapak bölümünün üst yarısı =====
+   Gazete mantığı: en fazla üç manşet, boyutları önem sırasına göre
+   azalıyor. Solda kazanan takım renginde 5px şerit. */
+.mn{padding:4px 0 6px}
+.mn .h{padding:16px 0;border-bottom:1px solid var(--line2);
+  display:flex;gap:15px;align-items:flex-start;width:100%;text-align:left;
+  background:none;border-left:0;border-right:0;border-top:0;cursor:pointer;
+  text-decoration:none;color:inherit}
+.mn .h:visited{color:inherit}
+.mn .t,.mn .s,.mn .s b{text-decoration:none}
+.mn .h:last-child{border-bottom:0}
+.mn .st{width:5px;flex:none;align-self:stretch;background:var(--tc,var(--ember));
+  border-radius:1px;margin:3px 0}
+.mn .b{flex:1;min-width:0}
+.mn .t{font-size:23px;font-weight:800;letter-spacing:-.035em;line-height:1.22;
+  color:var(--ink)}
+.mn .t em{color:var(--ember);font-style:normal}
+.mn .h.k2 .t{font-size:18.5px;font-weight:700;letter-spacing:-.028em}
+.mn .h.k3 .t{font-size:16px;font-weight:700;letter-spacing:-.02em;color:var(--dim)}
+.mn .h.k3 .t em{color:#B4713F}
+/* Künye satırı TEK SATIR: rozet çipi + skor + saat. Uzun takım adları
+   sarmalıyordu, manşet meta'sında KISA ad kullanılıyor. */
+.mn .s{font-family:var(--mono);font-size:11px;color:#4C5665;margin-top:8px;
+  display:flex;align-items:center;gap:9px;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis}
+.mn .s b{overflow:hidden;text-overflow:ellipsis}
+.mn .s b{color:var(--dim);font-weight:400}
+.mn .s u{text-decoration:none;color:#0A0603;background:var(--ember);
+  font-size:10px;font-weight:700;padding:1px 5px}
+.mn .h.k3 .s u{background:#232C39;color:#6C7787}
+/* ===== KAPAK MAÇ LİSTESİ — punch line yok, rozet + takımlar + saat ===== */
+.kaplist{padding:6px 0 2px}
+.kaplist h3{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--faint);font-weight:400;
+  margin:14px 0 6px;padding-top:12px;border-top:1px solid var(--line2)}
+.kaplist h3:first-child{border-top:0;padding-top:0;margin-top:4px}
+.kaplist a{display:flex;align-items:center;gap:10px;padding:7px 0;
+  text-decoration:none;color:inherit}
+.kaplist i{font-family:var(--mono);font-size:10px;font-weight:700;font-style:normal;
+  color:#0A0603;background:var(--ember);padding:1px 5px;flex:none;min-width:30px;
+  text-align:center}
+.kaplist .gz i{background:#232C39;color:#8A94A3}
+.kaplist span.tk{flex:1;min-width:0;font-family:var(--mono);font-size:12px;
+  color:var(--dim);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kaplist span.sa{font-family:var(--mono);font-size:10.5px;color:var(--faint);flex:none}
+.kaplist .gecserit{font-family:var(--mono);font-size:10.5px;color:var(--faint);
+  line-height:1.7;padding:8px 0 2px}
+.kaplist .gecserit b{color:var(--dim);font-weight:400}
+
 /* "Bunları geç" sol rayı — YAPI VERİR, DİKKAT ÇEKMEZ (kullanıcı kararı).
    Üst katmanlarda 3px ve tam renk; burada 2px ve %30'dan %10'a sönen
    degrade. Zemin YOK: bu katmanın kart iddiası yok.
@@ -1385,7 +1434,12 @@ td.khot{color:var(--amber);font-weight:700}
   <div class="clock">
     <div class="cbar"><span class="tz" id="briefTz"></span></div>
     <div class="night"></div>
-    <ul class="rows" id="briefList"></ul>
+    <!-- MANŞETLER + KAPAK MAÇ LİSTESİ. Saat rayı ve cümle akışı
+         KALKTI (kullanıcı kararı); oluşturucuları silinmedi, aşağıda
+         devre dışı duruyor. -->
+    <div class="mn" id="mansetler"></div>
+    <div class="kaplist" id="kapakListe"></div>
+    <ul class="rows" id="briefList" hidden></ul>
     <div class="ayrica" id="briefAyrica" hidden></div>
     <div class="cfoot"><span id="briefAralik"></span><em id="briefSayac"></em></div>
   </div>
@@ -2330,6 +2384,42 @@ function render(d){
   // Sıralama derle.py'de TSİ başlama saatine göre yapılıyor; burada
   // yeniden sıralanmıyor. İÇERİK KURALI DEĞİŞMEDİ: satır sayısı sabit
   // değil, bir maç ancak gerçek bir olguya dayanabiliyorsa satır alıyor.
+  // ---- MANŞETLER ----
+  // Metin derle.py'de SABİT KALIPTAN kuruldu; burada yalnız çiziliyor.
+  // `vurgu` metnin içindeki alt dizge — <em> ile işaretleniyor.
+  const mansetKutu=document.getElementById('mansetler');
+  const mansetler=d.mansetler||[];
+  mansetKutu.innerHTML=mansetler.map((m,i)=>{
+    let t=esc(m.metin);
+    if(m.vurgu){ const v=esc(m.vurgu); t=t.replace(v,`<em>${v}</em>`); }
+    const k=i===1?' k2':(i>=2?' k3':'');
+    return `<a class="h${k}" style="--tc:${esc(m.renk||'var(--ember)')}" href="#${esc(m.hedef_id||'')}">
+      <span class="st"></span>
+      <span class="b">
+        <span class="t">${t}</span>
+        <span class="s"><u>${(m.rozet||0).toFixed(1)}</u><b>${esc(m.mac||'')}</b>${
+          m.saat?`<span>${esc(m.saat)}</span>`:''}</span>
+      </span></a>`;}).join('');
+  // ---- KAPAK MAÇ LİSTESİ ----
+  // Punch line YOK (manşete çıktı). "Bunları geç" tek şeritte toplanıyor.
+  const kap=d.kapak_listesi||[];
+  const kapSatir=x=>`<a href="#${esc(x.hedef_id||'')}">
+      <i>${(x.rozet||0).toFixed(1)}</i>
+      <span class="tk">${esc(x.ev)} ${x.ev_skor}–${x.dep_skor} ${esc(x.dep)}</span>
+      <span class="sa">${esc(x.saat||'')}</span></a>`;
+  const grup=(ad,kod,sinif)=>{
+    const l=kap.filter(x=>x.katman===kod);
+    if(!l.length) return '';
+    return `<h3>${ad}</h3><div class="${sinif||''}">${l.map(kapSatir).join('')}</div>`;
+  };
+  const gecler=kap.filter(x=>x.katman==='gec');
+  document.getElementById('kapakListe').innerHTML =
+    grup('Mutlaka bil','mutlaka') + grup('Göz at','gozat','gz') +
+    (gecler.length?`<h3>Bunları geç</h3><div class="gecserit">${
+      gecler.map(x=>`<b>${esc(x.ev)} ${x.ev_skor}–${x.dep_skor} ${esc(x.dep)}</b>`).join(' · ')
+    }</div>`:'');
+
+  // DEVRE DIŞI — SİLİNMEDİ: saat rayı / cümle akışı oluşturucusu.
   const briefList=document.getElementById('briefList');
   const ozet=d.brief_ozet||{};
   document.getElementById('briefTz').textContent =

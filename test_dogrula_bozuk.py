@@ -6289,6 +6289,76 @@ def main():
     basar("Başlık: yayındaki hiçbir başlığın iddiası veriyle çelişmiyor",
           not _celisen, " | ".join(_celisen[:3]))
 
+    # ------------------------------------------------------------------
+    # MANŞET KALIPLARI — GARANTİ TESTİ
+    # ------------------------------------------------------------------
+    # Sabit kalıp + tek boşluk demek, üretilebilecek HER cümlenin
+    # sayılabilir olması demek. Tüm kalıplar × yayındaki tüm gecelerin
+    # oyuncu ve takım listesiyle üretilen her cümle yasaklı kapısından
+    # geçiriliyor. Bu bir umut değil, garanti.
+    _ADLAR, _TAKIMLAR = set(), set()
+    for _tm in _yayin.durum_oku()["yayinlanan"]:
+        _gm = _derle._yukle(_derle.GERCEK_DIZIN, _tm)["maclar"]
+        for _kk in _gm.values():
+            for _f in _kk:
+                if _f["tur"] == "oyuncu_stat" and _f["veri"].get("oyuncu"):
+                    _ADLAR.add(_f["veri"]["oyuncu"])
+                if _f["tur"] == "skor":
+                    for _kod in (_f["veri"].get("ev"), _f["veri"].get("dep")):
+                        if _kod:
+                            _TAKIMLAR.add(_derle._takim_adi(_kod))
+    basar("Manşet: ad havuzu dolu", len(_ADLAR) > 200 and len(_TAKIMLAR) >= 20,
+          f"{len(_ADLAR)} oyuncu, {len(_TAKIMLAR)} takım")
+    _yasak_liste = [w for w in yasakli_yukle() if len(w) > 3]
+    _kokler2 = _jj.loads(open("config/yasakli.json", encoding="utf-8").read()) \
+        .get("kok_kaliplari", [])
+    _kirli2, _uretilen = [], 0
+    for _kad, _kademe, _sab, _vur in cumle.MANSET_KALIPLARI:
+        _havuz = _TAKIMLAR if _kademe == 3 else _ADLAR
+        for _ad2 in sorted(_havuz):
+            for _n2 in (3, 6, 15, 20, 40, 55):
+                _c2, _v2 = cumle.manset_cumlesi(_kad, _ad2, _n2)
+                _uretilen += 1
+                _dus = _c2.lower()
+                for _kk2 in _kokler2:
+                    if _re.search(_kk2["desen"], _dus):
+                        _kirli2.append(f"{_kad}: {_c2} ← {_kk2['aciklama'][:34]}")
+                for _w2 in _yasak_liste:
+                    if _re.search(r"\b" + _re.escape(_w2.lower()), _dus):
+                        _kirli2.append(f"{_kad}: {_c2} ← yasaklı '{_w2}'")
+                if "{" in _c2 or "}" in _c2 or "None" in _c2:
+                    _kirli2.append(f"{_kad}: doldurulmamış boşluk → {_c2}")
+    basar(f"Manşet GARANTİ: üretilebilir {_uretilen} cümlenin hepsi kapıdan geçiyor",
+          not _kirli2, "; ".join(sorted(set(_kirli2))[:4]))
+    # EK KURALI: isim hep özne konumunda, ek almıyor.
+    _ekli = [k for k, _kd, _sb, _v in cumle.MANSET_KALIPLARI
+             if "{ad}'" in _sb or "{ad}’" in _sb or _sb.index("{ad}") != 0]
+    basar("Manşet: isim hep özne konumunda ve ek almıyor", not _ekli, str(_ekli))
+    basar("Manşet: kalıp listesi kapalı (12 kalıp)",
+          len(cumle.MANSET_KALIPLARI) == 12
+          and len({k[0] for k in cumle.MANSET_KALIPLARI}) == 12)
+    # SEÇİM: en fazla 3, aynı maçtan iki manşet çıkamaz.
+    _mkotu = []
+    for _tm2 in _yayin.durum_oku()["yayinlanan"]:
+        if not _os.path.exists(f"dist/{_tm2}.json"):
+            continue
+        _xm = _jj.loads(open(f"dist/{_tm2}.json", encoding="utf-8").read())
+        _ms = _xm.get("mansetler") or []
+        if len(_ms) > _derle.MANSET_EN_FAZLA:
+            _mkotu.append(f"{_tm2}: {len(_ms)} manşet")
+        _gidler = [m.get("mac_id") for m in _ms]
+        if len(_gidler) != len(set(_gidler)):
+            _mkotu.append(f"{_tm2}: aynı maçtan iki manşet")
+        for _m2 in _ms:
+            if _m2.get("kalip") not in cumle.MANSET_KALIP_BY_AD:
+                _mkotu.append(f"{_tm2}: liste dışı kalıp {_m2.get('kalip')}")
+    basar("Manşet: en fazla 3, aynı maçtan tek manşet, kalıp listede",
+          not _mkotu, "; ".join(_mkotu[:3]))
+    # SEZON BAŞI: bağlamlı kalıp ilk 10 maçta kurulamaz.
+    basar("Manşet: sezon başı bağlam eşiği susma kuralıyla aynı",
+          _derle.MANSET_BAGLAM_ASGARI == _gerc_modul.SEZON_ACILISI_TAZE_MAC_SAYISI
+          if "_gerc_modul" in dir() else _derle.MANSET_BAGLAM_ASGARI == 10)
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))

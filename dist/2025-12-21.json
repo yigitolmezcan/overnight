@@ -40,6 +40,106 @@
       "id": "g-mutlaka-1"
     }
   ],
+  "mansetler": [
+    {
+      "metin": "Jalen Brunson 47 sayı attı.",
+      "vurgu": "47 sayı",
+      "kalip": "kirk_sayi",
+      "kademe": 1,
+      "rozet": 8.9,
+      "mac": "New York 132 – 125 Miami",
+      "saat": "02:00",
+      "renk": "#F58426",
+      "hedef_id": "g-mutlaka-2",
+      "mac_id": "0022500398"
+    },
+    {
+      "metin": "Matas Buzelis sezonun en iyi gecesini oynadı.",
+      "vurgu": "sezonun en iyi gecesini",
+      "kalip": "sezon_en_iyi",
+      "kademe": 2,
+      "rozet": 9.2,
+      "mac": "Atlanta 150 – 152 Chicago",
+      "saat": "23:30",
+      "renk": "#CE1141",
+      "hedef_id": "g-mutlaka-0",
+      "mac_id": "0022500396"
+    },
+    {
+      "metin": "San Antonio Spurs üst üste 6. kez kazandı.",
+      "vurgu": "6. kez",
+      "kalip": "galibiyet_serisi",
+      "kademe": 3,
+      "rozet": 3.9,
+      "mac": "Washington 113 – 124 San Antonio",
+      "saat": "03:00",
+      "renk": "#C4CED4",
+      "hedef_id": "a-0022500399",
+      "mac_id": "0022500399"
+    }
+  ],
+  "kapak_listesi": [
+    {
+      "katman": "mutlaka",
+      "rozet": 9.2,
+      "ev": "Atlanta Hawks",
+      "dep": "Chicago Bulls",
+      "ev_skor": 150,
+      "dep_skor": 152,
+      "saat": "23:30",
+      "hedef_id": "g-mutlaka-0"
+    },
+    {
+      "katman": "mutlaka",
+      "rozet": 9.1,
+      "ev": "Sacramento Kings",
+      "dep": "Houston Rockets",
+      "ev_skor": 125,
+      "dep_skor": 124,
+      "saat": "06:00",
+      "hedef_id": "g-mutlaka-1"
+    },
+    {
+      "katman": "mutlaka",
+      "rozet": 8.9,
+      "ev": "New York Knicks",
+      "dep": "Miami Heat",
+      "ev_skor": 132,
+      "dep_skor": 125,
+      "saat": "02:00",
+      "hedef_id": "g-mutlaka-2"
+    },
+    {
+      "katman": "mutlaka",
+      "rozet": 7.1,
+      "ev": "Minnesota Timberwolves",
+      "dep": "Milwaukee Bucks",
+      "ev_skor": 103,
+      "dep_skor": 100,
+      "saat": "03:00",
+      "hedef_id": "g-mutlaka-3"
+    },
+    {
+      "katman": "gec",
+      "rozet": 3.9,
+      "ev": "Washington Wizards",
+      "dep": "San Antonio Spurs",
+      "ev_skor": 113,
+      "dep_skor": 124,
+      "saat": "03:00",
+      "hedef_id": "a-0022500399"
+    },
+    {
+      "katman": "gec",
+      "rozet": 2.5,
+      "ev": "Brooklyn Nets",
+      "dep": "Toronto Raptors",
+      "ev_skor": 96,
+      "dep_skor": 81,
+      "saat": "02:00",
+      "hedef_id": "a-0022500397"
+    }
+  ],
   "brief": [
     {
       "metin": "Chicago Bulls, Atlanta Hawks'ı yendi.",
@@ -10195,6 +10295,7 @@
   "diger": [
     {
       "id": "a-0022500399",
+      "mac_id": "0022500399",
       "mac": "Washington Wizards — San Antonio Spurs",
       "skor": "113–124",
       "rozet": 3.93,
@@ -10793,6 +10894,7 @@
     },
     {
       "id": "a-0022500397",
+      "mac_id": "0022500397",
       "mac": "Brooklyn Nets — Toronto Raptors",
       "skor": "96–81",
       "rozet": 2.45,

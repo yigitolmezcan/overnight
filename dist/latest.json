@@ -70,6 +70,156 @@
       "id": "a-0022500457"
     }
   ],
+  "mansetler": [
+    {
+      "metin": "Paolo Banchero triple-double yaptı.",
+      "vurgu": "triple-double",
+      "kalip": "triple_double",
+      "kademe": 1,
+      "rozet": 7.6,
+      "mac": "Toronto 107 – 106 Orlando",
+      "saat": "03:30",
+      "renk": "#CE1141",
+      "hedef_id": "a-0022500451",
+      "mac_id": "0022500451"
+    },
+    {
+      "metin": "Naz Reid sezonun en iyi gecesini oynadı.",
+      "vurgu": "sezonun en iyi gecesini",
+      "kalip": "sezon_en_iyi",
+      "kademe": 2,
+      "rozet": 6.8,
+      "mac": "Chicago 101 – 136 Minnesota",
+      "saat": "04:00",
+      "renk": "#3B7FD4",
+      "hedef_id": "a-0022500452",
+      "mac_id": "0022500452"
+    },
+    {
+      "metin": "Zion Williamson sezonun en iyi gecesini oynadı.",
+      "vurgu": "sezonun en iyi gecesini",
+      "kalip": "sezon_en_iyi",
+      "kademe": 2,
+      "rozet": 8.6,
+      "mac": "New Orleans 125 – 130 New York",
+      "saat": "04:00",
+      "renk": "#F58426",
+      "hedef_id": "g-mutlaka-1",
+      "mac_id": "0022500454"
+    }
+  ],
+  "kapak_listesi": [
+    {
+      "katman": "mutlaka",
+      "rozet": 8.9,
+      "ev": "Oklahoma City Thunder",
+      "dep": "Atlanta Hawks",
+      "ev_skor": 140,
+      "dep_skor": 129,
+      "saat": "04:00",
+      "hedef_id": "g-mutlaka-0"
+    },
+    {
+      "katman": "mutlaka",
+      "rozet": 8.6,
+      "ev": "New Orleans Pelicans",
+      "dep": "New York Knicks",
+      "ev_skor": 125,
+      "dep_skor": 130,
+      "saat": "04:00",
+      "hedef_id": "g-mutlaka-1"
+    },
+    {
+      "katman": "gozat",
+      "rozet": 7.6,
+      "ev": "Toronto Raptors",
+      "dep": "Orlando Magic",
+      "ev_skor": 107,
+      "dep_skor": 106,
+      "saat": "03:30",
+      "hedef_id": "a-0022500451"
+    },
+    {
+      "katman": "gozat",
+      "rozet": 7.4,
+      "ev": "Portland Trail Blazers",
+      "dep": "Dallas Mavericks",
+      "ev_skor": 125,
+      "dep_skor": 122,
+      "saat": "07:00",
+      "hedef_id": "a-0022500457"
+    },
+    {
+      "katman": "gozat",
+      "rozet": 6.8,
+      "ev": "Chicago Bulls",
+      "dep": "Minnesota Timberwolves",
+      "ev_skor": 101,
+      "dep_skor": 136,
+      "saat": "04:00",
+      "hedef_id": "a-0022500452"
+    },
+    {
+      "katman": "gec",
+      "rozet": 4.9,
+      "ev": "Washington Wizards",
+      "dep": "Phoenix Suns",
+      "ev_skor": 101,
+      "dep_skor": 115,
+      "saat": "03:00",
+      "hedef_id": "a-0022500448"
+    },
+    {
+      "katman": "gec",
+      "rozet": 4.8,
+      "ev": "San Antonio Spurs",
+      "dep": "Cleveland Cavaliers",
+      "ev_skor": 101,
+      "dep_skor": 113,
+      "saat": "04:00",
+      "hedef_id": "a-0022500456"
+    },
+    {
+      "katman": "gec",
+      "rozet": 4.7,
+      "ev": "Houston Rockets",
+      "dep": "Indiana Pacers",
+      "ev_skor": 126,
+      "dep_skor": 119,
+      "saat": "04:00",
+      "hedef_id": "a-0022500453"
+    },
+    {
+      "katman": "gec",
+      "rozet": 3.6,
+      "ev": "Brooklyn Nets",
+      "dep": "Golden State Warriors",
+      "ev_skor": 107,
+      "dep_skor": 120,
+      "saat": "03:30",
+      "hedef_id": "a-0022500449"
+    },
+    {
+      "katman": "gec",
+      "rozet": 3.5,
+      "ev": "Miami Heat",
+      "dep": "Denver Nuggets",
+      "ev_skor": 147,
+      "dep_skor": 123,
+      "saat": "03:30",
+      "hedef_id": "a-0022500450"
+    },
+    {
+      "katman": "gec",
+      "rozet": 2.9,
+      "ev": "Charlotte Hornets",
+      "dep": "Milwaukee Bucks",
+      "ev_skor": 113,
+      "dep_skor": 123,
+      "saat": "03:00",
+      "hedef_id": "a-0022500447"
+    }
+  ],
   "brief": [
     {
       "metin": "Phoenix Suns, Washington Wizards'ı yenerek 4 maçlık galibiyet serisini sürdürdü.",
@@ -16109,6 +16259,7 @@
   "degerse_bak": [
     {
       "id": "a-0022500451",
+      "mac_id": "0022500451",
       "mac": "Toronto Raptors — Orlando Magic",
       "skor": "107–106",
       "rozet": 7.64,
@@ -16765,6 +16916,7 @@
     },
     {
       "id": "a-0022500457",
+      "mac_id": "0022500457",
       "mac": "Portland Trail Blazers — Dallas Mavericks",
       "skor": "125–122",
       "rozet": 7.43,
@@ -17388,6 +17540,7 @@
     },
     {
       "id": "a-0022500452",
+      "mac_id": "0022500452",
       "mac": "Chicago Bulls — Minnesota Timberwolves",
       "skor": "101–136",
       "rozet": 6.78,
@@ -18156,6 +18309,7 @@
   "diger": [
     {
       "id": "a-0022500448",
+      "mac_id": "0022500448",
       "mac": "Washington Wizards — Phoenix Suns",
       "skor": "101–115",
       "rozet": 4.87,
@@ -18850,6 +19004,7 @@
     },
     {
       "id": "a-0022500456",
+      "mac_id": "0022500456",
       "mac": "San Antonio Spurs — Cleveland Cavaliers",
       "skor": "101–113",
       "rozet": 4.77,
@@ -19449,6 +19604,7 @@
     },
     {
       "id": "a-0022500453",
+      "mac_id": "0022500453",
       "mac": "Houston Rockets — Indiana Pacers",
       "skor": "126–119",
       "rozet": 4.66,
@@ -20213,6 +20369,7 @@
     },
     {
       "id": "a-0022500449",
+      "mac_id": "0022500449",
       "mac": "Brooklyn Nets — Golden State Warriors",
       "skor": "107–120",
       "rozet": 3.6,
@@ -20883,6 +21040,7 @@
     },
     {
       "id": "a-0022500450",
+      "mac_id": "0022500450",
       "mac": "Miami Heat — Denver Nuggets",
       "skor": "147–123",
       "rozet": 3.5,
@@ -21624,6 +21782,7 @@
     },
     {
       "id": "a-0022500447",
+      "mac_id": "0022500447",
       "mac": "Charlotte Hornets — Milwaukee Bucks",
       "skor": "113–123",
       "rozet": 2.86,

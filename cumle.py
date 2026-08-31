@@ -470,6 +470,51 @@ BASLIK_GERI_DONUS = 10        # kapatılan açık bu kadarsa "farktan dönüp"
 BASLIK_PERFORMANS = 30        # tek adamın taşıdığı maç eşiği
 
 
+# ===========================================================================
+# MANŞET KALIPLARI — SABİT METİN, TEK BOŞLUK
+# ===========================================================================
+#
+# LLM BU CÜMLELERE HİÇ DOKUNMUYOR. Kod, sabit metnin tek boşluğunu
+# dolduruyor; başka biçim üretilemez. Liste kapalı: yeni kalıp gerekirse
+# buraya eklenir, sistem uydurmaz.
+#
+# EK KURALI (kritik): kalıplar TÜRKÇE EK ALMAYACAK şekilde yazıldı.
+# İsim HEP ÖZNE konumunda ve ek almıyor — geçmişte patladığımız yer
+# tam olarak buydu ("Ellis'nun", "George'nin", "Brooklyn'un").
+# Yeni kalıp yazılırken de şart bu: isim ek alıyorsa o kalıp KABUL
+# EDİLMEZ, ek almayan bir biçim bulunur.
+#
+# (ad, kademe, şablon, vurgu_şablonu)
+#   kademe 1 = olağanüstü performans, 2 = bağlamlı performans,
+#   kademe 3 = takım bağlamı. Aşağı inildikçe eşik yükselir.
+MANSET_KALIPLARI = (
+    ("kirk_sayi",        1, "{ad} {n} sayı attı.",                       "{n} sayı"),
+    ("triple_double",    1, "{ad} triple-double yaptı.",                 "triple-double"),
+    ("yirmi_ribaund",    1, "{ad} {n} ribaund topladı.",                 "{n} ribaund"),
+    ("onbes_asist",      1, "{ad} {n} asist yaptı.",                     "{n} asist"),
+    ("alti_blok",        1, "{ad} {n} blok yaptı.",                      "{n} blok"),
+    ("kariyer_rekoru",   2, "{ad} kariyer rekoru kırdı.",                "kariyer rekoru"),
+    ("sezon_en_iyi",     2, "{ad} sezonun en iyi gecesini oynadı.",      "sezonun en iyi gecesini"),
+    ("ustuste_otuz",     2, "{ad} üst üste {n}. kez 30 sayıyı geçti.",   "{n}. kez"),
+    ("ilk_triple",       2, "{ad} sezonun ilk triple-double'ını yaptı.", "sezonun ilk"),
+    # "galibiyetini aldı" GARANTİ TESTİNDE düştü: yasaklı listede
+    # "galibiyeti aldı" cümle sonu dolgusu olarak duruyordu. Ek almayan
+    # ve kapıdan geçen biçimle değiştirildi.
+    ("galibiyet_serisi", 3, "{ad} üst üste {n}. kez kazandı.",           "{n}. kez"),
+    ("en_yuksek_skor",   3, "{ad} bu sezonki en yüksek skorunu attı.",   "en yüksek skorunu"),
+    ("konferans_lideri", 3, "{ad} konferans liderliğine yükseldi.",      "konferans liderliğine"),
+)
+
+MANSET_KALIP_BY_AD = {k[0]: k for k in MANSET_KALIPLARI}
+
+
+def manset_cumlesi(kalip_adi, ad, n=None):
+    """(metin, vurgu) — sabit kalıbın tek boşluğunu doldurur."""
+    _ad, _kademe, sablon, vurgu = MANSET_KALIP_BY_AD[kalip_adi]
+    metin = sablon.format(ad=ad, n=n)
+    return _gecir(metin) or metin, (vurgu or "").format(n=n)
+
+
 def baslik_iskeletinden(mac, olgu, en_iyi_ad=None, en_iyi_sayi=None, baglam=None):
     """İskeleti VERİ seçer, LLM değil.
 

@@ -46,6 +46,116 @@
       "id": "a-0022500408"
     }
   ],
+  "mansetler": [
+    {
+      "metin": "Nikola Jokić triple-double yaptı.",
+      "vurgu": "triple-double",
+      "kalip": "triple_double",
+      "kademe": 1,
+      "rozet": 5.5,
+      "mac": "Denver 135 – 112 Utah",
+      "saat": "05:00",
+      "renk": "#FEC524",
+      "hedef_id": "a-0022500405",
+      "mac_id": "0022500405"
+    },
+    {
+      "metin": "Anthony Davis sezonun en iyi gecesini oynadı.",
+      "vurgu": "sezonun en iyi gecesini",
+      "kalip": "sezon_en_iyi",
+      "kademe": 2,
+      "rozet": 6.5,
+      "mac": "New Orleans 119 – 113 Dallas",
+      "saat": "04:00",
+      "renk": "#B4975A",
+      "hedef_id": "a-0022500404",
+      "mac_id": "0022500404"
+    },
+    {
+      "metin": "Darius Garland sezonun en iyi gecesini oynadı.",
+      "vurgu": "sezonun en iyi gecesini",
+      "kalip": "sezon_en_iyi",
+      "kademe": 2,
+      "rozet": 5.2,
+      "mac": "Cleveland 139 – 132 Charlotte",
+      "saat": "03:00",
+      "renk": "#B3123F",
+      "hedef_id": "a-0022500402",
+      "mac_id": "0022500402"
+    }
+  ],
+  "kapak_listesi": [
+    {
+      "katman": "mutlaka",
+      "rozet": 8.3,
+      "ev": "Boston Celtics",
+      "dep": "Indiana Pacers",
+      "ev_skor": 103,
+      "dep_skor": 95,
+      "saat": "03:30",
+      "hedef_id": "g-mutlaka-0"
+    },
+    {
+      "katman": "gozat",
+      "rozet": 6.7,
+      "ev": "Oklahoma City Thunder",
+      "dep": "Memphis Grizzlies",
+      "ev_skor": 119,
+      "dep_skor": 103,
+      "saat": "05:30",
+      "hedef_id": "a-0022500406"
+    },
+    {
+      "katman": "gozat",
+      "rozet": 6.5,
+      "ev": "New Orleans Pelicans",
+      "dep": "Dallas Mavericks",
+      "ev_skor": 119,
+      "dep_skor": 113,
+      "saat": "04:00",
+      "hedef_id": "a-0022500404"
+    },
+    {
+      "katman": "gozat",
+      "rozet": 6.3,
+      "ev": "Portland Trail Blazers",
+      "dep": "Detroit Pistons",
+      "ev_skor": 102,
+      "dep_skor": 110,
+      "saat": "06:00",
+      "hedef_id": "a-0022500408"
+    },
+    {
+      "katman": "gec",
+      "rozet": 5.5,
+      "ev": "Denver Nuggets",
+      "dep": "Utah Jazz",
+      "ev_skor": 135,
+      "dep_skor": 112,
+      "saat": "05:00",
+      "hedef_id": "a-0022500405"
+    },
+    {
+      "katman": "gec",
+      "rozet": 5.2,
+      "ev": "Cleveland Cavaliers",
+      "dep": "Charlotte Hornets",
+      "ev_skor": 139,
+      "dep_skor": 132,
+      "saat": "03:00",
+      "hedef_id": "a-0022500402"
+    },
+    {
+      "katman": "gec",
+      "rozet": 2.6,
+      "ev": "Golden State Warriors",
+      "dep": "Orlando Magic",
+      "ev_skor": 120,
+      "dep_skor": 97,
+      "saat": "06:00",
+      "hedef_id": "a-0022500407"
+    }
+  ],
   "brief": [
     {
       "metin": "Cleveland Cavaliers, Charlotte Hornets'i evinde yendi.",
@@ -10233,6 +10343,7 @@
   "degerse_bak": [
     {
       "id": "a-0022500406",
+      "mac_id": "0022500406",
       "mac": "Oklahoma City Thunder — Memphis Grizzlies",
       "skor": "119–103",
       "rozet": 6.71,
@@ -10877,6 +10988,7 @@
     },
     {
       "id": "a-0022500404",
+      "mac_id": "0022500404",
       "mac": "New Orleans Pelicans — Dallas Mavericks",
       "skor": "119–113",
       "rozet": 6.51,
@@ -11484,6 +11596,7 @@
     },
     {
       "id": "a-0022500408",
+      "mac_id": "0022500408",
       "mac": "Portland Trail Blazers — Detroit Pistons",
       "skor": "102–110",
       "rozet": 6.33,
@@ -12156,6 +12269,7 @@
   "diger": [
     {
       "id": "a-0022500405",
+      "mac_id": "0022500405",
       "mac": "Denver Nuggets — Utah Jazz",
       "skor": "135–112",
       "rozet": 5.46,
@@ -12822,6 +12936,7 @@
     },
     {
       "id": "a-0022500402",
+      "mac_id": "0022500402",
       "mac": "Cleveland Cavaliers — Charlotte Hornets",
       "skor": "139–132",
       "rozet": 5.22,
@@ -13511,6 +13626,7 @@
     },
     {
       "id": "a-0022500407",
+      "mac_id": "0022500407",
       "mac": "Golden State Warriors — Orlando Magic",
       "skor": "120–97",
       "rozet": 2.58,

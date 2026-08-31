@@ -40,6 +40,106 @@
       "id": "a-0022500446"
     }
   ],
+  "mansetler": [
+    {
+      "metin": "Kawhi Leonard 55 sayı attı.",
+      "vurgu": "55 sayı",
+      "kalip": "kirk_sayi",
+      "kademe": 1,
+      "rozet": 9.2,
+      "mac": "LA Clippers 112 – 99 Detroit",
+      "saat": "05:00",
+      "renk": "#D2434A",
+      "hedef_id": "g-mutlaka-0",
+      "mac_id": "0022500445"
+    },
+    {
+      "metin": "Scottie Barnes triple-double yaptı.",
+      "vurgu": "triple-double",
+      "kalip": "triple_double",
+      "kademe": 1,
+      "rozet": 9.0,
+      "mac": "Toronto 141 – 127 Golden State",
+      "saat": "23:30",
+      "renk": "#CE1141",
+      "hedef_id": "g-mutlaka-1",
+      "mac_id": "0022500441"
+    },
+    {
+      "metin": "Alex Sarr 6 blok yaptı.",
+      "vurgu": "6 blok",
+      "kalip": "alti_blok",
+      "kademe": 1,
+      "rozet": 5.4,
+      "mac": "Washington 116 – 112 Memphis",
+      "saat": "02:00",
+      "renk": "#3B7FD4",
+      "hedef_id": "a-0022500443",
+      "mac_id": "0022500443"
+    }
+  ],
+  "kapak_listesi": [
+    {
+      "katman": "mutlaka",
+      "rozet": 9.2,
+      "ev": "LA Clippers",
+      "dep": "Detroit Pistons",
+      "ev_skor": 112,
+      "dep_skor": 99,
+      "saat": "05:00",
+      "hedef_id": "g-mutlaka-0"
+    },
+    {
+      "katman": "mutlaka",
+      "rozet": 9.0,
+      "ev": "Toronto Raptors",
+      "dep": "Golden State Warriors",
+      "ev_skor": 141,
+      "dep_skor": 127,
+      "saat": "23:30",
+      "hedef_id": "g-mutlaka-1"
+    },
+    {
+      "katman": "mutlaka",
+      "rozet": 8.3,
+      "ev": "Portland Trail Blazers",
+      "dep": "Boston Celtics",
+      "ev_skor": 114,
+      "dep_skor": 108,
+      "saat": "02:00",
+      "hedef_id": "g-mutlaka-2"
+    },
+    {
+      "katman": "gec",
+      "rozet": 5.7,
+      "ev": "Oklahoma City Thunder",
+      "dep": "Philadelphia 76ers",
+      "ev_skor": 129,
+      "dep_skor": 104,
+      "saat": "23:30",
+      "hedef_id": "a-0022500442"
+    },
+    {
+      "katman": "gec",
+      "rozet": 5.4,
+      "ev": "Washington Wizards",
+      "dep": "Memphis Grizzlies",
+      "ev_skor": 116,
+      "dep_skor": 112,
+      "saat": "02:00",
+      "hedef_id": "a-0022500443"
+    },
+    {
+      "katman": "gec",
+      "rozet": 5.2,
+      "ev": "Los Angeles Lakers",
+      "dep": "Sacramento Kings",
+      "ev_skor": 125,
+      "dep_skor": 101,
+      "saat": "05:30",
+      "hedef_id": "a-0022500446"
+    }
+  ],
   "brief": [
     {
       "metin": "Toronto Raptors, 13 sayılık farktan dönüp Golden State Warriors'u geçti.",
@@ -10060,6 +10160,7 @@
   "diger": [
     {
       "id": "a-0022500442",
+      "mac_id": "0022500442",
       "mac": "Oklahoma City Thunder — Philadelphia 76ers",
       "skor": "129–104",
       "rozet": 5.7,
@@ -10727,6 +10828,7 @@
     },
     {
       "id": "a-0022500443",
+      "mac_id": "0022500443",
       "mac": "Washington Wizards — Memphis Grizzlies",
       "skor": "116–112",
       "rozet": 5.43,
@@ -11356,6 +11458,7 @@
     },
     {
       "id": "a-0022500446",
+      "mac_id": "0022500446",
       "mac": "Los Angeles Lakers — Sacramento Kings",
       "skor": "125–101",
       "rozet": 5.2,

@@ -34,6 +34,96 @@
       "id": "a-0022501227"
     }
   ],
+  "mansetler": [
+    {
+      "metin": "Nikola Jokić triple-double yaptı.",
+      "vurgu": "triple-double",
+      "kalip": "triple_double",
+      "kademe": 1,
+      "rozet": 9.4,
+      "mac": "Denver 128 – 125 Houston",
+      "saat": "",
+      "renk": "#FEC524",
+      "hedef_id": "g-mutlaka-0",
+      "mac_id": "0022501225"
+    },
+    {
+      "metin": "Cooper Flagg 42 sayı attı.",
+      "vurgu": "42 sayı",
+      "kalip": "kirk_sayi",
+      "kademe": 1,
+      "rozet": 9.0,
+      "mac": "Utah 140 – 133 Dallas",
+      "saat": "",
+      "renk": "#3E7A5E",
+      "hedef_id": "g-mutlaka-1",
+      "mac_id": "0022501224"
+    },
+    {
+      "metin": "Jaren Jackson Jr. sezonun en iyi gecesini oynadı.",
+      "vurgu": "sezonun en iyi gecesini",
+      "kalip": "sezon_en_iyi",
+      "kademe": 2,
+      "rozet": 7.8,
+      "mac": "LA Clippers 103 – 121 Memphis",
+      "saat": "",
+      "renk": "#6C8CC7",
+      "hedef_id": "g-mutlaka-2",
+      "mac_id": "0022501226"
+    }
+  ],
+  "kapak_listesi": [
+    {
+      "katman": "mutlaka",
+      "rozet": 9.4,
+      "ev": "Denver Nuggets",
+      "dep": "Houston Rockets",
+      "ev_skor": 128,
+      "dep_skor": 125,
+      "saat": "",
+      "hedef_id": "g-mutlaka-0"
+    },
+    {
+      "katman": "mutlaka",
+      "rozet": 9.0,
+      "ev": "Utah Jazz",
+      "dep": "Dallas Mavericks",
+      "ev_skor": 140,
+      "dep_skor": 133,
+      "saat": "",
+      "hedef_id": "g-mutlaka-1"
+    },
+    {
+      "katman": "mutlaka",
+      "rozet": 7.8,
+      "ev": "LA Clippers",
+      "dep": "Memphis Grizzlies",
+      "ev_skor": 103,
+      "dep_skor": 121,
+      "saat": "",
+      "hedef_id": "g-mutlaka-2"
+    },
+    {
+      "katman": "mutlaka",
+      "rozet": 6.5,
+      "ev": "Boston Celtics",
+      "dep": "Detroit Pistons",
+      "ev_skor": 105,
+      "dep_skor": 112,
+      "saat": "",
+      "hedef_id": "g-mutlaka-3"
+    },
+    {
+      "katman": "gec",
+      "rozet": 4.0,
+      "ev": "Miami Heat",
+      "dep": "Toronto Raptors",
+      "ev_skor": 96,
+      "dep_skor": 106,
+      "saat": "",
+      "hedef_id": "a-0022501227"
+    }
+  ],
   "brief": [
     {
       "metin": "Nikola Jokić, Houston Rockets karşısında 39 sayı attı.",
@@ -9419,6 +9509,7 @@
   "diger": [
     {
       "id": "a-0022501227",
+      "mac_id": "0022501227",
       "mac": "Miami Heat — Toronto Raptors",
       "skor": "96–106",
       "rozet": 3.96,

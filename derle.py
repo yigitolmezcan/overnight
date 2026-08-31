@@ -465,6 +465,188 @@ def _oyuncu_kartlari(ham, tarih_str):
     return kartlar
 
 
+# ===========================================================================
+# MANŞETLER — kapak bölümünün üst yarısı
+# ===========================================================================
+#
+# Gazete mantığı: en fazla üç manşet, boyutları önem sırasına göre
+# azalıyor. Sıra: olağanüstü performans → bağlamlı performans → takım
+# bağlamı. Aynı maçtan iki manşet çıkamaz; hiçbiri eşiği geçmezse
+# manşet sayısı azalır, bölüm bir manşetle de çalışır.
+#
+# SEZON BAŞI: bağlamlı kalıplar ("sezonun en iyisi", "üst üste N. kez")
+# ilk MANSET_BAGLAM_ASGARI maçta KURULAMAZ — veri yok. O dönemde yalnız
+# olağanüstü kalıplar geçerli. Eşik susma kuralıyla aynı kaynaktan.
+MANSET_EN_FAZLA = 3
+MANSET_BAGLAM_ASGARI = 10          # bağlamlı iddia için asgari maç sayısı
+MANSET_ESIK = {
+    "kirk_sayi": 40, "yirmi_ribaund": 20, "onbes_asist": 15, "alti_blok": 6,
+    "ustuste_otuz": 3, "galibiyet_serisi": 5,
+    # "Sezonun en iyi gecesi" kendi başına manşet değil: yedek oyuncunun
+    # 12 sayılık sezon rekoru kapak değil. Ölçüldü — taban konmadan 29
+    # Aralık'ta yedi kişi birden bu kalıba giriyordu.
+    "sezon_en_iyi": 25,
+}
+
+
+def _oyuncu_gunlugu_tam(ham):
+    """{pid: [{tarih, sayi, rib, ast, blk, td3}, ...]} — eskiden yeniye."""
+    try:
+        rs = ham["oyuncu_ortalama"]["resultSets"][0]
+    except Exception:
+        return {}
+    h = {ad: i for i, ad in enumerate(rs["headers"])}
+    gerekli = ("PLAYER_ID", "GAME_DATE", "PTS", "REB", "AST", "BLK", "MATCHUP")
+    if any(k not in h for k in gerekli):
+        return {}
+    g = {}
+    for r in rs["rowSet"]:
+        rakip = _rakip_kisalt(r[h["MATCHUP"]])
+        if rakip not in TAKIM_ADI:
+            continue                        # hazırlık maçı sayılmıyor
+        g.setdefault(r[h["PLAYER_ID"]], []).append({
+            "tarih": str(r[h["GAME_DATE"]])[:10],
+            "sayi": r[h["PTS"]] or 0, "rib": r[h["REB"]] or 0,
+            "ast": r[h["AST"]] or 0, "blk": r[h["BLK"]] or 0,
+            "td3": int(r[h["TD3"]] or 0) if "TD3" in h else 0,
+        })
+    for pid in g:
+        g[pid].sort(key=lambda x: x["tarih"])
+    return g
+
+
+def _takim_gunlugu(ham):
+    """{kod: [{tarih, sonuc, sayi}, ...]} — eskiden yeniye."""
+    try:
+        rs = ham["puan_durumu"]["resultSets"][0]
+    except Exception:
+        return {}
+    h = {ad: i for i, ad in enumerate(rs["headers"])}
+    if any(k not in h for k in ("TEAM_ABBREVIATION", "GAME_DATE", "WL", "PTS")):
+        return {}
+    g = {}
+    for r in rs["rowSet"]:
+        g.setdefault(r[h["TEAM_ABBREVIATION"]], []).append({
+            "tarih": str(r[h["GAME_DATE"]])[:10],
+            "sonuc": r[h["WL"]], "sayi": r[h["PTS"]] or 0,
+        })
+    for k in g:
+        g[k].sort(key=lambda x: x["tarih"])
+    return g
+
+
+def _manset_adaylari(ham, gercek_gece, skor_by_gid, tarih_str):
+    """[(kademe, guc, kalip, ad, n, gid)] — eşiği geçen her aday."""
+    oy_gunluk = _oyuncu_gunlugu_tam(ham)
+    tk_gunluk = _takim_gunlugu(ham)
+    from gercekler import puan_durumu_hesapla
+    puan = puan_durumu_hesapla(ham.get('puan_durumu'), tarih_str) or {}
+    adaylar = []
+
+    for gid, kayitlar in (gercek_gece.get("maclar") or {}).items():
+        skor = next((f["veri"] for f in kayitlar if f["tur"] == "skor"), None)
+        if not skor:
+            continue
+        statlar = [f["veri"] for f in kayitlar if f["tur"] == "oyuncu_stat"]
+
+        # --- KADEME 1: olağanüstü performans ---------------------------
+        for st in statlar:
+            ad, pid = st.get("oyuncu"), st.get("id")
+            sayi, rib = int(st.get("sayi") or 0), int(st.get("rib") or 0)
+            ast, blk = int(st.get("ast") or 0), int(st.get("blk") or 0)
+            # GÜÇ ÖLÇEĞİ kademe içinde KARŞILAŞTIRILABİLİR olmalı.
+            # Ölçüldü: ilk hâlinde 6 blok (78) 55 sayının (55) önüne
+            # geçiyordu. Ölçek: 55 sayı 95, triple-double 90, 42 sayı 82,
+            # 20 ribaund 75, 15 asist 70, 6 blok 68.
+            if sayi >= MANSET_ESIK["kirk_sayi"]:
+                adaylar.append((1, 40 + sayi, "kirk_sayi", ad, sayi, gid))
+            if sum(1 for v in (sayi, rib, ast) if v >= 10) >= 3:
+                adaylar.append((1, 90, "triple_double", ad, None, gid))
+            if rib >= MANSET_ESIK["yirmi_ribaund"]:
+                adaylar.append((1, 55 + rib, "yirmi_ribaund", ad, rib, gid))
+            if ast >= MANSET_ESIK["onbes_asist"]:
+                adaylar.append((1, 55 + ast, "onbes_asist", ad, ast, gid))
+            if blk >= MANSET_ESIK["alti_blok"]:
+                adaylar.append((1, 50 + blk * 3, "alti_blok", ad, blk, gid))
+
+            # --- KADEME 2: bağlamlı performans -------------------------
+            gecmis = oy_gunluk.get(pid) or []
+            oncekiler = gecmis[:-1] if gecmis else []
+            if len(oncekiler) < MANSET_BAGLAM_ASGARI:
+                continue                    # sezon başı: bağlam kurulamaz
+            if sayi >= MANSET_ESIK["sezon_en_iyi"] \
+                    and sayi > max((x["sayi"] for x in oncekiler), default=0):
+                adaylar.append((2, 50 + sayi, "sezon_en_iyi", ad, None, gid))
+            if sum(1 for v in (sayi, rib, ast) if v >= 10) >= 3 \
+                    and not any(x["td3"] for x in oncekiler):
+                adaylar.append((2, 70, "ilk_triple", ad, None, gid))
+            seri = 0
+            for x in reversed(gecmis):
+                if x["sayi"] >= 30:
+                    seri += 1
+                else:
+                    break
+            if seri >= MANSET_ESIK["ustuste_otuz"]:
+                adaylar.append((2, 40 + seri * 5, "ustuste_otuz", ad, seri, gid))
+
+        # --- KADEME 3: takım bağlamı -----------------------------------
+        kaz = skor.get("kazanan")
+        gunluk = tk_gunluk.get(kaz) or []
+        if len(gunluk) >= MANSET_BAGLAM_ASGARI:
+            seri = 0
+            for x in reversed(gunluk):
+                if x["sonuc"] == "W":
+                    seri += 1
+                else:
+                    break
+            if seri >= MANSET_ESIK["galibiyet_serisi"]:
+                adaylar.append((3, 20 + seri * 3, "galibiyet_serisi",
+                                _takim_adi(kaz), seri, gid))
+            bugun = gunluk[-1]["sayi"]
+            if bugun > max((x["sayi"] for x in gunluk[:-1]), default=0):
+                adaylar.append((3, 25, "en_yuksek_skor", _takim_adi(kaz), None, gid))
+        kayit = (puan or {}).get(kaz) or {}
+        if kayit.get("konferans_sira") == 1 and \
+                (kayit.get("galibiyet", 0) + kayit.get("maglubiyet", 0)) >= MANSET_BAGLAM_ASGARI:
+            adaylar.append((3, 22, "konferans_lideri", _takim_adi(kaz), None, gid))
+    return adaylar
+
+
+def _mansetler(ham, gercek_gece, skor_by_gid, id_by_gid, tarih_str,
+               saat_by_gid=None):
+    """En fazla üç manşet; aynı maçtan yalnız biri."""
+    adaylar = _manset_adaylari(ham, gercek_gece, skor_by_gid, tarih_str)
+    # Eşit güçte maçın rozeti belirliyor — sıra rastgele kalmasın
+    # (18 Aralık'ta iki triple-double aynı güçteydi).
+    adaylar.sort(key=lambda a: (a[0], -a[1],
+                                -(skor_by_gid.get(a[5], {}).get("rozet") or 0)))
+    secilen, gorulen = [], set()
+    for kademe, guc, kalip, ad, n, gid in adaylar:
+        if gid in gorulen or len(secilen) >= MANSET_EN_FAZLA:
+            continue
+        sk = skor_by_gid.get(gid) or {}
+        if not sk:
+            continue
+        gorulen.add(gid)
+        metin, vurgu = cumle.manset_cumlesi(kalip, ad, n)
+        ev, dep = sk.get("ev"), sk.get("dep")
+        # skor/*.json kaydında "kazanan" alanı yok; skordan türetiliyor.
+        kaz = ev if (sk.get("ev_skor") or 0) >= (sk.get("dep_skor") or 0) else dep
+        secilen.append({
+            "metin": metin, "vurgu": vurgu, "kalip": kalip, "kademe": kademe,
+            "rozet": round(sk.get("rozet", 0), 1),
+            # KISA AD: manşet künyesi tek satır kalmalı; tam adlar
+            # 375px'te üç satıra sarmalıyordu.
+            "mac": (f"{cumle.TAKIM_KISA.get(ev, ev)} {sk.get('ev_skor')}"
+                    f" – {sk.get('dep_skor')} {cumle.TAKIM_KISA.get(dep, dep)}"),
+            "saat": (saat_by_gid or {}).get(gid) or "",
+            "renk": TAKIM_RENK.get(kaz, "#E8763A"),
+            "hedef_id": id_by_gid.get(gid, ""),
+            "mac_id": gid,
+        })
+    return secilen
+
+
 def _gecenin_besi(ham, gercek_gece, id_by_gid, skor_by_gid):
     """Kullanıcı kararı (kart turu): ana sayfada sadece isim + mevki
     görünecek, ayrıntı karta taşınacak. Bu yüzden her oyuncu için kartın
@@ -3108,6 +3290,16 @@ def derle(tarih_str):
 
     # ---- gecenin beşi ----
     gecenin_besi = _gecenin_besi(ham, gercek_gece, mutlaka_id_by_gid, rozet_by_gid)
+    # MANŞETLER — kapak bölümünün üst yarısı (cümle akışının yerine).
+    # Manşet her katmandan çıkabilir; hedef kimliği "Mutlaka bil"de
+    # farklı, diğerlerinde `a-<gid>`. Saat ham maçtan okunuyor.
+    _hedef_by_gid = {gid: mutlaka_id_by_gid.get(gid, f"a-{gid}")
+                     for gid in (gercek_gece.get("maclar") or {})}
+    _saat_by_gid = {gid: (_tsi_baslama(ham["maclar"][gid], tarih_str)
+                          if gid in (ham.get("maclar") or {}) else None)
+                    for gid in (gercek_gece.get("maclar") or {})}
+    mansetler = _mansetler(ham, gercek_gece, rozet_by_gid,
+                           _hedef_by_gid, tarih_str, _saat_by_gid)
 
     # ---- yükselen / düşen ----
     # Bu gece OYNAYAN her oyuncu aday; oynamayan iki listede de yok.
@@ -3158,6 +3350,9 @@ def derle(tarih_str):
         kaybeden_kod = plan.get(gid, {}).get("olgu_ham", {}).get("kaybeden")
         girdi = {
             "id": f"a-{gid}",
+            # `mac_id` ESKİDEN YOKTU: kapak listesi, akış ve ölçüm
+            # betikleri bu blokları maça bağlayamıyordu.
+            "mac_id": gid,
             "mac": f"{_takim_adi(skor_bilgi['ev'])} — {_takim_adi(skor_bilgi['dep'])}",
             "skor": f"{skor_bilgi['ev_skor']}–{skor_bilgi['dep_skor']}",
             "rozet": skor_bilgi["rozet"],
@@ -3207,6 +3402,28 @@ def derle(tarih_str):
         "uretildi": taslak.get("uretildi", ""),
         "mac_sayisi": len(rozet_by_gid),
         "bars": bars,
+        "mansetler": mansetler,
+        # KAPAK MAÇ LİSTESİ — manşetlerin altında: rozet + takımlar +
+        # saat. Punch line YOK (manşete çıktı). "Bunları geç" tek
+        # şeritte toplanıyor, satır almıyor.
+        "kapak_listesi": [
+            {
+                "katman": kat,
+                "rozet": round((rozet_by_gid.get(gid) or {}).get("rozet", 0), 1),
+                "ev": _takim_adi((rozet_by_gid.get(gid) or {}).get("ev")),
+                "dep": _takim_adi((rozet_by_gid.get(gid) or {}).get("dep")),
+                "ev_skor": (rozet_by_gid.get(gid) or {}).get("ev_skor"),
+                "dep_skor": (rozet_by_gid.get(gid) or {}).get("dep_skor"),
+                "saat": _saat_by_gid.get(gid) or "",
+                "hedef_id": _hedef_by_gid.get(gid, ""),
+            }
+            for kat, gidler in (
+                ("mutlaka", [m["mac_id"] for m in mutlaka]),
+                ("gozat", [m.get("mac_id") for m in degerse_bak]),
+                ("gec", [m.get("mac_id") for m in diger]),
+            )
+            for gid in gidler if gid and gid in rozet_by_gid
+        ],
         "brief": brief,
         "brief_ozet": brief_ozet,
         "brief_ayrica": ayrica,

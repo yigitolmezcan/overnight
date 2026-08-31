@@ -58,6 +58,136 @@
       "id": "g-mutlaka-2"
     }
   ],
+  "mansetler": [
+    {
+      "metin": "Nikola Jokić triple-double yaptı.",
+      "vurgu": "triple-double",
+      "kalip": "triple_double",
+      "kademe": 1,
+      "rozet": 9.3,
+      "mac": "Orlando 127 – 126 Denver",
+      "saat": "03:00",
+      "renk": "#1E8FD5",
+      "hedef_id": "g-mutlaka-0",
+      "mac_id": "0022500433"
+    },
+    {
+      "metin": "Andrew Nembhard 16 asist yaptı.",
+      "vurgu": "16 asist",
+      "kalip": "onbes_asist",
+      "kademe": 1,
+      "rozet": 5.9,
+      "mac": "Miami 142 – 116 Indiana",
+      "saat": "04:00",
+      "renk": "#C0304A",
+      "hedef_id": "a-0022500436",
+      "mac_id": "0022500436"
+    },
+    {
+      "metin": "Keldon Johnson sezonun en iyi gecesini oynadı.",
+      "vurgu": "sezonun en iyi gecesini",
+      "kalip": "sezon_en_iyi",
+      "kademe": 2,
+      "rozet": 8.3,
+      "mac": "San Antonio 114 – 127 Utah",
+      "saat": "04:00",
+      "renk": "#3E7A5E",
+      "hedef_id": "g-mutlaka-2",
+      "mac_id": "0022500440"
+    }
+  ],
+  "kapak_listesi": [
+    {
+      "katman": "mutlaka",
+      "rozet": 9.3,
+      "ev": "Orlando Magic",
+      "dep": "Denver Nuggets",
+      "ev_skor": 127,
+      "dep_skor": 126,
+      "saat": "03:00",
+      "hedef_id": "g-mutlaka-0"
+    },
+    {
+      "katman": "mutlaka",
+      "rozet": 8.9,
+      "ev": "Atlanta Hawks",
+      "dep": "New York Knicks",
+      "ev_skor": 125,
+      "dep_skor": 128,
+      "saat": "04:00",
+      "hedef_id": "g-mutlaka-1"
+    },
+    {
+      "katman": "mutlaka",
+      "rozet": 8.3,
+      "ev": "San Antonio Spurs",
+      "dep": "Utah Jazz",
+      "ev_skor": 114,
+      "dep_skor": 127,
+      "saat": "04:00",
+      "hedef_id": "g-mutlaka-2"
+    },
+    {
+      "katman": "gozat",
+      "rozet": 7.1,
+      "ev": "Minnesota Timberwolves",
+      "dep": "Brooklyn Nets",
+      "ev_skor": 107,
+      "dep_skor": 123,
+      "saat": "04:00",
+      "hedef_id": "a-0022500439"
+    },
+    {
+      "katman": "gozat",
+      "rozet": 6.2,
+      "ev": "Chicago Bulls",
+      "dep": "Milwaukee Bucks",
+      "ev_skor": 103,
+      "dep_skor": 112,
+      "saat": "04:00",
+      "hedef_id": "a-0022500437"
+    },
+    {
+      "katman": "gec",
+      "rozet": 5.9,
+      "ev": "Miami Heat",
+      "dep": "Indiana Pacers",
+      "ev_skor": 142,
+      "dep_skor": 116,
+      "saat": "04:00",
+      "hedef_id": "a-0022500436"
+    },
+    {
+      "katman": "gec",
+      "rozet": 5.8,
+      "ev": "Houston Rockets",
+      "dep": "Cleveland Cavaliers",
+      "ev_skor": 117,
+      "dep_skor": 100,
+      "saat": "04:00",
+      "hedef_id": "a-0022500438"
+    },
+    {
+      "katman": "gec",
+      "rozet": 3.2,
+      "ev": "New Orleans Pelicans",
+      "dep": "Phoenix Suns",
+      "ev_skor": 114,
+      "dep_skor": 123,
+      "saat": "03:00",
+      "hedef_id": "a-0022500434"
+    },
+    {
+      "katman": "gec",
+      "rozet": 2.0,
+      "ev": "Sacramento Kings",
+      "dep": "Dallas Mavericks",
+      "ev_skor": 113,
+      "dep_skor": 107,
+      "saat": "01:00",
+      "hedef_id": "a-0022500432"
+    }
+  ],
   "brief": [
     {
       "metin": "",
@@ -14247,10 +14377,11 @@
   "degerse_bak": [
     {
       "id": "a-0022500439",
+      "mac_id": "0022500439",
       "mac": "Minnesota Timberwolves — Brooklyn Nets",
       "skor": "107–123",
       "rozet": 7.11,
-      "why": "10. galibiyetini alan (kazanan)",
+      "why": "sürpriz sonuç: belirgin şekilde kötü bir takım, belirgin şekilde iyi bir takımı yendi",
       "metin": "",
       "box": {
         "ev": {
@@ -14926,6 +15057,7 @@
     },
     {
       "id": "a-0022500437",
+      "mac_id": "0022500437",
       "mac": "Chicago Bulls — Milwaukee Bucks",
       "skor": "103–112",
       "rozet": 6.16,
@@ -15559,6 +15691,7 @@
   "diger": [
     {
       "id": "a-0022500436",
+      "mac_id": "0022500436",
       "mac": "Miami Heat — Indiana Pacers",
       "skor": "142–116",
       "rozet": 5.91,
@@ -16276,6 +16409,7 @@
     },
     {
       "id": "a-0022500438",
+      "mac_id": "0022500438",
       "mac": "Houston Rockets — Cleveland Cavaliers",
       "skor": "117–100",
       "rozet": 5.84,
@@ -16974,6 +17108,7 @@
     },
     {
       "id": "a-0022500434",
+      "mac_id": "0022500434",
       "mac": "New Orleans Pelicans — Phoenix Suns",
       "skor": "114–123",
       "rozet": 3.17,
@@ -17596,6 +17731,7 @@
     },
     {
       "id": "a-0022500432",
+      "mac_id": "0022500432",
       "mac": "Sacramento Kings — Dallas Mavericks",
       "skor": "113–107",
       "rozet": 2.0,

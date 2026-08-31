@@ -64,6 +64,146 @@
       "id": "a-0022500395"
     }
   ],
+  "mansetler": [
+    {
+      "metin": "Cade Cunningham triple-double yaptı.",
+      "vurgu": "triple-double",
+      "kalip": "triple_double",
+      "kademe": 1,
+      "rozet": 2.5,
+      "mac": "Detroit 112 – 86 Charlotte",
+      "saat": "03:30",
+      "renk": "#E0384A",
+      "hedef_id": "a-0022500390",
+      "mac_id": "0022500390"
+    },
+    {
+      "metin": "Santi Aldama sezonun en iyi gecesini oynadı.",
+      "vurgu": "sezonun en iyi gecesini",
+      "kalip": "sezon_en_iyi",
+      "kademe": 2,
+      "rozet": 8.6,
+      "mac": "Memphis 122 – 130 Washington",
+      "saat": "04:00",
+      "renk": "#3B7FD4",
+      "hedef_id": "g-mutlaka-1",
+      "mac_id": "0022500391"
+    },
+    {
+      "metin": "Keyonte George üst üste 3. kez 30 sayıyı geçti.",
+      "vurgu": "3. kez",
+      "kalip": "ustuste_otuz",
+      "kademe": 2,
+      "rozet": 8.5,
+      "mac": "Utah 127 – 128 Orlando",
+      "saat": "05:30",
+      "renk": "#1E8FD5",
+      "hedef_id": "g-mutlaka-2",
+      "mac_id": "0022500393"
+    }
+  ],
+  "kapak_listesi": [
+    {
+      "katman": "mutlaka",
+      "rozet": 9.1,
+      "ev": "Golden State Warriors",
+      "dep": "Phoenix Suns",
+      "ev_skor": 119,
+      "dep_skor": 116,
+      "saat": "04:30",
+      "hedef_id": "g-mutlaka-0"
+    },
+    {
+      "katman": "mutlaka",
+      "rozet": 8.6,
+      "ev": "Memphis Grizzlies",
+      "dep": "Washington Wizards",
+      "ev_skor": 122,
+      "dep_skor": 130,
+      "saat": "04:00",
+      "hedef_id": "g-mutlaka-1"
+    },
+    {
+      "katman": "mutlaka",
+      "rozet": 8.5,
+      "ev": "Utah Jazz",
+      "dep": "Orlando Magic",
+      "ev_skor": 127,
+      "dep_skor": 128,
+      "saat": "05:30",
+      "hedef_id": "g-mutlaka-2"
+    },
+    {
+      "katman": "gozat",
+      "rozet": 7.3,
+      "ev": "Toronto Raptors",
+      "dep": "Boston Celtics",
+      "ev_skor": 96,
+      "dep_skor": 112,
+      "saat": "03:00",
+      "hedef_id": "a-0022500388"
+    },
+    {
+      "katman": "gozat",
+      "rozet": 6.4,
+      "ev": "Denver Nuggets",
+      "dep": "Houston Rockets",
+      "ev_skor": 101,
+      "dep_skor": 115,
+      "saat": "01:00",
+      "hedef_id": "a-0022500386"
+    },
+    {
+      "katman": "gec",
+      "rozet": 5.8,
+      "ev": "Philadelphia 76ers",
+      "dep": "Dallas Mavericks",
+      "ev_skor": 121,
+      "dep_skor": 114,
+      "saat": "03:00",
+      "hedef_id": "a-0022500387"
+    },
+    {
+      "katman": "gec",
+      "rozet": 5.1,
+      "ev": "LA Clippers",
+      "dep": "Los Angeles Lakers",
+      "ev_skor": 103,
+      "dep_skor": 88,
+      "saat": "06:30",
+      "hedef_id": "a-0022500395"
+    },
+    {
+      "katman": "gec",
+      "rozet": 4.0,
+      "ev": "New Orleans Pelicans",
+      "dep": "Indiana Pacers",
+      "ev_skor": 128,
+      "dep_skor": 109,
+      "saat": "03:00",
+      "hedef_id": "a-0022500389"
+    },
+    {
+      "katman": "gec",
+      "rozet": 2.6,
+      "ev": "Sacramento Kings",
+      "dep": "Portland Trail Blazers",
+      "ev_skor": 93,
+      "dep_skor": 98,
+      "saat": "06:00",
+      "hedef_id": "a-0022500394"
+    },
+    {
+      "katman": "gec",
+      "rozet": 2.5,
+      "ev": "Detroit Pistons",
+      "dep": "Charlotte Hornets",
+      "ev_skor": 112,
+      "dep_skor": 86,
+      "saat": "03:30",
+      "hedef_id": "a-0022500390"
+    }
+  ],
   "brief": [
     {
       "metin": "Houston Rockets, Denver Nuggets deplasmanında kazandı.",
@@ -15043,6 +15183,7 @@
   "degerse_bak": [
     {
       "id": "a-0022500388",
+      "mac_id": "0022500388",
       "mac": "Toronto Raptors — Boston Celtics",
       "skor": "96–112",
       "rozet": 7.35,
@@ -15688,6 +15829,7 @@
     },
     {
       "id": "a-0022500386",
+      "mac_id": "0022500386",
       "mac": "Denver Nuggets — Houston Rockets",
       "skor": "101–115",
       "rozet": 6.39,
@@ -16308,6 +16450,7 @@
   "diger": [
     {
       "id": "a-0022500387",
+      "mac_id": "0022500387",
       "mac": "Philadelphia 76ers — Dallas Mavericks",
       "skor": "121–114",
       "rozet": 5.8,
@@ -16880,6 +17023,7 @@
     },
     {
       "id": "a-0022500395",
+      "mac_id": "0022500395",
       "mac": "LA Clippers — Los Angeles Lakers",
       "skor": "103–88",
       "rozet": 5.07,
@@ -17499,6 +17643,7 @@
     },
     {
       "id": "a-0022500389",
+      "mac_id": "0022500389",
       "mac": "New Orleans Pelicans — Indiana Pacers",
       "skor": "128–109",
       "rozet": 4.05,
@@ -18177,6 +18322,7 @@
     },
     {
       "id": "a-0022500394",
+      "mac_id": "0022500394",
       "mac": "Sacramento Kings — Portland Trail Blazers",
       "skor": "93–98",
       "rozet": 2.65,
@@ -18791,6 +18937,7 @@
     },
     {
       "id": "a-0022500390",
+      "mac_id": "0022500390",
       "mac": "Detroit Pistons — Charlotte Hornets",
       "skor": "112–86",
       "rozet": 2.45,
