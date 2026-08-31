@@ -54,18 +54,6 @@
       "mac_id": "0022500398"
     },
     {
-      "metin": "Matas Buzelis sezonun en iyi gecesini oynadı.",
-      "vurgu": "sezonun en iyi gecesini",
-      "kalip": "sezon_en_iyi",
-      "kademe": 2,
-      "rozet": 9.2,
-      "mac": "Atlanta 150 – 152 Chicago",
-      "saat": "23:30",
-      "renk": "#CE1141",
-      "hedef_id": "g-mutlaka-0",
-      "mac_id": "0022500396"
-    },
-    {
       "metin": "San Antonio Spurs üst üste 6. kez kazandı.",
       "vurgu": "6. kez",
       "kalip": "galibiyet_serisi",
@@ -76,6 +64,18 @@
       "renk": "#C4CED4",
       "hedef_id": "a-0022500399",
       "mac_id": "0022500399"
+    },
+    {
+      "metin": "Chicago Bulls bu sezonki en yüksek skorunu attı.",
+      "vurgu": "en yüksek skorunu",
+      "kalip": "en_yuksek_skor",
+      "kademe": 3,
+      "rozet": 9.2,
+      "mac": "Atlanta 150 – 152 Chicago",
+      "saat": "23:30",
+      "renk": "#CE1141",
+      "hedef_id": "g-mutlaka-0",
+      "mac_id": "0022500396"
     }
   ],
   "kapak_listesi": [
@@ -87,17 +87,8 @@
       "ev_skor": 150,
       "dep_skor": 152,
       "saat": "23:30",
-      "hedef_id": "g-mutlaka-0"
-    },
-    {
-      "katman": "mutlaka",
-      "rozet": 9.1,
-      "ev": "Sacramento Kings",
-      "dep": "Houston Rockets",
-      "ev_skor": 125,
-      "dep_skor": 124,
-      "saat": "06:00",
-      "hedef_id": "g-mutlaka-1"
+      "hedef_id": "g-mutlaka-0",
+      "_sira": "2025-12-21T23:30:00+03:00"
     },
     {
       "katman": "mutlaka",
@@ -107,27 +98,8 @@
       "ev_skor": 132,
       "dep_skor": 125,
       "saat": "02:00",
-      "hedef_id": "g-mutlaka-2"
-    },
-    {
-      "katman": "mutlaka",
-      "rozet": 7.1,
-      "ev": "Minnesota Timberwolves",
-      "dep": "Milwaukee Bucks",
-      "ev_skor": 103,
-      "dep_skor": 100,
-      "saat": "03:00",
-      "hedef_id": "g-mutlaka-3"
-    },
-    {
-      "katman": "gec",
-      "rozet": 3.9,
-      "ev": "Washington Wizards",
-      "dep": "San Antonio Spurs",
-      "ev_skor": 113,
-      "dep_skor": 124,
-      "saat": "03:00",
-      "hedef_id": "a-0022500399"
+      "hedef_id": "g-mutlaka-2",
+      "_sira": "2025-12-22T02:00:00+03:00"
     },
     {
       "katman": "gec",
@@ -137,7 +109,41 @@
       "ev_skor": 96,
       "dep_skor": 81,
       "saat": "02:00",
-      "hedef_id": "a-0022500397"
+      "hedef_id": "a-0022500397",
+      "_sira": "2025-12-22T02:00:00+03:00"
+    },
+    {
+      "katman": "mutlaka",
+      "rozet": 7.1,
+      "ev": "Minnesota Timberwolves",
+      "dep": "Milwaukee Bucks",
+      "ev_skor": 103,
+      "dep_skor": 100,
+      "saat": "03:00",
+      "hedef_id": "g-mutlaka-3",
+      "_sira": "2025-12-22T03:00:00+03:00"
+    },
+    {
+      "katman": "gec",
+      "rozet": 3.9,
+      "ev": "Washington Wizards",
+      "dep": "San Antonio Spurs",
+      "ev_skor": 113,
+      "dep_skor": 124,
+      "saat": "03:00",
+      "hedef_id": "a-0022500399",
+      "_sira": "2025-12-22T03:00:00+03:00"
+    },
+    {
+      "katman": "mutlaka",
+      "rozet": 9.1,
+      "ev": "Sacramento Kings",
+      "dep": "Houston Rockets",
+      "ev_skor": 125,
+      "dep_skor": 124,
+      "saat": "06:00",
+      "hedef_id": "g-mutlaka-1",
+      "_sira": "2025-12-22T06:00:00+03:00"
     }
   ],
   "brief": [
@@ -181,7 +187,7 @@
       "metin": "Minnesota Timberwolves, 16 sayılık farktan dönüp Milwaukee Bucks'u geçti.",
       "anlatili": true,
       "hedef_id": "g-mutlaka-3",
-      "icon": "default",
+      "icon": "standings",
       "saat": "03:00",
       "rozet": 7.14,
       "skor": "MIN 103 – MIL 100",
@@ -10898,7 +10904,7 @@
       "mac": "Brooklyn Nets — Toronto Raptors",
       "skor": "96–81",
       "rozet": 2.45,
-      "why": "gece sırası 2",
+      "why": "",
       "metin": "Brooklyn Nets evinde Toronto Raptors'u 96-81 yendi.",
       "box": {
         "ev": {

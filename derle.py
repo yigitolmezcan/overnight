@@ -485,8 +485,11 @@ MANSET_ESIK = {
     # "Sezonun en iyi gecesi" kendi başına manşet değil: yedek oyuncunun
     # 12 sayılık sezon rekoru kapak değil. Ölçüldü — taban konmadan 29
     # Aralık'ta yedi kişi birden bu kalıba giriyordu.
-    "sezon_en_iyi": 25,
+    # 25 sayı tabanı yetmedi: her gecede birileri sezon rekoru kırıyordu.
+    # Taban 30 VE oyuncunun sezon ortalamasını en az %40 aşması şartı.
+    "sezon_en_iyi": 30,
 }
+MANSET_SEZON_EN_IYI_KAT = 1.40
 
 
 def _oyuncu_gunlugu_tam(ham):
@@ -574,8 +577,11 @@ def _manset_adaylari(ham, gercek_gece, skor_by_gid, tarih_str):
             oncekiler = gecmis[:-1] if gecmis else []
             if len(oncekiler) < MANSET_BAGLAM_ASGARI:
                 continue                    # sezon başı: bağlam kurulamaz
+            _ort = (sum(x["sayi"] for x in oncekiler) / len(oncekiler)
+                    if oncekiler else 0)
             if sayi >= MANSET_ESIK["sezon_en_iyi"] \
-                    and sayi > max((x["sayi"] for x in oncekiler), default=0):
+                    and sayi > max((x["sayi"] for x in oncekiler), default=0) \
+                    and _ort > 0 and sayi >= _ort * MANSET_SEZON_EN_IYI_KAT:
                 adaylar.append((2, 50 + sayi, "sezon_en_iyi", ad, None, gid))
             if sum(1 for v in (sayi, rib, ast) if v >= 10) >= 3 \
                     and not any(x["td3"] for x in oncekiler):
@@ -620,14 +626,20 @@ def _mansetler(ham, gercek_gece, skor_by_gid, id_by_gid, tarih_str,
     # (18 Aralık'ta iki triple-double aynı güçteydi).
     adaylar.sort(key=lambda a: (a[0], -a[1],
                                 -(skor_by_gid.get(a[5], {}).get("rozet") or 0)))
-    secilen, gorulen = [], set()
+    # AYNI KALIP BİR GECEDE EN FAZLA BİR KEZ (kullanıcı kuralı): üç
+    # satırın ikisi aynı cümle olunca tekrar hissi veriyordu (29 Aralık,
+    # "sezonun en iyi gecesini oynadı" iki kez). İkinci aday sıradaki
+    # FARKLI kalıba düşüyor, o da yoksa manşet sayısı azalıyor.
+    secilen, gorulen, kullanilan_kalip = [], set(), set()
     for kademe, guc, kalip, ad, n, gid in adaylar:
-        if gid in gorulen or len(secilen) >= MANSET_EN_FAZLA:
+        if gid in gorulen or kalip in kullanilan_kalip \
+                or len(secilen) >= MANSET_EN_FAZLA:
             continue
         sk = skor_by_gid.get(gid) or {}
         if not sk:
             continue
         gorulen.add(gid)
+        kullanilan_kalip.add(kalip)
         metin, vurgu = cumle.manset_cumlesi(kalip, ad, n)
         ev, dep = sk.get("ev"), sk.get("dep")
         # skor/*.json kaydında "kazanan" alanı yok; skordan türetiliyor.
@@ -3030,12 +3042,17 @@ def _ayrica_ifadesi(kilo, kutu):
     return f"{okunur} {fiil}"
 
 
-def _ayrica_satiri(gercek_gece, ham, brief):
+def _ayrica_satiri(gercek_gece, ham, brief, mansetler=None):
     """[{isim, ifade, takim}, ...] — en fazla AYRICA_EN_FAZLA, en NADİR olanlar.
 
-    Akışta cümlesi olan bir oyuncu buraya TEKRAR girmiyor: aynı haberi
-    iki kez okutmak bölümü uzatmaktan başka bir şey yapmaz."""
-    anilan = " ".join(b.get("metin", "") for b in brief if b.get("metin"))
+    Akışta ya da MANŞETTE anılan bir oyuncu buraya TEKRAR girmiyor:
+    aynı haberi iki kez okutmak bölümü uzatmaktan başka bir şey yapmaz.
+    Manşet kontrolü sonradan eklendi — 29 Aralık'ta en üstte "Paolo
+    Banchero triple-double yaptı" yazarken en altta "AYRICA Paolo
+    Banchero triple-double yaptı (Orlando)" duruyordu."""
+    anilan = " ".join(
+        [b.get("metin", "") for b in brief if b.get("metin")]
+        + [m.get("metin", "") for m in (mansetler or [])])
     kod_by_oyuncu, kutu_by_oyuncu = {}, {}
     for gid, hm in (ham.get("maclar") or {}).items():
         bt = hm["box_traditional"]["boxScoreTraditional"]
@@ -3217,7 +3234,16 @@ def derle(tarih_str):
                 x["etiket"], x["one_cikan"] = "", False
     for x in brief:
         x.pop("_gid", None)         # yalnız sıralama içindi
-    ayrica = _ayrica_satiri(gercek_gece, ham, brief)
+    # Manşet her katmandan çıkabilir; hedef kimliği "Mutlaka bil"de
+    # farklı, diğerlerinde `a-<gid>`. Saat ham maçtan okunuyor.
+    _hedef_by_gid = {gid: mutlaka_id_by_gid.get(gid, f"a-{gid}")
+                     for gid in (gercek_gece.get("maclar") or {})}
+    _saat_by_gid = {gid: (_tsi_baslama(ham["maclar"][gid], tarih_str)
+                          if gid in (ham.get("maclar") or {}) else None)
+                    for gid in (gercek_gece.get("maclar") or {})}
+    mansetler = _mansetler(ham, gercek_gece, rozet_by_gid,
+                           _hedef_by_gid, tarih_str, _saat_by_gid)
+    ayrica = _ayrica_satiri(gercek_gece, ham, brief, mansetler)
     anlar = [x["_an"] for x in brief if x["_an"]]
     saatli = [x["saat"] for x in brief if x["saat"]]
     _dakika = (int((anlar[-1] - anlar[0]).total_seconds() // 60)
@@ -3291,15 +3317,7 @@ def derle(tarih_str):
     # ---- gecenin beşi ----
     gecenin_besi = _gecenin_besi(ham, gercek_gece, mutlaka_id_by_gid, rozet_by_gid)
     # MANŞETLER — kapak bölümünün üst yarısı (cümle akışının yerine).
-    # Manşet her katmandan çıkabilir; hedef kimliği "Mutlaka bil"de
-    # farklı, diğerlerinde `a-<gid>`. Saat ham maçtan okunuyor.
-    _hedef_by_gid = {gid: mutlaka_id_by_gid.get(gid, f"a-{gid}")
-                     for gid in (gercek_gece.get("maclar") or {})}
-    _saat_by_gid = {gid: (_tsi_baslama(ham["maclar"][gid], tarih_str)
-                          if gid in (ham.get("maclar") or {}) else None)
-                    for gid in (gercek_gece.get("maclar") or {})}
-    mansetler = _mansetler(ham, gercek_gece, rozet_by_gid,
-                           _hedef_by_gid, tarih_str, _saat_by_gid)
+
 
     # ---- yükselen / düşen ----
     # Bu gece OYNAYAN her oyuncu aday; oynamayan iki listede de yok.
@@ -3406,7 +3424,10 @@ def derle(tarih_str):
         # KAPAK MAÇ LİSTESİ — manşetlerin altında: rozet + takımlar +
         # saat. Punch line YOK (manşete çıktı). "Bunları geç" tek
         # şeritte toplanıyor, satır almıyor.
-        "kapak_listesi": [
+        # TEK LİSTE, SAATE GÖRE SIRALI (kullanıcı kararı): başlık yok,
+        # ayrım yok. Rozet zaten önem sırasını söylüyor; kronolojik sıra
+        # "Sen uyurken" kimliğini koruyor.
+        "kapak_listesi": sorted([
             {
                 "katman": kat,
                 "rozet": round((rozet_by_gid.get(gid) or {}).get("rozet", 0), 1),
@@ -3416,6 +3437,12 @@ def derle(tarih_str):
                 "dep_skor": (rozet_by_gid.get(gid) or {}).get("dep_skor"),
                 "saat": _saat_by_gid.get(gid) or "",
                 "hedef_id": _hedef_by_gid.get(gid, ""),
+                # Sıralama anahtarı METİN: _tsi_baslama_dt bazı maçlarda
+                # saat dilimli, bazılarında saatsiz datetime döndürüyor
+                # ve ikisi karşılaştırılamıyor.
+                "_sira": ((_tsi_baslama_dt(ham["maclar"][gid], tarih_str)
+                           or datetime.max).isoformat()
+                          if gid in (ham.get("maclar") or {}) else "9"),
             }
             for kat, gidler in (
                 ("mutlaka", [m["mac_id"] for m in mutlaka]),
@@ -3423,7 +3450,7 @@ def derle(tarih_str):
                 ("gec", [m.get("mac_id") for m in diger]),
             )
             for gid in gidler if gid and gid in rozet_by_gid
-        ],
+        ], key=lambda x: x["_sira"]),
         "brief": brief,
         "brief_ozet": brief_ozet,
         "brief_ayrica": ayrica,

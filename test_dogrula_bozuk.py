@@ -3053,9 +3053,16 @@ def main():
               for f in _k if f["tur"] == "kilometre" and f["veri"].get("oyuncu")]
     _akis3 = " ".join(b.get("metin", "") for b in (_d3.get("brief") or []))
     _ayr_adlari = " ".join(a["isim"] for a in _ayr)
-    basar("Ayrıca: hiçbir kilometre taşı kaybolmuyor (akışta ya da Ayrıca'da)",
-          all(ad.split()[-1].lower() in (_akis3 + " " + _ayr_adlari).lower()
-              for ad in _kilo3))
+    # Kilometre taşı artık MANŞETTE de olabilir — kural değişmedi
+    # ("hiçbiri kaybolmaz"), kapsam genişledi.
+    _mans3 = " ".join(m.get("metin", "") for m in (_d3.get("mansetler") or []))
+    basar("Ayrıca: hiçbir kilometre taşı kaybolmuyor (manşet/akış/Ayrıca)",
+          all(ad.split()[-1].lower()
+              in (_akis3 + " " + _ayr_adlari + " " + _mans3).lower()
+              for ad in _kilo3),
+          str([a for a in _kilo3
+               if a.split()[-1].lower()
+               not in (_akis3 + " " + _ayr_adlari + " " + _mans3).lower()]))
     basar(f"Ayrıca: en fazla {_derle.AYRICA_EN_FAZLA} kayıt",
           len(_ayr) <= _derle.AYRICA_EN_FAZLA)
     basar("Ayrıca: her kayıtta isim, ifade ve takım var",
@@ -6354,6 +6361,46 @@ def main():
                 _mkotu.append(f"{_tm2}: liste dışı kalıp {_m2.get('kalip')}")
     basar("Manşet: en fazla 3, aynı maçtan tek manşet, kalıp listede",
           not _mkotu, "; ".join(_mkotu[:3]))
+    # AYNI KALIP BİR GECEDE EN FAZLA BİR KEZ.
+    _ktekrar = []
+    for _tm3 in _yayin.durum_oku()["yayinlanan"]:
+        if not _os.path.exists(f"dist/{_tm3}.json"):
+            continue
+        _x3 = _jj.loads(open(f"dist/{_tm3}.json", encoding="utf-8").read())
+        _kl = [m.get("kalip") for m in (_x3.get("mansetler") or [])]
+        if len(_kl) != len(set(_kl)):
+            _ktekrar.append(f"{_tm3}: {_kl}")
+    basar("Manşet: aynı kalıp bir gecede iki kez çıkmıyor",
+          not _ktekrar, "; ".join(_ktekrar[:3]))
+    basar("Manşet: sezon_en_iyi eşiği 30 sayı + ortalamanın %40 üstü",
+          _derle.MANSET_ESIK["sezon_en_iyi"] == 30
+          and _derle.MANSET_SEZON_EN_IYI_KAT == 1.40)
+    # AYRICA manşeti tekrar etmiyor.
+    _cakisan = []
+    for _tm4 in _yayin.durum_oku()["yayinlanan"]:
+        if not _os.path.exists(f"dist/{_tm4}.json"):
+            continue
+        _x4 = _jj.loads(open(f"dist/{_tm4}.json", encoding="utf-8").read())
+        _mans = " ".join(m.get("metin", "") for m in (_x4.get("mansetler") or []))
+        for _a4 in (_x4.get("brief_ayrica") or []):
+            _sy = (_a4.get("isim") or "").split()[-1]
+            if _sy and _sy.lower() in _mans.lower():
+                _cakisan.append(f"{_tm4}: {_a4.get('isim')}")
+    basar("Manşet: 'Ayrıca' manşetteki olguyu tekrar etmiyor",
+          not _cakisan, "; ".join(_cakisan[:3]))
+    # KAPAK LİSTESİ tek ve kronolojik; "Bunları geç" şeridi yok.
+    basar("Kapak: tek liste, başlıksız, kronolojik",
+          "gecserit" not in _sayfa and "grup('Mutlaka bil'" not in _sayfa
+          and 'key=lambda x: x["_sira"]' in _dsrc_kod)
+    _kron = []
+    for _tm5 in _yayin.durum_oku()["yayinlanan"]:
+        if not _os.path.exists(f"dist/{_tm5}.json"):
+            continue
+        _x5b = _jj.loads(open(f"dist/{_tm5}.json", encoding="utf-8").read())
+        _kl2 = [x.get("_sira") or "" for x in (_x5b.get("kapak_listesi") or [])]
+        if _kl2 != sorted(_kl2):
+            _kron.append(_tm5)
+    basar("Kapak: liste saate göre sıralı", not _kron, str(_kron))
     # SEZON BAŞI: bağlamlı kalıp ilk 10 maçta kurulamaz.
     basar("Manşet: sezon başı bağlam eşiği susma kuralıyla aynı",
           _derle.MANSET_BAGLAM_ASGARI == _gerc_modul.SEZON_ACILISI_TAZE_MAC_SAYISI

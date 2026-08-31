@@ -114,10 +114,10 @@
       "mac_id": "0022500422"
     },
     {
-      "metin": "Karl-Anthony Towns 40 sayı attı.",
-      "vurgu": "40 sayı",
-      "kalip": "kirk_sayi",
-      "kademe": 1,
+      "metin": "Karl-Anthony Towns sezonun en iyi gecesini oynadı.",
+      "vurgu": "sezonun en iyi gecesini",
+      "kalip": "sezon_en_iyi",
+      "kademe": 2,
       "rozet": 6.9,
       "mac": "Minnesota 115 – 104 New York",
       "saat": "04:00",
@@ -128,106 +128,6 @@
   ],
   "kapak_listesi": [
     {
-      "katman": "mutlaka",
-      "rozet": 9.3,
-      "ev": "Dallas Mavericks",
-      "dep": "Denver Nuggets",
-      "ev_skor": 131,
-      "dep_skor": 130,
-      "saat": "04:00",
-      "hedef_id": "g-mutlaka-0"
-    },
-    {
-      "katman": "mutlaka",
-      "rozet": 8.7,
-      "ev": "LA Clippers",
-      "dep": "Houston Rockets",
-      "ev_skor": 128,
-      "dep_skor": 108,
-      "saat": "07:00",
-      "hedef_id": "g-mutlaka-1"
-    },
-    {
-      "katman": "mutlaka",
-      "rozet": 8.6,
-      "ev": "Atlanta Hawks",
-      "dep": "Chicago Bulls",
-      "ev_skor": 123,
-      "dep_skor": 126,
-      "saat": "03:30",
-      "hedef_id": "g-mutlaka-2"
-    },
-    {
-      "katman": "gozat",
-      "rozet": 7.3,
-      "ev": "San Antonio Spurs",
-      "dep": "Oklahoma City Thunder",
-      "ev_skor": 130,
-      "dep_skor": 110,
-      "saat": "04:30",
-      "hedef_id": "a-0022500417"
-    },
-    {
-      "katman": "gozat",
-      "rozet": 7.2,
-      "ev": "Sacramento Kings",
-      "dep": "Detroit Pistons",
-      "ev_skor": 127,
-      "dep_skor": 136,
-      "saat": "06:00",
-      "hedef_id": "a-0022500421"
-    },
-    {
-      "katman": "gozat",
-      "rozet": 6.9,
-      "ev": "Minnesota Timberwolves",
-      "dep": "New York Knicks",
-      "ev_skor": 115,
-      "dep_skor": 104,
-      "saat": "04:00",
-      "hedef_id": "a-0022500416"
-    },
-    {
-      "katman": "gozat",
-      "rozet": 6.6,
-      "ev": "Utah Jazz",
-      "dep": "Memphis Grizzlies",
-      "ev_skor": 128,
-      "dep_skor": 137,
-      "saat": "05:00",
-      "hedef_id": "a-0022500419"
-    },
-    {
-      "katman": "gec",
-      "rozet": 5.3,
-      "ev": "Portland Trail Blazers",
-      "dep": "Orlando Magic",
-      "ev_skor": 106,
-      "dep_skor": 110,
-      "saat": "06:00",
-      "hedef_id": "a-0022500420"
-    },
-    {
-      "katman": "gec",
-      "rozet": 4.9,
-      "ev": "Miami Heat",
-      "dep": "Toronto Raptors",
-      "ev_skor": 91,
-      "dep_skor": 112,
-      "saat": "03:30",
-      "hedef_id": "a-0022500414"
-    },
-    {
-      "katman": "gec",
-      "rozet": 3.1,
-      "ev": "Indiana Pacers",
-      "dep": "Milwaukee Bucks",
-      "ev_skor": 94,
-      "dep_skor": 111,
-      "saat": "03:30",
-      "hedef_id": "a-0022500413"
-    },
-    {
       "katman": "gec",
       "rozet": 3.1,
       "ev": "Philadelphia 76ers",
@@ -235,7 +135,8 @@
       "ev_skor": 106,
       "dep_skor": 114,
       "saat": "03:00",
-      "hedef_id": "a-0022500410"
+      "hedef_id": "a-0022500410",
+      "_sira": "2025-12-24T03:00:00+03:00"
     },
     {
       "katman": "gec",
@@ -245,7 +146,41 @@
       "ev_skor": 126,
       "dep_skor": 109,
       "saat": "03:00",
-      "hedef_id": "a-0022500409"
+      "hedef_id": "a-0022500409",
+      "_sira": "2025-12-24T03:00:00+03:00"
+    },
+    {
+      "katman": "mutlaka",
+      "rozet": 8.6,
+      "ev": "Atlanta Hawks",
+      "dep": "Chicago Bulls",
+      "ev_skor": 123,
+      "dep_skor": 126,
+      "saat": "03:30",
+      "hedef_id": "g-mutlaka-2",
+      "_sira": "2025-12-24T03:30:00+03:00"
+    },
+    {
+      "katman": "gec",
+      "rozet": 4.9,
+      "ev": "Miami Heat",
+      "dep": "Toronto Raptors",
+      "ev_skor": 91,
+      "dep_skor": 112,
+      "saat": "03:30",
+      "hedef_id": "a-0022500414",
+      "_sira": "2025-12-24T03:30:00+03:00"
+    },
+    {
+      "katman": "gec",
+      "rozet": 3.1,
+      "ev": "Indiana Pacers",
+      "dep": "Milwaukee Bucks",
+      "ev_skor": 94,
+      "dep_skor": 111,
+      "saat": "03:30",
+      "hedef_id": "a-0022500413",
+      "_sira": "2025-12-24T03:30:00+03:00"
     },
     {
       "katman": "gec",
@@ -255,7 +190,52 @@
       "ev_skor": 141,
       "dep_skor": 118,
       "saat": "03:30",
-      "hedef_id": "a-0022500412"
+      "hedef_id": "a-0022500412",
+      "_sira": "2025-12-24T03:30:00+03:00"
+    },
+    {
+      "katman": "mutlaka",
+      "rozet": 9.3,
+      "ev": "Dallas Mavericks",
+      "dep": "Denver Nuggets",
+      "ev_skor": 131,
+      "dep_skor": 130,
+      "saat": "04:00",
+      "hedef_id": "g-mutlaka-0",
+      "_sira": "2025-12-24T04:00:00+03:00"
+    },
+    {
+      "katman": "gozat",
+      "rozet": 6.9,
+      "ev": "Minnesota Timberwolves",
+      "dep": "New York Knicks",
+      "ev_skor": 115,
+      "dep_skor": 104,
+      "saat": "04:00",
+      "hedef_id": "a-0022500416",
+      "_sira": "2025-12-24T04:00:00+03:00"
+    },
+    {
+      "katman": "gozat",
+      "rozet": 7.3,
+      "ev": "San Antonio Spurs",
+      "dep": "Oklahoma City Thunder",
+      "ev_skor": 130,
+      "dep_skor": 110,
+      "saat": "04:30",
+      "hedef_id": "a-0022500417",
+      "_sira": "2025-12-24T04:30:00+03:00"
+    },
+    {
+      "katman": "gozat",
+      "rozet": 6.6,
+      "ev": "Utah Jazz",
+      "dep": "Memphis Grizzlies",
+      "ev_skor": 128,
+      "dep_skor": 137,
+      "saat": "05:00",
+      "hedef_id": "a-0022500419",
+      "_sira": "2025-12-24T05:00:00+03:00"
     },
     {
       "katman": "gec",
@@ -265,7 +245,41 @@
       "ev_skor": 132,
       "dep_skor": 108,
       "saat": "05:00",
-      "hedef_id": "a-0022500418"
+      "hedef_id": "a-0022500418",
+      "_sira": "2025-12-24T05:00:00+03:00"
+    },
+    {
+      "katman": "gozat",
+      "rozet": 7.2,
+      "ev": "Sacramento Kings",
+      "dep": "Detroit Pistons",
+      "ev_skor": 127,
+      "dep_skor": 136,
+      "saat": "06:00",
+      "hedef_id": "a-0022500421",
+      "_sira": "2025-12-24T06:00:00+03:00"
+    },
+    {
+      "katman": "gec",
+      "rozet": 5.3,
+      "ev": "Portland Trail Blazers",
+      "dep": "Orlando Magic",
+      "ev_skor": 106,
+      "dep_skor": 110,
+      "saat": "06:00",
+      "hedef_id": "a-0022500420",
+      "_sira": "2025-12-24T06:00:00+03:00"
+    },
+    {
+      "katman": "mutlaka",
+      "rozet": 8.7,
+      "ev": "LA Clippers",
+      "dep": "Houston Rockets",
+      "ev_skor": 128,
+      "dep_skor": 108,
+      "saat": "07:00",
+      "hedef_id": "g-mutlaka-1",
+      "_sira": "2025-12-24T07:00:00+03:00"
     }
   ],
   "brief": [
@@ -285,7 +299,7 @@
       "metin": "Charlotte Hornets, Washington Wizards'ı yendi.",
       "anlatili": true,
       "hedef_id": "a-0022500409",
-      "icon": "standings",
+      "icon": "default",
       "saat": "03:00",
       "rozet": 2.98,
       "skor": "CHA 126 – WAS 109",
@@ -429,7 +443,7 @@
       "metin": "Kawhi Leonard, Houston Rockets karşısında 41 sayı attı.",
       "anlatili": true,
       "hedef_id": "g-mutlaka-1",
-      "icon": "default",
+      "icon": "standings",
       "saat": "07:00",
       "rozet": 8.66,
       "skor": "LAC 128 – HOU 108",
@@ -446,18 +460,7 @@
     "dakika": 240,
     "sure": "4 saat"
   },
-  "brief_ayrica": [
-    {
-      "isim": "Josh Giddey",
-      "ifade": "triple-double yaptı",
-      "takim": "Chicago"
-    },
-    {
-      "isim": "Karl-Anthony Towns",
-      "ifade": "40 sayı attı",
-      "takim": "New York"
-    }
-  ],
+  "brief_ayrica": [],
   "mutlaka": [
     {
       "id": "g-mutlaka-0",
@@ -26099,7 +26102,7 @@
       "mac": "Charlotte Hornets — Washington Wizards",
       "skor": "126–109",
       "rozet": 2.98,
-      "why": "gece sırası 1",
+      "why": "10. galibiyetini alan (kazanan)",
       "metin": "Charlotte Hornets evinde Washington Wizards'ı 126-109 yendi.",
       "box": {
         "ev": {

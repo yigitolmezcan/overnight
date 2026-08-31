@@ -1213,22 +1213,21 @@ td.khot{color:var(--amber);font-weight:700}
 .mn .h.k3 .s u{background:#232C39;color:#6C7787}
 /* ===== KAPAK MAÇ LİSTESİ — punch line yok, rozet + takımlar + saat ===== */
 .kaplist{padding:6px 0 2px}
-.kaplist h3{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--faint);font-weight:400;
-  margin:14px 0 6px;padding-top:12px;border-top:1px solid var(--line2)}
-.kaplist h3:first-child{border-top:0;padding-top:0;margin-top:4px}
-.kaplist a{display:flex;align-items:center;gap:10px;padding:7px 0;
+.kaplist{padding-top:10px;margin-top:6px;border-top:1px solid var(--line2)}
+.kaplist a{display:flex;align-items:center;gap:10px;padding:6px 0;
   text-decoration:none;color:inherit}
+.kaplist span.sa{font-family:var(--mono);font-size:10.5px;color:var(--faint);
+  flex:none;min-width:38px}
 .kaplist i{font-family:var(--mono);font-size:10px;font-weight:700;font-style:normal;
-  color:#0A0603;background:var(--ember);padding:1px 5px;flex:none;min-width:30px;
-  text-align:center}
-.kaplist .gz i{background:#232C39;color:#8A94A3}
+  padding:1px 5px;flex:none;min-width:30px;text-align:center;
+  background:#1A2230;color:#8A94A3}
+.kaplist .yuksek i{background:var(--ember);color:#0A0603}
+.kaplist .orta i{background:#2A2118;color:#B4713F}
 .kaplist span.tk{flex:1;min-width:0;font-family:var(--mono);font-size:12px;
   color:var(--dim);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.kaplist span.sa{font-family:var(--mono);font-size:10.5px;color:var(--faint);flex:none}
-.kaplist .gecserit{font-family:var(--mono);font-size:10.5px;color:var(--faint);
-  line-height:1.7;padding:8px 0 2px}
-.kaplist .gecserit b{color:var(--dim);font-weight:400}
+/* Düşük rozetli satır TAMAMEN soluk — göz yüksek rozete gitsin. */
+.kaplist .dusuk{opacity:.52}
+.kaplist .dusuk span.tk{color:var(--faint)}
 
 /* "Bunları geç" sol rayı — YAPI VERİR, DİKKAT ÇEKMEZ (kullanıcı kararı).
    Üst katmanlarda 3px ve tam renk; burada 2px ve %30'dan %10'a sönen
@@ -2403,21 +2402,18 @@ function render(d){
   // ---- KAPAK MAÇ LİSTESİ ----
   // Punch line YOK (manşete çıktı). "Bunları geç" tek şeritte toplanıyor.
   const kap=d.kapak_listesi||[];
-  const kapSatir=x=>`<a href="#${esc(x.hedef_id||'')}">
-      <i>${(x.rozet||0).toFixed(1)}</i>
-      <span class="tk">${esc(x.ev)} ${x.ev_skor}–${x.dep_skor} ${esc(x.dep)}</span>
-      <span class="sa">${esc(x.saat||'')}</span></a>`;
-  const grup=(ad,kod,sinif)=>{
-    const l=kap.filter(x=>x.katman===kod);
-    if(!l.length) return '';
-    return `<h3>${ad}</h3><div class="${sinif||''}">${l.map(kapSatir).join('')}</div>`;
-  };
-  const gecler=kap.filter(x=>x.katman==='gec');
-  document.getElementById('kapakListe').innerHTML =
-    grup('Mutlaka bil','mutlaka') + grup('Göz at','gozat','gz') +
-    (gecler.length?`<h3>Bunları geç</h3><div class="gecserit">${
-      gecler.map(x=>`<b>${esc(x.ev)} ${x.ev_skor}–${x.dep_skor} ${esc(x.dep)}</b>`).join(' · ')
-    }</div>`:'');
+  // TEK LİSTE, SAATE GÖRE SIRALI. Başlık yok, ayrım yok — rozet zaten
+  // önem sırasını söylüyor. Düşük rozetli satır tamamen soluk.
+  // "Bunları geç" ŞERİDİ KALKTI: sarmalanan skor metni okunmuyordu ve
+  // bu liste onu zaten çözüyor (aşağıdaki "Bunları geç" BÖLÜMÜ ayrı).
+  document.getElementById('kapakListe').innerHTML = kap.map(x=>{
+    const r = x.rozet||0;
+    const sinif = r>=7 ? 'yuksek' : (r>=5 ? 'orta' : 'dusuk');
+    return `<a class="${sinif}" href="#${esc(x.hedef_id||'')}">
+      <span class="sa">${esc(x.saat||'')}</span>
+      <i>${r.toFixed(1)}</i>
+      <span class="tk">${esc(x.ev)} ${x.ev_skor}–${x.dep_skor} ${esc(x.dep)}</span></a>`;
+  }).join('');
 
   // DEVRE DIŞI — SİLİNMEDİ: saat rayı / cümle akışı oluşturucusu.
   const briefList=document.getElementById('briefList');

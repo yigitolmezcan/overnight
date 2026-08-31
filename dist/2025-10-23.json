@@ -30,9 +30,9 @@
       "mac_id": "0022500005"
     },
     {
-      "metin": "Aaron Gordon 50 sayı attı.",
-      "vurgu": "50 sayı",
-      "kalip": "kirk_sayi",
+      "metin": "Nikola Jokić triple-double yaptı.",
+      "vurgu": "triple-double",
+      "kalip": "triple_double",
       "kademe": 1,
       "rozet": 9.4,
       "mac": "Golden State 137 – 131 Denver",
@@ -51,7 +51,8 @@
       "ev_skor": 135,
       "dep_skor": 141,
       "saat": "02:30",
-      "hedef_id": "g-mutlaka-0"
+      "hedef_id": "g-mutlaka-0",
+      "_sira": "2025-10-24T02:30:00+03:00"
     },
     {
       "katman": "gozat",
@@ -61,7 +62,8 @@
       "ev_skor": 137,
       "dep_skor": 131,
       "saat": "05:00",
-      "hedef_id": "a-0022500006"
+      "hedef_id": "a-0022500006",
+      "_sira": "2025-10-24T05:00:00+03:00"
     }
   ],
   "brief": [
@@ -99,11 +101,6 @@
     "sure": "2,5 saat"
   },
   "brief_ayrica": [
-    {
-      "isim": "Nikola Jokić",
-      "ifade": "triple-double yaptı",
-      "takim": "Denver"
-    },
     {
       "isim": "Aaron Gordon",
       "ifade": "50 sayı attı",

@@ -104,34 +104,15 @@
   ],
   "kapak_listesi": [
     {
-      "katman": "mutlaka",
-      "rozet": 9.1,
-      "ev": "Golden State Warriors",
-      "dep": "Phoenix Suns",
-      "ev_skor": 119,
-      "dep_skor": 116,
-      "saat": "04:30",
-      "hedef_id": "g-mutlaka-0"
-    },
-    {
-      "katman": "mutlaka",
-      "rozet": 8.6,
-      "ev": "Memphis Grizzlies",
-      "dep": "Washington Wizards",
-      "ev_skor": 122,
-      "dep_skor": 130,
-      "saat": "04:00",
-      "hedef_id": "g-mutlaka-1"
-    },
-    {
-      "katman": "mutlaka",
-      "rozet": 8.5,
-      "ev": "Utah Jazz",
-      "dep": "Orlando Magic",
-      "ev_skor": 127,
-      "dep_skor": 128,
-      "saat": "05:30",
-      "hedef_id": "g-mutlaka-2"
+      "katman": "gozat",
+      "rozet": 6.4,
+      "ev": "Denver Nuggets",
+      "dep": "Houston Rockets",
+      "ev_skor": 101,
+      "dep_skor": 115,
+      "saat": "01:00",
+      "hedef_id": "a-0022500386",
+      "_sira": "2025-12-21T01:00:00+03:00"
     },
     {
       "katman": "gozat",
@@ -141,17 +122,8 @@
       "ev_skor": 96,
       "dep_skor": 112,
       "saat": "03:00",
-      "hedef_id": "a-0022500388"
-    },
-    {
-      "katman": "gozat",
-      "rozet": 6.4,
-      "ev": "Denver Nuggets",
-      "dep": "Houston Rockets",
-      "ev_skor": 101,
-      "dep_skor": 115,
-      "saat": "01:00",
-      "hedef_id": "a-0022500386"
+      "hedef_id": "a-0022500388",
+      "_sira": "2025-12-21T03:00:00+03:00"
     },
     {
       "katman": "gec",
@@ -161,17 +133,8 @@
       "ev_skor": 121,
       "dep_skor": 114,
       "saat": "03:00",
-      "hedef_id": "a-0022500387"
-    },
-    {
-      "katman": "gec",
-      "rozet": 5.1,
-      "ev": "LA Clippers",
-      "dep": "Los Angeles Lakers",
-      "ev_skor": 103,
-      "dep_skor": 88,
-      "saat": "06:30",
-      "hedef_id": "a-0022500395"
+      "hedef_id": "a-0022500387",
+      "_sira": "2025-12-21T03:00:00+03:00"
     },
     {
       "katman": "gec",
@@ -181,17 +144,8 @@
       "ev_skor": 128,
       "dep_skor": 109,
       "saat": "03:00",
-      "hedef_id": "a-0022500389"
-    },
-    {
-      "katman": "gec",
-      "rozet": 2.6,
-      "ev": "Sacramento Kings",
-      "dep": "Portland Trail Blazers",
-      "ev_skor": 93,
-      "dep_skor": 98,
-      "saat": "06:00",
-      "hedef_id": "a-0022500394"
+      "hedef_id": "a-0022500389",
+      "_sira": "2025-12-21T03:00:00+03:00"
     },
     {
       "katman": "gec",
@@ -201,7 +155,63 @@
       "ev_skor": 112,
       "dep_skor": 86,
       "saat": "03:30",
-      "hedef_id": "a-0022500390"
+      "hedef_id": "a-0022500390",
+      "_sira": "2025-12-21T03:30:00+03:00"
+    },
+    {
+      "katman": "mutlaka",
+      "rozet": 8.6,
+      "ev": "Memphis Grizzlies",
+      "dep": "Washington Wizards",
+      "ev_skor": 122,
+      "dep_skor": 130,
+      "saat": "04:00",
+      "hedef_id": "g-mutlaka-1",
+      "_sira": "2025-12-21T04:00:00+03:00"
+    },
+    {
+      "katman": "mutlaka",
+      "rozet": 9.1,
+      "ev": "Golden State Warriors",
+      "dep": "Phoenix Suns",
+      "ev_skor": 119,
+      "dep_skor": 116,
+      "saat": "04:30",
+      "hedef_id": "g-mutlaka-0",
+      "_sira": "2025-12-21T04:30:00+03:00"
+    },
+    {
+      "katman": "mutlaka",
+      "rozet": 8.5,
+      "ev": "Utah Jazz",
+      "dep": "Orlando Magic",
+      "ev_skor": 127,
+      "dep_skor": 128,
+      "saat": "05:30",
+      "hedef_id": "g-mutlaka-2",
+      "_sira": "2025-12-21T05:30:00+03:00"
+    },
+    {
+      "katman": "gec",
+      "rozet": 2.6,
+      "ev": "Sacramento Kings",
+      "dep": "Portland Trail Blazers",
+      "ev_skor": 93,
+      "dep_skor": 98,
+      "saat": "06:00",
+      "hedef_id": "a-0022500394",
+      "_sira": "2025-12-21T06:00:00+03:00"
+    },
+    {
+      "katman": "gec",
+      "rozet": 5.1,
+      "ev": "LA Clippers",
+      "dep": "Los Angeles Lakers",
+      "ev_skor": 103,
+      "dep_skor": 88,
+      "saat": "06:30",
+      "hedef_id": "a-0022500395",
+      "_sira": "2025-12-21T06:30:00+03:00"
     }
   ],
   "brief": [
@@ -335,11 +345,6 @@
     "sure": "5,5 saat"
   },
   "brief_ayrica": [
-    {
-      "isim": "Cade Cunningham",
-      "ifade": "triple-double yaptı",
-      "takim": "Detroit"
-    },
     {
       "isim": "Dylan Cardwell",
       "ifade": "5 blok yaptı",

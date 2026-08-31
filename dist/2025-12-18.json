@@ -78,18 +78,6 @@
       "mac_id": "0022500379"
     },
     {
-      "metin": "Nikola Jokić triple-double yaptı.",
-      "vurgu": "triple-double",
-      "kalip": "triple_double",
-      "kademe": 1,
-      "rozet": 4.4,
-      "mac": "Denver 126 – 115 Orlando",
-      "saat": "05:00",
-      "renk": "#FEC524",
-      "hedef_id": "a-0022500377",
-      "mac_id": "0022500377"
-    },
-    {
       "metin": "Jalen Johnson 43 sayı attı.",
       "vurgu": "43 sayı",
       "kalip": "kirk_sayi",
@@ -100,39 +88,21 @@
       "renk": "#4B36A8",
       "hedef_id": "g-mutlaka-3",
       "mac_id": "0022500371"
+    },
+    {
+      "metin": "Paolo Banchero sezonun ilk triple-double'ını yaptı.",
+      "vurgu": "sezonun ilk",
+      "kalip": "ilk_triple",
+      "kademe": 2,
+      "rozet": 4.4,
+      "mac": "Denver 126 – 115 Orlando",
+      "saat": "05:00",
+      "renk": "#FEC524",
+      "hedef_id": "a-0022500377",
+      "mac_id": "0022500377"
     }
   ],
   "kapak_listesi": [
-    {
-      "katman": "mutlaka",
-      "rozet": 9.1,
-      "ev": "New Orleans Pelicans",
-      "dep": "Houston Rockets",
-      "ev_skor": 133,
-      "dep_skor": 128,
-      "saat": "04:00",
-      "hedef_id": "g-mutlaka-0"
-    },
-    {
-      "katman": "mutlaka",
-      "rozet": 8.9,
-      "ev": "Utah Jazz",
-      "dep": "Los Angeles Lakers",
-      "ev_skor": 135,
-      "dep_skor": 143,
-      "saat": "05:00",
-      "hedef_id": "g-mutlaka-1"
-    },
-    {
-      "katman": "mutlaka",
-      "rozet": 8.9,
-      "ev": "Portland Trail Blazers",
-      "dep": "Sacramento Kings",
-      "ev_skor": 134,
-      "dep_skor": 133,
-      "saat": "06:00",
-      "hedef_id": "g-mutlaka-2"
-    },
     {
       "katman": "mutlaka",
       "rozet": 8.8,
@@ -141,17 +111,8 @@
       "ev_skor": 133,
       "dep_skor": 126,
       "saat": "03:00",
-      "hedef_id": "g-mutlaka-3"
-    },
-    {
-      "katman": "gozat",
-      "rozet": 8.6,
-      "ev": "Phoenix Suns",
-      "dep": "Golden State Warriors",
-      "ev_skor": 99,
-      "dep_skor": 98,
-      "saat": "05:00",
-      "hedef_id": "a-0022500378"
+      "hedef_id": "g-mutlaka-3",
+      "_sira": "2025-12-19T03:00:00+03:00"
     },
     {
       "katman": "gozat",
@@ -161,17 +122,8 @@
       "ev_skor": 113,
       "dep_skor": 114,
       "saat": "03:00",
-      "hedef_id": "a-0022500372"
-    },
-    {
-      "katman": "gozat",
-      "rozet": 8.1,
-      "ev": "Dallas Mavericks",
-      "dep": "Detroit Pistons",
-      "ev_skor": 116,
-      "dep_skor": 114,
-      "saat": "04:30",
-      "hedef_id": "a-0022500376"
+      "hedef_id": "a-0022500372",
+      "_sira": "2025-12-19T03:00:00+03:00"
     },
     {
       "katman": "gec",
@@ -181,17 +133,19 @@
       "ev_skor": 95,
       "dep_skor": 106,
       "saat": "03:30",
-      "hedef_id": "a-0022500373"
+      "hedef_id": "a-0022500373",
+      "_sira": "2025-12-19T03:30:00+03:00"
     },
     {
-      "katman": "gec",
-      "rozet": 4.4,
-      "ev": "Denver Nuggets",
-      "dep": "Orlando Magic",
-      "ev_skor": 126,
-      "dep_skor": 115,
-      "saat": "05:00",
-      "hedef_id": "a-0022500377"
+      "katman": "mutlaka",
+      "rozet": 9.1,
+      "ev": "New Orleans Pelicans",
+      "dep": "Houston Rockets",
+      "ev_skor": 133,
+      "dep_skor": 128,
+      "saat": "04:00",
+      "hedef_id": "g-mutlaka-0",
+      "_sira": "2025-12-19T04:00:00+03:00"
     },
     {
       "katman": "gec",
@@ -201,7 +155,63 @@
       "ev_skor": 105,
       "dep_skor": 111,
       "saat": "04:00",
-      "hedef_id": "a-0022500374"
+      "hedef_id": "a-0022500374",
+      "_sira": "2025-12-19T04:00:00+03:00"
+    },
+    {
+      "katman": "gozat",
+      "rozet": 8.1,
+      "ev": "Dallas Mavericks",
+      "dep": "Detroit Pistons",
+      "ev_skor": 116,
+      "dep_skor": 114,
+      "saat": "04:30",
+      "hedef_id": "a-0022500376",
+      "_sira": "2025-12-19T04:30:00+03:00"
+    },
+    {
+      "katman": "mutlaka",
+      "rozet": 8.9,
+      "ev": "Utah Jazz",
+      "dep": "Los Angeles Lakers",
+      "ev_skor": 135,
+      "dep_skor": 143,
+      "saat": "05:00",
+      "hedef_id": "g-mutlaka-1",
+      "_sira": "2025-12-19T05:00:00+03:00"
+    },
+    {
+      "katman": "gozat",
+      "rozet": 8.6,
+      "ev": "Phoenix Suns",
+      "dep": "Golden State Warriors",
+      "ev_skor": 99,
+      "dep_skor": 98,
+      "saat": "05:00",
+      "hedef_id": "a-0022500378",
+      "_sira": "2025-12-19T05:00:00+03:00"
+    },
+    {
+      "katman": "gec",
+      "rozet": 4.4,
+      "ev": "Denver Nuggets",
+      "dep": "Orlando Magic",
+      "ev_skor": 126,
+      "dep_skor": 115,
+      "saat": "05:00",
+      "hedef_id": "a-0022500377",
+      "_sira": "2025-12-19T05:00:00+03:00"
+    },
+    {
+      "katman": "mutlaka",
+      "rozet": 8.9,
+      "ev": "Portland Trail Blazers",
+      "dep": "Sacramento Kings",
+      "ev_skor": 134,
+      "dep_skor": 133,
+      "saat": "06:00",
+      "hedef_id": "g-mutlaka-2",
+      "_sira": "2025-12-19T06:00:00+03:00"
     }
   ],
   "brief": [
@@ -336,19 +346,9 @@
   },
   "brief_ayrica": [
     {
-      "isim": "Paolo Banchero",
-      "ifade": "triple-double yaptı",
-      "takim": "Orlando"
-    },
-    {
       "isim": "Nikola Jokić",
       "ifade": "triple-double yaptı",
       "takim": "Denver"
-    },
-    {
-      "isim": "Jalen Johnson",
-      "ifade": "43 sayı attı",
-      "takim": "Atlanta"
     }
   ],
   "mutlaka": [

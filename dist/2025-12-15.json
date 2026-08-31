@@ -81,7 +81,8 @@
       "ev_skor": 128,
       "dep_skor": 125,
       "saat": "",
-      "hedef_id": "g-mutlaka-0"
+      "hedef_id": "g-mutlaka-0",
+      "_sira": "9999-12-31T23:59:59.999999"
     },
     {
       "katman": "mutlaka",
@@ -91,7 +92,8 @@
       "ev_skor": 140,
       "dep_skor": 133,
       "saat": "",
-      "hedef_id": "g-mutlaka-1"
+      "hedef_id": "g-mutlaka-1",
+      "_sira": "9999-12-31T23:59:59.999999"
     },
     {
       "katman": "mutlaka",
@@ -101,7 +103,8 @@
       "ev_skor": 103,
       "dep_skor": 121,
       "saat": "",
-      "hedef_id": "g-mutlaka-2"
+      "hedef_id": "g-mutlaka-2",
+      "_sira": "9999-12-31T23:59:59.999999"
     },
     {
       "katman": "mutlaka",
@@ -111,7 +114,8 @@
       "ev_skor": 105,
       "dep_skor": 112,
       "saat": "",
-      "hedef_id": "g-mutlaka-3"
+      "hedef_id": "g-mutlaka-3",
+      "_sira": "9999-12-31T23:59:59.999999"
     },
     {
       "katman": "gec",
@@ -121,7 +125,8 @@
       "ev_skor": 96,
       "dep_skor": 106,
       "saat": "",
-      "hedef_id": "a-0022501227"
+      "hedef_id": "a-0022501227",
+      "_sira": "9999-12-31T23:59:59.999999"
     }
   ],
   "brief": [
@@ -199,11 +204,6 @@
       "isim": "Alperen Şengün",
       "ifade": "triple-double yaptı",
       "takim": "Houston"
-    },
-    {
-      "isim": "Jaren Jackson Jr.",
-      "ifade": "5 blok yaptı",
-      "takim": "Memphis"
     },
     {
       "isim": "Kevin Durant",
