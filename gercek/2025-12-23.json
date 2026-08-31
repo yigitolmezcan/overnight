@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-23",
-  "uretildi": "2026-08-30T13:59:29.691105Z",
+  "uretildi": "2026-08-31T19:10:29.877790Z",
   "maclar": {
     "0022500409": [
       {
@@ -8930,7 +8930,8 @@
             "periyot": 3,
             "saniye_kalan": 158.0,
             "fark": 21,
-            "taraf": "CLE"
+            "taraf": "CLE",
+            "sonrasi_en_yakin": 16
           }
         },
         "kaynak": "PlayByPlayV3:0022500412:turetilmis",
@@ -12819,7 +12820,8 @@
             "periyot": 4,
             "saniye_kalan": 456.0,
             "fark": -21,
-            "taraf": "TOR"
+            "taraf": "TOR",
+            "sonrasi_en_yakin": 16
           }
         },
         "kaynak": "PlayByPlayV3:0022500414:turetilmis",
@@ -19448,7 +19450,8 @@
             "periyot": 4,
             "saniye_kalan": 107.0,
             "fark": 20,
-            "taraf": "SAS"
+            "taraf": "SAS",
+            "sonrasi_en_yakin": 18
           }
         },
         "kaynak": "PlayByPlayV3:0022500417:turetilmis",
@@ -21923,7 +21926,8 @@
             "periyot": 3,
             "saniye_kalan": 563.0,
             "fark": 20,
-            "taraf": "PHX"
+            "taraf": "PHX",
+            "sonrasi_en_yakin": 18
           }
         },
         "kaynak": "PlayByPlayV3:0022500418:turetilmis",
@@ -30568,7 +30572,8 @@
             "periyot": 4,
             "saniye_kalan": 347.0,
             "fark": 20,
-            "taraf": "LAC"
+            "taraf": "LAC",
+            "sonrasi_en_yakin": 20
           }
         },
         "kaynak": "PlayByPlayV3:0022500422:turetilmis",

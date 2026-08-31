@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-25",
-  "uretildi": "2026-08-20T16:27:33.141819Z",
+  "uretildi": "2026-08-31T19:10:30.028016Z",
   "maclar": {
     "0022500009": [
       {
@@ -565,78 +565,6 @@
       },
       {
         "id": "f28",
-        "tur": "kadro_disi",
-        "veri": {
-          "oyuncu": "Pacôme Dadiet",
-          "id": 1642359,
-          "takim": "NYK",
-          "aciklama": "DNP - Coach's Decision"
-        },
-        "kaynak": "BoxScoreTraditionalV3:0022500009:1642359",
-        "guven": "kesin"
-      },
-      {
-        "id": "f29",
-        "tur": "kadro_disi",
-        "veri": {
-          "oyuncu": "Tosan Evbuomwan",
-          "id": 1641787,
-          "takim": "NYK",
-          "aciklama": "DNP - Coach's Decision"
-        },
-        "kaynak": "BoxScoreTraditionalV3:0022500009:1641787",
-        "guven": "kesin"
-      },
-      {
-        "id": "f30",
-        "tur": "kadro_disi",
-        "veri": {
-          "oyuncu": "Guerschon Yabusele",
-          "id": 1627824,
-          "takim": "NYK",
-          "aciklama": "DNP - Coach's Decision"
-        },
-        "kaynak": "BoxScoreTraditionalV3:0022500009:1627824",
-        "guven": "kesin"
-      },
-      {
-        "id": "f31",
-        "tur": "kadro_disi",
-        "veri": {
-          "oyuncu": "Craig Porter Jr.",
-          "id": 1641854,
-          "takim": "CLE",
-          "aciklama": "DNP - Coach's Decision"
-        },
-        "kaynak": "BoxScoreTraditionalV3:0022500009:1641854",
-        "guven": "kesin"
-      },
-      {
-        "id": "f32",
-        "tur": "kadro_disi",
-        "veri": {
-          "oyuncu": "Tyrese Proctor",
-          "id": 1642878,
-          "takim": "CLE",
-          "aciklama": "DNP - Coach's Decision"
-        },
-        "kaynak": "BoxScoreTraditionalV3:0022500009:1642878",
-        "guven": "kesin"
-      },
-      {
-        "id": "f33",
-        "tur": "kadro_disi",
-        "veri": {
-          "oyuncu": "Nae'Qwan Tomlin",
-          "id": 1641772,
-          "takim": "CLE",
-          "aciklama": "DNP - Coach's Decision"
-        },
-        "kaynak": "BoxScoreTraditionalV3:0022500009:1641772",
-        "guven": "kesin"
-      },
-      {
-        "id": "f34",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jordan Clarkson",
@@ -648,7 +576,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f35",
+        "id": "f29",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Donovan Mitchell",
@@ -660,7 +588,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f36",
+        "id": "f30",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "OG Anunoby",
@@ -672,7 +600,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f37",
+        "id": "f31",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jarrett Allen",
@@ -684,7 +612,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f38",
+        "id": "f32",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Josh Hart",
@@ -696,7 +624,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f39",
+        "id": "f33",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jalen Brunson",
@@ -708,7 +636,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f40",
+        "id": "f34",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "De'Andre Hunter",
@@ -720,7 +648,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f41",
+        "id": "f35",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Darius Garland",
@@ -732,7 +660,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f42",
+        "id": "f36",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Sam Merrill",
@@ -744,7 +672,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f43",
+        "id": "f37",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Evan Mobley",
@@ -756,7 +684,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f44",
+        "id": "f38",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jaylon Tyson",
@@ -768,7 +696,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f45",
+        "id": "f39",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Mohamed Diawara",
@@ -780,7 +708,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f46",
+        "id": "f40",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jordan Clarkson",
@@ -792,7 +720,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f47",
+        "id": "f41",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Karl-Anthony Towns",
@@ -804,7 +732,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f48",
+        "id": "f42",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "OG Anunoby",
@@ -816,7 +744,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f49",
+        "id": "f43",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Josh Hart",
@@ -828,7 +756,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f50",
+        "id": "f44",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Thomas Bryant",
@@ -840,7 +768,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f51",
+        "id": "f45",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Mikal Bridges",
@@ -852,7 +780,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f52",
+        "id": "f46",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jalen Brunson",
@@ -864,7 +792,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f53",
+        "id": "f47",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "De'Andre Hunter",
@@ -876,7 +804,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f54",
+        "id": "f48",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Darius Garland",
@@ -888,7 +816,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f55",
+        "id": "f49",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Evan Mobley",
@@ -900,7 +828,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f56",
+        "id": "f50",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jordan Clarkson",
@@ -912,7 +840,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f57",
+        "id": "f51",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Karl-Anthony Towns",
@@ -924,7 +852,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f58",
+        "id": "f52",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Donovan Mitchell",
@@ -936,7 +864,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f59",
+        "id": "f53",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jarrett Allen",
@@ -948,7 +876,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f60",
+        "id": "f54",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Josh Hart",
@@ -960,7 +888,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f61",
+        "id": "f55",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Mikal Bridges",
@@ -972,7 +900,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f62",
+        "id": "f56",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jalen Brunson",
@@ -984,7 +912,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f63",
+        "id": "f57",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "De'Andre Hunter",
@@ -996,7 +924,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f64",
+        "id": "f58",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Darius Garland",
@@ -1008,7 +936,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f65",
+        "id": "f59",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Dean Wade",
@@ -1020,7 +948,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f66",
+        "id": "f60",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Sam Merrill",
@@ -1032,7 +960,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f67",
+        "id": "f61",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Tyler Kolek",
@@ -1044,7 +972,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f68",
+        "id": "f62",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jaylon Tyson",
@@ -1056,7 +984,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f69",
+        "id": "f63",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jordan Clarkson",
@@ -1068,7 +996,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f70",
+        "id": "f64",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Karl-Anthony Towns",
@@ -1080,7 +1008,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f71",
+        "id": "f65",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Donovan Mitchell",
@@ -1092,7 +1020,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f72",
+        "id": "f66",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "OG Anunoby",
@@ -1104,7 +1032,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f73",
+        "id": "f67",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jarrett Allen",
@@ -1116,7 +1044,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f74",
+        "id": "f68",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Josh Hart",
@@ -1128,7 +1056,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f75",
+        "id": "f69",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Mikal Bridges",
@@ -1140,7 +1068,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f76",
+        "id": "f70",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jalen Brunson",
@@ -1152,7 +1080,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f77",
+        "id": "f71",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Darius Garland",
@@ -1164,7 +1092,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f78",
+        "id": "f72",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Dean Wade",
@@ -1176,7 +1104,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f79",
+        "id": "f73",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Evan Mobley",
@@ -1188,7 +1116,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f80",
+        "id": "f74",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Tyler Kolek",
@@ -1200,7 +1128,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f81",
+        "id": "f75",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jaylon Tyson",
@@ -1212,7 +1140,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f82",
+        "id": "f76",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -1226,7 +1154,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f83",
+        "id": "f77",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -1242,7 +1170,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f84",
+        "id": "f78",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -1258,7 +1186,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f85",
+        "id": "f79",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -1274,7 +1202,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f86",
+        "id": "f80",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -1290,7 +1218,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f87",
+        "id": "f81",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -1306,7 +1234,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f88",
+        "id": "f82",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -1322,7 +1250,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f89",
+        "id": "f83",
         "tur": "an",
         "veri": {
           "periyot": 2,
@@ -1337,7 +1265,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f90",
+        "id": "f84",
         "tur": "an",
         "veri": {
           "periyot": 2,
@@ -1352,7 +1280,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f91",
+        "id": "f85",
         "tur": "an",
         "veri": {
           "periyot": 2,
@@ -1368,7 +1296,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f92",
+        "id": "f86",
         "tur": "an",
         "veri": {
           "periyot": 2,
@@ -1383,7 +1311,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f93",
+        "id": "f87",
         "tur": "an",
         "veri": {
           "periyot": 2,
@@ -1399,7 +1327,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f94",
+        "id": "f88",
         "tur": "an",
         "veri": {
           "periyot": 2,
@@ -1415,7 +1343,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f95",
+        "id": "f89",
         "tur": "an",
         "veri": {
           "periyot": 2,
@@ -1431,7 +1359,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f96",
+        "id": "f90",
         "tur": "an",
         "veri": {
           "periyot": 2,
@@ -1446,7 +1374,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f97",
+        "id": "f91",
         "tur": "an",
         "veri": {
           "periyot": 2,
@@ -1462,7 +1390,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f98",
+        "id": "f92",
         "tur": "an",
         "veri": {
           "periyot": 2,
@@ -1477,7 +1405,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f99",
+        "id": "f93",
         "tur": "an",
         "veri": {
           "periyot": 3,
@@ -1492,7 +1420,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f100",
+        "id": "f94",
         "tur": "an",
         "veri": {
           "periyot": 3,
@@ -1508,7 +1436,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f101",
+        "id": "f95",
         "tur": "an",
         "veri": {
           "periyot": 3,
@@ -1524,7 +1452,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f102",
+        "id": "f96",
         "tur": "an",
         "veri": {
           "periyot": 3,
@@ -1540,7 +1468,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f103",
+        "id": "f97",
         "tur": "an",
         "veri": {
           "periyot": 3,
@@ -1556,7 +1484,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f104",
+        "id": "f98",
         "tur": "an",
         "veri": {
           "periyot": 3,
@@ -1572,7 +1500,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f105",
+        "id": "f99",
         "tur": "an",
         "veri": {
           "periyot": 3,
@@ -1588,7 +1516,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f106",
+        "id": "f100",
         "tur": "an",
         "veri": {
           "periyot": 3,
@@ -1604,7 +1532,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f107",
+        "id": "f101",
         "tur": "an",
         "veri": {
           "periyot": 3,
@@ -1620,7 +1548,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f108",
+        "id": "f102",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -1636,7 +1564,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f109",
+        "id": "f103",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -1651,7 +1579,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f110",
+        "id": "f104",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -1667,7 +1595,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f111",
+        "id": "f105",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -1682,7 +1610,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f112",
+        "id": "f106",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -1698,7 +1626,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f113",
+        "id": "f107",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -1713,7 +1641,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f114",
+        "id": "f108",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -1729,7 +1657,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f115",
+        "id": "f109",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -1745,7 +1673,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f116",
+        "id": "f110",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -1761,7 +1689,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f117",
+        "id": "f111",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -1777,7 +1705,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f118",
+        "id": "f112",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -1793,7 +1721,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f119",
+        "id": "f113",
         "tur": "fark_serisi",
         "veri": {
           "en_buyuk_ev_farki": 6,
@@ -1831,7 +1759,497 @@
         "guven": "turetilmis"
       },
       {
+        "id": "f114",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 1,
+          "saniye_kalan": null,
+          "zaman": "1Ç",
+          "saat": null,
+          "ev_skor": 23,
+          "dep_skor": 38,
+          "fark": -15,
+          "takim": "CLE",
+          "basa_bas": false
+        },
+        "kaynak": "PlayByPlayV3:0022500009:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f115",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 2,
+          "saniye_kalan": null,
+          "zaman": "Devre",
+          "saat": null,
+          "ev_skor": 60,
+          "dep_skor": 58,
+          "fark": 2,
+          "takim": "NYK",
+          "basa_bas": true
+        },
+        "kaynak": "PlayByPlayV3:0022500009:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f116",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 3,
+          "saniye_kalan": null,
+          "zaman": "3Ç",
+          "saat": null,
+          "ev_skor": 84,
+          "dep_skor": 96,
+          "fark": -12,
+          "takim": "CLE",
+          "basa_bas": false
+        },
+        "kaynak": "PlayByPlayV3:0022500009:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f117",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_ustunlugu",
+          "periyot": 2,
+          "saniye_kalan": null,
+          "zaman": "Devre",
+          "saat": null,
+          "ev_skor": 60,
+          "dep_skor": 58,
+          "fark": 2,
+          "takim": "NYK",
+          "ev_kod": "NYK",
+          "sayi": 37,
+          "rakip_sayi": 20
+        },
+        "kaynak": "PlayByPlayV3:0022500009:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f118",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_ustunlugu",
+          "periyot": 3,
+          "saniye_kalan": null,
+          "zaman": "3Ç",
+          "saat": null,
+          "ev_skor": 84,
+          "dep_skor": 96,
+          "fark": -12,
+          "takim": "CLE",
+          "ev_kod": "NYK",
+          "sayi": 38,
+          "rakip_sayi": 24
+        },
+        "kaynak": "PlayByPlayV3:0022500009:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f119",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_ustunlugu",
+          "periyot": 4,
+          "saniye_kalan": null,
+          "zaman": "Maç sonu",
+          "saat": null,
+          "ev_skor": 126,
+          "dep_skor": 124,
+          "fark": 2,
+          "takim": "NYK",
+          "ev_kod": "NYK",
+          "sayi": 42,
+          "rakip_sayi": 28
+        },
+        "kaynak": "PlayByPlayV3:0022500009:akis",
+        "guven": "turetilmis"
+      },
+      {
         "id": "f120",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "en_buyuk_fark",
+          "periyot": 4,
+          "saniye_kalan": 626.0,
+          "zaman": "4Ç",
+          "saat": "10:26",
+          "ev_skor": 86,
+          "dep_skor": 103,
+          "fark": -17,
+          "takim": "CLE",
+          "sayi": 17,
+          "onceki_ev": 126,
+          "onceki_dep": 124
+        },
+        "kaynak": "PlayByPlayV3:0022500009:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f121",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 1,
+          "saniye_kalan": 402.0,
+          "zaman": "1Ç",
+          "saat": "6:42",
+          "ev_skor": 3,
+          "dep_skor": 18,
+          "fark": -15,
+          "takim": "CLE",
+          "sayi": 13,
+          "dusuk_esik": false,
+          "onceki_ev": 3,
+          "onceki_dep": 16
+        },
+        "kaynak": "PlayByPlayV3:0022500009:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f122",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 2,
+          "saniye_kalan": 359.0,
+          "zaman": "2Ç",
+          "saat": "5:59",
+          "ev_skor": 47,
+          "dep_skor": 41,
+          "fark": 6,
+          "takim": "NYK",
+          "sayi": 18,
+          "dusuk_esik": false,
+          "onceki_ev": 45,
+          "onceki_dep": 41
+        },
+        "kaynak": "PlayByPlayV3:0022500009:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f123",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 3,
+          "saniye_kalan": 319.0,
+          "zaman": "3Ç",
+          "saat": "5:19",
+          "ev_skor": 71,
+          "dep_skor": 80,
+          "fark": -9,
+          "takim": "CLE",
+          "sayi": 9,
+          "dusuk_esik": false,
+          "onceki_ev": 71,
+          "onceki_dep": 78
+        },
+        "kaynak": "PlayByPlayV3:0022500009:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f124",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 4,
+          "saniye_kalan": 249.0,
+          "zaman": "4Ç",
+          "saat": "4:09",
+          "ev_skor": 110,
+          "dep_skor": 111,
+          "fark": -1,
+          "takim": "NYK",
+          "sayi": 7,
+          "dusuk_esik": true,
+          "onceki_ev": 108,
+          "onceki_dep": 111
+        },
+        "kaynak": "PlayByPlayV3:0022500009:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f125",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "esitlik",
+          "periyot": 4,
+          "saniye_kalan": 228.0,
+          "zaman": "4Ç",
+          "saat": "3:48",
+          "ev_skor": 113,
+          "dep_skor": 113,
+          "fark": 0,
+          "takim": "NYK",
+          "onceki_ev": 110,
+          "onceki_dep": 113
+        },
+        "kaynak": "PlayByPlayV3:0022500009:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f126",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 2,
+          "saniye_kalan": 415.0,
+          "zaman": "2Ç",
+          "saat": "6:55",
+          "ev_skor": 43,
+          "dep_skor": 41,
+          "fark": 2,
+          "takim": "NYK",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Mikal Bridges",
+          "onceki_ev": 41,
+          "onceki_dep": 41
+        },
+        "kaynak": "PlayByPlayV3:0022500009:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f127",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 2,
+          "saniye_kalan": 136.0,
+          "zaman": "2Ç",
+          "saat": "2:16",
+          "ev_skor": 53,
+          "dep_skor": 54,
+          "fark": -1,
+          "takim": "CLE",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Evan Mobley",
+          "onceki_ev": 53,
+          "onceki_dep": 52
+        },
+        "kaynak": "PlayByPlayV3:0022500009:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f128",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 2,
+          "saniye_kalan": 113.0,
+          "zaman": "2Ç",
+          "saat": "1:53",
+          "ev_skor": 56,
+          "dep_skor": 54,
+          "fark": 2,
+          "takim": "NYK",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Jalen Brunson",
+          "onceki_ev": 53,
+          "onceki_dep": 54
+        },
+        "kaynak": "PlayByPlayV3:0022500009:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f129",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 2,
+          "saniye_kalan": 36.1,
+          "zaman": "2Ç",
+          "saat": "0:36",
+          "ev_skor": 57,
+          "dep_skor": 58,
+          "fark": -1,
+          "takim": "CLE",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Evan Mobley",
+          "onceki_ev": 57,
+          "onceki_dep": 56
+        },
+        "kaynak": "PlayByPlayV3:0022500009:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f130",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 2,
+          "saniye_kalan": 32.8,
+          "zaman": "2Ç",
+          "saat": "0:32",
+          "ev_skor": 60,
+          "dep_skor": 58,
+          "fark": 2,
+          "takim": "NYK",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Josh Hart",
+          "onceki_ev": 57,
+          "onceki_dep": 58
+        },
+        "kaynak": "PlayByPlayV3:0022500009:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f131",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 3,
+          "saniye_kalan": 607.0,
+          "zaman": "3Ç",
+          "saat": "10:07",
+          "ev_skor": 63,
+          "dep_skor": 66,
+          "fark": -3,
+          "takim": "CLE",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Sam Merrill",
+          "onceki_ev": 63,
+          "onceki_dep": 63
+        },
+        "kaynak": "PlayByPlayV3:0022500009:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f132",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 4,
+          "saniye_kalan": 89.0,
+          "zaman": "4Ç",
+          "saat": "1:29",
+          "ev_skor": 118,
+          "dep_skor": 117,
+          "fark": 1,
+          "takim": "NYK",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Mikal Bridges",
+          "onceki_ev": 116,
+          "onceki_dep": 117
+        },
+        "kaynak": "PlayByPlayV3:0022500009:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f133",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 4,
+          "saniye_kalan": 74.0,
+          "zaman": "4Ç",
+          "saat": "1:14",
+          "ev_skor": 118,
+          "dep_skor": 119,
+          "fark": -1,
+          "takim": "CLE",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": true,
+          "oyuncu": "Darius Garland",
+          "onceki_ev": 118,
+          "onceki_dep": 117
+        },
+        "kaynak": "PlayByPlayV3:0022500009:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f134",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 4,
+          "saniye_kalan": 65.0,
+          "zaman": "4Ç",
+          "saat": "1:05",
+          "ev_skor": 121,
+          "dep_skor": 119,
+          "fark": 2,
+          "takim": "NYK",
+          "kesin": true,
+          "kazanan_mi": true,
+          "son_mu": true,
+          "oyuncu": "Jalen Brunson",
+          "onceki_ev": 118,
+          "onceki_dep": 119
+        },
+        "kaynak": "PlayByPlayV3:0022500009:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f135",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "karar_ani",
+          "periyot": 4,
+          "saniye_kalan": 1.1,
+          "zaman": "Son",
+          "saat": "0:01",
+          "ev_skor": 126,
+          "dep_skor": 124,
+          "fark": 2,
+          "takim": "NYK",
+          "sut_turu": "serbest atış",
+          "sayi_degisimi": 1,
+          "tutarli": true,
+          "belirleyici": false,
+          "sa_isabet": 1,
+          "sa_deneme": 1,
+          "oyuncu": "Karl-Anthony Towns",
+          "onceki_ev": 125,
+          "onceki_dep": 124
+        },
+        "kaynak": "PlayByPlayV3:0022500009:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f136",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "rakip_yaklasti",
+          "periyot": 2,
+          "saniye_kalan": 322.0,
+          "zaman": "2Ç",
+          "saat": "5:22",
+          "ev_skor": 47,
+          "dep_skor": 46,
+          "fark": 1,
+          "takim": "CLE",
+          "sayi": 1,
+          "onceki_ev": 47,
+          "onceki_dep": 43
+        },
+        "kaynak": "PlayByPlayV3:0022500009:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f137",
         "tur": "derece",
         "veri": {
           "takim": "NYK",
@@ -1841,6 +2259,7 @@
           "konferans": "Doğu",
           "konferans_sira": 2,
           "lig_sira": 5,
+          "sezon_guvenilir": true,
           "onceki_seri_tur": "maglubiyet",
           "onceki_seri_uzunluk": 1,
           "sezon_ilk_mac_sonucu": "galibiyet",
@@ -1853,7 +2272,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f121",
+        "id": "f138",
         "tur": "derece",
         "veri": {
           "takim": "CLE",
@@ -1863,6 +2282,7 @@
           "konferans": "Doğu",
           "konferans_sira": 7,
           "lig_sira": 14,
+          "sezon_guvenilir": true,
           "onceki_seri_tur": "galibiyet",
           "onceki_seri_uzunluk": 2,
           "sezon_ilk_mac_sonucu": "maglubiyet",
@@ -2592,18 +3012,6 @@
       },
       {
         "id": "f35",
-        "tur": "kadro_disi",
-        "veri": {
-          "oyuncu": "Bismack Biyombo",
-          "id": 202687,
-          "takim": "SAS",
-          "aciklama": "DNP - Coach's Decision"
-        },
-        "kaynak": "BoxScoreTraditionalV3:0022500010:202687",
-        "guven": "kesin"
-      },
-      {
-        "id": "f36",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Harrison Barnes",
@@ -2615,7 +3023,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f37",
+        "id": "f36",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Alex Caruso",
@@ -2627,7 +3035,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f38",
+        "id": "f37",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "De'Aaron Fox",
@@ -2639,7 +3047,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f39",
+        "id": "f38",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Isaiah Hartenstein",
@@ -2651,7 +3059,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f40",
+        "id": "f39",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Shai Gilgeous-Alexander",
@@ -2663,7 +3071,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f41",
+        "id": "f40",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Kenrich Williams",
@@ -2675,7 +3083,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f42",
+        "id": "f41",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Keldon Johnson",
@@ -2687,7 +3095,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f43",
+        "id": "f42",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Luguentz Dort",
@@ -2699,7 +3107,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f44",
+        "id": "f43",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Devin Vassell",
@@ -2711,7 +3119,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f45",
+        "id": "f44",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Chet Holmgren",
@@ -2723,7 +3131,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f46",
+        "id": "f45",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jalen Williams",
@@ -2735,7 +3143,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f47",
+        "id": "f46",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Victor Wembanyama",
@@ -2747,7 +3155,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f48",
+        "id": "f47",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Stephon Castle",
@@ -2759,7 +3167,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f49",
+        "id": "f48",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Dylan Harper",
@@ -2771,7 +3179,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f50",
+        "id": "f49",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Harrison Barnes",
@@ -2783,7 +3191,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f51",
+        "id": "f50",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "De'Aaron Fox",
@@ -2795,7 +3203,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f52",
+        "id": "f51",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Isaiah Hartenstein",
@@ -2807,7 +3215,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f53",
+        "id": "f52",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Luke Kornet",
@@ -2819,7 +3227,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f54",
+        "id": "f53",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Shai Gilgeous-Alexander",
@@ -2831,7 +3239,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f55",
+        "id": "f54",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Luguentz Dort",
@@ -2843,7 +3251,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f56",
+        "id": "f55",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Devin Vassell",
@@ -2855,7 +3263,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f57",
+        "id": "f56",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Isaiah Joe",
@@ -2867,7 +3275,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f58",
+        "id": "f57",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Aaron Wiggins",
@@ -2879,7 +3287,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f59",
+        "id": "f58",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Chet Holmgren",
@@ -2891,7 +3299,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f60",
+        "id": "f59",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jalen Williams",
@@ -2903,7 +3311,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f61",
+        "id": "f60",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Victor Wembanyama",
@@ -2915,7 +3323,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f62",
+        "id": "f61",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Cason Wallace",
@@ -2927,7 +3335,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f63",
+        "id": "f62",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Stephon Castle",
@@ -2939,7 +3347,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f64",
+        "id": "f63",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Dylan Harper",
@@ -2951,7 +3359,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f65",
+        "id": "f64",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Harrison Barnes",
@@ -2963,7 +3371,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f66",
+        "id": "f65",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Alex Caruso",
@@ -2975,7 +3383,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f67",
+        "id": "f66",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "De'Aaron Fox",
@@ -2987,7 +3395,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f68",
+        "id": "f67",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Isaiah Hartenstein",
@@ -2999,7 +3407,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f69",
+        "id": "f68",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Luke Kornet",
@@ -3011,7 +3419,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f70",
+        "id": "f69",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Shai Gilgeous-Alexander",
@@ -3023,7 +3431,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f71",
+        "id": "f70",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Keldon Johnson",
@@ -3035,7 +3443,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f72",
+        "id": "f71",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Chet Holmgren",
@@ -3047,7 +3455,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f73",
+        "id": "f72",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Victor Wembanyama",
@@ -3059,7 +3467,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f74",
+        "id": "f73",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Cason Wallace",
@@ -3071,7 +3479,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f75",
+        "id": "f74",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Stephon Castle",
@@ -3083,7 +3491,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f76",
+        "id": "f75",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Dylan Harper",
@@ -3095,7 +3503,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f77",
+        "id": "f76",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Harrison Barnes",
@@ -3107,7 +3515,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f78",
+        "id": "f77",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Alex Caruso",
@@ -3119,7 +3527,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f79",
+        "id": "f78",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "De'Aaron Fox",
@@ -3131,7 +3539,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f80",
+        "id": "f79",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Isaiah Hartenstein",
@@ -3143,7 +3551,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f81",
+        "id": "f80",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Shai Gilgeous-Alexander",
@@ -3155,7 +3563,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f82",
+        "id": "f81",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Kenrich Williams",
@@ -3167,7 +3575,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f83",
+        "id": "f82",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jordan McLaughlin",
@@ -3179,7 +3587,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f84",
+        "id": "f83",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Isaiah Joe",
@@ -3191,7 +3599,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f85",
+        "id": "f84",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jalen Williams",
@@ -3203,7 +3611,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f86",
+        "id": "f85",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Victor Wembanyama",
@@ -3215,7 +3623,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f87",
+        "id": "f86",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Stephon Castle",
@@ -3227,7 +3635,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f88",
+        "id": "f87",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Branden Carlson",
@@ -3239,7 +3647,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f89",
+        "id": "f88",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Dylan Harper",
@@ -3251,7 +3659,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f90",
+        "id": "f89",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -3266,7 +3674,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f91",
+        "id": "f90",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -3281,7 +3689,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f92",
+        "id": "f91",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -3296,7 +3704,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f93",
+        "id": "f92",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -3311,7 +3719,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f94",
+        "id": "f93",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -3326,7 +3734,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f95",
+        "id": "f94",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -3341,7 +3749,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f96",
+        "id": "f95",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -3357,7 +3765,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f97",
+        "id": "f96",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -3373,7 +3781,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f98",
+        "id": "f97",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -3389,7 +3797,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f99",
+        "id": "f98",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -3405,7 +3813,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f100",
+        "id": "f99",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -3421,7 +3829,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f101",
+        "id": "f100",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -3436,7 +3844,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f102",
+        "id": "f101",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -3452,7 +3860,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f103",
+        "id": "f102",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -3468,7 +3876,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f104",
+        "id": "f103",
         "tur": "an",
         "veri": {
           "periyot": 2,
@@ -3484,7 +3892,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f105",
+        "id": "f104",
         "tur": "an",
         "veri": {
           "periyot": 2,
@@ -3500,7 +3908,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f106",
+        "id": "f105",
         "tur": "an",
         "veri": {
           "periyot": 2,
@@ -3516,7 +3924,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f107",
+        "id": "f106",
         "tur": "an",
         "veri": {
           "periyot": 2,
@@ -3532,7 +3940,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f108",
+        "id": "f107",
         "tur": "an",
         "veri": {
           "periyot": 3,
@@ -3548,7 +3956,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f109",
+        "id": "f108",
         "tur": "an",
         "veri": {
           "periyot": 3,
@@ -3564,7 +3972,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f110",
+        "id": "f109",
         "tur": "an",
         "veri": {
           "periyot": 3,
@@ -3580,7 +3988,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f111",
+        "id": "f110",
         "tur": "an",
         "veri": {
           "periyot": 3,
@@ -3596,7 +4004,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f112",
+        "id": "f111",
         "tur": "an",
         "veri": {
           "periyot": 3,
@@ -3612,7 +4020,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f113",
+        "id": "f112",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -3628,7 +4036,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f114",
+        "id": "f113",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -3644,7 +4052,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f115",
+        "id": "f114",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -3660,7 +4068,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f116",
+        "id": "f115",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -3676,7 +4084,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f117",
+        "id": "f116",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -3692,7 +4100,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f118",
+        "id": "f117",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -3708,7 +4116,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f119",
+        "id": "f118",
         "tur": "fark_serisi",
         "veri": {
           "en_buyuk_ev_farki": 8,
@@ -3746,7 +4154,404 @@
         "guven": "turetilmis"
       },
       {
+        "id": "f119",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 1,
+          "saniye_kalan": null,
+          "zaman": "1Ç",
+          "saat": null,
+          "ev_skor": 36,
+          "dep_skor": 41,
+          "fark": -5,
+          "takim": "SAS",
+          "basa_bas": false
+        },
+        "kaynak": "PlayByPlayV3:0022500010:akis",
+        "guven": "turetilmis"
+      },
+      {
         "id": "f120",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 2,
+          "saniye_kalan": null,
+          "zaman": "Devre",
+          "saat": null,
+          "ev_skor": 60,
+          "dep_skor": 69,
+          "fark": -9,
+          "takim": "SAS",
+          "basa_bas": false
+        },
+        "kaynak": "PlayByPlayV3:0022500010:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f121",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 3,
+          "saniye_kalan": null,
+          "zaman": "3Ç",
+          "saat": null,
+          "ev_skor": 79,
+          "dep_skor": 95,
+          "fark": -16,
+          "takim": "SAS",
+          "basa_bas": false
+        },
+        "kaynak": "PlayByPlayV3:0022500010:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f122",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "en_buyuk_fark",
+          "periyot": 1,
+          "saniye_kalan": 252.0,
+          "zaman": "1Ç",
+          "saat": "4:12",
+          "ev_skor": 32,
+          "dep_skor": 24,
+          "fark": 8,
+          "takim": "OKC",
+          "sayi": 8,
+          "onceki_ev": 102,
+          "onceki_dep": 117
+        },
+        "kaynak": "PlayByPlayV3:0022500010:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f123",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "en_buyuk_fark",
+          "periyot": 3,
+          "saniye_kalan": 364.0,
+          "zaman": "3Ç",
+          "saat": "6:04",
+          "ev_skor": 68,
+          "dep_skor": 85,
+          "fark": -17,
+          "takim": "SAS",
+          "sayi": 17,
+          "onceki_ev": 102,
+          "onceki_dep": 117
+        },
+        "kaynak": "PlayByPlayV3:0022500010:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f124",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 1,
+          "saniye_kalan": 491.0,
+          "zaman": "1Ç",
+          "saat": "8:11",
+          "ev_skor": 18,
+          "dep_skor": 12,
+          "fark": 6,
+          "takim": "OKC",
+          "sayi": 7,
+          "dusuk_esik": true,
+          "onceki_ev": 16,
+          "onceki_dep": 12
+        },
+        "kaynak": "PlayByPlayV3:0022500010:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f125",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 2,
+          "saniye_kalan": 704.0,
+          "zaman": "2Ç",
+          "saat": "11:44",
+          "ev_skor": 36,
+          "dep_skor": 43,
+          "fark": -7,
+          "takim": "SAS",
+          "sayi": 13,
+          "dusuk_esik": false,
+          "onceki_ev": 36,
+          "onceki_dep": 41
+        },
+        "kaynak": "PlayByPlayV3:0022500010:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f126",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 3,
+          "saniye_kalan": 364.0,
+          "zaman": "3Ç",
+          "saat": "6:04",
+          "ev_skor": 68,
+          "dep_skor": 85,
+          "fark": -17,
+          "takim": "SAS",
+          "sayi": 8,
+          "dusuk_esik": false,
+          "onceki_ev": 68,
+          "onceki_dep": 83
+        },
+        "kaynak": "PlayByPlayV3:0022500010:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f127",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 4,
+          "saniye_kalan": 587.0,
+          "zaman": "4Ç",
+          "saat": "9:47",
+          "ev_skor": 85,
+          "dep_skor": 95,
+          "fark": -10,
+          "takim": "OKC",
+          "sayi": 6,
+          "dusuk_esik": true,
+          "onceki_ev": 83,
+          "onceki_dep": 95
+        },
+        "kaynak": "PlayByPlayV3:0022500010:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f128",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 605.0,
+          "zaman": "1Ç",
+          "saat": "10:05",
+          "ev_skor": 6,
+          "dep_skor": 7,
+          "fark": -1,
+          "takim": "SAS",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "De'Aaron Fox",
+          "onceki_ev": 6,
+          "onceki_dep": 5
+        },
+        "kaynak": "PlayByPlayV3:0022500010:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f129",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 591.0,
+          "zaman": "1Ç",
+          "saat": "9:51",
+          "ev_skor": 8,
+          "dep_skor": 7,
+          "fark": 1,
+          "takim": "OKC",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Chet Holmgren",
+          "onceki_ev": 6,
+          "onceki_dep": 7
+        },
+        "kaynak": "PlayByPlayV3:0022500010:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f130",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 578.0,
+          "zaman": "1Ç",
+          "saat": "9:38",
+          "ev_skor": 8,
+          "dep_skor": 10,
+          "fark": -2,
+          "takim": "SAS",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "De'Aaron Fox",
+          "onceki_ev": 8,
+          "onceki_dep": 7
+        },
+        "kaynak": "PlayByPlayV3:0022500010:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f131",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 565.0,
+          "zaman": "1Ç",
+          "saat": "9:25",
+          "ev_skor": 11,
+          "dep_skor": 10,
+          "fark": 1,
+          "takim": "OKC",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Shai Gilgeous-Alexander",
+          "onceki_ev": 8,
+          "onceki_dep": 10
+        },
+        "kaynak": "PlayByPlayV3:0022500010:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f132",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 549.0,
+          "zaman": "1Ç",
+          "saat": "9:09",
+          "ev_skor": 11,
+          "dep_skor": 12,
+          "fark": -1,
+          "takim": "SAS",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Stephon Castle",
+          "onceki_ev": 11,
+          "onceki_dep": 10
+        },
+        "kaynak": "PlayByPlayV3:0022500010:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f133",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 541.0,
+          "zaman": "1Ç",
+          "saat": "9:01",
+          "ev_skor": 14,
+          "dep_skor": 12,
+          "fark": 2,
+          "takim": "OKC",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": true,
+          "oyuncu": "Jalen Williams",
+          "onceki_ev": 11,
+          "onceki_dep": 12
+        },
+        "kaynak": "PlayByPlayV3:0022500010:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f134",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 66.0,
+          "zaman": "1Ç",
+          "saat": "1:06",
+          "ev_skor": 36,
+          "dep_skor": 37,
+          "fark": -1,
+          "takim": "SAS",
+          "kesin": true,
+          "kazanan_mi": true,
+          "son_mu": true,
+          "oyuncu": "Dylan Harper",
+          "onceki_ev": 36,
+          "onceki_dep": 35
+        },
+        "kaynak": "PlayByPlayV3:0022500010:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f135",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "rakip_yaklasti",
+          "periyot": 2,
+          "saniye_kalan": 604.0,
+          "zaman": "2Ç",
+          "saat": "10:04",
+          "ev_skor": 43,
+          "dep_skor": 47,
+          "fark": -4,
+          "takim": "OKC",
+          "sayi": 4,
+          "onceki_ev": 40,
+          "onceki_dep": 47
+        },
+        "kaynak": "PlayByPlayV3:0022500010:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f136",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "kopus",
+          "periyot": 2,
+          "saniye_kalan": 271.0,
+          "zaman": "2Ç",
+          "saat": "4:31",
+          "ev_skor": 48,
+          "dep_skor": 58,
+          "fark": -10,
+          "takim": "SAS",
+          "sayi": 10,
+          "onceki_ev": 48,
+          "onceki_dep": 55
+        },
+        "kaynak": "PlayByPlayV3:0022500010:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f137",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "fark_korundu",
+          "periyot": 4,
+          "saniye_kalan": 490.0,
+          "zaman": "4Ç",
+          "saat": "8:10",
+          "ev_skor": 88,
+          "dep_skor": 97,
+          "fark": -9,
+          "sayi": 10,
+          "takim": "SAS"
+        },
+        "kaynak": "PlayByPlayV3:0022500010:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f138",
         "tur": "derece",
         "veri": {
           "takim": "OKC",
@@ -3756,6 +4561,7 @@
           "konferans": "Batı",
           "konferans_sira": 1,
           "lig_sira": 1,
+          "sezon_guvenilir": true,
           "onceki_seri_tur": "maglubiyet",
           "onceki_seri_uzunluk": 1,
           "sezon_ilk_mac_sonucu": "galibiyet",
@@ -3768,7 +4574,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f121",
+        "id": "f139",
         "tur": "seri",
         "veri": {
           "takim": "OKC",
@@ -3779,7 +4585,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f122",
+        "id": "f140",
         "tur": "derece",
         "veri": {
           "takim": "SAS",
@@ -3789,6 +4595,7 @@
           "konferans": "Batı",
           "konferans_sira": 2,
           "lig_sira": 3,
+          "sezon_guvenilir": true,
           "onceki_seri_tur": "galibiyet",
           "onceki_seri_uzunluk": 7,
           "sezon_ilk_mac_sonucu": "galibiyet",
@@ -3801,7 +4608,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f123",
+        "id": "f141",
         "tur": "seri",
         "veri": {
           "takim": "SAS",
@@ -4397,90 +5204,6 @@
       },
       {
         "id": "f29",
-        "tur": "kadro_disi",
-        "veri": {
-          "oyuncu": "Buddy Hield",
-          "id": 1627741,
-          "takim": "GSW",
-          "aciklama": "DNP - Coach's Decision"
-        },
-        "kaynak": "BoxScoreTraditionalV3:0022500011:1627741",
-        "guven": "kesin"
-      },
-      {
-        "id": "f30",
-        "tur": "kadro_disi",
-        "veri": {
-          "oyuncu": "Jonathan Kuminga",
-          "id": 1630228,
-          "takim": "GSW",
-          "aciklama": "DNP - Coach's Decision"
-        },
-        "kaynak": "BoxScoreTraditionalV3:0022500011:1630228",
-        "guven": "kesin"
-      },
-      {
-        "id": "f31",
-        "tur": "kadro_disi",
-        "veri": {
-          "oyuncu": "Gui Santos",
-          "id": 1630611,
-          "takim": "GSW",
-          "aciklama": "DNP - Coach's Decision"
-        },
-        "kaynak": "BoxScoreTraditionalV3:0022500011:1630611",
-        "guven": "kesin"
-      },
-      {
-        "id": "f32",
-        "tur": "kadro_disi",
-        "veri": {
-          "oyuncu": "Pat Spencer",
-          "id": 1630311,
-          "takim": "GSW",
-          "aciklama": "DNP - Coach's Decision"
-        },
-        "kaynak": "BoxScoreTraditionalV3:0022500011:1630311",
-        "guven": "kesin"
-      },
-      {
-        "id": "f33",
-        "tur": "kadro_disi",
-        "veri": {
-          "oyuncu": "Jaden Hardy",
-          "id": 1630702,
-          "takim": "DAL",
-          "aciklama": "DNP - Coach's Decision"
-        },
-        "kaynak": "BoxScoreTraditionalV3:0022500011:1630702",
-        "guven": "kesin"
-      },
-      {
-        "id": "f34",
-        "tur": "kadro_disi",
-        "veri": {
-          "oyuncu": "Dwight Powell",
-          "id": 203939,
-          "takim": "DAL",
-          "aciklama": "DNP - Coach's Decision"
-        },
-        "kaynak": "BoxScoreTraditionalV3:0022500011:203939",
-        "guven": "kesin"
-      },
-      {
-        "id": "f35",
-        "tur": "kadro_disi",
-        "veri": {
-          "oyuncu": "D'Angelo Russell",
-          "id": 1626156,
-          "takim": "DAL",
-          "aciklama": "DNP - Coach's Decision"
-        },
-        "kaynak": "BoxScoreTraditionalV3:0022500011:1626156",
-        "guven": "kesin"
-      },
-      {
-        "id": "f36",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Al Horford",
@@ -4492,7 +5215,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f37",
+        "id": "f30",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Stephen Curry",
@@ -4504,7 +5227,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f38",
+        "id": "f31",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Klay Thompson",
@@ -4516,7 +5239,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f39",
+        "id": "f32",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jimmy Butler III",
@@ -4528,7 +5251,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f40",
+        "id": "f33",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Anthony Davis",
@@ -4540,7 +5263,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f41",
+        "id": "f34",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Draymond Green",
@@ -4552,7 +5275,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f42",
+        "id": "f35",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "De'Anthony Melton",
@@ -4564,7 +5287,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f43",
+        "id": "f36",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "P.J. Washington",
@@ -4576,7 +5299,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f44",
+        "id": "f37",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Daniel Gafford",
@@ -4588,7 +5311,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f45",
+        "id": "f38",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Brandon Williams",
@@ -4600,7 +5323,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f46",
+        "id": "f39",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Moses Moody",
@@ -4612,7 +5335,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f47",
+        "id": "f40",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Max Christie",
@@ -4624,7 +5347,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f48",
+        "id": "f41",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Trayce Jackson-Davis",
@@ -4636,7 +5359,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f49",
+        "id": "f42",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Brandin Podziemski",
@@ -4648,7 +5371,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f50",
+        "id": "f43",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Quinten Post",
@@ -4660,7 +5383,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f51",
+        "id": "f44",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Cooper Flagg",
@@ -4672,7 +5395,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f52",
+        "id": "f45",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Ryan Nembhard",
@@ -4684,7 +5407,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f53",
+        "id": "f46",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Stephen Curry",
@@ -4696,7 +5419,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f54",
+        "id": "f47",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jimmy Butler III",
@@ -4708,7 +5431,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f55",
+        "id": "f48",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Draymond Green",
@@ -4720,7 +5443,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f56",
+        "id": "f49",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Caleb Martin",
@@ -4732,7 +5455,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f57",
+        "id": "f50",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "De'Anthony Melton",
@@ -4744,7 +5467,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f58",
+        "id": "f51",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Daniel Gafford",
@@ -4756,7 +5479,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f59",
+        "id": "f52",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Naji Marshall",
@@ -4768,7 +5491,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f60",
+        "id": "f53",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Brandon Williams",
@@ -4780,7 +5503,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f61",
+        "id": "f54",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Moses Moody",
@@ -4792,7 +5515,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f62",
+        "id": "f55",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Trayce Jackson-Davis",
@@ -4804,7 +5527,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f63",
+        "id": "f56",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Brandin Podziemski",
@@ -4816,7 +5539,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f64",
+        "id": "f57",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Cooper Flagg",
@@ -4828,7 +5551,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f65",
+        "id": "f58",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Ryan Nembhard",
@@ -4840,7 +5563,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f66",
+        "id": "f59",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Al Horford",
@@ -4852,7 +5575,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f67",
+        "id": "f60",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Stephen Curry",
@@ -4864,7 +5587,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f68",
+        "id": "f61",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Klay Thompson",
@@ -4876,7 +5599,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f69",
+        "id": "f62",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jimmy Butler III",
@@ -4888,7 +5611,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f70",
+        "id": "f63",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Draymond Green",
@@ -4900,7 +5623,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f71",
+        "id": "f64",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Gary Payton II",
@@ -4912,7 +5635,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f72",
+        "id": "f65",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "De'Anthony Melton",
@@ -4924,7 +5647,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f73",
+        "id": "f66",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "P.J. Washington",
@@ -4936,7 +5659,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f74",
+        "id": "f67",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Naji Marshall",
@@ -4948,7 +5671,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f75",
+        "id": "f68",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Brandon Williams",
@@ -4960,7 +5683,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f76",
+        "id": "f69",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Max Christie",
@@ -4972,7 +5695,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f77",
+        "id": "f70",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Brandin Podziemski",
@@ -4984,7 +5707,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f78",
+        "id": "f71",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Quinten Post",
@@ -4996,7 +5719,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f79",
+        "id": "f72",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Cooper Flagg",
@@ -5008,7 +5731,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f80",
+        "id": "f73",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Will Richard",
@@ -5020,7 +5743,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f81",
+        "id": "f74",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Stephen Curry",
@@ -5032,7 +5755,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f82",
+        "id": "f75",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Klay Thompson",
@@ -5044,7 +5767,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f83",
+        "id": "f76",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jimmy Butler III",
@@ -5056,7 +5779,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f84",
+        "id": "f77",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Gary Payton II",
@@ -5068,7 +5791,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f85",
+        "id": "f78",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "De'Anthony Melton",
@@ -5080,7 +5803,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f86",
+        "id": "f79",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "P.J. Washington",
@@ -5092,7 +5815,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f87",
+        "id": "f80",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Brandon Williams",
@@ -5104,7 +5827,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f88",
+        "id": "f81",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Max Christie",
@@ -5116,7 +5839,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f89",
+        "id": "f82",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Trayce Jackson-Davis",
@@ -5128,7 +5851,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f90",
+        "id": "f83",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Brandin Podziemski",
@@ -5140,7 +5863,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f91",
+        "id": "f84",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Cooper Flagg",
@@ -5152,7 +5875,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f92",
+        "id": "f85",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Will Richard",
@@ -5164,7 +5887,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f93",
+        "id": "f86",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -5179,7 +5902,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f94",
+        "id": "f87",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -5194,7 +5917,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f95",
+        "id": "f88",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -5210,7 +5933,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f96",
+        "id": "f89",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -5226,7 +5949,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f97",
+        "id": "f90",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -5242,7 +5965,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f98",
+        "id": "f91",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -5258,7 +5981,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f99",
+        "id": "f92",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -5274,7 +5997,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f100",
+        "id": "f93",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -5290,7 +6013,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f101",
+        "id": "f94",
         "tur": "an",
         "veri": {
           "periyot": 2,
@@ -5306,7 +6029,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f102",
+        "id": "f95",
         "tur": "an",
         "veri": {
           "periyot": 2,
@@ -5322,7 +6045,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f103",
+        "id": "f96",
         "tur": "an",
         "veri": {
           "periyot": 2,
@@ -5338,7 +6061,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f104",
+        "id": "f97",
         "tur": "an",
         "veri": {
           "periyot": 2,
@@ -5354,7 +6077,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f105",
+        "id": "f98",
         "tur": "an",
         "veri": {
           "periyot": 2,
@@ -5370,7 +6093,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f106",
+        "id": "f99",
         "tur": "an",
         "veri": {
           "periyot": 2,
@@ -5386,7 +6109,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f107",
+        "id": "f100",
         "tur": "an",
         "veri": {
           "periyot": 2,
@@ -5402,7 +6125,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f108",
+        "id": "f101",
         "tur": "an",
         "veri": {
           "periyot": 3,
@@ -5418,7 +6141,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f109",
+        "id": "f102",
         "tur": "an",
         "veri": {
           "periyot": 3,
@@ -5434,7 +6157,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f110",
+        "id": "f103",
         "tur": "an",
         "veri": {
           "periyot": 3,
@@ -5450,7 +6173,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f111",
+        "id": "f104",
         "tur": "an",
         "veri": {
           "periyot": 3,
@@ -5466,7 +6189,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f112",
+        "id": "f105",
         "tur": "an",
         "veri": {
           "periyot": 3,
@@ -5482,7 +6205,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f113",
+        "id": "f106",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -5498,7 +6221,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f114",
+        "id": "f107",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -5514,7 +6237,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f115",
+        "id": "f108",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -5530,7 +6253,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f116",
+        "id": "f109",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -5546,7 +6269,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f117",
+        "id": "f110",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -5562,7 +6285,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f118",
+        "id": "f111",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -5578,7 +6301,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f119",
+        "id": "f112",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -5594,7 +6317,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f120",
+        "id": "f113",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -5610,7 +6333,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f121",
+        "id": "f114",
         "tur": "fark_serisi",
         "veri": {
           "en_buyuk_ev_farki": 17,
@@ -5648,7 +6371,288 @@
         "guven": "turetilmis"
       },
       {
+        "id": "f115",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 1,
+          "saniye_kalan": null,
+          "zaman": "1Ç",
+          "saat": null,
+          "ev_skor": 40,
+          "dep_skor": 28,
+          "fark": 12,
+          "takim": "GSW",
+          "basa_bas": false
+        },
+        "kaynak": "PlayByPlayV3:0022500011:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f116",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 2,
+          "saniye_kalan": null,
+          "zaman": "Devre",
+          "saat": null,
+          "ev_skor": 71,
+          "dep_skor": 58,
+          "fark": 13,
+          "takim": "GSW",
+          "basa_bas": false
+        },
+        "kaynak": "PlayByPlayV3:0022500011:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f117",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "devre_farki",
+          "periyot": 2,
+          "saniye_kalan": null,
+          "zaman": "Devre",
+          "saat": null,
+          "ev_skor": 71,
+          "dep_skor": 58,
+          "fark": 13,
+          "takim": "GSW",
+          "sayi": 13
+        },
+        "kaynak": "PlayByPlayV3:0022500011:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f118",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 3,
+          "saniye_kalan": null,
+          "zaman": "3Ç",
+          "saat": null,
+          "ev_skor": 100,
+          "dep_skor": 89,
+          "fark": 11,
+          "takim": "GSW",
+          "basa_bas": false
+        },
+        "kaynak": "PlayByPlayV3:0022500011:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f119",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "en_buyuk_fark",
+          "periyot": 3,
+          "saniye_kalan": 495.0,
+          "zaman": "3Ç",
+          "saat": "8:15",
+          "ev_skor": 79,
+          "dep_skor": 62,
+          "fark": 17,
+          "takim": "GSW",
+          "sayi": 17,
+          "onceki_ev": 126,
+          "onceki_dep": 116
+        },
+        "kaynak": "PlayByPlayV3:0022500011:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f120",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 1,
+          "saniye_kalan": 605.0,
+          "zaman": "1Ç",
+          "saat": "10:05",
+          "ev_skor": 4,
+          "dep_skor": 6,
+          "fark": -2,
+          "takim": "DAL",
+          "sayi": 6,
+          "dusuk_esik": true,
+          "onceki_ev": 4,
+          "onceki_dep": 4
+        },
+        "kaynak": "PlayByPlayV3:0022500011:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f121",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 2,
+          "saniye_kalan": 560.0,
+          "zaman": "2Ç",
+          "saat": "9:20",
+          "ev_skor": 40,
+          "dep_skor": 36,
+          "fark": 4,
+          "takim": "DAL",
+          "sayi": 8,
+          "dusuk_esik": false,
+          "onceki_ev": 40,
+          "onceki_dep": 34
+        },
+        "kaynak": "PlayByPlayV3:0022500011:akis",
+        "guven": "turetilmis"
+      },
+      {
         "id": "f122",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 3,
+          "saniye_kalan": 426.0,
+          "zaman": "3Ç",
+          "saat": "7:06",
+          "ev_skor": 79,
+          "dep_skor": 69,
+          "fark": 10,
+          "takim": "DAL",
+          "sayi": 7,
+          "dusuk_esik": true,
+          "onceki_ev": 79,
+          "onceki_dep": 67
+        },
+        "kaynak": "PlayByPlayV3:0022500011:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f123",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 4,
+          "saniye_kalan": 408.0,
+          "zaman": "4Ç",
+          "saat": "6:48",
+          "ev_skor": 104,
+          "dep_skor": 99,
+          "fark": 5,
+          "takim": "DAL",
+          "sayi": 6,
+          "dusuk_esik": true,
+          "onceki_ev": 104,
+          "onceki_dep": 97
+        },
+        "kaynak": "PlayByPlayV3:0022500011:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f124",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "esitlik",
+          "periyot": 1,
+          "saniye_kalan": 277.0,
+          "zaman": "1Ç",
+          "saat": "4:37",
+          "ev_skor": 18,
+          "dep_skor": 18,
+          "fark": 0,
+          "takim": "DAL",
+          "onceki_ev": 18,
+          "onceki_dep": 15
+        },
+        "kaynak": "PlayByPlayV3:0022500011:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f125",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 605.0,
+          "zaman": "1Ç",
+          "saat": "10:05",
+          "ev_skor": 4,
+          "dep_skor": 6,
+          "fark": -2,
+          "takim": "DAL",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": true,
+          "oyuncu": "Ryan Nembhard",
+          "onceki_ev": 4,
+          "onceki_dep": 4
+        },
+        "kaynak": "PlayByPlayV3:0022500011:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f126",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 500.0,
+          "zaman": "1Ç",
+          "saat": "8:20",
+          "ev_skor": 7,
+          "dep_skor": 6,
+          "fark": 1,
+          "takim": "GSW",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": true,
+          "oyuncu": "Stephen Curry",
+          "onceki_ev": 6,
+          "onceki_dep": 6
+        },
+        "kaynak": "PlayByPlayV3:0022500011:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f127",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "rakip_yaklasti",
+          "periyot": 2,
+          "saniye_kalan": 560.0,
+          "zaman": "2Ç",
+          "saat": "9:20",
+          "ev_skor": 40,
+          "dep_skor": 36,
+          "fark": 4,
+          "takim": "DAL",
+          "sayi": 4,
+          "onceki_ev": 40,
+          "onceki_dep": 34
+        },
+        "kaynak": "PlayByPlayV3:0022500011:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f128",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "kopus",
+          "periyot": 4,
+          "saniye_kalan": 225.0,
+          "zaman": "4Ç",
+          "saat": "3:45",
+          "ev_skor": 115,
+          "dep_skor": 104,
+          "fark": 11,
+          "takim": "GSW",
+          "sayi": 11,
+          "onceki_ev": 112,
+          "onceki_dep": 104
+        },
+        "kaynak": "PlayByPlayV3:0022500011:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f129",
         "tur": "derece",
         "veri": {
           "takim": "GSW",
@@ -5658,6 +6662,7 @@
           "konferans": "Batı",
           "konferans_sira": 8,
           "lig_sira": 15,
+          "sezon_guvenilir": true,
           "onceki_seri_tur": "galibiyet",
           "onceki_seri_uzunluk": 2,
           "sezon_ilk_mac_sonucu": "galibiyet",
@@ -5670,7 +6675,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f123",
+        "id": "f130",
         "tur": "seri",
         "veri": {
           "takim": "GSW",
@@ -5681,7 +6686,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f124",
+        "id": "f131",
         "tur": "derece",
         "veri": {
           "takim": "DAL",
@@ -5691,6 +6696,7 @@
           "konferans": "Batı",
           "konferans_sira": 11,
           "lig_sira": 22,
+          "sezon_guvenilir": true,
           "onceki_seri_tur": "galibiyet",
           "onceki_seri_uzunluk": 1,
           "sezon_ilk_mac_sonucu": "maglubiyet",
@@ -7403,7 +8409,8 @@
             "periyot": 3,
             "saniye_kalan": 414.0,
             "fark": -20,
-            "taraf": "HOU"
+            "taraf": "HOU",
+            "sonrasi_en_yakin": 15
           }
         },
         "kaynak": "PlayByPlayV3:0022500012:turetilmis",
@@ -7411,6 +8418,260 @@
       },
       {
         "id": "f108",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 1,
+          "saniye_kalan": null,
+          "zaman": "1Ç",
+          "saat": null,
+          "ev_skor": 25,
+          "dep_skor": 37,
+          "fark": -12,
+          "takim": "HOU",
+          "basa_bas": false
+        },
+        "kaynak": "PlayByPlayV3:0022500012:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f109",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 2,
+          "saniye_kalan": null,
+          "zaman": "Devre",
+          "saat": null,
+          "ev_skor": 53,
+          "dep_skor": 63,
+          "fark": -10,
+          "takim": "HOU",
+          "basa_bas": false
+        },
+        "kaynak": "PlayByPlayV3:0022500012:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f110",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "devre_farki",
+          "periyot": 2,
+          "saniye_kalan": null,
+          "zaman": "Devre",
+          "saat": null,
+          "ev_skor": 53,
+          "dep_skor": 63,
+          "fark": -10,
+          "takim": "HOU",
+          "sayi": 10
+        },
+        "kaynak": "PlayByPlayV3:0022500012:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f111",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 3,
+          "saniye_kalan": null,
+          "zaman": "3Ç",
+          "saat": null,
+          "ev_skor": 74,
+          "dep_skor": 92,
+          "fark": -18,
+          "takim": "HOU",
+          "basa_bas": false
+        },
+        "kaynak": "PlayByPlayV3:0022500012:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f112",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_ustunlugu",
+          "periyot": 3,
+          "saniye_kalan": null,
+          "zaman": "3Ç",
+          "saat": null,
+          "ev_skor": 74,
+          "dep_skor": 92,
+          "fark": -18,
+          "takim": "HOU",
+          "ev_kod": "LAL",
+          "sayi": 29,
+          "rakip_sayi": 21
+        },
+        "kaynak": "PlayByPlayV3:0022500012:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f113",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "en_buyuk_fark",
+          "periyot": 4,
+          "saniye_kalan": 155.0,
+          "zaman": "4Ç",
+          "saat": "2:35",
+          "ev_skor": 89,
+          "dep_skor": 113,
+          "fark": -24,
+          "takim": "HOU",
+          "sayi": 24,
+          "onceki_ev": 96,
+          "onceki_dep": 119
+        },
+        "kaynak": "PlayByPlayV3:0022500012:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f114",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 1,
+          "saniye_kalan": 110.0,
+          "zaman": "1Ç",
+          "saat": "1:50",
+          "ev_skor": 20,
+          "dep_skor": 32,
+          "fark": -12,
+          "takim": "HOU",
+          "sayi": 7,
+          "dusuk_esik": true,
+          "onceki_ev": 20,
+          "onceki_dep": 30
+        },
+        "kaynak": "PlayByPlayV3:0022500012:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f115",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 2,
+          "saniye_kalan": 256.0,
+          "zaman": "2Ç",
+          "saat": "4:16",
+          "ev_skor": 44,
+          "dep_skor": 48,
+          "fark": -4,
+          "takim": "LAL",
+          "sayi": 6,
+          "dusuk_esik": true,
+          "onceki_ev": 41,
+          "onceki_dep": 48
+        },
+        "kaynak": "PlayByPlayV3:0022500012:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f116",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 3,
+          "saniye_kalan": 352.0,
+          "zaman": "3Ç",
+          "saat": "5:52",
+          "ev_skor": 58,
+          "dep_skor": 81,
+          "fark": -23,
+          "takim": "HOU",
+          "sayi": 8,
+          "dusuk_esik": false,
+          "onceki_ev": 58,
+          "onceki_dep": 79
+        },
+        "kaynak": "PlayByPlayV3:0022500012:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f117",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 4,
+          "saniye_kalan": 155.0,
+          "zaman": "4Ç",
+          "saat": "2:35",
+          "ev_skor": 89,
+          "dep_skor": 113,
+          "fark": -24,
+          "takim": "HOU",
+          "sayi": 9,
+          "dusuk_esik": false,
+          "onceki_ev": 89,
+          "onceki_dep": 111
+        },
+        "kaynak": "PlayByPlayV3:0022500012:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f118",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "rakip_yaklasti",
+          "periyot": 2,
+          "saniye_kalan": 256.0,
+          "zaman": "2Ç",
+          "saat": "4:16",
+          "ev_skor": 44,
+          "dep_skor": 48,
+          "fark": -4,
+          "takim": "LAL",
+          "sayi": 4,
+          "onceki_ev": 41,
+          "onceki_dep": 48
+        },
+        "kaynak": "PlayByPlayV3:0022500012:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f119",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "kopus",
+          "periyot": 2,
+          "saniye_kalan": 91.0,
+          "zaman": "2Ç",
+          "saat": "1:31",
+          "ev_skor": 51,
+          "dep_skor": 61,
+          "fark": -10,
+          "takim": "HOU",
+          "sayi": 10,
+          "onceki_ev": 51,
+          "onceki_dep": 59
+        },
+        "kaynak": "PlayByPlayV3:0022500012:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f120",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "fark_korundu",
+          "periyot": 3,
+          "saniye_kalan": 590.0,
+          "zaman": "3Ç",
+          "saat": "9:50",
+          "ev_skor": 56,
+          "dep_skor": 70,
+          "fark": -14,
+          "sayi": 15,
+          "takim": "HOU"
+        },
+        "kaynak": "PlayByPlayV3:0022500012:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f121",
         "tur": "derece",
         "veri": {
           "takim": "LAL",
@@ -7420,6 +8681,7 @@
           "konferans": "Batı",
           "konferans_sira": 4,
           "lig_sira": 6,
+          "sezon_guvenilir": true,
           "onceki_seri_tur": "maglubiyet",
           "onceki_seri_uzunluk": 2,
           "sezon_ilk_mac_sonucu": "maglubiyet",
@@ -7432,7 +8694,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f109",
+        "id": "f122",
         "tur": "seri",
         "veri": {
           "takim": "LAL",
@@ -7443,7 +8705,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f110",
+        "id": "f123",
         "tur": "derece",
         "veri": {
           "takim": "HOU",
@@ -7453,6 +8715,7 @@
           "konferans": "Batı",
           "konferans_sira": 6,
           "lig_sira": 8,
+          "sezon_guvenilir": true,
           "onceki_seri_tur": "maglubiyet",
           "onceki_seri_uzunluk": 2,
           "sezon_ilk_mac_sonucu": "maglubiyet",
@@ -8044,102 +9307,6 @@
       },
       {
         "id": "f29",
-        "tur": "kadro_disi",
-        "veri": {
-          "oyuncu": "DaRon Holmes II",
-          "id": 1641747,
-          "takim": "DEN",
-          "aciklama": "DNP - Coach's Decision"
-        },
-        "kaynak": "BoxScoreTraditionalV3:0022500013:1641747",
-        "guven": "kesin"
-      },
-      {
-        "id": "f30",
-        "tur": "kadro_disi",
-        "veri": {
-          "oyuncu": "Curtis Jones",
-          "id": 1642938,
-          "takim": "DEN",
-          "aciklama": "DNP - Coach's Decision"
-        },
-        "kaynak": "BoxScoreTraditionalV3:0022500013:1642938",
-        "guven": "kesin"
-      },
-      {
-        "id": "f31",
-        "tur": "kadro_disi",
-        "veri": {
-          "oyuncu": "Jalen Pickett",
-          "id": 1629618,
-          "takim": "DEN",
-          "aciklama": "DNP - Coach's Decision"
-        },
-        "kaynak": "BoxScoreTraditionalV3:0022500013:1629618",
-        "guven": "kesin"
-      },
-      {
-        "id": "f32",
-        "tur": "kadro_disi",
-        "veri": {
-          "oyuncu": "Hunter Tyson",
-          "id": 1641816,
-          "takim": "DEN",
-          "aciklama": "DNP - Coach's Decision"
-        },
-        "kaynak": "BoxScoreTraditionalV3:0022500013:1641816",
-        "guven": "kesin"
-      },
-      {
-        "id": "f33",
-        "tur": "kadro_disi",
-        "veri": {
-          "oyuncu": "Joan Beringer",
-          "id": 1642866,
-          "takim": "MIN",
-          "aciklama": "DNP - Coach's Decision"
-        },
-        "kaynak": "BoxScoreTraditionalV3:0022500013:1642866",
-        "guven": "kesin"
-      },
-      {
-        "id": "f34",
-        "tur": "kadro_disi",
-        "veri": {
-          "oyuncu": "Rob Dillingham",
-          "id": 1642265,
-          "takim": "MIN",
-          "aciklama": "DNP - Coach's Decision"
-        },
-        "kaynak": "BoxScoreTraditionalV3:0022500013:1642265",
-        "guven": "kesin"
-      },
-      {
-        "id": "f35",
-        "tur": "kadro_disi",
-        "veri": {
-          "oyuncu": "Joe Ingles",
-          "id": 204060,
-          "takim": "MIN",
-          "aciklama": "DNP - Coach's Decision"
-        },
-        "kaynak": "BoxScoreTraditionalV3:0022500013:204060",
-        "guven": "kesin"
-      },
-      {
-        "id": "f36",
-        "tur": "kadro_disi",
-        "veri": {
-          "oyuncu": "Leonard Miller",
-          "id": 1631159,
-          "takim": "MIN",
-          "aciklama": "DNP - Coach's Decision"
-        },
-        "kaynak": "BoxScoreTraditionalV3:0022500013:1631159",
-        "guven": "kesin"
-      },
-      {
-        "id": "f37",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Rudy Gobert",
@@ -8151,7 +9318,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f38",
+        "id": "f30",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Tim Hardaway Jr.",
@@ -8163,7 +9330,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f39",
+        "id": "f31",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Julius Randle",
@@ -8175,7 +9342,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f40",
+        "id": "f32",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Nikola Jokić",
@@ -8187,7 +9354,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f41",
+        "id": "f33",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jamal Murray",
@@ -8199,7 +9366,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f42",
+        "id": "f34",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Bruce Brown",
@@ -8211,7 +9378,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f43",
+        "id": "f35",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Donte DiVincenzo",
@@ -8223,7 +9390,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f44",
+        "id": "f36",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Naz Reid",
@@ -8235,7 +9402,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f45",
+        "id": "f37",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Anthony Edwards",
@@ -8247,7 +9414,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f46",
+        "id": "f38",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jaden McDaniels",
@@ -8259,7 +9426,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f47",
+        "id": "f39",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Peyton Watson",
@@ -8271,7 +9438,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f48",
+        "id": "f40",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Rudy Gobert",
@@ -8283,7 +9450,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f49",
+        "id": "f41",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Tim Hardaway Jr.",
@@ -8295,7 +9462,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f50",
+        "id": "f42",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Julius Randle",
@@ -8307,7 +9474,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f51",
+        "id": "f43",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Nikola Jokić",
@@ -8319,7 +9486,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f52",
+        "id": "f44",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jamal Murray",
@@ -8331,7 +9498,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f53",
+        "id": "f45",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Naz Reid",
@@ -8343,7 +9510,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f54",
+        "id": "f46",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jaden McDaniels",
@@ -8355,7 +9522,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f55",
+        "id": "f47",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Zeke Nnaji",
@@ -8367,7 +9534,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f56",
+        "id": "f48",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Bones Hyland",
@@ -8379,7 +9546,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f57",
+        "id": "f49",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jaylen Clark",
@@ -8391,7 +9558,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f58",
+        "id": "f50",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Spencer Jones",
@@ -8403,7 +9570,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f59",
+        "id": "f51",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Rudy Gobert",
@@ -8415,7 +9582,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f60",
+        "id": "f52",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Tim Hardaway Jr.",
@@ -8427,7 +9594,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f61",
+        "id": "f53",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Julius Randle",
@@ -8439,7 +9606,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f62",
+        "id": "f54",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Nikola Jokić",
@@ -8451,7 +9618,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f63",
+        "id": "f55",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jamal Murray",
@@ -8463,7 +9630,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f64",
+        "id": "f56",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Bruce Brown",
@@ -8475,7 +9642,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f65",
+        "id": "f57",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Anthony Edwards",
@@ -8487,7 +9654,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f66",
+        "id": "f58",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Bones Hyland",
@@ -8499,7 +9666,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f67",
+        "id": "f59",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Peyton Watson",
@@ -8511,7 +9678,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f68",
+        "id": "f60",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Spencer Jones",
@@ -8523,7 +9690,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f69",
+        "id": "f61",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jonas Valančiūnas",
@@ -8535,7 +9702,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f70",
+        "id": "f62",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Rudy Gobert",
@@ -8547,7 +9714,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f71",
+        "id": "f63",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Tim Hardaway Jr.",
@@ -8559,7 +9726,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f72",
+        "id": "f64",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Julius Randle",
@@ -8571,7 +9738,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f73",
+        "id": "f65",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Nikola Jokić",
@@ -8583,7 +9750,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f74",
+        "id": "f66",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jamal Murray",
@@ -8595,7 +9762,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f75",
+        "id": "f67",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Bruce Brown",
@@ -8607,7 +9774,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f76",
+        "id": "f68",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Naz Reid",
@@ -8619,7 +9786,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f77",
+        "id": "f69",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Anthony Edwards",
@@ -8631,7 +9798,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f78",
+        "id": "f70",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jaden McDaniels",
@@ -8643,7 +9810,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f79",
+        "id": "f71",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Spencer Jones",
@@ -8655,7 +9822,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f80",
+        "id": "f72",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Tim Hardaway Jr.",
@@ -8667,7 +9834,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f81",
+        "id": "f73",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Julius Randle",
@@ -8679,7 +9846,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f82",
+        "id": "f74",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Nikola Jokić",
@@ -8691,7 +9858,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f83",
+        "id": "f75",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jamal Murray",
@@ -8703,7 +9870,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f84",
+        "id": "f76",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Donte DiVincenzo",
@@ -8715,7 +9882,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f85",
+        "id": "f77",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Anthony Edwards",
@@ -8727,7 +9894,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f86",
+        "id": "f78",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Jaden McDaniels",
@@ -8739,7 +9906,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f87",
+        "id": "f79",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Bones Hyland",
@@ -8751,7 +9918,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f88",
+        "id": "f80",
         "tur": "oyuncu_ceyrek",
         "veri": {
           "oyuncu": "Peyton Watson",
@@ -8763,7 +9930,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f89",
+        "id": "f81",
         "tur": "kilometre",
         "veri": {
           "oyuncu": "Nikola Jokić",
@@ -8772,6 +9939,7 @@
           "sayi": 56,
           "rib": 16,
           "ast": 15,
+          "gmsc": 59.8,
           "baglam": {
             "olcek": "oyuncu_sezonu",
             "tur": "40+ sayı",
@@ -8783,7 +9951,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f90",
+        "id": "f82",
         "tur": "kilometre",
         "veri": {
           "oyuncu": "Nikola Jokić",
@@ -8792,13 +9960,14 @@
           "sayi": 56,
           "rib": 16,
           "ast": 15,
+          "gmsc": 59.8,
           "baglam": null
         },
         "kaynak": "BoxScoreTraditionalV3:0022500013:203999",
         "guven": "turetilmis"
       },
       {
-        "id": "f91",
+        "id": "f83",
         "tur": "kilometre",
         "veri": {
           "oyuncu": "Nikola Jokić",
@@ -8807,13 +9976,14 @@
           "sayi": 56,
           "rib": 16,
           "ast": 15,
+          "gmsc": 59.8,
           "baglam": null
         },
         "kaynak": "BoxScoreTraditionalV3:0022500013:203999",
         "guven": "turetilmis"
       },
       {
-        "id": "f92",
+        "id": "f84",
         "tur": "kilometre",
         "veri": {
           "oyuncu": "Nikola Jokić",
@@ -8822,6 +9992,7 @@
           "sayi": 56,
           "rib": 16,
           "ast": 15,
+          "gmsc": 59.8,
           "baglam": {
             "olcek": "nba_tarihi",
             "tur": "50+ sayılık triple-double",
@@ -8834,7 +10005,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f93",
+        "id": "f85",
         "tur": "kilometre",
         "veri": {
           "oyuncu": "Rudy Gobert",
@@ -8843,13 +10014,14 @@
           "sayi": 9,
           "rib": 12,
           "ast": 0,
+          "gmsc": 12.7,
           "baglam": null
         },
         "kaynak": "BoxScoreTraditionalV3:0022500013:203497",
         "guven": "turetilmis"
       },
       {
-        "id": "f94",
+        "id": "f86",
         "tur": "kilometre",
         "veri": {
           "oyuncu": "Anthony Edwards",
@@ -8858,6 +10030,7 @@
           "sayi": 44,
           "rib": 6,
           "ast": 3,
+          "gmsc": 31.8,
           "baglam": {
             "olcek": "oyuncu_sezonu",
             "tur": "40+ sayı",
@@ -8869,7 +10042,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f95",
+        "id": "f87",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -8884,7 +10057,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f96",
+        "id": "f88",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -8899,7 +10072,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f97",
+        "id": "f89",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -8914,7 +10087,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f98",
+        "id": "f90",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -8929,7 +10102,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f99",
+        "id": "f91",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -8945,7 +10118,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f100",
+        "id": "f92",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -8961,7 +10134,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f101",
+        "id": "f93",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -8977,7 +10150,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f102",
+        "id": "f94",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -8993,7 +10166,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f103",
+        "id": "f95",
         "tur": "an",
         "veri": {
           "periyot": 1,
@@ -9009,7 +10182,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f104",
+        "id": "f96",
         "tur": "an",
         "veri": {
           "periyot": 2,
@@ -9024,7 +10197,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f105",
+        "id": "f97",
         "tur": "an",
         "veri": {
           "periyot": 2,
@@ -9039,7 +10212,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f106",
+        "id": "f98",
         "tur": "an",
         "veri": {
           "periyot": 2,
@@ -9055,7 +10228,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f107",
+        "id": "f99",
         "tur": "an",
         "veri": {
           "periyot": 2,
@@ -9071,7 +10244,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f108",
+        "id": "f100",
         "tur": "an",
         "veri": {
           "periyot": 2,
@@ -9087,7 +10260,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f109",
+        "id": "f101",
         "tur": "an",
         "veri": {
           "periyot": 3,
@@ -9103,7 +10276,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f110",
+        "id": "f102",
         "tur": "an",
         "veri": {
           "periyot": 3,
@@ -9119,7 +10292,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f111",
+        "id": "f103",
         "tur": "an",
         "veri": {
           "periyot": 3,
@@ -9135,7 +10308,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f112",
+        "id": "f104",
         "tur": "an",
         "veri": {
           "periyot": 3,
@@ -9151,7 +10324,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f113",
+        "id": "f105",
         "tur": "an",
         "veri": {
           "periyot": 3,
@@ -9167,7 +10340,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f114",
+        "id": "f106",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -9183,7 +10356,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f115",
+        "id": "f107",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -9199,7 +10372,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f116",
+        "id": "f108",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -9215,7 +10388,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f117",
+        "id": "f109",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -9231,7 +10404,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f118",
+        "id": "f110",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -9247,7 +10420,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f119",
+        "id": "f111",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -9263,7 +10436,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f120",
+        "id": "f112",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -9279,7 +10452,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f121",
+        "id": "f113",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -9295,7 +10468,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f122",
+        "id": "f114",
         "tur": "an",
         "veri": {
           "periyot": 4,
@@ -9311,7 +10484,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f123",
+        "id": "f115",
         "tur": "an",
         "veri": {
           "periyot": 5,
@@ -9326,7 +10499,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f124",
+        "id": "f116",
         "tur": "an",
         "veri": {
           "periyot": 5,
@@ -9342,7 +10515,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f125",
+        "id": "f117",
         "tur": "an",
         "veri": {
           "periyot": 5,
@@ -9358,7 +10531,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f126",
+        "id": "f118",
         "tur": "an",
         "veri": {
           "periyot": 5,
@@ -9373,7 +10546,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f127",
+        "id": "f119",
         "tur": "an",
         "veri": {
           "periyot": 5,
@@ -9389,7 +10562,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f128",
+        "id": "f120",
         "tur": "an",
         "veri": {
           "periyot": 5,
@@ -9405,7 +10578,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f129",
+        "id": "f121",
         "tur": "an",
         "veri": {
           "periyot": 5,
@@ -9421,7 +10594,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f130",
+        "id": "f122",
         "tur": "an",
         "veri": {
           "periyot": 5,
@@ -9437,7 +10610,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f131",
+        "id": "f123",
         "tur": "an",
         "veri": {
           "periyot": 5,
@@ -9453,7 +10626,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f132",
+        "id": "f124",
         "tur": "an",
         "veri": {
           "periyot": 5,
@@ -9469,7 +10642,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f133",
+        "id": "f125",
         "tur": "an",
         "veri": {
           "periyot": 5,
@@ -9483,7 +10656,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f134",
+        "id": "f126",
         "tur": "an",
         "veri": {
           "periyot": 5,
@@ -9497,7 +10670,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f135",
+        "id": "f127",
         "tur": "an",
         "veri": {
           "periyot": 5,
@@ -9513,7 +10686,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f136",
+        "id": "f128",
         "tur": "an",
         "veri": {
           "periyot": 5,
@@ -9529,7 +10702,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f137",
+        "id": "f129",
         "tur": "an",
         "veri": {
           "periyot": 5,
@@ -9545,7 +10718,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f138",
+        "id": "f130",
         "tur": "an",
         "veri": {
           "periyot": 5,
@@ -9561,7 +10734,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f139",
+        "id": "f131",
         "tur": "an",
         "veri": {
           "periyot": 5,
@@ -9577,7 +10750,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f140",
+        "id": "f132",
         "tur": "an",
         "veri": {
           "periyot": 5,
@@ -9593,7 +10766,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f141",
+        "id": "f133",
         "tur": "an",
         "veri": {
           "periyot": 5,
@@ -9609,7 +10782,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f142",
+        "id": "f134",
         "tur": "an",
         "veri": {
           "periyot": 5,
@@ -9625,7 +10798,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f143",
+        "id": "f135",
         "tur": "an",
         "veri": {
           "periyot": 5,
@@ -9641,7 +10814,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f144",
+        "id": "f136",
         "tur": "an",
         "veri": {
           "periyot": 5,
@@ -9657,7 +10830,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f145",
+        "id": "f137",
         "tur": "an",
         "veri": {
           "periyot": 5,
@@ -9673,7 +10846,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f146",
+        "id": "f138",
         "tur": "an",
         "veri": {
           "periyot": 5,
@@ -9689,7 +10862,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f147",
+        "id": "f139",
         "tur": "an",
         "veri": {
           "periyot": 5,
@@ -9705,7 +10878,7 @@
         "guven": "kesin"
       },
       {
-        "id": "f148",
+        "id": "f140",
         "tur": "fark_serisi",
         "veri": {
           "en_buyuk_ev_farki": 16,
@@ -9743,7 +10916,495 @@
         "guven": "turetilmis"
       },
       {
+        "id": "f141",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 1,
+          "saniye_kalan": null,
+          "zaman": "1Ç",
+          "saat": null,
+          "ev_skor": 32,
+          "dep_skor": 29,
+          "fark": 3,
+          "takim": "DEN",
+          "basa_bas": true
+        },
+        "kaynak": "PlayByPlayV3:0022500013:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f142",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 2,
+          "saniye_kalan": null,
+          "zaman": "Devre",
+          "saat": null,
+          "ev_skor": 57,
+          "dep_skor": 55,
+          "fark": 2,
+          "takim": "DEN",
+          "basa_bas": true
+        },
+        "kaynak": "PlayByPlayV3:0022500013:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f143",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_sonu",
+          "periyot": 3,
+          "saniye_kalan": null,
+          "zaman": "3Ç",
+          "saat": null,
+          "ev_skor": 92,
+          "dep_skor": 78,
+          "fark": 14,
+          "takim": "DEN",
+          "basa_bas": false
+        },
+        "kaynak": "PlayByPlayV3:0022500013:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f144",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_ustunlugu",
+          "periyot": 3,
+          "saniye_kalan": null,
+          "zaman": "3Ç",
+          "saat": null,
+          "ev_skor": 92,
+          "dep_skor": 78,
+          "fark": 14,
+          "takim": "DEN",
+          "ev_kod": "DEN",
+          "sayi": 35,
+          "rakip_sayi": 23
+        },
+        "kaynak": "PlayByPlayV3:0022500013:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f145",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "ceyrek_ustunlugu",
+          "periyot": 4,
+          "saniye_kalan": null,
+          "zaman": "4Ç",
+          "saat": null,
+          "ev_skor": 115,
+          "dep_skor": 115,
+          "fark": 0,
+          "takim": "MIN",
+          "ev_kod": "DEN",
+          "sayi": 37,
+          "rakip_sayi": 23
+        },
+        "kaynak": "PlayByPlayV3:0022500013:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f146",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "en_buyuk_fark",
+          "periyot": 3,
+          "saniye_kalan": 345.0,
+          "zaman": "3Ç",
+          "saat": "5:45",
+          "ev_skor": 79,
+          "dep_skor": 63,
+          "fark": 16,
+          "takim": "DEN",
+          "sayi": 16,
+          "onceki_ev": 142,
+          "onceki_dep": 138
+        },
+        "kaynak": "PlayByPlayV3:0022500013:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f147",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "en_buyuk_fark",
+          "periyot": 5,
+          "saniye_kalan": 179.0,
+          "zaman": "U1",
+          "saat": "2:59",
+          "ev_skor": 115,
+          "dep_skor": 124,
+          "fark": -9,
+          "takim": "MIN",
+          "sayi": 9,
+          "onceki_ev": 142,
+          "onceki_dep": 138
+        },
+        "kaynak": "PlayByPlayV3:0022500013:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f148",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 1,
+          "saniye_kalan": 207.0,
+          "zaman": "1Ç",
+          "saat": "3:27",
+          "ev_skor": 19,
+          "dep_skor": 20,
+          "fark": -1,
+          "takim": "DEN",
+          "sayi": 7,
+          "dusuk_esik": true,
+          "onceki_ev": 18,
+          "onceki_dep": 20
+        },
+        "kaynak": "PlayByPlayV3:0022500013:akis",
+        "guven": "turetilmis"
+      },
+      {
         "id": "f149",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 2,
+          "saniye_kalan": 378.0,
+          "zaman": "2Ç",
+          "saat": "6:18",
+          "ev_skor": 38,
+          "dep_skor": 46,
+          "fark": -8,
+          "takim": "MIN",
+          "sayi": 17,
+          "dusuk_esik": false,
+          "onceki_ev": 38,
+          "onceki_dep": 44
+        },
+        "kaynak": "PlayByPlayV3:0022500013:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f150",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 3,
+          "saniye_kalan": 661.0,
+          "zaman": "3Ç",
+          "saat": "11:01",
+          "ev_skor": 63,
+          "dep_skor": 55,
+          "fark": 8,
+          "takim": "DEN",
+          "sayi": 8,
+          "dusuk_esik": false,
+          "onceki_ev": 61,
+          "onceki_dep": 55
+        },
+        "kaynak": "PlayByPlayV3:0022500013:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f151",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 4,
+          "saniye_kalan": 210.0,
+          "zaman": "4Ç",
+          "saat": "3:30",
+          "ev_skor": 106,
+          "dep_skor": 102,
+          "fark": 4,
+          "takim": "MIN",
+          "sayi": 11,
+          "dusuk_esik": false,
+          "onceki_ev": 106,
+          "onceki_dep": 101
+        },
+        "kaynak": "PlayByPlayV3:0022500013:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f152",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "sayi_serisi",
+          "periyot": 5,
+          "saniye_kalan": 179.0,
+          "zaman": "U1",
+          "saat": "2:59",
+          "ev_skor": 115,
+          "dep_skor": 124,
+          "fark": -9,
+          "takim": "MIN",
+          "sayi": 12,
+          "dusuk_esik": false,
+          "onceki_ev": 115,
+          "onceki_dep": 121
+        },
+        "kaynak": "PlayByPlayV3:0022500013:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f153",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "esitlik",
+          "periyot": 5,
+          "saniye_kalan": 48.7,
+          "zaman": "Son",
+          "saat": "0:48",
+          "ev_skor": 128,
+          "dep_skor": 128,
+          "fark": 0,
+          "takim": "MIN",
+          "onceki_ev": 128,
+          "onceki_dep": 126
+        },
+        "kaynak": "PlayByPlayV3:0022500013:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f154",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 454.0,
+          "zaman": "1Ç",
+          "saat": "7:34",
+          "ev_skor": 7,
+          "dep_skor": 8,
+          "fark": -1,
+          "takim": "MIN",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Anthony Edwards",
+          "onceki_ev": 7,
+          "onceki_dep": 5
+        },
+        "kaynak": "PlayByPlayV3:0022500013:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f155",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 427.0,
+          "zaman": "1Ç",
+          "saat": "7:07",
+          "ev_skor": 9,
+          "dep_skor": 8,
+          "fark": 1,
+          "takim": "DEN",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Nikola Jokić",
+          "onceki_ev": 8,
+          "onceki_dep": 8
+        },
+        "kaynak": "PlayByPlayV3:0022500013:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f156",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 408.0,
+          "zaman": "1Ç",
+          "saat": "6:48",
+          "ev_skor": 9,
+          "dep_skor": 10,
+          "fark": -1,
+          "takim": "MIN",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Rudy Gobert",
+          "onceki_ev": 9,
+          "onceki_dep": 8
+        },
+        "kaynak": "PlayByPlayV3:0022500013:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f157",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 1,
+          "saniye_kalan": 123.0,
+          "zaman": "1Ç",
+          "saat": "2:03",
+          "ev_skor": 26,
+          "dep_skor": 25,
+          "fark": 1,
+          "takim": "DEN",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Nikola Jokić",
+          "onceki_ev": 24,
+          "onceki_dep": 25
+        },
+        "kaynak": "PlayByPlayV3:0022500013:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f158",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 2,
+          "saniye_kalan": 505.0,
+          "zaman": "2Ç",
+          "saat": "8:25",
+          "ev_skor": 38,
+          "dep_skor": 40,
+          "fark": -2,
+          "takim": "MIN",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": false,
+          "oyuncu": "Rudy Gobert",
+          "onceki_ev": 38,
+          "onceki_dep": 38
+        },
+        "kaynak": "PlayByPlayV3:0022500013:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f159",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 2,
+          "saniye_kalan": 165.0,
+          "zaman": "2Ç",
+          "saat": "2:45",
+          "ev_skor": 49,
+          "dep_skor": 48,
+          "fark": 1,
+          "takim": "DEN",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": false,
+          "oyuncu": "Nikola Jokić",
+          "onceki_ev": 47,
+          "onceki_dep": 48
+        },
+        "kaynak": "PlayByPlayV3:0022500013:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f160",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 5,
+          "saniye_kalan": 284.0,
+          "zaman": "U1",
+          "saat": "4:44",
+          "ev_skor": 115,
+          "dep_skor": 117,
+          "fark": -2,
+          "takim": "MIN",
+          "kesin": false,
+          "kazanan_mi": false,
+          "son_mu": true,
+          "oyuncu": "Anthony Edwards",
+          "onceki_ev": 115,
+          "onceki_dep": 115
+        },
+        "kaynak": "PlayByPlayV3:0022500013:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f161",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "liderlik",
+          "periyot": 5,
+          "saniye_kalan": 56.4,
+          "zaman": "Son",
+          "saat": "0:56",
+          "ev_skor": 127,
+          "dep_skor": 126,
+          "fark": 1,
+          "takim": "DEN",
+          "kesin": false,
+          "kazanan_mi": true,
+          "son_mu": true,
+          "oyuncu": "Nikola Jokić",
+          "onceki_ev": 126,
+          "onceki_dep": 126
+        },
+        "kaynak": "PlayByPlayV3:0022500013:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f162",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "karar_ani",
+          "periyot": 5,
+          "saniye_kalan": 2.4,
+          "zaman": "Son",
+          "saat": "0:02",
+          "ev_skor": 142,
+          "dep_skor": 138,
+          "fark": 4,
+          "takim": "MIN",
+          "sut_turu": "basket",
+          "sayi_degisimi": 2,
+          "tutarli": true,
+          "belirleyici": false,
+          "sa_isabet": null,
+          "sa_deneme": null,
+          "oyuncu": "Bones Hyland",
+          "onceki_ev": 142,
+          "onceki_dep": 136
+        },
+        "kaynak": "PlayByPlayV3:0022500013:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f163",
+        "tur": "akis_olay",
+        "veri": {
+          "tip": "rakip_yaklasti",
+          "periyot": 4,
+          "saniye_kalan": 132.0,
+          "zaman": "4Ç",
+          "saat": "2:12",
+          "ev_skor": 108,
+          "dep_skor": 107,
+          "fark": 1,
+          "takim": "MIN",
+          "sayi": 1,
+          "onceki_ev": 108,
+          "onceki_dep": 105
+        },
+        "kaynak": "PlayByPlayV3:0022500013:akis",
+        "guven": "turetilmis"
+      },
+      {
+        "id": "f164",
         "tur": "derece",
         "veri": {
           "takim": "DEN",
@@ -9753,6 +11414,7 @@
           "konferans": "Batı",
           "konferans_sira": 3,
           "lig_sira": 4,
+          "sezon_guvenilir": true,
           "onceki_seri_tur": "maglubiyet",
           "onceki_seri_uzunluk": 1,
           "sezon_ilk_mac_sonucu": "maglubiyet",
@@ -9765,7 +11427,7 @@
         "guven": "turetilmis"
       },
       {
-        "id": "f150",
+        "id": "f165",
         "tur": "derece",
         "veri": {
           "takim": "MIN",
@@ -9775,6 +11437,7 @@
           "konferans": "Batı",
           "konferans_sira": 5,
           "lig_sira": 7,
+          "sezon_guvenilir": true,
           "onceki_seri_tur": "galibiyet",
           "onceki_seri_uzunluk": 3,
           "sezon_ilk_mac_sonucu": "galibiyet",

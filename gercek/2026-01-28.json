@@ -1,6 +1,6 @@
 {
   "tarih": "2026-01-28",
-  "uretildi": "2026-08-30T13:59:30.350663Z",
+  "uretildi": "2026-08-31T19:10:31.952402Z",
   "maclar": {
     "0022500671": [
       {
@@ -1716,7 +1716,8 @@
             "periyot": 3,
             "saniye_kalan": 43.0,
             "fark": 21,
-            "taraf": "CLE"
+            "taraf": "CLE",
+            "sonrasi_en_yakin": 19
           }
         },
         "kaynak": "PlayByPlayV3:0022500671:turetilmis",
@@ -10409,7 +10410,8 @@
             "periyot": 4,
             "saniye_kalan": 320.0,
             "fark": -22,
-            "taraf": "NYK"
+            "taraf": "NYK",
+            "sonrasi_en_yakin": 17
           }
         },
         "kaynak": "PlayByPlayV3:0022500675:turetilmis",
@@ -12521,7 +12523,8 @@
             "periyot": 4,
             "saniye_kalan": 140.0,
             "fark": -21,
-            "taraf": "CHA"
+            "taraf": "CHA",
+            "sonrasi_en_yakin": 15
           }
         },
         "kaynak": "PlayByPlayV3:0022500676:turetilmis",

@@ -777,14 +777,154 @@ BASLIK_ISKELETLERI = (
 )
 
 
-def t31_baslik_iskeleti(metin):
-    """Başlık iskelet listesinden birine uymuyorsa RET."""
+# ---------------------------------------------------------------------------
+# İSKELET ÖN KOŞULLARI — TEK KAYNAK
+# ---------------------------------------------------------------------------
+#
+# GERÇEK ARIZA: "New York, New Orleans'ı son saniyede devirdi" başlığı
+# 130-125 biten bir maç için kuruldu. İskelet listedeydi, T31 geçti —
+# çünkü T31 yalnız BİÇİME bakıyordu, İDDİAYA değil. Her iskeletin bir
+# ön koşulu var ve koşulu sağlanmayan iskelet ne SEÇİLEBİLİR ne de
+# YAYINA ÇIKABİLİR. Tablo tek kaynak: başlığı kuran (cumle.py) ve
+# denetleyen (T31) aynı yerden okuyor.
+
+ISKELET_SON_SANIYE_FARK = 3     # "son saniyede devirdi" için final fark
+ISKELET_SON_SANIYE_SN = 30      # liderlik bu süre içinde değişmeli
+ISKELET_GERI_DONUS_ASGARI = 10  # "N sayılık farktan dönüp"
+ISKELET_KOPMA_ESIGI = 12        # kopuştan sonra fark bunun altına inmemeli
+
+
+def iskelet_baglami(gercekler, ham_mac=None):
+    """İskelet ön koşullarını ölçmek için gereken tek sözlük.
+
+    Yeni veri üretmiyor — F merdiveninin baktığı olayların aynısı:
+    `skor`, `fark_serisi`, `akis_olay` ve `oyuncu_stat`."""
+    veri = lambda tur: [f["veri"] for f in (gercekler or []) if f["tur"] == tur]
+    skor = (veri("skor") or [{}])[0]
+    fs = (veri("fark_serisi") or [{}])[0]
+    olaylar = veri("akis_olay")
+    statlar = veri("oyuncu_stat")
+
+    ev_s, dep_s = skor.get("ev_skor"), skor.get("dep_skor")
+    son_fark = abs(ev_s - dep_s) if ev_s is not None and dep_s is not None else None
+    son_periyot = max((o.get("periyot") or 0 for o in olaylar), default=4)
+    gec_liderlik = any(
+        o["tip"] in ("liderlik", "esitlik")
+        and (o.get("periyot") or 0) == son_periyot
+        and (o.get("saniye_kalan") is not None)
+        and o["saniye_kalan"] <= ISKELET_SON_SANIYE_SN
+        for o in olaylar)
+    kopma = fs.get("kopma_ani") or {}
+    en_iyi = None
+    en_iyi_kazananda = None
+    if statlar:
+        try:
+            import hesapla
+            _st = hesapla.performans_sirala(statlar)[0]
+            en_iyi = _st.get("oyuncu")
+            en_iyi_kazananda = (_st.get("takim") == skor.get("kazanan"))
+        except Exception:
+            en_iyi = None
+    return {
+        "son_fark": son_fark,
+        "son30_liderlik": gec_liderlik,
+        "kazanan_acigi": fs.get("kazanan_en_buyuk_acigi"),
+        "kopma_periyot": kopma.get("periyot"),
+        "kopma_sonrasi": kopma.get("sonrasi_en_yakin"),
+        "en_iyi_oyuncu": en_iyi,
+        "en_iyi_kazanan_takimda": en_iyi_kazananda,
+        "kazanan_deplasmanda": (skor.get("kazanan") == skor.get("dep")),
+    }
+
+
+def _on_kosul_son_saniye(b, m=None):
+    if b.get("son_fark") is None:
+        return True, ""                      # ölçemiyorsak susuyoruz
+    if b["son_fark"] > ISKELET_SON_SANIYE_FARK:
+        return False, (f"'son saniyede devirdi' ama maç {b['son_fark']} farkla bitti "
+                       f"(en fazla {ISKELET_SON_SANIYE_FARK})")
+    if not b.get("son30_liderlik"):
+        return False, ("'son saniyede devirdi' ama son "
+                       f"{ISKELET_SON_SANIYE_SN} saniyede liderlik değişmedi")
+    return True, ""
+
+
+def _on_kosul_geri_donus(b, m=None):
+    acik = b.get("kazanan_acigi")
+    if acik is None:
+        return True, ""
+    if acik < ISKELET_GERI_DONUS_ASGARI:
+        return False, (f"'farktan dönüp' ama kazananın en büyük açığı {acik} "
+                       f"(en az {ISKELET_GERI_DONUS_ASGARI})")
+    if m:
+        sayilar = re.findall(r"(\d{1,2}) sayılık farktan", m)
+        if sayilar and int(sayilar[0]) != acik:
+            return False, (f"başlık {sayilar[0]} sayılık dönüş diyor, "
+                           f"gerçek açık {acik}")
+    return True, ""
+
+
+def _on_kosul_kopardi(b, m=None):
+    if b.get("kopma_periyot") is None:
+        return False, "'kopardı' ama kopuş anı yok"
+    sonrasi = b.get("kopma_sonrasi")
+    if sonrasi is not None and sonrasi < ISKELET_KOPMA_ESIGI:
+        return False, (f"'kopardı' ama kopuştan sonra fark {sonrasi}'e kadar indi "
+                       f"(en az {ISKELET_KOPMA_ESIGI} kalmalıydı)")
+    return True, ""
+
+
+def _on_kosul_performans(b, m=None):
+    """Başlıktaki oyuncu (1) maçın en iyisi ve (2) KAZANAN takımdan olmalı.
+
+    (2) şartı ölçümde ortaya çıktı: 23 Aralık'ta maçın en iyisi Jamal
+    Murray'di ama Murray KAYBEDEN Denver'daydı; koşul yalnız "en iyisi
+    mi" diye sorunca başlık "Murray'in 31 sayısıyla Dallas, Denver'ı
+    yendi" oluyordu — kaybedenin oyuncusu kazananın kahramanı gibi."""
+    en_iyi = b.get("en_iyi_oyuncu")
+    if not en_iyi or not m:
+        return True, ""
+    if b.get("en_iyi_kazanan_takimda") is False:
+        return False, (f"maçın en iyisi ({en_iyi}) KAYBEDEN takımda — "
+                       f"performans iskeleti kurulamaz")
+    soyad = en_iyi.strip().split()[-1]
+    if soyad.lower() not in m.lower():
+        return False, (f"başlıktaki oyuncu maçın en iyisi değil "
+                       f"(en iyisi: {en_iyi})")
+    return True, ""
+
+
+def _on_kosul_deplasman(b, m=None):
+    if not b.get("kazanan_deplasmanda"):
+        return False, "'deplasmanında' ama kazanan ev sahibi"
+    return True, ""
+
+
+ISKELET_ON_KOSULU = {
+    "son_saniye": _on_kosul_son_saniye,
+    "geri_donus": _on_kosul_geri_donus,
+    "kopardi": _on_kosul_kopardi,
+    "performans": _on_kosul_performans,
+    "deplasman": _on_kosul_deplasman,
+    "duz_skor": lambda b, m=None: (True, ""),   # nötr, her zaman geçerli
+}
+
+
+def t31_baslik_iskeleti(metin, baglam=None):
+    """Başlık iskelet listesinden birine uymuyorsa RET.
+
+    `baglam` verilmişse İDDİA da denetleniyor: iskeletin ön koşulu
+    sağlanmıyorsa başlık reddediliyor. Biçim doğru ama iddia yanlışsa
+    eskiden geçiyordu."""
     m = (metin or "").strip()
     if not m:
         return False, ["başlık boş"]
     for ad, desen in BASLIK_ISKELETLERI:
         if desen.match(m):
-            return True, None
+            if baglam is None:
+                return True, None
+            ok, sebep = ISKELET_ON_KOSULU[ad](baglam, m)
+            return (True, None) if ok else (False, [sebep])
     return False, [f"başlık iskelet listesinin dışında: '{m}'"]
 
 
@@ -1450,7 +1590,8 @@ def alan_dogrula(alan_adi, metin, gercekler, ham_mac, yasakli_liste, sablon=Fals
     # diğer alanlar (brief, gec_satiri, şablon gövdeler) bu kuralın
     # kapsamı dışında.
     if alan_adi == "baslik":
-        testler["T31"] = t31_baslik_iskeleti(metin)
+        testler["T31"] = t31_baslik_iskeleti(
+            metin, iskelet_baglami(gercekler, ham_mac) if gercekler else None)
     gecti = all(sonuc[0] for sonuc in testler.values())
     return gecti, testler
 

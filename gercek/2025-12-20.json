@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-20",
-  "uretildi": "2026-08-30T13:59:29.151730Z",
+  "uretildi": "2026-08-31T19:10:29.409696Z",
   "maclar": {
     "0022500386": [
       {
@@ -1478,7 +1478,8 @@
             "periyot": 4,
             "saniye_kalan": 286.0,
             "fark": -21,
-            "taraf": "HOU"
+            "taraf": "HOU",
+            "sonrasi_en_yakin": 10
           }
         },
         "kaynak": "PlayByPlayV3:0022500386:turetilmis",

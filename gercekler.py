@@ -1252,6 +1252,11 @@ def fark_serisi_gercegi_uret(g, gid, actions, ev_kod, dep_kod, kazanan):
                     "saniye_kalan": saniye,
                     "fark": ev - dep,
                     "taraf": ev_kod if ev > dep else dep_kod,
+                    # BAŞLIK ÖN KOŞULU: "kopardı" iddiası ancak o andan
+                    # sonra fark bir daha 12'nin altına inmediyse
+                    # kurulabilir. Eşik burada DEĞİL, dogrula.py'deki
+                    # ön koşul tablosunda; burada ham ölçü duruyor.
+                    "sonrasi_en_yakin": en_yakin_sonrasi,
                 }
             break
 

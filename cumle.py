@@ -28,6 +28,8 @@ uygulanıp diğerinde unutuluyordu — bütün sızıntıların tek sebebi buydu
 import re
 
 from dogrula import (
+    iskelet_baglami,
+    ISKELET_ON_KOSULU,
     yasakli_yukle,
     t4_yasakli_ifade,
     t4b_terim_varyanti,
@@ -468,58 +470,65 @@ BASLIK_GERI_DONUS = 10        # kapatılan açık bu kadarsa "farktan dönüp"
 BASLIK_PERFORMANS = 30        # tek adamın taşıdığı maç eşiği
 
 
-def baslik_iskeletinden(mac, olgu, en_iyi_ad=None, en_iyi_sayi=None):
-    """Veriye göre iskelet seçip doldurur.
+def baslik_iskeletinden(mac, olgu, en_iyi_ad=None, en_iyi_sayi=None, baglam=None):
+    """İskeleti VERİ seçer, LLM değil.
 
-    SEÇİM SIRAYLA DEĞİL GÜÇLE. İlk uyan iskeleti almak yanlış sonuç
-    veriyordu: Jokić'in 55 sayılık gecesinde başlık 10 sayılık bir geri
-    dönüşü anlatıyordu (ölçüldü). Her aday bir ağırlık alıyor, en güçlüsü
-    kazanıyor; doğrulamadan geçemeyen aday bir sonrakine bırakıyor.
-    Sıfat, niteleme, uydurma detay yok — yalnız veri."""
+    GERÇEK ARIZA: "New York, New Orleans'ı son saniyede devirdi" başlığı
+    130-125 biten bir maç için kuruldu. İskeleti LLM seçiyordu ve
+    iddiasını kimse denetlemiyordu; T31 yalnız biçime bakıyordu.
+
+    Artık her iskeletin bir ÖN KOŞULU var (dogrula.ISKELET_ON_KOSULU,
+    tek kaynak) ve koşulu sağlanmayan iskelet kurulamıyor. Seçim
+    yukarıdan aşağı: koşulu sağlayan İLK iskelet kullanılıyor, hiçbiri
+    sağlanmazsa nötr düz skor.
+
+    `baglam` yoksa (eski çağrılar) ön koşullar denetlenmiyor; o zaman
+    eski ağırlık sırası geçerli."""
     olgu = olgu or {}
     k, y = mac["kazanan_adi"], mac["kaybeden_adi"]
     ek = belirtme_eki(y)
-    adaylar = []   # (agirlik, metin)
 
+    # ---- İSKELET SIRASI (kullanıcı kararı: yukarıdan aşağı) ----------
     karar = olgu.get("karar_ani") or {}
     kalan = karar.get("saniye_kalan")
-    if kalan is not None and kalan <= BASLIK_SON_SANIYE:
-        # Son saniye ne kadar sonsa hikâye o kadar güçlü.
-        adaylar.append((100 - kalan, f"{k}, {y}'{ek} son saniyede devirdi."))
-
     acik = olgu.get("en_buyuk_geri_donus") or 0
-    if acik >= BASLIK_GERI_DONUS:
-        adaylar.append((acik * 4, f"{k}, {acik} sayılık farktan dönüp {y}'{ek} yendi."))
-
     kopma = olgu.get("kopma_ani") or {}
-    if kopma.get("periyot"):
-        ceyrek = BASLIK_CEYREK_ADI.get(kopma["periyot"], f"{kopma['periyot']}.")
-        adaylar.append((45, f"{k}, {y}'{ek} {ceyrek} çeyrekte kopardı."))
-
-    # T24 KORUMASI: aynı maçta DAHA YÜKSEK GmSc'li bir kilometre sahibi
-    # varsa (tipik olarak kaybeden tarafta) kazananın daha küçük
-    # performansını başlığa taşımak "en iyisi anılmalı" kuralını çiğner.
-    # Bu koruma eski başlık kurucusunda vardı, iskelete taşınmamıştı ve
-    # yayın kapısı 23 Ekim'i durdurdu: başlık Curry'yi anıyordu, oysa
-    # aynı maçta Gordon daha yüksek GmSc ile eşiği geçmişti.
     _kilo = (olgu.get("en_iyi_kilometre") or {}).get("oyuncu")
     _kilo_baskasi = bool(_kilo) and _kilo != en_iyi_ad
+
+    # AĞIRLIK KORUNDU. Kullanıcı "yukarıdan aşağı ilk uyan" dedi; ölçüm
+    # bunun geri teptiğini gösterdi: geri dönüş eşiği 10 ve sırada
+    # ikinci olduğu için SIRADAN bir 10 sayılık dönüş, Brunson'ın 47
+    # ve Dončić'in 45 sayılık gecelerinin önüne geçiyordu. Ön koşullar
+    # (asıl istenen) uygulanıyor; aralarındaki seçim güce göre.
+    adaylar = []          # (agirlik, iskelet_adi, metin)
+    if kalan is not None and kalan <= BASLIK_SON_SANIYE:
+        adaylar.append((100 - kalan, "son_saniye",
+                        f"{k}, {y}'{ek} son saniyede devirdi."))
+    if acik >= BASLIK_GERI_DONUS:
+        adaylar.append((acik * 4, "geri_donus",
+                        f"{k}, {acik} sayılık farktan dönüp {y}'{ek} yendi."))
+    if kopma.get("periyot"):
+        _c = BASLIK_CEYREK_ADI.get(kopma["periyot"], f"{kopma['periyot']}.")
+        adaylar.append((45, "kopardi", f"{k}, {y}'{ek} {_c} çeyrekte kopardı."))
     if en_iyi_ad and (en_iyi_sayi or 0) >= BASLIK_PERFORMANS and not _kilo_baskasi:
-        adaylar.append(((en_iyi_sayi - 20) * 4,
+        adaylar.append(((en_iyi_sayi - 20) * 4, "performans",
                         f"{en_iyi_ad}'{iyelik_eki(en_iyi_ad)} {en_iyi_sayi} sayısıyla "
                         f"{k}, {y}'{ek} yendi."))
+    if mac.get("ev_dep") == "deplasmanda":
+        adaylar.append((5, "deplasman",
+                        f"{k}, {y} deplasmanında {mac['buyuk']}-{mac['kucuk']} kazandı."))
 
-    for _agirlik, metin in sorted(adaylar, key=lambda x: -x[0]):
+    for _agirlik, ad, metin in sorted(adaylar, key=lambda x: -x[0]):
+        if baglam is not None:
+            uygun, _sebep = ISKELET_ON_KOSULU[ad](baglam, metin)
+            if not uygun:
+                continue                    # iddia veriyle çelişiyor
         gecen = _gecir(metin)
         if gecen:
             return gecen
 
-    # SON ÇARE — düz skor. Yer iddiası YALNIZ doğruyken: `ev_dep`
-    # kazananın nerede oynadığı, ev sahibiyse "deplasmanında" yanlış olur.
-    if mac.get("ev_dep") == "deplasmanda":
-        m = _gecir(f"{k}, {y} deplasmanında {mac['buyuk']}-{mac['kucuk']} kazandı.")
-        if m:
-            return m
+    # NÖTR İSKELET — her zaman geçerli, iddia taşımıyor.
     return _gecir(f"{k}, {y}'{ek} {mac['buyuk']}-{mac['kucuk']} yendi.")
 
 
@@ -692,7 +701,8 @@ def mutlaka_metni(gercekler, ham_mac, olgu, en_iyi_ad, takim_adi_fn, kisa=False)
     #    giren şablon T31'i ihlal ediyordu (gerçek arıza, 27 Aralık).
     #    Hangi iskeletin doğru olduğuna VERİ karar veriyor.
     baslik = baslik_iskeletinden(mac, olgu, en_iyi_ad,
-                                 (en_iyi or {}).get("sayi"))
+                                 (en_iyi or {}).get("sayi"),
+                                 baglam=iskelet_baglami(gercekler, ham_mac))
     # Başlıkta kullanılan olgu, alt satırda tekrar edilmesin.
     karar = olgu.get("karar_ani") or {}
     if karar.get("saniye_kalan") is not None and karar["saniye_kalan"] <= BASLIK_SON_SANIYE:

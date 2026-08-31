@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-28",
-  "uretildi": "2026-08-30T22:47:50.558892Z",
+  "uretildi": "2026-08-31T19:10:30.512952Z",
   "maclar": {
     "0022500441": [
       {
@@ -4184,7 +4184,8 @@
             "periyot": 4,
             "saniye_kalan": 657.0,
             "fark": 20,
-            "taraf": "OKC"
+            "taraf": "OKC",
+            "sonrasi_en_yakin": 17
           }
         },
         "kaynak": "PlayByPlayV3:0022500442:turetilmis",
@@ -13073,7 +13074,8 @@
             "periyot": 3,
             "saniye_kalan": 628.0,
             "fark": 20,
-            "taraf": "LAL"
+            "taraf": "LAL",
+            "sonrasi_en_yakin": 17
           }
         },
         "kaynak": "PlayByPlayV3:0022500446:turetilmis",
