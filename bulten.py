@@ -112,7 +112,7 @@ def mail_govdesi(veri, cikis_bag):
 
   {'<h2 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#E2701C;margin:0 0 6px">30 saniyede gece</h2><table style="width:100%;border-collapse:collapse;margin:0 0 24px">' + brief + '</table>' if brief else ''}
   {'<h2 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#E2701C;margin:0 0 10px">Mutlaka bil</h2>' + mutlaka if mutlaka else ''}
-  {'<h2 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#E2701C;margin:22px 0 10px">🇹🇷 Türkler</h2>' + turk if turk else ''}
+  {'<h2 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#E2701C;margin:22px 0 10px">Türkler</h2>' + turk if turk else ''}
 
   <p style="margin:26px 0 30px"><a href="{SITE}/" style="display:inline-block;background:#E2701C;color:#fff;text-decoration:none;padding:13px 24px;font-weight:600;font-size:15px">Kutu skorlar ve gecenin tamamı →</a></p>
 

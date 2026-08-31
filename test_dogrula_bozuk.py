@@ -1031,10 +1031,12 @@ def main():
     _sira = [x for x in _re.findall(r'<section class="sec ([a-zA-Z0-9]+)"', _html)]
     basar("html: bölüm sırası 30 saniyede → Türkler → Mutlaka bil → Göz at → Bunları geç → Gecenin beşi",
           _sira[:6] == ["s1", "sTr", "s3", "s4b", "s7", "s6"])
-    # Başlık altındaki tanıtım cümlesi KALKTI: açılış artık künye ve
-    # yerinde gecenin sayıları duruyor (bkz. "AÇILIŞ (HERO)" bölümü).
-    basar("html: başlık altında tanıtım cümlesi yok, veri var",
-          "Molasız, reklamsız özet." not in _html
+    # KARAR TERSİNE DÖNDÜ (31 Ağustos 2026): künyeye tek satırlık bir
+    # alt satır geri geldi — ama eski "dev slogan" değil; mono, 10.5px,
+    # soluk ve giriş cümlesinin DEVAMI olarak solda. Sağdaki sayılar
+    # yerinde duruyor. Eski uzun tanıtım cümlesi hâlâ yasak.
+    basar("html: künye alt satırı var, eski tanıtım cümlesi yok",
+          '<p class="slogan">Molasız, reklamsız özet.</p>' in _html
           and "Sıraya senin yerine biz karar verdik" not in _html
           and '<div class="nums" id="nums"></div>' in _html)
 
@@ -3172,10 +3174,10 @@ def main():
     basar("Açılış: dev slogan kalıbı kalktı",
           "clamp(38px,11vw,52px)" not in _sayfa8
           and "font-size:24px" in _sayfa8.split("\nh1{")[1].split("}")[0])
-    basar("Açılış: eski damga ve tanıtım cümlesi kalmadı",
-          "Molasız, reklamsız özet" not in _sayfa8
-          and 'id="stamp"' not in _sayfa8
-          and "NBA · sen uyurken</em>" not in _sayfa8)
+    basar("Açılış: eski damga kalmadı, alt satır dev slogan değil",
+          'id="stamp"' not in _sayfa8
+          and "NBA · sen uyurken</em>" not in _sayfa8
+          and "10.5px" in _sayfa8.split(".slogan{")[1].split("}")[0])
     # Sayılar sarmalanmamalı; sıkışırsa cümle kısalır, sayı bozulmaz.
     basar("Açılış: sayılar tek satırda ve daralmıyor",
           "flex:none" in _sayfa8.split(".nums{")[1].split("}")[0]
@@ -6220,6 +6222,43 @@ def main():
                 _eksik_d.append(_tb)
     basar("Geç: her blokta ray kanal değeri var", not _eksik_d,
           f"eksik: {sorted(set(_eksik_d))}")
+
+    # ------------------------------------------------------------------
+    # TİPOGRAFİK KİMLİK — EMOJİ YOK
+    # ------------------------------------------------------------------
+    # İkonlar bilinçli reddedildi; sitede emoji bulunmuyor.
+    _EMOJI_ARALIK = [(0x1F300, 0x1FAFF), (0x1F000, 0x1F2FF),
+                     (0x1F1E6, 0x1F1FF), (0x2600, 0x27BF)]
+    def _emoji_mi(_c):
+        _o = ord(_c)
+        return any(_a <= _o <= _b for _a, _b in _EMOJI_ARALIK)
+    _emoji_bulunan = {}
+    for _dosya in ("overnight_v17.html", "bulten.py"):
+        _icerik = open(_dosya, encoding="utf-8").read()
+        for _c in _icerik:
+            if _emoji_mi(_c):
+                _emoji_bulunan.setdefault(_dosya, set()).add(_c)
+    # ⚠ ✓ ✕ tipografik işaret olarak KALIYOR (uyarı rozeti, abone onayı,
+    # kapatma düğmesi) — emoji değil, dingbat. Bayrak gibi ülke/nesne
+    # emojisi yasak.
+    _IZINLI = {"\u26a0", "\u2713", "\u2715"}
+    _yasak = {d: sorted(k - _IZINLI) for d, k in _emoji_bulunan.items() if k - _IZINLI}
+    basar("Kimlik: sitede emoji yok (Türk bayrağı dahil)",
+          not _yasak, str(_yasak))
+    basar("Kimlik: Türkler başlığı sade",
+          ">Türkler</h2>" in _sayfa
+          and ">Türkler</h2>" in open("bulten.py", encoding="utf-8").read())
+
+    # KÜNYE ALT SATIRI — giriş cümlesinin devamı, sayıların altı değil.
+    basar("Künye: alt satır var ve sol sütunda",
+          '<p class="slogan">Molasız, reklamsız özet.</p>' in _sayfa
+          and '<div class="herol">' in _sayfa
+          and _sayfa.index('class="slogan"') < _sayfa.index('class="nums"'))
+    _sl = _sayfa.split(".slogan{")[1].split("}")[0]
+    basar("Künye: alt satır mono, küçük, soluk",
+          "var(--mono)" in _sl and "10.5px" in _sl and "var(--faint)" in _sl)
+    basar("Künye: bölüm başlıklarında slogan yok",
+          "Molasız" not in _sayfa.split('class="sechead"')[1])
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",

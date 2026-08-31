@@ -128,8 +128,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-a
 
 .hero{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;
   padding:15px 0 0}
-h1{flex:1;min-width:0;font-family:var(--disp);font-weight:800;font-size:24px;
+.herol{flex:1;min-width:0}
+h1{font-family:var(--disp);font-weight:800;font-size:24px;
   line-height:1.18;letter-spacing:-.03em;margin:0}
+/* Künyenin alt satırı — giriş cümlesinin DEVAMI, sayıların altı değil.
+   Mono, küçük, soluk: iddia değil künye. Bölüm başlıklarına slogan
+   konmuyor; oradaki alan bölümü tarif ediyor ("TSİ · 11 maç"). */
+.slogan{font-family:var(--mono);font-size:10.5px;color:var(--faint);
+  letter-spacing:.02em;margin:7px 0 0}
 h1 s{text-decoration:none;color:var(--faint);display:block}
 /* Sayılar sarmalanmıyor (white-space:nowrap) ve daralmıyor (flex:none);
    yer sıkışırsa giriş cümlesi kısalır, sayı bozulmaz. */
@@ -1365,7 +1371,10 @@ td.khot{color:var(--amber);font-weight:700}
 <div class="rule2"></div>
 
 <div class="hero">
-  <h1 id="h1">Günaydın.<s>NBA uyumadı.</s></h1>
+  <div class="herol">
+    <h1 id="h1">Günaydın.<s>NBA uyumadı.</s></h1>
+    <p class="slogan">Molasız, reklamsız özet.</p>
+  </div>
   <div class="nums" id="nums"></div>
 </div>
 <p class="hata" id="lede" hidden></p>
@@ -1383,7 +1392,7 @@ td.khot{color:var(--amber);font-weight:700}
 </section>
 
 <section class="sec sTr" id="secTurkler">
-  <div class="sechead"><h2>🇹🇷 Türkler</h2><div class="cue" id="turkcue"></div></div>
+  <div class="sechead"><h2>Türkler</h2><div class="cue" id="turkcue"></div></div>
   <div class="rule"></div>
   <div id="turkBox"></div>
 </section>
