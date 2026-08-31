@@ -828,6 +828,15 @@ def _sure_metni(dakika):
 # açıklayıcı. Farklı işler, ikisi bir arada durabilir.
 #
 # (alan, okunur ad, eşik, çok_olan_kazanır)
+# KİLİT İSTATİSTİK → TAKIM SEKMESİNDEKİ SATIR. Okuyucu sayfadaki kilit
+# istatistik kutusuyla tablodaki satırı eşleştirebilsin diye o satır
+# vurgulanıyor. Eşleşmesi olmayan iki kalem (ikinci şans, boyalı alan)
+# tabloda zaten YOK — onlarda vurgu da olmuyor, uydurma satır açmıyoruz.
+KILIT_TABLO_ALANI = {
+    "reb": "reb", "oreb": "oreb", "3pm": "3p",
+    "ast": "ast", "to": "to", "fta": "ft",
+}
+
 KILIT_ESIKLERI = [
     ("reb",   "ribaund",              15, True),
     ("oreb",  "hücum ribaundu",        8, True),
@@ -2203,6 +2212,7 @@ def _kilit_istatistik(ham_mac, ev_taraf, dep_taraf):
             ev_kazandi = (a > b) if cok_kazanir else (a < b)
             en_iyi = {
                 "ad": ad, "fark": fark, "_oran": oran,
+                "alan": KILIT_TABLO_ALANI.get(alan),
                 "kutular": [
                     {"kod": ev_taraf["kod"], "deger": a, "kazandi": ev_kazandi},
                     {"kod": dep_taraf["kod"], "deger": b, "kazandi": not ev_kazandi},
@@ -2418,11 +2428,19 @@ def _oyuncu_gecmisi(ham):
     gecmis = {}
     for satir in rs["rowSet"]:
         pid = satir[h["PLAYER_ID"]]
+        rakip = _rakip_kisalt(satir[h["MATCHUP"]])
+        # SEZON ÖNCESİ MAÇLAR FORMA GİRMEZ. Günlük ekim başından
+        # itibaren hazırlık maçlarını da taşıyor; rakip NBA takımı
+        # değilse ("GUA" gibi yabancı kulüpler) o maç form penceresine
+        # alınmıyor. Sezon ortasında zaten görünmüyordu, sezon başı
+        # tabanı devreye girince ortaya çıktı.
+        if rakip not in TAKIM_ADI:
+            continue
         gecmis.setdefault(pid, []).append({
             "tarih": str(satir[h["GAME_DATE"]])[:10],
             "sayi": satir[h["PTS"]] or 0,
             "dakika": _dakikayi_coz(satir[h["MIN"]]),
-            "rakip": _rakip_kisalt(satir[h["MATCHUP"]]),
+            "rakip": rakip,
         })
     for pid in gecmis:
         gecmis[pid].sort(key=lambda x: x["tarih"])
@@ -2477,6 +2495,20 @@ def _gunluk_kunye(ham, pid):
     return tablo.get(pid, {"isim": "", "takim": ""})
 
 
+_GECEN_SEZON_ONBELLEK = {}
+
+
+def _gecen_sezon_oku():
+    """Geçen sezon tabanı — bir kez okunup önbellekte tutuluyor."""
+    if "veri" not in _GECEN_SEZON_ONBELLEK:
+        import cek
+        try:
+            _GECEN_SEZON_ONBELLEK["veri"] = cek.gecen_sezon_oku()
+        except Exception:
+            _GECEN_SEZON_ONBELLEK["veri"] = {}
+    return _GECEN_SEZON_ONBELLEK["veri"]
+
+
 def _formda_listeler(ham, bt_by_gid, gecenin_oyunculari):
     """(yukselen, dusen) — her biri en fazla FORM_LISTE_UZUNLUGU satır.
 
@@ -2496,11 +2528,26 @@ def _formda_listeler(ham, bt_by_gid, gecenin_oyunculari):
     tum_tarihler = [x["tarih"] for lst in gecmis.values() for x in lst]
     referans = _gun(max(tum_tarihler)) if tum_tarihler else None
     adaylar = []
+    # SEZON BAŞI TABANI (kullanıcı kararı): bu sezon 10'dan az maçı olan
+    # oyuncu için karşılaştırma tabanı GEÇEN SEZON ortalamasıdır. 3
+    # maçlık bir örneklemle "sezon ortalamasının %40 üstünde" demek
+    # ölçüm değil gürültü. Eşik susma kuralıyla AYNI kaynaktan geliyor
+    # (gercekler.SEZON_ACILISI_TAZE_MAC_SAYISI). Geçen sezon verisi de
+    # yoksa (çaylak) oyuncu listeye HİÇ girmiyor.
+    gecen = (_gecen_sezon_oku() or {}).get("oyuncular") or {}
     for pid, onceki in gecmis.items():
         if not onceki:
             continue                      # sezon ortalaması yoksa kıyas yok
         o = bu_gece_by_id.get(pid)
-        sezon_ort = sum(x["sayi"] for x in onceki) / len(onceki)
+        taban = "bu_sezon"
+        if len(onceki) < _gerc.SEZON_ACILISI_TAZE_MAC_SAYISI:
+            g = gecen.get(str(pid))
+            if not g or not g.get("sayi_ort"):
+                continue                  # çaylak — taban yok, listeye girmez
+            sezon_ort = g["sayi_ort"]
+            taban = "gecen_sezon"
+        else:
+            sezon_ort = sum(x["sayi"] for x in onceki) / len(onceki)
         if o:
             # Son 5 = bu gece + logdan son 4.
             son5 = onceki[-(FORM_MAC_SAYISI - 1):] + [{
@@ -2554,6 +2601,9 @@ def _formda_listeler(ham, bt_by_gid, gecenin_oyunculari):
                       "ust": x["sayi"] > sezon_gosterilen} for x in son5],
             "son5_ort": round(son5_ort, 1),
             "sezon_ort": round(sezon_ort, 1),
+            # Kıyas tabanı hangi sezondan: kart "sezon 21.1" yazarken
+            # aslında geçen sezonu gösteriyorsa okuyucu bilmeli.
+            "taban": taban,
             "fark": round(son5_ort - sezon_ort, 1),
             "yuzde": round(yuzde, 1),
             "ust_sayisi": ust_sayisi,
@@ -2628,6 +2678,15 @@ def _son_form(oyun_gunlugu, kod, adet=SIRALAMA_FORM_MAC):
     maclar = sorted((r for r in rs["rowSet"] if r[i["TEAM_ABBREVIATION"]] == kod),
                     key=lambda r: str(r[i["GAME_DATE"]])[:10])
     cikti = []
+    # SEZON BAŞI: bu sezon `adet` maç dolmadıysa kutucuklar geçen
+    # sezonun son maçlarıyla tamamlanıyor (kullanıcı kararı, aynı 10
+    # maç eşiği). Bu kutucuklar `gecen_sezon: True` taşıyor ki arayüz
+    # onları bu sezonun maçlarıyla karıştırmasın.
+    if len(maclar) < adet:
+        _g = ((_gecen_sezon_oku() or {}).get("takimlar") or {}).get(kod) or {}
+        for _s in (_g.get("son10") or [])[-(adet - len(maclar)):]:
+            cikti.append({"g": _s == "W", "rakip": "", "skor": "",
+                          "gecen_sezon": True})
     for r in maclar[-adet:]:
         # "OKC vs. HOU" / "GSW @ LAL" → rakip kodu
         parcalar = str(r[i["MATCHUP"]]).replace(" vs. ", " @ ").split(" @ ")
@@ -2785,7 +2844,19 @@ def _ayrica_satiri(gercek_gece, ham, brief):
             })
     # En NADİR olanlar önce; eşitlikte GmSc.
     adaylar.sort(key=lambda a: (a["_nadirlik"], -(a["_gmsc"] or 0)))
-    secilen = adaylar[:AYRICA_EN_FAZLA]
+    # OYUNCU BAŞINA TEK SATIR: bir oyuncunun birkaç kilometre taşı üç
+    # yerin hepsini birden yiyordu ve BAŞKA oyuncuların taşı kayboluyordu
+    # (ölçüldü, 28 Aralık: Scottie Barnes üç satırı da aldı, Alex Sarr
+    # düştü). Sıralama nadirlik olduğu için oyuncunun EN NADİR taşı
+    # kalıyor.
+    _gorulen = set()
+    tekil = []
+    for a in adaylar:
+        if a["isim"] in _gorulen:
+            continue
+        _gorulen.add(a["isim"])
+        tekil.append(a)
+    secilen = tekil[:AYRICA_EN_FAZLA]
     for a in secilen:
         a.pop("_nadirlik", None)
         a.pop("_gmsc", None)

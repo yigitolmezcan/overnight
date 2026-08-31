@@ -43,6 +43,7 @@ KENDİSİ. Bu, hesapla.py'nin doğru çalışması için kritik.
 """
 
 import argparse
+import gzip
 import json
 import sys
 import time
@@ -141,6 +142,78 @@ def sezon_kodu(tarih: datetime) -> str:
     else:
         baslangic_yili = tarih.year - 1
     return f"{baslangic_yili}-{str(baslangic_yili + 1)[2:]}"
+
+
+def onceki_sezon_kodu(sezon: str) -> str:
+    """'2025-26' -> '2024-25'."""
+    bas = int(sezon.split("-")[0]) - 1
+    return f"{bas}-{str(bas + 1)[2:]}"
+
+
+GECEN_SEZON_DOSYA = HAM_DIZIN / "gecen_sezon.json.gz"
+
+
+def gecen_sezon_oku():
+    """Geçen sezonun oyuncu ortalamaları ve takım son maçları.
+
+    SEZON BAŞI TABANI için (kullanıcı kararı): bir oyuncunun/takımın bu
+    sezon 10'dan az maçı varsa karşılaştırma tabanı geçen sezon olur.
+    Veri DEPODA duruyor — GitHub koşucusu NBA'e ulaşamıyor (IP engeli),
+    o yüzden bir kez elle çekilip commit'leniyor (`cek.py --gecen-sezon`).
+    Dosya yoksa boş sözlük döner: taban bulunamayan oyuncu listeye
+    girmez, uydurma yapılmaz."""
+    if not GECEN_SEZON_DOSYA.exists():
+        return {}
+    with gzip.open(GECEN_SEZON_DOSYA, "rt", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def gecen_sezon_cek(sezon: str):
+    """Geçen sezonu çeker ve gzipli olarak depoya yazar. ELLE çalıştırılır."""
+    from nba_api.stats.endpoints import leaguedashplayerstats, teamgamelogs
+    onceki = onceki_sezon_kodu(sezon)
+    print(f"Geçen sezon çekiliyor: {onceki}")
+
+    ps = leaguedashplayerstats.LeagueDashPlayerStats(
+        season=onceki, timeout=60).get_dict()["resultSets"][0]
+    h = {ad: i for i, ad in enumerate(ps["headers"])}
+    oyuncular = {}
+    for r in ps["rowSet"]:
+        gp = r[h["GP"]] or 0
+        if gp <= 0:
+            continue
+        oyuncular[str(r[h["PLAYER_ID"]])] = {
+            "ad": r[h["PLAYER_NAME"]], "gp": gp,
+            "sayi_ort": round((r[h["PTS"]] or 0) / gp, 2),
+            "dakika_ort": round((r[h["MIN"]] or 0) / gp, 2) if "MIN" in h else None,
+        }
+
+    tg = teamgamelogs.TeamGameLogs(season_nullable=onceki,
+                                   timeout=60).get_dict()["resultSets"][0]
+    th = {ad: i for i, ad in enumerate(tg["headers"])}
+    takim_maclari = {}
+    for r in tg["rowSet"]:
+        kod = r[th["TEAM_ABBREVIATION"]]
+        takim_maclari.setdefault(kod, []).append({
+            "tarih": str(r[th["GAME_DATE"]])[:10],
+            "sonuc": r[th["WL"]],
+        })
+    takimlar = {}
+    for kod, lst in takim_maclari.items():
+        lst.sort(key=lambda x: x["tarih"])
+        takimlar[kod] = {
+            "gp": len(lst),
+            "galibiyet": sum(1 for x in lst if x["sonuc"] == "W"),
+            "son10": [x["sonuc"] for x in lst[-10:]],
+        }
+
+    cikti = {"sezon": onceki, "cekildi": datetime.utcnow().isoformat() + "Z",
+             "oyuncular": oyuncular, "takimlar": takimlar}
+    HAM_DIZIN.mkdir(exist_ok=True)
+    with gzip.open(GECEN_SEZON_DOSYA, "wt", encoding="utf-8") as f:
+        json.dump(cikti, f, ensure_ascii=False)
+    print(f"Yazıldı: {GECEN_SEZON_DOSYA} · {len(oyuncular)} oyuncu, {len(takimlar)} takım")
+    return cikti
 
 
 def gece_mac_idlerini_al(tarih_str: str) -> list[str]:

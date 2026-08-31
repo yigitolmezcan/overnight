@@ -162,7 +162,7 @@
           "durum": "DEN +3",
           "durum_takim": "DEN",
           "fark": 3,
-          "one_cikan": "4 kez liderlik değişti",
+          "one_cikan": "Jokić triple-double",
           "kritik": false
         },
         {
@@ -173,7 +173,7 @@
           "durum": "berabere",
           "durum_takim": null,
           "fark": 0,
-          "one_cikan": "Jokić 12 sayı",
+          "one_cikan": "3 kez liderlik değişti",
           "kritik": false
         },
         {
@@ -758,7 +758,7 @@
           "durum": "DAL +6",
           "durum_takim": "DAL",
           "fark": 6,
-          "one_cikan": "7 kez liderlik değişti",
+          "one_cikan": "Flagg 42 sayı",
           "kritik": false
         },
         {
@@ -769,7 +769,7 @@
           "durum": "DAL +4",
           "durum_takim": "DAL",
           "fark": 4,
-          "one_cikan": "George 12 sayı",
+          "one_cikan": "4 kez liderlik değişti",
           "kritik": false
         },
         {
@@ -2125,7 +2125,7 @@
           "durum": "DET +4",
           "durum_takim": "DET",
           "fark": 4,
-          "one_cikan": "3 kez liderlik değişti",
+          "one_cikan": "Cunningham double-double",
           "kritik": true
         },
         {
@@ -7311,9 +7311,9 @@
         "pm": "-11"
       },
       "sezon": {
-        "sezon_ort": 23.8,
+        "sezon_ort": 24.2,
         "son5_ort": 22.0,
-        "yuzde": -7.6,
+        "yuzde": -9.1,
         "son5": [
           {
             "sayi": 21,
@@ -7322,7 +7322,7 @@
           },
           {
             "sayi": 24,
-            "ust": true,
+            "ust": false,
             "bu_gece": false
           },
           {
@@ -7332,7 +7332,7 @@
           },
           {
             "sayi": 24,
-            "ust": true,
+            "ust": false,
             "bu_gece": false
           },
           {
@@ -7366,9 +7366,9 @@
         "pm": "-3"
       },
       "sezon": {
-        "sezon_ort": 12.1,
+        "sezon_ort": 12.0,
         "son5_ort": 12.4,
-        "yuzde": 2.5,
+        "yuzde": 3.3,
         "son5": [
           {
             "sayi": 15,
@@ -7476,9 +7476,9 @@
         "pm": "+3"
       },
       "sezon": {
-        "sezon_ort": 7.2,
+        "sezon_ort": 7.3,
         "son5_ort": 8.4,
-        "yuzde": 16.7,
+        "yuzde": 15.1,
         "son5": [
           {
             "sayi": 8,
@@ -7531,9 +7531,9 @@
         "pm": "-5"
       },
       "sezon": {
-        "sezon_ort": 24.3,
+        "sezon_ort": 25.0,
         "son5_ort": 22.8,
-        "yuzde": -6.2,
+        "yuzde": -8.8,
         "son5": [
           {
             "sayi": 27,
@@ -7641,9 +7641,9 @@
         "pm": "-23"
       },
       "sezon": {
-        "sezon_ort": 8.2,
+        "sezon_ort": 8.8,
         "son5_ort": 8.2,
-        "yuzde": 0.0,
+        "yuzde": -6.8,
         "son5": [
           {
             "sayi": 9,
@@ -7751,9 +7751,9 @@
         "pm": "-15"
       },
       "sezon": {
-        "sezon_ort": 8.0,
+        "sezon_ort": 7.6,
         "son5_ort": 8.8,
-        "yuzde": 10.0,
+        "yuzde": 15.8,
         "son5": [
           {
             "sayi": 22,
@@ -7861,9 +7861,9 @@
         "pm": "+5"
       },
       "sezon": {
-        "sezon_ort": 3.5,
+        "sezon_ort": 3.6,
         "son5_ort": 1.6,
-        "yuzde": -54.3,
+        "yuzde": -55.6,
         "son5": [
           {
             "sayi": 0,
@@ -8530,6 +8530,7 @@
       ],
       "son5_ort": 10.8,
       "sezon_ort": 5.1,
+      "taban": "bu_sezon",
       "fark": 5.7,
       "yuzde": 111.8,
       "ust_sayisi": 5,
@@ -8579,6 +8580,7 @@
       ],
       "son5_ort": 15.2,
       "sezon_ort": 7.2,
+      "taban": "bu_sezon",
       "fark": 8.0,
       "yuzde": 111.1,
       "ust_sayisi": 5,
@@ -8628,6 +8630,7 @@
       ],
       "son5_ort": 10.8,
       "sezon_ort": 5.2,
+      "taban": "bu_sezon",
       "fark": 5.6,
       "yuzde": 107.7,
       "ust_sayisi": 4,
@@ -8635,6 +8638,56 @@
       "son5_dakika": 24.4,
       "renk": "#3B7FD4",
       "asil_renk": "#3B7FD4",
+      "renk_degisti": false
+    },
+    {
+      "id": 1631245,
+      "isim": "Quenton Jackson",
+      "takim": "IND",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 8,
+          "rakip": "Dallas",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 15,
+          "rakip": "Atlanta",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 25,
+          "rakip": "Golden State",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 7,
+          "rakip": "Milwaukee",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 1,
+          "rakip": "Washington",
+          "bu_gece": false,
+          "ust": false
+        }
+      ],
+      "son5_ort": 11.2,
+      "sezon_ort": 5.8,
+      "taban": "gecen_sezon",
+      "fark": 5.4,
+      "yuzde": 93.1,
+      "ust_sayisi": 4,
+      "alt_sayisi": 1,
+      "son5_dakika": 19.7,
+      "renk": "#F2C230",
+      "asil_renk": "#F2C230",
       "renk_degisti": false
     },
     {
@@ -8677,6 +8730,7 @@
       ],
       "son5_ort": 10.2,
       "sezon_ort": 5.4,
+      "taban": "bu_sezon",
       "fark": 4.8,
       "yuzde": 88.9,
       "ust_sayisi": 5,
@@ -8684,55 +8738,6 @@
       "son5_dakika": 26.4,
       "renk": "#E03A3E",
       "asil_renk": "#E03A3E",
-      "renk_degisti": false
-    },
-    {
-      "id": 1642267,
-      "isim": "Bub Carrington",
-      "takim": "WAS",
-      "pos": "",
-      "_gmsc": 0,
-      "son5": [
-        {
-          "sayi": 10,
-          "rakip": "Philadelphia",
-          "bu_gece": false,
-          "ust": true
-        },
-        {
-          "sayi": 7,
-          "rakip": "Boston",
-          "bu_gece": false,
-          "ust": false
-        },
-        {
-          "sayi": 14,
-          "rakip": "Atlanta",
-          "bu_gece": false,
-          "ust": true
-        },
-        {
-          "sayi": 27,
-          "rakip": "Cleveland",
-          "bu_gece": false,
-          "ust": true
-        },
-        {
-          "sayi": 11,
-          "rakip": "Indiana",
-          "bu_gece": false,
-          "ust": true
-        }
-      ],
-      "son5_ort": 13.8,
-      "sezon_ort": 7.5,
-      "fark": 6.3,
-      "yuzde": 84.0,
-      "ust_sayisi": 4,
-      "alt_sayisi": 1,
-      "son5_dakika": 33.4,
-      "renk": "#3B7FD4",
-      "asil_renk": "#3B7FD4",
       "renk_degisti": false
     }
   ],
@@ -8777,6 +8782,7 @@
       ],
       "son5_ort": 9.2,
       "sezon_ort": 15.6,
+      "taban": "bu_sezon",
       "fark": -6.4,
       "yuzde": -41.0,
       "ust_sayisi": 0,
@@ -8826,6 +8832,7 @@
       ],
       "son5_ort": 8.8,
       "sezon_ort": 14.1,
+      "taban": "bu_sezon",
       "fark": -5.3,
       "yuzde": -37.6,
       "ust_sayisi": 0,
@@ -8875,6 +8882,7 @@
       ],
       "son5_ort": 6.6,
       "sezon_ort": 10.3,
+      "taban": "bu_sezon",
       "fark": -3.7,
       "yuzde": -35.9,
       "ust_sayisi": 1,
@@ -8924,6 +8932,7 @@
       ],
       "son5_ort": 8.2,
       "sezon_ort": 12.5,
+      "taban": "bu_sezon",
       "fark": -4.3,
       "yuzde": -34.4,
       "ust_sayisi": 1,
@@ -8973,6 +8982,7 @@
       ],
       "son5_ort": 12.4,
       "sezon_ort": 18.2,
+      "taban": "bu_sezon",
       "fark": -5.8,
       "yuzde": -31.9,
       "ust_sayisi": 0,
@@ -9984,6 +9994,7 @@
         "kilit": {
           "ad": "asist",
           "fark": 13,
+          "alan": "ast",
           "kutular": [
             {
               "kod": "MIA",
@@ -10029,6 +10040,13 @@
       "takim_adi": "Houston Rockets",
       "mac_kisa": "Denver 128–125 Houston",
       "mac_id": "g-mutlaka-0"
+    },
+    {
+      "isim": "Tarık Biberoviç",
+      "takim": "DAL",
+      "oynadi": false,
+      "takim_adi": "Dallas Mavericks",
+      "renk": "#2E7BC4"
     }
   ],
   "turkler_bekleyen": null,

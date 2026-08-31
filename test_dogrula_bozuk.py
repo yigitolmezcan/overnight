@@ -2487,9 +2487,13 @@ def main():
     # Mobilde kod, masaüstünde (577px) tam ad.
     basar("Sen uyurken: cümlesiz satır iki skor biçimi taşıyor",
           all(b.get("skor") and b.get("skor_tam") for b in _brief if not b["anlatili"]))
+    # `any` kullanılmıyordu: gecede hiç cümlesiz satır yoksa test veri
+    # yüzünden düşüyordu (28 Aralık'ta hepsi anlatılı). Kural "cümlesiz
+    # satır VARSA uzun ad taşısın" — yoksa iddia da yok.
+    _cumlesiz = [b for b in _brief if not b["anlatili"]]
     basar("Sen uyurken: tam ad biçimi gerçekten uzun ad kullanıyor",
-          any(len(b["skor_tam"]) > len(b["skor"]) + 8
-              for b in _brief if not b["anlatili"]))
+          all(len(b["skor_tam"]) > len(b["skor"]) + 8 for b in _cumlesiz),
+          f"cümlesiz satır: {len(_cumlesiz)}")
     basar("Sen uyurken: mobilde kod, masaüstünde tam ad",
           ".crow .sc b.genis{display:none}" in _sayfa3
           and "@media(min-width:768px){\n  .crow .sc b.dar{display:none}" in _sayfa3)
@@ -4246,7 +4250,7 @@ def main():
     basar("Kritik: blok kart gövdesinden çıktı",
           "${ceyrekSeridi(sira[0],sira[1])}\n    <div class=\"ktabs\">" in _s13)
     basar("Kritik: TAKIM sekmesinde kritik ÜSTTE, takım istatistiği altta",
-          _s13.index("${kritikBlogu(b.kritik)}") < _s13.index("${takimPanosu(sira[0],sira[1])}"))
+          _s13.index("${kritikBlogu(b.kritik)}") < _s13.index("${takimPanosu(sira[0],sira[1],b.kilit)}"))
     # Sekmede işaret: okuyucu orada bir şey olduğunu bilsin.
     basar("Kritik: blok varsa TAKIM sekmesinde işaret",
           "b.kritik?'<i class=\"kdot\"></i>':''" in _s13
@@ -4539,8 +4543,13 @@ def main():
     basar("Sürükleme: tutamak VE başlık alanı sürükleniyor",
           "querySelectorAll('.grab, .khead, .ohd')" in _s16)
     # Tablo alanında dikey kaydırma var; sürükleme onu ezmemeli.
-    basar("Sürükleme: tablo alanı hariç tutuluyor",
-          "!e.target.closest('.kbody')" in _s16)
+    # KURAL DEĞİŞTİ (kullanıcı kararı): gövde artık tamamen hariç değil.
+    # Sürükleme gövdeden de başlayabiliyor AMA yalnız liste en üstteyken
+    # ve parmak aşağı giderken; tablo alanında dikey kaydırma varsa
+    # sürükleme kartı kapatmıyor.
+    basar("Sürükleme: tablo alanında kaydırma varsa kart kapanmıyor",
+          "if(govde.scrollTop>0) return;" in _s16
+          and "kilitli=true" in _s16)
     basar("Sürükleme: eşiğe ulaşmazsa geri oturuyor",
           "kat.style.transform='translateX(-50%) translateY(0)'" in _s16)
     basar("Sürükleme: kart üstüne kartta katmana bağlı",
@@ -5478,7 +5487,8 @@ def main():
           "border:1px solid" not in _goz)
     basar("Ayraç: Göz at bloğunda da ray var",
           ".gozkart::before{" in _s21
-          and 'class="gozkart" id="${m.id}" style="--ray:' in _s21)
+          and 'class="gozkart" id="${m.id}" data-kart=' in _s21
+          and '--ray:' in _s21.split('class="gozkart"')[1][:400])
     # "Bunları geç" tek satır — orada zemin YOK.
     basar("Ayraç: Bunları geç katmanında zemin uygulanmıyor",
           ".archrow{" in _s21
@@ -5936,6 +5946,85 @@ def main():
            != _jj.loads(open("dist/latest.json", encoding="utf-8").read())["tarih"]))
     basar("Arşiv: her yayınlanmış gecenin sayfası var",
           all(_os.path.exists(f"site/{_t9}.html") for _t9 in _yy))
+
+    # ------------------------------------------------------------------
+    # KİLİT İSTATİSTİK VURGUSU · SEZON BAŞI TABANI · BLOK TIKLAMA
+    # ------------------------------------------------------------------
+    basar("Kilit: tablo alanı eşleşmesi tek kaynakta",
+          hasattr(_derle, "KILIT_TABLO_ALANI")
+          and _derle.KILIT_TABLO_ALANI["ast"] == "ast"
+          and _derle.KILIT_TABLO_ALANI["3pm"] == "3p"
+          and "pts2c" not in _derle.KILIT_TABLO_ALANI)   # tabloda karşılığı yok
+    basar("Kilit: takım panosu kilit satırını işaretliyor",
+          "function takimPanosu(ust,alt,kilit)" in _sayfa
+          and "kilitsatir" in _sayfa and ".cr.kilitsatir{" in _sayfa)
+    _kilitli = 0
+    for _ta in _geceler:
+        if not _os.path.exists(f"dist/{_ta}.json"):
+            continue
+        _xa = _jj.loads(open(f"dist/{_ta}.json", encoding="utf-8").read())
+        for _ba in ((_xa.get("mutlaka") or []) + (_xa.get("degerse_bak") or [])
+                    + (_xa.get("diger") or [])):
+            _ki = (_ba.get("box") or {}).get("kilit")
+            if _ki:
+                _kilitli += 1
+                basar(f"Kilit alanı geçerli ({_ta})",
+                      _ki.get("alan") is None
+                      or _ki["alan"] in {x[0] for x in
+                                         [('fg',), ('3p',), ('ft',), ('oreb',),
+                                          ('dreb',), ('reb',), ('ast',), ('to',),
+                                          ('stl',), ('blk',)]})
+    basar("Kilit: yayında kilit istatistiği olan blok var", _kilitli > 0)
+
+    # SEZON BAŞI TABANI — aynı 10 maç eşiği, tek kaynak.
+    basar("Taban: eşik susma kuralıyla aynı kaynaktan",
+          "_gerc.SEZON_ACILISI_TAZE_MAC_SAYISI" in _dsrc_kod)
+    basar("Taban: geçen sezon verisi depoda",
+          _os.path.exists("ham/gecen_sezon.json.gz"))
+    _gs = __import__("cek").gecen_sezon_oku()
+    basar("Taban: geçen sezon oyuncu ve takım taşıyor",
+          len(_gs.get("oyuncular") or {}) > 300
+          and len(_gs.get("takimlar") or {}) >= 30)
+    # Sezon başı gecesinde taban geçen sezona düşüyor, çaylak listeye girmiyor.
+    _d23 = _derle.derle("2025-10-23")
+    _sat = (_d23.get("yukselen") or []) + (_d23.get("dusen") or [])
+    basar("Taban: sezon başında liste boş kalmıyor", len(_sat) >= 4,
+          f"satır: {len(_sat)}")
+    basar("Taban: sezon başında hepsi geçen sezon tabanlı",
+          all(o.get("taban") == "gecen_sezon" for o in _sat),
+          str([o.get("taban") for o in _sat]))
+    basar("Taban: sezon ortasında bu sezona dönüyor",
+          any(o.get("taban") == "bu_sezon"
+              for o in ((_derle.derle("2025-12-28").get("yukselen") or [])
+                        + (_derle.derle("2025-12-28").get("dusen") or []))))
+    _f = _derle._son_form(__import__("cek").ham_oku("2025-10-23")["puan_durumu"], "BOS")
+    basar("Taban: sezon başında form kutucukları doluyor", len(_f) == 10)
+    basar("Taban: geçen sezondan gelen kutucuk işaretli",
+          any(x.get("gecen_sezon") for x in _f)
+          and ".f10 i.gs{" in _sayfa)
+
+    # BLOKTA HER YERE DOKUNMA
+    basar("Tıklama: Göz at bloğunun tamamı tıklanabilir",
+          'class="gozkart" id="${m.id}" data-kart="${m.id}"' in _sayfa)
+    basar("Tıklama: en içteki kart kazanıyor, iç öğeler korunuyor",
+          "e.target.closest('[data-kart]')!==b" in _sayfa
+          and "ICTEN_TIKLANABILIR" in _sayfa)
+    basar("Tıklama: imleç bloğun tıklanabilir olduğunu söylüyor",
+          ".gozkart{cursor:pointer}" in _sayfa and ".gcard{cursor:pointer}" in _sayfa)
+
+    # SÜRÜKLEYEREK KAPATMA
+    basar("Sürükleme: gövdeden de başlıyor ama yalnız en üstteyken",
+          "govde.scrollTop>0" in _sayfa and "govdedenMi" in _sayfa)
+    basar("Sürükleme: yön kilidi var (yatay/yukarı sürükleme kaydırmaya kalıyor)",
+          "Math.abs(x-x0)>Math.abs(ham)" in _sayfa)
+    basar("Sürükleme: konum rAF ile yazılıyor",
+          "requestAnimationFrame(ciz)" in _sayfa)
+    basar("Sürükleme: karartma orantılı açılıyor",
+          "perde.style.opacity=String(o)" in _sayfa)
+    basar("Sürükleme: kapanış animasyonlu, yedek zamanlayıcılı",
+          "transitionend" in _sayfa and "setTimeout(bitir,360)" in _sayfa)
+    basar("Sürükleme: başlık alanında tarayıcı kaydırması kapalı",
+          ".khead,.ohd{touch-action:none}" in _sayfa)
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",

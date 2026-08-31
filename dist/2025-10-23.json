@@ -62,9 +62,9 @@
       "takim": "Denver"
     },
     {
-      "isim": "Aaron Gordon",
-      "ifade": "10 üçlük attı",
-      "takim": "Denver"
+      "isim": "Stephen Curry",
+      "ifade": "42 sayı attı",
+      "takim": "Golden State"
     }
   ],
   "mutlaka": [
@@ -108,7 +108,7 @@
           "durum": "berabere",
           "durum_takim": null,
           "fark": 0,
-          "one_cikan": "Golden State 7-0 seri",
+          "one_cikan": "Curry 13 sayı",
           "kritik": false
         },
         {
@@ -3210,104 +3210,506 @@
   },
   "yukselen": [
     {
-      "id": 201939,
-      "isim": "Stephen Curry",
-      "takim": "GSW",
-      "pos": "G",
-      "_gmsc": 38.10000000000001,
+      "id": 1642263,
+      "isim": "Reed Sheppard",
+      "takim": "HOU",
+      "pos": "",
+      "_gmsc": 0,
       "son5": [
         {
+          "sayi": 7,
+          "rakip": "Atlanta",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
           "sayi": 11,
-          "rakip": "Portland",
-          "bu_gece": false,
-          "ust": false
-        },
-        {
-          "sayi": 28,
-          "rakip": "Portland",
+          "rakip": "Utah",
           "bu_gece": false,
           "ust": true
         },
         {
-          "sayi": 20,
-          "rakip": "LA Clippers",
+          "sayi": 13,
+          "rakip": "New Orleans",
           "bu_gece": false,
           "ust": true
         },
         {
-          "sayi": 23,
-          "rakip": "Los Angeles",
+          "sayi": 29,
+          "rakip": "Atlanta",
           "bu_gece": false,
           "ust": true
         },
         {
-          "sayi": 42,
-          "rakip": "Denver",
-          "bu_gece": true,
+          "sayi": 9,
+          "rakip": "Oklahoma City",
+          "bu_gece": false,
           "ust": true
         }
       ],
-      "son5_ort": 24.8,
-      "sezon_ort": 19.2,
-      "fark": 5.6,
-      "yuzde": 29.2,
-      "ust_sayisi": 4,
-      "alt_sayisi": 1,
-      "son5_dakika": 28.2,
-      "renk": "#2E6BD6",
-      "asil_renk": "#2E6BD6",
+      "son5_ort": 13.8,
+      "sezon_ort": 4.4,
+      "taban": "gecen_sezon",
+      "fark": 9.4,
+      "yuzde": 213.6,
+      "ust_sayisi": 5,
+      "alt_sayisi": 0,
+      "son5_dakika": 24.0,
+      "renk": "#CE1141",
+      "asil_renk": "#CE1141",
       "renk_degisti": false
+    },
+    {
+      "id": 1641707,
+      "isim": "Taylor Hendricks",
+      "takim": "UTA",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 15,
+          "rakip": "Houston",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 15,
+          "rakip": "San Antonio",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 14,
+          "rakip": "Dallas",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 8,
+          "rakip": "Portland",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 13,
+          "rakip": "LA Clippers",
+          "bu_gece": false,
+          "ust": true
+        }
+      ],
+      "son5_ort": 13.0,
+      "sezon_ort": 4.7,
+      "taban": "gecen_sezon",
+      "fark": 8.3,
+      "yuzde": 176.6,
+      "ust_sayisi": 5,
+      "alt_sayisi": 0,
+      "son5_dakika": 26.6,
+      "renk": "#3E7A5E",
+      "asil_renk": "#3E7A5E",
+      "renk_degisti": false
+    },
+    {
+      "id": 1630545,
+      "isim": "Terrence Shannon Jr",
+      "takim": "MIN",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 11,
+          "rakip": "Denver",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 9,
+          "rakip": "Indiana",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 11,
+          "rakip": "New York",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 14,
+          "rakip": "Chicago",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 10,
+          "rakip": "Portland",
+          "bu_gece": false,
+          "ust": true
+        }
+      ],
+      "son5_ort": 11.0,
+      "sezon_ort": 4.3,
+      "taban": "gecen_sezon",
+      "fark": 6.7,
+      "yuzde": 155.8,
+      "ust_sayisi": 5,
+      "alt_sayisi": 0,
+      "son5_dakika": 22.7,
+      "renk": "#3B7FD4",
+      "asil_renk": "#3B7FD4",
+      "renk_degisti": false
+    },
+    {
+      "id": 1631217,
+      "isim": "Moussa Diabaté",
+      "takim": "CHA",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 14,
+          "rakip": "Oklahoma City",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 6,
+          "rakip": "Dallas",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 18,
+          "rakip": "Memphis",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 11,
+          "rakip": "New York",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 13,
+          "rakip": "Brooklyn",
+          "bu_gece": false,
+          "ust": true
+        }
+      ],
+      "son5_ort": 12.4,
+      "sezon_ort": 5.7,
+      "taban": "gecen_sezon",
+      "fark": 6.7,
+      "yuzde": 117.5,
+      "ust_sayisi": 5,
+      "alt_sayisi": 0,
+      "son5_dakika": 21.2,
+      "renk": "#4B36A8",
+      "asil_renk": "#4B36A8",
+      "renk_degisti": false
+    },
+    {
+      "id": 1629111,
+      "isim": "Jock Landale",
+      "takim": "MEM",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 9,
+          "rakip": "Detroit",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 9,
+          "rakip": "Atlanta",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 12,
+          "rakip": "Charlotte",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 12,
+          "rakip": "Miami",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 10,
+          "rakip": "New Orleans",
+          "bu_gece": false,
+          "ust": true
+        }
+      ],
+      "son5_ort": 10.4,
+      "sezon_ort": 4.8,
+      "taban": "gecen_sezon",
+      "fark": 5.6,
+      "yuzde": 116.7,
+      "ust_sayisi": 5,
+      "alt_sayisi": 0,
+      "son5_dakika": 21.2,
+      "renk": "#12173F",
+      "asil_renk": "#6C8CC7",
+      "renk_degisti": true
     }
   ],
   "dusen": [
     {
-      "id": 1631172,
-      "isim": "Ousmane Dieng",
-      "takim": "OKC",
+      "id": 1642348,
+      "isim": "Justin Edwards",
+      "takim": "PHI",
       "pos": "",
-      "_gmsc": -2.5999999999999996,
+      "_gmsc": 0,
       "son5": [
         {
           "sayi": 0,
+          "rakip": "New York",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 4,
+          "rakip": "New York",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 5,
+          "rakip": "Orlando",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 0,
+          "rakip": "Minnesota",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 0,
+          "rakip": "Boston",
+          "bu_gece": false,
+          "ust": false
+        }
+      ],
+      "son5_ort": 1.8,
+      "sezon_ort": 10.1,
+      "taban": "gecen_sezon",
+      "fark": -8.3,
+      "yuzde": -82.2,
+      "ust_sayisi": 0,
+      "alt_sayisi": 5,
+      "son5_dakika": 16.6,
+      "renk": "#3A8DDE",
+      "asil_renk": "#3A8DDE",
+      "renk_degisti": false
+    },
+    {
+      "id": 1626145,
+      "isim": "Tyus Jones",
+      "takim": "ORL",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 3,
+          "rakip": "Miami",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 3,
+          "rakip": "Philadelphia",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 2,
+          "rakip": "Miami",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 5,
+          "rakip": "New Orleans",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 0,
+          "rakip": "Miami",
+          "bu_gece": false,
+          "ust": false
+        }
+      ],
+      "son5_ort": 2.6,
+      "sezon_ort": 10.2,
+      "taban": "gecen_sezon",
+      "fark": -7.6,
+      "yuzde": -74.5,
+      "ust_sayisi": 0,
+      "alt_sayisi": 5,
+      "son5_dakika": 18.5,
+      "renk": "#C4CED4",
+      "asil_renk": "#1E8FD5",
+      "renk_degisti": true
+    },
+    {
+      "id": 1626171,
+      "isim": "Bobby Portis Jr.",
+      "takim": "MIL",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 2,
+          "rakip": "Miami",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 11,
+          "rakip": "Detroit",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 5,
+          "rakip": "Chicago",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 9,
+          "rakip": "Oklahoma City",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 2,
+          "rakip": "Washington",
+          "bu_gece": false,
+          "ust": false
+        }
+      ],
+      "son5_ort": 5.8,
+      "sezon_ort": 13.9,
+      "taban": "gecen_sezon",
+      "fark": -8.1,
+      "yuzde": -58.3,
+      "ust_sayisi": 0,
+      "alt_sayisi": 5,
+      "son5_dakika": 15.8,
+      "renk": "#1E9E5A",
+      "asil_renk": "#1E9E5A",
+      "renk_degisti": false
+    },
+    {
+      "id": 1627824,
+      "isim": "Guerschon Yabusele",
+      "takim": "NYK",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 3,
+          "rakip": "Philadelphia",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 4,
+          "rakip": "Minnesota",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 11,
+          "rakip": "Washington",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 6,
           "rakip": "Charlotte",
           "bu_gece": false,
           "ust": false
         },
         {
-          "sayi": 10,
-          "rakip": "Indiana",
-          "bu_gece": false,
-          "ust": false
-        },
-        {
-          "sayi": 8,
-          "rakip": "Milwaukee",
-          "bu_gece": false,
-          "ust": false
-        },
-        {
-          "sayi": 17,
-          "rakip": "Denver",
-          "bu_gece": false,
-          "ust": true
-        },
-        {
           "sayi": 0,
-          "rakip": "Indiana",
-          "bu_gece": true,
+          "rakip": "Cleveland",
+          "bu_gece": false,
           "ust": false
         }
       ],
-      "son5_ort": 7.0,
-      "sezon_ort": 10.7,
-      "fark": -3.7,
-      "yuzde": -34.6,
-      "ust_sayisi": 1,
+      "son5_ort": 4.8,
+      "sezon_ort": 11.0,
+      "taban": "gecen_sezon",
+      "fark": -6.2,
+      "yuzde": -56.4,
+      "ust_sayisi": 0,
       "alt_sayisi": 4,
-      "son5_dakika": 20.6,
-      "renk": "#31A8E0",
-      "asil_renk": "#31A8E0",
+      "son5_dakika": 17.4,
+      "renk": "#F58426",
+      "asil_renk": "#F58426",
       "renk_degisti": false
+    },
+    {
+      "id": 203084,
+      "isim": "Harrison Barnes",
+      "takim": "SAS",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 8,
+          "rakip": "Miami",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 0,
+          "rakip": "Utah",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 4,
+          "rakip": "Indiana",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 9,
+          "rakip": "Indiana",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 7,
+          "rakip": "Dallas",
+          "bu_gece": false,
+          "ust": false
+        }
+      ],
+      "son5_ort": 5.6,
+      "sezon_ort": 12.3,
+      "taban": "gecen_sezon",
+      "fark": -6.7,
+      "yuzde": -54.5,
+      "ust_sayisi": 0,
+      "alt_sayisi": 5,
+      "son5_dakika": 23.3,
+      "renk": "#2A2D31",
+      "asil_renk": "#C4CED4",
+      "renk_degisti": true
     }
   ],
   "siralama": [],
@@ -3996,7 +4398,7 @@
           "durum": "OKC +7",
           "durum_takim": "OKC",
           "fark": 7,
-          "one_cikan": "Oklahoma City 10-0 seri",
+          "one_cikan": "Gilgeous-Alexander 55 sayı",
           "kritik": false
         },
         {
@@ -4021,10 +4423,11 @@
   "turkler_bekleyen": {
     "isimler": [
       "Şengün",
+      "Biberoviç",
       "Bona"
     ],
     "tarih": "24 Ekim'de",
-    "metin": "Bu gece Türk oyuncu sahaya çıkmadı. Şengün 24 Ekim'de, Bona 25 Ekim'de sahaya çıkıyor."
+    "metin": "Bu gece Türk oyuncu sahaya çıkmadı. Şengün ve Biberoviç 24 Ekim'de, Bona 25 Ekim'de sahaya çıkıyor."
   },
   "gecenin_notlari": [],
   "genis_aci": null

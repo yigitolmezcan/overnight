@@ -659,6 +659,11 @@ td.oyad{color:var(--ink);cursor:pointer}
   .sheet2{height:auto;max-height:88dvh}
 }
 .grab{padding:5px 0 3px;display:flex;justify-content:center;flex:none;cursor:grab;touch-action:none}
+/* Başlık alanı da sürükleniyor — tarayıcı aynı anda sayfayı
+   kaydırmaya çalışmasın diye dokunma eylemi kapatıldı. Gövdede
+   `touch-action` sürükleme KİLİTLENİNCE JS ile konuyor; yoksa liste
+   normal kayıyor. */
+.khead,.ohd{touch-action:none}
 .grab i{display:block;width:34px;height:3px;border-radius:2px;background:#2A3444}
 .khead{flex:none;padding:2px 16px 7px;border-bottom:1px solid #1A2230;position:relative}
 .kclose{position:absolute;top:-24px;right:6px;width:40px;height:40px;z-index:2;border:0;background:transparent;
@@ -751,6 +756,17 @@ td.oyad{color:var(--ink);cursor:pointer}
   text-transform:uppercase;color:var(--faint);font-weight:400}
 .cmp .h span{font-family:var(--mono);font-size:10.5px;color:var(--ink2)}
 .cr{display:flex;align-items:center;gap:10px;padding:var(--crpad,6px) 0}
+/* KİLİT İSTATİSTİK SATIRI: sayfadaki kilit kutusuyla eşleşsin diye ince
+   ember çerçeve. Dolgu değil çerçeve — satırın kendi kazanan/kaybeden
+   vurgusu (`.v.win`) okunur kalsın. */
+.cr.kilitsatir{border:1px solid rgba(232,118,58,.45);border-radius:4px;
+  padding-left:8px;padding-right:8px;margin:2px -8px;
+  background:rgba(232,118,58,.06)}
+.cr.kilitsatir .lb{color:var(--ember)}
+.cr.kilitsatir .kilitim{font-family:var(--mono);font-size:8.5px;font-style:normal;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ember);
+  border:1px solid rgba(232,118,58,.4);border-radius:2px;
+  padding:1px 4px;margin-left:6px;vertical-align:1px}
 .cr .v{font-family:var(--mono);font-size:15px;width:56px;flex:none;color:var(--faint)}
 .cr .v.l{text-align:left}
 .cr .v.r{text-align:right}
@@ -1165,6 +1181,9 @@ td.khot{color:var(--amber);font-weight:700}
    "geçebilirsin" demek; hafif durması doğru. */
 .arch{border-bottom:1px solid #171E2B}
 .arch:last-child{border-bottom:0}
+/* Geçen sezondan gelen form kutucuğu: bu sezonunkiyle karışmasın diye
+   soluk ve kesikli. Renk aynı (kazanma/kaybetme), yoğunluk farklı. */
+.f10 i.gs{opacity:.42;box-shadow:inset 0 0 0 1px rgba(152,162,176,.35)}
 .archrow{display:flex;gap:12px;align-items:flex-start;width:100%;padding:12px 0;text-align:left}
 .arch .dblock{margin-bottom:10px}
 .arch .dblock p{font-size:13.5px;line-height:1.5}
@@ -1197,6 +1216,11 @@ td.khot{color:var(--amber);font-weight:700}
   display:block}
 .gozkart:last-child{margin-bottom:0}
 .gozkart .archrow{padding:0 0 12px}
+/* Blok tamamı tıklanabilir (kullanıcı kararı) — imleç bunu söylesin.
+   "Box score ›" ve "›" oku görsel ipucu olarak duruyor. */
+.gozkart{cursor:pointer}
+.gcard{cursor:pointer}
+.gozkart:focus-visible,.gcard:focus-visible{outline:2px solid var(--ember);outline-offset:2px}
 .gozkart .dblock{margin-bottom:14px}
 .gozkart .dblock p{font-size:14.5px;line-height:1.7;color:var(--ink2)}
 @media(min-width:768px){
@@ -1863,58 +1887,108 @@ addEventListener('keydown',e=>{ if(e.key==='Escape'&&_ustKatman()) kartKapat(); 
 const SURUKLE_ESIGI = 80;      // px
 const SURUKLE_HIZI = 0.55;     // px/ms — bunun üstü "savurma" sayılıyor
 
+/* SÜRÜKLEME AKICILIĞI (kullanıcı kararı). Üç şey değişti:
+
+   1) BAŞLIK DEĞİL, KARTIN TAMAMI sürükleniyor — ama gövde yalnız
+      EN ÜSTTEYKEN (scrollTop 0) ve parmak AŞAĞI giderken. Tablo alanında
+      dikey kaydırma varsa sürükleme kartı kapatmıyor, liste kayıyor.
+   2) Konum her dokunuşta değil, rAF ile bir kez yazılıyor; ayrıca
+      `touch-action:none` sürükleme başlayınca konuyor, böylece tarayıcı
+      aynı anda sayfayı kaydırmaya çalışmıyor (takılmanın asıl sebebi).
+   3) Arka plan karartması sürükleme ilerledikçe ORANTILI açılıyor;
+      bırakınca eşiği geçtiyse kart aşağı akarak kapanıyor, geçmediyse
+      yerine oturuyor. */
 function surukleBagla(kat,kapat){
+  const govde=kat.querySelector('.kbody');
   const tutamaklar=[...kat.querySelectorAll('.grab, .khead, .ohd')];
   if(!tutamaklar.length) return;
-  let y0=null,dy=0,t0=0,sonY=0,sonT=0,hiz=0;
-  const bas=y=>{
-    y0=y; dy=0; hiz=0; t0=sonT=performance.now(); sonY=y;
+  const perde=kat.classList.contains('sheet2')
+    ? document.getElementById('scrim2') : document.getElementById('scrim');
+  const KAPANMA_YOLU=Math.max(kat.getBoundingClientRect().height||480,320);
+
+  let y0=null,x0=0,dy=0,sonY=0,sonT=0,hiz=0,cerceve=0,govdedenMi=false,kilitli=false;
+
+  const ciz=()=>{
+    cerceve=0;
+    kat.style.transform=`translateX(-50%) translateY(${dy}px)`;
+    if(perde){
+      // Karartma orantılı: kart yarı yola gelince perde yarı saydam.
+      const o=Math.max(0,1-(dy/KAPANMA_YOLU)*1.6);
+      perde.style.transition='none';
+      perde.style.opacity=String(o);
+    }
+  };
+  const perdeyiBirak=()=>{
+    if(!perde) return;
+    perde.style.transition='';
+    perde.style.removeProperty('opacity');
+  };
+
+  const bas=(y,x,govdeden)=>{
+    y0=y; x0=x; dy=0; hiz=0; sonT=performance.now(); sonY=y;
+    govdedenMi=govdeden; kilitli=false;
     kat.style.transition='none';
   };
-  const gec=y=>{
-    if(y0===null) return;
-    dy=Math.max(0,y-y0);
+  const gec=(y,x)=>{
+    if(y0===null) return false;
+    const ham=y-y0;
+    // Gövdeden başlayan sürüklemede yön kilidi: yatay ya da yukarı
+    // hareket sürükleme sayılmıyor, kaydırmaya bırakılıyor.
+    if(govdedenMi && !kilitli){
+      if(Math.abs(x-x0)>Math.abs(ham)){ y0=null; return false; }
+      if(ham<6) return false;
+      kilitli=true;
+      kat.style.touchAction='none';
+    }
+    dy=Math.max(0,ham);
     const simdi=performance.now(), dt=simdi-sonT;
     if(dt>0){ hiz=(y-sonY)/dt; sonY=y; sonT=simdi; }
-    kat.style.transform=`translateX(-50%) translateY(${dy}px)`;
+    if(!cerceve) cerceve=requestAnimationFrame(ciz);
+    return dy>0;
   };
   const bit=()=>{
-    if(y0===null) return;
-    kat.style.transition='';
-    // Eşiği geçtiyse ya da aşağı savurulduysa kapan; yoksa geri otur.
-    if(dy>SURUKLE_ESIGI || (hiz>SURUKLE_HIZI && dy>16)) kapat();
-    else kat.style.transform='translateX(-50%) translateY(0)';
+    if(y0===null){ kat.style.touchAction=''; return; }
+    if(cerceve){ cancelAnimationFrame(cerceve); cerceve=0; }
+    kat.style.transition=''; kat.style.touchAction='';
+    if(dy>SURUKLE_ESIGI || (hiz>SURUKLE_HIZI && dy>16)){
+      // AKICI KAPANIŞ: kart aşağı akıyor, perde onunla birlikte sönüyor.
+      kat.style.transform=`translateX(-50%) translateY(${KAPANMA_YOLU}px)`;
+      if(perde){ perde.style.transition=''; perde.style.opacity='0'; }
+      const bitir=()=>{ kat.removeEventListener('transitionend',bitir);
+                        perdeyiBirak(); kapat(); };
+      kat.addEventListener('transitionend',bitir);
+      setTimeout(bitir,360);                 // transitionend gelmezse yedek
+    }else{
+      kat.style.transform='translateX(-50%) translateY(0)';
+      perdeyiBirak();
+    }
     y0=null;
   };
-  const uygun=e=>!e.target.closest('.kbody');
+
+  // Tutamak ve başlık: koşulsuz sürüklenir.
   for(const el of tutamaklar){
-    el.addEventListener('touchstart',e=>{ if(uygun(e)) bas(e.touches[0].clientY); },{passive:true});
-    el.addEventListener('touchmove',e=>gec(e.touches[0].clientY),{passive:true});
+    el.addEventListener('touchstart',e=>bas(e.touches[0].clientY,e.touches[0].clientX,false),{passive:true});
+    el.addEventListener('touchmove',e=>gec(e.touches[0].clientY,e.touches[0].clientX),{passive:true});
     el.addEventListener('touchend',bit);
     el.addEventListener('touchcancel',bit);
     el.addEventListener('mousedown',e=>{
-      if(!uygun(e)) return;
-      bas(e.clientY);
-      const mm=ev=>gec(ev.clientY);
+      bas(e.clientY,e.clientX,false);
+      const mm=ev=>gec(ev.clientY,ev.clientX);
       const mu=()=>{bit();removeEventListener('mousemove',mm);removeEventListener('mouseup',mu);};
       addEventListener('mousemove',mm); addEventListener('mouseup',mu);
     });
   }
+  // Gövde: YALNIZ en üstteyken ve aşağı çekilirken.
+  if(govde){
+    govde.addEventListener('touchstart',e=>{
+      if(govde.scrollTop>0) return;
+      bas(e.touches[0].clientY,e.touches[0].clientX,true);
+    },{passive:true});
+    govde.addEventListener('touchmove',e=>gec(e.touches[0].clientY,e.touches[0].clientX),{passive:true});
+    govde.addEventListener('touchend',bit);
+    govde.addEventListener('touchcancel',bit);
+  }
 }
-
-/* ---- box score kartı ---- */
-// Kısaltmaların TAMAMI Türkçe (kullanıcı kuralı: yarı Türkçe yarı
-// İngilizce olmasın). Önceki set FG/3P/FT karışımıydı.
-// DİKKAT: "FA" KULLANILMAZ — Türk basketbol istatistiklerinde FA
-// FAUL demektir. Serbest atış sütununa FA yazılmıştı ve tam da bu
-// yüzden faul sanılıyordu ("3/7 faul olamaz"). Serbest atış = SA.
-/* Sütun sırası standart box score düzeni: dakika oyuncu adından hemen
-   sonra (kullanıcı kararı). DİKKAT — dakika SAYIYI EZMEMELİ: bağlam
-   bilgisi, manşet değil. `sonuk` işareti onu soluk ve bir tık küçük
-   yapıyor (bkz. td.kdk), sayı kalın ve beyaz kalıyor. */
-const KOLONLAR=[['min','DK',null,'sonuk'],['pts','SAY','k'],['reb','RİB'],['ast','AST'],
-                ['fg','ŞUT'],['3p','3S'],['ft','SA'],['stl','TÇ'],['blk','BLK'],
-                ['to','TK'],['pm','+/−']];
 
 function isaretliMi(t){ return t.oyuncular.some(o=>o.gecti_mi||o.aykiri||o.kaybedenin_en_iyisi); }
 
@@ -1985,7 +2059,15 @@ function karsilastirmaDegeri(ham){
   return m ? Number(m[1]) : Number(s);
 }
 
-function takimPanosu(ust,alt){
+const KOLONLAR=[['min','DK',null,'sonuk'],['pts','SAY','k'],['reb','RİB'],['ast','AST'],
+                ['fg','ŞUT'],['3p','3S'],['ft','SA'],['stl','TÇ'],['blk','BLK'],
+                ['to','TK'],['pm','+/−']];
+
+function takimPanosu(ust,alt,kilit){
+  // KİLİT SATIR VURGUSU: sayfadaki kilit istatistik kutusuyla tablodaki
+  // satır eşleşsin. Hangi satırın kilit olduğu derle.py'de belirleniyor
+  // (`kilit.alan`), burada yalnız çiziliyor.
+  const kilitAlan = (kilit && kilit.alan) || null;
   const satir=([alan,etiket,tersMi])=>{
     const sv=ust.toplam[alan], av=alt.toplam[alan];
     if(sv===undefined||av===undefined) return '';
@@ -1994,9 +2076,10 @@ function takimPanosu(ust,alt){
     // Eşitlikte iki taraf da vurgulanmaz.
     const solKazandi = tersMi ? a<b : a>b;
     const sagKazandi = tersMi ? b<a : b>a;
-    return `<div class="cr">
+    const kilitMi = alan===kilitAlan;
+    return `<div class="cr${kilitMi?' kilitsatir':''}"${kilitMi?' data-kilit':''}>
         <span class="v l${solKazandi?' win':''}">${esc(String(sv))}</span>
-        <span class="lb">${esc(etiket)}</span>
+        <span class="lb">${esc(etiket)}${kilitMi?'<i class="kilitim">kilit</i>':''}</span>
         <span class="v r${sagKazandi?' win':''}">${esc(String(av))}</span></div>`;
   };
   return `<div class="cmp">
@@ -2083,7 +2166,7 @@ function boxKartiHTML(m){
       <span class="ktn">${esc(t.takim)}</span><span class="kts">${t.skor}</span></div>`;
   const panolar=[
     `<div class="kpane" data-pane="0">${boxTablosu(sira[0])}</div>`,
-    `<div class="kpane" data-pane="1" hidden>${kritikBlogu(b.kritik)}${takimPanosu(sira[0],sira[1])}</div>`,
+    `<div class="kpane" data-pane="1" hidden>${kritikBlogu(b.kritik)}${takimPanosu(sira[0],sira[1],b.kilit)}</div>`,
     `<div class="kpane" data-pane="2" hidden>${boxTablosu(sira[1])}</div>`,
   ].join('');
   return `<div class="grab"><i></i></div>
@@ -2334,11 +2417,11 @@ function render(d){
   // ---- göz at (katman "ikinci" — veri yoksa bölüm gizli) ----
   document.getElementById('secDegerseBak').hidden = !(d.degerse_bak && d.degerse_bak.length);
   if(d.degerse_bak && d.degerse_bak.length){
-    document.getElementById('degerseBak').innerHTML=d.degerse_bak.map(m=>`<div class="gozkart" id="${m.id}" style="--ray:${esc(m.ray_renk||'var(--ember)')};--ray-rgb:${esc(m.ray_rgb||'226,112,28')}">
-      <button class="archrow" data-kart="${m.id}" aria-label="${esc(m.mac)} — box score">
+    document.getElementById('degerseBak').innerHTML=d.degerse_bak.map(m=>`<div class="gozkart" id="${m.id}" data-kart="${m.id}" role="button" tabindex="0" aria-label="${esc(m.mac)} — box score" style="--ray:${esc(m.ray_renk||'var(--ember)')};--ray-rgb:${esc(m.ray_rgb||'226,112,28')}">
+      <div class="archrow" aria-hidden="true">
         <span class="roz sm">${m.rozet.toFixed(1)}</span>
         <div class="mblok md">${macBlok(m.mac, m.skor)}</div>
-        <span class="gozgo" aria-hidden="true">›</span></button>
+        <span class="gozgo" aria-hidden="true">›</span></div>
       ${m.metin?`<div class="dblock" style="padding:0 0 14px"><p>${esc(m.metin)}</p></div>`:''}
       ${ctablo(m.ceyrek_tablosu)}
       ${kararBlogu(m.karar)}
@@ -2375,7 +2458,7 @@ function render(d){
       </span>
       <span class="sq">${o.son5.map(hucre).join('')}<span class="tip"></span></span>
       <span class="avg"><b>${o.son5_ort.toFixed(1)}</b>
-        <s>sezon ${o.sezon_ort.toFixed(1)} <em>${ok}%${Math.abs(o.yuzde).toFixed(0)}</em></s></span>
+        <s>${o.taban==='gecen_sezon'?'geçen sezon':'sezon'} ${o.sezon_ort.toFixed(1)} <em>${ok}%${Math.abs(o.yuzde).toFixed(0)}</em></s></span>
     </div>`;
   };
   const formdaCiz=(hangi)=>{
@@ -2445,7 +2528,11 @@ function render(d){
         const g = (typeof f === 'object') ? f.g : f;
         const bilgi = (typeof f === 'object' && f.rakip)
           ? ` data-rakip="${esc(f.rakip)}" data-skor="${esc(f.skor||'')}"` : '';
-        return `<i class="${g?'w':''}"${bilgi}></i>`;
+        // SEZON BAŞI: bu sezonun maçı dolmadığında kutucuklar geçen
+        // sezonun kuyruğuyla tamamlanıyor. Karışmasın diye soluk ve
+        // kesikli çerçeveli.
+        const gs = (typeof f === 'object' && f.gecen_sezon) ? ' gs' : '';
+        return `<i class="${g?'w':''}${gs}"${bilgi}></i>`;
       };
       return `<div class="sr">
         <span class="ar ${yukari?'u':'d'}">${yukari?'▲':'▼'}${Math.abs(t.degisim)}</span>
@@ -2560,10 +2647,24 @@ function render(d){
   }
 
   // ---- kart açma ----
+  // BLOĞUN HER YERİ AÇAR (kullanıcı kararı). İki koruma var:
+  //  1) En İÇTEKİ `[data-kart]` kazanır — iç içe olanlarda kart iki kez
+  //     açılmasın.
+  //  2) Blok içindeki BAŞKA bir tıklanabilir öğe (oyuncu adı, bağlantı,
+  //     kendi düğmesi) kendi işini yapar; box score açılmaz.
+  const ICTEN_TIKLANABILIR = 'a[href],[data-oyuncu],[data-kapat],button:not([data-kart]),input,select,textarea,summary';
   document.querySelectorAll('[data-kart]').forEach(b=>{
     const ac=()=>{ const m=MAC_BY_ID[b.dataset.kart]; if(m) kartAc(boxKartiHTML(m)); };
-    b.addEventListener('click',ac);
-    b.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); ac(); } });
+    b.addEventListener('click',e=>{
+      if(e.target.closest('[data-kart]')!==b) return;          // iç kart kazanır
+      if(e.target.closest(ICTEN_TIKLANABILIR)) return;          // kendi işini yapsın
+      if(window.getSelection && String(window.getSelection()).length>0) return; // metin seçimi
+      ac();
+    });
+    b.addEventListener('keydown',e=>{
+      if(e.target!==b) return;
+      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); ac(); }
+    });
   });
 }
 

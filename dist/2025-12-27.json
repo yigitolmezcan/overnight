@@ -183,11 +183,6 @@
       "takim": "Denver"
     },
     {
-      "isim": "Nikola Jokić",
-      "ifade": "21 ribaund topladı",
-      "takim": "Denver"
-    },
-    {
       "isim": "Victor Wembanyama",
       "ifade": "5 blok yaptı",
       "takim": "San Antonio"
@@ -822,6 +817,7 @@
         "kilit": {
           "ad": "top kaybı",
           "fark": 10,
+          "alan": "to",
           "kutular": [
             {
               "kod": "ORL",
@@ -1466,6 +1462,7 @@
         "kilit": {
           "ad": "hücum ribaundu",
           "fark": 10,
+          "alan": "oreb",
           "kutular": [
             {
               "kod": "ATL",
@@ -2184,6 +2181,7 @@
         "kilit": {
           "ad": "hücum ribaundu",
           "fark": 8,
+          "alan": "oreb",
           "kutular": [
             {
               "kod": "SAS",
@@ -5422,9 +5420,9 @@
         "pm": "+1"
       },
       "sezon": {
-        "sezon_ort": 20.1,
+        "sezon_ort": 20.2,
         "son5_ort": 17.0,
-        "yuzde": -15.4,
+        "yuzde": -15.8,
         "son5": [
           {
             "sayi": 17,
@@ -5477,9 +5475,9 @@
         "pm": "-6"
       },
       "sezon": {
-        "sezon_ort": 14.4,
+        "sezon_ort": 14.7,
         "son5_ort": 14.8,
-        "yuzde": 2.8,
+        "yuzde": 0.7,
         "son5": [
           {
             "sayi": 18,
@@ -5587,9 +5585,9 @@
         "pm": "-5"
       },
       "sezon": {
-        "sezon_ort": 7.3,
+        "sezon_ort": 7.5,
         "son5_ort": 3.4,
-        "yuzde": -53.4,
+        "yuzde": -54.7,
         "son5": [
           {
             "sayi": 5,
@@ -5642,9 +5640,9 @@
         "pm": "-12"
       },
       "sezon": {
-        "sezon_ort": 14.6,
+        "sezon_ort": 14.9,
         "son5_ort": 11.0,
-        "yuzde": -24.7,
+        "yuzde": -26.2,
         "son5": [
           {
             "sayi": 5,
@@ -5697,9 +5695,9 @@
         "pm": "+3"
       },
       "sezon": {
-        "sezon_ort": 7.9,
+        "sezon_ort": 8.1,
         "son5_ort": 6.6,
-        "yuzde": -16.5,
+        "yuzde": -18.5,
         "son5": [
           {
             "sayi": 3,
@@ -5752,9 +5750,9 @@
         "pm": "-7"
       },
       "sezon": {
-        "sezon_ort": 20.1,
+        "sezon_ort": 21.0,
         "son5_ort": 24.2,
-        "yuzde": 20.4,
+        "yuzde": 15.2,
         "son5": [
           {
             "sayi": 29,
@@ -5807,9 +5805,9 @@
         "pm": "-1"
       },
       "sezon": {
-        "sezon_ort": 16.5,
+        "sezon_ort": 16.9,
         "son5_ort": 13.0,
-        "yuzde": -21.2,
+        "yuzde": -23.1,
         "son5": [
           {
             "sayi": 15,
@@ -5862,9 +5860,9 @@
         "pm": "-8"
       },
       "sezon": {
-        "sezon_ort": 5.8,
+        "sezon_ort": 5.6,
         "son5_ort": 4.4,
-        "yuzde": -24.1,
+        "yuzde": -21.4,
         "son5": [
           {
             "sayi": 0,
@@ -5917,9 +5915,9 @@
         "pm": "-9"
       },
       "sezon": {
-        "sezon_ort": 4.7,
+        "sezon_ort": 4.5,
         "son5_ort": 2.6,
-        "yuzde": -44.7,
+        "yuzde": -42.2,
         "son5": [
           {
             "sayi": 8,
@@ -8832,9 +8830,9 @@
         "pm": "-15"
       },
       "sezon": {
-        "sezon_ort": 3.8,
+        "sezon_ort": 4.0,
         "son5_ort": 4.4,
-        "yuzde": 15.8,
+        "yuzde": 10.0,
         "son5": [
           {
             "sayi": 0,
@@ -11782,9 +11780,9 @@
         "pm": "-6"
       },
       "sezon": {
-        "sezon_ort": 6.7,
+        "sezon_ort": 6.9,
         "son5_ort": 9.2,
-        "yuzde": 37.3,
+        "yuzde": 33.3,
         "son5": [
           {
             "sayi": 13,
@@ -11892,9 +11890,9 @@
         "pm": "-4"
       },
       "sezon": {
-        "sezon_ort": 5.3,
+        "sezon_ort": 4.6,
         "son5_ort": 4.6,
-        "yuzde": -13.2,
+        "yuzde": 0.0,
         "son5": [
           {
             "sayi": 6,
@@ -11903,12 +11901,12 @@
           },
           {
             "sayi": 5,
-            "ust": false,
+            "ust": true,
             "bu_gece": false
           },
           {
             "sayi": 5,
-            "ust": false,
+            "ust": true,
             "bu_gece": false
           },
           {
@@ -11947,9 +11945,9 @@
         "pm": "+2"
       },
       "sezon": {
-        "sezon_ort": 5.6,
+        "sezon_ort": 4.7,
         "son5_ort": 1.2,
-        "yuzde": -78.6,
+        "yuzde": -74.5,
         "son5": [
           {
             "sayi": 0,
@@ -12002,9 +12000,9 @@
         "pm": "+2"
       },
       "sezon": {
-        "sezon_ort": 4.3,
+        "sezon_ort": 3.9,
         "son5_ort": 2.8,
-        "yuzde": -34.9,
+        "yuzde": -28.2,
         "son5": [
           {
             "sayi": 6,
@@ -12057,9 +12055,9 @@
         "pm": "+2"
       },
       "sezon": {
-        "sezon_ort": 4.5,
+        "sezon_ort": 3.5,
         "son5_ort": 0.6,
-        "yuzde": -86.7,
+        "yuzde": -82.9,
         "son5": [
           {
             "sayi": 2,
@@ -12112,9 +12110,9 @@
         "pm": "-1"
       },
       "sezon": {
-        "sezon_ort": 24.7,
+        "sezon_ort": 25.1,
         "son5_ort": 23.8,
-        "yuzde": -3.6,
+        "yuzde": -5.2,
         "son5": [
           {
             "sayi": 12,
@@ -12222,9 +12220,9 @@
         "pm": "-5"
       },
       "sezon": {
-        "sezon_ort": 13.1,
+        "sezon_ort": 13.2,
         "son5_ort": 13.6,
-        "yuzde": 3.8,
+        "yuzde": 3.0,
         "son5": [
           {
             "sayi": 10,
@@ -12277,9 +12275,9 @@
         "pm": "-3"
       },
       "sezon": {
-        "sezon_ort": 8.2,
+        "sezon_ort": 8.0,
         "son5_ort": 5.4,
-        "yuzde": -34.1,
+        "yuzde": -32.5,
         "son5": [
           {
             "sayi": 12,
@@ -12387,13 +12385,13 @@
         "pm": "+27"
       },
       "sezon": {
-        "sezon_ort": 18.7,
+        "sezon_ort": 19.6,
         "son5_ort": 20.6,
-        "yuzde": 10.2,
+        "yuzde": 5.1,
         "son5": [
           {
             "sayi": 19,
-            "ust": true,
+            "ust": false,
             "bu_gece": false
           },
           {
@@ -12442,9 +12440,9 @@
         "pm": "+17"
       },
       "sezon": {
-        "sezon_ort": 3.2,
+        "sezon_ort": 2.8,
         "son5_ort": 3.4,
-        "yuzde": 6.2,
+        "yuzde": 21.4,
         "son5": [
           {
             "sayi": 0,
@@ -12497,13 +12495,13 @@
         "pm": "+18"
       },
       "sezon": {
-        "sezon_ort": 7.8,
+        "sezon_ort": 8.0,
         "son5_ort": 6.2,
-        "yuzde": -20.5,
+        "yuzde": -22.5,
         "son5": [
           {
             "sayi": 8,
-            "ust": true,
+            "ust": false,
             "bu_gece": false
           },
           {
@@ -12662,9 +12660,9 @@
         "pm": "-3"
       },
       "sezon": {
-        "sezon_ort": 5.2,
+        "sezon_ort": 5.1,
         "son5_ort": 2.8,
-        "yuzde": -46.2,
+        "yuzde": -45.1,
         "son5": [
           {
             "sayi": 1,
@@ -12717,9 +12715,9 @@
         "pm": "+3"
       },
       "sezon": {
-        "sezon_ort": 10.3,
+        "sezon_ort": 10.2,
         "son5_ort": 3.4,
-        "yuzde": -67.0,
+        "yuzde": -66.7,
         "son5": [
           {
             "sayi": 6,
@@ -12772,9 +12770,9 @@
         "pm": "-5"
       },
       "sezon": {
-        "sezon_ort": 11.7,
+        "sezon_ort": 12.0,
         "son5_ort": 11.8,
-        "yuzde": 0.9,
+        "yuzde": -1.7,
         "son5": [
           {
             "sayi": 7,
@@ -12827,9 +12825,9 @@
         "pm": "-6"
       },
       "sezon": {
-        "sezon_ort": 21.9,
+        "sezon_ort": 22.4,
         "son5_ort": 20.6,
-        "yuzde": -5.9,
+        "yuzde": -8.0,
         "son5": [
           {
             "sayi": 26,
@@ -12992,9 +12990,9 @@
         "pm": "-7"
       },
       "sezon": {
-        "sezon_ort": 9.1,
+        "sezon_ort": 8.8,
         "son5_ort": 9.8,
-        "yuzde": 7.7,
+        "yuzde": 11.4,
         "son5": [
           {
             "sayi": 8,
@@ -13047,9 +13045,9 @@
         "pm": "-6"
       },
       "sezon": {
-        "sezon_ort": 12.8,
+        "sezon_ort": 12.7,
         "son5_ort": 17.2,
-        "yuzde": 34.4,
+        "yuzde": 35.4,
         "son5": [
           {
             "sayi": 13,
@@ -13157,9 +13155,9 @@
         "pm": "+9"
       },
       "sezon": {
-        "sezon_ort": 3.6,
+        "sezon_ort": 3.2,
         "son5_ort": 2.2,
-        "yuzde": -38.9,
+        "yuzde": -31.2,
         "son5": [
           {
             "sayi": 5,
@@ -13267,9 +13265,9 @@
         "pm": "-7"
       },
       "sezon": {
-        "sezon_ort": 3.2,
+        "sezon_ort": 2.9,
         "son5_ort": 2.2,
-        "yuzde": -31.2,
+        "yuzde": -24.1,
         "son5": [
           {
             "sayi": 0,
@@ -13283,7 +13281,7 @@
           },
           {
             "sayi": 3,
-            "ust": false,
+            "ust": true,
             "bu_gece": false
           },
           {
@@ -13946,6 +13944,7 @@
       ],
       "son5_ort": 17.0,
       "sezon_ort": 9.3,
+      "taban": "bu_sezon",
       "fark": 7.7,
       "yuzde": 82.8,
       "ust_sayisi": 4,
@@ -13995,6 +13994,7 @@
       ],
       "son5_ort": 24.6,
       "sezon_ort": 13.8,
+      "taban": "bu_sezon",
       "fark": 10.8,
       "yuzde": 78.3,
       "ust_sayisi": 5,
@@ -14044,6 +14044,7 @@
       ],
       "son5_ort": 14.2,
       "sezon_ort": 8.6,
+      "taban": "bu_sezon",
       "fark": 5.6,
       "yuzde": 65.1,
       "ust_sayisi": 4,
@@ -14093,6 +14094,7 @@
       ],
       "son5_ort": 14.8,
       "sezon_ort": 9.6,
+      "taban": "bu_sezon",
       "fark": 5.2,
       "yuzde": 54.2,
       "ust_sayisi": 4,
@@ -14142,6 +14144,7 @@
       ],
       "son5_ort": 18.2,
       "sezon_ort": 12.1,
+      "taban": "bu_sezon",
       "fark": 6.1,
       "yuzde": 50.4,
       "ust_sayisi": 4,
@@ -14192,9 +14195,10 @@
         }
       ],
       "son5_ort": 3.4,
-      "sezon_ort": 10.3,
-      "fark": -6.9,
-      "yuzde": -67.0,
+      "sezon_ort": 10.2,
+      "taban": "bu_sezon",
+      "fark": -6.8,
+      "yuzde": -66.7,
       "ust_sayisi": 0,
       "alt_sayisi": 5,
       "son5_dakika": 20.9,
@@ -14242,6 +14246,7 @@
       ],
       "son5_ort": 3.8,
       "sezon_ort": 10.9,
+      "taban": "bu_sezon",
       "fark": -7.1,
       "yuzde": -65.1,
       "ust_sayisi": 0,
@@ -14250,6 +14255,56 @@
       "renk": "#31A8E0",
       "asil_renk": "#31A8E0",
       "renk_degisti": false
+    },
+    {
+      "id": 1629001,
+      "isim": "De'Anthony Melton",
+      "takim": "GSW",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 0,
+          "rakip": "Portland",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 2,
+          "rakip": "Phoenix",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 2,
+          "rakip": "Phoenix",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 4,
+          "rakip": "Orlando",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 16,
+          "rakip": "Dallas",
+          "bu_gece": false,
+          "ust": true
+        }
+      ],
+      "son5_ort": 4.8,
+      "sezon_ort": 10.3,
+      "taban": "gecen_sezon",
+      "fark": -5.5,
+      "yuzde": -53.4,
+      "ust_sayisi": 1,
+      "alt_sayisi": 4,
+      "son5_dakika": 17.8,
+      "renk": "#FFC72C",
+      "asil_renk": "#2E6BD6",
+      "renk_degisti": true
     },
     {
       "id": 1629656,
@@ -14291,12 +14346,13 @@
       ],
       "son5_ort": 7.4,
       "sezon_ort": 15.1,
+      "taban": "bu_sezon",
       "fark": -7.7,
       "yuzde": -51.0,
       "ust_sayisi": 0,
       "alt_sayisi": 5,
       "son5_dakika": 29.2,
-      "renk": "#7A8B99",
+      "renk": "#ED174C",
       "asil_renk": "#3A8DDE",
       "renk_degisti": true
     },
@@ -14340,6 +14396,7 @@
       ],
       "son5_ort": 6.0,
       "sezon_ort": 12.1,
+      "taban": "bu_sezon",
       "fark": -6.1,
       "yuzde": -50.4,
       "ust_sayisi": 0,
@@ -14347,55 +14404,6 @@
       "son5_dakika": 20.7,
       "renk": "#C4CED4",
       "asil_renk": "#C4CED4",
-      "renk_degisti": false
-    },
-    {
-      "id": 1630245,
-      "isim": "Ayo Dosunmu",
-      "takim": "CHI",
-      "pos": "",
-      "_gmsc": 7.799999999999999,
-      "son5": [
-        {
-          "sayi": 8,
-          "rakip": "Cleveland",
-          "bu_gece": false,
-          "ust": false
-        },
-        {
-          "sayi": 13,
-          "rakip": "Atlanta",
-          "bu_gece": false,
-          "ust": false
-        },
-        {
-          "sayi": 6,
-          "rakip": "Atlanta",
-          "bu_gece": false,
-          "ust": false
-        },
-        {
-          "sayi": 8,
-          "rakip": "Philadelphia",
-          "bu_gece": false,
-          "ust": false
-        },
-        {
-          "sayi": 11,
-          "rakip": "Milwaukee",
-          "bu_gece": true,
-          "ust": false
-        }
-      ],
-      "son5_ort": 9.2,
-      "sezon_ort": 14.3,
-      "fark": -5.1,
-      "yuzde": -35.7,
-      "ust_sayisi": 0,
-      "alt_sayisi": 5,
-      "son5_dakika": 18.4,
-      "renk": "#CE1141",
-      "asil_renk": "#CE1141",
       "renk_degisti": false
     }
   ],
@@ -16244,6 +16252,7 @@
         "kilit": {
           "ad": "top kaybı",
           "fark": 16,
+          "alan": "to",
           "kutular": [
             {
               "kod": "MIA",
@@ -17559,6 +17568,7 @@
         "kilit": {
           "ad": "üçlük",
           "fark": 11,
+          "alan": "3p",
           "kutular": [
             {
               "kod": "NOP",
@@ -18198,6 +18208,7 @@
         "kilit": {
           "ad": "top kaybı",
           "fark": 8,
+          "alan": "to",
           "kutular": [
             {
               "kod": "SAC",

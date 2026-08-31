@@ -51,7 +51,7 @@
       "metin": "Cleveland Cavaliers, Charlotte Hornets'i evinde yendi.",
       "anlatili": true,
       "hedef_id": "a-0022500402",
-      "icon": "standings",
+      "icon": "default",
       "saat": "03:00",
       "rozet": 5.22,
       "skor": "CLE 139 – CHA 132",
@@ -111,7 +111,7 @@
       "metin": "Detroit Pistons, Portland Trail Blazers'i yenerek konferansta 1. sıraya yükseldi.",
       "anlatili": true,
       "hedef_id": "a-0022500408",
-      "icon": "default",
+      "icon": "standings",
       "saat": "06:00",
       "rozet": 6.12,
       "skor": "POR 102 – DET 110",
@@ -3631,9 +3631,9 @@
         "pm": "+10"
       },
       "sezon": {
-        "sezon_ort": 20.6,
+        "sezon_ort": 20.7,
         "son5_ort": 19.8,
-        "yuzde": -3.9,
+        "yuzde": -4.3,
         "son5": [
           {
             "sayi": 24,
@@ -3686,9 +3686,9 @@
         "pm": "+12"
       },
       "sezon": {
-        "sezon_ort": 14.6,
+        "sezon_ort": 14.9,
         "son5_ort": 18.2,
-        "yuzde": 24.7,
+        "yuzde": 22.1,
         "son5": [
           {
             "sayi": 15,
@@ -3851,9 +3851,9 @@
         "pm": "+7"
       },
       "sezon": {
-        "sezon_ort": 14.9,
+        "sezon_ort": 15.3,
         "son5_ort": 13.0,
-        "yuzde": -12.8,
+        "yuzde": -15.0,
         "son5": [
           {
             "sayi": 19,
@@ -3906,9 +3906,9 @@
         "pm": "-1"
       },
       "sezon": {
-        "sezon_ort": 16.5,
+        "sezon_ort": 17.0,
         "son5_ort": 16.6,
-        "yuzde": 0.6,
+        "yuzde": -2.4,
         "son5": [
           {
             "sayi": 22,
@@ -3961,9 +3961,9 @@
         "pm": "+2"
       },
       "sezon": {
-        "sezon_ort": 19.5,
+        "sezon_ort": 20.5,
         "son5_ort": 21.0,
-        "yuzde": 7.7,
+        "yuzde": 2.4,
         "son5": [
           {
             "sayi": 25,
@@ -4016,9 +4016,9 @@
         "pm": "-7"
       },
       "sezon": {
-        "sezon_ort": 4.9,
+        "sezon_ort": 4.6,
         "son5_ort": 4.0,
-        "yuzde": -18.4,
+        "yuzde": -13.0,
         "son5": [
           {
             "sayi": 2,
@@ -4071,9 +4071,9 @@
         "pm": "-3"
       },
       "sezon": {
-        "sezon_ort": 8.0,
+        "sezon_ort": 8.1,
         "son5_ort": 4.6,
-        "yuzde": -42.5,
+        "yuzde": -43.2,
         "son5": [
           {
             "sayi": 4,
@@ -4126,9 +4126,9 @@
         "pm": "+1"
       },
       "sezon": {
-        "sezon_ort": 5.0,
+        "sezon_ort": 4.8,
         "son5_ort": 3.8,
-        "yuzde": -24.0,
+        "yuzde": -20.8,
         "son5": [
           {
             "sayi": 2,
@@ -4142,7 +4142,7 @@
           },
           {
             "sayi": 5,
-            "ust": false,
+            "ust": true,
             "bu_gece": false
           },
           {
@@ -9645,6 +9645,7 @@
       ],
       "son5_ort": 17.6,
       "sezon_ort": 8.4,
+      "taban": "bu_sezon",
       "fark": 9.2,
       "yuzde": 109.5,
       "ust_sayisi": 5,
@@ -9694,6 +9695,7 @@
       ],
       "son5_ort": 16.2,
       "sezon_ort": 9.4,
+      "taban": "bu_sezon",
       "fark": 6.8,
       "yuzde": 72.3,
       "ust_sayisi": 4,
@@ -9742,9 +9744,10 @@
         }
       ],
       "son5_ort": 11.0,
-      "sezon_ort": 6.4,
-      "fark": 4.6,
-      "yuzde": 71.9,
+      "sezon_ort": 6.7,
+      "taban": "bu_sezon",
+      "fark": 4.3,
+      "yuzde": 64.2,
       "ust_sayisi": 4,
       "alt_sayisi": 1,
       "son5_dakika": 21.7,
@@ -9792,6 +9795,7 @@
       ],
       "son5_ort": 18.4,
       "sezon_ort": 11.9,
+      "taban": "bu_sezon",
       "fark": 6.5,
       "yuzde": 54.6,
       "ust_sayisi": 5,
@@ -9840,9 +9844,10 @@
         }
       ],
       "son5_ort": 11.2,
-      "sezon_ort": 7.7,
-      "fark": 3.5,
-      "yuzde": 45.5,
+      "sezon_ort": 7.8,
+      "taban": "bu_sezon",
+      "fark": 3.4,
+      "yuzde": 43.6,
       "ust_sayisi": 5,
       "alt_sayisi": 0,
       "son5_dakika": 30.4,
@@ -9852,6 +9857,56 @@
     }
   ],
   "dusen": [
+    {
+      "id": 1629001,
+      "isim": "De'Anthony Melton",
+      "takim": "GSW",
+      "pos": "",
+      "_gmsc": 2.5000000000000013,
+      "son5": [
+        {
+          "sayi": 9,
+          "rakip": "Minnesota",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 0,
+          "rakip": "Portland",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 2,
+          "rakip": "Phoenix",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 2,
+          "rakip": "Phoenix",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 4,
+          "rakip": "Orlando",
+          "bu_gece": true,
+          "ust": false
+        }
+      ],
+      "son5_ort": 3.4,
+      "sezon_ort": 10.3,
+      "taban": "gecen_sezon",
+      "fark": -6.9,
+      "yuzde": -67.0,
+      "ust_sayisi": 0,
+      "alt_sayisi": 5,
+      "son5_dakika": 17.0,
+      "renk": "#2E6BD6",
+      "asil_renk": "#2E6BD6",
+      "renk_degisti": false
+    },
     {
       "id": 1630577,
       "isim": "Julian Champagnie",
@@ -9891,9 +9946,10 @@
         }
       ],
       "son5_ort": 5.4,
-      "sezon_ort": 10.8,
-      "fark": -5.4,
-      "yuzde": -50.0,
+      "sezon_ort": 10.7,
+      "taban": "bu_sezon",
+      "fark": -5.3,
+      "yuzde": -49.5,
       "ust_sayisi": 1,
       "alt_sayisi": 4,
       "son5_dakika": 22.8,
@@ -9941,14 +9997,15 @@
       ],
       "son5_ort": 8.4,
       "sezon_ort": 15.6,
+      "taban": "bu_sezon",
       "fark": -7.2,
       "yuzde": -46.2,
       "ust_sayisi": 0,
       "alt_sayisi": 5,
       "son5_dakika": 29.9,
-      "renk": "#3A8DDE",
+      "renk": "#ED174C",
       "asil_renk": "#3A8DDE",
-      "renk_degisti": false
+      "renk_degisti": true
     },
     {
       "id": 1630228,
@@ -9990,14 +10047,15 @@
       ],
       "son5_ort": 6.6,
       "sezon_ort": 10.9,
+      "taban": "bu_sezon",
       "fark": -4.3,
       "yuzde": -39.4,
       "ust_sayisi": 0,
       "alt_sayisi": 5,
       "son5_dakika": 17.1,
-      "renk": "#1B3A6B",
+      "renk": "#2E6BD6",
       "asil_renk": "#2E6BD6",
-      "renk_degisti": true
+      "renk_degisti": false
     },
     {
       "id": 1631097,
@@ -10039,6 +10097,7 @@
       ],
       "son5_ort": 11.6,
       "sezon_ort": 18.4,
+      "taban": "bu_sezon",
       "fark": -6.8,
       "yuzde": -37.0,
       "ust_sayisi": 0,
@@ -10046,55 +10105,6 @@
       "son5_dakika": 32.7,
       "renk": "#F2C230",
       "asil_renk": "#F2C230",
-      "renk_degisti": false
-    },
-    {
-      "id": 1629640,
-      "isim": "Keldon Johnson",
-      "takim": "SAS",
-      "pos": "",
-      "_gmsc": 0,
-      "son5": [
-        {
-          "sayi": 3,
-          "rakip": "Oklahoma City",
-          "bu_gece": false,
-          "ust": false
-        },
-        {
-          "sayi": 3,
-          "rakip": "New York",
-          "bu_gece": false,
-          "ust": false
-        },
-        {
-          "sayi": 9,
-          "rakip": "Washington",
-          "bu_gece": false,
-          "ust": false
-        },
-        {
-          "sayi": 13,
-          "rakip": "Atlanta",
-          "bu_gece": false,
-          "ust": true
-        },
-        {
-          "sayi": 12,
-          "rakip": "Washington",
-          "bu_gece": false,
-          "ust": false
-        }
-      ],
-      "son5_ort": 8.0,
-      "sezon_ort": 12.6,
-      "fark": -4.6,
-      "yuzde": -36.5,
-      "ust_sayisi": 1,
-      "alt_sayisi": 4,
-      "son5_dakika": 18.1,
-      "renk": "#C4CED4",
-      "asil_renk": "#C4CED4",
       "renk_degisti": false
     }
   ],
@@ -10820,6 +10830,7 @@
         "kilit": {
           "ad": "top kaybı",
           "fark": 8,
+          "alan": "to",
           "kutular": [
             {
               "kod": "OKC",
@@ -10856,7 +10867,7 @@
           "durum": "OKC +16",
           "durum_takim": "OKC",
           "fark": 16,
-          "one_cikan": "Oklahoma City 8-0 seri",
+          "one_cikan": "Gilgeous-Alexander double-double",
           "kritik": true
         }
       ],
@@ -11452,7 +11463,7 @@
           "durum": "DAL +6",
           "durum_takim": "DAL",
           "fark": 6,
-          "one_cikan": "6 kez liderlik değişti",
+          "one_cikan": "Davis double-double",
           "kritik": false
         },
         {
@@ -11463,7 +11474,7 @@
           "durum": "NOP +6",
           "durum_takim": "NOP",
           "fark": 6,
-          "one_cikan": "New Orleans 10-0 seri",
+          "one_cikan": "3 kez liderlik değişti",
           "kritik": true
         }
       ],
@@ -11476,7 +11487,7 @@
       "mac": "Portland Trail Blazers — Detroit Pistons",
       "skor": "102–110",
       "rozet": 6.12,
-      "why": "",
+      "why": "gece sırası 7",
       "metin": "Detroit Pistons deplasmanda Portland Trail Blazers'i 110-102 yendi.",
       "box": {
         "ev": {
@@ -12073,6 +12084,7 @@
         "kilit": {
           "ad": "hücum ribaundu",
           "fark": 13,
+          "alan": "oreb",
           "kutular": [
             {
               "kod": "POR",
@@ -12788,6 +12800,7 @@
         "kilit": {
           "ad": "üçlük",
           "fark": 10,
+          "alan": "3p",
           "kutular": [
             {
               "kod": "DEN",
@@ -12810,7 +12823,7 @@
       "mac": "Cleveland Cavaliers — Charlotte Hornets",
       "skor": "139–132",
       "rozet": 5.22,
-      "why": "gece sırası 1",
+      "why": "",
       "metin": "Cleveland Cavaliers evinde Charlotte Hornets'i 139-132 yendi. Darius Garland double-double yaptı (27 sayı, 10 asist).",
       "box": {
         "ev": {
@@ -13474,6 +13487,7 @@
         "kilit": {
           "ad": "hücum ribaundu",
           "fark": 12,
+          "alan": "oreb",
           "kutular": [
             {
               "kod": "CLE",
@@ -14162,6 +14176,7 @@
         "kilit": {
           "ad": "asist",
           "fark": 12,
+          "alan": "ast",
           "kutular": [
             {
               "kod": "GSW",
@@ -14180,14 +14195,23 @@
       "kazanan_kod": "GSW"
     }
   ],
-  "turkler": [],
+  "turkler": [
+    {
+      "isim": "Tarık Biberoviç",
+      "takim": "DAL",
+      "oynadi": false,
+      "takim_adi": "Dallas Mavericks",
+      "renk": "#2E7BC4"
+    }
+  ],
   "turkler_bekleyen": {
     "isimler": [
       "Bona",
-      "Şengün"
+      "Şengün",
+      "Biberoviç"
     ],
     "tarih": "23 Aralık'ta",
-    "metin": "Bu gece Türk oyuncu sahaya çıkmadı. Bona ve Şengün 23 Aralık'ta sahaya çıkıyor."
+    "metin": "Bu gece Türk oyuncu sahaya çıkmadı. Bona, Şengün ve Biberoviç 23 Aralık'ta sahaya çıkıyor."
   },
   "gecenin_notlari": [],
   "genis_aci": null

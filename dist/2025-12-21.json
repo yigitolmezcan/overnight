@@ -81,7 +81,7 @@
       "metin": "Minnesota Timberwolves, 16 sayılık farktan dönüp Milwaukee Bucks'u geçti.",
       "anlatili": true,
       "hedef_id": "g-mutlaka-3",
-      "icon": "default",
+      "icon": "standings",
       "saat": "03:00",
       "rozet": 7.14,
       "skor": "MIN 103 – MIL 100",
@@ -153,7 +153,7 @@
           "durum": "HOU +11",
           "durum_takim": "HOU",
           "fark": 11,
-          "one_cikan": "Houston 9-0 seri",
+          "one_cikan": "Durant double-double",
           "kritik": false
         },
         {
@@ -164,7 +164,7 @@
           "durum": "HOU +9",
           "durum_takim": "HOU",
           "fark": 9,
-          "one_cikan": "Eason 7 sayı",
+          "one_cikan": "Sacramento 7-0 seri",
           "kritik": false
         },
         {
@@ -175,7 +175,7 @@
           "durum": "berabere",
           "durum_takim": null,
           "fark": 0,
-          "one_cikan": "Sacramento 12-0 seri",
+          "one_cikan": "Murray 10 sayı",
           "kritik": false
         },
         {
@@ -1443,7 +1443,7 @@
           "durum": "MIA +7",
           "durum_takim": "MIA",
           "fark": 7,
-          "one_cikan": "4 kez liderlik değişti",
+          "one_cikan": "Brunson 47 sayı",
           "kritik": false
         },
         {
@@ -2002,6 +2002,7 @@
         "kilit": {
           "ad": "hücum ribaundu",
           "fark": 8,
+          "alan": "oreb",
           "kutular": [
             {
               "kod": "NYK",
@@ -2052,7 +2053,7 @@
           "durum": "MIL +12",
           "durum_takim": "MIL",
           "fark": 12,
-          "one_cikan": "Milwaukee 11-0 seri",
+          "one_cikan": "Porter Jr. double-double",
           "kritik": false
         },
         {
@@ -2063,7 +2064,7 @@
           "durum": "berabere",
           "durum_takim": null,
           "fark": 0,
-          "one_cikan": "en büyük fark 16",
+          "one_cikan": "Minnesota 20-0 seri",
           "kritik": false
         },
         {
@@ -2074,7 +2075,7 @@
           "durum": "MIN +3",
           "durum_takim": "MIN",
           "fark": 3,
-          "one_cikan": "Minnesota 6-0 seri",
+          "one_cikan": "en büyük fark 8",
           "kritik": true
         }
       ],
@@ -4011,9 +4012,9 @@
         "pm": "+26"
       },
       "sezon": {
-        "sezon_ort": 24.6,
+        "sezon_ort": 25.1,
         "son5_ort": 26.6,
-        "yuzde": 8.1,
+        "yuzde": 6.0,
         "son5": [
           {
             "sayi": 35,
@@ -4176,9 +4177,9 @@
         "pm": "+28"
       },
       "sezon": {
-        "sezon_ort": 8.5,
+        "sezon_ort": 8.3,
         "son5_ort": 8.6,
-        "yuzde": 1.2,
+        "yuzde": 3.6,
         "son5": [
           {
             "sayi": 10,
@@ -4286,9 +4287,9 @@
         "pm": "-16"
       },
       "sezon": {
-        "sezon_ort": 9.4,
+        "sezon_ort": 9.5,
         "son5_ort": 5.2,
-        "yuzde": -44.7,
+        "yuzde": -45.3,
         "son5": [
           {
             "sayi": 9,
@@ -4341,9 +4342,9 @@
         "pm": "-7"
       },
       "sezon": {
-        "sezon_ort": 2.5,
+        "sezon_ort": 2.0,
         "son5_ort": 1.6,
-        "yuzde": -36.0,
+        "yuzde": -20.0,
         "son5": [
           {
             "sayi": 0,
@@ -4451,9 +4452,9 @@
         "pm": "-6"
       },
       "sezon": {
-        "sezon_ort": 8.7,
+        "sezon_ort": 8.9,
         "son5_ort": 8.2,
-        "yuzde": -5.7,
+        "yuzde": -7.9,
         "son5": [
           {
             "sayi": 7,
@@ -4506,9 +4507,9 @@
         "pm": "-17"
       },
       "sezon": {
-        "sezon_ort": 7.9,
+        "sezon_ort": 8.1,
         "son5_ort": 5.8,
-        "yuzde": -26.6,
+        "yuzde": -28.4,
         "son5": [
           {
             "sayi": 0,
@@ -6761,9 +6762,9 @@
         "pm": "+5"
       },
       "sezon": {
-        "sezon_ort": 11.3,
+        "sezon_ort": 11.6,
         "son5_ort": 8.0,
-        "yuzde": -29.2,
+        "yuzde": -31.0,
         "son5": [
           {
             "sayi": 6,
@@ -6871,9 +6872,9 @@
         "pm": "+13"
       },
       "sezon": {
-        "sezon_ort": 8.8,
+        "sezon_ort": 8.5,
         "son5_ort": 10.8,
-        "yuzde": 22.7,
+        "yuzde": 27.1,
         "son5": [
           {
             "sayi": 2,
@@ -7091,9 +7092,9 @@
         "pm": "+3"
       },
       "sezon": {
-        "sezon_ort": 12.6,
+        "sezon_ort": 12.5,
         "son5_ort": 8.0,
-        "yuzde": -36.5,
+        "yuzde": -36.0,
         "son5": [
           {
             "sayi": 3,
@@ -7146,9 +7147,9 @@
         "pm": "+5"
       },
       "sezon": {
-        "sezon_ort": 22.9,
+        "sezon_ort": 23.6,
         "son5_ort": 19.0,
-        "yuzde": -17.0,
+        "yuzde": -19.5,
         "son5": [
           {
             "sayi": 22,
@@ -7201,9 +7202,9 @@
         "pm": "+2"
       },
       "sezon": {
-        "sezon_ort": 11.1,
+        "sezon_ort": 10.9,
         "son5_ort": 5.4,
-        "yuzde": -51.4,
+        "yuzde": -50.5,
         "son5": [
           {
             "sayi": 3,
@@ -7641,9 +7642,9 @@
         "pm": "+4"
       },
       "sezon": {
-        "sezon_ort": 6.2,
+        "sezon_ort": 5.8,
         "son5_ort": 6.0,
-        "yuzde": -3.2,
+        "yuzde": 3.4,
         "son5": [
           {
             "sayi": 9,
@@ -7657,7 +7658,7 @@
           },
           {
             "sayi": 6,
-            "ust": false,
+            "ust": true,
             "bu_gece": false
           },
           {
@@ -7696,9 +7697,9 @@
         "pm": "+1"
       },
       "sezon": {
-        "sezon_ort": 6.3,
+        "sezon_ort": 6.6,
         "son5_ort": 11.0,
-        "yuzde": 74.6,
+        "yuzde": 66.7,
         "son5": [
           {
             "sayi": 3,
@@ -9365,6 +9366,7 @@
       ],
       "son5_ort": 17.6,
       "sezon_ort": 8.0,
+      "taban": "bu_sezon",
       "fark": 9.6,
       "yuzde": 120.0,
       "ust_sayisi": 5,
@@ -9414,6 +9416,7 @@
       ],
       "son5_ort": 16.2,
       "sezon_ort": 9.2,
+      "taban": "bu_sezon",
       "fark": 6.9,
       "yuzde": 76.1,
       "ust_sayisi": 4,
@@ -9462,9 +9465,10 @@
         }
       ],
       "son5_ort": 11.0,
-      "sezon_ort": 6.3,
-      "fark": 4.7,
-      "yuzde": 74.6,
+      "sezon_ort": 6.6,
+      "taban": "bu_sezon",
+      "fark": 4.4,
+      "yuzde": 66.7,
       "ust_sayisi": 4,
       "alt_sayisi": 1,
       "son5_dakika": 21.7,
@@ -9512,6 +9516,7 @@
       ],
       "son5_ort": 19.0,
       "sezon_ort": 11.9,
+      "taban": "bu_sezon",
       "fark": 7.1,
       "yuzde": 59.7,
       "ust_sayisi": 5,
@@ -9561,6 +9566,7 @@
       ],
       "son5_ort": 12.4,
       "sezon_ort": 8.3,
+      "taban": "bu_sezon",
       "fark": 4.1,
       "yuzde": 49.4,
       "ust_sayisi": 4,
@@ -9611,14 +9617,65 @@
         }
       ],
       "son5_ort": 5.4,
-      "sezon_ort": 11.1,
-      "fark": -5.7,
-      "yuzde": -51.4,
+      "sezon_ort": 10.9,
+      "taban": "bu_sezon",
+      "fark": -5.5,
+      "yuzde": -50.5,
       "ust_sayisi": 1,
       "alt_sayisi": 4,
       "son5_dakika": 22.8,
       "renk": "#C4CED4",
       "asil_renk": "#C4CED4",
+      "renk_degisti": false
+    },
+    {
+      "id": 1629001,
+      "isim": "De'Anthony Melton",
+      "takim": "GSW",
+      "pos": "",
+      "_gmsc": 0,
+      "son5": [
+        {
+          "sayi": 13,
+          "rakip": "Chicago",
+          "bu_gece": false,
+          "ust": true
+        },
+        {
+          "sayi": 9,
+          "rakip": "Minnesota",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 0,
+          "rakip": "Portland",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 2,
+          "rakip": "Phoenix",
+          "bu_gece": false,
+          "ust": false
+        },
+        {
+          "sayi": 2,
+          "rakip": "Phoenix",
+          "bu_gece": false,
+          "ust": false
+        }
+      ],
+      "son5_ort": 5.2,
+      "sezon_ort": 10.3,
+      "taban": "gecen_sezon",
+      "fark": -5.1,
+      "yuzde": -49.5,
+      "ust_sayisi": 1,
+      "alt_sayisi": 4,
+      "son5_dakika": 17.4,
+      "renk": "#2E6BD6",
+      "asil_renk": "#2E6BD6",
       "renk_degisti": false
     },
     {
@@ -9661,14 +9718,15 @@
       ],
       "son5_ort": 8.4,
       "sezon_ort": 15.6,
+      "taban": "bu_sezon",
       "fark": -7.2,
       "yuzde": -46.2,
       "ust_sayisi": 0,
       "alt_sayisi": 5,
       "son5_dakika": 29.9,
-      "renk": "#3A8DDE",
+      "renk": "#ED174C",
       "asil_renk": "#3A8DDE",
-      "renk_degisti": false
+      "renk_degisti": true
     },
     {
       "id": 1630228,
@@ -9710,14 +9768,15 @@
       ],
       "son5_ort": 6.6,
       "sezon_ort": 10.9,
+      "taban": "bu_sezon",
       "fark": -4.3,
       "yuzde": -39.4,
       "ust_sayisi": 0,
       "alt_sayisi": 5,
       "son5_dakika": 17.1,
-      "renk": "#FFC72C",
+      "renk": "#2E6BD6",
       "asil_renk": "#2E6BD6",
-      "renk_degisti": true
+      "renk_degisti": false
     },
     {
       "id": 1629631,
@@ -9759,63 +9818,15 @@
       ],
       "son5_ort": 9.6,
       "sezon_ort": 15.3,
+      "taban": "bu_sezon",
       "fark": -5.7,
       "yuzde": -37.3,
       "ust_sayisi": 0,
       "alt_sayisi": 5,
       "son5_dakika": 28.1,
-      "renk": "#B3123F",
+      "renk": "#F5B335",
       "asil_renk": "#B3123F",
-      "renk_degisti": false
-    },
-    {
-      "id": 1629640,
-      "isim": "Keldon Johnson",
-      "takim": "SAS",
-      "pos": "",
-      "_gmsc": 12.7,
-      "son5": [
-        {
-          "sayi": 3,
-          "rakip": "Oklahoma City",
-          "bu_gece": false,
-          "ust": false
-        },
-        {
-          "sayi": 3,
-          "rakip": "New York",
-          "bu_gece": false,
-          "ust": false
-        },
-        {
-          "sayi": 9,
-          "rakip": "Washington",
-          "bu_gece": false,
-          "ust": false
-        },
-        {
-          "sayi": 13,
-          "rakip": "Atlanta",
-          "bu_gece": false,
-          "ust": true
-        },
-        {
-          "sayi": 12,
-          "rakip": "Washington",
-          "bu_gece": true,
-          "ust": false
-        }
-      ],
-      "son5_ort": 8.0,
-      "sezon_ort": 12.6,
-      "fark": -4.6,
-      "yuzde": -36.5,
-      "ust_sayisi": 1,
-      "alt_sayisi": 4,
-      "son5_dakika": 18.1,
-      "renk": "#C4CED4",
-      "asil_renk": "#C4CED4",
-      "renk_degisti": false
+      "renk_degisti": true
     }
   ],
   "siralama": [
@@ -10760,6 +10771,7 @@
         "kilit": {
           "ad": "hücum ribaundu",
           "fark": 12,
+          "alan": "oreb",
           "kutular": [
             {
               "kod": "WAS",
@@ -10782,7 +10794,7 @@
       "mac": "Brooklyn Nets — Toronto Raptors",
       "skor": "96–81",
       "rozet": 2.45,
-      "why": "gece sırası 2",
+      "why": "",
       "metin": "Brooklyn Nets evinde Toronto Raptors'u 96-81 yendi.",
       "box": {
         "ev": {
