@@ -6112,6 +6112,80 @@ def main():
           _yakin["rozet"] > _uzak["rozet"],
           f"{_uzak['rozet']:.2f} → {_yakin['rozet']:.2f}")
 
+    # ------------------------------------------------------------------
+    # BAŞLIK İSKELETİ ÖN KOŞULLARI (T31 artık iddiayı da denetliyor)
+    # ------------------------------------------------------------------
+    _dm2 = dogrula_modul
+    basar("İskelet: ön koşul tablosu tek kaynak",
+          set(_dm2.ISKELET_ON_KOSULU) == {n for n, _ in _dm2.BASLIK_ISKELETLERI}
+          and "ISKELET_ON_KOSULU" in open("cumle.py", encoding="utf-8").read())
+    _b = lambda **kw: {"son_fark": None, "son30_liderlik": False,
+                       "kazanan_acigi": None, "kopma_periyot": None,
+                       "kopma_sonrasi": None, "en_iyi_oyuncu": None,
+                       "kazanan_deplasmanda": False, "kazananin_en_iyisi": None,
+                       "kazananin_kademesi": None, "kazananin_sayisi": None, **kw}
+    # "son saniyede devirdi" — final fark ve liderlik değişimi şartı.
+    basar("İskelet: 5 farkla biten maçta 'son saniyede' reddediliyor",
+          not _dm2.t31_baslik_iskeleti(
+              "New York, New Orleans'ı son saniyede devirdi.",
+              _b(son_fark=5, son30_liderlik=True))[0])
+    basar("İskelet: 3 fark + son 30 sn liderlik değişimi kabul",
+          _dm2.t31_baslik_iskeleti(
+              "New York, New Orleans'ı son saniyede devirdi.",
+              _b(son_fark=3, son30_liderlik=True))[0])
+    basar("İskelet: yakın bitse de liderlik değişmediyse ret",
+          not _dm2.t31_baslik_iskeleti(
+              "Chicago, Atlanta'yı son saniyede devirdi.",
+              _b(son_fark=2, son30_liderlik=False))[0])
+    # "N sayılık farktan dönüp" — N gerçek açığa eşit olmalı.
+    basar("İskelet: dönüş sayısı gerçek açıkla uyuşmalı",
+          not _dm2.t31_baslik_iskeleti(
+              "New Orleans, 22 sayılık farktan dönüp Houston'ı yendi.",
+              _b(kazanan_acigi=25))[0]
+          and _dm2.t31_baslik_iskeleti(
+              "New Orleans, 25 sayılık farktan dönüp Houston'ı yendi.",
+              _b(kazanan_acigi=25))[0])
+    basar("İskelet: 10'un altındaki açık 'dönüş' sayılmıyor",
+          not _dm2.t31_baslik_iskeleti(
+              "Utah, 8 sayılık farktan dönüp Dallas'ı yendi.",
+              _b(kazanan_acigi=8))[0])
+    # "kopardı" — kopuştan sonra fark 12'nin altına inmemeli.
+    basar("İskelet: kopuştan sonra fark daralmışsa 'kopardı' reddediliyor",
+          not _dm2.t31_baslik_iskeleti(
+              "Miami, Boston'ı üçüncü çeyrekte kopardı.",
+              _b(kopma_periyot=3, kopma_sonrasi=8))[0]
+          and _dm2.t31_baslik_iskeleti(
+              "Miami, Boston'ı üçüncü çeyrekte kopardı.",
+              _b(kopma_periyot=3, kopma_sonrasi=15))[0])
+    # "deplasmanında" — kazanan gerçekten deplasmanda olmalı.
+    basar("İskelet: ev sahibi kazandıysa 'deplasmanında' reddediliyor",
+          not _dm2.t31_baslik_iskeleti(
+              "Sacramento, Dallas deplasmanında 113-107 kazandı.",
+              _b(kazanan_deplasmanda=False))[0])
+    # Performans — KAZANANIN en iyisi + kayda değer (gevşetilmiş koşul).
+    basar("İskelet: kazananın en iyisi başlığı hak ediyor",
+          _dm2.t31_baslik_iskeleti(
+              "Lauri Markkanen'in 33 sayısıyla Utah, Dallas'ı yendi.",
+              _b(kazananin_en_iyisi="Lauri Markkanen", kazananin_kademesi=3,
+                 kazananin_sayisi=33))[0])
+    basar("İskelet: kazananın en iyisi DEĞİLSE ret",
+          not _dm2.t31_baslik_iskeleti(
+              "Cam Thomas'ın 30 sayısıyla Brooklyn, Minnesota'yı yendi.",
+              _b(kazananin_en_iyisi="Michael Porter Jr.", kazananin_kademesi=3,
+                 kazananin_sayisi=24))[0])
+    basar("İskelet: kayda değer olmayan performans başlığa çıkmıyor",
+          not _dm2.t31_baslik_iskeleti(
+              "Ayo Dosunmu'nun 18 sayısıyla Chicago, Utah'ı yendi.",
+              _b(kazananin_en_iyisi="Ayo Dosunmu", kazananin_kademesi=8,
+                 kazananin_sayisi=18))[0])
+    basar("İskelet: nötr düz skor her zaman geçerli",
+          _dm2.t31_baslik_iskeleti("Utah, Dallas'ı 113-107 yendi.", _b())[0])
+    # Şablon yolu HER ZAMAN geçen bir başlık üretmeli — LLM reddedilse
+    # bile gece yayınlanabilsin.
+    basar("İskelet: şablon yolu T31'den geçen başlık üretiyor",
+          "baglam=iskelet_baglami(gercekler, ham_mac)"
+          in open("cumle.py", encoding="utf-8").read())
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))

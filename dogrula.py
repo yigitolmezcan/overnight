@@ -817,12 +817,23 @@ def iskelet_baglami(gercekler, ham_mac=None):
     kopma = fs.get("kopma_ani") or {}
     en_iyi = None
     en_iyi_kazananda = None
+    kaz_en_iyi = None
+    kaz_kademe = None
+    kaz_sayi = None
     if statlar:
         try:
             import hesapla
             _st = hesapla.performans_sirala(statlar)[0]
             en_iyi = _st.get("oyuncu")
             en_iyi_kazananda = (_st.get("takim") == skor.get("kazanan"))
+            # KAZANANIN en iyisi ayrıca tutuluyor: performans iskeleti
+            # "maçın en iyisi" değil "kazananın en iyisi" istiyor.
+            _kaz = [x for x in statlar if x.get("takim") == skor.get("kazanan")]
+            if _kaz:
+                _k1 = hesapla.performans_sirala(_kaz)[0]
+                kaz_en_iyi = _k1.get("oyuncu")
+                kaz_kademe = hesapla.performans_derecesi(_k1)[0]
+                kaz_sayi = int(_k1.get("sayi") or 0)
         except Exception:
             en_iyi = None
     return {
@@ -833,6 +844,9 @@ def iskelet_baglami(gercekler, ham_mac=None):
         "kopma_sonrasi": kopma.get("sonrasi_en_yakin"),
         "en_iyi_oyuncu": en_iyi,
         "en_iyi_kazanan_takimda": en_iyi_kazananda,
+        "kazananin_en_iyisi": kaz_en_iyi,
+        "kazananin_kademesi": kaz_kademe,
+        "kazananin_sayisi": kaz_sayi,
         "kazanan_deplasmanda": (skor.get("kazanan") == skor.get("dep")),
     }
 
@@ -874,23 +888,36 @@ def _on_kosul_kopardi(b, m=None):
     return True, ""
 
 
-def _on_kosul_performans(b, m=None):
-    """Başlıktaki oyuncu (1) maçın en iyisi ve (2) KAZANAN takımdan olmalı.
+# Performans başlığı için "kayda değer" eşiği: 30+ sayı YA DA
+# double-double ve üstü kademe (hesapla.PERF_KADEMELERI sırasında
+# "cifte_cifte" 5. indeks).
+ISKELET_PERFORMANS_SAYI = 30
+ISKELET_PERFORMANS_KADEME = 5
 
-    (2) şartı ölçümde ortaya çıktı: 23 Aralık'ta maçın en iyisi Jamal
-    Murray'di ama Murray KAYBEDEN Denver'daydı; koşul yalnız "en iyisi
-    mi" diye sorunca başlık "Murray'in 31 sayısıyla Dallas, Denver'ı
-    yendi" oluyordu — kaybedenin oyuncusu kazananın kahramanı gibi."""
-    en_iyi = b.get("en_iyi_oyuncu")
-    if not en_iyi or not m:
+
+def _on_kosul_performans(b, m=None):
+    """Başlıktaki oyuncu KAZANAN takımın en iyisi ve kayda değer olmalı.
+
+    "Maçın en iyisi" şartı fazla katıydı (kullanıcı kararı): en iyi
+    oyuncu kaybeden taraftaysa hiçbir performans başlığı kurulamıyordu
+    ve 15 Aralık'ta Markkanen'in 33 sayısı düşüyordu. Kazananın en
+    iyisi de başlığı hak eder — yeter ki eşiği geçsin.
+
+    Kaybedenin oyuncusunu kazananın kahramanı yapan hata (23 Aralık,
+    Jamal Murray) yine kapalı: aday KAZANAN takımdan seçiliyor."""
+    kaz = b.get("kazananin_en_iyisi")
+    if not kaz or not m:
         return True, ""
-    if b.get("en_iyi_kazanan_takimda") is False:
-        return False, (f"maçın en iyisi ({en_iyi}) KAYBEDEN takımda — "
-                       f"performans iskeleti kurulamaz")
-    soyad = en_iyi.strip().split()[-1]
+    soyad = kaz.strip().split()[-1]
     if soyad.lower() not in m.lower():
-        return False, (f"başlıktaki oyuncu maçın en iyisi değil "
-                       f"(en iyisi: {en_iyi})")
+        return False, (f"başlıktaki oyuncu kazananın en iyisi değil "
+                       f"(kazananın en iyisi: {kaz})")
+    kademe = b.get("kazananin_kademesi")
+    sayi = b.get("kazananin_sayisi") or 0
+    if kademe is not None and kademe > ISKELET_PERFORMANS_KADEME \
+            and sayi < ISKELET_PERFORMANS_SAYI:
+        return False, (f"{kaz} performansı başlığa taşınacak kadar kayda değer "
+                       f"değil ({sayi} sayı, kademe {kademe})")
     return True, ""
 
 
