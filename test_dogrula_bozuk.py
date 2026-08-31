@@ -6436,10 +6436,13 @@ def main():
           "color:var(--ink);font-weight:700" in _sayfa.split(".kaplist .mc .w{")[1].split("}")[0]
           and "#2E3846" in _sayfa.split(".kaplist .mc .vs{")[1].split("}")[0]
           and "#4C5665" in _sayfa.split(".kaplist .mc .l{")[1].split("}")[0])
-    basar("Satır: düşük rozetli bir kademe daha soluk",
-          "#6E7A8B" in _sayfa.split(".kaplist .k3 .mc .w{")[1].split("}")[0]
-          and "#39424F" in _sayfa.split(".kaplist .k3 .mc .l{")[1].split("}")[0]
-          and "font-weight:400" in _sayfa.split(".kaplist .k3 .sk{")[1].split("}")[0])
+    # DEĞİŞTİ: kazanan adı ve skor artık HER satırda parlak. Bu liste
+    # "skorlara bak" için var; soluklaştırınca işlevini kaybediyordu.
+    # Triyajı rozet yapıyor, ikinci sinyale gerek yok (kullanıcı kararı).
+    basar("Satır: kazanan ve skor rozetten bağımsız parlak",
+          ".kaplist .k3 .mc .w{" not in _sayfa
+          and ".kaplist .k3 .sk{" not in _sayfa
+          and ".kaplist .k3 .mc .l{" not in _sayfa)
     # TAKMA ADLAR KALKTI, Lakers ayrışıyor.
     basar("Satır: kısa ad kullanılıyor, Lakers 'LA Lakers'",
           _derle.KAPAK_KISA_OVERRIDE.get("LAL") == "LA Lakers"
@@ -6464,11 +6467,11 @@ def main():
           "const RAY_DURAK=" in _sayfa
           and "rayRenk(bas)" in _sayfa and "rayRenk(bit)" in _sayfa)
 
+    # Rozet kademesi AYNEN duruyor — ayrım orada, satır metninde değil.
     basar("Liste: rozet üç kademe",
           ".kaplist .k1 i{background:var(--ember)" in _sayfa
           and ".kaplist .k2 i{background:#3A2216" in _sayfa
-          and ".kaplist .k3 i{background:#161D28" in _sayfa
-          and ".kaplist .k3 .mc .w{" in _sayfa)
+          and ".kaplist .k3 i{background:#161D28" in _sayfa)
     # SEZON BAŞI: bağlamlı kalıp ilk 10 maçta kurulamaz.
     basar("Manşet: sezon başı bağlam eşiği susma kuralıyla aynı",
           _derle.MANSET_BAGLAM_ASGARI == _gerc_modul.SEZON_ACILISI_TAZE_MAC_SAYISI
@@ -6529,6 +6532,52 @@ def main():
     basar("Liste ölçüsü: mobilde satır içi ölçüler sıkışıyor",
           "@media(max-width:639px){" in _ly
           and ".kaplist a{gap:9px}" in _ly)
+
+    # --------------------------------------------------------------
+    # MASAÜSTÜNDE İKİ SÜTUN (1024px ve üstü)
+    # --------------------------------------------------------------
+    _iki = _ly.split("@media(min-width:1024px){")
+    basar("İki sütun: kural 1024px eşiğinde", len(_iki) >= 2)
+    _blk = _iki[-1].split("\n}")[0] if len(_iki) >= 2 else ""
+    basar("İki sütun: grup ızgaraya dönüyor, iki eşit sütun",
+          "display:grid" in _blk and "grid-template-columns:1fr 1fr" in _blk)
+    basar("İki sütun: saat başlığı iki sütunu birden kaplıyor",
+          "grid-column:1/-1" in _blk)
+    basar("İki sütun: sütun boşluğu değişkenden (34px)",
+          "column-gap:var(--liste-sutun)" in _blk
+          and "--liste-sutun:34px" in _ly)
+    basar("İki sütun: saat başlığının üstünde ayırıcı, ilkinde yok",
+          "border-top:1px solid var(--line2)" in _blk
+          and ":first-child .saat{border-top:0" in _blk)
+    # Tek sütun üst sınırı masaüstünde kalkmalı, yoksa iki sütun sığmaz.
+    basar("İki sütun: tek sütun üst sınırı 1024'te kaldırılıyor",
+          "max-width:none" in _blk)
+    # MOBİLDE HİÇBİR ŞEY DEĞİŞMESİN: ızgara kuralı yalnız 1024+ içinde.
+    basar("İki sütun: mobil tek sütun (ızgara kuralı medya sorgusunun içinde)",
+          "display:grid" not in _ly.split("@media(min-width:1024px){")[0]
+          .split(".kaplist .grp{")[-1].split("}")[0])
+    # Sol ray ve degrade mantığı DEĞİŞMEDİ — grup kutusu duruyor.
+    basar("İki sütun: ray dilimi mantığı grup kutusu üstünde, dokunulmadı",
+          "const bas=g.offsetTop/H" in _sayfa
+          and "g.offsetTop+g.offsetHeight" in _sayfa
+          and '.kaplist .gray{position:absolute' in _ly)
+
+    # --------------------------------------------------------------
+    # TANIMSIZ CSS DEĞİŞKENİ — sessizce düşen bildirim olmasın
+    # --------------------------------------------------------------
+    # --line2 ve --dim referans bloklarından gelmişti ama :root'ta yoktu;
+    # 11 bildirim hiç uygulanmamıştı (çeyrek tablosu çizgileri, karar
+    # cümlesi üst çizgisi, manşet ayırıcıları, kapak listesi üst çizgisi).
+    _stil = _sayfa.split("<style>")[1].split("</style>")[0]
+    _tanimli = set(_re.findall(r"(--[\w-]+)\s*:", _stil))
+    # JS'ten inline verilenler (style="--tc:...") kural içinde tanımlı değil.
+    _inline = {"--tc", "--ray", "--ray-rgb", "--asil", "--crpad", "--kbspad"}
+    _acik = []
+    for _v in set(_re.findall(r"var\((--[\w-]+)\s*\)", _stil)):
+        if _v not in _tanimli and _v not in _inline:
+            _acik.append(_v)
+    basar("CSS: yedeksiz kullanılan her değişken :root'ta tanımlı",
+          not _acik, f"tanımsız: {sorted(_acik)}")
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",

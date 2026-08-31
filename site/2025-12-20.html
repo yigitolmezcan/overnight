@@ -31,6 +31,12 @@
   --disp:'Bricolage Grotesque',system-ui,sans-serif;
   --txt:'Instrument Sans',system-ui,sans-serif;
   --mono:'DM Mono',ui-monospace,monospace;
+  /* Referans bloklarından gelen kurallar bu iki değişkeni kullanıyordu
+     ama :root'ta tanımlı değillerdi — 11 bildirim SESSİZCE düşüyordu:
+     çeyrek tablosunun satır çizgileri, karar cümlesinin üst çizgisi,
+     manşet ayırıcıları, kapak listesinin üst çizgisi ve üçüncü kademe
+     manşetin soluk rengi hiç uygulanmamış. Ölçümle bulundu. */
+  --line2:#151C26; --dim:#98A2B0;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -80,6 +86,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-a
                            çifti 25 karakter ≈ 223px. 300px denendi,
                            satır içinde 115px ölü alan bıraktı. */
   --liste-yan:18px;     /* kutulu listenin yan iç dolgusu */
+  --liste-sutun:34px;   /* masaüstü iki sütun arası boşluk */
 }
 
 .sec{--c:var(--ember);padding-top:44px}
@@ -1264,11 +1271,10 @@ td.khot{color:var(--amber);font-weight:700}
 .kaplist .sk{font-family:var(--mono);font-size:14px;font-weight:700;
   color:var(--ink);flex:none;letter-spacing:-.02em;text-align:right}
 .kaplist .sk s{text-decoration:none;color:#4C5665;font-weight:400}
-/* Düşük rozetli satır bir kademe daha soluk. */
-.kaplist .k3 .mc .w{color:#6E7A8B}
-.kaplist .k3 .mc .l{color:#39424F}
-.kaplist .k3 .sk{color:#5A6472;font-weight:400}
-.kaplist .k3 .sk s{color:#39424F}
+/* KAZANAN ADI VE SKOR HER SATIRDA PARLAK — rozet kademesinden bağımsız.
+   Eskiden k3 satırında ikisi de soluklaşıyordu; bu liste tam olarak
+   "skorlara bak" için var, soluklaşınca işlevini kaybediyordu. Triyajı
+   rozet yapıyor (ember / bakır / gri), ikinci sinyale gerek yok. */
 
 /* "Bunları geç" sol rayı — YAPI VERİR, DİKKAT ÇEKMEZ (kullanıcı kararı).
    Üst katmanlarda 3px ve tam renk; burada 2px ve %30'dan %10'a sönen
@@ -1478,6 +1484,19 @@ td.khot{color:var(--amber);font-weight:700}
    2) Satır içi ölçüler bir tık sıkışıyor; dolgu 18px'in altına inmiyor. */
 .kaplist .mc .w{flex:0 0 auto}
 .kaplist .mc .l{flex:0 1 auto;min-width:0}
+/* ===== MASAÜSTÜNDE İKİ SÜTUN =====
+   Grup (saat) KUTUSU aynen duruyor — sol ray ve degrade dilimi onun
+   üstünde çalışıyor, mantık değişmedi. Değişen tek şey: grubun içi
+   ızgaraya dönüyor, saat başlığı iki sütunu birden kaplıyor, maçlar
+   altında yan yana diziliyor. Kronoloji yukarıdan aşağı akıyor.
+   7 maçlık grup 4 sol + 3 sağ olarak akar (satır yönlü otomatik akış). */
+@media(min-width:1024px){
+  .kaplist .grp{display:grid;grid-template-columns:1fr 1fr;
+    column-gap:var(--liste-sutun);align-items:start;max-width:none}
+  .kaplist .grp .saat{grid-column:1/-1;
+    border-top:1px solid var(--line2);padding:12px 0 4px}
+  .kaplist .grp:first-child .saat{border-top:0;padding-top:0}
+}
 @media(max-width:639px){
   .kaplist a{gap:9px}
   .kaplist .grp{padding-left:11px}
