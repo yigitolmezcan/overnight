@@ -1,11 +1,11 @@
 {
   "tarih": "2026-03-05",
-  "hesaplandi": "2026-08-31T18:51:30.478297Z",
-  "en_iyi_skor": 9.18,
+  "hesaplandi": "2026-08-31T19:01:27.666670Z",
+  "en_iyi_skor": 9.15,
   "maclar": [
     {
-      "rozet": 9.18,
-      "ham": 11.57,
+      "rozet": 9.15,
+      "ham": 11.42,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 10,
@@ -15,7 +15,7 @@
       },
       "yukselticiler": {
         "Y": 2.08,
-        "F": 4,
+        "F": 0,
         "G": 0,
         "A": 8.08
       },
@@ -120,34 +120,6 @@
       "ham": 7.41,
       "katman": "ikinci",
       "tasiyicilar": {
-        "S": 5.09,
-        "K": 6.14,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 2.67,
-        "F": 4,
-        "G": 0,
-        "A": 6.58
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500903",
-      "ev": "MIN",
-      "dep": "TOR",
-      "ev_skor": 115,
-      "dep_skor": 107,
-      "en_iyi_performans": "Rudy Gobert",
-      "esitlik_bozucu": [
-        0,
-        -8
-      ]
-    },
-    {
-      "rozet": 7.41,
-      "ham": 7.41,
-      "katman": "ikinci",
-      "tasiyicilar": {
         "S": 5.64,
         "K": 2.95,
         "T": 0,
@@ -172,8 +144,36 @@
       ]
     },
     {
-      "rozet": 7.15,
-      "ham": 7.15,
+      "rozet": 7.08,
+      "ham": 7.08,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 5.09,
+        "K": 6.14,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.67,
+        "F": 0,
+        "G": 0,
+        "A": 6.58
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500903",
+      "ev": "MIN",
+      "dep": "TOR",
+      "ev_skor": 115,
+      "dep_skor": 107,
+      "en_iyi_performans": "Rudy Gobert",
+      "esitlik_bozucu": [
+        0,
+        -8
+      ]
+    },
+    {
+      "rozet": 6.81,
+      "ham": 6.81,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 7.59,
@@ -183,7 +183,7 @@
       },
       "yukselticiler": {
         "Y": 3.19,
-        "F": 4,
+        "F": 0,
         "G": 0,
         "A": 4.08
       },
@@ -200,8 +200,8 @@
       ]
     },
     {
-      "rozet": 6.6,
-      "ham": 6.6,
+      "rozet": 6.29,
+      "ham": 6.29,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 5.89,
@@ -211,7 +211,7 @@
       },
       "yukselticiler": {
         "Y": 2.59,
-        "F": 4,
+        "F": 0,
         "G": 0,
         "A": 4.25
       },
@@ -228,8 +228,8 @@
       ]
     },
     {
-      "rozet": 4.93,
-      "ham": 4.93,
+      "rozet": 4.69,
+      "ham": 4.69,
       "katman": "gec",
       "tasiyicilar": {
         "S": 5.54,
@@ -239,7 +239,7 @@
       },
       "yukselticiler": {
         "Y": 3.15,
-        "F": 4,
+        "F": 0,
         "G": 0,
         "A": 0.17
       },

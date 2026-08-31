@@ -6,7 +6,7 @@
     {
       "sira": 1,
       "mac": "Toronto Raptors — Golden State Warriors",
-      "rozet": 9.01,
+      "rozet": 8.96,
       "id": "g-mutlaka-1"
     },
     {
@@ -47,7 +47,7 @@
       "hedef_id": "g-mutlaka-1",
       "icon": "default",
       "saat": "23:30",
-      "rozet": 9.01,
+      "rozet": 8.96,
       "skor": "TOR 141 – GSW 127",
       "skor_tam": "Toronto Raptors 141 – Golden State Warriors 127",
       "etiket": "gecenin ilki",
@@ -797,7 +797,7 @@
       "kisa": true,
       "mac": "Toronto Raptors — Golden State Warriors",
       "skor": "141–127",
-      "rozet": 9.01,
+      "rozet": 8.96,
       "baslik": "Toronto Raptors, 13 sayılık farktan dönüp Golden State Warriors'u yendi.",
       "neden_onemli": "",
       "ceyrek_tablosu": [

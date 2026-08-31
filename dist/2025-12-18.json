@@ -18,13 +18,13 @@
     {
       "sira": 3,
       "mac": "Brooklyn Nets — Miami Heat",
-      "rozet": 5.4,
+      "rozet": 5.15,
       "id": "a-0022500373"
     },
     {
       "sira": 4,
       "mac": "Milwaukee Bucks — Toronto Raptors",
-      "rozet": 3.96,
+      "rozet": 3.78,
       "id": "a-0022500374"
     },
     {
@@ -42,7 +42,7 @@
     {
       "sira": 7,
       "mac": "Denver Nuggets — Orlando Magic",
-      "rozet": 4.61,
+      "rozet": 4.4,
       "id": "a-0022500377"
     },
     {
@@ -95,7 +95,7 @@
       "hedef_id": "a-0022500373",
       "icon": "default",
       "saat": "03:30",
-      "rozet": 5.4,
+      "rozet": 5.15,
       "skor": "BKN 95 – MIA 106",
       "skor_tam": "Brooklyn Nets 95 – Miami Heat 106",
       "etiket": "",
@@ -119,7 +119,7 @@
       "hedef_id": "a-0022500374",
       "icon": "default",
       "saat": "04:00",
-      "rozet": 3.96,
+      "rozet": 3.78,
       "skor": "MIL 105 – TOR 111",
       "skor_tam": "Milwaukee Bucks 105 – Toronto Raptors 111",
       "etiket": "",
@@ -167,7 +167,7 @@
       "hedef_id": "a-0022500377",
       "icon": "default",
       "saat": "05:00",
-      "rozet": 4.61,
+      "rozet": 4.4,
       "skor": "DEN 126 – ORL 115",
       "skor_tam": "Denver Nuggets 126 – Orlando Magic 115",
       "etiket": "",
@@ -17517,7 +17517,7 @@
       "id": "a-0022500373",
       "mac": "Brooklyn Nets — Miami Heat",
       "skor": "95–106",
-      "rozet": 5.4,
+      "rozet": 5.15,
       "why": "",
       "metin": "Miami Heat deplasmanda Brooklyn Nets'i 106-95 yendi.",
       "box": {
@@ -18095,7 +18095,7 @@
       "id": "a-0022500377",
       "mac": "Denver Nuggets — Orlando Magic",
       "skor": "126–115",
-      "rozet": 4.61,
+      "rozet": 4.4,
       "why": "20. galibiyetini alan (kazanan)",
       "metin": "Denver Nuggets evinde Orlando Magic'i 126-115 yendi. Paolo Banchero triple-double yaptı (26 sayı, 16 ribaund, 10 asist).",
       "box": {
@@ -18646,7 +18646,7 @@
       "id": "a-0022500374",
       "mac": "Milwaukee Bucks — Toronto Raptors",
       "skor": "105–111",
-      "rozet": 3.96,
+      "rozet": 3.78,
       "why": "",
       "metin": "Toronto Raptors deplasmanda Milwaukee Bucks'u 111-105 yendi.",
       "box": {

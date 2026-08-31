@@ -6,7 +6,7 @@
     {
       "sira": 1,
       "mac": "Atlanta Hawks — Miami Heat",
-      "rozet": 4.88,
+      "rozet": 4.66,
       "id": "a-0022500423"
     },
     {
@@ -18,7 +18,7 @@
     {
       "sira": 3,
       "mac": "Washington Wizards — Toronto Raptors",
-      "rozet": 4.66,
+      "rozet": 4.44,
       "id": "a-0022500425"
     },
     {
@@ -36,7 +36,7 @@
     {
       "sira": 6,
       "mac": "Memphis Grizzlies — Milwaukee Bucks",
-      "rozet": 2.85,
+      "rozet": 2.71,
       "id": "a-0022500428"
     },
     {
@@ -54,7 +54,7 @@
     {
       "sira": 9,
       "mac": "Portland Trail Blazers — LA Clippers",
-      "rozet": 6.03,
+      "rozet": 5.76,
       "id": "a-0022500431"
     }
   ],
@@ -65,7 +65,7 @@
       "hedef_id": "a-0022500425",
       "icon": "default",
       "saat": "03:00",
-      "rozet": 4.66,
+      "rozet": 4.44,
       "skor": "WAS 138 – TOR 117",
       "skor_tam": "Washington Wizards 138 – Toronto Raptors 117",
       "etiket": "gecenin ilki",
@@ -125,7 +125,7 @@
       "hedef_id": "a-0022500428",
       "icon": "default",
       "saat": "04:00",
-      "rozet": 2.85,
+      "rozet": 2.71,
       "skor": "MEM 125 – MIL 104",
       "skor_tam": "Memphis Grizzlies 125 – Milwaukee Bucks 104",
       "etiket": "",
@@ -149,7 +149,7 @@
       "hedef_id": "a-0022500431",
       "icon": "standings",
       "saat": "06:00",
-      "rozet": 6.03,
+      "rozet": 5.76,
       "skor": "POR 103 – LAC 119",
       "skor_tam": "Portland Trail Blazers 103 – LA Clippers 119",
       "etiket": "",
@@ -161,7 +161,7 @@
       "hedef_id": "a-0022500423",
       "icon": "standings",
       "saat": null,
-      "rozet": 4.88,
+      "rozet": 4.66,
       "skor": "ATL 111 – MIA 126",
       "skor_tam": "Atlanta Hawks 111 – Miami Heat 126",
       "etiket": "",
@@ -13555,12 +13555,14 @@
       "karar": null,
       "ray_renk": "#B08BE8",
       "ray_rgb": "176,139,232"
-    },
+    }
+  ],
+  "diger": [
     {
       "id": "a-0022500431",
       "mac": "Portland Trail Blazers — LA Clippers",
       "skor": "103–119",
-      "rozet": 6.03,
+      "rozet": 5.76,
       "why": "gece sırası 9",
       "metin": "LA Clippers deplasmanda Portland Trail Blazers'i 119-103 yendi. James Harden 34 sayı attı.",
       "box": {
@@ -14174,37 +14176,8 @@
         },
         "kritik": null
       },
-      "kazanan_kod": "LAC",
-      "ceyrek_tablosu": [
-        {
-          "ceyrek": "1. yarı",
-          "skor": "62–56",
-          "ev_skor": 62,
-          "dep_skor": 56,
-          "durum": "POR +6",
-          "durum_takim": "POR",
-          "fark": 6,
-          "one_cikan": "Portland 9-0 seri",
-          "kritik": false
-        },
-        {
-          "ceyrek": "2. yarı",
-          "skor": "103–119",
-          "ev_skor": 103,
-          "dep_skor": 119,
-          "durum": "LAC +16",
-          "durum_takim": "LAC",
-          "fark": 16,
-          "one_cikan": "Leonard 21 sayı",
-          "kritik": true
-        }
-      ],
-      "karar": null,
-      "ray_renk": "#D2434A",
-      "ray_rgb": "210,67,74"
-    }
-  ],
-  "diger": [
+      "kazanan_kod": "LAC"
+    },
     {
       "id": "a-0022500427",
       "mac": "Chicago Bulls — Philadelphia 76ers",
@@ -14830,7 +14803,7 @@
       "id": "a-0022500423",
       "mac": "Atlanta Hawks — Miami Heat",
       "skor": "111–126",
-      "rozet": 4.88,
+      "rozet": 4.66,
       "why": "konferans sıraları 8-10",
       "metin": "Miami Heat deplasmanda Atlanta Hawks'ı 126-111 yendi.",
       "box": {
@@ -15401,7 +15374,7 @@
       "id": "a-0022500425",
       "mac": "Washington Wizards — Toronto Raptors",
       "skor": "138–117",
-      "rozet": 4.66,
+      "rozet": 4.44,
       "why": "",
       "metin": "Washington Wizards evinde Toronto Raptors'u 138-117 ezdi.",
       "box": {
@@ -16776,7 +16749,7 @@
       "id": "a-0022500428",
       "mac": "Memphis Grizzlies — Milwaukee Bucks",
       "skor": "125–104",
-      "rozet": 2.85,
+      "rozet": 2.71,
       "why": "bireysel performans: 5_blok eşiğini geçen Jaren Jackson Jr.",
       "metin": "Memphis Grizzlies evinde Milwaukee Bucks'u 125-104 yendi.",
       "box": {

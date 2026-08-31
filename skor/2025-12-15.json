@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-15",
-  "hesaplandi": "2026-08-31T18:51:27.000625Z",
+  "hesaplandi": "2026-08-31T19:01:24.088616Z",
   "en_iyi_skor": 9.39,
   "maclar": [
     {
@@ -60,8 +60,8 @@
       ]
     },
     {
-      "rozet": 8.09,
-      "ham": 8.17,
+      "rozet": 7.8,
+      "ham": 7.8,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 8.34,
@@ -71,7 +71,7 @@
       },
       "yukselticiler": {
         "Y": 2.12,
-        "F": 4,
+        "F": 0,
         "G": 0,
         "A": 6.0
       },

@@ -24,7 +24,7 @@
     {
       "sira": 4,
       "mac": "LA Clippers — Memphis Grizzlies",
-      "rozet": 8.09,
+      "rozet": 7.8,
       "id": "g-mutlaka-2"
     },
     {
@@ -65,7 +65,7 @@
       "hedef_id": "g-mutlaka-2",
       "icon": "standings",
       "saat": null,
-      "rozet": 8.09,
+      "rozet": 7.8,
       "skor": "LAC 103 – MEM 121",
       "skor_tam": "LA Clippers 103 – Memphis Grizzlies 121",
       "etiket": "",
@@ -1413,7 +1413,7 @@
       "kisa": true,
       "mac": "LA Clippers — Memphis Grizzlies",
       "skor": "103–121",
-      "rozet": 8.09,
+      "rozet": 7.8,
       "baslik": "Jaren Jackson Jr.'un 31 sayısıyla Memphis Grizzlies, LA Clippers'i yendi.",
       "neden_onemli": "",
       "ceyrek_tablosu": [

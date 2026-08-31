@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-25",
-  "hesaplandi": "2026-08-31T18:51:27.985843Z",
+  "hesaplandi": "2026-08-31T19:01:25.119411Z",
   "en_iyi_skor": 9.35,
   "maclar": [
     {
@@ -60,8 +60,8 @@
       ]
     },
     {
-      "rozet": 6.75,
-      "ham": 6.75,
+      "rozet": 6.45,
+      "ham": 6.45,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 4.64,
@@ -71,7 +71,7 @@
       },
       "yukselticiler": {
         "Y": 2.04,
-        "F": 4,
+        "F": 0,
         "G": 0,
         "A": 8.27
       },
@@ -116,8 +116,8 @@
       ]
     },
     {
-      "rozet": 3.17,
-      "ham": 3.17,
+      "rozet": 3.02,
+      "ham": 3.02,
       "katman": "gec",
       "tasiyicilar": {
         "S": 2.81,
@@ -127,7 +127,7 @@
       },
       "yukselticiler": {
         "Y": 3.06,
-        "F": 4,
+        "F": 0,
         "G": 0,
         "A": 5.33
       },

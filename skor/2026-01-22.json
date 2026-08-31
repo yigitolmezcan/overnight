@@ -1,6 +1,6 @@
 {
   "tarih": "2026-01-22",
-  "hesaplandi": "2026-08-31T18:51:29.454760Z",
+  "hesaplandi": "2026-08-31T19:01:26.622985Z",
   "en_iyi_skor": 8.78,
   "maclar": [
     {
@@ -60,8 +60,8 @@
       ]
     },
     {
-      "rozet": 8.22,
-      "ham": 8.47,
+      "rozet": 8.06,
+      "ham": 8.12,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 8.67,
@@ -71,7 +71,7 @@
       },
       "yukselticiler": {
         "Y": 4.6,
-        "F": 4,
+        "F": 0,
         "G": 0,
         "A": 2.0
       },
@@ -85,34 +85,6 @@
       "esitlik_bozucu": [
         0,
         -10
-      ]
-    },
-    {
-      "rozet": 8.04,
-      "ham": 8.08,
-      "katman": "ikinci",
-      "tasiyicilar": {
-        "S": 4.79,
-        "K": 6.86,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 5.1,
-        "F": 4,
-        "G": 0,
-        "A": 4.54
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500630",
-      "ev": "DAL",
-      "dep": "GSW",
-      "ev_skor": 123,
-      "dep_skor": 115,
-      "en_iyi_performans": "Stephen Curry",
-      "esitlik_bozucu": [
-        0,
-        -8
       ]
     },
     {
@@ -144,8 +116,36 @@
       ]
     },
     {
-      "rozet": 7.36,
-      "ham": 7.36,
+      "rozet": 7.72,
+      "ham": 7.72,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 4.79,
+        "K": 6.86,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 5.1,
+        "F": 0,
+        "G": 0,
+        "A": 4.54
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500630",
+      "ev": "DAL",
+      "dep": "GSW",
+      "ev_skor": 123,
+      "dep_skor": 115,
+      "en_iyi_performans": "Stephen Curry",
+      "esitlik_bozucu": [
+        0,
+        -8
+      ]
+    },
+    {
+      "rozet": 7.03,
+      "ham": 7.03,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 7.5,
@@ -155,7 +155,7 @@
       },
       "yukselticiler": {
         "Y": 4.45,
-        "F": 4,
+        "F": 0,
         "G": 0,
         "A": 4.58
       },
@@ -172,8 +172,8 @@
       ]
     },
     {
-      "rozet": 5.87,
-      "ham": 5.87,
+      "rozet": 5.58,
+      "ham": 5.58,
       "katman": "gec",
       "tasiyicilar": {
         "S": 5.64,
@@ -183,7 +183,7 @@
       },
       "yukselticiler": {
         "Y": 2.21,
-        "F": 4,
+        "F": 0,
         "G": 0,
         "A": 2.08
       },

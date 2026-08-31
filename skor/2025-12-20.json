@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-20",
-  "hesaplandi": "2026-08-31T18:51:27.415646Z",
+  "hesaplandi": "2026-08-31T19:01:24.525690Z",
   "en_iyi_skor": 9.05,
   "maclar": [
     {
@@ -88,8 +88,8 @@
       ]
     },
     {
-      "rozet": 7.7,
-      "ham": 7.7,
+      "rozet": 7.35,
+      "ham": 7.35,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 7.02,
@@ -99,7 +99,7 @@
       },
       "yukselticiler": {
         "Y": 3.87,
-        "F": 4,
+        "F": 0,
         "G": 0,
         "A": 4.75
       },
@@ -144,9 +144,9 @@
       ]
     },
     {
-      "rozet": 6.07,
-      "ham": 6.07,
-      "katman": "ikinci",
+      "rozet": 5.8,
+      "ham": 5.8,
+      "katman": "gec",
       "tasiyicilar": {
         "S": 5.3,
         "K": 2.88,
@@ -155,7 +155,7 @@
       },
       "yukselticiler": {
         "Y": 5.34,
-        "F": 4,
+        "F": 0,
         "G": 0,
         "A": 5.08
       },
@@ -172,8 +172,8 @@
       ]
     },
     {
-      "rozet": 5.32,
-      "ham": 5.32,
+      "rozet": 5.07,
+      "ham": 5.07,
       "katman": "gec",
       "tasiyicilar": {
         "S": 5.3,
@@ -183,7 +183,7 @@
       },
       "yukselticiler": {
         "Y": 2.04,
-        "F": 4,
+        "F": 0,
         "G": 0,
         "A": 6.5
       },
@@ -200,8 +200,8 @@
       ]
     },
     {
-      "rozet": 4.26,
-      "ham": 4.26,
+      "rozet": 4.05,
+      "ham": 4.05,
       "katman": "gec",
       "tasiyicilar": {
         "S": 4.77,
@@ -211,7 +211,7 @@
       },
       "yukselticiler": {
         "Y": 1.31,
-        "F": 4,
+        "F": 0,
         "G": 0,
         "A": 2.33
       },
@@ -256,8 +256,8 @@
       ]
     },
     {
-      "rozet": 2.57,
-      "ham": 2.57,
+      "rozet": 2.45,
+      "ham": 2.45,
       "katman": "gec",
       "tasiyicilar": {
         "S": 2.73,
@@ -267,7 +267,7 @@
       },
       "yukselticiler": {
         "Y": 1.58,
-        "F": 4,
+        "F": 0,
         "G": 0,
         "A": 5.75
       },

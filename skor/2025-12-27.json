@@ -1,6 +1,6 @@
 {
   "tarih": "2025-12-27",
-  "hesaplandi": "2026-08-31T18:51:28.285008Z",
+  "hesaplandi": "2026-08-31T19:01:25.420381Z",
   "en_iyi_skor": 9.35,
   "maclar": [
     {
@@ -88,8 +88,8 @@
       ]
     },
     {
-      "rozet": 7.46,
-      "ham": 7.46,
+      "rozet": 7.11,
+      "ham": 7.11,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 5.27,
@@ -99,7 +99,7 @@
       },
       "yukselticiler": {
         "Y": 2.4,
-        "F": 4,
+        "F": 0,
         "G": 0,
         "A": 5.75
       },
@@ -113,34 +113,6 @@
       "esitlik_bozucu": [
         0,
         -16
-      ]
-    },
-    {
-      "rozet": 6.21,
-      "ham": 6.21,
-      "katman": "ikinci",
-      "tasiyicilar": {
-        "S": 6.25,
-        "K": 1.78,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 3.23,
-        "F": 4,
-        "G": 0,
-        "A": 2.0
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500436",
-      "ev": "MIA",
-      "dep": "IND",
-      "ev_skor": 142,
-      "dep_skor": 116,
-      "en_iyi_performans": "Andrew Wiggins",
-      "esitlik_bozucu": [
-        0,
-        -26
       ]
     },
     {
@@ -169,6 +141,34 @@
       "esitlik_bozucu": [
         0,
         -9
+      ]
+    },
+    {
+      "rozet": 5.91,
+      "ham": 5.91,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 6.25,
+        "K": 1.78,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.23,
+        "F": 0,
+        "G": 0,
+        "A": 2.0
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500436",
+      "ev": "MIA",
+      "dep": "IND",
+      "ev_skor": 142,
+      "dep_skor": 116,
+      "en_iyi_performans": "Andrew Wiggins",
+      "esitlik_bozucu": [
+        0,
+        -26
       ]
     },
     {

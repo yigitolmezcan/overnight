@@ -6,13 +6,13 @@
     {
       "sira": 1,
       "mac": "Charlotte Hornets — Washington Wizards",
-      "rozet": 3.13,
+      "rozet": 2.98,
       "id": "a-0022500409"
     },
     {
       "sira": 2,
       "mac": "Philadelphia 76ers — Brooklyn Nets",
-      "rozet": 3.23,
+      "rozet": 3.08,
       "id": "a-0022500410"
     },
     {
@@ -30,7 +30,7 @@
     {
       "sira": 5,
       "mac": "Indiana Pacers — Milwaukee Bucks",
-      "rozet": 3.32,
+      "rozet": 3.15,
       "id": "a-0022500413"
     },
     {
@@ -48,13 +48,13 @@
     {
       "sira": 8,
       "mac": "Minnesota Timberwolves — New York Knicks",
-      "rozet": 7.2,
+      "rozet": 6.88,
       "id": "a-0022500416"
     },
     {
       "sira": 9,
       "mac": "San Antonio Spurs — Oklahoma City Thunder",
-      "rozet": 7.63,
+      "rozet": 7.29,
       "id": "a-0022500417"
     },
     {
@@ -66,7 +66,7 @@
     {
       "sira": 11,
       "mac": "Utah Jazz — Memphis Grizzlies",
-      "rozet": 6.94,
+      "rozet": 6.61,
       "id": "a-0022500419"
     },
     {
@@ -78,7 +78,7 @@
     {
       "sira": 13,
       "mac": "Sacramento Kings — Detroit Pistons",
-      "rozet": 7.57,
+      "rozet": 7.22,
       "id": "a-0022500421"
     },
     {
@@ -95,7 +95,7 @@
       "hedef_id": "a-0022500410",
       "icon": "default",
       "saat": "03:00",
-      "rozet": 3.23,
+      "rozet": 3.08,
       "skor": "PHI 106 – BKN 114",
       "skor_tam": "Philadelphia 76ers 106 – Brooklyn Nets 114",
       "etiket": "gecenin ilki",
@@ -105,9 +105,9 @@
       "metin": "Charlotte Hornets, Washington Wizards'ı yendi.",
       "anlatili": true,
       "hedef_id": "a-0022500409",
-      "icon": "default",
+      "icon": "standings",
       "saat": "03:00",
-      "rozet": 3.13,
+      "rozet": 2.98,
       "skor": "CHA 126 – WAS 109",
       "skor_tam": "Charlotte Hornets 126 – Washington Wizards 109",
       "etiket": "",
@@ -143,7 +143,7 @@
       "hedef_id": "a-0022500413",
       "icon": "default",
       "saat": "03:30",
-      "rozet": 3.32,
+      "rozet": 3.15,
       "skor": "IND 94 – MIL 111",
       "skor_tam": "Indiana Pacers 94 – Milwaukee Bucks 111",
       "etiket": "",
@@ -179,7 +179,7 @@
       "hedef_id": "a-0022500416",
       "icon": "default",
       "saat": "04:00",
-      "rozet": 7.2,
+      "rozet": 6.88,
       "skor": "MIN 115 – NYK 104",
       "skor_tam": "Minnesota Timberwolves 115 – New York Knicks 104",
       "etiket": "",
@@ -191,7 +191,7 @@
       "hedef_id": "a-0022500417",
       "icon": "standings",
       "saat": "04:30",
-      "rozet": 7.63,
+      "rozet": 7.29,
       "skor": "SAS 130 – OKC 110",
       "skor_tam": "San Antonio Spurs 130 – Oklahoma City Thunder 110",
       "etiket": "",
@@ -203,7 +203,7 @@
       "hedef_id": "a-0022500419",
       "icon": "default",
       "saat": "05:00",
-      "rozet": 6.94,
+      "rozet": 6.61,
       "skor": "UTA 128 – MEM 137",
       "skor_tam": "Utah Jazz 128 – Memphis Grizzlies 137",
       "etiket": "",
@@ -227,7 +227,7 @@
       "hedef_id": "a-0022500421",
       "icon": "default",
       "saat": "06:00",
-      "rozet": 7.57,
+      "rozet": 7.22,
       "skor": "SAC 127 – DET 136",
       "skor_tam": "Sacramento Kings 127 – Detroit Pistons 136",
       "etiket": "",
@@ -249,7 +249,7 @@
       "metin": "Kawhi Leonard, Houston Rockets karşısında 41 sayı attı.",
       "anlatili": true,
       "hedef_id": "g-mutlaka-1",
-      "icon": "standings",
+      "icon": "default",
       "saat": "07:00",
       "rozet": 8.66,
       "skor": "LAC 128 – HOU 108",
@@ -20654,7 +20654,7 @@
       "id": "a-0022500417",
       "mac": "San Antonio Spurs — Oklahoma City Thunder",
       "skor": "130–110",
-      "rozet": 7.63,
+      "rozet": 7.29,
       "why": "zirve maçı: Batı'nın zirvesi (2. ve 1. sıralar)",
       "metin": "Batı'nın zirvesinde San Antonio Spurs, Oklahoma City Thunder'i 130-110 yendi.",
       "box": {
@@ -21445,7 +21445,7 @@
       "id": "a-0022500421",
       "mac": "Sacramento Kings — Detroit Pistons",
       "skor": "127–136",
-      "rozet": 7.57,
+      "rozet": 7.22,
       "why": "",
       "metin": "Detroit Pistons deplasmanda Sacramento Kings'i 136-127 yendi.",
       "box": {
@@ -22041,7 +22041,7 @@
       "id": "a-0022500416",
       "mac": "Minnesota Timberwolves — New York Knicks",
       "skor": "115–104",
-      "rozet": 7.2,
+      "rozet": 6.88,
       "why": "eşit derece",
       "metin": "Minnesota Timberwolves evinde New York Knicks'i 115-104 yendi. Karl-Anthony Towns 40 sayı attı.",
       "box": {
@@ -22662,7 +22662,7 @@
       "id": "a-0022500419",
       "mac": "Utah Jazz — Memphis Grizzlies",
       "skor": "128–137",
-      "rozet": 6.94,
+      "rozet": 6.61,
       "why": "",
       "metin": "Memphis Grizzlies deplasmanda Utah Jazz'ı 137-128 yendi. Kyle Filipowski double-double yaptı (25 sayı, 13 ribaund).",
       "box": {
@@ -24513,7 +24513,7 @@
       "id": "a-0022500413",
       "mac": "Indiana Pacers — Milwaukee Bucks",
       "skor": "94–111",
-      "rozet": 3.32,
+      "rozet": 3.15,
       "why": "",
       "metin": "Milwaukee Bucks deplasmanda Indiana Pacers'i 111-94 yendi.",
       "box": {
@@ -25261,7 +25261,7 @@
       "id": "a-0022500410",
       "mac": "Philadelphia 76ers — Brooklyn Nets",
       "skor": "106–114",
-      "rozet": 3.23,
+      "rozet": 3.08,
       "why": "",
       "metin": "Brooklyn Nets deplasmanda Philadelphia 76ers'i 114-106 yendi.",
       "box": {
@@ -25901,8 +25901,8 @@
       "id": "a-0022500409",
       "mac": "Charlotte Hornets — Washington Wizards",
       "skor": "126–109",
-      "rozet": 3.13,
-      "why": "10. galibiyetini alan (kazanan)",
+      "rozet": 2.98,
+      "why": "gece sırası 1",
       "metin": "Charlotte Hornets evinde Washington Wizards'ı 126-109 yendi.",
       "box": {
         "ev": {

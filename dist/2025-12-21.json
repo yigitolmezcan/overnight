@@ -12,7 +12,7 @@
     {
       "sira": 2,
       "mac": "Brooklyn Nets — Toronto Raptors",
-      "rozet": 2.56,
+      "rozet": 2.45,
       "id": "a-0022500397"
     },
     {
@@ -24,7 +24,7 @@
     {
       "sira": 4,
       "mac": "Washington Wizards — San Antonio Spurs",
-      "rozet": 4.12,
+      "rozet": 3.93,
       "id": "a-0022500399"
     },
     {
@@ -71,7 +71,7 @@
       "hedef_id": "a-0022500397",
       "icon": "default",
       "saat": "02:00",
-      "rozet": 2.56,
+      "rozet": 2.45,
       "skor": "BKN 96 – TOR 81",
       "skor_tam": "Brooklyn Nets 96 – Toronto Raptors 81",
       "etiket": "",
@@ -95,7 +95,7 @@
       "hedef_id": "a-0022500399",
       "icon": "default",
       "saat": "03:00",
-      "rozet": 4.12,
+      "rozet": 3.93,
       "skor": "WAS 113 – SAS 124",
       "skor_tam": "Washington Wizards 113 – San Antonio Spurs 124",
       "etiket": "",
@@ -10197,7 +10197,7 @@
       "id": "a-0022500399",
       "mac": "Washington Wizards — San Antonio Spurs",
       "skor": "113–124",
-      "rozet": 4.12,
+      "rozet": 3.93,
       "why": "",
       "metin": "San Antonio Spurs deplasmanda Washington Wizards'ı 124-113 yendi.",
       "box": {
@@ -10793,7 +10793,7 @@
       "id": "a-0022500397",
       "mac": "Brooklyn Nets — Toronto Raptors",
       "skor": "96–81",
-      "rozet": 2.56,
+      "rozet": 2.45,
       "why": "",
       "metin": "Brooklyn Nets evinde Toronto Raptors'u 96-81 yendi.",
       "box": {

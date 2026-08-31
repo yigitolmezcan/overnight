@@ -6,13 +6,13 @@
     {
       "sira": 1,
       "mac": "Charlotte Hornets — Milwaukee Bucks",
-      "rozet": 2.99,
+      "rozet": 2.86,
       "id": "a-0022500447"
     },
     {
       "sira": 2,
       "mac": "Washington Wizards — Phoenix Suns",
-      "rozet": 5.1,
+      "rozet": 4.87,
       "id": "a-0022500448"
     },
     {
@@ -42,7 +42,7 @@
     {
       "sira": 7,
       "mac": "Houston Rockets — Indiana Pacers",
-      "rozet": 4.9,
+      "rozet": 4.66,
       "id": "a-0022500453"
     },
     {
@@ -60,7 +60,7 @@
     {
       "sira": 10,
       "mac": "San Antonio Spurs — Cleveland Cavaliers",
-      "rozet": 4.99,
+      "rozet": 4.77,
       "id": "a-0022500456"
     },
     {
@@ -77,7 +77,7 @@
       "hedef_id": "a-0022500448",
       "icon": "streak",
       "saat": "03:00",
-      "rozet": 5.1,
+      "rozet": 4.87,
       "skor": "WAS 101 – PHX 115",
       "skor_tam": "Washington Wizards 101 – Phoenix Suns 115",
       "etiket": "gecenin ilki",
@@ -89,7 +89,7 @@
       "hedef_id": "a-0022500447",
       "icon": "standings",
       "saat": "03:00",
-      "rozet": 2.99,
+      "rozet": 2.86,
       "skor": "CHA 113 – MIL 123",
       "skor_tam": "Charlotte Hornets 113 – Milwaukee Bucks 123",
       "etiket": "",
@@ -173,7 +173,7 @@
       "hedef_id": "a-0022500456",
       "icon": "default",
       "saat": "04:00",
-      "rozet": 4.99,
+      "rozet": 4.77,
       "skor": "SAS 101 – CLE 113",
       "skor_tam": "San Antonio Spurs 101 – Cleveland Cavaliers 113",
       "etiket": "",
@@ -185,7 +185,7 @@
       "hedef_id": "a-0022500453",
       "icon": "default",
       "saat": "04:00",
-      "rozet": 4.9,
+      "rozet": 4.66,
       "skor": "HOU 126 – IND 119",
       "skor_tam": "Houston Rockets 126 – Indiana Pacers 119",
       "etiket": "",
@@ -18158,7 +18158,7 @@
       "id": "a-0022500448",
       "mac": "Washington Wizards — Phoenix Suns",
       "skor": "101–115",
-      "rozet": 5.1,
+      "rozet": 4.87,
       "why": "kazananın 4 maçlık galibiyet serisi (takım kalitesi 4.7/10, sürpriz)",
       "metin": "Phoenix Suns deplasmanda Washington Wizards'ı 115-101 yendi.",
       "box": {
@@ -18850,7 +18850,7 @@
       "id": "a-0022500456",
       "mac": "San Antonio Spurs — Cleveland Cavaliers",
       "skor": "101–113",
-      "rozet": 4.99,
+      "rozet": 4.77,
       "why": "",
       "metin": "Cleveland Cavaliers deplasmanda San Antonio Spurs'u 113-101 yendi.",
       "box": {
@@ -19447,7 +19447,7 @@
       "id": "a-0022500453",
       "mac": "Houston Rockets — Indiana Pacers",
       "skor": "126–119",
-      "rozet": 4.9,
+      "rozet": 4.66,
       "why": "",
       "metin": "Houston Rockets evinde Indiana Pacers'i 126-119 yendi. Jabari Smith Jr. double-double yaptı (21 sayı, 10 ribaund).",
       "box": {
@@ -21616,7 +21616,7 @@
       "id": "a-0022500447",
       "mac": "Charlotte Hornets — Milwaukee Bucks",
       "skor": "113–123",
-      "rozet": 2.99,
+      "rozet": 2.86,
       "why": "konferans sıraları 11-12",
       "metin": "Milwaukee Bucks deplasmanda Charlotte Hornets'i 123-113 yendi.",
       "box": {

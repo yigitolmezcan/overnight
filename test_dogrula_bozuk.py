@@ -6087,11 +6087,21 @@ def main():
     basar("F: 6 farka kadar + son 5 dk liderlik değişimi 7",
           _H2.F_hesapla(_ser((4, 600, 90, 88), (4, 200, 95, 97),
                              (4, 120, 104, 100), (4, 0, 110, 104)), 4, False) == 7)
-    # F=4: son çeyrekte fark 10'un altına indi ama maç açıldı.
-    basar("F: son çeyrekte yaklaşma 4",
-          _H2.F_hesapla(_ser((4, 600, 90, 82), (4, 0, 120, 100)), 4, False) == 4)
+    # F=4 KALDIRILDI (kullanıcı ölçümü): "son çeyrekte fark 10'un altına
+    # indi" neredeyse her maçta oluyordu — ayrım yaratmıyor, taban
+    # yükseltiyordu.
+    basar("F: 'son çeyrekte yaklaşma' basamağı kalktı",
+          _H2.F_hesapla(_ser((4, 600, 90, 82), (4, 0, 120, 100)), 4, False) == 0)
     basar("F: hiçbiri 0",
           _H2.F_hesapla(_ser((4, 600, 90, 70), (4, 0, 120, 95)), 4, False) == 0)
+    # F=6 penceresi 4 dakika.
+    basar("F: yakınlık penceresi 4 dakika", _H2.F_YAKIN_PENCERE == 240)
+    basar("F: 4 dk içinde 5'in altına inen fark 6",
+          _H2.F_hesapla(_ser((4, 600, 90, 78), (4, 200, 100, 97),
+                             (4, 0, 118, 108)), 4, False) == 6)
+    basar("F: 4 dk'dan ÖNCE yaklaşıp açılan maç 0",
+          _H2.F_hesapla(_ser((4, 600, 90, 88), (4, 300, 95, 93),
+                             (4, 0, 120, 100)), 4, False) == 0)
     # Merdiven monoton: yakın biten maç uzak bitenden düşük olamaz.
     basar("F: final farkı merdivende gerçekten kullanılıyor",
           "son_fark <= 3" in open("hesapla.py", encoding="utf-8").read())

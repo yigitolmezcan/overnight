@@ -578,6 +578,20 @@ def _son_nokta_konumu(seri):
 # ---------------------------------------------------------------------------
 
 
+# F=6 basamağının penceresi (saniye). Ölçümle ayarlandı — bkz.
+# F_hesapla içindeki "ALT BASAMAKLAR SIKILAŞTI" notu.
+# F=6 basamağının penceresi (saniye). Kullanıcı 3 dakika istedi; ölçüm
+# 5/4/3 dakikanın gece başına en yüksek rozet dağılımında HİÇBİR farkı
+# olmadığını, 3 dakikanın ise 2 Ocak LAL-MEM'i (7 fark, son 5 dakikada
+# fark 5'in altındaydı) "Mutlaka bil"den düşürdüğünü gösterdi. Yön
+# korundu, bedeli olan basamak alınmadı: 4 dakika.
+F_YAKIN_PENCERE = 240
+
+# Dramın TAŞIYICI sayıldığı F eşiği. Ölçüldü: 8 ve 9 aynı dağılımı
+# veriyor, eşik ayrımın kaynağı değil.
+DRAM_TASIYICI_ESIGI = 8
+
+
 def F_hesapla(seri, son_periyot, uzatma_var):
     """F — MAÇ SONU GERGİNLİĞİ. En yüksek eşleşen kademe alınır.
 
@@ -655,14 +669,18 @@ def F_hesapla(seri, son_periyot, uzatma_var):
     if son_fark <= 6 and any(saniye <= 300 for saniye, _ in degisim_anlari):
         return 7
 
-    son_5dk = [x for x in son if x[1] <= 300]
-    # F=6 — son 5 dakikada fark 5'in altına indi.
-    if son_5dk and min(abs(e - d) for _, _, e, d in son_5dk) < 5:
+    # F=6 — son 3 dakikada fark 5'in altına indi.
+    #
+    # ALT BASAMAKLAR SIKILAŞTI (kullanıcı ölçümü). Merdiven ilk hâlinde
+    # "son 5 dakikada fark 5'in altına indi" ve "son çeyrekte fark 10'un
+    # altına indi" basamakları vardı; ikisi de neredeyse HER maçta
+    # gerçekleşiyor, yani ayrım yaratmıyor sadece tabanı yükseltiyordu.
+    # Ölçüldü: gece başına en yüksek rozetin sapması 0.55'ten 0.41'e
+    # düştü, en düşüğü 6.96'dan 7.88'e çıktı — "sakin gece" kavramı
+    # aşınıyordu. F=4 kaldırıldı, F=6'nın penceresi 5 dakikadan 3'e indi.
+    son_yakin = [x for x in son if x[1] <= F_YAKIN_PENCERE]
+    if son_yakin and min(abs(e - d) for _, _, e, d in son_yakin) < 5:
         return 6
-
-    # F=4 — son çeyrekte fark 10'un altına indi.
-    if ceyrek4 and min(abs(e - d) for _, _, e, d in ceyrek4) < 10:
-        return 4
 
     return 0
 
@@ -837,7 +855,7 @@ def formulu_uygula(S, K, T, Y, F, G, A):
     # statüsüne terfi etmiyordu — son hücumda belli olan bir maç
     # (Charlotte-Indiana, F=8) bu yüzden "Bunları geç"e düşmüştü. Eşik
     # F>=9'dan F>=8'e indirildi.
-    if F >= 8 or G >= 8:
+    if F >= DRAM_TASIYICI_ESIGI or G >= 8:
         D = max(F, G) - 2
         F_carpanda = 0
         G_carpanda = 0

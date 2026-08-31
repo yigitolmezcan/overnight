@@ -1,12 +1,12 @@
 {
   "tarih": "2026-01-28",
-  "hesaplandi": "2026-08-31T18:51:29.830846Z",
-  "en_iyi_skor": 8.55,
+  "hesaplandi": "2026-08-31T19:01:27.007272Z",
+  "en_iyi_skor": 8.4,
   "maclar": [
     {
-      "rozet": 8.55,
-      "ham": 9.28,
-      "katman": "mutlaka",
+      "rozet": 8.4,
+      "ham": 8.9,
+      "katman": "ikinci",
       "tasiyicilar": {
         "S": 7.71,
         "K": 3.09,
@@ -15,7 +15,7 @@
       },
       "yukselticiler": {
         "Y": 4.48,
-        "F": 4,
+        "F": 0,
         "G": 6,
         "A": 8.32
       },
@@ -29,34 +29,6 @@
       "esitlik_bozucu": [
         0,
         -12
-      ]
-    },
-    {
-      "rozet": 7.76,
-      "ham": 7.76,
-      "katman": "ikinci",
-      "tasiyicilar": {
-        "S": 6.29,
-        "K": 4.64,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 3.52,
-        "F": 4,
-        "G": 6,
-        "A": 4.33
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500674",
-      "ev": "MIA",
-      "dep": "ORL",
-      "ev_skor": 124,
-      "dep_skor": 133,
-      "en_iyi_performans": "Paolo Banchero",
-      "esitlik_bozucu": [
-        0,
-        -9
       ]
     },
     {
@@ -85,6 +57,34 @@
       "esitlik_bozucu": [
         7,
         -3
+      ]
+    },
+    {
+      "rozet": 7.42,
+      "ham": 7.42,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.29,
+        "K": 4.64,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.52,
+        "F": 0,
+        "G": 6,
+        "A": 4.33
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500674",
+      "ev": "MIA",
+      "dep": "ORL",
+      "ev_skor": 124,
+      "dep_skor": 133,
+      "en_iyi_performans": "Paolo Banchero",
+      "esitlik_bozucu": [
+        0,
+        -9
       ]
     },
     {
@@ -172,34 +172,6 @@
       ]
     },
     {
-      "rozet": 4.51,
-      "ham": 4.51,
-      "katman": "gec",
-      "tasiyicilar": {
-        "S": 4.46,
-        "K": 1.37,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 1.56,
-        "F": 4,
-        "G": 0,
-        "A": 4.67
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500678",
-      "ev": "UTA",
-      "dep": "GSW",
-      "ev_skor": 124,
-      "dep_skor": 140,
-      "en_iyi_performans": "Moses Moody",
-      "esitlik_bozucu": [
-        0,
-        -16
-      ]
-    },
-    {
       "rozet": 4.43,
       "ham": 4.43,
       "katman": "gec",
@@ -253,6 +225,34 @@
       "esitlik_bozucu": [
         0,
         -15
+      ]
+    },
+    {
+      "rozet": 4.3,
+      "ham": 4.3,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 4.46,
+        "K": 1.37,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.56,
+        "F": 0,
+        "G": 0,
+        "A": 4.67
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500678",
+      "ev": "UTA",
+      "dep": "GSW",
+      "ev_skor": 124,
+      "dep_skor": 140,
+      "en_iyi_performans": "Moses Moody",
+      "esitlik_bozucu": [
+        0,
+        -16
       ]
     }
   ]
