@@ -6474,6 +6474,62 @@ def main():
           _derle.MANSET_BAGLAM_ASGARI == _gerc_modul.SEZON_ACILISI_TAZE_MAC_SAYISI
           if "_gerc_modul" in dir() else _derle.MANSET_BAGLAM_ASGARI == 10)
 
+    # ------------------------------------------------------------------
+    # LİSTE ÖLÇÜLERİ — TEK KAYNAK
+    # ------------------------------------------------------------------
+    # Masaüstünde satırlar bölümün tamamına yayılınca ad ile sağ sütun
+    # arasında 200-600px ölü alan kalıyordu; mobilde skor çerçeveye
+    # 1px kalıyordu. İkisi de ölçümle bulundu, ikisi de burada kilitli.
+    _ly = _re.sub(r"/\*.*?\*/", "",
+                  open("overnight_v17.html", encoding="utf-8").read(), flags=_re.S)
+    basar("Liste ölçüsü: üç değişken :root'ta bir kez tanımlı",
+          _ly.count("--liste-max:") == 1 and _ly.count("--liste-takim:") == 1
+          and _ly.count("--liste-yan:") == 1)
+    # Ham piksel değeri kural içinde geçmesin — her bölüm ayrı ayrı
+    # ayarlanmasın diye tek kaynak şartı (kullanıcı kuralı).
+    _ham_px = [_ln for _ln in _ly.splitlines()
+               if _re.search(r"^\s*[.#][\w .,#>:()\-\[\]]*\{.*\b(480px|240px)\b", _ln)
+               and "--liste-" not in _ln]
+    basar("Liste ölçüsü: kurallarda ham 480px/240px yok, hepsi değişkenden",
+          not _ham_px, "; ".join(_ham_px))
+    # Dört listenin dördü de AYNI kuralda, tek üst sınırı alıyor.
+    _ortak = ".kaplist a,.fp,.sr,.tkust{max-width:var(--liste-max)}"
+    basar("Liste olcusu: dort liste tek kuralda ayni ust siniri aliyor",
+          _ortak in _ly, "ortak kural yok")
+
+    # SIRA TUZAĞI: aynı özgüllükte "flex:1" diyen kurallar yukarıda.
+    # Sabit genişlik kuralı onlardan SONRA gelmezse sessizce eziliyor
+    # (bir kez oldu, tarayıcı ölçümüyle yakalandı).
+    _sabit = _ly.rfind(".kaplist .mc{width:var(--liste-takim)")
+    basar("Liste ölçüsü: sabit ad genişliği .mc{flex:1} kuralından SONRA",
+          _sabit > _ly.rfind(".kaplist .mc{flex:1") > 0)
+    basar("Liste ölçüsü: kapak satırı içeriğine göre büzülüyor",
+          ".kaplist a{width:fit-content}" in _ly)
+    # Form/Sıralama'da ad ile sağ sütun arasında BAŞKA bir sütun var;
+    # onlara sabit ad genişliği verilince satır 480'i aşıyordu.
+    basar("Liste ölçüsü: Form ve Sıralama'ya sabit ad genişliği verilmiyor",
+          ".fp .who{width:var(--liste-takim)" not in _ly
+          and ".sr .tn{width:var(--liste-takim)" not in _ly)
+    # MOBİL: kutulu listede skorla çerçeve arasında dolgu.
+    basar("Liste ölçüsü: kapak listesi yan dolguyu değişkenden alıyor",
+          ".kaplist{padding:10px var(--liste-yan) 0" in _ly)
+    basar("Liste ölçüsü: Türkler bloğu da aynı yan dolguyu alıyor",
+          _ly.count("var(--liste-yan)") >= 3
+          and "#turkBox.ikili .tkblok{padding:13px var(--liste-yan)" in _ly)
+    _yan = int(_re.search(r"--liste-yan:(\d+)px", _ly).group(1))
+    basar("Liste ölçüsü: yan dolgu en az 18px (kullanıcı şartı)", _yan >= 18,
+          f"{_yan}px")
+    # Yan dolgu mobilde yer aldı, uzun takım adları kesilmeye başladı.
+    # KAZANAN ADI KESİLMEZ — kesme kaybedene kayıyor.
+    basar("Liste ölçüsü: kazanan takım adı büzülmüyor (kesme kaybedende)",
+          ".kaplist .mc .w{flex:0 0 auto}" in _ly
+          and ".kaplist .mc .l{flex:0 1 auto;min-width:0}" in _ly
+          and _ly.rfind(".kaplist .mc .w{flex:0 0 auto}")
+              > _ly.rfind(".kaplist .mc .w{color:"))
+    basar("Liste ölçüsü: mobilde satır içi ölçüler sıkışıyor",
+          "@media(max-width:639px){" in _ly
+          and ".kaplist a{gap:9px}" in _ly)
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))

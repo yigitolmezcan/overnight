@@ -66,6 +66,21 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-a
    (tablo, saha, saat şeridi) genişlikten kazanıyor ama okuma satırı
    uzarsa göz satır başını kaybediyor — kazanç zarara dönüyor. */
 .wrap{max-width:700px;margin:0 auto;padding:0 20px 60px}
+/* ===== LİSTE ÖLÇÜLERİ — TEK KAYNAK =====
+   Her bölüm ayrı ayrı ayarlanmasın diye üç değişken. Masaüstünde
+   satırlar bölümün tamamına yayılınca takım adıyla skor arasında
+   devasa boşluk kalıyordu; çözüm listeyi genişletmek değil DARALTMAK.
+   Kutulu listede (kapak) skor sağ kenara yapışıyordu — yan dolgu
+   simetrik. */
+:root{
+  --liste-max:480px;    /* satır genişliği ÜST SINIRI (satır kendi
+                           içeriğine göre daha dar durabilir) */
+  --liste-takim:240px;  /* ad sütununun sabit genişliği (masaüstü).
+                           ÖLÇÜLDÜ: yayındaki 27 gecenin en uzun takım
+                           çifti 25 karakter ≈ 223px. 300px denendi,
+                           satır içinde 115px ölü alan bıraktı. */
+  --liste-yan:18px;     /* kutulu listenin yan iç dolgusu */
+}
 
 .sec{--c:var(--ember);padding-top:44px}
 .sec.s1{--c:var(--ember)} .sec.s3{--c:var(--ember)} .sec.s4b{--c:var(--gold)}
@@ -150,7 +165,8 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
 
 /* Oynayan oyuncu: tam blok. Solda takım rengi şeridi, üstte ad + maçın
    skoru, ortada üç büyük rakam, altta tek satır ikincil istatistik. */
-.tkblok{background:#0C121C;padding:15px 16px 16px;border-left:3px solid var(--tc);
+.tkblok{background:#0C121C;padding:15px var(--liste-yan) 16px;
+  border-left:3px solid var(--tc);
   width:100%;text-align:left;display:block;cursor:pointer}
 .tkblok:hover{background:#101725}
 .tkust{display:flex;align-items:baseline;gap:12px;margin-bottom:12px}
@@ -166,7 +182,7 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
 /* İki oyuncu da oynadıysa rakamlar bir tık küçülüyor — iki blok alt alta
    gelince toplam yükseklik makul kalsın. */
 #turkBox.ikili .tkbuyuk .v{font-size:25px}
-#turkBox.ikili .tkblok{padding:13px 16px 14px}
+#turkBox.ikili .tkblok{padding:13px var(--liste-yan) 14px}
 
 /* İkincil satır. İKİ GRUBA bölünmüş: ya ikisi de tek satıra sığar, ya da
    dörtlü iki dengeli satır olur. Tek bir öğenin ("+9") yalnız başına
@@ -961,6 +977,7 @@ td.khot{color:var(--amber);font-weight:700}
 .tog button.on{color:#0A0603;background:var(--ember);font-weight:700}
 .tog button.on.cold{background:var(--dusen);color:#03101F}
 .fp{display:flex;align-items:center;gap:12px;padding:13px 2px;border-bottom:1px solid #141A24}
+
 .fp:last-child{border-bottom:0}
 .fp .who{flex:1;min-width:0}
 /* Ad tek satır: iki satıra inince çubuk hizası satır satır kayıyordu.
@@ -1056,6 +1073,7 @@ td.khot{color:var(--amber);font-weight:700}
 .sr{display:flex;align-items:center;gap:11px;padding:11px 2px;
   border-bottom:1px solid #141A24}
 .sr:last-child{border-bottom:0}
+
 /* Ok sütunu SABİT 30px; iki haneli değerde (▲10) sarmalanmasın diye
    nowrap ile birlikte. */
 .sr .ar{font-family:var(--mono);font-size:11.5px;font-weight:700;width:30px;
@@ -1213,9 +1231,10 @@ td.khot{color:var(--amber);font-weight:700}
 .mn .h.k3 .s u{background:#232C39;color:#6C7787}
 /* ===== KAPAK MAÇ LİSTESİ — punch line yok, rozet + takımlar + saat ===== */
 .kaplist{padding:6px 0 2px}
-.kaplist{padding-top:10px;margin-top:6px;border-top:1px solid var(--line2);
-  position:relative}
-.kaplist .grp{position:relative;padding:0 0 12px 15px}
+.kaplist{padding:10px var(--liste-yan) 0;margin-top:6px;
+  border-top:1px solid var(--line2);position:relative}
+.kaplist .grp{position:relative;padding:0 0 12px 15px;
+  max-width:calc(var(--liste-max) + 15px)}
 .kaplist .grp:last-child{padding-bottom:2px}
 /* SOL RAY: dikey gece degradesi. Renkler üstteki gece bandıyla aynı
    yolu izliyor — listenin üstü gece, altı şafak. Her grup toplam
@@ -1423,6 +1442,47 @@ td.khot{color:var(--amber);font-weight:700}
      tamamını kullanabiliyor, yalnız ekran yüksekliği onu sınırlıyor.
      80vh: 1000px pencerede 800px saha (848px yüksek, 152px pay). */
   .besiline{max-width:min(100%,80vh);margin-left:auto;margin-right:auto}
+}
+
+/* ==================== LİSTE SATIRI ÖLÇÜLERİ — TEK KAYNAK ====================
+   Dört liste (kapak maçları, Türkler, Yükselen/Düşen, Sıralama) aynı
+   iki değişkeni kullanıyor; hiçbiri kendi başına ayarlanmıyor.
+
+   NEDEN EN SONDA: bu seçicilerin ("​.fp .who", ".sr .tn", ".kaplist .mc")
+   flex:1 diyen eşdeğer özgüllükte kuralları yukarıda. Aynı özgüllükte
+   sonra yazılan kazanıyor — daha önce yukarıya koyduğumda kural sessizce
+   eziliyordu, ölçümle yakalandı.
+
+   MASAÜSTÜ: ad sütunu sabit (--liste-takim), satır içeriğine göre büzülüyor.
+   Böylece sağdaki sütun (skor / ortalama / sıra) her satırda AYNI x'te ve
+   ada yapışık; sağda kalan boşluk bölümün kendi boşluğu, kasıtlı.
+   MOBİL: sabit genişlik sığmaz — ad sütunu esnek kalıyor. */
+.kaplist a,.fp,.sr,.tkust{max-width:var(--liste-max)}
+@media(min-width:640px){
+  /* Kapak satırında skor, ad bloğunun HEMEN ardından geliyor; sabit ad
+     genişliği olmazsa skor sütunu satırdan satıra kayıyor. Satır da
+     içeriğine göre büzülüyor, yoksa 480'e kadar uzayıp arada 120px ölü
+     alan bırakıyor (ölçüldü). */
+  .kaplist a{width:fit-content}
+  .kaplist .mc{width:var(--liste-takim);flex:0 0 var(--liste-takim);min-width:0}
+}
+/* Form ve Sıralama'da ad ile sağ sütun ARASINDA zaten bir sütun var
+   (form kutucukları / son 10 maç); sağ sütunun yeri onunla zaten sabit.
+   Onlara sabit ad genişliği verilince satır 480'i 38px aşıyordu —
+   sadece üst sınır uygulanıyor. */
+
+/* MOBİL: yan dolgu 36px yer aldı, takım adları kesilmeye başladı
+   ("New Yo…"). İki önlem:
+   1) KAZANAN ADI HİÇ KESİLMEZ — kesme kaybedene kayıyor. Skorla
+      birlikte gecenin taşıdığı bilgi bu ikisi.
+   2) Satır içi ölçüler bir tık sıkışıyor; dolgu 18px'in altına inmiyor. */
+.kaplist .mc .w{flex:0 0 auto}
+.kaplist .mc .l{flex:0 1 auto;min-width:0}
+@media(max-width:639px){
+  .kaplist a{gap:9px}
+  .kaplist .grp{padding-left:11px}
+  .kaplist .mc{font-size:12.5px;gap:6px}
+  .kaplist i{min-width:27px;padding:1px 4px}
 }
 </style>
 </head>
