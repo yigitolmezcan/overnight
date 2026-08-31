@@ -82,10 +82,10 @@
     {
       "katman": "mutlaka",
       "rozet": 9.0,
-      "ev": "Toronto Raptors",
-      "dep": "Golden State Warriors",
-      "ev_skor": 141,
-      "dep_skor": 127,
+      "kazanan": "Toronto",
+      "kaybeden": "Golden State",
+      "kazanan_skor": 141,
+      "kaybeden_skor": 127,
       "saat": "23:30",
       "hedef_id": "g-mutlaka-1",
       "_sira": "2025-12-28T23:30:00+03:00"
@@ -93,10 +93,10 @@
     {
       "katman": "gec",
       "rozet": 5.7,
-      "ev": "Oklahoma City Thunder",
-      "dep": "Philadelphia 76ers",
-      "ev_skor": 129,
-      "dep_skor": 104,
+      "kazanan": "Oklahoma City",
+      "kaybeden": "Philadelphia",
+      "kazanan_skor": 129,
+      "kaybeden_skor": 104,
       "saat": "23:30",
       "hedef_id": "a-0022500442",
       "_sira": "2025-12-28T23:30:00+03:00"
@@ -104,10 +104,10 @@
     {
       "katman": "mutlaka",
       "rozet": 8.3,
-      "ev": "Portland Trail Blazers",
-      "dep": "Boston Celtics",
-      "ev_skor": 114,
-      "dep_skor": 108,
+      "kazanan": "Portland",
+      "kaybeden": "Boston",
+      "kazanan_skor": 114,
+      "kaybeden_skor": 108,
       "saat": "02:00",
       "hedef_id": "g-mutlaka-2",
       "_sira": "2025-12-29T02:00:00+03:00"
@@ -115,10 +115,10 @@
     {
       "katman": "gec",
       "rozet": 5.4,
-      "ev": "Washington Wizards",
-      "dep": "Memphis Grizzlies",
-      "ev_skor": 116,
-      "dep_skor": 112,
+      "kazanan": "Washington",
+      "kaybeden": "Memphis",
+      "kazanan_skor": 116,
+      "kaybeden_skor": 112,
       "saat": "02:00",
       "hedef_id": "a-0022500443",
       "_sira": "2025-12-29T02:00:00+03:00"
@@ -126,10 +126,10 @@
     {
       "katman": "mutlaka",
       "rozet": 9.2,
-      "ev": "LA Clippers",
-      "dep": "Detroit Pistons",
-      "ev_skor": 112,
-      "dep_skor": 99,
+      "kazanan": "LA Clippers",
+      "kaybeden": "Detroit",
+      "kazanan_skor": 112,
+      "kaybeden_skor": 99,
       "saat": "05:00",
       "hedef_id": "g-mutlaka-0",
       "_sira": "2025-12-29T05:00:00+03:00"
@@ -137,10 +137,10 @@
     {
       "katman": "gec",
       "rozet": 5.2,
-      "ev": "Los Angeles Lakers",
-      "dep": "Sacramento Kings",
-      "ev_skor": 125,
-      "dep_skor": 101,
+      "kazanan": "LA Lakers",
+      "kaybeden": "Sacramento",
+      "kazanan_skor": 125,
+      "kaybeden_skor": 101,
       "saat": "05:30",
       "hedef_id": "a-0022500446",
       "_sira": "2025-12-29T05:30:00+03:00"

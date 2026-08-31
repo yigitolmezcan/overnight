@@ -6413,17 +6413,62 @@ def main():
     basar("Liste: satırlar 15px içeriden",
           "padding:0 0 12px 15px" in _sayfa.split(".kaplist .grp{")[1].split("}")[0])
     _ry = _sayfa.split(".kaplist .gray{")[1].split("}")[0]
-    basar("Liste: sol ray 2px, gece→şafak degradesi, %55 opaklık",
-          "width:2px" in _ry and "#1E2636" in _ry and "#4A3520" in _ry
-          and "#E8763A" in _ry and "opacity:.55" in _ry)
-    basar("Liste: degrade TÜM LİSTE boyunca tek parça (dilimler hizalanıyor)",
-          "backgroundSize=`2px ${H}px`" in _sayfa
-          and "backgroundPosition=`0 ${-g.offsetTop}px`" in _sayfa)
+    # RAY KESKİNLEŞTİ (2px/%55 → 3px/%80) ve dilimleme yöntemi değişti:
+    # artık her grubun rengi konumundan HESAPLANIYOR, background-position
+    # kaydırmasıyla değil. Güncel iddialar aşağıdaki "Ray:" testlerinde.
+    basar("Liste: sol ray gece→şafak degradesi taşıyor",
+          "#4A3520" in _ry and "#E8763A" in _ry)
+    basar("Liste: degrade dilimleri grubun konumundan hesaplanıyor",
+          "g.offsetTop/H" in _sayfa
+          and "(g.offsetTop+g.offsetHeight)/H" in _sayfa)
+    # SATIR TİPOGRAFİSİ (C bloğu): kazanan önce, kalın, beyaz;
+    # ayırıcı soluk; kaybeden soluk; skor SAĞDA hizalı sütunda.
+    basar("Satır: kazanan önce, ayırıcı ×, skor sağda ayrı öğe",
+          '<span class="w">${esc(x.kazanan)}</span>' in _sayfa
+          and '<span class="vs">×</span>' in _sayfa
+          and '<span class="l">${esc(x.kaybeden)}</span>' in _sayfa
+          and '<span class="sk">${x.kazanan_skor}<s>–${x.kaybeden_skor}</s>' in _sayfa)
+    _mc = _sayfa.split(".kaplist .mc{")[1].split("}")[0]
+    basar("Satır: takım bloğu esner, skor sütunu sabit",
+          "flex:1" in _mc
+          and "flex:none" in _sayfa.split(".kaplist .sk{")[1].split("}")[0])
+    basar("Satır: kazanan kalın beyaz, ayırıcı ve kaybeden soluk",
+          "color:var(--ink);font-weight:700" in _sayfa.split(".kaplist .mc .w{")[1].split("}")[0]
+          and "#2E3846" in _sayfa.split(".kaplist .mc .vs{")[1].split("}")[0]
+          and "#4C5665" in _sayfa.split(".kaplist .mc .l{")[1].split("}")[0])
+    basar("Satır: düşük rozetli bir kademe daha soluk",
+          "#6E7A8B" in _sayfa.split(".kaplist .k3 .mc .w{")[1].split("}")[0]
+          and "#39424F" in _sayfa.split(".kaplist .k3 .mc .l{")[1].split("}")[0]
+          and "font-weight:400" in _sayfa.split(".kaplist .k3 .sk{")[1].split("}")[0])
+    # TAKMA ADLAR KALKTI, Lakers ayrışıyor.
+    basar("Satır: kısa ad kullanılıyor, Lakers 'LA Lakers'",
+          _derle.KAPAK_KISA_OVERRIDE.get("LAL") == "LA Lakers"
+          and "def _kapak_kisa_ad" in _dsrc_kod)
+    _takmali = []
+    for _tt in _yayin.durum_oku()["yayinlanan"]:
+        if not _os.path.exists(f"dist/{_tt}.json"):
+            continue
+        _xt = _jj.loads(open(f"dist/{_tt}.json", encoding="utf-8").read())
+        for _kx in (_xt.get("kapak_listesi") or []):
+            for _ad3 in (_kx.get("kazanan"), _kx.get("kaybeden")):
+                if any(_lak in (_ad3 or "") for _lak in
+                       ("Raptors", "Warriors", "Thunder", "Pelicans", "Knicks",
+                        "Suns", "Hornets", "Bucks", "Nets", "Heat")):
+                    _takmali.append(f"{_tt}: {_ad3}")
+    basar("Satır: takma ad kalmadı", not _takmali, "; ".join(_takmali[:3]))
+    # RAY: 3px, %80, keskin uçlar, dilimler zincirleme.
+    basar("Ray: 3px ve %80 opaklık", "width:3px" in _ry and "opacity:.80" in _ry)
+    basar("Ray: uçlar keskinleşti (#141C2A → #E8763A)",
+          "#141C2A" in _ry and "#E8763A" in _ry)
+    basar("Ray: her grup kendi renk aralığını alıyor, öncekinin bittiği yerden",
+          "const RAY_DURAK=" in _sayfa
+          and "rayRenk(bas)" in _sayfa and "rayRenk(bit)" in _sayfa)
+
     basar("Liste: rozet üç kademe",
           ".kaplist .k1 i{background:var(--ember)" in _sayfa
           and ".kaplist .k2 i{background:#3A2216" in _sayfa
           and ".kaplist .k3 i{background:#161D28" in _sayfa
-          and ".kaplist .k3 span.tk{color:var(--faint)}" in _sayfa)
+          and ".kaplist .k3 .mc .w{" in _sayfa)
     # SEZON BAŞI: bağlamlı kalıp ilk 10 maçta kurulamaz.
     basar("Manşet: sezon başı bağlam eşiği susma kuralıyla aynı",
           _derle.MANSET_BAGLAM_ASGARI == _gerc_modul.SEZON_ACILISI_TAZE_MAC_SAYISI

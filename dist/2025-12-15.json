@@ -76,10 +76,10 @@
     {
       "katman": "mutlaka",
       "rozet": 9.4,
-      "ev": "Denver Nuggets",
-      "dep": "Houston Rockets",
-      "ev_skor": 128,
-      "dep_skor": 125,
+      "kazanan": "Denver",
+      "kaybeden": "Houston",
+      "kazanan_skor": 128,
+      "kaybeden_skor": 125,
       "saat": "",
       "hedef_id": "g-mutlaka-0",
       "_sira": "9999-12-31T23:59:59.999999"
@@ -87,10 +87,10 @@
     {
       "katman": "mutlaka",
       "rozet": 9.0,
-      "ev": "Utah Jazz",
-      "dep": "Dallas Mavericks",
-      "ev_skor": 140,
-      "dep_skor": 133,
+      "kazanan": "Utah",
+      "kaybeden": "Dallas",
+      "kazanan_skor": 140,
+      "kaybeden_skor": 133,
       "saat": "",
       "hedef_id": "g-mutlaka-1",
       "_sira": "9999-12-31T23:59:59.999999"
@@ -98,10 +98,10 @@
     {
       "katman": "mutlaka",
       "rozet": 7.8,
-      "ev": "LA Clippers",
-      "dep": "Memphis Grizzlies",
-      "ev_skor": 103,
-      "dep_skor": 121,
+      "kazanan": "Memphis",
+      "kaybeden": "LA Clippers",
+      "kazanan_skor": 121,
+      "kaybeden_skor": 103,
       "saat": "",
       "hedef_id": "g-mutlaka-2",
       "_sira": "9999-12-31T23:59:59.999999"
@@ -109,10 +109,10 @@
     {
       "katman": "mutlaka",
       "rozet": 6.5,
-      "ev": "Boston Celtics",
-      "dep": "Detroit Pistons",
-      "ev_skor": 105,
-      "dep_skor": 112,
+      "kazanan": "Detroit",
+      "kaybeden": "Boston",
+      "kazanan_skor": 112,
+      "kaybeden_skor": 105,
       "saat": "",
       "hedef_id": "g-mutlaka-3",
       "_sira": "9999-12-31T23:59:59.999999"
@@ -120,10 +120,10 @@
     {
       "katman": "gec",
       "rozet": 4.0,
-      "ev": "Miami Heat",
-      "dep": "Toronto Raptors",
-      "ev_skor": 96,
-      "dep_skor": 106,
+      "kazanan": "Toronto",
+      "kaybeden": "Miami",
+      "kazanan_skor": 106,
+      "kaybeden_skor": 96,
       "saat": "",
       "hedef_id": "a-0022501227",
       "_sira": "9999-12-31T23:59:59.999999"

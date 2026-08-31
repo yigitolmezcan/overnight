@@ -618,6 +618,20 @@ def _manset_adaylari(ham, gercek_gece, skor_by_gid, tarih_str):
     return adaylar
 
 
+# Kapak listesinde kullanılan KISA ADLAR. `cumle.TAKIM_KISA` Lakers
+# için "Los Angeles" veriyor; Los Angeles'ta iki takım olduğu için
+# kapakta ayrışmıyordu.
+KAPAK_KISA_OVERRIDE = {"LAL": "LA Lakers"}
+
+
+def _kapak_kisa_ad(skor, kazanan=True):
+    ev, dep = skor.get("ev"), skor.get("dep")
+    es, ds = skor.get("ev_skor") or 0, skor.get("dep_skor") or 0
+    kaz = ev if es >= ds else dep
+    kod = kaz if kazanan else (dep if kaz == ev else ev)
+    return KAPAK_KISA_OVERRIDE.get(kod) or cumle.TAKIM_KISA.get(kod, kod)
+
+
 def _mansetler(ham, gercek_gece, skor_by_gid, id_by_gid, tarih_str,
                saat_by_gid=None):
     """En fazla üç manşet; aynı maçtan yalnız biri."""
@@ -3431,10 +3445,19 @@ def derle(tarih_str):
             {
                 "katman": kat,
                 "rozet": round((rozet_by_gid.get(gid) or {}).get("rozet", 0), 1),
-                "ev": _takim_adi((rozet_by_gid.get(gid) or {}).get("ev")),
-                "dep": _takim_adi((rozet_by_gid.get(gid) or {}).get("dep")),
-                "ev_skor": (rozet_by_gid.get(gid) or {}).get("ev_skor"),
-                "dep_skor": (rozet_by_gid.get(gid) or {}).get("dep_skor"),
+                # KAZANAN ÖNCE, KISA AD. Takma ad ("Raptors", "Suns")
+                # satırı uzatıyordu; şehir yeter. Los Angeles'ta iki
+                # takım olduğu için Lakers "LA Lakers" oluyor.
+                "kazanan": _kapak_kisa_ad(
+                    (rozet_by_gid.get(gid) or {}), kazanan=True),
+                "kaybeden": _kapak_kisa_ad(
+                    (rozet_by_gid.get(gid) or {}), kazanan=False),
+                "kazanan_skor": max(
+                    (rozet_by_gid.get(gid) or {}).get("ev_skor") or 0,
+                    (rozet_by_gid.get(gid) or {}).get("dep_skor") or 0),
+                "kaybeden_skor": min(
+                    (rozet_by_gid.get(gid) or {}).get("ev_skor") or 0,
+                    (rozet_by_gid.get(gid) or {}).get("dep_skor") or 0),
                 "saat": _saat_by_gid.get(gid) or "",
                 "hedef_id": _hedef_by_gid.get(gid, ""),
                 # Sıralama anahtarı METİN: _tsi_baslama_dt bazı maçlarda

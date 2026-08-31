@@ -106,10 +106,10 @@
     {
       "katman": "gozat",
       "rozet": 6.4,
-      "ev": "Denver Nuggets",
-      "dep": "Houston Rockets",
-      "ev_skor": 101,
-      "dep_skor": 115,
+      "kazanan": "Houston",
+      "kaybeden": "Denver",
+      "kazanan_skor": 115,
+      "kaybeden_skor": 101,
       "saat": "01:00",
       "hedef_id": "a-0022500386",
       "_sira": "2025-12-21T01:00:00+03:00"
@@ -117,10 +117,10 @@
     {
       "katman": "gozat",
       "rozet": 7.3,
-      "ev": "Toronto Raptors",
-      "dep": "Boston Celtics",
-      "ev_skor": 96,
-      "dep_skor": 112,
+      "kazanan": "Boston",
+      "kaybeden": "Toronto",
+      "kazanan_skor": 112,
+      "kaybeden_skor": 96,
       "saat": "03:00",
       "hedef_id": "a-0022500388",
       "_sira": "2025-12-21T03:00:00+03:00"
@@ -128,10 +128,10 @@
     {
       "katman": "gec",
       "rozet": 5.8,
-      "ev": "Philadelphia 76ers",
-      "dep": "Dallas Mavericks",
-      "ev_skor": 121,
-      "dep_skor": 114,
+      "kazanan": "Philadelphia",
+      "kaybeden": "Dallas",
+      "kazanan_skor": 121,
+      "kaybeden_skor": 114,
       "saat": "03:00",
       "hedef_id": "a-0022500387",
       "_sira": "2025-12-21T03:00:00+03:00"
@@ -139,10 +139,10 @@
     {
       "katman": "gec",
       "rozet": 4.0,
-      "ev": "New Orleans Pelicans",
-      "dep": "Indiana Pacers",
-      "ev_skor": 128,
-      "dep_skor": 109,
+      "kazanan": "New Orleans",
+      "kaybeden": "Indiana",
+      "kazanan_skor": 128,
+      "kaybeden_skor": 109,
       "saat": "03:00",
       "hedef_id": "a-0022500389",
       "_sira": "2025-12-21T03:00:00+03:00"
@@ -150,10 +150,10 @@
     {
       "katman": "gec",
       "rozet": 2.5,
-      "ev": "Detroit Pistons",
-      "dep": "Charlotte Hornets",
-      "ev_skor": 112,
-      "dep_skor": 86,
+      "kazanan": "Detroit",
+      "kaybeden": "Charlotte",
+      "kazanan_skor": 112,
+      "kaybeden_skor": 86,
       "saat": "03:30",
       "hedef_id": "a-0022500390",
       "_sira": "2025-12-21T03:30:00+03:00"
@@ -161,10 +161,10 @@
     {
       "katman": "mutlaka",
       "rozet": 8.6,
-      "ev": "Memphis Grizzlies",
-      "dep": "Washington Wizards",
-      "ev_skor": 122,
-      "dep_skor": 130,
+      "kazanan": "Washington",
+      "kaybeden": "Memphis",
+      "kazanan_skor": 130,
+      "kaybeden_skor": 122,
       "saat": "04:00",
       "hedef_id": "g-mutlaka-1",
       "_sira": "2025-12-21T04:00:00+03:00"
@@ -172,10 +172,10 @@
     {
       "katman": "mutlaka",
       "rozet": 9.1,
-      "ev": "Golden State Warriors",
-      "dep": "Phoenix Suns",
-      "ev_skor": 119,
-      "dep_skor": 116,
+      "kazanan": "Golden State",
+      "kaybeden": "Phoenix",
+      "kazanan_skor": 119,
+      "kaybeden_skor": 116,
       "saat": "04:30",
       "hedef_id": "g-mutlaka-0",
       "_sira": "2025-12-21T04:30:00+03:00"
@@ -183,10 +183,10 @@
     {
       "katman": "mutlaka",
       "rozet": 8.5,
-      "ev": "Utah Jazz",
-      "dep": "Orlando Magic",
-      "ev_skor": 127,
-      "dep_skor": 128,
+      "kazanan": "Orlando",
+      "kaybeden": "Utah",
+      "kazanan_skor": 128,
+      "kaybeden_skor": 127,
       "saat": "05:30",
       "hedef_id": "g-mutlaka-2",
       "_sira": "2025-12-21T05:30:00+03:00"
@@ -194,10 +194,10 @@
     {
       "katman": "gec",
       "rozet": 2.6,
-      "ev": "Sacramento Kings",
-      "dep": "Portland Trail Blazers",
-      "ev_skor": 93,
-      "dep_skor": 98,
+      "kazanan": "Portland",
+      "kaybeden": "Sacramento",
+      "kazanan_skor": 98,
+      "kaybeden_skor": 93,
       "saat": "06:00",
       "hedef_id": "a-0022500394",
       "_sira": "2025-12-21T06:00:00+03:00"
@@ -205,10 +205,10 @@
     {
       "katman": "gec",
       "rozet": 5.1,
-      "ev": "LA Clippers",
-      "dep": "Los Angeles Lakers",
-      "ev_skor": 103,
-      "dep_skor": 88,
+      "kazanan": "LA Clippers",
+      "kaybeden": "LA Lakers",
+      "kazanan_skor": 103,
+      "kaybeden_skor": 88,
       "saat": "06:30",
       "hedef_id": "a-0022500395",
       "_sira": "2025-12-21T06:30:00+03:00"
@@ -219,7 +219,7 @@
       "metin": "Houston Rockets, Denver Nuggets deplasmanında kazandı.",
       "anlatili": true,
       "hedef_id": "a-0022500386",
-      "icon": "default",
+      "icon": "standings",
       "saat": "01:00",
       "rozet": 6.39,
       "skor": "DEN 101 – HOU 115",
@@ -327,7 +327,7 @@
       "metin": "LA Clippers, Los Angeles Lakers'i evinde yendi.",
       "anlatili": true,
       "hedef_id": "a-0022500395",
-      "icon": "standings",
+      "icon": "default",
       "saat": "06:30",
       "rozet": 5.07,
       "skor": "LAC 103 – LAL 88",
@@ -15838,7 +15838,7 @@
       "mac": "Denver Nuggets — Houston Rockets",
       "skor": "101–115",
       "rozet": 6.39,
-      "why": "",
+      "why": "gece sırası 1",
       "metin": "Houston Rockets deplasmanda Denver Nuggets'i 115-101 yendi. Jabari Smith Jr. double-double yaptı (22 sayı, 10 ribaund).",
       "box": {
         "ev": {
@@ -17032,7 +17032,7 @@
       "mac": "LA Clippers — Los Angeles Lakers",
       "skor": "103–88",
       "rozet": 5.07,
-      "why": "gece sırası 10",
+      "why": "",
       "metin": "LA Clippers evinde Los Angeles Lakers'i 103-88 yendi.",
       "box": {
         "ev": {

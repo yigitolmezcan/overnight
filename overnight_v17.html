@@ -1220,12 +1220,12 @@ td.khot{color:var(--amber);font-weight:700}
 /* SOL RAY: dikey gece degradesi. Renkler üstteki gece bandıyla aynı
    yolu izliyor — listenin üstü gece, altı şafak. Her grup toplam
    degradenin KENDİ DİLİMİNİ alıyor (konum JS'te hizalanıyor). */
-.kaplist .gray{position:absolute;left:0;top:0;bottom:0;width:2px;opacity:.55;
-  background-image:linear-gradient(180deg,#1E2636 0%,#4A3520 55%,#E8763A 100%);
+.kaplist .gray{position:absolute;left:0;top:0;bottom:0;width:3px;opacity:.80;
+  background-image:linear-gradient(180deg,#141C2A 0%,#4A3520 55%,#E8763A 100%);
   background-repeat:no-repeat}
 .kaplist .saat{font-family:var(--mono);font-size:11px;color:#6E7A8B;
   letter-spacing:.04em;padding:6px 0 3px}
-.kaplist a{display:flex;align-items:center;gap:10px;padding:5px 0;
+.kaplist a{display:flex;align-items:center;gap:12px;padding:6px 0;
   text-decoration:none;color:inherit}
 /* ROZET ÜÇ KADEME — hiyerarşi görünsün. */
 .kaplist i{font-family:var(--mono);font-size:10px;font-weight:700;font-style:normal;
@@ -1233,10 +1233,23 @@ td.khot{color:var(--amber);font-weight:700}
 .kaplist .k1 i{background:var(--ember);color:#0A0603}
 .kaplist .k2 i{background:#3A2216;color:#C08050}
 .kaplist .k3 i{background:#161D28;color:#6E7A8B}
-.kaplist span.tk{flex:1;min-width:0;font-family:var(--mono);font-size:12px;
-  color:var(--dim);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-/* Düşük rozetli satırın maç adı da soluk. */
-.kaplist .k3 span.tk{color:var(--faint)}
+/* SATIR TİPOGRAFİSİ: solda takımlar (kazanan kalın ve beyaz),
+   sağda HİZALI skor sütunu. Takım adı uzunluğu skor sütununu
+   kaydırmıyor — göz tek sütunda aşağı inebiliyor. */
+.kaplist .mc{flex:1;min-width:0;font-family:var(--mono);font-size:13.5px;
+  display:flex;align-items:baseline;gap:8px;overflow:hidden;white-space:nowrap}
+.kaplist .mc .w{color:var(--ink);font-weight:700;
+  overflow:hidden;text-overflow:ellipsis}
+.kaplist .mc .vs{color:#2E3846;font-size:11px;flex:none}
+.kaplist .mc .l{color:#4C5665;overflow:hidden;text-overflow:ellipsis}
+.kaplist .sk{font-family:var(--mono);font-size:14px;font-weight:700;
+  color:var(--ink);flex:none;letter-spacing:-.02em;text-align:right}
+.kaplist .sk s{text-decoration:none;color:#4C5665;font-weight:400}
+/* Düşük rozetli satır bir kademe daha soluk. */
+.kaplist .k3 .mc .w{color:#6E7A8B}
+.kaplist .k3 .mc .l{color:#39424F}
+.kaplist .k3 .sk{color:#5A6472;font-weight:400}
+.kaplist .k3 .sk s{color:#39424F}
 
 /* "Bunları geç" sol rayı — YAPI VERİR, DİKKAT ÇEKMEZ (kullanıcı kararı).
    Üst katmanlarda 3px ve tam renk; burada 2px ve %30'dan %10'a sönen
@@ -2432,19 +2445,36 @@ function render(d){
       <div class="saat">${esc(g.saat)}</div>
       ${g.satirlar.map(x=>`<a class="${kademeSinif[x.katman]||'k3'}" href="#${esc(x.hedef_id||'')}">
         <i>${(x.rozet||0).toFixed(1)}</i>
-        <span class="tk">${esc(x.ev)} ${x.ev_skor}–${x.dep_skor} ${esc(x.dep)}</span></a>`).join('')}
+        <span class="mc"><span class="w">${esc(x.kazanan)}</span><span class="vs">×</span><span class="l">${esc(x.kaybeden)}</span></span>
+        <span class="sk">${x.kazanan_skor}<s>–${x.kaybeden_skor}</s></span></a>`).join('')}
     </div>`).join('');
   // SOL RAY — TÜM LİSTE BOYUNCA TEK DEGRADE, gruplara bölünmüş
   // parçalar halinde. Her grubun rayı toplam degradenin kendi dilimini
   // alıyor: dilim, grubun listedeki dikey konumundan hesaplanıyor.
   // Saf CSS ile yapılamıyor (her ray kendi yüksekliğinde ayrı bir
   // degrade çizerdi ve gruplar arasında kopardı).
+  // Ana degradenin durakları: gece → şafak. Her grup bu degradenin
+  // KENDİ ARALIĞINI alıyor — dilim, grubun listedeki dikey konumundan
+  // hesaplanıyor. Grup içinde yumuşak, gruplar ARASINDA sert: bir grup
+  // bir öncekinin bittiği renkten başlıyor, baştan başlamıyor.
+  const RAY_DURAK=[[0,[20,28,42]],[0.55,[74,53,32]],[1,[232,118,58]]];
+  const rayRenk=t=>{
+    t=Math.max(0,Math.min(1,t));
+    for(let i=1;i<RAY_DURAK.length;i++){
+      const [p1,c1]=RAY_DURAK[i-1], [p2,c2]=RAY_DURAK[i];
+      if(t<=p2){ const k=(t-p1)/(p2-p1||1);
+        return `rgb(${c1.map((v,j)=>Math.round(v+(c2[j]-v)*k)).join(',')})`; }
+    }
+    return `rgb(${RAY_DURAK[RAY_DURAK.length-1][1].join(',')})`;
+  };
   const rayHizala=()=>{
     const H=kapListe.scrollHeight||1;
     kapListe.querySelectorAll('.grp').forEach(g=>{
       const r=g.querySelector('.gray'); if(!r) return;
-      r.style.backgroundSize=`2px ${H}px`;
-      r.style.backgroundPosition=`0 ${-g.offsetTop}px`;
+      const bas=g.offsetTop/H, bit=(g.offsetTop+g.offsetHeight)/H;
+      r.style.backgroundImage=
+        `linear-gradient(180deg, ${rayRenk(bas)} 0%, ${rayRenk(bit)} 100%)`;
+      r.style.backgroundSize=''; r.style.backgroundPosition='';
     });
   };
   rayHizala();

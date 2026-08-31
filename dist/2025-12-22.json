@@ -88,10 +88,10 @@
     {
       "katman": "gec",
       "rozet": 5.2,
-      "ev": "Cleveland Cavaliers",
-      "dep": "Charlotte Hornets",
-      "ev_skor": 139,
-      "dep_skor": 132,
+      "kazanan": "Cleveland",
+      "kaybeden": "Charlotte",
+      "kazanan_skor": 139,
+      "kaybeden_skor": 132,
       "saat": "03:00",
       "hedef_id": "a-0022500402",
       "_sira": "2025-12-23T03:00:00+03:00"
@@ -99,10 +99,10 @@
     {
       "katman": "mutlaka",
       "rozet": 8.3,
-      "ev": "Boston Celtics",
-      "dep": "Indiana Pacers",
-      "ev_skor": 103,
-      "dep_skor": 95,
+      "kazanan": "Boston",
+      "kaybeden": "Indiana",
+      "kazanan_skor": 103,
+      "kaybeden_skor": 95,
       "saat": "03:30",
       "hedef_id": "g-mutlaka-0",
       "_sira": "2025-12-23T03:30:00+03:00"
@@ -110,10 +110,10 @@
     {
       "katman": "gozat",
       "rozet": 6.5,
-      "ev": "New Orleans Pelicans",
-      "dep": "Dallas Mavericks",
-      "ev_skor": 119,
-      "dep_skor": 113,
+      "kazanan": "New Orleans",
+      "kaybeden": "Dallas",
+      "kazanan_skor": 119,
+      "kaybeden_skor": 113,
       "saat": "04:00",
       "hedef_id": "a-0022500404",
       "_sira": "2025-12-23T04:00:00+03:00"
@@ -121,10 +121,10 @@
     {
       "katman": "gec",
       "rozet": 5.5,
-      "ev": "Denver Nuggets",
-      "dep": "Utah Jazz",
-      "ev_skor": 135,
-      "dep_skor": 112,
+      "kazanan": "Denver",
+      "kaybeden": "Utah",
+      "kazanan_skor": 135,
+      "kaybeden_skor": 112,
       "saat": "05:00",
       "hedef_id": "a-0022500405",
       "_sira": "2025-12-23T05:00:00+03:00"
@@ -132,10 +132,10 @@
     {
       "katman": "gozat",
       "rozet": 6.7,
-      "ev": "Oklahoma City Thunder",
-      "dep": "Memphis Grizzlies",
-      "ev_skor": 119,
-      "dep_skor": 103,
+      "kazanan": "Oklahoma City",
+      "kaybeden": "Memphis",
+      "kazanan_skor": 119,
+      "kaybeden_skor": 103,
       "saat": "05:30",
       "hedef_id": "a-0022500406",
       "_sira": "2025-12-23T05:30:00+03:00"
@@ -143,10 +143,10 @@
     {
       "katman": "gozat",
       "rozet": 6.3,
-      "ev": "Portland Trail Blazers",
-      "dep": "Detroit Pistons",
-      "ev_skor": 102,
-      "dep_skor": 110,
+      "kazanan": "Detroit",
+      "kaybeden": "Portland",
+      "kazanan_skor": 110,
+      "kaybeden_skor": 102,
       "saat": "06:00",
       "hedef_id": "a-0022500408",
       "_sira": "2025-12-23T06:00:00+03:00"
@@ -154,10 +154,10 @@
     {
       "katman": "gec",
       "rozet": 2.6,
-      "ev": "Golden State Warriors",
-      "dep": "Orlando Magic",
-      "ev_skor": 120,
-      "dep_skor": 97,
+      "kazanan": "Golden State",
+      "kaybeden": "Orlando",
+      "kazanan_skor": 120,
+      "kaybeden_skor": 97,
       "saat": "06:00",
       "hedef_id": "a-0022500407",
       "_sira": "2025-12-23T06:00:00+03:00"
@@ -168,7 +168,7 @@
       "metin": "Cleveland Cavaliers, Charlotte Hornets'i evinde yendi.",
       "anlatili": true,
       "hedef_id": "a-0022500402",
-      "icon": "default",
+      "icon": "standings",
       "saat": "03:00",
       "rozet": 5.22,
       "skor": "CLE 139 – CHA 132",
@@ -228,7 +228,7 @@
       "metin": "Detroit Pistons, Portland Trail Blazers'i yenerek konferansta 1. sıraya yükseldi.",
       "anlatili": true,
       "hedef_id": "a-0022500408",
-      "icon": "standings",
+      "icon": "default",
       "saat": "06:00",
       "rozet": 6.33,
       "skor": "POR 102 – DET 110",
@@ -11601,7 +11601,7 @@
       "mac": "Portland Trail Blazers — Detroit Pistons",
       "skor": "102–110",
       "rozet": 6.33,
-      "why": "gece sırası 7",
+      "why": "",
       "metin": "Detroit Pistons deplasmanda Portland Trail Blazers'i 110-102 yendi.",
       "box": {
         "ev": {
@@ -12941,7 +12941,7 @@
       "mac": "Cleveland Cavaliers — Charlotte Hornets",
       "skor": "139–132",
       "rozet": 5.22,
-      "why": "",
+      "why": "gece sırası 1",
       "metin": "Cleveland Cavaliers evinde Charlotte Hornets'i 139-132 yendi. Darius Garland double-double yaptı (27 sayı, 10 asist).",
       "box": {
         "ev": {

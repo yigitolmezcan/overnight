@@ -88,10 +88,10 @@
     {
       "katman": "gec",
       "rozet": 2.0,
-      "ev": "Sacramento Kings",
-      "dep": "Dallas Mavericks",
-      "ev_skor": 113,
-      "dep_skor": 107,
+      "kazanan": "Sacramento",
+      "kaybeden": "Dallas",
+      "kazanan_skor": 113,
+      "kaybeden_skor": 107,
       "saat": "01:00",
       "hedef_id": "a-0022500432",
       "_sira": "2025-12-28T01:00:00+03:00"
@@ -99,10 +99,10 @@
     {
       "katman": "mutlaka",
       "rozet": 9.3,
-      "ev": "Orlando Magic",
-      "dep": "Denver Nuggets",
-      "ev_skor": 127,
-      "dep_skor": 126,
+      "kazanan": "Orlando",
+      "kaybeden": "Denver",
+      "kazanan_skor": 127,
+      "kaybeden_skor": 126,
       "saat": "03:00",
       "hedef_id": "g-mutlaka-0",
       "_sira": "2025-12-28T03:00:00+03:00"
@@ -110,10 +110,10 @@
     {
       "katman": "gec",
       "rozet": 3.2,
-      "ev": "New Orleans Pelicans",
-      "dep": "Phoenix Suns",
-      "ev_skor": 114,
-      "dep_skor": 123,
+      "kazanan": "Phoenix",
+      "kaybeden": "New Orleans",
+      "kazanan_skor": 123,
+      "kaybeden_skor": 114,
       "saat": "03:00",
       "hedef_id": "a-0022500434",
       "_sira": "2025-12-28T03:00:00+03:00"
@@ -121,10 +121,10 @@
     {
       "katman": "mutlaka",
       "rozet": 8.9,
-      "ev": "Atlanta Hawks",
-      "dep": "New York Knicks",
-      "ev_skor": 125,
-      "dep_skor": 128,
+      "kazanan": "New York",
+      "kaybeden": "Atlanta",
+      "kazanan_skor": 128,
+      "kaybeden_skor": 125,
       "saat": "04:00",
       "hedef_id": "g-mutlaka-1",
       "_sira": "2025-12-28T04:00:00+03:00"
@@ -132,10 +132,10 @@
     {
       "katman": "mutlaka",
       "rozet": 8.3,
-      "ev": "San Antonio Spurs",
-      "dep": "Utah Jazz",
-      "ev_skor": 114,
-      "dep_skor": 127,
+      "kazanan": "Utah",
+      "kaybeden": "San Antonio",
+      "kazanan_skor": 127,
+      "kaybeden_skor": 114,
       "saat": "04:00",
       "hedef_id": "g-mutlaka-2",
       "_sira": "2025-12-28T04:00:00+03:00"
@@ -143,10 +143,10 @@
     {
       "katman": "gozat",
       "rozet": 7.1,
-      "ev": "Minnesota Timberwolves",
-      "dep": "Brooklyn Nets",
-      "ev_skor": 107,
-      "dep_skor": 123,
+      "kazanan": "Brooklyn",
+      "kaybeden": "Minnesota",
+      "kazanan_skor": 123,
+      "kaybeden_skor": 107,
       "saat": "04:00",
       "hedef_id": "a-0022500439",
       "_sira": "2025-12-28T04:00:00+03:00"
@@ -154,10 +154,10 @@
     {
       "katman": "gozat",
       "rozet": 6.2,
-      "ev": "Chicago Bulls",
-      "dep": "Milwaukee Bucks",
-      "ev_skor": 103,
-      "dep_skor": 112,
+      "kazanan": "Milwaukee",
+      "kaybeden": "Chicago",
+      "kazanan_skor": 112,
+      "kaybeden_skor": 103,
       "saat": "04:00",
       "hedef_id": "a-0022500437",
       "_sira": "2025-12-28T04:00:00+03:00"
@@ -165,10 +165,10 @@
     {
       "katman": "gec",
       "rozet": 5.9,
-      "ev": "Miami Heat",
-      "dep": "Indiana Pacers",
-      "ev_skor": 142,
-      "dep_skor": 116,
+      "kazanan": "Miami",
+      "kaybeden": "Indiana",
+      "kazanan_skor": 142,
+      "kaybeden_skor": 116,
       "saat": "04:00",
       "hedef_id": "a-0022500436",
       "_sira": "2025-12-28T04:00:00+03:00"
@@ -176,10 +176,10 @@
     {
       "katman": "gec",
       "rozet": 5.8,
-      "ev": "Houston Rockets",
-      "dep": "Cleveland Cavaliers",
-      "ev_skor": 117,
-      "dep_skor": 100,
+      "kazanan": "Houston",
+      "kaybeden": "Cleveland",
+      "kazanan_skor": 117,
+      "kaybeden_skor": 100,
       "saat": "04:00",
       "hedef_id": "a-0022500438",
       "_sira": "2025-12-28T04:00:00+03:00"
