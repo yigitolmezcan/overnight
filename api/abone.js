@@ -36,7 +36,18 @@ export default async function handler(istek, yanit) {
     });
   } catch (e) {
     console.error("Onay maili gönderilemedi:", e.message);
-    return yanit.status(502).json({ hata: "Onay maili gönderilemedi, birazdan tekrar dene." });
+    // TEŞHİS: Vercel'in çalışma zamanı kayıtları API'den okunamıyor ve
+    // kullanıcıya dönen mesaj sebebi söylemiyor — bir kez bu yüzden
+    // sebebi bulmak için tahmin yürütmek zorunda kaldık. Ops anahtarını
+    // taşıyan istek gerçek hatayı da görüyor; anahtarsız istekte
+    // davranış hiç değişmiyor.
+    const tani =
+      process.env.NOBETCI_ANAHTARI &&
+      istek.headers["x-tani"] === process.env.NOBETCI_ANAHTARI;
+    return yanit.status(502).json({
+      hata: "Onay maili gönderilemedi, birazdan tekrar dene.",
+      ...(tani ? { detay: String(e.message).slice(0, 400) } : {}),
+    });
   }
 
   // Adresin listede olup olmadığını SÖYLEMİYORUZ — aynı yanıt her
