@@ -58,8 +58,13 @@ def gonder(konu, satirlar):
             "html": govde_html(satirlar),
             "text": "\n".join(satirlar),
         }).encode("utf-8"),
+        # USER-AGENT ŞART: Resend'in önünde Cloudflare var ve Python'un
+        # varsayılan "Python-urllib/3.x" imzasını engelliyor (HTTP 403,
+        # Cloudflare error code 1010). Kimlik bilgisiyle ilgisi yok —
+        # istek Resend'e hiç ulaşmıyor. Ölçümle bulundu.
         headers={"Authorization": f"Bearer {RESEND}",
-                 "Content-Type": "application/json"},
+                 "Content-Type": "application/json",
+                 "User-Agent": "overnight/1.0 (+https://overnightnba.com)"},
         method="POST",
     )
     try:

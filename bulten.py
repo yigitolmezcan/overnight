@@ -19,6 +19,7 @@ import hmac
 import json
 import os
 import sys
+import urllib.error
 import urllib.request
 from base64 import urlsafe_b64encode
 from pathlib import Path
@@ -48,7 +49,9 @@ def aboneleri_getir():
     istek = urllib.request.Request(
         REDIS_URL,
         data=json.dumps(["SMEMBERS", REDIS_ANAHTAR]).encode(),
-        headers={"Authorization": f"Bearer {REDIS_TOKEN}", "Content-Type": "application/json"},
+        headers={"Authorization": f"Bearer {REDIS_TOKEN}",
+                 "Content-Type": "application/json",
+                 "User-Agent": "overnight/1.0 (+https://overnightnba.com)"},
         method="POST",
     )
     with urllib.request.urlopen(istek, timeout=30) as y:
@@ -151,11 +154,24 @@ def _resend(kime, konu, html, metin):
         "https://api.resend.com/emails",
         data=json.dumps({"from": GONDEREN, "to": [kime], "subject": konu,
                          "html": html, "text": metin}).encode(),
-        headers={"Authorization": f"Bearer {RESEND}", "Content-Type": "application/json"},
+        # User-Agent şart (bkz. uyari.py): Cloudflare varsayılan
+        # Python imzasını 403 ile geri çeviriyor.
+        headers={"Authorization": f"Bearer {RESEND}",
+                 "Content-Type": "application/json",
+                 "User-Agent": "overnight/1.0 (+https://overnightnba.com)"},
         method="POST",
     )
-    with urllib.request.urlopen(istek, timeout=30) as y:
-        return json.loads(y.read())
+    try:
+        with urllib.request.urlopen(istek, timeout=30) as y:
+            return json.loads(y.read())
+    except urllib.error.HTTPError as e:
+        # Resend'in mesajını yutma: yalnız HTTP kodu görülünce sebebi
+        # anlamak için ayrı koşu gerekiyor (bir kez oldu, 403).
+        try:
+            neden = e.read().decode("utf-8", "replace")[:300]
+        except Exception:
+            neden = "(gövde okunamadı)"
+        raise RuntimeError(f"Resend HTTP {e.code} — {neden}") from None
 
 
 def gonder(prova_adresi=None):
