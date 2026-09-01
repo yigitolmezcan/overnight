@@ -1,0 +1,119 @@
+{
+  "tarih": "2025-12-30",
+  "uretildi": "2026-09-01T02:02:14.063225Z",
+  "maclar": {
+    "0022500460": {
+      "gec_satiri": "Detroit Pistons deplasmanda Los Angeles Lakers'i 128-106 yendi. Cade Cunningham 11 asist yaptı.",
+      "muzip": false
+    },
+    "0022500458": {
+      "baslik": "Philadelphia, Memphis'i son saniyede devirdi."
+    },
+    "0022500461": {
+      "baslik": "Kawhi Leonard'ın 33 sayısıyla LA Clippers, Sacramento Kings'i yendi.",
+      "neden_onemli": "LA Clippers, 5 maçlık galibiyet serisini sürdürdü."
+    },
+    "0022500459": {
+      "baslik": "Boston, Utah deplasmanında 129-119 kazandı.",
+      "neden_onemli": "Boston Celtics, konferansta 3. sıraya yükseldi."
+    }
+  },
+  "brief": [
+    {
+      "metin": "Philadelphia 76ers, Memphis Grizzlies'i uzatmada geçti.",
+      "hedef_mac": "0022500458",
+      "muzip": false,
+      "kind": "uzatma"
+    },
+    {
+      "metin": "Kawhi Leonard, Sacramento Kings karşısında 33 sayı attı.",
+      "hedef_mac": "0022500461",
+      "muzip": false,
+      "kind": "performans"
+    },
+    {
+      "metin": "Boston Celtics, 12 sayılık farktan dönüp Utah Jazz'ı geçti.",
+      "hedef_mac": "0022500459",
+      "muzip": false,
+      "kind": "geri_donus"
+    },
+    {
+      "metin": "Detroit Pistons, Los Angeles Lakers'i yenerek konferansta 1. sıraya yükseldi.",
+      "hedef_mac": "0022500460",
+      "muzip": false,
+      "kind": "siralama"
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 7,
+    "ilk_denemede_kabul": 1,
+    "sablon_moduna_dusen": 1,
+    "detay": [
+      {
+        "mac_id": "0022500461",
+        "deneme": 0,
+        "gerekce": [
+          "T14: en iyi performans (Kawhi Leonard) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "LA Clippers, Sacramento'yu ikinci çeyrekte kopardı."
+        }
+      },
+      {
+        "mac_id": "0022500461",
+        "deneme": 1,
+        "gerekce": [
+          "baslik/T31: [\"başlık iskelet listesinin dışında: 'LA Clippers, Sacramento'yu ilk yarıda kopardı.'\"]",
+          "T14: en iyi performans (Kawhi Leonard) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "LA Clippers, Sacramento'yu ilk yarıda kopardı."
+        }
+      },
+      {
+        "mac_id": "0022500461",
+        "deneme": 2,
+        "gerekce": [
+          "baslik/T31: [\"başlık iskelet listesinin dışında: 'LA Clippers, Sacramento'yu ilk yarıda kopardı.'\"]",
+          "T14: en iyi performans (Kawhi Leonard) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "LA Clippers, Sacramento'yu ilk yarıda kopardı."
+        }
+      },
+      {
+        "mac_id": "0022500459",
+        "deneme": 0,
+        "gerekce": [
+          "baslik/T31: [\"başlık iskelet listesinin dışında: 'Derrick White'ın 27 sayısıyla Boston, Utah'ı deplasmanda yendi.'\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Derrick White'ın 27 sayısıyla Boston, Utah'ı deplasmanda yendi."
+        }
+      },
+      {
+        "mac_id": "0022500459",
+        "deneme": 1,
+        "gerekce": [
+          "baslik/T31: ['başlıktaki oyuncu kazananın en iyisi değil (kazananın en iyisi: Jaylen Brown)']"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Derrick White'ın 27 sayısıyla Boston, Utah'ı yendi."
+        }
+      }
+    ],
+    "sablon_isaretli": [],
+    "mutlaka_mac": 3,
+    "ret_orani": 0.857,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 7,
+      "girdi_token": 26123,
+      "cikti_token": 3454,
+      "cache_yazma_token": 39935,
+      "cache_okuma_token": 65866,
+      "toplam_maliyet_usd": 0.1998,
+      "butce_asildi": false
+    }
+  }
+}

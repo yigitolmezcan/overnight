@@ -1,0 +1,119 @@
+{
+  "tarih": "2025-12-30",
+  "hesaplandi": "2026-09-01T02:01:18.955527Z",
+  "en_iyi_skor": 9.3,
+  "maclar": [
+    {
+      "rozet": 9.3,
+      "ham": 12.22,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 9.4,
+        "K": 3.73,
+        "T": 0,
+        "D": 8
+      },
+      "yukselticiler": {
+        "Y": 9.5,
+        "F": 10,
+        "G": 0,
+        "A": 5.83
+      },
+      "dram_terfi": true,
+      "mac_id": "0022500458",
+      "ev": "MEM",
+      "dep": "PHI",
+      "ev_skor": 136,
+      "dep_skor": 139,
+      "en_iyi_performans": "Ja Morant",
+      "esitlik_bozucu": [
+        8,
+        -3
+      ]
+    },
+    {
+      "rozet": 6.77,
+      "ham": 6.77,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 7.91,
+        "K": 0.39,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.13,
+        "F": 0,
+        "G": 0,
+        "A": 3.17
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500461",
+      "ev": "LAC",
+      "dep": "SAC",
+      "ev_skor": 131,
+      "dep_skor": 90,
+      "en_iyi_performans": "Kawhi Leonard",
+      "esitlik_bozucu": [
+        0,
+        -41
+      ]
+    },
+    {
+      "rozet": 6.66,
+      "ham": 6.66,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.67,
+        "K": 1.53,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 5.06,
+        "F": 0,
+        "G": 0,
+        "A": 4.83
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500459",
+      "ev": "UTA",
+      "dep": "BOS",
+      "ev_skor": 119,
+      "dep_skor": 129,
+      "en_iyi_performans": "Keyonte George",
+      "esitlik_bozucu": [
+        0,
+        -10
+      ]
+    },
+    {
+      "rozet": 3.66,
+      "ham": 3.66,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 3.32,
+        "K": 2.05,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.25,
+        "F": 0,
+        "G": 0,
+        "A": 7.67
+      },
+      "dram_terfi": false,
+      "mac_id": "0022500460",
+      "ev": "LAL",
+      "dep": "DET",
+      "ev_skor": 106,
+      "dep_skor": 128,
+      "en_iyi_performans": "Cade Cunningham",
+      "esitlik_bozucu": [
+        0,
+        -22
+      ]
+    }
+  ]
+}
