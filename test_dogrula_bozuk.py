@@ -7044,6 +7044,39 @@ def main():
           not _celisen5, "; ".join(_celisen5[:3]))
 
     # ==================================================================
+    # BÜLTEN — HER GECEDE MAİL ÜRETİLEBİLİYOR MU
+    # ==================================================================
+    # Daha önce bir gecede KeyError ile çöküyordu. Bülten açılmadan
+    # önce yayındaki HER gecede gövde ve düz metin kuruluyor; gönderme
+    # yok, yalnız üretim.
+    import bulten as _blt
+    _mail_hata = []
+    _mail_ok = 0
+    for _t7 in _yayin.durum_oku()["yayinlanan"]:
+        _p7 = f"dist/{_t7}.json"
+        if not _os.path.exists(_p7):
+            _mail_hata.append(f"{_t7}: dist yok"); continue
+        _v7 = _jj.loads(open(_p7, encoding="utf-8").read())
+        try:
+            _h7 = _blt.mail_govdesi(_v7, "https://ornek/cikis")
+            _m7 = _blt.mail_metni(_v7, "https://ornek/cikis")
+            if not _h7 or "<html" not in _h7.lower():
+                raise ValueError("html gövdesi boş")
+            if not _m7 or len(_m7) < 40:
+                raise ValueError("düz metin çok kısa")
+            _mail_ok += 1
+        except Exception as _e7:
+            _mail_hata.append(f"{_t7}: {type(_e7).__name__}: {_e7}")
+    basar(f"Bülten: yayındaki {_mail_ok} gecenin hepsinde mail üretiliyor",
+          not _mail_hata, "; ".join(_mail_hata[:3]))
+    # Mailde site adresi TEK KAYNAKTAN geliyor; eski adres kalmasın.
+    _v7 = _jj.loads(open(f"dist/{_yayin.durum_oku()['yayinlanan'][-1]}.json",
+                         encoding="utf-8").read())
+    _h7 = _blt.mail_govdesi(_v7, "https://ornek/cikis")
+    basar("Bülten: mailde eski Vercel adresi geçmiyor",
+          "overnight-yigit8" not in _h7)
+
+    # ==================================================================
     # SİTE ADRESİ — TEK KAYNAK
     # ==================================================================
     # og:url ve og:image eski Vercel adresini gösteriyordu: adres
