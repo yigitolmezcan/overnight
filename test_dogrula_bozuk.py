@@ -6454,9 +6454,11 @@ def main():
     _yasak = {d: sorted(k - _IZINLI) for d, k in _emoji_bulunan.items() if k - _IZINLI}
     basar("Kimlik: sitede emoji yok (Türk bayrağı dahil)",
           not _yasak, str(_yasak))
+    # Mailde <h2> kalktı: turuncu büyük harf başlık kampanya işaretiydi
+    # ve Gmail maili "Tanıtımlar" sekmesine atıyordu (bkz. mail_govdesi).
     basar("Kimlik: Türkler başlığı sade",
           ">Türkler</h2>" in _sayfa
-          and ">Türkler</h2>" in open("bulten.py", encoding="utf-8").read())
+          and '_baslik("Türkler")' in open("bulten.py", encoding="utf-8").read())
 
     # KÜNYE ALT SATIRI — giriş cümlesinin devamı, sayıların altı değil.
     # .herol sarmalayıcısı kalktı: sayılar hero'nun sağından çıkıp
@@ -7098,6 +7100,48 @@ def main():
           and '"List-Unsubscribe-Post"' in _blt_src
           and "One-Click" in _blt_src
           and "cikis_bag=cikis" in _blt_src)
+
+    # YASAL SAYFALAR — e-posta topluyoruz, gizlilik metni zorunlu.
+    _yayin_kod = open("yayin.py", encoding="utf-8").read()
+    for _sf, _bas in (("gizlilik", "Gizlilik"), ("kosullar", "Kullanım koşulları")):
+        _yol = f"site/{_sf}.html"
+        basar(f"Yasal: /{_sf} sayfası yayında", _os.path.exists(_yol))
+        if not _os.path.exists(_yol):
+            continue
+        _ic = open(_yol, encoding="utf-8").read()
+        basar(f"Yasal[{_sf}]: başlık ve canonical doğru",
+              f"<title>{_bas} · OVERNIGHT</title>" in _ic
+              and f'canonical" href="https://overnightnba.com/{_sf}"' in _ic)
+    _gz = open("site/gizlilik.html", encoding="utf-8").read()
+    # Kullanıcı şartı: hangi veri, ne için, nasıl silinir, kiminle paylaşılıyor.
+    for _konu, _ipucu in (("ne topluyoruz", "Sadece e-posta adresini"),
+                          ("ne için", "her sabah 09:00"),
+                          ("nasıl silinir", "çıkış bağlantısı"),
+                          ("Resend", "Resend"), ("Upstash", "Upstash")):
+        basar(f"Yasal[gizlilik]: '{_konu}' yazılı", _ipucu in _gz)
+    basar("Yasal: sayfanın altında iki bağlantı da var",
+          '<a href="/gizlilik">' in _sayfa and '<a href="/kosullar">' in _sayfa)
+    basar("Yasal: sayfalar üretim adımına bağlı (elle bırakılmıyor)",
+          "def yasal_sayfalar(" in _yayin_kod
+          and _yayin_kod.count("yasal_sayfalar()") >= 2)
+
+    # BÜLTEN DÜZENİ — "Tanıtımlar" sekmesine düşmesin.
+    # İlk gönderim Gmail'de Tanıtımlar'a düştü; o sekme telefonda
+    # BİLDİRİM ÜRETMİYOR, sabah bülteninin bütün anlamı o bildirimde.
+    # Kampanya işaretleri kaldırıldı.
+    _mh = _blt.mail_govdesi(
+        _jj.loads(open(f"dist/{_yayin.durum_oku()['yayinlanan'][-1]}.json",
+                       encoding="utf-8").read()), "https://ornek/cikis")
+    basar("Bülten: kampanya düzeni yok (kart, tablo, görsel, CTA düğmesi)",
+          "<table" not in _mh and "<img" not in _mh
+          and not _re.search(r'<a[^>]*background:', _mh)
+          and "#F2F3F5" not in _mh)
+    basar("Bülten: bağlantı sayısı düşük (site + çıkış)",
+          _mh.count("<a ") <= 3, f"{_mh.count('<a ')} bağlantı")
+    # Açık zemin hâlâ AÇIKÇA yazılı (koyu temada okunsun) — bu kalmalı.
+    basar("Bülten: açık zemin ve color-scheme korundu",
+          "background:#FFFFFF" in _mh
+          and 'name="color-scheme" content="light"' in _mh)
 
     # ==================================================================
     # SİTE ADRESİ — TEK KAYNAK

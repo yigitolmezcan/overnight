@@ -79,12 +79,14 @@ def _kacis(s):
 
 def mail_govdesi(veri, cikis_bag):
     tarih = _tarih_tr(veri["tarih"])
+    # DÜZ PARAGRAF, TABLO DEĞİL. Tablo düzeni Gmail'in sınıflandırıcısı
+    # için kampanya işareti.
     brief = "".join(
-        f'<tr><td style="padding:9px 0;border-bottom:1px solid #E6E8EB;color:#333;font-size:15px;line-height:1.5">{_kacis(b["metin"])}</td></tr>'
+        f'<p style="margin:0 0 9px;font-size:15px;line-height:1.55">{_kacis(b["metin"])}</p>'
         for b in veri.get("brief", [])
     )
     mutlaka = "".join(
-        f'<p style="margin:0 0 10px;font-size:15px;line-height:1.5"><strong style="color:#111">{_kacis(m["baslik"])}</strong>'
+        f'<p style="margin:0 0 10px;font-size:15px;line-height:1.55"><strong>{_kacis(m["baslik"])}</strong>'
         + (f'<br><span style="color:#666;font-size:14px">{_kacis(m["mac"])} · {_kacis(m["skor"])}</span>' if m.get("mac") else "")
         + "</p>"
         for m in veri.get("mutlaka", [])
@@ -100,14 +102,26 @@ def mail_govdesi(veri, cikis_bag):
         turk += (f'<p style="margin:0 0 6px;font-size:15px"><strong>{_kacis(t["isim"])}</strong> '
                  f'<span style="color:#666">{t["pts"]} sayı · {t["reb"]} ribaund · {t["ast"]} asist</span></p>')
 
+    def _baslik(metin):
+        # Turuncu, büyük harf, geniş aralıklı başlık = pazarlama dili.
+        # Düz kalın başlık kişisel maile benziyor.
+        return f'<p style="margin:22px 0 8px;font-size:15px"><strong>{metin}</strong></p>'
+
     # Mail HTML'i TAM BİR BELGE olarak kuruluyor:
     #   - <meta charset>: bazı istemciler MIME başlığı yerine belgedeki
     #     bildirimi okuyor; olmayınca Türkçe karakterler bozuluyor.
     #   - Açık zemin AÇIKÇA yazılıyor: zemin tanımlanmazsa koyu temadaki
     #     istemciler (Gmail/Apple Mail karanlık mod) kendi koyu zeminini
-    #     koyuyor ve #1a1a1a metin okunmaz hâle geliyor.
+    #     koyuyor ve koyu metin okunmaz hâle geliyor.
     #   - color-scheme/supported-color-schemes: istemciye "bu mail açık
     #     temaya göre tasarlandı, ters çevirme" demenin standart yolu.
+    #
+    # DÜZEN NEDEN SADE: ilk gönderim Gmail'de "Tanıtımlar" sekmesine
+    # düştü ve o sekme telefonda BİLDİRİM ÜRETMİYOR — sabah bülteninin
+    # bütün anlamı o bildirimde. Kampanya işaretleri kaldırıldı:
+    # gri zemin üstünde beyaz çerçeveli kart, turuncu CTA düğmesi,
+    # tablo düzeni ve büyük harf turuncu başlıklar. Kalan şey düz bir
+    # belge — kişisel bir e-posta neye benziyorsa o.
     return f"""<!doctype html><html lang="tr"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -115,25 +129,21 @@ def mail_govdesi(veri, cikis_bag):
 <meta name="supported-color-schemes" content="light">
 <title>OVERNIGHT — {tarih}</title>
 </head>
-<body style="margin:0;padding:0;background:#F2F3F5;-webkit-text-size-adjust:100%">
-<div style="background:#F2F3F5;padding:24px 12px">
-<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:560px;margin:0 auto;background:#FFFFFF;padding:28px 24px;border:1px solid #E6E8EB">
-  <p style="font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.14em;color:#888;margin:0 0 4px">OVERNIGHT · ARŞİVDEN</p>
-  <h1 style="font-size:22px;margin:0 0 4px;letter-spacing:-.02em;color:#111">{tarih} gecesi</h1>
-  <p style="color:#666;margin:0 0 22px;font-size:15px">{veri.get('mac_sayisi', 0)} maç oynandı. Molasız, reklamsız özet.</p>
+<body style="margin:0;padding:20px 16px;background:#FFFFFF;color:#1a1a1a;-webkit-text-size-adjust:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">
+<div style="max-width:560px">
+  <p style="margin:0 0 16px;font-size:15px;line-height:1.55">{tarih} gecesi {veri.get('mac_sayisi', 0)} maç oynandı.</p>
 
-  {'<h2 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#E2701C;margin:0 0 6px">30 saniyede gece</h2><table style="width:100%;border-collapse:collapse;margin:0 0 24px">' + brief + '</table>' if brief else ''}
-  {'<h2 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#E2701C;margin:0 0 10px">Mutlaka bil</h2>' + mutlaka if mutlaka else ''}
-  {'<h2 style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#E2701C;margin:22px 0 10px">Türkler</h2>' + turk if turk else ''}
+  {_baslik("30 saniyede gece") + brief if brief else ''}
+  {_baslik("Mutlaka bil") + mutlaka if mutlaka else ''}
+  {_baslik("Türkler") + turk if turk else ''}
 
-  <p style="margin:26px 0 30px"><a href="{SITE}/" style="display:inline-block;background:#E2701C;color:#fff;text-decoration:none;padding:13px 24px;font-weight:600;font-size:15px">Kutu skorlar ve gecenin tamamı →</a></p>
+  <p style="margin:22px 0 26px;font-size:15px">Kutu skorlar ve gecenin tamamı:
+    <a href="{SITE}/" style="color:#C2560A">{SITE.replace('https://', '')}</a></p>
 
-  <hr style="border:0;border-top:1px solid #E6E8EB;margin:0 0 14px">
-  <p style="color:#999;font-size:12px;line-height:1.6;margin:0">
+  <p style="color:#999;font-size:12px;line-height:1.6;margin:0;border-top:1px solid #E6E8EB;padding-top:12px">
     Bu maili OVERNIGHT'a abone olduğun için alıyorsun.<br>
     <a href="{cikis_bag}" style="color:#999">Abonelikten çık</a>
   </p>
-</div>
 </div>
 </body></html>"""
 

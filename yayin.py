@@ -325,6 +325,24 @@ from site_adresi import site_adresi
 SITE_ADRESI = site_adresi()
 
 
+def yasal_sayfalar():
+    """Gizlilik ve kullanım koşulları sayfalarını site/ altına kopyalar.
+
+    Kaynakları sayfalar/ altında duruyor; site/ üretilen bir dizin, elle
+    dosya bırakılmıyor. E-posta topladığımız için gizlilik metni
+    zorunlu."""
+    kaynak = KOK / "sayfalar"
+    if not kaynak.exists():
+        return []
+    yazilan = []
+    for dosya in sorted(kaynak.glob("*.html")):
+        hedef = SITE_DIZIN / dosya.name
+        hedef.write_text(dosya.read_text(encoding="utf-8"), encoding="utf-8")
+        yazilan.append(dosya.name)
+    print(f"Yasal sayfalar: {', '.join(yazilan)}")
+    return yazilan
+
+
 def arsiv_sayfalari():
     """Yayınlanmış HER gecenin kendi sayfasını yeniden kurar.
 
@@ -342,6 +360,7 @@ def arsiv_sayfalari():
             continue
         _siteyi_kur(t, kok_da=(t == son))
         kuruldu.append(t)
+    yasal_sayfalar()
     print(f"Arşiv sayfası: {len(kuruldu)} gece kuruldu"
           + (f", {len(atlanan)} atlandı (dist yok): {atlanan}" if atlanan else ""))
     return kuruldu
