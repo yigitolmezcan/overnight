@@ -622,14 +622,27 @@ def _manset_adaylari(ham, gercek_gece, skor_by_gid, tarih_str):
 # için "Los Angeles" veriyor; Los Angeles'ta iki takım olduğu için
 # kapakta ayrışmıyordu.
 KAPAK_KISA_OVERRIDE = {"LAL": "LA Lakers"}
+# MASAÜSTÜNDE TAM AD kullanılıyor ("Philadelphia 76ers"). Los Angeles
+# takımlarında tam ad çok uzun ("Los Angeles Lakers 128 – 106 Detroit
+# Pistons" satırı sarmalıyordu, ölçüldü) — kısa ad orada da kalıyor.
+KAPAK_TAM_OVERRIDE = {"LAL": "LA Lakers", "LAC": "LA Clippers"}
 
 
-def _kapak_kisa_ad(skor, kazanan=True):
+def _kapak_kodu(skor, kazanan=True):
     ev, dep = skor.get("ev"), skor.get("dep")
     es, ds = skor.get("ev_skor") or 0, skor.get("dep_skor") or 0
     kaz = ev if es >= ds else dep
-    kod = kaz if kazanan else (dep if kaz == ev else ev)
+    return kaz if kazanan else (dep if kaz == ev else ev)
+
+
+def _kapak_kisa_ad(skor, kazanan=True):
+    kod = _kapak_kodu(skor, kazanan)
     return KAPAK_KISA_OVERRIDE.get(kod) or cumle.TAKIM_KISA.get(kod, kod)
+
+
+def _kapak_tam_ad(skor, kazanan=True):
+    kod = _kapak_kodu(skor, kazanan)
+    return KAPAK_TAM_OVERRIDE.get(kod) or _takim_adi(kod)
 
 
 def _mansetler(ham, gercek_gece, skor_by_gid, id_by_gid, tarih_str,
@@ -3520,6 +3533,17 @@ def derle(tarih_str):
                     (rozet_by_gid.get(gid) or {}), kazanan=True),
                 "kaybeden": _kapak_kisa_ad(
                     (rozet_by_gid.get(gid) or {}), kazanan=False),
+                # TAM AD masaüstü için; ikisi de gönderiliyor, hangisinin
+                # görüneceğine CSS karar veriyor (JS'te ölçüm yok).
+                "kazanan_tam": _kapak_tam_ad(
+                    (rozet_by_gid.get(gid) or {}), kazanan=True),
+                "kaybeden_tam": _kapak_tam_ad(
+                    (rozet_by_gid.get(gid) or {}), kazanan=False),
+                # Satırın sol şeridi kazananın rengi. Düşük rozetlide
+                # şablon nötr griye düşüyor.
+                "kazanan_renk": TAKIM_RENK.get(
+                    _kapak_kodu((rozet_by_gid.get(gid) or {}), kazanan=True),
+                    "#7E8794"),
                 "kazanan_skor": max(
                     (rozet_by_gid.get(gid) or {}).get("ev_skor") or 0,
                     (rozet_by_gid.get(gid) or {}).get("dep_skor") or 0),

@@ -1260,45 +1260,56 @@ td.khot{color:var(--amber);font-weight:700}
 .mn .s u{text-decoration:none;color:#0A0603;background:var(--ember);
   font-size:10px;font-weight:700;padding:1px 5px}
 .mn .h.k3 .s u{background:#232C39;color:#6C7787}
-/* ===== KAPAK MAÇ LİSTESİ — punch line yok, rozet + takımlar + saat ===== */
-.kaplist{padding:6px 0 2px}
-.kaplist{padding:10px var(--liste-yan) 0;margin-top:6px;
-  border-top:1px solid var(--line2);position:relative}
-.kaplist .grp{position:relative;padding:0 0 12px 15px;
-  max-width:calc(var(--liste-max) + 15px)}
-.kaplist .grp:last-child{padding-bottom:2px}
-/* SOL RAY: dikey gece degradesi. Renkler üstteki gece bandıyla aynı
-   yolu izliyor — listenin üstü gece, altı şafak. Her grup toplam
-   degradenin KENDİ DİLİMİNİ alıyor (konum JS'te hizalanıyor). */
-.kaplist .gray{position:absolute;left:0;top:0;bottom:0;width:3px;opacity:.80;
-  background-image:linear-gradient(180deg,#141C2A 0%,#4A3520 55%,#E8763A 100%);
-  background-repeat:no-repeat}
-.kaplist .saat{font-family:var(--mono);font-size:11px;color:#6E7A8B;
-  letter-spacing:.04em;padding:6px 0 3px}
-.kaplist a{display:flex;align-items:center;gap:12px;padding:6px 0;
-  text-decoration:none;color:inherit}
-/* ROZET ÜÇ KADEME — hiyerarşi görünsün. */
-.kaplist i{font-family:var(--mono);font-size:10px;font-weight:700;font-style:normal;
-  padding:1px 5px;flex:none;min-width:30px;text-align:center}
-.kaplist .k1 i{background:var(--ember);color:#0A0603}
-.kaplist .k2 i{background:#3A2216;color:#C08050}
-.kaplist .k3 i{background:#161D28;color:#6E7A8B}
-/* SATIR TİPOGRAFİSİ: solda takımlar (kazanan kalın ve beyaz),
-   sağda HİZALI skor sütunu. Takım adı uzunluğu skor sütununu
-   kaydırmıyor — göz tek sütunda aşağı inebiliyor. */
-.kaplist .mc{flex:1;min-width:0;font-family:var(--mono);font-size:13.5px;
-  display:flex;align-items:baseline;gap:8px;overflow:hidden;white-space:nowrap}
-.kaplist .mc .w{color:var(--ink);font-weight:700;
-  overflow:hidden;text-overflow:ellipsis}
-.kaplist .mc .vs{color:#2E3846;font-size:11px;flex:none}
-.kaplist .mc .l{color:#4C5665;overflow:hidden;text-overflow:ellipsis}
-.kaplist .sk{font-family:var(--mono);font-size:14px;font-weight:700;
-  color:var(--ink);flex:none;letter-spacing:-.02em;text-align:right}
-.kaplist .sk s{text-decoration:none;color:#4C5665;font-weight:400}
-/* KAZANAN ADI VE SKOR HER SATIRDA PARLAK — rozet kademesinden bağımsız.
-   Eskiden k3 satırında ikisi de soluklaşıyordu; bu liste tam olarak
-   "skorlara bak" için var, soluklaşınca işlevini kaybediyordu. Triyajı
-   rozet yapıyor (ember / bakır / gri), ikinci sinyale gerek yok. */
+/* ===== KAPAK MAÇ LİSTESİ — MANŞETLE AYNI GÖRSEL DİL =====
+   Eskiden tabloydu: üstte manşet blokları, altta tablo — aynı bölümde
+   iki ayrı dil, ve tablo sağa uzanmaya çalıştığı için boşluk sorunu
+   çıkıyordu. Satır artık manşetin küçük hâli: renk şeridi + ana satır
+   + alt bilgi. Sağa uzanma iddiası yok, boşluk sorunu kendiliğinden
+   kalktı. SAAT GRUPLARI ve GRUP RAYLARI kalktı — satırlar zaten
+   kronolojik, saat alt bilgide, her satırın kendi şeridi var. */
+.kaplist{padding:2px var(--liste-yan) 4px}
+/* Manşetlerle liste arasında ayırıcı başlık. */
+.gh{font-family:var(--mono);font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:#39424F;
+  margin:16px var(--liste-yan) 0;padding-top:14px;
+  border-top:1px solid var(--line2)}
+.kaplist .kr{display:flex;gap:15px;align-items:flex-start;padding:12px 0;
+  border-bottom:1px solid var(--line2);text-decoration:none;color:inherit}
+.kaplist .kr:last-child{border-bottom:0}
+.kaplist .kr:hover .mn b{color:var(--ember)}
+/* SOL ŞERİT 4px, kazananın rengi. Düşük rozetlide nötr gri. */
+.kaplist .st{width:4px;flex:none;align-self:stretch;border-radius:1px;
+  background:var(--tc,#2A3340);margin:2px 0}
+.kaplist .k3 .st{background:#2A3340}
+.kaplist .bd{flex:1;min-width:0}
+/* ANA SATIR: kazanan ve skoru kalın-beyaz, ayırıcı çok soluk,
+   kaybedenin skoru ve adı soluk. Tek okuma, ayrı sütun yok. */
+.kaplist .mn{font-family:var(--mono);font-size:16px;letter-spacing:-.01em}
+.kaplist .mn b{color:var(--ink);font-weight:700}
+.kaplist .mn i{font-style:normal;color:#2E3846;margin:0 3px}
+.kaplist .mn s{text-decoration:none;color:#4C5665}
+.kaplist .k3 .mn b{color:#7E8899}
+/* ALT BİLGİ: rozet çipi + saat. Rozet üç kademe. */
+.kaplist .sb{font-family:var(--mono);font-size:10.5px;color:#4C5665;
+  margin-top:7px;display:flex;align-items:center;gap:9px}
+.kaplist .sb u{text-decoration:none;color:#0A0603;background:var(--ember);
+  font-size:9.5px;font-weight:700;padding:1px 5px}
+.kaplist .k2 .sb u{background:#3A2216;color:#C4854F}
+.kaplist .k3 .sb u{background:#161D28;color:#4C5665}
+/* TAM AD 1024px ve üstünde, KISA AD altında. İkisi de yazılıyor,
+   seçimi CSS yapıyor — JS'te genişlik ölçümü yok. */
+.kaplist .tam{display:none}
+@media(min-width:1024px){
+  .kaplist .tam{display:inline}
+  .kaplist .kisa{display:none}
+}
+@media(max-width:479px){
+  /* 14.5px'te en uzun kısa ad çifti ("Oklahoma City 129–104
+     Philadelphia", 34 karakter) iki satıra sarmalıyordu — ölçüldü.
+     13px'te 375px'e sığıyor. Punto düşüyor, satır bölünmüyor. */
+  .kaplist .mn{font-size:13px}
+  .kaplist .kr{gap:10px}
+}
 
 /* "Bunları geç" sol rayı — YAPI VERİR, DİKKAT ÇEKMEZ (kullanıcı kararı).
    Üst katmanlarda 3px ve tam renk; burada 2px ve %30'dan %10'a sönen
@@ -1494,7 +1505,7 @@ td.khot{color:var(--amber);font-weight:700}
    bozuldu, sola bırakılınca sağda 380px boşluk kaldı. Sorun genişlik
    değil, içeriğin dar bir kutuda toplanmasıymış: artık satır TAM
    GENİŞLİĞE yayılıyor (aşağıdaki ızgara). */
-.kaplist a,.tkust{max-width:var(--liste-max)}
+.tkust{max-width:var(--liste-max)}
 /* ---- FORM ve SIRALAMA: satır bölümün tamamına yayılıyor ----
    Üç bölge: ad SOLDA, kutucuklar ORTADA, sayılar SAĞDA. Izgara
    kullanılıyor çünkü sütunlar satırdan satıra AYNI yerde durmalı;
@@ -1520,8 +1531,6 @@ td.khot{color:var(--amber);font-weight:700}
      genişliği olmazsa skor sütunu satırdan satıra kayıyor. Satır da
      içeriğine göre büzülüyor, yoksa 480'e kadar uzayıp arada 120px ölü
      alan bırakıyor (ölçüldü). */
-  .kaplist a{width:fit-content}
-  .kaplist .mc{width:var(--liste-takim);flex:0 0 var(--liste-takim);min-width:0}
 }
 /* Form ve Sıralama'da ad ile sağ sütun ARASINDA zaten bir sütun var
    (form kutucukları / son 10 maç); sağ sütunun yeri onunla zaten sabit.
@@ -1533,27 +1542,9 @@ td.khot{color:var(--amber);font-weight:700}
    1) KAZANAN ADI HİÇ KESİLMEZ — kesme kaybedene kayıyor. Skorla
       birlikte gecenin taşıdığı bilgi bu ikisi.
    2) Satır içi ölçüler bir tık sıkışıyor; dolgu 18px'in altına inmiyor. */
-.kaplist .mc .w{flex:0 0 auto}
-.kaplist .mc .l{flex:0 1 auto;min-width:0}
-/* ===== MASAÜSTÜNDE İKİ SÜTUN =====
-   Grup (saat) KUTUSU aynen duruyor — sol ray ve degrade dilimi onun
-   üstünde çalışıyor, mantık değişmedi. Değişen tek şey: grubun içi
-   ızgaraya dönüyor, saat başlığı iki sütunu birden kaplıyor, maçlar
-   altında yan yana diziliyor. Kronoloji yukarıdan aşağı akıyor.
-   7 maçlık grup 4 sol + 3 sağ olarak akar (satır yönlü otomatik akış). */
-@media(min-width:1024px){
-  .kaplist .grp{display:grid;grid-template-columns:1fr 1fr;
-    column-gap:var(--liste-sutun);align-items:start;max-width:none}
-  .kaplist .grp .saat{grid-column:1/-1;
-    border-top:1px solid var(--line2);padding:12px 0 4px}
-  .kaplist .grp:first-child .saat{border-top:0;padding-top:0}
-}
-@media(max-width:639px){
-  .kaplist a{gap:9px}
-  .kaplist .grp{padding-left:11px}
-  .kaplist .mc{font-size:12.5px;gap:6px}
-  .kaplist i{min-width:27px;padding:1px 4px}
-}
+/* İKİ SÜTUN KALKTI: dayanağı saat gruplarıydı, onlar kalktı. Ayrıca
+   tam takım adıyla ("Oklahoma City Thunder 140 – 129 Atlanta Hawks")
+   bir satır 430px'lik sütuna sığmıyor. Liste tek sütun, satırlar blok. */
 /* ---- ROZET AÇIKLAMASI ---- */
 .rozetac{max-width:var(--liste-max);margin:56px auto 0;
   border-top:1px solid #1C2432;padding-top:14px}
@@ -1618,6 +1609,7 @@ td.khot{color:var(--amber);font-weight:700}
          KALKTI (kullanıcı kararı); oluşturucuları silinmedi, aşağıda
          devre dışı duruyor. -->
     <div class="mn" id="mansetler"></div>
+    <div class="gh" id="gecenTamami" hidden>Gecenin tamamı</div>
     <div class="kaplist" id="kapakListe"></div>
     <ul class="rows" id="briefList" hidden></ul>
     <div class="ayrica" id="briefAyrica" hidden></div>
@@ -2672,53 +2664,33 @@ function render(d){
   // grupta toplanıyor, saat o grubun başlığı oluyor. Eskiden saat her
   // satırda tekrar ediyordu (03:00 iki kez, 04:00 beş kez).
   const kapListe=document.getElementById('kapakListe');
-  const gruplar=[];
-  kap.forEach(x=>{
-    const son=gruplar[gruplar.length-1];
-    if(son && son.saat===(x.saat||'')) son.satirlar.push(x);
-    else gruplar.push({saat:x.saat||'', satirlar:[x]});
-  });
-  // Rozet ÜÇ KADEME: katman zaten hiyerarşiyi söylüyor.
+  // ROZET ÜÇ KADEME: katman zaten hiyerarşiyi söylüyor.
   const kademeSinif={mutlaka:'k1', gozat:'k2', gec:'k3'};
-  kapListe.innerHTML=gruplar.map(g=>`<div class="grp">
-      <span class="gray"></span>
-      <div class="saat">${esc(g.saat)}</div>
-      ${g.satirlar.map(x=>`<a class="${kademeSinif[x.katman]||'k3'}" href="#${esc(x.hedef_id||'')}">
-        <i>${(x.rozet||0).toFixed(1)}</i>
-        <span class="mc"><span class="w">${esc(x.kazanan)}</span><span class="vs">×</span><span class="l">${esc(x.kaybeden)}</span></span>
-        <span class="sk">${x.kazanan_skor}<s>–${x.kaybeden_skor}</s></span></a>`).join('')}
-    </div>`).join('');
-  // SOL RAY — TÜM LİSTE BOYUNCA TEK DEGRADE, gruplara bölünmüş
-  // parçalar halinde. Her grubun rayı toplam degradenin kendi dilimini
-  // alıyor: dilim, grubun listedeki dikey konumundan hesaplanıyor.
-  // Saf CSS ile yapılamıyor (her ray kendi yüksekliğinde ayrı bir
-  // degrade çizerdi ve gruplar arasında kopardı).
-  // Ana degradenin durakları: gece → şafak. Her grup bu degradenin
-  // KENDİ ARALIĞINI alıyor — dilim, grubun listedeki dikey konumundan
-  // hesaplanıyor. Grup içinde yumuşak, gruplar ARASINDA sert: bir grup
-  // bir öncekinin bittiği renkten başlıyor, baştan başlamıyor.
-  const RAY_DURAK=[[0,[20,28,42]],[0.55,[74,53,32]],[1,[232,118,58]]];
-  const rayRenk=t=>{
-    t=Math.max(0,Math.min(1,t));
-    for(let i=1;i<RAY_DURAK.length;i++){
-      const [p1,c1]=RAY_DURAK[i-1], [p2,c2]=RAY_DURAK[i];
-      if(t<=p2){ const k=(t-p1)/(p2-p1||1);
-        return `rgb(${c1.map((v,j)=>Math.round(v+(c2[j]-v)*k)).join(',')})`; }
-    }
-    return `rgb(${RAY_DURAK[RAY_DURAK.length-1][1].join(',')})`;
-  };
-  const rayHizala=()=>{
-    const H=kapListe.scrollHeight||1;
-    kapListe.querySelectorAll('.grp').forEach(g=>{
-      const r=g.querySelector('.gray'); if(!r) return;
-      const bas=g.offsetTop/H, bit=(g.offsetTop+g.offsetHeight)/H;
-      r.style.backgroundImage=
-        `linear-gradient(180deg, ${rayRenk(bas)} 0%, ${rayRenk(bit)} 100%)`;
-      r.style.backgroundSize=''; r.style.backgroundPosition='';
-    });
-  };
-  rayHizala();
-  addEventListener('resize', rayHizala);
+  // SATIR ARTIK BLOK — manşetle aynı görsel dil: renk şeridi + ana
+  // satır + alt bilgi. Tablo yapısı kalktı (üstte blok, altta tablo
+  // aynı bölümde iki ayrı dildi; tablo sağa uzanmaya çalıştığı için
+  // boşluk sorunu çıkıyordu). SAAT GRUPLAMA ve GRUP RAYLARI da kalktı:
+  // satırlar zaten kronolojik, saat alt bilgide, her satırın kendi
+  // şeridi var.
+  // TAM AD ve KISA AD İKİSİ DE yazılıyor; hangisinin görüneceğine CSS
+  // karar veriyor (1024px eşiği). JS'te genişlik ölçümü yok.
+  const kapAd=(tam,kisa)=> (tam && tam!==kisa)
+    ? `<span class="tam">${esc(tam)}</span><span class="kisa">${esc(kisa)}</span>`
+    : esc(kisa);
+  // Ayırıcı başlık MANŞET VARSA anlamlı: neyin devamı olduğunu söylüyor.
+  document.getElementById('gecenTamami').hidden = !(d.mansetler||[]).length;
+  kapListe.innerHTML=kap.map(x=>{
+    const sinif=kademeSinif[x.katman]||'k3';
+    // Düşük rozetli satırda şerit nötr gri: renk vurgusunu hak etmiyor.
+    const renk = sinif==='k3' ? '' : ` style="--tc:${esc(x.kazanan_renk||'#7E8794')}"`;
+    return `<a class="kr ${sinif}" href="#${esc(x.hedef_id||'')}"${renk}>`
+      + `<span class="st"></span><span class="bd">`
+      + `<span class="mn"><b>${kapAd(x.kazanan_tam,x.kazanan)} ${x.kazanan_skor}</b>`
+      + `<i>–</i><s>${x.kaybeden_skor} ${kapAd(x.kaybeden_tam,x.kaybeden)}</s></span>`
+      + `<span class="sb"><u>${(x.rozet||0).toFixed(1)}</u>`
+      + `<span>${esc(x.saat||'')}</span></span>`
+      + `</span></a>`;
+  }).join('');
 
   // DEVRE DIŞI — SİLİNMEDİ: saat rayı / cümle akışı oluşturucusu.
   const briefList=document.getElementById('briefList');

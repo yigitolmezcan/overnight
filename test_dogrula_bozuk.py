@@ -4691,8 +4691,12 @@ def main():
           and ".kpanes{display:grid}" in _s17)
 
     # 2) Masaüstü punto ölçeği. SADECE 1024px+ bloğunda.
-    _mb = _s17.split("@media(min-width:1024px){")[1]
-    _mb = _mb[:_mb.index("\n}")]
+    # Dosyada birden fazla 1024px bloğu var (kapak listesinin tam/kısa
+    # ad kuralı da 1024'te açılıyor). Doğru blok İÇERİĞİNDEN bulunuyor —
+    # sıraya güvenmek sessizce yanlış bloğu okutuyordu.
+    _mb = next(b[:b.index("\n}")] for b in
+               _s17.split("@media(min-width:1024px){")[1:]
+               if ".fp .nm{font-size:16px}" in b[:b.index("\n}")])
     for _sec, _bek in [(".fp .nm{font-size:16px}", "oyuncu adı"),
                        (".fp .tm{font-size:11.5px}", "takım satırı"),
                        (".fp .avg b{font-size:18px}", "ortalama"),
@@ -4763,8 +4767,10 @@ def main():
     # pencereye tek başına sığmıyordu (ölçüldü). 656px hem masaüstü
     # öğe ölçeğinin ayarlandığı boy hem üst sınır; 66vh pencereye
     # bağlı sınır.
-    _mb19 = _s19.split("@media(min-width:1024px){")[1]
-    _mb19 = _mb19[:_mb19.index("\n}")]
+    # Doğru 1024px bloğu içeriğinden bulunuyor (bkz. _mb).
+    _mb19 = next(b[:b.index("\n}")] for b in
+                 _s19.split("@media(min-width:1024px){")[1:]
+                 if ".besiline{" in b[:b.index("\n}")])
     # Sabit piksel tavanı KALKTI: 1000px'lik pencerede saha 654'te
     # takılıp 860px'lik sayfanın ortasında küçük kalıyordu (kullanıcı:
     # "ortada cücük gibi"). Sınır artık yalnız pencere yüksekliği.
@@ -6587,52 +6593,83 @@ def main():
         if _kl2 != sorted(_kl2):
             _kron.append(_tm5)
     basar("Kapak: liste saate göre sıralı", not _kron, str(_kron))
-    # LİSTE YAPISI: saat GRUP BAŞLIĞI, satırlar içeriden, sol ray
-    # tek degradenin dilimleri, rozet üç kademe.
-    basar("Liste: saat grup başlığı (sütun değil)",
-          "gruplar.push({saat:" in _sayfa
-          and 'class="saat"' in _sayfa
-          and 'span class="sa"' not in _sayfa)
-    _sa = _sayfa.split(".kaplist .saat{")[1].split("}")[0]
-    basar("Liste: grup başlığı mono 11px gri",
-          "font-size:11px" in _sa and "#6E7A8B" in _sa)
-    basar("Liste: satırlar 15px içeriden",
-          "padding:0 0 12px 15px" in _sayfa.split(".kaplist .grp{")[1].split("}")[0])
-    _ry = _sayfa.split(".kaplist .gray{")[1].split("}")[0]
-    # RAY KESKİNLEŞTİ (2px/%55 → 3px/%80) ve dilimleme yöntemi değişti:
-    # artık her grubun rengi konumundan HESAPLANIYOR, background-position
-    # kaydırmasıyla değil. Güncel iddialar aşağıdaki "Ray:" testlerinde.
-    basar("Liste: sol ray gece→şafak degradesi taşıyor",
-          "#4A3520" in _ry and "#E8763A" in _ry)
-    basar("Liste: degrade dilimleri grubun konumundan hesaplanıyor",
-          "g.offsetTop/H" in _sayfa
-          and "(g.offsetTop+g.offsetHeight)/H" in _sayfa)
-    # SATIR TİPOGRAFİSİ (C bloğu): kazanan önce, kalın, beyaz;
-    # ayırıcı soluk; kaybeden soluk; skor SAĞDA hizalı sütunda.
-    basar("Satır: kazanan önce, ayırıcı ×, skor sağda ayrı öğe",
-          '<span class="w">${esc(x.kazanan)}</span>' in _sayfa
-          and '<span class="vs">×</span>' in _sayfa
-          and '<span class="l">${esc(x.kaybeden)}</span>' in _sayfa
-          and '<span class="sk">${x.kazanan_skor}<s>–${x.kaybeden_skor}</s>' in _sayfa)
-    _mc = _sayfa.split(".kaplist .mc{")[1].split("}")[0]
-    basar("Satır: takım bloğu esner, skor sütunu sabit",
-          "flex:1" in _mc
-          and "flex:none" in _sayfa.split(".kaplist .sk{")[1].split("}")[0])
-    basar("Satır: kazanan kalın beyaz, ayırıcı ve kaybeden soluk",
-          "color:var(--ink);font-weight:700" in _sayfa.split(".kaplist .mc .w{")[1].split("}")[0]
-          and "#2E3846" in _sayfa.split(".kaplist .mc .vs{")[1].split("}")[0]
-          and "#4C5665" in _sayfa.split(".kaplist .mc .l{")[1].split("}")[0])
-    # DEĞİŞTİ: kazanan adı ve skor artık HER satırda parlak. Bu liste
-    # "skorlara bak" için var; soluklaştırınca işlevini kaybediyordu.
-    # Triyajı rozet yapıyor, ikinci sinyale gerek yok (kullanıcı kararı).
-    basar("Satır: kazanan ve skor rozetten bağımsız parlak",
-          ".kaplist .k3 .mc .w{" not in _sayfa
-          and ".kaplist .k3 .sk{" not in _sayfa
-          and ".kaplist .k3 .mc .l{" not in _sayfa)
-    # TAKMA ADLAR KALKTI, Lakers ayrışıyor.
-    basar("Satır: kısa ad kullanılıyor, Lakers 'LA Lakers'",
-          _derle.KAPAK_KISA_OVERRIDE.get("LAL") == "LA Lakers"
-          and "def _kapak_kisa_ad" in _dsrc_kod)
+    # ------------------------------------------------------------------
+    # LİSTE ARTIK BLOK — manşetle aynı görsel dil
+    # ------------------------------------------------------------------
+    # Üstte manşet blokları, altta tablo aynı bölümde iki ayrı dildi ve
+    # tablo sağa uzanmaya çalıştığı için boşluk sorunu çıkıyordu.
+    basar("Liste: saat grupları ve grup rayları kalktı",
+          "gruplar.push({saat:" not in _sayfa
+          and 'class="saat"' not in _sayfa
+          and ".kaplist .gray{" not in _sayfa
+          and "const RAY_DURAK=" not in _sayfa
+          and "function rayHizala" not in _sayfa)
+    basar("Liste: iki sütun kalktı (dayanağı saat gruplarıydı)",
+          ".kaplist .grp{display:grid" not in _sayfa)
+    # SATIR = renk şeridi + ana satır + alt bilgi (manşetin küçük hâli).
+    basar("Liste: satır blok yapısında (şerit + ana satır + alt bilgi)",
+          '<span class="st"></span><span class="bd">' in _sayfa
+          and '<span class="mn"><b>' in _sayfa
+          and '<span class="sb"><u>' in _sayfa)
+    _st = _sayfa.split(".kaplist .st{")[1].split("}")[0]
+    basar("Liste: sol şerit 4px, kazananın rengi",
+          "width:4px" in _st and "background:var(--tc" in _st
+          and '"kazanan_renk"' in _dsrc_kod)
+    basar("Liste: düşük rozetlide şerit nötr gri",
+          ".kaplist .k3 .st{background:#2A3340}" in _sayfa)
+    _mnk = _sayfa.split(".kaplist .mn{")[1].split("}")[0]
+    basar("Liste: ana satır mono 16px",
+          "font-family:var(--mono);font-size:16px" in _mnk)
+    basar("Liste: kazanan kalın-beyaz, ayırıcı çok soluk, kaybeden soluk",
+          "color:var(--ink);font-weight:700" in
+          _sayfa.split(".kaplist .mn b{")[1].split("}")[0]
+          and "#2E3846" in _sayfa.split(".kaplist .mn i{")[1].split("}")[0]
+          and "#4C5665" in _sayfa.split(".kaplist .mn s{")[1].split("}")[0])
+    basar("Liste: düşük rozetlide kazanan bir kademe soluk",
+          ".kaplist .k3 .mn b{color:#7E8899}" in _sayfa)
+    _sbk = _sayfa.split(".kaplist .sb{")[1].split("}")[0]
+    basar("Liste: alt bilgi mono 10.5px",
+          "font-family:var(--mono);font-size:10.5px" in _sbk)
+    basar("Liste: rozet çipi üç kademe (ember / bakır / gri)",
+          "background:var(--ember)" in _sayfa.split(".kaplist .sb u{")[1].split("}")[0]
+          and ".kaplist .k2 .sb u{background:#3A2216" in _sayfa
+          and ".kaplist .k3 .sb u{background:#161D28" in _sayfa)
+    basar("Liste: satırlar arasında ayırıcı çizgi",
+          "border-bottom:1px solid var(--line2)" in
+          _sayfa.split(".kaplist .kr{")[1].split("}")[0])
+    # Ayırıcı başlık: manşet varsa anlamlı.
+    basar("Liste: 'Gecenin tamamı' ayırıcı başlığı, manşet yoksa gizli",
+          '<div class="gh" id="gecenTamami" hidden>Gecenin tamamı</div>' in _sayfa
+          and "gecenTamami').hidden = !(d.mansetler||[]).length" in _sayfa)
+    _ghk = _sayfa.split("\n.gh{")[1].split("}")[0]
+    basar("Liste: ayırıcı başlık mono 10px, harf aralığı geniş, çok soluk",
+          "font-size:10px" in _ghk and "letter-spacing:.16em" in _ghk
+          and "#39424F" in _ghk)
+    # TAM AD masaüstünde, KISA AD mobilde — seçim CSS'te, JS ölçüm yok.
+    basar("Liste: tam ad ve kısa ad ikisi de yazılıyor",
+          '<span class="tam">' in _sayfa and '<span class="kisa">' in _sayfa
+          and "kazanan_tam" in _sayfa and "kaybeden_tam" in _sayfa)
+    basar("Liste: tam ad 1024px eşiğinde açılıyor, kısa ad kapanıyor",
+          ".kaplist .tam{display:none}" in _sayfa
+          and ".kaplist .tam{display:inline}" in _sayfa
+          and ".kaplist .kisa{display:none}" in _sayfa)
+    # Los Angeles takımlarında tam ad çok uzun; kısa ad orada da kalıyor.
+    basar("Liste: LA takımlarında masaüstünde de kısa ad",
+          _derle.KAPAK_TAM_OVERRIDE.get("LAL") == "LA Lakers"
+          and _derle.KAPAK_TAM_OVERRIDE.get("LAC") == "LA Clippers")
+    # Yayındaki her gecede tam ad ve renk üretiliyor.
+    _eksik5 = []
+    for _tt in _yayin.durum_oku()["yayinlanan"]:
+        if not _os.path.exists(f"dist/{_tt}.json"):
+            continue
+        _xt = _jj.loads(open(f"dist/{_tt}.json", encoding="utf-8").read())
+        for _kx in (_xt.get("kapak_listesi") or []):
+            if not (_kx.get("kazanan_tam") and _kx.get("kaybeden_tam")
+                    and _kx.get("kazanan_renk")):
+                _eksik5.append(_tt)
+    basar("Liste: yayındaki her satırda tam ad ve kazanan rengi var",
+          not _eksik5, f"eksik: {sorted(set(_eksik5))}")
+    # TAKMA ADLAR kısa adda hâlâ yok (tam adda olması normal).
     _takmali = []
     for _tt in _yayin.durum_oku()["yayinlanan"]:
         if not _os.path.exists(f"dist/{_tt}.json"):
@@ -6644,20 +6681,13 @@ def main():
                        ("Raptors", "Warriors", "Thunder", "Pelicans", "Knicks",
                         "Suns", "Hornets", "Bucks", "Nets", "Heat")):
                     _takmali.append(f"{_tt}: {_ad3}")
-    basar("Satır: takma ad kalmadı", not _takmali, "; ".join(_takmali[:3]))
-    # RAY: 3px, %80, keskin uçlar, dilimler zincirleme.
-    basar("Ray: 3px ve %80 opaklık", "width:3px" in _ry and "opacity:.80" in _ry)
-    basar("Ray: uçlar keskinleşti (#141C2A → #E8763A)",
-          "#141C2A" in _ry and "#E8763A" in _ry)
-    basar("Ray: her grup kendi renk aralığını alıyor, öncekinin bittiği yerden",
-          "const RAY_DURAK=" in _sayfa
-          and "rayRenk(bas)" in _sayfa and "rayRenk(bit)" in _sayfa)
+    basar("Satır: kısa adda takma ad yok", not _takmali, "; ".join(_takmali[:3]))
+    basar("Satır: kısa adda Lakers 'LA Lakers'",
+          _derle.KAPAK_KISA_OVERRIDE.get("LAL") == "LA Lakers"
+          and "def _kapak_kisa_ad" in _dsrc_kod)
 
     # Rozet kademesi AYNEN duruyor — ayrım orada, satır metninde değil.
-    basar("Liste: rozet üç kademe",
-          ".kaplist .k1 i{background:var(--ember)" in _sayfa
-          and ".kaplist .k2 i{background:#3A2216" in _sayfa
-          and ".kaplist .k3 i{background:#161D28" in _sayfa)
+
     # SEZON BAŞI: bağlamlı kalıp ilk 10 maçta kurulamaz.
     basar("Manşet: sezon başı bağlam eşiği susma kuralıyla aynı",
           _derle.MANSET_BAGLAM_ASGARI == _gerc_modul.SEZON_ACILISI_TAZE_MAC_SAYISI
@@ -6684,17 +6714,19 @@ def main():
     # Dört listenin dördü de AYNI kuralda, tek üst sınırı alıyor.
     # Form ve Sıralama üst sınırdan ÇIKTI (satır tam genişliğe yayılıyor);
     # üst sınır kapak listesi ve Türkler satırında duruyor.
-    basar("Liste olcusu: kapak ve Turkler tek kuralda ust sinir aliyor",
-          ".kaplist a,.tkust{max-width:var(--liste-max)}" in _ly, "ortak kural yok")
+    # Kapak listesi de üst sınırdan çıktı: satır artık blok, sağa
+    # uzanmayı denemiyor. Üst sınır yalnız Türkler satırında.
+    basar("Liste olcusu: ust sinir yalniz Turkler satirinda",
+          ".tkust{max-width:var(--liste-max)}" in _ly
+          and ".kaplist a{max-width" not in _ly)
 
     # SIRA TUZAĞI: aynı özgüllükte "flex:1" diyen kurallar yukarıda.
     # Sabit genişlik kuralı onlardan SONRA gelmezse sessizce eziliyor
     # (bir kez oldu, tarayıcı ölçümüyle yakalandı).
-    _sabit = _ly.rfind(".kaplist .mc{width:var(--liste-takim)")
-    basar("Liste ölçüsü: sabit ad genişliği .mc{flex:1} kuralından SONRA",
-          _sabit > _ly.rfind(".kaplist .mc{flex:1") > 0)
-    basar("Liste ölçüsü: kapak satırı içeriğine göre büzülüyor",
-          ".kaplist a{width:fit-content}" in _ly)
+    # Sabit ad sütunu ve fit-content KALKTI: satır blok oldu, tablo
+    # hizalaması gerekmiyor.
+    basar("Liste ölçüsü: kapak listesinde tablo sütunu kalmadı",
+          ".kaplist .mc{" not in _ly and ".kaplist a{width:fit-content}" not in _ly)
     # Form/Sıralama'da ad ile sağ sütun arasında BAŞKA bir sütun var;
     # onlara sabit ad genişliği verilince satır 480'i aşıyordu.
     basar("Liste ölçüsü: Form ve Sıralama'ya sabit ad genişliği verilmiyor",
@@ -6702,52 +6734,27 @@ def main():
           and ".sr .tn{width:var(--liste-takim)" not in _ly)
     # MOBİL: kutulu listede skorla çerçeve arasında dolgu.
     basar("Liste ölçüsü: kapak listesi yan dolguyu değişkenden alıyor",
-          ".kaplist{padding:10px var(--liste-yan) 0" in _ly)
+          ".kaplist{padding:2px var(--liste-yan) 4px}" in _ly)
     basar("Liste ölçüsü: Türkler bloğu da aynı yan dolguyu alıyor",
           _ly.count("var(--liste-yan)") >= 3
           and "#turkBox.ikili .tkblok{padding:13px var(--liste-yan)" in _ly)
     _yan = int(_re.search(r"--liste-yan:(\d+)px", _ly).group(1))
     basar("Liste ölçüsü: yan dolgu en az 18px (kullanıcı şartı)", _yan >= 18,
           f"{_yan}px")
-    # Yan dolgu mobilde yer aldı, uzun takım adları kesilmeye başladı.
-    # KAZANAN ADI KESİLMEZ — kesme kaybedene kayıyor.
-    basar("Liste ölçüsü: kazanan takım adı büzülmüyor (kesme kaybedende)",
-          ".kaplist .mc .w{flex:0 0 auto}" in _ly
-          and ".kaplist .mc .l{flex:0 1 auto;min-width:0}" in _ly
-          and _ly.rfind(".kaplist .mc .w{flex:0 0 auto}")
-              > _ly.rfind(".kaplist .mc .w{color:"))
-    basar("Liste ölçüsü: mobilde satır içi ölçüler sıkışıyor",
-          "@media(max-width:639px){" in _ly
-          and ".kaplist a{gap:9px}" in _ly)
+    # Satır blok olunca kesme sorunu ortadan kalktı: ad tek satırda.
+    basar("Liste ölçüsü: kesme/ellipsis kuralları gerekmiyor",
+          ".kaplist .mc" not in _ly)
+    # MOBİL: en uzun kısa ad çifti 14.5px'te iki satıra sarmalıyordu
+    # (ölçüldü), 13px'te sığıyor. Punto düşüyor, satır bölünmüyor.
+    basar("Liste ölçüsü: mobilde punto düşüyor, satır bölünmüyor",
+          "@media(max-width:479px){" in _ly
+          and ".kaplist .mn{font-size:13px}" in _ly)
 
-    # --------------------------------------------------------------
-    # MASAÜSTÜNDE İKİ SÜTUN (1024px ve üstü)
-    # --------------------------------------------------------------
-    _iki = _ly.split("@media(min-width:1024px){")
-    basar("İki sütun: kural 1024px eşiğinde", len(_iki) >= 2)
-    _blk = _iki[-1].split("\n}")[0] if len(_iki) >= 2 else ""
-    basar("İki sütun: grup ızgaraya dönüyor, iki eşit sütun",
-          "display:grid" in _blk and "grid-template-columns:1fr 1fr" in _blk)
-    basar("İki sütun: saat başlığı iki sütunu birden kaplıyor",
-          "grid-column:1/-1" in _blk)
-    basar("İki sütun: sütun boşluğu değişkenden (34px)",
-          "column-gap:var(--liste-sutun)" in _blk
-          and "--liste-sutun:34px" in _ly)
-    basar("İki sütun: saat başlığının üstünde ayırıcı, ilkinde yok",
-          "border-top:1px solid var(--line2)" in _blk
-          and ":first-child .saat{border-top:0" in _blk)
-    # Tek sütun üst sınırı masaüstünde kalkmalı, yoksa iki sütun sığmaz.
-    basar("İki sütun: tek sütun üst sınırı 1024'te kaldırılıyor",
-          "max-width:none" in _blk)
-    # MOBİLDE HİÇBİR ŞEY DEĞİŞMESİN: ızgara kuralı yalnız 1024+ içinde.
-    basar("İki sütun: mobil tek sütun (ızgara kuralı medya sorgusunun içinde)",
-          "display:grid" not in _ly.split("@media(min-width:1024px){")[0]
-          .split(".kaplist .grp{")[-1].split("}")[0])
-    # Sol ray ve degrade mantığı DEĞİŞMEDİ — grup kutusu duruyor.
-    basar("İki sütun: ray dilimi mantığı grup kutusu üstünde, dokunulmadı",
-          "const bas=g.offsetTop/H" in _sayfa
-          and "g.offsetTop+g.offsetHeight" in _sayfa
-          and '.kaplist .gray{position:absolute' in _ly)
+    # İKİ SÜTUN KALDIRILDI: dayanağı saat gruplarıydı, onlar kalktı.
+    # Ayrıca tam takım adıyla bir satır 430px'lik sütuna sığmıyor.
+    basar("İki sütun: kaldırıldı, liste tek sütun blok",
+          "grid-template-columns:1fr 1fr;\n    column-gap:var(--liste-sutun)"
+          not in _ly and ".kaplist .grp" not in _ly)
 
     # --------------------------------------------------------------
     # TANIMSIZ CSS DEĞİŞKENİ — sessizce düşen bildirim olmasın
@@ -6821,7 +6828,7 @@ def main():
     # dar bir kutuda toplanmasıymış — satır artık TAM GENİŞLİĞE yayılıyor.
     basar("Hiza: Form ve Sıralama ortalanmıyor, üst sınır da almıyor",
           ".formda,.siralama,.formnot{max-width" not in _ly
-          and ".kaplist a,.tkust{max-width:var(--liste-max)}" in _ly)
+          and ".tkust{max-width:var(--liste-max)}" in _ly)
     # Üç bölge: ad solda, kutucuklar ORTADA, sayılar sağda. Izgara
     # kullanılıyor ki sütunlar satırdan satıra aynı yerde dursun.
     basar("Hiza: Form satırı üç bölgeli ızgara",
