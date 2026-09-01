@@ -1,15 +1,15 @@
 {
   "tarih": "2026-01-02",
-  "hesaplandi": "2026-08-31T19:01:25.928697Z",
-  "en_iyi_skor": 8.9,
+  "hesaplandi": "2026-09-01T10:35:30.519092Z",
+  "en_iyi_skor": 8.94,
   "maclar": [
     {
-      "rozet": 8.9,
-      "ham": 10.4,
+      "rozet": 8.94,
+      "ham": 10.52,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 7.95,
-        "K": 1.66,
+        "K": 2.94,
         "T": 0,
         "D": 8
       },
@@ -19,6 +19,12 @@
         "G": 0,
         "A": 6.42
       },
+      "ham_tasiyicilar": {
+        "S": 7.95,
+        "K": 1.66
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.28,
       "dram_terfi": true,
       "mac_id": "0022500481",
       "ev": "MIL",
@@ -32,12 +38,12 @@
       ]
     },
     {
-      "rozet": 7.61,
-      "ham": 7.61,
+      "rozet": 8.02,
+      "ham": 8.05,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 5.94,
-        "K": 4.43,
+        "K": 5.83,
         "T": 0,
         "D": 0
       },
@@ -47,6 +53,12 @@
         "G": 0,
         "A": 7.0
       },
+      "ham_tasiyicilar": {
+        "S": 5.94,
+        "K": 4.43
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.4,
       "dram_terfi": false,
       "mac_id": "0022500485",
       "ev": "LAL",
@@ -60,68 +72,12 @@
       ]
     },
     {
-      "rozet": 7.15,
-      "ham": 7.15,
-      "katman": "ikinci",
-      "tasiyicilar": {
-        "S": 7.45,
-        "K": 3.0,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 1.77,
-        "F": 0,
-        "G": 0,
-        "A": 2.42
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500482",
-      "ev": "NOP",
-      "dep": "POR",
-      "ev_skor": 109,
-      "dep_skor": 122,
-      "en_iyi_performans": "Zion Williamson",
-      "esitlik_bozucu": [
-        0,
-        -13
-      ]
-    },
-    {
-      "rozet": 7.06,
-      "ham": 7.06,
-      "katman": "ikinci",
-      "tasiyicilar": {
-        "S": 5.6,
-        "K": 4.65,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 6.66,
-        "F": 6,
-        "G": 0,
-        "A": 3.83
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500480",
-      "ev": "CHI",
-      "dep": "ORL",
-      "ev_skor": 121,
-      "dep_skor": 114,
-      "en_iyi_performans": "Paolo Banchero",
-      "esitlik_bozucu": [
-        0,
-        -7
-      ]
-    },
-    {
-      "rozet": 6.32,
-      "ham": 6.32,
+      "rozet": 7.51,
+      "ham": 7.51,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 4.42,
-        "K": 4.09,
+        "K": 5.39,
         "T": 0,
         "D": 0
       },
@@ -131,6 +87,12 @@
         "G": 6,
         "A": 6.5
       },
+      "ham_tasiyicilar": {
+        "S": 4.42,
+        "K": 4.09
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.3,
       "dram_terfi": false,
       "mac_id": "0022500478",
       "ev": "CLE",
@@ -144,40 +106,80 @@
       ]
     },
     {
-      "rozet": 3.6,
-      "ham": 3.6,
-      "katman": "gec",
+      "rozet": 7.29,
+      "ham": 7.29,
+      "katman": "ikinci",
       "tasiyicilar": {
-        "S": 3.46,
-        "K": 2.1,
+        "S": 5.6,
+        "K": 5.42,
         "T": 0,
         "D": 0
       },
       "yukselticiler": {
-        "Y": 1.2,
-        "F": 0,
+        "Y": 6.66,
+        "F": 6,
         "G": 0,
-        "A": 4.92
+        "A": 3.83
       },
+      "ham_tasiyicilar": {
+        "S": 5.6,
+        "K": 4.65
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.77,
       "dram_terfi": false,
-      "mac_id": "0022500483",
-      "ev": "PHX",
-      "dep": "SAC",
-      "ev_skor": 129,
-      "dep_skor": 102,
-      "en_iyi_performans": "Devin Booker",
+      "mac_id": "0022500480",
+      "ev": "CHI",
+      "dep": "ORL",
+      "ev_skor": 121,
+      "dep_skor": 114,
+      "en_iyi_performans": "Paolo Banchero",
       "esitlik_bozucu": [
         0,
-        -27
+        -7
       ]
     },
     {
-      "rozet": 3.23,
-      "ham": 3.23,
+      "rozet": 6.64,
+      "ham": 6.64,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.71,
+        "K": 3.48,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.77,
+        "F": 0,
+        "G": 0,
+        "A": 2.42
+      },
+      "ham_tasiyicilar": {
+        "S": 7.45,
+        "K": 3.0
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.48,
+      "dram_terfi": false,
+      "mac_id": "0022500482",
+      "ev": "NOP",
+      "dep": "POR",
+      "ev_skor": 109,
+      "dep_skor": 122,
+      "en_iyi_performans": "Zion Williamson",
+      "esitlik_bozucu": [
+        0,
+        -13
+      ]
+    },
+    {
+      "rozet": 3.9,
+      "ham": 3.9,
       "katman": "gec",
       "tasiyicilar": {
-        "S": 2.26,
-        "K": 3.0,
+        "S": 2.03,
+        "K": 3.83,
         "T": 0,
         "D": 0
       },
@@ -187,6 +189,12 @@
         "G": 0,
         "A": 4.17
       },
+      "ham_tasiyicilar": {
+        "S": 2.26,
+        "K": 3.0
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.83,
       "dram_terfi": false,
       "mac_id": "0022500479",
       "ev": "NYK",
@@ -200,12 +208,46 @@
       ]
     },
     {
-      "rozet": 2.37,
-      "ham": 2.37,
+      "rozet": 3.45,
+      "ham": 3.45,
       "katman": "gec",
       "tasiyicilar": {
-        "S": 2.56,
-        "K": 0.36,
+        "S": 2.77,
+        "K": 3.08,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.2,
+        "F": 0,
+        "G": 0,
+        "A": 4.92
+      },
+      "ham_tasiyicilar": {
+        "S": 3.46,
+        "K": 2.1
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 0.98,
+      "dram_terfi": false,
+      "mac_id": "0022500483",
+      "ev": "PHX",
+      "dep": "SAC",
+      "ev_skor": 129,
+      "dep_skor": 102,
+      "en_iyi_performans": "Devin Booker",
+      "esitlik_bozucu": [
+        0,
+        -27
+      ]
+    },
+    {
+      "rozet": 2.04,
+      "ham": 2.04,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 1.79,
+        "K": 1.67,
         "T": 0,
         "D": 0
       },
@@ -215,6 +257,12 @@
         "G": 0,
         "A": 6.57
       },
+      "ham_tasiyicilar": {
+        "S": 2.56,
+        "K": 0.36
+      },
+      "s_sonum": 0.7,
+      "a_k_katkisi": 1.31,
       "dram_terfi": false,
       "mac_id": "0022500484",
       "ev": "GSW",
@@ -228,12 +276,12 @@
       ]
     },
     {
-      "rozet": 0.76,
-      "ham": 0.76,
+      "rozet": 0.94,
+      "ham": 0.94,
       "katman": "gec",
       "tasiyicilar": {
         "S": 0.87,
-        "K": 0.0,
+        "K": 0.67,
         "T": 0,
         "D": 0
       },
@@ -243,6 +291,12 @@
         "G": 0,
         "A": 3.33
       },
+      "ham_tasiyicilar": {
+        "S": 0.87,
+        "K": 0.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.67,
       "dram_terfi": false,
       "mac_id": "0022500476",
       "ev": "IND",
@@ -256,12 +310,12 @@
       ]
     },
     {
-      "rozet": 0.64,
-      "ham": 0.64,
+      "rozet": 0.66,
+      "ham": 0.66,
       "katman": "gec",
       "tasiyicilar": {
-        "S": 0.75,
-        "K": 0.0,
+        "S": 0.6,
+        "K": 0.57,
         "T": 0,
         "D": 0
       },
@@ -271,6 +325,12 @@
         "G": 0,
         "A": 2.83
       },
+      "ham_tasiyicilar": {
+        "S": 0.75,
+        "K": 0.0
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 0.57,
       "dram_terfi": false,
       "mac_id": "0022500477",
       "ev": "WAS",

@@ -1,15 +1,15 @@
 {
   "tarih": "2026-02-10",
-  "hesaplandi": "2026-08-31T19:01:27.207744Z",
-  "en_iyi_skor": 9.15,
+  "hesaplandi": "2026-09-01T10:35:34.116917Z",
+  "en_iyi_skor": 9.18,
   "maclar": [
     {
-      "rozet": 9.15,
-      "ham": 11.45,
+      "rozet": 9.18,
+      "ham": 11.54,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 8.57,
-        "K": 5.22,
+        "K": 6.19,
         "T": 0,
         "D": 8
       },
@@ -19,6 +19,12 @@
         "G": 0,
         "A": 4.83
       },
+      "ham_tasiyicilar": {
+        "S": 8.57,
+        "K": 5.22
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.97,
       "dram_terfi": true,
       "mac_id": "0022500771",
       "ev": "NYK",
@@ -32,12 +38,12 @@
       ]
     },
     {
-      "rozet": 8.95,
-      "ham": 10.59,
-      "katman": "mutlaka",
+      "rozet": 8.06,
+      "ham": 8.13,
+      "katman": "ikinci",
       "tasiyicilar": {
-        "S": 10,
-        "K": 3.36,
+        "S": 8.0,
+        "K": 4.4,
         "T": 0,
         "D": 0
       },
@@ -47,6 +53,12 @@
         "G": 0,
         "A": 5.21
       },
+      "ham_tasiyicilar": {
+        "S": 10,
+        "K": 3.36
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 1.04,
       "dram_terfi": false,
       "mac_id": "0022500774",
       "ev": "LAL",
@@ -60,12 +72,12 @@
       ]
     },
     {
-      "rozet": 5.58,
-      "ham": 5.58,
-      "katman": "gec",
+      "rozet": 6.88,
+      "ham": 6.88,
+      "katman": "ikinci",
       "tasiyicilar": {
         "S": 0.58,
-        "K": 5.76,
+        "K": 7.14,
         "T": 0,
         "D": 0
       },
@@ -75,6 +87,12 @@
         "G": 0,
         "A": 6.9
       },
+      "ham_tasiyicilar": {
+        "S": 0.58,
+        "K": 5.76
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.38,
       "dram_terfi": false,
       "mac_id": "0022500772",
       "ev": "HOU",
@@ -88,12 +106,12 @@
       ]
     },
     {
-      "rozet": 5.35,
-      "ham": 5.35,
+      "rozet": 5.58,
+      "ham": 5.58,
       "katman": "gec",
       "tasiyicilar": {
         "S": 5.05,
-        "K": 3.23,
+        "K": 4.1,
         "T": 0,
         "D": 0
       },
@@ -103,6 +121,12 @@
         "G": 0,
         "A": 4.33
       },
+      "ham_tasiyicilar": {
+        "S": 5.05,
+        "K": 3.23
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.87,
       "dram_terfi": false,
       "mac_id": "0022500773",
       "ev": "PHX",

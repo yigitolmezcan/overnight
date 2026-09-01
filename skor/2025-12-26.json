@@ -1,15 +1,15 @@
 {
   "tarih": "2025-12-26",
-  "hesaplandi": "2026-08-31T19:01:25.267891Z",
-  "en_iyi_skor": 9.19,
+  "hesaplandi": "2026-09-01T10:35:27.594624Z",
+  "en_iyi_skor": 9.21,
   "maclar": [
     {
-      "rozet": 9.19,
-      "ham": 11.61,
+      "rozet": 9.21,
+      "ham": 11.72,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 9.0,
-        "K": 5.78,
+        "K": 6.88,
         "T": 0,
         "D": 8
       },
@@ -19,6 +19,12 @@
         "G": 0,
         "A": 5.5
       },
+      "ham_tasiyicilar": {
+        "S": 9.0,
+        "K": 5.78
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.1,
       "dram_terfi": true,
       "mac_id": "0022500430",
       "ev": "UTA",
@@ -32,12 +38,12 @@
       ]
     },
     {
-      "rozet": 6.07,
-      "ham": 6.07,
+      "rozet": 6.37,
+      "ham": 6.37,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 5.74,
-        "K": 0.49,
+        "K": 1.46,
         "T": 0,
         "D": 0
       },
@@ -47,6 +53,12 @@
         "G": 0,
         "A": 4.83
       },
+      "ham_tasiyicilar": {
+        "S": 5.74,
+        "K": 0.49
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.97,
       "dram_terfi": false,
       "mac_id": "0022500429",
       "ev": "NOP",
@@ -60,40 +72,12 @@
       ]
     },
     {
-      "rozet": 5.76,
-      "ham": 5.76,
-      "katman": "gec",
-      "tasiyicilar": {
-        "S": 5.29,
-        "K": 2.49,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 3.03,
-        "F": 0,
-        "G": 6,
-        "A": 4.0
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500431",
-      "ev": "POR",
-      "dep": "LAC",
-      "ev_skor": 103,
-      "dep_skor": 119,
-      "en_iyi_performans": "James Harden",
-      "esitlik_bozucu": [
-        0,
-        -16
-      ]
-    },
-    {
-      "rozet": 5.21,
-      "ham": 5.21,
-      "katman": "gec",
+      "rozet": 6.31,
+      "ham": 6.31,
+      "katman": "ikinci",
       "tasiyicilar": {
         "S": 3.58,
-        "K": 3.7,
+        "K": 4.72,
         "T": 0,
         "D": 0
       },
@@ -103,6 +87,12 @@
         "G": 6,
         "A": 5.08
       },
+      "ham_tasiyicilar": {
+        "S": 3.58,
+        "K": 3.7
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.02,
       "dram_terfi": false,
       "mac_id": "0022500427",
       "ev": "CHI",
@@ -116,12 +106,46 @@
       ]
     },
     {
-      "rozet": 4.66,
-      "ham": 4.66,
+      "rozet": 5.49,
+      "ham": 5.49,
       "katman": "gec",
       "tasiyicilar": {
-        "S": 3.97,
-        "K": 3.76,
+        "S": 4.76,
+        "K": 3.29,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.03,
+        "F": 0,
+        "G": 6,
+        "A": 4.0
+      },
+      "ham_tasiyicilar": {
+        "S": 5.29,
+        "K": 2.49
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.8,
+      "dram_terfi": false,
+      "mac_id": "0022500431",
+      "ev": "POR",
+      "dep": "LAC",
+      "ev_skor": 103,
+      "dep_skor": 119,
+      "en_iyi_performans": "James Harden",
+      "esitlik_bozucu": [
+        0,
+        -16
+      ]
+    },
+    {
+      "rozet": 5.48,
+      "ham": 5.48,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 3.57,
+        "K": 4.93,
         "T": 0,
         "D": 0
       },
@@ -131,6 +155,12 @@
         "G": 0,
         "A": 5.83
       },
+      "ham_tasiyicilar": {
+        "S": 3.97,
+        "K": 3.76
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 1.17,
       "dram_terfi": false,
       "mac_id": "0022500423",
       "ev": "ATL",
@@ -144,12 +174,12 @@
       ]
     },
     {
-      "rozet": 4.44,
-      "ham": 4.44,
+      "rozet": 3.91,
+      "ham": 3.91,
       "katman": "gec",
       "tasiyicilar": {
-        "S": 4.35,
-        "K": 1.92,
+        "S": 3.48,
+        "K": 2.87,
         "T": 0,
         "D": 0
       },
@@ -159,6 +189,12 @@
         "G": 0,
         "A": 4.75
       },
+      "ham_tasiyicilar": {
+        "S": 4.35,
+        "K": 1.92
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 0.95,
       "dram_terfi": false,
       "mac_id": "0022500425",
       "ev": "WAS",
@@ -172,12 +208,12 @@
       ]
     },
     {
-      "rozet": 3.76,
-      "ham": 3.76,
+      "rozet": 3.6,
+      "ham": 3.6,
       "katman": "gec",
       "tasiyicilar": {
-        "S": 4.26,
-        "K": 0.29,
+        "S": 3.83,
+        "K": 1.09,
         "T": 0,
         "D": 0
       },
@@ -187,6 +223,12 @@
         "G": 0,
         "A": 4.0
       },
+      "ham_tasiyicilar": {
+        "S": 4.26,
+        "K": 0.29
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.8,
       "dram_terfi": false,
       "mac_id": "0022500426",
       "ev": "IND",
@@ -200,40 +242,12 @@
       ]
     },
     {
-      "rozet": 2.71,
-      "ham": 2.71,
+      "rozet": 3.05,
+      "ham": 3.05,
       "katman": "gec",
       "tasiyicilar": {
-        "S": 2.93,
-        "K": 0.39,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 1.95,
-        "F": 0,
-        "G": 0,
-        "A": 4.83
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500428",
-      "ev": "MEM",
-      "dep": "MIL",
-      "ev_skor": 125,
-      "dep_skor": 104,
-      "en_iyi_performans": "Jaren Jackson Jr.",
-      "esitlik_bozucu": [
-        0,
-        -21
-      ]
-    },
-    {
-      "rozet": 2.45,
-      "ham": 2.45,
-      "katman": "gec",
-      "tasiyicilar": {
-        "S": 1.91,
-        "K": 2.25,
+        "S": 1.72,
+        "K": 3.0,
         "T": 0,
         "D": 0
       },
@@ -243,6 +257,12 @@
         "G": 0,
         "A": 3.75
       },
+      "ham_tasiyicilar": {
+        "S": 1.91,
+        "K": 2.25
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.75,
       "dram_terfi": false,
       "mac_id": "0022500424",
       "ev": "ORL",
@@ -253,6 +273,40 @@
       "esitlik_bozucu": [
         0,
         -15
+      ]
+    },
+    {
+      "rozet": 2.45,
+      "ham": 2.45,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 2.34,
+        "K": 1.36,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.95,
+        "F": 0,
+        "G": 0,
+        "A": 4.83
+      },
+      "ham_tasiyicilar": {
+        "S": 2.93,
+        "K": 0.39
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 0.97,
+      "dram_terfi": false,
+      "mac_id": "0022500428",
+      "ev": "MEM",
+      "dep": "MIL",
+      "ev_skor": 125,
+      "dep_skor": 104,
+      "en_iyi_performans": "Jaren Jackson Jr.",
+      "esitlik_bozucu": [
+        0,
+        -21
       ]
     }
   ]

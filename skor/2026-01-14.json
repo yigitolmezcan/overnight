@@ -1,15 +1,15 @@
 {
   "tarih": "2026-01-14",
-  "hesaplandi": "2026-08-31T19:01:26.235573Z",
+  "hesaplandi": "2026-09-01T10:35:31.488928Z",
   "en_iyi_skor": 9.06,
   "maclar": [
     {
       "rozet": 9.06,
-      "ham": 11.01,
+      "ham": 11.02,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 9.06,
-        "K": 3.36,
+        "K": 3.53,
         "T": 0,
         "D": 8
       },
@@ -19,6 +19,12 @@
         "G": 0,
         "A": 0.83
       },
+      "ham_tasiyicilar": {
+        "S": 9.06,
+        "K": 3.36
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.17,
       "dram_terfi": true,
       "mac_id": "0022500573",
       "ev": "CHI",
@@ -32,12 +38,12 @@
       ]
     },
     {
-      "rozet": 8.82,
-      "ham": 10.12,
+      "rozet": 8.85,
+      "ham": 10.2,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 8.45,
-        "K": 0.0,
+        "K": 0.8,
         "T": 0,
         "D": 7
       },
@@ -47,6 +53,12 @@
         "G": 0,
         "A": 4.0
       },
+      "ham_tasiyicilar": {
+        "S": 8.45,
+        "K": 0.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.8,
       "dram_terfi": true,
       "mac_id": "0022500574",
       "ev": "NOP",
@@ -60,12 +72,12 @@
       ]
     },
     {
-      "rozet": 8.54,
-      "ham": 9.26,
-      "katman": "mutlaka",
+      "rozet": 7.97,
+      "ham": 7.97,
+      "katman": "ikinci",
       "tasiyicilar": {
-        "S": 8.62,
-        "K": 5.49,
+        "S": 6.9,
+        "K": 6.76,
         "T": 0,
         "D": 0
       },
@@ -75,6 +87,12 @@
         "G": 0,
         "A": 6.33
       },
+      "ham_tasiyicilar": {
+        "S": 8.62,
+        "K": 5.49
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 1.27,
       "dram_terfi": false,
       "mac_id": "0022500572",
       "ev": "PHI",
@@ -88,68 +106,12 @@
       ]
     },
     {
-      "rozet": 6.32,
-      "ham": 6.32,
+      "rozet": 6.02,
+      "ham": 6.02,
       "katman": "ikinci",
       "tasiyicilar": {
-        "S": 6.39,
-        "K": 2.66,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 2.89,
-        "F": 0,
-        "G": 0,
-        "A": 3.0
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500577",
-      "ev": "LAC",
-      "dep": "WAS",
-      "ev_skor": 119,
-      "dep_skor": 105,
-      "en_iyi_performans": "Kawhi Leonard",
-      "esitlik_bozucu": [
-        0,
-        -14
-      ]
-    },
-    {
-      "rozet": 6.14,
-      "ham": 6.14,
-      "katman": "ikinci",
-      "tasiyicilar": {
-        "S": 6.51,
-        "K": 1.61,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 2.56,
-        "F": 0,
-        "G": 0,
-        "A": 3.25
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500571",
-      "ev": "IND",
-      "dep": "TOR",
-      "ev_skor": 101,
-      "dep_skor": 115,
-      "en_iyi_performans": "Scottie Barnes",
-      "esitlik_bozucu": [
-        0,
-        -14
-      ]
-    },
-    {
-      "rozet": 5.12,
-      "ham": 5.12,
-      "katman": "gec",
-      "tasiyicilar": {
-        "S": 3.5,
-        "K": 4.69,
+        "S": 3.15,
+        "K": 5.81,
         "T": 0,
         "D": 0
       },
@@ -159,6 +121,12 @@
         "G": 0,
         "A": 5.58
       },
+      "ham_tasiyicilar": {
+        "S": 3.5,
+        "K": 4.69
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 1.12,
       "dram_terfi": false,
       "mac_id": "0022500576",
       "ev": "SAC",
@@ -172,12 +140,80 @@
       ]
     },
     {
-      "rozet": 2.2,
-      "ham": 2.2,
+      "rozet": 5.92,
+      "ham": 5.92,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 5.75,
+        "K": 3.26,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.89,
+        "F": 0,
+        "G": 0,
+        "A": 3.0
+      },
+      "ham_tasiyicilar": {
+        "S": 6.39,
+        "K": 2.66
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.6,
+      "dram_terfi": false,
+      "mac_id": "0022500577",
+      "ev": "LAC",
+      "dep": "WAS",
+      "ev_skor": 119,
+      "dep_skor": 105,
+      "en_iyi_performans": "Kawhi Leonard",
+      "esitlik_bozucu": [
+        0,
+        -14
+      ]
+    },
+    {
+      "rozet": 5.74,
+      "ham": 5.74,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 5.86,
+        "K": 2.26,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.56,
+        "F": 0,
+        "G": 0,
+        "A": 3.25
+      },
+      "ham_tasiyicilar": {
+        "S": 6.51,
+        "K": 1.61
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.65,
+      "dram_terfi": false,
+      "mac_id": "0022500571",
+      "ev": "IND",
+      "dep": "TOR",
+      "ev_skor": 101,
+      "dep_skor": 115,
+      "en_iyi_performans": "Scottie Barnes",
+      "esitlik_bozucu": [
+        0,
+        -14
+      ]
+    },
+    {
+      "rozet": 2.86,
+      "ham": 2.86,
       "katman": "gec",
       "tasiyicilar": {
         "S": 1.79,
-        "K": 1.96,
+        "K": 2.71,
         "T": 0,
         "D": 0
       },
@@ -187,6 +223,12 @@
         "G": 0,
         "A": 3.75
       },
+      "ham_tasiyicilar": {
+        "S": 1.79,
+        "K": 1.96
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.75,
       "dram_terfi": false,
       "mac_id": "0022500575",
       "ev": "DAL",

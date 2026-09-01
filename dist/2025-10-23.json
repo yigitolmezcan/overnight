@@ -12,7 +12,7 @@
     {
       "sira": 2,
       "mac": "Golden State Warriors — Denver Nuggets",
-      "rozet": 9.36,
+      "rozet": 9.38,
       "id": "a-0022500006"
     }
   ],
@@ -99,7 +99,7 @@
       "hedef_id": "a-0022500006",
       "icon": "default",
       "saat": "05:00",
-      "rozet": 9.36,
+      "rozet": 9.38,
       "skor": "GSW 137 – DEN 131",
       "skor_tam": "Golden State Warriors 137 – Denver Nuggets 131",
       "etiket": "kapanış",
@@ -3866,8 +3866,8 @@
       "mac_id": "0022500006",
       "mac": "Golden State Warriors — Denver Nuggets",
       "skor": "137–131",
-      "rozet": 9.36,
-      "why": "uzatma",
+      "rozet": 9.38,
+      "why": "bireysel performans: triple_double eşiğini geçen Nikola Jokić",
       "metin": "",
       "box": {
         "ev": {

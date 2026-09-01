@@ -1,6 +1,6 @@
 {
   "tarih": "2026-01-17",
-  "hesaplandi": "2026-08-31T19:01:26.436964Z",
+  "hesaplandi": "2026-09-01T10:35:32.001707Z",
   "en_iyi_skor": 9.32,
   "maclar": [
     {
@@ -8,8 +8,8 @@
       "ham": 12.34,
       "katman": "mutlaka",
       "tasiyicilar": {
-        "S": 10,
-        "K": 2.36,
+        "S": 10.0,
+        "K": 3.93,
         "T": 6,
         "D": 6
       },
@@ -19,6 +19,12 @@
         "G": 0,
         "A": 7.83
       },
+      "ham_tasiyicilar": {
+        "S": 10,
+        "K": 2.36
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.57,
       "dram_terfi": true,
       "mac_id": "0022500598",
       "ev": "SAS",
@@ -32,12 +38,12 @@
       ]
     },
     {
-      "rozet": 9.24,
-      "ham": 11.88,
+      "rozet": 9.27,
+      "ham": 12.04,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 9.82,
-        "K": 1.94,
+        "K": 3.54,
         "T": 0,
         "D": 6
       },
@@ -47,6 +53,12 @@
         "G": 0,
         "A": 8.0
       },
+      "ham_tasiyicilar": {
+        "S": 9.82,
+        "K": 1.94
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.6,
       "dram_terfi": true,
       "mac_id": "0022500597",
       "ev": "MIA",
@@ -60,12 +72,12 @@
       ]
     },
     {
-      "rozet": 8.46,
-      "ham": 9.04,
-      "katman": "ikinci",
+      "rozet": 8.5,
+      "ham": 9.16,
+      "katman": "mutlaka",
       "tasiyicilar": {
         "S": 8.98,
-        "K": 0.22,
+        "K": 0.62,
         "T": 0,
         "D": 0
       },
@@ -75,6 +87,12 @@
         "G": 0,
         "A": 2.0
       },
+      "ham_tasiyicilar": {
+        "S": 8.98,
+        "K": 0.22
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.4,
       "dram_terfi": false,
       "mac_id": "0022500600",
       "ev": "DEN",
@@ -88,40 +106,12 @@
       ]
     },
     {
-      "rozet": 7.24,
-      "ham": 7.24,
+      "rozet": 6.78,
+      "ham": 6.78,
       "katman": "ikinci",
       "tasiyicilar": {
-        "S": 7.31,
-        "K": 3.66,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 0.16,
-        "F": 0,
-        "G": 0,
-        "A": 4.5
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500594",
-      "ev": "ATL",
-      "dep": "BOS",
-      "ev_skor": 106,
-      "dep_skor": 132,
-      "en_iyi_performans": "Jaylen Brown",
-      "esitlik_bozucu": [
-        0,
-        -26
-      ]
-    },
-    {
-      "rozet": 5.67,
-      "ham": 5.67,
-      "katman": "gec",
-      "tasiyicilar": {
         "S": 3.04,
-        "K": 4.71,
+        "K": 5.81,
         "T": 0,
         "D": 0
       },
@@ -131,6 +121,12 @@
         "G": 6,
         "A": 5.5
       },
+      "ham_tasiyicilar": {
+        "S": 3.04,
+        "K": 4.71
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.1,
       "dram_terfi": false,
       "mac_id": "0022500596",
       "ev": "NYK",
@@ -144,12 +140,46 @@
       ]
     },
     {
-      "rozet": 5.2,
-      "ham": 5.2,
+      "rozet": 6.21,
+      "ham": 6.21,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 5.85,
+        "K": 4.56,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.16,
+        "F": 0,
+        "G": 0,
+        "A": 4.5
+      },
+      "ham_tasiyicilar": {
+        "S": 7.31,
+        "K": 3.66
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 0.9,
+      "dram_terfi": false,
+      "mac_id": "0022500594",
+      "ev": "ATL",
+      "dep": "BOS",
+      "ev_skor": 106,
+      "dep_skor": 132,
+      "en_iyi_performans": "Jaylen Brown",
+      "esitlik_bozucu": [
+        0,
+        -26
+      ]
+    },
+    {
+      "rozet": 4.76,
+      "ham": 4.76,
       "katman": "gec",
       "tasiyicilar": {
-        "S": 5.77,
-        "K": 1.66,
+        "S": 5.19,
+        "K": 1.81,
         "T": 0,
         "D": 0
       },
@@ -159,6 +189,12 @@
         "G": 0,
         "A": 0.75
       },
+      "ham_tasiyicilar": {
+        "S": 5.77,
+        "K": 1.66
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.15,
       "dram_terfi": false,
       "mac_id": "0022500593",
       "ev": "DAL",
@@ -172,12 +208,12 @@
       ]
     },
     {
-      "rozet": 4.08,
-      "ham": 4.08,
+      "rozet": 4.68,
+      "ham": 4.68,
       "katman": "gec",
       "tasiyicilar": {
-        "S": 0.8,
-        "K": 4.48,
+        "S": 0.72,
+        "K": 5.2,
         "T": 0,
         "D": 0
       },
@@ -187,6 +223,12 @@
         "G": 0,
         "A": 3.58
       },
+      "ham_tasiyicilar": {
+        "S": 0.8,
+        "K": 4.48
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.72,
       "dram_terfi": false,
       "mac_id": "0022500601",
       "ev": "POR",
@@ -200,12 +242,12 @@
       ]
     },
     {
-      "rozet": 3.66,
-      "ham": 3.66,
+      "rozet": 3.27,
+      "ham": 3.27,
       "katman": "gec",
       "tasiyicilar": {
-        "S": 3.61,
-        "K": 1.72,
+        "S": 2.89,
+        "K": 2.67,
         "T": 0,
         "D": 0
       },
@@ -215,6 +257,12 @@
         "G": 0,
         "A": 4.75
       },
+      "ham_tasiyicilar": {
+        "S": 3.61,
+        "K": 1.72
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 0.95,
       "dram_terfi": false,
       "mac_id": "0022500599",
       "ev": "GSW",
@@ -228,12 +276,12 @@
       ]
     },
     {
-      "rozet": 0.84,
-      "ham": 0.84,
+      "rozet": 0.9,
+      "ham": 0.9,
       "katman": "gec",
       "tasiyicilar": {
-        "S": 0.98,
-        "K": 0.0,
+        "S": 0.69,
+        "K": 0.85,
         "T": 0,
         "D": 0
       },
@@ -243,6 +291,12 @@
         "G": 0,
         "A": 4.25
       },
+      "ham_tasiyicilar": {
+        "S": 0.98,
+        "K": 0.0
+      },
+      "s_sonum": 0.7,
+      "a_k_katkisi": 0.85,
       "dram_terfi": false,
       "mac_id": "0022500595",
       "ev": "DET",

@@ -6,13 +6,13 @@
     {
       "sira": 1,
       "mac": "Philadelphia 76ers — New York Knicks",
-      "rozet": 8.56,
+      "rozet": 8.6,
       "id": "g-mutlaka-2"
     },
     {
       "sira": 2,
       "mac": "Charlotte Hornets — Washington Wizards",
-      "rozet": 3.31,
+      "rozet": 3.48,
       "id": "a-0022500645"
     },
     {
@@ -24,19 +24,19 @@
     {
       "sira": 4,
       "mac": "Chicago Bulls — Boston Celtics",
-      "rozet": 8.83,
+      "rozet": 8.91,
       "id": "g-mutlaka-1"
     },
     {
       "sira": 5,
       "mac": "Dallas Mavericks — Los Angeles Lakers",
-      "rozet": 9.04,
+      "rozet": 9.06,
       "id": "g-mutlaka-0"
     },
     {
       "sira": 6,
       "mac": "Utah Jazz — Miami Heat",
-      "rozet": 3.16,
+      "rozet": 2.68,
       "id": "a-0022500649"
     }
   ],
@@ -46,7 +46,7 @@
       "vurgu": "triple-double",
       "kalip": "triple_double",
       "kademe": 1,
-      "rozet": 3.2,
+      "rozet": 2.7,
       "mac": "Utah 116 – 147 Miami",
       "saat": "05:30",
       "renk": "#C0304A",
@@ -87,7 +87,7 @@
     },
     {
       "katman": "gec",
-      "rozet": 3.3,
+      "rozet": 3.5,
       "ev_ad": "Charlotte",
       "dep_ad": "Washington",
       "ev_ad_tam": "Charlotte Hornets",
@@ -123,7 +123,7 @@
     },
     {
       "katman": "mutlaka",
-      "rozet": 8.8,
+      "rozet": 8.9,
       "ev_ad": "Chicago",
       "dep_ad": "Boston",
       "ev_ad_tam": "Chicago Bulls",
@@ -141,7 +141,7 @@
     },
     {
       "katman": "mutlaka",
-      "rozet": 9.0,
+      "rozet": 9.1,
       "ev_ad": "Dallas",
       "dep_ad": "LA Lakers",
       "ev_ad_tam": "Dallas Mavericks",
@@ -159,7 +159,7 @@
     },
     {
       "katman": "gec",
-      "rozet": 3.2,
+      "rozet": 2.7,
       "ev_ad": "Utah",
       "dep_ad": "Miami",
       "ev_ad_tam": "Utah Jazz",
@@ -183,7 +183,7 @@
       "hedef_id": "g-mutlaka-2",
       "icon": "standings",
       "saat": "23:00",
-      "rozet": 8.56,
+      "rozet": 8.6,
       "skor": "PHI 109 – NYK 112",
       "skor_tam": "Philadelphia 76ers 109 – New York Knicks 112",
       "etiket": "gecenin ilki",
@@ -195,7 +195,7 @@
       "hedef_id": "a-0022500645",
       "icon": "default",
       "saat": "02:00",
-      "rozet": 3.31,
+      "rozet": 3.48,
       "skor": "CHA 119 – WAS 115",
       "skor_tam": "Charlotte Hornets 119 – Washington Wizards 115",
       "etiket": "",
@@ -219,7 +219,7 @@
       "hedef_id": "g-mutlaka-1",
       "icon": "default",
       "saat": "04:00",
-      "rozet": 8.83,
+      "rozet": 8.91,
       "skor": "CHI 114 – BOS 111",
       "skor_tam": "Chicago Bulls 114 – Boston Celtics 111",
       "etiket": "",
@@ -231,7 +231,7 @@
       "hedef_id": "g-mutlaka-0",
       "icon": "default",
       "saat": "04:30",
-      "rozet": 9.04,
+      "rozet": 9.06,
       "skor": "DAL 110 – LAL 116",
       "skor_tam": "Dallas Mavericks 110 – Los Angeles Lakers 116",
       "etiket": "gecenin maçı",
@@ -243,7 +243,7 @@
       "hedef_id": "a-0022500649",
       "icon": "default",
       "saat": "05:30",
-      "rozet": 3.16,
+      "rozet": 2.68,
       "skor": "UTA 116 – MIA 147",
       "skor_tam": "Utah Jazz 116 – Miami Heat 147",
       "etiket": "kapanış",
@@ -266,7 +266,7 @@
       "kisa": false,
       "mac": "Dallas Mavericks — Los Angeles Lakers",
       "skor": "110–116",
-      "rozet": 9.04,
+      "rozet": 9.06,
       "baslik": "Los Angeles Lakers, 15 sayılık farktan dönüp Dallas Mavericks'i yendi.",
       "neden_onemli": "",
       "ceyrek_tablosu": [
@@ -951,7 +951,7 @@
       "kisa": true,
       "mac": "Chicago Bulls — Boston Celtics",
       "skor": "114–111",
-      "rozet": 8.83,
+      "rozet": 8.91,
       "baslik": "Chicago Bulls, Boston Celtics'i son saniyede devirdi.",
       "neden_onemli": "Bu sonuçla Bulls üst üste 4. galibiyetini alıp Doğu Konferansı'nda 9. sıraya yükseldi.",
       "ceyrek_tablosu": [
@@ -1625,7 +1625,7 @@
       "kisa": true,
       "mac": "Philadelphia 76ers — New York Knicks",
       "skor": "109–112",
-      "rozet": 8.56,
+      "rozet": 8.6,
       "baslik": "",
       "neden_onemli": "",
       "ceyrek_tablosu": [
@@ -10380,7 +10380,7 @@
       "mac_id": "0022500645",
       "mac": "Charlotte Hornets — Washington Wizards",
       "skor": "119–115",
-      "rozet": 3.31,
+      "rozet": 3.48,
       "why": "",
       "metin": "Charlotte, sahasında Washington'ı 119-115 yendi. 18-28'lik Charlotte'ta Brandon Miller, 21 sayı ve 11 ribaundla galibiyetin mimarı oldu. Washington'da ise Justin Champagnie mücadele etti.",
       "box": {
@@ -10993,7 +10993,7 @@
       "mac_id": "0022500649",
       "mac": "Utah Jazz — Miami Heat",
       "skor": "116–147",
-      "rozet": 3.16,
+      "rozet": 2.68,
       "why": "bireysel performans: triple_double eşiğini geçen Jusuf Nurkić",
       "metin": "Miami Heat, deplasmanda Utah Jazz'ı 147-116 yendi. Rakibine tam 31 sayı fark atan Heat'te Bam Adebayo, 26 sayı ve 15 ribaundla etkili oldu.",
       "box": {

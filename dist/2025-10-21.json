@@ -6,13 +6,13 @@
     {
       "sira": 1,
       "mac": "Oklahoma City Thunder — Houston Rockets",
-      "rozet": 9.43,
+      "rozet": 9.46,
       "id": "g-mutlaka-0"
     },
     {
       "sira": 2,
       "mac": "Los Angeles Lakers — Golden State Warriors",
-      "rozet": 8.7,
+      "rozet": 8.8,
       "id": "a-0022500002"
     }
   ],
@@ -22,7 +22,7 @@
       "vurgu": "43 sayı",
       "kalip": "kirk_sayi",
       "kademe": 1,
-      "rozet": 8.7,
+      "rozet": 8.8,
       "mac": "Los Angeles 109 – 119 Golden State",
       "saat": "",
       "renk": "#2E6BD6",
@@ -33,7 +33,7 @@
   "kapak_listesi": [
     {
       "katman": "mutlaka",
-      "rozet": 9.4,
+      "rozet": 9.5,
       "ev_ad": "Oklahoma City",
       "dep_ad": "Houston",
       "ev_ad_tam": "Oklahoma City Thunder",
@@ -51,7 +51,7 @@
     },
     {
       "katman": "gozat",
-      "rozet": 8.7,
+      "rozet": 8.8,
       "ev_ad": "LA Lakers",
       "dep_ad": "Golden State",
       "ev_ad_tam": "LA Lakers",
@@ -75,7 +75,7 @@
       "hedef_id": "g-mutlaka-0",
       "icon": "default",
       "saat": null,
-      "rozet": 9.43,
+      "rozet": 9.46,
       "skor": "OKC 125 – HOU 124",
       "skor_tam": "Oklahoma City Thunder 125 – Houston Rockets 124",
       "etiket": "gecenin maçı",
@@ -87,7 +87,7 @@
       "hedef_id": "a-0022500002",
       "icon": "default",
       "saat": null,
-      "rozet": 8.7,
+      "rozet": 8.8,
       "skor": "LAL 109 – GSW 119",
       "skor_tam": "Los Angeles Lakers 109 – Golden State Warriors 119",
       "etiket": "",
@@ -110,7 +110,7 @@
       "kisa": false,
       "mac": "Oklahoma City Thunder — Houston Rockets",
       "skor": "125–124",
-      "rozet": 9.43,
+      "rozet": 9.46,
       "baslik": "Oklahoma City Thunder, Houston Rockets'i son saniyede devirdi.",
       "neden_onemli": "Maç boyunca liderlik 22 kez el değiştirdi, son periyotta bu sayı 5'e çıktı.",
       "ceyrek_tablosu": [
@@ -3584,7 +3584,7 @@
       "mac_id": "0022500002",
       "mac": "Los Angeles Lakers — Golden State Warriors",
       "skor": "109–119",
-      "rozet": 8.7,
+      "rozet": 8.8,
       "why": "maçı bitiren basket, bitime 1.0 saniye kala",
       "metin": "",
       "box": {

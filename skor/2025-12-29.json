@@ -1,43 +1,15 @@
 {
   "tarih": "2025-12-29",
-  "hesaplandi": "2026-08-31T19:01:25.761668Z",
-  "en_iyi_skor": 8.86,
+  "hesaplandi": "2026-09-01T10:35:29.052930Z",
+  "en_iyi_skor": 8.76,
   "maclar": [
     {
-      "rozet": 8.86,
-      "ham": 10.26,
-      "katman": "mutlaka",
-      "tasiyicilar": {
-        "S": 9.57,
-        "K": 2.25,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 4.07,
-        "F": 6,
-        "G": 0,
-        "A": 6.33
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500455",
-      "ev": "OKC",
-      "dep": "ATL",
-      "ev_skor": 140,
-      "dep_skor": 129,
-      "en_iyi_performans": "Shai Gilgeous-Alexander",
-      "esitlik_bozucu": [
-        0,
-        -11
-      ]
-    },
-    {
-      "rozet": 8.64,
-      "ham": 9.54,
+      "rozet": 8.76,
+      "ham": 9.92,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 8.7,
-        "K": 0.0,
+        "K": 1.13,
         "T": 0,
         "D": 0
       },
@@ -47,6 +19,12 @@
         "G": 6,
         "A": 5.67
       },
+      "ham_tasiyicilar": {
+        "S": 8.7,
+        "K": 0.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.13,
       "dram_terfi": false,
       "mac_id": "0022500454",
       "ev": "NOP",
@@ -60,12 +38,46 @@
       ]
     },
     {
-      "rozet": 7.64,
-      "ham": 7.64,
+      "rozet": 8.7,
+      "ham": 9.71,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 8.61,
+        "K": 3.52,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 4.07,
+        "F": 6,
+        "G": 0,
+        "A": 6.33
+      },
+      "ham_tasiyicilar": {
+        "S": 9.57,
+        "K": 2.25
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 1.27,
+      "dram_terfi": false,
+      "mac_id": "0022500455",
+      "ev": "OKC",
+      "dep": "ATL",
+      "ev_skor": 140,
+      "dep_skor": 129,
+      "en_iyi_performans": "Shai Gilgeous-Alexander",
+      "esitlik_bozucu": [
+        0,
+        -11
+      ]
+    },
+    {
+      "rozet": 7.73,
+      "ham": 7.73,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 5.88,
-        "K": 3.51,
+        "K": 4.48,
         "T": 0,
         "D": 6
       },
@@ -75,6 +87,12 @@
         "G": 6,
         "A": 4.83
       },
+      "ham_tasiyicilar": {
+        "S": 5.88,
+        "K": 3.51
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.97,
       "dram_terfi": true,
       "mac_id": "0022500451",
       "ev": "TOR",
@@ -88,12 +106,12 @@
       ]
     },
     {
-      "rozet": 7.43,
-      "ham": 7.43,
+      "rozet": 7.47,
+      "ham": 7.47,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 5.7,
-        "K": 2.86,
+        "K": 3.34,
         "T": 0,
         "D": 6
       },
@@ -103,6 +121,12 @@
         "G": 0,
         "A": 2.42
       },
+      "ham_tasiyicilar": {
+        "S": 5.7,
+        "K": 2.86
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.48,
       "dram_terfi": true,
       "mac_id": "0022500457",
       "ev": "POR",
@@ -116,12 +140,12 @@
       ]
     },
     {
-      "rozet": 6.78,
-      "ham": 6.78,
-      "katman": "ikinci",
+      "rozet": 5.74,
+      "ham": 5.74,
+      "katman": "gec",
       "tasiyicilar": {
-        "S": 6.43,
-        "K": 3.86,
+        "S": 4.5,
+        "K": 5.08,
         "T": 0,
         "D": 0
       },
@@ -131,6 +155,12 @@
         "G": 0,
         "A": 6.08
       },
+      "ham_tasiyicilar": {
+        "S": 6.43,
+        "K": 3.86
+      },
+      "s_sonum": 0.7,
+      "a_k_katkisi": 1.22,
       "dram_terfi": false,
       "mac_id": "0022500452",
       "ev": "CHI",
@@ -144,124 +174,12 @@
       ]
     },
     {
-      "rozet": 4.87,
-      "ham": 4.87,
+      "rozet": 5.05,
+      "ham": 5.05,
       "katman": "gec",
       "tasiyicilar": {
-        "S": 5.01,
-        "K": 1.27,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 3.01,
-        "F": 0,
-        "G": 0,
-        "A": 4.67
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500448",
-      "ev": "WAS",
-      "dep": "PHX",
-      "ev_skor": 101,
-      "dep_skor": 115,
-      "en_iyi_performans": "Collin Gillespie",
-      "esitlik_bozucu": [
-        0,
-        -14
-      ]
-    },
-    {
-      "rozet": 4.77,
-      "ham": 4.77,
-      "katman": "gec",
-      "tasiyicilar": {
-        "S": 4.32,
-        "K": 2.23,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 4.13,
-        "F": 0,
-        "G": 0,
-        "A": 7.62
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500456",
-      "ev": "SAS",
-      "dep": "CLE",
-      "ev_skor": 101,
-      "dep_skor": 113,
-      "en_iyi_performans": "Victor Wembanyama",
-      "esitlik_bozucu": [
-        0,
-        -12
-      ]
-    },
-    {
-      "rozet": 4.66,
-      "ham": 4.66,
-      "katman": "gec",
-      "tasiyicilar": {
-        "S": 4.83,
-        "K": 1.55,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 1.23,
-        "F": 0,
-        "G": 0,
-        "A": 4.88
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500453",
-      "ev": "HOU",
-      "dep": "IND",
-      "ev_skor": 126,
-      "dep_skor": 119,
-      "en_iyi_performans": "Kevin Durant",
-      "esitlik_bozucu": [
-        0,
-        -7
-      ]
-    },
-    {
-      "rozet": 3.6,
-      "ham": 3.6,
-      "katman": "gec",
-      "tasiyicilar": {
-        "S": 3.56,
-        "K": 0.15,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 5.26,
-        "F": 6,
-        "G": 0,
-        "A": 4.5
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500449",
-      "ev": "BKN",
-      "dep": "GSW",
-      "ev_skor": 107,
-      "dep_skor": 120,
-      "en_iyi_performans": "Stephen Curry",
-      "esitlik_bozucu": [
-        0,
-        -13
-      ]
-    },
-    {
-      "rozet": 3.5,
-      "ham": 3.5,
-      "katman": "gec",
-      "tasiyicilar": {
-        "S": 1.42,
-        "K": 3.32,
+        "S": 1.14,
+        "K": 5.07,
         "T": 0,
         "D": 0
       },
@@ -271,6 +189,12 @@
         "G": 0,
         "A": 8.75
       },
+      "ham_tasiyicilar": {
+        "S": 1.42,
+        "K": 3.32
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 1.75,
       "dram_terfi": false,
       "mac_id": "0022500450",
       "ev": "MIA",
@@ -284,12 +208,114 @@
       ]
     },
     {
-      "rozet": 2.86,
-      "ham": 2.86,
+      "rozet": 4.92,
+      "ham": 4.92,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 4.83,
+        "K": 2.53,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.23,
+        "F": 0,
+        "G": 0,
+        "A": 4.88
+      },
+      "ham_tasiyicilar": {
+        "S": 4.83,
+        "K": 1.55
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.98,
+      "dram_terfi": false,
+      "mac_id": "0022500453",
+      "ev": "HOU",
+      "dep": "IND",
+      "ev_skor": 126,
+      "dep_skor": 119,
+      "en_iyi_performans": "Kevin Durant",
+      "esitlik_bozucu": [
+        0,
+        -7
+      ]
+    },
+    {
+      "rozet": 4.8,
+      "ham": 4.8,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 3.89,
+        "K": 3.75,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 4.13,
+        "F": 0,
+        "G": 0,
+        "A": 7.62
+      },
+      "ham_tasiyicilar": {
+        "S": 4.32,
+        "K": 2.23
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 1.52,
+      "dram_terfi": false,
+      "mac_id": "0022500456",
+      "ev": "SAS",
+      "dep": "CLE",
+      "ev_skor": 101,
+      "dep_skor": 113,
+      "en_iyi_performans": "Victor Wembanyama",
+      "esitlik_bozucu": [
+        0,
+        -12
+      ]
+    },
+    {
+      "rozet": 4.67,
+      "ham": 4.67,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 4.51,
+        "K": 2.2,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.01,
+        "F": 0,
+        "G": 0,
+        "A": 4.67
+      },
+      "ham_tasiyicilar": {
+        "S": 5.01,
+        "K": 1.27
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.93,
+      "dram_terfi": false,
+      "mac_id": "0022500448",
+      "ev": "WAS",
+      "dep": "PHX",
+      "ev_skor": 101,
+      "dep_skor": 115,
+      "en_iyi_performans": "Collin Gillespie",
+      "esitlik_bozucu": [
+        0,
+        -14
+      ]
+    },
+    {
+      "rozet": 3.67,
+      "ham": 3.67,
       "katman": "gec",
       "tasiyicilar": {
         "S": 2.47,
-        "K": 1.86,
+        "K": 3.14,
         "T": 0,
         "D": 0
       },
@@ -299,6 +325,12 @@
         "G": 0,
         "A": 6.42
       },
+      "ham_tasiyicilar": {
+        "S": 2.47,
+        "K": 1.86
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.28,
       "dram_terfi": false,
       "mac_id": "0022500447",
       "ev": "CHA",
@@ -309,6 +341,40 @@
       "esitlik_bozucu": [
         0,
         -10
+      ]
+    },
+    {
+      "rozet": 3.51,
+      "ham": 3.51,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 3.2,
+        "K": 1.05,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 5.26,
+        "F": 6,
+        "G": 0,
+        "A": 4.5
+      },
+      "ham_tasiyicilar": {
+        "S": 3.56,
+        "K": 0.15
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.9,
+      "dram_terfi": false,
+      "mac_id": "0022500449",
+      "ev": "BKN",
+      "dep": "GSW",
+      "ev_skor": 107,
+      "dep_skor": 120,
+      "en_iyi_performans": "Stephen Curry",
+      "esitlik_bozucu": [
+        0,
+        -13
       ]
     }
   ]

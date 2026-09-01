@@ -7032,6 +7032,64 @@ def main():
     basar("Sıra: 'deplasmanında/evinde' ifadeleri sırayla çelişmiyor",
           not _celisen5, "; ".join(_celisen5[:3]))
 
+    # ==================================================================
+    # S SÖNÜMLEMESİ ve A→K KARIŞIMI
+    # ==================================================================
+    import hesapla as _hS
+    basar("Sönümleme: merdiven kullanıcı kararıyla aynı",
+          _hS.S_SONUM_MERDIVEN[:3] == ((10, 1.00), (19, 0.90), (29, 0.80))
+          and _hS.S_SONUM_MERDIVEN[-1][1] == 0.70)
+    basar("Sönümleme: taban %70'in altına inmiyor",
+          min(k for _u, k in _hS.S_SONUM_MERDIVEN) >= 0.70)
+    # TARİHİ PERFORMANS İSTİSNASI: T>0 ise sönümleme yok.
+    basar("Sönümleme: T>0 olan maçta hiç uygulanmıyor",
+          _hS.s_sonumlemesi(41, 6) == 1.00
+          and _hS.s_sonumlemesi(41, 0) == 0.70
+          and _hS.s_sonumlemesi(10, 0) == 1.00
+          and _hS.s_sonumlemesi(20, 0) == 0.80)
+    # ORAN NEDEN 0.20 — ÖLÇÜLEN SINIR. Sürpriz bonusu K'ya en az 2.00
+    # ekliyor; A'nın katkısı onu GEÇMEMELİ (kullanıcı kuralı).
+    basar("A→K: oran 0.20", _hS.A_K_ORANI == 0.20)
+    _amax = max((m["yukselticiler"]["A"]
+                 for _t9 in _yayin.durum_oku()["yayinlanan"]
+                 if _os.path.exists(f"skor/{_t9}.json")
+                 for m in _jj.loads(open(f"skor/{_t9}.json",
+                                         encoding="utf-8").read())["maclar"]),
+                default=0)
+    basar("A→K: katkı sürpriz bonusunun tabanını (2.00) geçmiyor",
+          _hS.A_K_ORANI * _amax < 2.00, f"maks katkı {_hS.A_K_ORANI * _amax:.2f}")
+    # Kayıtta izlenebilirlik: ham S/K ve uygulanan sönümleme yazılı.
+    _iz = []
+    for _t9 in _yayin.durum_oku()["yayinlanan"]:
+        if not _os.path.exists(f"skor/{_t9}.json"):
+            continue
+        for m in _jj.loads(open(f"skor/{_t9}.json",
+                                encoding="utf-8").read())["maclar"]:
+            if not ("ham_tasiyicilar" in m and "s_sonum" in m
+                    and "a_k_katkisi" in m):
+                _iz.append(_t9); continue
+            _fk = abs(m["ev_skor"] - m["dep_skor"])
+            _bek = _hS.s_sonumlemesi(_fk, m["tasiyicilar"]["T"])
+            if abs(m["s_sonum"] - _bek) > 0.001:
+                _iz.append(f"{_t9} sönüm {m['s_sonum']}≠{_bek}")
+            if abs(m["tasiyicilar"]["S"]
+                   - round(m["ham_tasiyicilar"]["S"] * _bek, 2)) > 0.011:
+                _iz.append(f"{_t9} S uyuşmuyor")
+            if abs(m["tasiyicilar"]["K"] - (m["ham_tasiyicilar"]["K"]
+                                            + m["a_k_katkisi"])) > 0.011:
+                _iz.append(f"{_t9} K uyuşmuyor")
+    basar("Sönümleme: yayındaki her maçta kayıt merdivenle tutarlı",
+          not _iz, "; ".join(sorted(set(_iz))[:3]))
+    # Formül dokümanı koddaki değerlerle aynı sayıları yazmalı.
+    _dok = open("overnight-deger-skoru-v2-1.md", encoding="utf-8").read()
+    basar("Doküman: sönümleme merdiveni ve A→K oranı yazılı",
+          "final fark ≤ 10      S ×1.00" in _dok
+          and "final fark 30+       S ×0.70" in _dok
+          and f"K = K + {_hS.A_K_ORANI:.2f}·A" in _dok
+          and "T > 0 ise            sönümleme YOK" in _dok)
+    basar("Doküman: 0.20 gerekçesi ve 0.25 sınırı not düşülmüş",
+          "0.25" in _dok and "sınırı çiğnemeyen en yüksek oran" in _dok)
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))

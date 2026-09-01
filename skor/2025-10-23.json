@@ -1,6 +1,6 @@
 {
   "tarih": "2025-10-23",
-  "hesaplandi": "2026-08-31T19:01:23.843795Z",
+  "hesaplandi": "2026-09-01T10:35:22.642238Z",
   "en_iyi_skor": 9.43,
   "maclar": [
     {
@@ -8,8 +8,8 @@
       "ham": 13.04,
       "katman": "mutlaka",
       "tasiyicilar": {
-        "S": 10,
-        "K": 2.0,
+        "S": 10.0,
+        "K": 3.21,
         "T": 6,
         "D": 8
       },
@@ -19,6 +19,12 @@
         "G": 0,
         "A": 6.04
       },
+      "ham_tasiyicilar": {
+        "S": 10,
+        "K": 2.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.21,
       "dram_terfi": true,
       "mac_id": "0022500005",
       "ev": "IND",
@@ -32,12 +38,12 @@
       ]
     },
     {
-      "rozet": 9.36,
-      "ham": 12.57,
+      "rozet": 9.38,
+      "ham": 12.71,
       "katman": "mutlaka",
       "tasiyicilar": {
-        "S": 10,
-        "K": 2.0,
+        "S": 10.0,
+        "K": 3.37,
         "T": 6,
         "D": 0
       },
@@ -47,6 +53,12 @@
         "G": 6,
         "A": 6.83
       },
+      "ham_tasiyicilar": {
+        "S": 10,
+        "K": 2.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.37,
       "dram_terfi": false,
       "mac_id": "0022500006",
       "ev": "GSW",

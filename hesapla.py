@@ -854,7 +854,59 @@ SONUMLEME_TAVANI = 0.7
 KATMAN_ESIKLERI = {"mutlaka": 8.5, "ikinci": 6.0}
 
 
-def formulu_uygula(S, K, T, Y, F, G, A):
+# ===========================================================================
+# S SÖNÜMLEMESİ — performans hangi maçta atıldı?
+# ===========================================================================
+#
+# Rozet "izlenmeye değer mi" diyor, "iyi oynadı mı" demiyor. 41 farkla
+# biten bir maçta atılan 33 sayı iyi bir performans olabilir ama o maçı
+# izlemenin değeri düşük — sonuç baştan belliydi. S bileşeni eskiden
+# performansın HANGİ MAÇTA atıldığına hiç bakmıyordu; clutch ağırlığı
+# yalnız "maçın en iyisi kim" SEÇİMİNDE kullanılıyor, S'in değerine
+# girmiyordu.
+#
+# ÖLÇÜLDÜ (29 gece, 217 maç): fark ↔ rozet korelasyonu −0.458 → −0.570.
+# Fark büyüklüğü zaten rozeti yükseltemiyordu (F ve Y yakınlığı
+# ödüllendiriyor); bu ayar farklı biten maçtaki performansı da indiriyor.
+S_SONUM_MERDIVEN = ((10, 1.00), (19, 0.90), (29, 0.80), (10 ** 9, 0.70))
+
+
+def s_sonumlemesi(final_fark, T):
+    """Maç yakınlığına göre S çarpanı.
+
+    TARİHİ PERFORMANS İSTİSNASI: T > 0 ise (yani 50+ sayılık bir gece
+    varsa) sönümleme HİÇ uygulanmıyor. Sönümlemenin amacı çöp zamanda
+    toplanan sayıyı ödüllendirmemek; tarihi bir performans o kategoriye
+    girmiyor, maçın farkından bağımsız olarak izlenmeye değer.
+    (Adebayo'nun 83 sayısı, MIA 150-129 WAS, 21 fark — kullanıcı kararı.)"""
+    if T > 0:
+        return 1.00
+    for ust, k in S_SONUM_MERDIVEN:
+        if final_fark <= ust:
+            return k
+    return S_SONUM_MERDIVEN[-1][1]
+
+
+# ===========================================================================
+# A → K KARIŞIMI — iki iyi takımın karşılaşması taşıyıcıya girsin
+# ===========================================================================
+#
+# A (takım kalitesi) yalnız ÇARPANDA vardı ve çarpan 0.80–1.28'e sıkışık.
+# Katsayıyı ikiye katlamak bile boşluğu kapatmıyordu (ölçüldü: LAC–SAC ile
+# LAL–DET arası 3.11 → 1.63). Çalışan tek kaldıraç A'nın bir kısmını K
+# TAŞIYICISINA karıştırmak: taşıyıcı tabana doğrudan giriyor, tavana
+# takılmıyor.
+#
+# ORAN NEDEN 0.20 — ÖLÇÜLEN SINIR: kullanıcı kuralı "A, sürpriz sonuç ve
+# dram bileşenlerinin üstüne çıkmasın". Sürpriz bonusu K'ya 2.00–4.00
+# ekliyor; dram taşıyıcı olduğunda ortalama 7.06. A'nın katkısı 0.20'de
+# ortalama 1.00 / EN ÇOK 1.82 — sürprizin TABANININ bile altında.
+# 0.25'te en çok 2.28'e çıkıyor ve sürprizi geçmeye başlıyor.
+# 0.20, sınırı çiğnemeyen en yüksek oran.
+A_K_ORANI = 0.20
+
+
+def formulu_uygula(S, K, T, Y, F, G, A, final_fark=None):
     # 0. Dram terfisi
     # Kullanıcı kararı: F=8 ("son 30 saniyede öne geçildi") eskiden
     # sadece küçük bir çarpan katkısı (0.011/puan) alıyordu, taşıyıcı
@@ -869,6 +921,12 @@ def formulu_uygula(S, K, T, Y, F, G, A):
         D = 0
         F_carpanda = F
         G_carpanda = G
+
+    # 0b. S sönümlemesi ve A→K karışımı (bkz. yukarıdaki iki bölüm).
+    S_ham, K_ham = S, K
+    sonum = 1.00 if final_fark is None else s_sonumlemesi(final_fark, T)
+    S = S * sonum
+    K = K + A_K_ORANI * A
 
     # 1. Taşıyıcılar
     tasiyicilar = sorted([S, K, T, D], reverse=True)
@@ -914,8 +972,13 @@ def formulu_uygula(S, K, T, Y, F, G, A):
         "rozet": round(rozet, 2),
         "ham": round(ham, 2),
         "katman": katman,
-        "tasiyicilar": {"S": S, "K": K, "T": T, "D": D},
+        # Taşıyıcılar formüle GİREN değerler; ham hâlleri izlenebilirlik
+        # için ayrıca yazılıyor.
+        "tasiyicilar": {"S": round(S, 2), "K": round(K, 2), "T": T, "D": D},
         "yukselticiler": {"Y": Y, "F": F, "G": G, "A": A},
+        "ham_tasiyicilar": {"S": S_ham, "K": K_ham},
+        "s_sonum": round(sonum, 2),
+        "a_k_katkisi": round(A_K_ORANI * A, 2),
         "dram_terfi": D > 0,
     }
 
@@ -957,7 +1020,8 @@ def mac_hesapla(gid, m, ay, puan_durumu, lig_gmsc_sirali, kisisel_gmsc, yildizla
     G = G_hesapla(seri, kazanan_ev_mi)
     A = A_hesapla(ev_kod, dep_kod, takim_kalite_ort, takim_kalite_sirali, bt, yildizlar)
 
-    sonuc = formulu_uygula(S, K, T, Y, F, G, A)
+    sonuc = formulu_uygula(S, K, T, Y, F, G, A,
+                           final_fark=abs(ev_skor - dep_skor))
     sonuc["mac_id"] = gid
     sonuc["ev"] = ev_kod
     sonuc["dep"] = dep_kod

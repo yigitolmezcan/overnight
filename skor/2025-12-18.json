@@ -1,15 +1,15 @@
 {
   "tarih": "2025-12-18",
-  "hesaplandi": "2026-08-31T19:01:24.248061Z",
-  "en_iyi_skor": 9.09,
+  "hesaplandi": "2026-09-01T10:35:24.223733Z",
+  "en_iyi_skor": 9.12,
   "maclar": [
     {
-      "rozet": 9.09,
-      "ham": 11.14,
+      "rozet": 9.12,
+      "ham": 11.27,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 7.94,
-        "K": 5.4,
+        "K": 6.73,
         "T": 0,
         "D": 8
       },
@@ -19,6 +19,12 @@
         "G": 10,
         "A": 6.67
       },
+      "ham_tasiyicilar": {
+        "S": 7.94,
+        "K": 5.4
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.33,
       "dram_terfi": true,
       "mac_id": "0022500375",
       "ev": "NOP",
@@ -32,12 +38,12 @@
       ]
     },
     {
-      "rozet": 8.93,
-      "ham": 10.52,
+      "rozet": 9.01,
+      "ham": 10.81,
       "katman": "mutlaka",
       "tasiyicilar": {
-        "S": 10,
-        "K": 1.72,
+        "S": 10.0,
+        "K": 2.7,
         "T": 0,
         "D": 0
       },
@@ -47,6 +53,12 @@
         "G": 0,
         "A": 4.92
       },
+      "ham_tasiyicilar": {
+        "S": 10,
+        "K": 1.72
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.98,
       "dram_terfi": false,
       "mac_id": "0022500379",
       "ev": "UTA",
@@ -60,40 +72,12 @@
       ]
     },
     {
-      "rozet": 8.88,
-      "ham": 10.32,
-      "katman": "mutlaka",
-      "tasiyicilar": {
-        "S": 8.3,
-        "K": 2.25,
-        "T": 0,
-        "D": 8
-      },
-      "yukselticiler": {
-        "Y": 9.5,
-        "F": 10,
-        "G": 0,
-        "A": 0.92
-      },
-      "dram_terfi": true,
-      "mac_id": "0022500380",
-      "ev": "POR",
-      "dep": "SAC",
-      "ev_skor": 134,
-      "dep_skor": 133,
-      "en_iyi_performans": "DeMar DeRozan",
-      "esitlik_bozucu": [
-        8,
-        -1
-      ]
-    },
-    {
-      "rozet": 8.85,
-      "ham": 10.22,
+      "rozet": 8.94,
+      "ham": 10.53,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 9.63,
-        "K": 1.97,
+        "K": 3.0,
         "T": 0,
         "D": 0
       },
@@ -103,6 +87,12 @@
         "G": 0,
         "A": 5.17
       },
+      "ham_tasiyicilar": {
+        "S": 9.63,
+        "K": 1.97
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.03,
       "dram_terfi": false,
       "mac_id": "0022500371",
       "ev": "CHA",
@@ -116,12 +106,46 @@
       ]
     },
     {
-      "rozet": 8.63,
-      "ham": 9.51,
+      "rozet": 8.89,
+      "ham": 10.34,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 8.3,
+        "K": 2.43,
+        "T": 0,
+        "D": 8
+      },
+      "yukselticiler": {
+        "Y": 9.5,
+        "F": 10,
+        "G": 0,
+        "A": 0.92
+      },
+      "ham_tasiyicilar": {
+        "S": 8.3,
+        "K": 2.25
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.18,
+      "dram_terfi": true,
+      "mac_id": "0022500380",
+      "ev": "POR",
+      "dep": "SAC",
+      "ev_skor": 134,
+      "dep_skor": 133,
+      "en_iyi_performans": "DeMar DeRozan",
+      "esitlik_bozucu": [
+        8,
+        -1
+      ]
+    },
+    {
+      "rozet": 8.66,
+      "ham": 9.61,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 5.81,
-        "K": 1.48,
+        "K": 2.56,
         "T": 0,
         "D": 8
       },
@@ -131,6 +155,12 @@
         "G": 6,
         "A": 5.42
       },
+      "ham_tasiyicilar": {
+        "S": 5.81,
+        "K": 1.48
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.08,
       "dram_terfi": true,
       "mac_id": "0022500378",
       "ev": "PHX",
@@ -144,40 +174,12 @@
       ]
     },
     {
-      "rozet": 8.22,
-      "ham": 8.46,
-      "katman": "ikinci",
-      "tasiyicilar": {
-        "S": 3.32,
-        "K": 0.0,
-        "T": 0,
-        "D": 8
-      },
-      "yukselticiler": {
-        "Y": 6.51,
-        "F": 10,
-        "G": 8,
-        "A": 3.75
-      },
-      "dram_terfi": true,
-      "mac_id": "0022500372",
-      "ev": "IND",
-      "dep": "NYK",
-      "ev_skor": 113,
-      "dep_skor": 114,
-      "en_iyi_performans": "Jalen Brunson",
-      "esitlik_bozucu": [
-        8,
-        -1
-      ]
-    },
-    {
-      "rozet": 8.06,
-      "ham": 8.11,
+      "rozet": 8.48,
+      "ham": 9.1,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 3.22,
-        "K": 5.65,
+        "K": 6.87,
         "T": 0,
         "D": 6
       },
@@ -187,6 +189,12 @@
         "G": 0,
         "A": 6.08
       },
+      "ham_tasiyicilar": {
+        "S": 3.22,
+        "K": 5.65
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.22,
       "dram_terfi": true,
       "mac_id": "0022500376",
       "ev": "DAL",
@@ -200,12 +208,46 @@
       ]
     },
     {
-      "rozet": 5.15,
-      "ham": 5.15,
+      "rozet": 8.25,
+      "ham": 8.53,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 3.32,
+        "K": 0.75,
+        "T": 0,
+        "D": 8
+      },
+      "yukselticiler": {
+        "Y": 6.51,
+        "F": 10,
+        "G": 8,
+        "A": 3.75
+      },
+      "ham_tasiyicilar": {
+        "S": 3.32,
+        "K": 0.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.75,
+      "dram_terfi": true,
+      "mac_id": "0022500372",
+      "ev": "IND",
+      "dep": "NYK",
+      "ev_skor": 113,
+      "dep_skor": 114,
+      "en_iyi_performans": "Jalen Brunson",
+      "esitlik_bozucu": [
+        8,
+        -1
+      ]
+    },
+    {
+      "rozet": 4.94,
+      "ham": 4.94,
       "katman": "gec",
       "tasiyicilar": {
-        "S": 4.88,
-        "K": 2.25,
+        "S": 4.39,
+        "K": 3.12,
         "T": 0,
         "D": 0
       },
@@ -215,6 +257,12 @@
         "G": 0,
         "A": 4.33
       },
+      "ham_tasiyicilar": {
+        "S": 4.88,
+        "K": 2.25
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.87,
       "dram_terfi": false,
       "mac_id": "0022500373",
       "ev": "BKN",
@@ -232,8 +280,8 @@
       "ham": 4.4,
       "katman": "gec",
       "tasiyicilar": {
-        "S": 4.13,
-        "K": 2.25,
+        "S": 3.72,
+        "K": 3.6,
         "T": 0,
         "D": 0
       },
@@ -243,6 +291,12 @@
         "G": 0,
         "A": 6.75
       },
+      "ham_tasiyicilar": {
+        "S": 4.13,
+        "K": 2.25
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 1.35,
       "dram_terfi": false,
       "mac_id": "0022500377",
       "ev": "DEN",
@@ -256,12 +310,12 @@
       ]
     },
     {
-      "rozet": 3.78,
-      "ham": 3.78,
+      "rozet": 4.02,
+      "ham": 4.02,
       "katman": "gec",
       "tasiyicilar": {
         "S": 3.35,
-        "K": 2.61,
+        "K": 3.39,
         "T": 0,
         "D": 0
       },
@@ -271,6 +325,12 @@
         "G": 0,
         "A": 3.92
       },
+      "ham_tasiyicilar": {
+        "S": 3.35,
+        "K": 2.61
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.78,
       "dram_terfi": false,
       "mac_id": "0022500374",
       "ev": "MIL",

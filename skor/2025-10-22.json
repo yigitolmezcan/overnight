@@ -1,15 +1,15 @@
 {
   "tarih": "2025-10-22",
-  "hesaplandi": "2026-08-31T19:01:23.810284Z",
-  "en_iyi_skor": 9.3,
+  "hesaplandi": "2026-09-01T10:35:22.281035Z",
+  "en_iyi_skor": 9.35,
   "maclar": [
     {
-      "rozet": 9.3,
-      "ham": 12.18,
+      "rozet": 9.35,
+      "ham": 12.48,
       "katman": "mutlaka",
       "tasiyicilar": {
-        "S": 10,
-        "K": 6.0,
+        "S": 10.0,
+        "K": 7.02,
         "T": 0,
         "D": 6
       },
@@ -19,6 +19,12 @@
         "G": 6,
         "A": 5.08
       },
+      "ham_tasiyicilar": {
+        "S": 10,
+        "K": 6.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.02,
       "dram_terfi": true,
       "mac_id": "0022500083",
       "ev": "BOS",
@@ -32,12 +38,12 @@
       ]
     },
     {
-      "rozet": 9.15,
-      "ham": 11.42,
+      "rozet": 9.17,
+      "ham": 11.53,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 9.6,
-        "K": 2.0,
+        "K": 3.07,
         "T": 0,
         "D": 6
       },
@@ -47,6 +53,12 @@
         "G": 8,
         "A": 5.33
       },
+      "ham_tasiyicilar": {
+        "S": 9.6,
+        "K": 2.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.07,
       "dram_terfi": true,
       "mac_id": "0022500088",
       "ev": "PHX",
@@ -60,12 +72,12 @@
       ]
     },
     {
-      "rozet": 9.03,
-      "ham": 10.9,
+      "rozet": 9.11,
+      "ham": 11.25,
       "katman": "mutlaka",
       "tasiyicilar": {
-        "S": 10,
-        "K": 2.0,
+        "S": 10.0,
+        "K": 3.12,
         "T": 0,
         "D": 0
       },
@@ -75,6 +87,12 @@
         "G": 6,
         "A": 5.58
       },
+      "ham_tasiyicilar": {
+        "S": 10,
+        "K": 2.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.12,
       "dram_terfi": false,
       "mac_id": "0022500085",
       "ev": "MEM",
@@ -88,12 +106,12 @@
       ]
     },
     {
-      "rozet": 8.98,
-      "ham": 10.7,
+      "rozet": 9.05,
+      "ham": 10.98,
       "katman": "mutlaka",
       "tasiyicilar": {
-        "S": 10,
-        "K": 2.0,
+        "S": 10.0,
+        "K": 2.93,
         "T": 0,
         "D": 0
       },
@@ -103,6 +121,12 @@
         "G": 0,
         "A": 4.67
       },
+      "ham_tasiyicilar": {
+        "S": 10,
+        "K": 2.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.93,
       "dram_terfi": false,
       "mac_id": "0022500089",
       "ev": "POR",
@@ -116,12 +140,12 @@
       ]
     },
     {
-      "rozet": 8.88,
-      "ham": 10.33,
+      "rozet": 8.6,
+      "ham": 9.42,
       "katman": "mutlaka",
       "tasiyicilar": {
-        "S": 10,
-        "K": 2.0,
+        "S": 9.0,
+        "K": 3.32,
         "T": 0,
         "D": 0
       },
@@ -131,6 +155,12 @@
         "G": 0,
         "A": 6.58
       },
+      "ham_tasiyicilar": {
+        "S": 10,
+        "K": 2.0
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 1.32,
       "dram_terfi": false,
       "mac_id": "0022500086",
       "ev": "MIL",
@@ -144,40 +174,12 @@
       ]
     },
     {
-      "rozet": 8.84,
-      "ham": 10.19,
+      "rozet": 8.57,
+      "ham": 9.35,
       "katman": "mutlaka",
       "tasiyicilar": {
-        "S": 10,
-        "K": 2.0,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 0.73,
-        "F": 0,
-        "G": 0,
-        "A": 4.58
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500004",
-      "ev": "DAL",
-      "dep": "SAS",
-      "ev_skor": 92,
-      "dep_skor": 125,
-      "en_iyi_performans": "Victor Wembanyama",
-      "esitlik_bozucu": [
-        0,
-        -33
-      ]
-    },
-    {
-      "rozet": 8.44,
-      "ham": 9.0,
-      "katman": "ikinci",
-      "tasiyicilar": {
         "S": 8.27,
-        "K": 2.0,
+        "K": 3.15,
         "T": 0,
         "D": 0
       },
@@ -187,6 +189,12 @@
         "G": 0,
         "A": 5.75
       },
+      "ham_tasiyicilar": {
+        "S": 8.27,
+        "K": 2.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.15,
       "dram_terfi": false,
       "mac_id": "0022500084",
       "ev": "CHI",
@@ -200,40 +208,12 @@
       ]
     },
     {
-      "rozet": 8.17,
-      "ham": 8.36,
-      "katman": "ikinci",
-      "tasiyicilar": {
-        "S": 7.87,
-        "K": 6.0,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 0.38,
-        "F": 0,
-        "G": 0,
-        "A": 4.58
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500087",
-      "ev": "UTA",
-      "dep": "LAC",
-      "ev_skor": 129,
-      "dep_skor": 108,
-      "en_iyi_performans": "Walker Kessler",
-      "esitlik_bozucu": [
-        0,
-        -21
-      ]
-    },
-    {
-      "rozet": 7.27,
-      "ham": 7.27,
+      "rozet": 7.63,
+      "ham": 7.63,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 6.31,
-        "K": 2.0,
+        "K": 3.15,
         "T": 0,
         "D": 0
       },
@@ -243,6 +223,12 @@
         "G": 0,
         "A": 5.75
       },
+      "ham_tasiyicilar": {
+        "S": 6.31,
+        "K": 2.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.15,
       "dram_terfi": false,
       "mac_id": "0022500081",
       "ev": "ORL",
@@ -256,40 +242,46 @@
       ]
     },
     {
-      "rozet": 7.1,
-      "ham": 7.1,
+      "rozet": 7.61,
+      "ham": 7.61,
       "katman": "ikinci",
       "tasiyicilar": {
-        "S": 7.46,
-        "K": 2.0,
+        "S": 6.3,
+        "K": 6.92,
         "T": 0,
         "D": 0
       },
       "yukselticiler": {
-        "Y": 1.11,
+        "Y": 0.38,
         "F": 0,
         "G": 0,
-        "A": 5.0
+        "A": 4.58
       },
+      "ham_tasiyicilar": {
+        "S": 7.87,
+        "K": 6.0
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 0.92,
       "dram_terfi": false,
-      "mac_id": "0022500082",
-      "ev": "ATL",
-      "dep": "TOR",
-      "ev_skor": 118,
-      "dep_skor": 138,
-      "en_iyi_performans": "Scottie Barnes",
+      "mac_id": "0022500087",
+      "ev": "UTA",
+      "dep": "LAC",
+      "ev_skor": 129,
+      "dep_skor": 108,
+      "en_iyi_performans": "Walker Kessler",
       "esitlik_bozucu": [
         0,
-        -20
+        -21
       ]
     },
     {
-      "rozet": 6.76,
-      "ham": 6.76,
+      "rozet": 7.2,
+      "ham": 7.2,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 6.44,
-        "K": 2.0,
+        "K": 3.52,
         "T": 0,
         "D": 0
       },
@@ -299,6 +291,12 @@
         "G": 0,
         "A": 7.58
       },
+      "ham_tasiyicilar": {
+        "S": 6.44,
+        "K": 2.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.52,
       "dram_terfi": false,
       "mac_id": "0022500003",
       "ev": "NYK",
@@ -312,12 +310,80 @@
       ]
     },
     {
-      "rozet": 4.27,
-      "ham": 4.27,
+      "rozet": 6.85,
+      "ham": 6.85,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 7.0,
+        "K": 2.92,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.73,
+        "F": 0,
+        "G": 0,
+        "A": 4.58
+      },
+      "ham_tasiyicilar": {
+        "S": 10,
+        "K": 2.0
+      },
+      "s_sonum": 0.7,
+      "a_k_katkisi": 0.92,
+      "dram_terfi": false,
+      "mac_id": "0022500004",
+      "ev": "DAL",
+      "dep": "SAS",
+      "ev_skor": 92,
+      "dep_skor": 125,
+      "en_iyi_performans": "Victor Wembanyama",
+      "esitlik_bozucu": [
+        0,
+        -33
+      ]
+    },
+    {
+      "rozet": 6.05,
+      "ham": 6.05,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 5.97,
+        "K": 3.0,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.11,
+        "F": 0,
+        "G": 0,
+        "A": 5.0
+      },
+      "ham_tasiyicilar": {
+        "S": 7.46,
+        "K": 2.0
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 1.0,
+      "dram_terfi": false,
+      "mac_id": "0022500082",
+      "ev": "ATL",
+      "dep": "TOR",
+      "ev_skor": 118,
+      "dep_skor": 138,
+      "en_iyi_performans": "Scottie Barnes",
+      "esitlik_bozucu": [
+        0,
+        -20
+      ]
+    },
+    {
+      "rozet": 4.06,
+      "ham": 4.06,
       "katman": "gec",
       "tasiyicilar": {
-        "S": 4.39,
-        "K": 2.0,
+        "S": 3.95,
+        "K": 2.62,
         "T": 0,
         "D": 0
       },
@@ -327,6 +393,12 @@
         "G": 0,
         "A": 3.08
       },
+      "ham_tasiyicilar": {
+        "S": 4.39,
+        "K": 2.0
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.62,
       "dram_terfi": false,
       "mac_id": "0022500080",
       "ev": "CHA",

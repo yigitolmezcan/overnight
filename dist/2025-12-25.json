@@ -6,31 +6,31 @@
     {
       "sira": 1,
       "mac": "New York Knicks — Cleveland Cavaliers",
-      "rozet": 8.99,
+      "rozet": 9.03,
       "id": "g-mutlaka-1"
     },
     {
       "sira": 2,
       "mac": "Oklahoma City Thunder — San Antonio Spurs",
-      "rozet": 6.45,
+      "rozet": 7.87,
       "id": "g-mutlaka-2"
     },
     {
       "sira": 3,
       "mac": "Golden State Warriors — Dallas Mavericks",
-      "rozet": 3.02,
+      "rozet": 3.31,
       "id": "a-0022500011"
     },
     {
       "sira": 4,
       "mac": "Los Angeles Lakers — Houston Rockets",
-      "rozet": 6.15,
+      "rozet": 6.6,
       "id": "g-mutlaka-3"
     },
     {
       "sira": 5,
       "mac": "Denver Nuggets — Minnesota Timberwolves",
-      "rozet": 9.35,
+      "rozet": 9.37,
       "id": "g-mutlaka-0"
     }
   ],
@@ -40,7 +40,7 @@
       "vurgu": "56 sayı",
       "kalip": "kirk_sayi",
       "kademe": 1,
-      "rozet": 9.3,
+      "rozet": 9.4,
       "mac": "Denver 142 – 138 Minnesota",
       "saat": "06:30",
       "renk": "#FEC524",
@@ -52,7 +52,7 @@
       "vurgu": "4. kez",
       "kalip": "ustuste_otuz",
       "kademe": 2,
-      "rozet": 6.5,
+      "rozet": 7.9,
       "mac": "Oklahoma City 102 – 117 San Antonio",
       "saat": "22:30",
       "renk": "#C4CED4",
@@ -81,7 +81,7 @@
     },
     {
       "katman": "mutlaka",
-      "rozet": 6.5,
+      "rozet": 7.9,
       "ev_ad": "Oklahoma City",
       "dep_ad": "San Antonio",
       "ev_ad_tam": "Oklahoma City Thunder",
@@ -99,7 +99,7 @@
     },
     {
       "katman": "gec",
-      "rozet": 3.0,
+      "rozet": 3.3,
       "ev_ad": "Golden State",
       "dep_ad": "Dallas",
       "ev_ad_tam": "Golden State Warriors",
@@ -117,7 +117,7 @@
     },
     {
       "katman": "mutlaka",
-      "rozet": 6.2,
+      "rozet": 6.6,
       "ev_ad": "LA Lakers",
       "dep_ad": "Houston",
       "ev_ad_tam": "LA Lakers",
@@ -135,7 +135,7 @@
     },
     {
       "katman": "mutlaka",
-      "rozet": 9.3,
+      "rozet": 9.4,
       "ev_ad": "Denver",
       "dep_ad": "Minnesota",
       "ev_ad_tam": "Denver Nuggets",
@@ -159,7 +159,7 @@
       "hedef_id": "g-mutlaka-1",
       "icon": "default",
       "saat": "20:00",
-      "rozet": 8.99,
+      "rozet": 9.03,
       "skor": "NYK 126 – CLE 124",
       "skor_tam": "New York Knicks 126 – Cleveland Cavaliers 124",
       "etiket": "gecenin ilki",
@@ -171,7 +171,7 @@
       "hedef_id": "g-mutlaka-2",
       "icon": "standings",
       "saat": "22:30",
-      "rozet": 6.45,
+      "rozet": 7.87,
       "skor": "OKC 102 – SAS 117",
       "skor_tam": "Oklahoma City Thunder 102 – San Antonio Spurs 117",
       "etiket": "",
@@ -183,7 +183,7 @@
       "hedef_id": "a-0022500011",
       "icon": "default",
       "saat": "01:00",
-      "rozet": 3.02,
+      "rozet": 3.31,
       "skor": "GSW 126 – DAL 116",
       "skor_tam": "Golden State Warriors 126 – Dallas Mavericks 116",
       "etiket": "",
@@ -195,7 +195,7 @@
       "hedef_id": "g-mutlaka-3",
       "icon": "standings",
       "saat": "04:00",
-      "rozet": 6.15,
+      "rozet": 6.6,
       "skor": "LAL 96 – HOU 119",
       "skor_tam": "Los Angeles Lakers 96 – Houston Rockets 119",
       "etiket": "",
@@ -207,7 +207,7 @@
       "hedef_id": "g-mutlaka-0",
       "icon": "default",
       "saat": "06:30",
-      "rozet": 9.35,
+      "rozet": 9.37,
       "skor": "DEN 142 – MIN 138",
       "skor_tam": "Denver Nuggets 142 – Minnesota Timberwolves 138",
       "etiket": "gecenin maçı",
@@ -241,7 +241,7 @@
       "kisa": false,
       "mac": "Denver Nuggets — Minnesota Timberwolves",
       "skor": "142–138",
-      "rozet": 9.35,
+      "rozet": 9.37,
       "baslik": "Denver Nuggets, Minnesota Timberwolves'i 142-138 yendi.",
       "neden_onemli": "Denver Nuggets, konferansta 3. sıraya oturdu.",
       "ceyrek_tablosu": [
@@ -918,7 +918,7 @@
       "kisa": true,
       "mac": "New York Knicks — Cleveland Cavaliers",
       "skor": "126–124",
-      "rozet": 8.99,
+      "rozet": 9.03,
       "baslik": "New York Knicks, 17 sayılık farktan dönüp Cleveland Cavaliers'i yendi.",
       "neden_onemli": "Cleveland, iki maçlık galibiyet serisini bu mağlubiyetle bitirdi.",
       "ceyrek_tablosu": [
@@ -1580,7 +1580,7 @@
       "kisa": true,
       "mac": "Oklahoma City Thunder — San Antonio Spurs",
       "skor": "102–117",
-      "rozet": 6.45,
+      "rozet": 7.87,
       "baslik": "",
       "neden_onemli": "",
       "ceyrek_tablosu": [
@@ -2387,7 +2387,7 @@
       "kisa": true,
       "mac": "Los Angeles Lakers — Houston Rockets",
       "skor": "96–119",
-      "rozet": 6.15,
+      "rozet": 6.6,
       "baslik": "",
       "neden_onemli": "",
       "ceyrek_tablosu": [
@@ -10112,7 +10112,7 @@
       "mac_id": "0022500011",
       "mac": "Golden State Warriors — Dallas Mavericks",
       "skor": "126–116",
-      "rozet": 3.02,
+      "rozet": 3.31,
       "why": "konferans sıraları 8-11",
       "metin": "Konferans sıralamasını yakından ilgilendiren maçta Golden State Warriors, Dallas Mavericks'i 126-116 yendi.",
       "box": {

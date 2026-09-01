@@ -1,15 +1,15 @@
 {
   "tarih": "2025-12-22",
-  "hesaplandi": "2026-08-31T19:01:24.806950Z",
-  "en_iyi_skor": 8.31,
+  "hesaplandi": "2026-09-01T10:35:26.143042Z",
+  "en_iyi_skor": 8.34,
   "maclar": [
     {
-      "rozet": 8.31,
-      "ham": 8.67,
+      "rozet": 8.34,
+      "ham": 8.74,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 4.1,
-        "K": 0.66,
+        "K": 1.46,
         "T": 0,
         "D": 8
       },
@@ -19,6 +19,12 @@
         "G": 10,
         "A": 4.0
       },
+      "ham_tasiyicilar": {
+        "S": 4.1,
+        "K": 0.66
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.8,
       "dram_terfi": true,
       "mac_id": "0022500403",
       "ev": "BOS",
@@ -32,40 +38,12 @@
       ]
     },
     {
-      "rozet": 6.71,
-      "ham": 6.71,
-      "katman": "ikinci",
-      "tasiyicilar": {
-        "S": 6.89,
-        "K": 1.45,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 2.46,
-        "F": 0,
-        "G": 0,
-        "A": 6.23
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500406",
-      "ev": "OKC",
-      "dep": "MEM",
-      "ev_skor": 119,
-      "dep_skor": 103,
-      "en_iyi_performans": "Shai Gilgeous-Alexander",
-      "esitlik_bozucu": [
-        0,
-        -16
-      ]
-    },
-    {
-      "rozet": 6.51,
-      "ham": 6.51,
+      "rozet": 6.78,
+      "ham": 6.78,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 5.77,
-        "K": 1.16,
+        "K": 2.01,
         "T": 0,
         "D": 0
       },
@@ -75,6 +53,12 @@
         "G": 6,
         "A": 4.25
       },
+      "ham_tasiyicilar": {
+        "S": 5.77,
+        "K": 1.16
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.85,
       "dram_terfi": false,
       "mac_id": "0022500404",
       "ev": "NOP",
@@ -88,12 +72,12 @@
       ]
     },
     {
-      "rozet": 6.33,
-      "ham": 6.33,
+      "rozet": 6.58,
+      "ham": 6.58,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 5.8,
-        "K": 2.25,
+        "K": 3.1,
         "T": 0,
         "D": 0
       },
@@ -103,6 +87,12 @@
         "G": 0,
         "A": 4.25
       },
+      "ham_tasiyicilar": {
+        "S": 5.8,
+        "K": 2.25
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.85,
       "dram_terfi": false,
       "mac_id": "0022500408",
       "ev": "POR",
@@ -116,40 +106,46 @@
       ]
     },
     {
-      "rozet": 5.46,
-      "ham": 5.46,
-      "katman": "gec",
+      "rozet": 6.42,
+      "ham": 6.42,
+      "katman": "ikinci",
       "tasiyicilar": {
-        "S": 5.81,
-        "K": 0.98,
+        "S": 6.2,
+        "K": 2.7,
         "T": 0,
         "D": 0
       },
       "yukselticiler": {
-        "Y": 0.65,
+        "Y": 2.46,
         "F": 0,
         "G": 0,
-        "A": 6.58
+        "A": 6.23
       },
+      "ham_tasiyicilar": {
+        "S": 6.89,
+        "K": 1.45
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 1.25,
       "dram_terfi": false,
-      "mac_id": "0022500405",
-      "ev": "DEN",
-      "dep": "UTA",
-      "ev_skor": 135,
-      "dep_skor": 112,
-      "en_iyi_performans": "Nikola Jokić",
+      "mac_id": "0022500406",
+      "ev": "OKC",
+      "dep": "MEM",
+      "ev_skor": 119,
+      "dep_skor": 103,
+      "en_iyi_performans": "Shai Gilgeous-Alexander",
       "esitlik_bozucu": [
         0,
-        -23
+        -16
       ]
     },
     {
-      "rozet": 5.22,
-      "ham": 5.22,
+      "rozet": 5.43,
+      "ham": 5.43,
       "katman": "gec",
       "tasiyicilar": {
         "S": 5.34,
-        "K": 1.83,
+        "K": 2.6,
         "T": 0,
         "D": 0
       },
@@ -159,6 +155,12 @@
         "G": 0,
         "A": 3.83
       },
+      "ham_tasiyicilar": {
+        "S": 5.34,
+        "K": 1.83
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.77,
       "dram_terfi": false,
       "mac_id": "0022500402",
       "ev": "CLE",
@@ -172,12 +174,46 @@
       ]
     },
     {
-      "rozet": 2.58,
-      "ham": 2.58,
+      "rozet": 4.77,
+      "ham": 4.77,
       "katman": "gec",
       "tasiyicilar": {
-        "S": 1.12,
-        "K": 2.51,
+        "S": 4.65,
+        "K": 2.3,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.65,
+        "F": 0,
+        "G": 0,
+        "A": 6.58
+      },
+      "ham_tasiyicilar": {
+        "S": 5.81,
+        "K": 0.98
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 1.32,
+      "dram_terfi": false,
+      "mac_id": "0022500405",
+      "ev": "DEN",
+      "dep": "UTA",
+      "ev_skor": 135,
+      "dep_skor": 112,
+      "en_iyi_performans": "Nikola Jokić",
+      "esitlik_bozucu": [
+        0,
+        -23
+      ]
+    },
+    {
+      "rozet": 3.5,
+      "ham": 3.5,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 0.9,
+        "K": 3.59,
         "T": 0,
         "D": 0
       },
@@ -187,6 +223,12 @@
         "G": 0,
         "A": 5.38
       },
+      "ham_tasiyicilar": {
+        "S": 1.12,
+        "K": 2.51
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 1.08,
       "dram_terfi": false,
       "mac_id": "0022500407",
       "ev": "GSW",

@@ -1,15 +1,15 @@
 {
   "tarih": "2025-12-30",
-  "hesaplandi": "2026-09-01T02:01:18.955527Z",
-  "en_iyi_skor": 9.3,
+  "hesaplandi": "2026-09-01T10:35:29.525374Z",
+  "en_iyi_skor": 9.32,
   "maclar": [
     {
-      "rozet": 9.3,
-      "ham": 12.22,
+      "rozet": 9.32,
+      "ham": 12.33,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 9.4,
-        "K": 3.73,
+        "K": 4.9,
         "T": 0,
         "D": 8
       },
@@ -19,6 +19,12 @@
         "G": 0,
         "A": 5.83
       },
+      "ham_tasiyicilar": {
+        "S": 9.4,
+        "K": 3.73
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.17,
       "dram_terfi": true,
       "mac_id": "0022500458",
       "ev": "MEM",
@@ -32,40 +38,12 @@
       ]
     },
     {
-      "rozet": 6.77,
-      "ham": 6.77,
-      "katman": "ikinci",
-      "tasiyicilar": {
-        "S": 7.91,
-        "K": 0.39,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 0.13,
-        "F": 0,
-        "G": 0,
-        "A": 3.17
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500461",
-      "ev": "LAC",
-      "dep": "SAC",
-      "ev_skor": 131,
-      "dep_skor": 90,
-      "en_iyi_performans": "Kawhi Leonard",
-      "esitlik_bozucu": [
-        0,
-        -41
-      ]
-    },
-    {
-      "rozet": 6.66,
-      "ham": 6.66,
+      "rozet": 6.93,
+      "ham": 6.93,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 6.67,
-        "K": 1.53,
+        "K": 2.5,
         "T": 0,
         "D": 0
       },
@@ -75,6 +53,12 @@
         "G": 0,
         "A": 4.83
       },
+      "ham_tasiyicilar": {
+        "S": 6.67,
+        "K": 1.53
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.97,
       "dram_terfi": false,
       "mac_id": "0022500459",
       "ev": "UTA",
@@ -88,12 +72,46 @@
       ]
     },
     {
-      "rozet": 3.66,
-      "ham": 3.66,
+      "rozet": 4.93,
+      "ham": 4.93,
       "katman": "gec",
       "tasiyicilar": {
-        "S": 3.32,
-        "K": 2.05,
+        "S": 5.54,
+        "K": 1.02,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.13,
+        "F": 0,
+        "G": 0,
+        "A": 3.17
+      },
+      "ham_tasiyicilar": {
+        "S": 7.91,
+        "K": 0.39
+      },
+      "s_sonum": 0.7,
+      "a_k_katkisi": 0.63,
+      "dram_terfi": false,
+      "mac_id": "0022500461",
+      "ev": "LAC",
+      "dep": "SAC",
+      "ev_skor": 131,
+      "dep_skor": 90,
+      "en_iyi_performans": "Kawhi Leonard",
+      "esitlik_bozucu": [
+        0,
+        -41
+      ]
+    },
+    {
+      "rozet": 4.08,
+      "ham": 4.08,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 2.66,
+        "K": 3.58,
         "T": 0,
         "D": 0
       },
@@ -103,6 +121,12 @@
         "G": 0,
         "A": 7.67
       },
+      "ham_tasiyicilar": {
+        "S": 3.32,
+        "K": 2.05
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 1.53,
       "dram_terfi": false,
       "mac_id": "0022500460",
       "ev": "LAL",

@@ -96,6 +96,16 @@ sebebi büyütür, sebep yaratmaz.
 0. Dram terfisi: F ≥ 9 veya G ≥ 8 ise D = max(F,G) − 2 ve F, G
    çarpandan düşülür. Değilse D = 0.
 
+0b. S sönümlemesi — performans HANGİ MAÇTA atıldı?
+
+   T > 0 ise            sönümleme YOK (tarihi performans istisnası)
+   final fark ≤ 10      S ×1.00
+   final fark 11–19     S ×0.90
+   final fark 20–29     S ×0.80
+   final fark 30+       S ×0.70
+
+0c. A → K karışımı:  K = K + 0.20·A
+
 1. Taşıyıcıları büyükten küçüğe sırala: C1 ≥ C2 ≥ C3  (S, K, T, D arasından)
 
    Taban = C1 + 0.30·C2 + 0.10·C3
@@ -116,6 +126,44 @@ sebebi büyütür, sebep yaratmaz.
    Ham ≤ 8   →  Rozet = Ham
    Ham > 8   →  Rozet = 8 + 2 × (1 − e^(−(Ham−8)/4))
 ```
+
+**0b neden var:** Rozet "izlenmeye değer mi" diyor, "iyi oynadı mı"
+demiyor. S bileşeni eskiden performansın hangi maçta atıldığına hiç
+bakmıyordu — clutch ağırlığı yalnız "maçın en iyisi kim" SEÇİMİNDE
+kullanılıyor, S'in değerine girmiyor. 41 farkla biten bir maçta atılan
+33 sayı iyi bir performans olabilir ama o maçı izlemenin değeri düşük.
+
+Fark büyüklüğü zaten rozeti YÜKSELTEMİYORDU (formüle yalnız F ve Y'den
+giriyor, ikisi de yakınlığı ödüllendirir; T yalnız 50+ sayıya bakıyor).
+Ölçüm: 29 gece, 217 maç, fark ↔ rozet korelasyonu −0.458 → −0.570.
+
+**Tarihi performans istisnası (T > 0):** sönümlemenin amacı çöp zamanda
+toplanan sayıyı ödüllendirmemek; tarihi bir performans o kategoriye
+girmiyor. Adebayo'nun 83 sayısı 21 farkla biten bir maçta atıldı
+(MIA 150–129 WAS) ve sönümleme onu 9.21'den 8.40'a indiriyordu. İstisna
+ile 9.23'te kalıyor. Veri setinde T > 0 olan 7 maç var.
+
+**0c neden var ve ORAN NEDEN 0.20:** A (takım kalitesi) yalnız çarpanda
+vardı, çarpan da 0.80–1.28'e sıkışık. Katsayıyı ikiye katlamak bile iki
+maç arasındaki boşluğu kapatmıyordu (LAC 131–90 SAC ile LAL 106–128 DET
+arası 3.11 → 1.63). Taşıyıcıya karıştırmak çalışıyor çünkü taşıyıcı
+tabana doğrudan giriyor, tavana takılmıyor.
+
+ÖLÇÜLEN SINIR — kural: "A, sürpriz sonuç ve dram bileşenlerinin üstüne
+çıkmasın."
+
+| A→K oranı | A'nın K'ya katkısı (ort / EN ÇOK) | sürprizi geçiyor mu? |
+|---|---|---|
+| 0.20 | 1.00 / **1.82** | hayır (sürpriz tabanı 2.00) |
+| 0.25 | 1.25 / **2.28** | **evet** |
+| 0.35 | 1.76 / 3.19 | evet |
+
+Sürpriz bonusu K'ya 2.00–4.00 ekliyor, dram taşıyıcı olduğunda ortalama
+7.06. **0.20, sınırı çiğnemeyen en yüksek oran** — bu yüzden 0.20.
+
+0.35 denendi: Detroit LAC'yi geçiyor ama gece başına tepe rozetin
+sapması 0.45'ten 0.38'e düşüyor (geceler birbirine benzemeye başlıyor)
+ve tepede A≥7 maç sayısı 9/29'dan 11/29'a çıkıyor.
 
 **3. adım neden var:** 83 sayılık bir gece, maçın 21 farkla bitmiş olmasına
 bakmaz. Tarihi bir bireysel performans bağlama muhtaç değildir. Ama yüksek

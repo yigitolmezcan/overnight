@@ -6,31 +6,31 @@
     {
       "sira": 1,
       "mac": "Boston Celtics — Miami Heat",
-      "rozet": 7.34,
+      "rozet": 7.02,
       "id": "g-mutlaka-2"
     },
     {
       "sira": 2,
       "mac": "New York Knicks — Philadelphia 76ers",
-      "rozet": 6.49,
+      "rozet": 6.89,
       "id": "g-mutlaka-3"
     },
     {
       "sira": 3,
       "mac": "Atlanta Hawks — San Antonio Spurs",
-      "rozet": 5.18,
+      "rozet": 4.51,
       "id": "a-0022500383"
     },
     {
       "sira": 4,
       "mac": "Cleveland Cavaliers — Chicago Bulls",
-      "rozet": 8.45,
+      "rozet": 8.59,
       "id": "g-mutlaka-1"
     },
     {
       "sira": 5,
       "mac": "Minnesota Timberwolves — Oklahoma City Thunder",
-      "rozet": 8.82,
+      "rozet": 8.97,
       "id": "g-mutlaka-0"
     }
   ],
@@ -40,7 +40,7 @@
       "vurgu": "sezonun en iyi gecesini",
       "kalip": "sezon_en_iyi",
       "kademe": 2,
-      "rozet": 8.4,
+      "rozet": 8.6,
       "mac": "Cleveland 125 – 136 Chicago",
       "saat": "03:30",
       "renk": "#CE1141",
@@ -52,7 +52,7 @@
       "vurgu": "5. kez",
       "kalip": "ustuste_otuz",
       "kademe": 2,
-      "rozet": 7.3,
+      "rozet": 7.0,
       "mac": "Boston 129 – 116 Miami",
       "saat": "03:00",
       "renk": "#12A05C",
@@ -64,7 +64,7 @@
       "vurgu": "5. kez",
       "kalip": "galibiyet_serisi",
       "kademe": 3,
-      "rozet": 5.2,
+      "rozet": 4.5,
       "mac": "Atlanta 98 – 126 San Antonio",
       "saat": "03:30",
       "renk": "#C4CED4",
@@ -75,7 +75,7 @@
   "kapak_listesi": [
     {
       "katman": "mutlaka",
-      "rozet": 7.3,
+      "rozet": 7.0,
       "ev_ad": "Boston",
       "dep_ad": "Miami",
       "ev_ad_tam": "Boston Celtics",
@@ -93,7 +93,7 @@
     },
     {
       "katman": "mutlaka",
-      "rozet": 6.5,
+      "rozet": 6.9,
       "ev_ad": "New York",
       "dep_ad": "Philadelphia",
       "ev_ad_tam": "New York Knicks",
@@ -111,7 +111,7 @@
     },
     {
       "katman": "mutlaka",
-      "rozet": 8.4,
+      "rozet": 8.6,
       "ev_ad": "Cleveland",
       "dep_ad": "Chicago",
       "ev_ad_tam": "Cleveland Cavaliers",
@@ -129,7 +129,7 @@
     },
     {
       "katman": "gec",
-      "rozet": 5.2,
+      "rozet": 4.5,
       "ev_ad": "Atlanta",
       "dep_ad": "San Antonio",
       "ev_ad_tam": "Atlanta Hawks",
@@ -147,7 +147,7 @@
     },
     {
       "katman": "mutlaka",
-      "rozet": 8.8,
+      "rozet": 9.0,
       "ev_ad": "Minnesota",
       "dep_ad": "Oklahoma City",
       "ev_ad_tam": "Minnesota Timberwolves",
@@ -171,7 +171,7 @@
       "hedef_id": "g-mutlaka-2",
       "icon": "standings",
       "saat": "03:00",
-      "rozet": 7.34,
+      "rozet": 7.02,
       "skor": "BOS 129 – MIA 116",
       "skor_tam": "Boston Celtics 129 – Miami Heat 116",
       "etiket": "gecenin ilki",
@@ -183,7 +183,7 @@
       "hedef_id": "g-mutlaka-3",
       "icon": "default",
       "saat": "03:00",
-      "rozet": 6.49,
+      "rozet": 6.89,
       "skor": "NYK 107 – PHI 116",
       "skor_tam": "New York Knicks 107 – Philadelphia 76ers 116",
       "etiket": "",
@@ -195,7 +195,7 @@
       "hedef_id": "g-mutlaka-1",
       "icon": "default",
       "saat": "03:30",
-      "rozet": 8.45,
+      "rozet": 8.59,
       "skor": "CLE 125 – CHI 136",
       "skor_tam": "Cleveland Cavaliers 125 – Chicago Bulls 136",
       "etiket": "",
@@ -207,7 +207,7 @@
       "hedef_id": "a-0022500383",
       "icon": "streak",
       "saat": "03:30",
-      "rozet": 5.18,
+      "rozet": 4.51,
       "skor": "ATL 98 – SAS 126",
       "skor_tam": "Atlanta Hawks 98 – San Antonio Spurs 126",
       "etiket": "",
@@ -219,7 +219,7 @@
       "hedef_id": "g-mutlaka-0",
       "icon": "default",
       "saat": "05:30",
-      "rozet": 8.82,
+      "rozet": 8.97,
       "skor": "MIN 112 – OKC 107",
       "skor_tam": "Minnesota Timberwolves 112 – Oklahoma City Thunder 107",
       "etiket": "gecenin maçı",
@@ -242,7 +242,7 @@
       "kisa": false,
       "mac": "Minnesota Timberwolves — Oklahoma City Thunder",
       "skor": "112–107",
-      "rozet": 8.82,
+      "rozet": 8.97,
       "baslik": "Minnesota Timberwolves, 12 sayılık farktan dönüp Oklahoma City Thunder'i yendi.",
       "neden_onemli": "Bu galibiyet, lig lideri Oklahoma City'ye karşı geldi.",
       "ceyrek_tablosu": [
@@ -894,7 +894,7 @@
       "kisa": true,
       "mac": "Cleveland Cavaliers — Chicago Bulls",
       "skor": "125–136",
-      "rozet": 8.45,
+      "rozet": 8.59,
       "baslik": "Chicago Bulls, 11 sayılık farktan dönüp Cleveland Cavaliers'i yendi.",
       "neden_onemli": "Liderliğin 7 kez el değiştirdiği maçta Bulls, 11 sayılık farktan döndü.",
       "ceyrek_tablosu": [
@@ -1572,7 +1572,7 @@
       "kisa": true,
       "mac": "Boston Celtics — Miami Heat",
       "skor": "129–116",
-      "rozet": 7.34,
+      "rozet": 7.02,
       "baslik": "Derrick White'ın 33 sayısıyla Boston Celtics, Miami Heat'i yendi.",
       "neden_onemli": "Miami, kazandığı en yakın anda farkı sadece 8 sayıya indirebildi.",
       "ceyrek_tablosu": [
@@ -2226,7 +2226,7 @@
       "kisa": true,
       "mac": "New York Knicks — Philadelphia 76ers",
       "skor": "107–116",
-      "rozet": 6.49,
+      "rozet": 6.89,
       "baslik": "",
       "neden_onemli": "",
       "ceyrek_tablosu": [
@@ -9361,7 +9361,7 @@
       "mac_id": "0022500383",
       "mac": "Atlanta Hawks — San Antonio Spurs",
       "skor": "98–126",
-      "rozet": 5.18,
+      "rozet": 4.51,
       "why": "kazananın 5 maçlık galibiyet serisi (takım kalitesi 6.3/10, sürpriz)",
       "metin": "San Antonio Spurs deplasmanda Atlanta Hawks'ı 126-98 ezdi.",
       "box": {

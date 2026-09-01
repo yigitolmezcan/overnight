@@ -1,15 +1,15 @@
 {
   "tarih": "2025-12-23",
-  "hesaplandi": "2026-08-31T19:01:24.984608Z",
-  "en_iyi_skor": 9.27,
+  "hesaplandi": "2026-09-01T10:35:26.645654Z",
+  "en_iyi_skor": 9.34,
   "maclar": [
     {
-      "rozet": 9.27,
-      "ham": 12.04,
+      "rozet": 9.34,
+      "ham": 12.44,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 9.69,
-        "K": 6.02,
+        "K": 7.39,
         "T": 0,
         "D": 6
       },
@@ -19,6 +19,12 @@
         "G": 0,
         "A": 6.83
       },
+      "ham_tasiyicilar": {
+        "S": 9.69,
+        "K": 6.02
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.37,
       "dram_terfi": true,
       "mac_id": "0022500415",
       "ev": "DAL",
@@ -32,40 +38,12 @@
       ]
     },
     {
-      "rozet": 8.66,
-      "ham": 9.59,
-      "katman": "mutlaka",
-      "tasiyicilar": {
-        "S": 9.3,
-        "K": 2.25,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 1.5,
-        "F": 0,
-        "G": 0,
-        "A": 7.43
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500422",
-      "ev": "LAC",
-      "dep": "HOU",
-      "ev_skor": 128,
-      "dep_skor": 108,
-      "en_iyi_performans": "Kawhi Leonard",
-      "esitlik_bozucu": [
-        0,
-        -20
-      ]
-    },
-    {
-      "rozet": 8.59,
-      "ham": 9.41,
+      "rozet": 8.65,
+      "ham": 9.58,
       "katman": "mutlaka",
       "tasiyicilar": {
         "S": 5.25,
-        "K": 4.47,
+        "K": 5.57,
         "T": 0,
         "D": 8
       },
@@ -75,6 +53,12 @@
         "G": 8,
         "A": 5.5
       },
+      "ham_tasiyicilar": {
+        "S": 5.25,
+        "K": 4.47
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.1,
       "dram_terfi": true,
       "mac_id": "0022500411",
       "ev": "ATL",
@@ -88,12 +72,12 @@
       ]
     },
     {
-      "rozet": 7.29,
-      "ham": 7.29,
+      "rozet": 8.09,
+      "ham": 8.17,
       "katman": "ikinci",
       "tasiyicilar": {
-        "S": 6.02,
-        "K": 5.5,
+        "S": 4.82,
+        "K": 7.15,
         "T": 0,
         "D": 0
       },
@@ -103,6 +87,12 @@
         "G": 0,
         "A": 8.27
       },
+      "ham_tasiyicilar": {
+        "S": 6.02,
+        "K": 5.5
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 1.65,
       "dram_terfi": false,
       "mac_id": "0022500417",
       "ev": "SAS",
@@ -116,12 +106,46 @@
       ]
     },
     {
-      "rozet": 7.22,
-      "ham": 7.22,
+      "rozet": 7.86,
+      "ham": 7.86,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 7.44,
+        "K": 3.74,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.5,
+        "F": 0,
+        "G": 0,
+        "A": 7.43
+      },
+      "ham_tasiyicilar": {
+        "S": 9.3,
+        "K": 2.25
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 1.49,
+      "dram_terfi": false,
+      "mac_id": "0022500422",
+      "ev": "LAC",
+      "dep": "HOU",
+      "ev_skor": 128,
+      "dep_skor": 108,
+      "en_iyi_performans": "Kawhi Leonard",
+      "esitlik_bozucu": [
+        0,
+        -20
+      ]
+    },
+    {
+      "rozet": 7.53,
+      "ham": 7.53,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 7.99,
-        "K": 0.0,
+        "K": 1.17,
         "T": 0,
         "D": 0
       },
@@ -131,6 +155,12 @@
         "G": 0,
         "A": 5.83
       },
+      "ham_tasiyicilar": {
+        "S": 7.99,
+        "K": 0.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.17,
       "dram_terfi": false,
       "mac_id": "0022500421",
       "ev": "SAC",
@@ -144,40 +174,12 @@
       ]
     },
     {
-      "rozet": 6.88,
-      "ham": 6.88,
+      "rozet": 6.75,
+      "ham": 6.75,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 6.94,
-        "K": 1.4,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 3.66,
-        "F": 0,
-        "G": 0,
-        "A": 6.42
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500416",
-      "ev": "MIN",
-      "dep": "NYK",
-      "ev_skor": 115,
-      "dep_skor": 104,
-      "en_iyi_performans": "Anthony Edwards",
-      "esitlik_bozucu": [
-        0,
-        -11
-      ]
-    },
-    {
-      "rozet": 6.61,
-      "ham": 6.61,
-      "katman": "ikinci",
-      "tasiyicilar": {
-        "S": 6.94,
-        "K": 1.69,
+        "K": 2.21,
         "T": 0,
         "D": 0
       },
@@ -187,6 +189,12 @@
         "G": 0,
         "A": 2.58
       },
+      "ham_tasiyicilar": {
+        "S": 6.94,
+        "K": 1.69
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.52,
       "dram_terfi": false,
       "mac_id": "0022500419",
       "ev": "UTA",
@@ -200,12 +208,46 @@
       ]
     },
     {
-      "rozet": 5.27,
-      "ham": 5.27,
+      "rozet": 6.59,
+      "ham": 6.59,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.25,
+        "K": 2.68,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.66,
+        "F": 0,
+        "G": 0,
+        "A": 6.42
+      },
+      "ham_tasiyicilar": {
+        "S": 6.94,
+        "K": 1.4
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 1.28,
+      "dram_terfi": false,
+      "mac_id": "0022500416",
+      "ev": "MIN",
+      "dep": "NYK",
+      "ev_skor": 115,
+      "dep_skor": 104,
+      "en_iyi_performans": "Anthony Edwards",
+      "esitlik_bozucu": [
+        0,
+        -11
+      ]
+    },
+    {
+      "rozet": 5.91,
+      "ham": 5.91,
       "katman": "gec",
       "tasiyicilar": {
         "S": 2.76,
-        "K": 4.5,
+        "K": 5.15,
         "T": 0,
         "D": 0
       },
@@ -215,6 +257,12 @@
         "G": 0,
         "A": 3.25
       },
+      "ham_tasiyicilar": {
+        "S": 2.76,
+        "K": 4.5
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.65,
       "dram_terfi": false,
       "mac_id": "0022500420",
       "ev": "POR",
@@ -228,12 +276,12 @@
       ]
     },
     {
-      "rozet": 4.92,
-      "ham": 4.92,
+      "rozet": 5.47,
+      "ham": 5.47,
       "katman": "gec",
       "tasiyicilar": {
-        "S": 4.32,
-        "K": 3.78,
+        "S": 3.46,
+        "K": 5.03,
         "T": 0,
         "D": 0
       },
@@ -243,6 +291,12 @@
         "G": 0,
         "A": 6.25
       },
+      "ham_tasiyicilar": {
+        "S": 4.32,
+        "K": 3.78
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 1.25,
       "dram_terfi": false,
       "mac_id": "0022500414",
       "ev": "MIA",
@@ -256,40 +310,12 @@
       ]
     },
     {
-      "rozet": 3.15,
-      "ham": 3.15,
-      "katman": "gec",
-      "tasiyicilar": {
-        "S": 3.65,
-        "K": 0.34,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 1.58,
-        "F": 0,
-        "G": 0,
-        "A": 1.42
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500413",
-      "ev": "IND",
-      "dep": "MIL",
-      "ev_skor": 94,
-      "dep_skor": 111,
-      "en_iyi_performans": "Kevin Porter Jr.",
-      "esitlik_bozucu": [
-        0,
-        -17
-      ]
-    },
-    {
-      "rozet": 3.08,
-      "ham": 3.08,
+      "rozet": 3.49,
+      "ham": 3.49,
       "katman": "gec",
       "tasiyicilar": {
         "S": 2.81,
-        "K": 2.14,
+        "K": 3.07,
         "T": 0,
         "D": 0
       },
@@ -299,6 +325,12 @@
         "G": 0,
         "A": 4.67
       },
+      "ham_tasiyicilar": {
+        "S": 2.81,
+        "K": 2.14
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.93,
       "dram_terfi": false,
       "mac_id": "0022500410",
       "ev": "PHI",
@@ -312,12 +344,46 @@
       ]
     },
     {
-      "rozet": 2.98,
-      "ham": 2.98,
+      "rozet": 2.92,
+      "ham": 2.92,
       "katman": "gec",
       "tasiyicilar": {
-        "S": 3.35,
-        "K": 0.0,
+        "S": 3.29,
+        "K": 0.62,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.58,
+        "F": 0,
+        "G": 0,
+        "A": 1.42
+      },
+      "ham_tasiyicilar": {
+        "S": 3.65,
+        "K": 0.34
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.28,
+      "dram_terfi": false,
+      "mac_id": "0022500413",
+      "ev": "IND",
+      "dep": "MIL",
+      "ev_skor": 94,
+      "dep_skor": 111,
+      "en_iyi_performans": "Kevin Porter Jr.",
+      "esitlik_bozucu": [
+        0,
+        -17
+      ]
+    },
+    {
+      "rozet": 2.83,
+      "ham": 2.83,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 3.02,
+        "K": 0.55,
         "T": 0,
         "D": 0
       },
@@ -327,6 +393,12 @@
         "G": 0,
         "A": 2.75
       },
+      "ham_tasiyicilar": {
+        "S": 3.35,
+        "K": 0.0
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.55,
       "dram_terfi": false,
       "mac_id": "0022500409",
       "ev": "CHA",
@@ -340,12 +412,12 @@
       ]
     },
     {
-      "rozet": 2.28,
-      "ham": 2.28,
+      "rozet": 2.78,
+      "ham": 2.78,
       "katman": "gec",
       "tasiyicilar": {
-        "S": 2.08,
-        "K": 1.83,
+        "S": 1.66,
+        "K": 2.7,
         "T": 0,
         "D": 0
       },
@@ -355,6 +427,12 @@
         "G": 0,
         "A": 4.33
       },
+      "ham_tasiyicilar": {
+        "S": 2.08,
+        "K": 1.83
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 0.87,
       "dram_terfi": false,
       "mac_id": "0022500412",
       "ev": "CLE",
@@ -368,12 +446,12 @@
       ]
     },
     {
-      "rozet": 1.76,
-      "ham": 1.76,
+      "rozet": 2.6,
+      "ham": 2.6,
       "katman": "gec",
       "tasiyicilar": {
-        "S": 1.47,
-        "K": 1.57,
+        "S": 1.18,
+        "K": 2.62,
         "T": 0,
         "D": 0
       },
@@ -383,6 +461,12 @@
         "G": 0,
         "A": 5.25
       },
+      "ham_tasiyicilar": {
+        "S": 1.47,
+        "K": 1.57
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 1.05,
       "dram_terfi": false,
       "mac_id": "0022500418",
       "ev": "PHX",

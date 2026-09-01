@@ -6,37 +6,37 @@
     {
       "sira": 1,
       "mac": "Atlanta Hawks — Chicago Bulls",
-      "rozet": 9.24,
+      "rozet": 9.26,
       "id": "g-mutlaka-0"
     },
     {
       "sira": 2,
       "mac": "Brooklyn Nets — Toronto Raptors",
-      "rozet": 2.45,
+      "rozet": 3.32,
       "id": "a-0022500397"
     },
     {
       "sira": 3,
       "mac": "New York Knicks — Miami Heat",
-      "rozet": 8.9,
+      "rozet": 9.01,
       "id": "g-mutlaka-2"
     },
     {
       "sira": 4,
       "mac": "Washington Wizards — San Antonio Spurs",
-      "rozet": 3.93,
+      "rozet": 3.86,
       "id": "a-0022500399"
     },
     {
       "sira": 5,
       "mac": "Minnesota Timberwolves — Milwaukee Bucks",
-      "rozet": 7.14,
+      "rozet": 7.23,
       "id": "g-mutlaka-3"
     },
     {
       "sira": 6,
       "mac": "Sacramento Kings — Houston Rockets",
-      "rozet": 9.06,
+      "rozet": 9.12,
       "id": "g-mutlaka-1"
     }
   ],
@@ -46,7 +46,7 @@
       "vurgu": "47 sayı",
       "kalip": "kirk_sayi",
       "kademe": 1,
-      "rozet": 8.9,
+      "rozet": 9.0,
       "mac": "New York 132 – 125 Miami",
       "saat": "02:00",
       "renk": "#F58426",
@@ -70,7 +70,7 @@
       "vurgu": "en yüksek skorunu",
       "kalip": "en_yuksek_skor",
       "kademe": 3,
-      "rozet": 9.2,
+      "rozet": 9.3,
       "mac": "Atlanta 150 – 152 Chicago",
       "saat": "23:30",
       "renk": "#CE1141",
@@ -81,7 +81,7 @@
   "kapak_listesi": [
     {
       "katman": "mutlaka",
-      "rozet": 9.2,
+      "rozet": 9.3,
       "ev_ad": "Atlanta",
       "dep_ad": "Chicago",
       "ev_ad_tam": "Atlanta Hawks",
@@ -99,7 +99,7 @@
     },
     {
       "katman": "mutlaka",
-      "rozet": 8.9,
+      "rozet": 9.0,
       "ev_ad": "New York",
       "dep_ad": "Miami",
       "ev_ad_tam": "New York Knicks",
@@ -117,7 +117,7 @@
     },
     {
       "katman": "gec",
-      "rozet": 2.5,
+      "rozet": 3.3,
       "ev_ad": "Brooklyn",
       "dep_ad": "Toronto",
       "ev_ad_tam": "Brooklyn Nets",
@@ -135,7 +135,7 @@
     },
     {
       "katman": "mutlaka",
-      "rozet": 7.1,
+      "rozet": 7.2,
       "ev_ad": "Minnesota",
       "dep_ad": "Milwaukee",
       "ev_ad_tam": "Minnesota Timberwolves",
@@ -195,7 +195,7 @@
       "hedef_id": "g-mutlaka-0",
       "icon": "standings",
       "saat": "23:30",
-      "rozet": 9.24,
+      "rozet": 9.26,
       "skor": "ATL 150 – CHI 152",
       "skor_tam": "Atlanta Hawks 150 – Chicago Bulls 152",
       "etiket": "gecenin maçı",
@@ -207,7 +207,7 @@
       "hedef_id": "g-mutlaka-2",
       "icon": "default",
       "saat": "02:00",
-      "rozet": 8.9,
+      "rozet": 9.01,
       "skor": "NYK 132 – MIA 125",
       "skor_tam": "New York Knicks 132 – Miami Heat 125",
       "etiket": "",
@@ -219,7 +219,7 @@
       "hedef_id": "a-0022500397",
       "icon": "default",
       "saat": "02:00",
-      "rozet": 2.45,
+      "rozet": 3.32,
       "skor": "BKN 96 – TOR 81",
       "skor_tam": "Brooklyn Nets 96 – Toronto Raptors 81",
       "etiket": "",
@@ -231,7 +231,7 @@
       "hedef_id": "g-mutlaka-3",
       "icon": "standings",
       "saat": "03:00",
-      "rozet": 7.14,
+      "rozet": 7.23,
       "skor": "MIN 103 – MIL 100",
       "skor_tam": "Minnesota Timberwolves 103 – Milwaukee Bucks 100",
       "etiket": "",
@@ -243,7 +243,7 @@
       "hedef_id": "a-0022500399",
       "icon": "default",
       "saat": "03:00",
-      "rozet": 3.93,
+      "rozet": 3.86,
       "skor": "WAS 113 – SAS 124",
       "skor_tam": "Washington Wizards 113 – San Antonio Spurs 124",
       "etiket": "",
@@ -255,7 +255,7 @@
       "hedef_id": "g-mutlaka-1",
       "icon": "default",
       "saat": "06:00",
-      "rozet": 9.06,
+      "rozet": 9.12,
       "skor": "SAC 125 – HOU 124",
       "skor_tam": "Sacramento Kings 125 – Houston Rockets 124",
       "etiket": "kapanış",
@@ -278,7 +278,7 @@
       "kisa": false,
       "mac": "Atlanta Hawks — Chicago Bulls",
       "skor": "150–152",
-      "rozet": 9.24,
+      "rozet": 9.26,
       "baslik": "Chicago Bulls, Atlanta Hawks deplasmanında 152-150 kazandı.",
       "neden_onemli": "",
       "ceyrek_tablosu": [
@@ -964,7 +964,7 @@
       "kisa": true,
       "mac": "Sacramento Kings — Houston Rockets",
       "skor": "125–124",
-      "rozet": 9.06,
+      "rozet": 9.12,
       "baslik": "Sacramento Kings, Houston Rockets'i son saniyede devirdi.",
       "neden_onemli": "",
       "ceyrek_tablosu": [
@@ -1593,7 +1593,7 @@
       "kisa": true,
       "mac": "New York Knicks — Miami Heat",
       "skor": "132–125",
-      "rozet": 8.9,
+      "rozet": 9.01,
       "baslik": "Brunson'ın 47 sayısıyla New York, Miami'yi yendi.",
       "neden_onemli": "New York Knicks, konferansta 2. sıraya yükseldi.",
       "ceyrek_tablosu": [
@@ -2198,7 +2198,7 @@
       "kisa": true,
       "mac": "Minnesota Timberwolves — Milwaukee Bucks",
       "skor": "103–100",
-      "rozet": 7.14,
+      "rozet": 7.23,
       "baslik": "Minnesota Timberwolves, 16 sayılık farktan dönüp Milwaukee Bucks'u yendi.",
       "neden_onemli": "",
       "ceyrek_tablosu": [
@@ -10372,7 +10372,7 @@
       "mac_id": "0022500399",
       "mac": "Washington Wizards — San Antonio Spurs",
       "skor": "113–124",
-      "rozet": 3.93,
+      "rozet": 3.86,
       "why": "",
       "metin": "San Antonio Spurs deplasmanda Washington Wizards'ı 124-113 yendi.",
       "box": {
@@ -10971,7 +10971,7 @@
       "mac_id": "0022500397",
       "mac": "Brooklyn Nets — Toronto Raptors",
       "skor": "96–81",
-      "rozet": 2.45,
+      "rozet": 3.32,
       "why": "",
       "metin": "Brooklyn Nets evinde Toronto Raptors'u 96-81 yendi.",
       "box": {

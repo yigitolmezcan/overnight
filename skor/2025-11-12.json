@@ -1,15 +1,15 @@
 {
   "tarih": "2025-11-12",
-  "hesaplandi": "2026-08-31T19:01:23.955845Z",
-  "en_iyi_skor": 9.16,
+  "hesaplandi": "2026-09-01T10:35:23.088938Z",
+  "en_iyi_skor": 9.19,
   "maclar": [
     {
-      "rozet": 9.16,
-      "ham": 11.49,
+      "rozet": 9.19,
+      "ham": 11.62,
       "katman": "mutlaka",
       "tasiyicilar": {
-        "S": 10,
-        "K": 0.1,
+        "S": 10.0,
+        "K": 1.42,
         "T": 6,
         "D": 0
       },
@@ -19,6 +19,12 @@
         "G": 0,
         "A": 6.58
       },
+      "ham_tasiyicilar": {
+        "S": 10,
+        "K": 0.1
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.32,
       "dram_terfi": false,
       "mac_id": "0022500224",
       "ev": "LAC",
@@ -32,12 +38,12 @@
       ]
     },
     {
-      "rozet": 8.86,
-      "ham": 10.26,
+      "rozet": 8.97,
+      "ham": 10.64,
       "katman": "mutlaka",
       "tasiyicilar": {
-        "S": 10,
-        "K": 0.1,
+        "S": 10.0,
+        "K": 1.34,
         "T": 0,
         "D": 0
       },
@@ -47,6 +53,12 @@
         "G": 6,
         "A": 6.21
       },
+      "ham_tasiyicilar": {
+        "S": 10,
+        "K": 0.1
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.24,
       "dram_terfi": false,
       "mac_id": "0022500220",
       "ev": "SAS",
@@ -60,68 +72,12 @@
       ]
     },
     {
-      "rozet": 7.77,
-      "ham": 7.77,
-      "katman": "ikinci",
-      "tasiyicilar": {
-        "S": 8.53,
-        "K": 0.92,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 3.11,
-        "F": 0,
-        "G": 0,
-        "A": 2.83
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500214",
-      "ev": "DET",
-      "dep": "CHI",
-      "ev_skor": 124,
-      "dep_skor": 113,
-      "en_iyi_performans": "Paul Reed",
-      "esitlik_bozucu": [
-        0,
-        -11
-      ]
-    },
-    {
-      "rozet": 7.58,
-      "ham": 7.58,
-      "katman": "ikinci",
-      "tasiyicilar": {
-        "S": 8.23,
-        "K": 1.03,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 0.19,
-        "F": 0,
-        "G": 0,
-        "A": 6.53
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500222",
-      "ev": "OKC",
-      "dep": "LAL",
-      "ev_skor": 121,
-      "dep_skor": 92,
-      "en_iyi_performans": "Shai Gilgeous-Alexander",
-      "esitlik_bozucu": [
-        0,
-        -29
-      ]
-    },
-    {
-      "rozet": 7.35,
-      "ham": 7.35,
+      "rozet": 7.4,
+      "ham": 7.4,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 7.83,
-        "K": 0.1,
+        "K": 0.28,
         "T": 0,
         "D": 0
       },
@@ -131,6 +87,12 @@
         "G": 0,
         "A": 0.92
       },
+      "ham_tasiyicilar": {
+        "S": 7.83,
+        "K": 0.1
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.18,
       "dram_terfi": false,
       "mac_id": "0022500219",
       "ev": "NOP",
@@ -144,12 +106,46 @@
       ]
     },
     {
-      "rozet": 5.6,
-      "ham": 5.6,
-      "katman": "gec",
+      "rozet": 7.15,
+      "ham": 7.15,
+      "katman": "ikinci",
       "tasiyicilar": {
-        "S": 6.34,
-        "K": 1.5,
+        "S": 7.68,
+        "K": 1.49,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.11,
+        "F": 0,
+        "G": 0,
+        "A": 2.83
+      },
+      "ham_tasiyicilar": {
+        "S": 8.53,
+        "K": 0.92
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.57,
+      "dram_terfi": false,
+      "mac_id": "0022500214",
+      "ev": "DET",
+      "dep": "CHI",
+      "ev_skor": 124,
+      "dep_skor": 113,
+      "en_iyi_performans": "Paul Reed",
+      "esitlik_bozucu": [
+        0,
+        -11
+      ]
+    },
+    {
+      "rozet": 6.47,
+      "ham": 6.47,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.58,
+        "K": 2.34,
         "T": 0,
         "D": 0
       },
@@ -157,27 +153,33 @@
         "Y": 0.19,
         "F": 0,
         "G": 0,
-        "A": 1.67
+        "A": 6.53
       },
+      "ham_tasiyicilar": {
+        "S": 8.23,
+        "K": 1.03
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 1.31,
       "dram_terfi": false,
-      "mac_id": "0022500223",
-      "ev": "SAC",
-      "dep": "ATL",
-      "ev_skor": 100,
-      "dep_skor": 133,
-      "en_iyi_performans": "Jalen Johnson",
+      "mac_id": "0022500222",
+      "ev": "OKC",
+      "dep": "LAL",
+      "ev_skor": 121,
+      "dep_skor": 92,
+      "en_iyi_performans": "Shai Gilgeous-Alexander",
       "esitlik_bozucu": [
         0,
-        -33
+        -29
       ]
     },
     {
-      "rozet": 5.28,
-      "ham": 5.28,
+      "rozet": 5.04,
+      "ham": 5.04,
       "katman": "gec",
       "tasiyicilar": {
-        "S": 4.94,
-        "K": 1.72,
+        "S": 4.45,
+        "K": 2.54,
         "T": 0,
         "D": 0
       },
@@ -187,6 +189,12 @@
         "G": 6,
         "A": 4.08
       },
+      "ham_tasiyicilar": {
+        "S": 4.94,
+        "K": 1.72
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.82,
       "dram_terfi": false,
       "mac_id": "0022500217",
       "ev": "MIA",
@@ -200,12 +208,12 @@
       ]
     },
     {
-      "rozet": 5.09,
-      "ham": 5.09,
+      "rozet": 5.01,
+      "ham": 5.01,
       "katman": "gec",
       "tasiyicilar": {
-        "S": 4.94,
-        "K": 2.18,
+        "S": 4.45,
+        "K": 3.51,
         "T": 0,
         "D": 0
       },
@@ -215,6 +223,12 @@
         "G": 0,
         "A": 6.67
       },
+      "ham_tasiyicilar": {
+        "S": 4.94,
+        "K": 2.18
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 1.33,
       "dram_terfi": false,
       "mac_id": "0022500215",
       "ev": "NYK",
@@ -228,12 +242,46 @@
       ]
     },
     {
-      "rozet": 4.65,
-      "ham": 4.65,
+      "rozet": 4.11,
+      "ham": 4.11,
       "katman": "gec",
       "tasiyicilar": {
-        "S": 4.87,
-        "K": 1.55,
+        "S": 4.44,
+        "K": 1.83,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.19,
+        "F": 0,
+        "G": 0,
+        "A": 1.67
+      },
+      "ham_tasiyicilar": {
+        "S": 6.34,
+        "K": 1.5
+      },
+      "s_sonum": 0.7,
+      "a_k_katkisi": 0.33,
+      "dram_terfi": false,
+      "mac_id": "0022500223",
+      "ev": "SAC",
+      "dep": "ATL",
+      "ev_skor": 100,
+      "dep_skor": 133,
+      "en_iyi_performans": "Jalen Johnson",
+      "esitlik_bozucu": [
+        0,
+        -33
+      ]
+    },
+    {
+      "rozet": 3.65,
+      "ham": 3.65,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 3.41,
+        "K": 2.6,
         "T": 0,
         "D": 0
       },
@@ -243,6 +291,12 @@
         "G": 0,
         "A": 5.25
       },
+      "ham_tasiyicilar": {
+        "S": 4.87,
+        "K": 1.55
+      },
+      "s_sonum": 0.7,
+      "a_k_katkisi": 1.05,
       "dram_terfi": false,
       "mac_id": "0022500216",
       "ev": "BOS",
@@ -256,12 +310,12 @@
       ]
     },
     {
-      "rozet": 3.73,
-      "ham": 3.73,
+      "rozet": 3.5,
+      "ham": 3.5,
       "katman": "gec",
       "tasiyicilar": {
-        "S": 3.95,
-        "K": 1.5,
+        "S": 3.56,
+        "K": 1.9,
         "T": 0,
         "D": 0
       },
@@ -271,6 +325,12 @@
         "G": 0,
         "A": 2.0
       },
+      "ham_tasiyicilar": {
+        "S": 3.95,
+        "K": 1.5
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.4,
       "dram_terfi": false,
       "mac_id": "0022500213",
       "ev": "CHA",
@@ -284,12 +344,12 @@
       ]
     },
     {
-      "rozet": 3.16,
-      "ham": 3.16,
+      "rozet": 3.37,
+      "ham": 3.37,
       "katman": "gec",
       "tasiyicilar": {
         "S": 3.09,
-        "K": 0.68,
+        "K": 1.41,
         "T": 0,
         "D": 0
       },
@@ -299,6 +359,12 @@
         "G": 0,
         "A": 3.67
       },
+      "ham_tasiyicilar": {
+        "S": 3.09,
+        "K": 0.68
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.73,
       "dram_terfi": false,
       "mac_id": "0022500221",
       "ev": "DAL",
@@ -312,12 +378,12 @@
       ]
     },
     {
-      "rozet": 2.7,
-      "ham": 2.7,
+      "rozet": 2.54,
+      "ham": 2.54,
       "katman": "gec",
       "tasiyicilar": {
-        "S": 2.85,
-        "K": 0.52,
+        "S": 2.28,
+        "K": 1.84,
         "T": 0,
         "D": 0
       },
@@ -327,6 +393,12 @@
         "G": 0,
         "A": 6.58
       },
+      "ham_tasiyicilar": {
+        "S": 2.85,
+        "K": 0.52
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 1.32,
       "dram_terfi": false,
       "mac_id": "0022500218",
       "ev": "HOU",

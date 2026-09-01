@@ -1,15 +1,49 @@
 {
   "tarih": "2026-02-12",
-  "hesaplandi": "2026-08-31T19:01:27.408477Z",
-  "en_iyi_skor": 7.5,
+  "hesaplandi": "2026-09-01T10:35:34.644854Z",
+  "en_iyi_skor": 7.28,
   "maclar": [
     {
-      "rozet": 7.5,
-      "ham": 7.5,
+      "rozet": 7.28,
+      "ham": 7.28,
       "katman": "ikinci",
       "tasiyicilar": {
-        "S": 7.75,
-        "K": 3.48,
+        "S": 3.83,
+        "K": 7.22,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.27,
+        "F": 0,
+        "G": 0,
+        "A": 4.04
+      },
+      "ham_tasiyicilar": {
+        "S": 4.25,
+        "K": 6.41
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.81,
+      "dram_terfi": false,
+      "mac_id": "0022500789",
+      "ev": "OKC",
+      "dep": "MIL",
+      "ev_skor": 93,
+      "dep_skor": 110,
+      "en_iyi_performans": "Ousmane Dieng",
+      "esitlik_bozucu": [
+        0,
+        -17
+      ]
+    },
+    {
+      "rozet": 6.88,
+      "ham": 6.88,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.98,
+        "K": 3.63,
         "T": 0,
         "D": 0
       },
@@ -19,6 +53,12 @@
         "G": 0,
         "A": 0.75
       },
+      "ham_tasiyicilar": {
+        "S": 7.75,
+        "K": 3.48
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.15,
       "dram_terfi": false,
       "mac_id": "0022500790",
       "ev": "UTA",
@@ -32,12 +72,12 @@
       ]
     },
     {
-      "rozet": 6.81,
-      "ham": 6.81,
-      "katman": "ikinci",
+      "rozet": 5.79,
+      "ham": 5.79,
+      "katman": "gec",
       "tasiyicilar": {
-        "S": 6.82,
-        "K": 3.36,
+        "S": 5.46,
+        "K": 3.99,
         "T": 0,
         "D": 0
       },
@@ -47,6 +87,12 @@
         "G": 0,
         "A": 3.17
       },
+      "ham_tasiyicilar": {
+        "S": 6.82,
+        "K": 3.36
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 0.63,
       "dram_terfi": false,
       "mac_id": "0022500791",
       "ev": "LAL",
@@ -57,34 +103,6 @@
       "esitlik_bozucu": [
         0,
         -20
-      ]
-    },
-    {
-      "rozet": 6.69,
-      "ham": 6.69,
-      "katman": "ikinci",
-      "tasiyicilar": {
-        "S": 4.25,
-        "K": 6.41,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 1.27,
-        "F": 0,
-        "G": 0,
-        "A": 4.04
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500789",
-      "ev": "OKC",
-      "dep": "MIL",
-      "ev_skor": 93,
-      "dep_skor": 110,
-      "en_iyi_performans": "Ousmane Dieng",
-      "esitlik_bozucu": [
-        0,
-        -17
       ]
     }
   ]

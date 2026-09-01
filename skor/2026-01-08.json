@@ -1,15 +1,49 @@
 {
   "tarih": "2026-01-08",
-  "hesaplandi": "2026-08-31T19:01:26.066479Z",
-  "en_iyi_skor": 7.88,
+  "hesaplandi": "2026-09-01T10:35:30.990382Z",
+  "en_iyi_skor": 7.92,
   "maclar": [
     {
-      "rozet": 7.88,
-      "ham": 7.88,
+      "rozet": 7.92,
+      "ham": 7.92,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 3.71,
+        "K": 6.75,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.1,
+        "F": 6,
+        "G": 0,
+        "A": 7.58
+      },
+      "ham_tasiyicilar": {
+        "S": 3.71,
+        "K": 5.23
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.52,
+      "dram_terfi": false,
+      "mac_id": "0022500530",
+      "ev": "MIN",
+      "dep": "CLE",
+      "ev_skor": 131,
+      "dep_skor": 122,
+      "en_iyi_performans": "Donovan Mitchell",
+      "esitlik_bozucu": [
+        0,
+        -9
+      ]
+    },
+    {
+      "rozet": 7.89,
+      "ham": 7.89,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 5.34,
-        "K": 0.0,
+        "K": 0.18,
         "T": 0,
         "D": 7
       },
@@ -19,6 +53,12 @@
         "G": 0,
         "A": 0.92
       },
+      "ham_tasiyicilar": {
+        "S": 5.34,
+        "K": 0.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.18,
       "dram_terfi": true,
       "mac_id": "0022500528",
       "ev": "CHA",
@@ -32,12 +72,12 @@
       ]
     },
     {
-      "rozet": 7.76,
-      "ham": 7.76,
+      "rozet": 7.84,
+      "ham": 7.84,
       "katman": "ikinci",
       "tasiyicilar": {
         "S": 6.12,
-        "K": 1.54,
+        "K": 2.41,
         "T": 0,
         "D": 6
       },
@@ -47,6 +87,12 @@
         "G": 0,
         "A": 4.33
       },
+      "ham_tasiyicilar": {
+        "S": 6.12,
+        "K": 1.54
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.87,
       "dram_terfi": true,
       "mac_id": "0022500531",
       "ev": "UTA",
@@ -57,34 +103,6 @@
       "esitlik_bozucu": [
         6,
         -2
-      ]
-    },
-    {
-      "rozet": 6.39,
-      "ham": 6.39,
-      "katman": "ikinci",
-      "tasiyicilar": {
-        "S": 3.71,
-        "K": 5.23,
-        "T": 0,
-        "D": 0
-      },
-      "yukselticiler": {
-        "Y": 3.1,
-        "F": 6,
-        "G": 0,
-        "A": 7.58
-      },
-      "dram_terfi": false,
-      "mac_id": "0022500530",
-      "ev": "MIN",
-      "dep": "CLE",
-      "ev_skor": 131,
-      "dep_skor": 122,
-      "en_iyi_performans": "Donovan Mitchell",
-      "esitlik_bozucu": [
-        0,
-        -9
       ]
     }
   ]
