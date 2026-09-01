@@ -6636,11 +6636,11 @@ def main():
     _mnk = _sayfa.split(".kaplist .mn{")[1].split("}")[0]
     basar("Liste: ana satır mono 16px",
           "font-family:var(--mono);font-size:16px" in _mnk)
-    basar("Liste: kazanan kalın-beyaz, ayırıcı çok soluk, kaybeden soluk",
+    basar("Liste: kazanan kalın-beyaz, ayırıcı ve kaybeden ikinci planda",
           "color:var(--ink);font-weight:700" in
           _sayfa.split(".kaplist .mn b{")[1].split("}")[0]
-          and "#2E3846" in _sayfa.split(".kaplist .mn i{")[1].split("}")[0]
-          and "#4C5665" in _sayfa.split(".kaplist .mn s{")[1].split("}")[0])
+          and "var(--ayirici)" in _sayfa.split(".kaplist .mn i{")[1].split("}")[0]
+          and "var(--kaybeden)" in _sayfa.split(".kaplist .mn s{")[1].split("}")[0])
     basar("Liste: kazanan ve skor rozetten bağımsız parlak",
           ".kaplist .k3 .mn b{" not in _sayfa
           and ".kaplist .k3 .mn s{" not in _sayfa)
@@ -6962,11 +6962,10 @@ def main():
     basar("Sıra: Türkler maç skorunda ev sahibi önce",
           'mac_kisa = (f"{TAKIM_KISA.get(ev[\'teamTricode\']' in _dsrc_kod)
     # KAZANANI KALINLIK GÖSTERİYOR, konum değil.
-    basar("Sıra: kazanan kalın #F2F0EC, kaybeden #4C5665",
+    basar("Sıra: kazanan kalın #F2F0EC, kaybeden --kaybeden",
           ".mrow.win .mad,.mrow.win .msk{color:var(--ink);font-weight:700}" in _sayfa
-          and ".mrow.lose .mad,.mrow.lose .msk{color:#4C5665" in _sayfa
-          and ".kt.win .ktn,.kt.kts" not in _sayfa
-          and ".kt.lose .ktn,.kt.lose .kts{color:#4C5665" in _sayfa)
+          and ".mrow.lose .mad,.mrow.lose .msk{color:var(--kaybeden)" in _sayfa
+          and ".kt.lose .ktn,.kt.lose .kts{color:var(--kaybeden)" in _sayfa)
     # ETİKET YOK: "EV"/"DEP" işareti gürültü olurdu (kullanıcı kuralı).
     basar("Sıra: 'EV'/'DEP' etiketi eklenmedi",
           ">EV<" not in _sayfa and ">DEP<" not in _sayfa
@@ -7043,6 +7042,38 @@ def main():
                         _celisen5.append(f"{_t5} {_al5}: {_c5[:56]}")
     basar("Sıra: 'deplasmanında/evinde' ifadeleri sırayla çelişmiyor",
           not _celisen5, "; ".join(_celisen5[:3]))
+
+    # ==================================================================
+    # SKORUN KAYBEDEN TARAFI — TEK KAYNAK
+    # ==================================================================
+    # #4C5665 / #2E3846 fazla soluktu, skorun yarısı kayboluyordu.
+    # İkinci planda kalsın ama OKUNSUN (kullanıcı kararı).
+    basar("Kaybeden rengi: iki değişken :root'ta bir kez tanımlı",
+          _ly.count("--kaybeden:") == 1 and _ly.count("--ayirici:") == 1
+          and "--kaybeden:#7E8899" in _ly and "--ayirici:#5A6472" in _ly)
+    # BEŞ YÜZEYİN HEPSİ AYNI KAYNAKTAN.
+    for _sel5, _ad5 in (
+            (".kaplist .mn s{text-decoration:none;color:var(--kaybeden)}",
+             "gecenin tamamı"),
+            (".kaplist .mn i{font-style:normal;color:var(--ayirici)", "ayırıcı"),
+            (".mrow.lose .mad,.mrow.lose .msk{color:var(--kaybeden)", "maç bloğu"),
+            (".kt.lose .ktn,.kt.lose .kts{color:var(--kaybeden)", "box score kartı"),
+            (".kararc .ktx div s{text-decoration:none;color:var(--kaybeden)}",
+             "karar anı"),
+            ("color:var(--kaybeden);", "Türkler maç skoru")):
+        basar(f"Kaybeden rengi[{_ad5}]: değişkenden geliyor", _sel5 in _ly)
+    # Eski ham değerler kaybeden/ayırıcı kurallarında kalmasın.
+    _eski5 = [_l for _l in _ly.splitlines()
+              if ("#4C5665" in _l or "#2E3846" in _l)
+              and ("lose" in _l or ".mn s{" in _l or ".mn i{" in _l
+                   or "tkmac" in _l)]
+    basar("Kaybeden rengi: eski ham değer hiçbir kuralda kalmadı",
+          not _eski5, "; ".join(_eski5[:3]))
+    # Kazanan tarafta değişiklik YOK.
+    basar("Kaybeden rengi: kazanan tarafa dokunulmadı",
+          ".mrow.win .mad,.mrow.win .msk{color:var(--ink);font-weight:700}" in _ly
+          and ".kt.win .ktn,.kt.win .kts{color:var(--ink);font-weight:700}" in _ly
+          and ".kaplist .mn b{color:var(--ink);font-weight:700}" in _ly)
 
     # ==================================================================
     # KARAR ANI — DEV SAAT

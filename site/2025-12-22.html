@@ -37,6 +37,11 @@
      manşet ayırıcıları, kapak listesinin üst çizgisi ve üçüncü kademe
      manşetin soluk rengi hiç uygulanmamış. Ölçümle bulundu. */
   --line2:#151C26; --dim:#98A2B0;
+  /* SKORUN KAYBEDEN TARAFI — ikinci planda ama OKUNUR. Eskiden
+     #4C5665/#2E3846'ydı ve skorun yarısı kayboluyordu: iki tarafın da
+     okunabilmesi gerekiyor (kullanıcı kararı). Sıralamayı ev sahibi,
+     kazananı kalınlık gösteriyor; renk yalnız plan ayrımı yapıyor. */
+  --kaybeden:#7E8899; --ayirici:#5A6472;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scrollbar-gutter:stable}
@@ -195,7 +200,7 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
 .tkblok:hover{background:#101725}
 .tkust{display:flex;align-items:baseline;gap:12px;margin-bottom:12px}
 .tkad{flex:1;min-width:0;font-size:16px;font-weight:600;letter-spacing:-.01em}
-.tkmac{flex:none;font-family:var(--mono);font-size:11.5px;color:var(--faint);
+.tkmac{flex:none;font-family:var(--mono);font-size:11.5px;color:var(--kaybeden);
   letter-spacing:.02em;white-space:nowrap}
 .tkbuyuk{display:flex;gap:30px}
 .tkbuyuk div{display:flex;flex-direction:column}
@@ -446,10 +451,10 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
 .mad{flex:1;min-width:0;font-family:var(--mono);font-size:17px;letter-spacing:.01em;line-height:1.25}
 .msk{font-family:var(--mono);font-size:24px;letter-spacing:-.02em;line-height:1;flex:none}
 /* SIRA ARTIK EV SAHİBİNİ GÖSTERİYOR, KAZANANI DEĞİL — vurgu skorda ve
-   isimde. Kazanan #F2F0EC ve kalın, kaybeden #4C5665. Ev sahibi
+   isimde. Kazanan #F2F0EC ve kalın, kaybeden --kaybeden. Ev sahibi
    kaybettiyse üstte ama soluk durur. */
 .mrow.win .mad,.mrow.win .msk{color:var(--ink);font-weight:700}
-.mrow.lose .mad,.mrow.lose .msk{color:#4C5665;font-weight:400}
+.mrow.lose .mad,.mrow.lose .msk{color:var(--kaybeden);font-weight:400}
 .mblok.sm .mad{font-size:14.5px}
 .mblok.sm .msk{font-size:19px}
 /* Orta boy: Göz at için. Üç bölümün ağırlığı skor bloğunun boyundan da
@@ -519,8 +524,9 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
   text-decoration:none;margin-bottom:5px}
 .kararc .ktx{flex:1;min-width:0;border-left:1px solid var(--line2);
   padding-left:18px}
-.kararc .ktx div{font-family:var(--mono);font-size:11px;color:#5A6472;
+.kararc .ktx div{font-family:var(--mono);font-size:11px;color:var(--ayirici);
   margin-top:8px}
+.kararc .ktx div s{text-decoration:none;color:var(--kaybeden)}
 .kararc .ktx div b{color:var(--ink);font-weight:700}
 /* MOBİL: 40px saat ile cümle yan yana sığmazsa saat 34px'e iner —
    ALT ALTA GEÇMEZ (kullanıcı kuralı). */
@@ -771,7 +777,7 @@ td.oyad{color:var(--ink);cursor:pointer}
   letter-spacing:.01em;line-height:1.2}
 .kts{font-family:var(--mono);font-size:34px;font-weight:500;letter-spacing:-.02em;line-height:1;flex:none}
 .kt.lose{background:linear-gradient(90deg,color-mix(in srgb,var(--tc) 7%,transparent),transparent 78%)}
-.kt.lose .ktn,.kt.lose .kts{color:#4C5665;font-weight:400}
+.kt.lose .ktn,.kt.lose .kts{color:var(--kaybeden);font-weight:400}
 .kt.win .ktn,.kt.win .kts{color:var(--ink);font-weight:700}
 /* Çeyrek şeridi (kullanıcı kararı): skor bloğunun ALTINDA, sekmelerin
    ÜSTÜNDE kendi şeridinde. Satır içine denendi, 375px'te takım adının
@@ -1308,8 +1314,8 @@ td.khot{color:var(--amber);font-weight:700}
    kaybedenin skoru ve adı soluk. Tek okuma, ayrı sütun yok. */
 .kaplist .mn{font-family:var(--mono);font-size:16px;letter-spacing:-.01em}
 .kaplist .mn b{color:var(--ink);font-weight:700}
-.kaplist .mn i{font-style:normal;color:#2E3846;margin:0 3px}
-.kaplist .mn s{text-decoration:none;color:#4C5665}
+.kaplist .mn i{font-style:normal;color:var(--ayirici);margin:0 3px}
+.kaplist .mn s{text-decoration:none;color:var(--kaybeden)}
 /* KAZANAN VE SKOR HER SATIRDA PARLAK — düşük rozetlide de. Ayrım
    rozet çipinde (ember / bakır / gri), satır metninde değil. */
 /* ALT BİLGİ: rozet çipi + saat. Rozet üç kademe. */
@@ -2828,8 +2834,8 @@ function render(d){
   const kararBlogu = k => {
     if(!k) return '';
     const sk = k.ev_kazandi
-      ? `<b>${k.ev_skor}</b> – ${k.dep_skor}`
-      : `${k.ev_skor} – <b>${k.dep_skor}</b>`;
+      ? `<b>${k.ev_skor}</b> – <s>${k.dep_skor}</s>`
+      : `<s>${k.ev_skor}</s> – <b>${k.dep_skor}</b>`;
     return `<div class="kararc">
       <div class="kbig">${k.periyot_etiketi
           ? `<s>${esc(k.periyot_etiketi)}</s>` : ''}
