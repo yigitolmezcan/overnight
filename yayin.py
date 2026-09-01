@@ -319,7 +319,10 @@ def _siteyi_kur(tarih, kok_da=True):
     return len(yeni.encode("utf-8"))
 
 
-SITE_ADRESI = "https://overnight-yigit8.vercel.app"
+# ADRES TEK KAYNAKTAN (bkz. site_adresi.py) — bülten de aynı yerden
+# okuyor, alan adı değişince tek dosya güncelleniyor.
+from site_adresi import site_adresi
+SITE_ADRESI = site_adresi()
 
 
 def arsiv_sayfalari():
@@ -374,6 +377,13 @@ def _meta_doldur(html, tarih, dist, og_gorsel):
         "og:description": aciklama, "twitter:description": aciklama,
         "og:url": adres, "og:image": gorsel, "twitter:image": gorsel,
     }
+    # CANONICAL: eski vercel.app adresi hâlâ çözülüyor; arama motoru iki
+    # ayrı site sanmasın diye her sayfa kendi asıl adresini işaret ediyor.
+    html, _sayi_c = re.subn(r'(<link rel="canonical" href=")[^"]*(">)',
+                            lambda m: m.group(1) + _kacir(adres) + m.group(2),
+                            html, count=1)
+    if _sayi_c != 1:
+        raise RuntimeError("canonical etiketi bulunamadı")
     for ad, deger in degerler.items():
         nitelik = "name" if ad.startswith("twitter:") else "property"
         desen = rf'(<meta {nitelik}="{re.escape(ad)}" content=")[^"]*(">)'

@@ -20,7 +20,8 @@ import time
 import urllib.error
 import urllib.request
 
-VARSAYILAN_URL = "https://overnight-yigit8.vercel.app/"
+from site_adresi import site_adresi
+VARSAYILAN_URL = site_adresi() + "/"
 # Vercel dağıtımı birkaç dakika sürebiliyor; tek atışta "olmadı" demek
 # yanlış alarm üretir. Toplam ~5 dakika bekleniyor.
 DENEME = 10

@@ -7044,6 +7044,43 @@ def main():
           not _celisen5, "; ".join(_celisen5[:3]))
 
     # ==================================================================
+    # SİTE ADRESİ — TEK KAYNAK
+    # ==================================================================
+    # og:url ve og:image eski Vercel adresini gösteriyordu: adres
+    # yayin.py'de sabit, bulten.py'de ayrı bir ortam değişkenindeydi.
+    import site_adresi as _sa
+    import glob as _glob
+    basar("Adres: tek kaynak modülü var ve alan adını veriyor",
+          _sa.VARSAYILAN == "https://overnightnba.com"
+          and _sa.site_adresi() == "https://ornek.test")   # ortam değişkeni kazanır
+    _kaynaklar = []
+    for _dosya in ("yayin.py", "bulten.py", "og_uret.py", "canli_dogrula.py"):
+        _iç = open(_dosya, encoding="utf-8").read()
+        if "from site_adresi import site_adresi" not in _iç:
+            _kaynaklar.append(_dosya)
+        if "overnight-yigit8" in _iç:
+            _kaynaklar.append(f"{_dosya}: eski adres sabit")
+    basar("Adres: dört modül de tek kaynaktan okuyor",
+          not _kaynaklar, "; ".join(_kaynaklar))
+    # Yayındaki her sayfada og:url, og:image ve canonical yeni alan adında
+    # ve birbiriyle tutarlı.
+    _meta_hata = []
+    for _f in sorted(_glob.glob("site/2*.html")) + ["site/index.html"]:
+        _h = open(_f, encoding="utf-8").read()
+        _ou = _re.search(r'<meta property="og:url" content="([^"]*)"', _h)
+        _oi = _re.search(r'<meta property="og:image" content="([^"]*)"', _h)
+        _cn = _re.search(r'<link rel="canonical" href="([^"]*)"', _h)
+        for _et, _m in (("og:url", _ou), ("og:image", _oi), ("canonical", _cn)):
+            if not _m or not _m.group(1):
+                _meta_hata.append(f"{_f}: {_et} boş"); continue
+            if not _m.group(1).startswith(_sa.VARSAYILAN):
+                _meta_hata.append(f"{_f}: {_et} = {_m.group(1)[:44]}")
+        if _ou and _cn and _ou.group(1) != _cn.group(1):
+            _meta_hata.append(f"{_f}: og:url ≠ canonical")
+    basar("Adres: yayındaki her sayfada og:url, og:image ve canonical doğru",
+          not _meta_hata, "; ".join(_meta_hata[:3]))
+
+    # ==================================================================
     # SKORUN KAYBEDEN TARAFI — TEK KAYNAK
     # ==================================================================
     # #4C5665 / #2E3846 fazla soluktu, skorun yarısı kayboluyordu.

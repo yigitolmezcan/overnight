@@ -21,7 +21,10 @@ from PIL import Image, ImageDraw, ImageFont
 KOK = Path(__file__).parent
 FONT_DIZIN = KOK / "fonts"
 OG_DIZIN = KOK / "og"
-ALAN_ADI = "overnight-yigit8.vercel.app"
+# ALAN ADI TEK KAYNAKTAN (bkz. site_adresi.py) — paylaşım görselinin
+# alt şeridinde yazan adres de alan adı değişince kendiliğinden değişsin.
+from site_adresi import site_adresi
+ALAN_ADI = site_adresi().split("://", 1)[-1]
 
 G, Y = 1200, 630
 ZEMIN = "#0A0D12"

@@ -27,7 +27,10 @@ KOK = Path(__file__).resolve().parent
 DURUM = KOK / "config" / "yayin_durumu.json"
 DIST = KOK / "dist"
 
-SITE = os.environ.get("SITE_ADRESI", "").rstrip("/")
+# ADRES TEK KAYNAKTAN (bkz. site_adresi.py).
+sys.path.insert(0, str(Path(__file__).parent))
+from site_adresi import site_adresi
+SITE = site_adresi()
 GONDEREN = os.environ.get("GONDEREN_ADRES", "OVERNIGHT <onboarding@resend.dev>")
 GIZLI = os.environ.get("ABONE_GIZLI_ANAHTAR", "")
 RESEND = os.environ.get("RESEND_API_KEY", "")
