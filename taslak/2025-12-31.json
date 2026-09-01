@@ -1,0 +1,201 @@
+{
+  "tarih": "2025-12-31",
+  "uretildi": "2026-09-01T07:06:35.568899Z",
+  "maclar": {
+    "0022500465": {
+      "gec_satiri": "Cleveland Cavaliers evinde Phoenix Suns'u 129-113 yendi. Donovan Mitchell 34 sayı attı.",
+      "muzip": false
+    },
+    "0022500468": {
+      "gec_satiri": "Scottie Barnes'ın 20 sayı, 14 ribaund ve 10 asistlik gecesinde Denver, Toronto'yu yendi.",
+      "muzip": false
+    },
+    "0022500463": {
+      "gec_satiri": "Atlanta Hawks evinde Minnesota Timberwolves'u 126-102 yendi. Jalen Johnson 34 sayı attı.",
+      "muzip": false
+    },
+    "0022500462": {
+      "gec_satiri": "Golden State Warriors deplasmanda Charlotte Hornets'i 132-125 yendi.",
+      "muzip": false
+    },
+    "0022500466": {
+      "gec_satiri": "Chicago Bulls evinde New Orleans Pelicans'ı 134-118 yendi.",
+      "muzip": false
+    },
+    "0022500467": {
+      "baslik": "San Antonio Spurs, 19 sayılık farktan dönüp New York Knicks'i yendi.",
+      "neden_onemli": "San Antonio Spurs, konferansta 2. sıraya yükseldi."
+    },
+    "0022500469": {
+      "baslik": "Washington, Milwaukee'yi son saniyede devirdi."
+    },
+    "0022500464": {
+      "baslik": "Orlando, Indiana'yı son saniyede devirdi."
+    },
+    "0022500470": {
+      "baslik": "Oklahoma City Thunder, Portland Trail Blazers'i 124-95 yendi.",
+      "neden_onemli": "Oklahoma City Thunder lig liderliğini sürdürdü."
+    }
+  },
+  "brief": [
+    {
+      "metin": "San Antonio Spurs, 19 sayılık farktan dönüp New York Knicks'i geçti.",
+      "hedef_mac": "0022500467",
+      "muzip": false,
+      "kind": "geri_donus"
+    },
+    {
+      "metin": "Washington Wizards, Milwaukee Bucks'u yendi.",
+      "hedef_mac": "0022500469",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Orlando Magic, Indiana Pacers'i yendi.",
+      "hedef_mac": "0022500464",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Oklahoma City Thunder, Portland Trail Blazers'i yenerek konferansta 1. sıraya yükseldi.",
+      "hedef_mac": "0022500470",
+      "muzip": false,
+      "kind": "siralama"
+    },
+    {
+      "metin": "Cleveland Cavaliers, Phoenix Suns'u evinde yendi.",
+      "hedef_mac": "0022500465",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Denver Nuggets, Toronto Raptors deplasmanında kazandı.",
+      "hedef_mac": "0022500468",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Jalen Johnson, Minnesota Timberwolves karşısında 34 sayı attı.",
+      "hedef_mac": "0022500463",
+      "muzip": false,
+      "kind": "performans"
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 8,
+    "ilk_denemede_kabul": 2,
+    "sablon_moduna_dusen": 2,
+    "detay": [
+      {
+        "mac_id": "0022500467",
+        "deneme": 0,
+        "gerekce": [
+          "T14: en iyi performans (Victor Wembanyama) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "San Antonio, 19 sayılık farktan dönüp New York'u yendi."
+        }
+      },
+      {
+        "mac_id": "0022500467",
+        "deneme": 1,
+        "gerekce": [
+          "T14: en iyi performans (Victor Wembanyama) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "San Antonio, 19 sayılık farktan dönüp New York'u yendi."
+        }
+      },
+      {
+        "mac_id": "0022500467",
+        "deneme": 2,
+        "gerekce": [
+          "T14: en iyi performans (Victor Wembanyama) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "San Antonio, 19 sayılık farktan dönüp New York'u yendi."
+        }
+      },
+      {
+        "mac_id": "0022500470",
+        "deneme": 0,
+        "gerekce": [
+          "baslik/T4e: ['OKC']",
+          "T14: en iyi performans (Shai Gilgeous-Alexander) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Lider OKC, Portland'ı üçüncü çeyrekte kopardı."
+        }
+      },
+      {
+        "mac_id": "0022500470",
+        "deneme": 1,
+        "gerekce": [
+          "baslik/T31: ['başlıktaki oyuncu kazananın en iyisi değil (kazananın en iyisi: Chet Holmgren)']"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Shai Gilgeous-Alexander'ın 30 sayısıyla Oklahoma City, Portland'ı yendi."
+        }
+      },
+      {
+        "mac_id": "0022500470",
+        "deneme": 2,
+        "gerekce": [
+          "T14: en iyi performans (Shai Gilgeous-Alexander) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Oklahoma City, Portland'ı üçüncü çeyrekte kopardı."
+        }
+      }
+    ],
+    "sablon_isaretli": [
+      {
+        "mac_id": "0022500468",
+        "alan": "gec_satiri",
+        "gerekce": [
+          "gec_satiri/T17: [\"'Scottie Barnes' (kaybeden TOR) cümle öznesi: 'Scottie Barnes'ın 20 sayı, 14 ribaund ve 10 asistlik gecesinde Denver, Toronto'yu yendi'\"]",
+          "T30: 'ribaund' — bu maçın KİLİT İSTATİSTİĞİ (hücum ribaundu) zaten kendi kutusunda gösteriliyor, metinde tekrarlanmaz"
+        ],
+        "metin": {
+          "gec_satiri": "Scottie Barnes'ın 20 sayı, 14 ribaund ve 10 asistlik gecesinde Denver, Toronto'yu yendi.",
+          "muzip": false
+        }
+      },
+      {
+        "mac_id": "0022500467",
+        "alan": "mutlaka",
+        "gerekce": [
+          "baslik/T6: 11 kelime (sınır 10)",
+          "T14: en iyi performans (Victor Wembanyama) hiç anılmadı"
+        ],
+        "metin": {
+          "baslik": "San Antonio Spurs, 19 sayılık farktan dönüp New York Knicks'i yendi.",
+          "neden_onemli": "San Antonio Spurs, konferansta 2. sıraya yükseldi."
+        }
+      },
+      {
+        "mac_id": "0022500470",
+        "alan": "mutlaka",
+        "gerekce": [
+          "T14: en iyi performans (Shai Gilgeous-Alexander) hiç anılmadı"
+        ],
+        "metin": {
+          "baslik": "Oklahoma City Thunder, Portland Trail Blazers'i 124-95 yendi.",
+          "neden_onemli": "Oklahoma City Thunder lig liderliğini sürdürdü."
+        }
+      }
+    ],
+    "mutlaka_mac": 4,
+    "ret_orani": 0.75,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 8,
+      "girdi_token": 31196,
+      "cikti_token": 4087,
+      "cache_yazma_token": 45104,
+      "cache_okuma_token": 78699,
+      "toplam_maliyet_usd": 0.2318,
+      "butce_asildi": false
+    }
+  }
+}
