@@ -998,7 +998,6 @@
           "onde": "ev",
           "fark": 7,
           "one_cikan": [
-            "Embiid triple-double",
             "Philadelphia 12/18 şut"
           ],
           "kritik": false
@@ -1011,7 +1010,7 @@
           "onde": "ev",
           "fark": 2,
           "one_cikan": [
-            "en büyük fark 9"
+            "Durant 9 sayı"
           ],
           "kritik": false
         },
@@ -12131,7 +12130,7 @@
           "onde": "dep",
           "fark": 2,
           "one_cikan": [
-            "Watson 15 sayı",
+            "en büyük fark 10",
             "Washington 8 üçlük"
           ],
           "kritik": false
@@ -12144,8 +12143,8 @@
           "onde": "dep",
           "fark": 10,
           "one_cikan": [
-            "George double-double",
-            "Denver 9-0 seri"
+            "Denver 9-0 seri",
+            "Watson 20 sayı"
           ],
           "kritik": true
         }
@@ -12736,8 +12735,8 @@
           "onde": "ev",
           "fark": 17,
           "one_cikan": [
-            "Dončić double-double",
-            "7 kez liderlik değişti"
+            "7 kez liderlik değişti",
+            "en büyük fark 19"
           ],
           "kritik": false
         },
@@ -13461,8 +13460,8 @@
           "onde": "ev",
           "fark": 5,
           "one_cikan": [
-            "Dallas 12-0 seri",
-            "Curry 13 sayı"
+            "Curry 13 sayı",
+            "Dallas 6 üçlük"
           ],
           "kritik": false
         },
@@ -13474,8 +13473,8 @@
           "onde": "ev",
           "fark": 8,
           "one_cikan": [
-            "Flagg double-double",
-            "6 kez liderlik değişti"
+            "6 kez liderlik değişti",
+            "Dallas 11-0 seri"
           ],
           "kritik": true
         }
@@ -14096,7 +14095,7 @@
           "fark": 12,
           "one_cikan": [
             "3 kez liderlik değişti",
-            "Fox 14 sayı"
+            "en büyük fark 15"
           ],
           "kritik": false
         },
@@ -14108,8 +14107,8 @@
           "onde": "dep",
           "fark": 17,
           "one_cikan": [
-            "Nurkić triple-double",
-            "San Antonio 10-0 seri"
+            "San Antonio 10-0 seri",
+            "Fox 17 sayı"
           ],
           "kritik": true
         }

@@ -329,7 +329,6 @@
           "onde": "dep",
           "fark": 8,
           "one_cikan": [
-            "Orlando 9-0 seri",
             "Black 15 sayı"
           ],
           "kritik": false
@@ -341,7 +340,9 @@
           "dep_skor": 62,
           "onde": "dep",
           "fark": 14,
-          "one_cikan": [],
+          "one_cikan": [
+            "en büyük fark 15"
+          ],
           "kritik": false
         },
         {
@@ -352,7 +353,6 @@
           "onde": "dep",
           "fark": 9,
           "one_cikan": [
-            "en büyük fark 17",
             "Orlando 16/22 şut"
           ],
           "kritik": false
@@ -365,8 +365,8 @@
           "onde": "ev",
           "fark": 1,
           "one_cikan": [
-            "Jokić triple-double",
-            "9 kez liderlik değişti"
+            "9 kez liderlik değişti",
+            "Orlando 9-0 seri"
           ],
           "kritik": true
         }
@@ -1020,7 +1020,7 @@
           "onde": "dep",
           "fark": 13,
           "one_cikan": [
-            "New York 7-0 seri"
+            "en büyük fark 14"
           ],
           "kritik": false
         },
@@ -1032,7 +1032,7 @@
           "onde": "dep",
           "fark": 9,
           "one_cikan": [
-            "en büyük fark 18"
+            "Brunson 10 sayı"
           ],
           "kritik": false
         },
@@ -1044,8 +1044,8 @@
           "onde": "dep",
           "fark": 3,
           "one_cikan": [
-            "Towns double-double",
-            "4 kez liderlik değişti"
+            "4 kez liderlik değişti",
+            "Atlanta 9-0 seri"
           ],
           "kritik": true
         }
@@ -1658,8 +1658,8 @@
           "onde": "ev",
           "fark": 8,
           "one_cikan": [
-            "Johnson double-double",
-            "5 kez liderlik değişti"
+            "5 kez liderlik değişti",
+            "Utah 6 üçlük"
           ],
           "kritik": false
         },
@@ -1684,7 +1684,7 @@
           "onde": "dep",
           "fark": 11,
           "one_cikan": [
-            "en büyük fark 17"
+            "Wembanyama 11 sayı"
           ],
           "kritik": false
         },
@@ -1697,7 +1697,7 @@
           "fark": 13,
           "one_cikan": [
             "San Antonio 9-0 seri",
-            "Utah 5 üçlük"
+            "en büyük fark 13"
           ],
           "kritik": true
         }
@@ -14391,7 +14391,7 @@
       "mac": "Minnesota Timberwolves — Brooklyn Nets",
       "skor": "107–123",
       "rozet": 7.11,
-      "why": "10. galibiyetini alan (kazanan)",
+      "why": "sürpriz sonuç: belirgin şekilde kötü bir takım, belirgin şekilde iyi bir takımı yendi",
       "metin": "",
       "box": {
         "ev": {
@@ -15047,7 +15047,7 @@
           "fark": 1,
           "one_cikan": [
             "9 kez liderlik değişti",
-            "Edwards 13 sayı"
+            "Minnesota 9 üçlük"
           ],
           "kritik": false
         },
@@ -15059,8 +15059,8 @@
           "onde": "dep",
           "fark": 16,
           "one_cikan": [
-            "Porter Jr. double-double",
-            "Brooklyn 12-0 seri"
+            "Brooklyn 12-0 seri",
+            "Porter Jr. 18 sayı"
           ],
           "kritik": true
         }

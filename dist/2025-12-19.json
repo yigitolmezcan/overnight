@@ -134,7 +134,7 @@
       "metin": "Derrick White, Miami Heat karşısında 33 sayı attı.",
       "anlatili": true,
       "hedef_id": "g-mutlaka-2",
-      "icon": "default",
+      "icon": "standings",
       "saat": "03:00",
       "rozet": 7.34,
       "skor": "BOS 129 – MIA 116",
@@ -182,7 +182,7 @@
       "metin": "Minnesota Timberwolves, 12 sayılık farktan dönüp Oklahoma City Thunder'i geçti.",
       "anlatili": true,
       "hedef_id": "g-mutlaka-0",
-      "icon": "standings",
+      "icon": "default",
       "saat": "05:30",
       "rozet": 8.82,
       "skor": "MIN 112 – OKC 107",
@@ -244,7 +244,6 @@
           "onde": "dep",
           "fark": 2,
           "one_cikan": [
-            "Edwards double-double",
             "Minnesota 5 üçlük"
           ],
           "kritik": false
@@ -873,7 +872,7 @@
           "fark": 0,
           "one_cikan": [
             "Cleveland 11-0 seri",
-            "en büyük fark 11"
+            "Chicago 7 üçlük"
           ],
           "kritik": false
         },
@@ -885,8 +884,7 @@
           "onde": "dep",
           "fark": 11,
           "one_cikan": [
-            "3 kez liderlik değişti",
-            "Chicago 5 üçlük"
+            "3 kez liderlik değişti"
           ],
           "kritik": false
         },
@@ -897,7 +895,9 @@
           "dep_skor": 101,
           "onde": "dep",
           "fark": 2,
-          "one_cikan": [],
+          "one_cikan": [
+            "Allen 10 sayı"
+          ],
           "kritik": false
         },
         {
@@ -908,8 +908,8 @@
           "onde": "dep",
           "fark": 11,
           "one_cikan": [
-            "Vučević double-double",
-            "Vučević 11 sayı"
+            "Vučević 11 sayı",
+            "en büyük fark 11"
           ],
           "kritik": true
         }
@@ -1549,8 +1549,8 @@
           "onde": "ev",
           "fark": 1,
           "one_cikan": [
-            "Ware double-double",
-            "4 kez liderlik değişti"
+            "4 kez liderlik değişti",
+            "Miami 5 üçlük"
           ],
           "kritik": false
         },
@@ -1562,8 +1562,7 @@
           "onde": null,
           "fark": 0,
           "one_cikan": [
-            "en büyük fark 8",
-            "Miami 5 üçlük"
+            "White 11 sayı"
           ],
           "kritik": false
         },
@@ -1574,7 +1573,9 @@
           "dep_skor": 89,
           "onde": "ev",
           "fark": 3,
-          "one_cikan": [],
+          "one_cikan": [
+            "Brown 15 sayı"
+          ],
           "kritik": false
         },
         {
@@ -2226,7 +2227,7 @@
           "onde": "dep",
           "fark": 1,
           "one_cikan": [
-            "Towns double-double"
+            "Edgecombe 11 sayı"
           ],
           "kritik": false
         },

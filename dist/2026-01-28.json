@@ -341,7 +341,7 @@
           "onde": "ev",
           "fark": 10,
           "one_cikan": [
-            "Şengün 11 sayı",
+            "en büyük fark 10",
             "Houston 15/25 şut"
           ],
           "kritik": false
@@ -354,7 +354,7 @@
           "onde": "ev",
           "fark": 8,
           "one_cikan": [
-            "en büyük fark 16"
+            "Castle 9 sayı"
           ],
           "kritik": false
         },
@@ -365,7 +365,9 @@
           "dep_skor": 84,
           "onde": "ev",
           "fark": 2,
-          "one_cikan": [],
+          "one_cikan": [
+            "Thompson 11 sayı"
+          ],
           "kritik": false
         },
         {
@@ -376,8 +378,8 @@
           "onde": "dep",
           "fark": 12,
           "one_cikan": [
-            "Wembanyama double-double",
-            "San Antonio 11-0 seri"
+            "San Antonio 11-0 seri",
+            "Wembanyama 13 sayı"
           ],
           "kritik": true
         }
@@ -14004,7 +14006,7 @@
           "fark": 4,
           "one_cikan": [
             "Buzelis 15 sayı",
-            "Indiana 8 üçlük"
+            "en büyük fark 12"
           ],
           "kritik": false
         },
@@ -14656,7 +14658,7 @@
           "fark": 9,
           "one_cikan": [
             "10 kez liderlik değişti",
-            "Fontecchio 17 sayı"
+            "en büyük fark 13"
           ],
           "kritik": false
         },
@@ -14668,8 +14670,8 @@
           "onde": "dep",
           "fark": 9,
           "one_cikan": [
-            "Banchero double-double",
-            "Orlando 14-0 seri"
+            "Orlando 14-0 seri",
+            "Banchero 22 sayı"
           ],
           "kritik": true
         }

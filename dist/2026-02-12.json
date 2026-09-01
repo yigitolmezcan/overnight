@@ -148,7 +148,9 @@
           "dep_skor": 28,
           "onde": "ev",
           "fark": 3,
-          "one_cikan": [],
+          "one_cikan": [
+            "en büyük fark 11"
+          ],
           "kritik": false
         },
         {
@@ -172,7 +174,6 @@
           "onde": "dep",
           "fark": 15,
           "one_cikan": [
-            "Clingan double-double",
             "Utah 7/24 şut"
           ],
           "kritik": false
@@ -6131,8 +6132,8 @@
           "onde": "ev",
           "fark": 1,
           "one_cikan": [
-            "James triple-double",
-            "James 18 sayı"
+            "James 18 sayı",
+            "en büyük fark 13"
           ],
           "kritik": false
         },
@@ -6812,6 +6813,7 @@
           "onde": "dep",
           "fark": 12,
           "one_cikan": [
+            "en büyük fark 18",
             "Milwaukee 10 üçlük"
           ],
           "kritik": false

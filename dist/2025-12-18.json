@@ -382,7 +382,9 @@
           "dep_skor": 67,
           "onde": "dep",
           "fark": 22,
-          "one_cikan": [],
+          "one_cikan": [
+            "en büyük fark 23"
+          ],
           "kritik": false
         },
         {
@@ -393,8 +395,7 @@
           "onde": "dep",
           "fark": 16,
           "one_cikan": [
-            "Şengün double-double",
-            "en büyük fark 25"
+            "New Orleans 14/19 şut"
           ],
           "kritik": false
         },
@@ -406,7 +407,7 @@
           "onde": null,
           "fark": 0,
           "one_cikan": [
-            "New Orleans 13/20 şut"
+            "Bey 11 sayı"
           ],
           "kritik": false
         },
@@ -1061,8 +1062,8 @@
           "onde": "ev",
           "fark": 9,
           "one_cikan": [
-            "Dončić triple-double",
-            "en büyük fark 10"
+            "en büyük fark 10",
+            "Utah 6 üçlük"
           ],
           "kritik": false
         },
@@ -1085,7 +1086,9 @@
           "dep_skor": 102,
           "onde": "ev",
           "fark": 4,
-          "one_cikan": [],
+          "one_cikan": [
+            "Bailey 11 sayı"
+          ],
           "kritik": false
         },
         {
@@ -1719,8 +1722,8 @@
           "onde": "dep",
           "fark": 4,
           "one_cikan": [
-            "Raynaud double-double",
-            "13 kez liderlik değişti"
+            "13 kez liderlik değişti",
+            "Portland 7 üçlük"
           ],
           "kritik": false
         },
@@ -1732,7 +1735,7 @@
           "onde": "ev",
           "fark": 3,
           "one_cikan": [
-            "en büyük fark 8"
+            "Schröder 6 sayı"
           ],
           "kritik": false
         },
@@ -1755,7 +1758,9 @@
           "dep_skor": 115,
           "onde": null,
           "fark": 0,
-          "one_cikan": [],
+          "one_cikan": [
+            "en büyük fark 18"
+          ],
           "kritik": false
         },
         {
@@ -2436,8 +2441,8 @@
           "onde": "ev",
           "fark": 5,
           "one_cikan": [
-            "Charlotte 9 üçlük",
-            "Atlanta 14/23 şut"
+            "Charlotte 8-0 seri",
+            "Charlotte 9 üçlük"
           ],
           "kritik": false
         },
@@ -2449,7 +2454,7 @@
           "onde": "ev",
           "fark": 11,
           "one_cikan": [
-            "en büyük fark 24"
+            "Charlotte 16/26 şut"
           ],
           "kritik": false
         },
@@ -2461,7 +2466,7 @@
           "onde": "ev",
           "fark": 12,
           "one_cikan": [
-            "Johnson 43 sayı"
+            "Johnson 15 sayı"
           ],
           "kritik": false
         },
@@ -2474,7 +2479,7 @@
           "fark": 7,
           "one_cikan": [
             "Johnson 14 sayı",
-            "Atlanta 7-0 seri"
+            "en büyük fark 12"
           ],
           "kritik": true
         }
@@ -17663,8 +17668,8 @@
           "onde": "ev",
           "fark": 9,
           "one_cikan": [
-            "Cunningham double-double",
-            "Detroit 12-0 seri"
+            "Detroit 12-0 seri",
+            "en büyük fark 15"
           ],
           "kritik": false
         },

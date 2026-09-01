@@ -196,7 +196,9 @@
           "dep_skor": 63,
           "onde": "ev",
           "fark": 6,
-          "one_cikan": [],
+          "one_cikan": [
+            "Towns 11 sayı"
+          ],
           "kritik": false
         },
         {
@@ -207,7 +209,6 @@
           "onde": "dep",
           "fark": 1,
           "one_cikan": [
-            "Hart triple-double",
             "Indiana 5 üçlük"
           ],
           "kritik": false
@@ -232,8 +233,7 @@
           "onde": "dep",
           "fark": 3,
           "one_cikan": [
-            "Indiana 9-0 seri",
-            "en büyük fark 9"
+            "Indiana 9-0 seri"
           ],
           "kritik": true
         }
@@ -857,8 +857,8 @@
           "onde": "dep",
           "fark": 17,
           "one_cikan": [
-            "Wembanyama 40 sayı",
-            "San Antonio 9-0 seri"
+            "San Antonio 9-0 seri",
+            "Wembanyama 25 sayı"
           ],
           "kritik": true
         },
@@ -870,7 +870,7 @@
           "onde": "dep",
           "fark": 29,
           "one_cikan": [
-            "Bryant 14 sayı",
+            "en büyük fark 30",
             "San Antonio 14/23 şut"
           ],
           "kritik": false
@@ -883,7 +883,7 @@
           "onde": "dep",
           "fark": 34,
           "one_cikan": [
-            "en büyük fark 41"
+            "Vassell 9 sayı"
           ],
           "kritik": false
         },
@@ -894,7 +894,9 @@
           "dep_skor": 136,
           "onde": "dep",
           "fark": 28,
-          "one_cikan": [],
+          "one_cikan": [
+            "Timme 9 sayı"
+          ],
           "kritik": false
         }
       ],

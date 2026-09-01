@@ -277,8 +277,8 @@
           "onde": "dep",
           "fark": 9,
           "one_cikan": [
-            "Indiana 8 üçlük",
-            "Brown 9 sayı"
+            "en büyük fark 12",
+            "Indiana 8 üçlük"
           ],
           "kritik": false
         },
@@ -290,7 +290,7 @@
           "onde": "dep",
           "fark": 18,
           "one_cikan": [
-            "en büyük fark 20"
+            "Siakam 14 sayı"
           ],
           "kritik": false
         },
@@ -301,7 +301,9 @@
           "dep_skor": 82,
           "onde": "dep",
           "fark": 8,
-          "one_cikan": [],
+          "one_cikan": [
+            "Simons 9 sayı"
+          ],
           "kritik": false
         },
         {
@@ -10973,7 +10975,7 @@
           "fark": 13,
           "one_cikan": [
             "3 kez liderlik değişti",
-            "Gilgeous-Alexander 17 sayı"
+            "en büyük fark 17"
           ],
           "kritik": false
         },
@@ -10985,8 +10987,8 @@
           "onde": "ev",
           "fark": 16,
           "one_cikan": [
-            "Gilgeous-Alexander double-double",
-            "Oklahoma City 8-0 seri"
+            "Oklahoma City 8-0 seri",
+            "Gilgeous-Alexander 14 sayı"
           ],
           "kritik": true
         }
@@ -11584,8 +11586,8 @@
           "onde": "dep",
           "fark": 6,
           "one_cikan": [
-            "Davis double-double",
-            "Davis 22 sayı"
+            "Davis 22 sayı",
+            "en büyük fark 11"
           ],
           "kritik": false
         },
@@ -12259,7 +12261,7 @@
           "onde": "dep",
           "fark": 10,
           "one_cikan": [
-            "Sharpe 16 sayı",
+            "en büyük fark 16",
             "Detroit 6 üçlük"
           ],
           "kritik": false
@@ -12272,8 +12274,8 @@
           "onde": "dep",
           "fark": 8,
           "one_cikan": [
-            "Duren double-double",
-            "Portland 11-0 seri"
+            "Portland 11-0 seri",
+            "Duren 18 sayı"
           ],
           "kritik": true
         }

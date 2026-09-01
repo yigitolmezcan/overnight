@@ -433,8 +433,8 @@
           "onde": "dep",
           "fark": 4,
           "one_cikan": [
-            "Jokić 55 sayı",
-            "3 kez liderlik değişti"
+            "3 kez liderlik değişti",
+            "en büyük fark 10"
           ],
           "kritik": false
         },
@@ -446,7 +446,6 @@
           "onde": "ev",
           "fark": 5,
           "one_cikan": [
-            "en büyük fark 10",
             "LA Clippers 5 üçlük"
           ],
           "kritik": false
@@ -471,7 +470,9 @@
           "dep_skor": 130,
           "onde": "dep",
           "fark": 14,
-          "one_cikan": [],
+          "one_cikan": [
+            "Murray 8 sayı"
+          ],
           "kritik": false
         }
       ],
@@ -1230,8 +1231,8 @@
           "onde": "ev",
           "fark": 14,
           "one_cikan": [
-            "Golden State 5/22 şut",
-            "Castle 8 sayı"
+            "en büyük fark 14",
+            "Golden State 5/22 şut"
           ],
           "kritik": false
         },
@@ -1243,7 +1244,6 @@
           "onde": "ev",
           "fark": 7,
           "one_cikan": [
-            "en büyük fark 16",
             "Golden State 5 üçlük"
           ],
           "kritik": false
@@ -1268,8 +1268,8 @@
           "onde": "dep",
           "fark": 5,
           "one_cikan": [
-            "Wembanyama triple-double",
-            "San Antonio 9-0 seri"
+            "San Antonio 9-0 seri",
+            "Wembanyama 14 sayı"
           ],
           "kritik": true
         }
@@ -19436,7 +19436,7 @@
           "onde": "ev",
           "fark": 16,
           "one_cikan": [
-            "Robinson 17 sayı",
+            "en büyük fark 16",
             "Detroit 9 üçlük"
           ],
           "kritik": false
@@ -19449,8 +19449,8 @@
           "onde": "ev",
           "fark": 11,
           "one_cikan": [
-            "Reed double-double",
-            "Chicago 15-0 seri"
+            "Chicago 15-0 seri",
+            "Reed 20 sayı"
           ],
           "kritik": true
         }
@@ -20132,6 +20132,7 @@
           "onde": "ev",
           "fark": 32,
           "one_cikan": [
+            "en büyük fark 32",
             "Oklahoma City 8 üçlük"
           ],
           "kritik": false
@@ -20793,7 +20794,7 @@
           "fark": 2,
           "one_cikan": [
             "10 kez liderlik değişti",
-            "Sharpe 20 sayı"
+            "New Orleans 9 üçlük"
           ],
           "kritik": false
         },
@@ -20805,8 +20806,8 @@
           "onde": "dep",
           "fark": 8,
           "one_cikan": [
-            "Holiday double-double",
-            "Portland 11-0 seri"
+            "Portland 11-0 seri",
+            "Avdija 17 sayı"
           ],
           "kritik": true
         }

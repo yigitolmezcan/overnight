@@ -143,7 +143,7 @@
           "onde": "dep",
           "fark": 7,
           "one_cikan": [
-            "Gilgeous-Alexander 55 sayı"
+            "Gilgeous-Alexander 11 sayı"
           ],
           "kritik": false
         },
@@ -154,7 +154,9 @@
           "dep_skor": 81,
           "onde": "dep",
           "fark": 3,
-          "one_cikan": [],
+          "one_cikan": [
+            "Wiggins 10 sayı"
+          ],
           "kritik": false
         },
         {
@@ -164,7 +166,9 @@
           "dep_skor": 113,
           "onde": null,
           "fark": 0,
-          "one_cikan": [],
+          "one_cikan": [
+            "Mathurin 15 sayı"
+          ],
           "kritik": false
         },
         {
@@ -174,7 +178,9 @@
           "dep_skor": 124,
           "onde": null,
           "fark": 0,
-          "one_cikan": [],
+          "one_cikan": [
+            "Gilgeous-Alexander 6 sayı"
+          ],
           "kritik": false
         },
         {
@@ -4456,8 +4462,8 @@
           "onde": "dep",
           "fark": 9,
           "one_cikan": [
-            "Jokić triple-double",
-            "Gordon 25 sayı"
+            "Gordon 25 sayı",
+            "en büyük fark 14"
           ],
           "kritik": false
         },

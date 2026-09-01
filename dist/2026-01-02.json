@@ -365,7 +365,7 @@
           "fark": 14,
           "one_cikan": [
             "Antetokounmpo 10 sayı",
-            "Charlotte 5 üçlük"
+            "en büyük fark 14"
           ],
           "kritik": false
         },
@@ -377,8 +377,7 @@
           "onde": "dep",
           "fark": 9,
           "one_cikan": [
-            "Charlotte 9-0 seri",
-            "en büyük fark 16"
+            "Kuzma 7 sayı"
           ],
           "kritik": false
         },
@@ -389,7 +388,9 @@
           "dep_skor": 91,
           "onde": "dep",
           "fark": 4,
-          "one_cikan": [],
+          "one_cikan": [
+            "Charlotte 5 üçlük"
+          ],
           "kritik": false
         },
         {
@@ -400,8 +401,8 @@
           "onde": "ev",
           "fark": 1,
           "one_cikan": [
-            "Antetokounmpo double-double",
-            "5 kez liderlik değişti"
+            "5 kez liderlik değişti",
+            "Milwaukee 8-0 seri"
           ],
           "kritik": true
         }
@@ -13357,7 +13358,7 @@
       "mac": "Los Angeles Lakers — Memphis Grizzlies",
       "skor": "128–121",
       "rozet": 7.61,
-      "why": "gece sırası 10",
+      "why": "",
       "metin": "Los Angeles Lakers evinde 128-121 kazandı. Ja Morant double-double yaptı (16 sayı, 11 asist).",
       "box": {
         "ev": {
@@ -14542,8 +14543,8 @@
           "onde": "dep",
           "fark": 8,
           "one_cikan": [
-            "Avdija double-double",
-            "9 kez liderlik değişti"
+            "9 kez liderlik değişti",
+            "Portland 11-0 seri"
           ],
           "kritik": false
         },
@@ -15792,7 +15793,7 @@
           "fark": 3,
           "one_cikan": [
             "Murray 28 sayı",
-            "en büyük fark 9"
+            "Denver 9 üçlük"
           ],
           "kritik": false
         },
@@ -17748,7 +17749,7 @@
       "mac": "Indiana Pacers — San Antonio Spurs",
       "skor": "113–123",
       "rozet": 0.76,
-      "why": "",
+      "why": "gece sırası 1",
       "metin": "San Antonio Spurs deplasmanda 123-113 yendi.",
       "box": {
         "ev": {

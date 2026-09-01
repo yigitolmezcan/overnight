@@ -2568,6 +2568,61 @@
     },
     "kaynak": "PlayByPlayV3:0022500441:turetilmis",
     "guven": "turetilmis"
+   },
+   {
+    "id": "f159",
+    "tur": "ceyrek_fark",
+    "veri": {
+     "periyot": 1,
+     "sayi": 10,
+     "onde": "ev"
+    },
+    "kaynak": "PlayByPlayV3:0022500441:turetilmis",
+    "guven": "turetilmis"
+   },
+   {
+    "id": "f160",
+    "tur": "ceyrek_fark",
+    "veri": {
+     "periyot": 2,
+     "sayi": 9,
+     "onde": "ev"
+    },
+    "kaynak": "PlayByPlayV3:0022500441:turetilmis",
+    "guven": "turetilmis"
+   },
+   {
+    "id": "f161",
+    "tur": "ceyrek_fark",
+    "veri": {
+     "periyot": 3,
+     "sayi": 13,
+     "onde": "dep"
+    },
+    "kaynak": "PlayByPlayV3:0022500441:turetilmis",
+    "guven": "turetilmis"
+   },
+   {
+    "id": "f162",
+    "tur": "ceyrek_fark",
+    "veri": {
+     "periyot": 4,
+     "sayi": 12,
+     "onde": "dep"
+    },
+    "kaynak": "PlayByPlayV3:0022500441:turetilmis",
+    "guven": "turetilmis"
+   },
+   {
+    "id": "f163",
+    "tur": "ceyrek_fark",
+    "veri": {
+     "periyot": 5,
+     "sayi": 14,
+     "onde": "ev"
+    },
+    "kaynak": "PlayByPlayV3:0022500441:turetilmis",
+    "guven": "turetilmis"
    }
   ],
   "0022500442": [
@@ -4874,6 +4929,50 @@
      "fg_deneme": 23,
      "uc_isabet": 2,
      "uc_deneme": 12
+    },
+    "kaynak": "PlayByPlayV3:0022500442:turetilmis",
+    "guven": "turetilmis"
+   },
+   {
+    "id": "f142",
+    "tur": "ceyrek_fark",
+    "veri": {
+     "periyot": 1,
+     "sayi": 7,
+     "onde": "ev"
+    },
+    "kaynak": "PlayByPlayV3:0022500442:turetilmis",
+    "guven": "turetilmis"
+   },
+   {
+    "id": "f143",
+    "tur": "ceyrek_fark",
+    "veri": {
+     "periyot": 2,
+     "sayi": 8,
+     "onde": "ev"
+    },
+    "kaynak": "PlayByPlayV3:0022500442:turetilmis",
+    "guven": "turetilmis"
+   },
+   {
+    "id": "f144",
+    "tur": "ceyrek_fark",
+    "veri": {
+     "periyot": 3,
+     "sayi": 18,
+     "onde": "ev"
+    },
+    "kaynak": "PlayByPlayV3:0022500442:turetilmis",
+    "guven": "turetilmis"
+   },
+   {
+    "id": "f145",
+    "tur": "ceyrek_fark",
+    "veri": {
+     "periyot": 4,
+     "sayi": 27,
+     "onde": "ev"
     },
     "kaynak": "PlayByPlayV3:0022500442:turetilmis",
     "guven": "turetilmis"
@@ -7743,6 +7842,50 @@
     },
     "kaynak": "PlayByPlayV3:0022500443:turetilmis",
     "guven": "turetilmis"
+   },
+   {
+    "id": "f173",
+    "tur": "ceyrek_fark",
+    "veri": {
+     "periyot": 1,
+     "sayi": 8,
+     "onde": "dep"
+    },
+    "kaynak": "PlayByPlayV3:0022500443:turetilmis",
+    "guven": "turetilmis"
+   },
+   {
+    "id": "f174",
+    "tur": "ceyrek_fark",
+    "veri": {
+     "periyot": 2,
+     "sayi": 6,
+     "onde": "ev"
+    },
+    "kaynak": "PlayByPlayV3:0022500443:turetilmis",
+    "guven": "turetilmis"
+   },
+   {
+    "id": "f175",
+    "tur": "ceyrek_fark",
+    "veri": {
+     "periyot": 3,
+     "sayi": 10,
+     "onde": "dep"
+    },
+    "kaynak": "PlayByPlayV3:0022500443:turetilmis",
+    "guven": "turetilmis"
+   },
+   {
+    "id": "f176",
+    "tur": "ceyrek_fark",
+    "veri": {
+     "periyot": 4,
+     "sayi": 9,
+     "onde": "ev"
+    },
+    "kaynak": "PlayByPlayV3:0022500443:turetilmis",
+    "guven": "turetilmis"
    }
   ],
   "0022500444": [
@@ -10112,6 +10255,50 @@
     },
     "kaynak": "PlayByPlayV3:0022500444:turetilmis",
     "guven": "turetilmis"
+   },
+   {
+    "id": "f145",
+    "tur": "ceyrek_fark",
+    "veri": {
+     "periyot": 1,
+     "sayi": 9,
+     "onde": "dep"
+    },
+    "kaynak": "PlayByPlayV3:0022500444:turetilmis",
+    "guven": "turetilmis"
+   },
+   {
+    "id": "f146",
+    "tur": "ceyrek_fark",
+    "veri": {
+     "periyot": 2,
+     "sayi": 8,
+     "onde": "dep"
+    },
+    "kaynak": "PlayByPlayV3:0022500444:turetilmis",
+    "guven": "turetilmis"
+   },
+   {
+    "id": "f147",
+    "tur": "ceyrek_fark",
+    "veri": {
+     "periyot": 3,
+     "sayi": 10,
+     "onde": "dep"
+    },
+    "kaynak": "PlayByPlayV3:0022500444:turetilmis",
+    "guven": "turetilmis"
+   },
+   {
+    "id": "f148",
+    "tur": "ceyrek_fark",
+    "veri": {
+     "periyot": 4,
+     "sayi": 6,
+     "onde": "ev"
+    },
+    "kaynak": "PlayByPlayV3:0022500444:turetilmis",
+    "guven": "turetilmis"
    }
   ],
   "0022500445": [
@@ -12005,6 +12192,50 @@
      "fg_deneme": 18,
      "uc_isabet": 2,
      "uc_deneme": 10
+    },
+    "kaynak": "PlayByPlayV3:0022500445:turetilmis",
+    "guven": "turetilmis"
+   },
+   {
+    "id": "f117",
+    "tur": "ceyrek_fark",
+    "veri": {
+     "periyot": 1,
+     "sayi": 19,
+     "onde": "ev"
+    },
+    "kaynak": "PlayByPlayV3:0022500445:turetilmis",
+    "guven": "turetilmis"
+   },
+   {
+    "id": "f118",
+    "tur": "ceyrek_fark",
+    "veri": {
+     "periyot": 2,
+     "sayi": 20,
+     "onde": "ev"
+    },
+    "kaynak": "PlayByPlayV3:0022500445:turetilmis",
+    "guven": "turetilmis"
+   },
+   {
+    "id": "f119",
+    "tur": "ceyrek_fark",
+    "veri": {
+     "periyot": 3,
+     "sayi": 23,
+     "onde": "ev"
+    },
+    "kaynak": "PlayByPlayV3:0022500445:turetilmis",
+    "guven": "turetilmis"
+   },
+   {
+    "id": "f120",
+    "tur": "ceyrek_fark",
+    "veri": {
+     "periyot": 4,
+     "sayi": 26,
+     "onde": "ev"
     },
     "kaynak": "PlayByPlayV3:0022500445:turetilmis",
     "guven": "turetilmis"
@@ -14178,6 +14409,50 @@
      "fg_deneme": 21,
      "uc_isabet": 1,
      "uc_deneme": 5
+    },
+    "kaynak": "PlayByPlayV3:0022500446:turetilmis",
+    "guven": "turetilmis"
+   },
+   {
+    "id": "f134",
+    "tur": "ceyrek_fark",
+    "veri": {
+     "periyot": 1,
+     "sayi": 6,
+     "onde": "ev"
+    },
+    "kaynak": "PlayByPlayV3:0022500446:turetilmis",
+    "guven": "turetilmis"
+   },
+   {
+    "id": "f135",
+    "tur": "ceyrek_fark",
+    "veri": {
+     "periyot": 2,
+     "sayi": 15,
+     "onde": "ev"
+    },
+    "kaynak": "PlayByPlayV3:0022500446:turetilmis",
+    "guven": "turetilmis"
+   },
+   {
+    "id": "f136",
+    "tur": "ceyrek_fark",
+    "veri": {
+     "periyot": 3,
+     "sayi": 26,
+     "onde": "ev"
+    },
+    "kaynak": "PlayByPlayV3:0022500446:turetilmis",
+    "guven": "turetilmis"
+   },
+   {
+    "id": "f137",
+    "tur": "ceyrek_fark",
+    "veri": {
+     "periyot": 4,
+     "sayi": 30,
+     "onde": "ev"
     },
     "kaynak": "PlayByPlayV3:0022500446:turetilmis",
     "guven": "turetilmis"

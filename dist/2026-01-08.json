@@ -137,8 +137,8 @@
           "onde": "dep",
           "fark": 3,
           "one_cikan": [
-            "Siakam double-double",
-            "Siakam 15 sayı"
+            "Siakam 15 sayı",
+            "en büyük fark 12"
           ],
           "kritik": false
         },
@@ -149,7 +149,9 @@
           "dep_skor": 60,
           "onde": "dep",
           "fark": 2,
-          "one_cikan": [],
+          "one_cikan": [
+            "Ball 11 sayı"
+          ],
           "kritik": false
         },
         {
@@ -5556,8 +5558,8 @@
           "onde": "ev",
           "fark": 3,
           "one_cikan": [
-            "Flagg double-double",
-            "Markkanen 15 sayı"
+            "Markkanen 15 sayı",
+            "en büyük fark 14"
           ],
           "kritik": false
         },
@@ -6137,7 +6139,7 @@
           "fark": 4,
           "one_cikan": [
             "3 kez liderlik değişti",
-            "Randle 12 sayı"
+            "en büyük fark 12"
           ],
           "kritik": false
         },
@@ -6149,8 +6151,8 @@
           "onde": "ev",
           "fark": 9,
           "one_cikan": [
-            "Randle double-double",
-            "Minnesota 13-0 seri"
+            "Minnesota 13-0 seri",
+            "Mitchell 19 sayı"
           ],
           "kritik": true
         }

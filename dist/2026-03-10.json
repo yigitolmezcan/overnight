@@ -404,8 +404,8 @@
           "onde": "ev",
           "fark": 11,
           "one_cikan": [
-            "Adebayo 83 sayı",
-            "Miami 10-0 seri"
+            "Miami 10-0 seri",
+            "Adebayo 31 sayı"
           ],
           "kritik": true
         },
@@ -417,7 +417,7 @@
           "onde": "ev",
           "fark": 14,
           "one_cikan": [
-            "Adebayo 12 sayı"
+            "en büyük fark 19"
           ],
           "kritik": false
         },
@@ -441,7 +441,7 @@
           "onde": "ev",
           "fark": 21,
           "one_cikan": [
-            "en büyük fark 28"
+            "Adebayo 21 sayı"
           ],
           "kritik": false
         }
@@ -15885,8 +15885,8 @@
           "onde": "dep",
           "fark": 3,
           "one_cikan": [
-            "Payne double-double",
-            "17 kez liderlik değişti"
+            "17 kez liderlik değişti",
+            "en büyük fark 10"
           ],
           "kritik": false
         },
@@ -16513,8 +16513,8 @@
           "onde": "dep",
           "fark": 6,
           "one_cikan": [
-            "Giddey triple-double",
-            "Jones 14 sayı"
+            "Jones 14 sayı",
+            "en büyük fark 10"
           ],
           "kritik": false
         },
@@ -17828,8 +17828,8 @@
           "onde": null,
           "fark": 0,
           "one_cikan": [
-            "San Antonio 9-0 seri",
-            "Wembanyama 15 sayı"
+            "Wembanyama 15 sayı",
+            "Boston 11 üçlük"
           ],
           "kritik": false
         },
@@ -17841,8 +17841,8 @@
           "onde": "ev",
           "fark": 9,
           "one_cikan": [
-            "Wembanyama double-double",
-            "3 kez liderlik değişti"
+            "3 kez liderlik değişti",
+            "San Antonio 12-0 seri"
           ],
           "kritik": true
         }
@@ -19230,7 +19230,7 @@
           "fark": 17,
           "one_cikan": [
             "Nesmith 24 sayı",
-            "Indiana 6 üçlük"
+            "en büyük fark 17"
           ],
           "kritik": false
         },
@@ -20012,8 +20012,7 @@
           "onde": null,
           "fark": 0,
           "one_cikan": [
-            "Minnesota 9-0 seri",
-            "en büyük fark 8"
+            "Minnesota 9-0 seri"
           ],
           "kritik": false
         },
@@ -20025,8 +20024,8 @@
           "onde": "ev",
           "fark": 14,
           "one_cikan": [
-            "Dončić triple-double",
-            "Reaves 29 sayı"
+            "Reaves 29 sayı",
+            "en büyük fark 23"
           ],
           "kritik": true
         }

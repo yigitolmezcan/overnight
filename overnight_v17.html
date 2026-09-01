@@ -400,7 +400,8 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
    açılır" demek (box score, oyuncu kartı). Zemin tonu sınırı gösteriyor
    ama tıklanabilirlik iddiasında bulunmuyor. */
 .game{position:relative;padding:16px 16px 14px 17px;margin-bottom:14px;
-  background:#0D1219;border-top:1px solid #151C26;scroll-margin-top:20px}
+  background:#0D1219;border-top:1px solid #151C26;
+  scroll-margin-top:var(--cipa,60px)}
 .game:last-child{margin-bottom:0}
 /* HİZA: ray rozetin ÜST KENARINDAN başlıyor — blok en tepeden itibaren
    işaretli, üstte boşluk yok. Altta metin bitmeden sönüyor. */
@@ -1325,7 +1326,8 @@ td.khot{color:var(--amber);font-weight:700}
 /* Göz at da aynı zemini alıyor. ÇERÇEVE KALKTI: kart dili bu sitede
    "dokununca açılır" demek; blok zemini sınırı çerçevesiz gösteriyor. */
 .gozkart{position:relative;background:#0D1219;border-top:1px solid #151C26;
-  padding:16px 16px 14px 17px;margin-bottom:14px;scroll-margin-top:20px}
+  padding:16px 16px 14px 17px;margin-bottom:14px;
+  scroll-margin-top:var(--cipa,60px)}
 .gozkart::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
   background:linear-gradient(180deg,
     var(--ray,var(--ember)) 0%,
@@ -1926,12 +1928,22 @@ addEventListener('resize',_olcumYenile);
 
    Ayrıca paylık: 20px çok azdı — hedefin üstünde nefes alacak yer
    bırakmıyordu ve kart "yukarıdan kesilmiş" gibi duruyordu. */
-const CIPA_PAYI = 56;
+/* PAY = yapışkan bölüm başlığının YÜKSEKLİĞİ + 16px nefes.
+   Sabit 56 kullanılıyordu; başlık şeridi ondan yüksek olunca blok
+   şeridin ALTINDA kalıyor, hedef üste tam oturmuyordu (kullanıcı
+   bulgusu). Yükseklik ölçülüyor — punto/dolgu değişse de doğru kalır. */
+const CIPA_NEFES = 16;
+function cipaPayi(el){
+  const bolum = el && el.closest && el.closest('.sec');
+  const bas = bolum && bolum.querySelector('.sechead');
+  const h = bas ? Math.round(bas.getBoundingClientRect().height) : 0;
+  return h + CIPA_NEFES;
+}
 function cipayaKaydir(id){
   const el = document.getElementById(id);
   if (!el) return false;
   const mutlak = el.getBoundingClientRect().top + scrollY;
-  const hedef = Math.max(0, Math.round(mutlak - CIPA_PAYI));
+  const hedef = Math.max(0, Math.round(mutlak - cipaPayi(el)));
   const yumusak = !matchMedia('(prefers-reduced-motion: reduce)').matches;
   scrollTo({top: hedef, behavior: yumusak ? 'smooth' : 'auto'});
   // Adres çubuğu güncellensin ama tarayıcı İKİNCİ bir sıçrama yapmasın.
@@ -1939,7 +1951,10 @@ function cipayaKaydir(id){
   return true;
 }
 document.addEventListener('click', e => {
-  const bag = e.target.closest && e.target.closest('a.rowlink[href^="#"]');
+  // Kapak listesi satırları .rowlink DEĞİL; onlar tarayıcının kendi
+  // çapa kaydırmasına düşüyordu ve hedefi şaşırıyordu.
+  const bag = e.target.closest && e.target.closest(
+    'a.rowlink[href^="#"], .kaplist a[href^="#"], .mn a[href^="#"]');
   if (!bag) return;
   const id = bag.getAttribute('href').slice(1);
   if (cipayaKaydir(id)) e.preventDefault();
@@ -2715,6 +2730,14 @@ function render(d){
     });
   }
   ceyrekOlguHizala();
+  // Adres çubuğundan (#id) gelen tarayıcı çapası da aynı payı kullansın.
+  function cipaPayiniYaz(){
+    const bas=document.querySelector('.sechead');
+    const h=bas?Math.round(bas.getBoundingClientRect().height):44;
+    document.documentElement.style.setProperty('--cipa',(h+16)+'px');
+  }
+  cipaPayiniYaz();
+  addEventListener('resize',cipaPayiniYaz);
   let _olguZ; addEventListener('resize',()=>{
     clearTimeout(_olguZ); _olguZ=setTimeout(ceyrekOlguHizala,120); });
 

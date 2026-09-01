@@ -218,7 +218,6 @@
           "onde": "ev",
           "fark": 3,
           "one_cikan": [
-            "Jokić triple-double",
             "4 kez liderlik değişti"
           ],
           "kritik": false
@@ -230,7 +229,9 @@
           "dep_skor": 55,
           "onde": "ev",
           "fark": 2,
-          "one_cikan": [],
+          "one_cikan": [
+            "Randle 9 sayı"
+          ],
           "kritik": false
         },
         {
@@ -894,8 +895,8 @@
           "onde": "dep",
           "fark": 15,
           "one_cikan": [
-            "Garland double-double",
-            "Cleveland 13-0 seri"
+            "Cleveland 13-0 seri",
+            "en büyük fark 15"
           ],
           "kritik": false
         },
@@ -919,7 +920,9 @@
           "dep_skor": 96,
           "onde": "dep",
           "fark": 12,
-          "one_cikan": [],
+          "one_cikan": [
+            "Tyson 11 sayı"
+          ],
           "kritik": false
         },
         {
@@ -1555,7 +1558,7 @@
           "fark": 5,
           "one_cikan": [
             "7 kez liderlik değişti",
-            "en büyük fark 8"
+            "Fox 13 sayı"
           ],
           "kritik": false
         },
@@ -1568,7 +1571,7 @@
           "fark": 9,
           "one_cikan": [
             "San Antonio 13-0 seri",
-            "Fox 8 sayı"
+            "en büyük fark 14"
           ],
           "kritik": true
         },
@@ -1591,7 +1594,9 @@
           "dep_skor": 117,
           "onde": "dep",
           "fark": 15,
-          "one_cikan": [],
+          "one_cikan": [
+            "Caruso 7 sayı"
+          ],
           "kritik": false
         }
       ],
@@ -2359,7 +2364,8 @@
           "onde": "dep",
           "fark": 12,
           "one_cikan": [
-            "Houston 15/24 şut"
+            "Houston 15/24 şut",
+            "Houston 7-0 seri"
           ],
           "kritik": false
         },
@@ -2372,7 +2378,7 @@
           "fark": 10,
           "one_cikan": [
             "Dončić 11 sayı",
-            "Los Angeles 6-0 seri"
+            "en büyük fark 14"
           ],
           "kritik": true
         },
@@ -2383,7 +2389,9 @@
           "dep_skor": 92,
           "onde": "dep",
           "fark": 18,
-          "one_cikan": [],
+          "one_cikan": [
+            "Dončić 10 sayı"
+          ],
           "kritik": false
         },
         {
@@ -2394,7 +2402,7 @@
           "onde": "dep",
           "fark": 23,
           "one_cikan": [
-            "en büyük fark 24"
+            "James 6 sayı"
           ],
           "kritik": false
         }

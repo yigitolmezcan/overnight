@@ -623,6 +623,31 @@ def takim_ceyrek_gerceklerini_uret(g, gid, actions):
         )
 
 
+def ceyrek_fark_gerceklerini_uret(g, gid, actions):
+    """Her periyot İÇİNDE farkın ulaştığı en yüksek değer.
+
+    "en_buyuk_fark" akış olayı MAÇIN en büyük farkını veriyor; çeyrek
+    satırında kullanılınca o çeyrekte olmuş gibi okunuyordu (kullanıcı
+    bulgusu). Çeyrek satırındaki her olgu o çeyreğe ait olmalı."""
+    enb = {}
+    for a in actions:
+        ev, dep = a.get("scoreHome"), a.get("scoreAway")
+        if ev in (None, "") or dep in (None, ""):
+            continue
+        fark = int(ev) - int(dep)
+        p = a["period"]
+        if p not in enb or abs(fark) > abs(enb[p]):
+            enb[p] = fark
+    for p, fark in sorted(enb.items()):
+        g.ekle(
+            "ceyrek_fark",
+            {"periyot": p, "sayi": abs(fark),
+             "onde": None if fark == 0 else ("ev" if fark > 0 else "dep")},
+            f"PlayByPlayV3:{gid}:turetilmis",
+            "turetilmis",
+        )
+
+
 def kilometre_gerceklerini_uret(g, gid, oyuncu_stat_ham, sezon_sayilari_by_player_id=None):
     sezon_sayilari_by_player_id = sezon_sayilari_by_player_id or {}
     for personId, veri, s in oyuncu_stat_ham:
@@ -1558,6 +1583,7 @@ def mac_isle(gid, m, puan_durumu, sezon_sayilari_by_player_id=None, son10_dakika
     kadro_disi_gerceklerini_uret(g, gid, bt, son10_dakika_by_id)
     oyuncu_ceyrek_gerceklerini_uret(g, gid, actions, isim_haritasi)
     takim_ceyrek_gerceklerini_uret(g, gid, actions)
+    ceyrek_fark_gerceklerini_uret(g, gid, actions)
     kilometre_gerceklerini_uret(g, gid, oyuncu_stat_ham, sezon_sayilari_by_player_id)
     an_gerceklerini_uret(g, gid, actions, isim_haritasi)
     fark_serisi_gercegi_uret(g, gid, actions, ev_kod, dep_kod, kazanan)

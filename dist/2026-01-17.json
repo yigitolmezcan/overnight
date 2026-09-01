@@ -351,7 +351,6 @@
           "onde": "dep",
           "fark": 1,
           "one_cikan": [
-            "Edwards 11 sayı",
             "San Antonio 7-0 seri"
           ],
           "kritik": false
@@ -376,7 +375,9 @@
           "dep_skor": 84,
           "onde": "ev",
           "fark": 12,
-          "one_cikan": [],
+          "one_cikan": [
+            "Edwards 13 sayı"
+          ],
           "kritik": false
         },
         {
@@ -387,8 +388,8 @@
           "onde": "ev",
           "fark": 3,
           "one_cikan": [
-            "Edwards 55 sayı",
-            "4 kez liderlik değişti"
+            "4 kez liderlik değişti",
+            "Edwards 26 sayı"
           ],
           "kritik": true
         }
@@ -1053,8 +1054,8 @@
           "onde": "dep",
           "fark": 7,
           "one_cikan": [
-            "Adebayo double-double",
-            "Oklahoma City 15/21 şut"
+            "Oklahoma City 15/21 şut",
+            "Oklahoma City 7-0 seri"
           ],
           "kritik": false
         },
@@ -1066,8 +1067,8 @@
           "onde": "dep",
           "fark": 5,
           "one_cikan": [
-            "Miami 9-0 seri",
-            "en büyük fark 12"
+            "en büyük fark 12",
+            "Miami 6 üçlük"
           ],
           "kritik": false
         },
@@ -1079,7 +1080,7 @@
           "onde": null,
           "fark": 0,
           "one_cikan": [
-            "Miami 6 üçlük"
+            "Gilgeous-Alexander 12 sayı"
           ],
           "kritik": false
         },
@@ -1756,8 +1757,8 @@
           "onde": "ev",
           "fark": 7,
           "one_cikan": [
-            "Murray 10 sayı",
-            "en büyük fark 12"
+            "en büyük fark 12",
+            "Denver 6 üçlük"
           ],
           "kritik": false
         },
@@ -1780,7 +1781,9 @@
           "dep_skor": 86,
           "onde": "dep",
           "fark": 3,
-          "one_cikan": [],
+          "one_cikan": [
+            "Watson 11 sayı"
+          ],
           "kritik": false
         },
         {
@@ -1791,8 +1794,8 @@
           "onde": "ev",
           "fark": 6,
           "one_cikan": [
-            "Murray 42 sayı",
-            "Denver 8-0 seri"
+            "Denver 8-0 seri",
+            "Murray 16 sayı"
           ],
           "kritik": true
         }
@@ -2380,7 +2383,7 @@
           "onde": "dep",
           "fark": 7,
           "one_cikan": [
-            "Brown 41 sayı"
+            "en büyük fark 10"
           ],
           "kritik": false
         },
@@ -2405,7 +2408,6 @@
           "onde": "dep",
           "fark": 43,
           "one_cikan": [
-            "en büyük fark 43",
             "Atlanta 9/30 şut"
           ],
           "kritik": false
@@ -2417,7 +2419,9 @@
           "dep_skor": 132,
           "onde": "dep",
           "fark": 26,
-          "one_cikan": [],
+          "one_cikan": [
+            "Newell 7 sayı"
+          ],
           "kritik": false
         }
       ],

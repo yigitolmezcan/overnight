@@ -335,8 +335,8 @@
           "onde": "ev",
           "fark": 15,
           "one_cikan": [
-            "Wembanyama double-double",
-            "Fox 16 sayı"
+            "Fox 16 sayı",
+            "en büyük fark 17"
           ],
           "kritik": true
         },
@@ -360,7 +360,7 @@
           "onde": "ev",
           "fark": 8,
           "one_cikan": [
-            "en büyük fark 22"
+            "Wembanyama 10 sayı"
           ],
           "kritik": false
         },
@@ -371,7 +371,9 @@
           "dep_skor": 106,
           "onde": "ev",
           "fark": 15,
-          "one_cikan": [],
+          "one_cikan": [
+            "Champagnie 10 sayı"
+          ],
           "kritik": false
         }
       ],
@@ -1139,8 +1141,8 @@
           "onde": "dep",
           "fark": 10,
           "one_cikan": [
-            "Melton 10 sayı",
-            "en büyük fark 11"
+            "en büyük fark 11",
+            "Golden State 7-0 seri"
           ],
           "kritik": false
         },
@@ -1152,7 +1154,7 @@
           "onde": "dep",
           "fark": 4,
           "one_cikan": [
-            "Houston 10-0 seri"
+            "Sheppard 9 sayı"
           ],
           "kritik": false
         },
@@ -1176,7 +1178,9 @@
           "dep_skor": 101,
           "onde": null,
           "fark": 0,
-          "one_cikan": [],
+          "one_cikan": [
+            "Melton 7 sayı"
+          ],
           "kritik": false
         },
         {
@@ -1186,7 +1190,9 @@
           "dep_skor": 115,
           "onde": "dep",
           "fark": 2,
-          "one_cikan": [],
+          "one_cikan": [
+            "Podziemski 7 sayı"
+          ],
           "kritik": true
         }
       ],
@@ -1761,7 +1767,9 @@
           "dep_skor": 22,
           "onde": "ev",
           "fark": 10,
-          "one_cikan": [],
+          "one_cikan": [
+            "Murray 9 sayı"
+          ],
           "kritik": false
         },
         {
@@ -1772,8 +1780,8 @@
           "onde": "ev",
           "fark": 10,
           "one_cikan": [
-            "en büyük fark 15",
-            "Denver 6 üçlük"
+            "Denver 6 üçlük",
+            "Los Angeles 13/19 şut"
           ],
           "kritik": false
         },
@@ -1785,7 +1793,7 @@
           "onde": "ev",
           "fark": 7,
           "one_cikan": [
-            "Jokić triple-double"
+            "Dončić 12 sayı"
           ],
           "kritik": false
         },
@@ -1798,7 +1806,7 @@
           "fark": 7,
           "one_cikan": [
             "Los Angeles 11-0 seri",
-            "Jokić 8 sayı"
+            "en büyük fark 14"
           ],
           "kritik": true
         }
@@ -2437,7 +2445,9 @@
           "dep_skor": 88,
           "onde": "ev",
           "fark": 3,
-          "one_cikan": [],
+          "one_cikan": [
+            "Thompson 9 sayı"
+          ],
           "kritik": false
         },
         {
@@ -14460,7 +14470,7 @@
       "mac": "Phoenix Suns — Chicago Bulls",
       "skor": "103–105",
       "rozet": 7.41,
-      "why": "gece sırası 7",
+      "why": "",
       "metin": "Chicago Bulls deplasmanda Phoenix Suns'u 105-103 yendi. Collin Sexton 30 sayı attı.",
       "box": {
         "ev": {
@@ -15017,6 +15027,7 @@
           "onde": "dep",
           "fark": 5,
           "one_cikan": [
+            "en büyük fark 11",
             "Phoenix 8 üçlük"
           ],
           "kritik": false
@@ -16385,7 +16396,7 @@
           "fark": 4,
           "one_cikan": [
             "13 kez liderlik değişti",
-            "Westbrook 14 sayı"
+            "Sacramento 6 üçlük"
           ],
           "kritik": false
         },
@@ -16397,8 +16408,8 @@
           "onde": "dep",
           "fark": 10,
           "one_cikan": [
-            "Achiuwa double-double",
-            "New Orleans 15-0 seri"
+            "New Orleans 15-0 seri",
+            "Achiuwa 21 sayı"
           ],
           "kritik": true
         }
@@ -16413,7 +16424,7 @@
       "mac": "Miami Heat — Brooklyn Nets",
       "skor": "126–110",
       "rozet": 6.29,
-      "why": "",
+      "why": "gece sırası 3",
       "metin": "Miami Heat evinde Brooklyn Nets'i 126-110 yendi.",
       "box": {
         "ev": {
@@ -17132,8 +17143,8 @@
           "onde": "ev",
           "fark": 4,
           "one_cikan": [
-            "Brooklyn 9-0 seri",
-            "Adebayo 13 sayı"
+            "Adebayo 13 sayı",
+            "en büyük fark 14"
           ],
           "kritik": false
         },
@@ -17145,8 +17156,8 @@
           "onde": "ev",
           "fark": 16,
           "one_cikan": [
-            "Porter Jr. double-double",
-            "4 kez liderlik değişti"
+            "4 kez liderlik değişti",
+            "Miami 14-0 seri"
           ],
           "kritik": true
         }

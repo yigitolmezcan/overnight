@@ -236,7 +236,6 @@
           "onde": "dep",
           "fark": 9,
           "one_cikan": [
-            "Dončić double-double",
             "4 kez liderlik değişti"
           ],
           "kritik": false
@@ -260,7 +259,9 @@
           "dep_skor": 79,
           "onde": "ev",
           "fark": 8,
-          "one_cikan": [],
+          "one_cikan": [
+            "Williams 8 sayı"
+          ],
           "kritik": false
         },
         {
@@ -933,7 +934,7 @@
           "onde": "dep",
           "fark": 6,
           "one_cikan": [
-            "en büyük fark 8"
+            "Simons 10 sayı"
           ],
           "kritik": false
         },
@@ -1594,8 +1595,8 @@
           "onde": null,
           "fark": 0,
           "one_cikan": [
-            "Embiid double-double",
-            "4 kez liderlik değişti"
+            "4 kez liderlik değişti",
+            "New York 6 üçlük"
           ],
           "kritik": false
         },
@@ -1618,7 +1619,9 @@
           "dep_skor": 90,
           "onde": "dep",
           "fark": 13,
-          "one_cikan": [],
+          "one_cikan": [
+            "en büyük fark 14"
+          ],
           "kritik": false
         },
         {
@@ -2247,7 +2250,8 @@
           "onde": "dep",
           "fark": 2,
           "one_cikan": [
-            "9 kez liderlik değişti"
+            "9 kez liderlik değişti",
+            "Orlando 10-0 seri"
           ],
           "kritik": false
         },
@@ -2258,7 +2262,9 @@
           "dep_skor": 55,
           "onde": "dep",
           "fark": 7,
-          "one_cikan": [],
+          "one_cikan": [
+            "Tyson 9 sayı"
+          ],
           "kritik": false
         },
         {
@@ -2270,7 +2276,7 @@
           "fark": 12,
           "one_cikan": [
             "Mitchell 10 sayı",
-            "Cleveland 6-0 seri"
+            "en büyük fark 12"
           ],
           "kritik": true
         },
@@ -2282,8 +2288,8 @@
           "onde": "dep",
           "fark": 14,
           "one_cikan": [
-            "en büyük fark 18",
-            "Cleveland 5 üçlük"
+            "Cleveland 5 üçlük",
+            "Cleveland 12/20 şut"
           ],
           "kritik": false
         }

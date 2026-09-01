@@ -383,7 +383,6 @@
           "onde": "dep",
           "fark": 3,
           "one_cikan": [
-            "en büyük fark 14",
             "Golden State 6-0 seri"
           ],
           "kritik": false
@@ -408,8 +407,8 @@
           "onde": "ev",
           "fark": 3,
           "one_cikan": [
-            "Curry double-double",
-            "Curry 14 sayı"
+            "Curry 14 sayı",
+            "en büyük fark 11"
           ],
           "kritik": true
         }
@@ -1072,7 +1071,6 @@
           "onde": "ev",
           "fark": 5,
           "one_cikan": [
-            "Aldama double-double",
             "Aldama 13 sayı"
           ],
           "kritik": false
@@ -1708,8 +1706,8 @@
           "onde": "ev",
           "fark": 2,
           "one_cikan": [
-            "Love double-double",
-            "Banchero 11 sayı"
+            "Banchero 11 sayı",
+            "Orlando 7-0 seri"
           ],
           "kritik": false
         },
@@ -1721,7 +1719,7 @@
           "onde": "dep",
           "fark": 5,
           "one_cikan": [
-            "Utah 8-0 seri"
+            "en büyük fark 10"
           ],
           "kritik": false
         },
@@ -1733,7 +1731,6 @@
           "onde": "dep",
           "fark": 15,
           "one_cikan": [
-            "en büyük fark 19",
             "Orlando 12/19 şut"
           ],
           "kritik": false
@@ -1745,7 +1742,9 @@
           "dep_skor": 118,
           "onde": null,
           "fark": 0,
-          "one_cikan": [],
+          "one_cikan": [
+            "Collier 16 sayı"
+          ],
           "kritik": false
         },
         {
@@ -15832,8 +15831,8 @@
           "onde": "ev",
           "fark": 2,
           "one_cikan": [
-            "Boston 16-0 seri",
-            "Ingram 12 sayı"
+            "Ingram 12 sayı",
+            "en büyük fark 13"
           ],
           "kritik": false
         },
@@ -15845,8 +15844,8 @@
           "onde": "dep",
           "fark": 16,
           "one_cikan": [
-            "Pritchard double-double",
-            "9 kez liderlik değişti"
+            "9 kez liderlik değişti",
+            "Toronto 13-0 seri"
           ],
           "kritik": true
         }
@@ -16456,7 +16455,7 @@
           "fark": 8,
           "one_cikan": [
             "4 kez liderlik değişti",
-            "Durant 16 sayı"
+            "en büyük fark 12"
           ],
           "kritik": false
         },
@@ -16468,8 +16467,8 @@
           "onde": "dep",
           "fark": 14,
           "one_cikan": [
-            "Smith Jr. double-double",
-            "Houston 11-0 seri"
+            "Houston 11-0 seri",
+            "Smith Jr. 17 sayı"
           ],
           "kritik": true
         }

@@ -1353,6 +1353,7 @@ ONE_CIKAN_EN_FAZLA = 2      # bir satırda en fazla iki olgu
 ONE_CIKAN_SUT_UST = 60      # çeyrek saha içi isabet yüzdesi bu ve üstü
 ONE_CIKAN_SUT_ALT = 30      # ... ya da bu ve altı
 ONE_CIKAN_UCLUK = 5         # çeyrekte bu kadar üçlük
+ONE_CIKAN_FARK = 10         # çeyrek içinde farkın ulaştığı en yüksek değer
 # SARMALAMA KARARI BURADA DEĞİL: hücre genişliği ekrana göre değişiyor
 # (375px'te 192px ≈ 26 karakter, 1440px'te 717px ≈ 99). Sabit bir
 # karakter bütçesi masaüstünde rahat sığan ikinci olguyu da düşürüyordu.
@@ -1475,21 +1476,11 @@ def _ceyrek_tablosu(gercekler, gozat=False):
         return []
     olaylar = [f["veri"] for f in gercekler if f["tur"] == "akis_olay"]
     oyuncu_ceyrek = [f["veri"] for f in gercekler if f["tur"] == "oyuncu_ceyrek"]
-    # BİLEŞİK BAŞARI TABLODA DA GÖRÜNSÜN: maçın en dikkat çekici
-    # performansı üst kademelerdense (quadruple/triple-double, 40+ sayı,
-    # yüksek double-double), o oyuncunun EN ÇOK SAYI ATTIĞI çeyreğin
-    # satırında çeyrek sayısı yerine başarı etiketi yazılıyor. Diğer
-    # satırlar çeyrek verisiyle kalıyor — bir çeyrek satırı maç geneli
-    # bir iddiayı tekrar tekrar taşımasın.
-    _en_iyi = _en_iyi_performans_stat(gercekler)
-    _bilesik_etiket = _bilesik_periyot = None
-    if _en_iyi:
-        _kd, _knm, _et, _ek = hesapla.performans_derecesi(_en_iyi)
-        if _kd <= 3 and _et:
-            _oc = [o for o in oyuncu_ceyrek if o["oyuncu"] == _en_iyi["oyuncu"]]
-            if _oc:
-                _bilesik_periyot = max(_oc, key=lambda o: o.get("sayi") or 0)["periyot"]
-                _bilesik_etiket = f"{_soyad(_en_iyi['oyuncu'])} {_et}"
+    # BİLEŞİK BAŞARI TABLODAN ÇIKTI. double-double / triple-double ve
+    # oyuncunun MAÇ TOPLAMI sayısı maç geneline ait; çeyrek satırında
+    # "o çeyrekte olmuş" gibi okunuyordu (kullanıcı bulgusu). Bu
+    # başarılar zaten manşette ve punch line'da var, tabloda tekrar
+    # edilmiyor. Çeyrek satırındaki HER olgu o çeyreğe ait.
     kisa = lambda k: cumle.TAKIM_KISA.get(k, k)
     son_periyot = max(c["periyot"] for c in ceyrekler)
 
@@ -1511,11 +1502,13 @@ def _ceyrek_tablosu(gercekler, gozat=False):
     karar_periyot = (karar_olay or {}).get("periyot") or son_periyot
 
     takim_ceyrek = [f["veri"] for f in gercekler if f["tur"] == "takim_ceyrek"]
+    ceyrek_fark = [f["veri"] for f in gercekler if f["tur"] == "ceyrek_fark"]
 
     def _one_cikan(periyotlar, kullanilan):
         """EN FAZLA İKİ ETİKET — yüklem yok, sabit öncelik sırası.
 
-        `kullanilan`: bu MAÇTA daha önce yazılmış olgu türleri. Aynı tür
+        `kullanilan`: {"tur": set, "metin": set} — bu MAÇTA daha önce
+        yazılmış olgu türleri ve metinleri. Aynı tür
         bir maçta iki kez kullanılmıyor (kullanıcı kuralı) — eskiden
         sadece arka arkaya gelmesi engelleniyordu, üç satırda iki kez
         "N-0 seri" çıkabiliyordu.
@@ -1533,8 +1526,10 @@ def _ceyrek_tablosu(gercekler, gozat=False):
         for o in sayilar:
             toplam[o["oyuncu"]] = toplam.get(o["oyuncu"], 0) + (o.get("sayi") or 0)
         en_oyuncu = max(toplam.items(), key=lambda kv: kv[1]) if toplam else None
-        buyuk = [o for o in olaylar
-                 if o["tip"] == "en_buyuk_fark" and (o.get("periyot") or 0) in periyotlar]
+        # ÇEYREK İÇİ EN YÜKSEK FARK. Akıştaki "en_buyuk_fark" MAÇIN en
+        # büyük farkıydı; o çeyrekte olmuş gibi okunuyordu.
+        buyuk = [f.get("sayi") or 0 for f in ceyrek_fark
+                 if (f.get("periyot") or 0) in periyotlar]
         # TAKIM ŞUTU: "İlk yarı" gibi çok periyotlu satırda çeyrekler
         # TOPLANIYOR — iki ayrı yüzdenin ortalaması yanlış olurdu.
         sut = {}
@@ -1550,17 +1545,14 @@ def _ceyrek_tablosu(gercekler, gozat=False):
         # BİLEŞİK BAŞARI EN ÖNDE: triple-double / 40+ sayı gibi bir gece
         # "5 kez liderlik değişti"nin arkasında kalamaz. Tek kaynak
         # sıralama neyi üste koyuyorsa tabloda da o görünüyor.
-        if _bilesik_etiket and _bilesik_periyot in periyotlar:
-            adaylar.append(("bilesik", _bilesik_etiket))
         if len(lider) >= ONE_CIKAN_LIDERLIK:
             adaylar.append(("lider", f"{len(lider)} kez liderlik değişti"))
         if en_seri is not None and (en_seri.get("sayi") or 0) >= ONE_CIKAN_SERI:
             adaylar.append(("seri", f"{kisa(en_seri.get('takim'))} {en_seri['sayi']}-0 seri"))
         if en_oyuncu and en_oyuncu[1] >= ONE_CIKAN_SAYI:
             adaylar.append(("sayi", f"{_soyad(en_oyuncu[0])} {en_oyuncu[1]} sayı"))
-        if buyuk:
-            adaylar.append(("fark",
-                            f"en büyük fark {max(o.get('sayi') or 0 for o in buyuk)}"))
+        if buyuk and max(buyuk) >= ONE_CIKAN_FARK:
+            adaylar.append(("fark", f"en büyük fark {max(buyuk)}"))
         # ÜÇLÜK: çeyrekte 5 ve üstü. En çok atan takım.
         _uc = [(k, v["uc_isabet"]) for k, v in sut.items()
                if v["uc_isabet"] >= ONE_CIKAN_UCLUK]
@@ -1586,13 +1578,31 @@ def _ceyrek_tablosu(gercekler, gozat=False):
 
         secilen = []
         for tur, metin in adaylar:
-            if tur in kullanilan or any(tur == t for t, _ in secilen):
+            if (tur in kullanilan["tur"] or metin in kullanilan["metin"]
+                    or any(tur == t for t, _ in secilen)):
                 continue
             secilen.append((tur, metin))
             if len(secilen) == ONE_CIKAN_EN_FAZLA:
                 break
-        for tur, _ in secilen:
-            kullanilan.add(tur)
+        # HİÇBİR SATIR BOŞ KALMASIN (kullanıcı kuralı): hiçbir aday eşiği
+        # geçmediyse ya da hepsi bu maçta kullanıldıysa, o çeyreğin en
+        # skoreri EŞİKSİZ yazılıyor. Yazılan yine çeyrek içi sayı.
+        # Bu geri düşüş "aynı tip iki kez kullanılmaz" kuralını AŞAR —
+        # boş satır bırakmamak daha öncelikli (kullanıcı kararı).
+        if not secilen:
+            # Aynı METİN iki kez yazılmaz: iki çeyrekte de 10 sayı atan
+            # oyuncu "Murray 10 sayı"yı iki satırda tekrarlıyordu. Sırayla
+            # bir sonraki skorer deneniyor.
+            for _ad, _n in sorted(toplam.items(), key=lambda kv: -kv[1]):
+                if _n <= 0:
+                    break
+                _m = f"{_soyad(_ad)} {_n} sayı"
+                if _m not in kullanilan["metin"]:
+                    secilen.append(("sayi", _m))
+                    break
+        for tur, metin in secilen:
+            kullanilan["tur"].add(tur)
+            kullanilan["metin"].add(metin)
         return [m for _, m in secilen]
 
     def _satir(etiket, c, kritik, olgular):
@@ -1619,7 +1629,7 @@ def _ceyrek_tablosu(gercekler, gozat=False):
         if ilk is None:
             return []
         # KISA ETİKET: "İkinci yarı" skor sütununa değiyordu (375px).
-        _kullanilan = set()
+        _kullanilan = {"tur": set(), "metin": set()}
         # KARAR SATIRI ÖNCE SEÇER (aşağıdaki nota bak).
         _o2 = _one_cikan(set(range(3, son_periyot + 1)), _kullanilan)
         _o1 = _one_cikan({1, 2}, _kullanilan)
@@ -1631,7 +1641,7 @@ def _ceyrek_tablosu(gercekler, gozat=False):
     # "seri"yi alıp bitiriyor, maçın karara bağlandığı çeyrek olgusuz
     # kalıyordu (127 karar satırının 24'ü, ölçüldü). Tablo yine
     # KRONOLOJİK yazılıyor; değişen sadece seçim sırası.
-    _kullanilan = set()
+    _kullanilan = {"tur": set(), "metin": set()}
     _olgu = {}
     for c in sorted(ceyrekler,
                     key=lambda c: (c["periyot"] != karar_periyot, c["periyot"])):

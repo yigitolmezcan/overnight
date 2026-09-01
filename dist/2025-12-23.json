@@ -299,7 +299,7 @@
       "metin": "Charlotte Hornets, Washington Wizards'ı yendi.",
       "anlatili": true,
       "hedef_id": "a-0022500409",
-      "icon": "standings",
+      "icon": "default",
       "saat": "03:00",
       "rozet": 2.98,
       "skor": "CHA 126 – WAS 109",
@@ -443,7 +443,7 @@
       "metin": "Kawhi Leonard, Houston Rockets karşısında 41 sayı attı.",
       "anlatili": true,
       "hedef_id": "g-mutlaka-1",
-      "icon": "default",
+      "icon": "standings",
       "saat": "07:00",
       "rozet": 8.66,
       "skor": "LAC 128 – HOU 108",
@@ -481,7 +481,7 @@
           "fark": 14,
           "one_cikan": [
             "Flagg 14 sayı",
-            "Denver 5 üçlük"
+            "en büyük fark 18"
           ],
           "kritik": false
         },
@@ -493,8 +493,7 @@
           "onde": "ev",
           "fark": 10,
           "one_cikan": [
-            "Murray double-double",
-            "en büyük fark 21"
+            "Murray 14 sayı"
           ],
           "kritik": false
         },
@@ -506,6 +505,7 @@
           "onde": null,
           "fark": 0,
           "one_cikan": [
+            "Denver 9 üçlük",
             "Denver 18/25 şut"
           ],
           "kritik": false
@@ -1158,7 +1158,6 @@
           "onde": "dep",
           "fark": 6,
           "one_cikan": [
-            "en büyük fark 9",
             "Houston 15/23 şut"
           ],
           "kritik": false
@@ -1197,7 +1196,7 @@
           "onde": "ev",
           "fark": 20,
           "one_cikan": [
-            "Leonard 41 sayı"
+            "en büyük fark 26"
           ],
           "kritik": false
         }
@@ -1942,7 +1941,6 @@
           "onde": "ev",
           "fark": 13,
           "one_cikan": [
-            "en büyük fark 18",
             "Chicago 6 üçlük"
           ],
           "kritik": false
@@ -1967,8 +1965,8 @@
           "onde": "dep",
           "fark": 3,
           "one_cikan": [
-            "Giddey triple-double",
-            "Chicago 10-0 seri"
+            "Chicago 10-0 seri",
+            "en büyük fark 13"
           ],
           "kritik": true
         }
@@ -22228,7 +22226,7 @@
           "fark": 17,
           "one_cikan": [
             "9 kez liderlik değişti",
-            "en büyük fark 24"
+            "Detroit 7 üçlük"
           ],
           "kritik": false
         },
@@ -22240,8 +22238,8 @@
           "onde": "dep",
           "fark": 9,
           "one_cikan": [
-            "Duren double-double",
-            "Westbrook 18 sayı"
+            "Westbrook 18 sayı",
+            "en büyük fark 21"
           ],
           "kritik": true
         }
@@ -22853,8 +22851,8 @@
           "onde": "ev",
           "fark": 6,
           "one_cikan": [
-            "Towns 40 sayı",
-            "8 kez liderlik değişti"
+            "8 kez liderlik değişti",
+            "en büyük fark 16"
           ],
           "kritik": false
         },
@@ -23502,8 +23500,8 @@
           "onde": "dep",
           "fark": 2,
           "one_cikan": [
-            "Filipowski double-double",
-            "en büyük fark 15"
+            "en büyük fark 15",
+            "Memphis 9 üçlük"
           ],
           "kritik": false
         },
@@ -26138,7 +26136,7 @@
       "mac": "Charlotte Hornets — Washington Wizards",
       "skor": "126–109",
       "rozet": 2.98,
-      "why": "gece sırası 1",
+      "why": "10. galibiyetini alan (kazanan)",
       "metin": "Charlotte Hornets evinde Washington Wizards'ı 126-109 yendi.",
       "box": {
         "ev": {

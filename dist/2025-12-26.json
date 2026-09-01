@@ -341,7 +341,6 @@
           "onde": "dep",
           "fark": 3,
           "one_cikan": [
-            "Detroit 11-0 seri",
             "Detroit 16/25 şut"
           ],
           "kritik": false
@@ -379,8 +378,8 @@
           "onde": "ev",
           "fark": 2,
           "one_cikan": [
-            "Cunningham double-double",
-            "Cunningham 12 sayı"
+            "Cunningham 12 sayı",
+            "Detroit 7-0 seri"
           ],
           "kritik": true
         }
@@ -13684,8 +13683,8 @@
           "onde": "dep",
           "fark": 5,
           "one_cikan": [
-            "Phoenix 9-0 seri",
-            "Poole 11 sayı"
+            "Poole 11 sayı",
+            "Phoenix 5 üçlük"
           ],
           "kritik": false
         },
@@ -13697,8 +13696,8 @@
           "onde": "dep",
           "fark": 7,
           "one_cikan": [
-            "Williams double-double",
-            "4 kez liderlik değişti"
+            "4 kez liderlik değişti",
+            "New Orleans 8-0 seri"
           ],
           "kritik": true
         }

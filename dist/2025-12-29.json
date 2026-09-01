@@ -393,8 +393,8 @@
           "onde": "dep",
           "fark": 3,
           "one_cikan": [
-            "Okongwu double-double",
-            "8 kez liderlik değişti"
+            "8 kez liderlik değişti",
+            "Atlanta 7 üçlük"
           ],
           "kritik": false
         },
@@ -406,8 +406,7 @@
           "onde": "dep",
           "fark": 4,
           "one_cikan": [
-            "en büyük fark 10",
-            "Atlanta 7 üçlük"
+            "en büyük fark 10"
           ],
           "kritik": false
         },
@@ -1046,8 +1045,8 @@
           "onde": "ev",
           "fark": 4,
           "one_cikan": [
-            "New Orleans 9-0 seri",
-            "Bey 23 sayı"
+            "Bey 23 sayı",
+            "New Orleans 7 üçlük"
           ],
           "kritik": false
         },
@@ -1058,7 +1057,9 @@
           "dep_skor": 72,
           "onde": "ev",
           "fark": 3,
-          "one_cikan": [],
+          "one_cikan": [
+            "Anunoby 16 sayı"
+          ],
           "kritik": false
         },
         {
@@ -1081,8 +1082,8 @@
           "onde": "dep",
           "fark": 5,
           "one_cikan": [
-            "Brunson double-double",
-            "7 kez liderlik değişti"
+            "7 kez liderlik değişti",
+            "New York 8-0 seri"
           ],
           "kritik": true
         }
@@ -16911,8 +16912,8 @@
           "onde": "dep",
           "fark": 11,
           "one_cikan": [
-            "Banchero triple-double",
-            "Bane 18 sayı"
+            "Bane 18 sayı",
+            "en büyük fark 21"
           ],
           "kritik": false
         },
@@ -17539,8 +17540,8 @@
           "onde": "ev",
           "fark": 12,
           "one_cikan": [
-            "Avdija double-double",
-            "Avdija 16 sayı"
+            "Avdija 16 sayı",
+            "en büyük fark 17"
           ],
           "kritik": false
         },
@@ -18310,8 +18311,8 @@
           "onde": "dep",
           "fark": 5,
           "one_cikan": [
-            "Randle double-double",
-            "6 kez liderlik değişti"
+            "6 kez liderlik değişti",
+            "Minnesota 7 üçlük"
           ],
           "kritik": false
         },

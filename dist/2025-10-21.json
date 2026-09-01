@@ -120,6 +120,7 @@
           "onde": "dep",
           "fark": 6,
           "one_cikan": [
+            "en büyük fark 10",
             "Houston 5 üçlük"
           ],
           "kritik": false
@@ -132,7 +133,7 @@
           "onde": "dep",
           "fark": 4,
           "one_cikan": [
-            "en büyük fark 12"
+            "Şengün 9 sayı"
           ],
           "kritik": false
         },
@@ -144,7 +145,7 @@
           "onde": null,
           "fark": 0,
           "one_cikan": [
-            "Şengün double-double"
+            "Gilgeous-Alexander 12 sayı"
           ],
           "kritik": false
         },
@@ -155,7 +156,9 @@
           "dep_skor": 115,
           "onde": null,
           "fark": 0,
-          "one_cikan": [],
+          "one_cikan": [
+            "Holmgren 6 sayı"
+          ],
           "kritik": false
         },
         {
@@ -4166,7 +4169,7 @@
           "fark": 1,
           "one_cikan": [
             "7 kez liderlik değişti",
-            "Dončić 22 sayı"
+            "en büyük fark 10"
           ],
           "kritik": false
         },
@@ -4178,8 +4181,8 @@
           "onde": "dep",
           "fark": 10,
           "one_cikan": [
-            "Dončić 43 sayı",
-            "Golden State 11-0 seri"
+            "Golden State 11-0 seri",
+            "Dončić 21 sayı"
           ],
           "kritik": true
         }

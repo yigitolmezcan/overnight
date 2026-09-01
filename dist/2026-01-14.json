@@ -253,8 +253,8 @@
           "onde": "dep",
           "fark": 3,
           "one_cikan": [
-            "Sensabaugh 43 sayı",
-            "15 kez liderlik değişti"
+            "15 kez liderlik değişti",
+            "Chicago 6 üçlük"
           ],
           "kritik": false
         },
@@ -266,7 +266,7 @@
           "onde": "ev",
           "fark": 9,
           "one_cikan": [
-            "Chicago 5 üçlük"
+            "Dosunmu 10 sayı"
           ],
           "kritik": false
         },
@@ -908,7 +908,9 @@
           "dep_skor": 87,
           "onde": null,
           "fark": 0,
-          "one_cikan": [],
+          "one_cikan": [
+            "Williamson 14 sayı"
+          ],
           "kritik": false
         },
         {
@@ -1560,7 +1562,7 @@
           "fark": 15,
           "one_cikan": [
             "Cleveland 10-0 seri",
-            "Cleveland 5 üçlük"
+            "en büyük fark 16"
           ],
           "kritik": true
         },
@@ -1583,7 +1585,9 @@
           "dep_skor": 93,
           "onde": "dep",
           "fark": 18,
-          "one_cikan": [],
+          "one_cikan": [
+            "Mitchell 20 sayı"
+          ],
           "kritik": false
         },
         {
@@ -1594,7 +1598,7 @@
           "onde": "dep",
           "fark": 26,
           "one_cikan": [
-            "en büyük fark 30"
+            "Cleveland 7 üçlük"
           ],
           "kritik": false
         }
@@ -12764,8 +12768,8 @@
           "onde": "dep",
           "fark": 19,
           "one_cikan": [
-            "Dick 17 sayı",
-            "en büyük fark 27"
+            "en büyük fark 27",
+            "Indiana 8 üçlük"
           ],
           "kritik": false
         },
@@ -12777,8 +12781,8 @@
           "onde": "dep",
           "fark": 14,
           "one_cikan": [
-            "Siakam double-double",
-            "Indiana 9-0 seri"
+            "Indiana 9-0 seri",
+            "Ingram 18 sayı"
           ],
           "kritik": true
         }

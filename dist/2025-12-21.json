@@ -249,7 +249,7 @@
           "fark": 0,
           "one_cikan": [
             "Atlanta 9-0 seri",
-            "Okongwu 15 sayı"
+            "en büyük fark 11"
           ],
           "kritik": false
         },
@@ -273,7 +273,9 @@
           "dep_skor": 116,
           "onde": "dep",
           "fark": 1,
-          "one_cikan": [],
+          "one_cikan": [
+            "Young 9 sayı"
+          ],
           "kritik": false
         },
         {
@@ -284,8 +286,8 @@
           "onde": "dep",
           "fark": 2,
           "one_cikan": [
-            "Johnson double-double",
-            "4 kez liderlik değişti"
+            "4 kez liderlik değişti",
+            "Johnson 13 sayı"
           ],
           "kritik": true
         }
@@ -945,7 +947,6 @@
           "onde": "dep",
           "fark": 11,
           "one_cikan": [
-            "Durant double-double",
             "Houston 13/21 şut"
           ],
           "kritik": false
@@ -957,7 +958,9 @@
           "dep_skor": 91,
           "onde": "dep",
           "fark": 9,
-          "one_cikan": [],
+          "one_cikan": [
+            "Eason 7 sayı"
+          ],
           "kritik": false
         },
         {
@@ -967,7 +970,9 @@
           "dep_skor": 112,
           "onde": null,
           "fark": 0,
-          "one_cikan": [],
+          "one_cikan": [
+            "Durant 7 sayı"
+          ],
           "kritik": false
         },
         {
@@ -1558,8 +1563,8 @@
           "onde": "dep",
           "fark": 7,
           "one_cikan": [
-            "Brunson 47 sayı",
-            "4 kez liderlik değişti"
+            "4 kez liderlik değişti",
+            "Brunson 14 sayı"
           ],
           "kritik": false
         },
@@ -1571,7 +1576,6 @@
           "onde": "ev",
           "fark": 4,
           "one_cikan": [
-            "Bridges 14 sayı",
             "New York 8 üçlük"
           ],
           "kritik": false
@@ -2177,8 +2181,7 @@
           "onde": "dep",
           "fark": 12,
           "one_cikan": [
-            "Porter Jr. double-double",
-            "Milwaukee 11-0 seri"
+            "en büyük fark 14"
           ],
           "kritik": false
         },
@@ -2189,7 +2192,9 @@
           "dep_skor": 75,
           "onde": null,
           "fark": 0,
-          "one_cikan": [],
+          "one_cikan": [
+            "Reid 9 sayı"
+          ],
           "kritik": false
         },
         {
@@ -2200,8 +2205,8 @@
           "onde": "ev",
           "fark": 3,
           "one_cikan": [
-            "en büyük fark 8",
-            "Minnesota 6 üçlük"
+            "Minnesota 6 üçlük",
+            "Minnesota 6-0 seri"
           ],
           "kritik": true
         }

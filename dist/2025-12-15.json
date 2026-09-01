@@ -243,7 +243,7 @@
           "onde": "ev",
           "fark": 7,
           "one_cikan": [
-            "en büyük fark 9"
+            "Jokić 9 sayı"
           ],
           "kritik": false
         },
@@ -255,7 +255,6 @@
           "onde": "ev",
           "fark": 3,
           "one_cikan": [
-            "Jokić triple-double",
             "Houston 15/22 şut"
           ],
           "kritik": false
@@ -855,8 +854,8 @@
           "onde": "dep",
           "fark": 6,
           "one_cikan": [
-            "Flagg 42 sayı",
-            "7 kez liderlik değişti"
+            "7 kez liderlik değişti",
+            "en büyük fark 10"
           ],
           "kritik": false
         },
@@ -880,7 +879,7 @@
           "onde": "dep",
           "fark": 7,
           "one_cikan": [
-            "en büyük fark 10"
+            "Washington 12 sayı"
           ],
           "kritik": false
         },
@@ -904,7 +903,9 @@
           "dep_skor": 133,
           "onde": "ev",
           "fark": 7,
-          "one_cikan": [],
+          "one_cikan": [
+            "George 5 sayı"
+          ],
           "kritik": false
         }
       ],
@@ -1527,8 +1528,8 @@
           "onde": "ev",
           "fark": 2,
           "one_cikan": [
-            "en büyük fark 9",
-            "LA Clippers 11/18 şut"
+            "LA Clippers 11/18 şut",
+            "Spencer 9 sayı"
           ],
           "kritik": false
         },
@@ -1540,7 +1541,7 @@
           "onde": "dep",
           "fark": 8,
           "one_cikan": [
-            "Jackson Jr. 14 sayı"
+            "en büyük fark 13"
           ],
           "kritik": false
         },
@@ -2212,7 +2213,7 @@
           "fark": 8,
           "one_cikan": [
             "Boston 14-0 seri",
-            "Brown 10 sayı"
+            "Boston 5 üçlük"
           ],
           "kritik": false
         },
@@ -2236,8 +2237,8 @@
           "onde": "dep",
           "fark": 4,
           "one_cikan": [
-            "Cunningham double-double",
-            "3 kez liderlik değişti"
+            "3 kez liderlik değişti",
+            "LeVert 11 sayı"
           ],
           "kritik": true
         },
@@ -2248,7 +2249,9 @@
           "dep_skor": 112,
           "onde": "dep",
           "fark": 7,
-          "one_cikan": [],
+          "one_cikan": [
+            "White 14 sayı"
+          ],
           "kritik": false
         }
       ],

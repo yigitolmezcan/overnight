@@ -2795,7 +2795,20 @@ def main():
     # Çıpa kaydırması ve Göz at'ta box score işareti
     # ==================================================================
     basar("Çıpa: kaydırma tarayıcıya bırakılmıyor, hesaplanıyor",
-          "function cipayaKaydir(" in _sayfa5 and "CIPA_PAYI" in _sayfa5)
+          "function cipayaKaydir(" in _sayfa5 and "function cipaPayi(" in _sayfa5)
+    # PAY SABİT DEĞİL, ÖLÇÜLÜYOR: yapışkan başlığın yüksekliği + 16px.
+    # Sabit 56 kullanılıyordu, blok başlık şeridinin altında kalıyordu.
+    basar("Çıpa: pay = yapışkan başlık yüksekliği + 16px nefes",
+          "const CIPA_NEFES = 16;" in _sayfa5
+          and "bolum.querySelector('.sechead')" in _sayfa5
+          and "return h + CIPA_NEFES;" in _sayfa5)
+    # Kapak listesi satırları .rowlink değil; tarayıcının kendi çapasına
+    # düşüp hedefi şaşırıyorlardı.
+    basar("Çıpa: kapak listesi satırları da hesaplanan yola giriyor",
+          ".kaplist a[href^=" in _sayfa5.split("e.target.closest(")[1][:200])
+    basar("Çıpa: tarayıcı çapası da ölçülen payı kullanıyor",
+          "scroll-margin-top:var(--cipa" in _sayfa5
+          and "--cipa" in _sayfa5.split("cipaPayiniYaz")[1][:400])
     basar("Çıpa: ikinci sıçrama olmasın diye replaceState kullanılıyor",
           "history.replaceState(null, '', '#' + id)" in _sayfa5)
     basar("Çıpa: kullanılmayan revealTarget ölü kodu kaldırıldı",
@@ -5803,7 +5816,7 @@ def main():
           "; ".join(_yapi[:4]))
     basar("Tablo: her blokta tam bir kritik satır", not _kritik,
           "; ".join(_kritik[:4]))
-    basar("Tablo: durum alanı skorla tutarlı", not _durum_hata,
+    basar("Tablo: önde işareti skorla tutarlı, olgu tekrarı yok", not _durum_hata,
           "; ".join(_durum_hata[:4]))
     basar("Tablo: kümülatif skor ilerliyor", not _skor_hata,
           "; ".join(_skor_hata[:4]))
@@ -5841,9 +5854,14 @@ def main():
                         _dolu_satir += 1
                     else:
                         _bos_satir += 1
-    basar("Tablo: sakin çeyrekte satır boş kalıyor, dolgu yazılmıyor",
-          _bos_satir > 0 and _dolu_satir > 0,
+    # HİÇBİR SATIR BOŞ KALMASIN (kullanıcı kararı): eşik geçilmezse o
+    # çeyreğin en skoreri EŞİKSİZ yazılıyor. Dolgu işareti ("—") yok.
+    basar("Tablo: hiçbir satır boş kalmıyor, dolgu işareti de yok",
+          _bos_satir == 0 and _dolu_satir > 0,
           f"boş {_bos_satir} / dolu {_dolu_satir}")
+    basar("Tablo: boş kalacak satırda eşiksiz çeyrek skoreri yazılıyor",
+          "if not secilen:" in _dsrc3
+          and 'sorted(toplam.items(), key=lambda kv: -kv[1])' in _dsrc3)
     # --------------------------------------------------------------
     # OLGU HAVUZU — altı kaynağın altısı da üretimde çalışıyor mu?
     # --------------------------------------------------------------
