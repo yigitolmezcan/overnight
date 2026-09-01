@@ -478,8 +478,13 @@
         }
       ],
       "karar": {
-        "cumle": "Antetokounmpo bitime 5 saniye kala sayıyı buldu.",
-        "detay": "122–121 · maçı bitirdi"
+        "cumle": "Giannis Antetokounmpo sayıyı buldu.",
+        "saat": "0:04",
+        "periyot_etiketi": "",
+        "ev_skor": 122,
+        "dep_skor": 121,
+        "ev_kazandi": true,
+        "detay": "maçı bitirdi"
       },
       "box": {
         "ev": {
@@ -13428,7 +13433,7 @@
       "mac": "Los Angeles Lakers — Memphis Grizzlies",
       "skor": "128–121",
       "rozet": 8.02,
-      "why": "gece sırası 10",
+      "why": "",
       "metin": "Los Angeles Lakers evinde 128-121 kazandı. Ja Morant double-double yaptı (16 sayı, 11 asist).",
       "box": {
         "ev": {
@@ -17819,7 +17824,7 @@
       "mac": "Indiana Pacers — San Antonio Spurs",
       "skor": "113–123",
       "rozet": 0.94,
-      "why": "",
+      "why": "gece sırası 1",
       "metin": "San Antonio Spurs deplasmanda 123-113 yendi.",
       "box": {
         "ev": {

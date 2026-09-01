@@ -2528,8 +2528,13 @@
         }
       ],
       "karar": {
-        "cumle": "Carter Jr. bitime 1 saniye kala sayıyı buldu.",
-        "detay": "115–114 · maçı bitirdi"
+        "cumle": "Wendell Carter Jr. sayıyı buldu.",
+        "saat": "0:01",
+        "periyot_etiketi": "",
+        "ev_skor": 115,
+        "dep_skor": 114,
+        "ev_kazandi": true,
+        "detay": "maçı bitirdi"
       },
       "box": {
         "ev": {

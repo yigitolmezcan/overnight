@@ -448,8 +448,13 @@
         }
       ],
       "karar": {
-        "cumle": "George bitime 2 saniye kala sayıyı buldu.",
-        "detay": "131–129 · maçı bitirdi"
+        "cumle": "Keyonte George sayıyı buldu.",
+        "saat": "0:02",
+        "periyot_etiketi": "",
+        "ev_skor": 131,
+        "dep_skor": 129,
+        "ev_kazandi": true,
+        "detay": "maçı bitirdi"
       },
       "box": {
         "ev": {

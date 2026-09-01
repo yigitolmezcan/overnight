@@ -1007,8 +1007,13 @@
         }
       ],
       "karar": {
-        "cumle": "Huerter bitime 1 saniye kala üçlük attı.",
-        "detay": "114–111 · maçı bitirdi"
+        "cumle": "Kevin Huerter üçlük attı.",
+        "saat": "0:01",
+        "periyot_etiketi": "",
+        "ev_skor": 114,
+        "dep_skor": 111,
+        "ev_kazandi": true,
+        "detay": "maçı bitirdi"
       },
       "box": {
         "ev": {

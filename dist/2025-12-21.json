@@ -1032,8 +1032,13 @@
         }
       ],
       "karar": {
-        "cumle": "Schröder bitime 3 saniye kala üçlük attı.",
-        "detay": "125–124 · maçı bitirdi"
+        "cumle": "Dennis Schröder üçlük attı.",
+        "saat": "0:03",
+        "periyot_etiketi": "UZ",
+        "ev_skor": 125,
+        "dep_skor": 124,
+        "ev_kazandi": true,
+        "detay": "maçı bitirdi"
       },
       "box": {
         "ev": {

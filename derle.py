@@ -1728,7 +1728,8 @@ def _ceyrek_tablosu(gercekler, gozat=False):
 def _karar_cumlesi(gercekler):
     """{cumle, detay} ya da None — TEK izin verilen biçim.
 
-    "[Oyuncu] bitime [süre] kala [şut türü] attı."
+    "[Oyuncu] [şut türü] attı." — kalan süre CÜMLEDE DEĞİL, soldaki
+    dev saatte (bkz. şablondaki .kararc). Oyuncunun TAM ADI yazılıyor.
 
     Yalnız maçı bitiren belirgin bir basket varsa çıkar: son 30 saniyede
     atılmış ve sonucu belirlemiş. Yoksa HİÇ ÇIKMAZ — farklı biten maçta
@@ -1751,8 +1752,12 @@ def _karar_cumlesi(gercekler):
     if not karar.get("belirleyici"):
         return None
     n = int(round(saniye))
-    sure = "son saniyede" if n <= 0 else f"bitime {n} saniye kala"
-    ad = _soyad(karar["oyuncu"])
+    # KALAN SÜRE ARTIK CÜMLEDE DEĞİL, SOLDAKİ DEV SAATTE. "bitime 2
+    # saniye kala" ifadesi cümleden çıktı — asıl çarpıcı olan sayı
+    # cümlenin içinde kayboluyordu (kullanıcı kararı).
+    # TAM AD: bu blokta oyuncunun tam adı yazılıyor. Çeyrek tablosunun
+    # "öne çıkan" sütununda soyadı kalıyor — orada yer dar, tekrar çok.
+    ad = karar["oyuncu"]
     # ŞUT TÜRÜNE GÖRE ELEME YOK (kullanıcı kararı). Tek ölçüt
     # belirleyicilik: son saniyede atılan ve maçı kazandıran bir serbest
     # atış da dramatiktir. Tek atışın sorunu dramatiklik değil, Türkçede
@@ -1770,9 +1775,25 @@ def _karar_cumlesi(gercekler):
         # "basket attı" kuru duruyordu; "sayıyı buldu" hem doğru hem
         # doğal. Kaç sayı geldiği alt satırdaki skordan görünüyor.
         sut = "sayıyı buldu"
+    # UZATMA ETİKETİ: hangi periyotta olduğu belli olsun.
+    _p = karar.get("periyot") or 4
+    if _p == 5:
+        periyot_etiketi = "UZ"
+    elif _p > 5:
+        periyot_etiketi = f"UZ{_p - 4}"
+    else:
+        periyot_etiketi = ""
+    _ev, _dep = karar.get("ev_skor") or 0, karar.get("dep_skor") or 0
     return {
-        "cumle": f"{ad} {sure} {sut}.",
-        "detay": f"{karar['ev_skor']}–{karar['dep_skor']} · maçı bitirdi",
+        "cumle": f"{ad} {sut}.",
+        # Dev saat için: "0:02". `saat` play-by-play'den geliyor; yoksa
+        # kalan saniyeden kuruluyor, uydurulmuyor.
+        "saat": karar.get("saat") or f"0:{max(n, 0):02d}",
+        "periyot_etiketi": periyot_etiketi,
+        # Skor satırı EV–DEP sırasında (tek kaynak kuralı), kazananın
+        # skoru kalın.
+        "ev_skor": _ev, "dep_skor": _dep, "ev_kazandi": _ev >= _dep,
+        "detay": "maçı bitirdi",
     }
 
 

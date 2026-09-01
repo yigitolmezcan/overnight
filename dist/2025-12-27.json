@@ -435,8 +435,13 @@
         }
       ],
       "karar": {
-        "cumle": "Bane bitime 7 saniye kala sayıyı buldu.",
-        "detay": "127–126 · maçı bitirdi"
+        "cumle": "Desmond Bane sayıyı buldu.",
+        "saat": "0:06",
+        "periyot_etiketi": "",
+        "ev_skor": 127,
+        "dep_skor": 126,
+        "ev_kazandi": true,
+        "detay": "maçı bitirdi"
       },
       "box": {
         "ev": {

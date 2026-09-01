@@ -2547,8 +2547,13 @@
         }
       ],
       "karar": {
-        "cumle": "Avdija bitime 2 saniye kala serbest atışları 2/2 attı.",
-        "detay": "134–133 · maçı bitirdi"
+        "cumle": "Deni Avdija serbest atışları 2/2 attı.",
+        "saat": "0:01",
+        "periyot_etiketi": "UZ",
+        "ev_skor": 134,
+        "dep_skor": 133,
+        "ev_kazandi": true,
+        "detay": "maçı bitirdi"
       },
       "box": {
         "ev": {
@@ -16330,8 +16335,13 @@
         }
       ],
       "karar": {
-        "cumle": "Goodwin son saniyede sayıyı buldu.",
-        "detay": "99–98 · maçı bitirdi"
+        "cumle": "Jordan Goodwin sayıyı buldu.",
+        "saat": "0:00",
+        "periyot_etiketi": "",
+        "ev_skor": 99,
+        "dep_skor": 98,
+        "ev_kazandi": true,
+        "detay": "maçı bitirdi"
       },
       "ray_renk": "#B08BE8",
       "ray_rgb": "176,139,232"
@@ -17755,8 +17765,13 @@
         }
       ],
       "karar": {
-        "cumle": "Brunson bitime 6 saniye kala üçlük attı.",
-        "detay": "113–114 · maçı bitirdi"
+        "cumle": "Jalen Brunson üçlük attı.",
+        "saat": "0:05",
+        "periyot_etiketi": "",
+        "ev_skor": 113,
+        "dep_skor": 114,
+        "ev_kazandi": false,
+        "detay": "maçı bitirdi"
       },
       "ray_renk": "#F58426",
       "ray_rgb": "245,132,38"

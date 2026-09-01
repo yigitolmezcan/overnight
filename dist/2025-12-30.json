@@ -274,8 +274,13 @@
         }
       ],
       "karar": {
-        "cumle": "Edgecombe bitime 2 saniye kala üçlük attı.",
-        "detay": "136–139 · maçı bitirdi"
+        "cumle": "VJ Edgecombe üçlük attı.",
+        "saat": "0:02",
+        "periyot_etiketi": "UZ",
+        "ev_skor": 136,
+        "dep_skor": 139,
+        "ev_kazandi": false,
+        "detay": "maçı bitirdi"
       },
       "box": {
         "ev": {

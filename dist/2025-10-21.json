@@ -190,8 +190,13 @@
         }
       ],
       "karar": {
-        "cumle": "Gilgeous-Alexander bitime 2 saniye kala serbest atışları 2/2 attı.",
-        "detay": "125–124 · maçı bitirdi"
+        "cumle": "Shai Gilgeous-Alexander serbest atışları 2/2 attı.",
+        "saat": "0:02",
+        "periyot_etiketi": "UZ2",
+        "ev_skor": 125,
+        "dep_skor": 124,
+        "ev_kazandi": true,
+        "detay": "maçı bitirdi"
       },
       "box": {
         "ev": {

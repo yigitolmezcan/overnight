@@ -1612,7 +1612,8 @@ def main():
     basar("Tablo: Göz at bölümünde de var",
           "${ctablo(m.ceyrek_tablosu)}" in _sayfa)
     basar("Tablo: karar cümlesi bloğu var, koşullu çiziliyor",
-          "${kararBlogu(mv.karar)}" in _sayfa and "const kararBlogu = k => k" in _sayfa)
+          "${kararBlogu(mv.karar)}" in _sayfa
+          and "const kararBlogu = k => {" in _sayfa and "if(!k) return '';" in _sayfa)
     basar("Akış oluşturucusu devre dışı — silinmedi",
           "const akisBlogu" in _sayfa
           and "${akisBlogu(mv.akis)}" not in _sayfa_kodu
@@ -5837,14 +5838,25 @@ def main():
                 _k5 = _b5.get("karar")
                 if _k5:
                     _karar_var += 1
+                    # KALAN SÜRE CÜMLEDEN ÇIKTI — soldaki dev saatte.
+                    # Cümle: "[Tam ad] [şut türü] attı."
                     if not _re.match(
-                            r"^\S.* (bitime \d+ saniye kala|son saniyede) "
-                            r"(üçlük attı|sayıyı buldu|"
-                            r"serbest atışları (\d+)/\3 attı)\.$",
+                            r"^\S.* (üçlük attı|sayıyı buldu|"
+                            r"serbest atışları (\d+)/\2 attı)\.$",
                             _k5.get("cumle", "")):
                         _karar_bozuk.append(f"{_ad5}: {_k5.get('cumle')}")
+                    if "bitime" in _k5.get("cumle", "") or "kala" in _k5.get("cumle", ""):
+                        _karar_bozuk.append(f"{_ad5}: süre hâlâ cümlede")
                     if "maçı bitirdi" not in (_k5.get("detay") or ""):
                         _karar_bozuk.append(f"{_ad5}: detay {_k5.get('detay')}")
+                    # DEV SAAT için gereken alanlar
+                    for _al5 in ("saat", "periyot_etiketi", "ev_skor",
+                                 "dep_skor", "ev_kazandi"):
+                        if _al5 not in _k5:
+                            _karar_bozuk.append(f"{_ad5}: {_al5} yok")
+                    if not _re.match(r"^\d+:\d{2}$", _k5.get("saat") or ""):
+                        _karar_bozuk.append(f"{_ad5}: saat '{_k5.get('saat')}'")
+
                 else:
                     _karar_yok += 1
     # Eşik gece sayısına bağlı (28 Ocak vitrin gecesi listeden çıkınca
@@ -7031,6 +7043,74 @@ def main():
                         _celisen5.append(f"{_t5} {_al5}: {_c5[:56]}")
     basar("Sıra: 'deplasmanında/evinde' ifadeleri sırayla çelişmiyor",
           not _celisen5, "; ".join(_celisen5[:3]))
+
+    # ==================================================================
+    # KARAR ANI — DEV SAAT
+    # ==================================================================
+    # Kalan süre cümlenin içinde kayboluyordu; artık solda 40px mono.
+    _kk = _sayfa.split(".kararc{")[1].split("}")[0]
+    basar("Karar anı: turuncu nokta kalktı",
+          ".kararc u{width:7px" not in _sayfa
+          and "<div class=\"kararc\"><u></u>" not in _sayfa)
+    basar("Karar anı: solda dev saat 40px ember, harf aralığı sıkı",
+          "font-size:40px;font-weight:700;color:var(--ember)" in _sayfa
+          and "letter-spacing:-.05em" in
+          _sayfa.split(".kararc .kbig b{")[1].split("}")[0])
+    basar("Karar anı: 'KALA' mono 8.5px, geniş aralık, koyu bakır",
+          "font-size:8.5px;letter-spacing:.15em" in
+          _sayfa.split(".kararc .kbig u{")[1].split("}")[0]
+          and "#8A5A38" in _sayfa.split(".kararc .kbig u{")[1].split("}")[0])
+    basar("Karar anı: aralarında dikey ince çizgi, 18px boşluk",
+          "gap:18px" in _kk
+          and "border-left:1px solid var(--line2)" in
+          _sayfa.split(".kararc .ktx{")[1].split("}")[0]
+          and "padding-left:18px" in
+          _sayfa.split(".kararc .ktx{")[1].split("}")[0])
+    basar("Karar anı: cümle 16px kalın, skor satırı mono 11px",
+          "font-size:16px" in _sayfa.split(".kararc p{")[1].split("}")[0]
+          and "font-weight:700" in _sayfa.split(".kararc p{")[1].split("}")[0]
+          and "font-size:11px" in
+          _sayfa.split(".kararc .ktx div{")[1].split("}")[0])
+    basar("Karar anı: kazananın skoru beyaz kalın",
+          ".kararc .ktx div b{color:var(--ink);font-weight:700}" in _sayfa
+          and "k.ev_kazandi" in _sayfa)
+    # UZATMA ETİKETİ saatin ÜSTÜNDE.
+    basar("Karar anı: uzatmada saatin üstünde periyot etiketi",
+          "periyot_etiketi" in _sayfa
+          and "margin-bottom:5px" in
+          _sayfa.split(".kararc .kbig s{")[1].split("}")[0])
+    # MOBİL: 40px sığmıyor (ölçüldü: cümle 2 satıra düşüyor), 34'e iniyor.
+    # ALT ALTA GEÇMİYOR.
+    basar("Karar anı: mobilde saat 34px, alt alta geçmiyor",
+          "@media(max-width:479px){" in _sayfa
+          and ".kararc .kbig b{font-size:34px}" in _sayfa
+          and "flex-direction:column" not in _kk)
+    # TAM AD bu blokta, soyadı çeyrek tablosunda.
+    _tamad = []
+    for _t8 in _yayin.durum_oku()["yayinlanan"]:
+        _p8 = f"dist/{_t8}.json"
+        _g8 = f"gercek/{_t8}.json"
+        if not (_os.path.exists(_p8) and _os.path.exists(_g8)):
+            continue
+        _d8 = _jj.loads(open(_p8, encoding="utf-8").read())
+        _gc8 = _jj.loads(open(_g8, encoding="utf-8").read())["maclar"]
+        for _bol8 in ("mutlaka", "degerse_bak", "diger"):
+            for _b8 in (_d8.get(_bol8) or []):
+                if not isinstance(_b8, dict) or not _b8.get("karar"):
+                    continue
+                _gid8 = _b8.get("mac_id")
+                _ka8 = next((k["veri"] for k in (_gc8.get(_gid8) or [])
+                             if k["tur"] == "akis_olay"
+                             and k["veri"].get("tip") == "karar_ani"), None)
+                if not _ka8:
+                    continue
+                if not _b8["karar"]["cumle"].startswith(_ka8["oyuncu"]):
+                    _tamad.append(f"{_t8}: {_b8['karar']['cumle']}")
+    basar("Karar anı: cümle oyuncunun TAM ADIYLA başlıyor",
+          not _tamad, "; ".join(_tamad[:3]))
+    # Çeyrek tablosunda SOYADI kalıyor (orada yer dar).
+    basar("Karar anı: çeyrek tablosunda soyadı korunuyor",
+          "_soyad(en_oyuncu[0])" in _dsrc_kod)
 
     # ==================================================================
     # S SÖNÜMLEMESİ ve A→K KARIŞIMI

@@ -346,8 +346,13 @@
         }
       ],
       "karar": {
-        "cumle": "Vučević bitime 4 saniye kala sayıyı buldu.",
-        "detay": "128–126 · maçı bitirdi"
+        "cumle": "Nikola Vučević sayıyı buldu.",
+        "saat": "0:04",
+        "periyot_etiketi": "",
+        "ev_skor": 128,
+        "dep_skor": 126,
+        "ev_kazandi": true,
+        "detay": "maçı bitirdi"
       },
       "box": {
         "ev": {

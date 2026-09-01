@@ -1159,8 +1159,13 @@
         }
       ],
       "karar": {
-        "cumle": "McCollum bitime 1 saniye kala sayıyı buldu.",
-        "detay": "113–114 · maçı bitirdi"
+        "cumle": "CJ McCollum sayıyı buldu.",
+        "saat": "0:01",
+        "periyot_etiketi": "",
+        "ev_skor": 113,
+        "dep_skor": 114,
+        "ev_kazandi": false,
+        "detay": "maçı bitirdi"
       },
       "box": {
         "ev": {
@@ -1795,8 +1800,13 @@
         }
       ],
       "karar": {
-        "cumle": "Banchero bitime 8 saniye kala sayıyı buldu.",
-        "detay": "110–112 · maçı bitirdi"
+        "cumle": "Paolo Banchero sayıyı buldu.",
+        "saat": "0:07",
+        "periyot_etiketi": "",
+        "ev_skor": 110,
+        "dep_skor": 112,
+        "ev_kazandi": false,
+        "detay": "maçı bitirdi"
       },
       "box": {
         "ev": {

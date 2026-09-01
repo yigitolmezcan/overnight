@@ -289,7 +289,7 @@
       "metin": "Houston Rockets, Denver Nuggets deplasmanında kazandı.",
       "anlatili": true,
       "hedef_id": "a-0022500386",
-      "icon": "default",
+      "icon": "standings",
       "saat": "01:00",
       "rozet": 6.3,
       "skor": "DEN 101 – HOU 115",
@@ -397,7 +397,7 @@
       "metin": "LA Clippers, Los Angeles Lakers'i evinde yendi.",
       "anlatili": true,
       "hedef_id": "a-0022500395",
-      "icon": "standings",
+      "icon": "default",
       "saat": "06:30",
       "rozet": 4.94,
       "skor": "LAC 103 – LAL 88",
@@ -1831,8 +1831,13 @@
         }
       ],
       "karar": {
-        "cumle": "Bane bitime 1 saniye kala sayıyı buldu.",
-        "detay": "127–128 · maçı bitirdi"
+        "cumle": "Desmond Bane sayıyı buldu.",
+        "saat": "0:00",
+        "periyot_etiketi": "UZ",
+        "ev_skor": 127,
+        "dep_skor": 128,
+        "ev_kazandi": false,
+        "detay": "maçı bitirdi"
       },
       "box": {
         "ev": {
@@ -15930,7 +15935,7 @@
       "mac": "Denver Nuggets — Houston Rockets",
       "skor": "101–115",
       "rozet": 6.3,
-      "why": "",
+      "why": "gece sırası 1",
       "metin": "Houston Rockets deplasmanda Denver Nuggets'i 115-101 yendi. Jabari Smith Jr. double-double yaptı (22 sayı, 10 ribaund).",
       "box": {
         "ev": {
@@ -17157,7 +17162,7 @@
       "mac": "LA Clippers — Los Angeles Lakers",
       "skor": "103–88",
       "rozet": 4.94,
-      "why": "gece sırası 10",
+      "why": "",
       "metin": "LA Clippers evinde Los Angeles Lakers'i 103-88 yendi.",
       "box": {
         "ev": {

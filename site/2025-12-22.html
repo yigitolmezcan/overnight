@@ -504,13 +504,33 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
 .ctbl tr.k td.f{font-weight:600}
 .ctbl tr.k td.q{color:var(--ember)}
 .ctbl tr.k td.s b{color:var(--ember)}
-.kararc{margin-top:14px;padding-top:12px;border-top:1px solid var(--line2);
-  display:flex;gap:11px;align-items:flex-start}
-.kararc u{width:7px;height:7px;border-radius:50%;background:var(--ember);flex:none;
-  margin-top:5px;text-decoration:none;box-shadow:0 0 0 3px rgba(232,118,58,.15)}
-.kararc p{font-size:13.5px;line-height:1.5;color:var(--ink);font-weight:600}
-.kararc em{display:block;font-family:var(--mono);font-size:10.5px;color:#8A5A38;
-  font-style:normal;margin-top:4px;font-weight:400}
+/* KARAR ANI — DEV SAAT. Solda kalan süre 40px, sağda cümle; aralarında
+   dikey ince çizgi. Turuncu nokta kalktı: asıl sinyal sayının kendisi. */
+.kararc{margin-top:14px;padding-top:15px;border-top:1px solid var(--line2);
+  display:flex;gap:18px;align-items:baseline}
+.kararc .kbig{font-family:var(--mono);flex:none}
+.kararc .kbig b{display:block;font-size:40px;font-weight:700;color:var(--ember);
+  letter-spacing:-.05em;line-height:.9}
+.kararc .kbig u{display:block;font-size:8.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:#8A5A38;text-decoration:none;margin-top:6px}
+/* UZATMA ETİKETİ saatin ÜSTÜNDE — hangi periyot olduğu belli olsun. */
+.kararc .kbig s{display:block;font-family:var(--mono);font-size:8.5px;
+  letter-spacing:.15em;text-transform:uppercase;color:#8A5A38;
+  text-decoration:none;margin-bottom:5px}
+.kararc .ktx{flex:1;min-width:0;border-left:1px solid var(--line2);
+  padding-left:18px}
+.kararc .ktx div{font-family:var(--mono);font-size:11px;color:#5A6472;
+  margin-top:8px}
+.kararc .ktx div b{color:var(--ink);font-weight:700}
+/* MOBİL: 40px saat ile cümle yan yana sığmazsa saat 34px'e iner —
+   ALT ALTA GEÇMEZ (kullanıcı kuralı). */
+@media(max-width:479px){
+  .kararc{gap:14px}
+  .kararc .kbig b{font-size:34px}
+  .kararc .ktx{padding-left:14px}
+}
+.kararc p{font-size:16px;line-height:1.35;color:var(--ink);font-weight:700;
+  letter-spacing:-.015em}
 
 /* DEVRE DIŞI — SİLİNMEDİ: cümle akışının stilleri */
 .akis{margin-top:15px;border-top:1px solid var(--line2);padding-top:4px}
@@ -2803,10 +2823,21 @@ function render(d){
        }).join('')}</table>`
     : '';
   // TEK karar cümlesi — yalnız maçı bitiren belirgin basket varsa.
-  const kararBlogu = k => k
-    ? `<div class="kararc"><u></u><div><p>${esc(k.cumle)}</p>
-       ${k.detay?`<em>${esc(k.detay)}</em>`:''}</div></div>`
-    : '';
+  // KARAR ANI — DEV SAAT (referans D bloğu). Asıl çarpıcı olan kalan
+  // süre; eskiden cümlenin içinde kayboluyordu. Turuncu nokta kalktı.
+  const kararBlogu = k => {
+    if(!k) return '';
+    const sk = k.ev_kazandi
+      ? `<b>${k.ev_skor}</b> – ${k.dep_skor}`
+      : `${k.ev_skor} – <b>${k.dep_skor}</b>`;
+    return `<div class="kararc">
+      <div class="kbig">${k.periyot_etiketi
+          ? `<s>${esc(k.periyot_etiketi)}</s>` : ''}
+        <b>${esc(k.saat||'')}</b><u>kala</u></div>
+      <div class="ktx"><p>${esc(k.cumle)}</p>
+        <div>${sk}${k.detay?` · ${esc(k.detay)}`:''}</div></div>
+    </div>`;
+  };
 
   // DEVRE DIŞI — SİLİNMEDİ: cümle akışı oluşturucusu.
   const akisBlogu = a => (a && a.length)
