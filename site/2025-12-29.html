@@ -148,9 +148,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-a
    altında 1px koyu çizgi. */
 .rule2{height:1px;background:#1A2130;margin-top:3px}
 
-.hero{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;
-  padding:15px 0 0}
-.herol{flex:1;min-width:0}
+.hero{padding:15px 0 0}
 h1{font-family:var(--disp);font-weight:800;font-size:24px;
   line-height:1.18;letter-spacing:-.03em;margin:0}
 /* Künyenin alt satırı — giriş cümlesinin DEVAMI, sayıların altı değil.
@@ -161,9 +159,28 @@ h1{font-family:var(--disp);font-weight:800;font-size:24px;
 h1 s{text-decoration:none;color:var(--faint);display:block}
 /* Sayılar sarmalanmıyor (white-space:nowrap) ve daralmıyor (flex:none);
    yer sıkışırsa giriş cümlesi kısalır, sayı bozulmaz. */
-.nums{flex:none;font-family:var(--mono);font-size:10.5px;color:var(--faint);
-  text-align:right;line-height:1.7;white-space:nowrap}
-.nums b{color:var(--ink2);font-weight:400}
+/* SAYI ŞERİDİ. Üç eşit hücre, aralarında dikey ince çizgi. Hücreler
+   SOLA hizalı: ilk hücrenin sol kenarı sayfanın sol kenarıyla, yani
+   diğer bölümlerle aynı hizada. */
+.serit{display:grid;grid-template-columns:repeat(3,1fr);
+  margin-top:20px;border-top:1px solid #151C26;padding-top:14px}
+.serit.ikili{grid-template-columns:repeat(2,1fr)}
+.serit .h{padding-left:16px}
+.serit .h:first-child{padding-left:0}
+.serit .h+.h{border-left:1px solid #1A2130}
+.serit b{display:block;font-family:var(--mono);font-size:24px;font-weight:700;
+  line-height:1;letter-spacing:-.03em;color:var(--ink2)}
+.serit .h.iyi b{color:var(--ember)}
+.serit .h.kotu b{color:#5A6472}
+.serit s{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);text-decoration:none;margin-top:8px}
+/* Masaüstünde başlık 36px (şartname). Mobilde 24 kalıyor: 36 iki
+   satırı üç satıra çıkarıyor. */
+@media(min-width:640px){
+  h1{font-size:36px}
+  .serit b{font-size:26px}
+  .serit .h{padding-left:20px}
+}
 .hata{margin-top:14px;font-size:14px;color:var(--ink2)}
 
 /* türkler — side-by-side tabs, one active detail panel */
@@ -1472,16 +1489,31 @@ td.khot{color:var(--amber);font-weight:700}
    Böylece sağdaki sütun (skor / ortalama / sıra) her satırda AYNI x'te ve
    ada yapışık; sağda kalan boşluk bölümün kendi boşluğu, kasıtlı.
    MOBİL: sabit genişlik sığmaz — ad sütunu esnek kalıyor. */
-.kaplist a,.fp,.sr,.tkust{max-width:var(--liste-max)}
-/* FORM ve SIRALAMA masaüstünde ORTALI. Bu iki bölüm sayfadaki tek
-   dar bloktu ve sola yapışıp sağda 380px boşluk bırakıyordu; diğer
-   bölümler kutu genişliğinin tamamını kullanıyor. Kapak listesi
-   ayrı: o kendi çerçevesinin (.clock) içinde ve sola hizalı kalması
-   kasıtlı. Ortalama satırın kendisine değil KAPSAYICIYA veriliyor,
-   yoksa satır içi hizalar bozuluyor. */
+/* Üst sınır SADECE kapak listesi ve Türkler satırında. Form ve
+   Sıralama'ya da verilmişti; ortalanınca bölüm başlığıyla hizası
+   bozuldu, sola bırakılınca sağda 380px boşluk kaldı. Sorun genişlik
+   değil, içeriğin dar bir kutuda toplanmasıymış: artık satır TAM
+   GENİŞLİĞE yayılıyor (aşağıdaki ızgara). */
+.kaplist a,.tkust{max-width:var(--liste-max)}
+/* ---- FORM ve SIRALAMA: satır bölümün tamamına yayılıyor ----
+   Üç bölge: ad SOLDA, kutucuklar ORTADA, sayılar SAĞDA. Izgara
+   kullanılıyor çünkü sütunlar satırdan satıra AYNI yerde durmalı;
+   esnek boşlukla ortalansaydı kutucukların yeri ad uzunluğuna göre
+   kayardı. Kenar sütunları eşit (1fr) olduğu için orta hücre gerçekten
+   ortada. MOBİLDE değişmiyor: dar ekranda ızgara sıkışıyor. */
 @media(min-width:640px){
-  .formda,.siralama,.formnot{max-width:var(--liste-max);
-    margin-left:auto;margin-right:auto}
+  .fp{display:grid;grid-template-columns:1fr max-content 1fr;align-items:center}
+  .fp .who{min-width:0}
+  .fp .sq{justify-self:center}
+  .fp .avg{justify-self:end}
+  /* Sıralama'da dört öğe var; kenarlardaki iki sütun EŞİT genişlikte
+     (sıra no ve hareket oku) ki orta hücre tam ortaya otursun. */
+  .sr{display:grid;grid-template-columns:36px 1fr max-content 1fr 36px;
+    align-items:center}
+  .sr .pos{width:auto}
+  .sr .tn{width:auto;min-width:0}
+  .sr .f10{justify-self:center}
+  .sr .ar{grid-column:5;width:auto;justify-self:end}
 }
 @media(min-width:640px){
   /* Kapak satırında skor, ad bloğunun HEMEN ardından geliyor; sabit ad
@@ -1565,12 +1597,15 @@ td.khot{color:var(--amber);font-weight:700}
 <div class="rule2"></div>
 
 <div class="hero">
-  <div class="herol">
-    <h1 id="h1">Günaydın.<s>NBA uyumadı.</s></h1>
-    <p class="slogan">Molasız, reklamsız özet.</p>
-  </div>
-  <div class="nums" id="nums"></div>
+  <h1 id="h1">Günaydın.<s>NBA uyumadı.</s></h1>
+  <p class="slogan">Molasız, reklamsız özet.</p>
 </div>
+<!-- SAYI ŞERİDİ — künyenin EN ALTINDA, tam genişlikte üç hücre.
+     Eskiden en küçük puntoyla sağ üst köşeye itilmişti; asıl bilgi
+     oydu. En iyi ve en kötü rozetin YAN YANA durması bilinçli: aynı
+     gecede 9.3 ile 2.4 arasındaki fark ürünün neden var olduğunu tek
+     bakışta söylüyor. -->
+<div class="serit" id="nums"></div>
 <p class="hata" id="lede" hidden></p>
 
 <section class="sec s1">
@@ -2531,9 +2566,18 @@ function render(d){
   arsivOklari(d.tarih);
   // Gecenin iki sayısı: maç adedi ve en yüksek rozet. İkisi de zaten
   // hesaplanıyor. "Okuma süresi" bilerek yok — ürünün vaadi hız değil.
-  const enIyi=(d.bars||[]).reduce((a,b)=>Math.max(a,b.rozet||0),0);
-  document.getElementById('nums').innerHTML=
-    `<b>${d.mac_sayisi}</b> maç`+(enIyi>0?`<br><b>${enIyi.toFixed(1)}</b> en iyisi`:'');
+  const _roz=(d.bars||[]).map(b=>b.rozet||0).filter(x=>x>0);
+  const enIyi=_roz.length?Math.max(..._roz):0;
+  const enKotu=_roz.length?Math.min(..._roz):0;
+  // TEK MAÇLIK GECEDE "en kötüsü" ÇIKMIYOR: aynı maç iki hücrede
+  // görünürdü. İki hücre kalıyor.
+  const _cok=_roz.length>1;
+  const _serit=document.getElementById('nums');
+  _serit.classList.toggle('ikili',!_cok);
+  _serit.innerHTML=
+    `<div class="h"><b>${d.mac_sayisi}</b><s>maç</s></div>`
+    +(enIyi>0?`<div class="h iyi"><b>${enIyi.toFixed(1)}</b><s>en iyisi</s></div>`:'')
+    +(_cok?`<div class="h kotu"><b>${enKotu.toFixed(1)}</b><s>en kötüsü</s></div>`:'');
   document.getElementById('endP').textContent=`${d.mac_sayisi} maç. Yarın sabah dokuzda görüşürüz.`;
   document.getElementById('credit').textContent=`OVERNIGHT · ${esc(d.uretildi||'')}`;
 

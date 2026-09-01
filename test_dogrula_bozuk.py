@@ -1038,7 +1038,8 @@ def main():
     basar("html: künye alt satırı var, eski tanıtım cümlesi yok",
           '<p class="slogan">Molasız, reklamsız özet.</p>' in _html
           and "Sıraya senin yerine biz karar verdik" not in _html
-          and '<div class="nums" id="nums"></div>' in _html)
+          # Sayı şeridi artık hero'nun SAĞINDA değil, künyenin ALTINDA.
+          and '<div class="serit" id="nums"></div>' in _html)
 
 
     # ==================================================================
@@ -3222,10 +3223,11 @@ def main():
           'id="stamp"' not in _sayfa8
           and "NBA · sen uyurken</em>" not in _sayfa8
           and "10.5px" in _sayfa8.split(".slogan{")[1].split("}")[0])
-    # Sayılar sarmalanmamalı; sıkışırsa cümle kısalır, sayı bozulmaz.
-    basar("Açılış: sayılar tek satırda ve daralmıyor",
-          "flex:none" in _sayfa8.split(".nums{")[1].split("}")[0]
-          and "white-space:nowrap" in _sayfa8.split(".nums{")[1].split("}")[0])
+    # .nums KALKTI: sayılar künyenin altında üç hücrelik şeritte
+    # (bkz. "Künye: şerit üç eşit hücre"). Sarmalanma ölçümle denetlendi:
+    # 375px'te üç hücrenin sayısı da etiketi de tek satırda.
+    basar("Açılış: sayılar köşeye itilmiş .nums kutusunda değil",
+          ".nums{" not in _sayfa8 and ".serit{display:grid" in _sayfa8)
 
     # --- Sayılar ham veriyle birebir mi? ---
     # (DOM'a elle değer enjekte edip "doğru görünüyor" demek yerine
@@ -6439,10 +6441,12 @@ def main():
           and ">Türkler</h2>" in open("bulten.py", encoding="utf-8").read())
 
     # KÜNYE ALT SATIRI — giriş cümlesinin devamı, sayıların altı değil.
-    basar("Künye: alt satır var ve sol sütunda",
+    # .herol sarmalayıcısı kalktı: sayılar hero'nun sağından çıkıp
+    # künyenin ALTINA indi, hero tek sütun oldu.
+    basar("Künye: alt satır var ve başlığın hemen altında",
           '<p class="slogan">Molasız, reklamsız özet.</p>' in _sayfa
-          and '<div class="herol">' in _sayfa
-          and _sayfa.index('class="slogan"') < _sayfa.index('class="nums"'))
+          and '<div class="herol">' not in _sayfa
+          and _sayfa.index('class="slogan"') < _sayfa.index('class="serit"'))
     _sl = _sayfa.split(".slogan{")[1].split("}")[0]
     basar("Künye: alt satır mono, küçük, soluk",
           "var(--mono)" in _sl and "10.5px" in _sl and "var(--faint)" in _sl)
@@ -6678,9 +6682,10 @@ def main():
     basar("Liste ölçüsü: kurallarda ham 480px/240px yok, hepsi değişkenden",
           not _ham_px, "; ".join(_ham_px))
     # Dört listenin dördü de AYNI kuralda, tek üst sınırı alıyor.
-    _ortak = ".kaplist a,.fp,.sr,.tkust{max-width:var(--liste-max)}"
-    basar("Liste olcusu: dort liste tek kuralda ayni ust siniri aliyor",
-          _ortak in _ly, "ortak kural yok")
+    # Form ve Sıralama üst sınırdan ÇIKTI (satır tam genişliğe yayılıyor);
+    # üst sınır kapak listesi ve Türkler satırında duruyor.
+    basar("Liste olcusu: kapak ve Turkler tek kuralda ust sinir aliyor",
+          ".kaplist a,.tkust{max-width:var(--liste-max)}" in _ly, "ortak kural yok")
 
     # SIRA TUZAĞI: aynı özgüllükte "flex:1" diyen kurallar yukarıda.
     # Sabit genişlik kuralı onlardan SONRA gelmezse sessizce eziliyor
@@ -6811,14 +6816,68 @@ def main():
     # FORM ve SIRALAMA masaüstünde ORTALI. Sayfadaki tek dar bloklardı,
     # sola yapışıp sağda 380px boşluk bırakıyorlardı. Kapak listesi
     # ayrı: kendi çerçevesinin içinde ve sola hizalı kalması kasıtlı.
-    basar("Hiza: Form ve Sıralama tek kuralda ortalanıyor",
-          ".formda,.siralama,.formnot{max-width:var(--liste-max);" in _ly
-          and "margin-left:auto;margin-right:auto}" in _ly)
+    # ORTALAMA GERİ ALINDI: liste sayfanın ortasında kalıp bölüm
+    # başlığıyla hizasını kaybediyordu. Sorun genişlik değil, içeriğin
+    # dar bir kutuda toplanmasıymış — satır artık TAM GENİŞLİĞE yayılıyor.
+    basar("Hiza: Form ve Sıralama ortalanmıyor, üst sınır da almıyor",
+          ".formda,.siralama,.formnot{max-width" not in _ly
+          and ".kaplist a,.tkust{max-width:var(--liste-max)}" in _ly)
+    # Üç bölge: ad solda, kutucuklar ORTADA, sayılar sağda. Izgara
+    # kullanılıyor ki sütunlar satırdan satıra aynı yerde dursun.
+    basar("Hiza: Form satırı üç bölgeli ızgara",
+          ".fp{display:grid;grid-template-columns:1fr max-content 1fr" in _ly
+          and ".fp .sq{justify-self:center}" in _ly
+          and ".fp .avg{justify-self:end}" in _ly)
+    # Sıralama'da dört öğe var; kenar sütunları EŞİT olmalı ki orta
+    # hücre gerçekten ortaya otursun.
+    basar("Hiza: Sıralama satırında kenar sütunlar eşit, kutucuklar ortada",
+          ".sr{display:grid;grid-template-columns:36px 1fr max-content 1fr 36px" in _ly
+          and ".sr .f10{justify-self:center}" in _ly
+          and ".sr .ar{grid-column:5" in _ly)
+    # Izgara SADECE masaüstünde: mobilde satır esnek kalmalı, dar
+    # ekranda beş sütunlu ızgara sıkışıyor.
+    _once = _ly.split(".fp{display:grid")[0]
+    basar("Hiza: ızgara sadece masaüstünde, mobil dokunulmadı",
+          _once.rfind("@media(min-width:640px){") > _once.rfind("@media(max-width")
+          and ".fp{display:flex" in _ly)
     # Ölçütlerin hepsi soru cümlesi — soru işareti eksik kalmasın.
     _ddler = _re.findall(r"<dd>([^<]+)</dd>", _sayfa)
     basar("Rozet açıklaması: dört ölçütün dördü de soru işaretiyle bitiyor",
           len(_ddler) == 4 and all(d.strip().endswith("?") for d in _ddler),
           str(_ddler))
+
+    # ------------------------------------------------------------------
+    # KÜNYE — sayı şeridi EN ALTTA
+    # ------------------------------------------------------------------
+    # Öğeler flex ile köşelere itilmişti: asıl bilgi (maç adedi, en iyi
+    # rozet) en küçük puntoyla en uzak köşedeydi.
+    basar("Künye: sayılar hero'dan çıkıp künyenin altına indi",
+          '<div class="serit" id="nums"></div>' in _sayfa
+          and '<div class="nums" id="nums">' not in _sayfa
+          and '.hero{padding:15px 0 0}' in _sayfa)
+    basar("Künye: şerit üç eşit hücre, aralarında dikey çizgi",
+          ".serit{display:grid;grid-template-columns:repeat(3,1fr)" in _sayfa
+          and ".serit .h+.h{border-left:1px solid" in _sayfa)
+    basar("Künye: sayılar mono 24px kalın, etiketler mono 8.5px büyük harf",
+          ".serit b{display:block;font-family:var(--mono);font-size:24px;font-weight:700"
+          in _sayfa
+          and "font-size:8.5px;letter-spacing:.16em;\n  text-transform:uppercase"
+          in _sayfa.split(".serit s{")[1][:220])
+    basar("Künye: en iyisi ember, en kötüsü soluk gri",
+          ".serit .h.iyi b{color:var(--ember)}" in _sayfa
+          and ".serit .h.kotu b{color:#5A6472}" in _sayfa)
+    # TEK MAÇLIK GECEDE üçüncü hücre çıkmıyor — aynı maç iki hücrede
+    # görünürdü.
+    basar("Künye: tek maçlık gecede 'en kötüsü' hücresi çıkmıyor",
+          "const _cok=_roz.length>1;" in _sayfa
+          and "_serit.classList.toggle('ikili',!_cok)" in _sayfa
+          and ".serit.ikili{grid-template-columns:repeat(2,1fr)}" in _sayfa)
+    basar("Künye: masaüstünde başlık 36px",
+          "h1{font-size:36px}" in _sayfa)
+    # Çift kural (gazete): 2px açık alt kenar + 1px koyu çizgi.
+    basar("Künye: çift çizgi duruyor",
+          "border-bottom:2px solid var(--ink)" in _sayfa
+          and ".rule2{height:1px;background:#1A2130" in _sayfa)
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
