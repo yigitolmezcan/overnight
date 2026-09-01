@@ -330,6 +330,12 @@
       "is": "yayinla",
       "sonuc": "success",
       "not": "run 27 · schedule"
+    },
+    {
+      "zaman": "2026-09-01T11:51:23Z",
+      "is": "yayinla",
+      "sonuc": "success",
+      "not": "run 28 · schedule"
     }
   ]
 }
