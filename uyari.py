@@ -68,7 +68,14 @@ def gonder(konu, satirlar):
         print(f"uyari: mail gönderildi -> {ADRES}")
         return 0
     except urllib.error.HTTPError as e:
-        print(f"uyari: UYARI GÖNDERİLEMEDİ (HTTP {e.code})")
+        # SEBEBİ DE YAZ: yalnız kodu yazmak hata ayıklanamaz hâle
+        # getiriyordu (403 gördük, nedenini öğrenmek için ayrı koşu
+        # gerekti). Resend gövdede açık mesaj döndürüyor.
+        try:
+            neden = e.read().decode("utf-8", "replace")[:300]
+        except Exception:
+            neden = "(gövde okunamadı)"
+        print(f"uyari: UYARI GÖNDERİLEMEDİ (HTTP {e.code}) — {neden}")
         return 1
     except Exception as e:
         print(f"uyari: UYARI GÖNDERİLEMEDİ ({e})")
