@@ -63,7 +63,11 @@ export const coz = (s) => Buffer.from(String(s || ""), "base64url").toString("ut
 async function redis(...komut) {
   const yanit = await fetch(REDIS_URL, {
     method: "POST",
-    headers: { Authorization: `Bearer ${REDIS_TOKEN}`, "Content-Type": "application/json" },
+    headers: {
+      Authorization: `Bearer ${REDIS_TOKEN}`,
+      "Content-Type": "application/json",
+      "User-Agent": "overnight/1.0 (+https://overnightnba.com)",
+    },
     body: JSON.stringify(komut),
   });
   if (!yanit.ok) throw new Error(`Depolama hatası (${yanit.status}): ${await yanit.text()}`);
@@ -86,6 +90,10 @@ export async function mailGonder({ kime, konu, html, metin }) {
     headers: {
       Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
       "Content-Type": "application/json",
+      // USER-AGENT ŞART: Resend'in önünde Cloudflare var, imzasız
+      // isteği 403 ile geri çeviriyor (error code 1010). Python
+      // tarafında ölçümle bulundu, aynı tuzak burada da vardı.
+      "User-Agent": "overnight/1.0 (+https://overnightnba.com)",
     },
     body: JSON.stringify({
       from: process.env.GONDEREN_ADRES || "OVERNIGHT <onboarding@resend.dev>",

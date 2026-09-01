@@ -116,6 +116,7 @@ async function mailAt(konu, satirlar) {
     headers: {
       Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
       "Content-Type": "application/json",
+      "User-Agent": "overnight/1.0 (+https://overnightnba.com)",
     },
     body: JSON.stringify({
       from: process.env.GONDEREN_ADRES || "OVERNIGHT <onboarding@resend.dev>",
