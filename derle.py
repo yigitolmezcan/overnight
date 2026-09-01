@@ -645,6 +645,24 @@ def _kapak_tam_ad(skor, kazanan=True):
     return KAPAK_TAM_OVERRIDE.get(kod) or _takim_adi(kod)
 
 
+def _kapak_renkleri(satirlar):
+    """Kapak listesinin sol şeritlerine çakışmayan renk atar.
+
+    ŞERİT HER SATIRDA RENKLİ — düşük rozetli satır da (kullanıcı kararı:
+    bu liste "gecenin tamamını gör" için var, soluklaştırınca işlevini
+    kaybediyor; triyajı rozet çipi yapıyor). O yüzden çakışma kuralı
+    burada da geçerli: aynı gecede yakın renkli iki kazanan varsa DÜŞÜK
+    ROZETLİ olan kendi ikincil rengine geçiyor."""
+    girdi = [{"takim": r.get("kazanan_kod"), "_gmsc": r.get("rozet") or 0}
+             for r in satirlar]
+    renk_cakismasini_coz(girdi, uygun_mu=serit_rengi_uygun_mu)
+    for r, g in zip(satirlar, girdi):
+        r["kazanan_renk"] = g["renk"]
+        r["kazanan_asil_renk"] = g["asil_renk"]
+        r["kazanan_renk_degisti"] = g["renk_degisti"]
+    return satirlar
+
+
 def _mansetler(ham, gercek_gece, skor_by_gid, id_by_gid, tarih_str,
                saat_by_gid=None):
     """En fazla üç manşet; aynı maçtan yalnız biri."""
@@ -2582,6 +2600,23 @@ TON_ESIGI = 32.0        # derece (0-360)
 PARLAKLIK_ESIGI = 0.20  # 0-1
 DOYGUNLUK_ESIGI = 0.25  # bu farkın üstünde renkler zaten ayırt ediliyor
 
+# ŞERİT OLARAK KULLANILABİLİR RENK. Kapak listesinde şerit 4px ve zemin
+# koyu; çakışma çözülürken sıradaki seçenek bazen neredeyse siyah
+# (#2A1C3B) ya da gri (#2C2F33) oluyordu ve şerit görünmez kalıyordu —
+# yani soluklaştırma sorununun aynısı, başka kapıdan. Bu eşikleri
+# geçmeyen aday atlanıyor; hiçbiri geçmezse birincil renk kalıyor.
+SERIT_PARLAKLIK_ALT = 0.22   # bundan koyu renk koyu zeminde okunmuyor
+SERIT_DOYGUNLUK_ALT = 0.25   # bundan doygunsuzu "takım rengi" gibi durmuyor
+
+
+def serit_rengi_uygun_mu(hex_renk):
+    try:
+        _t, parlaklik, doygunluk = _hsl(hex_renk)
+    except Exception:
+        return False
+    return (parlaklik >= SERIT_PARLAKLIK_ALT
+            and doygunluk >= SERIT_DOYGUNLUK_ALT)
+
 
 def _hsl(hex_renk):
     h = hex_renk.lstrip("#")
@@ -2630,7 +2665,7 @@ def renk_kanallari(hex_renk):
         return None
 
 
-def renk_cakismasini_coz(oyuncular):
+def renk_cakismasini_coz(oyuncular, uygun_mu=None):
     """Aynı listedeki oyunculara çakışmayan renk atar.
 
     `oyuncular`: [{"takim": kod, "_gmsc": float, ...}] — sıra önemli DEĞİL,
@@ -2658,7 +2693,8 @@ def renk_cakismasini_coz(oyuncular):
         liste = secenekler.get(kod) or [TAKIM_RENK.get(kod, "#7E8794")]
         asil = liste[0]
         secilen = next((aday for aday in liste
-                        if not any(_renkler_yakin_mi(aday, k) for k in kullanilan)), None)
+                        if (uygun_mu is None or uygun_mu(aday))
+                        and not any(_renkler_yakin_mi(aday, k) for k in kullanilan)), None)
         # Hepsi çakışıyorsa birincil kalır: yanlış renk göstermektense
         # çakışmayı kabul ediyoruz — KOD zaten her oyuncuda yazılı.
         if secilen is None:
@@ -3522,7 +3558,7 @@ def derle(tarih_str):
         # TEK LİSTE, SAATE GÖRE SIRALI (kullanıcı kararı): başlık yok,
         # ayrım yok. Rozet zaten önem sırasını söylüyor; kronolojik sıra
         # "Sen uyurken" kimliğini koruyor.
-        "kapak_listesi": sorted([
+        "kapak_listesi": _kapak_renkleri(sorted([
             {
                 "katman": kat,
                 "rozet": round((rozet_by_gid.get(gid) or {}).get("rozet", 0), 1),
@@ -3539,11 +3575,10 @@ def derle(tarih_str):
                     (rozet_by_gid.get(gid) or {}), kazanan=True),
                 "kaybeden_tam": _kapak_tam_ad(
                     (rozet_by_gid.get(gid) or {}), kazanan=False),
-                # Satırın sol şeridi kazananın rengi. Düşük rozetlide
-                # şablon nötr griye düşüyor.
-                "kazanan_renk": TAKIM_RENK.get(
-                    _kapak_kodu((rozet_by_gid.get(gid) or {}), kazanan=True),
-                    "#7E8794"),
+                # Satırın sol şeridi kazananın rengi — HER satırda,
+                # rozetten bağımsız. Renk çakışması aşağıda çözülüyor.
+                "kazanan_kod": _kapak_kodu(
+                    (rozet_by_gid.get(gid) or {}), kazanan=True),
                 "kazanan_skor": max(
                     (rozet_by_gid.get(gid) or {}).get("ev_skor") or 0,
                     (rozet_by_gid.get(gid) or {}).get("dep_skor") or 0),
@@ -3565,7 +3600,7 @@ def derle(tarih_str):
                 ("gec", [m.get("mac_id") for m in diger]),
             )
             for gid in gidler if gid and gid in rozet_by_gid
-        ], key=lambda x: x["_sira"]),
+        ], key=lambda x: x["_sira"])),
         "brief": brief,
         "brief_ozet": brief_ozet,
         "brief_ayrica": ayrica,

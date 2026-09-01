@@ -80,12 +80,15 @@
       "kaybeden": "Miami",
       "kazanan_tam": "Boston Celtics",
       "kaybeden_tam": "Miami Heat",
-      "kazanan_renk": "#12A05C",
+      "kazanan_kod": "BOS",
       "kazanan_skor": 129,
       "kaybeden_skor": 116,
       "saat": "03:00",
       "hedef_id": "g-mutlaka-2",
-      "_sira": "2025-12-20T03:00:00+03:00"
+      "_sira": "2025-12-20T03:00:00+03:00",
+      "kazanan_renk": "#12A05C",
+      "kazanan_asil_renk": "#12A05C",
+      "kazanan_renk_degisti": false
     },
     {
       "katman": "mutlaka",
@@ -94,12 +97,15 @@
       "kaybeden": "New York",
       "kazanan_tam": "Philadelphia 76ers",
       "kaybeden_tam": "New York Knicks",
-      "kazanan_renk": "#3A8DDE",
+      "kazanan_kod": "PHI",
       "kazanan_skor": 116,
       "kaybeden_skor": 107,
       "saat": "03:00",
       "hedef_id": "g-mutlaka-3",
-      "_sira": "2025-12-20T03:00:00+03:00"
+      "_sira": "2025-12-20T03:00:00+03:00",
+      "kazanan_renk": "#3A8DDE",
+      "kazanan_asil_renk": "#3A8DDE",
+      "kazanan_renk_degisti": false
     },
     {
       "katman": "mutlaka",
@@ -108,12 +114,15 @@
       "kaybeden": "Cleveland",
       "kazanan_tam": "Chicago Bulls",
       "kaybeden_tam": "Cleveland Cavaliers",
-      "kazanan_renk": "#CE1141",
+      "kazanan_kod": "CHI",
       "kazanan_skor": 136,
       "kaybeden_skor": 125,
       "saat": "03:30",
       "hedef_id": "g-mutlaka-1",
-      "_sira": "2025-12-20T03:30:00+03:00"
+      "_sira": "2025-12-20T03:30:00+03:00",
+      "kazanan_renk": "#CE1141",
+      "kazanan_asil_renk": "#CE1141",
+      "kazanan_renk_degisti": false
     },
     {
       "katman": "gec",
@@ -122,12 +131,15 @@
       "kaybeden": "Atlanta",
       "kazanan_tam": "San Antonio Spurs",
       "kaybeden_tam": "Atlanta Hawks",
-      "kazanan_renk": "#C4CED4",
+      "kazanan_kod": "SAS",
       "kazanan_skor": 126,
       "kaybeden_skor": 98,
       "saat": "03:30",
       "hedef_id": "a-0022500383",
-      "_sira": "2025-12-20T03:30:00+03:00"
+      "_sira": "2025-12-20T03:30:00+03:00",
+      "kazanan_renk": "#C4CED4",
+      "kazanan_asil_renk": "#C4CED4",
+      "kazanan_renk_degisti": false
     },
     {
       "katman": "mutlaka",
@@ -136,12 +148,15 @@
       "kaybeden": "Oklahoma City",
       "kazanan_tam": "Minnesota Timberwolves",
       "kaybeden_tam": "Oklahoma City Thunder",
-      "kazanan_renk": "#3B7FD4",
+      "kazanan_kod": "MIN",
       "kazanan_skor": 112,
       "kaybeden_skor": 107,
       "saat": "05:30",
       "hedef_id": "g-mutlaka-0",
-      "_sira": "2025-12-20T05:30:00+03:00"
+      "_sira": "2025-12-20T05:30:00+03:00",
+      "kazanan_renk": "#3B7FD4",
+      "kazanan_asil_renk": "#3B7FD4",
+      "kazanan_renk_degisti": false
     }
   ],
   "brief": [
@@ -149,7 +164,7 @@
       "metin": "Derrick White, Miami Heat karşısında 33 sayı attı.",
       "anlatili": true,
       "hedef_id": "g-mutlaka-2",
-      "icon": "standings",
+      "icon": "default",
       "saat": "03:00",
       "rozet": 7.34,
       "skor": "BOS 129 – MIA 116",
@@ -197,7 +212,7 @@
       "metin": "Minnesota Timberwolves, 12 sayılık farktan dönüp Oklahoma City Thunder'i geçti.",
       "anlatili": true,
       "hedef_id": "g-mutlaka-0",
-      "icon": "default",
+      "icon": "standings",
       "saat": "05:30",
       "rozet": 8.82,
       "skor": "MIN 112 – OKC 107",

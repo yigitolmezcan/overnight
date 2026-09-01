@@ -38,12 +38,15 @@
       "kaybeden": "Houston",
       "kazanan_tam": "Oklahoma City Thunder",
       "kaybeden_tam": "Houston Rockets",
-      "kazanan_renk": "#31A8E0",
+      "kazanan_kod": "OKC",
       "kazanan_skor": 125,
       "kaybeden_skor": 124,
       "saat": "",
       "hedef_id": "g-mutlaka-0",
-      "_sira": "9999-12-31T23:59:59.999999"
+      "_sira": "9999-12-31T23:59:59.999999",
+      "kazanan_renk": "#31A8E0",
+      "kazanan_asil_renk": "#31A8E0",
+      "kazanan_renk_degisti": false
     },
     {
       "katman": "gozat",
@@ -52,12 +55,15 @@
       "kaybeden": "LA Lakers",
       "kazanan_tam": "Golden State Warriors",
       "kaybeden_tam": "LA Lakers",
-      "kazanan_renk": "#2E6BD6",
+      "kazanan_kod": "GSW",
       "kazanan_skor": 119,
       "kaybeden_skor": 109,
       "saat": "",
       "hedef_id": "a-0022500002",
-      "_sira": "9999-12-31T23:59:59.999999"
+      "_sira": "9999-12-31T23:59:59.999999",
+      "kazanan_renk": "#FFC72C",
+      "kazanan_asil_renk": "#2E6BD6",
+      "kazanan_renk_degisti": true
     }
   ],
   "brief": [

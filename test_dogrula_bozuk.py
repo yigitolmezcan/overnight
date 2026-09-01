@@ -6615,8 +6615,12 @@ def main():
     basar("Liste: sol şerit 4px, kazananın rengi",
           "width:4px" in _st and "background:var(--tc" in _st
           and '"kazanan_renk"' in _dsrc_kod)
-    basar("Liste: düşük rozetlide şerit nötr gri",
-          ".kaplist .k3 .st{background:#2A3340}" in _sayfa)
+    # DEĞİŞTİ: şerit HER satırda kazananın rengi. Bu liste "gecenin
+    # tamamını gör" için var; soluklaştırınca işlevini kaybediyordu.
+    # Triyajı rozet çipi yapıyor (kullanıcı kararı).
+    basar("Liste: şerit her satırda renkli, nötr gri kalktı",
+          ".kaplist .k3 .st{" not in _sayfa
+          and "const renk = ` style=\"--tc:${esc(x.kazanan_renk" in _sayfa)
     _mnk = _sayfa.split(".kaplist .mn{")[1].split("}")[0]
     basar("Liste: ana satır mono 16px",
           "font-family:var(--mono);font-size:16px" in _mnk)
@@ -6625,8 +6629,38 @@ def main():
           _sayfa.split(".kaplist .mn b{")[1].split("}")[0]
           and "#2E3846" in _sayfa.split(".kaplist .mn i{")[1].split("}")[0]
           and "#4C5665" in _sayfa.split(".kaplist .mn s{")[1].split("}")[0])
-    basar("Liste: düşük rozetlide kazanan bir kademe soluk",
-          ".kaplist .k3 .mn b{color:#7E8899}" in _sayfa)
+    basar("Liste: kazanan ve skor rozetten bağımsız parlak",
+          ".kaplist .k3 .mn b{" not in _sayfa
+          and ".kaplist .k3 .mn s{" not in _sayfa)
+    # RENK ÇAKIŞMASI kapak listesinde de çözülüyor: aynı gecede yakın
+    # renkli iki kazanan varsa DÜŞÜK ROZETLİ olan ikincil rengine geçer.
+    basar("Liste: şerit renkleri çakışma çözücüden geçiyor",
+          "def _kapak_renkleri(" in _dsrc_kod
+          and "renk_cakismasini_coz(girdi, uygun_mu=serit_rengi_uygun_mu)"
+          in _dsrc_kod)
+    # ŞERİT OLARAK KULLANILABİLİRLİK: çakışma çözülürken sıradaki
+    # seçenek bazen neredeyse siyah (#2A1C3B) çıkıyordu — şerit görünmez
+    # kalıyordu, yani soluklaştırma sorununun aynısı başka kapıdan.
+    basar("Liste: çakışma çözümü okunmayan renge düşmüyor",
+          _derle.serit_rengi_uygun_mu("#CE1141")
+          and not _derle.serit_rengi_uygun_mu("#2A1C3B")
+          and not _derle.serit_rengi_uygun_mu("#2C2F33"))
+    # Yayındaki her satırda şerit rengi var ve ya kullanılabilir ya da
+    # takımın KENDİ birincil rengi (Brooklyn gri, Spurs gümüş).
+    _kotu_serit = []
+    for _tt in _yayin.durum_oku()["yayinlanan"]:
+        if not _os.path.exists(f"dist/{_tt}.json"):
+            continue
+        _xt = _jj.loads(open(f"dist/{_tt}.json", encoding="utf-8").read())
+        for _kx in (_xt.get("kapak_listesi") or []):
+            _rk = _kx.get("kazanan_renk")
+            if not _rk:
+                _kotu_serit.append(f"{_tt}: renk yok")
+            elif (not _derle.serit_rengi_uygun_mu(_rk)
+                  and _kx.get("kazanan_renk_degisti")):
+                _kotu_serit.append(f"{_tt}: {_kx.get('kazanan')} {_rk}")
+    basar("Liste: hiçbir satır okunmayan bir ikincil renge kaymamış",
+          not _kotu_serit, "; ".join(_kotu_serit[:3]))
     _sbk = _sayfa.split(".kaplist .sb{")[1].split("}")[0]
     basar("Liste: alt bilgi mono 10.5px",
           "font-family:var(--mono);font-size:10.5px" in _sbk)
@@ -6716,9 +6750,12 @@ def main():
     # üst sınır kapak listesi ve Türkler satırında duruyor.
     # Kapak listesi de üst sınırdan çıktı: satır artık blok, sağa
     # uzanmayı denemiyor. Üst sınır yalnız Türkler satırında.
-    basar("Liste olcusu: ust sinir yalniz Turkler satirinda",
-          ".tkust{max-width:var(--liste-max)}" in _ly
-          and ".kaplist a{max-width" not in _ly)
+    # TÜRKLER üst sınırdan da çıktı: maç skoru blok ortasında asılı
+    # kalıyordu, artık bloğun SAĞ kenarına hizalı.
+    basar("Liste olcusu: kapak ve Turkler ust sinir almiyor",
+          ".kaplist a{max-width" not in _ly
+          and ".tkust{max-width:none}" in _ly
+          and ".tkmac{margin-left:auto}" in _ly)
 
     # SIRA TUZAĞI: aynı özgüllükte "flex:1" diyen kurallar yukarıda.
     # Sabit genişlik kuralı onlardan SONRA gelmezse sessizce eziliyor
@@ -6827,8 +6864,12 @@ def main():
     # başlığıyla hizasını kaybediyordu. Sorun genişlik değil, içeriğin
     # dar bir kutuda toplanmasıymış — satır artık TAM GENİŞLİĞE yayılıyor.
     basar("Hiza: Form ve Sıralama ortalanmıyor, üst sınır da almıyor",
-          ".formda,.siralama,.formnot{max-width" not in _ly
-          and ".tkust{max-width:var(--liste-max)}" in _ly)
+          ".formda,.siralama,.formnot{max-width" not in _ly)
+    # Türkler bloğunda maç skoru bloğun SAĞ kenarına hizalı; ölçüldü
+    # (1280/1440px), skor ile blok iç kenarı arasında 0px kaldı.
+    basar("Türkler: maç skoru sağa hizalı, mobilde dokunulmadı",
+          ".tkmac{margin-left:auto}" in
+          _ly.split("@media(min-width:640px){")[-3:][0] + _ly.split(".tkust{max-width:none}")[1][:120])
     # Üç bölge: ad solda, kutucuklar ORTADA, sayılar sağda. Izgara
     # kullanılıyor ki sütunlar satırdan satıra aynı yerde dursun.
     basar("Hiza: Form satırı üç bölgeli ızgara",

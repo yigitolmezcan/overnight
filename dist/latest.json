@@ -74,12 +74,15 @@
       "kaybeden": "Memphis",
       "kazanan_tam": "Philadelphia 76ers",
       "kaybeden_tam": "Memphis Grizzlies",
-      "kazanan_renk": "#3A8DDE",
+      "kazanan_kod": "PHI",
       "kazanan_skor": 139,
       "kaybeden_skor": 136,
       "saat": "04:00",
       "hedef_id": "g-mutlaka-0",
-      "_sira": "2025-12-31T04:00:00+03:00"
+      "_sira": "2025-12-31T04:00:00+03:00",
+      "kazanan_renk": "#3A8DDE",
+      "kazanan_asil_renk": "#3A8DDE",
+      "kazanan_renk_degisti": false
     },
     {
       "katman": "mutlaka",
@@ -88,12 +91,15 @@
       "kaybeden": "Utah",
       "kazanan_tam": "Boston Celtics",
       "kaybeden_tam": "Utah Jazz",
-      "kazanan_renk": "#12A05C",
+      "kazanan_kod": "BOS",
       "kazanan_skor": 129,
       "kaybeden_skor": 119,
       "saat": "05:00",
       "hedef_id": "g-mutlaka-2",
-      "_sira": "2025-12-31T05:00:00+03:00"
+      "_sira": "2025-12-31T05:00:00+03:00",
+      "kazanan_renk": "#12A05C",
+      "kazanan_asil_renk": "#12A05C",
+      "kazanan_renk_degisti": false
     },
     {
       "katman": "gec",
@@ -102,12 +108,15 @@
       "kaybeden": "LA Lakers",
       "kazanan_tam": "Detroit Pistons",
       "kaybeden_tam": "LA Lakers",
-      "kazanan_renk": "#E0384A",
+      "kazanan_kod": "DET",
       "kazanan_skor": 128,
       "kaybeden_skor": 106,
       "saat": "06:30",
       "hedef_id": "a-0022500460",
-      "_sira": "2025-12-31T06:30:00+03:00"
+      "_sira": "2025-12-31T06:30:00+03:00",
+      "kazanan_renk": "#E0384A",
+      "kazanan_asil_renk": "#E0384A",
+      "kazanan_renk_degisti": false
     },
     {
       "katman": "mutlaka",
@@ -116,12 +125,15 @@
       "kaybeden": "Sacramento",
       "kazanan_tam": "LA Clippers",
       "kaybeden_tam": "Sacramento Kings",
-      "kazanan_renk": "#D2434A",
+      "kazanan_kod": "LAC",
       "kazanan_skor": 131,
       "kaybeden_skor": 90,
       "saat": "07:00",
       "hedef_id": "g-mutlaka-1",
-      "_sira": "2025-12-31T07:00:00+03:00"
+      "_sira": "2025-12-31T07:00:00+03:00",
+      "kazanan_renk": "#D2434A",
+      "kazanan_asil_renk": "#D2434A",
+      "kazanan_renk_degisti": false
     }
   ],
   "brief": [

@@ -80,12 +80,15 @@
       "kaybeden": "Houston",
       "kazanan_tam": "Denver Nuggets",
       "kaybeden_tam": "Houston Rockets",
-      "kazanan_renk": "#FEC524",
+      "kazanan_kod": "DEN",
       "kazanan_skor": 128,
       "kaybeden_skor": 125,
       "saat": "",
       "hedef_id": "g-mutlaka-0",
-      "_sira": "9999-12-31T23:59:59.999999"
+      "_sira": "9999-12-31T23:59:59.999999",
+      "kazanan_renk": "#FEC524",
+      "kazanan_asil_renk": "#FEC524",
+      "kazanan_renk_degisti": false
     },
     {
       "katman": "mutlaka",
@@ -94,12 +97,15 @@
       "kaybeden": "Dallas",
       "kazanan_tam": "Utah Jazz",
       "kaybeden_tam": "Dallas Mavericks",
-      "kazanan_renk": "#3E7A5E",
+      "kazanan_kod": "UTA",
       "kazanan_skor": 140,
       "kaybeden_skor": 133,
       "saat": "",
       "hedef_id": "g-mutlaka-1",
-      "_sira": "9999-12-31T23:59:59.999999"
+      "_sira": "9999-12-31T23:59:59.999999",
+      "kazanan_renk": "#3E7A5E",
+      "kazanan_asil_renk": "#3E7A5E",
+      "kazanan_renk_degisti": false
     },
     {
       "katman": "mutlaka",
@@ -108,12 +114,15 @@
       "kaybeden": "LA Clippers",
       "kazanan_tam": "Memphis Grizzlies",
       "kaybeden_tam": "LA Clippers",
-      "kazanan_renk": "#6C8CC7",
+      "kazanan_kod": "MEM",
       "kazanan_skor": 121,
       "kaybeden_skor": 103,
       "saat": "",
       "hedef_id": "g-mutlaka-2",
-      "_sira": "9999-12-31T23:59:59.999999"
+      "_sira": "9999-12-31T23:59:59.999999",
+      "kazanan_renk": "#6C8CC7",
+      "kazanan_asil_renk": "#6C8CC7",
+      "kazanan_renk_degisti": false
     },
     {
       "katman": "mutlaka",
@@ -122,12 +131,15 @@
       "kaybeden": "Boston",
       "kazanan_tam": "Detroit Pistons",
       "kaybeden_tam": "Boston Celtics",
-      "kazanan_renk": "#E0384A",
+      "kazanan_kod": "DET",
       "kazanan_skor": 112,
       "kaybeden_skor": 105,
       "saat": "",
       "hedef_id": "g-mutlaka-3",
-      "_sira": "9999-12-31T23:59:59.999999"
+      "_sira": "9999-12-31T23:59:59.999999",
+      "kazanan_renk": "#E0384A",
+      "kazanan_asil_renk": "#E0384A",
+      "kazanan_renk_degisti": false
     },
     {
       "katman": "gec",
@@ -136,12 +148,15 @@
       "kaybeden": "Miami",
       "kazanan_tam": "Toronto Raptors",
       "kaybeden_tam": "Miami Heat",
-      "kazanan_renk": "#CE1141",
+      "kazanan_kod": "TOR",
       "kazanan_skor": 106,
       "kaybeden_skor": 96,
       "saat": "",
       "hedef_id": "a-0022501227",
-      "_sira": "9999-12-31T23:59:59.999999"
+      "_sira": "9999-12-31T23:59:59.999999",
+      "kazanan_renk": "#CE1141",
+      "kazanan_asil_renk": "#CE1141",
+      "kazanan_renk_degisti": false
     }
   ],
   "brief": [

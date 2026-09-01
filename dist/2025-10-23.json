@@ -50,12 +50,15 @@
       "kaybeden": "Indiana",
       "kazanan_tam": "Oklahoma City Thunder",
       "kaybeden_tam": "Indiana Pacers",
-      "kazanan_renk": "#31A8E0",
+      "kazanan_kod": "OKC",
       "kazanan_skor": 141,
       "kaybeden_skor": 135,
       "saat": "02:30",
       "hedef_id": "g-mutlaka-0",
-      "_sira": "2025-10-24T02:30:00+03:00"
+      "_sira": "2025-10-24T02:30:00+03:00",
+      "kazanan_renk": "#31A8E0",
+      "kazanan_asil_renk": "#31A8E0",
+      "kazanan_renk_degisti": false
     },
     {
       "katman": "gozat",
@@ -64,12 +67,15 @@
       "kaybeden": "Denver",
       "kazanan_tam": "Golden State Warriors",
       "kaybeden_tam": "Denver Nuggets",
-      "kazanan_renk": "#2E6BD6",
+      "kazanan_kod": "GSW",
       "kazanan_skor": 137,
       "kaybeden_skor": 131,
       "saat": "05:00",
       "hedef_id": "a-0022500006",
-      "_sira": "2025-10-24T05:00:00+03:00"
+      "_sira": "2025-10-24T05:00:00+03:00",
+      "kazanan_renk": "#FFC72C",
+      "kazanan_asil_renk": "#2E6BD6",
+      "kazanan_renk_degisti": true
     }
   ],
   "brief": [

@@ -104,12 +104,15 @@
       "kaybeden": "Dallas",
       "kazanan_tam": "Orlando Magic",
       "kaybeden_tam": "Dallas Mavericks",
-      "kazanan_renk": "#1E8FD5",
+      "kazanan_kod": "ORL",
       "kazanan_skor": 115,
       "kaybeden_skor": 114,
       "saat": "03:00",
       "hedef_id": "g-mutlaka-3",
-      "_sira": "2026-03-06T03:00:00+03:00"
+      "_sira": "2026-03-06T03:00:00+03:00",
+      "kazanan_renk": "#1E8FD5",
+      "kazanan_asil_renk": "#1E8FD5",
+      "kazanan_renk_degisti": false
     },
     {
       "katman": "gec",
@@ -118,12 +121,15 @@
       "kaybeden": "Washington",
       "kazanan_tam": "Utah Jazz",
       "kaybeden_tam": "Washington Wizards",
-      "kazanan_renk": "#3E7A5E",
+      "kazanan_kod": "UTA",
       "kazanan_skor": 122,
       "kaybeden_skor": 112,
       "saat": "03:00",
       "hedef_id": "a-0022500900",
-      "_sira": "2026-03-06T03:00:00+03:00"
+      "_sira": "2026-03-06T03:00:00+03:00",
+      "kazanan_renk": "#3E7A5E",
+      "kazanan_asil_renk": "#3E7A5E",
+      "kazanan_renk_degisti": false
     },
     {
       "katman": "mutlaka",
@@ -132,12 +138,15 @@
       "kaybeden": "Houston",
       "kazanan_tam": "Golden State Warriors",
       "kaybeden_tam": "Houston Rockets",
-      "kazanan_renk": "#2E6BD6",
+      "kazanan_kod": "GSW",
       "kazanan_skor": 115,
       "kaybeden_skor": 113,
       "saat": "03:30",
       "hedef_id": "g-mutlaka-1",
-      "_sira": "2026-03-06T03:30:00+03:00"
+      "_sira": "2026-03-06T03:30:00+03:00",
+      "kazanan_renk": "#2E6BD6",
+      "kazanan_asil_renk": "#2E6BD6",
+      "kazanan_renk_degisti": false
     },
     {
       "katman": "gozat",
@@ -146,12 +155,15 @@
       "kaybeden": "Brooklyn",
       "kazanan_tam": "Miami Heat",
       "kaybeden_tam": "Brooklyn Nets",
-      "kazanan_renk": "#C0304A",
+      "kazanan_kod": "MIA",
       "kazanan_skor": 126,
       "kaybeden_skor": 110,
       "saat": "03:30",
       "hedef_id": "a-0022500901",
-      "_sira": "2026-03-06T03:30:00+03:00"
+      "_sira": "2026-03-06T03:30:00+03:00",
+      "kazanan_renk": "#C0304A",
+      "kazanan_asil_renk": "#C0304A",
+      "kazanan_renk_degisti": false
     },
     {
       "katman": "mutlaka",
@@ -160,12 +172,15 @@
       "kaybeden": "Detroit",
       "kazanan_tam": "San Antonio Spurs",
       "kaybeden_tam": "Detroit Pistons",
-      "kazanan_renk": "#C4CED4",
+      "kazanan_kod": "SAS",
       "kazanan_skor": 121,
       "kaybeden_skor": 106,
       "saat": "04:00",
       "hedef_id": "g-mutlaka-0",
-      "_sira": "2026-03-06T04:00:00+03:00"
+      "_sira": "2026-03-06T04:00:00+03:00",
+      "kazanan_renk": "#C4CED4",
+      "kazanan_asil_renk": "#C4CED4",
+      "kazanan_renk_degisti": false
     },
     {
       "katman": "gozat",
@@ -174,12 +189,15 @@
       "kaybeden": "Toronto",
       "kazanan_tam": "Minnesota Timberwolves",
       "kaybeden_tam": "Toronto Raptors",
-      "kazanan_renk": "#3B7FD4",
+      "kazanan_kod": "MIN",
       "kazanan_skor": 115,
       "kaybeden_skor": 107,
       "saat": "04:00",
       "hedef_id": "a-0022500903",
-      "_sira": "2026-03-06T04:00:00+03:00"
+      "_sira": "2026-03-06T04:00:00+03:00",
+      "kazanan_renk": "#78BE20",
+      "kazanan_asil_renk": "#3B7FD4",
+      "kazanan_renk_degisti": true
     },
     {
       "katman": "gozat",
@@ -188,12 +206,15 @@
       "kaybeden": "Phoenix",
       "kazanan_tam": "Chicago Bulls",
       "kaybeden_tam": "Phoenix Suns",
-      "kazanan_renk": "#CE1141",
+      "kazanan_kod": "CHI",
       "kazanan_skor": 105,
       "kaybeden_skor": 103,
       "saat": "05:00",
       "hedef_id": "a-0022500905",
-      "_sira": "2026-03-06T05:00:00+03:00"
+      "_sira": "2026-03-06T05:00:00+03:00",
+      "kazanan_renk": "#CE1141",
+      "kazanan_asil_renk": "#CE1141",
+      "kazanan_renk_degisti": false
     },
     {
       "katman": "mutlaka",
@@ -202,12 +223,15 @@
       "kaybeden": "LA Lakers",
       "kazanan_tam": "Denver Nuggets",
       "kaybeden_tam": "LA Lakers",
-      "kazanan_renk": "#FEC524",
+      "kazanan_kod": "DEN",
       "kazanan_skor": 120,
       "kaybeden_skor": 113,
       "saat": "06:00",
       "hedef_id": "g-mutlaka-2",
-      "_sira": "2026-03-06T06:00:00+03:00"
+      "_sira": "2026-03-06T06:00:00+03:00",
+      "kazanan_renk": "#FEC524",
+      "kazanan_asil_renk": "#FEC524",
+      "kazanan_renk_degisti": false
     },
     {
       "katman": "gozat",
@@ -216,12 +240,15 @@
       "kaybeden": "Sacramento",
       "kazanan_tam": "New Orleans Pelicans",
       "kaybeden_tam": "Sacramento Kings",
-      "kazanan_renk": "#B4975A",
+      "kazanan_kod": "NOP",
       "kazanan_skor": 133,
       "kaybeden_skor": 123,
       "saat": "06:00",
       "hedef_id": "a-0022500907",
-      "_sira": "2026-03-06T06:00:00+03:00"
+      "_sira": "2026-03-06T06:00:00+03:00",
+      "kazanan_renk": "#B4975A",
+      "kazanan_asil_renk": "#B4975A",
+      "kazanan_renk_degisti": false
     }
   ],
   "brief": [
@@ -14497,7 +14524,7 @@
       "mac": "Phoenix Suns — Chicago Bulls",
       "skor": "103–105",
       "rozet": 7.41,
-      "why": "gece sırası 7",
+      "why": "",
       "metin": "Chicago Bulls deplasmanda Phoenix Suns'u 105-103 yendi. Collin Sexton 30 sayı attı.",
       "box": {
         "ev": {
@@ -16451,7 +16478,7 @@
       "mac": "Miami Heat — Brooklyn Nets",
       "skor": "126–110",
       "rozet": 6.29,
-      "why": "",
+      "why": "gece sırası 3",
       "metin": "Miami Heat evinde Brooklyn Nets'i 126-110 yendi.",
       "box": {
         "ev": {

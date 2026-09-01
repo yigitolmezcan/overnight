@@ -104,12 +104,15 @@
       "kaybeden": "Charlotte",
       "kazanan_tam": "Golden State Warriors",
       "kaybeden_tam": "Charlotte Hornets",
-      "kazanan_renk": "#2E6BD6",
+      "kazanan_kod": "GSW",
       "kazanan_skor": 132,
       "kaybeden_skor": 125,
       "saat": "21:00",
       "hedef_id": "a-0022500462",
-      "_sira": "2025-12-31T21:00:00+03:00"
+      "_sira": "2025-12-31T21:00:00+03:00",
+      "kazanan_renk": "#1B3A6B",
+      "kazanan_asil_renk": "#2E6BD6",
+      "kazanan_renk_degisti": true
     },
     {
       "katman": "mutlaka",
@@ -118,12 +121,15 @@
       "kaybeden": "Indiana",
       "kazanan_tam": "Orlando Magic",
       "kaybeden_tam": "Indiana Pacers",
-      "kazanan_renk": "#1E8FD5",
+      "kazanan_kod": "ORL",
       "kazanan_skor": 112,
       "kaybeden_skor": 110,
       "saat": "23:00",
       "hedef_id": "g-mutlaka-2",
-      "_sira": "2025-12-31T23:00:00+03:00"
+      "_sira": "2025-12-31T23:00:00+03:00",
+      "kazanan_renk": "#1E8FD5",
+      "kazanan_asil_renk": "#1E8FD5",
+      "kazanan_renk_degisti": false
     },
     {
       "katman": "gozat",
@@ -132,12 +138,15 @@
       "kaybeden": "Minnesota",
       "kazanan_tam": "Atlanta Hawks",
       "kaybeden_tam": "Minnesota Timberwolves",
-      "kazanan_renk": "#E03A3E",
+      "kazanan_kod": "ATL",
       "kazanan_skor": 126,
       "kaybeden_skor": 102,
       "saat": "23:00",
       "hedef_id": "a-0022500463",
-      "_sira": "2025-12-31T23:00:00+03:00"
+      "_sira": "2025-12-31T23:00:00+03:00",
+      "kazanan_renk": "#C1D32F",
+      "kazanan_asil_renk": "#E03A3E",
+      "kazanan_renk_degisti": true
     },
     {
       "katman": "gozat",
@@ -146,12 +155,15 @@
       "kaybeden": "Phoenix",
       "kazanan_tam": "Cleveland Cavaliers",
       "kaybeden_tam": "Phoenix Suns",
-      "kazanan_renk": "#B3123F",
+      "kazanan_kod": "CLE",
       "kazanan_skor": 129,
       "kaybeden_skor": 113,
       "saat": "23:30",
       "hedef_id": "a-0022500465",
-      "_sira": "2025-12-31T23:30:00+03:00"
+      "_sira": "2025-12-31T23:30:00+03:00",
+      "kazanan_renk": "#F5B335",
+      "kazanan_asil_renk": "#B3123F",
+      "kazanan_renk_degisti": true
     },
     {
       "katman": "mutlaka",
@@ -160,12 +172,15 @@
       "kaybeden": "New York",
       "kazanan_tam": "San Antonio Spurs",
       "kaybeden_tam": "New York Knicks",
-      "kazanan_renk": "#C4CED4",
+      "kazanan_kod": "SAS",
       "kazanan_skor": 134,
       "kaybeden_skor": 132,
       "saat": "03:00",
       "hedef_id": "g-mutlaka-0",
-      "_sira": "2026-01-01T03:00:00+03:00"
+      "_sira": "2026-01-01T03:00:00+03:00",
+      "kazanan_renk": "#C4CED4",
+      "kazanan_asil_renk": "#C4CED4",
+      "kazanan_renk_degisti": false
     },
     {
       "katman": "gec",
@@ -174,12 +189,15 @@
       "kaybeden": "New Orleans",
       "kazanan_tam": "Chicago Bulls",
       "kaybeden_tam": "New Orleans Pelicans",
-      "kazanan_renk": "#CE1141",
+      "kazanan_kod": "CHI",
       "kazanan_skor": 134,
       "kaybeden_skor": 118,
       "saat": "03:00",
       "hedef_id": "a-0022500466",
-      "_sira": "2026-01-01T03:00:00+03:00"
+      "_sira": "2026-01-01T03:00:00+03:00",
+      "kazanan_renk": "#CE1141",
+      "kazanan_asil_renk": "#CE1141",
+      "kazanan_renk_degisti": false
     },
     {
       "katman": "gozat",
@@ -188,12 +206,15 @@
       "kaybeden": "Toronto",
       "kazanan_tam": "Denver Nuggets",
       "kaybeden_tam": "Toronto Raptors",
-      "kazanan_renk": "#FEC524",
+      "kazanan_kod": "DEN",
       "kazanan_skor": 106,
       "kaybeden_skor": 103,
       "saat": "03:30",
       "hedef_id": "a-0022500468",
-      "_sira": "2026-01-01T03:30:00+03:00"
+      "_sira": "2026-01-01T03:30:00+03:00",
+      "kazanan_renk": "#8B5E2B",
+      "kazanan_asil_renk": "#FEC524",
+      "kazanan_renk_degisti": true
     },
     {
       "katman": "mutlaka",
@@ -202,12 +223,15 @@
       "kaybeden": "Milwaukee",
       "kazanan_tam": "Washington Wizards",
       "kaybeden_tam": "Milwaukee Bucks",
-      "kazanan_renk": "#3B7FD4",
+      "kazanan_kod": "WAS",
       "kazanan_skor": 114,
       "kaybeden_skor": 113,
       "saat": "04:00",
       "hedef_id": "g-mutlaka-1",
-      "_sira": "2026-01-01T04:00:00+03:00"
+      "_sira": "2026-01-01T04:00:00+03:00",
+      "kazanan_renk": "#3B7FD4",
+      "kazanan_asil_renk": "#3B7FD4",
+      "kazanan_renk_degisti": false
     },
     {
       "katman": "mutlaka",
@@ -216,12 +240,15 @@
       "kaybeden": "Portland",
       "kazanan_tam": "Oklahoma City Thunder",
       "kaybeden_tam": "Portland Trail Blazers",
-      "kazanan_renk": "#31A8E0",
+      "kazanan_kod": "OKC",
       "kazanan_skor": 124,
       "kaybeden_skor": 95,
       "saat": "04:00",
       "hedef_id": "g-mutlaka-3",
-      "_sira": "2026-01-01T04:00:00+03:00"
+      "_sira": "2026-01-01T04:00:00+03:00",
+      "kazanan_renk": "#EF3B24",
+      "kazanan_asil_renk": "#31A8E0",
+      "kazanan_renk_degisti": true
     }
   ],
   "brief": [
