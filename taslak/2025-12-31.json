@@ -7,7 +7,7 @@
       "muzip": false
     },
     "0022500468": {
-      "gec_satiri": "Scottie Barnes'ın 20 sayı, 14 ribaund ve 10 asistlik gecesinde Denver, Toronto'yu yendi.",
+      "gec_satiri": "Denver Nuggets deplasmanda Toronto Raptors'u 106-103 yendi. Peyton Watson 24 sayı attı. Mağlup tarafta Scottie Barnes triple-double yaptı (20 sayı, 14 ribaund, 10 asist).",
       "muzip": false
     },
     "0022500463": {
@@ -152,12 +152,9 @@
       {
         "mac_id": "0022500468",
         "alan": "gec_satiri",
-        "gerekce": [
-          "gec_satiri/T17: [\"'Scottie Barnes' (kaybeden TOR) cümle öznesi: 'Scottie Barnes'ın 20 sayı, 14 ribaund ve 10 asistlik gecesinde Denver, Toronto'yu yendi'\"]",
-          "T30: 'ribaund' — bu maçın KİLİT İSTATİSTİĞİ (hücum ribaundu) zaten kendi kutusunda gösteriliyor, metinde tekrarlanmaz"
-        ],
+        "gerekce": [],
         "metin": {
-          "gec_satiri": "Scottie Barnes'ın 20 sayı, 14 ribaund ve 10 asistlik gecesinde Denver, Toronto'yu yendi.",
+          "gec_satiri": "Denver Nuggets deplasmanda Toronto Raptors'u 106-103 yendi. Peyton Watson 24 sayı attı. Mağlup tarafta Scottie Barnes triple-double yaptı (20 sayı, 14 ribaund, 10 asist).",
           "muzip": false
         }
       },

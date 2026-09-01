@@ -345,6 +345,14 @@ def performans(mac, en_iyi_oyuncu, en_iyi_ad):
         # kaybedilmiş, sıradan bir performans için susulur.
         return None
     onek = "" if kazanan_tarafta else "Mağlup tarafta "
+    # BİLEŞİK BAŞARI VARSA O YAZILIR. PERFORMANS_ESIKLERI eşiği geçen
+    # İLK tekil istatistiği döndürüyor; triple-double yapan oyuncu için
+    # "10 asist yaptı" hem eksik hem keyfi (sıradaki eşik neyse o
+    # çıkıyor). Kademe tek kaynaktan geliyor: hesapla.performans_derecesi.
+    import hesapla as _h
+    _kademe, _ad_k, _etiket, _eksen = _h.performans_derecesi(en_iyi_oyuncu)
+    if _kademe <= _h.PERF_BILESIK_KADEME and _eksen:
+        return _gecir(f"{onek}{en_iyi_ad} {_eksen}.")
     return _gecir(f"{onek}{en_iyi_ad} {deger} {birim} {fiil}.")
 
 
@@ -1229,13 +1237,34 @@ def govde(gercekler, ham_mac, olgu, en_iyi_ad, kanca_harf, seviye, takim_adi_fn)
     mac = mac_baglami(gercekler, ham_mac, olgu, takim_adi_fn)
     butce = SEVIYE_BUTCE[seviye]
 
-    en_iyi_oyuncu = None
-    if en_iyi_ad:
+    # ÇAĞIRAN SÖZLÜK DE GEÇEBİLİYOR: yaz.sablon_uret bu parametreye
+    # `en_iyi_performans` STAT SÖZLÜĞÜNÜ veriyor, buradaki arama ise ada
+    # göre yapılıyordu — eşleşme hiç tutmuyor, en_iyi_oyuncu None kalıyor
+    # ve performans cümlesi HİÇ kurulmuyordu. Sessiz bir kayıptı: T14
+    # "en iyi performans anılmadı" diye şikâyet ediyor ama üretim tarafı
+    # o cümleyi zaten kuramıyordu. İkisini de kabul ediyoruz.
+    if isinstance(en_iyi_ad, dict):
+        en_iyi_oyuncu = en_iyi_ad
+        en_iyi_ad = en_iyi_ad.get("oyuncu")
+    else:
+        en_iyi_oyuncu = None
+    if en_iyi_ad and en_iyi_oyuncu is None:
         en_iyi_oyuncu = next(
             (g["veri"] for g in gercekler if g["tur"] == "oyuncu_stat" and g["veri"]["oyuncu"] == en_iyi_ad),
             None,
         )
 
+    # P KANCASI KAYBEDEN OYUNCUDA KULLANILMAZ. Kanca oyuncuyu cümlenin
+    # ÖZNESİ yapıyor ("X'in 20 sayılık gecesinde ..."); kaybeden taraftaki
+    # oyuncu için bu T17 ihlali. Kanca düşünce performans cümlesi devreye
+    # giriyor ve o "Mağlup tarafta ..." çerçevesini kullanıyor — T17 de
+    # T14 de karşılanıyor.
+    # Gerçek üretim vakası (31 Aralık, DEN-TOR): Scottie Barnes triple-
+    # double yapmış ama kaybetmiş. P kancası onu özne yapıyordu, gece
+    # yayına çıkamıyordu; iki kural birbirini kilitliyordu.
+    if (kanca_harf == "P" and en_iyi_oyuncu
+            and en_iyi_oyuncu.get("takim") != mac["kazanan_kod"]):
+        kanca_harf = None
     onek = kanca_oneki(kanca_harf, olgu, mac, en_iyi_oyuncu) if butce > 1 else None
     # Kanca oyuncuyu zaten andıysa ayrıca performans cümlesi kurulmaz
     # (gerçek üretim bug'ı: "LeBron James'in 28 sayılık gecesinde ...

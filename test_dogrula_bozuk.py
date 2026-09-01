@@ -7101,6 +7101,43 @@ def main():
           and "One-Click" in _blt_src
           and "cikis_bag=cikis" in _blt_src)
 
+    # ==================================================================
+    # T17 ↔ T14 KİLİDİ — kaybeden taraftaki bileşik başarı
+    # ==================================================================
+    # Gerçek üretim vakası (31 Aralık, DEN-TOR): Scottie Barnes
+    # triple-double yapmış ama KAYBETMİŞ. P kancası onu cümlenin öznesi
+    # yapıyordu (T17 ihlali); kanca oyuncuyu tükettiği için performans
+    # cümlesi hiç kurulmuyor, o da T14'ü tetikliyordu. İki kural
+    # birbirini kilitliyor ve gece yayına çıkamıyordu.
+    _cs = open("cumle.py", encoding="utf-8").read()
+    basar("Kilit: P kancası kaybeden oyuncuda kullanılmıyor",
+          'if (kanca_harf == "P" and en_iyi_oyuncu' in _cs
+          and 'en_iyi_oyuncu.get("takim") != mac["kazanan_kod"]' in _cs)
+    # SESSİZ KAYIP: çağıran bu parametreye stat SÖZLÜĞÜ veriyordu, arama
+    # ADA göre yapılıyordu — eşleşme hiç tutmuyor, performans cümlesi
+    # hiç kurulmuyordu.
+    basar("Kilit: en iyi performans hem sözlük hem ad olarak kabul ediliyor",
+          "if isinstance(en_iyi_ad, dict):" in _cs)
+    import cumle as _cm, hesapla as _hh
+    _mac9 = {"kazanan_kod": "DEN", "kaybeden_kod": "TOR",
+             "kazanan_adi": "Denver Nuggets", "kaybeden_adi": "Toronto Raptors",
+             "ev_dep": "deplasmanda", "buyuk": 106, "kucuk": 103, "fark": 3,
+             "en_buyuk_fark_gecede_mi": False,
+             "maglup_anilabilir_ad": "Scottie Barnes"}
+    _brn = {"oyuncu": "Scottie Barnes", "takim": "TOR",
+            "sayi": 20, "rib": 14, "ast": 10}
+    _c9 = _cm.performans(_mac9, _brn, "Scottie Barnes")
+    basar("Kilit: kaybeden bileşik başarı 'Mağlup tarafta' çerçevesinde",
+          _c9 and _c9.startswith("Mağlup tarafta") and "triple-double" in _c9, str(_c9))
+    # SINIR: çift-çifte bu sınırın DIŞINDA, orada tekil istatistik daha somut.
+    basar("Kilit: bileşik etiket sınırı 40 sayıda (çift-çifte dışarıda)",
+          _hh.PERF_BILESIK_KADEME == _hh.PERF_KADEMELERI.index("kirk_sayi"))
+    _cc = _cm.performans(
+        {**_mac9, "maglup_anilabilir_ad": None, "kazanan_kod": "TOR"},
+        {"oyuncu": "X Y", "takim": "TOR", "sayi": 20, "rib": 9, "ast": 13}, "X Y")
+    basar("Kilit: çift-çiftede tekil istatistik korunuyor",
+          _cc and "asist yaptı" in _cc, str(_cc))
+
     # SİMGELER — sekme ve ana ekran
     from PIL import Image as _Im
     _ikonlar = {"favicon.svg": None, "favicon.ico": None,

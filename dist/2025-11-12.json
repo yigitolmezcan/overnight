@@ -469,7 +469,7 @@
       "metin": "Nikola Jokić, LA Clippers karşısında 55 sayı attı.",
       "anlatili": true,
       "hedef_id": "g-mutlaka-0",
-      "icon": "standings",
+      "icon": "default",
       "saat": "06:30",
       "rozet": 9.19,
       "skor": "LAC 116 – DEN 130",
@@ -23662,7 +23662,7 @@
       "mac": "Charlotte Hornets — Milwaukee Bucks",
       "skor": "111–100",
       "rozet": 3.5,
-      "why": "",
+      "why": "gece sırası 1",
       "metin": "Charlotte Hornets evinde Milwaukee Bucks'u 111-100 yendi.",
       "box": {
         "ev": {

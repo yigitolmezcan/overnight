@@ -1126,6 +1126,17 @@ PERF_KADEMELERI = (
     "en_yuksek_tek",
 )
 
+# BİLEŞİK BAŞARI SINIRI: bu kademeye kadar olan başarılar tek bir
+# istatistikle anlatılamaz ("triple-double" yerine "10 asist" demek
+# hem eksik hem keyfi). Cümle katmanı bu sınıra bakıp etiketi tercih
+# ediyor (bkz. cumle.performans).
+# Sınır "40 sayı"da: quadruple-double, triple-double ve 40+ sayı tek bir
+# istatistikle anlatılamaz. Çift-çifte bu sınırın DIŞINDA — orada
+# "13 asist yaptı" hâlâ doğru ve daha somut (kullanıcı kuralı: sınır
+# "triple-double veya üstü, 40+ sayı").
+PERF_BILESIK_KADEME = PERF_KADEMELERI.index("kirk_sayi")
+
+
 _PERF_ALAN = (("sayi", "sayı"), ("rib", "ribaund"), ("ast", "asist"),
               ("cal", "top çalma"), ("blk", "blok"))
 
