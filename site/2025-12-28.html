@@ -1510,6 +1510,32 @@ td.khot{color:var(--amber);font-weight:700}
   .kaplist .mc{font-size:12.5px;gap:6px}
   .kaplist i{min-width:27px;padding:1px 4px}
 }
+/* ---- ROZET AÇIKLAMASI ---- */
+.rozetac{max-width:var(--liste-max);margin:56px auto 0;
+  border-top:1px solid #1C2432;padding-top:14px}
+.rozetac>summary{list-style:none;cursor:pointer;font-family:var(--mono);
+  font-size:11.5px;letter-spacing:.06em;color:#6E7A8B;padding:6px 0;
+  display:flex;align-items:center;gap:8px}
+.rozetac>summary::-webkit-details-marker{display:none}
+.rozetac>summary::after{content:"+";color:#39424F;font-weight:700}
+.rozetac[open]>summary::after{content:"−"}
+.rozetac>summary:hover{color:var(--ink2)}
+.ra{padding:6px 0 4px}
+.ra p{font-size:13.5px;line-height:1.65;color:var(--ink2);margin:0 0 14px}
+.ra p b{color:var(--ink);font-weight:600}
+/* Dört ölçüt HİZALI: etiket sütunu sabit genişlikte, mono. */
+.raol{display:grid;grid-template-columns:max-content 1fr;
+  gap:9px 18px;margin:0 0 16px}
+.raol dt{font-family:var(--mono);font-size:11.5px;letter-spacing:.02em;
+  color:var(--ember);white-space:nowrap}
+.raol dd{margin:0;font-size:13px;line-height:1.5;color:var(--ink2)}
+.ra .ravurgu{color:var(--ink2);border-left:2px solid #2A3340;
+  padding-left:12px;margin-bottom:0}
+@media(max-width:479px){
+  /* Dar ekranda iki sütun sıkışıyor: etiket üste geçiyor. */
+  .raol{grid-template-columns:1fr;gap:2px 0}
+  .raol dd{margin-bottom:10px}
+}
 </style>
 </head>
 <body>
@@ -1614,6 +1640,30 @@ td.khot{color:var(--amber);font-weight:700}
   <div class="rule"></div>
   <div class="siralama" id="siralamaListe"></div>
 </section>
+
+<!-- ROZET AÇIKLAMASI — katlanır, varsayılan KAPALI.
+     Her gün okuyan biri bir kez okur. Rozeti keyfi olmaktan çıkarıyor:
+     itiraz edilebilir hale gelsin diye ölçütler açıkça yazıldı, formül
+     açılmadı. Son paragraf "benim takımım neden düşük" itirazının
+     cevabı. -->
+<details class="rozetac">
+  <summary>Rozet nasıl hesaplanıyor?</summary>
+  <div class="ra">
+    <p>Her maça 0 ile 10 arasında bir rozet veriyoruz. Dört şeye bakıyoruz:</p>
+    <dl class="raol">
+      <dt>Yıldız gecesi</dt><dd>Birinin olağanüstü bir performansı var mı</dd>
+      <dt>Maçın önemi</dt><dd>Sıralamayı etkiliyor mu, sürpriz bir sonuç mu</dd>
+      <dt>Tarihilik</dt><dd>Nadir görülen bir şey oldu mu</dd>
+      <dt>Dram</dt><dd>Maç ne kadar geç karara bağlandı</dd>
+    </dl>
+    <p>Rozet 8.5&apos;in üstündeyse <b>Mutlaka bil</b>, 6 ile 8.5 arasındaysa
+      <b>Göz at</b>, altındaysa <b>Bunları geç</b> bölümüne düşüyor. Eşikler
+      sabit değil — sakin bir gecede en iyi maç daha düşük rozetle de tepede
+      olabilir.</p>
+    <p class="ravurgu">Rozet bir kalite notu değil, izlenmeye değerlik notu.
+      30 farkla biten harika bir takım performansı düşük rozet alabilir.</p>
+  </div>
+</details>
 
 <div class="end">
   <h2>Gecen tamam.</h2>
@@ -2457,7 +2507,10 @@ function render(d){
     turkBox.className='';
     turkBox.innerHTML=`<div class="turkempty">${esc((bek&&bek.metin)||'Bu gece Türk oyuncu sahaya çıkmadı.')}</div>`;
     turkcue.textContent='';
-    document.querySelector('.end').before(secTurkler);
+    // Rozet açıklaması SAYFANIN EN ALTINDA, bülten kutusunun hemen
+    // üstünde kalmalı — Türkler bölümü onun da altına iniyordu.
+    (document.querySelector('.rozetac')
+     || document.querySelector('.end')).before(secTurkler);
   } else {
     turkcue.innerHTML=`<span class="dokun">dokun</span><span class="tikla">tıkla</span>, box score açılsın`;
     // İki oyuncu da oynadıysa rakamlar bir tık küçülür (CSS .ikili).

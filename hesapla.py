@@ -848,6 +848,12 @@ def A_hesapla(ev_kod, dep_kod, ortalamalar, sirali, bt, yildizlar):
 SONUMLEME_TAVANI = 0.7
 
 
+# KATMAN EŞİKLERİ — TEK KAYNAK. Sayfadaki "Rozet nasıl hesaplanıyor?"
+# açıklaması bu iki sayıyı yazıyor; testi ikisinin aynı kalmasını
+# denetliyor (açıklama koddan sapamaz).
+KATMAN_ESIKLERI = {"mutlaka": 8.5, "ikinci": 6.0}
+
+
 def formulu_uygula(S, K, T, Y, F, G, A):
     # 0. Dram terfisi
     # Kullanıcı kararı: F=8 ("son 30 saniyede öne geçildi") eskiden
@@ -897,9 +903,9 @@ def formulu_uygula(S, K, T, Y, F, G, A):
     else:
         rozet = 8 + 2 * (1 - math.exp(-(ham - 8) / 4))
 
-    if rozet >= 8.5:
+    if rozet >= KATMAN_ESIKLERI["mutlaka"]:
         katman = "mutlaka"
-    elif rozet >= 6.0:
+    elif rozet >= KATMAN_ESIKLERI["ikinci"]:
         katman = "ikinci"
     else:
         katman = "gec"

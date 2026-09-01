@@ -6727,6 +6727,53 @@ def main():
     basar("CSS: yedeksiz kullanılan her değişken :root'ta tanımlı",
           not _acik, f"tanımsız: {sorted(_acik)}")
 
+    # ------------------------------------------------------------------
+    # ROZET AÇIKLAMASI — sayfanın en altında, katlanır, varsayılan kapalı
+    # ------------------------------------------------------------------
+    # Amaç rozeti keyfi olmaktan çıkarmak: ölçütler açık yazılıyor,
+    # formül açılmıyor. Metindeki eşikler KODDAN sapamaz.
+    _ra = _sayfa.split('<details class="rozetac">')
+    basar("Rozet açıklaması: sayfada var ve katlanır", len(_ra) == 2)
+    _ra_blok = _ra[1].split("</details>")[0] if len(_ra) == 2 else ""
+    basar("Rozet açıklaması: varsayılan KAPALI",
+          '<details class="rozetac">' in _sayfa
+          and 'class="rozetac" open' not in _sayfa
+          and "<details open" not in _ra_blok)
+    basar("Rozet açıklaması: başlık satırı 'Rozet nasıl hesaplanıyor?'",
+          "<summary>Rozet nasıl hesaplanıyor?</summary>" in _ra_blok)
+    # YER: bülten kutusunun HEMEN üstünde. Türk oyuncusu oynamadığı
+    # gecelerde Türkler bölümü en alta iniyor ve açıklamanın da altına
+    # düşüyordu — çıpası açıklamaya bağlandı.
+    basar("Rozet açıklaması: bülten kutusunun hemen üstünde",
+          _sayfa.index('<details class="rozetac">') < _sayfa.index('<div class="end">')
+          and "</details>" in _sayfa.split('<div class="end">')[0][-400:])
+    basar("Rozet açıklaması: Türkler bölümü altına inemiyor",
+          "document.querySelector('.rozetac')" in
+          _sayfa.split("before(secTurkler)")[0][-260:])
+    # DÖRT ÖLÇÜT, sırayla ve hizalı.
+    for _o in ("Yıldız gecesi", "Maçın önemi", "Tarihilik", "Dram"):
+        basar(f"Rozet açıklaması: '{_o}' ölçütü var",
+              f"<dt>{_o}</dt>" in _ra_blok)
+    basar("Rozet açıklaması: dört ölçüt hizalı ızgarada",
+          "grid-template-columns:max-content 1fr" in _sayfa
+          and _ra_blok.count("<dt>") == 4)
+    # EŞİKLER KODDAN GELİYOR — metin sapamaz.
+    import hesapla as _hRoz
+    _yazsrc = open("yaz.py", encoding="utf-8").read()
+    _me = _hRoz.KATMAN_ESIKLERI
+    basar("Rozet açıklaması: eşikler koddaki değerlerle aynı",
+          f"Rozet {_me['mutlaka']}" in _ra_blok
+          and f"{_me['ikinci']:g} ile {_me['mutlaka']} arasındaysa" in _ra_blok,
+          f"kod: {_me}")
+    # SON PARAGRAF — "benim takımım neden düşük" itirazının cevabı.
+    basar("Rozet açıklaması: kalite notu değil vurgusu duruyor",
+          "kalite notu değil, izlenmeye değerlik notu" in _ra_blok)
+    # "Eşikler sabit değil" cümlesi kodla tutarlı mı? _mutlaka_ve_diger
+    # eşiği geçen yoksa EN YÜKSEĞİ tek başına alıyor.
+    basar("Rozet açıklaması: 'sakin gecede eşik altı maç tepede' iddiası kodla uyumlu",
+          "sakin bir gecede en iyi maç daha düşük rozetle de tepede" in _ra_blok
+          and 'tum_maclar[0]["rozet"] < MUTLAKA_ESIGI' in _yazsrc)
+
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))
