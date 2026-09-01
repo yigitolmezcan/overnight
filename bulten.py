@@ -33,6 +33,9 @@ sys.path.insert(0, str(Path(__file__).parent))
 from site_adresi import site_adresi
 SITE = site_adresi()
 GONDEREN = os.environ.get("GONDEREN_ADRES", "OVERNIGHT <onboarding@resend.dev>")
+# Cevap adresi: gönderen adresiyle aynı kutu. Gizlilik metninde ve
+# koşullarda verdiğimiz iletişim adresi de bu.
+CEVAP_ADRES = os.environ.get("CEVAP_ADRESI", "gece@overnightnba.com")
 GIZLI = os.environ.get("ABONE_GIZLI_ANAHTAR", "")
 RESEND = os.environ.get("RESEND_API_KEY", "")
 # Abone listesi depoda DEĞİL (adresler git geçmişine yazılmasın diye) —
@@ -168,8 +171,11 @@ def _resend(kime, konu, html, metin, cikis_bag=None):
     if cikis_bag:
         basliklar["List-Unsubscribe"] = f"<{cikis_bag}>"
         basliklar["List-Unsubscribe-Post"] = "List-Unsubscribe=One-Click"
+    # REPLY-TO: cevaplanabilir bir adres olması hem okuyucu için doğru
+    # (bir hata görürse yazabilsin) hem de gönderen itibarına olumlu
+    # katkı — cevaplanamayan gönderen daha kötü puanlanıyor.
     govde = {"from": GONDEREN, "to": [kime], "subject": konu,
-             "html": html, "text": metin}
+             "reply_to": CEVAP_ADRES, "html": html, "text": metin}
     if basliklar:
         govde["headers"] = basliklar
     istek = urllib.request.Request(
