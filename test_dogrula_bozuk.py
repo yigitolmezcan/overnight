@@ -7101,6 +7101,58 @@ def main():
           and "One-Click" in _blt_src
           and "cikis_bag=cikis" in _blt_src)
 
+    # SİMGELER — sekme ve ana ekran
+    from PIL import Image as _Im
+    _ikonlar = {"favicon.svg": None, "favicon.ico": None,
+                "apple-touch-icon.png": (180, 180),
+                "icon-192.png": (192, 192), "icon-512.png": (512, 512)}
+    _ik_eksik = []
+    for _ad, _boy in _ikonlar.items():
+        _y = f"site/{_ad}"
+        if not _os.path.exists(_y):
+            _ik_eksik.append(_ad); continue
+        if _boy and _Im.open(_y).size != _boy:
+            _ik_eksik.append(f"{_ad}: {_Im.open(_y).size}")
+    basar("Simge: beş dosyanın hepsi yayında ve doğru boyutta",
+          not _ik_eksik, "; ".join(_ik_eksik))
+    basar("Simge: favicon.ico içinde 16/32/48 gömülü",
+          sorted(_Im.open("site/favicon.ico").info.get("sizes", []))
+          == [(16, 16), (32, 32), (48, 48)])
+    # 16px'te dikiş erimemeli — çizgi 0.8 piksele düşüyordu, tabana çekildi.
+    _p16 = _Im.open("site/favicon.ico")
+    _p16.size = (16, 16); _p16.load()
+    _p16 = _p16.convert("RGB")
+    _ayrim = sum(abs(a - b) for a, b in
+                 zip(_p16.getpixel((8, 8)), _p16.getpixel((10, 8))))
+    basar("Simge: 16px'te dikiş çizgisi görünüyor", _ayrim > 40, f"ayrım {_ayrim}")
+    # ANA EKRAN SİMGELERİ TAM KARE: işletim sistemi kendi maskesini
+    # uyguluyor, içeride yuvarlatırsak köşe iki kez kesiliyor.
+    _kose = _Im.open("site/icon-512.png").convert("RGB").getpixel((2, 2))
+    basar("Simge: ana ekran simgeleri tam kare (köşe boş değil)",
+          _kose == (10, 13, 18), str(_kose))
+    # favicon.svg köşeleri yuvarlatılmış (sekmede maske yok).
+    # Simgeler ÜRETİLİYOR, elle çizilmiş dosya değil.
+    basar("Simge: üretici dosya var ve dördünü de kuruyor",
+          _os.path.exists("ikon_uret.py")
+          and "def hepsini_uret(" in open("ikon_uret.py", encoding="utf-8").read())
+    basar("Simge: favicon.svg köşeleri yuvarlatılmış",
+          'rx="4"' in open("site/favicon.svg", encoding="utf-8").read())
+    _mf = _jj.loads(open("site/site.webmanifest", encoding="utf-8").read())
+    basar("Simge: manifest alanları doğru",
+          _mf["name"] == "OVERNIGHT" and _mf["short_name"] == "OVERNIGHT"
+          and _mf["theme_color"] == "#0A0D12"
+          and _mf["background_color"] == "#0A0D12"
+          and _mf["display"] == "standalone"
+          and sorted(i["sizes"] for i in _mf["icons"]) == ["192x192", "512x512"])
+    for _et in ('name="theme-color" content="#0A0D12"',
+                'name="apple-mobile-web-app-capable" content="yes"',
+                'name="apple-mobile-web-app-status-bar-style" content="black-translucent"',
+                'name="apple-mobile-web-app-title" content="OVERNIGHT"',
+                'rel="manifest" href="/site.webmanifest"',
+                'rel="apple-touch-icon" href="/apple-touch-icon.png"',
+                'rel="icon" href="/favicon.svg" type="image/svg+xml"'):
+        basar(f"Simge: meta/link '{_et.split(chr(34))[1]}' var", _et in _sayfa)
+
     # YASAL SAYFALAR — e-posta topluyoruz, gizlilik metni zorunlu.
     _yayin_kod = open("yayin.py", encoding="utf-8").read()
     for _sf, _bas in (("gizlilik", "Gizlilik"), ("kosullar", "Kullanım koşulları")):

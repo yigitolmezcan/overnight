@@ -326,7 +326,7 @@ SITE_ADRESI = site_adresi()
 
 
 def yasal_sayfalar():
-    """Gizlilik ve kullanım koşulları sayfalarını site/ altına kopyalar.
+    """Yasal sayfaları ve simgeleri site/ altına kopyalar.
 
     Kaynakları sayfalar/ altında duruyor; site/ üretilen bir dizin, elle
     dosya bırakılmıyor. E-posta topladığımız için gizlilik metni
@@ -335,9 +335,10 @@ def yasal_sayfalar():
     if not kaynak.exists():
         return []
     yazilan = []
-    for dosya in sorted(kaynak.glob("*.html")):
+    UZANTILAR = ("*.html", "*.svg", "*.ico", "*.png", "*.webmanifest")
+    for dosya in sorted(d for u in UZANTILAR for d in kaynak.glob(u)):
         hedef = SITE_DIZIN / dosya.name
-        hedef.write_text(dosya.read_text(encoding="utf-8"), encoding="utf-8")
+        hedef.write_bytes(dosya.read_bytes())   # ikili dosyalar da var
         yazilan.append(dosya.name)
     print(f"Yasal sayfalar: {', '.join(yazilan)}")
     return yazilan
