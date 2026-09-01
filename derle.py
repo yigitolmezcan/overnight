@@ -628,6 +628,34 @@ KAPAK_KISA_OVERRIDE = {"LAL": "LA Lakers"}
 KAPAK_TAM_OVERRIDE = {"LAL": "LA Lakers", "LAC": "LA Clippers"}
 
 
+# ===========================================================================
+# TAKIM SIRASI — EV SAHİBİ ÖNCE, HER YERDE
+# ===========================================================================
+#
+# Eskiden kazanan başta yazılıyordu ve ev sahibi/deplasman bilgisi hiçbir
+# yerde görünmüyordu. Ekranda çelişki bile çıkıyordu: skor bloğu "Boston
+# Celtics / Utah Jazz" derken cümle "Boston, Utah deplasmanında kazandı"
+# diyordu.
+#
+# Yeni kural: ev sahibi ÜSTTE/SOLDA, deplasman altta/sağda. İstisna yok.
+# Kazananı KALINLIK gösteriyor, konum değil. Sol şerit hâlâ kazananın
+# rengi — o triyaj sinyali, konumla ilgisi yok.
+#
+# `ev` alanı gercekler.py'de doğrudan BoxScoreTraditional'ın homeTeam'inden
+# geliyor (bkz. skor_gerceklerini_uret), türetilmiyor.
+
+
+def ev_dep_sirasi(skor):
+    """(ev_kod, ev_skor, dep_kod, dep_skor, ev_kazandi) — TEK KAYNAK.
+
+    Takım sırası kuran her yer buradan geçiyor; hiçbir yüzey kendi
+    sırasını kurmuyor."""
+    ev, dep = skor.get("ev"), skor.get("dep")
+    es = skor.get("ev_skor") or 0
+    ds = skor.get("dep_skor") or 0
+    return ev, es, dep, ds, es >= ds
+
+
 def _kapak_kodu(skor, kazanan=True):
     ev, dep = skor.get("ev"), skor.get("dep")
     es, ds = skor.get("ev_skor") or 0, skor.get("dep_skor") or 0
@@ -635,14 +663,20 @@ def _kapak_kodu(skor, kazanan=True):
     return kaz if kazanan else (dep if kaz == ev else ev)
 
 
-def _kapak_kisa_ad(skor, kazanan=True):
-    kod = _kapak_kodu(skor, kazanan)
+def _kapak_kisa_kod(kod):
     return KAPAK_KISA_OVERRIDE.get(kod) or cumle.TAKIM_KISA.get(kod, kod)
 
 
-def _kapak_tam_ad(skor, kazanan=True):
-    kod = _kapak_kodu(skor, kazanan)
+def _kapak_tam_kod(kod):
     return KAPAK_TAM_OVERRIDE.get(kod) or _takim_adi(kod)
+
+
+def _kapak_kisa_ad(skor, kazanan=True):
+    return _kapak_kisa_kod(_kapak_kodu(skor, kazanan))
+
+
+def _kapak_tam_ad(skor, kazanan=True):
+    return _kapak_tam_kod(_kapak_kodu(skor, kazanan))
 
 
 def _kapak_renkleri(satirlar):
@@ -863,10 +897,10 @@ def _turkler(ham, turk_oyunculari, id_by_gid=None, skor_by_gid=None):
         bt = ham_mac["box_traditional"]["boxScoreTraditional"]
         ev, dep = bt["homeTeam"], bt["awayTeam"]
         ev_p, dep_p = ev["statistics"]["points"], dep["statistics"]["points"]
-        kaz, kay = (ev, dep) if ev_p >= dep_p else (dep, ev)
-        mac_kisa = (f"{TAKIM_KISA.get(kaz['teamTricode'], kaz['teamTricode'])} "
-                    f"{max(ev_p, dep_p)}–{min(ev_p, dep_p)} "
-                    f"{TAKIM_KISA.get(kay['teamTricode'], kay['teamTricode'])}")
+        # EV SAHİBİ ÖNCE (tek kaynak kuralı) — eskiden kazanan öndeydi.
+        mac_kisa = (f"{TAKIM_KISA.get(ev['teamTricode'], ev['teamTricode'])} "
+                    f"{ev_p}–{dep_p} "
+                    f"{TAKIM_KISA.get(dep['teamTricode'], dep['teamTricode'])}")
         for taraf in (ev, dep):
             oynayan_takimlar.add(taraf["teamTricode"])
             for p in taraf["players"]:
@@ -3562,29 +3596,26 @@ def derle(tarih_str):
             {
                 "katman": kat,
                 "rozet": round((rozet_by_gid.get(gid) or {}).get("rozet", 0), 1),
-                # KAZANAN ÖNCE, KISA AD. Takma ad ("Raptors", "Suns")
-                # satırı uzatıyordu; şehir yeter. Los Angeles'ta iki
-                # takım olduğu için Lakers "LA Lakers" oluyor.
-                "kazanan": _kapak_kisa_ad(
-                    (rozet_by_gid.get(gid) or {}), kazanan=True),
-                "kaybeden": _kapak_kisa_ad(
-                    (rozet_by_gid.get(gid) or {}), kazanan=False),
+                # EV SAHİBİ ÖNCE (tek kaynak: ev_dep_sirasi). Kazananı
+                # kalınlık gösteriyor, sıra değil. KISA AD: takma ad
+                # ("Raptors", "Suns") satırı uzatıyordu; şehir yeter.
                 # TAM AD masaüstü için; ikisi de gönderiliyor, hangisinin
                 # görüneceğine CSS karar veriyor (JS'te ölçüm yok).
-                "kazanan_tam": _kapak_tam_ad(
-                    (rozet_by_gid.get(gid) or {}), kazanan=True),
-                "kaybeden_tam": _kapak_tam_ad(
-                    (rozet_by_gid.get(gid) or {}), kazanan=False),
+                "ev_ad": _kapak_kisa_kod(
+                    ev_dep_sirasi(rozet_by_gid.get(gid) or {})[0]),
+                "dep_ad": _kapak_kisa_kod(
+                    ev_dep_sirasi(rozet_by_gid.get(gid) or {})[2]),
+                "ev_ad_tam": _kapak_tam_kod(
+                    ev_dep_sirasi(rozet_by_gid.get(gid) or {})[0]),
+                "dep_ad_tam": _kapak_tam_kod(
+                    ev_dep_sirasi(rozet_by_gid.get(gid) or {})[2]),
+                "ev_kazandi": ev_dep_sirasi(rozet_by_gid.get(gid) or {})[4],
                 # Satırın sol şeridi kazananın rengi — HER satırda,
                 # rozetten bağımsız. Renk çakışması aşağıda çözülüyor.
                 "kazanan_kod": _kapak_kodu(
                     (rozet_by_gid.get(gid) or {}), kazanan=True),
-                "kazanan_skor": max(
-                    (rozet_by_gid.get(gid) or {}).get("ev_skor") or 0,
-                    (rozet_by_gid.get(gid) or {}).get("dep_skor") or 0),
-                "kaybeden_skor": min(
-                    (rozet_by_gid.get(gid) or {}).get("ev_skor") or 0,
-                    (rozet_by_gid.get(gid) or {}).get("dep_skor") or 0),
+                "ev_skor": (rozet_by_gid.get(gid) or {}).get("ev_skor") or 0,
+                "dep_skor": (rozet_by_gid.get(gid) or {}).get("dep_skor") or 0,
                 "saat": _saat_by_gid.get(gid) or "",
                 "hedef_id": _hedef_by_gid.get(gid, ""),
                 # Sıralama anahtarı METİN: _tsi_baslama_dt bazı maçlarda

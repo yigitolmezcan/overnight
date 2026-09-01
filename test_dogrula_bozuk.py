@@ -6609,7 +6609,7 @@ def main():
     # SATIR = renk şeridi + ana satır + alt bilgi (manşetin küçük hâli).
     basar("Liste: satır blok yapısında (şerit + ana satır + alt bilgi)",
           '<span class="st"></span><span class="bd">' in _sayfa
-          and '<span class="mn"><b>' in _sayfa
+          and '<span class="mn">${x.ev_kazandi' in _sayfa
           and '<span class="sb"><u>' in _sayfa)
     _st = _sayfa.split(".kaplist .st{")[1].split("}")[0]
     basar("Liste: sol şerit 4px, kazananın rengi",
@@ -6682,7 +6682,7 @@ def main():
     # TAM AD masaüstünde, KISA AD mobilde — seçim CSS'te, JS ölçüm yok.
     basar("Liste: tam ad ve kısa ad ikisi de yazılıyor",
           '<span class="tam">' in _sayfa and '<span class="kisa">' in _sayfa
-          and "kazanan_tam" in _sayfa and "kaybeden_tam" in _sayfa)
+          and "ev_ad_tam" in _sayfa and "dep_ad_tam" in _sayfa)
     basar("Liste: tam ad 1024px eşiğinde açılıyor, kısa ad kapanıyor",
           ".kaplist .tam{display:none}" in _sayfa
           and ".kaplist .tam{display:inline}" in _sayfa
@@ -6698,7 +6698,7 @@ def main():
             continue
         _xt = _jj.loads(open(f"dist/{_tt}.json", encoding="utf-8").read())
         for _kx in (_xt.get("kapak_listesi") or []):
-            if not (_kx.get("kazanan_tam") and _kx.get("kaybeden_tam")
+            if not (_kx.get("ev_ad_tam") and _kx.get("dep_ad_tam")
                     and _kx.get("kazanan_renk")):
                 _eksik5.append(_tt)
     basar("Liste: yayındaki her satırda tam ad ve kazanan rengi var",
@@ -6710,7 +6710,7 @@ def main():
             continue
         _xt = _jj.loads(open(f"dist/{_tt}.json", encoding="utf-8").read())
         for _kx in (_xt.get("kapak_listesi") or []):
-            for _ad3 in (_kx.get("kazanan"), _kx.get("kaybeden")):
+            for _ad3 in (_kx.get("ev_ad"), _kx.get("dep_ad")):
                 if any(_lak in (_ad3 or "") for _lak in
                        ("Raptors", "Warriors", "Thunder", "Pelicans", "Knicks",
                         "Suns", "Hornets", "Bucks", "Nets", "Heat")):
@@ -6926,6 +6926,111 @@ def main():
     basar("Künye: çift çizgi duruyor",
           "border-bottom:2px solid var(--ink)" in _sayfa
           and ".rule2{height:1px;background:#1A2130" in _sayfa)
+
+    # ==================================================================
+    # TAKIM SIRASI — EV SAHİBİ ÖNCE, HER YERDE
+    # ==================================================================
+    # Eskiden kazanan başta yazılıyordu; ev/deplasman bilgisi hiçbir
+    # yerde görünmüyordu ve ekranda çelişki çıkıyordu (skor bloğu
+    # "Boston / Utah" derken cümle "Boston, Utah deplasmanında kazandı").
+    basar("Sıra: tek kaynak yardımcısı var",
+          "def ev_dep_sirasi(" in _dsrc_kod
+          and 'bt["homeTeam"]' in open("gercekler.py", encoding="utf-8").read())
+    # Şablonda hiçbir yüzey kendi sırasını kurmuyor.
+    basar("Sıra: maç bloğu kazananı üste almıyor",
+          "const sira = [[ev,es,es>=ds],[dep,ds,ds>es]];" in _sayfa
+          and "evKazandi ? [[ev,es,1]" not in _sayfa)
+    basar("Sıra: box score kartında ev sahibi solda",
+          "const sira = [b.ev, b.dep];" in _sayfa
+          and "b.ev.skor>=b.dep.skor ? [b.ev,b.dep]" not in _sayfa)
+    basar("Sıra: kapak listesinde ev sahibi solda",
+          '"ev_ad"' in _dsrc_kod and '"dep_ad"' in _dsrc_kod
+          and '"kazanan_skor"' not in _dsrc_kod
+          and '"kaybeden_skor"' not in _dsrc_kod)
+    basar("Sıra: Türkler maç skorunda ev sahibi önce",
+          'mac_kisa = (f"{TAKIM_KISA.get(ev[\'teamTricode\']' in _dsrc_kod)
+    # KAZANANI KALINLIK GÖSTERİYOR, konum değil.
+    basar("Sıra: kazanan kalın #F2F0EC, kaybeden #4C5665",
+          ".mrow.win .mad,.mrow.win .msk{color:var(--ink);font-weight:700}" in _sayfa
+          and ".mrow.lose .mad,.mrow.lose .msk{color:#4C5665" in _sayfa
+          and ".kt.win .ktn,.kt.kts" not in _sayfa
+          and ".kt.lose .ktn,.kt.lose .kts{color:#4C5665" in _sayfa)
+    # ETİKET YOK: "EV"/"DEP" işareti gürültü olurdu (kullanıcı kuralı).
+    basar("Sıra: 'EV'/'DEP' etiketi eklenmedi",
+          ">EV<" not in _sayfa and ">DEP<" not in _sayfa
+          and "ev-etiket" not in _sayfa)
+
+    # ---- YAYINDAKİ HER YÜZEYDE DOĞRULAMA ----
+    import cumle as _cum5
+    _ters5 = []
+    _yuzey5 = 0
+    for _t5 in _yayin.durum_oku()["yayinlanan"]:
+        _dp5, _sp5 = f"dist/{_t5}.json", f"skor/{_t5}.json"
+        if not (_os.path.exists(_dp5) and _os.path.exists(_sp5)):
+            continue
+        _d5 = _jj.loads(open(_dp5, encoding="utf-8").read())
+        _sk5 = {x["mac_id"]: x for x in
+                _jj.loads(open(_sp5, encoding="utf-8").read())["maclar"]}
+        for _r5 in (_d5.get("kapak_listesi") or []):
+            _yuzey5 += 1
+            _e5 = next((v for v in _sk5.values()
+                        if _derle._kapak_kisa_kod(v["ev"]) == _r5.get("ev_ad")
+                        and v["ev_skor"] == _r5.get("ev_skor")), None)
+            if _e5 is None:
+                _ters5.append(f"{_t5} kapak {_r5.get('ev_ad')}")
+        for _bol5 in ("mutlaka", "degerse_bak", "diger"):
+            for _b5 in (_d5.get(_bol5) or []):
+                if not isinstance(_b5, dict):
+                    continue
+                _x5 = _sk5.get(_b5.get("mac_id"))
+                if _x5 is None:
+                    continue
+                _m5 = _b5.get("mac") or ""
+                if _m5:
+                    _yuzey5 += 1
+                    if not _m5.startswith(_derle._takim_adi(_x5["ev"])):
+                        _ters5.append(f"{_t5} {_bol5}.mac {_m5[:38]}")
+                _s5 = _b5.get("skor") or ""
+                if _re.match(r"^\d+[–-]\d+$", _s5):
+                    _yuzey5 += 1
+                    if int(_re.split("[–-]", _s5)[0]) != _x5["ev_skor"]:
+                        _ters5.append(f"{_t5} {_bol5}.skor {_s5}")
+        for _tk5 in (_d5.get("turkler") or []):
+            _v5 = _tk5.get("mac_kisa")
+            if not _v5:
+                continue
+            _yuzey5 += 1
+            if not any(_v5.startswith(_cum5.TAKIM_KISA.get(v["ev"], v["ev"]))
+                       for v in _sk5.values()):
+                _ters5.append(f"{_t5} türkler {_v5}")
+    basar(f"Sıra: yayındaki {_yuzey5} yüzeyin hepsinde ev sahibi önde",
+          not _ters5, "; ".join(_ters5[:4]))
+
+    # "deplasmanında/evinde" ifadeleri yeni sırayla ÇELİŞMEMELİ.
+    _celisen5 = []
+    for _t5 in _yayin.durum_oku()["yayinlanan"]:
+        _dp5, _sp5 = f"dist/{_t5}.json", f"skor/{_t5}.json"
+        if not (_os.path.exists(_dp5) and _os.path.exists(_sp5)):
+            continue
+        _d5 = _jj.loads(open(_dp5, encoding="utf-8").read())
+        _sk5 = {x["mac_id"]: x for x in
+                _jj.loads(open(_sp5, encoding="utf-8").read())["maclar"]}
+        for _bol5 in ("mutlaka", "degerse_bak", "diger"):
+            for _b5 in (_d5.get(_bol5) or []):
+                if not isinstance(_b5, dict):
+                    continue
+                _x5 = _sk5.get(_b5.get("mac_id"))
+                if _x5 is None:
+                    continue
+                _ev_kaz = _x5["ev_skor"] >= _x5["dep_skor"]
+                for _al5 in ("baslik", "ozet", "neden_onemli", "metin"):
+                    _c5 = (_b5.get(_al5) or "").lower()
+                    if "deplasman" in _c5 and _ev_kaz:
+                        _celisen5.append(f"{_t5} {_al5}: {_c5[:56]}")
+                    if ("evinde" in _c5 or "sahasında" in _c5) and not _ev_kaz:
+                        _celisen5.append(f"{_t5} {_al5}: {_c5[:56]}")
+    basar("Sıra: 'deplasmanında/evinde' ifadeleri sırayla çelişmiyor",
+          not _celisen5, "; ".join(_celisen5[:3]))
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",

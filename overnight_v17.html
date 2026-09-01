@@ -445,8 +445,11 @@ h1 s{text-decoration:none;color:var(--faint);display:block}
 .mrow{display:flex;align-items:baseline;gap:12px;padding:2px 0}
 .mad{flex:1;min-width:0;font-family:var(--mono);font-size:17px;letter-spacing:.01em;line-height:1.25}
 .msk{font-family:var(--mono);font-size:24px;letter-spacing:-.02em;line-height:1;flex:none}
-.mrow.win .mad,.mrow.win .msk{color:var(--ink);font-weight:500}
-.mrow.lose .mad,.mrow.lose .msk{color:var(--faint);font-weight:400}
+/* SIRA ARTIK EV SAHİBİNİ GÖSTERİYOR, KAZANANI DEĞİL — vurgu skorda ve
+   isimde. Kazanan #F2F0EC ve kalın, kaybeden #4C5665. Ev sahibi
+   kaybettiyse üstte ama soluk durur. */
+.mrow.win .mad,.mrow.win .msk{color:var(--ink);font-weight:700}
+.mrow.lose .mad,.mrow.lose .msk{color:#4C5665;font-weight:400}
 .mblok.sm .mad{font-size:14.5px}
 .mblok.sm .msk{font-size:19px}
 /* Orta boy: Göz at için. Üç bölümün ağırlığı skor bloğunun boyundan da
@@ -748,8 +751,8 @@ td.oyad{color:var(--ink);cursor:pointer}
   letter-spacing:.01em;line-height:1.2}
 .kts{font-family:var(--mono);font-size:34px;font-weight:500;letter-spacing:-.02em;line-height:1;flex:none}
 .kt.lose{background:linear-gradient(90deg,color-mix(in srgb,var(--tc) 7%,transparent),transparent 78%)}
-.kt.lose .ktn,.kt.lose .kts{color:var(--faint);font-weight:400}
-.kt.win .ktn,.kt.win .kts{color:var(--ink);font-weight:500}
+.kt.lose .ktn,.kt.lose .kts{color:#4C5665;font-weight:400}
+.kt.win .ktn,.kt.win .kts{color:var(--ink);font-weight:700}
 /* Çeyrek şeridi (kullanıcı kararı): skor bloğunun ALTINDA, sekmelerin
    ÜSTÜNDE kendi şeridinde. Satır içine denendi, 375px'te takım adının
    yanına sığmıyor — o yüzden kendi satırına alındı, geri konmayacak.
@@ -1794,10 +1797,15 @@ function macParcala(mac){
    skor sağda hizalı. Izgara/tire hizası sorununu tamamen ortadan
    kaldırıyor ve sayfa ile kart aynı dili konuşuyor. */
 function macBlok(mac, skor){
+  // EV SAHİBİ ÜSTTE, deplasman altta — İSTİSNA YOK. Girdi zaten
+  // ev–dep sırasında geliyor (derle.ev_dep_sirasi), burada yeniden
+  // sıralanmıyor. Kazananı KALINLIK gösteriyor (.win/.lose), konum
+  // ev sahibini. Eskiden kazanan üste alınıyordu ve ev/deplasman
+  // bilgisi hiçbir yerde görünmüyordu; blok "Boston / Utah" derken
+  // cümle "Boston, Utah deplasmanında kazandı" diyordu.
   const [ev,dep]=macParcala(mac);
   const [es,ds]=String(skor||'').split('–').map(x=>parseInt(x,10));
-  const evKazandi = !(ds>es);
-  const sira = evKazandi ? [[ev,es,1],[dep,ds,0]] : [[dep,ds,1],[ev,es,0]];
+  const sira = [[ev,es,es>=ds],[dep,ds,ds>es]];
   return sira.map(([ad,sk,kaz])=>
     `<div class="mrow ${kaz?'win':'lose'}"><span class="mad">${esc(ad)}</span><span class="msk">${sk}</span></div>`
   ).join('');
@@ -2476,15 +2484,15 @@ function oyuncuKartiHTML(o){
 
 function boxKartiHTML(m){
   const b=m.box;
-  // Varsayılan sekme KAZANAN takım.
-  const sira = b.ev.skor>=b.dep.skor ? [b.ev,b.dep] : [b.dep,b.ev];
-  // Sekme çubuğu: KAZANAN | TAKIM | KAYBEDEN.
-  // DİKKAT: karşılaştırma sütunları sekme sırasını izliyor (solda soldaki
-  // sekmenin takımı). Kullanıcı "solda ev sahibi" demişti; ev sahibi
-  // kaybettiğinde sol sekme ile sol sütun FARKLI takımlar oluyordu ve
-  // okuyucu yanlış takımın rakamını okuyordu. Başlıkta iki kod da yazılı.
+  // EV SAHİBİ SOLDA — İSTİSNA YOK, sayfanın her yerindeki sırayla aynı.
+  // Karşılaştırma sütunları sekme sırasını izliyor, ikisi de ev–dep
+  // olduğu için sol sekme ile sol sütun HEP aynı takım.
+  const sira = [b.ev, b.dep];
   const tab=(t,i)=>`<button class="${i===0?'on':''}" style="--tc:${esc(t.renk)}" data-pane="${i===0?0:2}">${esc(t.kod)}${i!==0&&isaretliMi(t)?'<i class="dot"></i>':''}</button>`;
-  const takimSatiri=(t,kazandi)=>`<div class="kt ${kazandi?'win':'lose'}" style="--tc:${esc(t.renk)}">
+  // KAZANANI KALINLIK GÖSTERİYOR, sıra değil: ev sahibi kaybettiyse
+  // üstte ama soluk durur.
+  const kazandiMi=t=>t.skor>=Math.max(b.ev.skor,b.dep.skor);
+  const takimSatiri=(t)=>`<div class="kt ${kazandiMi(t)?'win':'lose'}" style="--tc:${esc(t.renk)}">
       <span class="ktn">${esc(t.takim)}</span><span class="kts">${t.skor}</span></div>`;
   const panolar=[
     `<div class="kpane" data-pane="0">${boxTablosu(sira[0])}</div>`,
@@ -2494,7 +2502,7 @@ function boxKartiHTML(m){
   return `<div class="grab"><i></i></div>
     <div class="khead"><button class="kclose" data-kapat aria-label="Kapat">✕</button>
       <div class="kmeta">${esc(TARIH_ETIKET)} · <b>rozet ${m.rozet.toFixed(1)}</b></div>
-      <div class="kteams">${sira.map((t,i)=>takimSatiri(t,i===0)).join('')}</div></div>
+      <div class="kteams">${sira.map(t=>takimSatiri(t)).join('')}</div></div>
     ${ceyrekSeridi(sira[0],sira[1])}
     <div class="ktabs">${tab(sira[0],0)}<button class="mid" style="--tc:var(--ember)" data-pane="1">TAKIM${
       b.kritik?'<i class="kdot"></i>':''}</button>${tab(sira[1],1)}</div>
@@ -2693,8 +2701,13 @@ function render(d){
     const renk = ` style="--tc:${esc(x.kazanan_renk||'#7E8794')}"`;
     return `<a class="kr ${sinif}" href="#${esc(x.hedef_id||'')}"${renk}>`
       + `<span class="st"></span><span class="bd">`
-      + `<span class="mn"><b>${kapAd(x.kazanan_tam,x.kazanan)} ${x.kazanan_skor}</b>`
-      + `<i>–</i><s>${x.kaybeden_skor} ${kapAd(x.kaybeden_tam,x.kaybeden)}</s></span>`
+      // EV SAHİBİ SOLDA. Kazananı KALINLIK gösteriyor: <b> kazanan,
+      // <s> kaybeden. Ev sahibi kaybettiyse solda ama soluk durur.
+      + `<span class="mn">${x.ev_kazandi
+          ? `<b>${kapAd(x.ev_ad_tam,x.ev_ad)} ${x.ev_skor}</b><i>–</i>`
+            + `<s>${x.dep_skor} ${kapAd(x.dep_ad_tam,x.dep_ad)}</s>`
+          : `<s>${kapAd(x.ev_ad_tam,x.ev_ad)} ${x.ev_skor}</s><i>–</i>`
+            + `<b>${x.dep_skor} ${kapAd(x.dep_ad_tam,x.dep_ad)}</b>`}</span>`
       + `<span class="sb"><u>${(x.rozet||0).toFixed(1)}</u>`
       + `<span>${esc(x.saat||'')}</span></span>`
       + `</span></a>`;
