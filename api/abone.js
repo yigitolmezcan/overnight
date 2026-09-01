@@ -42,8 +42,8 @@ export default async function handler(istek, yanit) {
     // taşıyan istek gerçek hatayı da görüyor; anahtarsız istekte
     // davranış hiç değişmiyor.
     const tani =
-      process.env.NOBETCI_ANAHTARI &&
-      istek.headers["x-tani"] === process.env.NOBETCI_ANAHTARI;
+      process.env.TANI_ANAHTARI &&
+      istek.headers["x-tani"] === process.env.TANI_ANAHTARI;
     return yanit.status(502).json({
       hata: "Onay maili gönderilemedi, birazdan tekrar dene.",
       ...(tani ? { detay: String(e.message).slice(0, 400) } : {}),
