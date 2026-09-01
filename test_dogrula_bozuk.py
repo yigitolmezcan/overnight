@@ -2919,9 +2919,15 @@ def main():
           _bolumler and _bolumler[-1] == "secSiralama")
 
     # ÖLÇÜLER — şartnamedeki değerler.
-    basar("Sıralama: ok sütunu 30px ve sarmalanmıyor",
-          "font-size:11.5px;font-weight:700;width:30px" in _sayfa6
-          and "white-space:nowrap}" in _sayfa6.split(".sr .ar{")[1][:200])
+    # SATIR YENİDEN DÜZENLENDİ: sıra numarası SOLDA (liste bir sıralama
+    # listesi, göz önce sıraya bakar), hareket oku SAĞDA.
+    _sr_sira = _re.findall(r'<span class="(pos|tn|f10|ar)',
+                           _sayfa6.split('return `<div class="sr">')[1][:600])
+    basar("Sıralama: satır sırası sıra no → takım → form → ok",
+          _sr_sira == ["pos", "tn", "f10", "ar"], str(_sr_sira))
+    basar("Sıralama: ok sütunu sağa hizalı, sarmalanmıyor",
+          "text-align:right" in _sayfa6.split(".sr .ar{")[1][:200]
+          and "white-space:nowrap}" in _sayfa6.split(".sr .ar{")[1][:220])
     basar("Sıralama: yükseliş yeşil, düşüş kırmızı",
           ".sr .ar.u{color:#3FB27F}" in _sayfa6 and ".sr .ar.d{color:#C4544F}" in _sayfa6)
     basar("Sıralama: form kutucukları 9x9, 2.5px aralık",
@@ -2931,15 +2937,19 @@ def main():
     basar("Sıralama: galibiyet yeşil %85, mağlubiyet kırmızı %75",
           ".sr .f10 i.w{background:#3FB27F;opacity:.85}" in _sayfa6
           and "background:#C4544F;opacity:.75" in _sayfa6)
-    basar("Sıralama: sıra sütunu 46px, sağa hizalı",
-          "width:46px;flex:none;text-align:right" in _sayfa6)
+    # SABİT GENİŞLİK: iki haneli sırada ("12.") takım adı kaymasın.
+    basar("Sıralama: sıra sütunu mono, sabit genişlikte, sağa hizalı",
+          "font-family:var(--mono);width:30px;flex:none;text-align:right" in _sayfa6
+          and ".sr .pos{width:34px}" in _sayfa6)
     # "4→3" 10 form kutucuğunun yanında galibiyet-mağlubiyet sanıldı;
     # "4.→3." de okunaksız oldu. Eski sıra ZATEN gereksiz: soldaki ok kaç
     # sıra oynadığını, sağdaki nerede olduğunu söylüyor.
     basar("Sıralama: sadece YENİ sıra yazılıyor",
           "<b>${t.yeni}.</b>" in _sayfa6 and "${t.eski}" not in _sayfa6)
-    basar("Sıralama: sayının ne olduğu satırda yazılı",
-          "<s>sıra</s>" in _sayfa6)
+    # "sıra" alt etiketi KALKTI: sütun sola geçince başlık gibi
+    # okunmuyor, sayı zaten nokta taşıyor ("4.").
+    basar("Sıralama: 'sıra' alt etiketi kalktı",
+          "<s>sıra</s>" not in _sayfa6 and ".sr .pos s{" not in _sayfa6)
     # Eşitlikte diziliş rastgele görünüyordu; yeni sıra belirleyici.
     basar("Sıralama: eşit hareketlerde üst sıradaki önce",
           all(_sir[i]["degisim"] != _sir[i+1]["degisim"]
@@ -4054,7 +4064,31 @@ def main():
           and "sheet.innerHTML=oyuncuKartiHTML" not in _sayfa10)
     # Sayfa kaydırması ancak SON katman kapanınca serbest kalmalı.
     basar("Kart üstüne kart: sayfa kaydırması son katmanda serbest kalıyor",
-          "if(_ustKatman()===0) document.body.style.overflow='';" in _sayfa10)
+          "if(_ustKatman()===0) _kaydirmayiCoz();" in _sayfa10)
+    # ---- KAYDIRMA KİLİDİ ----
+    # Kart kapanınca sayfa kaldığı yere dönmeli.
+    basar("Kilit: kaydırma geri yükleme tarayıcıdan alındı",
+          "history.scrollRestoration = 'manual'" in _sayfa10)
+    basar("Kilit: konum saklanıyor ve aynı noktaya dönülüyor",
+          "_sayfaY = window.scrollY" in _sayfa10
+          and "window.scrollTo({top: _sayfaY, behavior: 'instant'})" in _sayfa10)
+    # SIRA TUZAĞI: kilit 'on' sınıfı EKLENMEDEN önce çağrılmalı. Sonra
+    # çağrılırsa _ustKatman() zaten 1 döner, konum HİÇ kaydedilmez
+    # (bir kez oldu, tarayıcı ölçümüyle yakalandı: kapanışta 1400 → 0).
+    _kac = _sayfa10.split("function kartAc(")[1][:900]
+    basar("Kilit: konum 'on' sınıfından ÖNCE alınıyor",
+          _kac.index("_kaydirmayiKilitle()") < _kac.index("sheet.classList.add('on')"))
+    _oka = _sayfa10.split("function oyuncuKartiAc(")[1][:1400]
+    basar("Kilit: ikinci katmanda da sıra doğru",
+          _oka.index("_kaydirmayiKilitle()") < _oka.index("sheet2.classList.add('on')"))
+    # ALTTAKİ KARTIN KENDİ KONUMU: oyuncu kartı kapanınca box score
+    # kaldığı satırda kalsın.
+    basar("Kilit: alttaki kartın kendi kaydırma konumu korunuyor",
+          "_altKatmanY = _alt ? _alt.scrollTop : 0" in _sayfa10
+          and "_alt.scrollTop = _altKatmanY" in _sayfa10)
+    # Çubuk kaybolunca sayfa genişleyip sarmalanan metin yer değiştiriyordu.
+    basar("Kilit: kaydırma çubuğunun yeri hep ayrılı",
+          "scrollbar-gutter:stable" in _sayfa10)
     # Sürükleme hangi kart sürükleniyorsa ONU kapatmalı.
     basar("Kart üstüne kart: sürükleme katmana bağlı",
           "function surukleBagla(kat,kapat)" in _sayfa10)
@@ -6773,6 +6807,18 @@ def main():
     basar("Rozet açıklaması: 'sakin gecede eşik altı maç tepede' iddiası kodla uyumlu",
           "sakin bir gecede en iyi maç daha düşük rozetle de tepede" in _ra_blok
           and 'tum_maclar[0]["rozet"] < MUTLAKA_ESIGI' in _yazsrc)
+
+    # FORM ve SIRALAMA masaüstünde ORTALI. Sayfadaki tek dar bloklardı,
+    # sola yapışıp sağda 380px boşluk bırakıyorlardı. Kapak listesi
+    # ayrı: kendi çerçevesinin içinde ve sola hizalı kalması kasıtlı.
+    basar("Hiza: Form ve Sıralama tek kuralda ortalanıyor",
+          ".formda,.siralama,.formnot{max-width:var(--liste-max);" in _ly
+          and "margin-left:auto;margin-right:auto}" in _ly)
+    # Ölçütlerin hepsi soru cümlesi — soru işareti eksik kalmasın.
+    _ddler = _re.findall(r"<dd>([^<]+)</dd>", _sayfa)
+    basar("Rozet açıklaması: dört ölçütün dördü de soru işaretiyle bitiyor",
+          len(_ddler) == 4 and all(d.strip().endswith("?") for d in _ddler),
+          str(_ddler))
 
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",

@@ -39,7 +39,7 @@
   --line2:#151C26; --dim:#98A2B0;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scrollbar-gutter:stable}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 /* -webkit-text-size-adjust:100% — iOS Safari, viewport'tan geniş
    bloklardaki yazıyı KENDİLİĞİNDEN büyütüyor ("text autosizing") ve
@@ -1089,7 +1089,8 @@ td.khot{color:var(--amber);font-weight:700}
 
 /* Ok sütunu SABİT 30px; iki haneli değerde (▲10) sarmalanmasın diye
    nowrap ile birlikte. */
-.sr .ar{font-family:var(--mono);font-size:11.5px;font-weight:700;width:30px;
+.sr .ar{font-family:var(--mono);font-size:11.5px;font-weight:700;width:34px;
+  text-align:right;
   flex:none;white-space:nowrap}
 .sr .ar.u{color:#3FB27F}
 .sr .ar.d{color:#C4544F}
@@ -1127,12 +1128,12 @@ td.khot{color:var(--amber);font-weight:700}
    bilgiyi veriyor, tek bir sayı okunuyor.
    "SIRA" etiketi sayının altında, çok küçük — neyin sayısı olduğu bir
    kere söyleniyor ve satır kalabalıklaşmıyor. */
-.sr .pos{font-family:var(--mono);width:46px;flex:none;text-align:right;
+/* SIRA NUMARASI SOLDA: mono, SAĞA hizalı, sabit genişlik — iki haneli
+   sıralarda ("12.") takım adı kaymasın. "sıra" alt etiketi kalktı:
+   sütun sola geçince başlık gibi okunmuyor, sayı zaten nokta taşıyor. */
+.sr .pos{font-family:var(--mono);width:30px;flex:none;text-align:right;
   white-space:nowrap;line-height:1.1}
-.sr .pos b{display:block;font-size:15px;font-weight:700;color:var(--ink);
-  letter-spacing:-.02em}
-.sr .pos s{display:block;font-size:8px;letter-spacing:.13em;text-transform:uppercase;
-  color:var(--faint);text-decoration:none;margin-top:2px}
+.sr .pos b{font-size:15px;font-weight:700;color:var(--ink);letter-spacing:-.02em}
 @media(max-width:400px){
   /* 375px'te dört sütun + 10 kutucuk dar kalıyor; takım adı esnek
      olduğu için ilk o daralıyor, kutucuklar sabit kalıyor. */
@@ -1436,11 +1437,12 @@ td.khot{color:var(--amber);font-weight:700}
   .sq i{height:3.5px}
   .formnot{font-size:9.5px}
   .sr{padding:13px 2px;gap:13px}
-  .sr .ar{font-size:12.5px;width:33px}
+  .sr .ar{font-size:12.5px;width:36px}
   .sr .tn{font-size:15.5px}
-  .sr .pos{width:52px}
+  /* 52px, altındaki "sıra" etiketi içindi; etiket kalktı. 34px iki
+     haneli sırayı ("12.") 17px mono ile tam alıyor. */
+  .sr .pos{width:34px}
   .sr .pos b{font-size:17px}
-  .sr .pos s{font-size:9px}
   .sr .f10{gap:3px}
   .sr .f10 i{width:10px;height:10px}
   /* SAHA. Sayfa 860'a çıkınca yarım saha da onunla büyüdü: 856x907,
@@ -1471,6 +1473,16 @@ td.khot{color:var(--amber);font-weight:700}
    ada yapışık; sağda kalan boşluk bölümün kendi boşluğu, kasıtlı.
    MOBİL: sabit genişlik sığmaz — ad sütunu esnek kalıyor. */
 .kaplist a,.fp,.sr,.tkust{max-width:var(--liste-max)}
+/* FORM ve SIRALAMA masaüstünde ORTALI. Bu iki bölüm sayfadaki tek
+   dar bloktu ve sola yapışıp sağda 380px boşluk bırakıyordu; diğer
+   bölümler kutu genişliğinin tamamını kullanıyor. Kapak listesi
+   ayrı: o kendi çerçevesinin (.clock) içinde ve sola hizalı kalması
+   kasıtlı. Ortalama satırın kendisine değil KAPSAYICIYA veriliyor,
+   yoksa satır içi hizalar bozuluyor. */
+@media(min-width:640px){
+  .formda,.siralama,.formnot{max-width:var(--liste-max);
+    margin-left:auto;margin-right:auto}
+}
 @media(min-width:640px){
   /* Kapak satırında skor, ad bloğunun HEMEN ardından geliyor; sabit ad
      genişliği olmazsa skor sütunu satırdan satıra kayıyor. Satır da
@@ -1651,10 +1663,10 @@ td.khot{color:var(--amber);font-weight:700}
   <div class="ra">
     <p>Her maça 0 ile 10 arasında bir rozet veriyoruz. Dört şeye bakıyoruz:</p>
     <dl class="raol">
-      <dt>Yıldız gecesi</dt><dd>Birinin olağanüstü bir performansı var mı</dd>
-      <dt>Maçın önemi</dt><dd>Sıralamayı etkiliyor mu, sürpriz bir sonuç mu</dd>
-      <dt>Tarihilik</dt><dd>Nadir görülen bir şey oldu mu</dd>
-      <dt>Dram</dt><dd>Maç ne kadar geç karara bağlandı</dd>
+      <dt>Yıldız gecesi</dt><dd>Birinin olağanüstü bir performansı var mı?</dd>
+      <dt>Maçın önemi</dt><dd>Sıralamayı etkiliyor mu, sürpriz bir sonuç mu?</dd>
+      <dt>Tarihilik</dt><dd>Nadir görülen bir şey oldu mu?</dd>
+      <dt>Dram</dt><dd>Maç ne kadar geç karara bağlandı?</dd>
     </dl>
     <p>Rozet 8.5&apos;in üstündeyse <b>Mutlaka bil</b>, 6 ile 8.5 arasındaysa
       <b>Göz at</b>, altındaysa <b>Bunları geç</b> bölümüne düşüyor. Eşikler
@@ -2033,8 +2045,13 @@ function _katmaniKapat(n,geri){
   const s=n===2?sheet2:sheet, sc=n===2?scrim2:scrim;
   s.classList.remove('on'); sc.classList.remove('on'); s.style.transform='';
   if(n===1) removeEventListener('resize',satirAraliginiAyarla);
+  // Üstteki kart kapanınca alttaki kart kendi konumuna dönüyor.
+  if(n===2){
+    const _alt = sheet.querySelector('.kbody');
+    if(_alt) _alt.scrollTop = _altKatmanY;
+  }
   // Sayfa kaydırması ancak SON katman kapanınca serbest kalıyor.
-  if(_ustKatman()===0) document.body.style.overflow='';
+  if(_ustKatman()===0) _kaydirmayiCoz();
   if(geri && history.state && history.state.kart){ _geriYutulacak=true; history.back(); }
 }
 
@@ -2046,8 +2063,12 @@ function oyuncuKartiAc(pid,macId){
   // verildiğinde çıkıyor (Türkler bölümü). Kutu skordan açılmışsa
   // zaten oradan geldik, aynı yere geri götüren bağlantı gürültü.
   sheet2.innerHTML=oyuncuKartiHTML({...o, _mac_id: macId || ''});
+  // ALTTAKİ KARTIN KENDİ KONUMU da korunuyor: oyuncu kartı kapanınca
+  // box score kaldığı satırda kalsın.
+  const _alt = sheet.querySelector('.kbody');
+  _altKatmanY = _alt ? _alt.scrollTop : 0;
+  _kaydirmayiKilitle();
   sheet2.classList.add('on'); scrim2.classList.add('on');
-  document.body.style.overflow='hidden';
   if(yeniKatman) history.pushState({kart:_ustKatman()},'');
   sheet2.querySelectorAll('[data-kapat]').forEach(b=>b.addEventListener('click',()=>_katmaniKapat(2,true)));
   // "Maçın box score'u ›" — oyuncu kartını KAPATIP kutu skoru açıyor,
@@ -2070,6 +2091,29 @@ function oyuncuBagla(kap){
   });
 }
 
+/* KAYDIRMA KİLİDİ — kart kapanınca sayfa kaldığı yere dönsün.
+   İki ayrı kaynak vardı:
+   1) history.scrollRestoration 'auto' iken kapatmadaki history.back()
+      kaydırmayı TARAYICIYA bırakıyordu; geri dönülen kayıt kart
+      açılırken alındığı için konum kayabiliyordu. Artık 'manual':
+      konumu biz saklıyor, biz geri veriyoruz.
+   2) body'ye overflow:hidden verilince kaydırma çubuğu kayboluyor,
+      sayfa genişliyor ve sarmalanan metinlerin yüksekliği değişiyor —
+      aynı scrollY başka bir içeriğe denk geliyor. scrollbar-gutter
+      ile çubuğun yeri hep ayrılı duruyor (bkz. html kuralı). */
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+let _sayfaY = 0;          // kart açılmadan önceki sayfa konumu
+let _altKatmanY = 0;      // üstüne kart açılan kartın kendi konumu
+function _kaydirmayiKilitle(){
+  if (_ustKatman() === 0) _sayfaY = window.scrollY;
+  document.body.style.overflow = 'hidden';
+}
+function _kaydirmayiCoz(){
+  document.body.style.overflow = '';
+  // 'instant': yumuşak kaydırma açıkken geri dönüş animasyonlu olur ve
+  // kullanıcı sıçramayı görür.
+  window.scrollTo({top: _sayfaY, behavior: 'instant'});
+}
 function kartAc(html){
   const yeniKatman=!sheet.classList.contains('on');
   sheet.innerHTML=html;
@@ -2077,8 +2121,8 @@ function kartAc(html){
   sheet.classList.remove('sik1','sik2');
   sheet.style.removeProperty('--kbspad');
   sheet.querySelectorAll('.kpane').forEach(p=>p.style.removeProperty('--kbspad'));
-  sheet.classList.add('on'); scrim.classList.add('on');
-  document.body.style.overflow='hidden';
+  _kaydirmayiKilitle();   // 'on' EKLENMEDEN önce: sonra çağrılırsa
+  sheet.classList.add('on'); scrim.classList.add('on');  // konum kaydedilmez
   // İçerik DEĞİŞİRSE (maç kartından maç kartına) yeni geçmiş kaydı yok.
   if(yeniKatman) history.pushState({kart:1},'');
   sheet.querySelectorAll('[data-kapat]').forEach(b=>b.addEventListener('click',kartKapat));
@@ -2899,11 +2943,13 @@ function render(d){
         const gs = (typeof f === 'object' && f.gecen_sezon) ? ' gs' : '';
         return `<i class="${g?'w':''}${gs}"${bilgi}></i>`;
       };
+      // SIRA NUMARASI SOLDA: liste bir sıralama listesi, göz önce
+      // sıraya bakar. Hareket oku sıradan SONRA gelen bilgi, sağda.
       return `<div class="sr">
-        <span class="ar ${yukari?'u':'d'}">${yukari?'▲':'▼'}${Math.abs(t.degisim)}</span>
+        <span class="pos"><b>${t.yeni}.</b></span>
         <span class="tn">${esc(t.takim_adi)}</span>
         <span class="f10">${t.form.map(kare).join('')}<span class="ftip"></span></span>
-        <span class="pos"><b>${t.yeni}.</b><s>sıra</s></span>
+        <span class="ar ${yukari?'u':'d'}">${yukari?'▲':'▼'}${Math.abs(t.degisim)}</span>
       </div>`;
     }).join('');
     siralamaBalonBagla();
