@@ -149,11 +149,22 @@ def mail_metni(veri, cikis_bag):
     return "\n".join(satir)
 
 
-def _resend(kime, konu, html, metin):
+def _resend(kime, konu, html, metin, cikis_bag=None):
+    # LIST-UNSUBSCRIBE: Gmail ve Yahoo toplu gönderende bu başlığı ŞART
+    # koşuyor; olmayan gönderen spam'e düşüyor. Tek tıkla çıkış
+    # (One-Click) için POST biçimi de bildiriliyor. Gövdedeki çıkış
+    # bağlantısı yerine geçmiyor, ona EK.
+    basliklar = {}
+    if cikis_bag:
+        basliklar["List-Unsubscribe"] = f"<{cikis_bag}>"
+        basliklar["List-Unsubscribe-Post"] = "List-Unsubscribe=One-Click"
+    govde = {"from": GONDEREN, "to": [kime], "subject": konu,
+             "html": html, "text": metin}
+    if basliklar:
+        govde["headers"] = basliklar
     istek = urllib.request.Request(
         "https://api.resend.com/emails",
-        data=json.dumps({"from": GONDEREN, "to": [kime], "subject": konu,
-                         "html": html, "text": metin}).encode(),
+        data=json.dumps(govde).encode(),
         # User-Agent şart (bkz. uyari.py): Cloudflare varsayılan
         # Python imzasını 403 ile geri çeviriyor.
         headers={"Authorization": f"Bearer {RESEND}",
@@ -224,7 +235,8 @@ def gonder(prova_adresi=None):
     for adres in alicilar:
         cikis = _cikis_bagi(adres)
         try:
-            _resend(adres, konu, mail_govdesi(veri, cikis), mail_metni(veri, cikis))
+            _resend(adres, konu, mail_govdesi(veri, cikis),
+                    mail_metni(veri, cikis), cikis_bag=cikis)
             basarili += 1
         except Exception as e:
             basarisiz.append(f"{adres}: {e}")

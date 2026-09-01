@@ -7076,6 +7076,29 @@ def main():
     basar("Bülten: mailde eski Vercel adresi geçmiyor",
           "overnight-yigit8" not in _h7)
 
+    # MAİL GÖNDERİMİ: Cloudflare imzasız isteği 403'lüyor (error code
+    # 1010). Python VE Node tarafında aynı tuzak vardı; hiçbir mail
+    # gitmiyordu — bülten, onay maili ve arıza uyarısı dahil.
+    _ua = "User-Agent"
+    _ua_eksik = []
+    for _d8, _en_az in (("uyari.py", 1), ("bulten.py", 2),
+                        ("api/_ortak.js", 2), ("api/nobetci.js", 2)):
+        if open(_d8, encoding="utf-8").read().count(_ua) < _en_az:
+            _ua_eksik.append(_d8)
+    basar("Mail: Resend ve Upstash isteklerinde User-Agent var",
+          not _ua_eksik, "; ".join(_ua_eksik))
+    # Hata gövdesi kayda giriyor mu (yalnız HTTP kodu yetmiyordu).
+    basar("Mail: hata gövdesi kayda giriyor",
+          "Resend HTTP {e.code} — {neden}" in open("bulten.py", encoding="utf-8").read()
+          and "HTTP {e.code}) — {neden}" in open("uyari.py", encoding="utf-8").read())
+    # LIST-UNSUBSCRIBE: Gmail/Yahoo toplu gönderende şart koşuyor.
+    _blt_src = open("bulten.py", encoding="utf-8").read()
+    basar("Bülten: List-Unsubscribe başlıkları gönderiliyor",
+          '"List-Unsubscribe"' in _blt_src
+          and '"List-Unsubscribe-Post"' in _blt_src
+          and "One-Click" in _blt_src
+          and "cikis_bag=cikis" in _blt_src)
+
     # ==================================================================
     # SİTE ADRESİ — TEK KAYNAK
     # ==================================================================
