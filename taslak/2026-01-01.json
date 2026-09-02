@@ -1,0 +1,71 @@
+{
+  "tarih": "2026-01-01",
+  "uretildi": "2026-09-02T06:42:43.741893Z",
+  "maclar": {
+    "0022500472": {
+      "gec_satiri": "Miami Heat deplasmanda Detroit Pistons'u 118-112 yendi.",
+      "muzip": false
+    },
+    "0022500473": {
+      "gec_satiri": "Philadelphia 76ers deplasmanda Dallas Mavericks'i 123-108 yendi. Tyrese Maxey 34 sayı attı.",
+      "muzip": false
+    },
+    "0022500474": {
+      "gec_satiri": "Boston Celtics deplasmanda Sacramento Kings'i 120-106 yendi.",
+      "muzip": false
+    },
+    "0022500471": {
+      "gec_satiri": "Houston Rockets deplasmanda Brooklyn Nets'i 120-96 ezdi.",
+      "muzip": false
+    },
+    "0022500475": {
+      "baslik": "Kawhi Leonard'ın 45 sayısıyla LA Clippers, Utah Jazz'ı yendi.",
+      "neden_onemli": "LA Clippers, 6 maçlık galibiyet serisini sürdürdü."
+    }
+  },
+  "brief": [
+    {
+      "metin": "Kawhi Leonard, Utah Jazz karşısında 45 sayı attı.",
+      "hedef_mac": "0022500475",
+      "muzip": false,
+      "kind": "performans"
+    },
+    {
+      "metin": "Miami Heat, Detroit Pistons'u yenerek 4 maçlık galibiyet serisini sürdürdü.",
+      "hedef_mac": "0022500472",
+      "muzip": false,
+      "kind": "seri"
+    },
+    {
+      "metin": "Philadelphia 76ers, Dallas Mavericks'i yendi.",
+      "hedef_mac": "0022500473",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Boston Celtics, Sacramento Kings'i yenerek konferansta 3. sıraya yükseldi.",
+      "hedef_mac": "0022500474",
+      "muzip": false,
+      "kind": "siralama"
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 1,
+    "ilk_denemede_kabul": 1,
+    "sablon_moduna_dusen": 0,
+    "detay": [],
+    "sablon_isaretli": [],
+    "mutlaka_mac": 1,
+    "ret_orani": 0.0,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 1,
+      "girdi_token": 4223,
+      "cikti_token": 264,
+      "cache_yazma_token": 15125,
+      "cache_okuma_token": 0,
+      "toplam_maliyet_usd": 0.0489,
+      "butce_asildi": false
+    }
+  }
+}

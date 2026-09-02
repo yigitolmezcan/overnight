@@ -1,0 +1,177 @@
+{
+  "tarih": "2026-01-01",
+  "hesaplandi": "2026-09-02T06:42:34.274503Z",
+  "en_iyi_skor": 8.11,
+  "maclar": [
+    {
+      "rozet": 8.11,
+      "ham": 8.22,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 8.08,
+        "K": 3.57,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 4.52,
+        "F": 0,
+        "G": 0,
+        "A": 2.67
+      },
+      "ham_tasiyicilar": {
+        "S": 8.98,
+        "K": 3.04
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.53,
+      "dram_terfi": false,
+      "mac_id": "0022500475",
+      "ev": "LAC",
+      "dep": "UTA",
+      "ev_skor": 118,
+      "dep_skor": 101,
+      "en_iyi_performans": "Kawhi Leonard",
+      "esitlik_bozucu": [
+        0,
+        -17
+      ]
+    },
+    {
+      "rozet": 7.8,
+      "ham": 7.8,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.48,
+        "K": 4.4,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.05,
+        "F": 6,
+        "G": 0,
+        "A": 7.0
+      },
+      "ham_tasiyicilar": {
+        "S": 6.48,
+        "K": 3.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.4,
+      "dram_terfi": false,
+      "mac_id": "0022500472",
+      "ev": "DET",
+      "dep": "MIA",
+      "ev_skor": 112,
+      "dep_skor": 118,
+      "en_iyi_performans": "Cade Cunningham",
+      "esitlik_bozucu": [
+        0,
+        -6
+      ]
+    },
+    {
+      "rozet": 7.44,
+      "ham": 7.44,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.74,
+        "K": 4.77,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.26,
+        "F": 0,
+        "G": 0,
+        "A": 5.0
+      },
+      "ham_tasiyicilar": {
+        "S": 7.49,
+        "K": 3.77
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 1.0,
+      "dram_terfi": false,
+      "mac_id": "0022500473",
+      "ev": "DAL",
+      "dep": "PHI",
+      "ev_skor": 108,
+      "dep_skor": 123,
+      "en_iyi_performans": "Tyrese Maxey",
+      "esitlik_bozucu": [
+        0,
+        -15
+      ]
+    },
+    {
+      "rozet": 3.77,
+      "ham": 3.77,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 3.63,
+        "K": 1.49,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 4.87,
+        "F": 0,
+        "G": 0,
+        "A": 4.33
+      },
+      "ham_tasiyicilar": {
+        "S": 4.03,
+        "K": 0.62
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.87,
+      "dram_terfi": false,
+      "mac_id": "0022500474",
+      "ev": "SAC",
+      "dep": "BOS",
+      "ev_skor": 106,
+      "dep_skor": 120,
+      "en_iyi_performans": "DeMar DeRozan",
+      "esitlik_bozucu": [
+        0,
+        -14
+      ]
+    },
+    {
+      "rozet": 2.86,
+      "ham": 2.86,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 1.98,
+        "K": 2.58,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.81,
+        "F": 0,
+        "G": 0,
+        "A": 7.08
+      },
+      "ham_tasiyicilar": {
+        "S": 2.48,
+        "K": 1.16
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 1.42,
+      "dram_terfi": false,
+      "mac_id": "0022500471",
+      "ev": "BKN",
+      "dep": "HOU",
+      "ev_skor": 96,
+      "dep_skor": 120,
+      "en_iyi_performans": "Alperen Şengün",
+      "esitlik_bozucu": [
+        0,
+        -24
+      ]
+    }
+  ]
+}
