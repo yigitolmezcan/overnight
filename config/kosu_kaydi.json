@@ -342,6 +342,12 @@
       "is": "yayinla",
       "sonuc": "success",
       "not": "run 29 · schedule"
+    },
+    {
+      "zaman": "2026-09-02T02:40:56Z",
+      "is": "uret",
+      "sonuc": "success",
+      "not": "run 32 · workflow_dispatch"
     }
   ]
 }
