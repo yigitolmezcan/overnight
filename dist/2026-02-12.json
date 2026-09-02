@@ -29,7 +29,7 @@
       "kalip": "triple_double",
       "kademe": 1,
       "rozet": 5.8,
-      "mac": "Los Angeles 124 – 104 Dallas",
+      "mac": "LA Lakers 124 – 104 Dallas",
       "saat": "06:00",
       "renk": "#8B62D9",
       "hedef_id": "a-0022500791",
@@ -4845,7 +4845,7 @@
         },
         {
           "sayi": 15,
-          "rakip": "Los Angeles",
+          "rakip": "LA Lakers",
           "bu_gece": false,
           "ust": true
         },
@@ -5045,7 +5045,7 @@
         },
         {
           "sayi": 14,
-          "rakip": "Los Angeles",
+          "rakip": "LA Lakers",
           "bu_gece": false,
           "ust": true
         },

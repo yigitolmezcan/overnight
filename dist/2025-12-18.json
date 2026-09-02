@@ -71,7 +71,7 @@
       "kalip": "triple_double",
       "kademe": 1,
       "rozet": 9.0,
-      "mac": "Utah 135 – 143 Los Angeles",
+      "mac": "Utah 135 – 143 LA Lakers",
       "saat": "05:00",
       "renk": "#8B62D9",
       "hedef_id": "g-mutlaka-1",
@@ -1145,7 +1145,7 @@
           "onde": "ev",
           "fark": 5,
           "one_cikan": [
-            "Los Angeles 17/28 şut"
+            "LA Lakers 17/28 şut"
           ],
           "kritik": false
         },
@@ -1169,7 +1169,7 @@
           "onde": "dep",
           "fark": 8,
           "one_cikan": [
-            "Los Angeles 10-0 seri",
+            "LA Lakers 10-0 seri",
             "George 13 sayı"
           ],
           "kritik": true
@@ -14818,7 +14818,7 @@
         },
         {
           "sayi": 17,
-          "rakip": "Los Angeles",
+          "rakip": "LA Lakers",
           "bu_gece": false,
           "ust": true
         },

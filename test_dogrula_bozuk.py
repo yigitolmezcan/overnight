@@ -2077,8 +2077,42 @@ def main():
     # Kural 1 birbirini yer ve gece hiç yayınlanamaz.
     _gercek_1218 = json.loads(open("gercek/2025-12-18.json").read())
     _izin = _kalip_secici.gece_maglup_izni(_gercek_1218["maclar"])
-    basar("Kural1: gece izni tek kaynaktan geliyor ve gecede en fazla bir maça veriliyor",
-          sum(1 for v in _izin.values() if v) <= 1)
+    # KURAL DEĞİŞTİ: hak artık iki yoldan geliyor. Performansın kendisi
+    # yeterince büyükse (triple-double+/40+ sayı ya da gecenin en yüksek
+    # GmSc'si) hak OTOMATİK ve tavana takılmıyor; diğer durumlarda eski
+    # "gecede en fazla bir kez" kuralı aynen duruyor. Eski hâlinde T17
+    # ile T14 birbirini kilitleyebiliyordu (31 Aralık, Scottie Barnes).
+    basar("Kural1: gece izni tek kaynaktan geliyor",
+          "def gece_maglup_izni(" in open("kalip_secici.py", encoding="utf-8").read()
+          and "gece_maglup_izni" in open("yaz.py", encoding="utf-8").read()
+          and "gece_maglup_izni" in open("dogrula.py", encoding="utf-8").read())
+    basar("Kural1: büyük performansta hak OTOMATİK, tavana takılmıyor",
+          "PERF_BILESIK_KADEME" in open("kalip_secici.py", encoding="utf-8").read()
+          and "otomatik" in open("kalip_secici.py", encoding="utf-8").read())
+    # Tavanlı yol: otomatik hak almayan maçlar arasında gecede EN FAZLA BİR.
+    import kalip_secici as _ks9, json as _j9, glob as _g9
+    import hesapla as _hs9
+    _tavan_ihlali = []
+    for _f9 in sorted(_g9.glob("gercek/2*.json")):
+        _g = _j9.loads(open(_f9, encoding="utf-8").read())["maclar"]
+        _izin = _ks9.gece_maglup_izni(_g)
+        _oto = 0
+        for _gid, _ad in _izin.items():
+            if not _ad:
+                continue
+            _skor = next((x["veri"] for x in _g[_gid] if x["tur"] == "skor"), None)
+            if not _skor:
+                continue
+            _kayb = _skor["dep"] if _skor["kazanan"] == _skor["ev"] else _skor["ev"]
+            _st = next((x["veri"] for x in _g[_gid]
+                        if x["tur"] == "oyuncu_stat" and x["veri"]["oyuncu"] == _ad), None)
+            if _st and _hs9.performans_derecesi(_st)[0] <= _hs9.PERF_BILESIK_KADEME:
+                _oto += 1
+        _tavanli = sum(1 for a in _izin.values() if a) - _oto
+        if _tavanli > 1:
+            _tavan_ihlali.append(f"{_f9}: {_tavanli}")
+    basar("Kural1: tavanlı hak gecede en fazla bir maçta",
+          not _tavan_ihlali, "; ".join(_tavan_ihlali[:3]))
 
     # ==================================================================
     # Yayın kapısı gerekçeleri GÜNCEL kurallarla yeniden hesaplanmalı —

@@ -47,7 +47,7 @@
       "kalip": "kirk_sayi",
       "kademe": 1,
       "rozet": 8.1,
-      "mac": "Los Angeles 108 – 136 San Antonio",
+      "mac": "LA Lakers 108 – 136 San Antonio",
       "saat": "06:30",
       "renk": "#C4CED4",
       "hedef_id": "g-mutlaka-1",
@@ -7411,7 +7411,7 @@
         },
         {
           "sayi": 15,
-          "rakip": "Los Angeles",
+          "rakip": "LA Lakers",
           "bu_gece": false,
           "ust": true
         },
@@ -7763,7 +7763,7 @@
         },
         {
           "sayi": 4,
-          "rakip": "Los Angeles",
+          "rakip": "LA Lakers",
           "bu_gece": false,
           "ust": false
         },

@@ -240,35 +240,95 @@ def _karar_ani_bul(gercekler, ev_kod, kazanan_kod):
 
 
 def gece_maglup_izni(gercek_maclar):
-    """{mac_id: ad|None} — "Mağlup tarafta ..." kalıbını kullanma hakkı
-    gecede TEK bir maçın TEK bir oyuncusunda.
+    """{mac_id: ad|None} — "Mağlup tarafta ..." kalıbını kullanma hakkı.
 
-    Kural iki kullanıcı kuralının birleşimi: kalıp gecede en fazla bir
-    kez kullanılır VE sadece kaybeden taraftaki oyuncu gerçekten dikkat
-    çekiciyse (sistemin kendi kilometre taşı kataloğundan birini
-    geçmişse). Hak, kaybeden tarafta gecenin en yüksek GmSc'li kilometre
-    taşını barındıran maça gider.
+    HAK İKİ YOLDAN GELİYOR:
+
+    1) PERFORMANSIN KENDİSİNDEN (otomatik, gece planına danışılmaz).
+       Kaybeden taraftaki oyuncu şu eşiklerden birini geçiyorsa hak
+       doğrudan onundur:
+         - triple-double veya üstü / 40+ sayı
+           (hesapla.PERF_BILESIK_KADEME sınırı — tek kaynak)
+         - gecenin en yüksek GmSc'si
+       Bu durumlarda "gecede en fazla bir kez" tavanı UYGULANMAZ.
+
+    2) TAVANLI HAK (eski kural, aynen duruyor). Otomatik hak almayan
+       maçlar arasında, kaybeden tarafta gecenin en yüksek GmSc'li
+       kilometre taşını barındıran maça gecede BİR kez verilir.
+
+    NEDEN İKİ YOL: eski hâlinde hak yalnız gece planından geliyordu ve
+    T17 ile T14 birbirini kilitleyebiliyordu — kaybeden taraftaki bir
+    triple-double, hak başka maça gitmişse hiç anılamıyor, T14 ise
+    "en iyi performans anılmadı" diyerek geceyi yayına sokmuyordu
+    (gerçek vaka: 31 Aralık, Scottie Barnes 20/14/10). Performans
+    yeterince büyükse hak artık pazarlık konusu değil.
 
     TEK KAYNAK: hem üretim (yaz.gece_kalip_plani) hem doğrulama
     (dogrula.gece_dogrula) bunu çağırır. İki yerde ayrı ayrı
     hesaplanırsa T14 ile bu kural birbirini yer."""
-    adaylar = []
+    from hesapla import PERF_BILESIK_KADEME, performans_derecesi
+
+    izin = {gid: None for gid in (gercek_maclar or {})}
+
+    # Gecenin en yüksek GmSc'li oyuncusu (hangi tarafta olursa olsun).
+    gece_en_iyi = None   # (gmsc, gid, ad)
+    kaybedenler = {}     # gid -> (kaybeden_kod, oyuncu_stat listesi)
     for gid, gercekler in (gercek_maclar or {}).items():
         skor = _tek(gercekler, "skor")
         if not skor:
             continue
         kaybeden = skor["dep"] if skor["kazanan"] == skor["ev"] else skor["ev"]
-        oyuncu_stat = _oyuncu_stat_listesi(gercekler)
+        stat = _oyuncu_stat_listesi(gercekler)
+        kaybedenler[gid] = (kaybeden, stat)
+        for s in stat:
+            g = s.get("gmsc")
+            if g is None:
+                continue
+            if gece_en_iyi is None or g > gece_en_iyi[0]:
+                gece_en_iyi = (g, gid, s.get("oyuncu"))
+
+    # 1) OTOMATİK HAK
+    otomatik = set()
+    for gid, (kaybeden, stat) in kaybedenler.items():
+        for s in stat:
+            if s.get("takim") != kaybeden:
+                continue
+            kademe, _ad, _etiket, _eksen = performans_derecesi(s)
+            buyuk = kademe <= PERF_BILESIK_KADEME
+            gecenin_en_iyisi = (gece_en_iyi is not None
+                                and gece_en_iyi[1] == gid
+                                and gece_en_iyi[2] == s.get("oyuncu"))
+            if buyuk or gecenin_en_iyisi:
+                # Aynı maçta birden fazla aday varsa en yüksek GmSc'li.
+                mevcut = izin.get(gid)
+                if mevcut is None or (s.get("gmsc") or 0) > _gmsc_of(stat, mevcut):
+                    izin[gid] = s.get("oyuncu")
+                otomatik.add(gid)
+
+    # 2) TAVANLI HAK — otomatik hak almamış maçlar arasında, gecede bir.
+    adaylar = []
+    for gid, gercekler in (gercek_maclar or {}).items():
+        if gid in otomatik:
+            continue
+        kaybeden, oyuncu_stat = kaybedenler.get(gid, (None, []))
+        if not kaybeden:
+            continue
         for f in _fact(gercekler, "kilometre"):
             k = f["veri"]
             ad = k.get("oyuncu")
             if ad and _oyuncunun_kodu(oyuncu_stat, ad) == kaybeden:
                 adaylar.append((k.get("gmsc", 0), gid, ad))
-    izin = {gid: None for gid in (gercek_maclar or {})}
     if adaylar:
         _, gid, ad = max(adaylar, key=lambda x: x[0])
         izin[gid] = ad
     return izin
+
+
+def _gmsc_of(oyuncu_stat, ad):
+    for s in oyuncu_stat:
+        if s.get("oyuncu") == ad:
+            return s.get("gmsc") or 0
+    return 0
 
 
 def _oyuncunun_kodu(oyuncu_stat, ad):

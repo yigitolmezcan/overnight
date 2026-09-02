@@ -65,7 +65,7 @@
       "kalip": "triple_double",
       "kademe": 1,
       "rozet": 9.2,
-      "mac": "Denver 120 – 113 Los Angeles",
+      "mac": "Denver 120 – 113 LA Lakers",
       "saat": "06:00",
       "renk": "#FEC524",
       "hedef_id": "g-mutlaka-0",
@@ -411,7 +411,7 @@
           "fark": 10,
           "one_cikan": [
             "Denver 6 üçlük",
-            "Los Angeles 13/19 şut"
+            "LA Lakers 13/19 şut"
           ],
           "kritik": false
         },
@@ -435,7 +435,7 @@
           "onde": "ev",
           "fark": 7,
           "one_cikan": [
-            "Los Angeles 11-0 seri",
+            "LA Lakers 11-0 seri",
             "en büyük fark 14"
           ],
           "kritik": true
@@ -14089,7 +14089,7 @@
         },
         {
           "sayi": 12,
-          "rakip": "Los Angeles",
+          "rakip": "LA Lakers",
           "bu_gece": false,
           "ust": true
         }
@@ -14285,7 +14285,7 @@
         },
         {
           "sayi": 4,
-          "rakip": "Los Angeles",
+          "rakip": "LA Lakers",
           "bu_gece": false,
           "ust": false
         },
@@ -15271,7 +15271,7 @@
       "mac": "Phoenix Suns — Chicago Bulls",
       "skor": "103–105",
       "rozet": 7.5,
-      "why": "gece sırası 7",
+      "why": "",
       "metin": "Chicago Bulls deplasmanda Phoenix Suns'u 105-103 yendi. Collin Sexton 30 sayı attı.",
       "box": {
         "ev": {
@@ -16494,7 +16494,7 @@
       "mac": "Miami Heat — Brooklyn Nets",
       "skor": "126–110",
       "rozet": 5.99,
-      "why": "",
+      "why": "gece sırası 3",
       "metin": "Miami Heat evinde Brooklyn Nets'i 126-110 yendi.",
       "box": {
         "ev": {

@@ -169,7 +169,7 @@
       "metin": "Derrick White, Miami Heat karşısında 33 sayı attı.",
       "anlatili": true,
       "hedef_id": "g-mutlaka-2",
-      "icon": "standings",
+      "icon": "default",
       "saat": "03:00",
       "rozet": 7.02,
       "skor": "BOS 129 – MIA 116",
@@ -217,7 +217,7 @@
       "metin": "Minnesota Timberwolves, 12 sayılık farktan dönüp Oklahoma City Thunder'i geçti.",
       "anlatili": true,
       "hedef_id": "g-mutlaka-0",
-      "icon": "default",
+      "icon": "standings",
       "saat": "05:30",
       "rozet": 8.97,
       "skor": "MIN 112 – OKC 107",
@@ -8998,7 +8998,7 @@
       "son5": [
         {
           "sayi": 17,
-          "rakip": "Los Angeles",
+          "rakip": "LA Lakers",
           "bu_gece": false,
           "ust": true
         },
@@ -9200,7 +9200,7 @@
       "son5": [
         {
           "sayi": 20,
-          "rakip": "Los Angeles",
+          "rakip": "LA Lakers",
           "bu_gece": false,
           "ust": false
         },
@@ -9274,7 +9274,7 @@
         },
         {
           "sayi": 13,
-          "rakip": "Los Angeles",
+          "rakip": "LA Lakers",
           "bu_gece": false,
           "ust": false
         }

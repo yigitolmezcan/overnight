@@ -314,7 +314,7 @@
           "onde": "dep",
           "fark": 6,
           "one_cikan": [
-            "Los Angeles 12-0 seri",
+            "LA Lakers 12-0 seri",
             "James 11 sayı"
           ],
           "kritik": true
@@ -9936,7 +9936,7 @@
         },
         {
           "sayi": 14,
-          "rakip": "Los Angeles",
+          "rakip": "LA Lakers",
           "bu_gece": false,
           "ust": true
         }
@@ -10020,7 +10020,7 @@
         },
         {
           "sayi": 3,
-          "rakip": "Los Angeles",
+          "rakip": "LA Lakers",
           "bu_gece": false,
           "ust": false
         },
@@ -10138,7 +10138,7 @@
         },
         {
           "sayi": 2,
-          "rakip": "Los Angeles",
+          "rakip": "LA Lakers",
           "bu_gece": true,
           "ust": false
         }

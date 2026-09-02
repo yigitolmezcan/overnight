@@ -621,7 +621,8 @@ def _manset_adaylari(ham, gercek_gece, skor_by_gid, tarih_str):
 # Kapak listesinde kullanılan KISA ADLAR. `cumle.TAKIM_KISA` Lakers
 # için "Los Angeles" veriyor; Los Angeles'ta iki takım olduğu için
 # kapakta ayrışmıyordu.
-KAPAK_KISA_OVERRIDE = {"LAL": "LA Lakers"}
+# TEK KAYNAK cumle.GORUNEN_AYRIK — burada kopyalanmıyor.
+KAPAK_KISA_OVERRIDE = cumle.GORUNEN_AYRIK
 # MASAÜSTÜNDE TAM AD kullanılıyor ("Philadelphia 76ers"). Los Angeles
 # takımlarında tam ad çok uzun ("Los Angeles Lakers 128 – 106 Detroit
 # Pistons" satırı sarmalıyordu, ölçüldü) — kısa ad orada da kalıyor.
@@ -664,7 +665,7 @@ def _kapak_kodu(skor, kazanan=True):
 
 
 def _kapak_kisa_kod(kod):
-    return KAPAK_KISA_OVERRIDE.get(kod) or cumle.TAKIM_KISA.get(kod, kod)
+    return cumle.kisa_gorunen(kod)
 
 
 def _kapak_tam_kod(kod):
@@ -728,8 +729,8 @@ def _mansetler(ham, gercek_gece, skor_by_gid, id_by_gid, tarih_str,
             "rozet": round(sk.get("rozet", 0), 1),
             # KISA AD: manşet künyesi tek satır kalmalı; tam adlar
             # 375px'te üç satıra sarmalıyordu.
-            "mac": (f"{cumle.TAKIM_KISA.get(ev, ev)} {sk.get('ev_skor')}"
-                    f" – {sk.get('dep_skor')} {cumle.TAKIM_KISA.get(dep, dep)}"),
+            "mac": (f"{cumle.kisa_gorunen(ev)} {sk.get('ev_skor')}"
+                    f" – {sk.get('dep_skor')} {cumle.kisa_gorunen(dep)}"),
             "saat": (saat_by_gid or {}).get(gid) or "",
             "renk": TAKIM_RENK.get(kaz, "#E8763A"),
             "hedef_id": id_by_gid.get(gid, ""),

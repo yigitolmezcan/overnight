@@ -10985,7 +10985,7 @@
         },
         {
           "sayi": 14,
-          "rakip": "Los Angeles",
+          "rakip": "LA Lakers",
           "bu_gece": true,
           "ust": true
         }
@@ -11023,7 +11023,7 @@
         },
         {
           "sayi": 0,
-          "rakip": "Los Angeles",
+          "rakip": "LA Lakers",
           "bu_gece": false,
           "ust": false
         },
@@ -11135,7 +11135,7 @@
         },
         {
           "sayi": 11,
-          "rakip": "Los Angeles",
+          "rakip": "LA Lakers",
           "bu_gece": false,
           "ust": true
         }
@@ -11175,7 +11175,7 @@
         },
         {
           "sayi": 3,
-          "rakip": "Los Angeles",
+          "rakip": "LA Lakers",
           "bu_gece": false,
           "ust": false
         },
@@ -12243,7 +12243,7 @@
           "onde": "ev",
           "fark": 8,
           "one_cikan": [
-            "Los Angeles 12-0 seri",
+            "LA Lakers 12-0 seri",
             "Dončić 15 sayı"
           ],
           "kritik": true

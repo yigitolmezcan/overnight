@@ -192,6 +192,21 @@ def galibiyet_serisi_konusulabilir(seri, kazanan_derece, seri_haber):
     return seri.get("uzunluk", 0) >= SERI_ESIGI
 
 
+# GÖRÜNEN KISA AD — TEK KAYNAK (kapak listesi, manşet künyesi, paylaşım
+# görseli). TAKIM_KISA'dan AYRI tutuluyor çünkü o tablo CÜMLE METNİNDE
+# kullanılıyor ve T2 kısa adın tam adın ÖNEKİ olmasını şart koşuyor:
+# "LA Lakers", "Los Angeles Lakers"ın öneki değil, cümlede kullanılırsa
+# uydurma özel ad sayılır. Ekranda ise "Los Angeles" belirsiz — Lakers mı
+# Clippers mı belli olmuyor (kullanıcı bulgusu: 30 Aralık paylaşım
+# görseli).
+GORUNEN_AYRIK = {"LAL": "LA Lakers"}
+
+
+def kisa_gorunen(kod):
+    """Ekranda gösterilecek kısa takım adı."""
+    return GORUNEN_AYRIK.get(kod) or TAKIM_KISA.get(kod, kod)
+
+
 def maglup_anilabilir(mac, ad):
     """Kaybeden takımın oyuncusu anılabilir mi?
 

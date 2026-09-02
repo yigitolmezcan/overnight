@@ -89,9 +89,10 @@ def tarih_metni(tarih_str):
 
 
 def kisa_mac_adi(kod_ev, kod_dep):
+    # GÖRÜNEN AD tek kaynaktan: "Los Angeles" ekranda belirsizdi
+    # (30 Aralık paylaşım görselinde Lakers mı Clippers mı belli değildi).
     import cumle
-    return (f"{cumle.TAKIM_KISA.get(kod_ev, kod_ev)} – "
-            f"{cumle.TAKIM_KISA.get(kod_dep, kod_dep)}")
+    return f"{cumle.kisa_gorunen(kod_ev)} – {cumle.kisa_gorunen(kod_dep)}"
 
 
 def satirlari_sec(skor_gece):

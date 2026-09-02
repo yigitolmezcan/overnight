@@ -77,7 +77,7 @@
       "kalip": "ustuste_otuz",
       "kademe": 2,
       "rozet": 5.6,
-      "mac": "Cleveland 129 – 99 Los Angeles",
+      "mac": "Cleveland 129 – 99 LA Lakers",
       "saat": "03:00",
       "renk": "#B3123F",
       "hedef_id": "a-0022500671",
@@ -12709,7 +12709,7 @@
         },
         {
           "sayi": 14,
-          "rakip": "Los Angeles",
+          "rakip": "LA Lakers",
           "bu_gece": false,
           "ust": true
         },

@@ -397,7 +397,7 @@
       "metin": "Charlotte Hornets, Washington Wizards'ı yendi.",
       "anlatili": true,
       "hedef_id": "a-0022500409",
-      "icon": "default",
+      "icon": "standings",
       "saat": "03:00",
       "rozet": 2.83,
       "skor": "CHA 126 – WAS 109",
@@ -541,7 +541,7 @@
       "metin": "Kawhi Leonard, Houston Rockets karşısında 41 sayı attı.",
       "anlatili": true,
       "hedef_id": "a-0022500422",
-      "icon": "standings",
+      "icon": "default",
       "saat": "07:00",
       "rozet": 7.86,
       "skor": "LAC 128 – HOU 108",
@@ -19140,7 +19140,7 @@
       "son5": [
         {
           "sayi": 7,
-          "rakip": "Los Angeles",
+          "rakip": "LA Lakers",
           "bu_gece": false,
           "ust": false
         },
@@ -20954,7 +20954,7 @@
       "mac": "LA Clippers — Houston Rockets",
       "skor": "128–108",
       "rozet": 7.86,
-      "why": "gece sırası 14",
+      "why": "",
       "metin": "",
       "box": {
         "ev": {
@@ -26181,7 +26181,7 @@
       "mac": "Charlotte Hornets — Washington Wizards",
       "skor": "126–109",
       "rozet": 2.83,
-      "why": "10. galibiyetini alan (kazanan)",
+      "why": "gece sırası 1",
       "metin": "Charlotte Hornets evinde Washington Wizards'ı 126-109 yendi.",
       "box": {
         "ev": {

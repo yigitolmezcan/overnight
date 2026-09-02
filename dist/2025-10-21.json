@@ -23,7 +23,7 @@
       "kalip": "kirk_sayi",
       "kademe": 1,
       "rozet": 8.8,
-      "mac": "Los Angeles 109 – 119 Golden State",
+      "mac": "LA Lakers 109 – 119 Golden State",
       "saat": "",
       "renk": "#2E6BD6",
       "hedef_id": "a-0022500002",
@@ -3490,7 +3490,7 @@
       "son5": [
         {
           "sayi": 5,
-          "rakip": "Los Angeles",
+          "rakip": "LA Lakers",
           "bu_gece": false,
           "ust": false
         },
@@ -3502,7 +3502,7 @@
         },
         {
           "sayi": 13,
-          "rakip": "Los Angeles",
+          "rakip": "LA Lakers",
           "bu_gece": false,
           "ust": false
         },
@@ -3514,7 +3514,7 @@
         },
         {
           "sayi": 17,
-          "rakip": "Los Angeles",
+          "rakip": "LA Lakers",
           "bu_gece": true,
           "ust": true
         }
