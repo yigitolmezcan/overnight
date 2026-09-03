@@ -1,0 +1,279 @@
+{
+  "tarih": "2026-01-03",
+  "hesaplandi": "2026-09-03T06:45:18.041555Z",
+  "en_iyi_skor": 9.18,
+  "maclar": [
+    {
+      "rozet": 9.18,
+      "ham": 11.56,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 10.0,
+        "K": 1.57,
+        "T": 6,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.31,
+        "F": 0,
+        "G": 0,
+        "A": 5.5
+      },
+      "ham_tasiyicilar": {
+        "S": 10,
+        "K": 0.47
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.1,
+      "dram_terfi": false,
+      "mac_id": "0022500493",
+      "ev": "LAC",
+      "dep": "BOS",
+      "ev_skor": 115,
+      "dep_skor": 146,
+      "en_iyi_performans": "Jaylen Brown",
+      "esitlik_bozucu": [
+        0,
+        -31
+      ]
+    },
+    {
+      "rozet": 8.68,
+      "ham": 9.65,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 6.36,
+        "K": 7.83,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 5.66,
+        "F": 6,
+        "G": 0,
+        "A": 3.5
+      },
+      "ham_tasiyicilar": {
+        "S": 6.36,
+        "K": 7.13
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.7,
+      "dram_terfi": false,
+      "mac_id": "0022500490",
+      "ev": "SAS",
+      "dep": "POR",
+      "ev_skor": 110,
+      "dep_skor": 115,
+      "en_iyi_performans": "Deni Avdija",
+      "esitlik_bozucu": [
+        0,
+        -5
+      ]
+    },
+    {
+      "rozet": 8.57,
+      "ham": 9.34,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 6.2,
+        "K": 8.09,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.35,
+        "F": 0,
+        "G": 0,
+        "A": 7.02
+      },
+      "ham_tasiyicilar": {
+        "S": 6.2,
+        "K": 6.69
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.4,
+      "dram_terfi": false,
+      "mac_id": "0022500491",
+      "ev": "DAL",
+      "dep": "HOU",
+      "ev_skor": 110,
+      "dep_skor": 104,
+      "en_iyi_performans": "Kevin Durant",
+      "esitlik_bozucu": [
+        0,
+        -6
+      ]
+    },
+    {
+      "rozet": 8.03,
+      "ham": 8.06,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 5.39,
+        "K": 7.01,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.13,
+        "F": 0,
+        "G": 0,
+        "A": 7.0
+      },
+      "ham_tasiyicilar": {
+        "S": 5.39,
+        "K": 5.61
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.4,
+      "dram_terfi": false,
+      "mac_id": "0022500486",
+      "ev": "MIA",
+      "dep": "MIN",
+      "ev_skor": 115,
+      "dep_skor": 125,
+      "en_iyi_performans": "Anthony Edwards",
+      "esitlik_bozucu": [
+        0,
+        -10
+      ]
+    },
+    {
+      "rozet": 6.58,
+      "ham": 6.58,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 4.87,
+        "K": 5.92,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.01,
+        "F": 0,
+        "G": 0,
+        "A": 3.83
+      },
+      "ham_tasiyicilar": {
+        "S": 5.41,
+        "K": 5.15
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.77,
+      "dram_terfi": false,
+      "mac_id": "0022500488",
+      "ev": "TOR",
+      "dep": "ATL",
+      "ev_skor": 134,
+      "dep_skor": 117,
+      "en_iyi_performans": "Brandon Ingram",
+      "esitlik_bozucu": [
+        0,
+        -17
+      ]
+    },
+    {
+      "rozet": 5.79,
+      "ham": 5.79,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 5.21,
+        "K": 2.92,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.14,
+        "F": 0,
+        "G": 6,
+        "A": 3.67
+      },
+      "ham_tasiyicilar": {
+        "S": 5.79,
+        "K": 2.19
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.73,
+      "dram_terfi": false,
+      "mac_id": "0022500489",
+      "ev": "CHI",
+      "dep": "CHA",
+      "ev_skor": 99,
+      "dep_skor": 112,
+      "en_iyi_performans": "Nikola Vučević",
+      "esitlik_bozucu": [
+        0,
+        -13
+      ]
+    },
+    {
+      "rozet": 5.76,
+      "ham": 5.76,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 5.17,
+        "K": 3.66,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.47,
+        "F": 0,
+        "G": 0,
+        "A": 6.42
+      },
+      "ham_tasiyicilar": {
+        "S": 5.75,
+        "K": 2.38
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 1.28,
+      "dram_terfi": false,
+      "mac_id": "0022500487",
+      "ev": "NYK",
+      "dep": "PHI",
+      "ev_skor": 119,
+      "dep_skor": 130,
+      "en_iyi_performans": "Tyrese Maxey",
+      "esitlik_bozucu": [
+        0,
+        -11
+      ]
+    },
+    {
+      "rozet": 4.7,
+      "ham": 4.7,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 4.69,
+        "K": 1.54,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.73,
+        "F": 0,
+        "G": 0,
+        "A": 4.58
+      },
+      "ham_tasiyicilar": {
+        "S": 4.69,
+        "K": 0.62
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.92,
+      "dram_terfi": false,
+      "mac_id": "0022500492",
+      "ev": "GSW",
+      "dep": "UTA",
+      "ev_skor": 123,
+      "dep_skor": 114,
+      "en_iyi_performans": "Stephen Curry",
+      "esitlik_bozucu": [
+        0,
+        -9
+      ]
+    }
+  ]
+}

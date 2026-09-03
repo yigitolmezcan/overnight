@@ -1,0 +1,166 @@
+{
+  "tarih": "2026-01-03",
+  "uretildi": "2026-09-03T06:46:07.440827Z",
+  "maclar": {
+    "0022500488": {
+      "gec_satiri": "Toronto Raptors evinde Atlanta Hawks'ı 134-117 yendi.",
+      "muzip": false
+    },
+    "0022500489": {
+      "gec_satiri": "Charlotte Hornets deplasmanda Chicago Bulls'u 112-99 yendi.",
+      "muzip": false
+    },
+    "0022500487": {
+      "gec_satiri": "Philadelphia 76ers deplasmanda New York Knicks'i 130-119 yendi. Tyrese Maxey 36 sayı attı.",
+      "muzip": false
+    },
+    "0022500492": {
+      "gec_satiri": "Golden State Warriors evinde Utah Jazz'ı 123-114 yendi. Stephen Curry 31 sayı attı.",
+      "muzip": false
+    },
+    "0022500493": {
+      "baslik": "Jaylen Brown'ın 50 sayısıyla Boston, LA Clippers'ı yendi.",
+      "neden_onemli": "Boston Celtics, konferansta 3. sıraya yükseldi."
+    },
+    "0022500490": {
+      "baslik": "Deni Avdija'nın 29 sayısıyla Portland, San Antonio'yu yendi."
+    },
+    "0022500491": {
+      "baslik": "Dallas, 11 sayılık farktan dönüp Houston'ı yendi."
+    },
+    "0022500486": {
+      "baslik": "Minnesota Timberwolves, Miami Heat deplasmanında 125-115 kazandı."
+    }
+  },
+  "brief": [
+    {
+      "metin": "Jaylen Brown, LA Clippers karşısında 50 sayı attı.",
+      "hedef_mac": "0022500493",
+      "muzip": false,
+      "kind": "performans"
+    },
+    {
+      "metin": "Portland Trail Blazers, San Antonio Spurs'u yendi.",
+      "hedef_mac": "0022500490",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Sürpriz bir sonuçla Dallas Mavericks, Houston Rockets'i yendi.",
+      "hedef_mac": "0022500491",
+      "muzip": false,
+      "kind": "surpriz"
+    },
+    {
+      "metin": "Minnesota Timberwolves, Miami Heat'i yendi.",
+      "hedef_mac": "0022500486",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Toronto Raptors, Atlanta Hawks'ı evinde yendi.",
+      "hedef_mac": "0022500488",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Charlotte Hornets, 15 sayılık farktan dönüp Chicago Bulls'u geçti.",
+      "hedef_mac": "0022500489",
+      "muzip": false,
+      "kind": "geri_donus"
+    },
+    {
+      "metin": "Philadelphia 76ers, New York Knicks deplasmanında kazandı.",
+      "hedef_mac": "0022500487",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Utah Jazz, deplasmanda Golden State Warriors'a kaybetti.",
+      "hedef_mac": "0022500492",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 8,
+    "ilk_denemede_kabul": 1,
+    "sablon_moduna_dusen": 1,
+    "detay": [
+      {
+        "mac_id": "0022500490",
+        "deneme": 0,
+        "gerekce": [
+          "baslik/T31: [\"başlık iskelet listesinin dışında: 'Portland, Deni Avdija'nın triple-double'ıyla San Antonio'yu deplasmanda yendi.'\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Portland, Deni Avdija'nın triple-double'ıyla San Antonio'yu deplasmanda yendi."
+        }
+      },
+      {
+        "mac_id": "0022500491",
+        "deneme": 0,
+        "gerekce": [
+          "baslik/T31: [\"başlık iskelet listesinin dışında: 'Dallas, 11 sayılık farktan dönüp favori Houston'ı yendi.'\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Dallas, 11 sayılık farktan dönüp favori Houston'ı yendi."
+        }
+      },
+      {
+        "mac_id": "0022500486",
+        "deneme": 0,
+        "gerekce": [
+          "T14: en iyi performans (Anthony Edwards) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Minnesota, Miami deplasmanında 125-115 kazandı."
+        }
+      },
+      {
+        "mac_id": "0022500486",
+        "deneme": 1,
+        "gerekce": [
+          "baslik/T31: ['başlıktaki oyuncu kazananın en iyisi değil (kazananın en iyisi: Julius Randle)']"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Anthony Edwards'ın 33 sayısıyla Minnesota, Miami'yi yendi."
+        }
+      },
+      {
+        "mac_id": "0022500486",
+        "deneme": 2,
+        "gerekce": [
+          "T14: en iyi performans (Anthony Edwards) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Minnesota, Miami deplasmanında 125-115 kazandı."
+        }
+      }
+    ],
+    "sablon_isaretli": [
+      {
+        "mac_id": "0022500486",
+        "alan": "mutlaka",
+        "gerekce": [
+          "T14: en iyi performans (Anthony Edwards) hiç anılmadı"
+        ],
+        "metin": {
+          "baslik": "Minnesota Timberwolves, Miami Heat deplasmanında 125-115 kazandı."
+        }
+      }
+    ],
+    "mutlaka_mac": 4,
+    "ret_orani": 0.875,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 8,
+      "girdi_token": 29727,
+      "cikti_token": 2620,
+      "cache_yazma_token": 46764,
+      "cache_okuma_token": 74774,
+      "toplam_maliyet_usd": 0.2175,
+      "butce_asildi": false
+    }
+  }
+}
