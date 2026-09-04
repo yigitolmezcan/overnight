@@ -1,0 +1,149 @@
+{
+  "tarih": "2026-01-04",
+  "uretildi": "2026-09-04T06:50:09.986050Z",
+  "maclar": {
+    "0022500500": {
+      "gec_satiri": "Milwaukee Bucks deplasmanda Sacramento Kings'i 115-98 yendi. Giannis Antetokounmpo 37 sayı attı.",
+      "muzip": false
+    },
+    "0022500495": {
+      "gec_satiri": "Orlando Magic evinde Indiana Pacers'i 135-127 yendi. Orlando Magic, 12 sayılık farktan dönerek kazandı.",
+      "muzip": false
+    },
+    "0022500497": {
+      "gec_satiri": "Miami Heat evinde New Orleans Pelicans'ı 125-106 yendi. Norman Powell 34 sayı attı.",
+      "muzip": false
+    },
+    "0022500496": {
+      "gec_satiri": "Sürpriz bir sonuçla Brooklyn Nets, Denver Nuggets'i 127-115 yendi.",
+      "muzip": false
+    },
+    "0022500494": {
+      "gec_satiri": "Detroit Pistons deplasmanda Cleveland Cavaliers'i 114-110 yendi.",
+      "muzip": false
+    },
+    "0022500498": {
+      "gec_satiri": "Minnesota Timberwolves deplasmanda Washington Wizards'ı 141-115 ezdi. Anthony Edwards 35 sayı attı.",
+      "muzip": false
+    },
+    "0022500501": {
+      "baslik": "Los Angeles Lakers, 16 sayılık farktan dönüp Memphis Grizzlies'i yendi.",
+      "neden_onemli": "Los Angeles Lakers, konferansta 3. sıraya yükseldi."
+    },
+    "0022500499": {
+      "baslik": "Phoenix, Oklahoma City'yi son saniyede devirdi."
+    }
+  },
+  "brief": [
+    {
+      "metin": "Los Angeles Lakers, Memphis Grizzlies'i yendi.",
+      "hedef_mac": "0022500501",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Phoenix Suns, 18 sayılık farktan dönüp Oklahoma City Thunder'i geçti.",
+      "hedef_mac": "0022500499",
+      "muzip": false,
+      "kind": "geri_donus"
+    },
+    {
+      "metin": "Giannis Antetokounmpo, Sacramento Kings karşısında 37 sayı attı.",
+      "hedef_mac": "0022500500",
+      "muzip": false,
+      "kind": "performans"
+    },
+    {
+      "metin": "Orlando Magic, Indiana Pacers'i yendi.",
+      "hedef_mac": "0022500495",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Miami Heat, New Orleans Pelicans'ı evinde yendi.",
+      "hedef_mac": "0022500497",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Sürpriz bir sonuçla Brooklyn Nets, Denver Nuggets'i yendi.",
+      "hedef_mac": "0022500496",
+      "muzip": false,
+      "kind": "surpriz"
+    },
+    {
+      "metin": "Detroit Pistons, Cleveland Cavaliers'i yenerek konferansta 1. sıraya yükseldi.",
+      "hedef_mac": "0022500494",
+      "muzip": false,
+      "kind": "siralama"
+    },
+    {
+      "metin": "Minnesota Timberwolves, Washington Wizards deplasmanında kazandı.",
+      "hedef_mac": "0022500498",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 4,
+    "ilk_denemede_kabul": 1,
+    "sablon_moduna_dusen": 1,
+    "detay": [
+      {
+        "mac_id": "0022500501",
+        "deneme": 0,
+        "gerekce": [
+          "T14: en iyi performans (Luka Dončić) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Lakers, 16 sayılık farktan dönüp Grizzlies'i yendi."
+        }
+      },
+      {
+        "mac_id": "0022500501",
+        "deneme": 1,
+        "gerekce": [
+          "T14: en iyi performans (Luka Dončić) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Los Angeles Lakers, 16 sayılık farktan dönüp Memphis'i yendi."
+        }
+      },
+      {
+        "mac_id": "0022500501",
+        "deneme": 2,
+        "gerekce": [
+          "T14: en iyi performans (Luka Dončić) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Los Angeles Lakers, 16 sayılık farktan dönüp Memphis'i yendi."
+        }
+      }
+    ],
+    "sablon_isaretli": [
+      {
+        "mac_id": "0022500501",
+        "alan": "mutlaka",
+        "gerekce": [
+          "T14: en iyi performans (Luka Dončić) hiç anılmadı"
+        ],
+        "metin": {
+          "baslik": "Los Angeles Lakers, 16 sayılık farktan dönüp Memphis Grizzlies'i yendi.",
+          "neden_onemli": "Los Angeles Lakers, konferansta 3. sıraya yükseldi."
+        }
+      }
+    ],
+    "mutlaka_mac": 2,
+    "ret_orani": 0.75,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 4,
+      "girdi_token": 16607,
+      "cikti_token": 418,
+      "cache_yazma_token": 35292,
+      "cache_okuma_token": 27741,
+      "toplam_maliyet_usd": 0.1312,
+      "butce_asildi": false
+    }
+  }
+}

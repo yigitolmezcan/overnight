@@ -1,0 +1,279 @@
+{
+  "tarih": "2026-01-04",
+  "hesaplandi": "2026-09-04T06:49:56.164139Z",
+  "en_iyi_skor": 9.17,
+  "maclar": [
+    {
+      "rozet": 9.17,
+      "ham": 11.51,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 8.93,
+        "K": 6.37,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 5.77,
+        "F": 6,
+        "G": 6,
+        "A": 6.12
+      },
+      "ham_tasiyicilar": {
+        "S": 8.93,
+        "K": 5.15
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.22,
+      "dram_terfi": false,
+      "mac_id": "0022500501",
+      "ev": "LAL",
+      "dep": "MEM",
+      "ev_skor": 120,
+      "dep_skor": 114,
+      "en_iyi_performans": "Luka Dončić",
+      "esitlik_bozucu": [
+        0,
+        -6
+      ]
+    },
+    {
+      "rozet": 8.88,
+      "ham": 10.33,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 6.64,
+        "K": 3.29,
+        "T": 0,
+        "D": 8
+      },
+      "yukselticiler": {
+        "Y": 7.4,
+        "F": 10,
+        "G": 0,
+        "A": 7.46
+      },
+      "ham_tasiyicilar": {
+        "S": 6.64,
+        "K": 1.8
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.49,
+      "dram_terfi": true,
+      "mac_id": "0022500499",
+      "ev": "PHX",
+      "dep": "OKC",
+      "ev_skor": 108,
+      "dep_skor": 105,
+      "en_iyi_performans": "Devin Booker",
+      "esitlik_bozucu": [
+        8,
+        -3
+      ]
+    },
+    {
+      "rozet": 7.91,
+      "ham": 7.91,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 7.56,
+        "K": 3.79,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.98,
+        "F": 0,
+        "G": 0,
+        "A": 6.25
+      },
+      "ham_tasiyicilar": {
+        "S": 8.4,
+        "K": 2.54
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 1.25,
+      "dram_terfi": false,
+      "mac_id": "0022500500",
+      "ev": "SAC",
+      "dep": "MIL",
+      "ev_skor": 98,
+      "dep_skor": 115,
+      "en_iyi_performans": "Giannis Antetokounmpo",
+      "esitlik_bozucu": [
+        0,
+        -17
+      ]
+    },
+    {
+      "rozet": 7.57,
+      "ham": 7.57,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.67,
+        "K": 3.6,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 5.16,
+        "F": 6,
+        "G": 0,
+        "A": 3.0
+      },
+      "ham_tasiyicilar": {
+        "S": 6.67,
+        "K": 3.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.6,
+      "dram_terfi": false,
+      "mac_id": "0022500495",
+      "ev": "ORL",
+      "dep": "IND",
+      "ev_skor": 135,
+      "dep_skor": 127,
+      "en_iyi_performans": "Pascal Siakam",
+      "esitlik_bozucu": [
+        0,
+        -8
+      ]
+    },
+    {
+      "rozet": 6.95,
+      "ham": 6.95,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.6,
+        "K": 4.05,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.55,
+        "F": 0,
+        "G": 0,
+        "A": 5.25
+      },
+      "ham_tasiyicilar": {
+        "S": 7.33,
+        "K": 3.0
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 1.05,
+      "dram_terfi": false,
+      "mac_id": "0022500497",
+      "ev": "MIA",
+      "dep": "NOP",
+      "ev_skor": 125,
+      "dep_skor": 106,
+      "en_iyi_performans": "Norman Powell",
+      "esitlik_bozucu": [
+        0,
+        -19
+      ]
+    },
+    {
+      "rozet": 6.73,
+      "ham": 6.73,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 3.02,
+        "K": 6.94,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.79,
+        "F": 0,
+        "G": 0,
+        "A": 2.5
+      },
+      "ham_tasiyicilar": {
+        "S": 3.36,
+        "K": 6.44
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.5,
+      "dram_terfi": false,
+      "mac_id": "0022500496",
+      "ev": "BKN",
+      "dep": "DEN",
+      "ev_skor": 127,
+      "dep_skor": 115,
+      "en_iyi_performans": "Jamal Murray",
+      "esitlik_bozucu": [
+        0,
+        -12
+      ]
+    },
+    {
+      "rozet": 6.0,
+      "ham": 6.0,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 4.62,
+        "K": 4.02,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 4.77,
+        "F": 6,
+        "G": 0,
+        "A": 7.42
+      },
+      "ham_tasiyicilar": {
+        "S": 4.62,
+        "K": 2.54
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.48,
+      "dram_terfi": false,
+      "mac_id": "0022500494",
+      "ev": "CLE",
+      "dep": "DET",
+      "ev_skor": 110,
+      "dep_skor": 114,
+      "en_iyi_performans": "Donovan Mitchell",
+      "esitlik_bozucu": [
+        0,
+        -4
+      ]
+    },
+    {
+      "rozet": 5.54,
+      "ham": 5.54,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 5.11,
+        "K": 4.07,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.37,
+        "F": 0,
+        "G": 0,
+        "A": 5.33
+      },
+      "ham_tasiyicilar": {
+        "S": 6.39,
+        "K": 3.0
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 1.07,
+      "dram_terfi": false,
+      "mac_id": "0022500498",
+      "ev": "WAS",
+      "dep": "MIN",
+      "ev_skor": 115,
+      "dep_skor": 141,
+      "en_iyi_performans": "Anthony Edwards",
+      "esitlik_bozucu": [
+        0,
+        -26
+      ]
+    }
+  ]
+}
