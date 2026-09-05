@@ -1,0 +1,106 @@
+{
+  "tarih": "2026-01-05",
+  "uretildi": "2026-09-05T07:54:33.492266Z",
+  "maclar": {
+    "0022500502": {
+      "gec_satiri": "Doğu'nun zirvesinde Detroit Pistons, New York Knicks'i 121-90 yendi. Cade Cunningham 13 asist yaptı.",
+      "muzip": false
+    },
+    "0022500508": {
+      "gec_satiri": "LA Clippers evinde Golden State Warriors'u 103-102 yendi.",
+      "muzip": false
+    },
+    "0022500504": {
+      "gec_satiri": "Toronto Raptors evinde Atlanta Hawks'ı 118-100 yendi.",
+      "muzip": false
+    },
+    "0022500506": {
+      "gec_satiri": "Charlotte Hornets deplasmanda Oklahoma City Thunder'i 124-97 yendi.",
+      "muzip": false
+    },
+    "0022500509": {
+      "gec_satiri": "Portland Trail Blazers evinde Utah Jazz'ı 137-117 yendi. Deni Avdija 33 sayı attı.",
+      "muzip": false
+    },
+    "0022500503": {
+      "gec_satiri": "Boston Celtics evinde Chicago Bulls'u 115-101 yendi.",
+      "muzip": false
+    },
+    "0022500507": {
+      "baslik": "Denver, Philadelphia'yı son saniyede devirdi.",
+      "neden_onemli": "Denver Nuggets, konferansta 3. sıraya yükseldi."
+    },
+    "0022500505": {
+      "baslik": "Houston, Phoenix'i son saniyede devirdi."
+    }
+  },
+  "brief": [
+    {
+      "metin": "Denver Nuggets, Philadelphia 76ers'i uzatmada geçti.",
+      "hedef_mac": "0022500507",
+      "muzip": false,
+      "kind": "uzatma"
+    },
+    {
+      "metin": "Houston Rockets, 13 sayılık farktan dönüp Phoenix Suns'u geçti.",
+      "hedef_mac": "0022500505",
+      "muzip": false,
+      "kind": "geri_donus"
+    },
+    {
+      "metin": "Detroit Pistons, New York Knicks'i yenerek konferansta 1. sıraya yükseldi.",
+      "hedef_mac": "0022500502",
+      "muzip": false,
+      "kind": "siralama"
+    },
+    {
+      "metin": "LA Clippers, Golden State Warriors'u yendi.",
+      "hedef_mac": "0022500508",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Toronto Raptors, Atlanta Hawks'ı yendi.",
+      "hedef_mac": "0022500504",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Sürpriz bir sonuçla Charlotte Hornets, Oklahoma City Thunder'i yendi.",
+      "hedef_mac": "0022500506",
+      "muzip": false,
+      "kind": "surpriz"
+    },
+    {
+      "metin": "Deni Avdija, Utah Jazz karşısında 33 sayı attı.",
+      "hedef_mac": "0022500509",
+      "muzip": false,
+      "kind": "performans"
+    },
+    {
+      "metin": "Boston Celtics, Chicago Bulls'u evinde yendi.",
+      "hedef_mac": "0022500503",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 2,
+    "ilk_denemede_kabul": 2,
+    "sablon_moduna_dusen": 0,
+    "detay": [],
+    "sablon_isaretli": [],
+    "mutlaka_mac": 2,
+    "ret_orani": 0.0,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 2,
+      "girdi_token": 7541,
+      "cikti_token": 136,
+      "cache_yazma_token": 19442,
+      "cache_okuma_token": 11977,
+      "toplam_maliyet_usd": 0.0674,
+      "butce_asildi": false
+    }
+  }
+}
