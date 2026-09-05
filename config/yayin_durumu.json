@@ -40,14 +40,7 @@
     "2026-01-01",
     "2026-01-03"
   ],
-  "hazir": {
-    "tarih": "2026-01-04",
-    "uretildi": "2026-09-04T06:50:10.974309Z",
-    "mod": "hibrit",
-    "maliyet_usd": 0.1312,
-    "butce_asildi": false,
-    "sablona_dusen_alan": 1
-  },
+  "hazir": null,
   "son_yayin": {
     "tarih": "2026-01-03",
     "uretildi": "2026-09-03T06:46:08.419528Z",
@@ -57,8 +50,29 @@
     "sablona_dusen_alan": 1,
     "yayinlandi": "2026-09-04T06:40:42.157744Z"
   },
-  "son_engel": null,
-  "engellenen": [],
+  "son_engel": {
+    "tarih": "2026-01-04",
+    "sebep": [
+      {
+        "mac_id": "0022500501",
+        "alan": "mutlaka",
+        "gerekce": [
+          "T14: en iyi performans (Luka Dončić) hiç anılmadı"
+        ],
+        "metin": {
+          "baslik": "Los Angeles Lakers, 16 sayılık farktan dönüp Memphis Grizzlies'i yendi.",
+          "neden_onemli": "Los Angeles Lakers, konferansta 3. sıraya yükseldi."
+        },
+        "engelleyen": [
+          "T14"
+        ]
+      }
+    ],
+    "zaman": "2026-09-05T06:40:44.379100Z"
+  },
+  "engellenen": [
+    "2026-01-04"
+  ],
   "sira_imleci": "2026-01-03",
   "_sira_imleci_neden": "Kullanıcı kararı 2026-08-25: kronoloji sezon başından değil, ARALIK ORTASINDAN başlıyor. Sezon başı gecelerinde takımlar 10 maçı doldurmadığı için susma kuralı derece/sıralama/seri/sürpriz olgularının hepsini kapatıyor ve metinler haftalarca cılız kalıyor. Ekim-Kasım arşiv geceleri atlanıyor; sezon gerçekten Ekim'de başlayınca canlı veriye geçilecek, o geceler kullanılmayacak.",
   "_vitrin_geri_alindi": {
