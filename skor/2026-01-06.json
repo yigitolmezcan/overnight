@@ -1,0 +1,211 @@
+{
+  "tarih": "2026-01-06",
+  "hesaplandi": "2026-09-06T02:40:46.060675Z",
+  "en_iyi_skor": 8.56,
+  "maclar": [
+    {
+      "rozet": 8.56,
+      "ham": 9.31,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 8.14,
+        "K": 3.31,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 5.54,
+        "F": 6,
+        "G": 0,
+        "A": 5.83
+      },
+      "ham_tasiyicilar": {
+        "S": 8.14,
+        "K": 2.14
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.17,
+      "dram_terfi": false,
+      "mac_id": "0022500514",
+      "ev": "NOP",
+      "dep": "LAL",
+      "ev_skor": 103,
+      "dep_skor": 111,
+      "en_iyi_performans": "LeBron James",
+      "esitlik_bozucu": [
+        0,
+        -8
+      ]
+    },
+    {
+      "rozet": 8.06,
+      "ham": 8.12,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 5.23,
+        "K": 5.84,
+        "T": 0,
+        "D": 6
+      },
+      "yukselticiler": {
+        "Y": 7.13,
+        "F": 8,
+        "G": 6,
+        "A": 6.25
+      },
+      "ham_tasiyicilar": {
+        "S": 5.23,
+        "K": 4.59
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.25,
+      "dram_terfi": true,
+      "mac_id": "0022500512",
+      "ev": "MEM",
+      "dep": "SAS",
+      "ev_skor": 106,
+      "dep_skor": 105,
+      "en_iyi_performans": "Victor Wembanyama",
+      "esitlik_bozucu": [
+        6,
+        -1
+      ]
+    },
+    {
+      "rozet": 6.62,
+      "ham": 6.62,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 2.41,
+        "K": 1.84,
+        "T": 0,
+        "D": 6
+      },
+      "yukselticiler": {
+        "Y": 7.31,
+        "F": 8,
+        "G": 6,
+        "A": 4.33
+      },
+      "ham_tasiyicilar": {
+        "S": 2.41,
+        "K": 0.97
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.87,
+      "dram_terfi": true,
+      "mac_id": "0022500515",
+      "ev": "SAC",
+      "dep": "DAL",
+      "ev_skor": 98,
+      "dep_skor": 100,
+      "en_iyi_performans": "Cooper Flagg",
+      "esitlik_bozucu": [
+        6,
+        -2
+      ]
+    },
+    {
+      "rozet": 6.58,
+      "ham": 6.58,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 0.61,
+        "K": 7.06,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.07,
+        "F": 0,
+        "G": 0,
+        "A": 7.17
+      },
+      "ham_tasiyicilar": {
+        "S": 0.76,
+        "K": 5.63
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 1.43,
+      "dram_terfi": false,
+      "mac_id": "0022500513",
+      "ev": "MIN",
+      "dep": "MIA",
+      "ev_skor": 122,
+      "dep_skor": 94,
+      "en_iyi_performans": "Anthony Edwards",
+      "esitlik_bozucu": [
+        0,
+        -28
+      ]
+    },
+    {
+      "rozet": 5.23,
+      "ham": 5.23,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 4.91,
+        "K": 3.26,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.37,
+        "F": 0,
+        "G": 0,
+        "A": 3.17
+      },
+      "ham_tasiyicilar": {
+        "S": 4.91,
+        "K": 2.63
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.63,
+      "dram_terfi": false,
+      "mac_id": "0022500511",
+      "ev": "WAS",
+      "dep": "ORL",
+      "ev_skor": 120,
+      "dep_skor": 112,
+      "en_iyi_performans": "Alex Sarr",
+      "esitlik_bozucu": [
+        0,
+        -8
+      ]
+    },
+    {
+      "rozet": 5.15,
+      "ham": 5.15,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 4.06,
+        "K": 3.7,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 6.09,
+        "F": 6,
+        "G": 0,
+        "A": 3.5
+      },
+      "ham_tasiyicilar": {
+        "S": 4.06,
+        "K": 3.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.7,
+      "dram_terfi": false,
+      "mac_id": "0022500510",
+      "ev": "IND",
+      "dep": "CLE",
+      "ev_skor": 116,
+      "dep_skor": 120,
+      "en_iyi_performans": "Darius Garland",
+      "esitlik_bozucu": [
+        0,
+        -4
+      ]
+    }
+  ]
+}

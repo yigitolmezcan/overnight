@@ -1,0 +1,134 @@
+{
+  "tarih": "2026-01-06",
+  "uretildi": "2026-09-06T02:41:17.394899Z",
+  "maclar": {
+    "0022500515": {
+      "gec_satiri": "Dallas Mavericks deplasmanda Sacramento Kings'i 100-98 yendi. Dallas Mavericks, 12 sayılık farktan dönerek kazandı.",
+      "muzip": false
+    },
+    "0022500513": {
+      "gec_satiri": "Minnesota Timberwolves evinde Miami Heat'i 122-94 ezdi.",
+      "muzip": false
+    },
+    "0022500511": {
+      "gec_satiri": "Washington Wizards evinde Orlando Magic'i 120-112 yendi.",
+      "muzip": false
+    },
+    "0022500510": {
+      "gec_satiri": "Cleveland Cavaliers deplasmanda Indiana Pacers'i 120-116 yendi.",
+      "muzip": false
+    },
+    "0022500514": {
+      "baslik": "Los Angeles Lakers, New Orleans Pelicans deplasmanında 111-103 kazandı.",
+      "neden_onemli": "Los Angeles Lakers, konferansta 3. sıraya yükseldi."
+    },
+    "0022500512": {
+      "baslik": "Memphis, 11 sayılık farktan dönüp San Antonio'yu yendi."
+    }
+  },
+  "brief": [
+    {
+      "metin": "Los Angeles Lakers, New Orleans Pelicans'ı yenerek konferansta 3. sıraya yükseldi.",
+      "hedef_mac": "0022500514",
+      "muzip": false,
+      "kind": "siralama"
+    },
+    {
+      "metin": "Memphis Grizzlies, San Antonio Spurs'u yendi.",
+      "hedef_mac": "0022500512",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Dallas Mavericks, 12 sayılık farktan dönüp Sacramento Kings'i geçti.",
+      "hedef_mac": "0022500515",
+      "muzip": false,
+      "kind": "geri_donus"
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 6,
+    "ilk_denemede_kabul": 0,
+    "sablon_moduna_dusen": 1,
+    "detay": [
+      {
+        "mac_id": "0022500514",
+        "deneme": 0,
+        "gerekce": [
+          "T14: en iyi performans (LeBron James) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Lakers, New Orleans deplasmanında 111-103 kazandı."
+        }
+      },
+      {
+        "mac_id": "0022500514",
+        "deneme": 1,
+        "gerekce": [
+          "T14: en iyi performans (LeBron James) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Los Angeles Lakers, New Orleans'ı 111-103 yendi."
+        }
+      },
+      {
+        "mac_id": "0022500514",
+        "deneme": 2,
+        "gerekce": [
+          "baslik/T16: [\"'farktan dönüp' civarındaki geri dönüş 10 sayının altında\"]",
+          "baslik/T31: [\"'farktan dönüp' ama kazananın en büyük açığı 9 (en az 10)\"]",
+          "T14: en iyi performans (LeBron James) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Los Angeles, 9 sayılık farktan dönüp Pelicans'ı yendi."
+        }
+      },
+      {
+        "mac_id": "0022500512",
+        "deneme": 0,
+        "gerekce": [
+          "baslik/T31: [\"'son saniyede devirdi' ama son 30 saniyede liderlik değişmedi\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Memphis, San Antonio'yu son saniyede devirdi."
+        }
+      },
+      {
+        "mac_id": "0022500512",
+        "deneme": 1,
+        "gerekce": [
+          "baslik/T31: [\"'son saniyede devirdi' ama son 30 saniyede liderlik değişmedi\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Memphis, San Antonio'yu son saniyede devirdi."
+        }
+      }
+    ],
+    "sablon_isaretli": [
+      {
+        "mac_id": "0022500514",
+        "alan": "mutlaka",
+        "gerekce": [
+          "T28: başlık düz skor ama metinde güçlü olgu var (siralama) — düz skor son çaredir, başlık en güçlü olguyu kullanmalı",
+          "T14: en iyi performans (LeBron James) hiç anılmadı"
+        ],
+        "metin": {
+          "baslik": "Los Angeles Lakers, New Orleans Pelicans deplasmanında 111-103 kazandı.",
+          "neden_onemli": "Los Angeles Lakers, konferansta 3. sıraya yükseldi."
+        }
+      }
+    ],
+    "mutlaka_mac": 2,
+    "ret_orani": 1.0,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 6,
+      "girdi_token": 23072,
+      "cikti_token": 2032,
+      "cache_yazma_token": 37956,
+      "cache_okuma_token": 54909,
+      "toplam_maliyet_usd": 0.1723,
+      "butce_asildi": false
+    }
+  }
+}
