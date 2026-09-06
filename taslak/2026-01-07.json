@@ -1,0 +1,180 @@
+{
+  "tarih": "2026-01-07",
+  "uretildi": "2026-09-06T06:45:36.626704Z",
+  "maclar": {
+    "0022500521": {
+      "gec_satiri": "Orlando Magic deplasmanda Brooklyn Nets'i 104-103 yendi. Paolo Banchero 30 sayı attı.",
+      "muzip": false
+    },
+    "0022500520": {
+      "gec_satiri": "Batı'nın zirvesinde Denver Nuggets, Boston Celtics'i 114-110 yendi. Jamal Murray 17 asist yaptı.",
+      "muzip": false
+    },
+    "0022500516": {
+      "gec_satiri": "Nefes kesen bir maçta Toronto Raptors, Charlotte Hornets'i 97-96 yendi.",
+      "muzip": false
+    },
+    "0022500523": {
+      "gec_satiri": "San Antonio Spurs evinde Los Angeles Lakers'i 107-91 yendi. Keldon Johnson 27 sayı attı. Mağlup tarafta Luka Dončić triple-double yaptı (38 sayı, 10 ribaund, 10 asist).",
+      "muzip": false
+    },
+    "0022500526": {
+      "gec_satiri": "Golden State Warriors evinde Milwaukee Bucks'u 120-113 yendi. Stephen Curry 31 sayı attı.",
+      "muzip": false
+    },
+    "0022500517": {
+      "gec_satiri": "Detroit Pistons evinde Chicago Bulls'u 108-93 yendi. Isaiah Stewart 31 sayı attı.",
+      "muzip": false
+    },
+    "0022500524": {
+      "gec_satiri": "Phoenix Suns deplasmanda Memphis Grizzlies'i 117-98 yendi.",
+      "muzip": false
+    },
+    "0022500522": {
+      "gec_satiri": "New York Knicks evinde LA Clippers'i 123-111 yendi.",
+      "muzip": false
+    },
+    "0022500518": {
+      "gec_satiri": "Philadelphia 76ers evinde Washington Wizards'ı 131-110 ezdi.",
+      "muzip": false
+    },
+    "0022500519": {
+      "gec_satiri": "Atlanta Hawks evinde New Orleans Pelicans'ı 117-100 yendi.",
+      "muzip": false
+    },
+    "0022500525": {
+      "baslik": "Shai Gilgeous-Alexander'in 46 sayısıyla Oklahoma City Thunder, Utah Jazz'ı yendi.",
+      "neden_onemli": "Oklahoma City Thunder lig liderliğini sürdürdü."
+    },
+    "0022500527": {
+      "baslik": "Deni Avdija'nın 41 sayısıyla Portland, Houston'ı yendi.",
+      "neden_onemli": "Portland Trail Blazers, 4 maçlık galibiyet serisini sürdürdü."
+    }
+  },
+  "brief": [
+    {
+      "metin": "Shai Gilgeous-Alexander, Utah Jazz karşısında 46 sayı attı.",
+      "hedef_mac": "0022500525",
+      "muzip": false,
+      "kind": "performans"
+    },
+    {
+      "metin": "Sürpriz bir sonuçla Portland Trail Blazers, Houston Rockets'i yendi.",
+      "hedef_mac": "0022500527",
+      "muzip": false,
+      "kind": "surpriz"
+    },
+    {
+      "metin": "Orlando Magic, Brooklyn Nets'i uzatmada geçti.",
+      "hedef_mac": "0022500521",
+      "muzip": false,
+      "kind": "uzatma"
+    },
+    {
+      "metin": "Denver Nuggets, Boston Celtics'i yendi.",
+      "hedef_mac": "0022500520",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Toronto Raptors, 13 sayılık farktan dönüp Charlotte Hornets'i geçti.",
+      "hedef_mac": "0022500516",
+      "muzip": false,
+      "kind": "geri_donus"
+    },
+    {
+      "metin": "San Antonio Spurs, Los Angeles Lakers'i yendi.",
+      "hedef_mac": "0022500523",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Golden State Warriors, Milwaukee Bucks'u evinde yendi.",
+      "hedef_mac": "0022500526",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Detroit Pistons, Chicago Bulls'u yenerek konferansta 1. sıraya yükseldi.",
+      "hedef_mac": "0022500517",
+      "muzip": false,
+      "kind": "siralama"
+    },
+    {
+      "metin": "Phoenix Suns, Memphis Grizzlies deplasmanında kazandı.",
+      "hedef_mac": "0022500524",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "LA Clippers, deplasmanda New York Knicks'e kaybetti.",
+      "hedef_mac": "0022500522",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 5,
+    "ilk_denemede_kabul": 0,
+    "sablon_moduna_dusen": 1,
+    "detay": [
+      {
+        "mac_id": "0022500525",
+        "deneme": 0,
+        "gerekce": [
+          "baslik/T31: [\"'son saniyede devirdi' ama maç 4 farkla bitti (en fazla 3)\"]",
+          "T14: en iyi performans (Shai Gilgeous-Alexander) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Lider Oklahoma City, Utah'ı son saniyede devirdi."
+        }
+      },
+      {
+        "mac_id": "0022500525",
+        "deneme": 1,
+        "gerekce": [
+          "baslik/T16: [\"'farktan dönüp' civarındaki geri dönüş 10 sayının altında\"]",
+          "baslik/T31: [\"'farktan dönüp' ama kazananın en büyük açığı 8 (en az 10)\"]",
+          "T14: en iyi performans (Shai Gilgeous-Alexander) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Oklahoma City, 8 sayılık farktan dönüp Utah'ı yendi."
+        }
+      },
+      {
+        "mac_id": "0022500525",
+        "deneme": 2,
+        "gerekce": [
+          "baslik/T31: [\"'son saniyede devirdi' ama maç 4 farkla bitti (en fazla 3)\"]",
+          "T14: en iyi performans (Shai Gilgeous-Alexander) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Oklahoma City, Utah'ı son saniyede devirdi."
+        }
+      },
+      {
+        "mac_id": "0022500527",
+        "deneme": 0,
+        "gerekce": [
+          "baslik/T31: [\"'son saniyede devirdi' ama son 30 saniyede liderlik değişmedi\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Portland, Houston'ı son saniyede devirdi."
+        }
+      }
+    ],
+    "sablon_isaretli": [],
+    "mutlaka_mac": 2,
+    "ret_orani": 1.0,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 5,
+      "girdi_token": 20379,
+      "cikti_token": 2153,
+      "cache_yazma_token": 40008,
+      "cache_okuma_token": 40056,
+      "toplam_maliyet_usd": 0.1703,
+      "butce_asildi": false
+    }
+  }
+}
