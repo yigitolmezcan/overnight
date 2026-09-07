@@ -1,0 +1,172 @@
+{
+  "tarih": "2026-01-09",
+  "uretildi": "2026-09-07T06:54:13.565556Z",
+  "maclar": {
+    "0022500538": {
+      "gec_satiri": "Phoenix Suns evinde New York Knicks'i 112-107 yendi. Devin Booker 31 sayı attı.",
+      "muzip": false
+    },
+    "0022500537": {
+      "gec_satiri": "Atlanta Hawks deplasmanda Denver Nuggets'i 110-87 yendi.",
+      "muzip": false
+    },
+    "0022500532": {
+      "gec_satiri": "Boston Celtics evinde Toronto Raptors'u 125-117 yendi.",
+      "muzip": false
+    },
+    "0022500533": {
+      "gec_satiri": "Philadelphia 76ers deplasmanda Orlando Magic'i 103-91 yendi.",
+      "muzip": false
+    },
+    "0022500535": {
+      "gec_satiri": "LA Clippers deplasmanda Brooklyn Nets'i 121-105 yendi.",
+      "muzip": false
+    },
+    "0022500534": {
+      "gec_satiri": "New Orleans Pelicans deplasmanda Washington Wizards'ı 128-107 yendi. Zion Williamson 31 sayı attı.",
+      "muzip": false
+    },
+    "0022500539": {
+      "gec_satiri": "Golden State Warriors evinde Sacramento Kings'i 137-103 ezdi. Stephen Curry 10 asist yaptı.",
+      "muzip": false
+    },
+    "0022500540": {
+      "baslik": "Portland, 13 sayılık farktan dönüp Houston'ı yendi.",
+      "neden_onemli": "Portland Trail Blazers, 5 maçlık galibiyet serisini sürdürdü."
+    },
+    "0022500541": {
+      "baslik": "Milwaukee, Lakers deplasmanında 105-101 kazandı."
+    },
+    "0022500536": {
+      "baslik": "Oklahoma City Thunder, 21 sayılık farktan dönüp Memphis Grizzlies'i yendi.",
+      "neden_onemli": "Oklahoma City Thunder lig liderliğini sürdürdü."
+    }
+  },
+  "brief": [
+    {
+      "metin": "Sürpriz bir sonuçla Portland Trail Blazers, Houston Rockets'i yendi.",
+      "hedef_mac": "0022500540",
+      "muzip": false,
+      "kind": "surpriz"
+    },
+    {
+      "metin": "Milwaukee Bucks, Los Angeles Lakers'i yendi.",
+      "hedef_mac": "0022500541",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Oklahoma City Thunder, 21 sayılık farktan dönüp Memphis Grizzlies'i geçti.",
+      "hedef_mac": "0022500536",
+      "muzip": false,
+      "kind": "geri_donus"
+    },
+    {
+      "metin": "Devin Booker, New York Knicks karşısında 31 sayı attı.",
+      "hedef_mac": "0022500538",
+      "muzip": false,
+      "kind": "performans"
+    },
+    {
+      "metin": "Atlanta Hawks, Denver Nuggets'i yendi.",
+      "hedef_mac": "0022500537",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Boston Celtics, Toronto Raptors'u yenerek konferansta 2. sıraya yükseldi.",
+      "hedef_mac": "0022500532",
+      "muzip": false,
+      "kind": "siralama"
+    },
+    {
+      "metin": "Philadelphia 76ers, Orlando Magic deplasmanında kazandı.",
+      "hedef_mac": "0022500533",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "LA Clippers, Brooklyn Nets deplasmanında kazandı.",
+      "hedef_mac": "0022500535",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Washington Wizards, evinde New Orleans Pelicans'a kaybetti.",
+      "hedef_mac": "0022500534",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Sacramento Kings, deplasmanda Golden State Warriors'a kaybetti.",
+      "hedef_mac": "0022500539",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 5,
+    "ilk_denemede_kabul": 2,
+    "sablon_moduna_dusen": 1,
+    "detay": [
+      {
+        "mac_id": "0022500536",
+        "deneme": 0,
+        "gerekce": [
+          "baslik/T31: [\"'son saniyede devirdi' ama son 30 saniyede liderlik değişmedi\"]",
+          "T14: en iyi performans (Jalen Williams) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Oklahoma City, Memphis'i son saniyede devirdi."
+        }
+      },
+      {
+        "mac_id": "0022500536",
+        "deneme": 1,
+        "gerekce": [
+          "baslik/T4e: ['OKC']",
+          "T14: en iyi performans (Jalen Williams) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "OKC, 21 sayılık farktan dönüp Memphis'i yendi."
+        }
+      },
+      {
+        "mac_id": "0022500536",
+        "deneme": 2,
+        "gerekce": [
+          "baslik/T31: [\"'son saniyede devirdi' ama son 30 saniyede liderlik değişmedi\"]",
+          "T14: en iyi performans (Jalen Williams) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Oklahoma City, Memphis'i son saniyede devirdi."
+        }
+      }
+    ],
+    "sablon_isaretli": [
+      {
+        "mac_id": "0022500536",
+        "alan": "mutlaka",
+        "gerekce": [
+          "T14: en iyi performans (Jalen Williams) hiç anılmadı"
+        ],
+        "metin": {
+          "baslik": "Oklahoma City Thunder, 21 sayılık farktan dönüp Memphis Grizzlies'i yendi.",
+          "neden_onemli": "Oklahoma City Thunder lig liderliğini sürdürdü."
+        }
+      }
+    ],
+    "mutlaka_mac": 3,
+    "ret_orani": 0.6,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 5,
+      "girdi_token": 18792,
+      "cikti_token": 1604,
+      "cache_yazma_token": 38840,
+      "cache_okuma_token": 39583,
+      "toplam_maliyet_usd": 0.1586,
+      "butce_asildi": false
+    }
+  }
+}

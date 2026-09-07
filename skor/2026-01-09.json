@@ -1,0 +1,347 @@
+{
+  "tarih": "2026-01-09",
+  "hesaplandi": "2026-09-07T06:53:39.938018Z",
+  "en_iyi_skor": 9.31,
+  "maclar": [
+    {
+      "rozet": 9.31,
+      "ham": 12.26,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 7.47,
+        "K": 8.99,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 6.29,
+        "F": 7,
+        "G": 6,
+        "A": 5.12
+      },
+      "ham_tasiyicilar": {
+        "S": 7.47,
+        "K": 7.97
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.02,
+      "dram_terfi": false,
+      "mac_id": "0022500540",
+      "ev": "POR",
+      "dep": "HOU",
+      "ev_skor": 111,
+      "dep_skor": 105,
+      "en_iyi_performans": "Kevin Durant",
+      "esitlik_bozucu": [
+        0,
+        -6
+      ]
+    },
+    {
+      "rozet": 8.64,
+      "ham": 9.53,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 6.28,
+        "K": 6.76,
+        "T": 0,
+        "D": 7
+      },
+      "yukselticiler": {
+        "Y": 6.65,
+        "F": 9,
+        "G": 0,
+        "A": 7.25
+      },
+      "ham_tasiyicilar": {
+        "S": 6.28,
+        "K": 5.31
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.45,
+      "dram_terfi": true,
+      "mac_id": "0022500541",
+      "ev": "LAL",
+      "dep": "MIL",
+      "ev_skor": 101,
+      "dep_skor": 105,
+      "en_iyi_performans": "LeBron James",
+      "esitlik_bozucu": [
+        7,
+        -4
+      ]
+    },
+    {
+      "rozet": 8.39,
+      "ham": 8.86,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 4.09,
+        "K": 4.05,
+        "T": 0,
+        "D": 8
+      },
+      "yukselticiler": {
+        "Y": 3.73,
+        "F": 8,
+        "G": 10,
+        "A": 5.23
+      },
+      "ham_tasiyicilar": {
+        "S": 4.09,
+        "K": 3.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.05,
+      "dram_terfi": true,
+      "mac_id": "0022500536",
+      "ev": "MEM",
+      "dep": "OKC",
+      "ev_skor": 116,
+      "dep_skor": 117,
+      "en_iyi_performans": "Jalen Williams",
+      "esitlik_bozucu": [
+        8,
+        -1
+      ]
+    },
+    {
+      "rozet": 6.21,
+      "ham": 6.21,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 4.78,
+        "K": 3.81,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 6.02,
+        "F": 7,
+        "G": 0,
+        "A": 6.67
+      },
+      "ham_tasiyicilar": {
+        "S": 4.78,
+        "K": 2.48
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.33,
+      "dram_terfi": false,
+      "mac_id": "0022500538",
+      "ev": "PHX",
+      "dep": "NYK",
+      "ev_skor": 112,
+      "dep_skor": 107,
+      "en_iyi_performans": "Devin Booker",
+      "esitlik_bozucu": [
+        0,
+        -5
+      ]
+    },
+    {
+      "rozet": 5.65,
+      "ham": 5.65,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 4.22,
+        "K": 5.2,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.51,
+        "F": 0,
+        "G": 0,
+        "A": 2.92
+      },
+      "ham_tasiyicilar": {
+        "S": 5.27,
+        "K": 4.62
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 0.58,
+      "dram_terfi": false,
+      "mac_id": "0022500537",
+      "ev": "DEN",
+      "dep": "ATL",
+      "ev_skor": 87,
+      "dep_skor": 110,
+      "en_iyi_performans": "Jalen Johnson",
+      "esitlik_bozucu": [
+        0,
+        -23
+      ]
+    },
+    {
+      "rozet": 5.18,
+      "ham": 5.18,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 5.01,
+        "K": 2.41,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.12,
+        "F": 0,
+        "G": 0,
+        "A": 4.58
+      },
+      "ham_tasiyicilar": {
+        "S": 5.01,
+        "K": 1.49
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.92,
+      "dram_terfi": false,
+      "mac_id": "0022500532",
+      "ev": "BOS",
+      "dep": "TOR",
+      "ev_skor": 125,
+      "dep_skor": 117,
+      "en_iyi_performans": "Payton Pritchard",
+      "esitlik_bozucu": [
+        0,
+        -8
+      ]
+    },
+    {
+      "rozet": 5.15,
+      "ham": 5.15,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 1.47,
+        "K": 5.32,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.52,
+        "F": 0,
+        "G": 0,
+        "A": 3.5
+      },
+      "ham_tasiyicilar": {
+        "S": 1.63,
+        "K": 4.62
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.7,
+      "dram_terfi": false,
+      "mac_id": "0022500533",
+      "ev": "ORL",
+      "dep": "PHI",
+      "ev_skor": 91,
+      "dep_skor": 103,
+      "en_iyi_performans": "Tyrese Maxey",
+      "esitlik_bozucu": [
+        0,
+        -12
+      ]
+    },
+    {
+      "rozet": 4.81,
+      "ham": 4.81,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 4.9,
+        "K": 2.34,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.23,
+        "F": 0,
+        "G": 0,
+        "A": 3.25
+      },
+      "ham_tasiyicilar": {
+        "S": 5.44,
+        "K": 1.69
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.65,
+      "dram_terfi": false,
+      "mac_id": "0022500535",
+      "ev": "BKN",
+      "dep": "LAC",
+      "ev_skor": 105,
+      "dep_skor": 121,
+      "en_iyi_performans": "Kawhi Leonard",
+      "esitlik_bozucu": [
+        0,
+        -16
+      ]
+    },
+    {
+      "rozet": 4.79,
+      "ham": 4.79,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 5.31,
+        "K": 0.72,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.48,
+        "F": 0,
+        "G": 0,
+        "A": 3.58
+      },
+      "ham_tasiyicilar": {
+        "S": 6.64,
+        "K": 0.0
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 0.72,
+      "dram_terfi": false,
+      "mac_id": "0022500534",
+      "ev": "WAS",
+      "dep": "NOP",
+      "ev_skor": 107,
+      "dep_skor": 128,
+      "en_iyi_performans": "Zion Williamson",
+      "esitlik_bozucu": [
+        0,
+        -21
+      ]
+    },
+    {
+      "rozet": 3.14,
+      "ham": 3.14,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 3.21,
+        "K": 1.11,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.9,
+        "F": 0,
+        "G": 0,
+        "A": 4.42
+      },
+      "ham_tasiyicilar": {
+        "S": 4.59,
+        "K": 0.23
+      },
+      "s_sonum": 0.7,
+      "a_k_katkisi": 0.88,
+      "dram_terfi": false,
+      "mac_id": "0022500539",
+      "ev": "GSW",
+      "dep": "SAC",
+      "ev_skor": 137,
+      "dep_skor": 103,
+      "en_iyi_performans": "Stephen Curry",
+      "esitlik_bozucu": [
+        0,
+        -34
+      ]
+    }
+  ]
+}
