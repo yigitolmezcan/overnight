@@ -1625,6 +1625,44 @@ td.khot{color:var(--amber);font-weight:700}
 .yasal a{color:#5A6472;text-decoration:none;border-bottom:1px solid #232C39}
 .yasal a:hover{color:var(--ink2)}
 .yasal span{padding:0 8px;color:#232C39}
+
+/* ---- SON TOPLAR — kutu skor kartının dördüncü sekmesi ----------------
+   Son 90 (gerekirse 60) saniyenin akışı. Sekme SADECE yakın biten ya da
+   uzatmaya giden maçlarda var; varlığı bile bir bilgi.
+   STİL BLOĞUN SONUNDA: aynı özgüllükteki bir kural, temel kuralın
+   ÖNÜNE konursa kaybediyor (bu tuzağa yedi kez düşüldü). */
+.ktabs button.son{font-size:9.5px;letter-spacing:.08em}
+.ktabs button.son.on{color:var(--ember)}
+.ktabs .sdot{display:inline-block;width:4px;height:4px;border-radius:50%;
+  background:var(--ember);vertical-align:2px;margin-left:5px}
+.ktabs button.son.on .sdot{opacity:.55}
+/* Yatay dolgu BLOĞUN KENDİSİNDE — kartın panoları kendi
+   boşluğunu taşıyor (bkz. .kritik). Dolgusuz bırakılınca skor
+   sütunu kartın sağ kenarına yapışıyordu (375px'te ölçüldü). */
+.stlist{padding:2px 16px 8px}
+.stlist .sth{font-family:var(--mono);font-size:8.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:#39424F;padding:2px 0 6px}
+.stev{display:flex;gap:12px;align-items:baseline;padding:9px 0;
+  border-bottom:1px solid #101620}
+.stev:last-child{border-bottom:0}
+.stev .sa{flex:none;width:38px;font-family:var(--mono);font-size:11px;
+  color:var(--faint)}
+.stev .tx{flex:1;min-width:0;font-size:13.5px;line-height:1.4;color:var(--ink2)}
+.stev .sk{flex:none;font-family:var(--mono);font-size:12px;color:var(--faint);
+  letter-spacing:-.01em;white-space:nowrap}
+.stev .sk b{color:var(--ink);font-weight:700}
+/* Kaçan şutlar ve molalar SOLUK: olan bir şey ama sayıya dönüşmemiş. */
+.stev.q .tx{color:var(--faint)}
+/* Karar anı: soldan sağa sönen ember zemin — dev saatteki anın ta
+   kendisi (işaret `_karar_cumlesi`den geliyor, iki yer ayrı karar
+   vermiyor). */
+.stev.g{background:linear-gradient(90deg,rgba(226,112,28,.10),transparent)}
+.stev.g .sa{color:var(--ember)}
+.stev.g .tx{color:var(--ink);font-weight:600}
+.stev.g .sk b{color:var(--ember)}
+.stfoot{display:flex;justify-content:space-between;gap:12px;
+  font-family:var(--mono);font-size:10px;color:#39424F;
+  padding:12px 0 2px;border-top:1px solid var(--line2)}
 </style>
 </head>
 <body>
@@ -1694,7 +1732,12 @@ td.khot{color:var(--amber);font-weight:700}
 </section>
 
 <section class="sec s7">
-  <div class="sechead"><h2>Bunları geç</h2><div class="cue">ama istersen bak</div></div>
+  <!-- ADI DEĞİŞTİ: "Bunları geç" box score didiklemeyi seven okuyucuya
+       her sabah "geç" diyordu — onun zevkine karşı konuşuyordu. Önemsizliği
+       rozet zaten söylüyor, başlığın emir vermesine gerek yok. Alt açıklama
+       ("ama istersen bak") aynı tonu taşıdığı için kalktı; başlık kendi
+       başına yeterli. -->
+  <div class="sechead"><h2>Gecenin gerisi</h2></div>
   <div class="rule"></div>
   <div id="archive"></div>
 </section>
@@ -1750,7 +1793,7 @@ td.khot{color:var(--amber);font-weight:700}
       <dt>Dram</dt><dd>Maç ne kadar geç karara bağlandı?</dd>
     </dl>
     <p>Rozet 8.5&apos;in üstündeyse <b>Mutlaka bil</b>, 6 ile 8.5 arasındaysa
-      <b>Göz at</b>, altındaysa <b>Bunları geç</b> bölümüne düşüyor. Eşikler
+      <b>Göz at</b>, altındaysa <b>Gecenin gerisi</b> bölümüne düşüyor. Eşikler
       sabit değil — sakin bir gecede en iyi maç daha düşük rozetle de tepede
       olabilir.</p>
     <p class="ravurgu">Rozet bir kalite notu değil, izlenmeye değerlik notu.
@@ -2529,6 +2572,27 @@ function oyuncuKartiHTML(o){
     </div>`;
 }
 
+/* SON TOPLAR. Satırların METNİ Python'da kuruldu (kapalı kalıp listesi,
+   `cumle.son_top_cumlesi`) — burada sadece çiziliyor. Skor SADECE
+   değiştiğinde yazılıyor; her satıra skor koymak gürültü olurdu. */
+function sonToplarHTML(st){
+  const skor=r=>{
+    if(!r.skor) return '';
+    const e=r.skor.ev, d=r.skor.dep;
+    // Kazanan taraf KALIN — sıra her yerdeki gibi ev–deplasman.
+    return st.ev_kazandi?`<b>${e}</b>–${d}`:`${e}–<b>${d}</b>`;
+  };
+  const satir=r=>`<div class="stev${r.karar?' g':(r.soluk?' q':'')}">
+      <span class="sa">${esc(r.saat)}</span>
+      <span class="tx">${esc(r.cumle)}</span>
+      <span class="sk">${skor(r)}</span></div>`;
+  return `<div class="stlist">
+      <div class="sth">Son ${st.pencere} saniye${st.uzatma?' · uzatma':''}</div>
+      ${st.satirlar.map(satir).join('')}
+      <div class="stfoot"><span>${st.hamle} hamle</span><span>${esc(st.kazanan)} kazandı</span></div>
+    </div>`;
+}
+
 function boxKartiHTML(m){
   const b=m.box;
   // EV SAHİBİ SOLDA — İSTİSNA YOK, sayfanın her yerindeki sırayla aynı.
@@ -2545,6 +2609,7 @@ function boxKartiHTML(m){
     `<div class="kpane" data-pane="0">${boxTablosu(sira[0])}</div>`,
     `<div class="kpane" data-pane="1" hidden>${kritikBlogu(b.kritik)}${takimPanosu(sira[0],sira[1],b.kilit)}</div>`,
     `<div class="kpane" data-pane="2" hidden>${boxTablosu(sira[1])}</div>`,
+    b.son_toplar?`<div class="kpane" data-pane="3" hidden>${sonToplarHTML(b.son_toplar)}</div>`:'',
   ].join('');
   return `<div class="grab"><i></i></div>
     <div class="khead"><button class="kclose" data-kapat aria-label="Kapat">✕</button>
@@ -2552,7 +2617,8 @@ function boxKartiHTML(m){
       <div class="kteams">${sira.map(t=>takimSatiri(t)).join('')}</div></div>
     ${ceyrekSeridi(sira[0],sira[1])}
     <div class="ktabs">${tab(sira[0],0)}<button class="mid" style="--tc:var(--ember)" data-pane="1">TAKIM${
-      b.kritik?'<i class="kdot"></i>':''}</button>${tab(sira[1],1)}</div>
+      b.kritik?'<i class="kdot"></i>':''}</button>${tab(sira[1],1)}${
+      b.son_toplar?'<button class="son" style="--tc:var(--ember)" data-pane="3">SON TOPLAR<i class="sdot"></i></button>':''}</div>
     <div class="kbody">
       ${b.wtf?`<div class="kwtf"><span>WTF İstatistiği</span><p>${esc(b.wtf)}</p></div>`:''}
       <div class="kpanes">${panolar}</div>
@@ -2691,7 +2757,7 @@ function render(d){
   MAC_BY_ID={};
   (d.mutlaka||[]).forEach(m=>{MAC_BY_ID[m.id]={...m,katman_adi:'Mutlaka bil'};});
   (d.degerse_bak||[]).forEach(m=>{MAC_BY_ID[m.id]={...m,katman_adi:'Göz at'};});
-  (d.diger||[]).forEach(m=>{MAC_BY_ID[m.id]={...m,katman_adi:'Bunları geç'};});
+  (d.diger||[]).forEach(m=>{MAC_BY_ID[m.id]={...m,katman_adi:'Gecenin gerisi'};});
   TARIH_ETIKET=`${turkceTarih(d.tarih)} gecesi`;
 
   // ---- "Sen uyurken" (masa saati) ----

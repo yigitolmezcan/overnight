@@ -289,7 +289,7 @@
       "metin": "Boston Celtics, Toronto Raptors'u yenerek konferansta 2. sıraya yükseldi.",
       "anlatili": true,
       "hedef_id": "a-0022500532",
-      "icon": "standings",
+      "icon": "default",
       "saat": "03:00",
       "rozet": 5.18,
       "skor": "BOS 125 – TOR 117",
@@ -397,7 +397,7 @@
       "metin": "Milwaukee Bucks, Los Angeles Lakers'i yendi.",
       "anlatili": true,
       "hedef_id": "g-mutlaka-1",
-      "icon": "default",
+      "icon": "standings",
       "saat": "06:30",
       "rozet": 8.64,
       "skor": "LAL 101 – MIL 105",
@@ -1074,7 +1074,8 @@
               "kazanan": false
             }
           ]
-        }
+        },
+        "son_toplar": null
       },
       "kazanan_kod": "POR",
       "ray_renk": "#E03A3E",
@@ -1711,7 +1712,8 @@
               "kazanan": false
             }
           ]
-        }
+        },
+        "son_toplar": null
       },
       "kazanan_kod": "MIL",
       "ray_renk": "#1E9E5A",
@@ -2363,7 +2365,115 @@
             }
           ]
         },
-        "kritik": null
+        "kritik": null,
+        "son_toplar": {
+          "pencere": 90,
+          "satirlar": [
+            {
+              "saat": "1:30",
+              "cumle": "Cam Spencer üçlüğü kaçırdı",
+              "tip": "kacan",
+              "kod": "MEM",
+              "skor": null,
+              "soluk": true,
+              "karar": false
+            },
+            {
+              "saat": "1:07",
+              "cumle": "Kenrich Williams üçlük attı",
+              "tip": "basket",
+              "kod": "OKC",
+              "skor": {
+                "ev": 114,
+                "dep": 115
+              },
+              "soluk": false,
+              "karar": false
+            },
+            {
+              "saat": "0:59",
+              "cumle": "Luguentz Dort topu çaldı",
+              "tip": "calma",
+              "kod": "OKC",
+              "skor": null,
+              "soluk": false,
+              "karar": false
+            },
+            {
+              "saat": "0:58",
+              "cumle": "Memphis molası",
+              "tip": "mola",
+              "kod": "",
+              "skor": null,
+              "soluk": true,
+              "karar": false
+            },
+            {
+              "saat": "0:58",
+              "cumle": "Luguentz Dort serbest atışları 2/2 attı",
+              "tip": "serbest",
+              "kod": "OKC",
+              "skor": {
+                "ev": 114,
+                "dep": 117
+              },
+              "soluk": false,
+              "karar": false
+            },
+            {
+              "saat": "0:42",
+              "cumle": "Cedric Coward üçlüğü kaçırdı",
+              "tip": "kacan",
+              "kod": "MEM",
+              "skor": null,
+              "soluk": true,
+              "karar": false
+            },
+            {
+              "saat": "0:39",
+              "cumle": "Jock Landale hücum ribaundu aldı",
+              "tip": "h_ribaund",
+              "kod": "MEM",
+              "skor": null,
+              "soluk": false,
+              "karar": false
+            },
+            {
+              "saat": "0:37",
+              "cumle": "Jock Landale basket attı",
+              "tip": "basket",
+              "kod": "MEM",
+              "skor": {
+                "ev": 116,
+                "dep": 117
+              },
+              "soluk": false,
+              "karar": false
+            },
+            {
+              "saat": "0:17",
+              "cumle": "Jalen Williams şutu kaçırdı",
+              "tip": "kacan",
+              "kod": "OKC",
+              "skor": null,
+              "soluk": true,
+              "karar": false
+            },
+            {
+              "saat": "0:00",
+              "cumle": "Cedric Coward şutu kaçırdı",
+              "tip": "kacan",
+              "kod": "MEM",
+              "skor": null,
+              "soluk": true,
+              "karar": false
+            }
+          ],
+          "hamle": 10,
+          "kazanan": "Oklahoma City",
+          "ev_kazandi": false,
+          "uzatma": false
+        }
       },
       "kazanan_kod": "OKC",
       "ray_renk": "#31A8E0",
@@ -15530,7 +15640,8 @@
               "kazanan": true
             }
           ]
-        }
+        },
+        "son_toplar": null
       },
       "kazanan_kod": "PHX",
       "ceyrek_tablosu": [
@@ -16132,7 +16243,8 @@
             }
           ]
         },
-        "kritik": null
+        "kritik": null,
+        "son_toplar": null
       },
       "kazanan_kod": "ATL",
       "ray_renk": "#E03A3E",
@@ -16144,7 +16256,7 @@
       "mac": "Boston Celtics — Toronto Raptors",
       "skor": "125–117",
       "rozet": 5.18,
-      "why": "gece sırası 1",
+      "why": "",
       "metin": "Boston Celtics evinde Toronto Raptors'u 125-117 yendi.",
       "box": {
         "ev": {
@@ -16714,7 +16826,8 @@
         },
         "wtf": "Jaylen Brown tek başına 13 serbest atış denedi. Toronto Raptors'un tamamı 10.",
         "kilit": null,
-        "kritik": null
+        "kritik": null,
+        "son_toplar": null
       },
       "kazanan_kod": "BOS",
       "ray_renk": "#12A05C",
@@ -17336,7 +17449,8 @@
             }
           ]
         },
-        "kritik": null
+        "kritik": null,
+        "son_toplar": null
       },
       "kazanan_kod": "PHI",
       "ray_renk": "#3A8DDE",
@@ -18004,7 +18118,8 @@
             }
           ]
         },
-        "kritik": null
+        "kritik": null,
+        "son_toplar": null
       },
       "kazanan_kod": "LAC",
       "ray_renk": "#1D428A",
@@ -18634,7 +18749,8 @@
         },
         "wtf": null,
         "kilit": null,
-        "kritik": null
+        "kritik": null,
+        "son_toplar": null
       },
       "kazanan_kod": "NOP",
       "ray_renk": "#B4975A",
@@ -19355,7 +19471,8 @@
             }
           ]
         },
-        "kritik": null
+        "kritik": null,
+        "son_toplar": null
       },
       "kazanan_kod": "GSW",
       "ray_renk": "#FFC72C",

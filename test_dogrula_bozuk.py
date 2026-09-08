@@ -1029,7 +1029,7 @@ def main():
           "veil" not in _html and "spoilerbtn" not in _html and "body.spoil" not in _html)
     import re as _re
     _sira = [x for x in _re.findall(r'<section class="sec ([a-zA-Z0-9]+)"', _html)]
-    basar("html: bölüm sırası 30 saniyede → Türkler → Mutlaka bil → Göz at → Bunları geç → Gecenin beşi",
+    basar("html: bölüm sırası 30 saniyede → Türkler → Mutlaka bil → Göz at → Gecenin gerisi → Gecenin beşi",
           _sira[:6] == ["s1", "sTr", "s3", "s4b", "s7", "s6"])
     # KARAR TERSİNE DÖNDÜ (31 Ağustos 2026): künyeye tek satırlık bir
     # alt satır geri geldi — ama eski "dev slogan" değil; mono, 10.5px,
@@ -7464,6 +7464,147 @@ def main():
     # Kalibrasyon: eşitlik kalmamalı.
     basar("Kalibrasyon: hiçbir gecede 3+ maç aynı rozeti paylaşmıyor",
           all(g["en_cok_tekrar"] < 3 for g in _kalib.geceleri_oku()))
+
+    # ==================================================================
+    # SON TOPLAR — kutu skor kartının dördüncü sekmesi.
+    # Cümleler KAPALI bir kalıp listesinden geliyor; LLM dokunmuyor.
+    # Bu bölüm o listenin GARANTİSİNİ kuruyor: üretilebilecek her cümle
+    # yasaklı sözcük kapısından geçmeli. Ölçüm tek bir geceyle değil,
+    # DEPODAKİ TÜM GECELERLE yapılıyor.
+    # ==================================================================
+    _st_geceler = sorted(_os.path.basename(f)[:-5]
+                         for f in __import__("glob").glob("gercek/2*.json"))
+    _st_adlar, _st_bloklar, _st_hata = set(), [], []
+    for _t in _st_geceler:
+        try:
+            _hg = json.loads(open(f"ham/{_t}.json", encoding="utf-8").read())
+        except OSError:
+            continue
+        for _gid, _m in (_hg.get("maclar") or {}).items():
+            try:
+                _bt = _m["box_traditional"]["boxScoreTraditional"]
+            except (KeyError, TypeError):
+                continue
+            _tarafl = []
+            for _tk in (_bt["homeTeam"], _bt["awayTeam"]):
+                _tarafl.append({"kod": _tk["teamTricode"],
+                                "skor": _tk["statistics"]["points"]})
+                for _p in _tk["players"]:
+                    _st_adlar.add(_derle._dogru_oyuncu_adi(
+                        _p["personId"],
+                        f"{_p['firstName']} {_p['familyName']}".strip()))
+            _blok = _derle._son_toplar(_m, _tarafl[0], _tarafl[1], None)
+            if _blok:
+                _blok["_kimlik"] = f"{_t} {_tarafl[0]['kod']}-{_tarafl[1]['kod']}"
+                _blok["_fark"] = abs(_tarafl[0]["skor"] - _tarafl[1]["skor"])
+                _st_bloklar.append(_blok)
+
+    # 1) GARANTİ: kapalı listedeki her kalıp × depodaki her oyuncu adı ×
+    #    her takım adı → hepsi yasaklı sözcük kapısından geçmeli.
+    _st_uretilen, _st_dusen = 0, []
+    for _ad in sorted(_st_adlar):
+        _adaylar = [{"tip": "h_ribaund", "ad": _ad},
+                    {"tip": "top_kaybi", "ad": _ad},
+                    {"tip": "calma", "ad": _ad}]
+        for _sut in cumle.SON_TOP_SUT_TURLERI:
+            _adaylar.append({"tip": "basket", "ad": _ad, "sut": _sut})
+            _adaylar.append({"tip": "kacan", "ad": _ad, "sut": _sut})
+        for _m2 in (1, 2, 3):
+            for _n2 in range(_m2 + 1):
+                _adaylar.append({"tip": "serbest", "ad": _ad,
+                                 "isabet": _n2, "deneme": _m2})
+        for _a in _adaylar:
+            _st_uretilen += 1
+            if not cumle.son_top_cumlesi(_a):
+                _st_dusen.append(f"{_a['tip']}/{_ad}")
+    for _kod in cumle.TAKIM_KISA:
+        _st_uretilen += 1
+        if not cumle.son_top_cumlesi({"tip": "mola",
+                                      "takim": cumle.kisa_gorunen(_kod)}):
+            _st_dusen.append(f"mola/{_kod}")
+    basar(f"Son toplar: üretilebilecek {_st_uretilen} cümlenin hepsi kapıdan geçiyor",
+          not _st_dusen, "; ".join(sorted(set(_st_dusen))[:3]))
+
+    # 2) LİSTE KAPALI: tanımsız bir olay tipi ASLA satır almaz.
+    basar("Son toplar: listede olmayan olay tipi cümle üretmiyor",
+          all(cumle.son_top_cumlesi({"tip": _x, "ad": "Nikola Jokić"}) is None
+              for _x in ("faul", "blok", "degisiklik", "s_ribaund", "", None))
+          and cumle.son_top_cumlesi({"tip": "basket", "ad": "Nikola Jokić",
+                                     "sut": "kanca"}) is None
+          and cumle.son_top_cumlesi({"tip": "h_ribaund", "ad": ""}) is None)
+
+    # 3) EŞİK: 3 farktan uzak ve uzatmasız maçta sekme HİÇ çıkmaz.
+    basar("Son toplar: eşik dışı maçta blok yok (3 fark / uzatma)",
+          all(b["_fark"] <= _derle.SON_TOP_FARK_ESIGI or b["uzatma"]
+              for b in _st_bloklar),
+          "; ".join(b["_kimlik"] for b in _st_bloklar
+                    if b["_fark"] > _derle.SON_TOP_FARK_ESIGI
+                    and not b["uzatma"])[:120])
+
+    # 4) SINIR: en fazla 10 satır, pencere 90 ya da 60.
+    basar("Son toplar: her blok ≤10 satır, pencere 90/60",
+          _st_bloklar
+          and all(1 <= b["hamle"] <= _derle.SON_TOP_MAX_SATIR
+                  and b["hamle"] == len(b["satirlar"])
+                  and b["pencere"] in (90, 60) for b in _st_bloklar),
+          f"{len(_st_bloklar)} blok")
+
+    # 5) YAYINDAKİ HER SATIR kapıdan geçiyor (kurulan metnin kendisi).
+    _st_kotu = [f"{b['_kimlik']}: {r['cumle']}" for b in _st_bloklar
+                for r in b["satirlar"] if cumle._gecir(r["cumle"]) != r["cumle"]]
+    basar("Son toplar: üretilmiş her satır yasaklı kapısından geçiyor",
+          not _st_kotu, "; ".join(_st_kotu[:3]))
+
+    # 6) TAM AD: mola dışındaki her satır tam adla başlıyor — PBP'deki
+    #    yalın soyadı ("Edgecombe") satıra ASLA çıkmıyor.
+    _st_kisa = [f"{b['_kimlik']}: {r['cumle']}" for b in _st_bloklar
+                for r in b["satirlar"]
+                if r["tip"] != "mola"
+                and not any(r["cumle"].startswith(a + " ") for a in _st_adlar)]
+    basar("Son toplar: her satır oyuncunun TAM adıyla başlıyor",
+          not _st_kisa, "; ".join(_st_kisa[:3]))
+
+    # 7) SKOR SADECE DEĞİŞTİĞİNDE: skor yazan iki ardışık satır aynı
+    #    skoru göstermiyor, ve skor hep ilerliyor.
+    _st_skor = []
+    for b in _st_bloklar:
+        _onceki = None
+        for r in b["satirlar"]:
+            if not r["skor"]:
+                continue
+            if _onceki and (r["skor"]["ev"] < _onceki["ev"]
+                            or r["skor"]["dep"] < _onceki["dep"]
+                            or (r["skor"]["ev"], r["skor"]["dep"]) == (_onceki["ev"], _onceki["dep"])):
+                _st_skor.append(f"{b['_kimlik']} {r['saat']}")
+            _onceki = r["skor"]
+    basar("Son toplar: skor yalnız değiştiğinde ve hep ileri doğru",
+          not _st_skor, "; ".join(_st_skor[:3]))
+
+    # 8) Serbest atış satırı "0/2 attı" gibi yalan bir ifade kurmuyor.
+    basar("Son toplar: kaçan serbest atış 'attı' fiiliyle yazılmıyor",
+          not [r for b in _st_bloklar for r in b["satirlar"]
+               if r["tip"] == "serbest" and _re.search(r"\b0/\d+ attı", r["cumle"])])
+
+    # 9) ŞABLON: sekme SADECE veri varsa çiziliyor, panosu da öyle.
+    # DİKKAT: `_html` bu noktada BÜLTEN gövdesine dönmüş oluyor (aynı ad
+    # main() içinde yeniden atanıyor). Şablonu kendi adıyla okuyoruz —
+    # yoksa test yanlış dosyayı denetler ve sessizce düşer.
+    _st_html = open("overnight_v17.html", encoding="utf-8").read()
+    basar("html: son toplar sekmesi veriye bağlı, dördüncü pano var",
+          "b.son_toplar?'<button class=\"son\"" in _st_html
+          and 'data-pane="3"' in _st_html
+          and "function sonToplarHTML(st)" in _st_html)
+    # Aynı özgüllük tuzağı: `.stev.g` temel `.stev` kuralından SONRA
+    # gelmeli, yoksa vurgulu satır sessizce soluk kalır.
+    basar("html: .stev.g kuralı .stev'den sonra tanımlı",
+          _st_html.index(".stev.g{") > _st_html.index(".stev{")
+          and _st_html.index(".stev.q .tx{") > _st_html.index(".stev .tx{"))
+    # CSS değişkenleri tanımlı olmalı (11 bildirimin sessizce düştüğü
+    # tuzağın tekrarı olmasın).
+    basar("html: son toplar stili tanımsız değişken kullanmıyor",
+          all(f"--{_v}:" in _st_html for _v in ("ember", "ink", "ink2", "faint",
+                                             "mono", "line2")))
+
 
 
 if __name__ == "__main__":

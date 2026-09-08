@@ -1195,6 +1195,88 @@ def _brief_adaylari(mac, olgu, en_iyi_oyuncu, en_iyi_ad):
 
 
 # ---------------------------------------------------------------------------
+# SON TOPLAR — KAPALI KALIP LİSTESİ.
+#
+# Kutu skor kartının dördüncü sekmesi: son 90 saniyenin oyun akışı.
+# LLM buraya HİÇ dokunmuyor — kod, olay tipini sabit bir kalıba eşliyor.
+# Eşleşmeyen olay tipi SATIR ALMAZ. Yeni bir kalıp gerekirse buraya
+# eklenir; sistem uydurmaz. Her satır tek özneli, tek fiilli, tek olgulu
+# ve hepsi `_gecir`den geçiyor (yasaklı sözcük kapısı).
+# ---------------------------------------------------------------------------
+
+# Bu listenin DIŞINDA satır yok. Testler bu demeti dolaşarak "üretilebilecek
+# tüm cümleler" kümesini kuruyor.
+SON_TOP_TIPLERI = ("basket", "kacan", "serbest", "h_ribaund",
+                   "top_kaybi", "calma", "mola")
+
+# Şut türü → (attı biçimi, kaçırdı biçimi). Belirtme eki türden türe
+# değişiyor ("üçlüğü", "turnikeyi", "smacı"), o yüzden iki biçim de elle
+# yazılı — ek türetilmiyor, sürpriz çıkmıyor.
+SON_TOP_SUT_TURLERI = {
+    "üçlük": ("üçlük attı", "üçlüğü kaçırdı"),
+    "turnike": ("turnike attı", "turnikeyi kaçırdı"),
+    "smaç": ("smaç attı", "smacı kaçırdı"),
+    "basket": ("basket attı", "şutu kaçırdı"),
+}
+
+
+def son_top_sut_turu(shot_value, alt_tur):
+    """Ham play-by-play alanlarından şut türü. TEK KAYNAK: hem satır
+    kurulurken hem testte buradan geliyor."""
+    at = (alt_tur or "").lower()
+    try:
+        deger = int(shot_value or 0)
+    except (TypeError, ValueError):
+        deger = 0
+    if deger == 3:
+        return "üçlük"
+    if "dunk" in at:
+        return "smaç"
+    if "layup" in at or "finger roll" in at:
+        return "turnike"
+    return "basket"
+
+
+def son_top_cumlesi(olay):
+    """Bir play-by-play olayının satır cümlesi, ya da None (= satır yok).
+
+    Nokta YOK: bunlar cümle değil, akış satırı — kartta saat ve skorla
+    aynı satırda duruyorlar."""
+    tip = (olay or {}).get("tip")
+    if tip == "mola":
+        takim = (olay.get("takim") or "").strip()
+        return _gecir(f"{takim} molası") if takim else None
+    ad = ((olay or {}).get("ad") or "").strip()
+    if not ad:
+        # Takım kaydı (oyuncusuz top kaybı, takım ribaundu) satır almaz.
+        return None
+    if tip in ("basket", "kacan"):
+        bicim = SON_TOP_SUT_TURLERI.get(olay.get("sut"))
+        if not bicim:
+            return None
+        return _gecir(f"{ad} {bicim[0 if tip == 'basket' else 1]}")
+    if tip == "serbest":
+        n, m = olay.get("isabet"), olay.get("deneme")
+        if not isinstance(n, int) or not isinstance(m, int):
+            return None
+        if m < 1 or n < 0 or n > m:
+            return None
+        if m == 1:
+            return _gecir(f"{ad} serbest atışını {'attı' if n else 'kaçırdı'}")
+        if n == 0:
+            # "0/2 attı" yalan söylüyordu; kaçırma kendi fiiliyle yazılıyor.
+            return _gecir(f"{ad} {m} serbest atışı da kaçırdı")
+        return _gecir(f"{ad} serbest atışları {n}/{m} attı")
+    if tip == "h_ribaund":
+        return _gecir(f"{ad} hücum ribaundu aldı")
+    if tip == "top_kaybi":
+        return _gecir(f"{ad} top kaybetti")
+    if tip == "calma":
+        return _gecir(f"{ad} topu çaldı")
+    return None
+
+
+# ---------------------------------------------------------------------------
 # ORKESTRA — bir maçın gövdesini kurar. Bütçe katmandan gelir.
 # ---------------------------------------------------------------------------
 

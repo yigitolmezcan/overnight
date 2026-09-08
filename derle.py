@@ -348,7 +348,7 @@ def _box_score(ham_mac, metin="", kaybeden_kod=None, gercekler=None):
     wtf = _wtf_istatistigi_bul(ev_taraf, dep_taraf)
 
     return {"ev": ev_taraf, "dep": dep_taraf, "wtf": wtf, "kilit": kilit,
-            "kritik": kritik}
+            "kritik": kritik, "son_toplar": _son_toplar(ham_mac, ev_taraf, dep_taraf, gercekler)}
 
 
 def _takim_adi(kod):
@@ -2412,6 +2412,204 @@ def _mac_akisi(gercekler, en_iyi_performans=None, satir_sayisi=AKIS_SATIR_SAYISI
     if satirlar and not any(r["kritik"] for r in satirlar):
         satirlar[-1]["kritik"] = True
     return satirlar
+
+
+# ---- SON TOPLAR (kutu skor kartının dördüncü sekmesi) -------------------
+# Maç 3 fark veya daha yakın bittiyse VEYA uzatmaya gittiyse çıkar.
+# Diğer maçlarda sekme HİÇ görünmez — sekmenin varlığı bile bilgi.
+SON_TOP_FARK_ESIGI = 3
+# Önce 90 saniye; satır sayısı sınırı aşarsa pencere 60'a iner.
+SON_TOP_PENCERELERI = (90.0, 60.0)
+SON_TOP_MAX_SATIR = 10
+# Satır alan olay tipleri (kullanıcı listesi): skor değiştiren hamleler,
+# kaçan şutlar, top kayıpları, top çalmalar, hücum ribaundları, molalar.
+# ELENENLER: oyuncu değişikliği, savunma ribaundu, faul, blok, teknik
+# kayıtlar (jump ball, ihlal, video incelemesi, periyot başı/sonu).
+
+
+def _son_toplar(ham_mac, ev_taraf, dep_taraf, gercekler=None):
+    """Son periyodun son 90 (gerekirse 60) saniyesinin akışı, ya da None.
+
+    Cümleler `cumle.son_top_cumlesi`den geliyor — kapalı kalıp listesi,
+    LLM yok. Eşleşmeyen olay tipi satır almıyor."""
+    try:
+        olaylar = ham_mac["play_by_play"]["game"]["actions"]
+    except (KeyError, TypeError):
+        return None
+    if not olaylar:
+        return None
+
+    ev_skor, dep_skor = ev_taraf["skor"], dep_taraf["skor"]
+    son_periyot = max(int(o.get("period") or 1) for o in olaylar)
+    uzatma = son_periyot > 4
+    if abs(ev_skor - dep_skor) > SON_TOP_FARK_ESIGI and not uzatma:
+        return None
+
+    # TAM AD: play-by-play'de yalnız soyadı var, tam ad kutu skordan
+    # personId ile geliyor (kullanıcı kuralı: "VJ Edgecombe", "Edgecombe"
+    # değil).
+    ad_by_id = {}
+    try:
+        bt = ham_mac["box_traditional"]["boxScoreTraditional"]
+        for takim in (bt["homeTeam"], bt["awayTeam"]):
+            for p in takim["players"]:
+                ad_by_id[p["personId"]] = _dogru_oyuncu_adi(
+                    p["personId"], f"{p['firstName']} {p['familyName']}".strip())
+    except (KeyError, TypeError):
+        return None
+
+    # Mola kayıtlarında teamTricode YOK, sadece teamId var — haritayı
+    # kayıtların kendisinden kuruyoruz, tahmin etmiyoruz.
+    kod_by_takim_id = {}
+    for o in olaylar:
+        tid, kod = o.get("teamId"), o.get("teamTricode")
+        if tid and kod:
+            kod_by_takim_id[int(tid)] = kod
+
+    def _saat(sn):
+        n = int(sn)
+        return f"{n // 60}:{n % 60:02d}"
+
+    def kur(pencere):
+        satirlar = []
+        ev_s = dep_s = 0
+        son_kacan_kod = None      # hücum/savunma ribaundu ayrımı için
+        # Aynı faulün serbest atışları TEK satır. Saat duruyor, o yüzden
+        # grubun kimliği (oyuncu + saat). Araya oyuncu değişikliği ya da
+        # video incelemesi girse bile grup BOZULMUYOR — satır yerinde
+        # duruyor, içeriği güncelleniyor (sıra korunsun diye).
+        grup_kimlik, grup_yeri, grup = None, None, None
+
+        def grubu_yaz():
+            if grup_yeri is None:
+                return
+            c = cumle.son_top_cumlesi({
+                "tip": "serbest", "ad": ad_by_id.get(grup["pid"], ""),
+                "isabet": grup["isabet"], "deneme": grup["deneme"]})
+            satirlar[grup_yeri].update({
+                "cumle": c or "",
+                "skor": {"ev": grup["ev"], "dep": grup["dep"]} if grup["skor_degisti"] else None,
+                "soluk": grup["isabet"] == 0,
+            })
+
+        for o in olaylar:
+            if int(o.get("period") or 1) != son_periyot:
+                continue
+            kalan = _pbp_saniye(o.get("clock"))
+            if kalan is None:
+                continue
+            pencerede = kalan <= pencere
+            tur = (o.get("actionType") or "").strip()
+            alt = (o.get("subType") or "").strip()
+            aciklama = o.get("description") or ""
+            pid = o.get("personId")
+            kod = o.get("teamTricode") or ""
+            onceki = (ev_s, dep_s)
+            if str(o.get("scoreHome") or "").strip():
+                ev_s = int(o["scoreHome"])
+            if str(o.get("scoreAway") or "").strip():
+                dep_s = int(o["scoreAway"])
+            degisti = (ev_s, dep_s) != onceki
+
+            # --- serbest atış grubu ---------------------------------
+            if tur == "Free Throw":
+                if not degisti:
+                    son_kacan_kod = kod
+                kimlik = (pid, o.get("clock"))
+                if not pencerede or pid not in ad_by_id:
+                    continue
+                if kimlik != grup_kimlik:
+                    grup_kimlik = kimlik
+                    grup = {"pid": pid, "isabet": 0, "deneme": 0,
+                            "skor_degisti": False, "ev": ev_s, "dep": dep_s}
+                    satirlar.append({"saat": _saat(kalan), "cumle": "", "tip": "serbest",
+                                     "kod": kod, "skor": None, "soluk": False})
+                    grup_yeri = len(satirlar) - 1
+                grup["deneme"] += 1
+                if degisti:
+                    grup["isabet"] += 1
+                    grup["skor_degisti"] = True
+                    grup["ev"], grup["dep"] = ev_s, dep_s
+                grubu_yaz()
+                continue
+
+            olay = None
+            if tur == "Made Shot":
+                olay = {"tip": "basket", "ad": ad_by_id.get(pid, ""),
+                        "sut": cumle.son_top_sut_turu(o.get("shotValue"), alt)}
+            elif tur == "Missed Shot":
+                olay = {"tip": "kacan", "ad": ad_by_id.get(pid, ""),
+                        "sut": cumle.son_top_sut_turu(o.get("shotValue"), alt)}
+                son_kacan_kod = kod
+            elif tur == "Rebound":
+                # HÜCUM RİBAUNDU: ribaundu alan takım, kaçan şutu atan
+                # takımla aynıysa. Kaydın kendi içinde "Off:x Def:y" var
+                # ama o oyuncunun TOPLAMI — tek kayıttan hangisi olduğu
+                # okunmuyor. Savunma ribaundu satır almıyor.
+                if kod and son_kacan_kod and kod == son_kacan_kod:
+                    olay = {"tip": "h_ribaund", "ad": ad_by_id.get(pid, "")}
+            elif tur == "Turnover":
+                olay = {"tip": "top_kaybi", "ad": ad_by_id.get(pid, "")}
+            elif tur == "Timeout":
+                t_kod = kod or kod_by_takim_id.get(int(pid or 0), "")
+                olay = {"tip": "mola", "takim": cumle.kisa_gorunen(t_kod) if t_kod else ""}
+            elif not tur and " STEAL " in aciklama:
+                # Çalma kayıtlarında actionType boş geliyor.
+                olay = {"tip": "calma", "ad": ad_by_id.get(pid, "")}
+
+            if not olay or not pencerede:
+                continue
+            c = cumle.son_top_cumlesi(olay)
+            if not c:
+                continue
+            # Araya satır alan başka bir olay girdiyse serbest atış grubu
+            # kapanır — sonraki atış yeni bir satır açar.
+            grup_kimlik, grup_yeri, grup = None, None, None
+            satirlar.append({
+                "saat": _saat(kalan), "cumle": c, "tip": olay["tip"], "kod": kod,
+                "skor": {"ev": ev_s, "dep": dep_s} if degisti else None,
+                "soluk": olay["tip"] in ("kacan", "mola"),
+            })
+        # AYNI TOPUN İKİ KAYDI: her çalmanın yanında bir de top kaybı
+        # kaydı var. İkisini birden yazmak aynı olayı iki satıra bölüyor;
+        # çalma satırı kalıyor (olayı yapan tarafı adlandıran o).
+        calma_saatleri = {r["saat"] for r in satirlar if r["tip"] == "calma"}
+        satirlar = [r for r in satirlar
+                    if not (r["tip"] == "top_kaybi" and r["saat"] in calma_saatleri)]
+        return [r for r in satirlar if r["cumle"]]
+
+    pencere = SON_TOP_PENCERELERI[0]
+    satirlar = kur(pencere)
+    if len(satirlar) > SON_TOP_MAX_SATIR:
+        pencere = SON_TOP_PENCERELERI[1]
+        satirlar = kur(pencere)
+        # 60 saniye de taşarsa SONDAKİ satırlar kalır — maçı bitiren
+        # hamleler kesilmemeli.
+        satirlar = satirlar[-SON_TOP_MAX_SATIR:]
+    if not satirlar:
+        return None
+
+    # KARAR ANI VURGUSU: dev saatte gösterilen anın TA KENDİSİ olsun diye
+    # işaret `_karar_cumlesi`den geliyor — iki yer ayrı ayrı karar vermiyor.
+    kd = _karar_cumlesi(gercekler) if gercekler else None
+    for r in satirlar:
+        r["karar"] = False
+    if kd:
+        for r in reversed(satirlar):
+            if r["skor"] and r["skor"]["ev"] == kd["ev_skor"] and r["skor"]["dep"] == kd["dep_skor"]:
+                r["karar"] = True
+                r["soluk"] = False
+                break
+
+    kazanan_kod = ev_taraf["kod"] if ev_skor >= dep_skor else dep_taraf["kod"]
+    return {
+        "pencere": int(pencere),
+        "satirlar": satirlar,
+        "hamle": len(satirlar),
+        "kazanan": cumle.kisa_gorunen(kazanan_kod),
+        "ev_kazandi": ev_skor >= dep_skor,
+        "uzatma": uzatma,
+    }
 
 
 def _kritik_anlar(ham_mac, ev_taraf, dep_taraf):
