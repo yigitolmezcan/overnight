@@ -1,0 +1,80 @@
+{
+  "tarih": "2026-01-10",
+  "uretildi": "2026-09-08T06:49:26.358415Z",
+  "maclar": {
+    "0022500544": {
+      "gec_satiri": "LA Clippers deplasmanda Detroit Pistons'u 98-92 yendi. LA Clippers, 19 sayılık farktan dönerek kazandı.",
+      "muzip": false
+    },
+    "0022500542": {
+      "gec_satiri": "Liderliğin 15 kez el değiştirdiği maçta Cleveland, Minnesota'yı yendi.",
+      "muzip": false
+    },
+    "0022500543": {
+      "gec_satiri": "Indiana Pacers evinde Miami Heat'i 123-99 yendi.",
+      "muzip": false
+    },
+    "0022500546": {
+      "gec_satiri": "Chicago Bulls evinde Dallas Mavericks'i 125-107 yendi.",
+      "muzip": false
+    },
+    "0022500547": {
+      "gec_satiri": "Charlotte Hornets deplasmanda Utah Jazz'ı 150-95 ezdi.",
+      "muzip": false
+    },
+    "0022500545": {
+      "baslik": "San Antonio, Boston deplasmanında 100-95 kazandı.",
+      "neden_onemli": "San Antonio Spurs, konferansta 2. sıraya yükseldi."
+    }
+  },
+  "brief": [
+    {
+      "metin": "San Antonio Spurs, Boston Celtics'i yenerek konferansta 2. sıraya yükseldi.",
+      "hedef_mac": "0022500545",
+      "muzip": false,
+      "kind": "siralama"
+    },
+    {
+      "metin": "LA Clippers, 19 sayılık farktan dönüp Detroit Pistons'u geçti.",
+      "hedef_mac": "0022500544",
+      "muzip": false,
+      "kind": "geri_donus"
+    },
+    {
+      "metin": "Cleveland Cavaliers, Minnesota Timberwolves'u yendi.",
+      "hedef_mac": "0022500542",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 2,
+    "ilk_denemede_kabul": 0,
+    "sablon_moduna_dusen": 0,
+    "detay": [
+      {
+        "mac_id": "0022500545",
+        "deneme": 0,
+        "gerekce": [
+          "baslik/T31: [\"'son saniyede devirdi' ama maç 5 farkla bitti (en fazla 3)\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "San Antonio, Boston'ı son saniyede devirdi."
+        }
+      }
+    ],
+    "sablon_isaretli": [],
+    "mutlaka_mac": 1,
+    "ret_orani": 1.0,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 2,
+      "girdi_token": 8532,
+      "cikti_token": 363,
+      "cache_yazma_token": 31392,
+      "cache_okuma_token": 0,
+      "toplam_maliyet_usd": 0.0992,
+      "butce_asildi": false
+    }
+  }
+}

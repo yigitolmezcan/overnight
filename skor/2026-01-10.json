@@ -1,0 +1,211 @@
+{
+  "tarih": "2026-01-10",
+  "hesaplandi": "2026-09-08T06:49:16.637880Z",
+  "en_iyi_skor": 8.33,
+  "maclar": [
+    {
+      "rozet": 8.33,
+      "ham": 8.73,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 4.14,
+        "K": 6.89,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 7.52,
+        "F": 7,
+        "G": 0,
+        "A": 7.08
+      },
+      "ham_tasiyicilar": {
+        "S": 4.14,
+        "K": 5.47
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.42,
+      "dram_terfi": false,
+      "mac_id": "0022500545",
+      "ev": "BOS",
+      "dep": "SAS",
+      "ev_skor": 95,
+      "dep_skor": 100,
+      "en_iyi_performans": "Derrick White",
+      "esitlik_bozucu": [
+        0,
+        -5
+      ]
+    },
+    {
+      "rozet": 7.81,
+      "ham": 7.81,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.34,
+        "K": 3.09,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 5.61,
+        "F": 7,
+        "G": 6,
+        "A": 4.5
+      },
+      "ham_tasiyicilar": {
+        "S": 6.34,
+        "K": 2.19
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.9,
+      "dram_terfi": false,
+      "mac_id": "0022500544",
+      "ev": "DET",
+      "dep": "LAC",
+      "ev_skor": 92,
+      "dep_skor": 98,
+      "en_iyi_performans": "John Collins",
+      "esitlik_bozucu": [
+        0,
+        -6
+      ]
+    },
+    {
+      "rozet": 7.49,
+      "ham": 7.49,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 2.75,
+        "K": 7.14,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.04,
+        "F": 0,
+        "G": 0,
+        "A": 7.58
+      },
+      "ham_tasiyicilar": {
+        "S": 3.06,
+        "K": 5.62
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 1.52,
+      "dram_terfi": false,
+      "mac_id": "0022500542",
+      "ev": "CLE",
+      "dep": "MIN",
+      "ev_skor": 146,
+      "dep_skor": 134,
+      "en_iyi_performans": "Donovan Mitchell",
+      "esitlik_bozucu": [
+        0,
+        -12
+      ]
+    },
+    {
+      "rozet": 5.79,
+      "ham": 5.79,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 6.13,
+        "K": 2.67,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.69,
+        "F": 0,
+        "G": 0,
+        "A": 2.0
+      },
+      "ham_tasiyicilar": {
+        "S": 7.66,
+        "K": 2.27
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 0.4,
+      "dram_terfi": false,
+      "mac_id": "0022500543",
+      "ev": "IND",
+      "dep": "MIA",
+      "ev_skor": 123,
+      "dep_skor": 99,
+      "en_iyi_performans": "Andrew Nembhard",
+      "esitlik_bozucu": [
+        0,
+        -24
+      ]
+    },
+    {
+      "rozet": 4.95,
+      "ham": 4.95,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 3.63,
+        "K": 4.69,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.24,
+        "F": 0,
+        "G": 0,
+        "A": 3.0
+      },
+      "ham_tasiyicilar": {
+        "S": 4.03,
+        "K": 4.09
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.6,
+      "dram_terfi": false,
+      "mac_id": "0022500546",
+      "ev": "CHI",
+      "dep": "DAL",
+      "ev_skor": 125,
+      "dep_skor": 107,
+      "en_iyi_performans": "Ayo Dosunmu",
+      "esitlik_bozucu": [
+        0,
+        -18
+      ]
+    },
+    {
+      "rozet": 0.86,
+      "ham": 0.86,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 0.85,
+        "K": 0.72,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.02,
+        "F": 0,
+        "G": 0,
+        "A": 0.75
+      },
+      "ham_tasiyicilar": {
+        "S": 1.21,
+        "K": 0.57
+      },
+      "s_sonum": 0.7,
+      "a_k_katkisi": 0.15,
+      "dram_terfi": false,
+      "mac_id": "0022500547",
+      "ev": "UTA",
+      "dep": "CHA",
+      "ev_skor": 95,
+      "dep_skor": 150,
+      "en_iyi_performans": "Miles Bridges",
+      "esitlik_bozucu": [
+        0,
+        -55
+      ]
+    }
+  ]
+}
