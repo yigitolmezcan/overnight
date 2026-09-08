@@ -9,8 +9,13 @@ Depo "yayınlandı" diyorsa yeterli değil; ölçüt OKUYUCUNUN GÖRDÜĞÜ sayf
 Bu betik canlı siteyi çekip gömülü verideki tarihi okuyor ve beklenen
 geceyle karşılaştırıyor.
 
+İkinci denetim (kullanıcı isteği, 9 Eylül 2026): dist/latest.json ile
+canlı sayfanın tarihi AYNI olmalı. İşaretçi aylarca geride kaldı ve
+kimse görmedi, çünkü hiçbir adım ona bakmıyordu — canlı sayfa doğruydu,
+işaretçi 30 Aralık'ta donmuştu. Artık ikisi ayrışırsa iş KIRMIZI yanar.
+
 Kullanım: python3 canli_dogrula.py <beklenen-tarih> [url]
-Çıkış kodu 1 = site beklenen geceyi göstermiyor.
+Çıkış kodu 1 = site beklenen geceyi göstermiyor YA DA işaretçi ayrışmış.
 """
 
 import json
@@ -20,8 +25,11 @@ import time
 import urllib.error
 import urllib.request
 
+from pathlib import Path
+
 from site_adresi import site_adresi
 VARSAYILAN_URL = site_adresi() + "/"
+LATEST_DOSYASI = Path(__file__).resolve().parent / "dist" / "latest.json"
 # Vercel dağıtımı birkaç dakika sürebiliyor; tek atışta "olmadı" demek
 # yanlış alarm üretir. Toplam ~5 dakika bekleniyor.
 DENEME = 10
@@ -63,9 +71,28 @@ def dogrula(beklenen, url=VARSAYILAN_URL, deneme=DENEME, ara=DENEME_ARASI_SN):
     return False
 
 
+def latest_dogrula(canli):
+    """dist/latest.json canlı sayfayla aynı geceyi mi gösteriyor?"""
+    try:
+        isaretci = json.loads(LATEST_DOSYASI.read_text(encoding="utf-8")).get("tarih")
+    except (OSError, ValueError) as hata:
+        print(f"İŞARETÇİ OKUNAMADI: dist/latest.json ({type(hata).__name__})")
+        return False
+    if isaretci == canli:
+        print(f"İŞARETÇİ: dist/latest.json → {isaretci} (canlıyla aynı)")
+        return True
+    print(f"İŞARETÇİ AYRIŞTI: dist/latest.json {isaretci!r} diyor, "
+          f"canlı sayfa {canli!r} gösteriyor.")
+    return False
+
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         raise SystemExit("Kullanım: python3 canli_dogrula.py <beklenen-tarih> [url]")
     hedef = sys.argv[1]
     adres = sys.argv[2] if len(sys.argv) > 2 else VARSAYILAN_URL
-    raise SystemExit(0 if dogrula(hedef, adres) else 1)
+    # İKİ DENETİM DE KOŞSUN: ilki düşünce ikincisini atlarsak, iki ayrı
+    # arıza tek koşuda görünmez ve ertesi gün ikinciyi yeniden keşfederiz.
+    canli_tamam = dogrula(hedef, adres)
+    isaretci_tamam = latest_dogrula(hedef)
+    raise SystemExit(0 if (canli_tamam and isaretci_tamam) else 1)

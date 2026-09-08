@@ -50,6 +50,14 @@ jobs:
         id: kurulum
         run: pip install -r requirements.txt
 
+      # Bkz. yayinla.yml'deki aynı adım: yayin.depo_kapisi geride bir
+      # depoda işi durduruyor (9 Eylül 2026 yakın kaçışı). Önce senkronla.
+      - name: Depoyu uzaktakiyle eşitle
+        run: |
+          git fetch origin main
+          git pull --rebase --autostash origin main
+          echo "HEAD: $(git rev-parse --short HEAD) · origin/main: $(git rev-parse --short origin/main)"
+
       - name: Testler (bozuk kod yayına çıkmasın)
         id: testler
         run: |

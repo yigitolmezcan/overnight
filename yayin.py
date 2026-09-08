@@ -190,6 +190,7 @@ def _kos(komut, ortam=None):
 
 def uret():
     """08:30 işi — sıradaki geceyi baştan sona üretir ve 'hazır' işaretler."""
+    depo_kapisi("uret")
     d = durum_oku()
     if d.get("hazir"):
         print(f"Zaten hazır bir gece var ({d['hazir']['tarih']}), yeniden üretilmiyor.")
@@ -282,6 +283,96 @@ def uret():
     return 0
 
 
+def _latest_isaretle(tarih):
+    """dist/latest.json = yayına giren gecenin DONDURULMUŞ dist'i.
+
+    GERÇEK KUSUR (ölçüldü, 9 Eylül 2026): işaretçi 30 Aralık'ta donmuştu,
+    site 9 Ocak'taydı — on gece geride. Sebep zincirin şekliydi:
+    `derle.yaz_dosya` işaretçiyi YALNIZ derlediği gece "en son yayınlanan"
+    ise yazıyor; `uret` işi ise HENÜZ YAYINLANMAMIŞ geceyi derliyor, yani
+    hiçbir zaman yazmıyor (bu doğru). `yayinla` ise geceyi yayına
+    alıyor ama BİR DAHA DERLEMİYOR — dondurulmuş dist'i sayfaya gömüyor.
+    Sonuç: işaretçiyi yazacak an hiç gelmiyordu. Tek yazan yol elle
+    çalıştırılan `tazele`ydi; ben en son 30 Aralık'ta çalıştırmıştım.
+
+    KOPYA, YENİDEN DERLEME DEĞİL: `derle` çağırmak metni değiştirebilir
+    (ölçüldü: aynı gece yeniden derlenince rozet ikonu ve bir gerekçe
+    alanı değişiyor). İşaretçi, sayfaya gömülen dosyanın AYNISI olmalı."""
+    kaynak = DIST_DIZIN / f"{tarih}.json"
+    if not kaynak.exists():
+        print(f"UYARI: dist/{tarih}.json yok — latest.json güncellenmedi.")
+        return False
+    (DIST_DIZIN / "latest.json").write_text(
+        kaynak.read_text(encoding="utf-8"), encoding="utf-8")
+    print(f"latest.json → {tarih}")
+    return True
+
+
+# --- YEREL DEPO GERİDE Mİ ------------------------------------------------
+# YAKIN KAÇIŞ (9 Eylül 2026): yerel depo on gece geride kalmıştı ve
+# `tazele`/`sayfalar` o eski duruma göre site sayfalarını yeniden kurdu.
+# Push edilseydi canlı site on gece geriye gidecekti. Fark edilmesi
+# tamamen tesadüftü (push reddedildi). Artık siteyi yeniden kuran her
+# komut ÖNCE bu kapıdan geçiyor: yerel geride ise iş DURUYOR.
+DEPO_KONTROL_KAPALI = "OVERNIGHT_DEPO_KONTROLU"
+
+
+def _git(*argumanlar):
+    return subprocess.run(["git", *argumanlar], cwd=str(KOK),
+                          capture_output=True, text=True, timeout=60)
+
+
+def depo_geride_mi():
+    """(geride_commit_sayisi, aciklama). Ölçemezse (None, sebep)."""
+    if os.environ.get(DEPO_KONTROL_KAPALI) == "0":
+        return 0, "kontrol kapalı (OVERNIGHT_DEPO_KONTROLU=0)"
+    try:
+        uzak = _git("remote").stdout.split()
+        if not uzak:
+            return None, "uzak depo tanımlı değil"
+        getir = _git("fetch", "--quiet", uzak[0])
+        if getir.returncode != 0:
+            return None, f"fetch başarısız: {(getir.stderr or '').strip()[:120]}"
+        # KARŞILAŞTIRMA HEDEFİ ÜÇ KADEMELİ. İlk sürüm yalnız
+        # `origin/<dal>`a bakıyordu ve ölçüm testinde YAKALANDI: dalın
+        # uzakta karşılığı yoksa (ayrık HEAD, yerel deneme dalı) kapı
+        # "ölçemedim" deyip GEÇİRİYORDU — tam da korumak istediği
+        # durumda. Sitenin doğrusu main; son kademe oraya düşüyor.
+        hedef = _git("rev-parse", "--abbrev-ref", "--symbolic-full-name",
+                     "@{upstream}").stdout.strip()
+        if not hedef:
+            dal = _git("rev-parse", "--abbrev-ref", "HEAD").stdout.strip()
+            for aday in (f"{uzak[0]}/{dal}" if dal and dal != "HEAD" else None,
+                         f"{uzak[0]}/main"):
+                if aday and _git("rev-parse", "--verify", "--quiet", aday).returncode == 0:
+                    hedef = aday
+                    break
+        if not hedef:
+            return None, "karşılaştırılacak uzak dal bulunamadı"
+        say = _git("rev-list", "--count", f"HEAD..{hedef}").stdout.strip()
+        return int(say or 0), hedef
+    except Exception as hata:            # ağ yok, git yok, zaman aşımı...
+        return None, f"{type(hata).__name__}: {hata}"
+
+
+def depo_kapisi(is_adi):
+    """Yerel geride ise SystemExit ile durur. Ölçülemezse uyarır, geçirir.
+
+    Ölçülemeyen durumda durmuyoruz: ağın olmadığı bir makinede hiçbir
+    şey yapılamaz hale gelmek, korumanın çözdüğünden büyük bir sorun."""
+    geride, detay = depo_geride_mi()
+    if geride is None:
+        print(f"UYARI [{is_adi}]: yerel/uzak karşılaştırması yapılamadı ({detay}). "
+              f"Devam ediliyor — depo güncelliğini kendin doğrula.")
+        return
+    if geride > 0:
+        print(f"DURDU [{is_adi}]: yerel depo {detay} dalının {geride} commit GERİSİNDE.")
+        print("  Bu haldeki bir yeniden kurma, canlı siteyi geriye alır.")
+        print("  Önce senkronla:  git pull --rebase")
+        print(f"  Bilerek geçmek için: {DEPO_KONTROL_KAPALI}=0")
+        raise SystemExit(2)
+
+
 def _siteyi_kur(tarih, kok_da=True):
     """Tasarım dosyasını alıp o gecenin verisini gömerek site/index.html üretir.
 
@@ -351,6 +442,7 @@ def arsiv_sayfalari():
     ok 404 verir. Bu komut geriye dönük eksikleri kapatıyor ve tasarım
     değiştiğinde bütün arşivi tazeliyor. Kök (index.html) SON gecede
     kalıyor — arşiv sayfaları onu ezmiyor."""
+    depo_kapisi("sayfalar")
     d = durum_oku()
     gunler = sorted(set(d.get("yayinlanan") or []))
     son = (d.get("yayinlanan") or [None])[-1]
@@ -362,6 +454,8 @@ def arsiv_sayfalari():
         _siteyi_kur(t, kok_da=(t == son))
         kuruldu.append(t)
     yasal_sayfalar()
+    if son:
+        _latest_isaretle(son)
     print(f"Arşiv sayfası: {len(kuruldu)} gece kuruldu"
           + (f", {len(atlanan)} atlandı (dist yok): {atlanan}" if atlanan else ""))
     return kuruldu
@@ -678,6 +772,7 @@ def yayinla():
 
     Artık o gün yayın yapılmışsa iş sessizce dönüyor. Elle zorlamak için
     YAYIN_GUNDE_TEK=0."""
+    depo_kapisi("yayinla")
     d = durum_oku()
     if os.environ.get("YAYIN_GUNDE_TEK", "1") != "0" and _bugun_yayinlandi_mi(d):
         son = (d.get("son_yayin") or {}).get("tarih")
@@ -714,6 +809,8 @@ def yayinla():
             return 0
 
     boyut = _siteyi_kur(tarih)
+    # İŞARETÇİ BURADA YAZILIYOR: geceyi yayına alan tek yer burası.
+    _latest_isaretle(tarih)
     d["yayinlanan"].append(tarih)
     # Vitrin gecesi sırayı ilerletmez — kronoloji kaldığı yerden devam eder.
     if not hazir.get("vitrin"):
@@ -731,6 +828,7 @@ def tazele():
     Bir yapılandırma ya da tasarım değişikliği (ör. Türk oyuncu listesi)
     yayındaki gecenin metnini de etkilediğinde gerekiyor: `yayinla`
     sıradaki geceye geçerdi, oysa istenen aynı gecenin tazelenmesi."""
+    depo_kapisi("tazele")
     d = durum_oku()
     if not d["yayinlanan"]:
         print("Yayında gece yok — tazelenecek bir şey yok.")
@@ -742,6 +840,7 @@ def tazele():
     # tazeleme, işi kopyalama. Derleme burada.
     _kos([sys.executable, "derle.py", tarih])
     boyut = _siteyi_kur(tarih)
+    _latest_isaretle(tarih)
     print(f"TAZELENDİ: {tarih} · site/index.html {boyut:,} bayt")
     return 0
 

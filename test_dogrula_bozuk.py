@@ -6192,6 +6192,122 @@ def main():
            != _jj.loads(open("dist/latest.json", encoding="utf-8").read())["tarih"]))
     basar("Arşiv: her yayınlanmış gecenin sayfası var",
           all(_os.path.exists(f"site/{_t9}.html") for _t9 in _yy))
+    # ...VE TERSİ: yayın listesinde olmayan bir gece sayfası sitede
+    # DURMAMALI. site/2026-01-28.html aylarca öyle durdu — hiçbir yerden
+    # link verilmiyordu ama adresi bilen açabiliyordu ve eski bölüm
+    # adını taşıyordu. Arşiv tazelemesi de ona hiç dokunmuyordu (o
+    # yalnız yayın listesini geziyor), yani sayfa donuyor.
+    _artik = sorted({_os.path.basename(_f)[:-5]
+                     for _f in __import__("glob").glob("site/2*.html")} - set(_yy))
+    basar("Arşiv: yayın listesinde olmayan gece sayfası sitede yok",
+          not _artik, f"artık sayfa: {_artik}")
+
+    # ------------------------------------------------------------------
+    # LATEST İŞARETÇİSİ — YAZILIYOR, COMMİT EDİLİYOR, DENETLENİYOR
+    # ------------------------------------------------------------------
+    # Arıza (ölçüldü, 9 Eylül 2026): işaretçi 30 Aralık'ta donmuştu,
+    # site 9 Ocak'taydı. Zincirde işaretçiyi yazacak an hiç gelmiyordu:
+    # `uret` yayınlanmamış geceyi derliyor (yazmıyor, doğru), `yayinla`
+    # ise DERLEMİYOR — dondurulmuş dist'i sayfaya gömüyor. Tek yazan
+    # yol elle çalıştırılan `tazele`ydi.
+    _ysrc = open("yayin.py", encoding="utf-8").read()
+    _yyml = open(".github/workflows/yayinla.yml", encoding="utf-8").read()
+    _uyml = open(".github/workflows/uret.yml", encoding="utf-8").read()
+    _csrc = open("canli_dogrula.py", encoding="utf-8").read()
+    basar("Latest: geceyi yayına alan yol işaretçiyi yazıyor",
+          "def _latest_isaretle(tarih)" in _ysrc
+          and _ysrc.count("_latest_isaretle(") >= 4)
+    # KOPYA, YENİDEN DERLEME DEĞİL: aynı gece yeniden derlenince metin
+    # değişebiliyor (ölçüldü: rozet ikonu ve bir gerekçe alanı).
+    basar("Latest: işaretçi dondurulmuş dist'in KOPYASI",
+          'kaynak = DIST_DIZIN / f"{tarih}.json"' in _ysrc
+          and "kaynak.read_text(encoding=\"utf-8\")" in _ysrc)
+    # Koşucuda yazılıp atılmasın.
+    basar("Latest: yayın işi dist/latest.json'ı commit'e ekliyor",
+          "git add site config/yayin_durumu.json dist/latest.json" in _yyml)
+    # Denetim: ayrışırsa iş KIRMIZI yansın.
+    basar("Latest: canlı denetim işaretçiyi de karşılaştırıyor",
+          "def latest_dogrula(canli)" in _csrc
+          and "canli_tamam and isaretci_tamam" in _csrc)
+    basar("Latest: canlı denetim adımı yayın işinde koşuyor ve düşerse iş kırmızı",
+          "canli_dogrula.py" in _yyml
+          and "steps.canli.outcome == 'failure'" in _yyml)
+    # Deponun kendi hâli de tutarlı olmalı: işaretçi = son yayınlanan =
+    # site/index.html'e gömülü gece.
+    _gomulu = _re.search(
+        r'<script id="gomulu-veri" type="application/json">(.*?)</script>',
+        open("site/index.html", encoding="utf-8").read(), _re.S)
+    _gomulu_tarih = sorted(_jj.loads(_gomulu.group(1)).keys())[-1] if _gomulu else None
+    basar("Latest: işaretçi, yayın listesi ve gömülü sayfa aynı geceyi söylüyor",
+          _jj.loads(open("dist/latest.json", encoding="utf-8").read())["tarih"]
+          == max(_yy) == _gomulu_tarih,
+          f"latest={_jj.loads(open('dist/latest.json', encoding='utf-8').read())['tarih']} "
+          f"liste={max(_yy)} sayfa={_gomulu_tarih}")
+
+    # ------------------------------------------------------------------
+    # YEREL DEPO GERİDE KALMA KAPISI
+    # ------------------------------------------------------------------
+    # Yakın kaçış (9 Eylül 2026): on gece geride bir yerel depodan site
+    # yeniden kuruldu. Push reddedildiği için fark edildi — yani koruma
+    # tesadüftü. Siteyi yeniden kuran HER komut artık kapıdan geçiyor.
+    basar("Depo kapısı: ölçüm ve durdurma ayrı fonksiyonlarda",
+          "def depo_geride_mi()" in _ysrc and "def depo_kapisi(is_adi)" in _ysrc
+          and "raise SystemExit(2)" in _ysrc)
+    for _is in ("uret", "yayinla", "tazele", "sayfalar"):
+        basar(f"Depo kapısı: '{_is}' işi kapıdan geçiyor",
+              f'depo_kapisi("{_is}")' in _ysrc)
+    # Ölçülemeyen durumda DURMUYOR (ağsız makinede hiçbir şey
+    # yapılamaz hale gelmek daha büyük sorun) ama SESSİZ de kalmıyor.
+    basar("Depo kapısı: ölçülemezse uyarıyor, sessiz geçmiyor",
+          "yerel/uzak karşılaştırması yapılamadı" in _ysrc)
+    # İlk sürüm burada DÜŞTÜ: dalın uzakta karşılığı yoksa (ayrık HEAD,
+    # yerel deneme dalı) kapı "ölçemedim" deyip geçiriyordu — tam da
+    # korumak istediği durumda. Üç kademeli hedef seçimi o yüzden var.
+    basar("Depo kapısı: hedef üç kademeli (upstream → origin/dal → origin/main)",
+          "@{upstream}" in _ysrc and f'{chr(34)}{{uzak[0]}}/main{chr(34)}' in _ysrc)
+    # CI'da iş kendi kendini kilitlemesin: koşucu önce senkronlanıyor.
+    basar("Depo kapısı: her iki iş akışı da python'dan ÖNCE senkronlanıyor",
+          all("Depoyu uzaktakiyle eşitle" in _y
+              and "git pull --rebase --autostash origin main" in _y
+              for _y in (_yyml, _uyml)))
+
+    # ------------------------------------------------------------------
+    # GECİKME NÖBETİ — tetikleme 09:15'i geçerse haber ver
+    # ------------------------------------------------------------------
+    # Ölçüm (7 gün, GitHub run_started_at): Vercel cron'u `0 6 * * *`
+    # yazılı olmasına rağmen HER SABAH 09:40:16 TSİ'de ateşledi (+40 dk).
+    # Ücretsiz planda cron çözünürlüğü saat bazında. Asıl zamanlayıcı
+    # dışarı alındı; bu nöbet onun geciktiğini haber veriyor.
+    _nsrc = open("api/nobetci.js", encoding="utf-8").read()
+    basar("Gecikme nöbeti: ayrı bir görev olarak var",
+          'gorev === "gecikme"' in _nsrc)
+    # ÖLÇÜT BAŞLAMA ANI: koşu süresi değişken, tetikleme saati ölçülen şey.
+    basar("Gecikme nöbeti: koşunun BAŞLAMA anına bakıyor",
+          "run_started_at" in _nsrc and "workflows/yayinla.yml/runs" in _nsrc)
+    # PENCERE, TEK ÜST EŞİK DEĞİL: senaryo testinde yakalandı — gece
+    # yarısından sonra düşen başıboş bir koşu alarmı susturuyordu.
+    basar("Gecikme nöbeti: ölçüt pencere (alt sınır da var)",
+          "GECIKME_ALT_TSI" in _nsrc and "GECIKME_ESIGI_TSI" in _nsrc
+          and "h >= GECIKME_ALT_TSI && h <= GECIKME_ESIGI_TSI" in _nsrc)
+    basar("Gecikme nöbeti: eşik 09:15, pencere 08:30'da başlıyor",
+          'GECIKME_ESIGI_TSI || "09:15"' in _nsrc
+          and 'GECIKME_ALT_TSI || "08:30"' in _nsrc)
+    # Yaz saati yok; sabit ofset yazılı olsun ki "neden 3?" sorusu
+    # koda bakınca cevaplansın.
+    basar("Gecikme nöbeti: TSİ ofseti sabit ve gerekçeli",
+          "TSI_OFSET_DK = 180" in _nsrc and "yaz saati yok" in _nsrc)
+    # HTTP yanıt nesnesini gölgeleme hatası geri gelmesin.
+    basar("Gecikme nöbeti: fetch yanıtı `yanit`i gölgelemiyor",
+          "const cevap = await gh(" in _nsrc
+          and "const yanit = await gh(\"/actions/workflows" not in _nsrc)
+    # Ölçüm aracı: "kaçta tetiklendi" sorusu bir komutla cevaplanabilsin.
+    _ksrc = open("kosu_kaydi.py", encoding="utf-8").read()
+    basar("Gecikme ölçümü: --tetikleme komutu var ve başlama anını okuyor",
+          "def tetikleme(" in _ksrc and "run_started_at" in _ksrc
+          and '"--tetikleme" in sys.argv' in _ksrc)
+    basar("Gecikme ölçümü: jeton ekrana yazılmıyor",
+          "Değeri EKRANA YAZILMAZ" in _ksrc
+          and "print(jeton" not in _ksrc and "print(f\"{jeton" not in _ksrc)
 
     # ------------------------------------------------------------------
     # KİLİT İSTATİSTİK VURGUSU · SEZON BAŞI TABANI · BLOK TIKLAMA

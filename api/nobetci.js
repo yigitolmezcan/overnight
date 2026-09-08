@@ -25,6 +25,35 @@ const ANAHTAR = process.env.NOBETCI_ANAHTARI || "";
 const UYARI_ADRESI = process.env.UYARI_ADRESI || "";
 const BAYATLIK_ESIGI_GUN = Number(process.env.BAYATLIK_ESIGI_GUN || 2);
 
+// GECİKME NÖBETİ (kullanıcı isteği, 9 Eylül 2026).
+// Ölçüm: Vercel cron `0 6 * * *` yazılı olmasına rağmen her sabah
+// 06:40:16 UTC'de ateşliyordu — beş gün üst üste, saniyesi saniyesine
+// (+40 dk). Ücretsiz planda cron çözünürlüğü SAAT bazında, dakika
+// garantisi yok. Asıl zamanlayıcı artık dışarıda (cron-job.org);
+// burası onun geciktiğini haber veren nöbet.
+//
+// Bu nöbet İZLEDİĞİ SİSTEMİN DIŞINDA yaşıyor: GitHub'ın kendi işi hiç
+// koşmasa bile bu uç nokta koşar ve haber verir. (Aynı ilke bayatlık
+// nöbetinde de var — alarm izlediği sistemin içinde yaşayamaz.)
+const TSI_OFSET_DK = 180;                    // Türkiye UTC+3, yaz saati yok
+// Pencere, tek bir üst eşik DEĞİL. Senaryo testinde görüldü: gece
+// yarısından hemen sonra düşen başıboş bir koşu (elle tetikleme ya da
+// saatlerce geciken GitHub cron'u) "bugün 00:30'da tetiklendi" sayılıp
+// alarmı SUSTURUYORDU — hedeflenen 09:00 tetiklemesi hiç olmasa bile.
+// Ölçüt artık "bugün koşu var mı" değil, "09:00 PENCERESİNDE koşu var mı".
+const GECIKME_ALT_TSI = process.env.GECIKME_ALT_TSI || "08:30";
+const GECIKME_ESIGI_TSI = process.env.GECIKME_ESIGI_TSI || "09:15";
+
+function tsi(d) {
+  return new Date(d.getTime() + TSI_OFSET_DK * 60000);
+}
+function tsiGun(d) {
+  return tsi(d).toISOString().slice(0, 10);
+}
+function tsiSaatDk(d) {
+  return tsi(d).toISOString().slice(11, 16);
+}
+
 // ZORUNLU tek ayar: GH_JETON. Kullanıcıya bırakılan kurulum işi ne
 // kadar azsa o kadar iyi — her ek değişken bir kurulum adımı, her
 // kurulum adımı bir arıza ihtimali.
@@ -169,6 +198,44 @@ export default async function handler(istek, yanit) {
       // aynı çağrıda nöbeti de tutuyor — dünkü yayın çıkmadıysa bunu
       // yakalayan tek katman bu.
       if (gorev !== "yayinla") return yanit.status(200).json(rapor);
+    }
+
+    if (gorev === "gecikme") {
+      // BUGÜN yayın işi tetiklendi mi, tetiklendiyse SAAT KAÇTA?
+      // Ölçüt işin BAŞLAMA anı (run_started_at) — bitiş değil. Koşu
+      // süresi değişken, tetikleme saati ise ölçmek istediğimiz şey.
+      // `cevap` — `yanit` DEĞİL: `yanit` bu fonksiyonun HTTP yanıt
+      // nesnesi. Aynı adı kullanmak onu gölgeliyor ve dönüş satırı
+      // sessizce patlıyordu.
+      const cevap = await gh("/actions/workflows/yayinla.yml/runs?per_page=30");
+      if (!cevap.ok) throw new Error(`koşu listesi okunamadı (${cevap.status})`);
+      const kosular = (await cevap.json()).workflow_runs || [];
+      const bugun = tsiGun(new Date());
+      const bugunkuler = kosular
+        .map((k) => new Date(k.run_started_at))
+        .filter((t) => tsiGun(t) === bugun)
+        .sort((a, b) => a - b);
+      const saatler = bugunkuler.map(tsiSaatDk);
+      const pencerede = saatler.filter(
+        (h) => h >= GECIKME_ALT_TSI && h <= GECIKME_ESIGI_TSI);
+      rapor.gun_tsi = bugun;
+      rapor.bugunku_tetiklemeler_tsi = saatler;
+      rapor.pencere_tsi = `${GECIKME_ALT_TSI}-${GECIKME_ESIGI_TSI}`;
+      rapor.zamaninda_tetikleme_tsi = pencerede[0] || null;
+      if (!pencerede.length) {
+        rapor.haber = await haberVer("OVERNIGHT · yayın tetiklemesi gecikti", [
+          `${bugun} · yayın işi ${GECIKME_ALT_TSI}-${GECIKME_ESIGI_TSI} TSİ penceresinde tetiklenmedi.`,
+          saatler.length
+            ? `Bugün görülen tetiklemeler: ${saatler.join(", ")} TSİ.`
+            : "Bugün hiç koşu yok.",
+          "Dış zamanlayıcı (cron-job.org) ateşlememiş olabilir.",
+          `Koşular: https://github.com/${GH_DEPO}/actions`,
+        ]);
+        rapor.uyari = "gecikti";
+      } else {
+        rapor.uyari = null;
+      }
+      return yanit.status(200).json(rapor);
     }
 
     // Nöbet: yayın bayat mı?
