@@ -1,0 +1,177 @@
+{
+  "tarih": "2026-01-11",
+  "uretildi": "2026-09-09T06:58:33.078323Z",
+  "maclar": {
+    "0022500548": {
+      "gec_satiri": "Orlando Magic evinde New Orleans Pelicans'ı 128-118 yendi. Orlando Magic, 11 sayılık farktan dönerek kazandı.",
+      "muzip": false
+    },
+    "0022500556": {
+      "gec_satiri": "Atlanta Hawks deplasmanda Golden State Warriors'u 124-111 yendi.",
+      "muzip": false
+    },
+    "0022500549": {
+      "gec_satiri": "Memphis Grizzlies evinde Brooklyn Nets'i 103-98 yendi.",
+      "muzip": false
+    },
+    "0022500553": {
+      "gec_satiri": "Oklahoma City Thunder evinde Miami Heat'i 124-112 yendi.",
+      "muzip": false
+    },
+    "0022500555": {
+      "gec_satiri": "Phoenix Suns evinde Washington Wizards'ı 112-93 yendi.",
+      "muzip": false
+    },
+    "0022500551": {
+      "gec_satiri": "New York Knicks deplasmanda Portland Trail Blazers'i 123-114 yendi.",
+      "muzip": false
+    },
+    "0022500554": {
+      "baslik": "Denver, Milwaukee'yi 108-104 yendi.",
+      "neden_onemli": "Denver Nuggets, konferansta 3. sıraya yükseldi."
+    },
+    "0022500550": {
+      "baslik": "Toronto Raptors, Philadelphia 76ers'i 116-115 yendi."
+    },
+    "0022500557": {
+      "baslik": "Sacramento, Houston'ı 111-98 yendi."
+    },
+    "0022500552": {
+      "baslik": "Minnesota, San Antonio'yu son saniyede devirdi."
+    }
+  },
+  "brief": [
+    {
+      "metin": "Denver Nuggets, Milwaukee Bucks'u yendi.",
+      "hedef_mac": "0022500554",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Scottie Barnes, Philadelphia 76ers karşısında 31 sayı attı.",
+      "hedef_mac": "0022500550",
+      "muzip": false,
+      "kind": "performans"
+    },
+    {
+      "metin": "Sürpriz bir sonuçla Sacramento Kings, Houston Rockets'i yendi.",
+      "hedef_mac": "0022500557",
+      "muzip": false,
+      "kind": "surpriz"
+    },
+    {
+      "metin": "Minnesota Timberwolves, 19 sayılık farktan dönüp San Antonio Spurs'u geçti.",
+      "hedef_mac": "0022500552",
+      "muzip": false,
+      "kind": "geri_donus"
+    },
+    {
+      "metin": "Orlando Magic, New Orleans Pelicans'ı yendi.",
+      "hedef_mac": "0022500548",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Atlanta Hawks, Golden State Warriors deplasmanında kazandı.",
+      "hedef_mac": "0022500556",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Memphis Grizzlies, Brooklyn Nets'i evinde yendi.",
+      "hedef_mac": "0022500549",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Oklahoma City Thunder, Miami Heat'i yenerek konferansta 1. sıraya yükseldi.",
+      "hedef_mac": "0022500553",
+      "muzip": false,
+      "kind": "siralama"
+    },
+    {
+      "metin": "Washington Wizards, deplasmanda Phoenix Suns'a kaybetti.",
+      "hedef_mac": "0022500555",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Portland Trail Blazers, evinde New York Knicks'e kaybetti.",
+      "hedef_mac": "0022500551",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 7,
+    "ilk_denemede_kabul": 2,
+    "sablon_moduna_dusen": 1,
+    "detay": [
+      {
+        "mac_id": "0022500554",
+        "deneme": 0,
+        "gerekce": [
+          "baslik/T31: [\"başlık iskelet listesinin dışında: 'Denver, Milwaukee'yi sahasında 108-104 yendi.'\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Denver, Milwaukee'yi sahasında 108-104 yendi."
+        }
+      },
+      {
+        "mac_id": "0022500550",
+        "deneme": 0,
+        "gerekce": [
+          "baslik/T31: [\"başlık iskelet listesinin dışında: 'Toronto, son saniyede Philadelphia'yı 116-115 yendi.'\"]",
+          "T14: en iyi performans (Scottie Barnes) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Toronto, son saniyede Philadelphia'yı 116-115 yendi."
+        }
+      },
+      {
+        "mac_id": "0022500550",
+        "deneme": 1,
+        "gerekce": [
+          "T14: en iyi performans (Scottie Barnes) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Toronto, Philadelphia'yı son saniyede devirdi."
+        }
+      },
+      {
+        "mac_id": "0022500550",
+        "deneme": 2,
+        "gerekce": [
+          "T14: en iyi performans (Scottie Barnes) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Toronto, Philadelphia'yı son saniyede devirdi."
+        }
+      }
+    ],
+    "sablon_isaretli": [
+      {
+        "mac_id": "0022500550",
+        "alan": "mutlaka",
+        "gerekce": [
+          "T14: en iyi performans (Scottie Barnes) hiç anılmadı"
+        ],
+        "metin": {
+          "baslik": "Toronto Raptors, Philadelphia 76ers'i 116-115 yendi."
+        }
+      }
+    ],
+    "mutlaka_mac": 4,
+    "ret_orani": 0.714,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 7,
+      "girdi_token": 26117,
+      "cikti_token": 837,
+      "cache_yazma_token": 45374,
+      "cache_okuma_token": 63753,
+      "toplam_maliyet_usd": 0.1868,
+      "butce_asildi": false
+    }
+  }
+}
