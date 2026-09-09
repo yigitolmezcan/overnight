@@ -42,24 +42,18 @@
     "2026-01-05",
     "2026-01-06",
     "2026-01-07",
-    "2026-01-09"
+    "2026-01-09",
+    "2026-01-10"
   ],
-  "hazir": {
+  "hazir": null,
+  "son_yayin": {
     "tarih": "2026-01-10",
     "uretildi": "2026-09-08T06:49:27.090852Z",
     "mod": "hibrit",
     "maliyet_usd": 0.0992,
     "butce_asildi": false,
-    "sablona_dusen_alan": 0
-  },
-  "son_yayin": {
-    "tarih": "2026-01-09",
-    "uretildi": "2026-09-07T06:54:14.612032Z",
-    "mod": "hibrit",
-    "maliyet_usd": 0.1586,
-    "butce_asildi": false,
-    "sablona_dusen_alan": 1,
-    "yayinlandi": "2026-09-08T06:40:41.504042Z"
+    "sablona_dusen_alan": 0,
+    "yayinlandi": "2026-09-09T06:40:42.917484Z"
   },
   "son_engel": {
     "tarih": "2026-01-04",
@@ -84,7 +78,7 @@
   "engellenen": [
     "2026-01-04"
   ],
-  "sira_imleci": "2026-01-09",
+  "sira_imleci": "2026-01-10",
   "_sira_imleci_neden": "Kullanıcı kararı 2026-08-25: kronoloji sezon başından değil, ARALIK ORTASINDAN başlıyor. Sezon başı gecelerinde takımlar 10 maçı doldurmadığı için susma kuralı derece/sıralama/seri/sürpriz olgularının hepsini kapatıyor ve metinler haftalarca cılız kalıyor. Ekim-Kasım arşiv geceleri atlanıyor; sezon gerçekten Ekim'de başlayınca canlı veriye geçilecek, o geceler kullanılmayacak.",
   "_vitrin_geri_alindi": {
     "tarih": "2026-01-28",
