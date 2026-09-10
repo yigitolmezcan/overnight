@@ -1,0 +1,211 @@
+{
+  "tarih": "2026-01-12",
+  "hesaplandi": "2026-09-10T06:54:37.542738Z",
+  "en_iyi_skor": 8.77,
+  "maclar": [
+    {
+      "rozet": 8.77,
+      "ham": 9.95,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 5.72,
+        "K": 8.32,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 4.24,
+        "F": 0,
+        "G": 6,
+        "A": 5.5
+      },
+      "ham_tasiyicilar": {
+        "S": 6.36,
+        "K": 7.22
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 1.1,
+      "dram_terfi": false,
+      "mac_id": "0022500558",
+      "ev": "CLE",
+      "dep": "UTA",
+      "ev_skor": 112,
+      "dep_skor": 123,
+      "en_iyi_performans": "Keyonte George",
+      "esitlik_bozucu": [
+        0,
+        -11
+      ]
+    },
+    {
+      "rozet": 8.67,
+      "ham": 9.64,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 9.0,
+        "K": 4.09,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.15,
+        "F": 0,
+        "G": 0,
+        "A": 6.42
+      },
+      "ham_tasiyicilar": {
+        "S": 10,
+        "K": 2.81
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 1.28,
+      "dram_terfi": false,
+      "mac_id": "0022500562",
+      "ev": "SAC",
+      "dep": "LAL",
+      "ev_skor": 124,
+      "dep_skor": 112,
+      "en_iyi_performans": "Luka Dončić",
+      "esitlik_bozucu": [
+        0,
+        -12
+      ]
+    },
+    {
+      "rozet": 8.56,
+      "ham": 9.32,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 4.02,
+        "K": 5.54,
+        "T": 0,
+        "D": 8
+      },
+      "yukselticiler": {
+        "Y": 6.42,
+        "F": 10,
+        "G": 0,
+        "A": 2.75
+      },
+      "ham_tasiyicilar": {
+        "S": 4.02,
+        "K": 4.99
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.55,
+      "dram_terfi": true,
+      "mac_id": "0022500559",
+      "ev": "IND",
+      "dep": "BOS",
+      "ev_skor": 98,
+      "dep_skor": 96,
+      "en_iyi_performans": "Pascal Siakam",
+      "esitlik_bozucu": [
+        8,
+        -2
+      ]
+    },
+    {
+      "rozet": 6.84,
+      "ham": 6.84,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.55,
+        "K": 2.91,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 5.47,
+        "F": 0,
+        "G": 0,
+        "A": 3.5
+      },
+      "ham_tasiyicilar": {
+        "S": 6.55,
+        "K": 2.21
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.7,
+      "dram_terfi": false,
+      "mac_id": "0022500563",
+      "ev": "LAC",
+      "dep": "CHA",
+      "ev_skor": 117,
+      "dep_skor": 109,
+      "en_iyi_performans": "Kawhi Leonard",
+      "esitlik_bozucu": [
+        0,
+        -8
+      ]
+    },
+    {
+      "rozet": 6.54,
+      "ham": 6.54,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.78,
+        "K": 1.66,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 4.53,
+        "F": 0,
+        "G": 0,
+        "A": 2.67
+      },
+      "ham_tasiyicilar": {
+        "S": 6.78,
+        "K": 1.13
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.53,
+      "dram_terfi": false,
+      "mac_id": "0022500561",
+      "ev": "DAL",
+      "dep": "BKN",
+      "ev_skor": 113,
+      "dep_skor": 105,
+      "en_iyi_performans": "Cooper Flagg",
+      "esitlik_bozucu": [
+        0,
+        -8
+      ]
+    },
+    {
+      "rozet": 5.94,
+      "ham": 5.94,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 5.17,
+        "K": 5.1,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.11,
+        "F": 0,
+        "G": 0,
+        "A": 5.42
+      },
+      "ham_tasiyicilar": {
+        "S": 5.75,
+        "K": 4.02
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 1.08,
+      "dram_terfi": false,
+      "mac_id": "0022500560",
+      "ev": "TOR",
+      "dep": "PHI",
+      "ev_skor": 102,
+      "dep_skor": 115,
+      "en_iyi_performans": "Tyrese Maxey",
+      "esitlik_bozucu": [
+        0,
+        -13
+      ]
+    }
+  ]
+}

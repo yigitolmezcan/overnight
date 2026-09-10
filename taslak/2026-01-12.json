@@ -1,0 +1,126 @@
+{
+  "tarih": "2026-01-12",
+  "uretildi": "2026-09-10T06:55:13.849028Z",
+  "maclar": {
+    "0022500563": {
+      "gec_satiri": "LA Clippers evinde Charlotte Hornets'i 117-109 yendi. Kawhi Leonard 35 sayı attı.",
+      "muzip": false
+    },
+    "0022500561": {
+      "gec_satiri": "Dallas Mavericks evinde Brooklyn Nets'i 113-105 yendi.",
+      "muzip": false
+    },
+    "0022500560": {
+      "gec_satiri": "Philadelphia 76ers deplasmanda Toronto Raptors'u 115-102 yendi. Tyrese Maxey 33 sayı attı.",
+      "muzip": false
+    },
+    "0022500558": {
+      "baslik": "Utah Jazz, 10 sayılık farktan dönüp Cleveland Cavaliers'i yendi."
+    },
+    "0022500562": {
+      "baslik": "DeRozan'ın 32 sayısıyla Sacramento, Lakers'ı yendi."
+    },
+    "0022500559": {
+      "baslik": "Indiana, Boston'u son saniyede devirdi."
+    }
+  },
+  "brief": [
+    {
+      "metin": "Sürpriz bir sonuçla Utah Jazz, Cleveland Cavaliers'i yendi.",
+      "hedef_mac": "0022500558",
+      "muzip": false,
+      "kind": "surpriz"
+    },
+    {
+      "metin": "Sacramento Kings, Los Angeles Lakers'i yendi.",
+      "hedef_mac": "0022500562",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Indiana Pacers, Boston Celtics'i yendi.",
+      "hedef_mac": "0022500559",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Kawhi Leonard, Charlotte Hornets karşısında 35 sayı attı.",
+      "hedef_mac": "0022500563",
+      "muzip": false,
+      "kind": "performans"
+    },
+    {
+      "metin": "Dallas Mavericks, Brooklyn Nets'i evinde yendi.",
+      "hedef_mac": "0022500561",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Philadelphia 76ers, Toronto Raptors deplasmanında kazandı.",
+      "hedef_mac": "0022500560",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 5,
+    "ilk_denemede_kabul": 2,
+    "sablon_moduna_dusen": 1,
+    "detay": [
+      {
+        "mac_id": "0022500558",
+        "deneme": 0,
+        "gerekce": [
+          "T14: en iyi performans (Keyonte George) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Utah, 10 sayılık farktan dönüp Cleveland'ı yendi."
+        }
+      },
+      {
+        "mac_id": "0022500558",
+        "deneme": 1,
+        "gerekce": [
+          "T14: en iyi performans (Keyonte George) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Utah, Cleveland deplasmanında 123-112 kazandı."
+        }
+      },
+      {
+        "mac_id": "0022500558",
+        "deneme": 2,
+        "gerekce": [
+          "T14: en iyi performans (Keyonte George) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Utah, 10 sayılık farktan dönüp Cleveland'ı yendi."
+        }
+      }
+    ],
+    "sablon_isaretli": [
+      {
+        "mac_id": "0022500558",
+        "alan": "mutlaka",
+        "gerekce": [
+          "T14: en iyi performans (Keyonte George) hiç anılmadı"
+        ],
+        "metin": {
+          "baslik": "Utah Jazz, 10 sayılık farktan dönüp Cleveland Cavaliers'i yendi."
+        }
+      }
+    ],
+    "mutlaka_mac": 3,
+    "ret_orani": 0.6,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 5,
+      "girdi_token": 20110,
+      "cikti_token": 2011,
+      "cache_yazma_token": 36065,
+      "cache_okuma_token": 38799,
+      "toplam_maliyet_usd": 0.1583,
+      "butce_asildi": false
+    }
+  }
+}
