@@ -1,0 +1,245 @@
+{
+  "tarih": "2026-01-13",
+  "hesaplandi": "2026-09-11T06:54:22.063890Z",
+  "en_iyi_skor": 9.21,
+  "maclar": [
+    {
+      "rozet": 9.21,
+      "ham": 11.72,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 8.84,
+        "K": 7.48,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 7.21,
+        "F": 7,
+        "G": 0,
+        "A": 7.42
+      },
+      "ham_tasiyicilar": {
+        "S": 8.84,
+        "K": 6.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.48,
+      "dram_terfi": false,
+      "mac_id": "0022500565",
+      "ev": "HOU",
+      "dep": "CHI",
+      "ev_skor": 119,
+      "dep_skor": 113,
+      "en_iyi_performans": "Tre Jones",
+      "esitlik_bozucu": [
+        0,
+        -6
+      ]
+    },
+    {
+      "rozet": 9.01,
+      "ham": 10.8,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 8.46,
+        "K": 5.89,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 6.71,
+        "F": 7,
+        "G": 0,
+        "A": 6.58
+      },
+      "ham_tasiyicilar": {
+        "S": 8.46,
+        "K": 4.57
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.32,
+      "dram_terfi": false,
+      "mac_id": "0022500564",
+      "ev": "MIA",
+      "dep": "PHX",
+      "ev_skor": 127,
+      "dep_skor": 121,
+      "en_iyi_performans": "Bam Adebayo",
+      "esitlik_bozucu": [
+        0,
+        -6
+      ]
+    },
+    {
+      "rozet": 8.8,
+      "ham": 10.04,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 8.57,
+        "K": 2.14,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 7.62,
+        "F": 7,
+        "G": 6,
+        "A": 3.92
+      },
+      "ham_tasiyicilar": {
+        "S": 8.57,
+        "K": 1.36
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.78,
+      "dram_terfi": false,
+      "mac_id": "0022500567",
+      "ev": "NOP",
+      "dep": "DEN",
+      "ev_skor": 116,
+      "dep_skor": 122,
+      "en_iyi_performans": "Jamal Murray",
+      "esitlik_bozucu": [
+        0,
+        -6
+      ]
+    },
+    {
+      "rozet": 8.54,
+      "ham": 9.26,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 4.72,
+        "K": 8.51,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.79,
+        "F": 0,
+        "G": 0,
+        "A": 8.27
+      },
+      "ham_tasiyicilar": {
+        "S": 5.9,
+        "K": 6.86
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 1.65,
+      "dram_terfi": false,
+      "mac_id": "0022500568",
+      "ev": "OKC",
+      "dep": "SAS",
+      "ev_skor": 119,
+      "dep_skor": 98,
+      "en_iyi_performans": "Shai Gilgeous-Alexander",
+      "esitlik_bozucu": [
+        0,
+        -21
+      ]
+    },
+    {
+      "rozet": 7.24,
+      "ham": 7.24,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.21,
+        "K": 6.34,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.82,
+        "F": 0,
+        "G": 0,
+        "A": 5.5
+      },
+      "ham_tasiyicilar": {
+        "S": 7.76,
+        "K": 5.24
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 1.1,
+      "dram_terfi": false,
+      "mac_id": "0022500569",
+      "ev": "LAL",
+      "dep": "ATL",
+      "ev_skor": 141,
+      "dep_skor": 116,
+      "en_iyi_performans": "LeBron James",
+      "esitlik_bozucu": [
+        0,
+        -25
+      ]
+    },
+    {
+      "rozet": 5.12,
+      "ham": 5.12,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 3.31,
+        "K": 4.86,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.21,
+        "F": 0,
+        "G": 0,
+        "A": 5.58
+      },
+      "ham_tasiyicilar": {
+        "S": 4.73,
+        "K": 3.74
+      },
+      "s_sonum": 0.7,
+      "a_k_katkisi": 1.12,
+      "dram_terfi": false,
+      "mac_id": "0022500566",
+      "ev": "MIL",
+      "dep": "MIN",
+      "ev_skor": 106,
+      "dep_skor": 139,
+      "en_iyi_performans": "Julius Randle",
+      "esitlik_bozucu": [
+        0,
+        -33
+      ]
+    },
+    {
+      "rozet": 3.02,
+      "ham": 3.02,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 0.51,
+        "K": 3.36,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.62,
+        "F": 0,
+        "G": 0,
+        "A": 4.08
+      },
+      "ham_tasiyicilar": {
+        "S": 0.64,
+        "K": 2.54
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 0.82,
+      "dram_terfi": false,
+      "mac_id": "0022500570",
+      "ev": "GSW",
+      "dep": "POR",
+      "ev_skor": 119,
+      "dep_skor": 97,
+      "en_iyi_performans": "Jimmy Butler III",
+      "esitlik_bozucu": [
+        0,
+        -22
+      ]
+    }
+  ]
+}
