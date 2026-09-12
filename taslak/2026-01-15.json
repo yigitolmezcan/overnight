@@ -1,0 +1,144 @@
+{
+  "tarih": "2026-01-15",
+  "uretildi": "2026-09-12T06:46:53.008824Z",
+  "maclar": {
+    "0022500579": {
+      "gec_satiri": "Detroit Pistons evinde Phoenix Suns'u 108-105 yendi. Detroit Pistons, 16 sayılık farktan dönerek kazandı.",
+      "muzip": false
+    },
+    "0022500584": {
+      "gec_satiri": "Karl-Anthony Towns'un 17 sayılık gecesinde Golden State, New York'u yendi. Jimmy Butler III 32 sayı attı.",
+      "muzip": false
+    },
+    "0022500586": {
+      "gec_satiri": "Charlotte Hornets deplasmanda Los Angeles Lakers'i 135-117 yendi. Charlotte Hornets, 13 sayılık farktan dönerek kazandı.",
+      "muzip": false
+    },
+    "0022500581": {
+      "gec_satiri": "Oklahoma City Thunder deplasmanda Houston Rockets'i 111-91 yendi.",
+      "muzip": false
+    },
+    "0022500585": {
+      "gec_satiri": "Portland Trail Blazers evinde Atlanta Hawks'ı 117-101 yendi.",
+      "muzip": false
+    },
+    "0022500582": {
+      "gec_satiri": "San Antonio Spurs evinde Milwaukee Bucks'u 119-101 yendi.",
+      "muzip": false
+    },
+    "0022500583": {
+      "gec_satiri": "Dallas Mavericks evinde Utah Jazz'ı 144-122 ezdi.",
+      "muzip": false
+    },
+    "0022500578": {
+      "baslik": "Orlando, 20 sayılık farktan dönüp Memphis'i yendi."
+    },
+    "0022500580": {
+      "baslik": "Simons'ın 39 sayısıyla Boston, Miami'yi yendi.",
+      "neden_onemli": "Boston Celtics, konferansta 2. sıraya yükseldi."
+    }
+  },
+  "brief": [
+    {
+      "metin": "Orlando Magic, 20 sayılık farktan dönüp Memphis Grizzlies'i geçti.",
+      "hedef_mac": "0022500578",
+      "muzip": false,
+      "kind": "geri_donus"
+    },
+    {
+      "metin": "Anfernee Simons, Miami Heat karşısında 39 sayı attı.",
+      "hedef_mac": "0022500580",
+      "muzip": false,
+      "kind": "performans"
+    },
+    {
+      "metin": "Detroit Pistons, Phoenix Suns'u yendi.",
+      "hedef_mac": "0022500579",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Golden State Warriors, New York Knicks'i yendi.",
+      "hedef_mac": "0022500584",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Charlotte Hornets, Los Angeles Lakers deplasmanında kazandı.",
+      "hedef_mac": "0022500586",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Oklahoma City Thunder, Houston Rockets'i yenerek konferansta 1. sıraya yükseldi.",
+      "hedef_mac": "0022500581",
+      "muzip": false,
+      "kind": "siralama"
+    },
+    {
+      "metin": "Portland Trail Blazers, Atlanta Hawks'ı evinde yendi.",
+      "hedef_mac": "0022500585",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Milwaukee Bucks, deplasmanda San Antonio Spurs'a kaybetti.",
+      "hedef_mac": "0022500582",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 4,
+    "ilk_denemede_kabul": 1,
+    "sablon_moduna_dusen": 0,
+    "detay": [
+      {
+        "mac_id": "0022500580",
+        "deneme": 0,
+        "gerekce": [
+          "baslik/T31: [\"'son saniyede devirdi' ama maç 5 farkla bitti (en fazla 3)\"]",
+          "T14: en iyi performans (Anfernee Simons) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Boston, Miami'yi son saniyede devirdi."
+        }
+      },
+      {
+        "mac_id": "0022500580",
+        "deneme": 1,
+        "gerekce": [
+          "T14: en iyi performans (Anfernee Simons) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Boston, 19 sayılık farktan dönüp Miami'yi yendi."
+        }
+      }
+    ],
+    "sablon_isaretli": [
+      {
+        "mac_id": "0022500584",
+        "alan": "gec_satiri",
+        "gerekce": [
+          "gec_satiri/T17: [\"'Karl-Anthony Towns' (kaybeden NYK) cümle öznesi: 'Karl-Anthony Towns'un 17 sayılık gecesinde Golden State, New York'u yendi'\"]"
+        ],
+        "metin": {
+          "gec_satiri": "Karl-Anthony Towns'un 17 sayılık gecesinde Golden State, New York'u yendi. Jimmy Butler III 32 sayı attı.",
+          "muzip": false
+        }
+      }
+    ],
+    "mutlaka_mac": 2,
+    "ret_orani": 0.75,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 4,
+      "girdi_token": 14881,
+      "cikti_token": 3058,
+      "cache_yazma_token": 35057,
+      "cache_okuma_token": 27640,
+      "toplam_maliyet_usd": 0.1535,
+      "butce_asildi": false
+    }
+  }
+}

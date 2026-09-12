@@ -1,0 +1,313 @@
+{
+  "tarih": "2026-01-15",
+  "hesaplandi": "2026-09-12T06:46:06.483234Z",
+  "en_iyi_skor": 8.77,
+  "maclar": [
+    {
+      "rozet": 8.77,
+      "ham": 9.96,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 7.14,
+        "K": 7.04,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 5.89,
+        "F": 6,
+        "G": 6,
+        "A": 5.21
+      },
+      "ham_tasiyicilar": {
+        "S": 7.14,
+        "K": 6.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.04,
+      "dram_terfi": false,
+      "mac_id": "0022500578",
+      "ev": "ORL",
+      "dep": "MEM",
+      "ev_skor": 118,
+      "dep_skor": 111,
+      "en_iyi_performans": "Paolo Banchero",
+      "esitlik_bozucu": [
+        0,
+        -7
+      ]
+    },
+    {
+      "rozet": 8.49,
+      "ham": 9.13,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 7.45,
+        "K": 3.71,
+        "T": 0,
+        "D": 6
+      },
+      "yukselticiler": {
+        "Y": 5.4,
+        "F": 7,
+        "G": 8,
+        "A": 5.67
+      },
+      "ham_tasiyicilar": {
+        "S": 7.45,
+        "K": 2.58
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.13,
+      "dram_terfi": true,
+      "mac_id": "0022500580",
+      "ev": "MIA",
+      "dep": "BOS",
+      "ev_skor": 114,
+      "dep_skor": 119,
+      "en_iyi_performans": "Anfernee Simons",
+      "esitlik_bozucu": [
+        6,
+        -5
+      ]
+    },
+    {
+      "rozet": 7.34,
+      "ham": 7.34,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 4.24,
+        "K": 3.44,
+        "T": 0,
+        "D": 6
+      },
+      "yukselticiler": {
+        "Y": 6.85,
+        "F": 8,
+        "G": 0,
+        "A": 5.25
+      },
+      "ham_tasiyicilar": {
+        "S": 4.24,
+        "K": 2.39
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.05,
+      "dram_terfi": true,
+      "mac_id": "0022500579",
+      "ev": "DET",
+      "dep": "PHX",
+      "ev_skor": 108,
+      "dep_skor": 105,
+      "en_iyi_performans": "Grayson Allen",
+      "esitlik_bozucu": [
+        6,
+        -3
+      ]
+    },
+    {
+      "rozet": 6.95,
+      "ham": 6.95,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.45,
+        "K": 3.87,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.77,
+        "F": 0,
+        "G": 0,
+        "A": 5.71
+      },
+      "ham_tasiyicilar": {
+        "S": 7.17,
+        "K": 2.73
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 1.14,
+      "dram_terfi": false,
+      "mac_id": "0022500584",
+      "ev": "GSW",
+      "dep": "NYK",
+      "ev_skor": 126,
+      "dep_skor": 113,
+      "en_iyi_performans": "Jimmy Butler III",
+      "esitlik_bozucu": [
+        0,
+        -13
+      ]
+    },
+    {
+      "rozet": 6.29,
+      "ham": 6.29,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 5.62,
+        "K": 4.02,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.47,
+        "F": 0,
+        "G": 0,
+        "A": 6.67
+      },
+      "ham_tasiyicilar": {
+        "S": 6.24,
+        "K": 2.69
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 1.33,
+      "dram_terfi": false,
+      "mac_id": "0022500586",
+      "ev": "LAL",
+      "dep": "CHA",
+      "ev_skor": 117,
+      "dep_skor": 135,
+      "en_iyi_performans": "Luka Dončić",
+      "esitlik_bozucu": [
+        0,
+        -18
+      ]
+    },
+    {
+      "rozet": 5.31,
+      "ham": 5.31,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 2.54,
+        "K": 4.78,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.99,
+        "F": 0,
+        "G": 0,
+        "A": 8.92
+      },
+      "ham_tasiyicilar": {
+        "S": 3.17,
+        "K": 3.0
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 1.78,
+      "dram_terfi": false,
+      "mac_id": "0022500581",
+      "ev": "HOU",
+      "dep": "OKC",
+      "ev_skor": 91,
+      "dep_skor": 111,
+      "en_iyi_performans": "Chet Holmgren",
+      "esitlik_bozucu": [
+        0,
+        -20
+      ]
+    },
+    {
+      "rozet": 4.67,
+      "ham": 4.67,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 2.04,
+        "K": 4.76,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.36,
+        "F": 0,
+        "G": 0,
+        "A": 1.67
+      },
+      "ham_tasiyicilar": {
+        "S": 2.27,
+        "K": 4.43
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.33,
+      "dram_terfi": false,
+      "mac_id": "0022500585",
+      "ev": "POR",
+      "dep": "ATL",
+      "ev_skor": 117,
+      "dep_skor": 101,
+      "en_iyi_performans": "Shaedon Sharpe",
+      "esitlik_bozucu": [
+        0,
+        -16
+      ]
+    },
+    {
+      "rozet": 3.62,
+      "ham": 3.62,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 1.84,
+        "K": 3.48,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.49,
+        "F": 0,
+        "G": 0,
+        "A": 7.08
+      },
+      "ham_tasiyicilar": {
+        "S": 2.04,
+        "K": 2.06
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 1.42,
+      "dram_terfi": false,
+      "mac_id": "0022500582",
+      "ev": "SAS",
+      "dep": "MIL",
+      "ev_skor": 119,
+      "dep_skor": 101,
+      "en_iyi_performans": "Victor Wembanyama",
+      "esitlik_bozucu": [
+        0,
+        -18
+      ]
+    },
+    {
+      "rozet": 3.09,
+      "ham": 3.09,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 3.14,
+        "K": 2.21,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.39,
+        "F": 0,
+        "G": 0,
+        "A": 0.67
+      },
+      "ham_tasiyicilar": {
+        "S": 3.92,
+        "K": 2.08
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 0.13,
+      "dram_terfi": false,
+      "mac_id": "0022500583",
+      "ev": "DAL",
+      "dep": "UTA",
+      "ev_skor": 144,
+      "dep_skor": 122,
+      "en_iyi_performans": "Brice Sensabaugh",
+      "esitlik_bozucu": [
+        0,
+        -22
+      ]
+    }
+  ]
+}
