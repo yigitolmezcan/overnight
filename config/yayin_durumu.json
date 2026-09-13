@@ -58,28 +58,9 @@
     "sablona_dusen_alan": 1,
     "yayinlandi": "2026-09-12T06:40:42.596203Z"
   },
-  "son_engel": {
-    "tarih": "2026-01-16",
-    "sebep": [
-      {
-        "mac_id": "0022500589",
-        "alan": "mutlaka",
-        "gerekce": [
-          "T14: en iyi performans (Jaylon Tyson) hiç anılmadı"
-        ],
-        "metin": {
-          "baslik": "Cleveland Cavaliers, 11 sayılık farktan dönüp Philadelphia 76ers'i yendi."
-        },
-        "engelleyen": [
-          "T14"
-        ]
-      }
-    ],
-    "zaman": "2026-09-13T11:01:38.596430Z"
-  },
+  "son_engel": null,
   "engellenen": [
-    "2026-01-04",
-    "2026-01-16"
+    "2026-01-04"
   ],
   "sira_imleci": "2026-01-13",
   "_sira_imleci_neden": "Kullanıcı kararı 2026-08-25: kronoloji sezon başından değil, ARALIK ORTASINDAN başlıyor. Sezon başı gecelerinde takımlar 10 maçı doldurmadığı için susma kuralı derece/sıralama/seri/sürpriz olgularının hepsini kapatıyor ve metinler haftalarca cılız kalıyor. Ekim-Kasım arşiv geceleri atlanıyor; sezon gerçekten Ekim'de başlayınca canlı veriye geçilecek, o geceler kullanılmayacak.",
