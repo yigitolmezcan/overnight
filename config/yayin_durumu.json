@@ -48,14 +48,7 @@
     "2026-01-12",
     "2026-01-13"
   ],
-  "hazir": {
-    "tarih": "2026-01-15",
-    "uretildi": "2026-09-12T06:46:54.174617Z",
-    "mod": "hibrit",
-    "maliyet_usd": 0.1535,
-    "butce_asildi": false,
-    "sablona_dusen_alan": 0
-  },
+  "hazir": null,
   "son_yayin": {
     "tarih": "2026-01-13",
     "uretildi": "2026-09-11T06:55:17.723820Z",
@@ -66,27 +59,29 @@
     "yayinlandi": "2026-09-12T06:40:42.596203Z"
   },
   "son_engel": {
-    "tarih": "2026-01-04",
+    "tarih": "2026-01-15",
     "sebep": [
       {
-        "mac_id": "0022500501",
-        "alan": "mutlaka",
+        "mac_id": "0022500584",
+        "alan": "gec_satiri",
         "gerekce": [
-          "T14: en iyi performans (Luka Dončić) hiç anılmadı"
+          "gec_satiri/T17: [\"'Karl-Anthony Towns' (kaybeden NYK) cümle öznesi: 'Karl-Anthony Towns'un 17 sayılık gecesinde Golden State, New York'u yendi'\"]",
+          "gec_satiri/T17: [\"'Karl-Anthony Towns' (kaybeden NYK) cümle öznesi: 'Karl-Anthony Towns'un 17 sayılık gecesinde Golden State, New York'u yendi'\"]"
         ],
         "metin": {
-          "baslik": "Los Angeles Lakers, 16 sayılık farktan dönüp Memphis Grizzlies'i yendi.",
-          "neden_onemli": "Los Angeles Lakers, konferansta 3. sıraya yükseldi."
+          "gec_satiri": "Karl-Anthony Towns'un 17 sayılık gecesinde Golden State, New York'u yendi. Jimmy Butler III 32 sayı attı.",
+          "muzip": false
         },
         "engelleyen": [
-          "T14"
+          "T17"
         ]
       }
     ],
-    "zaman": "2026-09-05T06:40:44.379100Z"
+    "zaman": "2026-09-13T06:40:36.628916Z"
   },
   "engellenen": [
-    "2026-01-04"
+    "2026-01-04",
+    "2026-01-15"
   ],
   "sira_imleci": "2026-01-13",
   "_sira_imleci_neden": "Kullanıcı kararı 2026-08-25: kronoloji sezon başından değil, ARALIK ORTASINDAN başlıyor. Sezon başı gecelerinde takımlar 10 maçı doldurmadığı için susma kuralı derece/sıralama/seri/sürpriz olgularının hepsini kapatıyor ve metinler haftalarca cılız kalıyor. Ekim-Kasım arşiv geceleri atlanıyor; sezon gerçekten Ekim'de başlayınca canlı veriye geçilecek, o geceler kullanılmayacak.",
