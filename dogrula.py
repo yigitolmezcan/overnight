@@ -820,6 +820,7 @@ def iskelet_baglami(gercekler, ham_mac=None):
     kaz_en_iyi = None
     kaz_kademe = None
     kaz_sayi = None
+    kaz_skorer = kaz_skorer_kademe = kaz_skorer_sayi = None
     if statlar:
         try:
             import hesapla
@@ -834,6 +835,19 @@ def iskelet_baglami(gercekler, ham_mac=None):
                 kaz_en_iyi = _k1.get("oyuncu")
                 kaz_kademe = hesapla.performans_derecesi(_k1)[0]
                 kaz_sayi = int(_k1.get("sayi") or 0)
+                # KAZANANIN EN SKORERİ ayrıca. Kademe merdiveni 12 asistli
+                # ya da 15 ribaundlu bir double-double'ı 30+ sayının ÜSTÜNE
+                # koyuyor; T14 ise en iyi performansı GmSc'yle seçiyor. İkisi
+                # ayrı oyuncuyu "en iyi" sayınca performans başlığı hiç
+                # kurulamıyordu ve T14 geceyi durduruyordu.
+                # Ölçüldü (13 Eylül 2026): kazanan tarafta 30+ sayılık en iyi
+                # performansın olduğu 102 maçın 35'inde iki tanım çelişiyor
+                # (Edwards 38 sayı ↔ Gobert 11/16; Stewart 31 ↔ Jenkins 2/6/15).
+                # 16 Ocak gecesi böyle kapıya takıldı (Tyson 39 ↔ Mitchell 13/9/12).
+                _k2 = max(_kaz, key=lambda x: int(x.get("sayi") or 0))
+                kaz_skorer = _k2.get("oyuncu")
+                kaz_skorer_kademe = hesapla.performans_derecesi(_k2)[0]
+                kaz_skorer_sayi = int(_k2.get("sayi") or 0)
         except Exception:
             en_iyi = None
     return {
@@ -847,6 +861,9 @@ def iskelet_baglami(gercekler, ham_mac=None):
         "kazananin_en_iyisi": kaz_en_iyi,
         "kazananin_kademesi": kaz_kademe,
         "kazananin_sayisi": kaz_sayi,
+        "kazananin_skoreri": kaz_skorer,
+        "kazananin_skoreri_kademesi": kaz_skorer_kademe,
+        "kazananin_skoreri_sayisi": kaz_skorer_sayi,
         "kazanan_deplasmanda": (skor.get("kazanan") == skor.get("dep")),
     }
 
@@ -908,12 +925,20 @@ def _on_kosul_performans(b, m=None):
     kaz = b.get("kazananin_en_iyisi")
     if not kaz or not m:
         return True, ""
-    soyad = kaz.strip().split()[-1]
-    if soyad.lower() not in m.lower():
+    # İKİ KABUL EDİLEBİLİR AD: kademe merdiveninin seçtiği ve kazananın en
+    # skoreri. İkisi de KAZANAN takımdan — Murray hatası (kaybedenin
+    # oyuncusunu kahraman yapmak) kapalı kalıyor. Eşik, başlıkta ADI
+    # GEÇEN oyuncunun kendi kademesi/sayısıyla ölçülüyor.
+    adaylar = [(kaz, b.get("kazananin_kademesi"), b.get("kazananin_sayisi"))]
+    if b.get("kazananin_skoreri") and b.get("kazananin_skoreri") != kaz:
+        adaylar.append((b["kazananin_skoreri"], b.get("kazananin_skoreri_kademesi"),
+                        b.get("kazananin_skoreri_sayisi")))
+    secilen = next((a for a in adaylar
+                    if a[0].strip().split()[-1].lower() in m.lower()), None)
+    if secilen is None:
         return False, (f"başlıktaki oyuncu kazananın en iyisi değil "
                        f"(kazananın en iyisi: {kaz})")
-    kademe = b.get("kazananin_kademesi")
-    sayi = b.get("kazananin_sayisi") or 0
+    kaz, kademe, sayi = secilen[0], secilen[1], secilen[2] or 0
     if kademe is not None and kademe > ISKELET_PERFORMANS_KADEME \
             and sayi < ISKELET_PERFORMANS_SAYI:
         return False, (f"{kaz} performansı başlığa taşınacak kadar kayda değer "

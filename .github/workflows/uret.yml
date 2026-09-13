@@ -110,6 +110,14 @@ jobs:
               echo "Şablona düşme alarmı — tekrar denenmiyor."
               exit 2
             fi
+            # 4 = arka arkaya URET_KAPI_DENEME gece yayın kapısına takıldı
+            # (yayin.uret). Tekrar denemek AYNI kusura üç gece daha
+            # harcamak demek — iş kırmızı yansın, insan baksın.
+            if [ "$KOD" -eq 4 ]; then
+              echo "kapi_tikandi=1" >> "$GITHUB_OUTPUT"
+              echo "Arka arkaya geceler yayın kapısına takıldı — tekrar denenmiyor."
+              exit 4
+            fi
             # 3 = hiçbir gecenin verisine ULAŞILAMADI (sezon sonu değil).
             # Tekrar denemenin anlamı var: engel dönemsel olabilir. Ama
             # son denemede de olmuyorsa iş DÜŞMELİ, sessizce "gece yok"
@@ -247,6 +255,10 @@ jobs:
           [ "${{ steps.kurulum.outcome }}" = "failure" ] && DUSEN="Bağımlılıklar (pip install)"
           [ "${{ steps.testler.outcome }}" = "failure" ] && DUSEN="Testler"
           [ "${{ steps.uretim.outcome }}" = "failure" ] && DUSEN="Gece üretimi"
+          # Çıkış 4: üretim çalıştı ama arka arkaya geceler yayın kapısına
+          # takıldı. "Gece üretimi düştü" demek yanıltırdı — sebep altyapı
+          # değil, üretim kurallarındaki bir kusur.
+          [ "${{ steps.uretim.outputs.kapi_tikandi }}" = "1" ] && DUSEN="Yayın kapısı (arka arkaya 3 gece takıldı)"
           [ "${{ steps.yazma.outcome }}" = "failure" ] && DUSEN="Depoya yazma"
           # HATANIN KENDİSİ bildirime giriyor. Önceki sürüm sadece
           # "başarısız oldu" deyip kayıt bağlantısı veriyordu; sebebi

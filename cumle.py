@@ -1362,6 +1362,18 @@ def govde(gercekler, ham_mac, olgu, en_iyi_ad, kanca_harf, seviye, takim_adi_fn)
     if (kanca_harf == "P" and en_iyi_oyuncu
             and en_iyi_oyuncu.get("takim") != mac["kazanan_kod"]):
         kanca_harf = None
+    # KANCANIN ÖZNESİ en_iyi_oyuncu DEĞİL. P kancası `en_iyi_kilometre`
+    # oyuncusunu adlandırıyor (bkz. kanca_oneki) ve bu ikisi FARKLI
+    # oyuncular olabiliyor. Yukarıdaki denetim yalnız en iyi oyuncunun
+    # takımına bakıyordu, kancanın gerçekten özne yaptığı oyuncuya değil.
+    # Gerçek üretim vakası (15 Ocak, GSW-NYK): en iyi performans Butler
+    # (kazanan GSW) → denetim geçti; kanca ise Towns'un 20 ribaundunu
+    # (kaybeden NYK) anlattı: "Karl-Anthony Towns'un 17 sayılık gecesinde
+    # Golden State, New York'u yendi." T17 geceyi yayın kapısında durdurdu.
+    _kanca_oznesi = (olgu.get("en_iyi_kilometre") or {}).get("oyuncu")
+    _kanca_takimi = oyuncunun_takimi(gercekler, _kanca_oznesi) if _kanca_oznesi else None
+    if kanca_harf == "P" and _kanca_takimi and _kanca_takimi != mac["kazanan_kod"]:
+        kanca_harf = None
     onek = kanca_oneki(kanca_harf, olgu, mac, en_iyi_oyuncu) if butce > 1 else None
     # Kanca oyuncuyu zaten andıysa ayrıca performans cümlesi kurulmaz
     # (gerçek üretim bug'ı: "LeBron James'in 28 sayılık gecesinde ...

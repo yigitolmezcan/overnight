@@ -4996,7 +4996,11 @@ def main():
     # Ölçüldü (29 Ağustos, gerçek koşu): 2025-12-23 için iki deneme de
     # "scoreboard: 4 denemede de alınamadı" ile düştü.
     _uy = open("yayin.py", encoding="utf-8").read()
-    _uret_govde = _uy[_uy.index("def uret("):]
+    # ÜRETİMİN GÖVDESİ `_bir_gece_uret`te. `uret` artık onu bir kapı
+    # döngüsüyle sarmalıyor (13 Eylül 2026) — kaynak denetimi, çekme
+    # adımının GERÇEKTEN yaşadığı fonksiyona bakmalı; sarmalayıcıya
+    # bakınca "cek.py çağrısı yok" diye yanlış alarm veriyordu.
+    _uret_govde = _uy[_uy.index("def _bir_gece_uret("):]
     _uret_govde = _uret_govde[:_uret_govde.index("\ndef ")]
     basar("Üretim: ham veri varsa çekme adımı atlanıyor",
           "if _cek.ham_yolu(tarih) is not None:" in _uret_govde
@@ -7721,6 +7725,115 @@ def main():
           all(f"--{_v}:" in _st_html for _v in ("ember", "ink", "ink2", "faint",
                                              "mono", "line2")))
 
+
+    # ==================================================================
+    # 13 EYLÜL 2026 — SABAH YAYINI OLMADI: İKİ KİLİT + ÜRETİMDE KAPI
+    # ==================================================================
+    # 15 Ocak gecesi 09:40'ta T17'ye takıldı ve site 13 Ocak'ta kaldı;
+    # sıradaki 16 Ocak da T14'e takılacaktı. İkisi de KOD kusuruydu.
+
+    # --- (1) P kancasının öznesi ---------------------------------------
+    # Kanca `en_iyi_kilometre` oyuncusunu özne yapıyor; kaybeden taraf
+    # denetimi ise yalnız en iyi oyuncunun takımına bakıyordu. 15 Ocak:
+    # en iyi Butler (kazanan) → denetim geçti; kanca Towns'u (kaybeden)
+    # anlattı: "Karl-Anthony Towns'un 17 sayılık gecesinde Golden State..."
+    _cs13 = open("cumle.py", encoding="utf-8").read()
+    basar("13 Eylül/T17: P kancası özne yaptığı oyuncunun takımına bakıyor",
+          '_kanca_oznesi = (olgu.get("en_iyi_kilometre") or {}).get("oyuncu")' in _cs13
+          and '_kanca_takimi != mac["kazanan_kod"]' in _cs13)
+
+    # --- (2) başlığın "kazananın en iyisi" tanımı ------------------------
+    # Kademe merdiveni 12 asistli bir double-double'ı 30+ sayının üstüne
+    # koyuyor, T14 ise GmSc'yle seçiyor. İki tanım çelişince performans
+    # başlığı kurulamıyor, T14 geceyi durduruyordu. Ölçüldü: kazanan
+    # tarafta 30+ sayılık en iyi performansın olduğu 102 maçın 35'inde.
+    basar("13 Eylül/T31: kazananın en skoreri de performans başlığını hak ediyor",
+          dogrula_modul.t31_baslik_iskeleti(
+              "Anthony Edwards'ın 38 sayısıyla Minnesota, Denver'ı yendi.",
+              _b(kazananin_en_iyisi="Rudy Gobert", kazananin_kademesi=3,
+                 kazananin_sayisi=11, kazananin_skoreri="Anthony Edwards",
+                 kazananin_skoreri_kademesi=6, kazananin_skoreri_sayisi=38))[0])
+    basar("13 Eylül/T31: iki adaydan hiçbiri değilse hâlâ ret (Murray hatası kapalı)",
+          not dogrula_modul.t31_baslik_iskeleti(
+              "Nikola Jokić'in 35 sayısıyla Minnesota, Denver'ı yendi.",
+              _b(kazananin_en_iyisi="Rudy Gobert", kazananin_kademesi=3,
+                 kazananin_sayisi=11, kazananin_skoreri="Anthony Edwards",
+                 kazananin_skoreri_kademesi=6, kazananin_skoreri_sayisi=38))[0])
+    basar("13 Eylül/T31: skorer kayda değer değilse başlığa çıkmıyor",
+          not dogrula_modul.t31_baslik_iskeleti(
+              "Ayo Dosunmu'nun 18 sayısıyla Chicago, Utah'ı yendi.",
+              _b(kazananin_en_iyisi="Josh Giddey", kazananin_kademesi=3,
+                 kazananin_sayisi=14, kazananin_skoreri="Ayo Dosunmu",
+                 kazananin_skoreri_kademesi=8, kazananin_skoreri_sayisi=18))[0])
+
+    # --- (1)+(2) GERÇEK VERİYLE: iki gece artık kapıdan geçen metin kuruyor
+    try:
+        import cek as _cek13, gzip as _gz13
+        def _ham13(_t):
+            _y = _cek13.ham_yolu(_t)
+            if _y is None:
+                raise FileNotFoundError(f"ham/{_t} yok")
+            return json.load(_gz13.open(_y) if str(_y).endswith(".gz") else open(_y))
+        # 15 Ocak GSW–NYK, gec_satiri
+        _t, _gid = "2026-01-15", "0022500584"
+        _h = _ham13(_t); _gg = json.load(open(f"gercek/{_t}.json")); _sk = json.load(open(f"skor/{_t}.json"))
+        _pl = yaz.gece_kalip_plani(_t, _gg, _h, _sk)
+        _m = {x["mac_id"]: x for x in _sk["maclar"]}[_gid]
+        _gs = yaz.sablon_uret(_gg["maclar"][_gid], _h["maclar"][_gid], _m.get("en_iyi_performans"),
+                              kanca_harf=_pl[_gid]["kanca_harf"], olgu=_pl[_gid]["olgu_ham"], rozet=_m.get("rozet"))
+        basar("13 Eylül/15 Ocak: GSW–NYK satırı kaybedeni özne yapmıyor (T17)",
+              dogrula_modul.t17_kaybeden_ozne(_gs, _gg["maclar"][_gid], _h["maclar"][_gid])[0]
+              and "Towns'un" not in _gs, _gs)
+        # 16 Ocak CLE–PHI, Mutlaka bil şablonu
+        _t, _gid = "2026-01-16", "0022500589"
+        _h = _ham13(_t); _gg = json.load(open(f"gercek/{_t}.json")); _sk = json.load(open(f"skor/{_t}.json"))
+        _pl = yaz.gece_kalip_plani(_t, _gg, _h, _sk)
+        _eip = {x["mac_id"]: x.get("en_iyi_performans") for x in _sk["maclar"]}[_gid]
+        _ob = yaz.sablon_uret_mutlaka(_gg["maclar"][_gid], _h["maclar"][_gid], _pl[_gid]["olgu_ham"], _eip)
+        _tum = " ".join(v for v in _ob.values() if isinstance(v, str))
+        basar("13 Eylül/16 Ocak: CLE–PHI şablonu en iyi performansı anıyor (T14)",
+              dogrula_modul.t14_en_iyi_performans_anildi(
+                  _tum, _eip, _gg["maclar"][_gid], _pl[_gid]["olgu_ham"].get("maglup_anilabilir_ad"))[0],
+              json.dumps(_ob, ensure_ascii=False))
+        basar("13 Eylül/16 Ocak: o başlık T31 ön koşulundan da geçiyor",
+              dogrula_modul.t31_baslik_iskeleti(
+                  _ob["baslik"], dogrula_modul.iskelet_baglami(_gg["maclar"][_gid], _h["maclar"][_gid]))[0],
+              _ob.get("baslik"))
+    except Exception as _e13:
+        # SESSİZ GEÇMİYOR: veri yoksa bu bir FAIL, çünkü kanıt eksik.
+        basar("13 Eylül: gerçek veriyle yeniden üretim testi koştu", False,
+              f"{type(_e13).__name__}: {_e13}")
+
+    # --- (3) ÜRETİMDE YAYIN KAPISI ---------------------------------------
+    # Kapı yalnız 09:00 yayınında çalışınca takılan gecenin yerine
+    # konacak gece ertesi güne kalıyordu → o sabah yayın yok.
+    _yy13 = open("yayin.py", encoding="utf-8").read()
+    _uret13 = _yy13[_yy13.index("def uret("):_yy13.index("def _bir_gece_uret(")]
+    basar("Üretim kapısı: uret üretimden sonra yayın kapısını çalıştırıyor",
+          "kod = _bir_gece_uret()" in _uret13
+          and "engeller = yayin_engelleri(tarih)" in _uret13)
+    basar("Üretim kapısı: takılan gece engellenen'e geçiyor, hazır boşalıyor",
+          'd["engellenen"] = sorted(set(d.get("engellenen", [])) | {tarih})' in _uret13
+          and 'd["hazir"] = None' in _uret13 and '"asama": "uretim"' in _uret13)
+    basar("Üretim kapısı: en fazla 3 gece, tükenirse çıkış 4 (sessiz değil)",
+          "URET_KAPI_DENEME = 3" in _yy13 and "return 4" in _uret13
+          and "ÜRETİM DURDU" in _uret13)
+    basar("Üretim kapısı: YAYIN_KAPISI=0 kaçış deliği üretimde de geçerli",
+          'os.environ.get("YAYIN_KAPISI", "1") == "0"' in _uret13)
+    _uyml13 = open(".github/workflows/uret.yml", encoding="utf-8").read()
+    basar("Üretim kapısı: iş akışı çıkış 4'ü tekrar denemiyor ve adını koyuyor",
+          'if [ "$KOD" -eq 4 ]; then' in _uyml13 and "kapi_tikandi=1" in _uyml13
+          and "Yayın kapısı (arka arkaya 3 gece takıldı)" in _uyml13)
+    # Eski taslak yeniden KULLANILMASIN: sıraya gelen gece yayınlanmamış,
+    # elimizdeki taslağı eski kurallarla yazılmış olabilir.
+    _bg13 = _yy13[_yy13.index("def _bir_gece_uret("):]
+    _bg13 = _bg13[:_bg13.index("\ndef ")]
+    basar("Üretim: seçilen gecenin taslağı her zaman yeniden yazılıyor (--force)",
+          '_kos([py, "yaz.py", tarih, "--force"]' in _bg13
+          and '"--sadece-sablon", "--force"' in _bg13)
+    basar("Üretim: gerçekler ve skorlar BİLEREK zorlanmıyor",
+          '_kos([py, "gercekler.py", tarih])' in _bg13
+          and '_kos([py, "hesapla.py", tarih])' in _bg13)
 
 
 if __name__ == "__main__":

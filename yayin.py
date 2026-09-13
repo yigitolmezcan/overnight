@@ -188,9 +188,58 @@ def _kos(komut, ortam=None):
         raise RuntimeError(f"Adım başarısız: {' '.join(komut)} (çıkış kodu {sonuc.returncode})")
 
 
+# ÜRETİMDE YAYIN KAPISI. Kapı eskiden YALNIZ 09:00'daki yayın işinde
+# çalışıyordu: gece 05:40'ta üretiliyor, "hazır" işaretleniyor, 09:40'ta
+# kapıya takılıyor ve o sabah site HİÇ güncellenmiyordu — bir sonraki
+# gece ancak ertesi günün üretiminde hazırlanıyordu.
+# Ölçüldü (13 Eylül 2026): 15 Ocak gecesi 09:40'ta T17'ye takıldı, site
+# 13 Ocak'ta kaldı; yerine üretilen 16 Ocak da T14'e takılacaktı, yani
+# ertesi sabah da yayın olmayacaktı.
+# Artık kapı ÜRETİMİN SONUNDA da çalışıyor: takılan gece hemen
+# `engellenen`e geçiyor ve AYNI koşuda sıradaki gece üretiliyor. 09:00'a
+# kapıdan geçmiş bir gece hazır bekliyor. Kapı gevşemedi — takılan gece
+# yine yayına çıkmıyor; yalnızca sabah boş geçmiyor.
+URET_KAPI_DENEME = 3   # aynı koşuda en fazla bu kadar gece (maliyet tavanı)
+
+
 def uret():
-    """08:30 işi — sıradaki geceyi baştan sona üretir ve 'hazır' işaretler."""
+    """08:30 işi — sıradaki geceyi üretir, yayın kapısından geçiriyorsa
+    'hazır' işaretler; geçmiyorsa sıradakine geçer (en fazla
+    URET_KAPI_DENEME gece)."""
     depo_kapisi("uret")
+    for deneme in range(1, URET_KAPI_DENEME + 1):
+        kod = _bir_gece_uret()
+        if kod != 0:
+            return kod
+        d = durum_oku()
+        hazir = d.get("hazir")
+        if not hazir:
+            return 0                       # sezon bitti / üretilecek gece yok
+        tarih = hazir["tarih"]
+        if os.environ.get("YAYIN_KAPISI", "1") == "0":
+            return 0
+        engeller = yayin_engelleri(tarih)
+        if not engeller:
+            print(f"KAPIDAN GEÇTİ: {tarih} — 09:00 yayınına hazır.")
+            return 0
+        print(f"KAPIYA TAKILDI (üretimde): {tarih} — {len(engeller)} işaretli alan. "
+              f"Yayına çıkmayacak; sıradaki gece üretiliyor ({deneme}/{URET_KAPI_DENEME}).")
+        for e in engeller:
+            print(f"  - {e.get('mac_id', '?')}: {'; '.join(e.get('gerekce', []))[:200]}")
+        d["hazir"] = None
+        d["engellenen"] = sorted(set(d.get("engellenen", [])) | {tarih})
+        d["son_engel"] = {"tarih": tarih, "sebep": engeller, "asama": "uretim",
+                          "zaman": datetime.utcnow().isoformat() + "Z"}
+        durum_yaz(d)
+    # SESSİZ KALMIYOR: arka arkaya bu kadar gece kapıya takıldıysa bu
+    # tesadüf değil, üretimde bir kusur var. Çıkış 4 → iş kırmızı.
+    print(f"ÜRETİM DURDU: arka arkaya {URET_KAPI_DENEME} gece yayın kapısına takıldı. "
+          f"Sabah yayını olmayacak — üretim kurallarında bir kusur var.")
+    return 4
+
+
+def _bir_gece_uret():
+    """Sıradaki TEK geceyi baştan sona üretir ve 'hazır' işaretler."""
     d = durum_oku()
     if d.get("hazir"):
         print(f"Zaten hazır bir gece var ({d['hazir']['tarih']}), yeniden üretilmiyor.")
@@ -243,11 +292,20 @@ def uret():
     # (yerel deneme, secret tanımsız) doğrudan şablon moduna geçiyoruz —
     # yarıda kalan bir üretim yerine bedava ve geçerli bir gece.
     tavan = os.environ.get("GUNLUK_BUTCE_USD", "1.00")
+    # --force: METİN KATMANI HER ZAMAN YENİDEN YAZILIYOR. `yaz.py` taslak
+    # dosyası varsa "zaten var, atlanıyor" deyip çıkıyordu. Sıraya gelen
+    # gece tanımı gereği henüz YAYINLANMAMIŞ; elimizdeki taslağı ise eski
+    # bir kodla, eski kurallarla yazılmış olabilir. 13 Eylül'de 15 ve 16
+    # Ocak'ın taslakları, düzeltilmiş bir hatanın izini taşıyordu —
+    # --force olmadan yeniden üretim aynı hatalı metni geri getirirdi.
+    # Gerçekler (gercekler.py) ve skorlar (hesapla.py) BİLEREK zorlanmıyor:
+    # ham veriden deterministik türüyorlar ve yeniden üretmek rozetleri
+    # kaydırabiliyor (bkz. "gerçekleri yeniden üretme tuzağı").
     if os.environ.get("ANTHROPIC_API_KEY"):
-        _kos([py, "yaz.py", tarih], ortam={"GUNLUK_BUTCE_USD": tavan})
+        _kos([py, "yaz.py", tarih, "--force"], ortam={"GUNLUK_BUTCE_USD": tavan})
     else:
         print("ANTHROPIC_API_KEY yok — gece şablon modunda üretiliyor (bedava).")
-        _kos([py, "yaz.py", tarih, "--sadece-sablon"])
+        _kos([py, "yaz.py", tarih, "--sadece-sablon", "--force"])
 
     _kos([py, "derle.py", tarih])
 
