@@ -7595,11 +7595,25 @@ def main():
     _st_geceler = sorted(_os.path.basename(f)[:-5]
                          for f in __import__("glob").glob("gercek/2*.json"))
     _st_adlar, _st_bloklar, _st_hata = set(), [], []
+    # HAM VERİ GEÇİDİ `cek.ham_yolu`: CI'da yalnız .json.gz var (düz .json
+    # .gitignore'da). İlk sürüm düz dosyayı açıyordu; CI'da HİÇBİR gece
+    # okunmuyor, blok listesi boş kalıyor ve aşağıdaki "hepsi" testleri
+    # BOŞ KÜMEDE geçiyordu — yani CI'da son toplar hiç denetlenmiyordu.
+    # Ölçüldü (13 Eylül 2026, üretim koşusu 34753934257): tek düşen
+    # "≤10 satır" testiydi, çünkü o `_st_bloklar and ...` diye başlıyor.
+    import cek as _cek_st, gzip as _gz_st
+    _st_okunan = 0
     for _t in _st_geceler:
-        try:
-            _hg = json.loads(open(f"ham/{_t}.json", encoding="utf-8").read())
-        except OSError:
+        _y_st = _cek_st.ham_yolu(_t)
+        if _y_st is None:
             continue
+        try:
+            _hg = json.load(_gz_st.open(_y_st, "rt", encoding="utf-8")
+                            if str(_y_st).endswith(".gz")
+                            else open(_y_st, encoding="utf-8"))
+        except (OSError, ValueError):
+            continue
+        _st_okunan += 1
         for _gid, _m in (_hg.get("maclar") or {}).items():
             try:
                 _bt = _m["box_traditional"]["boxScoreTraditional"]
@@ -7618,6 +7632,10 @@ def main():
                 _blok["_kimlik"] = f"{_t} {_tarafl[0]['kod']}-{_tarafl[1]['kod']}"
                 _blok["_fark"] = abs(_tarafl[0]["skor"] - _tarafl[1]["skor"])
                 _st_bloklar.append(_blok)
+
+    basar("Son toplar: tarama gerçekten veri okudu (boş kümede geçmiyor)",
+          _st_okunan >= 10 and len(_st_bloklar) >= 10,
+          f"okunan gece {_st_okunan}, sekme çıkan maç {len(_st_bloklar)}")
 
     # 1) GARANTİ: kapalı listedeki her kalıp × depodaki her oyuncu adı ×
     #    her takım adı → hepsi yasaklı sözcük kapısından geçmeli.
