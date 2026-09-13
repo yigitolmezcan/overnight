@@ -48,7 +48,14 @@
     "2026-01-12",
     "2026-01-13"
   ],
-  "hazir": null,
+  "hazir": {
+    "tarih": "2026-01-16",
+    "uretildi": "2026-09-13T07:04:39.455851Z",
+    "mod": "hibrit",
+    "maliyet_usd": 0.2174,
+    "butce_asildi": false,
+    "sablona_dusen_alan": 2
+  },
   "son_yayin": {
     "tarih": "2026-01-13",
     "uretildi": "2026-09-11T06:55:17.723820Z",

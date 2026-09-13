@@ -1,0 +1,211 @@
+{
+  "tarih": "2026-01-16",
+  "hesaplandi": "2026-09-13T07:03:52.491243Z",
+  "en_iyi_skor": 9.3,
+  "maclar": [
+    {
+      "rozet": 9.3,
+      "ham": 12.19,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 10.0,
+        "K": 6.72,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 5.81,
+        "F": 6,
+        "G": 0,
+        "A": 7.79
+      },
+      "ham_tasiyicilar": {
+        "S": 10,
+        "K": 5.16
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.56,
+      "dram_terfi": false,
+      "mac_id": "0022500591",
+      "ev": "HOU",
+      "dep": "MIN",
+      "ev_skor": 110,
+      "dep_skor": 105,
+      "en_iyi_performans": "Kevin Durant",
+      "esitlik_bozucu": [
+        0,
+        -5
+      ]
+    },
+    {
+      "rozet": 9.17,
+      "ham": 11.52,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 8.75,
+        "K": 7.02,
+        "T": 0,
+        "D": 8
+      },
+      "yukselticiler": {
+        "Y": 6.0,
+        "F": 10,
+        "G": 6,
+        "A": 6.33
+      },
+      "ham_tasiyicilar": {
+        "S": 8.75,
+        "K": 5.75
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.27,
+      "dram_terfi": true,
+      "mac_id": "0022500589",
+      "ev": "PHI",
+      "dep": "CLE",
+      "ev_skor": 115,
+      "dep_skor": 117,
+      "en_iyi_performans": "Jaylon Tyson",
+      "esitlik_bozucu": [
+        8,
+        -2
+      ]
+    },
+    {
+      "rozet": 8.24,
+      "ham": 8.52,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 3.18,
+        "K": 3.68,
+        "T": 0,
+        "D": 8
+      },
+      "yukselticiler": {
+        "Y": 4.23,
+        "F": 10,
+        "G": 0,
+        "A": 3.42
+      },
+      "ham_tasiyicilar": {
+        "S": 3.18,
+        "K": 3.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.68,
+      "dram_terfi": true,
+      "mac_id": "0022500587",
+      "ev": "BKN",
+      "dep": "CHI",
+      "ev_skor": 112,
+      "dep_skor": 109,
+      "en_iyi_performans": "Michael Porter Jr.",
+      "esitlik_bozucu": [
+        8,
+        -3
+      ]
+    },
+    {
+      "rozet": 8.14,
+      "ham": 8.29,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 4.59,
+        "K": 6.03,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 9.5,
+        "F": 7,
+        "G": 6,
+        "A": 3.75
+      },
+      "ham_tasiyicilar": {
+        "S": 4.59,
+        "K": 5.28
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.75,
+      "dram_terfi": false,
+      "mac_id": "0022500590",
+      "ev": "TOR",
+      "dep": "LAC",
+      "ev_skor": 117,
+      "dep_skor": 121,
+      "en_iyi_performans": "Jordan Miller",
+      "esitlik_bozucu": [
+        0,
+        -4
+      ]
+    },
+    {
+      "rozet": 6.14,
+      "ham": 6.14,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.86,
+        "K": 0.47,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.34,
+        "F": 0,
+        "G": 0,
+        "A": 2.33
+      },
+      "ham_tasiyicilar": {
+        "S": 6.86,
+        "K": 0.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.47,
+      "dram_terfi": false,
+      "mac_id": "0022500588",
+      "ev": "IND",
+      "dep": "NOP",
+      "ev_skor": 127,
+      "dep_skor": 119,
+      "en_iyi_performans": "Jay Huff",
+      "esitlik_bozucu": [
+        0,
+        -8
+      ]
+    },
+    {
+      "rozet": 2.36,
+      "ham": 2.36,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 2.56,
+        "K": 0.55,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.31,
+        "F": 0,
+        "G": 0,
+        "A": 2.75
+      },
+      "ham_tasiyicilar": {
+        "S": 2.84,
+        "K": 0.0
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.55,
+      "dram_terfi": false,
+      "mac_id": "0022500592",
+      "ev": "SAC",
+      "dep": "WAS",
+      "ev_skor": 128,
+      "dep_skor": 115,
+      "en_iyi_performans": "Russell Westbrook",
+      "esitlik_bozucu": [
+        0,
+        -13
+      ]
+    }
+  ]
+}
