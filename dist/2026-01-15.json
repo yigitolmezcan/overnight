@@ -1,6 +1,6 @@
 {
   "tarih": "2026-01-15",
-  "uretildi": "2026-09-12T06:46:53.008824Z",
+  "uretildi": "2026-09-13T11:15:37.660235Z",
   "mac_sayisi": 9,
   "bars": [
     {
@@ -265,7 +265,7 @@
       "metin": "Orlando Magic, 20 sayılık farktan dönüp Memphis Grizzlies'i geçti.",
       "anlatili": true,
       "hedef_id": "g-mutlaka-0",
-      "icon": "default",
+      "icon": "standings",
       "saat": "22:00",
       "rozet": 8.77,
       "skor": "ORL 118 – MEM 111",
@@ -361,7 +361,7 @@
       "metin": "Charlotte Hornets, Los Angeles Lakers deplasmanında kazandı.",
       "anlatili": true,
       "hedef_id": "a-0022500586",
-      "icon": "standings",
+      "icon": "default",
       "saat": "06:30",
       "rozet": 6.29,
       "skor": "LAL 117 – CHA 135",
@@ -1059,7 +1059,7 @@
       "mac": "Miami Heat — Boston Celtics",
       "skor": "114–119",
       "rozet": 8.49,
-      "baslik": "Simons'ın 39 sayısıyla Boston, Miami'yi yendi.",
+      "baslik": "Anfernee Simons'ın 39 sayısıyla Boston, Miami'yi yendi.",
       "neden_onemli": "Boston Celtics, konferansta 2. sıraya yükseldi.",
       "ceyrek_tablosu": [
         {
@@ -14510,7 +14510,7 @@
       "skor": "126–113",
       "rozet": 6.95,
       "why": "bireysel performans: 20_ribaund eşiğini geçen Karl-Anthony Towns",
-      "metin": "Karl-Anthony Towns'un 17 sayılık gecesinde Golden State, New York'u yendi. Karl-Anthony Towns double-double yaptı (17 sayı, 20 ribaund).",
+      "metin": "Golden State Warriors evinde New York Knicks'i 126-113 yendi. Karl-Anthony Towns double-double yaptı (17 sayı, 20 ribaund).",
       "box": {
         "ev": {
           "takim": "Golden State Warriors",
@@ -15242,7 +15242,7 @@
       "mac": "Los Angeles Lakers — Charlotte Hornets",
       "skor": "117–135",
       "rozet": 6.29,
-      "why": "gece sırası 9",
+      "why": "",
       "metin": "Charlotte Hornets deplasmanda Los Angeles Lakers'i 135-117 yendi. Charlotte Hornets, 13 sayılık farktan dönerek kazandı.",
       "box": {
         "ev": {

@@ -1,13 +1,13 @@
 {
   "tarih": "2026-01-15",
-  "uretildi": "2026-09-12T06:46:53.008824Z",
+  "uretildi": "2026-09-13T11:15:37.660235Z",
   "maclar": {
     "0022500579": {
       "gec_satiri": "Detroit Pistons evinde Phoenix Suns'u 108-105 yendi. Detroit Pistons, 16 sayılık farktan dönerek kazandı.",
       "muzip": false
     },
     "0022500584": {
-      "gec_satiri": "Karl-Anthony Towns'un 17 sayılık gecesinde Golden State, New York'u yendi. Jimmy Butler III 32 sayı attı.",
+      "gec_satiri": "Golden State Warriors evinde New York Knicks'i 126-113 yendi. Jimmy Butler III 32 sayı attı.",
       "muzip": false
     },
     "0022500586": {
@@ -34,7 +34,7 @@
       "baslik": "Orlando, 20 sayılık farktan dönüp Memphis'i yendi."
     },
     "0022500580": {
-      "baslik": "Simons'ın 39 sayısıyla Boston, Miami'yi yendi.",
+      "baslik": "Anfernee Simons'ın 39 sayısıyla Boston, Miami'yi yendi.",
       "neden_onemli": "Boston Celtics, konferansta 2. sıraya yükseldi."
     }
   },
@@ -89,24 +89,13 @@
     }
   ],
   "rapor": {
-    "toplam_alan": 4,
+    "toplam_alan": 3,
     "ilk_denemede_kabul": 1,
     "sablon_moduna_dusen": 0,
     "detay": [
       {
         "mac_id": "0022500580",
         "deneme": 0,
-        "gerekce": [
-          "baslik/T31: [\"'son saniyede devirdi' ama maç 5 farkla bitti (en fazla 3)\"]",
-          "T14: en iyi performans (Anfernee Simons) hiç anılmadı"
-        ],
-        "reddedilen_taslak": {
-          "baslik": "Boston, Miami'yi son saniyede devirdi."
-        }
-      },
-      {
-        "mac_id": "0022500580",
-        "deneme": 1,
         "gerekce": [
           "T14: en iyi performans (Anfernee Simons) hiç anılmadı"
         ],
@@ -115,29 +104,17 @@
         }
       }
     ],
-    "sablon_isaretli": [
-      {
-        "mac_id": "0022500584",
-        "alan": "gec_satiri",
-        "gerekce": [
-          "gec_satiri/T17: [\"'Karl-Anthony Towns' (kaybeden NYK) cümle öznesi: 'Karl-Anthony Towns'un 17 sayılık gecesinde Golden State, New York'u yendi'\"]"
-        ],
-        "metin": {
-          "gec_satiri": "Karl-Anthony Towns'un 17 sayılık gecesinde Golden State, New York'u yendi. Jimmy Butler III 32 sayı attı.",
-          "muzip": false
-        }
-      }
-    ],
+    "sablon_isaretli": [],
     "mutlaka_mac": 2,
-    "ret_orani": 0.75,
+    "ret_orani": 0.667,
     "uretim_modu": "hibrit",
     "kullanim": {
-      "cagri_sayisi": 4,
-      "girdi_token": 14881,
-      "cikti_token": 3058,
+      "cagri_sayisi": 3,
+      "girdi_token": 11256,
+      "cikti_token": 667,
       "cache_yazma_token": 35057,
-      "cache_okuma_token": 27640,
-      "toplam_maliyet_usd": 0.1535,
+      "cache_okuma_token": 11977,
+      "toplam_maliyet_usd": 0.1192,
       "butce_asildi": false
     }
   }
