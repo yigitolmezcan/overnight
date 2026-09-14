@@ -1,6 +1,6 @@
 {
   "tarih": "2026-01-16",
-  "uretildi": "2026-09-13T07:04:38.472600Z",
+  "uretildi": "2026-09-14T02:41:40.356431Z",
   "maclar": {
     "0022500588": {
       "gec_satiri": "Indiana Pacers evinde New Orleans Pelicans'ı 127-119 yendi.",
@@ -11,10 +11,10 @@
       "muzip": false
     },
     "0022500591": {
-      "baslik": "Houston Rockets, 12 sayılık farktan dönüp Minnesota Timberwolves'u yendi."
+      "baslik": "Kevin Durant'ın 39 sayısıyla Houston Rockets, Minnesota Timberwolves'u yendi."
     },
     "0022500589": {
-      "baslik": "Cleveland Cavaliers, 11 sayılık farktan dönüp Philadelphia 76ers'i yendi."
+      "baslik": "Jaylon Tyson'un 39 sayısıyla Cleveland Cavaliers, Philadelphia 76ers'i yendi."
     },
     "0022500587": {
       "baslik": "Brooklyn, Chicago'yu son saniyede devirdi."
@@ -128,38 +128,17 @@
         }
       }
     ],
-    "sablon_isaretli": [
-      {
-        "mac_id": "0022500591",
-        "alan": "mutlaka",
-        "gerekce": [
-          "T14: en iyi performans (Kevin Durant) hiç anılmadı"
-        ],
-        "metin": {
-          "baslik": "Houston Rockets, 12 sayılık farktan dönüp Minnesota Timberwolves'u yendi."
-        }
-      },
-      {
-        "mac_id": "0022500589",
-        "alan": "mutlaka",
-        "gerekce": [
-          "T14: en iyi performans (Jaylon Tyson) hiç anılmadı"
-        ],
-        "metin": {
-          "baslik": "Cleveland Cavaliers, 11 sayılık farktan dönüp Philadelphia 76ers'i yendi."
-        }
-      }
-    ],
+    "sablon_isaretli": [],
     "mutlaka_mac": 4,
     "ret_orani": 0.75,
     "uretim_modu": "hibrit",
     "kullanim": {
       "cagri_sayisi": 8,
       "girdi_token": 30614,
-      "cikti_token": 2427,
+      "cikti_token": 1591,
       "cache_yazma_token": 46410,
       "cache_okuma_token": 79336,
-      "toplam_maliyet_usd": 0.2174,
+      "toplam_maliyet_usd": 0.209,
       "butce_asildi": false
     }
   }
