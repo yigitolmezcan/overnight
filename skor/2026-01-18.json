@@ -1,0 +1,211 @@
+{
+  "tarih": "2026-01-18",
+  "hesaplandi": "2026-09-20T07:21:16.442052Z",
+  "en_iyi_skor": 7.76,
+  "maclar": [
+    {
+      "rozet": 7.76,
+      "ham": 7.76,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 5.12,
+        "K": 7.16,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.87,
+        "F": 0,
+        "G": 0,
+        "A": 6.17
+      },
+      "ham_tasiyicilar": {
+        "S": 5.69,
+        "K": 5.93
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 1.23,
+      "dram_terfi": false,
+      "mac_id": "0022500602",
+      "ev": "MEM",
+      "dep": "ORL",
+      "ev_skor": 126,
+      "dep_skor": 109,
+      "en_iyi_performans": "Ja Morant",
+      "esitlik_bozucu": [
+        0,
+        -17
+      ]
+    },
+    {
+      "rozet": 7.0,
+      "ham": 7.0,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 2.38,
+        "K": 6.79,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.16,
+        "F": 0,
+        "G": 0,
+        "A": 6.75
+      },
+      "ham_tasiyicilar": {
+        "S": 2.65,
+        "K": 5.44
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 1.35,
+      "dram_terfi": false,
+      "mac_id": "0022500607",
+      "ev": "LAL",
+      "dep": "TOR",
+      "ev_skor": 110,
+      "dep_skor": 93,
+      "en_iyi_performans": "LeBron James",
+      "esitlik_bozucu": [
+        0,
+        -17
+      ]
+    },
+    {
+      "rozet": 5.67,
+      "ham": 5.67,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 5.74,
+        "K": 1.32,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.2,
+        "F": 6,
+        "G": 0,
+        "A": 1.0
+      },
+      "ham_tasiyicilar": {
+        "S": 5.74,
+        "K": 1.12
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.2,
+      "dram_terfi": false,
+      "mac_id": "0022500606",
+      "ev": "SAC",
+      "dep": "POR",
+      "ev_skor": 110,
+      "dep_skor": 117,
+      "en_iyi_performans": "Deni Avdija",
+      "esitlik_bozucu": [
+        0,
+        -7
+      ]
+    },
+    {
+      "rozet": 5.18,
+      "ham": 5.18,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 0.66,
+        "K": 5.98,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.37,
+        "F": 0,
+        "G": 0,
+        "A": 2.5
+      },
+      "ham_tasiyicilar": {
+        "S": 0.83,
+        "K": 5.48
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 0.5,
+      "dram_terfi": false,
+      "mac_id": "0022500605",
+      "ev": "DEN",
+      "dep": "CHA",
+      "ev_skor": 87,
+      "dep_skor": 110,
+      "en_iyi_performans": "Ryan Kalkbrenner",
+      "esitlik_bozucu": [
+        0,
+        -23
+      ]
+    },
+    {
+      "rozet": 4.41,
+      "ham": 4.41,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 2.98,
+        "K": 3.86,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.8,
+        "F": 0,
+        "G": 0,
+        "A": 6.67
+      },
+      "ham_tasiyicilar": {
+        "S": 2.98,
+        "K": 2.53
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.33,
+      "dram_terfi": false,
+      "mac_id": "0022500604",
+      "ev": "HOU",
+      "dep": "NOP",
+      "ev_skor": 119,
+      "dep_skor": 110,
+      "en_iyi_performans": "Amen Thompson",
+      "esitlik_bozucu": [
+        0,
+        -9
+      ]
+    },
+    {
+      "rozet": 3.14,
+      "ham": 3.14,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 2.21,
+        "K": 3.01,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.6,
+        "F": 0,
+        "G": 0,
+        "A": 3.42
+      },
+      "ham_tasiyicilar": {
+        "S": 2.76,
+        "K": 2.33
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 0.68,
+      "dram_terfi": false,
+      "mac_id": "0022500603",
+      "ev": "CHI",
+      "dep": "BKN",
+      "ev_skor": 124,
+      "dep_skor": 102,
+      "en_iyi_performans": "Coby White",
+      "esitlik_bozucu": [
+        0,
+        -22
+      ]
+    }
+  ]
+}

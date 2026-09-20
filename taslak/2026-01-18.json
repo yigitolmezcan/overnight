@@ -1,0 +1,85 @@
+{
+  "tarih": "2026-01-18",
+  "uretildi": "2026-09-20T07:21:31.783699Z",
+  "maclar": {
+    "0022500607": {
+      "gec_satiri": "Los Angeles Lakers evinde Toronto Raptors'u 110-93 yendi.",
+      "muzip": false
+    },
+    "0022500606": {
+      "gec_satiri": "Portland Trail Blazers deplasmanda Sacramento Kings'i 117-110 yendi. Deni Avdija 30 sayı attı.",
+      "muzip": false
+    },
+    "0022500605": {
+      "gec_satiri": "Charlotte Hornets deplasmanda Denver Nuggets'i 110-87 ezdi.",
+      "muzip": false
+    },
+    "0022500604": {
+      "gec_satiri": "Houston Rockets evinde New Orleans Pelicans'ı 119-110 yendi.",
+      "muzip": false
+    },
+    "0022500603": {
+      "gec_satiri": "Chicago Bulls evinde Brooklyn Nets'i 124-102 yendi.",
+      "muzip": false
+    },
+    "0022500602": {
+      "baslik": "Ja Morant'ın 24 sayısıyla Memphis, Orlando'yu yendi."
+    }
+  },
+  "brief": [
+    {
+      "metin": "Memphis Grizzlies, Orlando Magic'i yendi.",
+      "hedef_mac": "0022500602",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Los Angeles Lakers, Toronto Raptors'u yendi.",
+      "hedef_mac": "0022500607",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Deni Avdija, Sacramento Kings karşısında 30 sayı attı.",
+      "hedef_mac": "0022500606",
+      "muzip": false,
+      "kind": "performans"
+    },
+    {
+      "metin": "Sürpriz bir sonuçla Charlotte Hornets, Denver Nuggets'i yendi.",
+      "hedef_mac": "0022500605",
+      "muzip": false,
+      "kind": "surpriz"
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 2,
+    "ilk_denemede_kabul": 0,
+    "sablon_moduna_dusen": 0,
+    "detay": [
+      {
+        "mac_id": "0022500602",
+        "deneme": 0,
+        "gerekce": [
+          "T14: en iyi performans (Ja Morant) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Memphis, Orlando'yu ilk çeyrekte kopardı."
+        }
+      }
+    ],
+    "sablon_isaretli": [],
+    "mutlaka_mac": 1,
+    "ret_orani": 1.0,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 2,
+      "girdi_token": 8352,
+      "cikti_token": 879,
+      "cache_yazma_token": 29792,
+      "cache_okuma_token": 0,
+      "toplam_maliyet_usd": 0.1,
+      "butce_asildi": false
+    }
+  }
+}
