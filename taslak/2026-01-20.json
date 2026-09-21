@@ -1,0 +1,109 @@
+{
+  "tarih": "2026-01-20",
+  "uretildi": "2026-09-21T07:31:38.267266Z",
+  "maclar": {
+    "0022500613": {
+      "gec_satiri": "Phoenix Suns deplasmanda Philadelphia 76ers'i 116-110 yendi.",
+      "muzip": false
+    },
+    "0022500614": {
+      "gec_satiri": "Chicago Bulls evinde LA Clippers'i 138-110 ezdi. Tre Jones 10 asist yaptı.",
+      "muzip": false
+    },
+    "0022500619": {
+      "gec_satiri": "Miami Heat deplasmanda Sacramento Kings'i 130-117 yendi.",
+      "muzip": false
+    },
+    "0022500617": {
+      "baslik": "Dončić'in 38 sayısıyla Lakers, Denver'ı yendi."
+    },
+    "0022500616": {
+      "baslik": "Keyonte George'un 43 sayısıyla Utah, Minnesota'yı yendi."
+    },
+    "0022500618": {
+      "baslik": "Immanuel Quickley'in 40 sayısıyla Toronto, Golden State'i yendi."
+    },
+    "0022500615": {
+      "baslik": "Houston, 16 sayılık farktan dönüp San Antonio'yu yendi."
+    }
+  },
+  "brief": [
+    {
+      "metin": "Los Angeles Lakers, Denver Nuggets'i yendi.",
+      "hedef_mac": "0022500617",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Sürpriz bir sonuçla Utah Jazz, Minnesota Timberwolves'u yendi.",
+      "hedef_mac": "0022500616",
+      "muzip": false,
+      "kind": "surpriz"
+    },
+    {
+      "metin": "Immanuel Quickley, Golden State Warriors karşısında 40 sayı attı.",
+      "hedef_mac": "0022500618",
+      "muzip": false,
+      "kind": "performans"
+    },
+    {
+      "metin": "Houston Rockets, 16 sayılık farktan dönüp San Antonio Spurs'u geçti.",
+      "hedef_mac": "0022500615",
+      "muzip": false,
+      "kind": "geri_donus"
+    },
+    {
+      "metin": "Phoenix Suns, Philadelphia 76ers'i yendi.",
+      "hedef_mac": "0022500613",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Chicago Bulls, LA Clippers'i evinde yendi.",
+      "hedef_mac": "0022500614",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 6,
+    "ilk_denemede_kabul": 3,
+    "sablon_moduna_dusen": 0,
+    "detay": [
+      {
+        "mac_id": "0022500618",
+        "deneme": 0,
+        "gerekce": [
+          "baslik/T31: [\"başlık iskelet listesinin dışında: 'Toronto, Golden State'i deplasmanda 145-127 kazandı.'\"]",
+          "T14: en iyi performans (Immanuel Quickley) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Toronto, Golden State'i deplasmanda 145-127 kazandı."
+        }
+      },
+      {
+        "mac_id": "0022500618",
+        "deneme": 1,
+        "gerekce": [
+          "T14: en iyi performans (Immanuel Quickley) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Toronto, Golden State deplasmanında 145-127 kazandı."
+        }
+      }
+    ],
+    "sablon_isaretli": [],
+    "mutlaka_mac": 4,
+    "ret_orani": 0.5,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 6,
+      "girdi_token": 22331,
+      "cikti_token": 1395,
+      "cache_yazma_token": 41008,
+      "cache_okuma_token": 50956,
+      "toplam_maliyet_usd": 0.1713,
+      "butce_asildi": false
+    }
+  }
+}

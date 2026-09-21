@@ -1,0 +1,245 @@
+{
+  "tarih": "2026-01-20",
+  "hesaplandi": "2026-09-21T07:31:07.906105Z",
+  "en_iyi_skor": 9.3,
+  "maclar": [
+    {
+      "rozet": 9.3,
+      "ham": 12.23,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 10.0,
+        "K": 5.74,
+        "T": 0,
+        "D": 6
+      },
+      "yukselticiler": {
+        "Y": 5.4,
+        "F": 0,
+        "G": 8,
+        "A": 6.5
+      },
+      "ham_tasiyicilar": {
+        "S": 10,
+        "K": 4.44
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.3,
+      "dram_terfi": true,
+      "mac_id": "0022500617",
+      "ev": "DEN",
+      "dep": "LAL",
+      "ev_skor": 107,
+      "dep_skor": 115,
+      "en_iyi_performans": "Luka Dončić",
+      "esitlik_bozucu": [
+        6,
+        -8
+      ]
+    },
+    {
+      "rozet": 9.02,
+      "ham": 10.85,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 8.62,
+        "K": 7.78,
+        "T": 0,
+        "D": 6
+      },
+      "yukselticiler": {
+        "Y": 5.88,
+        "F": 6,
+        "G": 8,
+        "A": 3.92
+      },
+      "ham_tasiyicilar": {
+        "S": 8.62,
+        "K": 7.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.78,
+      "dram_terfi": true,
+      "mac_id": "0022500616",
+      "ev": "UTA",
+      "dep": "MIN",
+      "ev_skor": 127,
+      "dep_skor": 122,
+      "en_iyi_performans": "Anthony Edwards",
+      "esitlik_bozucu": [
+        6,
+        -5
+      ]
+    },
+    {
+      "rozet": 8.61,
+      "ham": 9.45,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 8.91,
+        "K": 4.44,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.37,
+        "F": 0,
+        "G": 0,
+        "A": 5.75
+      },
+      "ham_tasiyicilar": {
+        "S": 9.9,
+        "K": 3.29
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 1.15,
+      "dram_terfi": false,
+      "mac_id": "0022500618",
+      "ev": "GSW",
+      "dep": "TOR",
+      "ev_skor": 127,
+      "dep_skor": 145,
+      "en_iyi_performans": "Immanuel Quickley",
+      "esitlik_bozucu": [
+        0,
+        -18
+      ]
+    },
+    {
+      "rozet": 7.85,
+      "ham": 7.85,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 3.86,
+        "K": 4.93,
+        "T": 0,
+        "D": 6
+      },
+      "yukselticiler": {
+        "Y": 6.37,
+        "F": 7,
+        "G": 8,
+        "A": 8.32
+      },
+      "ham_tasiyicilar": {
+        "S": 3.86,
+        "K": 3.27
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.66,
+      "dram_terfi": true,
+      "mac_id": "0022500615",
+      "ev": "HOU",
+      "dep": "SAS",
+      "ev_skor": 111,
+      "dep_skor": 106,
+      "en_iyi_performans": "Alperen Şengün",
+      "esitlik_bozucu": [
+        6,
+        -5
+      ]
+    },
+    {
+      "rozet": 7.0,
+      "ham": 7.0,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 1.21,
+        "K": 7.2,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.42,
+        "F": 0,
+        "G": 0,
+        "A": 6.0
+      },
+      "ham_tasiyicilar": {
+        "S": 1.21,
+        "K": 6.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.2,
+      "dram_terfi": false,
+      "mac_id": "0022500613",
+      "ev": "PHI",
+      "dep": "PHX",
+      "ev_skor": 110,
+      "dep_skor": 116,
+      "en_iyi_performans": "Grayson Allen",
+      "esitlik_bozucu": [
+        0,
+        -6
+      ]
+    },
+    {
+      "rozet": 5.06,
+      "ham": 5.06,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 3.15,
+        "K": 5.08,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.83,
+        "F": 0,
+        "G": 0,
+        "A": 2.17
+      },
+      "ham_tasiyicilar": {
+        "S": 3.94,
+        "K": 4.65
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 0.43,
+      "dram_terfi": false,
+      "mac_id": "0022500614",
+      "ev": "CHI",
+      "dep": "LAC",
+      "ev_skor": 138,
+      "dep_skor": 110,
+      "en_iyi_performans": "Tre Jones",
+      "esitlik_bozucu": [
+        0,
+        -28
+      ]
+    },
+    {
+      "rozet": 3.75,
+      "ham": 3.75,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 3.34,
+        "K": 3.05,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.98,
+        "F": 0,
+        "G": 0,
+        "A": 4.08
+      },
+      "ham_tasiyicilar": {
+        "S": 3.71,
+        "K": 2.23
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.82,
+      "dram_terfi": false,
+      "mac_id": "0022500619",
+      "ev": "SAC",
+      "dep": "MIA",
+      "ev_skor": 117,
+      "dep_skor": 130,
+      "en_iyi_performans": "Bam Adebayo",
+      "esitlik_bozucu": [
+        0,
+        -13
+      ]
+    }
+  ]
+}
