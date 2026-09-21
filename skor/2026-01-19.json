@@ -1,0 +1,313 @@
+{
+  "tarih": "2026-01-19",
+  "hesaplandi": "2026-09-21T02:41:11.245730Z",
+  "en_iyi_skor": 8.88,
+  "maclar": [
+    {
+      "rozet": 8.88,
+      "ham": 10.33,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 8.93,
+        "K": 3.3,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 7.24,
+        "F": 7,
+        "G": 6,
+        "A": 1.5
+      },
+      "ham_tasiyicilar": {
+        "S": 8.93,
+        "K": 3.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.3,
+      "dram_terfi": false,
+      "mac_id": "0022500608",
+      "ev": "WAS",
+      "dep": "LAC",
+      "ev_skor": 106,
+      "dep_skor": 110,
+      "en_iyi_performans": "James Harden",
+      "esitlik_bozucu": [
+        0,
+        -4
+      ]
+    },
+    {
+      "rozet": 8.71,
+      "ham": 9.77,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 3.04,
+        "K": 7.67,
+        "T": 0,
+        "D": 6
+      },
+      "yukselticiler": {
+        "Y": 7.92,
+        "F": 8,
+        "G": 0,
+        "A": 6.83
+      },
+      "ham_tasiyicilar": {
+        "S": 3.04,
+        "K": 6.3
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.37,
+      "dram_terfi": true,
+      "mac_id": "0022500017",
+      "ev": "DET",
+      "dep": "BOS",
+      "ev_skor": 104,
+      "dep_skor": 103,
+      "en_iyi_performans": "Jaylen Brown",
+      "esitlik_bozucu": [
+        6,
+        -1
+      ]
+    },
+    {
+      "rozet": 8.71,
+      "ham": 9.76,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 8.17,
+        "K": 6.36,
+        "T": 0,
+        "D": 6
+      },
+      "yukselticiler": {
+        "Y": 4.22,
+        "F": 8,
+        "G": 0,
+        "A": 4.25
+      },
+      "ham_tasiyicilar": {
+        "S": 8.17,
+        "K": 5.51
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.85,
+      "dram_terfi": true,
+      "mac_id": "0022500014",
+      "ev": "ATL",
+      "dep": "MIL",
+      "ev_skor": 110,
+      "dep_skor": 112,
+      "en_iyi_performans": "Nickeil Alexander-Walker",
+      "esitlik_bozucu": [
+        6,
+        -2
+      ]
+    },
+    {
+      "rozet": 8.21,
+      "ham": 8.45,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 3.61,
+        "K": 8.52,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.93,
+        "F": 0,
+        "G": 0,
+        "A": 5.12
+      },
+      "ham_tasiyicilar": {
+        "S": 4.01,
+        "K": 7.5
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 1.02,
+      "dram_terfi": false,
+      "mac_id": "0022500016",
+      "ev": "NYK",
+      "dep": "DAL",
+      "ev_skor": 97,
+      "dep_skor": 114,
+      "en_iyi_performans": "Max Christie",
+      "esitlik_bozucu": [
+        0,
+        -17
+      ]
+    },
+    {
+      "rozet": 6.8,
+      "ham": 6.8,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 7.34,
+        "K": 1.22,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.7,
+        "F": 0,
+        "G": 0,
+        "A": 4.58
+      },
+      "ham_tasiyicilar": {
+        "S": 8.15,
+        "K": 0.3
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.92,
+      "dram_terfi": false,
+      "mac_id": "0022500611",
+      "ev": "SAS",
+      "dep": "UTA",
+      "ev_skor": 123,
+      "dep_skor": 110,
+      "en_iyi_performans": "Victor Wembanyama",
+      "esitlik_bozucu": [
+        0,
+        -13
+      ]
+    },
+    {
+      "rozet": 6.62,
+      "ham": 6.62,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.31,
+        "K": 3.22,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 4.91,
+        "F": 0,
+        "G": 0,
+        "A": 3.17
+      },
+      "ham_tasiyicilar": {
+        "S": 6.31,
+        "K": 2.59
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.63,
+      "dram_terfi": false,
+      "mac_id": "0022500609",
+      "ev": "PHI",
+      "dep": "IND",
+      "ev_skor": 113,
+      "dep_skor": 104,
+      "en_iyi_performans": "Tyrese Maxey",
+      "esitlik_bozucu": [
+        0,
+        -9
+      ]
+    },
+    {
+      "rozet": 5.19,
+      "ham": 5.19,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 4.53,
+        "K": 3.87,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.13,
+        "F": 0,
+        "G": 0,
+        "A": 5.17
+      },
+      "ham_tasiyicilar": {
+        "S": 4.53,
+        "K": 2.84
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.03,
+      "dram_terfi": false,
+      "mac_id": "0022500610",
+      "ev": "BKN",
+      "dep": "PHX",
+      "ev_skor": 117,
+      "dep_skor": 126,
+      "en_iyi_performans": "Collin Gillespie",
+      "esitlik_bozucu": [
+        0,
+        -9
+      ]
+    },
+    {
+      "rozet": 4.98,
+      "ham": 4.98,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 3.35,
+        "K": 4.43,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.3,
+        "F": 0,
+        "G": 0,
+        "A": 7.52
+      },
+      "ham_tasiyicilar": {
+        "S": 4.79,
+        "K": 2.93
+      },
+      "s_sonum": 0.7,
+      "a_k_katkisi": 1.5,
+      "dram_terfi": false,
+      "mac_id": "0022500015",
+      "ev": "CLE",
+      "dep": "OKC",
+      "ev_skor": 104,
+      "dep_skor": 136,
+      "en_iyi_performans": "Shai Gilgeous-Alexander",
+      "esitlik_bozucu": [
+        0,
+        -32
+      ]
+    },
+    {
+      "rozet": 4.38,
+      "ham": 4.38,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 0.23,
+        "K": 4.78,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.03,
+        "F": 0,
+        "G": 0,
+        "A": 5.83
+      },
+      "ham_tasiyicilar": {
+        "S": 0.29,
+        "K": 3.61
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 1.17,
+      "dram_terfi": false,
+      "mac_id": "0022500612",
+      "ev": "GSW",
+      "dep": "MIA",
+      "ev_skor": 135,
+      "dep_skor": 112,
+      "en_iyi_performans": "Stephen Curry",
+      "esitlik_bozucu": [
+        0,
+        -23
+      ]
+    }
+  ]
+}

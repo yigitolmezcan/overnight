@@ -1,0 +1,186 @@
+{
+  "tarih": "2026-01-19",
+  "uretildi": "2026-09-21T02:42:28.169769Z",
+  "maclar": {
+    "0022500611": {
+      "gec_satiri": "San Antonio Spurs evinde Utah Jazz'ı 123-110 yendi. Victor Wembanyama 33 sayı attı.",
+      "muzip": false
+    },
+    "0022500609": {
+      "gec_satiri": "Philadelphia 76ers evinde Indiana Pacers'i 113-104 yendi. Philadelphia 76ers, 10 sayılık farktan dönerek kazandı.",
+      "muzip": false
+    },
+    "0022500610": {
+      "gec_satiri": "Phoenix Suns deplasmanda Brooklyn Nets'i 126-117 yendi.",
+      "muzip": false
+    },
+    "0022500015": {
+      "gec_satiri": "Oklahoma City Thunder deplasmanda Cleveland Cavaliers'i 136-104 ezdi. Shai Gilgeous-Alexander 30 sayı attı.",
+      "muzip": false
+    },
+    "0022500612": {
+      "gec_satiri": "Golden State Warriors evinde Miami Heat'i 135-112 yendi. Stephen Curry 11 asist yaptı.",
+      "muzip": false
+    },
+    "0022500608": {
+      "baslik": "James Harden'in 36 sayısıyla LA Clippers, Washington Wizards'ı yendi.",
+      "neden_onemli": "LA Clippers, 6 maçlık galibiyet serisini sürdürdü."
+    },
+    "0022500017": {
+      "baslik": "Detroit, Boston'ı 104-103 yendi.",
+      "neden_onemli": "Detroit Pistons, konferansta 1. sıraya yükseldi."
+    },
+    "0022500014": {
+      "baslik": "Milwaukee Bucks, Atlanta Hawks deplasmanında 112-110 kazandı."
+    },
+    "0022500016": {
+      "baslik": "Dallas, New York'u ikinci çeyrekte kopardı."
+    }
+  },
+  "brief": [
+    {
+      "metin": "James Harden, Washington Wizards karşısında 36 sayı attı.",
+      "hedef_mac": "0022500608",
+      "muzip": false,
+      "kind": "performans"
+    },
+    {
+      "metin": "Detroit Pistons, Boston Celtics'i yenerek konferansta 1. sıraya yükseldi.",
+      "hedef_mac": "0022500017",
+      "muzip": false,
+      "kind": "siralama"
+    },
+    {
+      "metin": "Milwaukee Bucks, Atlanta Hawks'ı yendi.",
+      "hedef_mac": "0022500014",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Sürpriz bir sonuçla Dallas Mavericks, New York Knicks'i yendi.",
+      "hedef_mac": "0022500016",
+      "muzip": false,
+      "kind": "surpriz"
+    },
+    {
+      "metin": "San Antonio Spurs, Utah Jazz'ı yendi.",
+      "hedef_mac": "0022500611",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Philadelphia 76ers, 10 sayılık farktan dönüp Indiana Pacers'i geçti.",
+      "hedef_mac": "0022500609",
+      "muzip": false,
+      "kind": "geri_donus"
+    },
+    {
+      "metin": "Phoenix Suns, Brooklyn Nets deplasmanında kazandı.",
+      "hedef_mac": "0022500610",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Oklahoma City Thunder, Cleveland Cavaliers deplasmanında kazandı.",
+      "hedef_mac": "0022500015",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Miami Heat, deplasmanda Golden State Warriors'a kaybetti.",
+      "hedef_mac": "0022500612",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 9,
+    "ilk_denemede_kabul": 1,
+    "sablon_moduna_dusen": 2,
+    "detay": [
+      {
+        "mac_id": "0022500608",
+        "deneme": 0,
+        "gerekce": [
+          "T14: en iyi performans (James Harden) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "LA Clippers, Washington deplasmanında 110-106 kazandı."
+        }
+      },
+      {
+        "mac_id": "0022500608",
+        "deneme": 1,
+        "gerekce": [
+          "T14: en iyi performans (James Harden) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "LA Clippers, 10 sayılık farktan dönüp Washington'ı yendi."
+        }
+      },
+      {
+        "mac_id": "0022500608",
+        "deneme": 2,
+        "gerekce": [
+          "T14: en iyi performans (James Harden) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "LA Clippers, 10 sayılık farktan dönüp Washington Wizards'ı yendi."
+        }
+      },
+      {
+        "mac_id": "0022500017",
+        "deneme": 0,
+        "gerekce": [
+          "baslik/T31: [\"'son saniyede devirdi' ama son 30 saniyede liderlik değişmedi\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Detroit, Boston'ı son saniyede devirdi."
+        }
+      },
+      {
+        "mac_id": "0022500014",
+        "deneme": 0,
+        "gerekce": [
+          "baslik/T31: [\"'son saniyede devirdi' ama son 30 saniyede liderlik değişmedi\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Milwaukee, Atlanta'yı son saniyede devirdi."
+        }
+      },
+      {
+        "mac_id": "0022500014",
+        "deneme": 1,
+        "gerekce": [
+          "baslik/T31: [\"'kopardı' ama kopuş anı yok\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Milwaukee, Atlanta'yı ikinci çeyrekte kopardı."
+        }
+      },
+      {
+        "mac_id": "0022500014",
+        "deneme": 2,
+        "gerekce": [
+          "baslik/T31: [\"'son saniyede devirdi' ama son 30 saniyede liderlik değişmedi\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Milwaukee, Atlanta'yı son saniyede devirdi."
+        }
+      }
+    ],
+    "sablon_isaretli": [],
+    "mutlaka_mac": 4,
+    "ret_orani": 0.889,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 9,
+      "girdi_token": 34615,
+      "cikti_token": 4550,
+      "cache_yazma_token": 49456,
+      "cache_okuma_token": 91382,
+      "toplam_maliyet_usd": 0.2566,
+      "butce_asildi": false
+    }
+  }
+}
