@@ -1,0 +1,118 @@
+{
+  "tarih": "2026-01-21",
+  "uretildi": "2026-09-22T07:11:06.254976Z",
+  "maclar": {
+    "0022500625": {
+      "gec_satiri": "Shai Gilgeous-Alexander'in 40 sayı ve 11 asistlik gecesinde Oklahoma City, Milwaukee'yi yendi.",
+      "muzip": false
+    },
+    "0022500620": {
+      "gec_satiri": "Cleveland Cavaliers deplasmanda Charlotte Hornets'i 94-87 yendi.",
+      "muzip": false
+    },
+    "0022500626": {
+      "gec_satiri": "Toronto Raptors deplasmanda Sacramento Kings'i 122-109 yendi.",
+      "muzip": false
+    },
+    "0022500624": {
+      "gec_satiri": "Detroit Pistons deplasmanda New Orleans Pelicans'ı 112-104 yendi. Jalen Duren 15 ribaund topladı.",
+      "muzip": false
+    },
+    "0022500621": {
+      "gec_satiri": "Boston Celtics evinde Indiana Pacers'i 119-104 yendi. Jaylen Brown 30 sayı attı.",
+      "muzip": false
+    },
+    "0022500622": {
+      "gec_satiri": "New York Knicks evinde Brooklyn Nets'i 120-66 ezdi.",
+      "muzip": false
+    },
+    "0022500623": {
+      "baslik": "Jalen Johnson'ın 32 sayısıyla Atlanta, Memphis'i yendi."
+    }
+  },
+  "brief": [
+    {
+      "metin": "Atlanta Hawks, Memphis Grizzlies'i yendi.",
+      "hedef_mac": "0022500623",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Shai Gilgeous-Alexander, Milwaukee Bucks karşısında 40 sayı attı.",
+      "hedef_mac": "0022500625",
+      "muzip": false,
+      "kind": "performans"
+    },
+    {
+      "metin": "Cleveland Cavaliers, Charlotte Hornets'i yendi.",
+      "hedef_mac": "0022500620",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Toronto Raptors, 12 sayılık farktan dönüp Sacramento Kings'i geçti.",
+      "hedef_mac": "0022500626",
+      "muzip": false,
+      "kind": "geri_donus"
+    },
+    {
+      "metin": "Detroit Pistons, New Orleans Pelicans'ı yenerek konferansta 1. sıraya yükseldi.",
+      "hedef_mac": "0022500624",
+      "muzip": false,
+      "kind": "siralama"
+    },
+    {
+      "metin": "Boston Celtics, Indiana Pacers'i evinde yendi.",
+      "hedef_mac": "0022500621",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "New York Knicks, Brooklyn Nets'i evinde yendi.",
+      "hedef_mac": "0022500622",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 3,
+    "ilk_denemede_kabul": 0,
+    "sablon_moduna_dusen": 0,
+    "detay": [
+      {
+        "mac_id": "0022500623",
+        "deneme": 0,
+        "gerekce": [
+          "baslik/T31: [\"'son saniyede devirdi' ama son 30 saniyede liderlik değişmedi\"]",
+          "T14: en iyi performans (Jalen Johnson) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Atlanta, Memphis'i son saniyede devirdi."
+        }
+      },
+      {
+        "mac_id": "0022500623",
+        "deneme": 1,
+        "gerekce": [
+          "T14: en iyi performans (Jalen Johnson) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Atlanta, 11 sayılık farktan dönüp Memphis'i yendi."
+        }
+      }
+    ],
+    "sablon_isaretli": [],
+    "mutlaka_mac": 1,
+    "ret_orani": 1.0,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 3,
+      "girdi_token": 12915,
+      "cikti_token": 1169,
+      "cache_yazma_token": 31348,
+      "cache_okuma_token": 15674,
+      "toplam_maliyet_usd": 0.119,
+      "butce_asildi": false
+    }
+  }
+}

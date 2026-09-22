@@ -1,0 +1,245 @@
+{
+  "tarih": "2026-01-21",
+  "hesaplandi": "2026-09-22T07:10:46.766053Z",
+  "en_iyi_skor": 8.32,
+  "maclar": [
+    {
+      "rozet": 8.32,
+      "ham": 8.71,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.31,
+        "K": 6.52,
+        "T": 0,
+        "D": 6
+      },
+      "yukselticiler": {
+        "Y": 7.5,
+        "F": 8,
+        "G": 0,
+        "A": 4.67
+      },
+      "ham_tasiyicilar": {
+        "S": 6.31,
+        "K": 5.59
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.93,
+      "dram_terfi": true,
+      "mac_id": "0022500623",
+      "ev": "MEM",
+      "dep": "ATL",
+      "ev_skor": 122,
+      "dep_skor": 124,
+      "en_iyi_performans": "Jalen Johnson",
+      "esitlik_bozucu": [
+        6,
+        -2
+      ]
+    },
+    {
+      "rozet": 8.03,
+      "ham": 8.06,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 8.0,
+        "K": 3.15,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.03,
+        "F": 0,
+        "G": 0,
+        "A": 6.62
+      },
+      "ham_tasiyicilar": {
+        "S": 10,
+        "K": 1.83
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 1.32,
+      "dram_terfi": false,
+      "mac_id": "0022500625",
+      "ev": "MIL",
+      "dep": "OKC",
+      "ev_skor": 102,
+      "dep_skor": 122,
+      "en_iyi_performans": "Shai Gilgeous-Alexander",
+      "esitlik_bozucu": [
+        0,
+        -20
+      ]
+    },
+    {
+      "rozet": 4.11,
+      "ham": 4.11,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 0.37,
+        "K": 4.08,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.56,
+        "F": 6,
+        "G": 0,
+        "A": 5.92
+      },
+      "ham_tasiyicilar": {
+        "S": 0.37,
+        "K": 2.9
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.18,
+      "dram_terfi": false,
+      "mac_id": "0022500620",
+      "ev": "CHA",
+      "dep": "CLE",
+      "ev_skor": 87,
+      "dep_skor": 94,
+      "en_iyi_performans": "Kon Knueppel",
+      "esitlik_bozucu": [
+        0,
+        -7
+      ]
+    },
+    {
+      "rozet": 3.97,
+      "ham": 3.97,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 3.56,
+        "K": 2.76,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.98,
+        "F": 0,
+        "G": 0,
+        "A": 4.83
+      },
+      "ham_tasiyicilar": {
+        "S": 3.96,
+        "K": 1.79
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.97,
+      "dram_terfi": false,
+      "mac_id": "0022500626",
+      "ev": "SAC",
+      "dep": "TOR",
+      "ev_skor": 109,
+      "dep_skor": 122,
+      "en_iyi_performans": "Scottie Barnes",
+      "esitlik_bozucu": [
+        0,
+        -13
+      ]
+    },
+    {
+      "rozet": 3.43,
+      "ham": 3.43,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 3.55,
+        "K": 0.82,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.56,
+        "F": 0,
+        "G": 0,
+        "A": 4.08
+      },
+      "ham_tasiyicilar": {
+        "S": 3.55,
+        "K": 0.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.82,
+      "dram_terfi": false,
+      "mac_id": "0022500624",
+      "ev": "NOP",
+      "dep": "DET",
+      "ev_skor": 104,
+      "dep_skor": 112,
+      "en_iyi_performans": "Jalen Duren",
+      "esitlik_bozucu": [
+        0,
+        -8
+      ]
+    },
+    {
+      "rozet": 3.18,
+      "ham": 3.18,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 3.27,
+        "K": 1.31,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.35,
+        "F": 0,
+        "G": 0,
+        "A": 3.92
+      },
+      "ham_tasiyicilar": {
+        "S": 3.63,
+        "K": 0.53
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.78,
+      "dram_terfi": false,
+      "mac_id": "0022500621",
+      "ev": "BOS",
+      "dep": "IND",
+      "ev_skor": 119,
+      "dep_skor": 104,
+      "en_iyi_performans": "Jaylen Brown",
+      "esitlik_bozucu": [
+        0,
+        -15
+      ]
+    },
+    {
+      "rozet": 2.91,
+      "ham": 2.91,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 1.72,
+        "K": 2.8,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.1,
+        "F": 0,
+        "G": 0,
+        "A": 5.67
+      },
+      "ham_tasiyicilar": {
+        "S": 2.46,
+        "K": 1.67
+      },
+      "s_sonum": 0.7,
+      "a_k_katkisi": 1.13,
+      "dram_terfi": false,
+      "mac_id": "0022500622",
+      "ev": "NYK",
+      "dep": "BKN",
+      "ev_skor": 120,
+      "dep_skor": 66,
+      "en_iyi_performans": "Landry Shamet",
+      "esitlik_bozucu": [
+        0,
+        -54
+      ]
+    }
+  ]
+}
