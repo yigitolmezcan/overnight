@@ -1,0 +1,125 @@
+{
+  "tarih": "2026-01-23",
+  "uretildi": "2026-09-23T07:09:34.074151Z",
+  "maclar": {
+    "0022500636": {
+      "gec_satiri": "Atlanta Hawks evinde Phoenix Suns'u 110-103 yendi.",
+      "muzip": false
+    },
+    "0022500635": {
+      "gec_satiri": "Houston Rockets deplasmanda Detroit Pistons'u 111-104 yendi. Kevin Durant 32 sayı attı.",
+      "muzip": false
+    },
+    "0022500640": {
+      "gec_satiri": "Nefes kesen bir maçta Denver Nuggets, Milwaukee Bucks'u 102-100 yendi.",
+      "muzip": false
+    },
+    "0022500637": {
+      "gec_satiri": "Boston Celtics deplasmanda Brooklyn Nets'i 130-126 yendi.",
+      "muzip": false
+    },
+    "0022500642": {
+      "gec_satiri": "Toronto Raptors deplasmanda Portland Trail Blazers'i 110-98 yendi.",
+      "muzip": false
+    },
+    "0022500641": {
+      "baslik": "Indiana, Oklahoma City deplasmanında 117-114 kazandı."
+    },
+    "0022500639": {
+      "baslik": "Saddiq Bey'in 36 sayısıyla New Orleans, Memphis'i yendi."
+    },
+    "0022500638": {
+      "baslik": "Cleveland, Sacramento'yu 123-118 yendi."
+    }
+  },
+  "brief": [
+    {
+      "metin": "Sürpriz bir sonuçla Indiana Pacers, Oklahoma City Thunder'i yendi.",
+      "hedef_mac": "0022500641",
+      "muzip": false,
+      "kind": "surpriz"
+    },
+    {
+      "metin": "Saddiq Bey, Memphis Grizzlies karşısında 36 sayı attı.",
+      "hedef_mac": "0022500639",
+      "muzip": false,
+      "kind": "performans"
+    },
+    {
+      "metin": "Cleveland Cavaliers, Sacramento Kings'i yendi.",
+      "hedef_mac": "0022500638",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Atlanta Hawks, Phoenix Suns'u yendi.",
+      "hedef_mac": "0022500636",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Houston Rockets, Detroit Pistons deplasmanında kazandı.",
+      "hedef_mac": "0022500635",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Denver Nuggets, Milwaukee Bucks'u yenerek konferansta 3. sıraya yükseldi.",
+      "hedef_mac": "0022500640",
+      "muzip": false,
+      "kind": "siralama"
+    },
+    {
+      "metin": "Boston Celtics, 11 sayılık farktan dönüp Brooklyn Nets'i geçti.",
+      "hedef_mac": "0022500637",
+      "muzip": false,
+      "kind": "geri_donus"
+    },
+    {
+      "metin": "Toronto Raptors, Portland Trail Blazers deplasmanında kazandı.",
+      "hedef_mac": "0022500642",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 5,
+    "ilk_denemede_kabul": 1,
+    "sablon_moduna_dusen": 0,
+    "detay": [
+      {
+        "mac_id": "0022500641",
+        "deneme": 0,
+        "gerekce": [
+          "baslik/T31: [\"'son saniyede devirdi' ama son 30 saniyede liderlik değişmedi\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Indiana, Oklahoma City'yi son saniyede devirdi."
+        }
+      },
+      {
+        "mac_id": "0022500639",
+        "deneme": 0,
+        "gerekce": [
+          "T14: en iyi performans (Saddiq Bey) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "New Orleans, 13 sayılık farktan dönüp Memphis'i yendi."
+        }
+      }
+    ],
+    "sablon_isaretli": [],
+    "mutlaka_mac": 3,
+    "ret_orani": 0.8,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 5,
+      "girdi_token": 19424,
+      "cikti_token": 1966,
+      "cache_yazma_token": 42765,
+      "cache_okuma_token": 35931,
+      "toplam_maliyet_usd": 0.1726,
+      "butce_asildi": false
+    }
+  }
+}

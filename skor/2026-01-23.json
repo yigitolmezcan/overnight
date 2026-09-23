@@ -1,0 +1,279 @@
+{
+  "tarih": "2026-01-23",
+  "hesaplandi": "2026-09-23T07:08:57.673858Z",
+  "en_iyi_skor": 9.27,
+  "maclar": [
+    {
+      "rozet": 9.27,
+      "ham": 12.05,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 10.0,
+        "K": 4.99,
+        "T": 0,
+        "D": 6
+      },
+      "yukselticiler": {
+        "Y": 4.95,
+        "F": 8,
+        "G": 0,
+        "A": 4.96
+      },
+      "ham_tasiyicilar": {
+        "S": 10,
+        "K": 4.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.99,
+      "dram_terfi": true,
+      "mac_id": "0022500641",
+      "ev": "OKC",
+      "dep": "IND",
+      "ev_skor": 114,
+      "dep_skor": 117,
+      "en_iyi_performans": "Shai Gilgeous-Alexander",
+      "esitlik_bozucu": [
+        6,
+        -3
+      ]
+    },
+    {
+      "rozet": 8.87,
+      "ham": 10.28,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 8.94,
+        "K": 2.69,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 6.27,
+        "F": 7,
+        "G": 6,
+        "A": 4.0
+      },
+      "ham_tasiyicilar": {
+        "S": 8.94,
+        "K": 1.89
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.8,
+      "dram_terfi": false,
+      "mac_id": "0022500639",
+      "ev": "MEM",
+      "dep": "NOP",
+      "ev_skor": 127,
+      "dep_skor": 133,
+      "en_iyi_performans": "Saddiq Bey",
+      "esitlik_bozucu": [
+        0,
+        -6
+      ]
+    },
+    {
+      "rozet": 8.51,
+      "ham": 9.19,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 7.65,
+        "K": 3.93,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 6.36,
+        "F": 7,
+        "G": 0,
+        "A": 5.75
+      },
+      "ham_tasiyicilar": {
+        "S": 7.65,
+        "K": 2.78
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.15,
+      "dram_terfi": false,
+      "mac_id": "0022500638",
+      "ev": "CLE",
+      "dep": "SAC",
+      "ev_skor": 123,
+      "dep_skor": 118,
+      "en_iyi_performans": "Evan Mobley",
+      "esitlik_bozucu": [
+        0,
+        -5
+      ]
+    },
+    {
+      "rozet": 8.1,
+      "ham": 8.21,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 4.04,
+        "K": 6.85,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 6.96,
+        "F": 6,
+        "G": 0,
+        "A": 4.25
+      },
+      "ham_tasiyicilar": {
+        "S": 4.04,
+        "K": 6.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.85,
+      "dram_terfi": false,
+      "mac_id": "0022500636",
+      "ev": "ATL",
+      "dep": "PHX",
+      "ev_skor": 110,
+      "dep_skor": 103,
+      "en_iyi_performans": "Devin Booker",
+      "esitlik_bozucu": [
+        0,
+        -7
+      ]
+    },
+    {
+      "rozet": 7.86,
+      "ham": 7.86,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.9,
+        "K": 3.87,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 4.41,
+        "F": 0,
+        "G": 0,
+        "A": 8.67
+      },
+      "ham_tasiyicilar": {
+        "S": 6.9,
+        "K": 2.14
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.73,
+      "dram_terfi": false,
+      "mac_id": "0022500635",
+      "ev": "DET",
+      "dep": "HOU",
+      "ev_skor": 104,
+      "dep_skor": 111,
+      "en_iyi_performans": "Kevin Durant",
+      "esitlik_bozucu": [
+        0,
+        -7
+      ]
+    },
+    {
+      "rozet": 6.57,
+      "ham": 6.57,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 3.08,
+        "K": 2.98,
+        "T": 0,
+        "D": 6
+      },
+      "yukselticiler": {
+        "Y": 2.86,
+        "F": 8,
+        "G": 0,
+        "A": 5.33
+      },
+      "ham_tasiyicilar": {
+        "S": 3.08,
+        "K": 1.91
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.07,
+      "dram_terfi": true,
+      "mac_id": "0022500640",
+      "ev": "MIL",
+      "dep": "DEN",
+      "ev_skor": 100,
+      "dep_skor": 102,
+      "en_iyi_performans": "Giannis Antetokounmpo",
+      "esitlik_bozucu": [
+        6,
+        -2
+      ]
+    },
+    {
+      "rozet": 5.86,
+      "ham": 5.86,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 5.06,
+        "K": 1.46,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 9.5,
+        "F": 7,
+        "G": 0,
+        "A": 4.33
+      },
+      "ham_tasiyicilar": {
+        "S": 5.06,
+        "K": 0.59
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.87,
+      "dram_terfi": false,
+      "mac_id": "0022500637",
+      "ev": "BKN",
+      "dep": "BOS",
+      "ev_skor": 126,
+      "dep_skor": 130,
+      "en_iyi_performans": "Michael Porter Jr.",
+      "esitlik_bozucu": [
+        0,
+        -4
+      ]
+    },
+    {
+      "rozet": 4.45,
+      "ham": 4.45,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 2.38,
+        "K": 4.15,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 4.94,
+        "F": 0,
+        "G": 0,
+        "A": 3.5
+      },
+      "ham_tasiyicilar": {
+        "S": 2.65,
+        "K": 3.45
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.7,
+      "dram_terfi": false,
+      "mac_id": "0022500642",
+      "ev": "POR",
+      "dep": "TOR",
+      "ev_skor": 98,
+      "dep_skor": 110,
+      "en_iyi_performans": "Immanuel Quickley",
+      "esitlik_bozucu": [
+        0,
+        -12
+      ]
+    }
+  ]
+}
