@@ -2,12 +2,6 @@
   "_aciklama": "Zamanlanmış işlerin koşu kaydı. Her koşu, sonucu ne olursa olsun buraya bir satır yazar. Kayıt yoksa iş hiç tetiklenmemiştir.",
   "kosular": [
     {
-      "zaman": "2026-09-17T07:01:02Z",
-      "is": "uret",
-      "sonuc": "failure",
-      "not": "run 94 · schedule"
-    },
-    {
       "zaman": "2026-09-17T08:59:16Z",
       "is": "uret",
       "sonuc": "failure",
@@ -360,6 +354,12 @@
       "is": "yayinla",
       "sonuc": "success",
       "not": "run 119 · schedule"
+    },
+    {
+      "zaman": "2026-09-24T12:01:13Z",
+      "is": "yayinla",
+      "sonuc": "success",
+      "not": "run 120 · schedule"
     }
   ]
 }
