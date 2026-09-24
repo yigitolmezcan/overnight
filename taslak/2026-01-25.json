@@ -1,0 +1,96 @@
+{
+  "tarih": "2026-01-25",
+  "uretildi": "2026-09-24T07:03:16.931293Z",
+  "maclar": {
+    "0022500644": {
+      "gec_satiri": "Golden State Warriors deplasmanda Minnesota Timberwolves'u 111-85 yendi.",
+      "muzip": false
+    },
+    "0022500655": {
+      "gec_satiri": "Miami Heat deplasmanda Phoenix Suns'u 111-102 yendi.",
+      "muzip": false
+    },
+    "0022500650": {
+      "gec_satiri": "Detroit Pistons evinde Sacramento Kings'i 139-116 yendi. Cade Cunningham 11 asist yaptı.",
+      "muzip": false
+    },
+    "0022500654": {
+      "gec_satiri": "New Orleans Pelicans deplasmanda San Antonio Spurs'u 104-95 yendi.",
+      "muzip": false
+    },
+    "0022500656": {
+      "gec_satiri": "LA Clippers evinde Brooklyn Nets'i 126-89 ezdi.",
+      "muzip": false
+    },
+    "0022500653": {
+      "baslik": "Toronto, Oklahoma City deplasmanında 103-101 kazandı.",
+      "neden_onemli": "Toronto Raptors, konferansta 3. sıraya yükseldi."
+    }
+  },
+  "brief": [
+    {
+      "metin": "Toronto Raptors, Oklahoma City Thunder'i yenerek 4 maçlık galibiyet serisini sürdürdü.",
+      "hedef_mac": "0022500653",
+      "muzip": false,
+      "kind": "seri"
+    },
+    {
+      "metin": "Golden State Warriors, Minnesota Timberwolves'u yendi.",
+      "hedef_mac": "0022500644",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Miami Heat, Phoenix Suns'u yendi.",
+      "hedef_mac": "0022500655",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Cade Cunningham, Sacramento Kings karşısında 11 asist yaptı.",
+      "hedef_mac": "0022500650",
+      "muzip": false,
+      "kind": "performans"
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 3,
+    "ilk_denemede_kabul": 0,
+    "sablon_moduna_dusen": 0,
+    "detay": [
+      {
+        "mac_id": "0022500653",
+        "deneme": 0,
+        "gerekce": [
+          "baslik/T4e: ['OKC']"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Toronto, OKC deplasmanında 103-101 kazandı."
+        }
+      },
+      {
+        "mac_id": "0022500653",
+        "deneme": 1,
+        "gerekce": [
+          "baslik/T31: [\"'son saniyede devirdi' ama son 30 saniyede liderlik değişmedi\"]"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Toronto, Oklahoma City'yi son saniyede devirdi."
+        }
+      }
+    ],
+    "sablon_isaretli": [],
+    "mutlaka_mac": 1,
+    "ret_orani": 1.0,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 3,
+      "girdi_token": 12393,
+      "cikti_token": 720,
+      "cache_yazma_token": 31576,
+      "cache_okuma_token": 15788,
+      "toplam_maliyet_usd": 0.1141,
+      "butce_asildi": false
+    }
+  }
+}
