@@ -1,0 +1,125 @@
+{
+  "tarih": "2026-01-26",
+  "uretildi": "2026-09-25T06:59:25.770514Z",
+  "maclar": {
+    "0022500659": {
+      "gec_satiri": "Atlanta Hawks evinde Indiana Pacers'i 132-116 yendi. Atlanta Hawks, 15 sayılık farktan dönerek kazandı.",
+      "muzip": false
+    },
+    "0022500657": {
+      "gec_satiri": "Charlotte Hornets evinde Philadelphia 76ers'i 130-93 ezdi. Brandon Miller 30 sayı attı.",
+      "muzip": false
+    },
+    "0022500663": {
+      "gec_satiri": "Minnesota Timberwolves evinde Golden State Warriors'u 108-83 yendi. Rudy Gobert 17 ribaund topladı.",
+      "muzip": false
+    },
+    "0022500660": {
+      "gec_satiri": "Boston Celtics evinde Portland Trail Blazers'i 102-94 yendi.",
+      "muzip": false
+    },
+    "0022500661": {
+      "baslik": "Dončić'in 46 sayısıyla Lakers, Bulls'u yendi."
+    },
+    "0022500662": {
+      "baslik": "Alperen Şengün'ün 33 sayısıyla Houston Rockets, Memphis Grizzlies'i yendi."
+    },
+    "0022500658": {
+      "baslik": "Donovan Mitchell'ın 45 sayısıyla Cleveland, Orlando'yu yendi."
+    }
+  },
+  "brief": [
+    {
+      "metin": "Luka Dončić, Chicago Bulls karşısında 46 sayı attı.",
+      "hedef_mac": "0022500661",
+      "muzip": false,
+      "kind": "performans"
+    },
+    {
+      "metin": "Houston Rockets, Memphis Grizzlies'i yendi.",
+      "hedef_mac": "0022500662",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Cleveland Cavaliers, Orlando Magic'i yendi.",
+      "hedef_mac": "0022500658",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Atlanta Hawks, 15 sayılık farktan dönüp Indiana Pacers'i geçti.",
+      "hedef_mac": "0022500659",
+      "muzip": false,
+      "kind": "geri_donus"
+    },
+    {
+      "metin": "Charlotte Hornets, Philadelphia 76ers'i evinde yendi.",
+      "hedef_mac": "0022500657",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Minnesota Timberwolves, Golden State Warriors'u evinde yendi.",
+      "hedef_mac": "0022500663",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Boston Celtics, Portland Trail Blazers'i yenerek konferansta 2. sıraya yükseldi.",
+      "hedef_mac": "0022500660",
+      "muzip": false,
+      "kind": "siralama"
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 5,
+    "ilk_denemede_kabul": 2,
+    "sablon_moduna_dusen": 1,
+    "detay": [
+      {
+        "mac_id": "0022500662",
+        "deneme": 0,
+        "gerekce": [
+          "T14: en iyi performans (Alperen Şengün) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Houston, Memphis'i 108-99 yendi."
+        }
+      },
+      {
+        "mac_id": "0022500662",
+        "deneme": 1,
+        "gerekce": [
+          "T14: en iyi performans (Alperen Şengün) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Houston, 10 sayılık farktan dönüp Memphis'i yendi."
+        }
+      },
+      {
+        "mac_id": "0022500662",
+        "deneme": 2,
+        "gerekce": [
+          "T14: en iyi performans (Alperen Şengün) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Houston, 10 sayılık farktan dönüp Memphis'i yendi."
+        }
+      }
+    ],
+    "sablon_isaretli": [],
+    "mutlaka_mac": 3,
+    "ret_orani": 0.6,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 5,
+      "girdi_token": 18360,
+      "cikti_token": 806,
+      "cache_yazma_token": 36873,
+      "cache_okuma_token": 39269,
+      "toplam_maliyet_usd": 0.1448,
+      "butce_asildi": false
+    }
+  }
+}

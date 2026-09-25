@@ -1,0 +1,245 @@
+{
+  "tarih": "2026-01-26",
+  "hesaplandi": "2026-09-25T06:59:06.871919Z",
+  "en_iyi_skor": 8.87,
+  "maclar": [
+    {
+      "rozet": 8.87,
+      "ham": 10.27,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 9.0,
+        "K": 5.93,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.8,
+        "F": 0,
+        "G": 0,
+        "A": 6.92
+      },
+      "ham_tasiyicilar": {
+        "S": 10,
+        "K": 4.55
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 1.38,
+      "dram_terfi": false,
+      "mac_id": "0022500661",
+      "ev": "CHI",
+      "dep": "LAL",
+      "ev_skor": 118,
+      "dep_skor": 129,
+      "en_iyi_performans": "Luka Dončić",
+      "esitlik_bozucu": [
+        0,
+        -11
+      ]
+    },
+    {
+      "rozet": 8.56,
+      "ham": 9.31,
+      "katman": "mutlaka",
+      "tasiyicilar": {
+        "S": 7.86,
+        "K": 4.36,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 4.67,
+        "F": 0,
+        "G": 6,
+        "A": 6.9
+      },
+      "ham_tasiyicilar": {
+        "S": 7.86,
+        "K": 2.98
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.38,
+      "dram_terfi": false,
+      "mac_id": "0022500662",
+      "ev": "HOU",
+      "dep": "MEM",
+      "ev_skor": 108,
+      "dep_skor": 99,
+      "en_iyi_performans": "Alperen Şengün",
+      "esitlik_bozucu": [
+        0,
+        -9
+      ]
+    },
+    {
+      "rozet": 8.3,
+      "ham": 8.65,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 7.99,
+        "K": 4.92,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.79,
+        "F": 0,
+        "G": 0,
+        "A": 5.71
+      },
+      "ham_tasiyicilar": {
+        "S": 8.88,
+        "K": 3.78
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 1.14,
+      "dram_terfi": false,
+      "mac_id": "0022500658",
+      "ev": "CLE",
+      "dep": "ORL",
+      "ev_skor": 114,
+      "dep_skor": 98,
+      "en_iyi_performans": "Donovan Mitchell",
+      "esitlik_bozucu": [
+        0,
+        -16
+      ]
+    },
+    {
+      "rozet": 6.41,
+      "ham": 6.41,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 3.7,
+        "K": 3.27,
+        "T": 0,
+        "D": 6
+      },
+      "yukselticiler": {
+        "Y": 3.19,
+        "F": 0,
+        "G": 8,
+        "A": 1.33
+      },
+      "ham_tasiyicilar": {
+        "S": 4.11,
+        "K": 3.0
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.27,
+      "dram_terfi": true,
+      "mac_id": "0022500659",
+      "ev": "ATL",
+      "dep": "IND",
+      "ev_skor": 132,
+      "dep_skor": 116,
+      "en_iyi_performans": "Dyson Daniels",
+      "esitlik_bozucu": [
+        6,
+        -16
+      ]
+    },
+    {
+      "rozet": 5.55,
+      "ham": 5.55,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 4.99,
+        "K": 4.7,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.1,
+        "F": 0,
+        "G": 0,
+        "A": 5.0
+      },
+      "ham_tasiyicilar": {
+        "S": 7.13,
+        "K": 3.7
+      },
+      "s_sonum": 0.7,
+      "a_k_katkisi": 1.0,
+      "dram_terfi": false,
+      "mac_id": "0022500657",
+      "ev": "CHA",
+      "dep": "PHI",
+      "ev_skor": 130,
+      "dep_skor": 93,
+      "en_iyi_performans": "Brandon Miller",
+      "esitlik_bozucu": [
+        0,
+        -37
+      ]
+    },
+    {
+      "rozet": 4.65,
+      "ham": 4.65,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 0.98,
+        "K": 5.11,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 0.76,
+        "F": 0,
+        "G": 0,
+        "A": 3.83
+      },
+      "ham_tasiyicilar": {
+        "S": 1.22,
+        "K": 4.34
+      },
+      "s_sonum": 0.8,
+      "a_k_katkisi": 0.77,
+      "dram_terfi": false,
+      "mac_id": "0022500663",
+      "ev": "MIN",
+      "dep": "GSW",
+      "ev_skor": 108,
+      "dep_skor": 83,
+      "en_iyi_performans": "Rudy Gobert",
+      "esitlik_bozucu": [
+        0,
+        -25
+      ]
+    },
+    {
+      "rozet": 3.12,
+      "ham": 3.12,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 1.26,
+        "K": 3.14,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.46,
+        "F": 0,
+        "G": 0,
+        "A": 4.08
+      },
+      "ham_tasiyicilar": {
+        "S": 1.26,
+        "K": 2.32
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.82,
+      "dram_terfi": false,
+      "mac_id": "0022500660",
+      "ev": "BOS",
+      "dep": "POR",
+      "ev_skor": 102,
+      "dep_skor": 94,
+      "en_iyi_performans": "Jaylen Brown",
+      "esitlik_bozucu": [
+        0,
+        -8
+      ]
+    }
+  ]
+}
