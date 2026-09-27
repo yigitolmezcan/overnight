@@ -1,0 +1,245 @@
+{
+  "tarih": "2026-01-27",
+  "hesaplandi": "2026-09-27T10:38:44.909630Z",
+  "en_iyi_skor": 8.38,
+  "maclar": [
+    {
+      "rozet": 8.38,
+      "ham": 8.84,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 3.93,
+        "K": 7.21,
+        "T": 0,
+        "D": 6
+      },
+      "yukselticiler": {
+        "Y": 4.61,
+        "F": 8,
+        "G": 0,
+        "A": 5.83
+      },
+      "ham_tasiyicilar": {
+        "S": 3.93,
+        "K": 6.04
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.17,
+      "dram_terfi": true,
+      "mac_id": "0022500668",
+      "ev": "DEN",
+      "dep": "DET",
+      "ev_skor": 107,
+      "dep_skor": 109,
+      "en_iyi_performans": "Cade Cunningham",
+      "esitlik_bozucu": [
+        6,
+        -2
+      ]
+    },
+    {
+      "rozet": 7.42,
+      "ham": 7.42,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 6.58,
+        "K": 3.33,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 5.7,
+        "F": 7,
+        "G": 0,
+        "A": 1.67
+      },
+      "ham_tasiyicilar": {
+        "S": 6.58,
+        "K": 3.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.33,
+      "dram_terfi": false,
+      "mac_id": "0022500669",
+      "ev": "PHX",
+      "dep": "BKN",
+      "ev_skor": 106,
+      "dep_skor": 102,
+      "en_iyi_performans": "Michael Porter Jr.",
+      "esitlik_bozucu": [
+        0,
+        -4
+      ]
+    },
+    {
+      "rozet": 6.17,
+      "ham": 6.17,
+      "katman": "ikinci",
+      "tasiyicilar": {
+        "S": 5.33,
+        "K": 3.07,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 7.42,
+        "F": 7,
+        "G": 0,
+        "A": 0.5
+      },
+      "ham_tasiyicilar": {
+        "S": 5.33,
+        "K": 2.97
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 0.1,
+      "dram_terfi": false,
+      "mac_id": "0022500664",
+      "ev": "WAS",
+      "dep": "POR",
+      "ev_skor": 115,
+      "dep_skor": 111,
+      "en_iyi_performans": "Shaedon Sharpe",
+      "esitlik_bozucu": [
+        0,
+        -4
+      ]
+    },
+    {
+      "rozet": 5.62,
+      "ham": 5.62,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 5.12,
+        "K": 4.27,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 2.36,
+        "F": 0,
+        "G": 0,
+        "A": 3.5
+      },
+      "ham_tasiyicilar": {
+        "S": 5.69,
+        "K": 3.57
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.7,
+      "dram_terfi": false,
+      "mac_id": "0022500666",
+      "ev": "PHI",
+      "dep": "MIL",
+      "ev_skor": 139,
+      "dep_skor": 122,
+      "en_iyi_performans": "Myles Turner",
+      "esitlik_bozucu": [
+        0,
+        -17
+      ]
+    },
+    {
+      "rozet": 5.02,
+      "ham": 5.02,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 5.11,
+        "K": 1.12,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 3.5,
+        "F": 0,
+        "G": 0,
+        "A": 5.58
+      },
+      "ham_tasiyicilar": {
+        "S": 5.11,
+        "K": 0.0
+      },
+      "s_sonum": 1.0,
+      "a_k_katkisi": 1.12,
+      "dram_terfi": false,
+      "mac_id": "0022500667",
+      "ev": "OKC",
+      "dep": "NOP",
+      "ev_skor": 104,
+      "dep_skor": 95,
+      "en_iyi_performans": "Chet Holmgren",
+      "esitlik_bozucu": [
+        0,
+        -9
+      ]
+    },
+    {
+      "rozet": 3.38,
+      "ham": 3.38,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 0.2,
+        "K": 3.78,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 1.95,
+        "F": 0,
+        "G": 0,
+        "A": 3.92
+      },
+      "ham_tasiyicilar": {
+        "S": 0.22,
+        "K": 3.0
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 0.78,
+      "dram_terfi": false,
+      "mac_id": "0022500670",
+      "ev": "UTA",
+      "dep": "LAC",
+      "ev_skor": 103,
+      "dep_skor": 115,
+      "en_iyi_performans": "Kawhi Leonard",
+      "esitlik_bozucu": [
+        0,
+        -12
+      ]
+    },
+    {
+      "rozet": 2.65,
+      "ham": 2.65,
+      "katman": "gec",
+      "tasiyicilar": {
+        "S": 2.17,
+        "K": 2.12,
+        "T": 0,
+        "D": 0
+      },
+      "yukselticiler": {
+        "Y": 5.0,
+        "F": 0,
+        "G": 0,
+        "A": 5.67
+      },
+      "ham_tasiyicilar": {
+        "S": 2.41,
+        "K": 0.99
+      },
+      "s_sonum": 0.9,
+      "a_k_katkisi": 1.13,
+      "dram_terfi": false,
+      "mac_id": "0022500665",
+      "ev": "NYK",
+      "dep": "SAC",
+      "ev_skor": 103,
+      "dep_skor": 87,
+      "en_iyi_performans": "Jalen Brunson",
+      "esitlik_bozucu": [
+        0,
+        -16
+      ]
+    }
+  ]
+}

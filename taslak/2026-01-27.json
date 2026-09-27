@@ -1,0 +1,109 @@
+{
+  "tarih": "2026-01-27",
+  "uretildi": "2026-09-27T10:39:10.723106Z",
+  "maclar": {
+    "0022500669": {
+      "gec_satiri": "Phoenix Suns evinde Brooklyn Nets'i 106-102 yendi.",
+      "muzip": false
+    },
+    "0022500664": {
+      "gec_satiri": "Washington Wizards evinde Portland Trail Blazers'i 115-111 yendi.",
+      "muzip": false
+    },
+    "0022500666": {
+      "gec_satiri": "Philadelphia 76ers evinde Milwaukee Bucks'u 139-122 yendi.",
+      "muzip": false
+    },
+    "0022500667": {
+      "gec_satiri": "Oklahoma City Thunder evinde New Orleans Pelicans'ı 104-95 yendi.",
+      "muzip": false
+    },
+    "0022500670": {
+      "gec_satiri": "LA Clippers deplasmanda Utah Jazz'ı 115-103 yendi.",
+      "muzip": false
+    },
+    "0022500665": {
+      "gec_satiri": "New York Knicks evinde Sacramento Kings'i 103-87 yendi.",
+      "muzip": false
+    },
+    "0022500668": {
+      "baslik": "Cunningham'ın 22 sayısıyla Detroit, Denver'ı yendi.",
+      "neden_onemli": "Detroit Pistons, konferansta 1. sıraya yükseldi."
+    }
+  },
+  "brief": [
+    {
+      "metin": "Cade Cunningham, Denver Nuggets karşısında 11 asist yaptı.",
+      "hedef_mac": "0022500668",
+      "muzip": false,
+      "kind": "performans"
+    },
+    {
+      "metin": "Phoenix Suns, Brooklyn Nets'i yendi.",
+      "hedef_mac": "0022500669",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Washington Wizards, Portland Trail Blazers'i yendi.",
+      "hedef_mac": "0022500664",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Philadelphia 76ers, Milwaukee Bucks'u evinde yendi.",
+      "hedef_mac": "0022500666",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    },
+    {
+      "metin": "Oklahoma City Thunder, New Orleans Pelicans'ı yenerek konferansta 1. sıraya yükseldi.",
+      "hedef_mac": "0022500667",
+      "muzip": false,
+      "kind": "siralama"
+    },
+    {
+      "metin": "LA Clippers, 11 sayılık farktan dönüp Utah Jazz'ı geçti.",
+      "hedef_mac": "0022500670",
+      "muzip": false,
+      "kind": "geri_donus"
+    },
+    {
+      "metin": "New York Knicks, Sacramento Kings'i evinde yendi.",
+      "hedef_mac": "0022500665",
+      "muzip": false,
+      "kind": "duz_sonuc"
+    }
+  ],
+  "rapor": {
+    "toplam_alan": 2,
+    "ilk_denemede_kabul": 0,
+    "sablon_moduna_dusen": 0,
+    "detay": [
+      {
+        "mac_id": "0022500668",
+        "deneme": 0,
+        "gerekce": [
+          "baslik/T31: [\"'son saniyede devirdi' ama son 30 saniyede liderlik değişmedi\"]",
+          "T14: en iyi performans (Cade Cunningham) hiç anılmadı"
+        ],
+        "reddedilen_taslak": {
+          "baslik": "Detroit, Denver'ı son saniyede devirdi."
+        }
+      }
+    ],
+    "sablon_isaretli": [],
+    "mutlaka_mac": 1,
+    "ret_orani": 1.0,
+    "uretim_modu": "hibrit",
+    "kullanim": {
+      "cagri_sayisi": 2,
+      "girdi_token": 8665,
+      "cikti_token": 1525,
+      "cache_yazma_token": 31388,
+      "cache_okuma_token": 0,
+      "toplam_maliyet_usd": 0.111,
+      "butce_asildi": false
+    }
+  }
+}
