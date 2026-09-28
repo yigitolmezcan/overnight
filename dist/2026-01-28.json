@@ -1,6 +1,6 @@
 {
   "tarih": "2026-01-28",
-  "uretildi": "2026-08-30T11:06:14.948943Z",
+  "uretildi": "2026-09-28T08:06:01.097677Z",
   "mac_sayisi": 9,
   "bars": [
     {
@@ -274,7 +274,7 @@
       "one_cikan": false
     },
     {
-      "metin": "Cleveland Cavaliers, Los Angeles Lakers'i evinde yendi.",
+      "metin": "Cleveland Cavaliers, Los Angeles Lakers'i yendi.",
       "anlatili": true,
       "hedef_id": "a-0022500671",
       "icon": "standings",
@@ -334,7 +334,7 @@
       "one_cikan": false
     },
     {
-      "metin": "Minnesota Timberwolves, Dallas Mavericks'i yendi.",
+      "metin": "Minnesota Timberwolves, Dallas Mavericks deplasmanında kazandı.",
       "anlatili": true,
       "hedef_id": "a-0022500677",
       "icon": "default",
@@ -393,7 +393,7 @@
       "mac": "Houston Rockets — San Antonio Spurs",
       "skor": "99–111",
       "rozet": 8.29,
-      "baslik": "San Antonio Spurs, 16 sayılık farktan dönüp Houston Rockets'i yendi.",
+      "baslik": "Wembanyama'nın 28 sayısıyla San Antonio, Houston'ı yendi.",
       "neden_onemli": "San Antonio Spurs, konferansta 2. sıraya yükseldi.",
       "ceyrek_tablosu": [
         {
@@ -1129,7 +1129,8 @@
             }
           ]
         },
-        "kritik": null
+        "kritik": null,
+        "son_toplar": null
       },
       "kazanan_kod": "SAS",
       "ray_renk": "#C4CED4",
@@ -12709,7 +12710,7 @@
         },
         {
           "sayi": 14,
-          "rakip": "LA Lakers",
+          "rakip": "Los Angeles",
           "bu_gece": false,
           "ust": true
         },
@@ -14031,7 +14032,8 @@
             }
           ]
         },
-        "kritik": null
+        "kritik": null,
+        "son_toplar": null
       },
       "kazanan_kod": "ORL",
       "ceyrek_tablosu": [
@@ -14708,6 +14710,120 @@
               "kazanan": false
             }
           ]
+        },
+        "son_toplar": {
+          "pencere": 90,
+          "satirlar": [
+            {
+              "saat": "1:18",
+              "cumle": "Pascal Siakam basket attı",
+              "tip": "basket",
+              "kod": "IND",
+              "skor": {
+                "ev": 107,
+                "dep": 107
+              },
+              "soluk": false,
+              "karar": false
+            },
+            {
+              "saat": "1:02",
+              "cumle": "Coby White şutu kaçırdı",
+              "tip": "kacan",
+              "kod": "CHI",
+              "skor": null,
+              "soluk": true,
+              "karar": false
+            },
+            {
+              "saat": "0:39",
+              "cumle": "Andrew Nembhard basket attı",
+              "tip": "basket",
+              "kod": "IND",
+              "skor": {
+                "ev": 109,
+                "dep": 107
+              },
+              "soluk": false,
+              "karar": false
+            },
+            {
+              "saat": "0:38",
+              "cumle": "Chicago molası",
+              "tip": "mola",
+              "kod": "",
+              "skor": null,
+              "soluk": true,
+              "karar": false
+            },
+            {
+              "saat": "0:33",
+              "cumle": "Nikola Vučević üçlük attı",
+              "tip": "basket",
+              "kod": "CHI",
+              "skor": {
+                "ev": 109,
+                "dep": 110
+              },
+              "soluk": false,
+              "karar": false
+            },
+            {
+              "saat": "0:13",
+              "cumle": "Aaron Nesmith turnike attı",
+              "tip": "basket",
+              "kod": "IND",
+              "skor": {
+                "ev": 111,
+                "dep": 110
+              },
+              "soluk": false,
+              "karar": false
+            },
+            {
+              "saat": "0:13",
+              "cumle": "Chicago molası",
+              "tip": "mola",
+              "kod": "",
+              "skor": null,
+              "soluk": true,
+              "karar": false
+            },
+            {
+              "saat": "0:02",
+              "cumle": "Coby White turnikeyi kaçırdı",
+              "tip": "kacan",
+              "kod": "CHI",
+              "skor": null,
+              "soluk": true,
+              "karar": false
+            },
+            {
+              "saat": "0:02",
+              "cumle": "Johnny Furphy serbest atışları 2/2 attı",
+              "tip": "serbest",
+              "kod": "IND",
+              "skor": {
+                "ev": 113,
+                "dep": 110
+              },
+              "soluk": false,
+              "karar": false
+            },
+            {
+              "saat": "0:00",
+              "cumle": "Andrew Nembhard topu çaldı",
+              "tip": "calma",
+              "kod": "IND",
+              "skor": null,
+              "soluk": false,
+              "karar": false
+            }
+          ],
+          "hamle": 10,
+          "kazanan": "Indiana",
+          "ev_kazandi": true,
+          "uzatma": false
         }
       },
       "kazanan_kod": "IND",
@@ -14752,7 +14868,7 @@
       "skor": "92–119",
       "rozet": 5.95,
       "why": "eşit derece",
-      "metin": "New York Knicks deplasmanda Toronto Raptors'u 119-92 yendi. New York Knicks, 12 sayılık farktan dönerek kazandı.",
+      "metin": "New York Knicks deplasmanda Toronto Raptors'u 119-92 yendi.",
       "box": {
         "ev": {
           "takim": "Toronto Raptors",
@@ -15429,7 +15545,8 @@
             }
           ]
         },
-        "kritik": null
+        "kritik": null,
+        "son_toplar": null
       },
       "kazanan_kod": "NYK",
       "ray_renk": "#F58426",
@@ -16144,7 +16261,8 @@
             }
           ]
         },
-        "kritik": null
+        "kritik": null,
+        "son_toplar": null
       },
       "kazanan_kod": "CLE",
       "ray_renk": "#B3123F",
@@ -16741,7 +16859,8 @@
             }
           ]
         },
-        "kritik": null
+        "kritik": null,
+        "son_toplar": null
       },
       "kazanan_kod": "MIN",
       "ray_renk": "#3B7FD4",
@@ -17386,7 +17505,8 @@
             }
           ]
         },
-        "kritik": null
+        "kritik": null,
+        "son_toplar": null
       },
       "kazanan_kod": "ATL",
       "ray_renk": "#C1D32F",
@@ -18016,7 +18136,8 @@
         },
         "wtf": null,
         "kilit": null,
-        "kritik": null
+        "kritik": null,
+        "son_toplar": null
       },
       "kazanan_kod": "CHA",
       "ray_renk": "#4B36A8",
@@ -18687,7 +18808,8 @@
             }
           ]
         },
-        "kritik": null
+        "kritik": null,
+        "son_toplar": null
       },
       "kazanan_kod": "GSW",
       "ray_renk": "#1B3A6B",

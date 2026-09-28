@@ -1,25 +1,25 @@
 {
   "tarih": "2026-01-28",
-  "uretildi": "2026-08-30T11:06:14.948943Z",
+  "uretildi": "2026-09-28T08:06:01.097677Z",
   "maclar": {
     "0022500674": {
       "gec_satiri": "Orlando Magic deplasmanda Miami Heat'i 133-124 yendi. Paolo Banchero 31 sayı attı.",
-      "muzip": false
-    },
-    "0022500675": {
-      "gec_satiri": "New York Knicks deplasmanda Toronto Raptors'u 119-92 yendi. New York Knicks, 12 sayılık farktan dönerek kazandı.",
       "muzip": false
     },
     "0022500672": {
       "gec_satiri": "Indiana Pacers evinde Chicago Bulls'u 113-110 yendi. Indiana Pacers, 14 sayılık farktan dönerek kazandı.",
       "muzip": false
     },
-    "0022500677": {
-      "gec_satiri": "Minnesota Timberwolves deplasmanda Dallas Mavericks'i 118-105 yendi. Julius Randle 31 sayı attı.",
+    "0022500675": {
+      "gec_satiri": "New York Knicks deplasmanda Toronto Raptors'u 119-92 yendi.",
       "muzip": false
     },
     "0022500671": {
       "gec_satiri": "Cleveland Cavaliers evinde Los Angeles Lakers'i 129-99 ezdi.",
+      "muzip": false
+    },
+    "0022500677": {
+      "gec_satiri": "Minnesota Timberwolves deplasmanda Dallas Mavericks'i 118-105 yendi. Julius Randle 31 sayı attı.",
       "muzip": false
     },
     "0022500673": {
@@ -35,7 +35,7 @@
       "muzip": false
     },
     "0022500679": {
-      "baslik": "San Antonio Spurs, 16 sayılık farktan dönüp Houston Rockets'i yendi.",
+      "baslik": "Wembanyama'nın 28 sayısıyla San Antonio, Houston'ı yendi.",
       "neden_onemli": "San Antonio Spurs, konferansta 2. sıraya yükseldi."
     }
   },
@@ -53,26 +53,26 @@
       "kind": "performans"
     },
     {
-      "metin": "New York Knicks, Toronto Raptors'u yenerek konferansta 2. sıraya yükseldi.",
-      "hedef_mac": "0022500675",
-      "muzip": false,
-      "kind": "siralama"
-    },
-    {
       "metin": "Indiana Pacers, Chicago Bulls'u yendi.",
       "hedef_mac": "0022500672",
       "muzip": false,
       "kind": "duz_sonuc"
     },
     {
-      "metin": "Minnesota Timberwolves, Dallas Mavericks'i yendi.",
-      "hedef_mac": "0022500677",
+      "metin": "New York Knicks, Toronto Raptors'u yenerek konferansta 2. sıraya yükseldi.",
+      "hedef_mac": "0022500675",
+      "muzip": false,
+      "kind": "siralama"
+    },
+    {
+      "metin": "Cleveland Cavaliers, Los Angeles Lakers'i yendi.",
+      "hedef_mac": "0022500671",
       "muzip": false,
       "kind": "duz_sonuc"
     },
     {
-      "metin": "Cleveland Cavaliers, Los Angeles Lakers'i evinde yendi.",
-      "hedef_mac": "0022500671",
+      "metin": "Minnesota Timberwolves, Dallas Mavericks deplasmanında kazandı.",
+      "hedef_mac": "0022500677",
       "muzip": false,
       "kind": "duz_sonuc"
     },
@@ -90,66 +90,33 @@
     }
   ],
   "rapor": {
-    "toplam_alan": 3,
+    "toplam_alan": 2,
     "ilk_denemede_kabul": 0,
-    "sablon_moduna_dusen": 1,
+    "sablon_moduna_dusen": 0,
     "detay": [
       {
         "mac_id": "0022500679",
         "deneme": 0,
         "gerekce": [
-          "baslik/T31: [\"başlık iskelet listesinin dışında: 'San Antonio, Wembanyama'nın 28 sayısıyla Houston'ı yendi.'\"]"
+          "baslik/T31: [\"başlık iskelet listesinin dışında: 'Wembanyama'nın 28 sayı 16 ribaunduyla San Antonio, Houston'ı yendi.'\"]",
+          "T30: 'ribaund' — bu maçın KİLİT İSTATİSTİĞİ (hücum ribaundu) zaten kendi kutusunda gösteriliyor, metinde tekrarlanmaz"
         ],
         "reddedilen_taslak": {
-          "baslik": "San Antonio, Wembanyama'nın 28 sayısıyla Houston'ı yendi."
-        }
-      },
-      {
-        "mac_id": "0022500679",
-        "deneme": 1,
-        "gerekce": [
-          "baslik/T31: [\"başlık iskelet listesinin dışında: 'San Antonio, Houston'ın açtığı 16 sayılık farktan dönüp yendi.'\"]",
-          "T14: en iyi performans (Victor Wembanyama) hiç anılmadı"
-        ],
-        "reddedilen_taslak": {
-          "baslik": "San Antonio, Houston'ın açtığı 16 sayılık farktan dönüp yendi."
-        }
-      },
-      {
-        "mac_id": "0022500679",
-        "deneme": 2,
-        "gerekce": [
-          "baslik/T31: [\"başlık iskelet listesinin dışında: 'San Antonio, Houston'ı deplasmanda 111-99 yendi.'\"]",
-          "T14: en iyi performans (Victor Wembanyama) hiç anılmadı"
-        ],
-        "reddedilen_taslak": {
-          "baslik": "San Antonio, Houston'ı deplasmanda 111-99 yendi."
+          "baslik": "Wembanyama'nın 28 sayı 16 ribaunduyla San Antonio, Houston'ı yendi."
         }
       }
     ],
-    "sablon_isaretli": [
-      {
-        "mac_id": "0022500679",
-        "alan": "mutlaka",
-        "gerekce": [
-          "T14: en iyi performans (Victor Wembanyama) hiç anılmadı"
-        ],
-        "metin": {
-          "baslik": "San Antonio Spurs, 16 sayılık farktan dönüp Houston Rockets'i yendi.",
-          "neden_onemli": "San Antonio Spurs, konferansta 2. sıraya yükseldi."
-        }
-      }
-    ],
+    "sablon_isaretli": [],
     "mutlaka_mac": 1,
     "ret_orani": 1.0,
     "uretim_modu": "hibrit",
     "kullanim": {
-      "cagri_sayisi": 3,
-      "girdi_token": 12803,
-      "cikti_token": 762,
-      "cache_yazma_token": 6166,
-      "cache_okuma_token": 39014,
-      "toplam_maliyet_usd": 0.0564,
+      "cagri_sayisi": 2,
+      "girdi_token": 8777,
+      "cikti_token": 783,
+      "cache_yazma_token": 30120,
+      "cache_okuma_token": 0,
+      "toplam_maliyet_usd": 0.1007,
       "butce_asildi": false
     }
   }
