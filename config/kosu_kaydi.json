@@ -2,12 +2,6 @@
   "_aciklama": "Zamanlanmış işlerin koşu kaydı. Her koşu, sonucu ne olursa olsun buraya bir satır yazar. Kayıt yoksa iş hiç tetiklenmemiştir.",
   "kosular": [
     {
-      "zaman": "2026-10-08T12:09:00Z",
-      "is": "uret",
-      "sonuc": "failure",
-      "not": "run 180 · schedule"
-    },
-    {
       "zaman": "2026-10-08T12:44:01Z",
       "is": "yayinla",
       "sonuc": "success",
@@ -360,6 +354,12 @@
       "is": "uret",
       "sonuc": "failure",
       "not": "run 209 · workflow_dispatch"
+    },
+    {
+      "zaman": "2026-10-16T06:38:35Z",
+      "is": "uret",
+      "sonuc": "failure",
+      "not": "run 210 · schedule"
     }
   ]
 }
