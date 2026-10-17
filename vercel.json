@@ -3,14 +3,5 @@
   "outputDirectory": "site",
   "framework": null,
   "cleanUrls": true,
-  "crons": [
-    {
-      "path": "/api/nobetci?gorev=uret",
-      "schedule": "0 2 * * *"
-    },
-    {
-      "path": "/api/nobetci?gorev=yayinla",
-      "schedule": "0 6 * * *"
-    }
-  ]
+  "crons": []
 }
